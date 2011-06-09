@@ -14,10 +14,12 @@
     using EWSEditor.Resources;
 
     using Microsoft.Exchange.WebServices.Data;
+    using EWSEditor.Exchange;
 
     public partial class FolderContentForm : ItemsContentForm
     {
         private Folder currentFolder = null;
+        private ToolStripMenuItem mnuCreateFromStream = new ToolStripMenuItem();
 
         private FolderContentForm()
         {
@@ -54,6 +56,7 @@
                 this.mnuSoftDeletedItems,
                 this.mnuFolderSplit1,
                 this.mnuCreateFromMIME,
+                this.mnuCreateFromStream,
                 this.mnuFolderSplit2,
                 this.mnuPermissions,
                 this.mnuFolderSplit3,
@@ -90,6 +93,11 @@
             this.mnuCreateFromMIME.Size = new System.Drawing.Size(305, 22);
             this.mnuCreateFromMIME.Text = "Create Item From MIME...";
             this.mnuCreateFromMIME.Click += new System.EventHandler(this.MnuCreateFromMIME_Click);
+
+            this.mnuCreateFromStream.Name = "mnuCreateFromStream";
+            this.mnuCreateFromStream.Size = new System.Drawing.Size(305, 22);
+            this.mnuCreateFromStream.Text = "Create Item From Stream...";
+            this.mnuCreateFromStream.Click += new System.EventHandler(this.MnuCreateFromStream_Click);
 
             this.mnuFolderSplit2.Name = "mnuFolderSplit2";
             this.mnuFolderSplit2.Size = new System.Drawing.Size(302, 6);
@@ -284,6 +292,38 @@
         private void PropertyDetailsGrid_PropertyChanged(object sender, EventArgs e)
         {
             this.RefreshContentAndDetails();
+        }
+
+        private void MnuCreateFromStream_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Choose an export stream file to import...";
+            ofd.Multiselect = false;
+            ofd.CheckFileExists = true;
+            ofd.CheckPathExists = true;
+
+            if (ofd.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                byte[] data = System.IO.File.ReadAllBytes(ofd.FileName);
+
+                ExportUploadHelper.UploadItem(
+                    this.CurrentService,
+                    this.currentFolder.Id,
+                    data);
+
+                this.RefreshContentAndDetails();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
         }
 
         /// <summary>

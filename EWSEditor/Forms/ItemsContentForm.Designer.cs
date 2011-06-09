@@ -44,6 +44,7 @@
             this.mnuExportItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExportMIMEContent = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExportXml = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToStreamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemSplit3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuResponse = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMeetingAccept = new System.Windows.Forms.ToolStripMenuItem();
@@ -141,7 +142,8 @@
             // 
             this.mnuExportItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuExportMIMEContent,
-            this.mnuExportXml});
+            this.mnuExportXml,
+            this.exportToStreamToolStripMenuItem});
             this.mnuExportItem.Name = "mnuExportItem";
             this.mnuExportItem.Size = new System.Drawing.Size(195, 22);
             this.mnuExportItem.Text = "Export Item";
@@ -159,6 +161,13 @@
             this.mnuExportXml.Size = new System.Drawing.Size(196, 22);
             this.mnuExportXml.Text = "Export to XML...";
             this.mnuExportXml.Click += new System.EventHandler(this.MnuExportXml_Click);
+            // 
+            // exportToStreamToolStripMenuItem
+            // 
+            this.exportToStreamToolStripMenuItem.Name = "exportToStreamToolStripMenuItem";
+            this.exportToStreamToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.exportToStreamToolStripMenuItem.Text = "Export to Stream...";
+            this.exportToStreamToolStripMenuItem.Click += new System.EventHandler(this.MnuExportToStream_Click);
             // 
             // mnuItemSplit3
             // 
@@ -230,5 +239,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuMeetingTentative;
         private System.Windows.Forms.ToolStripMenuItem mnuAddItemAttach;
         private System.Windows.Forms.ToolStripMenuItem mnuExportXml;
+        private System.Windows.Forms.ToolStripMenuItem exportToStreamToolStripMenuItem;
     }
 }

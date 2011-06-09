@@ -38,15 +38,11 @@ namespace EWSEditor
                 // If the API is not found on the machine then display an error message and offer to
                 // take the user to the download page.
                 EWSEditor.Forms.ManagedApiDialog.ShowDialog();
-            }
-            else
-            {
-                // By default, if we fail to load something else just display a generic error message
-                ErrorDialog.ShowError(string.Format(Application.CurrentCulture, "Could not load {0}", args.Name));
+
+                // If we failed to load an assembly there's nothing left to do so kill the process
+                System.Environment.Exit(0);
             }
 
-            // If we failed to load an assembly there's nothing left to do so kill the process
-            System.Environment.Exit(0);
             return null;
         }
 
@@ -63,10 +59,10 @@ namespace EWSEditor
                 Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
 
                 // Require .NET Framework 3.5 SP1 before starting
-                if (!Constants.IsFramework_35SP1)
+                if (!Constants.IsDotNetFramework35SP1)
                 {
                     ErrorDialog.ShowError("EWSEditor and the Exchange Web Services Managed API require at least the .NET Framework 3.5 SP1.");
-                    TraceHelper.WriteInfo(String.Format("Framework version {0}, is not .NET Framework 3.5 SP1", Constants.FrameworkVersion));
+                    TraceHelper.WriteInfo(String.Format("Framework version {0}, is not .NET Framework 3.5 SP1", Constants.DotNetFrameworkVersion));
                     return;
                 }
 

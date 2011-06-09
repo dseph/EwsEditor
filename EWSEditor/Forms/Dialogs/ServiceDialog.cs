@@ -9,6 +9,7 @@ namespace EWSEditor.Forms
     using System.Text;
     using System.Windows.Forms;
 
+    using EWSEditor.Exchange;
     using EWSEditor.Common;
     using EWSEditor.Common.Extensions;
     using EWSEditor.Diagnostics;
@@ -53,77 +54,79 @@ namespace EWSEditor.Forms
 
         private void BtnOK_Click(object sender, EventArgs e)
         {
+            // Validation for credential input...
+            if (chkCredentials.Checked && (txtUserName.Text.Length == 0 || txtPassword.Text.Length == 0))
+            {
+                ErrorDialog.ShowInfo(DisplayStrings.MSG_SPECIFY_CREDS);
+                return;
+            }
+
+            // Validation for Autodiscover input...
+            if (this.UseAutodiscoverCheck.Checked && String.IsNullOrEmpty(this.AutodiscoverEmailText.Text))
+            {
+                ErrorDialog.ShowInfo(DisplayStrings.MSG_SERVICE_REQ);
+                return;
+            }
+
+            // Validation for URL input...
+            if (!this.UseAutodiscoverCheck.Checked && String.IsNullOrEmpty(this.ExchangeServiceURLText.Text))
+            {
+                ErrorDialog.ShowInfo(DisplayStrings.MSG_SERVICE_REQ);
+                return;
+            }
+
+            // Validation for Impersonation input...
+            if (this.ImpersonationCheck.Checked && (String.IsNullOrEmpty(this.ImpersonatedIdTextBox.Text) || !this.connectingIdCombo.SelectedItem.HasValue))
+            {
+                ErrorDialog.ShowInfo(DisplayStrings.MSG_IMPERSON_REQ);
+                    return;
+            }
+
             try
             {
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
 
-                // Setup the Requested Server Version
-                ExchangeVersion? version = this.exchangeVersionCombo.SelectedItem;
-                if (version.HasValue)
+                ExchangeServiceFactory factory = new ExchangeServiceFactory();
+                factory.ExchangeVersion = this.exchangeVersionCombo.SelectedItem;
+                factory.TraceEnabled = true;
+                factory.TraceListner = new EWSEditorTraceListener();
+                factory.AllowAutodiscoverRedirect = ConfigHelper.AllowAutodiscoverRedirect;
+
+                factory.UserAgent = String.Format("EWSEditor {0}; EWSAPI {1}; .NET {2};",
+                    Constants.EwsEditorVersion,
+                    Constants.EwsApiFileVersion.FileVersion,
+                    Constants.DotNetFrameworkVersion);
+
+                factory.UseDefaultCredentials = !this.chkCredentials.Checked;
+                factory.ServiceCredential = this.chkCredentials.Checked ? 
+                    new NetworkCredential(
+                        this.txtUserName.Text,
+                        this.txtPassword.Text,
+                        this.txtDomain.Text) :
+                    null;
+
+                factory.ServiceEmailAddress = this.AutodiscoverEmailText.Text;
+                factory.ServiceUri = this.UseAutodiscoverCheck.Checked ?
+                    null : new Uri(this.ExchangeServiceURLText.Text);
+
+                this.CurrentService = this.ImpersonationCheck.Checked ?
+                    this.CurrentService = factory.CreateService(
+                        this.connectingIdCombo.SelectedItem.Value,
+                        this.ImpersonatedIdTextBox.Text) :
+                    this.CurrentService = factory.CreateService();
+
+                if (this.UseAutodiscoverCheck.Checked)
                 {
-                    this.CurrentService = new ExchangeService(version.Value);
-                }
-                else
-                {
-                    this.CurrentService = new ExchangeService();
+                    factory.DoAutodiscover();
                 }
 
-                this.CurrentService.TraceEnabled = true;
-                this.CurrentService.TraceListener = new EWSEditorTraceListener();
+                this.CurrentService = this.ImpersonationCheck.Checked ?
+                    this.CurrentService = factory.CreateService(
+                        this.connectingIdCombo.SelectedItem.Value,
+                        this.ImpersonatedIdTextBox.Text) :
+                    this.CurrentService = factory.CreateService();
 
-                // Setup credentials
-                if (chkCredentials.Checked)
-                {
-                    if (txtUserName.Text.Length == 0 || txtPassword.Text.Length == 0)
-                    {
-                        ErrorDialog.ShowInfo(DisplayStrings.MSG_SPECIFY_CREDS);
-                        return;
-                    }
-                    else
-                    {
-                        this.CurrentService.Credentials = new NetworkCredential(
-                                                txtUserName.Text,
-                                                txtPassword.Text,
-                                                txtDomain.Text);
-                    }
-                }
-                else
-                {
-                    this.CurrentService.UseDefaultCredentials = true;
-                }
-
-                // Setup the service URL
-                if (this.UseAutodiscoverCheck.Checked && !String.IsNullOrEmpty(this.AutodiscoverEmailText.Text))
-                {
-                    this.CurrentService.AutodiscoverUrl(this.AutodiscoverEmailText.Text);
-                    this.ExchangeServiceURLText.Text = this.CurrentService.Url.PathAndQuery;
-                }
-                else if (!this.UseAutodiscoverCheck.Checked)
-                {
-                    this.CurrentService.Url = new Uri(ExchangeServiceURLText.Text);
-                }
-
-                // Setup Exchange Impersonation
-                if (this.ImpersonationCheck.Checked)
-                {
-                    if (!String.IsNullOrEmpty(this.ImpersonatedIdTextBox.Text) && 
-                        this.connectingIdCombo.SelectedItem.HasValue)
-                    {
-                        this.CurrentService.ImpersonatedUserId = new ImpersonatedUserId(
-                            this.connectingIdCombo.SelectedItem.Value,
-                            this.ImpersonatedIdTextBox.Text);
-                    }
-                    else
-                    {
-                        ErrorDialog.ShowInfo(DisplayStrings.MSG_IMPERSON_REQ);
-                        return;
-                    }
-                }
-
-                // Test the service with a canary call to see if it works. If not
-                // don't close the form, display the exception and allow the user
-                // to fix the settings.
-                this.CurrentService.TestExchangeService(ConfigHelper.OverrideCertValidation);
+                this.CurrentService.TestExchangeService();
 
                 this.DialogResult = DialogResult.OK;
             }
@@ -197,7 +200,7 @@ namespace EWSEditor.Forms
                 tempService.TraceEnabled = true;
                 tempService.TraceListener = new EWSEditorTraceListener();
 
-                if (ConfigHelper.OverrideAutodiscValidation)
+                if (ConfigHelper.AllowAutodiscoverRedirect)
                 {
                     tempService.AutodiscoverUrl(
                         mbx.Address,

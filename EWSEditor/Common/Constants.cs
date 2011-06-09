@@ -1,9 +1,20 @@
-﻿namespace EWSEditor.Common
-{
-    using System;
-    using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Reflection;
 
-    using EWSEditor.Diagnostics;
+using EWSEditor.Diagnostics;
+
+namespace EWSEditor.Common
+{
+
+    internal enum EwsApiVersions
+    {
+        OnePointZero,
+        OnePointZeroHot,
+        OnePointOne,
+        OnePointOneHot,
+        Unknown
+    }
 
     internal class Constants
     {
@@ -12,43 +23,116 @@
         internal const string EwsManagedApiInstallPath = @"C:\Program Files\Microsoft\Exchange\Web Services\1.0\Microsoft.Exchange.WebServices.dll";
         internal const string EwsManagedApiDownloadUrl = "http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=c3342fb3-fbcc-4127-becf-872c746840e1";
 
-        internal enum EwsManagedApiVersions
-        {
-            RTM,
-            RTMHot,
-            SP1,
-            SP1Hot,
-            Unknown
-        }
-
-        internal static EwsManagedApiVersions LoadedEWSManagedAPIRelease
+        internal static string EwsEditorVersion
         {
             get
             {
-                if (Constants.EWSManagedAPIFileVersion.FileMajorPart == 14 &&
-                    Constants.EWSManagedAPIFileVersion.FileMinorPart == 0)
-                {
-                    if (Constants.EWSManagedAPIFileVersion.FileBuildPart == 650 &&
-                        Constants.EWSManagedAPIFileVersion.FilePrivatePart == 7)
-                    {
-                        return EwsManagedApiVersions.RTM;
-                    }
-                    else if (Constants.EWSManagedAPIFileVersion.FileBuildPart > 650)
-                    {
-                        return EwsManagedApiVersions.RTMHot;
-                    }
-                }
-                else if (Constants.EWSManagedAPIFileVersion.FileMajorPart == 14 &&
-                    Constants.EWSManagedAPIFileVersion.FileMinorPart == 1)
-                {
-                    return EwsManagedApiVersions.SP1Hot;
-                }
-
-                return EwsManagedApiVersions.Unknown;
+                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
             }
         }
 
-        internal static FileVersionInfo EWSManagedAPIFileVersion
+        internal static string EwsEditorTitle
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+                if (attributes.Length > 0)
+                {
+                    AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
+                    if (titleAttribute.Title != string.Empty)
+                    {
+                        return titleAttribute.Title;
+                    }
+                }
+
+                return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
+            }
+        }
+
+        internal static string EwsEditorDescription
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return string.Empty;
+                }
+
+                return ((AssemblyDescriptionAttribute)attributes[0]).Description;
+            }
+        }
+
+        internal static string EwsEditorProduct
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return string.Empty;
+                }
+
+                return ((AssemblyProductAttribute)attributes[0]).Product;
+            }
+        }
+
+        internal static string EwsEditorCopyright
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return string.Empty;
+                }
+
+                return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+            }
+        }
+
+        internal static string EwsEditorCompany
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return string.Empty;
+                }
+
+                return ((AssemblyCompanyAttribute)attributes[0]).Company;
+            }
+        }
+
+        internal static EwsApiVersions EwsApiVersion
+        {
+            get
+            {
+                if (Constants.EwsApiFileVersion.FileMajorPart == 14 &&
+                    Constants.EwsApiFileVersion.FileMinorPart == 0)
+                {
+                    if (Constants.EwsApiFileVersion.FileBuildPart == 650 &&
+                        Constants.EwsApiFileVersion.FilePrivatePart == 7)
+                    {
+                        return EwsApiVersions.OnePointZero;
+                    }
+                    else if (Constants.EwsApiFileVersion.FileBuildPart > 650)
+                    {
+                        return EwsApiVersions.OnePointZeroHot;
+                    }
+                }
+                else if (Constants.EwsApiFileVersion.FileMajorPart == 14 &&
+                    Constants.EwsApiFileVersion.FileMinorPart == 2)
+                {
+                    return EwsApiVersions.OnePointOneHot;
+                }
+
+                return EwsApiVersions.Unknown;
+            }
+        }
+
+        internal static FileVersionInfo EwsApiFileVersion
         {
             get
             {
@@ -58,7 +142,7 @@
             }
         }
 
-        internal static string EWSManagedAPIPath
+        internal static string EwsApiPath
         {
             get
             {
@@ -67,7 +151,7 @@
             }
         }
 
-        internal static bool IsFramework_35SP1
+        internal static bool IsDotNetFramework35SP1
         {
             get
             {
@@ -91,7 +175,7 @@
             }
         }
 
-        internal static string FrameworkVersion
+        internal static string DotNetFrameworkVersion
         {
             get
             {
@@ -104,46 +188,6 @@
                 }
 
                 return string.Empty;
-            }
-        }
-
-        internal static string TraceLogBeginTag
-        {
-            get
-            {
-                string beginTag = string.Empty;
-
-                switch (Constants.LoadedEWSManagedAPIRelease)
-                {
-                    case EwsManagedApiVersions.SP1Hot:
-                        beginTag = "<Trace";
-                        break;
-                    default:
-                        beginTag = "<EwsLogEntry";
-                        break;
-                }
-
-                return beginTag;
-            }
-        }
-
-        internal static string TraceLogEndTag
-        {
-            get
-            {
-                string endTag = string.Empty;
-
-                switch (Constants.LoadedEWSManagedAPIRelease)
-                {
-                    case EwsManagedApiVersions.SP1Hot:
-                        endTag = "</Trace>";
-                        break;
-                    default:
-                        endTag = "</EwsLogEntry>";
-                        break;
-                }
-
-                return endTag;
             }
         }
     }

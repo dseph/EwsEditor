@@ -117,6 +117,8 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -128,10 +130,14 @@
     <Compile Include="Common\ActiveDirectoryHelper.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\ConversionHelper.cs" />
+    <Compile Include="Common\EwsApiTraceParser.cs" />
     <Compile Include="Common\ExceptionHelper.cs" />
     <Compile Include="Common\ResponseCodeHelper.cs" />
     <Compile Include="Diagnostics\Util.cs" />
     <Compile Include="Common\Extensions\ExchangeServiceExtensions.cs" />
+    <Compile Include="Exchange\ExchangeServiceFactory.cs" />
+    <Compile Include="Exchange\CertificateValidationHelper.cs" />
+    <Compile Include="Exchange\ExportUploadHelper.cs" />
     <Compile Include="Forms\AppointmentsContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -414,7 +420,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GridDataTables.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Common\DumpHelper.cs" />
+    <Compile Include="Exchange\DumpHelper.cs" />
     <Compile Include="Common\FileHelper.cs" />
     <Compile Include="Forms\DialogForm.cs">
       <SubType>Form</SubType>
@@ -449,6 +455,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Web References\EwsVsProxy\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\AppointmentsContentForm.resx">
       <DependentUpon>AppointmentsContentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -642,6 +653,194 @@
       <DependentUpon>ServicesProfile.xsd</DependentUpon>
     </Compile>
     <Compile Include="Diagnostics\TraceHelper.cs" />
+    <None Include="Web References\EwsVsProxy\AddDelegateResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\ApplyConversationActionResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\ConvertIdResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\CopyFolderResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\CopyItemResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\CreateAttachmentResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\CreateFolderResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\CreateItemResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\CreateManagedFolderResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\CreateUserConfigurationResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\DeleteAttachmentResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\DeleteFolderResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\DeleteItemResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\DeleteUserConfigurationResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\DisconnectPhoneCallResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\EmptyFolderResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\ExpandDLResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\ExportItemsResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\FindConversationResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\FindFolderResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\FindItemResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\FindMessageTrackingReportResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetAttachmentResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetDelegateResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetEventsResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetFolderResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetInboxRulesResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetItemResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetMailTipsResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetMessageTrackingReportResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetPhoneCallInformationResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetRoomListsResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetRoomsResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetServerTimeZonesResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetServiceConfigurationResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetSharingFolderResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetSharingMetadataResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetStreamingEventsResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetUserAvailabilityResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetUserConfigurationResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\GetUserOofSettingsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\messages.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\EwsVsProxy\MoveFolderResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\MoveItemResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\PlayOnPhoneResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\EwsVsProxy\RefreshSharingFolderResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\RemoveDelegateResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\ResolveNamesResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\SendItemResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\Services.wsdl" />
+    <None Include="Web References\EwsVsProxy\SetUserOofSettingsResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\SubscribeResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\SyncFolderHierarchyResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\SyncFolderItemsResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\types.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\EwsVsProxy\UnsubscribeResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\UpdateDelegateResponseMessageType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\UpdateFolderResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\UpdateInboxRulesResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\UpdateItemResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\UpdateUserConfigurationResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\EwsVsProxy\UploadItemsResponseType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\EWSEditor.Controls.GridDataTables+ItemListDataTable.datasource" />
@@ -715,6 +914,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Dialogs\SmartEditors\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://mail.microsoft.com/ews/Services.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\EwsVsProxy\</RelPath>
+      <UpdateFromURL>https://mail.microsoft.com/ews/Services.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

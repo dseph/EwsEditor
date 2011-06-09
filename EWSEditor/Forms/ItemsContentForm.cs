@@ -13,6 +13,7 @@
     using EWSEditor.Resources;
 
     using Microsoft.Exchange.WebServices.Data;
+    using EWSEditor.Exchange;
 
     public partial class ItemsContentForm : BaseContentForm
     {
@@ -559,6 +560,42 @@
                     new List<ItemId> { id },
                     browser.SelectedPath,
                     this.CurrentService);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void MnuExportToStream_Click(object sender, EventArgs e)
+        {
+            // Get the currently selected item
+            ItemId id = GetSelectedContentId();
+            if (id == null) { return; }
+
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Title = "Save exported stream to a file...";
+            dialog.OverwritePrompt = true;
+            dialog.CheckPathExists = true;
+            dialog.Filter = "Binary file (*.bin)|*.bin";
+
+            if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            {
+                return;
+            }
+
+            try
+            {
+                byte[] data = null;
+
+                ExportUploadHelper.ExportItem(
+                    this.CurrentService,
+                    id,
+                    out data);
+
+                System.IO.File.WriteAllBytes(
+                    dialog.FileName,
+                    data);
             }
             finally
             {

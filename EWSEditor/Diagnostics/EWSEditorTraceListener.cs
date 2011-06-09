@@ -18,6 +18,48 @@
     {
         private const string EWSCHATTER_TEMP_MESSAGE_FILE = "EWSLogEntry.xml";
 
+        private static string TraceLogBeginTag
+        {
+            get
+            {
+                string beginTag = string.Empty;
+
+                switch (Constants.EwsApiVersion)
+                {
+                    case EwsApiVersions.OnePointOne:
+                    case EwsApiVersions.OnePointOneHot:
+                        beginTag = "<Trace";
+                        break;
+                    default:
+                        beginTag = "<EwsLogEntry";
+                        break;
+                }
+
+                return beginTag;
+            }
+        }
+
+        private static string TraceLogEndTag
+        {
+            get
+            {
+                string endTag = string.Empty;
+
+                switch (Constants.EwsApiVersion)
+                {
+                    case EwsApiVersions.OnePointOne:
+                    case EwsApiVersions.OnePointOneHot:
+                        endTag = "</Trace>";
+                        break;
+                    default:
+                        endTag = "</EwsLogEntry>";
+                        break;
+                }
+
+                return endTag;
+            }
+        }
+
         private static Dictionary<string, string> CurrentHeaders = new Dictionary<string, string>();
 
         private static string ChatterLogFilePath
@@ -107,9 +149,9 @@
                     if (message != null)
                     {
                         // Once the end tag is written bail out.
-                        if (data.Contains(Constants.TraceLogEndTag))
+                        if (data.Contains(EWSEditorTraceListener.TraceLogEndTag))
                         {
-                            data = data.Substring(0, data.IndexOf(Constants.TraceLogEndTag) + Constants.TraceLogEndTag.Length);
+                            data = data.Substring(0, data.IndexOf(EWSEditorTraceListener.TraceLogEndTag) + EWSEditorTraceListener.TraceLogEndTag.Length);
                             keepReading = false;
                         }
 
@@ -152,7 +194,7 @@
         private static string LogEWSChatter(string message)
         {
             // Parse out the text to be used as the header
-            if (message.StartsWith(Constants.TraceLogBeginTag))
+            if (message.StartsWith(EWSEditorTraceListener.TraceLogBeginTag))
             {
                 string header = message.Substring(0, message.IndexOf(">", 0) + 1);
 
@@ -207,8 +249,8 @@
             }
             else
             {
-                TraceHelper.WriteVerbose(String.Format("The message, '{0}', is unexpected.", message));
-                throw new ArgumentException(String.Format("{0} is not a valid trace message.", message));
+                TraceHelper.WriteVerbose(String.Format("The following message could not be parsed\n'{0}'", message));
+                throw new ArgumentException("Could not parse trace message");
             }
         }
     }

@@ -41,9 +41,9 @@ namespace EWSEditor.Forms
             TraceHelper.WriteInfo(string.Format(System.Globalization.CultureInfo.CurrentCulture, "EWSEditorPath: {0}", Application.ExecutablePath));
             TraceHelper.WriteInfo(string.Format(System.Globalization.CultureInfo.CurrentCulture, "OSVersion: {0}", Environment.OSVersion));
             TraceHelper.WriteInfo(string.Format(System.Globalization.CultureInfo.CurrentCulture, "ImageRuntimeVersion: {0}", System.Reflection.Assembly.GetExecutingAssembly().ImageRuntimeVersion));
-            TraceHelper.WriteInfo(string.Format(System.Globalization.CultureInfo.CurrentCulture, "FrameworkVesion: {0}", Constants.FrameworkVersion));
-            TraceHelper.WriteInfo(string.Format(System.Globalization.CultureInfo.CurrentCulture, "EWSManagedAPIVersion: {0}", Constants.EWSManagedAPIFileVersion.FileVersion));
-            TraceHelper.WriteInfo(string.Format(System.Globalization.CultureInfo.CurrentCulture, "EWSManagedAPIPath: {0}", Constants.EWSManagedAPIPath));
+            TraceHelper.WriteInfo(string.Format(System.Globalization.CultureInfo.CurrentCulture, "FrameworkVesion: {0}", Constants.DotNetFrameworkVersion));
+            TraceHelper.WriteInfo(string.Format(System.Globalization.CultureInfo.CurrentCulture, "EWSManagedAPIVersion: {0}", Constants.EwsApiFileVersion.FileVersion));
+            TraceHelper.WriteInfo(string.Format(System.Globalization.CultureInfo.CurrentCulture, "EWSManagedAPIPath: {0}", Constants.EwsApiPath));
 
             Form firstForm = null;
             if (this.CommandLineProfile.Length > 0)

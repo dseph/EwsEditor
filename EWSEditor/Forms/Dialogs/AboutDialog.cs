@@ -33,17 +33,17 @@
             descrip.AppendLine(string.Format(
                 System.Globalization.CultureInfo.CurrentCulture, 
                 "Loaded EWS Managed API Version: {0}",
-                Constants.EWSManagedAPIFileVersion.FileVersion));
+                Constants.EwsApiFileVersion.FileVersion));
 
             descrip.AppendLine(string.Format(
                     System.Globalization.CultureInfo.CurrentCulture, 
                     "Loaded EWS Managed API Path: {0}", 
-                    Constants.EWSManagedAPIPath));
+                    Constants.EwsApiPath));
 
             descrip.AppendLine(string.Format(
                 System.Globalization.CultureInfo.CurrentCulture, 
                 "Loaded .NET Framework Version: {0}",
-                Constants.FrameworkVersion));
+                Constants.DotNetFrameworkVersion));
 
             descrip.AppendLine();
             descrip.AppendLine("EWSEditor demonstrates the Exchange Web Services Managed API.");

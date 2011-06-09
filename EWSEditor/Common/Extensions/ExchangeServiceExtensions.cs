@@ -91,6 +91,11 @@
         /// <returns>NetworkCredential retrieved</returns>
         public static NetworkCredential GetNetworkCredential(this ExchangeService service)
         {
+            if (service.Credentials == null)
+            {
+                return null;
+            }
+
             WebCredentials webCreds = (WebCredentials)service.Credentials;
 
             if (!(webCreds.Credentials is NetworkCredential))
@@ -199,6 +204,13 @@
             }
         }
 
+        public static void TestExchangeService(this ExchangeService service)
+        {
+            service.ConvertIds(
+                new AlternateId[] { new AlternateId(IdFormat.HexEntryId, "00", "blah@blah.com") },
+                IdFormat.HexEntryId);
+        }
+
         /// <summary>
         /// Create an ExchangeService with all default values
         /// </summary>
@@ -249,7 +261,7 @@
                         WindowsIdentity.GetCurrent().Name);
                 }
 
-                if (ConfigHelper.OverrideAutodiscValidation)
+                if (ConfigHelper.AllowAutodiscoverRedirect)
                 {
                     service.AutodiscoverUrl(autodiscoverAddress,
                         delegate(string url) { return true; });

@@ -97,19 +97,18 @@
 
                 string ATTRIBUTE_TIMESTAMP = string.Empty;
                 string ATTRIBUTE_ENTRYKIND = string.Empty;
-                switch (Constants.LoadedEWSManagedAPIRelease)
+                switch (Constants.EwsApiVersion)
                 {
-                    case Constants.EwsManagedApiVersions.RTM:
-                    case Constants.EwsManagedApiVersions.RTMHot:
+                    case EwsApiVersions.OnePointZero:
+                    case EwsApiVersions.OnePointZeroHot:
                         ATTRIBUTE_TIMESTAMP = "Timestamp=\"";
                         ATTRIBUTE_ENTRYKIND = "EntryKind=\"";
                         break;
-                    case Constants.EwsManagedApiVersions.SP1:
-                    case Constants.EwsManagedApiVersions.SP1Hot:
+                    case EwsApiVersions.OnePointOne:
+                    case EwsApiVersions.OnePointOneHot:
                         ATTRIBUTE_TIMESTAMP = "Time=\"";
                         ATTRIBUTE_ENTRYKIND = "Tag=\"";
                         break;
-                    case Constants.EwsManagedApiVersions.Unknown:
                     default:
                         return;
                 }

@@ -302,7 +302,7 @@ namespace EWSEditor.Common
             this.ResponseCodeDictionary.Add(ServiceError.ErrorNoRespondingCASInDestinationSite, new ResponseCodeInfo("", ""));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorNotEnoughMemory, new ResponseCodeInfo("There was not enough memory to complete the request.", "The operation could not complete due to insufficient memory."));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorNotDelegate, new ResponseCodeInfo("", ""));
-            this.ResponseCodeDictionary.Add(ServiceError.ErrorObjectNotFound, new ResponseCodeInfo("", ""));
+            //this.ResponseCodeDictionary.Add(ServiceError.ErrorObjectNotFound, new ResponseCodeInfo("", ""));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorObjectTypeChanged, new ResponseCodeInfo("Caller does not have access to free busy data.", "Indicates that the caller does not have free/busy viewing rights on the calendarfolder in question."));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorOccurrenceCrossingBoundary, new ResponseCodeInfo("Modified occurrence is crossing or overlapping adjacent occurrence.", "Indicates that the time allotment for a given occurrence overlaps with oneof its neighbors."));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorOccurrenceTimeSpanTooBig, new ResponseCodeInfo("One occurrence of the recurring calendar item overlaps with another occurrenceof the same calendar item.", "Indicates that the time allotment for a given occurrence is too long, whichcauses the occurrence to overlap with its neighbor. This response codealso occurs if the length in minutes of a given occurrence is larger thanInt32.MaxValue."));
@@ -317,8 +317,8 @@ namespace EWSEditor.Common
             this.ResponseCodeDictionary.Add(ServiceError.ErrorProxiedSubscriptionCallFailure, new ResponseCodeInfo("", ""));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorProxyGroupSidLimitExceeded, new ResponseCodeInfo("", ""));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorProxyCallFailed, new ResponseCodeInfo("", ""));
-            this.ResponseCodeDictionary.Add(ServiceError.ErrorProxyServerCannotSerializeTokens, new ResponseCodeInfo("", ""));
-            this.ResponseCodeDictionary.Add(ServiceError.ErrorProxyServerIsNotInExchangeServersGroup, new ResponseCodeInfo("", ""));
+            //this.ResponseCodeDictionary.Add(ServiceError.ErrorProxyServerCannotSerializeTokens, new ResponseCodeInfo("", ""));
+            //this.ResponseCodeDictionary.Add(ServiceError.ErrorProxyServerIsNotInExchangeServersGroup, new ResponseCodeInfo("", ""));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorProxyServiceDiscoveryFailed, new ResponseCodeInfo("", ""));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorProxyTokenExpired, new ResponseCodeInfo("", ""));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorQueryFilterTooLong, new ResponseCodeInfo("The search folder has a restriction that is too long to return.", "Restrictions can contain a maximum of 255 filter expressions. If you try tobind to an existing search folder that exceeds this limit, you encounter thisresponse code."));
@@ -356,7 +356,7 @@ namespace EWSEditor.Common
             this.ResponseCodeDictionary.Add(ServiceError.ErrorUpdateDelegatesFailed, new ResponseCodeInfo("", ""));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorUpdatePropertyMismatch, new ResponseCodeInfo("Property for update does not match property in object.", "The single property path listed in a change description must match thesingle property that is being set within the actual Item/Folder element."));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorUnableToGetUserOofSettings, new ResponseCodeInfo("N/A", "You will never encounter this response code.Appendix A Response CodesAppendix A Response CodesErrorUnsupportedCultureMessage The specified item culture is not supported on this server.Applicable methods CreateItem, UpdateItemYou tried to set the Culture property to a value that is not parsable by theSystem.Globalization.CultureInfo class."));
-            this.ResponseCodeDictionary.Add(ServiceError.ErrorUnableToSetUserOofSettings, new ResponseCodeInfo("", ""));
+            //this.ResponseCodeDictionary.Add(ServiceError.ErrorUnableToSetUserOofSettings, new ResponseCodeInfo("", ""));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorUnifiedMessagingDialPlanNotFound, new ResponseCodeInfo("", ""));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorUnifiedMessagingRequestFailed, new ResponseCodeInfo("", ""));
             this.ResponseCodeDictionary.Add(ServiceError.ErrorUnifiedMessagingServerNotFound, new ResponseCodeInfo("", ""));

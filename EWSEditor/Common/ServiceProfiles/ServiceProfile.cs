@@ -259,7 +259,7 @@
             // Load autodiscover email if found
             if (!row.IsAutoDiscoverEmailNull())
             {
-                if (ConfigHelper.OverrideAutodiscValidation)
+                if (ConfigHelper.AllowAutodiscoverRedirect)
                 {
                     service.AutodiscoverUrl(row.AutoDiscoverEmail,
                         delegate(string url) { return true; });

@@ -120,7 +120,7 @@
             }
         }
 
-        public static bool OverrideAutodiscValidation
+        public static bool AllowAutodiscoverRedirect
         {
             get
             {
