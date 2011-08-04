@@ -42,7 +42,16 @@ namespace EWSEditor.Exchange
 
         public ExchangeService CreateService()
         {
-            ExchangeService service = new ExchangeService();
+            ExchangeService service = null;
+
+            if (this.ExchangeVersion.HasValue)
+            {
+                service = new ExchangeService(this.ExchangeVersion.Value);
+            }
+            else
+            {
+                service = new ExchangeService();
+            }
 
             if (this.EnableScpLookup.HasValue)
             {
