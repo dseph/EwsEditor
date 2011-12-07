@@ -1,19 +1,17 @@
-﻿namespace EWSEditor.Common.ServiceProfiles
+﻿using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text;
+using System.Windows.Forms;
+using EWSEditor.Common.Extensions;
+using EWSEditor.Forms;
+using EWSEditor.Logging;
+using EWSEditor.PropertyInformation;
+using EWSEditor.Settings;
+using Microsoft.Exchange.WebServices.Data;
+
+namespace EWSEditor.Common.ServiceProfiles
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Net;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using Microsoft.Exchange.WebServices.Data;
-
-    using EWSEditor.Common;
-    using EWSEditor.Common.Extensions;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.Forms;
-    using EWSEditor.PropertyInformation;
-
     internal struct ServiceProfileItem
     {
         internal readonly ExchangeService Service;
@@ -121,7 +119,7 @@
 
                     if (testServices)
                     {
-                        service.TestExchangeService(ConfigHelper.OverrideCertValidation);
+                        service.TestExchangeService();
                     }
 
                     FolderId[] rootFolderIds = LoadRootFolderIdsFromProfileRow(row);
@@ -130,8 +128,7 @@
                 }
                 catch (Exception ex)
                 {
-                    TraceHelper.WriteVerbose("Handled exception when loading profile:");
-                    TraceHelper.WriteVerbose(ex);
+                    DebugLog.WriteVerbose("Handled exception when loading profile", ex);
 
                     // If we are allowed to show dialogs, display the exception.  If not, keep
                     // on loading ServiceProfileItems
@@ -254,12 +251,12 @@
 
             // Setup request/response tracer...
             service.TraceEnabled = true;
-            service.TraceListener = new EWSEditorTraceListener();
+            service.TraceListener = new EWSEditor.Logging.EwsTraceListener();
 
             // Load autodiscover email if found
             if (!row.IsAutoDiscoverEmailNull())
             {
-                if (ConfigHelper.AllowAutodiscoverRedirect)
+                if (GlobalSettings.AllowAutodiscoverRedirect)
                 {
                     service.AutodiscoverUrl(row.AutoDiscoverEmail,
                         delegate(string url) { return true; });

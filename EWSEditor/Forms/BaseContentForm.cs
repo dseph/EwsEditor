@@ -1,17 +1,9 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.Windows.Forms;
+using EWSEditor.Logging;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-
     /// <summary>
     /// This base form makes it really easy to implement new, specialized content
     /// forms for different types of content.  The steps to implement a new form
@@ -141,7 +133,8 @@
             if (this.contentIdColumnName.Length == 0 || 
                 !this.ContentsGrid.Columns.Contains(this.ContentIdColumnName)) 
             {
-                TraceHelper.WriteInfo(String.Concat("Invalid value for RowIdColumnName, ", this.ContentIdColumnName));
+
+                DebugLog.WriteVerbose(String.Concat("Invalid value for RowIdColumnName, ", this.ContentIdColumnName));
                 throw new InvalidOperationException("RowIdColumnName must be set to a valid column name.");
             }
 

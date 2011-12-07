@@ -1,21 +1,13 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using EWSEditor.Forms.Controls;
+using EWSEditor.Logging;
+using EWSEditor.PropertyInformation;
+using Microsoft.Exchange.WebServices.Data;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.Forms.Controls;
-    using EWSEditor.PropertyInformation;
-
-    using Microsoft.Exchange.WebServices.Data;
-
     public partial class AvailabilityForm : CountedForm
     {
         private const string InitialAttendAvailGroupHeader = "Attendees and Availability";
@@ -265,7 +257,7 @@
             {
                 if (this.AttendeeList.Items.Count == 0)
                 {
-                    TraceHelper.WriteVerbose("false: No attendees in the AttendeeList");
+                    DebugLog.WriteVerbose("false: No attendees in the AttendeeList");
                     return false;
                 }
 
@@ -288,7 +280,7 @@
                 if (attendees == null ||
                     attendees.Count == 0)
                 {
-                    TraceHelper.WriteVerbose("false: No attendees a AttendeeDataContainer found in the AttendeeList");
+                    DebugLog.WriteVerbose("false: No attendees a AttendeeDataContainer found in the AttendeeList");
                     return false;
                 }
 
@@ -296,7 +288,7 @@
             }
             catch (Exception ex)
             {
-                TraceHelper.WriteVerbose(String.Concat("false: Exception of type ", ex.ToString()));
+                DebugLog.WriteVerbose("Returning false due to exception", ex);
                 return false;
             }
         }
@@ -323,20 +315,20 @@
                 }
             }
 
-            TraceHelper.WriteVerbose(string.Format("Leave: Attendee, {0}, not found in AttendeeList", attendee.SmtpAddress));
+            DebugLog.WriteVerbose(string.Format("Leave: Attendee, {0}, not found in AttendeeList", attendee.SmtpAddress));
         }
 
         private void AddAttendeeToList(AttendeeInfo attendee)
         {
             if (attendee == null)
             {
-                TraceHelper.WriteVerbose("Leave: attendee is null");
+                DebugLog.WriteVerbose("Leave: attendee is null");
                 return;
             }
 
             if (String.IsNullOrEmpty(attendee.SmtpAddress))
             {
-                TraceHelper.WriteVerbose("Leave: Attendee's SMTP address is null or empty");
+                DebugLog.WriteVerbose("Leave: Attendee's SMTP address is null or empty");
                 return;
             }
 

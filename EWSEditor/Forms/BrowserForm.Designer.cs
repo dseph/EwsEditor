@@ -40,7 +40,7 @@
             this.mnuViewSplit1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuChatter = new System.Windows.Forms.ToolStripMenuItem();
+            this.DebugLogVeiwerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAutoDiscoverView = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsSplit1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuResolveName = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +52,9 @@
             this.mnuDisplayDelegates = new System.Windows.Forms.ToolStripMenuItem();
             this.UserOofSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserAvailabilityMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConvertIdMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOther = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenItemById = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenFolderById = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +62,7 @@
             this.mnuFindAppointments = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.ConvertIdMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -146,7 +149,8 @@
             // mnuTools
             // 
             this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuChatter,
+            this.DebugLogVeiwerMenuItem,
+            this.toolStripMenuItem2,
             this.mnuAutoDiscoverView,
             this.mnuToolsSplit1,
             this.mnuResolveName,
@@ -158,23 +162,25 @@
             this.mnuDisplayDelegates,
             this.UserOofSettingsMenuItem,
             this.UserAvailabilityMenuItem,
-            this.ConvertIdMenuItem});
+            this.ConvertIdMenuItem,
+            this.toolStripMenuItem1,
+            this.OptionsMenuItem});
             this.mnuTools.Name = "mnuTools";
             this.mnuTools.Size = new System.Drawing.Size(48, 20);
             this.mnuTools.Text = "Tools";
             // 
-            // mnuChatter
+            // DebugLogVeiwerMenuItem
             // 
-            this.mnuChatter.Name = "mnuChatter";
-            this.mnuChatter.Size = new System.Drawing.Size(230, 22);
-            this.mnuChatter.Text = "Request/Response History...";
-            this.mnuChatter.Click += new System.EventHandler(this.MnuChatter_Click);
+            this.DebugLogVeiwerMenuItem.Name = "DebugLogVeiwerMenuItem";
+            this.DebugLogVeiwerMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.DebugLogVeiwerMenuItem.Text = "EWSEditor Log Viewer...";
+            this.DebugLogVeiwerMenuItem.Click += new System.EventHandler(this.DebugLogVeiwerMenuItem_Click);
             // 
             // mnuAutoDiscoverView
             // 
             this.mnuAutoDiscoverView.Name = "mnuAutoDiscoverView";
             this.mnuAutoDiscoverView.Size = new System.Drawing.Size(230, 22);
-            this.mnuAutoDiscoverView.Text = "AutoDiscover Viewer...";
+            this.mnuAutoDiscoverView.Text = "Autodiscover Viewer...";
             this.mnuAutoDiscoverView.Click += new System.EventHandler(this.MnuAutoDiscoverView_Click);
             // 
             // mnuToolsSplit1
@@ -241,6 +247,25 @@
             this.UserAvailabilityMenuItem.Text = "User Availability...";
             this.UserAvailabilityMenuItem.Click += new System.EventHandler(this.MnuAvailability_Click);
             // 
+            // ConvertIdMenuItem
+            // 
+            this.ConvertIdMenuItem.Name = "ConvertIdMenuItem";
+            this.ConvertIdMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.ConvertIdMenuItem.Text = "ConvertId...";
+            this.ConvertIdMenuItem.Click += new System.EventHandler(this.ConvertIdMenu_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(227, 6);
+            // 
+            // OptionsMenuItem
+            // 
+            this.OptionsMenuItem.Name = "OptionsMenuItem";
+            this.OptionsMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.OptionsMenuItem.Text = "Options...";
+            this.OptionsMenuItem.Click += new System.EventHandler(this.OptionsMenuItem_Click);
+            // 
             // mnuOther
             // 
             this.mnuOther.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -293,12 +318,10 @@
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
-            // ConvertIdMenu
+            // toolStripMenuItem2
             // 
-            this.ConvertIdMenuItem.Name = "ConvertIdMenu";
-            this.ConvertIdMenuItem.Size = new System.Drawing.Size(230, 22);
-            this.ConvertIdMenuItem.Text = "ConvertId...";
-            this.ConvertIdMenuItem.Click += new System.EventHandler(this.ConvertIdMenu_Click);
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(227, 6);
             // 
             // BrowserForm
             // 
@@ -331,7 +354,6 @@
         public System.Windows.Forms.ToolStripMenuItem mnuViewResetPropertySet;
         public System.Windows.Forms.ToolStripSeparator mnuViewSplit1;
         public System.Windows.Forms.ToolStripMenuItem mnuRefresh;
-        public System.Windows.Forms.ToolStripMenuItem mnuChatter;
         public System.Windows.Forms.ToolStripSeparator mnuToolsSplit1;
         public System.Windows.Forms.ToolStripMenuItem mnuResolveName;
         public System.Windows.Forms.ToolStripMenuItem mnuResolveExProp;
@@ -352,5 +374,9 @@
         protected System.Windows.Forms.ToolStripMenuItem UserOofSettingsMenuItem;
         protected System.Windows.Forms.ToolStripMenuItem UserAvailabilityMenuItem;
         protected System.Windows.Forms.ToolStripMenuItem ConvertIdMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem OptionsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DebugLogVeiwerMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
     }
 }

@@ -1,23 +1,15 @@
+using System;
+using System.Net;
+using System.Windows.Forms;
+using EWSEditor.Common.Extensions;
+using EWSEditor.Exchange;
+using EWSEditor.Forms.Controls;
+using EWSEditor.Resources;
+using EWSEditor.Settings;
+using Microsoft.Exchange.WebServices.Data;
+
 namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Net;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Exchange;
-    using EWSEditor.Common;
-    using EWSEditor.Common.Extensions;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.Forms.Controls;
-    using EWSEditor.Resources;
-
-    using Microsoft.Exchange.WebServices.Data;
-
     public partial class ServiceDialog : DialogForm
     {
         private EnumComboBox<ConnectingIdType> connectingIdCombo = new EnumComboBox<ConnectingIdType>();
@@ -79,52 +71,45 @@ namespace EWSEditor.Forms
             if (this.ImpersonationCheck.Checked && (String.IsNullOrEmpty(this.ImpersonatedIdTextBox.Text) || !this.connectingIdCombo.SelectedItem.HasValue))
             {
                 ErrorDialog.ShowInfo(DisplayStrings.MSG_IMPERSON_REQ);
-                    return;
+                return;
             }
 
             try
             {
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
 
-                ExchangeServiceFactory factory = new ExchangeServiceFactory();
-                factory.ExchangeVersion = this.exchangeVersionCombo.SelectedItem;
-                factory.TraceEnabled = true;
-                factory.TraceListner = new EWSEditorTraceListener();
-                factory.AllowAutodiscoverRedirect = ConfigHelper.AllowAutodiscoverRedirect;
+                EwsProxyFactory factory = new EwsProxyFactory();
+                factory.RequestedExchangeVersion = this.exchangeVersionCombo.SelectedItem;
+                //factory.TraceEnabled = true;
+                //factory.TraceListner = new EWSEditor.Logging.EwsTraceListener();
+                factory.AllowAutodiscoverRedirect = GlobalSettings.AllowAutodiscoverRedirect;
 
-                factory.UserAgent = String.Format("EWSEditor {0}; EWSAPI {1}; .NET {2};",
-                    Constants.EwsEditorVersion,
-                    Constants.EwsApiFileVersion.FileVersion,
-                    Constants.DotNetFrameworkVersion);
+                //factory.UserAgent = String.Format("EWSEditor {0}; EWSAPI {1}; .NET {2};",
+                //    EnvironmentInfo.EwsEditorVersion,
+                //    EnvironmentInfo.EwsApiFileVersion.FileVersion,
+                //    EnvironmentInfo.DotNetFrameworkVersion);
 
                 factory.UseDefaultCredentials = !this.chkCredentials.Checked;
-                factory.ServiceCredential = this.chkCredentials.Checked ? 
+                factory.ServiceCredential = this.chkCredentials.Checked ?
                     new NetworkCredential(
-                        this.txtUserName.Text,
-                        this.txtPassword.Text,
-                        this.txtDomain.Text) :
+                        this.txtUserName.Text.Trim(),
+                        this.txtPassword.Text.Trim(),
+                        this.txtDomain.Text.Trim()) :
                     null;
 
-                factory.ServiceEmailAddress = this.AutodiscoverEmailText.Text;
-                factory.ServiceUri = this.UseAutodiscoverCheck.Checked ?
-                    null : new Uri(this.ExchangeServiceURLText.Text);
+                factory.EwsUrl = this.UseAutodiscoverCheck.Checked ?
+                    null : new Uri(this.ExchangeServiceURLText.Text.Trim());
 
-                this.CurrentService = this.ImpersonationCheck.Checked ?
-                    this.CurrentService = factory.CreateService(
-                        this.connectingIdCombo.SelectedItem.Value,
-                        this.ImpersonatedIdTextBox.Text) :
-                    this.CurrentService = factory.CreateService();
+                factory.UserToImpersonate = this.ImpersonationCheck.Checked ?
+                    new ImpersonatedUserId(this.connectingIdCombo.SelectedItem.Value, this.ImpersonatedIdTextBox.Text.Trim()) : null;
 
+                factory.ServiceEmailAddress = this.AutodiscoverEmailText.Text.Trim();
                 if (this.UseAutodiscoverCheck.Checked)
                 {
                     factory.DoAutodiscover();
                 }
 
-                this.CurrentService = this.ImpersonationCheck.Checked ?
-                    this.CurrentService = factory.CreateService(
-                        this.connectingIdCombo.SelectedItem.Value,
-                        this.ImpersonatedIdTextBox.Text) :
-                    this.CurrentService = factory.CreateService();
+                this.CurrentService = factory.CreateExchangeService();
 
                 this.CurrentService.TestExchangeService();
 
@@ -198,9 +183,9 @@ namespace EWSEditor.Forms
 
                 ExchangeService tempService = new ExchangeService(ExchangeVersion.Exchange2010);
                 tempService.TraceEnabled = true;
-                tempService.TraceListener = new EWSEditorTraceListener();
+                tempService.TraceListener = new EWSEditor.Logging.EwsTraceListener();
 
-                if (ConfigHelper.AllowAutodiscoverRedirect)
+                if (GlobalSettings.AllowAutodiscoverRedirect)
                 {
                     tempService.AutodiscoverUrl(
                         mbx.Address,

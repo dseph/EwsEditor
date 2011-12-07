@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using EWSEditor.Settings;
 
 namespace EWSEditor.Common
 {
@@ -13,7 +14,7 @@ namespace EWSEditor.Common
             {
                 string beginTag = string.Empty;
 
-                switch (Constants.EwsApiVersion)
+                switch (EnvironmentInfo.EwsApiVersion)
                 {
                     case EwsApiVersions.OnePointOne:
                     case EwsApiVersions.OnePointOneHot:
@@ -34,7 +35,7 @@ namespace EWSEditor.Common
             {
                 string endTag = string.Empty;
 
-                switch (Constants.EwsApiVersion)
+                switch (EnvironmentInfo.EwsApiVersion)
                 {
                     case EwsApiVersions.OnePointOne:
                     case EwsApiVersions.OnePointOneHot:
@@ -68,7 +69,7 @@ namespace EWSEditor.Common
             this.OriginalTraceMessageType = type;
 
             // Determine the trace log version
-            switch (Constants.EwsApiVersion)
+            switch (EnvironmentInfo.EwsApiVersion)
             {
                 case EwsApiVersions.OnePointOne:
                 case EwsApiVersions.OnePointOneHot:
@@ -89,7 +90,7 @@ namespace EWSEditor.Common
 
         private static string GetHeader_OnePointZero(string message)
         {
-            return message.Substring(0, message.IndexOf(">", 0) + 1);;
+            return message.Substring(0, message.IndexOf(">", 0) + 1);
         }
 
         private static string GetMethod_OnePointZero(string message)

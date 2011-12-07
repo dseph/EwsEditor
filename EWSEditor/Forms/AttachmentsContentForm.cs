@@ -1,19 +1,11 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.ComponentModel;
+using System.Windows.Forms;
+using EWSEditor.Logging;
+using Microsoft.Exchange.WebServices.Data;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-
-    using Microsoft.Exchange.WebServices.Data;
-
     public partial class AttachmentsContentForm : BaseContentForm
     {
         private const string ColNameAttachmentId = "colAttachmentId";
@@ -165,7 +157,6 @@
             {
                 if (fileAttach.Content == null)
                 {
-                    TraceHelper.WriteVerbose("Cannot save FileAttachment because FileAttachment.Content is NULL.");
                     ErrorDialog.ShowWarning("Cannot save FileAttachment because FileAttachment.Content is NULL.");
                     return;
                 }
@@ -188,7 +179,6 @@
                 {
                     if (itemAttachment.Item == null)
                     {
-                        TraceHelper.WriteVerbose("Cannot save ItemAttachment because ItemAttachment.Item is NULL.");
                         ErrorDialog.ShowWarning("Cannot save ItemAttachment because ItemAttachment.Item is NULL.");
                         return;
                     }
@@ -265,7 +255,7 @@
 
             if (itemAttachment.Item == null)
             {
-                TraceHelper.WriteVerbose("Cannot display ItemAttachment.Item because ItemAttachment.Item is NULL.");
+                DebugLog.WriteVerbose("Cannot display ItemAttachment.Item because ItemAttachment.Item is NULL.");
                 ErrorDialog.ShowWarning("Cannot display ItemAttachment.Item because ItemAttachment.Item is NULL.");
                 return;
             }

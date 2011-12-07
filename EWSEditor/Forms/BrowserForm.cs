@@ -231,16 +231,6 @@
         }
 
         /// <summary>
-        /// Display the RequestResponseHistoryForm
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void MnuChatter_Click(object sender, EventArgs e)
-        {
-            RequestResponseHistoryForm.Show();
-        }
-
-        /// <summary>
         /// Display the PullNotificationForm
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
@@ -329,12 +319,22 @@
         /// <param name="e">The parameter is not used.</param>
         private void MnuAutoDiscoverView_Click(object sender, EventArgs e)
         {
-            AutodiscoverViewerForm.ShowDialog();
+            AutodiscoverViewerForm.Show();
+        }
+
+        private void OptionsMenuItem_Click(object sender, EventArgs e)
+        {
+            OptionsDialog.ShowDialog();
         }
 
         private void ConvertIdMenu_Click(object sender, EventArgs e)
         {
             ConvertIdForm.Show(this, this.CurrentService);
+        }
+
+        private void DebugLogVeiwerMenuItem_Click(object sender, EventArgs e)
+        {
+            DebugLogViewerForm.Show();
         }
 
         #endregion

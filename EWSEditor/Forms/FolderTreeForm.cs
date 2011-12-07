@@ -1,24 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using EWSEditor.Common.Extensions;
+using EWSEditor.Common.ServiceProfiles;
+using EWSEditor.Logging;
+using EWSEditor.PropertyInformation;
+using EWSEditor.Resources;
+using EWSEditor.Settings;
+using Microsoft.Exchange.WebServices.Data;
+using EWSEditor.Exchange;
+
 namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Diagnostics;
-    using System.Drawing;
-    using System.IO;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-    using EWSEditor.Common.Extensions;
-    using EWSEditor.Common.ServiceProfiles;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.PropertyInformation;
-    using EWSEditor.Resources;
-
-    using Microsoft.Exchange.WebServices.Data;
-
     public partial class FolderTreeForm : BrowserForm
     {
         private const int ExchangeServiceImageIndex = 0;
@@ -67,7 +60,7 @@ namespace EWSEditor.Forms
             // Make sure the file exists
             if (!System.IO.File.Exists(profilePath))
             {
-                TraceHelper.WriteVerbose(string.Format("Leave: Profile path, {0}, does not exist", profilePath));
+                DebugLog.WriteVerbose(string.Format("Leave: Profile path, {0}, does not exist", profilePath));
                 return;
             }
 
@@ -87,8 +80,7 @@ namespace EWSEditor.Forms
                     {
                         // Keep going through the loop after showing exception
                         ErrorDialog.ShowError(ex);
-                        TraceHelper.WriteVerbose("Handled exception when adding root folders to service.");
-                        TraceHelper.WriteVerbose(ex);
+                        DebugLog.WriteVerbose("Handled exception when adding root folders to service.", ex);
                     }
                 }
             }
@@ -121,7 +113,8 @@ namespace EWSEditor.Forms
                 // Is there a CurrentService set?
                 bool isCurrentService = base.CurrentService != null;
 
-                if (base.CurrentService == null)
+                // Clear the property details grid if there is no service
+                if (!isCurrentService)
                 {
                     FolderPropertyDetailsGrid.Clear();
                 }
@@ -176,7 +169,7 @@ namespace EWSEditor.Forms
         {
             if (node == null)
             {
-                TraceHelper.WriteVerbose("Leave: node is null");
+                DebugLog.WriteVerbose("Leave: node is null");
                 return null;
             }
 
@@ -186,7 +179,7 @@ namespace EWSEditor.Forms
             }
             else
             {
-                TraceHelper.WriteVerbose("Leave: node.Parent is null");
+                DebugLog.WriteVerbose("Leave: node.Parent is null");
                 return node;
             }
         }
@@ -324,6 +317,8 @@ namespace EWSEditor.Forms
 
         private void FolderTreeForm_Load(object sender, EventArgs e)
         {
+            this.CurrentService = null;
+
             this.Text = string.Empty;
             this.mnuRefresh.Click += new EventHandler(this.RefreshMenu_Click);
 
@@ -346,13 +341,13 @@ namespace EWSEditor.Forms
 
                 if (result != DialogResult.OK)
                 {
-                    TraceHelper.WriteVerbose(string.Format("Leave: ServiceDialog returned {0}", result));
+                    DebugLog.WriteVerbose(string.Format("Leave: ServiceDialog returned {0}", result));
                     return;
                 }
 
                 if (service == null)
                 {
-                    TraceHelper.WriteVerbose(string.Format("Leave: ExchangeService is null"));
+                    DebugLog.WriteVerbose(string.Format("Leave: ExchangeService is null"));
                     return;
                 }
 
@@ -378,14 +373,14 @@ namespace EWSEditor.Forms
 
                 if (this.FolderTreeView.SelectedNode == null)
                 {
-                    TraceHelper.WriteVerbose("Leave: this.FolderTreeView.SelectedNode is null.");
+                    DebugLog.WriteVerbose("Leave: this.FolderTreeView.SelectedNode is null.");
                     return;
                 }
 
                 TreeNode rootNode = GetRootOfNode(FolderTreeView.SelectedNode);
                 if (rootNode == null)
                 {
-                    TraceHelper.WriteVerbose("Leave: Root node is null.");
+                    DebugLog.WriteVerbose("Leave: Root node is null.");
                     return;
                 }
 
@@ -415,7 +410,7 @@ namespace EWSEditor.Forms
             DialogResult result = saveFileDialog.ShowDialog();
             if (result != DialogResult.OK) 
             {
-                TraceHelper.WriteVerbose(string.Format("Leave: SaveFileDialog result was {0}.", result));
+                DebugLog.WriteVerbose(string.Format("Leave: SaveFileDialog result was {0}.", result));
                 return; 
             }
 
@@ -481,7 +476,7 @@ namespace EWSEditor.Forms
                     }
                     else
                     {
-                        TraceHelper.WriteVerbose("Leave: Don't open ServiceProfile and close existing ExchangeServices.");
+                        DebugLog.WriteVerbose("Leave: Don't open ServiceProfile and close existing ExchangeServices.");
                         return;
                     }
                 }
@@ -490,13 +485,13 @@ namespace EWSEditor.Forms
                 DialogResult fileResult = this.openFileDialog.ShowDialog();
                 if (fileResult != DialogResult.OK) 
                 {
-                    TraceHelper.WriteVerbose(string.Format("Leave: OpenFileDialog result was {0}.", fileResult));
+                    DebugLog.WriteVerbose(string.Format("Leave: OpenFileDialog result was {0}.", fileResult));
                     return; 
                 }
 
                 if (!System.IO.File.Exists(this.openFileDialog.FileName))
                 {
-                    TraceHelper.WriteVerbose(string.Format("Leave: OpenFileDialog file name, {0}, does not exist.", this.openFileDialog.FileName));
+                    DebugLog.WriteVerbose(string.Format("Leave: OpenFileDialog file name, {0}, does not exist.", this.openFileDialog.FileName));
                     return;
                 }
 
@@ -523,8 +518,7 @@ namespace EWSEditor.Forms
                                 ex);
                             ErrorDialog.ShowError(appEx);
 
-                            TraceHelper.WriteVerbose("Handled exception when adding root folders to service.");
-                            TraceHelper.WriteVerbose(ex);
+                            DebugLog.WriteVerbose("Handled exception when adding root folders to service.", ex);
                         }
                     }
                 }
@@ -556,7 +550,7 @@ namespace EWSEditor.Forms
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                ExchangeService service = ExchangeServiceExtensions.GetExchangeService();
+                ExchangeService service = EwsProxyFactory.InitializeWithDefaults().CreateExchangeService();
 
                 TreeNode newNode = this.AddServiceToTreeView(service);
                 this.FolderTreeView.SelectedNode = newNode;
@@ -620,7 +614,7 @@ namespace EWSEditor.Forms
             Folder folder = GetFolderFromNode(e.Node);
             if (folder != null)
             {
-                TraceHelper.WriteVerbose(string.Format("Double click on '{0}' node, cancelling deferred actions and showing contents", e.Node.Text));
+                DebugLog.WriteVerbose(string.Format("Double click on '{0}' node, cancelling deferred actions and showing contents", e.Node.Text));
 
                 // Cancel any deferred actions
                 this.deferredTreeViewAction = null;
@@ -646,7 +640,7 @@ namespace EWSEditor.Forms
             if (GetFolderFromNode(e.Node) != null)
             {
                 this.DeferTreeViewAction(e);
-                TraceHelper.WriteVerbose(string.Format("TreeViewAction, {0}, {1} cancelled and deferred.", e.Action, e.Cancel ? "was" : "was not"));
+                DebugLog.WriteVerbose(string.Format("TreeViewAction, {0}, {1} cancelled and deferred.", e.Action, e.Cancel ? "was" : "was not"));
             }
         }
 
@@ -662,7 +656,7 @@ namespace EWSEditor.Forms
             if (GetFolderFromNode(e.Node) != null)
             {
                 this.DeferTreeViewAction(e);
-                TraceHelper.WriteVerbose(string.Format("TreeViewAction, {0}, {1} cancelled and deferred.", e.Action, e.Cancel ? "was" : "was not"));
+                DebugLog.WriteVerbose(string.Format("TreeViewAction, {0}, {1} cancelled and deferred.", e.Action, e.Cancel ? "was" : "was not"));
             }
         }
 
@@ -932,7 +926,7 @@ namespace EWSEditor.Forms
             Folder folder = GetFolderFromNode(this.FolderTreeView.SelectedNode);
             if (folder == null)
             {
-                TraceHelper.WriteVerbose("Could not get Folder from this.FolderTreeView.SelectedNode");
+                DebugLog.WriteVerbose("Could not get Folder from this.FolderTreeView.SelectedNode");
                 return;
             }
 
@@ -970,7 +964,7 @@ namespace EWSEditor.Forms
             Folder folder = GetFolderFromNode(this.FolderTreeView.SelectedNode);
             if (folder == null)
             {
-                TraceHelper.WriteVerbose("Could not get Folder from this.FolderTreeView.SelectedNode");
+                DebugLog.WriteVerbose("Could not get Folder from this.FolderTreeView.SelectedNode");
                 return;
             }
 
@@ -1192,7 +1186,7 @@ namespace EWSEditor.Forms
             // If no node is selected, bail out
             if (this.FolderTreeView.SelectedNode == null) 
             {
-                TraceHelper.WriteVerbose("Leave: this.FolderTreeView.SelectedNode is null");
+                DebugLog.WriteVerbose("Leave: this.FolderTreeView.SelectedNode is null");
                 return; 
             }
 
@@ -1260,7 +1254,7 @@ namespace EWSEditor.Forms
         {
             if (this.deferredTreeViewAction != null)
             {
-                TraceHelper.WriteVerbose(string.Format("Leave: {0}, is already deferred will skip deferring passed action, {1}", this.deferredTreeViewAction, e.Action));
+                DebugLog.WriteVerbose(string.Format("Leave: {0}, is already deferred will skip deferring passed action, {1}", this.deferredTreeViewAction, e.Action));
                 return;
             }
 
@@ -1275,10 +1269,10 @@ namespace EWSEditor.Forms
                         e.Cancel = true;
                         this.deferredTreeViewAction = e.Action;
                         this.DeferredTreeViewActionTimer.Start();
-                        TraceHelper.WriteVerbose(string.Format("Deferred {0} on node, '{1}'", this.deferredTreeViewAction, e.Node.Text));
+                        DebugLog.WriteVerbose(string.Format("Deferred {0} on node, '{1}'", this.deferredTreeViewAction, e.Node.Text));
                         break;
                     default:
-                        TraceHelper.WriteVerbose("Leave: TreeViewAction not deferrable");
+                        DebugLog.WriteVerbose("Leave: TreeViewAction not deferrable");
                         break;
                 }
             }
@@ -1286,7 +1280,7 @@ namespace EWSEditor.Forms
 
         private void DoDeferredTreeViewAction(object sender, EventArgs e)
         {
-            TraceHelper.WriteVerbose(string.Format("Enter: this.deferredTreeViewAction = {0}", this.deferredTreeViewAction));
+            DebugLog.WriteVerbose(string.Format("Enter: this.deferredTreeViewAction = {0}", this.deferredTreeViewAction));
 
             try
             {
@@ -1294,7 +1288,7 @@ namespace EWSEditor.Forms
                 // double click the node
                 if (!this.deferredTreeViewAction.HasValue)
                 {
-                    TraceHelper.WriteVerbose("Leave: There is no deferred action");
+                    DebugLog.WriteVerbose("Leave: There is no deferred action");
                     return;
                 }
 
@@ -1310,7 +1304,7 @@ namespace EWSEditor.Forms
                         break;
                     default:
                         // We shouldn't get here, but don't fail if we do
-                        TraceHelper.WriteVerbose(string.Format("Unexpected this.deferredTreeViewAction.Value, {0}", this.deferredTreeViewAction.Value));
+                        DebugLog.WriteVerbose(string.Format("Unexpected this.deferredTreeViewAction.Value, {0}", this.deferredTreeViewAction.Value));
                         break;
                 }
             }
@@ -1323,7 +1317,7 @@ namespace EWSEditor.Forms
                 this.Cursor = Cursors.Default;
             }
 
-            TraceHelper.WriteVerbose("Leave");
+            DebugLog.WriteVerbose("Leave");
         }
 
         private void ExpandSelectedTreeNode()
@@ -1331,14 +1325,14 @@ namespace EWSEditor.Forms
             TreeNode node = this.FolderTreeView.SelectedNode;
             if (node == null)
             {
-                TraceHelper.WriteVerbose("Leave: this.FolderTreeView.SelectedNode is null");
+                DebugLog.WriteVerbose("Leave: this.FolderTreeView.SelectedNode is null");
                 return;
             }
             
             Folder parentFolder = GetFolderFromNode(node);
             if (parentFolder == null)
             {
-                TraceHelper.WriteVerbose(string.Format("Leave: No folder for this.FolderTreeView.SelectedNode, '{0}'", this.FolderTreeView.SelectedNode.Text));
+                DebugLog.WriteVerbose(string.Format("Leave: No folder for this.FolderTreeView.SelectedNode, '{0}'", this.FolderTreeView.SelectedNode.Text));
                 return;
             }
 
@@ -1347,12 +1341,12 @@ namespace EWSEditor.Forms
             // If the parent folder has no childern bail out
             if (parentFolder.ChildFolderCount == 0)
             {
-                TraceHelper.WriteVerbose(String.Format("Leave: Folder for this.FolderTreeView.SelectedNode, '{0}', has no children", this.FolderTreeView.SelectedNode.Text));
+                DebugLog.WriteVerbose(String.Format("Leave: Folder for this.FolderTreeView.SelectedNode, '{0}', has no children", this.FolderTreeView.SelectedNode.Text));
                 return; 
             }
 
             // Find sub-folders of the parent folder
-            int viewSize = ConfigHelper.FindFolderViewSize;
+            int viewSize = GlobalSettings.FindFolderViewSize;
             bool finished = false;
             List<Folder> subFolders = new List<Folder>();
             while (!finished)

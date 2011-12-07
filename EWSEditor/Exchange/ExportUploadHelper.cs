@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using System.ServiceModel;
 using EWSEditor.Common.Extensions;
 using EWSEditor.EwsVsProxy;
 using Microsoft.Exchange.WebServices.Data;
@@ -20,17 +19,17 @@ namespace EWSEditor.Exchange
         public static void UploadItem(ExchangeService service, FolderId folderId, byte[] data)
         {
             ExchangeServiceBinding client = ConvertExchangeService(service);
-
             var upload = new UploadItemsType();
-            
-            // TODO: Make these options instead of hardcoding in the future
             var item = new UploadItemType();
+
             item.IsAssociated = false;
-            item.CreateAction = CreateActionType.CreateNew;
             item.ParentFolderId = new FolderIdType();
             item.ParentFolderId.Id = folderId.UniqueId;
             item.ParentFolderId.ChangeKey = folderId.ChangeKey;
             item.Data = data;
+
+            // TODO: Make this an option instead of hardcoding in the future
+            item.CreateAction = CreateActionType.CreateNew;
 
             upload.Items = new UploadItemType[]
             {
@@ -55,7 +54,6 @@ namespace EWSEditor.Exchange
             data = null;
 
             ExchangeServiceBinding client = ConvertExchangeService(service);
-            
             ExportItemsType export = new ExportItemsType();
             export.ItemIds = new ItemIdType[]
             {

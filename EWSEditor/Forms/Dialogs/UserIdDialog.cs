@@ -1,19 +1,10 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.Windows.Forms;
+using EWSEditor.Forms.Controls;
+using Microsoft.Exchange.WebServices.Data;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.Forms.Controls;
-
-    using Microsoft.Exchange.WebServices.Data;
-
     public partial class UserIdDialog : EWSEditor.Forms.DialogForm
     {
         private EnumComboBox<StandardUser> standardUserCombo = new EnumComboBox<StandardUser>();

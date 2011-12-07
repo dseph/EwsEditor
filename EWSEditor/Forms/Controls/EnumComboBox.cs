@@ -1,17 +1,9 @@
-﻿namespace EWSEditor.Forms.Controls
+﻿using System;
+using System.Windows.Forms;
+using EWSEditor.Logging;
+
+namespace EWSEditor.Forms.Controls
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Diagnostics;
-    using Microsoft.Exchange.WebServices.Data;
-
     public partial class EnumComboBox<T> : ComboBox where T : struct
     {
         private bool hasEmptyItem = false;
@@ -68,7 +60,7 @@
                 catch (Exception ex)
                 {
                     // Shouldn't get an exception here but log it and bury it if we do
-                    TraceHelper.WriteVerbose(ex);
+                    DebugLog.WriteVerbose("Handled exception and returned null", ex);
                     return null;
                 }
             }

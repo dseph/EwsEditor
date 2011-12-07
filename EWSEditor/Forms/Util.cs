@@ -1,21 +1,12 @@
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+using EWSEditor.Common;
+using EWSEditor.Logging;
+using Microsoft.Exchange.WebServices.Data;
+
 namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Drawing;
-    using System.IO;
-    using System.Text;
-    using System.Web.Services.Protocols;
-    using System.Windows.Forms;
-    using System.Xml.Serialization;
-
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.Forms;
-    using EWSEditor.PropertyInformation;
-
-    using Microsoft.Exchange.WebServices.Data;
-
     public class FormsUtil
     {
         public enum TriStateBool
@@ -34,7 +25,7 @@ namespace EWSEditor.Forms
             DialogResult result = dialog.ShowDialog();
             if (result != DialogResult.OK)
             { 
-                TraceHelper.WriteVerbose(string.Format("Leave: User closed dialog with result, {0}.", result));
+                DebugLog.WriteVerbose("Leave: User closed dialog with result, {0}." + result);
                 return string.Empty; 
             }
 
@@ -103,8 +94,7 @@ namespace EWSEditor.Forms
                 }
                 catch (ServiceResponseException srex)
                 {
-                    TraceHelper.WriteVerbose("Handled exception when retrieving property:");
-                    TraceHelper.WriteVerbose(srex);
+                    DebugLog.WriteVerbose("Handled exception when retrieving property", srex);
 
                     // Give the user the option of removing the bad properites from the request
                     // and retrying.
@@ -121,15 +111,16 @@ namespace EWSEditor.Forms
                         return item;
                     }
                 }
-                catch (Exception ex)
-                {
-                    TraceHelper.WriteVerbose(ex);
+                // mstehle - 11/15/2011 - This code makes little sense, commenting out for now...
+                //catch (Exception ex)
+                //{
+                //    DebugLog.WriteVerbose(ex);
 
-                    if (ex.Message.Length > 0)
-                    {
-                        throw;
-                    }
-                }
+                //    if (ex.Message.Length > 0)
+                //    {
+                //        throw;
+                //    }
+                //}
             }
         }
 
@@ -151,8 +142,7 @@ namespace EWSEditor.Forms
                 }
                 catch (ServiceResponseException srex)
                 {
-                    TraceHelper.WriteVerbose("Handled exception when retrieving property:");
-                    TraceHelper.WriteVerbose(srex);
+                    DebugLog.WriteVerbose("Handled exception when retrieving property", srex);
 
                     // Give the user the option of removing the bad properites from the request
                     // and retrying.

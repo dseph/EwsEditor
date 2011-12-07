@@ -1,16 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using Microsoft.Exchange.WebServices.Data;
-
-using EWSEditor.Common;
 using EWSEditor.PropertyInformation;
 using EWSEditor.Resources;
+using EWSEditor.Settings;
+using Microsoft.Exchange.WebServices.Data;
 
 namespace EWSEditor.Forms
 {
@@ -78,7 +72,7 @@ namespace EWSEditor.Forms
                 DateTime start = Convert.ToDateTime(txtStartTime.Text);
                 DateTime end = Convert.ToDateTime(txtEndTime.Text);
 
-                CalendarView view = new CalendarView(start, end, ConfigHelper.CalendarViewSize);
+                CalendarView view = new CalendarView(start, end, GlobalSettings.CalendarViewSize);
                 view.PropertySet = new PropertySet(BasePropertySet.FirstClassProperties);
 
                 FindItemsResults<Appointment> appts = this.CurrentService.FindAppointments(
@@ -91,7 +85,7 @@ namespace EWSEditor.Forms
                 // Warn the user if more results are available that we are not displaying
                 if (appts.MoreAvailable)
                 {
-                    ErrorDialog.ShowWarning(string.Format(DisplayStrings.WARN_CALENDARVIEW_LIMT, ConfigHelper.CalendarViewSize));
+                    ErrorDialog.ShowWarning(string.Format(DisplayStrings.WARN_CALENDARVIEW_LIMT, GlobalSettings.CalendarViewSize));
                 }
             }
             finally
@@ -106,7 +100,6 @@ namespace EWSEditor.Forms
         /// </summary>
         private void btnFolderId_Click(object sender, EventArgs e)
         {
-            ErrorDialog.ShowInfo("Create a FolderId for the Calendar you wish to search.");
             if (FolderIdDialog.ShowDialog(ref this.CurrentCalendar) == DialogResult.OK)
             {
                 lblFolderId.Text = PropertyInterpretation.GetPropertyValue(this.CurrentCalendar);

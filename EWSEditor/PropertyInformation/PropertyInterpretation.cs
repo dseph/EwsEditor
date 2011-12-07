@@ -1,20 +1,14 @@
-﻿namespace EWSEditor.PropertyInformation
+﻿using System;
+using System.Reflection;
+using System.Text;
+using System.Xml;
+using EWSEditor.Logging;
+using EWSEditor.PropertyInformation.SmartViews;
+using EWSEditor.PropertyInformation.TypeValues;
+using Microsoft.Exchange.WebServices.Data;
+
+namespace EWSEditor.PropertyInformation
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Reflection;
-    using System.Xml;
-
-    using Microsoft.Exchange.WebServices.Data;
-
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.PropertyInformation.TypeValues;
-    using EWSEditor.PropertyInformation.SmartViews;
-
     /// <summary>
     /// This class defines the full property interpretation
     /// available for first class properties and extended
@@ -390,14 +384,14 @@
                 typeName = tie.InnerException.GetType().Name;
                 value = tie.InnerException.Message;
 
-                TraceHelper.WriteVerbose(tie);
+                DebugLog.WriteVerbose("Handled TargetInvocationException", tie);
             }
             catch (Exception ex)
             {
                 typeName = ex.GetType().Name;
                 value = ex.Message;
 
-                TraceHelper.WriteVerbose(ex);
+                DebugLog.WriteVerbose("Handled exception", ex);
             }
 
             return value;
@@ -486,12 +480,12 @@
                 // Special handling for this exception because
                 // the inner exception text is nice
                 value = tie.InnerException.Message;
-                TraceHelper.WriteVerbose(tie);
+                DebugLog.WriteVerbose("Handled TargetInvocationException", tie);
             }
             catch (Exception ex)
             {
                 value = ex.Message;
-                TraceHelper.WriteVerbose(ex);
+                DebugLog.WriteVerbose("Handled exception", ex);
             }
 
             return value;

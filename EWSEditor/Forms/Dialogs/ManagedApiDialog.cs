@@ -1,17 +1,11 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+using EWSEditor.Resources;
+using EWSEditor.Settings;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-    using EWSEditor.Resources;
-
     public partial class ManagedApiDialog : Form
     {
         public ManagedApiDialog()
@@ -34,7 +28,7 @@
 
         private void LnkDownload_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start(Constants.EwsManagedApiDownloadUrl);
+            System.Diagnostics.Process.Start(EnvironmentInfo.EwsManagedApiDownloadUrl);
         }
     }
 }

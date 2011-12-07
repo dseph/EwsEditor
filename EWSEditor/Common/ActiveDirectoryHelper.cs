@@ -37,19 +37,16 @@
             ds.Filter = string.Format(System.Globalization.CultureInfo.CurrentCulture, "sAMAccountName={0}", sAMAccountName);
 
             SearchResult result = ds.FindOne();
-            if (result != null)
-            {
-                // Get the 'mail' property and assume the
-                // first value is the primary SMTP address
-                return result.Properties["mail"][0].ToString();
-            }
-            else
+
+            if (result == null)
             {
                 // If there are no results go BOOM!
                 throw new ApplicationException("Directory entry not found, cannot retrieve default SMTP address.");
             }
 
-            return string.Empty;
+            // Get the 'mail' property and assume the
+            // first value is the primary SMTP address
+            return result.Properties["mail"][0].ToString();
         }
     }
 }

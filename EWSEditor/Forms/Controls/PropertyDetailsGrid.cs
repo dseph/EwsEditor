@@ -1,22 +1,15 @@
-﻿namespace EWSEditor.Forms.Controls
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Drawing;
-    using System.Data;
-    using System.Reflection;
-    using System.Text;
-    using System.Windows.Forms;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Reflection;
+using System.Windows.Forms;
+using EWSEditor.Logging;
+using EWSEditor.PropertyInformation;
+using Microsoft.Exchange.WebServices.Data;
 
-    using Microsoft.Exchange.WebServices.Data;
-
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.PropertyInformation;
-
-    public enum PropertyListItemType
+namespace EWSEditor.Forms.Controls
+{    public enum PropertyListItemType
     {
         FirstClass,
         Extended
@@ -53,8 +46,7 @@
                 }
                 catch (ServiceResponseException srex)
                 {
-                    TraceHelper.WriteVerbose("Handled exception when retrieving property");
-                    TraceHelper.WriteVerbose(srex);
+                    DebugLog.WriteVerbose("Handled exception when retrieving property", srex);
 
                     // Remove the bad properties from the PropertySet and try again.
                     foreach (PropertyDefinitionBase propDef in srex.Response.ErrorProperties)
@@ -159,8 +151,7 @@
         private void PropertyListDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             string colName = PropertyListDataGridView.Rows[e.RowIndex].Cells["NameColumn"].Value.ToString();
-            TraceHelper.WriteVerbose(String.Format("Row index {0}, data error on {1}", e.RowIndex, colName));
-            TraceHelper.WriteVerbose(String.Format("Exception: {0}", e.Exception.Message));
+            DebugLog.WriteVerbose(String.Format("Row index {0}, data error on {1}", e.RowIndex, colName), e.Exception);
         }
 
         /// <summary>

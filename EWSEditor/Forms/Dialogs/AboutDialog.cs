@@ -1,16 +1,11 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.Reflection;
+using System.Text;
+using System.Windows.Forms;
+using EWSEditor.Settings;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Drawing;
-    using System.Linq;
-    using System.Reflection;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-
     public partial class AboutDialog : DialogForm
     {
         private static AboutDialog currentDialog = null;
@@ -24,35 +19,35 @@
             this.lblCopyright.Text = this.AssemblyCopyright;
 
             StringBuilder descrip = new StringBuilder();
-            
-            descrip.AppendLine(string.Format(
-                System.Globalization.CultureInfo.CurrentCulture, 
-                "Target EWS Managed API Version: {0}", 
-                Constants.BuiltForEwsManagedApiVersion));
 
             descrip.AppendLine(string.Format(
-                System.Globalization.CultureInfo.CurrentCulture, 
+                System.Globalization.CultureInfo.CurrentCulture,
+                "Target EWS Managed API Version: {0}",
+                EnvironmentInfo.BuiltForEwsManagedApiVersion));
+
+            descrip.AppendLine(string.Format(
+                System.Globalization.CultureInfo.CurrentCulture,
                 "Loaded EWS Managed API Version: {0}",
-                Constants.EwsApiFileVersion.FileVersion));
+                EnvironmentInfo.EwsApiFileVersion.FileVersion));
 
             descrip.AppendLine(string.Format(
-                    System.Globalization.CultureInfo.CurrentCulture, 
-                    "Loaded EWS Managed API Path: {0}", 
-                    Constants.EwsApiPath));
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    "Loaded EWS Managed API Path: {0}",
+                    EnvironmentInfo.EwsApiPath));
 
             descrip.AppendLine(string.Format(
-                System.Globalization.CultureInfo.CurrentCulture, 
+                System.Globalization.CultureInfo.CurrentCulture,
                 "Loaded .NET Framework Version: {0}",
-                Constants.DotNetFrameworkVersion));
+                EnvironmentInfo.DotNetFrameworkVersion));
 
             descrip.AppendLine();
             descrip.AppendLine("EWSEditor demonstrates the Exchange Web Services Managed API.");
             descrip.AppendLine();
 
             descrip.AppendLine(string.Format(
-                System.Globalization.CultureInfo.CurrentCulture, 
-                "This build assumes you are using a build of the EWS Managed API version {0} or later.  Other versions may or may not work, good luck!", 
-                Constants.BuiltForEwsManagedApiVersion));
+                System.Globalization.CultureInfo.CurrentCulture,
+                "This build assumes you are using a build of the EWS Managed API version {0} or later.  Other versions may or may not work, good luck!",
+                EnvironmentInfo.BuiltForEwsManagedApiVersion));
 
             this.txtDescription.Text = descrip.ToString();
             this.btnOK.Select();
@@ -159,12 +154,12 @@
 
         private void AboutDialog_Load(object sender, EventArgs e)
         {
-            this.chkStartup.Checked = ConfigHelper.ShowSplash;
+            this.chkStartup.Checked = GlobalSettings.ShowSplash;
         }
 
         private void ChkStartup_CheckedChanged(object sender, EventArgs e)
         {
-            ConfigHelper.ShowSplash = this.chkStartup.Checked;
+            GlobalSettings.ShowSplash = this.chkStartup.Checked;
         }
 
         private void CodeGalleryLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

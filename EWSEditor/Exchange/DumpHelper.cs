@@ -1,15 +1,14 @@
-﻿namespace EWSEditor.Common
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Xml;
+using EWSEditor.Logging;
+using EWSEditor.PropertyInformation;
+using EWSEditor.Settings;
+using Microsoft.Exchange.WebServices.Data;
+
+namespace EWSEditor.Common
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Xml;
-
-    using EWSEditor.Diagnostics;
-    using EWSEditor.PropertyInformation;
-
-    using Microsoft.Exchange.WebServices.Data;
-
     public class DumpHelper
     {
         private DumpHelper()
@@ -29,7 +28,7 @@
             string destinationFolderPath, 
             ExchangeService service)
         {
-            TraceHelper.WriteVerbose(String.Format("Dumping MIME contents of {0}.", source.DisplayName));
+            DebugLog.WriteVerbose("Dumping MIME contents of " + source.DisplayName);
             List<ItemId> itemIds = GetItemIds(source, service, traversal);
 
             DumpMIME(itemIds, destinationFolderPath, service);
@@ -47,14 +46,14 @@
             string destinationFolderPath,
             ExchangeService service)
         {
-            TraceHelper.WriteVerbose(String.Format("Getting {0} items by ItemId.", itemIds.Count));
+            DebugLog.WriteVerbose(String.Format("Getting {0} items by ItemId.", itemIds.Count));
 
             PropertySet mimeSet = new PropertySet(BasePropertySet.IdOnly);
             mimeSet.Add(EmailMessageSchema.MimeContent);
             mimeSet.Add(EmailMessageSchema.Subject);
             ServiceResponseCollection<GetItemResponse> responses = service.BindToItems(itemIds, mimeSet);
 
-            TraceHelper.WriteVerbose("Finished getting items.");
+            DebugLog.WriteVerbose("Finished getting items.");
 
             foreach (GetItemResponse response in responses)
             {
@@ -73,7 +72,7 @@
                 }
             }
 
-            TraceHelper.WriteVerbose("Finished dumping MimeContents for each item.");
+            DebugLog.WriteVerbose("Finished dumping MimeContents for each item.");
         }
 
         /// <summary>
@@ -92,7 +91,7 @@
                 throw new ApplicationException("No MIME content to write");
             }
 
-            TraceHelper.WriteVerbose("Writing MimeContent to file.");
+            DebugLog.WriteVerbose("Writing MimeContent to file.");
 
             // Create a file path to save the MIME content to
             string fileName = string.Format(
@@ -106,7 +105,7 @@
                 FileHelper.EnsureUniqueFileName(fileName),
                 item.MimeContent.Content);
 
-            TraceHelper.WriteVerbose(String.Format("Wrote item to file, {0}.", fileName));
+            DebugLog.WriteVerbose(String.Format("Wrote item to file, {0}.", fileName));
         }
 
         /// <summary>
@@ -144,11 +143,11 @@
             string destinationFolderPath,
             ExchangeService service)
         {
-            TraceHelper.WriteVerbose(String.Format("Getting {0} items by ItemId.", itemIds.Count));
+            DebugLog.WriteVerbose(String.Format("Getting {0} items by ItemId.", itemIds.Count));
             ServiceResponseCollection<GetItemResponse> responses = service.BindToItems(itemIds, propertySet);
-            TraceHelper.WriteVerbose("Finished getting items.");
+            DebugLog.WriteVerbose("Finished getting items.");
 
-            TraceHelper.WriteVerbose("Started writing XML dumps to files.");
+            DebugLog.WriteVerbose("Started writing XML dumps to files.");
             foreach (GetItemResponse response in responses)
             {
                 switch (response.Result)
@@ -166,7 +165,7 @@
                 }
             }
 
-            TraceHelper.WriteVerbose("Finished writing XML dumps to files.");
+            DebugLog.WriteVerbose("Finished writing XML dumps to files.");
         }
 
         /// <summary>
@@ -179,7 +178,7 @@
             Item item,
             string destinationFolderPath)
         {
-            TraceHelper.WriteVerbose("Writing item to file.");
+            DebugLog.WriteVerbose("Writing item to file.");
 
             // Create a file path to save the item properties to
             string fileName = null;
@@ -209,7 +208,7 @@
                 FileHelper.EnsureUniqueFileName(fileName),
                 xmlDoc.OuterXml);
 
-            TraceHelper.WriteVerbose(String.Concat("Wrote item to file, {0}", fileName));
+            DebugLog.WriteVerbose(String.Concat("Wrote item to file, {0}", fileName));
         }
 
         /// <summary>
@@ -221,7 +220,7 @@
             GetItemResponse response,
             string destinationFolderPath)
         {
-            TraceHelper.WriteVerbose("Writing error to file.");
+            DebugLog.WriteVerbose("Writing error to file.");
 
             XmlDocument xmlDoc = new XmlDocument();
             XmlNode xmlMessage = xmlDoc.CreateNode(XmlNodeType.Element, "Message", string.Empty);
@@ -283,7 +282,7 @@
                 FileHelper.EnsureUniqueFileName(fileName),
                 xmlDoc.OuterXml);
 
-            TraceHelper.WriteVerbose(String.Format("Wrote error to file, {0}.", fileName));
+            DebugLog.WriteVerbose(String.Format("Wrote error to file, {0}.", fileName));
         }
 
         private static List<ItemId> GetItemIds(Folder source, ExchangeService service, ItemTraversal traversal)
@@ -294,17 +293,17 @@
             FindItemsResults<Item> findResults = null;
             while (findResults == null || findResults.MoreAvailable == true)
             {
-                TraceHelper.WriteVerbose("Calling FindItems.");
+                DebugLog.WriteVerbose("Calling FindItems.");
 
                 ItemView view = new ItemView(
-                    ConfigHelper.DumpFolderViewSize,
+                    GlobalSettings.DumpFolderViewSize,
                     itemIds.Count);
 
                 view.Traversal = traversal;
                 view.PropertySet = new PropertySet(BasePropertySet.IdOnly);
                 findResults = source.FindItems(view);
 
-                TraceHelper.WriteVerbose(String.Concat("FindItems returned {0} items", findResults.Items.Count));
+                DebugLog.WriteVerbose(String.Concat("FindItems returned {0} items", findResults.Items.Count));
 
                 foreach (Item foundItem in findResults.Items)
                 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
-using EWSEditor.Common;
+using EWSEditor.Settings;
 
 namespace EWSEditor.Exchange
 {
@@ -82,7 +82,7 @@ namespace EWSEditor.Exchange
             ServicePointManager.ServerCertificateValidationCallback =
                 delegate
                 {
-                    return ConfigHelper.OverrideCertValidation;
+                    return GlobalSettings.OverrideCertValidation;
                 };
         }
     }

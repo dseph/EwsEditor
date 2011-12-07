@@ -23,6 +23,7 @@
     </ApplicationIcon>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <StartupObject>EWSEditor.Program</StartupObject>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -35,7 +36,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -103,7 +103,10 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Exchange.WebServices, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Exchange.WebServices, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>deps\Microsoft.Exchange.WebServices.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
@@ -117,8 +120,6 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -128,15 +129,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ActiveDirectoryHelper.cs" />
-    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Forms\Dialogs\OptionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\OptionsDialog.Designer.cs">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\EnvironmentInfo.cs" />
     <Compile Include="Common\ConversionHelper.cs" />
     <Compile Include="Common\EwsApiTraceParser.cs" />
     <Compile Include="Common\ExceptionHelper.cs" />
+    <Compile Include="Common\InMemoryListener.cs" />
+    <Compile Include="Logging\DebugLog.cs" />
+    <Compile Include="Logging\EwsTraceListener.cs" />
+    <Compile Include="Common\ValidationCallbackHelper.cs" />
     <Compile Include="Common\ResponseCodeHelper.cs" />
-    <Compile Include="Diagnostics\Util.cs" />
     <Compile Include="Common\Extensions\ExchangeServiceExtensions.cs" />
-    <Compile Include="Exchange\ExchangeServiceFactory.cs" />
     <Compile Include="Exchange\CertificateValidationHelper.cs" />
+    <Compile Include="Exchange\EwsProxyFactory.cs" />
     <Compile Include="Exchange\ExportUploadHelper.cs" />
     <Compile Include="Forms\AppointmentsContentForm.cs">
       <SubType>Form</SubType>
@@ -185,6 +195,12 @@
     </Compile>
     <Compile Include="Forms\ConvertIdForm.Designer.cs">
       <DependentUpon>ConvertIdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DebugLogViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DebugLogViewerForm.Designer.cs">
+      <DependentUpon>DebugLogViewerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\AttendeeInfoDialog.cs">
       <SubType>Form</SubType>
@@ -270,7 +286,6 @@
     <Compile Include="Forms\SyncFolderItemsForm.Designer.cs">
       <DependentUpon>SyncFolderItemsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Diagnostics\EWSEditorTraceListener.cs" />
     <Compile Include="PropertyInformation\BinaryParser.cs" />
     <Compile Include="PropertyInformation\SmartViews\BitFlagsToStringHelper.cs" />
     <Compile Include="PropertyInformation\SmartViews\GlobalObjectIdSmartView.cs" />
@@ -311,12 +326,6 @@
     </Compile>
     <Compile Include="Forms\Dialogs\FindAppointmentsDialog.Designer.cs">
       <DependentUpon>FindAppointmentsDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\RequestResponseHistoryForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\RequestResponseHistoryForm.Designer.cs">
-      <DependentUpon>RequestResponseHistoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\DelegateDialog.cs">
       <SubType>Form</SubType>
@@ -385,7 +394,6 @@
       <DependentUpon>ServiceDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\ComparisonHelper.cs" />
-    <Compile Include="Common\ConfigHelper.cs" />
     <Compile Include="PropertyInformation\TypeValues\ByteArrayTypeValue.cs" />
     <Compile Include="PropertyInformation\TypeValues\EmailAddressCollectionTypeValue.cs" />
     <Compile Include="PropertyInformation\TypeValues\EmailAddressTypeValue.cs" />
@@ -455,6 +463,13 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\GlobalSettings.cs" />
+    <Compile Include="Settings\Internals\UserSettings.cs" />
+    <Compile Include="Settings\Internals\UserSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>UserSettings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Web References\EwsVsProxy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -487,6 +502,9 @@
     <EmbeddedResource Include="Forms\CountedForm.resx">
       <DependentUpon>CountedForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DebugLogViewerForm.resx">
+      <DependentUpon>DebugLogViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\AttendeeInfoDialog.resx">
       <DependentUpon>AttendeeInfoDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -495,6 +513,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\OofForm.resx">
       <DependentUpon>OofForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\OptionsDialog.resx">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FolderContentForm.resx">
       <DependentUpon>FolderContentForm.cs</DependentUpon>
@@ -556,10 +577,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\FindAppointmentsDialog.resx">
       <DependentUpon>FindAppointmentsDialog.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RequestResponseHistoryForm.resx">
-      <DependentUpon>RequestResponseHistoryForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\DelegateDialog.resx">
@@ -652,7 +669,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ServicesProfile.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Diagnostics\TraceHelper.cs" />
+    <None Include="Settings\Internals\UserSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>UserSettings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web References\EwsVsProxy\AddDelegateResponseMessageType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -878,7 +899,7 @@
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework Client Profile</ProductName>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
@@ -908,15 +929,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="deps\Microsoft.Exchange.WebServices.dll" />
+    <Content Include="deps\Microsoft.Exchange.WebServices.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\EWSEditor2.ico" />
     <Content Include="Resources\EWSEditor2.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Dialogs\SmartEditors\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />

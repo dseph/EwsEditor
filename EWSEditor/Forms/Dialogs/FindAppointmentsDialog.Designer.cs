@@ -71,6 +71,7 @@
             this.btnFolderId.TabIndex = 0;
             this.btnFolderId.Text = "...";
             this.btnFolderId.UseVisualStyleBackColor = true;
+            this.btnFolderId.Click += new System.EventHandler(this.btnFolderId_Click);
             // 
             // lblFolderId
             // 

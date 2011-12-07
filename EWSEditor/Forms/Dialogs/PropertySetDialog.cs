@@ -1,20 +1,12 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.Data;
+using System.Windows.Forms;
+using EWSEditor.Forms.Controls;
+using EWSEditor.PropertyInformation;
+using Microsoft.Exchange.WebServices.Data;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.Forms.Controls;
-    using EWSEditor.PropertyInformation;
-
-    using Microsoft.Exchange.WebServices.Data;
-
     public partial class PropertySetDialog : EWSEditor.Forms.DialogForm
     {
         private EnumComboBox<BasePropertySet> basePropertySetCombo = new EnumComboBox<BasePropertySet>();
@@ -163,21 +155,20 @@
         /// <param name="e">The parameter is not used.</param>
         private void PropertySetDialog_Load(object sender, EventArgs e)
         {
-            // Convert regular ComboBoxes to EnumComboBoxes
+            // Convert regular ComboBoxes to EnumComboBoxes and set values
             this.basePropertySetCombo.TransformComboBox(this.TempBasePropertySetCombo);
             this.basePropertySetCombo.HasEmptyItem = true;
-            this.basePropertySetCombo.SelectedItem = this.CurrentPropertySet.BasePropertySet;
+            this.basePropertySetCombo.SelectedItem = this.initialPropertySet.BasePropertySet;
 
             this.bodyTypeCombo.TransformComboBox(this.TempBodyTypeCombo);
             this.bodyTypeCombo.HasEmptyItem = true;
-            this.bodyTypeCombo.SelectedItem = this.CurrentPropertySet.RequestedBodyType;
+            this.bodyTypeCombo.SelectedItem = this.initialPropertySet.RequestedBodyType;
 
             this.filterHtmlCombo.TransformComboBox(this.TempFilterHtmlCombo);
             this.filterHtmlCombo.HasEmptyItem = true;
-            this.filterHtmlCombo.SelectedItem = this.CurrentPropertySet.FilterHtmlContent;
+            this.filterHtmlCombo.SelectedItem = this.initialPropertySet.FilterHtmlContent;
 
-            // Initialize the datatable used to display the properties
-            // in the PropertySet.
+            // Initialize the datatable used to display the properties in the PropertySet.
             this.propertyDisplayTable.Columns.Add("PropertyName", typeof(string));
             this.propertyDisplayTable.Columns.Add("PropertyType", typeof(string));
             this.propertyDisplayTable.Columns.Add("WellKnownName", typeof(string));
@@ -192,16 +183,6 @@
             this.PropertiesGrid.Columns["PropertyDefinitionBase"].Visible = false;
             this.PropertiesGrid.Columns["PropertyNameSortString"].Visible = false;
             this.PropertiesGrid.ScrollBars = ScrollBars.Both;
-
-            if (this.initialPropertySet.FilterHtmlContent.HasValue)
-            {
-                this.TempFilterHtmlCombo.SelectedItem = this.initialPropertySet.FilterHtmlContent.Value.ToString();
-            }
-
-            if (this.initialPropertySet.RequestedBodyType.HasValue)
-            {
-                this.TempBodyTypeCombo.SelectedItem = this.initialPropertySet.RequestedBodyType.Value.ToString();
-            }
 
             foreach (PropertyDefinitionBase prop in this.initialPropertySet)
             {

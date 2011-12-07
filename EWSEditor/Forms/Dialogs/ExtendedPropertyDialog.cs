@@ -1,21 +1,13 @@
+using System;
+using System.Windows.Forms;
+using EWSEditor.Common;
+using EWSEditor.Forms.Controls;
+using EWSEditor.Logging;
+using EWSEditor.PropertyInformation;
+using Microsoft.Exchange.WebServices.Data;
+
 namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Reflection;
-    using System.Text;
-    using System.Windows.Forms;
-    
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.Forms.Controls;
-    using EWSEditor.PropertyInformation;
-
-    using Microsoft.Exchange.WebServices.Data;
-
     public partial class ExtendedPropertyDialog : DialogForm
     {
         // The current loaded ExtendedPropertyDefinition from the control values
@@ -58,7 +50,7 @@ namespace EWSEditor.Forms
                 }
                 catch (Exception ex)
                 {
-                    TraceHelper.WriteVerbose(ex);
+                    DebugLog.WriteVerbose("Handled exception and returned null", ex);
                     return null;
                 }
 
@@ -89,7 +81,7 @@ namespace EWSEditor.Forms
                 // If PropTag is selected identifier there is nothing to do
                 if (this.IsPropertyTagThePropertyIdentifier()) 
                 {
-                    TraceHelper.WriteVerbose("PropTag is the identifier, no need to get PropertyId");
+                    DebugLog.WriteVerbose("PropTag is the identifier, no need to get PropertyId");
                     return null;
                 }
 
@@ -112,14 +104,14 @@ namespace EWSEditor.Forms
                 // If PropTag is selected identifier there is nothing to do
                 if (this.IsPropertyTagThePropertyIdentifier()) 
                 {
-                    TraceHelper.WriteVerbose("Property tag is the selected identifier, no need to get PropertyName");
+                    DebugLog.WriteVerbose("Property tag is the selected identifier, no need to get PropertyName");
                     return null; 
                 }
 
                 // If CurrentPropertyId has a value there is nothing to do
                 if (this.CurrentPropertyId.HasValue) 
                 {
-                    TraceHelper.WriteVerbose("CurrentPropertyId has a value, no need to get PropertyName");
+                    DebugLog.WriteVerbose("CurrentPropertyId has a value, no need to get PropertyName");
                     return null; 
                 }
 
@@ -214,7 +206,7 @@ namespace EWSEditor.Forms
             // If we didn't find the property, bailout...
             if (propDef == null) 
             {
-                TraceHelper.WriteVerbose("Didn't find any property definition");
+                DebugLog.WriteVerbose("Didn't find any property definition");
                 return; 
             }
 
@@ -239,7 +231,7 @@ namespace EWSEditor.Forms
             // then we have nothing to do here...
             if (!this.CurrentMapiPropertyType.HasValue) 
             {
-                TraceHelper.WriteVerbose("CurrentMapiPropertyType has no value.");
+                DebugLog.WriteVerbose("CurrentMapiPropertyType has no value.");
                 return null; 
             }
 
@@ -312,7 +304,7 @@ namespace EWSEditor.Forms
             // Guard against NULL or empty strings
             if (String.IsNullOrEmpty(value)) 
             {
-                TraceHelper.WriteVerbose("Input is null or empty, returning NULL");
+                DebugLog.WriteVerbose("Input is null or empty, returning NULL");
                 return null; 
             }
 
@@ -333,8 +325,7 @@ namespace EWSEditor.Forms
             }
             catch (Exception ex)
             {
-                TraceHelper.WriteVerbose("Handled exception.");
-                TraceHelper.WriteVerbose(ex);
+                DebugLog.WriteVerbose("Handled exception.", ex);
 
                 // The conversions will fail if the value
                 // is not numeric, if so return 0

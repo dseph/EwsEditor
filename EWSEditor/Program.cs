@@ -1,13 +1,12 @@
+using System;
+using System.Windows.Forms;
+using EWSEditor.Forms;
+using EWSEditor.Logging;
+using EWSEditor.Settings;
+using EWSEditor.Common;
+
 namespace EWSEditor
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.Forms;
-
     static class Program
     {
         static Program()
@@ -30,9 +29,9 @@ namespace EWSEditor
             if (args.Name.Contains("Microsoft.Exchange.WebServices"))
             {
                 // Try to load the DLL from the install location if not found in the .NET assembly path
-                if (System.IO.File.Exists(Constants.EwsManagedApiInstallPath))
+                if (System.IO.File.Exists(EnvironmentInfo.EwsManagedApiInstallPath))
                 {
-                    return System.Reflection.Assembly.LoadFrom(Constants.EwsManagedApiInstallPath);
+                    return System.Reflection.Assembly.LoadFrom(EnvironmentInfo.EwsManagedApiInstallPath);
                 }
 
                 // If the API is not found on the machine then display an error message and offer to
@@ -59,12 +58,17 @@ namespace EWSEditor
                 Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
 
                 // Require .NET Framework 3.5 SP1 before starting
-                if (!Constants.IsDotNetFramework35SP1)
+                if (!EnvironmentInfo.IsDotNetFramework35SP1)
                 {
                     ErrorDialog.ShowError("EWSEditor and the Exchange Web Services Managed API require at least the .NET Framework 3.5 SP1.");
-                    TraceHelper.WriteInfo(String.Format("Framework version {0}, is not .NET Framework 3.5 SP1", Constants.DotNetFrameworkVersion));
+                    DebugLog.WriteInfo(String.Format("Framework version {0}, is not .NET Framework 3.5 SP1", EnvironmentInfo.DotNetFrameworkVersion));
                     return;
                 }
+
+                // mstehle - 11/15/2011 - Is this the best place to set the callback delegate?  It only needs to be set once
+                // so this seems to be as good as any place.
+                System.Net.ServicePointManager.ServerCertificateValidationCallback = 
+                    ValidationCallbackHelper.CertificateValidationCallBack;
 
                 // If we have command line arguments, parse them...
                 if (Environment.GetCommandLineArgs().Length > 1)
@@ -81,14 +85,13 @@ namespace EWSEditor
             {
                 ErrorDialog.ShowError("EWSEditor may not work from a network share due to code access security features in the .NET framework.");
 
-                TraceHelper.WriteVerbose("Exception handled, assumed to be a running from network share.");
-                TraceHelper.WriteVerbose(ex);
+                DebugLog.WriteVerbose("Exception handled, assumed to be a running from network share.", ex);
             }
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            TraceHelper.WriteError(e.Exception);
+            DebugLog.WriteException("Unhandled exception!", e.Exception);
             ErrorDialog.ShowError(e.Exception);
         }
     }

@@ -1,21 +1,14 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using EWSEditor.Exchange;
+using EWSEditor.PropertyInformation;
+using EWSEditor.Resources;
+using EWSEditor.Settings;
+using Microsoft.Exchange.WebServices.Data;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-    using EWSEditor.PropertyInformation;
-    using EWSEditor.Resources;
-
-    using Microsoft.Exchange.WebServices.Data;
-    using EWSEditor.Exchange;
-
     public partial class FolderContentForm : ItemsContentForm
     {
         private Folder currentFolder = null;
@@ -154,7 +147,7 @@
                     this.Cursor = Cursors.Default;
                 }
 
-                this.ContentItemView.Offset = this.ContentItemView.Offset + ConfigHelper.FindItemViewSize;
+                this.ContentItemView.Offset = this.ContentItemView.Offset + GlobalSettings.FindItemViewSize;
 
                 foreach (Item item in findResults.Items)
                 {
@@ -338,8 +331,8 @@
             ofd.Multiselect = false;
 
             // The dialog doesn't return OK, bail out...
-            if (ofd.ShowDialog() != DialogResult.OK) 
-            { 
+            if (ofd.ShowDialog() != DialogResult.OK)
+            {
                 return;
             }
 

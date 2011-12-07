@@ -1,18 +1,11 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.Windows.Forms;
+using EWSEditor.Forms.Controls;
+using EWSEditor.Logging;
+using Microsoft.Exchange.WebServices.Data;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using Microsoft.Exchange.WebServices.Data;
-
-    using EWSEditor.Forms.Controls;
-    using EWSEditor.Diagnostics;
-
     public partial class ConvertIdForm : EWSEditor.Forms.CountedForm
     {
         private EnumComboBox<IdFormat> srcFormatCombo = new EnumComboBox<IdFormat>();
@@ -35,8 +28,8 @@
             if (this.srcFormatCombo.SelectedItem.HasValue == false &&
                 this.reqFormatCombo.SelectedItem.HasValue == false)
             {
-                if (this.srcFormatCombo.SelectedItem.HasValue == false) TraceHelper.WriteVerbose("srcFormatCombo has no value");
-                if (this.reqFormatCombo.SelectedItem.HasValue == false) TraceHelper.WriteVerbose("reqFormatCombo has no value");
+                if (this.srcFormatCombo.SelectedItem.HasValue == false) DebugLog.WriteVerbose("srcFormatCombo has no value");
+                if (this.reqFormatCombo.SelectedItem.HasValue == false) DebugLog.WriteVerbose("reqFormatCombo has no value");
 
                 ErrorDialog.ShowWarning("Select a source and requested ID format before converting.");
                 return;

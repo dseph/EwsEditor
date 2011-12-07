@@ -1,21 +1,15 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+using EWSEditor.Logging;
+using EWSEditor.PropertyInformation;
+using Microsoft.Exchange.WebServices.Autodiscover;
+using Microsoft.Exchange.WebServices.Data;
+using System.Diagnostics;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Text;
-    using System.Web.Services.Protocols;
-    using System.Windows.Forms;
-    using System.Xml.Serialization;
-
-    using EWSEditor.Diagnostics;
-    using EWSEditor.PropertyInformation;
-
-    using Microsoft.Exchange.WebServices.Autodiscover;
-    using Microsoft.Exchange.WebServices.Data;
-
     public partial class ErrorDialog : EWSEditor.Forms.DialogForm
     {
         private const string WarningTitle = "Warning";
@@ -38,7 +32,7 @@
                 MessageBoxIcon.Error,
                 MessageBoxDefaultButton.Button1);
 
-            TraceHelper.WriteVerbose(text);
+            DebugLog.WriteInfo(text);
         }
 
         public static void ShowWarning(string text)
@@ -50,7 +44,7 @@
                 MessageBoxIcon.Warning,
                 MessageBoxDefaultButton.Button1);
 
-            TraceHelper.WriteWarning(text);
+            DebugLog.WriteInfo(text);
         }
 
         public static void ShowInfo(string text)
@@ -72,7 +66,7 @@
             if (ex == null || String.IsNullOrEmpty(ex.Message))
             {
                 // This shouldn't ever happen
-                TraceHelper.WriteVerbose("ex is NULL?!?!");
+                DebugLog.WriteVerbose("ex is NULL?!?!");
                 return;
             }
 
@@ -83,7 +77,7 @@
             // Set the header text of the dialog with the exception message 
             // and calling method.
             dialog.ExceptionMessage.Text = ex.Message;
-            dialog.FromWhere.Text = EWSEditor.Diagnostics.DiagUtil.EwsMethodFromStackTrace(ex);
+            dialog.FromWhere.Text = EwsMethodFromStackTrace(ex);
 
             // Add verbose exception details
             dialog.ExceptionDetailBox.Text = BuildExceptionDetail(ex);
@@ -93,7 +87,7 @@
             {
                 foreach (Form openForm in Application.OpenForms)
                 {
-                    TraceHelper.WriteVerbose(String.Format("Type: {0} Focused: {0} Visible: {0} Modal: {0}", openForm.GetType().FullName, openForm.Focused.ToString(), openForm.Visible.ToString(), openForm.Modal.ToString()));
+                    DebugLog.WriteVerbose(String.Format("Type: {0} Focused: {0} Visible: {0} Modal: {0}", openForm.GetType().FullName, openForm.Focused.ToString(), openForm.Visible.ToString(), openForm.Modal.ToString()));
 
                     if (openForm.Visible)
                     {
@@ -154,6 +148,36 @@
                     icon,
                     MessageBoxDefaultButton.Button1);
             }
+        }
+
+        private static string EwsMethodFromStackTrace(Exception ex)
+        {
+            StackTrace stack = null;
+            if (ex != null)
+            {
+                stack = new System.Diagnostics.StackTrace(ex);
+            }
+
+            // Find the first stack from in EWSEditor that is not GetCallingMethod
+            StackFrame targetFrame = null;
+            foreach (StackFrame f in stack.GetFrames())
+            {
+                System.Reflection.MethodBase method = f.GetMethod();
+                if ((method != null) &&
+                    (method.Module.Equals("EWSEditor.exe")) &&
+                    (!method.Name.Equals("GetCallingMethod")))
+                {
+                    targetFrame = f;
+                    break;
+                }
+            }
+
+            if (targetFrame == null)
+            {
+                targetFrame = stack.GetFrame(2);
+            }
+
+            return string.Format("{0}.{1}()", targetFrame.GetMethod().DeclaringType.FullName, targetFrame.GetMethod().Name);
         }
 
         /// <summary>

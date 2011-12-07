@@ -1,19 +1,15 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using EWSEditor.Common;
+using EWSEditor.Exchange;
+using EWSEditor.Logging;
+using EWSEditor.Resources;
+using EWSEditor.Settings;
+using Microsoft.Exchange.WebServices.Data;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.Resources;
-
-    using Microsoft.Exchange.WebServices.Data;
-    using EWSEditor.Exchange;
 
     public partial class ItemsContentForm : BaseContentForm
     {
@@ -35,7 +31,7 @@
         protected const string ColNameItemId = "colItemId";
 
         private List<ItemId> currentItemIds = new List<ItemId>();
-        private ItemView contentItemView = new ItemView(ConfigHelper.FindItemViewSize);
+        private ItemView contentItemView = new ItemView(GlobalSettings.FindItemViewSize);
 
         protected ItemsContentForm()
         {
@@ -101,9 +97,10 @@
             this.contentItemView.PropertySet.Add(ItemSchema.DateTimeSent);
             this.contentItemView.PropertySet.Add(ItemSchema.LastModifiedTime);
             this.contentItemView.PropertySet.Add(ItemSchema.LastModifiedName);
-            
+
+            // IsAssociated is not supported in Exchange 2007
             if (this.CurrentService != null &&
-                this.CurrentService.RequestedServerVersion == ExchangeVersion.Exchange2010)
+                this.CurrentService.RequestedServerVersion != ExchangeVersion.Exchange2007_SP1)
             {
                 this.contentItemView.PropertySet.Add(ItemSchema.IsAssociated);
             }
@@ -189,12 +186,12 @@
                     }
                     else
                     {
-                        TraceHelper.WriteVerbose("GetItemResponse.Item is not an Item.");
+                        DebugLog.WriteVerbose("GetItemResponse.Item is not an Item.");
                     }
                 }
                 else
                 {
-                    TraceHelper.WriteVerbose(String.Format("GetItemResponse.Item is null, GetItemResponse.ErrorCode is {0}.", getItem.ErrorCode.ToString()));
+                    DebugLog.WriteVerbose(String.Format("GetItemResponse.Item is null, GetItemResponse.ErrorCode is {0}.", getItem.ErrorCode.ToString()));
                 }
             }
         }
@@ -248,8 +245,7 @@
             }
             catch (Exception ex)
             {
-                TraceHelper.WriteVerbose("Handled exception when getting DateTimeReceived");
-                TraceHelper.WriteVerbose(ex);
+                DebugLog.WriteVerbose("Handled exception when getting DateTimeReceived", ex);
                 this.ContentsGrid.Rows[row].Cells[ColNameDateReceived].Value = ex.Message;
             }
 
@@ -261,8 +257,7 @@
             }
             catch (Exception ex)
             {
-                TraceHelper.WriteVerbose("Handled exception when getting DateTimeSent");
-                TraceHelper.WriteVerbose(ex);
+                DebugLog.WriteVerbose("Handled exception when getting DateTimeSent", ex);
                 this.ContentsGrid.Rows[row].Cells[ColNameDateSent].Value = ex.Message;
             }
 
@@ -275,8 +270,7 @@
             }
             catch (Exception ex)
             {
-                TraceHelper.WriteVerbose("Handled exception when getting IsAssociated");
-                TraceHelper.WriteVerbose(ex);
+                DebugLog.WriteVerbose("Handled exception when getting IsAssociated", ex);
                 this.ContentsGrid.Rows[row].Cells[ColNameIsAssociated].Value = ex.Message;
             }
 
@@ -290,8 +284,7 @@
             }
             catch (Exception ex)
             {
-                TraceHelper.WriteVerbose("Handled exception when getting Culture");
-                TraceHelper.WriteVerbose(ex);
+                DebugLog.WriteVerbose("Handled exception when getting Culture", ex);
                 this.ContentsGrid.Rows[row].Cells[ColNameCulture].Value = ex.Message;
             }
 

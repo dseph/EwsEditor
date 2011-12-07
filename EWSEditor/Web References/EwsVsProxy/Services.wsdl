@@ -27,6 +27,7 @@
   </wsdl:message>
   <wsdl:message name="ConvertIdSoapIn">
     <wsdl:part name="request" element="tns:ConvertId" />
+    <wsdl:part name="Impersonation" element="t:ExchangeImpersonation" />
     <wsdl:part name="RequestVersion" element="t:RequestServerVersion" />
   </wsdl:message>
   <wsdl:message name="ConvertIdSoapOut">
@@ -414,6 +415,9 @@
   </wsdl:message>
   <wsdl:message name="GetUserAvailabilitySoapIn">
     <wsdl:part name="GetUserAvailabilityRequest" element="tns:GetUserAvailabilityRequest" />
+    <wsdl:part name="Impersonation" element="t:ExchangeImpersonation" />
+    <wsdl:part name="TimeZoneContext" element="t:TimeZoneContext" />
+    <wsdl:part name="RequestVersion" element="t:RequestServerVersion" />
   </wsdl:message>
   <wsdl:message name="GetUserAvailabilitySoapOut">
     <wsdl:part name="GetUserAvailabilityResult" element="tns:GetUserAvailabilityResponse" />
@@ -910,6 +914,7 @@
     <wsdl:operation name="ConvertId">
       <soap:operation soapAction="http://schemas.microsoft.com/exchange/services/2006/messages/ConvertId" />
       <wsdl:input>
+        <soap:header message="tns:ConvertIdSoapIn" part="Impersonation" use="literal" />
         <soap:header message="tns:ConvertIdSoapIn" part="RequestVersion" use="literal" />
         <soap:body use="literal" parts="request" />
       </wsdl:input>
@@ -1357,6 +1362,9 @@
     <wsdl:operation name="GetUserAvailability">
       <soap:operation soapAction="http://schemas.microsoft.com/exchange/services/2006/messages/GetUserAvailability" />
       <wsdl:input>
+        <soap:header message="tns:GetUserAvailabilitySoapIn" part="Impersonation" use="literal" />
+        <soap:header message="tns:GetUserAvailabilitySoapIn" part="TimeZoneContext" use="literal" />
+        <soap:header message="tns:GetUserAvailabilitySoapIn" part="RequestVersion" use="literal" />
         <soap:body use="literal" parts="GetUserAvailabilityRequest" />
       </wsdl:input>
       <wsdl:output>
@@ -1367,6 +1375,7 @@
     <wsdl:operation name="GetUserOofSettings">
       <soap:operation soapAction="http://schemas.microsoft.com/exchange/services/2006/messages/GetUserOofSettings" />
       <wsdl:input>
+        <soap:header message="tns:GetUserOofSettingsSoapIn" part="Impersonation" use="literal" />
         <soap:body use="literal" parts="GetUserOofSettingsRequest" />
       </wsdl:input>
       <wsdl:output>
@@ -1377,6 +1386,7 @@
     <wsdl:operation name="SetUserOofSettings">
       <soap:operation soapAction="http://schemas.microsoft.com/exchange/services/2006/messages/SetUserOofSettings" />
       <wsdl:input>
+        <soap:header message="tns:SetUserOofSettingsSoapIn" part="Impersonation" use="literal" />
         <soap:body use="literal" parts="SetUserOofSettingsRequest" />
       </wsdl:input>
       <wsdl:output>

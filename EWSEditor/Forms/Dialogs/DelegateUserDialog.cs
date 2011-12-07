@@ -1,19 +1,11 @@
-﻿namespace EWSEditor.Forms
+﻿using System;
+using System.Windows.Forms;
+using EWSEditor.Forms.Controls;
+using EWSEditor.Logging;
+using Microsoft.Exchange.WebServices.Data;
+
+namespace EWSEditor.Forms
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
-    using System.Text;
-    using System.Windows.Forms;
-
-    using EWSEditor.Common;
-    using EWSEditor.Diagnostics;
-    using EWSEditor.Forms.Controls;
-
-    using Microsoft.Exchange.WebServices.Data;
-
     public partial class DelegateUserDialog : EWSEditor.Forms.DialogForm
     {
         private DelegateUser delegateUser = null;
@@ -140,14 +132,14 @@
             if (UserIdDialog.ShowDialog(this.CurrentService, ref delegateUserId) != DialogResult.OK)
             {
                 // If the UserIdDialog does not return OK then do nothing
-                TraceHelper.WriteVerbose("UserIdDialog did not return OK");
+                DebugLog.WriteVerbose("UserIdDialog did not return OK");
                 return;
             }
 
             if (delegateUserId == null)
             {
                 // If delegateUserId is NULL then do nothing
-                TraceHelper.WriteVerbose("UserIdDialog return a NULL UserId");
+                DebugLog.WriteVerbose("UserIdDialog return a NULL UserId");
                 return;
             }
 
@@ -163,7 +155,7 @@
             else
             {
                 // Treat an invalid delegateUserId as if the UserIdDialog did not return OK
-                TraceHelper.WriteVerbose("UserIdDialog returned OK but UserId returned didn't have StandardUser or PrimarySmtpAddress");
+                DebugLog.WriteVerbose("UserIdDialog returned OK but UserId returned didn't have StandardUser or PrimarySmtpAddress");
             }           
         }
 
