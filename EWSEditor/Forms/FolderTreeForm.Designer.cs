@@ -52,6 +52,8 @@ namespace EWSEditor.Forms
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuDumpMIMEContents = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDumpXMLContents = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.addExtenedPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertyListItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -61,8 +63,6 @@ namespace EWSEditor.Forms
             this.mnuAddRootFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuContextCloseExchangeService = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.addExtenedPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitter.Panel1.SuspendLayout();
             this.splitter.Panel2.SuspendLayout();
             this.splitter.SuspendLayout();
@@ -104,11 +104,11 @@ namespace EWSEditor.Forms
             this.FolderTreeView.ShowNodeToolTips = true;
             this.FolderTreeView.Size = new System.Drawing.Size(228, 645);
             this.FolderTreeView.TabIndex = 0;
-            this.FolderTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.FolderTreeView_NodeMouseDoubleClick);
-            this.FolderTreeView.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.FolderTreeView_BeforeExpand);
             this.FolderTreeView.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.FolderTreeView_BeforeCollapse);
+            this.FolderTreeView.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.FolderTreeView_BeforeExpand);
             this.FolderTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.FolderTreeView_AfterSelect);
             this.FolderTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.FolderTreeView_NodeMouseClick);
+            this.FolderTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.FolderTreeView_NodeMouseDoubleClick);
             // 
             // imageList
             // 
@@ -271,6 +271,18 @@ namespace EWSEditor.Forms
             this.mnuDumpXMLContents.Text = "Save Folder Contents as XML...";
             this.mnuDumpXMLContents.Click += new System.EventHandler(this.DumpXmlContentsMenu_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(239, 6);
+            // 
+            // addExtenedPropertyToolStripMenuItem
+            // 
+            this.addExtenedPropertyToolStripMenuItem.Name = "addExtenedPropertyToolStripMenuItem";
+            this.addExtenedPropertyToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.addExtenedPropertyToolStripMenuItem.Text = "Add Extened Property...";
+            this.addExtenedPropertyToolStripMenuItem.Click += new System.EventHandler(this.AddExtenedPropertyToolStripMenuItem_Click);
+            // 
             // saveFileDialog
             // 
             this.saveFileDialog.Filter = "EWS Editor Services Profile Files|*.mmp";
@@ -320,18 +332,6 @@ namespace EWSEditor.Forms
             this.mnuContextCloseExchangeService.Size = new System.Drawing.Size(196, 22);
             this.mnuContextCloseExchangeService.Text = "Close ExchangeService";
             this.mnuContextCloseExchangeService.Click += new System.EventHandler(this.CloseExchangeServiceButton_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(239, 6);
-            // 
-            // addExtenedPropertyToolStripMenuItem
-            // 
-            this.addExtenedPropertyToolStripMenuItem.Name = "addExtenedPropertyToolStripMenuItem";
-            this.addExtenedPropertyToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.addExtenedPropertyToolStripMenuItem.Text = "Add Extened Property...";
-            this.addExtenedPropertyToolStripMenuItem.Click += new System.EventHandler(this.AddExtenedPropertyToolStripMenuItem_Click);
             // 
             // FolderTreeForm
             // 

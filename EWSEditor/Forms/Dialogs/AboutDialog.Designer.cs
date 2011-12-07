@@ -145,7 +145,7 @@
             this.CodeGalleryLink.Size = new System.Drawing.Size(230, 13);
             this.CodeGalleryLink.TabIndex = 28;
             this.CodeGalleryLink.TabStop = true;
-            this.CodeGalleryLink.Text = "EWSEditor Project on MSDN Code Gallery";
+            this.CodeGalleryLink.Text = "EWSEditor Project Website";
             this.CodeGalleryLink.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.CodeGalleryLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.CodeGalleryLink_LinkClicked);
             // 

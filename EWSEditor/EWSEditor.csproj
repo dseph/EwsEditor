@@ -139,7 +139,6 @@
     <Compile Include="Common\ConversionHelper.cs" />
     <Compile Include="Common\EwsApiTraceParser.cs" />
     <Compile Include="Common\ExceptionHelper.cs" />
-    <Compile Include="Common\InMemoryListener.cs" />
     <Compile Include="Logging\DebugLog.cs" />
     <Compile Include="Logging\EwsTraceListener.cs" />
     <Compile Include="Common\ValidationCallbackHelper.cs" />
@@ -640,19 +639,10 @@
     <None Include="App.config" />
     <None Include="Properties\DataSources\Microsoft.Exchange.Data.Services.ExtendedPropertyDefinition.datasource" />
     <None Include="Properties\DataSources\Microsoft.Exchange.Data.Services.Item.datasource" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="PropertyInformation\TypeValues\WorkingHoursTypeValue.cs" />
     <Compile Include="Resources\DisplayStrings.Designer.cs">

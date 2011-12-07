@@ -164,12 +164,12 @@ namespace EWSEditor.Forms
 
         private void CodeGalleryLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://code.msdn.microsoft.com/ewseditor");
+            System.Diagnostics.Process.Start(EnvironmentInfo.EwsEditorProjectUrl);
         }
 
         private void MoreEwsEditor_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://blogs.msdn.com/mstehle/archive/tags/EWSEditor/default.aspx");
+            System.Diagnostics.Process.Start(EnvironmentInfo.EwsEditorBlogPostsUrl);
         }
     }
 }
