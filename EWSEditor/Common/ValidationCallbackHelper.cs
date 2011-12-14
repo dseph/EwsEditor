@@ -50,12 +50,28 @@ namespace EWSEditor.Common
                 builder.AppendLine();
             }
 
+            // Only write detailed certificate information if requested
             if (GlobalSettings.EnableSslDetailLogging)
             {
                 DebugLog.WriteInfo(builder.ToString());
             }
 
-            return GlobalSettings.OverrideCertValidation;
+            // If we're overriding validation then always return true
+            if (GlobalSettings.OverrideCertValidation)
+            {
+                return true;
+            }
+
+            // If there were errors output error code and return false
+            if (sslPolicyErrors != System.Net.Security.SslPolicyErrors.None)
+            {
+                DebugLog.WriteInfo("SSL certificate validation failed because System.Net.Security.SslPolicyErrors = '{0}'",
+                    System.Enum.GetName(typeof(System.Net.Security.SslPolicyErrors), sslPolicyErrors));
+
+                return false;
+            }
+
+            return true;
         }
 
         public static bool RedirectionUrlValidationCallback(string redirectionUrl)
