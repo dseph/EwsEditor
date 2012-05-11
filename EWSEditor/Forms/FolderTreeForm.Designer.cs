@@ -280,7 +280,7 @@ namespace EWSEditor.Forms
             // 
             this.addExtenedPropertyToolStripMenuItem.Name = "addExtenedPropertyToolStripMenuItem";
             this.addExtenedPropertyToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.addExtenedPropertyToolStripMenuItem.Text = "Add Extened Property...";
+            this.addExtenedPropertyToolStripMenuItem.Text = "Add Extended Property...";
             this.addExtenedPropertyToolStripMenuItem.Click += new System.EventHandler(this.AddExtenedPropertyToolStripMenuItem_Click);
             // 
             // saveFileDialog
