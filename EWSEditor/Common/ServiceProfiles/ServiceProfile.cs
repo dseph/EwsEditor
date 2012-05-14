@@ -4,6 +4,7 @@ using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using EWSEditor.Common.Extensions;
+using EWSEditor.Exchange;
 using EWSEditor.Forms;
 using EWSEditor.Logging;
 using EWSEditor.PropertyInformation;
@@ -235,63 +236,48 @@ namespace EWSEditor.Common.ServiceProfiles
             NetworkCredential cred)
         {
             // Create the ExchangeService
-            ExchangeService service = new ExchangeService();
 
             if (!row.IsRequestedServerVersionNull())
             {
                 // Convert the string to an ExchangeVersion enumeration
                 ExchangeVersion req =
                     (ExchangeVersion)System.Enum.Parse(typeof(ExchangeVersion), row.RequestedServerVersion);
-                service = new ExchangeService(req);
-            }
-            else
-            {
-                service = new ExchangeService();
+                EwsProxyFactory.RequestedExchangeVersion = req;
             }
 
-            // Setup request/response tracer...
-            service.TraceEnabled = true;
-            service.TraceListener = new EWSEditor.Logging.EwsTraceListener();
 
             // Load autodiscover email if found
             if (!row.IsAutoDiscoverEmailNull())
             {
-                if (GlobalSettings.AllowAutodiscoverRedirect)
-                {
-                    service.AutodiscoverUrl(row.AutoDiscoverEmail,
-                        delegate(string url) { return true; });
-                }
-                else
-                {
-                    service.AutodiscoverUrl(row.AutoDiscoverEmail);
-                }
-            }
-            else
-            {
-                service.Url = new Uri(row.ServicesURL);
+                EwsProxyFactory.AllowAutodiscoverRedirect = GlobalSettings.AllowAutodiscoverRedirect;
+                EwsProxyFactory.ServiceEmailAddress = new EmailAddress(row.AutoDiscoverEmail);
             }
 
+            if(!row.IsServicesURLNull())
+            {
+                EwsProxyFactory.EwsUrl = new Uri(row.ServicesURL);
+            }
+
+            
             // If ImpersonationType is specified then we assume an Id is as well
             if (!row.IsImpersonationTypeNull())
             {
                 // Convert the string to a ConnectingIdType enumeration
                 ConnectingIdType impType =
                     (ConnectingIdType)System.Enum.Parse(typeof(ConnectingIdType), row.ImpersonationType);
-                service.ImpersonatedUserId = new ImpersonatedUserId(impType, row.ImpersonationId);
+                EwsProxyFactory.UserToImpersonate = new ImpersonatedUserId(impType, row.ImpersonationId);
             }
 
             // If credentials are not required then use DefaultCredentials
             if (row.UsesDefaultCredentials)
             {
-                service.UseDefaultCredentials = true;
-                //service.Credentials =
-                //    (NetworkCredential)System.Net.CredentialCache.DefaultCredentials;
+                EwsProxyFactory.UseDefaultCredentials = true;
             }
             else
             {
                 if (cred != null)
                 {
-                    service.Credentials = (ExchangeCredentials)cred;
+                    EwsProxyFactory.ServiceCredential = cred;
                 }
                 else
                 {
@@ -299,7 +285,7 @@ namespace EWSEditor.Common.ServiceProfiles
                 }
             }
 
-            return service;
+            return EwsProxyFactory.CreateExchangeService();
         }
 
         /// <summary>

@@ -76,48 +76,42 @@ namespace EWSEditor.Forms
 
             try
             {
-                this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+                Cursor = System.Windows.Forms.Cursors.WaitCursor;
 
-                EwsProxyFactory factory = new EwsProxyFactory();
-                factory.RequestedExchangeVersion = this.exchangeVersionCombo.SelectedItem;
-                //factory.TraceEnabled = true;
-                //factory.TraceListner = new EWSEditor.Logging.EwsTraceListener();
-                factory.AllowAutodiscoverRedirect = GlobalSettings.AllowAutodiscoverRedirect;
 
-                //factory.UserAgent = String.Format("EWSEditor {0}; EWSAPI {1}; .NET {2};",
-                //    EnvironmentInfo.EwsEditorVersion,
-                //    EnvironmentInfo.EwsApiFileVersion.FileVersion,
-                //    EnvironmentInfo.DotNetFrameworkVersion);
-
-                factory.UseDefaultCredentials = !this.chkCredentials.Checked;
-                factory.ServiceCredential = this.chkCredentials.Checked ?
+                
+                //EwsProxyFactory.InitializeWithDefaults(exchangeVersionCombo.SelectedIndex,
+                EwsProxyFactory.RequestedExchangeVersion = exchangeVersionCombo.SelectedItem;
+                EwsProxyFactory.AllowAutodiscoverRedirect = GlobalSettings.AllowAutodiscoverRedirect;
+                EwsProxyFactory.UseDefaultCredentials = !chkCredentials.Checked;
+                EwsProxyFactory.ServiceCredential = chkCredentials.Checked ?
                     new NetworkCredential(
-                        this.txtUserName.Text.Trim(),
-                        this.txtPassword.Text.Trim(),
+                        this.txtUserName.Text.Trim(), 
+                        this.txtPassword.Text.Trim(), //TODO:  This will fail on passwords ending with whitespace
                         this.txtDomain.Text.Trim()) :
                     null;
 
-                factory.EwsUrl = this.UseAutodiscoverCheck.Checked ?
-                    null : new Uri(this.ExchangeServiceURLText.Text.Trim());
+                EwsProxyFactory.EwsUrl = UseAutodiscoverCheck.Checked ?
+                    null : new Uri(ExchangeServiceURLText.Text.Trim());
 
-                factory.UserToImpersonate = this.ImpersonationCheck.Checked ?
+                EwsProxyFactory.UserToImpersonate = this.ImpersonationCheck.Checked ?
                     new ImpersonatedUserId(this.connectingIdCombo.SelectedItem.Value, this.ImpersonatedIdTextBox.Text.Trim()) : null;
 
-                factory.ServiceEmailAddress = this.AutodiscoverEmailText.Text.Trim();
+                EwsProxyFactory.ServiceEmailAddress = this.AutodiscoverEmailText.Text.Trim();
                 if (this.UseAutodiscoverCheck.Checked)
                 {
-                    factory.DoAutodiscover();
+                    EwsProxyFactory.DoAutodiscover();
                 }
 
-                this.CurrentService = factory.CreateExchangeService();
+                CurrentService = EwsProxyFactory.CreateExchangeService();
 
-                this.CurrentService.TestExchangeService();
+                CurrentService.TestExchangeService();
 
-                this.DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.OK;
             }
             finally
             {
-                this.Cursor = System.Windows.Forms.Cursors.Default;
+                Cursor = System.Windows.Forms.Cursors.Default;
             }
         }
 

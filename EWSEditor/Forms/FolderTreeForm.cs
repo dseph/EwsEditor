@@ -122,6 +122,10 @@ namespace EWSEditor.Forms
                 // Enable the following controls when connected...
                 this.saveProfileMenu.Enabled = isCurrentService;
                 this.closeExchangeServiceMenu.Enabled = isCurrentService;
+                
+                this.openDefaultExchangeServiceMenu.Enabled = !isCurrentService;
+                this.openProfileMenu.Enabled = !isCurrentService;
+                this.newExchangeServiceMenu.Enabled = !isCurrentService;
 
                 // Actions Menu
                 this.mnuOpenItemById.Enabled = isCurrentService;
@@ -137,6 +141,7 @@ namespace EWSEditor.Forms
                 // Tools Menu
                 this.mnuSynchronization.Enabled = isCurrentService;
                 this.mnuNotification.Enabled = isCurrentService;
+                this.mnuStreamingNotification.Enabled = isCurrentService && CurrentService.RequestedServerVersion.CompareTo(ExchangeVersion.Exchange2010_SP1) >=0;  // Only enable streaming notifications for 2k10 SP1+
                 this.mnuDisplayDelegates.Enabled = isCurrentService;
                 this.UserAvailabilityMenuItem.Enabled = isCurrentService;
                 this.UserOofSettingsMenuItem.Enabled = isCurrentService;
@@ -389,6 +394,10 @@ namespace EWSEditor.Forms
                 {
                     this.FolderTreeView.SelectedNode = rootNode.NextNode;
                 }
+                else 
+                {
+                    this.CurrentService = null;
+                }
 
                 rootNode.Remove();
                 this.FolderPropertyDetailsGrid.Clear();
@@ -549,8 +558,8 @@ namespace EWSEditor.Forms
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
-                ExchangeService service = EwsProxyFactory.InitializeWithDefaults().CreateExchangeService();
+                EwsProxyFactory.InitializeWithDefaults();
+                ExchangeService service = EwsProxyFactory.CreateExchangeService();
 
                 TreeNode newNode = this.AddServiceToTreeView(service);
                 this.FolderTreeView.SelectedNode = newNode;
@@ -1378,6 +1387,17 @@ namespace EWSEditor.Forms
         {
             internal Folder FolderObject;
             internal FolderId OriginalFolderId;
+        }
+
+        private void mnuOpenStreamingNotifications_Click(object sender, EventArgs e)
+        {
+            Folder folder = GetFolderFromNode(FolderTreeView.SelectedNode);
+            if (folder != null)
+            {
+                StreamingNotificationForm.Show(
+                    string.Format(DisplayStrings.TITLE_CONTENTS_FOLDER, folder.DisplayName),
+                    folder.Id);
+            }
         }
     }
 }

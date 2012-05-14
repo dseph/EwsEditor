@@ -39,6 +39,8 @@ namespace EWSEditor.Forms
             this.mnuOpenAssocContents = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenSoftDelItems = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuOpenStreamingNotifications = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuPermissions = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuCreateSubFolder = new System.Windows.Forms.ToolStripMenuItem();
@@ -140,6 +142,8 @@ namespace EWSEditor.Forms
             this.mnuOpenAssocContents,
             this.mnuOpenSoftDelItems,
             this.toolStripMenuItem4,
+            this.mnuOpenStreamingNotifications,
+            this.toolStripSeparator2,
             this.mnuPermissions,
             this.toolStripMenuItem13,
             this.mnuCreateSubFolder,
@@ -153,12 +157,12 @@ namespace EWSEditor.Forms
             this.toolStripMenuItem1,
             this.addExtenedPropertyToolStripMenuItem});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
-            this.cmsFolderMenu.Size = new System.Drawing.Size(243, 298);
+            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 326);
             // 
             // mnuOpenContents
             // 
             this.mnuOpenContents.Name = "mnuOpenContents";
-            this.mnuOpenContents.Size = new System.Drawing.Size(242, 22);
+            this.mnuOpenContents.Size = new System.Drawing.Size(269, 22);
             this.mnuOpenContents.Tag = "Folder";
             this.mnuOpenContents.Text = "Open Items...";
             this.mnuOpenContents.Click += new System.EventHandler(this.OpenContentsMenu_Click);
@@ -166,7 +170,7 @@ namespace EWSEditor.Forms
             // mnuOpenAssocContents
             // 
             this.mnuOpenAssocContents.Name = "mnuOpenAssocContents";
-            this.mnuOpenAssocContents.Size = new System.Drawing.Size(242, 22);
+            this.mnuOpenAssocContents.Size = new System.Drawing.Size(269, 22);
             this.mnuOpenAssocContents.Tag = "Folder";
             this.mnuOpenAssocContents.Text = "Open Associated Items...";
             this.mnuOpenAssocContents.Click += new System.EventHandler(this.OpenAssocContentsMenu_Click);
@@ -174,31 +178,43 @@ namespace EWSEditor.Forms
             // mnuOpenSoftDelItems
             // 
             this.mnuOpenSoftDelItems.Name = "mnuOpenSoftDelItems";
-            this.mnuOpenSoftDelItems.Size = new System.Drawing.Size(242, 22);
+            this.mnuOpenSoftDelItems.Size = new System.Drawing.Size(269, 22);
             this.mnuOpenSoftDelItems.Text = "Open Soft Deleted Items...";
             this.mnuOpenSoftDelItems.Click += new System.EventHandler(this.OpenSoftDelItemsMenu_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(239, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(266, 6);
+            // 
+            // mnuOpenStreamingNotifications
+            // 
+            this.mnuOpenStreamingNotifications.Name = "mnuOpenStreamingNotifications";
+            this.mnuOpenStreamingNotifications.Size = new System.Drawing.Size(269, 22);
+            this.mnuOpenStreamingNotifications.Text = "Open Streaming Notifications Viewer";
+            this.mnuOpenStreamingNotifications.Click += new System.EventHandler(this.mnuOpenStreamingNotifications_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(266, 6);
             // 
             // mnuPermissions
             // 
             this.mnuPermissions.Name = "mnuPermissions";
-            this.mnuPermissions.Size = new System.Drawing.Size(242, 22);
+            this.mnuPermissions.Size = new System.Drawing.Size(269, 22);
             this.mnuPermissions.Text = "Display Permissions...";
             this.mnuPermissions.Click += new System.EventHandler(this.PermissionsMenu_Click);
             // 
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(239, 6);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(266, 6);
             // 
             // mnuCreateSubFolder
             // 
             this.mnuCreateSubFolder.Name = "mnuCreateSubFolder";
-            this.mnuCreateSubFolder.Size = new System.Drawing.Size(242, 22);
+            this.mnuCreateSubFolder.Size = new System.Drawing.Size(269, 22);
             this.mnuCreateSubFolder.Text = "Create SubFolder...";
             this.mnuCreateSubFolder.Click += new System.EventHandler(this.CreateSubFolderMenu_Click);
             // 
@@ -209,7 +225,7 @@ namespace EWSEditor.Forms
             this.DeleteSoftMenu,
             this.DeleteMoveMenu});
             this.mnuDeleteFolder.Name = "mnuDeleteFolder";
-            this.mnuDeleteFolder.Size = new System.Drawing.Size(242, 22);
+            this.mnuDeleteFolder.Size = new System.Drawing.Size(269, 22);
             this.mnuDeleteFolder.Text = "Delete Folder";
             // 
             // DeleteHardMenu
@@ -236,51 +252,51 @@ namespace EWSEditor.Forms
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(239, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(266, 6);
             // 
             // mnuCopyFolder
             // 
             this.mnuCopyFolder.Name = "mnuCopyFolder";
-            this.mnuCopyFolder.Size = new System.Drawing.Size(242, 22);
+            this.mnuCopyFolder.Size = new System.Drawing.Size(269, 22);
             this.mnuCopyFolder.Text = "Copy Folder...";
             this.mnuCopyFolder.Click += new System.EventHandler(this.CopyFolderMenu_Click);
             // 
             // mnuMoveFolder
             // 
             this.mnuMoveFolder.Name = "mnuMoveFolder";
-            this.mnuMoveFolder.Size = new System.Drawing.Size(242, 22);
+            this.mnuMoveFolder.Size = new System.Drawing.Size(269, 22);
             this.mnuMoveFolder.Text = "Move Folder...";
             this.mnuMoveFolder.Click += new System.EventHandler(this.MoveFolderMenu_Click);
             // 
             // toolStripMenuItem12
             // 
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(239, 6);
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(266, 6);
             // 
             // mnuDumpMIMEContents
             // 
             this.mnuDumpMIMEContents.Name = "mnuDumpMIMEContents";
-            this.mnuDumpMIMEContents.Size = new System.Drawing.Size(242, 22);
+            this.mnuDumpMIMEContents.Size = new System.Drawing.Size(269, 22);
             this.mnuDumpMIMEContents.Text = "Save Folder Contents as MIME...";
             this.mnuDumpMIMEContents.Click += new System.EventHandler(this.DumpMimeContentsMenu_Click);
             // 
             // mnuDumpXMLContents
             // 
             this.mnuDumpXMLContents.Name = "mnuDumpXMLContents";
-            this.mnuDumpXMLContents.Size = new System.Drawing.Size(242, 22);
+            this.mnuDumpXMLContents.Size = new System.Drawing.Size(269, 22);
             this.mnuDumpXMLContents.Text = "Save Folder Contents as XML...";
             this.mnuDumpXMLContents.Click += new System.EventHandler(this.DumpXmlContentsMenu_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(239, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(266, 6);
             // 
             // addExtenedPropertyToolStripMenuItem
             // 
             this.addExtenedPropertyToolStripMenuItem.Name = "addExtenedPropertyToolStripMenuItem";
-            this.addExtenedPropertyToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.addExtenedPropertyToolStripMenuItem.Text = "Add Extended Property...";
+            this.addExtenedPropertyToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.addExtenedPropertyToolStripMenuItem.Text = "Add Extened Property...";
             this.addExtenedPropertyToolStripMenuItem.Click += new System.EventHandler(this.AddExtenedPropertyToolStripMenuItem_Click);
             // 
             // saveFileDialog
@@ -390,5 +406,7 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.ToolStripMenuItem mnuDumpXMLContents;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem addExtenedPropertyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuOpenStreamingNotifications;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

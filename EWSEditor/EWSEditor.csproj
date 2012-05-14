@@ -19,8 +19,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\EWSEditor2.ico</ApplicationIcon>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <StartupObject>EWSEditor.Program</StartupObject>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -134,6 +133,9 @@
     </Compile>
     <Compile Include="Forms\Dialogs\OptionsDialog.Designer.cs">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StreamingNotificationForm.Designer.cs">
+      <DependentUpon>StreamingNotificationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings\EnvironmentInfo.cs" />
     <Compile Include="Common\ConversionHelper.cs" />
@@ -469,6 +471,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>UserSettings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Forms\StreamingNotificationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Web References\EwsVsProxy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -562,6 +567,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PullNotificationForm.resx">
       <DependentUpon>PullNotificationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StreamingNotificationForm.resx">
+      <DependentUpon>StreamingNotificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SyncFolderItemsForm.resx">
       <DependentUpon>SyncFolderItemsForm.cs</DependentUpon>

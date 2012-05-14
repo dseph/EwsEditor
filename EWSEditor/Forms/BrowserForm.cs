@@ -241,6 +241,16 @@
         }
 
         /// <summary>
+        /// Display the PullNotificationForm
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void MnuStreamingNotification_Click(object sender, EventArgs e)
+        {
+            StreamingNotificationForm.Show();
+        }
+
+        /// <summary>
         /// Display the SyncFolderItemsForm
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>

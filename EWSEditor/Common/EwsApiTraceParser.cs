@@ -16,12 +16,12 @@ namespace EWSEditor.Common
 
                 switch (EnvironmentInfo.EwsApiVersion)
                 {
-                    case EwsApiVersions.OnePointOne:
-                    case EwsApiVersions.OnePointOneHot:
-                        beginTag = "<Trace";
+                    case EwsApiVersions.OnePointZero:
+                    case EwsApiVersions.OnePointZeroHot:
+                        beginTag = "<EwsLogEntry";
                         break;
                     default:
-                        beginTag = "<EwsLogEntry";
+                        beginTag = "<Trace";
                         break;
                 }
 
@@ -37,12 +37,12 @@ namespace EWSEditor.Common
 
                 switch (EnvironmentInfo.EwsApiVersion)
                 {
-                    case EwsApiVersions.OnePointOne:
-                    case EwsApiVersions.OnePointOneHot:
-                        endTag = "</Trace>";
+                    case EwsApiVersions.OnePointZero:
+                    case EwsApiVersions.OnePointZeroHot:
+                        endTag = "</EwsLogEntry>";
                         break;
                     default:
-                        endTag = "</EwsLogEntry>";
+                        endTag = "</Trace>";
                         break;
                 }
 
@@ -68,24 +68,28 @@ namespace EWSEditor.Common
             this.OriginalTraceMessage = message;
             this.OriginalTraceMessageType = type;
 
-            // Determine the trace log version
-            switch (EnvironmentInfo.EwsApiVersion)
-            {
-                case EwsApiVersions.OnePointOne:
-                case EwsApiVersions.OnePointOneHot:
-                    this.UniqueKey = GetHeader_OnePointZero(message);
-                    this.Method = GetMethod_OnePointZero(message);
-                    break;
-                case EwsApiVersions.OnePointZero:
-                case EwsApiVersions.OnePointZeroHot:
-                    this.UniqueKey = GetHeader_OnePointZero(message);
-                    this.Method = GetMethod_OnePointZero(message);
-                    break;
-                default:
-                    this.UniqueKey = string.Empty;
-                    this.Method = string.Empty;
-                    break;
-            }
+            //// Determine the trace log version
+            //switch (EnvironmentInfo.EwsApiVersion)
+            //{
+            //    case EwsApiVersions.OnePointOne:
+            //    case EwsApiVersions.OnePointOneHot:
+            //        this.UniqueKey = GetHeader_OnePointZero(message);
+            //        this.Method = GetMethod_OnePointZero(message);
+            //        break;
+            //    case EwsApiVersions.OnePointZero:
+            //    case EwsApiVersions.OnePointZeroHot:
+            //        this.UniqueKey = GetHeader_OnePointZero(message);
+            //        this.Method = GetMethod_OnePointZero(message);
+            //        break;
+            //    default:
+            //        this.UniqueKey = string.Empty;
+            //        this.Method = string.Empty;
+            //        break;
+            //}
+            
+            this.UniqueKey = GetHeader_OnePointZero(message);
+            this.Method = GetMethod_OnePointZero(message);
+
         }
 
         private static string GetHeader_OnePointZero(string message)

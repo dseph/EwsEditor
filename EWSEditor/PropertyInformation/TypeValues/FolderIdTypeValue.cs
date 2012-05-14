@@ -58,7 +58,7 @@ namespace EWSEditor.PropertyInformation.TypeValues
 
             if (singleLine)
             {
-                return text.Replace("\n", "");
+                return text.Replace("\n", ",");
             }
 
             return text;

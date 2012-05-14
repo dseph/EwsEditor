@@ -55,7 +55,7 @@ namespace EWSEditor.Forms
                 service.UseDefaultCredentials = this.chkDefaultWindowsCredentials.Checked;
                 if (!service.UseDefaultCredentials)
                 {
-                    service.Credentials = new WebCredentials(txtUser.Text.Trim(), txtPassword.Text.Trim(), txtDomain.Text.Trim());
+                    service.Credentials = new WebCredentials(txtUser.Text, txtPassword.Text, txtDomain.Text);
                 }
 
                 // Enable/Disable the SCP lookup against Active Directory

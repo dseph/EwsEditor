@@ -121,12 +121,24 @@ namespace EWSEditor.Forms
             this.mnuFolderNotifications.Text = "Pull Notifications Viewer... (This Folder)";
             this.mnuFolderNotifications.Click += new System.EventHandler(this.MnuNotifications_Click);
 
+            this.mnuFolderNotifications.Name = "mnuFolderStreamingNotifications";
+            this.mnuFolderNotifications.Size = new System.Drawing.Size(305, 22);
+            this.mnuFolderNotifications.Text = "Streaming Notifications Viewer... (This Folder)";
+            this.mnuFolderNotifications.Click += new System.EventHandler(this.MnuStreamingNotifications_Click);
+
             this.mnuFolderSynchronize.Name = "mnuFolderSynchronize";
             this.mnuFolderSynchronize.Size = new System.Drawing.Size(305, 22);
             this.mnuFolderSynchronize.Text = "Item Synchronization Viewer... (This Folder) ";
             this.mnuFolderSynchronize.Click += new System.EventHandler(this.MnuSyncState_Click);
 
             base.SetupForm();
+        }
+
+        private void MnuStreamingNotifications_Click(object sender, EventArgs e)
+        {
+            StreamingNotificationForm.Show(
+                string.Format(DisplayStrings.TITLE_NOTIFICATIONS_FOLDER, this.currentFolder.DisplayName),
+                this.currentFolder.Id);
         }
 
         protected override void LoadContents()

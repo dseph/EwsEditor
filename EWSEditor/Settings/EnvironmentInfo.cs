@@ -11,15 +11,16 @@ namespace EWSEditor.Settings
         OnePointZeroHot,
         OnePointOne,
         OnePointOneHot,
+        OnePointTwo,
         Unknown
     }
 
     internal class EnvironmentInfo
     {
-        internal const string BuiltForEwsManagedApiVersion = "14.02.0051.000";
+        internal const string BuiltForEwsManagedApiVersion = "14.03.0032.000";
         internal const string Framework35RegistryPath = @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5";
-        internal const string EwsManagedApiInstallPath = @"C:\Program Files\Microsoft\Exchange\Web Services\1.1\Microsoft.Exchange.WebServices.dll";
-        internal const string EwsManagedApiDownloadUrl = "http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=c3342fb3-fbcc-4127-becf-872c746840e1";
+        internal const string EwsManagedApiInstallPath = @"C:\Program Files\Microsoft\Exchange\Web Services\1.2\Microsoft.Exchange.WebServices.dll";
+        internal const string EwsManagedApiDownloadUrl = "http://www.microsoft.com/en-us/download/details.aspx?id=28952";
         internal const string EwsEditorProjectUrl = "http://ewseditor.codeplex.com";
         internal const string EwsEditorBlogPostsUrl = "http://blogs.msdn.com/mstehle/archive/tags/EWSEditor/default.aspx";
 
@@ -126,6 +127,11 @@ namespace EWSEditor.Settings
                     EnvironmentInfo.EwsApiFileVersion.FileMinorPart == 2)
                 {
                     return EwsApiVersions.OnePointOneHot;
+                }
+                else if (EnvironmentInfo.EwsApiFileVersion.FileMajorPart == 14 &&
+                    EnvironmentInfo.EwsApiFileVersion.FileMinorPart == 3)
+                {
+                    return EwsApiVersions.OnePointTwo;
                 }
 
                 return EwsApiVersions.Unknown;

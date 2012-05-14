@@ -11,41 +11,35 @@ namespace EWSEditor.Exchange
 {
     public class EwsProxyFactory
     {
-        public ExchangeVersion? RequestedExchangeVersion = null;
-        public bool? AllowAutodiscoverRedirect = null;
-        public bool? EnableScpLookup;
-        public NetworkCredential ServiceCredential = null;
-        public Microsoft.Exchange.WebServices.Data.EmailAddress ServiceEmailAddress = null;
-        public Uri EwsUrl;
-        public int? Timeout = null;
-        public bool? UseDefaultCredentials = null;
-        public ImpersonatedUserId UserToImpersonate = null;
+        public static ExchangeVersion? RequestedExchangeVersion = null;
+        public static bool? AllowAutodiscoverRedirect = null;
+        public static bool? EnableScpLookup;
+        public static NetworkCredential ServiceCredential = null;
+        public static Microsoft.Exchange.WebServices.Data.EmailAddress ServiceEmailAddress = null;
+        public static Uri EwsUrl;
+        public static int? Timeout = null;
+        public static bool? UseDefaultCredentials = null;
+        public static ImpersonatedUserId UserToImpersonate = null;
 
-        public EwsProxyFactory()
+        public static void DoAutodiscover()
         {
-
+            DoAutodiscover(ServiceEmailAddress);
         }
 
-        public void DoAutodiscover()
+        public static void DoAutodiscover(Microsoft.Exchange.WebServices.Data.EmailAddress emailAddress)
         {
-            DoAutodiscover(this.ServiceEmailAddress);
-        }
-
-        public void DoAutodiscover(Microsoft.Exchange.WebServices.Data.EmailAddress emailAddress)
-        {
-            ExchangeService service = this.CreateExchangeService();
+            ExchangeService service = CreateExchangeService();
             service.AutodiscoverUrl(emailAddress.Address, ValidationCallbackHelper.RedirectionUrlValidationCallback );
-
-            this.EwsUrl = service.Url;
+            EwsUrl = service.Url;
         }
 
-        public ExchangeService CreateExchangeService()
+        public static ExchangeService CreateExchangeService()
         {
             ExchangeService service = null;
 
-            if (this.RequestedExchangeVersion.HasValue)
+            if (RequestedExchangeVersion.HasValue)
             {
-                service = new ExchangeService(this.RequestedExchangeVersion.Value);
+                service = new ExchangeService(RequestedExchangeVersion.Value);
             }
             else
             {
@@ -57,40 +51,40 @@ namespace EWSEditor.Exchange
             service.TraceEnabled = true;
             service.TraceListener = new EWSEditor.Logging.EwsTraceListener();
 
-            if (this.EnableScpLookup.HasValue)
+            if (EnableScpLookup.HasValue)
             {
-                service.EnableScpLookup = this.EnableScpLookup.Value;
+                service.EnableScpLookup = EnableScpLookup.Value;
             }
 
-            if (this.ServiceCredential != null)
+            if (ServiceCredential != null)
             {
-                service.Credentials = this.ServiceCredential;
+                service.Credentials = ServiceCredential;
             }
 
-            if (this.EwsUrl != null)
+            if (EwsUrl != null)
             {
-                service.Url = this.EwsUrl;
+                service.Url = EwsUrl;
             }
 
-            if (this.Timeout.HasValue)
+            if (Timeout.HasValue)
             {
-                service.Timeout = this.Timeout.Value;
+                service.Timeout = Timeout.Value;
             }
 
-            if (this.UseDefaultCredentials.HasValue)
+            if (UseDefaultCredentials.HasValue)
             {
-                service.UseDefaultCredentials = this.UseDefaultCredentials.Value;
+                service.UseDefaultCredentials = UseDefaultCredentials.Value;
             }
 
-            if (this.UserToImpersonate != null)
+            if (UserToImpersonate != null)
             {
-                service.ImpersonatedUserId = this.UserToImpersonate;
+                service.ImpersonatedUserId = UserToImpersonate;
             }
 
             return service;
         }
 
-        public ExchangeServiceBinding CreateExchangeServiceBinding()
+        public static ExchangeServiceBinding CreateExchangeServiceBinding()
         {
             var binding = new ExchangeServiceBinding();
             binding.AllowAutoRedirect = false;
@@ -99,7 +93,7 @@ namespace EWSEditor.Exchange
 
             // Set the RequestServerVersionValue
             binding.RequestServerVersionValue = new EwsVsProxy.RequestServerVersion();
-            switch (this.RequestedExchangeVersion)
+            switch (RequestedExchangeVersion)
             {
                 case ExchangeVersion.Exchange2007_SP1:
                     binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2007_SP1;
@@ -111,37 +105,37 @@ namespace EWSEditor.Exchange
                     binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010_SP1;
                     break;
                 default:
-                    DebugLog.WriteVerbose("Requested ExchangeVersion was '" + this.RequestedExchangeVersion.Value.ToString() + "' which is not expected");
+                    DebugLog.WriteVerbose("Requested ExchangeVersion was '" + RequestedExchangeVersion.Value.ToString() + "' which is not expected");
                     throw new ApplicationException("Unexpected ExchangeVersion");
             }
 
-            if (this.EwsUrl != null)
+            if (EwsUrl != null)
             {
-                binding.Url = this.EwsUrl.AbsoluteUri;
+                binding.Url = EwsUrl.AbsoluteUri;
             }
 
-            if (this.ServiceCredential != null)
+            if (ServiceCredential != null)
             {
-                binding.Credentials = this.ServiceCredential;
+                binding.Credentials = ServiceCredential;
             }
 
-            if (this.UseDefaultCredentials.HasValue)
+            if (UseDefaultCredentials.HasValue)
             {
-                binding.UseDefaultCredentials = this.UseDefaultCredentials.Value;
+                binding.UseDefaultCredentials = UseDefaultCredentials.Value;
             }
 
-            if (this.Timeout.HasValue)
+            if (Timeout.HasValue)
             {
-                binding.Timeout = this.Timeout.Value;
+                binding.Timeout = Timeout.Value;
             }
 
             // Create the ExchangeImpersonationType if needed
-            if (this.UserToImpersonate != null)
+            if (UserToImpersonate != null)
             {
                 binding.ExchangeImpersonation = new ExchangeImpersonationType();
                 binding.ExchangeImpersonation.ConnectingSID = new ConnectingSIDType();
-                binding.ExchangeImpersonation.ConnectingSID.Item = this.UserToImpersonate.Id;
-                switch (this.UserToImpersonate.IdType)
+                binding.ExchangeImpersonation.ConnectingSID.Item = UserToImpersonate.Id;
+                switch (UserToImpersonate.IdType)
                 {
                     case ConnectingIdType.PrincipalName:
                         binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.PrincipalName;
@@ -158,9 +152,9 @@ namespace EWSEditor.Exchange
             return binding;
         }
 
-        public static EwsProxyFactory InitializeWithDefaults()
+        public static void InitializeWithDefaults()
         {
-            return InitializeWithDefaults(null, null, null);
+            InitializeWithDefaults(null, null, null);
         }
 
         /// <summary>
@@ -174,12 +168,10 @@ namespace EWSEditor.Exchange
         /// <param name="autodiscoverAddress">Email address to use for Autodiscover.
         /// Passing NULL or an empty string results in a ActiveDirectory querying.</param>
         /// <returns>A new instance of an ExchangeService</returns>
-        private static EwsProxyFactory InitializeWithDefaults(ExchangeVersion? version, Uri ewsUrl, string autodiscoverAddress)
+        private static void InitializeWithDefaults(ExchangeVersion? version, Uri ewsUrl, string autodiscoverAddress)
         {
-            EwsProxyFactory factory = new EwsProxyFactory();
-
-            factory.RequestedExchangeVersion = version;
-            factory.UseDefaultCredentials = true;
+            RequestedExchangeVersion = version;
+            UseDefaultCredentials = true;
 
             // If the EWS URL is not specified, use Autodiscover to find it
             if (ewsUrl == null)
@@ -192,25 +184,24 @@ namespace EWSEditor.Exchange
                         System.Security.Principal.WindowsIdentity.GetCurrent().Name);
                 }
 
-                factory.DoAutodiscover(autodiscoverAddress);
+                DoAutodiscover(autodiscoverAddress);
             }
             else
             {
-                factory.EwsUrl = ewsUrl;
+                EwsUrl = ewsUrl;
             }
 
             try
             {
-                factory.CreateExchangeService().TestExchangeService();
+                CreateExchangeService().TestExchangeService();
             }
             catch (ServiceVersionException ex)
             {
                 DebugLog.WriteVerbose("Initial requested version of Exchange2010 didn't work, trying Exchange 2007_SP1", ex);
                 // Pass the autodiscover email address and URL if we've already looked those up
-                factory = InitializeWithDefaults(ExchangeVersion.Exchange2007_SP1, factory.EwsUrl, autodiscoverAddress);
+                InitializeWithDefaults(ExchangeVersion.Exchange2007_SP1, EwsUrl, autodiscoverAddress);
             }
 
-            return factory;
         }
     }
 }

@@ -45,7 +45,7 @@ namespace EWSEditor.Forms
         {
             if (txtUserName.Text.Length > 0 &&
                 txtPassword.Text.Length > 0 &&
-                txtDomain.Text.Length > 0)
+                (txtDomain.Text.Length > 0 || txtUserName.Text.Contains("@")))
             {
                 this.DialogResult = DialogResult.OK;
             }
