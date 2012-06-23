@@ -261,5 +261,17 @@ namespace EWSEditor.Forms
         }
 
         #endregion
+
+        private void ContentsGrid_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
+        {
+            if (e.Column.ValueType == typeof(DateTime))
+            {
+                DateTime date1 = Convert.ToDateTime(e.CellValue1);
+                DateTime date2 = Convert.ToDateTime(e.CellValue2);
+
+                e.SortResult = System.DateTime.Compare(date1, date2);
+                e.Handled = true;
+            }
+        }
     }
 }

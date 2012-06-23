@@ -79,6 +79,7 @@
             this.ContentsGrid.TabIndex = 1;
             this.ContentsGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ContentsGrid_CellMouseClick);
             this.ContentsGrid.SelectionChanged += new System.EventHandler(this.ContentsGrid_SelectionChanged);
+            this.ContentsGrid.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.ContentsGrid_SortCompare);
             // 
             // TestColumn
             // 
@@ -102,7 +103,6 @@
             this.Controls.Add(this.splitter);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BaseContentForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.BaseContentForm_Load);
             this.Controls.SetChildIndex(this.splitter, 0);
             this.splitter.Panel1.ResumeLayout(false);
