@@ -37,13 +37,13 @@ namespace EWSEditor.PropertyInformation.TypeValues
             if (attendee == null) { return string.Empty; }
 
             StringBuilder value = new StringBuilder();
-            value.AppendLine(string.Format(System.Globalization.CultureInfo.CurrentCulture, "Address: {0}", attendee.Address));
-            value.AppendLine(string.Format(System.Globalization.CultureInfo.CurrentCulture, "Id: {0}", ItemIdTypeValue.GetValue(attendee.Id, singleLine)));
-            value.AppendLine(string.Format(System.Globalization.CultureInfo.CurrentCulture, "LastResponseTiem: {0}", attendee.LastResponseTime.ToString()));
-            value.AppendLine(string.Format(System.Globalization.CultureInfo.CurrentCulture, "MailboxType: {0}", attendee.MailboxType.ToString()));
-            value.AppendLine(string.Format(System.Globalization.CultureInfo.CurrentCulture, "Name: {0}", attendee.Name));
-            value.AppendLine(string.Format(System.Globalization.CultureInfo.CurrentCulture, "ResponseType: {0}", attendee.ResponseType));
-            value.AppendLine(string.Format(System.Globalization.CultureInfo.CurrentCulture, "RoutingType: {0}", attendee.RoutingType));
+            value.AppendLine("Address: " + attendee.Address);
+            value.AppendLine("Id: " + ItemIdTypeValue.GetValue(attendee.Id, singleLine));
+            value.AppendLine("LastResponseTime: " + attendee.LastResponseTime.ToString());
+            value.AppendLine("MailboxType: " + attendee.MailboxType.ToString());
+            value.AppendLine("Name: {0}" + attendee.Name);
+            value.AppendLine("ResponseType: " + attendee.ResponseType);
+            value.AppendLine("RoutingType: {0}" + attendee.RoutingType);
 
             if (singleLine)
             {
