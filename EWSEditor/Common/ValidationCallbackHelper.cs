@@ -14,48 +14,6 @@ namespace EWSEditor.Common
                  System.Security.Cryptography.X509Certificates.X509Chain chain,
                  System.Net.Security.SslPolicyErrors sslPolicyErrors)
         {
-            StringBuilder builder = new StringBuilder();
-            builder.AppendLine("SslPolicyErrors: " + sslPolicyErrors.ToString());
-            builder.AppendLine("-----------------------------------------------");
-            builder.AppendLine("X509Certificate");
-            builder.AppendLine("-----------------------------------------------");
-            builder.AppendLine(certificate.ToString(true));
-            builder.AppendLine();
-
-            builder.AppendLine("-----------------------------------------------");
-            builder.AppendLine("X509Chain");
-            builder.AppendLine("ChainContext: " + chain.ChainContext.ToString());
-            //builder.AppendLine("ChainPolicy: " + chain.ChainPolicy.);
-            builder.AppendLine("ChainStatus: ");
-            foreach (X509ChainStatus status in chain.ChainStatus)
-            {
-                builder.AppendLine("\tChainStatus.Status:" + System.Enum.GetName(typeof(X509ChainStatus), status.Status));
-                builder.AppendLine("\tChainStatus.StatusInformation:" + status.StatusInformation);
-            }
-            builder.AppendLine("-----------------------------------------------");
-
-            foreach (X509ChainElement element in chain.ChainElements)
-            {
-                builder.AppendLine("-----------------------------------------------");
-                builder.AppendLine("X509ChainElement");
-                builder.AppendLine("ChainElementStatus:");
-                foreach (X509ChainStatus status in element.ChainElementStatus)
-                {
-                    builder.AppendLine("\tChainElementStatus.Status:" + System.Enum.GetName(typeof(X509ChainStatus), status.Status));
-                    builder.AppendLine("\tChainElementStatus.StatusInformation:" + status.StatusInformation);
-                }
-                builder.AppendLine("Information:" + element.Information);
-                builder.AppendLine("-----------------------------------------------");
-                builder.AppendLine(element.Certificate.ToString(true));
-                builder.AppendLine();
-            }
-
-            // Only write detailed certificate information if requested
-            if (GlobalSettings.EnableSslDetailLogging)
-            {
-                DebugLog.WriteInfo(builder.ToString());
-            }
-
             // If we're overriding validation then always return true
             if (GlobalSettings.OverrideCertValidation)
             {
@@ -71,7 +29,55 @@ namespace EWSEditor.Common
                 return false;
             }
 
+            // Only write detailed certificate information if requested
+            if (GlobalSettings.EnableSslDetailLogging)
+            {
+                DumpCertificationDetail(certificate, chain);
+            }
+
             return true;
+        }
+
+        public static void DumpCertificationDetail(
+            System.Security.Cryptography.X509Certificates.X509Certificate certificate, 
+            System.Security.Cryptography.X509Certificates.X509Chain chain)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.AppendLine("-----------------------------------------------");
+            builder.AppendLine("X509Certificate");
+            builder.AppendLine("-----------------------------------------------");
+            builder.AppendLine(certificate.ToString(true));
+            builder.AppendLine();
+
+            builder.AppendLine("-----------------------------------------------");
+            builder.AppendLine("X509Chain");
+            builder.AppendLine("ChainContext: " + chain.ChainContext.ToString());
+            //builder.AppendLine("ChainPolicy: " + chain.ChainPolicy.);
+            builder.AppendLine("ChainStatus: ");
+            foreach (X509ChainStatus status in chain.ChainStatus)
+            {
+                builder.AppendLine("\tChainStatus.Status:" + status.Status.ToString());
+                builder.AppendLine("\tChainStatus.StatusInformation:" + status.StatusInformation);
+            }
+            builder.AppendLine("-----------------------------------------------");
+
+            foreach (X509ChainElement element in chain.ChainElements)
+            {
+                builder.AppendLine("-----------------------------------------------");
+                builder.AppendLine("X509ChainElement");
+                builder.AppendLine("ChainElementStatus:");
+                foreach (X509ChainStatus status in element.ChainElementStatus)
+                {
+                    builder.AppendLine("\tChainElementStatus.Status:" + status.Status.ToString());
+                    builder.AppendLine("\tChainElementStatus.StatusInformation:" + status.StatusInformation);
+                }
+                builder.AppendLine("Information:" + element.Information);
+                builder.AppendLine("-----------------------------------------------");
+                builder.AppendLine(element.Certificate.ToString(true));
+                builder.AppendLine();
+            }
+
+            DebugLog.WriteInfo(builder.ToString());
         }
 
         public static bool RedirectionUrlValidationCallback(string redirectionUrl)
