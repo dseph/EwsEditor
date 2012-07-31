@@ -54,8 +54,8 @@
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lstUsers = new System.Windows.Forms.ListView();
-            this.colName = new System.Windows.Forms.ColumnHeader();
-            this.colPermLevel = new System.Windows.Forms.ColumnHeader();
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colPermLevel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpPermissions.SuspendLayout();
             this.grpOther.SuspendLayout();
             this.grpDelete.SuspendLayout();
@@ -288,13 +288,13 @@
             this.rdoReadNone.UseVisualStyleBackColor = true;
             this.rdoReadNone.CheckedChanged += new System.EventHandler(this.FolderPermissionChanged);
             // 
-            // PermissionLevelComboBox
+            // TempPermissionLevelCombo
             // 
             this.TempPermissionLevelCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempPermissionLevelCombo.FormattingEnabled = true;
-            this.TempPermissionLevelCombo.Location = new System.Drawing.Point(101, 20);
-            this.TempPermissionLevelCombo.Name = "cboPermissionLevel";
-            this.TempPermissionLevelCombo.Size = new System.Drawing.Size(214, 21);
+            this.TempPermissionLevelCombo.Location = new System.Drawing.Point(109, 20);
+            this.TempPermissionLevelCombo.Name = "TempPermissionLevelCombo";
+            this.TempPermissionLevelCombo.Size = new System.Drawing.Size(206, 21);
             this.TempPermissionLevelCombo.TabIndex = 1;
             this.TempPermissionLevelCombo.SelectedIndexChanged += new System.EventHandler(this.cboPermissionLevel_SelectedIndexChanged);
             // 
@@ -302,7 +302,7 @@
             // 
             this.lblLevel.Location = new System.Drawing.Point(7, 20);
             this.lblLevel.Name = "lblLevel";
-            this.lblLevel.Size = new System.Drawing.Size(100, 23);
+            this.lblLevel.Size = new System.Drawing.Size(96, 23);
             this.lblLevel.TabIndex = 0;
             this.lblLevel.Text = "Permission Level:";
             this.lblLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

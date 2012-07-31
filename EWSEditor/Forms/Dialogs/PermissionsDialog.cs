@@ -288,7 +288,7 @@
                 FolderPermission selectedPermission = lstUsers.SelectedItems[0].Tag as FolderPermission;
 
                 lstUsers.SelectedItems[0].SubItems[1].Text = selectedPermission.PermissionLevel.ToString();
-                TempPermissionLevelCombo.SelectedItem = selectedPermission.PermissionLevel;
+                this.permissionLevelCombo.SelectedItem = selectedPermission.PermissionLevel;
 
                 if (!LastPermLevel.HasValue)
                 {
@@ -386,7 +386,7 @@
         private void EnableFormEvents()
         {
             this.lstUsers.SelectedIndexChanged += lstUsers_SelectedIndexChanged;
-            this.TempPermissionLevelCombo.SelectedIndexChanged += cboPermissionLevel_SelectedIndexChanged;
+            this.permissionLevelCombo.SelectedIndexChanged += cboPermissionLevel_SelectedIndexChanged;
 
             this.chkContact.CheckedChanged += FolderPermissionChanged;
             this.chkCreateItems.CheckedChanged += FolderPermissionChanged;
@@ -411,7 +411,7 @@
         private void DisableFormEvents()
         {
             this.lstUsers.SelectedIndexChanged -= lstUsers_SelectedIndexChanged;
-            this.TempPermissionLevelCombo.SelectedIndexChanged -= cboPermissionLevel_SelectedIndexChanged;
+            this.permissionLevelCombo.SelectedIndexChanged -= cboPermissionLevel_SelectedIndexChanged;
 
             this.chkContact.CheckedChanged -= FolderPermissionChanged;
             this.chkCreateItems.CheckedChanged -= FolderPermissionChanged;
