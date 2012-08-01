@@ -17,7 +17,7 @@ namespace EWSEditor.Settings
 
     internal class EnvironmentInfo
     {
-        internal const string BuiltForEwsManagedApiVersion = "14.03.0032.000";
+        internal const string BuiltForEwsManagedApiVersion = "14.03.0067.001";
         internal const string Framework35RegistryPath = @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5";
         internal const string EwsManagedApiInstallPath = @"C:\Program Files\Microsoft\Exchange\Web Services\1.2\Microsoft.Exchange.WebServices.dll";
         internal const string EwsManagedApiDownloadUrl = "http://www.microsoft.com/en-us/download/details.aspx?id=28952";
