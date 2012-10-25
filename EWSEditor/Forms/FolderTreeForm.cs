@@ -696,7 +696,7 @@ namespace EWSEditor.Forms
         #region Right Click Context Menu
 
 
-        private void AddExtenedPropertyToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddExtendedPropertyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Folder folder = GetFolderFromNode(FolderTreeView.SelectedNode);
 

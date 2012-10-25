@@ -55,7 +55,7 @@ namespace EWSEditor.Forms
             this.mnuDumpMIMEContents = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDumpXMLContents = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.addExtenedPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addExtendedPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertyListItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -155,7 +155,7 @@ namespace EWSEditor.Forms
             this.mnuDumpMIMEContents,
             this.mnuDumpXMLContents,
             this.toolStripMenuItem1,
-            this.addExtenedPropertyToolStripMenuItem});
+            this.addExtendedPropertyToolStripMenuItem});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
             this.cmsFolderMenu.Size = new System.Drawing.Size(270, 326);
             // 
@@ -292,12 +292,12 @@ namespace EWSEditor.Forms
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(266, 6);
             // 
-            // addExtenedPropertyToolStripMenuItem
+            // addExtendedPropertyToolStripMenuItem
             // 
-            this.addExtenedPropertyToolStripMenuItem.Name = "addExtenedPropertyToolStripMenuItem";
-            this.addExtenedPropertyToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
-            this.addExtenedPropertyToolStripMenuItem.Text = "Add Extened Property...";
-            this.addExtenedPropertyToolStripMenuItem.Click += new System.EventHandler(this.AddExtenedPropertyToolStripMenuItem_Click);
+            this.addExtendedPropertyToolStripMenuItem.Name = "addExtendedPropertyToolStripMenuItem";
+            this.addExtendedPropertyToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.addExtendedPropertyToolStripMenuItem.Text = "Add Extended Property...";
+            this.addExtendedPropertyToolStripMenuItem.Click += new System.EventHandler(this.AddExtendedPropertyToolStripMenuItem_Click);
             // 
             // saveFileDialog
             // 
@@ -405,7 +405,7 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
         private System.Windows.Forms.ToolStripMenuItem mnuDumpXMLContents;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem addExtenedPropertyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addExtendedPropertyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuOpenStreamingNotifications;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
