@@ -929,9 +929,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="deps\Microsoft.Exchange.WebServices.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="deps\Microsoft.Exchange.WebServices.dll" />
     <Content Include="Resources\EWSEditor2.ico" />
     <Content Include="Resources\EWSEditor2.png" />
   </ItemGroup>
