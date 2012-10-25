@@ -30,6 +30,7 @@ namespace EWSEditor.Forms
 
             // Log a bunch of information about the current environment
             DebugLog.WriteInfo(
+                "Environment information",
                 "EWSEditorVersion: " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(),
                 "EWSEditorPath: " + Application.ExecutablePath,
                 "OSVersion: " + Environment.OSVersion,

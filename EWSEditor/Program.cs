@@ -61,7 +61,7 @@ namespace EWSEditor
                 if (!EnvironmentInfo.IsDotNetFramework35SP1)
                 {
                     ErrorDialog.ShowError("EWSEditor and the Exchange Web Services Managed API require at least the .NET Framework 3.5 SP1.");
-                    DebugLog.WriteInfo(String.Format("Framework version {0}, is not .NET Framework 3.5 SP1", EnvironmentInfo.DotNetFrameworkVersion));
+                    DebugLog.WriteInfo("Wrong .NET Framework version", String.Format("Framework version {0}, is not .NET Framework 3.5 SP1", EnvironmentInfo.DotNetFrameworkVersion));
                     return;
                 }
 

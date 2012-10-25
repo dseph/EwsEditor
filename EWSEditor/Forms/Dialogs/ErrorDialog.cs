@@ -32,7 +32,7 @@ namespace EWSEditor.Forms
                 MessageBoxIcon.Error,
                 MessageBoxDefaultButton.Button1);
 
-            DebugLog.WriteInfo(text);
+            DebugLog.WriteInfo("Showed error dialog", text);
         }
 
         public static void ShowWarning(string text)
@@ -44,7 +44,7 @@ namespace EWSEditor.Forms
                 MessageBoxIcon.Warning,
                 MessageBoxDefaultButton.Button1);
 
-            DebugLog.WriteInfo(text);
+            DebugLog.WriteInfo("Showed warning dialog", text);
         }
 
         public static void ShowInfo(string text)

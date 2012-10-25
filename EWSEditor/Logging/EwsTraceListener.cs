@@ -17,14 +17,14 @@ namespace EWSEditor.Logging
                 string diagInfo = null;
                 if (TryGetResponseHeader(traceMessage, XDiagInfoHeaderName, out diagInfo))
                 {
-                    DebugLog.WriteInfo("X-DiagInfo = " + diagInfo);
+                    DebugLog.WriteInfo("X-DiagInfo", diagInfo);
                     this.LastDiagInfoHeader = diagInfo;
                 }
 
                 string requestId = null;
                 if (TryGetResponseHeader(traceMessage, RequestIdHeaderName, out requestId))
                 {
-                    DebugLog.WriteInfo("RequestId = " + requestId);
+                    DebugLog.WriteInfo("RequestId", requestId);
                     this.LastRequestIdHeader = requestId;
                 }
             }

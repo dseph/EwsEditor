@@ -104,25 +104,18 @@ namespace EWSEditor.Logging
             WriteLogItem(DateTime.Now, frame.GetMethod().Name, DebugLogType.Error, title, ExceptionToString(ex));
         }
 
-        internal static void WriteInfo(params string[] lines)
+        internal static void WriteInfo(string title, params string[] lines)
         {
             StackTrace stack = new StackTrace();
             StackFrame frame = stack.GetFrame(1);
 
-            StringBuilder builder = new StringBuilder();
+            StringBuilder combinedLines = new StringBuilder();
             foreach (string line in lines)
             {
-                builder.AppendLine(line);
+                combinedLines.AppendLine(line);
             }
 
-            WriteLogItem(DateTime.Now, frame.GetMethod().Name, DebugLogType.Information, "", builder.ToString());
-        }
-
-        internal static void WriteInfo(string message)
-        {
-            StackTrace stack = new StackTrace();
-            StackFrame frame = stack.GetFrame(1);
-            WriteLogItem(DateTime.Now, frame.GetMethod().Name, DebugLogType.Information, "", message);
+            WriteLogItem(DateTime.Now, frame.GetMethod().Name, DebugLogType.Information, title, combinedLines.ToString());
         }
 
         internal static void WriteVerbose(params string[] lines)
@@ -137,13 +130,6 @@ namespace EWSEditor.Logging
             }
 
             WriteLogItem(DateTime.Now, frame.GetMethod().Name, DebugLogType.Verbose, "", builder.ToString());
-        }
-
-        internal static void WriteVerbose(string message)
-        {
-            StackTrace stack = new StackTrace();
-            StackFrame frame = stack.GetFrame(1);
-            WriteLogItem(DateTime.Now, frame.GetMethod().Name, DebugLogType.Verbose, "", message);
         }
 
         internal static void WriteVerbose(string title, Exception ex)

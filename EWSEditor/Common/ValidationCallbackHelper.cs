@@ -23,7 +23,7 @@ namespace EWSEditor.Common
             // If there were errors output error code and return false
             if (sslPolicyErrors != System.Net.Security.SslPolicyErrors.None)
             {
-                DebugLog.WriteInfo("SSL certificate validation failed because System.Net.Security.SslPolicyErrors = '{0}'",
+                DebugLog.WriteInfo("SSL certificate validation failed", "System.Net.Security.SslPolicyErrors = '{0}'",
                     System.Enum.GetName(typeof(System.Net.Security.SslPolicyErrors), sslPolicyErrors));
 
                 return false;
@@ -42,42 +42,42 @@ namespace EWSEditor.Common
             System.Security.Cryptography.X509Certificates.X509Certificate certificate, 
             System.Security.Cryptography.X509Certificates.X509Chain chain)
         {
-            StringBuilder builder = new StringBuilder();
-            builder.AppendLine("-----------------------------------------------");
-            builder.AppendLine("X509Certificate");
-            builder.AppendLine("-----------------------------------------------");
-            builder.AppendLine(certificate.ToString(true));
-            builder.AppendLine();
+            StringBuilder certificateDetail = new StringBuilder();
+            certificateDetail.AppendLine("-----------------------------------------------");
+            certificateDetail.AppendLine("X509Certificate");
+            certificateDetail.AppendLine("-----------------------------------------------");
+            certificateDetail.AppendLine(certificate.ToString(true));
+            certificateDetail.AppendLine();
 
-            builder.AppendLine("-----------------------------------------------");
-            builder.AppendLine("X509Chain");
-            builder.AppendLine("ChainContext: " + chain.ChainContext.ToString());
+            certificateDetail.AppendLine("-----------------------------------------------");
+            certificateDetail.AppendLine("X509Chain");
+            certificateDetail.AppendLine("ChainContext: " + chain.ChainContext.ToString());
             //builder.AppendLine("ChainPolicy: " + chain.ChainPolicy.);
-            builder.AppendLine("ChainStatus: ");
+            certificateDetail.AppendLine("ChainStatus: ");
             foreach (X509ChainStatus status in chain.ChainStatus)
             {
-                builder.AppendLine("\tChainStatus.Status:" + status.Status.ToString());
-                builder.AppendLine("\tChainStatus.StatusInformation:" + status.StatusInformation);
+                certificateDetail.AppendLine("\tChainStatus.Status:" + status.Status.ToString());
+                certificateDetail.AppendLine("\tChainStatus.StatusInformation:" + status.StatusInformation);
             }
-            builder.AppendLine("-----------------------------------------------");
+            certificateDetail.AppendLine("-----------------------------------------------");
 
             foreach (X509ChainElement element in chain.ChainElements)
             {
-                builder.AppendLine("-----------------------------------------------");
-                builder.AppendLine("X509ChainElement");
-                builder.AppendLine("ChainElementStatus:");
+                certificateDetail.AppendLine("-----------------------------------------------");
+                certificateDetail.AppendLine("X509ChainElement");
+                certificateDetail.AppendLine("ChainElementStatus:");
                 foreach (X509ChainStatus status in element.ChainElementStatus)
                 {
-                    builder.AppendLine("\tChainElementStatus.Status:" + status.Status.ToString());
-                    builder.AppendLine("\tChainElementStatus.StatusInformation:" + status.StatusInformation);
+                    certificateDetail.AppendLine("\tChainElementStatus.Status:" + status.Status.ToString());
+                    certificateDetail.AppendLine("\tChainElementStatus.StatusInformation:" + status.StatusInformation);
                 }
-                builder.AppendLine("Information:" + element.Information);
-                builder.AppendLine("-----------------------------------------------");
-                builder.AppendLine(element.Certificate.ToString(true));
-                builder.AppendLine();
+                certificateDetail.AppendLine("Information:" + element.Information);
+                certificateDetail.AppendLine("-----------------------------------------------");
+                certificateDetail.AppendLine(element.Certificate.ToString(true));
+                certificateDetail.AppendLine();
             }
 
-            DebugLog.WriteInfo(builder.ToString());
+            DebugLog.WriteInfo("SSL Certificate detail", certificateDetail.ToString());
         }
 
         public static bool RedirectionUrlValidationCallback(string redirectionUrl)
@@ -86,14 +86,14 @@ namespace EWSEditor.Common
             // callback, the redirection URL is considered valid if it is using HTTPS
             // to encrypt the authentication credentials. 
             Uri redirectionUri = new Uri(redirectionUrl);
+
             if (redirectionUri.Scheme != "https")
             {
-                DebugLog.WriteInfo("Cannot allow potentially unsafe redirection to non-SSL URL: " + redirectionUrl);
+                DebugLog.WriteInfo("Unsafe URL redirection blocked", "Cannot allow potentially unsafe redirection to non-SSL URL: " + redirectionUrl);
                 return false;
             }
 
-            DebugLog.WriteInfo((GlobalSettings.AllowAutodiscoverRedirect ? "Allow redirection to: " : "Blocked redirection to: ") + redirectionUrl);
-
+            DebugLog.WriteInfo((GlobalSettings.AllowAutodiscoverRedirect ? "Allow URL redirection" : "Blocked URL redirection to"), "URL: " + redirectionUrl);
             return GlobalSettings.AllowAutodiscoverRedirect;
         }
     }
