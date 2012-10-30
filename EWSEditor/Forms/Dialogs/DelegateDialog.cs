@@ -353,6 +353,11 @@ namespace EWSEditor.Forms
                     rdoDelegateAndMe.Checked = true;
                     rdoDelegateAndCopy.Checked = false;
                     break;
+                case MeetingRequestsDeliveryScope.NoForward:
+                    rdoDelegateOnly.Checked = false;
+                    rdoDelegateAndMe.Checked = false;
+                    rdoDelegateAndCopy.Checked = false;
+                    break;
                 default:
                     // If we got here then something went really wrong
                     throw new ApplicationException(
@@ -371,9 +376,13 @@ namespace EWSEditor.Forms
             {
                 return MeetingRequestsDeliveryScope.DelegatesAndSendInformationToMe;
             }
-            else
+            else if (rdoDelegateOnly.Checked)
             {
                 return MeetingRequestsDeliveryScope.DelegatesAndMe;
+            }
+            else
+            {
+                return MeetingRequestsDeliveryScope.NoForward;
             }
         }
 

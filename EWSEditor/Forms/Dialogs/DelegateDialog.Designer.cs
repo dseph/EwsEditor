@@ -52,7 +52,7 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(222, 436);
+            this.btnOK.Location = new System.Drawing.Point(222, 432);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 13;
@@ -64,7 +64,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(303, 436);
+            this.btnCancel.Location = new System.Drawing.Point(303, 432);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 12;
@@ -80,9 +80,9 @@
             this.grpDelInfo.Controls.Add(this.lstDelegates);
             this.grpDelInfo.Controls.Add(this.panel1);
             this.grpDelInfo.Controls.Add(this.lblDescription);
-            this.grpDelInfo.Location = new System.Drawing.Point(12, 95);
+            this.grpDelInfo.Location = new System.Drawing.Point(12, 91);
             this.grpDelInfo.Name = "grpDelInfo";
-            this.grpDelInfo.Size = new System.Drawing.Size(367, 316);
+            this.grpDelInfo.Size = new System.Drawing.Size(367, 314);
             this.grpDelInfo.TabIndex = 14;
             this.grpDelInfo.TabStop = false;
             this.grpDelInfo.Text = "Delegate Information for {0}";
@@ -132,13 +132,13 @@
             this.panel1.Controls.Add(this.rdoDelegateAndCopy);
             this.panel1.Location = new System.Drawing.Point(30, 199);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(307, 87);
+            this.panel1.Size = new System.Drawing.Size(307, 90);
             this.panel1.TabIndex = 13;
             // 
             // rdoDelegateAndMe
             // 
             this.rdoDelegateAndMe.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.rdoDelegateAndMe.Location = new System.Drawing.Point(3, 56);
+            this.rdoDelegateAndMe.Location = new System.Drawing.Point(3, 62);
             this.rdoDelegateAndMe.Name = "rdoDelegateAndMe";
             this.rdoDelegateAndMe.Size = new System.Drawing.Size(300, 24);
             this.rdoDelegateAndMe.TabIndex = 2;
@@ -150,7 +150,7 @@
             // rdoDelegateOnly
             // 
             this.rdoDelegateOnly.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.rdoDelegateOnly.Location = new System.Drawing.Point(4, 35);
+            this.rdoDelegateOnly.Location = new System.Drawing.Point(4, 38);
             this.rdoDelegateOnly.Name = "rdoDelegateOnly";
             this.rdoDelegateOnly.Size = new System.Drawing.Size(300, 24);
             this.rdoDelegateOnly.TabIndex = 1;
@@ -168,7 +168,7 @@
             this.rdoDelegateAndCopy.TabIndex = 0;
             this.rdoDelegateAndCopy.TabStop = true;
             this.rdoDelegateAndCopy.Text = "My delegates only, but send a copy of meeting requests and responses to me (recom" +
-                "mended)";
+    "mended)";
             this.rdoDelegateAndCopy.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.rdoDelegateAndCopy.UseVisualStyleBackColor = true;
             // 
@@ -179,7 +179,7 @@
             this.lblDescription.Size = new System.Drawing.Size(321, 33);
             this.lblDescription.TabIndex = 12;
             this.lblDescription.Text = "Deliver meeting requests addresed to me and responses to meeting requests where I" +
-                " am the organizer to:";
+    " am the organizer to:";
             // 
             // txtPrincipal
             // 
@@ -223,7 +223,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(391, 471);
+            this.ClientSize = new System.Drawing.Size(391, 467);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
