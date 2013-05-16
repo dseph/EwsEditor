@@ -131,8 +131,41 @@ namespace EWSEditor.Forms
 
         }
 
+        //DJB
+        private void GetGroupingInfo(ExchangeService oExchangeService, string DiscoverMailbox)
+        {
+            //oExchangeService.get
+            string UseVersion = oExchangeService.RequestedServerVersion.ToString();
+            string UseUrl = oExchangeService.Url.ToString();  // djb - need to fix it to the autodiscover url.
+ 
+            string EwsRequest = EwsRequests.GroupingInformationTemplateRequest;
+            EwsRequest =  EwsRequest.Replace("XXXExchangeVersionXXX",  UseVersion);
+            EwsRequest =  EwsRequest.Replace("XXXAutoDiscoverServiceServerXXX", UseUrl);
+            EwsRequest =  EwsRequest.Replace("XXXMailboxSmtpXXX", DiscoverMailbox);
+
+            // DO raw post 
+            // string sResponse
+            // if (DoRawPost(UseUrl, oExchangeService.ServerCredentials, EwsRequest, ref sResponse));
+            // {
+            //    Extract GroupingInformation and external url from sResponse);
+            // }
+            // else
+            // {
+            //    return error;
+            // }
+
+ 
+        }
+ 
         private void StreamingSubscribeWork()
         {
+
+            // djb
+            // get a list of maiboxes, thier external ews urls and grouping info
+            // list of items = GetGroupingInfo(ExchangeService oExchangeService, string DiscoverMailbox);
+            // Sort list of items by url + GroupingInformaiton
+            // 
+
             try
             {
                 lock (WorkThreads)
@@ -520,6 +553,16 @@ namespace EWSEditor.Forms
             {
                 t.Abort();
             }
+        }
+
+        private void grpSynchronize_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StreamingNotificationForm_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

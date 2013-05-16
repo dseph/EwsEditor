@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://mail.microsoft.com/ews/messages.xsd" filename="messages.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://mail.microsoft.com/ews/types.xsd" filename="types.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://mail.microsoft.com/ews/Services.wsdl" filename="Services.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="https://65.53.1.36/ews/Services.wsdl" filename="Services.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://65.53.1.36/ews/messages.xsd" filename="messages.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="https://65.53.1.36/ews/types.xsd" filename="types.xsd" />
   </Results>
 </DiscoveryClientResultsFile>

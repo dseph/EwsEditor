@@ -93,6 +93,10 @@ namespace EWSEditor.Common
                 return false;
             }
 
+ 
+            // online should go here:  "https://autodiscover-s.outlook.com/autodiscover/autodiscover.xml");
+   
+
             DebugLog.WriteInfo((GlobalSettings.AllowAutodiscoverRedirect ? "Allow URL redirection" : "Blocked URL redirection to"), "URL: " + redirectionUrl);
             return GlobalSettings.AllowAutodiscoverRedirect;
         }

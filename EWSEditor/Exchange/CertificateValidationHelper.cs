@@ -15,31 +15,33 @@ namespace EWSEditor.Exchange
         private static object uaLock = new object();
         private static object urlLock = new object();
 
-        public static void AddAllowedUserAgent(string userAgent)
-        {
-            lock (CertificateValidationHelper.uaLock)
-            {
-                if (ServicePointManager.ServerCertificateValidationCallback == null)
-                {
-                    ServicePointManager.ServerCertificateValidationCallback = CertificateValidationHelper.ServerCertificateValidationCallback;
-                }
+        // Code below not in use
+        //public static void AddAllowedUserAgent(string userAgent)
+        //{
+        //    lock (CertificateValidationHelper.uaLock)
+        //    {
+        //        if (ServicePointManager.ServerCertificateValidationCallback == null)
+        //        {
+        //            ServicePointManager.ServerCertificateValidationCallback = CertificateValidationHelper.ServerCertificateValidationCallback;
+        //        }
 
-                CertificateValidationHelper.allowedUserAgents.Add(userAgent);
-            }
-        }
+        //        CertificateValidationHelper.allowedUserAgents.Add(userAgent);
+        //    }
+        //}
 
-        public static void AddAllowedUrl(Uri url)
-        {
-            lock (CertificateValidationHelper.urlLock)
-            {
-                if (ServicePointManager.ServerCertificateValidationCallback == null)
-                {
-                    ServicePointManager.ServerCertificateValidationCallback = CertificateValidationHelper.ServerCertificateValidationCallback;
-                }
+        // Code below not in use
+        //public static void AddAllowedUrl(Uri url)
+        //{
+        //    lock (CertificateValidationHelper.urlLock)
+        //    {
+        //        if (ServicePointManager.ServerCertificateValidationCallback == null)
+        //        {
+        //            ServicePointManager.ServerCertificateValidationCallback = CertificateValidationHelper.ServerCertificateValidationCallback;
+        //        }
 
-                CertificateValidationHelper.allowedUrls.Add(url);
-            }
-        }
+        //        CertificateValidationHelper.allowedUrls.Add(url);
+        //    }
+        //}
 
         public static bool ServerCertificateValidationCallback(
                     Object obj,
@@ -74,16 +76,17 @@ namespace EWSEditor.Exchange
             return result;
         }
 
-        /// <summary>
-        /// Simply return the configuration setting to allow validation to pass or not
-        /// </summary>
-        public static void SimpleCertValidationOverride()
-        {
-            ServicePointManager.ServerCertificateValidationCallback =
-                delegate
-                {
-                    return GlobalSettings.OverrideCertValidation;
-                };
-        }
+        // Code below not used
+        ///// <summary>
+        ///// Simply return the configuration setting to allow validation to pass or not
+        ///// </summary>
+        //public static void SimpleCertValidationOverride()
+        //{
+        //    ServicePointManager.ServerCertificateValidationCallback =
+        //        delegate
+        //        {
+        //            return GlobalSettings.OverrideCertValidation;
+        //        };
+        //}
     }
 }
