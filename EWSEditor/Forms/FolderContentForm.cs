@@ -301,26 +301,34 @@ namespace EWSEditor.Forms
 
         private void MnuCreateFromStream_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Choose an export stream file to import...";
-            ofd.Multiselect = false;
-            ofd.CheckFileExists = true;
-            ofd.CheckPathExists = true;
+            UploadItemForm oUploadItemForm = new UploadItemForm();
+            oUploadItemForm.ShowDialog();
 
-            if (ofd.ShowDialog() != DialogResult.OK)
-            {
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.Title = "Choose an export stream file to import...";
+            //ofd.Multiselect = false;
+            //ofd.CheckFileExists = true;
+            //ofd.CheckPathExists = true;
+
+            //if (ofd.ShowDialog() != DialogResult.OK)
+            //{
+            //    return;
+            //}
+
+            if (oUploadItemForm.ChoseOk == false)
                 return;
-            }
 
             try
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                byte[] data = System.IO.File.ReadAllBytes(ofd.FileName);
+                byte[] data = System.IO.File.ReadAllBytes(oUploadItemForm.ChoseFileToUpload);
 
                 ExportUploadHelper.UploadItem(
                     this.CurrentService,
                     this.currentFolder.Id,
+                    oUploadItemForm.ChoseCreateActionType,
+                    oUploadItemForm.ChoseItemId,
                     data);
 
                 this.RefreshContentAndDetails();

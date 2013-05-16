@@ -16,20 +16,30 @@ namespace EWSEditor.Exchange
         /// <param name="service">ExchangeService object to convert to a WCF client</param>
         /// <param name="folderId">Id of target folder where item will be uploaded to</param>
         /// <param name="data">Stream to import</param>
-        public static void UploadItem(ExchangeService service, FolderId folderId, byte[] data)
+        public static void UploadItem(ExchangeService service, FolderId folderId, CreateActionType oCreateActionType, string sItemId, byte[] data)
         {
             ExchangeServiceBinding client = ConvertExchangeService(service);
             var upload = new UploadItemsType();
             var item = new UploadItemType();
-
+             
             item.IsAssociated = false;
             item.ParentFolderId = new FolderIdType();
             item.ParentFolderId.Id = folderId.UniqueId;
             item.ParentFolderId.ChangeKey = folderId.ChangeKey;
             item.Data = data;
+ 
+            if (oCreateActionType == CreateActionType.UpdateOrCreate ||
+                oCreateActionType == CreateActionType.Update)
+            {
+   
+                ItemIdType oItem = new ItemIdType() ;
+                oItem.Id = sItemId;
+                item.ItemId = oItem;   
+            }
 
-            // TODO: Make this an option instead of hardcoding in the future
-            item.CreateAction = CreateActionType.CreateNew;
+
+            // TODO: Finish changes to make this an option instead of hardcoding in the future
+            item.CreateAction = oCreateActionType;
 
             upload.Items = new UploadItemType[]
             {
@@ -168,6 +178,12 @@ namespace EWSEditor.Exchange
                     break;
                 case ExchangeVersion.Exchange2010_SP1:
                     binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010_SP1;
+                    break;
+                case ExchangeVersion.Exchange2010_SP2:
+                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010_SP2;
+                    break;
+                case ExchangeVersion.Exchange2013:
+                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2013;
                     break;
             }
 

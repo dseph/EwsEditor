@@ -104,6 +104,12 @@ namespace EWSEditor.Exchange
                 case ExchangeVersion.Exchange2010_SP1:
                     binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010_SP1;
                     break;
+                case ExchangeVersion.Exchange2010_SP2:
+                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010_SP2;
+                    break;
+                case ExchangeVersion.Exchange2013:
+                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2013;
+                    break;
                 default:
                     DebugLog.WriteVerbose("Requested ExchangeVersion was '" + RequestedExchangeVersion.Value.ToString() + "' which is not expected");
                     throw new ApplicationException("Unexpected ExchangeVersion");
