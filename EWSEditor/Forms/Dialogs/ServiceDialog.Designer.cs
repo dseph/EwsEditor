@@ -57,7 +57,7 @@ namespace EWSEditor.Forms
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(223, 429);
+            this.btnOK.Location = new System.Drawing.Point(221, 436);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 10;
@@ -69,7 +69,7 @@ namespace EWSEditor.Forms
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(304, 429);
+            this.btnCancel.Location = new System.Drawing.Point(302, 436);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 11;
@@ -80,7 +80,7 @@ namespace EWSEditor.Forms
             // 
             this.lblExImp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblExImp.AutoSize = true;
-            this.lblExImp.Location = new System.Drawing.Point(22, 136);
+            this.lblExImp.Location = new System.Drawing.Point(22, 143);
             this.lblExImp.Name = "lblExImp";
             this.lblExImp.Size = new System.Drawing.Size(0, 13);
             this.lblExImp.TabIndex = 13;
@@ -89,9 +89,9 @@ namespace EWSEditor.Forms
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Location = new System.Drawing.Point(11, 400);
+            this.groupBox1.Location = new System.Drawing.Point(11, 407);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(361, 10);
+            this.groupBox1.Size = new System.Drawing.Size(359, 10);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             // 
@@ -283,7 +283,7 @@ namespace EWSEditor.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(386, 464);
+            this.ClientSize = new System.Drawing.Size(384, 471);
             this.Controls.Add(this.UseAutodiscoverCheck);
             this.Controls.Add(this.AutodiscoverEmailText);
             this.Controls.Add(this.label5);

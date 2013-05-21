@@ -70,10 +70,23 @@ namespace EWSEditor.Settings.Internals {
                 this["AllowAutodiscoverRedirect"] = value;
             }
         }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool EnableScpLookups
+        {
+            get {
+                return ((bool)(this["EnableScpLookups"]));
+            }
+            set {
+                this["EnableScpLookups"] = value;
+            }
+        }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool OverrideCertValidation {
             get {
                 return ((bool)(this["OverrideCertValidation"]));

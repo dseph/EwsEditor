@@ -64,6 +64,7 @@ namespace EWSEditor.Forms
             this.OverrideSslCheck.Checked = GlobalSettings.OverrideCertValidation;
             this.EnableSslDetailCheck.Checked = GlobalSettings.EnableSslDetailLogging;
             this.AllowRedirectsCheck.Checked = GlobalSettings.AllowAutodiscoverRedirect;
+            this.EnableScpLookups.Checked = GlobalSettings.EnableScpLookups;
         }
 
         private void SaveSettings()
@@ -81,6 +82,12 @@ namespace EWSEditor.Forms
             GlobalSettings.OverrideCertValidation = this.OverrideSslCheck.Checked;
             GlobalSettings.EnableSslDetailLogging = this.EnableSslDetailCheck.Checked;
             GlobalSettings.AllowAutodiscoverRedirect = this.AllowRedirectsCheck.Checked;
+            GlobalSettings.EnableScpLookups = this.EnableScpLookups.Checked;
+        }
+
+        private void EnableScpLookups_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

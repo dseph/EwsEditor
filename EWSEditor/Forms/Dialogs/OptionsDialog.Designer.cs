@@ -48,12 +48,14 @@
             this.LogFilePathLabel = new System.Windows.Forms.Label();
             this.LogFilePathText = new System.Windows.Forms.TextBox();
             this.LoggingGroup = new System.Windows.Forms.GroupBox();
+            this.EnableScpLookups = new System.Windows.Forms.CheckBox();
             this.MiscSettingsGroup.SuspendLayout();
             this.LoggingGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // MiscSettingsGroup
             // 
+            this.MiscSettingsGroup.Controls.Add(this.EnableScpLookups);
             this.MiscSettingsGroup.Controls.Add(this.UserAgentText);
             this.MiscSettingsGroup.Controls.Add(this.UserAgentLabel);
             this.MiscSettingsGroup.Controls.Add(this.EnableSslDetailCheck);
@@ -69,7 +71,7 @@
             this.MiscSettingsGroup.Controls.Add(this.CalendarViewLabel);
             this.MiscSettingsGroup.Location = new System.Drawing.Point(13, 12);
             this.MiscSettingsGroup.Name = "MiscSettingsGroup";
-            this.MiscSettingsGroup.Size = new System.Drawing.Size(462, 220);
+            this.MiscSettingsGroup.Size = new System.Drawing.Size(462, 251);
             this.MiscSettingsGroup.TabIndex = 1;
             this.MiscSettingsGroup.TabStop = false;
             this.MiscSettingsGroup.Text = "Miscellaneous";
@@ -100,7 +102,7 @@
             // 
             // DumpFolderText
             // 
-            this.DumpFolderText.Location = new System.Drawing.Point(144, 184);
+            this.DumpFolderText.Location = new System.Drawing.Point(146, 215);
             this.DumpFolderText.Name = "DumpFolderText";
             this.DumpFolderText.Size = new System.Drawing.Size(100, 20);
             this.DumpFolderText.TabIndex = 7;
@@ -116,7 +118,7 @@
             // 
             // FindItemText
             // 
-            this.FindItemText.Location = new System.Drawing.Point(144, 161);
+            this.FindItemText.Location = new System.Drawing.Point(146, 192);
             this.FindItemText.Name = "FindItemText";
             this.FindItemText.Size = new System.Drawing.Size(100, 20);
             this.FindItemText.TabIndex = 6;
@@ -132,21 +134,21 @@
             // 
             // FindFolderText
             // 
-            this.FindFolderText.Location = new System.Drawing.Point(144, 138);
+            this.FindFolderText.Location = new System.Drawing.Point(146, 169);
             this.FindFolderText.Name = "FindFolderText";
             this.FindFolderText.Size = new System.Drawing.Size(100, 20);
             this.FindFolderText.TabIndex = 5;
             // 
             // CalendarViewText
             // 
-            this.CalendarViewText.Location = new System.Drawing.Point(144, 112);
+            this.CalendarViewText.Location = new System.Drawing.Point(146, 143);
             this.CalendarViewText.Name = "CalendarViewText";
             this.CalendarViewText.Size = new System.Drawing.Size(100, 20);
             this.CalendarViewText.TabIndex = 4;
             // 
             // DumpFolderLabel
             // 
-            this.DumpFolderLabel.Location = new System.Drawing.Point(10, 184);
+            this.DumpFolderLabel.Location = new System.Drawing.Point(12, 215);
             this.DumpFolderLabel.Name = "DumpFolderLabel";
             this.DumpFolderLabel.Size = new System.Drawing.Size(128, 23);
             this.DumpFolderLabel.TabIndex = 3;
@@ -154,7 +156,7 @@
             // 
             // FindItemLabel
             // 
-            this.FindItemLabel.Location = new System.Drawing.Point(10, 161);
+            this.FindItemLabel.Location = new System.Drawing.Point(12, 192);
             this.FindItemLabel.Name = "FindItemLabel";
             this.FindItemLabel.Size = new System.Drawing.Size(128, 23);
             this.FindItemLabel.TabIndex = 2;
@@ -162,7 +164,7 @@
             // 
             // FindFolderLabel
             // 
-            this.FindFolderLabel.Location = new System.Drawing.Point(10, 138);
+            this.FindFolderLabel.Location = new System.Drawing.Point(12, 169);
             this.FindFolderLabel.Name = "FindFolderLabel";
             this.FindFolderLabel.Size = new System.Drawing.Size(128, 23);
             this.FindFolderLabel.TabIndex = 1;
@@ -170,7 +172,7 @@
             // 
             // CalendarViewLabel
             // 
-            this.CalendarViewLabel.Location = new System.Drawing.Point(10, 115);
+            this.CalendarViewLabel.Location = new System.Drawing.Point(12, 146);
             this.CalendarViewLabel.Name = "CalendarViewLabel";
             this.CalendarViewLabel.Size = new System.Drawing.Size(128, 23);
             this.CalendarViewLabel.TabIndex = 0;
@@ -180,7 +182,7 @@
             // 
             this.MyCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MyCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.MyCancelButton.Location = new System.Drawing.Point(400, 355);
+            this.MyCancelButton.Location = new System.Drawing.Point(400, 380);
             this.MyCancelButton.Name = "MyCancelButton";
             this.MyCancelButton.Size = new System.Drawing.Size(75, 23);
             this.MyCancelButton.TabIndex = 4;
@@ -192,7 +194,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(319, 355);
+            this.OkButton.Location = new System.Drawing.Point(319, 380);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 3;
@@ -229,12 +231,22 @@
             this.LoggingGroup.Controls.Add(this.LogFilePathText);
             this.LoggingGroup.Controls.Add(this.LogFilePathLabel);
             this.LoggingGroup.Controls.Add(this.SaveLogFileCheck);
-            this.LoggingGroup.Location = new System.Drawing.Point(13, 238);
+            this.LoggingGroup.Location = new System.Drawing.Point(12, 269);
             this.LoggingGroup.Name = "LoggingGroup";
             this.LoggingGroup.Size = new System.Drawing.Size(462, 105);
             this.LoggingGroup.TabIndex = 0;
             this.LoggingGroup.TabStop = false;
             this.LoggingGroup.Text = "Logging...";
+            // 
+            // EnableScpLookups
+            // 
+            this.EnableScpLookups.Location = new System.Drawing.Point(13, 102);
+            this.EnableScpLookups.Name = "EnableScpLookups";
+            this.EnableScpLookups.Size = new System.Drawing.Size(231, 24);
+            this.EnableScpLookups.TabIndex = 10;
+            this.EnableScpLookups.Text = "Enable SCP Lookups";
+            this.EnableScpLookups.UseVisualStyleBackColor = true;
+            this.EnableScpLookups.CheckedChanged += new System.EventHandler(this.EnableScpLookups_CheckedChanged);
             // 
             // OptionsDialog
             // 
@@ -242,7 +254,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.MyCancelButton;
-            this.ClientSize = new System.Drawing.Size(487, 390);
+            this.ClientSize = new System.Drawing.Size(487, 415);
             this.Controls.Add(this.MyCancelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.MiscSettingsGroup);
@@ -283,5 +295,6 @@
         private System.Windows.Forms.GroupBox LoggingGroup;
         private System.Windows.Forms.TextBox UserAgentText;
         private System.Windows.Forms.Label UserAgentLabel;
+        private System.Windows.Forms.CheckBox EnableScpLookups;
     }
 }
