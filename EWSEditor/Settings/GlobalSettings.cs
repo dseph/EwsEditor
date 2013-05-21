@@ -177,6 +177,23 @@ namespace EWSEditor.Settings
             }
         }
 
+                /// <summary>
+        /// Enables SCP Lookups used for Autodisocver
+        /// </summary>
+        public static bool EnableScpLookups
+        {
+            get
+            {
+                return UserSettings.Default.EnableScpLookups;
+            }
+            set
+            {
+                UserSettings.Default.EnableScpLookups = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+ 
         /// <summary>
         /// Gets or sets a bool to show the splash screen when EWSEditor is starting
         /// EWSEditor.

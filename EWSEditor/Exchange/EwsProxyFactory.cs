@@ -29,6 +29,7 @@ namespace EWSEditor.Exchange
         public static void DoAutodiscover(Microsoft.Exchange.WebServices.Data.EmailAddress emailAddress)
         {
             ExchangeService service = CreateExchangeService();
+            service.EnableScpLookup = GlobalSettings.EnableScpLookups;
             service.AutodiscoverUrl(emailAddress.Address, ValidationCallbackHelper.RedirectionUrlValidationCallback );
             EwsUrl = service.Url;
         }
