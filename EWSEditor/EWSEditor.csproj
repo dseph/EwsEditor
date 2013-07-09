@@ -128,12 +128,65 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ActiveDirectoryHelper.cs" />
+    <Compile Include="Common\AppointmentHelper.cs" />
+    <Compile Include="Common\ComboBoxHelper.cs" />
+    <Compile Include="Common\FolderTag.cs" />
     <Compile Include="Common\HttpHelpler.cs" />
+    <Compile Include="Common\ItemHelper.cs" />
+    <Compile Include="Common\ItemTag.cs" />
+    <Compile Include="Common\ListViewColumnSorter.cs" />
+    <Compile Include="Common\ListViewItemHelper.cs" />
+    <Compile Include="Common\RecipientHelper.cs" />
+    <Compile Include="Common\StringHelper.cs" />
+    <Compile Include="Common\TimeHelper.cs" />
+    <Compile Include="Common\UserIoHelper.cs" />
+    <Compile Include="Forms\CalendarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CalendarForm.designer.cs">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CalendarInstanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CalendarInstanceForm.designer.cs">
+      <DependentUpon>CalendarInstanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CalendarMonthView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CalendarMonthView.designer.cs">
+      <DependentUpon>CalendarMonthView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dialogs\OptionsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Dialogs\OptionsDialog.Designer.cs">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\TimeZonesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\TimeZonesForm.designer.cs">
+      <DependentUpon>TimeZonesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectSendMeetingUpdateNotificationOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectSendMeetingUpdateNotificationOptions.designer.cs">
+      <DependentUpon>SelectSendMeetingUpdateNotificationOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectSendNewMeetingNotificationOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectSendNewMeetingNotificationOptions.designer.cs">
+      <DependentUpon>SelectSendNewMeetingNotificationOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ShowTextDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ShowTextDocument.designer.cs">
+      <DependentUpon>ShowTextDocument.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\StreamingNotificationForm.Designer.cs">
       <DependentUpon>StreamingNotificationForm.cs</DependentUpon>
@@ -509,6 +562,15 @@
     <EmbeddedResource Include="Forms\AvailabilityForm.resx">
       <DependentUpon>AvailabilityForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CalendarForm.resx">
+      <DependentUpon>CalendarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CalendarInstanceForm.resx">
+      <DependentUpon>CalendarInstanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CalendarMonthView.resx">
+      <DependentUpon>CalendarMonthView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\EnumComboBox.resx">
       <DependentUpon>EnumComboBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -532,6 +594,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\OptionsDialog.resx">
       <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\TimeZonesForm.resx">
+      <DependentUpon>TimeZonesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FolderContentForm.resx">
       <DependentUpon>FolderContentForm.cs</DependentUpon>
@@ -579,6 +644,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PullNotificationForm.resx">
       <DependentUpon>PullNotificationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectSendMeetingUpdateNotificationOptions.resx">
+      <DependentUpon>SelectSendMeetingUpdateNotificationOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectSendNewMeetingNotificationOptions.resx">
+      <DependentUpon>SelectSendNewMeetingNotificationOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ShowTextDocument.resx">
+      <DependentUpon>ShowTextDocument.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StreamingNotificationForm.resx">
       <DependentUpon>StreamingNotificationForm.cs</DependentUpon>
