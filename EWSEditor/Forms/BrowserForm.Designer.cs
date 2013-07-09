@@ -48,6 +48,7 @@
             this.mnuResolveExProp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsSplit2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuNotification = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStreamingNotification = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSynchronization = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsSplit3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuDisplayDelegates = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,7 @@
             this.mnuFindAppointments = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuStreamingNotification = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimeZonemenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -165,6 +166,7 @@
             this.UserOofSettingsMenuItem,
             this.UserAvailabilityMenuItem,
             this.ConvertIdMenuItem,
+            this.TimeZonemenuitem,
             this.toolStripMenuItem1,
             this.OptionsMenuItem});
             this.mnuTools.Name = "mnuTools";
@@ -220,6 +222,13 @@
             this.mnuNotification.Size = new System.Drawing.Size(246, 22);
             this.mnuNotification.Text = "Pull Notifications Viewer...";
             this.mnuNotification.Click += new System.EventHandler(this.MnuNotification_Click);
+            // 
+            // mnuStreamingNotification
+            // 
+            this.mnuStreamingNotification.Name = "mnuStreamingNotification";
+            this.mnuStreamingNotification.Size = new System.Drawing.Size(246, 22);
+            this.mnuStreamingNotification.Text = "Streaming Notifications Viewer...";
+            this.mnuStreamingNotification.Click += new System.EventHandler(this.MnuStreamingNotification_Click);
             // 
             // mnuSynchronization
             // 
@@ -325,12 +334,12 @@
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
-            // mnuStreamingNotification
+            // TimeZonemenuitem
             // 
-            this.mnuStreamingNotification.Name = "mnuStreamingNotification";
-            this.mnuStreamingNotification.Size = new System.Drawing.Size(246, 22);
-            this.mnuStreamingNotification.Text = "Streaming Notifications Viewer...";
-            this.mnuStreamingNotification.Click += new System.EventHandler(this.MnuStreamingNotification_Click);
+            this.TimeZonemenuitem.Name = "TimeZonemenuitem";
+            this.TimeZonemenuitem.Size = new System.Drawing.Size(246, 22);
+            this.TimeZonemenuitem.Text = "TimeZone";
+            this.TimeZonemenuitem.Click += new System.EventHandler(this.TimeZonemenuitem_Click);
             // 
             // BrowserForm
             // 
@@ -388,5 +397,6 @@
         private System.Windows.Forms.ToolStripMenuItem DebugLogVeiwerMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         public System.Windows.Forms.ToolStripMenuItem mnuStreamingNotification;
+        private System.Windows.Forms.ToolStripMenuItem TimeZonemenuitem;
     }
 }

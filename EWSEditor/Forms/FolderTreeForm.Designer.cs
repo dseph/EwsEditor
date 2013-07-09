@@ -134,6 +134,7 @@ namespace EWSEditor.Forms
             this.FolderPropertyDetailsGrid.Size = new System.Drawing.Size(658, 645);
             this.FolderPropertyDetailsGrid.TabIndex = 0;
             this.FolderPropertyDetailsGrid.PropertyChanged += new EWSEditor.Forms.Controls.PropertyDetialsGrid.PropertyChangedEventHandler(this.FolderPropertyDetailsGrid_PropertyChanged);
+            this.FolderPropertyDetailsGrid.Load += new System.EventHandler(this.FolderPropertyDetailsGrid_Load);
             // 
             // cmsFolderMenu
             // 
@@ -157,7 +158,7 @@ namespace EWSEditor.Forms
             this.toolStripMenuItem1,
             this.addExtendedPropertyToolStripMenuItem});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
-            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 326);
+            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 304);
             // 
             // mnuOpenContents
             // 

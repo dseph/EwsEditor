@@ -1399,5 +1399,10 @@ namespace EWSEditor.Forms
                     folder.Id);
             }
         }
+
+        private void FolderPropertyDetailsGrid_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

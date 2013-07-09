@@ -425,5 +425,25 @@
         }
 
         #endregion
+
+        private void TimeZonemenuitem_Click(object sender, EventArgs e)
+        {
+            //this.Cursor = Cursors.WaitCursor;
+
+            // If there is no CurrentService then we can't do anything
+            if (this.CurrentService != null)
+            {
+                TimeZonesForm oTimeZonesForm = new TimeZonesForm(this.CurrentService);
+                oTimeZonesForm.ShowDialog();
+            }
+
+            //this.Cursor = Cursors.Default;
+
+        }
+
+        private void BrowserForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

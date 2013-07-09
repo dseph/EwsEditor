@@ -29,7 +29,7 @@ namespace EWSEditor.Forms
         {
             this.exchangeVersionCombo.TransformComboBox(this.TempExchangeVersionCombo);
             this.exchangeVersionCombo.HasEmptyItem = true;
-
+            //this.TempExchangeVersionCombo.Text = "Exchange2007_SP1";
             SetFields();
         }
 
