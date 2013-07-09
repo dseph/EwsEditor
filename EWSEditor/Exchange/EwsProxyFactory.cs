@@ -12,6 +12,7 @@ namespace EWSEditor.Exchange
     public class EwsProxyFactory
     {
         public static ExchangeVersion? RequestedExchangeVersion = null;
+        public static TimeZoneInfo SelectedTimeZone = null;
         public static bool? AllowAutodiscoverRedirect = null;
         public static bool? EnableScpLookup;
         public static NetworkCredential ServiceCredential = null;
@@ -40,11 +41,17 @@ namespace EWSEditor.Exchange
 
             if (RequestedExchangeVersion.HasValue)
             {
-                service = new ExchangeService(RequestedExchangeVersion.Value);
+                if (SelectedTimeZone != null)
+                    service = new ExchangeService(RequestedExchangeVersion.Value, SelectedTimeZone);
+                else
+                    service = new ExchangeService(RequestedExchangeVersion.Value);
             }
             else
             {
-                service = new ExchangeService();
+                if (SelectedTimeZone != null)
+                    service = new ExchangeService(SelectedTimeZone);
+                else
+                    service = new ExchangeService( ); 
             }
 
             service.UserAgent = GlobalSettings.UserAgent;

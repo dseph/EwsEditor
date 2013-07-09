@@ -77,11 +77,18 @@ namespace EWSEditor.Forms
             try
             {
                 Cursor = System.Windows.Forms.Cursors.WaitCursor;
-
-
-                
+ 
                 //EwsProxyFactory.InitializeWithDefaults(exchangeVersionCombo.SelectedIndex,
                 EwsProxyFactory.RequestedExchangeVersion = exchangeVersionCombo.SelectedItem;
+                if (this.chkUseSpecifiedTimezone.Checked)
+                {
+                    TimeZoneInfo oTimeZone = TimeZoneInfo.FindSystemTimeZoneById(cmboTimeZoneIds.Text);
+                    EwsProxyFactory.SelectedTimeZone = oTimeZone;
+                }
+                else
+                {
+                    EwsProxyFactory.SelectedTimeZone = null;
+                }
                 EwsProxyFactory.AllowAutodiscoverRedirect = GlobalSettings.AllowAutodiscoverRedirect;
                 EwsProxyFactory.UseDefaultCredentials = !chkCredentials.Checked;
                 EwsProxyFactory.ServiceCredential = chkCredentials.Checked ?
@@ -203,9 +210,17 @@ namespace EWSEditor.Forms
         {
             this.exchangeVersionCombo.TransformComboBox(this.TempExchangeVersionCombo);
             this.exchangeVersionCombo.HasEmptyItem = true;
+            this.exchangeVersionCombo.Text = "Exchange2007_SP1";
 
             this.connectingIdCombo.TransformComboBox(this.TempConnectingIdCombo);
             this.connectingIdCombo.SelectedItem = ConnectingIdType.SmtpAddress;
+
+             
+            foreach (TimeZoneInfo tzinfo in TimeZoneInfo.GetSystemTimeZones())
+            {
+                cmboTimeZoneIds.Items.Add(tzinfo.Id);
+            }
+            cmboTimeZoneIds.Text = TimeZone.CurrentTimeZone.DaylightName;
 
             // If CurrentService is already set then we are editing an
             // existing ExchangeService and need to load it first.
@@ -237,6 +252,11 @@ namespace EWSEditor.Forms
                     this.ImpersonatedIdTextBox.Text = this.CurrentService.ImpersonatedUserId.Id;
                 }
             }
+        }
+
+        private void chkUseSpecifiedTimezone_CheckedChanged(object sender, EventArgs e)
+        {
+            cmboTimeZoneIds.Enabled = chkUseSpecifiedTimezone.Checked;
         }
     }
 }
