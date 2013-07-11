@@ -55,6 +55,7 @@
             this.UserOofSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserAvailabilityMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConvertIdMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TimeZonemenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOther = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +65,6 @@
             this.mnuFindAppointments = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimeZonemenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -270,6 +270,13 @@
             this.ConvertIdMenuItem.Text = "ConvertId...";
             this.ConvertIdMenuItem.Click += new System.EventHandler(this.ConvertIdMenu_Click);
             // 
+            // TimeZonemenuitem
+            // 
+            this.TimeZonemenuitem.Name = "TimeZonemenuitem";
+            this.TimeZonemenuitem.Size = new System.Drawing.Size(246, 22);
+            this.TimeZonemenuitem.Text = "TimeZone";
+            this.TimeZonemenuitem.Click += new System.EventHandler(this.TimeZonemenuitem_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -334,13 +341,6 @@
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
-            // TimeZonemenuitem
-            // 
-            this.TimeZonemenuitem.Name = "TimeZonemenuitem";
-            this.TimeZonemenuitem.Size = new System.Drawing.Size(246, 22);
-            this.TimeZonemenuitem.Text = "TimeZone";
-            this.TimeZonemenuitem.Click += new System.EventHandler(this.TimeZonemenuitem_Click);
-            // 
             // BrowserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,6 +351,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BrowserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.BrowserForm_Load_1);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.mnuMain.ResumeLayout(false);

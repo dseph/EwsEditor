@@ -155,7 +155,7 @@
         /// key is initially not found, create it.
         /// </summary>
         private static RegistryKey GetAppRegKey(bool writable)
-        {
+        { 
             RegistryKey appRegKey = Registry.CurrentUser.OpenSubKey(REG_KEY_APP_KEY_PATH, writable);
 
             if (appRegKey == null)

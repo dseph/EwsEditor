@@ -45,6 +45,10 @@ namespace EWSEditor.Exchange
                     service = new ExchangeService(RequestedExchangeVersion.Value, SelectedTimeZone);
                 else
                     service = new ExchangeService(RequestedExchangeVersion.Value);
+
+              
+                //System.Diagnostics.Debug.WriteLine(service.PreferredCulture);
+                 
             }
             else
             {
