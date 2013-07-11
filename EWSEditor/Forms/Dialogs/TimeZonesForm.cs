@@ -9,6 +9,7 @@ using System.Globalization;
 using System.Windows.Forms;
 using EWSEditor.Common;
 using Microsoft.Exchange.WebServices.Data;
+ 
 
 namespace EWSEditor.Forms 
 {
@@ -216,7 +217,7 @@ namespace EWSEditor.Forms
                 sb.Append(GetValuesFromTimeZoneInfo(oTimeZoneInfo));
 
                 s = sb.ToString();
-                txtServerTimezoneResults.Text = s;
+                
             }
             catch (Exception ex)
             {
