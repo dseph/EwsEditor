@@ -131,31 +131,31 @@ namespace EWSEditor.Forms
 
         }
 
-        //DJB
-        private void GetGroupingInfo(ExchangeService oExchangeService, string DiscoverMailbox)
-        {
-            //oExchangeService.get
-            string UseVersion = oExchangeService.RequestedServerVersion.ToString();
-            string UseUrl = oExchangeService.Url.ToString();  // djb - need to fix it to the autodiscover url.
+        ////DJB
+        //private void GetGroupingInfo(ExchangeService oExchangeService, string DiscoverMailbox)
+        //{
+        //    //oExchangeService.get
+        //    string UseVersion = oExchangeService.RequestedServerVersion.ToString();
+        //    string UseUrl = oExchangeService.Url.ToString();  // djb - need to fix it to the autodiscover url.
  
-            string EwsRequest = EwsRequests.GroupingInformationTemplateRequest;
-            EwsRequest =  EwsRequest.Replace("XXXExchangeVersionXXX",  UseVersion);
-            EwsRequest =  EwsRequest.Replace("XXXAutoDiscoverServiceServerXXX", UseUrl);
-            EwsRequest =  EwsRequest.Replace("XXXMailboxSmtpXXX", DiscoverMailbox);
+        //    string EwsRequest = EwsRequests.GroupingInformationTemplateRequest;
+        //    EwsRequest =  EwsRequest.Replace("XXXExchangeVersionXXX",  UseVersion);
+        //    EwsRequest =  EwsRequest.Replace("XXXAutoDiscoverServiceServerXXX", UseUrl);
+        //    EwsRequest =  EwsRequest.Replace("XXXMailboxSmtpXXX", DiscoverMailbox);
 
-            // DO raw post 
-            // string sResponse
-            // if (DoRawPost(UseUrl, oExchangeService.ServerCredentials, EwsRequest, ref sResponse));
-            // {
-            //    Extract GroupingInformation and external url from sResponse);
-            // }
-            // else
-            // {
-            //    return error;
-            // }
+        //    // DO raw post 
+        //    // string sResponse
+        //    // if (DoRawPost(UseUrl, oExchangeService.ServerCredentials, EwsRequest, ref sResponse));
+        //    // {
+        //    //    Extract GroupingInformation and external url from sResponse);
+        //    // }
+        //    // else
+        //    // {
+        //    //    return error;
+        //    // }
 
  
-        }
+        //}
  
         private void StreamingSubscribeWork()
         {
@@ -194,9 +194,19 @@ namespace EWSEditor.Forms
                 {
                     try
                     {
-                        StreamingSubscription CurrentSubscription = ThreadLocalService.SubscribeToStreamingNotifications(
-                                                                            new FolderId[] { this.CurrentFolderId },
-                                                                            EventTypes.ToArray());
+                        StreamingSubscription CurrentSubscription = null;
+                        if (chkAllFoldes.Checked == false)
+                        {
+                            CurrentSubscription = ThreadLocalService.SubscribeToStreamingNotifications(
+                                                                                new FolderId[] { this.CurrentFolderId },
+                                                                                EventTypes.ToArray());
+                        }
+                        else
+                        {
+                            CurrentSubscription = ThreadLocalService.SubscribeToStreamingNotificationsOnAllFolders(
+                                                                                 EventTypes.ToArray());
+                        }
+
                         ThreadLocalSubscriptions.Add(CurrentSubscription);
                         lock (ActiveSubscriptions)
                         {
@@ -562,7 +572,55 @@ namespace EWSEditor.Forms
 
         private void StreamingNotificationForm_Load(object sender, EventArgs e)
         {
+            SetROchkAllFoldes();
+        }
 
+        private void chkAllFoldes_CheckedChanged(object sender, EventArgs e)
+        {
+            SetROchkAllFoldes();
+        }
+
+        private void SetROchkAllFoldes()
+        {
+            bool bChecked = false;
+            if (chkAllFoldes.Checked == false)
+                bChecked = true;
+
+            txtFolderId.Enabled = bChecked;
+            btnGetFolderId.Enabled = bChecked;
+        }
+
+        private void lstEvents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstEvents_DoubleClick(object sender, EventArgs e)
+        {
+            if (lstEvents.SelectedItems.Count > 0)
+            {
+                StringBuilder oSB = new StringBuilder();
+                oSB.AppendFormat("EventType:                \r\n    {0}\r\n", lstEvents.SelectedItems[0].Text);             
+                oSB.AppendFormat("Thread:                   \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[1].Text);
+                oSB.AppendFormat("TimeStamp:                \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[2].Text);
+                oSB.AppendFormat("EventType:                \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[3].Text);
+
+                oSB.AppendFormat("ParentFolderId:           \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[4].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
+                oSB.AppendFormat("OldParentFolderId:        \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[5].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
+                oSB.AppendFormat("Item.ItemId:              \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[6].Text.Replace("ChangeKey:", "    ChangeKey:"));
+                oSB.AppendFormat("Item.OldItemId:           \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[7].Text.Replace("ChangeKey:", "    ChangeKey:"));
+                oSB.AppendFormat("FolderEvent.FolderId:     \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[8].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
+                oSB.AppendFormat("Folder.OldFolderId:       \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[9].Text.Replace("ChangeKey:", "    ChangeKey:"));
+                oSB.AppendFormat("FolderEvent.UnreadCount:  \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[10].Text);
+                
+                string sContent = oSB.ToString();
+
+                ShowTextDocument oForm = new ShowTextDocument();
+                oForm.txtEntry.WordWrap = false;
+                oForm.Text = "Information";
+                oForm.txtEntry.Text = sContent;
+                oForm.ShowDialog();
+            }
         }
 
     }
