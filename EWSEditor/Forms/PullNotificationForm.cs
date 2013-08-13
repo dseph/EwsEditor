@@ -61,7 +61,7 @@ namespace EWSEditor.Forms
         /// </summary>
         private void btnSubscribe_Click(object sender, EventArgs e)
         {
-            const int DEFAULT_NOTIFICATION_TIMEOUT = 5;
+            //const int DEFAULT_NOTIFICATION_TIMEOUT = 5;
 
             // Convert the check box settings into an array of EventTypes
             List<EventType> eventTypes = new List<EventType>();
@@ -96,13 +96,25 @@ namespace EWSEditor.Forms
                 eventTypes.Add(EventType.NewMail);
             }
 
-            // Create the subscription based on the form settings
-            this.CurrentSubscription = this.CurrentService.SubscribeToPullNotifications(
-                                                                    new FolderId[] { this.CurrentFolderId },
-                                                                    DEFAULT_NOTIFICATION_TIMEOUT,
-                                                                    string.Empty,
-                                                                    eventTypes.ToArray());
+            int TimeOutMinutes = Convert.ToInt32(numMinutes.Value);
 
+            if (chkAllFoldes.Checked == false)
+            {
+                // Create the subscription based on the form settings
+                this.CurrentSubscription = this.CurrentService.SubscribeToPullNotifications(
+                                                                        new FolderId[] { this.CurrentFolderId },
+                                                                        TimeOutMinutes,
+                                                                        string.Empty,
+                                                                        eventTypes.ToArray());
+            }
+            else
+            {
+                // Create the subscription based on the form settings
+                this.CurrentSubscription = this.CurrentService.SubscribeToPullNotificationsOnAllFolders(
+                                                                        TimeOutMinutes,
+                                                                        string.Empty,
+                                                                        eventTypes.ToArray());
+            }
             // Enable/Disable form controls for an active subscription
             this.btnUnsubscribe.Enabled = true;
             this.btnSubscribe.Enabled = false;
@@ -237,6 +249,60 @@ namespace EWSEditor.Forms
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void chkAllFoldes_CheckedChanged(object sender, EventArgs e)
+        {
+            SetROchkAllFoldes();
+        }
+
+        private void SetROchkAllFoldes()
+        {
+            bool bChecked = false;
+            if (chkAllFoldes.Checked == false)
+                bChecked = true;
+
+            txtFolderId.Enabled = bChecked;
+            btnGetFolderId.Enabled = bChecked;
+        }
+
+        private void grpSynchronize_Enter(object sender, EventArgs e)
+        {
+             
+        }
+
+        private void PullNotificationForm_Load(object sender, EventArgs e)
+        {
+            SetROchkAllFoldes();
+        }
+
+        private void lstEvents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void lstEvents_DoubleClick(object sender, EventArgs e)
+        {
+     
+            if (lstEvents.SelectedItems.Count > 0)
+            {
+                StringBuilder oSB = new StringBuilder();
+                oSB.AppendFormat("EventType:         \r\n    {0}\r\n", lstEvents.SelectedItems[0].Text);
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("TimeStamp:         \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[1].Text);
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("ObjectType:        \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[2].Text);
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("OldObjectId:       \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[3].Text.Replace("ChangeKey:", "    ChangeKey:"));
+                oSB.AppendFormat("ParentFolderId:    \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[4].Text.Replace("ChangeKey:", "    ChangeKey:"));
+                oSB.AppendFormat("OldParentFolderId: \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[5].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
+                string sContent = oSB.ToString();
+
+                ShowTextDocument oForm = new ShowTextDocument();
+                oForm.txtEntry.WordWrap = false;
+                oForm.Text = "Information";
+                oForm.txtEntry.Text = sContent;
+                oForm.ShowDialog();
+            }
         }
     }
 }
