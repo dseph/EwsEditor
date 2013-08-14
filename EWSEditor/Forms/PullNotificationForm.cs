@@ -282,28 +282,317 @@ namespace EWSEditor.Forms
 
         private void lstEvents_DoubleClick(object sender, EventArgs e)
         {
-     
+            string ParentFolderName = string.Empty;
+            string ParentFolderClass = string.Empty;
+            string OldParentFolderName = string.Empty;
+            string OldParentFolderClass = string.Empty;
+
+            string ItemName = string.Empty;
+            string ItemClass = string.Empty;
+            string OldItemName = string.Empty;
+            string OldItemClass = string.Empty;
+
+            string FolderName = string.Empty;
+            string FolderClass = string.Empty;
+            string OldFolderName = string.Empty;
+            string OldFolderClass = string.Empty;
+
+            Folder oFolder = null;
+            Item oItem = null;
+
+            StringBuilder oSB = new StringBuilder();
+
             if (lstEvents.SelectedItems.Count > 0)
             {
-                StringBuilder oSB = new StringBuilder();
-                oSB.AppendFormat("EventType:         \r\n    {0}\r\n", lstEvents.SelectedItems[0].Text);
-                oSB.AppendFormat("\r\n");
-                oSB.AppendFormat("TimeStamp:         \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[1].Text);
-                oSB.AppendFormat("\r\n");
-                oSB.AppendFormat("ObjectType:        \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[2].Text);
-                oSB.AppendFormat("\r\n");
-                oSB.AppendFormat("ObjectId:          \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[3].Text.Replace("ChangeKey:", "    ChangeKey:"));
-                oSB.AppendFormat("OldObjectId:       \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[4].Text.Replace("ChangeKey:", "    ChangeKey:"));
-                oSB.AppendFormat("ParentFolderId:    \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[5].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
-                oSB.AppendFormat("\r\n");
-                oSB.AppendFormat("OldParentFolderId: \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[6].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
-                string sContent = oSB.ToString();
 
-                ShowTextDocument oForm = new ShowTextDocument();
-                oForm.txtEntry.WordWrap = false;
-                oForm.Text = "Information";
-                oForm.txtEntry.Text = sContent;
-                oForm.ShowDialog();
+                ListViewItem oListViewItem = lstEvents.SelectedItems[0];
+
+                if (oListViewItem.Tag.ToString().StartsWith("[") == false)
+                {
+                     
+                     
+
+                    if (lstEvents.SelectedItems[0].Text == "ItemEvent")
+                    {
+                        ItemEvent oItemEvent = null;
+
+                        oItemEvent = (ItemEvent)oListViewItem.Tag;
+
+
+                        Item oSomeItem = null;
+
+
+                        if (oListViewItem.SubItems[3].Text.TrimEnd().Length != 0)
+                        {
+                            try
+                            {
+
+                                oSomeItem = Item.Bind(CurrentService, new ItemId(oItemEvent.ItemId.UniqueId));
+
+                                if (oSomeItem != null)
+                                {
+                                    ItemName = oSomeItem.Subject;
+                                    ItemClass = oSomeItem.ItemClass;
+                                }
+                            }
+                            catch (Exception ex)
+                            { }
+                        }
+
+                        if (oListViewItem.SubItems[4].Text.TrimEnd().Length != 0)
+                        {
+                            try
+                            {
+
+                                oSomeItem = Item.Bind(CurrentService, new ItemId(oItemEvent.OldItemId.UniqueId));
+
+                                if (oSomeItem != null)
+                                {
+                                    OldItemName = oSomeItem.Subject;
+                                    OldItemClass = oSomeItem.ItemClass;
+                                }
+                            }
+                            catch (Exception ex)
+                            { }
+                        }
+
+                        if (oListViewItem.SubItems[5].Text.TrimEnd().Length != 0)
+                        {
+                            try
+                            {
+                                oFolder = Folder.Bind(CurrentService, new FolderId(oItemEvent.ParentFolderId.UniqueId));
+                                if (oFolder  != null)
+                                {
+                                    ParentFolderName = oFolder .DisplayName;
+                                    ParentFolderClass = oFolder.FolderClass;
+                                }
+                            }
+                            catch (Exception ex)
+                            { }
+                        }
+                        if (oListViewItem.SubItems[6].Text.TrimEnd().Length != 0)
+                        {
+                            try
+                            {
+                                oFolder  = Folder.Bind(CurrentService, new FolderId(oItemEvent.OldParentFolderId.UniqueId));
+                                if (oFolder  != null)
+                                {
+                                    OldParentFolderName = oFolder.DisplayName;
+                                    OldParentFolderClass = oFolder.FolderClass;
+                                }
+                            }
+                            catch (Exception ex)
+                            { }
+                        }
+
+
+                         
+                        oSB.AppendFormat("EventType:         \r\n    {0}\r\n", lstEvents.SelectedItems[0].Text);
+                        oSB.AppendFormat("\r\n");
+                        oSB.AppendFormat("TimeStamp:         \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[1].Text);
+                        oSB.AppendFormat("\r\n");
+                        oSB.AppendFormat("ObjectType:        \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[2].Text);
+                        oSB.AppendFormat("\r\n");
+
+                        oSB.AppendFormat("Object:\r\n");
+                        if (oItemEvent != null)
+                        {
+                            if (oItemEvent.ItemId != null)
+                            {
+                                oSB.AppendFormat("    UniqueId:  {0}\r\n", oItemEvent.ItemId.UniqueId.ToString());
+                                oSB.AppendFormat("    ChangeKey: {0}\r\n", oItemEvent.ItemId.ChangeKey.ToString());
+                                oSB.AppendFormat("    Name:      {0}\r\n", ItemName);
+                                oSB.AppendFormat("    Class:     {0}\r\n", ItemClass);
+                            }
+                        }
+                        oSB.AppendFormat("\r\n");
+
+                        oSB.AppendFormat("OldObject:\r\n");
+                        if (oItemEvent != null)
+                        {
+                            if (oItemEvent.OldItemId != null)
+                            {
+                                oSB.AppendFormat("    UniqueId:  {0}\r\n", oItemEvent.OldItemId.UniqueId.ToString());
+                                oSB.AppendFormat("    ChangeKey: {0}\r\n", oItemEvent.OldItemId.ChangeKey.ToString());
+                                oSB.AppendFormat("    Name:      {0}\r\n", OldItemName);
+                                oSB.AppendFormat("    Class:     {0}\r\n", OldItemClass);
+                            }
+                        }
+                        oSB.AppendFormat("\r\n");
+
+                        oSB.AppendFormat("ParentFolder:\r\n");
+                        if (oItemEvent != null)
+                        {
+                            if (oItemEvent.ParentFolderId != null)
+                            {
+                                oSB.AppendFormat("    UniqueId:  {0}\r\n", oItemEvent.ParentFolderId.UniqueId.ToString());
+                                oSB.AppendFormat("    ChangeKey: {0}\r\n", oItemEvent.ParentFolderId.ChangeKey.ToString());
+                                oSB.AppendFormat("    Name:      {0}\r\n", ParentFolderName);
+                                oSB.AppendFormat("    Class:     {0}\r\n", ParentFolderClass);
+                            }
+                        }
+                        oSB.AppendFormat("\r\n");
+
+                        oSB.AppendFormat("OldParentFolder:\r\n");
+                        if (oItemEvent != null)
+                        {
+                            if (oItemEvent.OldParentFolderId != null)
+                            {
+                                oSB.AppendFormat("    UniqueId:  {0}\r\n", oItemEvent.OldParentFolderId.UniqueId.ToString());
+                                oSB.AppendFormat("    ChangeKey: {0}\r\n", oItemEvent.OldParentFolderId.ChangeKey.ToString());
+                                oSB.AppendFormat("    Name:      {0}\r\n", OldParentFolderName);
+                                oSB.AppendFormat("    Class:     {0}\r\n", OldParentFolderClass);
+                            }
+                        }
+                        oSB.AppendFormat("\r\n");
+                    }
+
+                    if (lstEvents.SelectedItems[0].Text == "FolderEvent")
+                    {
+                        FolderEvent oFolderEvent = null;
+                        oFolderEvent = (FolderEvent)oListViewItem.Tag;
+
+
+                        Item oSomeItem = null;
+
+
+                        if (oListViewItem.SubItems[3].Text.TrimEnd().Length != 0)
+                        {
+                            try
+                            {
+
+                                oFolder = Folder.Bind(CurrentService, new FolderId(oFolderEvent.FolderId.UniqueId));
+
+                                if (oFolder != null)
+                                {
+                                    FolderName = oSomeItem.Subject;
+                                    FolderClass = oSomeItem.ItemClass;
+                                }
+                            }
+                            catch (Exception ex)
+                            { }
+                        }
+
+                        if (oListViewItem.SubItems[4].Text.TrimEnd().Length != 0)
+                        {
+                            try
+                            {
+
+                                oFolder = Folder.Bind(CurrentService, new FolderId(oFolderEvent.OldFolderId.UniqueId));
+
+                                if (oFolder != null)
+                                {
+                                    OldFolderName = oSomeItem.Subject;
+                                    OldFolderClass = oSomeItem.ItemClass;
+                                }
+                            }
+                            catch (Exception ex)
+                            { }
+                        }
+
+                        if (oListViewItem.SubItems[5].Text.TrimEnd().Length != 0)
+                        {
+                            try
+                            {
+                                oFolder = Folder.Bind(CurrentService, new FolderId(oFolderEvent.ParentFolderId.UniqueId));
+                                if (oFolder != null)
+                                {
+                                    ParentFolderName = oFolder.DisplayName;
+                                    ParentFolderClass = oFolder.FolderClass;
+                                }
+                            }
+                            catch (Exception ex)
+                            { }
+                        }
+                        if (oListViewItem.SubItems[6].Text.TrimEnd().Length != 0)
+                        {
+                            try
+                            {
+                                oFolder = Folder.Bind(CurrentService, new FolderId(oFolderEvent.OldParentFolderId.UniqueId));
+                                if (oFolder != null)
+                                {
+                                    OldParentFolderName = oFolder.DisplayName;
+                                    OldParentFolderClass = oFolder.FolderClass;
+                                }
+                            }
+                            catch (Exception ex)
+                            { }
+                        }
+ 
+
+                         
+                        oSB.AppendFormat("EventType:         \r\n    {0}\r\n", lstEvents.SelectedItems[0].Text);
+                        oSB.AppendFormat("\r\n");
+                        oSB.AppendFormat("TimeStamp:         \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[1].Text);
+                        oSB.AppendFormat("\r\n");
+                        oSB.AppendFormat("ObjectType:        \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[2].Text);
+                        oSB.AppendFormat("\r\n");
+
+                        oSB.AppendFormat("Item:\r\n");
+                        if (oFolderEvent != null)
+                        {
+                            if (oFolderEvent.FolderId!= null)
+                            {
+                                oSB.AppendFormat("    UniqueId:  {0}\r\n", oFolderEvent.FolderId.UniqueId.ToString());
+                                oSB.AppendFormat("    ChangeKey: {0}\r\n", oFolderEvent.FolderId.ChangeKey.ToString());
+                                oSB.AppendFormat("    Name:      {0}\r\n", ItemName);
+                                oSB.AppendFormat("    Class:     {0}\r\n", ItemClass);
+                            }
+                        }
+                        oSB.AppendFormat("\r\n");
+
+                        oSB.AppendFormat("OldItem:\r\n");
+                        if (oFolderEvent != null)
+                        {
+                            if (oFolderEvent.OldFolderId != null)
+                            {
+                                oSB.AppendFormat("    UniqueId:  {0}\r\n", oFolderEvent.OldFolderId.UniqueId.ToString());
+                                oSB.AppendFormat("    ChangeKey: {0}\r\n", oFolderEvent.OldFolderId.ChangeKey.ToString());
+                                oSB.AppendFormat("    Name:      {0}\r\n", OldItemName);
+                                oSB.AppendFormat("    Class:     {0}\r\n", OldItemClass);
+                            }
+                        }
+                        oSB.AppendFormat("\r\n");
+
+                        oSB.AppendFormat("ParentFolder:\r\n");
+                        if (oFolderEvent != null)
+                        {
+                            if (oFolderEvent.ParentFolderId != null)
+                            {
+                                oSB.AppendFormat("    UniqueId:  {0}\r\n", oFolderEvent.ParentFolderId.UniqueId.ToString());
+                                oSB.AppendFormat("    ChangeKey: {0}\r\n", oFolderEvent.ParentFolderId.ChangeKey.ToString());
+                                oSB.AppendFormat("    Name:      {0}\r\n", ParentFolderName);
+                                oSB.AppendFormat("    Class:     {0}\r\n", ParentFolderClass);
+                            }
+                        }
+                        oSB.AppendFormat("\r\n");
+
+                        oSB.AppendFormat("OldParentFolder:\r\n");
+                        if (oFolderEvent != null)
+                        {
+                            if (oFolderEvent.OldParentFolderId != null)
+                            {
+                                oSB.AppendFormat("    UniqueId:  {0}\r\n", oFolderEvent.OldParentFolderId.UniqueId.ToString());
+                                oSB.AppendFormat("    ChangeKey: {0}\r\n", oFolderEvent.OldParentFolderId.ChangeKey.ToString());
+                                oSB.AppendFormat("    Name:      {0}\r\n", OldParentFolderName);
+                                oSB.AppendFormat("    Class:     {0}\r\n", OldParentFolderClass);
+                            }
+                        }
+                        oSB.AppendFormat("\r\n");
+                    }
+                     
+                     
+
+
+                    string sContent = oSB.ToString();
+
+                    ShowTextDocument oForm = new ShowTextDocument();
+                    oForm.txtEntry.WordWrap = false;
+                    oForm.Text = "Information";
+                    oForm.txtEntry.Text = sContent;
+                    oForm.ShowDialog();
+                }
+
             }
         }
     }
