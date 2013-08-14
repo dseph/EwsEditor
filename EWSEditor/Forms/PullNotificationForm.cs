@@ -292,9 +292,11 @@ namespace EWSEditor.Forms
                 oSB.AppendFormat("\r\n");
                 oSB.AppendFormat("ObjectType:        \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[2].Text);
                 oSB.AppendFormat("\r\n");
-                oSB.AppendFormat("OldObjectId:       \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[3].Text.Replace("ChangeKey:", "    ChangeKey:"));
-                oSB.AppendFormat("ParentFolderId:    \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[4].Text.Replace("ChangeKey:", "    ChangeKey:"));
-                oSB.AppendFormat("OldParentFolderId: \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[5].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
+                oSB.AppendFormat("ObjectId:          \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[3].Text.Replace("ChangeKey:", "    ChangeKey:"));
+                oSB.AppendFormat("OldObjectId:       \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[4].Text.Replace("ChangeKey:", "    ChangeKey:"));
+                oSB.AppendFormat("ParentFolderId:    \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[5].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("OldParentFolderId: \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[6].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
                 string sContent = oSB.ToString();
 
                 ShowTextDocument oForm = new ShowTextDocument();

@@ -131,6 +131,16 @@ namespace EWSEditor.Forms
             this.mnuFolderSynchronize.Text = "Item Synchronization Viewer... (This Folder) ";
             this.mnuFolderSynchronize.Click += new System.EventHandler(this.MnuSyncState_Click);
 
+            this.mnuFolderSplit4.Name = "mnuFolderSplit5";
+            this.mnuFolderSplit4.Size = new System.Drawing.Size(302, 6);
+
+            this.mnuFolderCalendarView.Name = "mnuFolderCalendarView";
+            this.mnuFolderCalendarView.Size = new System.Drawing.Size(305, 22);
+            this.mnuFolderCalendarView.Text = "CalendarView... (This Folder) ";
+            this.mnuFolderCalendarView.Click += new System.EventHandler(this.MnuFolderCalendarView_Click);
+
+             
+
             base.SetupForm();
         }
 
@@ -214,6 +224,13 @@ namespace EWSEditor.Forms
         private void MnuSyncState_Click(object sender, EventArgs e)
         {
             SyncFolderItemsForm.Show(this.CurrentService, this.currentFolder.Id);
+        }
+
+        private void MnuFolderCalendarView_Click(object sender, EventArgs e)
+        {
+            CalendarMonthView oForm = new CalendarMonthView(this, this.CurrentService, this.currentFolder.Id);
+            oForm.ShowDialog();
+            oForm = null;
         }
 
         private void MnuItems_Click(object sender, EventArgs e)
@@ -384,5 +401,20 @@ namespace EWSEditor.Forms
         }
 
         #endregion
+
+        private void ContentsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ContentsGrid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ContentsGrid_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

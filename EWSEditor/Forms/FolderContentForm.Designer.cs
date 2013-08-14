@@ -25,6 +25,11 @@ namespace EWSEditor.Forms
         private ToolStripMenuItem mnuCreateContact = new ToolStripMenuItem();
         private ToolStripMenuItem mnuCreateStickyNote = new ToolStripMenuItem();
 
+        private ToolStripSeparator mnuFolderSplit5 = new ToolStripSeparator();
+        private ToolStripMenuItem mnuFolderCalendarView = new ToolStripMenuItem();
+
+ 
+
         /// <summary>
         /// Required designer variable.
         /// </summary>

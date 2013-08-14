@@ -600,17 +600,26 @@ namespace EWSEditor.Forms
             if (lstEvents.SelectedItems.Count > 0)
             {
                 StringBuilder oSB = new StringBuilder();
-                oSB.AppendFormat("EventType:                \r\n    {0}\r\n", lstEvents.SelectedItems[0].Text);             
+                oSB.AppendFormat("EventType:                \r\n    {0}\r\n", lstEvents.SelectedItems[0].Text);
+                oSB.AppendFormat("\r\n");
                 oSB.AppendFormat("Thread:                   \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[1].Text);
+                oSB.AppendFormat("\r\n");
                 oSB.AppendFormat("TimeStamp:                \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[2].Text);
+                oSB.AppendFormat("\r\n");
                 oSB.AppendFormat("EventType:                \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[3].Text);
-
-                oSB.AppendFormat("ParentFolderId:           \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[4].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
-                oSB.AppendFormat("OldParentFolderId:        \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[5].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
-                oSB.AppendFormat("Item.ItemId:              \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[6].Text.Replace("ChangeKey:", "    ChangeKey:"));
-                oSB.AppendFormat("Item.OldItemId:           \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[7].Text.Replace("ChangeKey:", "    ChangeKey:"));
-                oSB.AppendFormat("FolderEvent.FolderId:     \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[8].Text.Replace("ChangeKey:", "\r\n    ChangeKey:"));
-                oSB.AppendFormat("Folder.OldFolderId:       \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[9].Text.Replace("ChangeKey:", "    ChangeKey:"));
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("ParentFolderId:           \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[4].Text.TrimEnd().Replace("ChangeKey:", "\r\n    ChangeKey:"));
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("OldParentFolderId:        \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[5].Text.TrimEnd().Replace("ChangeKey:", "\r\n    ChangeKey:"));
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("Item.ItemId:              \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[6].Text.TrimEnd().Replace("ChangeKey:", "    ChangeKey:"));
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("Item.OldItemId:           \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[7].Text.TrimEnd().Replace("ChangeKey:", "    ChangeKey:"));
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("FolderEvent.FolderId:     \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[8].Text.TrimEnd().Replace("ChangeKey:", "\r\n    ChangeKey:"));
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("Folder.OldFolderId:       \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[9].Text.TrimEnd().Replace("ChangeKey:", "    ChangeKey:"));
+                oSB.AppendFormat("\r\n");
                 oSB.AppendFormat("FolderEvent.UnreadCount:  \r\n    {0}\r\n", lstEvents.SelectedItems[0].SubItems[10].Text);
                 
                 string sContent = oSB.ToString();
