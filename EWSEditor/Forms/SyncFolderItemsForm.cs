@@ -134,5 +134,10 @@ namespace EWSEditor
             this.lstChanges.Items.Clear();
             this.lblLastSyncTime.Text = string.Empty;
         }
+
+        private void lstChanges_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

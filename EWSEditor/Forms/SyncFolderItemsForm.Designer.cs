@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.lstChanges = new System.Windows.Forms.ListView();
-            this.colChangeType = new System.Windows.Forms.ColumnHeader();
-            this.colIsRead = new System.Windows.Forms.ColumnHeader();
-            this.colItemId = new System.Windows.Forms.ColumnHeader();
+            this.colChangeType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colIsRead = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colItemId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.grpSynchronize = new System.Windows.Forms.GroupBox();
             this.btnGetFolderId = new System.Windows.Forms.Button();
             this.txtSyncState = new System.Windows.Forms.TextBox();
@@ -64,6 +64,7 @@
             this.lstChanges.TabIndex = 2;
             this.lstChanges.UseCompatibleStateImageBehavior = false;
             this.lstChanges.View = System.Windows.Forms.View.Details;
+            this.lstChanges.SelectedIndexChanged += new System.EventHandler(this.lstChanges_SelectedIndexChanged);
             // 
             // colChangeType
             // 
@@ -209,17 +210,9 @@
             this.Controls.Add(this.btnSynchronize);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SyncFolderItemsForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Controls.SetChildIndex(this.btnSynchronize, 0);
-            this.Controls.SetChildIndex(this.lstChanges, 0);
-            this.Controls.SetChildIndex(this.btnClose, 0);
-            this.Controls.SetChildIndex(this.lblLastSyncTime, 0);
-            this.Controls.SetChildIndex(this.grpSynchronize, 0);
-            this.Controls.SetChildIndex(this.label4, 0);
             this.grpSynchronize.ResumeLayout(false);
             this.grpSynchronize.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
