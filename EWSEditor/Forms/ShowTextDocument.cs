@@ -24,7 +24,20 @@ namespace EWSEditor.Forms
 
         private void ShowTextDocument_Load(object sender, EventArgs e)
         {
+             
+        }
 
+        private void txtEntry_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEntry_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control & e.KeyCode == Keys.A)
+                txtEntry.SelectAll();
+            if (e.Control & e.KeyCode == Keys.C)
+                txtEntry.Copy();
         }
     }
 }
