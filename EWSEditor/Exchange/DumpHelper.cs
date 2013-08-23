@@ -6,6 +6,7 @@ using EWSEditor.Logging;
 using EWSEditor.PropertyInformation;
 using EWSEditor.Settings;
 using Microsoft.Exchange.WebServices.Data;
+using Microsoft.Exchange;
 
 namespace EWSEditor.Common
 {
@@ -13,6 +14,10 @@ namespace EWSEditor.Common
     {
         private DumpHelper()
         {
+
+            Appointment x;
+            
+ 
         }
 
         /// <summary>
@@ -49,8 +54,15 @@ namespace EWSEditor.Common
             DebugLog.WriteVerbose(String.Format("Getting {0} items by ItemId.", itemIds.Count));
 
             PropertySet mimeSet = new PropertySet(BasePropertySet.IdOnly);
+
             mimeSet.Add(EmailMessageSchema.MimeContent);
             mimeSet.Add(EmailMessageSchema.Subject);
+             
+            
+            //mimeSet.Add(AppointmentSchema.MimeContent);
+            //mimeSet.Add(AppointmentSchema.Subject);
+            //mimeSet.Add(AppointmentSchema.RequiredAttendees);
+            //mimeSet.Add(AppointmentSchema.OptionalAttendees);
             ServiceResponseCollection<GetItemResponse> responses = service.BindToItems(itemIds, mimeSet);
 
             DebugLog.WriteVerbose("Finished getting items.");
@@ -74,6 +86,133 @@ namespace EWSEditor.Common
 
             DebugLog.WriteVerbose("Finished dumping MimeContents for each item.");
         }
+
+ 
+        /// <summary>
+        /// Get the MimeContent of each Item specified in itemIds and write it
+        /// to a string.
+        /// </summary>
+        /// <param name="itemIds">ItemIds to retrieve</param>
+        /// <param name="destinationFolderPath">Folder to save messages to</param>
+        /// <param name="service">ExchangeService to use to make EWS calls</param>
+        /// <param name="TheMime">MIME string to set</param>
+        public static void DumpMIMEToString(
+            List<ItemId> itemIds,
+            ExchangeService service,
+            ref string TheMime)
+        {
+            DebugLog.WriteVerbose(String.Format("Getting {0} items by ItemId.", itemIds.Count));
+            string MimeToReturn = string.Empty;
+            PropertySet mimeSet = new PropertySet(BasePropertySet.IdOnly);
+
+            mimeSet.Add(EmailMessageSchema.MimeContent);
+            mimeSet.Add(EmailMessageSchema.Subject);
+
+ 
+            ServiceResponseCollection<GetItemResponse> responses = service.BindToItems(itemIds, mimeSet);
+
+            DebugLog.WriteVerbose("Finished getting items.");
+
+            foreach (GetItemResponse response in responses)
+            {
+                switch (response.Result)
+                {
+                    case ServiceResult.Success:
+                        if (response.Item.MimeContent == null)
+                        {
+                            throw new ApplicationException("No MIME content to write");
+                        }
+                        UTF8Encoding oUTF8Encoding = new UTF8Encoding();
+                        MimeToReturn = oUTF8Encoding.GetString(response.Item.MimeContent.Content);
+                         
+                        break;
+                    case ServiceResult.Error:
+                        MimeToReturn =
+                                "ErrorCode:           " + response.ErrorCode.ToString() + "\r\n" +
+                                "\r\nErrorMessage:    " + response.ErrorMessage + "\r\n";
+ 
+                        break;
+                    case ServiceResult.Warning:
+                        throw new NotImplementedException("DumpMIMEToString doesn't handle ServiceResult.Warning.");
+                    default:
+                        throw new NotImplementedException("DumpMIMEToString encountered an unexpected ServiceResult.");
+                }
+            }
+
+            TheMime = MimeToReturn;
+
+            DebugLog.WriteVerbose("Finished dumping MimeContents for each item.");
+        }
+
+ 
+
+        /// <summary>
+        /// Get the MIME for the item and return MIME as a string. 
+        /// 
+        /// </summary>
+        /// <param name="oItemId">ItemId of Item with the MimeContent to get</param>
+        /// <param name="service">Exchagne service to use</param>
+        /// <param name="TheMime">MIME string to set</param>
+        public static void GetItemMime(ItemId oItemId,
+            ExchangeService service,
+            ref string TheMime)
+        {
+            DebugLog.WriteVerbose(String.Format("Getting item MIME." ));
+            string MimeToReturn = string.Empty;
+            try
+            {
+
+                PropertySet oMimePropertySet = new PropertySet(ItemSchema.MimeContent);
+                Item oItem = Item.Bind(service, oItemId, oMimePropertySet);
+                if (oItem.MimeContent == null)
+                    throw new ApplicationException("No MIME content to write");
+                else
+                    MimeToReturn = oItem.MimeContent.ToString();
+            }
+            catch (Exception ex)
+            {
+                MimeToReturn = "Error getting MIME: \r\n" + ex.Message;
+            }
+            TheMime = MimeToReturn;
+
+            DebugLog.WriteVerbose(String.Format("Finished item MIME."));
+        }
+
+        /// <summary>
+        /// Get the MIME for the item and return MIME as a string. 
+        /// 
+        /// </summary>
+        /// <param name="item">Item with the MimeContent to get</param>
+        /// <param name="service">Exchagne service to use</param>
+        /// <param name="TheMime">MIME string to set</param>
+        public  static void  GetItemMime(Item oItem,
+            ExchangeService service,
+            ref string TheMime)
+        {
+            DebugLog.WriteVerbose(String.Format("Getting item MIME."));
+            string MimeToReturn = string.Empty;
+            try 
+            {
+                PropertySet oMimePropertySet = new PropertySet(ItemSchema.MimeContent);
+                oItem.Load(oMimePropertySet);
+ 
+                if (oItem.MimeContent == null)
+                    throw new ApplicationException("No MIME content to write");
+                else
+                    TheMime =  oItem.MimeContent.ToString();
+                
+            }
+            catch (Exception ex)
+            {
+                MimeToReturn = "Error getting MIME: \r\n" + ex.Message;
+            }
+            TheMime = MimeToReturn;
+
+            DebugLog.WriteVerbose(String.Format("Finished item MIME.")); 
+        }
+
+
+
 
         /// <summary>
         /// Dump the MimeContent property of the given Item the given folder
