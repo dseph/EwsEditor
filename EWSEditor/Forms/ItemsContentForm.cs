@@ -680,5 +680,43 @@ namespace EWSEditor.Forms
 
         #endregion
 
+        private void mnuViewMIMEContent_Click(object sender, EventArgs e)
+        {
+            string MimeOfItem = string.Empty;
+            try
+            {
+                ItemId id = GetSelectedContentId();
+                if (id == null)
+                {
+                    return;
+                }
+ 
+                
+                //DumpHelper.DumpMIMEToString(
+                //    new List<ItemId> { id },
+                //    this.CurrentService,
+                //    ref MimeOfItem);
+              
+                DumpHelper.GetItemMime(
+                    id,
+                    this.CurrentService,
+                    ref MimeOfItem);
+
+                ShowTextDocument oForm = new ShowTextDocument();
+                oForm.txtEntry.WordWrap = false;
+                oForm.Text = "MIME";
+                oForm.txtEntry.Text = MimeOfItem;
+                oForm.ShowDialog();
+
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+ 
+ 
+        
+        }
+
     }
 }
