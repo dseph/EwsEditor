@@ -366,38 +366,69 @@ namespace EWSEditor.Forms
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Choose a MIME file to import...";
             ofd.Multiselect = false;
+            this.Cursor = Cursors.WaitCursor;
 
             // The dialog doesn't return OK, bail out...
             if (ofd.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
+            bool bItemSaved = false;
+            bool bSupportedFolderType = false;
 
-            try
+            if (this.currentFolder.FolderClass.StartsWith("IPF.Appointment"))
             {
-                this.Cursor = Cursors.WaitCursor;
+                bSupportedFolderType = true;
+                Appointment item = new Appointment(this.CurrentService);
+                item.MimeContent = new MimeContent();
 
+                DialogResult res = MessageBox.Show("Is the MIME Base64 encoded?", "MIME Encoding", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                    item.MimeContent.Content = Convert.FromBase64String(System.IO.File.ReadAllText(ofd.FileName));
+                else
+                    item.MimeContent.Content = System.IO.File.ReadAllBytes(ofd.FileName);
+                item.Save(this.currentFolder.Id);
+                this.RefreshContentAndDetails();
+                bItemSaved = true;
+            }
+            if (this.currentFolder.FolderClass.StartsWith("IPF.Contact"))
+            {
+                bSupportedFolderType = true;
+                Contact item = new Contact(this.CurrentService);
+                item.MimeContent = new MimeContent();
+
+                DialogResult res = MessageBox.Show("Is the MIME Base64 encoded?", "MIME Encoding", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                    item.MimeContent.Content = Convert.FromBase64String(System.IO.File.ReadAllText(ofd.FileName));
+                else
+                    item.MimeContent.Content = System.IO.File.ReadAllBytes(ofd.FileName);
+                item.Save(this.currentFolder.Id);
+                this.RefreshContentAndDetails();
+                bItemSaved = true;
+            }
+            if (this.currentFolder.FolderClass.StartsWith("IPF.Note"))
+            {
+                bSupportedFolderType = true;
                 EmailMessage item = new EmailMessage(this.CurrentService);
                 item.MimeContent = new MimeContent();
 
                 DialogResult res = MessageBox.Show("Is the MIME Base64 encoded?", "MIME Encoding", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (res == DialogResult.Yes)
-                {
                     item.MimeContent.Content = Convert.FromBase64String(System.IO.File.ReadAllText(ofd.FileName));
-                }
                 else
-                {
                     item.MimeContent.Content = System.IO.File.ReadAllBytes(ofd.FileName);
-                }
-
                 item.Save(this.currentFolder.Id);
-
                 this.RefreshContentAndDetails();
+                bItemSaved = true;
             }
-            finally
+            if (bSupportedFolderType == false)
             {
-                this.Cursor = Cursors.Default;
+                MessageBox.Show("Loading for this folder type not implemented.");
             }
+ 
+ 
+ 
+            this.Cursor = Cursors.Default;
         }
 
         #endregion
