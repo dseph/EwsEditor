@@ -470,7 +470,7 @@ namespace EWSEditor.Forms
                                 }
                             }
                             catch (Exception ex)
-                            { }
+                            { System.Console.WriteLine(ex.Message); }
                         }
 
                         if (oListViewItem.SubItems[4].Text.TrimEnd().Length != 0)
@@ -487,7 +487,7 @@ namespace EWSEditor.Forms
                                 }
                             }
                             catch (Exception ex)
-                            { }
+                            { System.Console.WriteLine(ex.Message); }
                         }
 
                         if (oListViewItem.SubItems[5].Text.TrimEnd().Length != 0)
@@ -502,7 +502,7 @@ namespace EWSEditor.Forms
                                 }
                             }
                             catch (Exception ex)
-                            { }
+                            { System.Console.WriteLine(ex.Message); }
                         }
                         if (oListViewItem.SubItems[6].Text.TrimEnd().Length != 0)
                         {
@@ -516,7 +516,7 @@ namespace EWSEditor.Forms
                                 }
                             }
                             catch (Exception ex)
-                            { }
+                            { System.Console.WriteLine(ex.Message); }
                         }
  
 
