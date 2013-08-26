@@ -32,7 +32,6 @@
             this.mcSelect = new System.Windows.Forms.MonthCalendar();
             this.lvItems = new System.Windows.Forms.ListView();
             this.cmsItems = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmsItemsProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemsViewMime = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemsViewMimeText = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsItemsViewMimeHexDump = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +70,6 @@
             // cmsItems
             // 
             this.cmsItems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmsItemsProperties,
             this.cmsItemsViewMime,
             this.cmsItemsAttachments,
             this.cmsItemsEdit,
@@ -79,15 +77,8 @@
             this.cmsItemsAttendeeStatus,
             this.openMasterToolStripMenuItem});
             this.cmsItems.Name = "cmsItems";
-            this.cmsItems.Size = new System.Drawing.Size(155, 180);
+            this.cmsItems.Size = new System.Drawing.Size(155, 158);
             this.cmsItems.Opening += new System.ComponentModel.CancelEventHandler(this.cmsItems_Opening);
-            // 
-            // cmsItemsProperties
-            // 
-            this.cmsItemsProperties.Name = "cmsItemsProperties";
-            this.cmsItemsProperties.Size = new System.Drawing.Size(154, 22);
-            this.cmsItemsProperties.Text = "Properties";
-            this.cmsItemsProperties.Click += new System.EventHandler(this.cmsItemsProperties_Click);
             // 
             // cmsItemsViewMime
             // 
@@ -101,14 +92,14 @@
             // cmsItemsViewMimeText
             // 
             this.cmsItemsViewMimeText.Name = "cmsItemsViewMimeText";
-            this.cmsItemsViewMimeText.Size = new System.Drawing.Size(130, 22);
+            this.cmsItemsViewMimeText.Size = new System.Drawing.Size(152, 22);
             this.cmsItemsViewMimeText.Text = "Text";
             this.cmsItemsViewMimeText.Click += new System.EventHandler(this.cmsItemsViewMimeText_Click);
             // 
             // cmsItemsViewMimeHexDump
             // 
             this.cmsItemsViewMimeHexDump.Name = "cmsItemsViewMimeHexDump";
-            this.cmsItemsViewMimeHexDump.Size = new System.Drawing.Size(130, 22);
+            this.cmsItemsViewMimeHexDump.Size = new System.Drawing.Size(152, 22);
             this.cmsItemsViewMimeHexDump.Text = "Hex Dump";
             this.cmsItemsViewMimeHexDump.Click += new System.EventHandler(this.cmsItemsViewMimeHexDump_Click);
             // 
@@ -117,6 +108,7 @@
             this.cmsItemsAttachments.Name = "cmsItemsAttachments";
             this.cmsItemsAttachments.Size = new System.Drawing.Size(154, 22);
             this.cmsItemsAttachments.Text = "Attachments";
+            this.cmsItemsAttachments.Visible = false;
             this.cmsItemsAttachments.Click += new System.EventHandler(this.cmsItemsAttachments_Click);
             // 
             // cmsItemsEdit
@@ -167,7 +159,6 @@
         private System.Windows.Forms.MonthCalendar mcSelect;
         private System.Windows.Forms.ListView lvItems;
         private System.Windows.Forms.ContextMenuStrip cmsItems;
-        private System.Windows.Forms.ToolStripMenuItem cmsItemsProperties;
         private System.Windows.Forms.ToolStripMenuItem cmsItemsViewMime;
         private System.Windows.Forms.ToolStripMenuItem cmsItemsViewMimeText;
         private System.Windows.Forms.ToolStripMenuItem cmsItemsViewMimeHexDump;
