@@ -32,33 +32,57 @@ namespace EWSEditor.Forms
 
             _SelectedFolder = oFolderId;
 
-            mcSelect.ShowToday = true;
-            mcSelect.ShowTodayCircle = true;
-            mcSelect.MaxSelectionCount = 1;
+            InitializeComponent();
+
+            //mcSelect.ShowToday = true;
+            //mcSelect.ShowTodayCircle = true;
+            //mcSelect.MaxSelectionCount = 1;
 
  
-            // Set the default displayed meetings to todays.
-            DateTime oDateTime= new DateTime();
-            oDateTime = DateTime.Now;
-            DateTime oDateTimeStart = TimeHelper.StartTimeOfDate(oDateTime);
-            DateTime oDateTimeEnd =  TimeHelper.EndTimeOfDate(oDateTime);
+            //// Set the default displayed meetings to todays.
+            //DateTime oDateTime= new DateTime();
+            //oDateTime = DateTime.Now;
+            //DateTime oDateTimeStart = TimeHelper.StartTimeOfDate(oDateTime);
+            //DateTime oDateTimeEnd =  TimeHelper.EndTimeOfDate(oDateTime);
 
   
-            _IsInitializingCalendar = true;
-            mcSelect.SelectionStart = oDateTimeStart;
-            mcSelect.SelectionEnd = oDateTimeEnd;
-            _IsInitializingCalendar = false;
+            //_IsInitializingCalendar = true;
+            //mcSelect.SelectionStart = oDateTimeStart;
+            //mcSelect.SelectionEnd = oDateTimeEnd;
+            //_IsInitializingCalendar = false;
 
-            ListViewItemHelper.LoadCalendarInstances(CurrentService, _SelectedFolder, 
-                    ref lvItems,
-                    mcSelect.SelectionStart, mcSelect.SelectionEnd);
- 
+            //ListViewItemHelper.LoadCalendarInstances(CurrentService, _SelectedFolder, 
+            //        ref lvItems,
+            //        mcSelect.SelectionStart, mcSelect.SelectionEnd);
+
+             
+
         }
 
 
         private void CalendarMonthView_Load(object sender, EventArgs e)
         {
+            mcSelect.ShowToday = true;
+            mcSelect.ShowTodayCircle = true;
+            mcSelect.MaxSelectionCount = 1;
 
+
+            // Set the default displayed meetings to todays.
+            DateTime oDateTime = new DateTime();
+            oDateTime = DateTime.Now;
+            DateTime oDateTimeStart = TimeHelper.StartTimeOfDate(oDateTime);
+            DateTime oDateTimeEnd = TimeHelper.EndTimeOfDate(oDateTime);
+
+
+            _IsInitializingCalendar = true;
+            mcSelect.SelectionStart = oDateTimeStart;
+            mcSelect.SelectionEnd = oDateTimeEnd;
+            _IsInitializingCalendar = false;
+
+            ListViewItemHelper.LoadCalendarInstances(CurrentService, _SelectedFolder,
+                    ref lvItems,
+                    mcSelect.SelectionStart, mcSelect.SelectionEnd);
+ 
         }
 
         private void ClearForm()
@@ -101,9 +125,22 @@ namespace EWSEditor.Forms
             {
                 ItemTag oItemTag = null;
                 oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
-                CalendarInstanceForm oForm = new CalendarInstanceForm(CurrentService, oItemTag.Id);
-                oForm.ShowDialog();
-                oForm = null;
+                //Item oSomeItem = Item.Bind(CurrentService, oItemTag.Id);
+                Appointment oSomeAppointment = Appointment.Bind(CurrentService, oItemTag.Id);
+                string sAppointmentType = oSomeAppointment.AppointmentType.ToString();
+                if (sAppointmentType == "Single")
+                {
+                    CalendarForm oForm = new CalendarForm(CurrentService, oSomeAppointment.Id);
+                    oForm.ShowDialog();
+                    oForm = null;
+                }
+                else
+                {
+                    CalendarInstanceForm oForm = new CalendarInstanceForm(CurrentService, oSomeAppointment.Id);
+                    oForm.ShowDialog();
+                    oForm = null;
+                }
+ 
                 oItemTag = null;
             }
         }
