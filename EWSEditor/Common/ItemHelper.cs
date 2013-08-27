@@ -95,7 +95,8 @@ namespace EWSEditor.Common
             //if (oListView.SelectedItems.Count > 0)
             //{
             //    string sInfo = string.Empty;
-            //    EwsClient.ItemTag oItemTag = (EwsClient.ItemTag)oListView.SelectedItems[0].Tag;
+            //    ItemTag oItemTag = (ItemTag)oListView.SelectedItems[0].Tag;
+        
 
             //    //sInfo = _EwsCaller.GetItemInfo(oItemTag.Id);
 
