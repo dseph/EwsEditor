@@ -371,6 +371,7 @@ namespace EWSEditor.Forms
                 return;
             }
             bool bItemSaved = false;
+            //bItemSaved = bItemSaved;
             bool bSupportedFolderType = false;
 
             if (this.currentFolder.FolderClass.StartsWith("IPF.Appointment"))

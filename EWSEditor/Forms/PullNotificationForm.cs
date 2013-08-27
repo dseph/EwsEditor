@@ -298,7 +298,7 @@ namespace EWSEditor.Forms
             string OldFolderClass = string.Empty;
 
             Folder oFolder = null;
-            Item oItem = null;
+            //Item oItem = null;
 
             StringBuilder oSB = new StringBuilder();
 
@@ -336,7 +336,9 @@ namespace EWSEditor.Forms
                                 }
                             }
                             catch (Exception ex)
-                            { }
+                            {
+                                Console.WriteLine("Error: " + ex.ToString());
+                            }
                         }
 
                         if (oListViewItem.SubItems[4].Text.TrimEnd().Length != 0)
@@ -353,7 +355,9 @@ namespace EWSEditor.Forms
                                 }
                             }
                             catch (Exception ex)
-                            { }
+                            {
+                                Console.WriteLine("Error: " + ex.ToString());
+                            }
                         }
 
                         if (oListViewItem.SubItems[5].Text.TrimEnd().Length != 0)
@@ -368,7 +372,9 @@ namespace EWSEditor.Forms
                                 }
                             }
                             catch (Exception ex)
-                            { }
+                            {
+                                Console.WriteLine("Error: " + ex.ToString());
+                            }
                         }
                         if (oListViewItem.SubItems[6].Text.TrimEnd().Length != 0)
                         {
@@ -382,7 +388,9 @@ namespace EWSEditor.Forms
                                 }
                             }
                             catch (Exception ex)
-                            { }
+                            {
+                                Console.WriteLine("Error: " + ex.ToString());
+                            }
                         }
 
 

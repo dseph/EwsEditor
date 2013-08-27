@@ -15,7 +15,7 @@ namespace EWSEditor.Common
         private DumpHelper()
         {
 
-            Appointment x;
+            //Appointment x;
             
  
         }
