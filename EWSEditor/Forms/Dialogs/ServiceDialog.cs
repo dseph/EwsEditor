@@ -258,5 +258,10 @@ namespace EWSEditor.Forms
         {
             cmboTimeZoneIds.Enabled = chkUseSpecifiedTimezone.Checked;
         }
+
+        //private void btnOptions_Click(object sender, EventArgs e)
+        //{
+        //    OptionsDialog.ShowDialog();
+        //}
     }
 }

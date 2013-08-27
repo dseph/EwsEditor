@@ -55,12 +55,18 @@ namespace EWSEditor.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.cmboTimeZoneIds = new System.Windows.Forms.ComboBox();
             this.chkUseSpecifiedTimezone = new System.Windows.Forms.CheckBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(227, 465);
+            this.btnOK.Location = new System.Drawing.Point(291, 499);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 10;
@@ -72,7 +78,7 @@ namespace EWSEditor.Forms
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(308, 465);
+            this.btnCancel.Location = new System.Drawing.Point(372, 499);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 11;
@@ -83,7 +89,7 @@ namespace EWSEditor.Forms
             // 
             this.lblExImp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblExImp.AutoSize = true;
-            this.lblExImp.Location = new System.Drawing.Point(23, 206);
+            this.lblExImp.Location = new System.Drawing.Point(23, -42);
             this.lblExImp.Name = "lblExImp";
             this.lblExImp.Size = new System.Drawing.Size(0, 13);
             this.lblExImp.TabIndex = 13;
@@ -92,9 +98,9 @@ namespace EWSEditor.Forms
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Location = new System.Drawing.Point(11, 436);
+            this.groupBox1.Location = new System.Drawing.Point(13, 483);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(365, 10);
+            this.groupBox1.Size = new System.Drawing.Size(429, 10);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             // 
@@ -102,16 +108,16 @@ namespace EWSEditor.Forms
             // 
             this.TempExchangeVersionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempExchangeVersionCombo.FormattingEnabled = true;
-            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(126, 112);
+            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(190, 120);
             this.TempExchangeVersionCombo.Name = "TempExchangeVersionCombo";
             this.TempExchangeVersionCombo.Size = new System.Drawing.Size(211, 21);
             this.TempExchangeVersionCombo.TabIndex = 2;
             // 
             // lblVersion
             // 
-            this.lblVersion.Location = new System.Drawing.Point(8, 112);
+            this.lblVersion.Location = new System.Drawing.Point(9, 120);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(100, 37);
+            this.lblVersion.Size = new System.Drawing.Size(154, 21);
             this.lblVersion.TabIndex = 26;
             this.lblVersion.Text = "Requested Exchange Version:";
             // 
@@ -119,7 +125,7 @@ namespace EWSEditor.Forms
             // 
             this.lblImpId.AutoSize = true;
             this.lblImpId.Enabled = false;
-            this.lblImpId.Location = new System.Drawing.Point(44, 411);
+            this.lblImpId.Location = new System.Drawing.Point(41, 85);
             this.lblImpId.Name = "lblImpId";
             this.lblImpId.Size = new System.Drawing.Size(19, 13);
             this.lblImpId.TabIndex = 36;
@@ -128,7 +134,7 @@ namespace EWSEditor.Forms
             // ImpersonationCheck
             // 
             this.ImpersonationCheck.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.ImpersonationCheck.Location = new System.Drawing.Point(12, 345);
+            this.ImpersonationCheck.Location = new System.Drawing.Point(9, 15);
             this.ImpersonationCheck.Name = "ImpersonationCheck";
             this.ImpersonationCheck.Size = new System.Drawing.Size(352, 31);
             this.ImpersonationCheck.TabIndex = 7;
@@ -142,7 +148,7 @@ namespace EWSEditor.Forms
             // 
             this.lblImpIdType.AutoSize = true;
             this.lblImpIdType.Enabled = false;
-            this.lblImpIdType.Location = new System.Drawing.Point(44, 384);
+            this.lblImpIdType.Location = new System.Drawing.Point(41, 54);
             this.lblImpIdType.Name = "lblImpIdType";
             this.lblImpIdType.Size = new System.Drawing.Size(46, 13);
             this.lblImpIdType.TabIndex = 35;
@@ -153,7 +159,7 @@ namespace EWSEditor.Forms
             this.TempConnectingIdCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempConnectingIdCombo.Enabled = false;
             this.TempConnectingIdCombo.FormattingEnabled = true;
-            this.TempConnectingIdCombo.Location = new System.Drawing.Point(115, 381);
+            this.TempConnectingIdCombo.Location = new System.Drawing.Point(112, 51);
             this.TempConnectingIdCombo.Name = "TempConnectingIdCombo";
             this.TempConnectingIdCombo.Size = new System.Drawing.Size(211, 21);
             this.TempConnectingIdCombo.TabIndex = 8;
@@ -161,7 +167,7 @@ namespace EWSEditor.Forms
             // ImpersonatedIdTextBox
             // 
             this.ImpersonatedIdTextBox.Enabled = false;
-            this.ImpersonatedIdTextBox.Location = new System.Drawing.Point(115, 409);
+            this.ImpersonatedIdTextBox.Location = new System.Drawing.Point(112, 78);
             this.ImpersonatedIdTextBox.Name = "ImpersonatedIdTextBox";
             this.ImpersonatedIdTextBox.Size = new System.Drawing.Size(211, 20);
             this.ImpersonatedIdTextBox.TabIndex = 9;
@@ -170,7 +176,7 @@ namespace EWSEditor.Forms
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Enabled = false;
-            this.lblUserName.Location = new System.Drawing.Point(44, 244);
+            this.lblUserName.Location = new System.Drawing.Point(44, 59);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(63, 13);
             this.lblUserName.TabIndex = 37;
@@ -179,7 +185,7 @@ namespace EWSEditor.Forms
             // txtDomain
             // 
             this.txtDomain.Enabled = false;
-            this.txtDomain.Location = new System.Drawing.Point(115, 292);
+            this.txtDomain.Location = new System.Drawing.Point(115, 107);
             this.txtDomain.Name = "txtDomain";
             this.txtDomain.Size = new System.Drawing.Size(211, 20);
             this.txtDomain.TabIndex = 6;
@@ -187,7 +193,7 @@ namespace EWSEditor.Forms
             // txtUserName
             // 
             this.txtUserName.Enabled = false;
-            this.txtUserName.Location = new System.Drawing.Point(115, 241);
+            this.txtUserName.Location = new System.Drawing.Point(115, 56);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(211, 20);
             this.txtUserName.TabIndex = 4;
@@ -195,7 +201,7 @@ namespace EWSEditor.Forms
             // txtPassword
             // 
             this.txtPassword.Enabled = false;
-            this.txtPassword.Location = new System.Drawing.Point(115, 267);
+            this.txtPassword.Location = new System.Drawing.Point(115, 82);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(211, 20);
@@ -205,7 +211,7 @@ namespace EWSEditor.Forms
             // 
             this.lblDomain.AutoSize = true;
             this.lblDomain.Enabled = false;
-            this.lblDomain.Location = new System.Drawing.Point(44, 295);
+            this.lblDomain.Location = new System.Drawing.Point(44, 110);
             this.lblDomain.Name = "lblDomain";
             this.lblDomain.Size = new System.Drawing.Size(46, 13);
             this.lblDomain.TabIndex = 42;
@@ -215,7 +221,7 @@ namespace EWSEditor.Forms
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Enabled = false;
-            this.lblPassword.Location = new System.Drawing.Point(44, 270);
+            this.lblPassword.Location = new System.Drawing.Point(44, 85);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(56, 13);
             this.lblPassword.TabIndex = 39;
@@ -224,7 +230,7 @@ namespace EWSEditor.Forms
             // chkCredentials
             // 
             this.chkCredentials.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.chkCredentials.Location = new System.Drawing.Point(12, 204);
+            this.chkCredentials.Location = new System.Drawing.Point(12, 19);
             this.chkCredentials.Name = "chkCredentials";
             this.chkCredentials.Size = new System.Drawing.Size(351, 31);
             this.chkCredentials.TabIndex = 3;
@@ -235,7 +241,7 @@ namespace EWSEditor.Forms
             // 
             // ExchangeServiceURLText
             // 
-            this.ExchangeServiceURLText.Location = new System.Drawing.Point(126, 80);
+            this.ExchangeServiceURLText.Location = new System.Drawing.Point(190, 78);
             this.ExchangeServiceURLText.Name = "ExchangeServiceURLText";
             this.ExchangeServiceURLText.ReadOnly = true;
             this.ExchangeServiceURLText.Size = new System.Drawing.Size(211, 20);
@@ -243,7 +249,7 @@ namespace EWSEditor.Forms
             // 
             // ExchangeServiceLabel
             // 
-            this.ExchangeServiceLabel.Location = new System.Drawing.Point(49, 80);
+            this.ExchangeServiceLabel.Location = new System.Drawing.Point(47, 81);
             this.ExchangeServiceLabel.Name = "ExchangeServiceLabel";
             this.ExchangeServiceLabel.Size = new System.Drawing.Size(56, 29);
             this.ExchangeServiceLabel.TabIndex = 58;
@@ -251,14 +257,14 @@ namespace EWSEditor.Forms
             // 
             // AutodiscoverEmailText
             // 
-            this.AutodiscoverEmailText.Location = new System.Drawing.Point(126, 41);
+            this.AutodiscoverEmailText.Location = new System.Drawing.Point(190, 39);
             this.AutodiscoverEmailText.Name = "AutodiscoverEmailText";
             this.AutodiscoverEmailText.Size = new System.Drawing.Size(211, 20);
             this.AutodiscoverEmailText.TabIndex = 0;
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(46, 41);
+            this.label5.Location = new System.Drawing.Point(44, 42);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 30);
             this.label5.TabIndex = 61;
@@ -268,9 +274,9 @@ namespace EWSEditor.Forms
             // 
             this.UseAutodiscoverCheck.Checked = true;
             this.UseAutodiscoverCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.UseAutodiscoverCheck.Location = new System.Drawing.Point(11, 12);
+            this.UseAutodiscoverCheck.Location = new System.Drawing.Point(12, 14);
             this.UseAutodiscoverCheck.Name = "UseAutodiscoverCheck";
-            this.UseAutodiscoverCheck.Size = new System.Drawing.Size(352, 24);
+            this.UseAutodiscoverCheck.Size = new System.Drawing.Size(323, 24);
             this.UseAutodiscoverCheck.TabIndex = 62;
             this.UseAutodiscoverCheck.Text = "Use Autodiscover to get the Exchange Web Services URL.";
             this.UseAutodiscoverCheck.UseVisualStyleBackColor = true;
@@ -282,7 +288,7 @@ namespace EWSEditor.Forms
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(44, 180);
+            this.label1.Location = new System.Drawing.Point(34, 463);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 18);
             this.label1.TabIndex = 63;
@@ -293,14 +299,14 @@ namespace EWSEditor.Forms
             this.cmboTimeZoneIds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboTimeZoneIds.Enabled = false;
             this.cmboTimeZoneIds.FormattingEnabled = true;
-            this.cmboTimeZoneIds.Location = new System.Drawing.Point(126, 177);
+            this.cmboTimeZoneIds.Location = new System.Drawing.Point(104, 460);
             this.cmboTimeZoneIds.Name = "cmboTimeZoneIds";
             this.cmboTimeZoneIds.Size = new System.Drawing.Size(211, 21);
             this.cmboTimeZoneIds.TabIndex = 64;
             // 
             // chkUseSpecifiedTimezone
             // 
-            this.chkUseSpecifiedTimezone.Location = new System.Drawing.Point(12, 152);
+            this.chkUseSpecifiedTimezone.Location = new System.Drawing.Point(11, 435);
             this.chkUseSpecifiedTimezone.Name = "chkUseSpecifiedTimezone";
             this.chkUseSpecifiedTimezone.Size = new System.Drawing.Size(352, 19);
             this.chkUseSpecifiedTimezone.TabIndex = 65;
@@ -308,44 +314,73 @@ namespace EWSEditor.Forms
             this.chkUseSpecifiedTimezone.UseVisualStyleBackColor = true;
             this.chkUseSpecifiedTimezone.CheckedChanged += new System.EventHandler(this.chkUseSpecifiedTimezone_CheckedChanged);
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ExchangeServiceURLText);
+            this.panel1.Controls.Add(this.ExchangeServiceLabel);
+            this.panel1.Controls.Add(this.UseAutodiscoverCheck);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.AutodiscoverEmailText);
+            this.panel1.Controls.Add(this.TempExchangeVersionCombo);
+            this.panel1.Controls.Add(this.lblVersion);
+            this.panel1.Location = new System.Drawing.Point(11, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(429, 157);
+            this.panel1.TabIndex = 68;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txtDomain);
+            this.panel2.Controls.Add(this.lblExImp);
+            this.panel2.Controls.Add(this.lblPassword);
+            this.panel2.Controls.Add(this.lblDomain);
+            this.panel2.Controls.Add(this.txtPassword);
+            this.panel2.Controls.Add(this.txtUserName);
+            this.panel2.Controls.Add(this.chkCredentials);
+            this.panel2.Controls.Add(this.lblUserName);
+            this.panel2.Location = new System.Drawing.Point(11, 175);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(429, 137);
+            this.panel2.TabIndex = 69;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.TempConnectingIdCombo);
+            this.panel3.Controls.Add(this.lblImpIdType);
+            this.panel3.Controls.Add(this.ImpersonationCheck);
+            this.panel3.Controls.Add(this.lblImpId);
+            this.panel3.Controls.Add(this.ImpersonatedIdTextBox);
+            this.panel3.Location = new System.Drawing.Point(11, 318);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(429, 111);
+            this.panel3.TabIndex = 70;
+            // 
             // ServiceDialog
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(390, 500);
+            this.ClientSize = new System.Drawing.Size(454, 534);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.chkUseSpecifiedTimezone);
             this.Controls.Add(this.cmboTimeZoneIds);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.UseAutodiscoverCheck);
-            this.Controls.Add(this.AutodiscoverEmailText);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.ExchangeServiceURLText);
-            this.Controls.Add(this.ExchangeServiceLabel);
-            this.Controls.Add(this.chkCredentials);
-            this.Controls.Add(this.lblUserName);
-            this.Controls.Add(this.txtDomain);
-            this.Controls.Add(this.txtUserName);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.lblDomain);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.lblImpId);
-            this.Controls.Add(this.ImpersonationCheck);
-            this.Controls.Add(this.lblImpIdType);
-            this.Controls.Add(this.TempConnectingIdCombo);
-            this.Controls.Add(this.ImpersonatedIdTextBox);
-            this.Controls.Add(this.TempExchangeVersionCombo);
-            this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblExImp);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Name = "ServiceDialog";
             this.Text = "EWS Editor - Exchange Service Configuration";
             this.Load += new System.EventHandler(this.ServiceDialog_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -378,5 +413,8 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmboTimeZoneIds;
         private System.Windows.Forms.CheckBox chkUseSpecifiedTimezone;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
