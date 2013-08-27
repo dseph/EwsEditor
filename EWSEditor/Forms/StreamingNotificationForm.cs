@@ -666,7 +666,9 @@ namespace EWSEditor.Forms
                             }
                         }
                         catch (Exception ex)
-                        { }
+                        {
+                            Console.WriteLine("Error: " + ex.ToString());
+                        }
                     }
                     if (lstEvents.SelectedItems[0].SubItems[5].Text.TrimEnd().Length != 0)
                     {
@@ -680,7 +682,9 @@ namespace EWSEditor.Forms
                             }
                         }
                         catch (Exception ex)
-                        { }
+                        {
+                            Console.WriteLine("Error: " + ex.ToString());
+                        }
                     }
                     if (lstEvents.SelectedItems[0].SubItems[6].Text.TrimEnd().Length != 0)
                     {
@@ -694,7 +698,9 @@ namespace EWSEditor.Forms
                             }
                         }
                         catch (Exception ex)
-                        { }
+                        {
+                            Console.WriteLine("Error: " + ex.ToString());
+                        }
                     }
                     if (lstEvents.SelectedItems[0].SubItems[7].Text.TrimEnd().Length != 0)
                     {
@@ -708,7 +714,9 @@ namespace EWSEditor.Forms
                             }
                         }
                         catch (Exception ex)
-                        { }
+                        {
+                            Console.WriteLine("Error: " + ex.ToString());
+                        }
                     }
                     if (lstEvents.SelectedItems[0].SubItems[8].Text.TrimEnd().Length != 0)
                     {
@@ -722,7 +730,9 @@ namespace EWSEditor.Forms
                             }
                         }
                         catch (Exception ex)
-                        { }
+                        {
+                            Console.WriteLine("Error: " + ex.ToString());
+                        }
                     }
                     if (lstEvents.SelectedItems[0].SubItems[9].Text.TrimEnd().Length != 0)
                     {
@@ -736,7 +746,9 @@ namespace EWSEditor.Forms
                             }
                         }
                         catch (Exception ex)
-                        { }
+                        {
+                            Console.WriteLine("Error: " + ex.ToString());
+                        }
                     }
 
                     StringBuilder oSB = new StringBuilder();

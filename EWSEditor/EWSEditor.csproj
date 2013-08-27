@@ -136,10 +136,17 @@
     <Compile Include="Common\ItemTag.cs" />
     <Compile Include="Common\ListViewColumnSorter.cs" />
     <Compile Include="Common\ListViewItemHelper.cs" />
+    <Compile Include="Common\PropertyGridHelper.cs" />
     <Compile Include="Common\RecipientHelper.cs" />
     <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Common\TimeHelper.cs" />
     <Compile Include="Common\UserIoHelper.cs" />
+    <Compile Include="ContactsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContactsForm.designer.cs">
+      <DependentUpon>ContactsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CalendarForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +177,18 @@
     <Compile Include="Forms\Dialogs\TimeZonesForm.designer.cs">
       <DependentUpon>TimeZonesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MessageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MessageForm.designer.cs">
+      <DependentUpon>MessageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RoomsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RoomsForm.Designer.cs">
+      <DependentUpon>RoomsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SelectSendMeetingUpdateNotificationOptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +215,11 @@
     </Compile>
     <Compile Include="Forms\UploadItemForm.Designer.cs">
       <DependentUpon>UploadItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Resources\EwsRequests.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -544,6 +568,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ContactsForm.resx">
+      <DependentUpon>ContactsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AppointmentsContentForm.resx">
       <DependentUpon>AppointmentsContentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -642,8 +669,14 @@
     <EmbeddedResource Include="Forms\Dialogs\UserIdDialog.resx">
       <DependentUpon>UserIdDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MessageForm.resx">
+      <DependentUpon>MessageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PullNotificationForm.resx">
       <DependentUpon>PullNotificationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RoomsForm.resx">
+      <DependentUpon>RoomsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectSendMeetingUpdateNotificationOptions.resx">
       <DependentUpon>SelectSendMeetingUpdateNotificationOptions.cs</DependentUpon>
@@ -762,6 +795,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ServicesProfile.xsd</DependentUpon>
     </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Settings\Internals\UserSettings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>UserSettings.Designer.cs</LastGenOutput>
