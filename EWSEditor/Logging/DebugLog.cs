@@ -234,7 +234,8 @@ namespace EWSEditor.Logging
                 }
 
                 // Write the debug log to the output file
-                System.IO.File.AppendAllText(DebugLog.LogFile, sb.ToString());
+                string LogEntry = sb.ToString();
+                System.IO.File.AppendAllText(DebugLog.LogFile, LogEntry);
                 return true;
             }
             catch (Exception ex)
