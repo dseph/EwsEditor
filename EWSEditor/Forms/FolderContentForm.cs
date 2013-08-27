@@ -134,10 +134,10 @@ namespace EWSEditor.Forms
             this.mnuFolderSplit4.Name = "mnuFolderSplit5";
             this.mnuFolderSplit4.Size = new System.Drawing.Size(302, 6);
 
-            this.mnuFolderCalendarView.Name = "mnuFolderCalendarView";
-            this.mnuFolderCalendarView.Size = new System.Drawing.Size(305, 22);
-            this.mnuFolderCalendarView.Text = "CalendarView... (This Folder) ";
-            this.mnuFolderCalendarView.Click += new System.EventHandler(this.MnuFolderCalendarView_Click);
+            //this.mnuFolderCalendarView.Name = "mnuFolderCalendarView";
+            //this.mnuFolderCalendarView.Size = new System.Drawing.Size(305, 22);
+            //this.mnuFolderCalendarView.Text = "CalendarView... (This Folder) ";
+            //this.mnuFolderCalendarView.Click += new System.EventHandler(this.MnuFolderCalendarView_Click);
 
              
 
@@ -226,12 +226,7 @@ namespace EWSEditor.Forms
             SyncFolderItemsForm.Show(this.CurrentService, this.currentFolder.Id);
         }
 
-        private void MnuFolderCalendarView_Click(object sender, EventArgs e)
-        {
-            CalendarMonthView oForm = new CalendarMonthView(this, this.CurrentService, this.currentFolder.Id);
-            oForm.ShowDialog();
-            oForm = null;
-        }
+ 
 
         private void MnuItems_Click(object sender, EventArgs e)
         {
@@ -241,6 +236,8 @@ namespace EWSEditor.Forms
                 ItemTraversal.Shallow,
                 this.CurrentService,
                 this);
+
+
         }
 
         private void MnuSoftDeletedItems_Click(object sender, EventArgs e)

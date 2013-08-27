@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.MiscSettingsGroup = new System.Windows.Forms.GroupBox();
+            this.EnableScpLookups = new System.Windows.Forms.CheckBox();
             this.UserAgentText = new System.Windows.Forms.TextBox();
             this.UserAgentLabel = new System.Windows.Forms.Label();
             this.EnableSslDetailCheck = new System.Windows.Forms.CheckBox();
@@ -48,7 +49,6 @@
             this.LogFilePathLabel = new System.Windows.Forms.Label();
             this.LogFilePathText = new System.Windows.Forms.TextBox();
             this.LoggingGroup = new System.Windows.Forms.GroupBox();
-            this.EnableScpLookups = new System.Windows.Forms.CheckBox();
             this.MiscSettingsGroup.SuspendLayout();
             this.LoggingGroup.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +75,16 @@
             this.MiscSettingsGroup.TabIndex = 1;
             this.MiscSettingsGroup.TabStop = false;
             this.MiscSettingsGroup.Text = "Miscellaneous";
+            // 
+            // EnableScpLookups
+            // 
+            this.EnableScpLookups.Location = new System.Drawing.Point(13, 102);
+            this.EnableScpLookups.Name = "EnableScpLookups";
+            this.EnableScpLookups.Size = new System.Drawing.Size(231, 24);
+            this.EnableScpLookups.TabIndex = 10;
+            this.EnableScpLookups.Text = "Enable SCP Lookups";
+            this.EnableScpLookups.UseVisualStyleBackColor = true;
+            this.EnableScpLookups.CheckedChanged += new System.EventHandler(this.EnableScpLookups_CheckedChanged);
             // 
             // UserAgentText
             // 
@@ -182,7 +192,7 @@
             // 
             this.MyCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MyCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.MyCancelButton.Location = new System.Drawing.Point(400, 380);
+            this.MyCancelButton.Location = new System.Drawing.Point(400, 379);
             this.MyCancelButton.Name = "MyCancelButton";
             this.MyCancelButton.Size = new System.Drawing.Size(75, 23);
             this.MyCancelButton.TabIndex = 4;
@@ -194,7 +204,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(319, 380);
+            this.OkButton.Location = new System.Drawing.Point(319, 379);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 3;
@@ -238,23 +248,13 @@
             this.LoggingGroup.TabStop = false;
             this.LoggingGroup.Text = "Logging...";
             // 
-            // EnableScpLookups
-            // 
-            this.EnableScpLookups.Location = new System.Drawing.Point(13, 102);
-            this.EnableScpLookups.Name = "EnableScpLookups";
-            this.EnableScpLookups.Size = new System.Drawing.Size(231, 24);
-            this.EnableScpLookups.TabIndex = 10;
-            this.EnableScpLookups.Text = "Enable SCP Lookups";
-            this.EnableScpLookups.UseVisualStyleBackColor = true;
-            this.EnableScpLookups.CheckedChanged += new System.EventHandler(this.EnableScpLookups_CheckedChanged);
-            // 
             // OptionsDialog
             // 
             this.AcceptButton = this.OkButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.MyCancelButton;
-            this.ClientSize = new System.Drawing.Size(487, 415);
+            this.ClientSize = new System.Drawing.Size(487, 414);
             this.Controls.Add(this.MyCancelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.MiscSettingsGroup);

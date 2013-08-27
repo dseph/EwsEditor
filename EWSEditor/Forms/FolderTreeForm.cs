@@ -583,11 +583,32 @@ namespace EWSEditor.Forms
 
         private void FolderTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            // Set the server version and update the status bar...
+             
             try
             {
                 this.Cursor = Cursors.WaitCursor;
+
+                // Set the server version and update the status bar...
                 this.BindSelectedNode();
+
+
+                // Specific folder type configurations
+                Folder oFolder = (GetFolderFromNode(e.Node));
+                if (oFolder != null)
+                {
+                    // Calendar folders get the calendar view folder
+                    if (oFolder.FolderClass == "IPF.Appointment")
+                    {
+                        mnuFolderCalendarView.Visible = true;
+                        toolStripMenuItem14.Visible = true;
+                    }
+                    else
+                    {
+                        mnuFolderCalendarView.Visible = false;
+                        toolStripMenuItem14.Visible = false;
+                    }
+                    oFolder = null;
+                }
             }
             finally
             {
@@ -651,6 +672,18 @@ namespace EWSEditor.Forms
                 this.DeferTreeViewAction(e);
                 DebugLog.WriteVerbose(string.Format("TreeViewAction, {0}, {1} cancelled and deferred.", e.Action, e.Cancel ? "was" : "was not"));
             }
+
+
+            //Folder oFolder = (GetFolderFromNode(e.Node));
+            //if (oFolder != null)
+            //{
+            //    if (oFolder.FolderClass == "IPF.Appointment")
+            //        mnuFolderCalendarView.Visible = true;
+            //    else
+            //        mnuFolderCalendarView.Visible = false;
+            //    oFolder = null;
+            //}
+ 
         }
 
         /// <summary>
@@ -802,6 +835,32 @@ namespace EWSEditor.Forms
                     this.CurrentService, 
                     this);
             }
+        }
+
+        /// <summary>
+        /// Open Calendar series view.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void MnuFolderCalendarView_Click(object sender, EventArgs e)
+        {
+            Folder folder = GetFolderFromNode(FolderTreeView.SelectedNode);
+            if (folder != null)
+            {
+                if (folder.FolderClass == "IPF.Appointment")
+                {
+                     
+                    CalendarMonthView oForm = new CalendarMonthView(this, this.CurrentService, folder.Id);
+                    oForm.ShowDialog();
+                    oForm = null;
+                }
+            }
+
+            //if (this.currentFolder.FolderClass == "IPF.Appointment")
+            //    MnuFolderCalendarView.Enabled = true;
+            //else
+            //    mnuFolderCalendarView.Enabled = false;
+ 
         }
 
         /// <summary>

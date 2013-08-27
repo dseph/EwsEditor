@@ -56,6 +56,8 @@ namespace EWSEditor.Forms
             this.mnuDumpXMLContents = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.addExtendedPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuFolderCalendarView = new System.Windows.Forms.ToolStripMenuItem();
             this.propertyListItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -156,9 +158,11 @@ namespace EWSEditor.Forms
             this.mnuDumpMIMEContents,
             this.mnuDumpXMLContents,
             this.toolStripMenuItem1,
-            this.addExtendedPropertyToolStripMenuItem});
+            this.addExtendedPropertyToolStripMenuItem,
+            this.toolStripMenuItem14,
+            this.mnuFolderCalendarView});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
-            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 304);
+            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 332);
             // 
             // mnuOpenContents
             // 
@@ -300,6 +304,18 @@ namespace EWSEditor.Forms
             this.addExtendedPropertyToolStripMenuItem.Text = "Add Extended Property...";
             this.addExtendedPropertyToolStripMenuItem.Click += new System.EventHandler(this.AddExtendedPropertyToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem14
+            // 
+            this.toolStripMenuItem14.Name = "toolStripMenuItem14";
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(266, 6);
+            // 
+            // mnuFolderCalendarView
+            // 
+            this.mnuFolderCalendarView.Name = "mnuFolderCalendarView";
+            this.mnuFolderCalendarView.Size = new System.Drawing.Size(269, 22);
+            this.mnuFolderCalendarView.Text = "CalendarView... ";
+            this.mnuFolderCalendarView.Click += new System.EventHandler(this.MnuFolderCalendarView_Click);
+            // 
             // saveFileDialog
             // 
             this.saveFileDialog.Filter = "EWS Editor Services Profile Files|*.mmp";
@@ -388,6 +404,7 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.ToolStripMenuItem mnuDumpMIMEContents;
         private System.Windows.Forms.ToolStripMenuItem mnuPermissions;
         private System.Windows.Forms.ToolStripMenuItem mnuOpenSoftDelItems;
+        
         private System.Windows.Forms.ContextMenuStrip mnuServiceContext;
         private System.Windows.Forms.ToolStripMenuItem mnuAddRootFolder;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
@@ -398,6 +415,7 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.ToolStripMenuItem DeleteHardMenu;
         private System.Windows.Forms.ToolStripMenuItem DeleteSoftMenu;
         private System.Windows.Forms.ToolStripMenuItem DeleteMoveMenu;
+
         private System.Windows.Forms.ToolStripMenuItem mnuCopyFolder;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem13;
         private System.Windows.Forms.ToolStripMenuItem mnuMoveFolder;
@@ -409,5 +427,8 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.ToolStripMenuItem addExtendedPropertyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuOpenStreamingNotifications;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem14;
+        private System.Windows.Forms.ToolStripMenuItem mnuFolderCalendarView; 
     }
 }

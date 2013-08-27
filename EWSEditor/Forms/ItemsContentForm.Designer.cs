@@ -68,7 +68,8 @@
             this.mnuItemSplit3,
             this.mnuResponse});
             this.mnuItemContext.Name = "mnuItemContext";
-            this.mnuItemContext.Size = new System.Drawing.Size(196, 198);
+            this.mnuItemContext.Size = new System.Drawing.Size(196, 176);
+            this.mnuItemContext.Opening += new System.ComponentModel.CancelEventHandler(this.mnuItemContext_Opening);
             // 
             // mnuAttachments
             // 

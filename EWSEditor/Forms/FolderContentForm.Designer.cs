@@ -26,7 +26,7 @@ namespace EWSEditor.Forms
         private ToolStripMenuItem mnuCreateStickyNote = new ToolStripMenuItem();
 
         private ToolStripSeparator mnuFolderSplit5 = new ToolStripSeparator();
-        private ToolStripMenuItem mnuFolderCalendarView = new ToolStripMenuItem();
+        //private ToolStripMenuItem mnuFolderCalendarView = new ToolStripMenuItem();
 
  
 
