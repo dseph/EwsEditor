@@ -450,5 +450,14 @@
         {
              
         }
+
+        private void MeetingRoomsMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.CurrentService != null)
+            {
+                RoomsForm oRoomsForm = new RoomsForm(this.CurrentService);
+                oRoomsForm.ShowDialog();
+            }
+        }
     }
 }

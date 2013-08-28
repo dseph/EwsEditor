@@ -12,7 +12,7 @@ using EWSEditor.Forms.Controls;
 using EWSEditor.Logging;
 using EWSEditor.Common;
 
-namespace EwsClient
+namespace EWSEditor.Forms
 {
     public partial class RoomsForm : Form
     {
@@ -47,8 +47,8 @@ namespace EwsClient
             lvRoomLists.View = View.Details;
             lvRoomLists.GridLines = true;
             lvRoomLists.FullRowSelect = true;
-            lvRoomLists.Columns.Add("Address", 200, HorizontalAlignment.Left);
-            lvRoomLists.Columns.Add("Name", 200, HorizontalAlignment.Left);
+            lvRoomLists.Columns.Add("Address", 250, HorizontalAlignment.Left);
+            lvRoomLists.Columns.Add("Name", 400, HorizontalAlignment.Left);
  
             ListViewItem oListItem = null;
             try
@@ -81,14 +81,14 @@ namespace EwsClient
             lvRooms.View = View.Details;
             lvRooms.GridLines = true;
             lvRooms.FullRowSelect = true;
-            lvRooms.Columns.Add("Address", 200, HorizontalAlignment.Left);
-            lvRooms.Columns.Add("Name", 200, HorizontalAlignment.Left);
+            lvRooms.Columns.Add("Address", 250, HorizontalAlignment.Left);
+            lvRooms.Columns.Add("Name", 400, HorizontalAlignment.Left);
 
             ListViewItem oListItem = null;
             try
             {
-                string sEmailAddress = textBox1.Text.Trim();
-                if (textBox1.Text.Trim().Length != 0)
+                string sEmailAddress = txtListSmtp.Text.Trim();
+                if (txtListSmtp.Text.Trim().Length != 0)
                 {
                     EmailAddress oEmailAddress = new EmailAddress(sEmailAddress);
                     System.Collections.ObjectModel.Collection<EmailAddress> oAddresses = null;
@@ -110,6 +110,30 @@ namespace EwsClient
 
             }
         }
+
+        private void lvRooms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvRoomLists_Click(object sender, EventArgs e)
+        {
+            string sSMTP = string.Empty;
+
+            if (lvRoomLists.SelectedItems[0].IndentCount != 0)
+            {
+                sSMTP = lvRoomLists.SelectedItems[0].Text;
+                if (sSMTP.Length != 0)
+                    txtListSmtp.Text = sSMTP;
+            }
+
+        }
+
+        private void lvRoomLists_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
  
     }
 }
