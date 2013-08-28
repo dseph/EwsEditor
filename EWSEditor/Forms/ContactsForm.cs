@@ -7,9 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Exchange.WebServices.Data;
-using EWSEditor.Forms.Controls;
-using EWSEditor.Logging;
-using EWSEditor.Common;
+using EwsClient;
  
 
 namespace EwsClient
@@ -33,7 +31,7 @@ namespace EwsClient
         {
             InitializeComponent();
             _CurrentService = CurrentService;
-            _Contact = new Contact(_CurrentService);
+            _Contact = new Contact(CurrentService);
             _IsExistingContact = false;
             _FolderId = oFolderId;
             ClearForm();
@@ -47,7 +45,7 @@ namespace EwsClient
             InitializeComponent();
             _CurrentService = CurrentService;
 
-            _Contact = LoadContactForEdit(_CurrentService, oItemId);
+            _Contact = LoadContactForEdit(CurrentService, oItemId);
             _IsExistingContact = true;
             SetFormFromContact(_Contact);
             if (_ContactWasSaved == false)
