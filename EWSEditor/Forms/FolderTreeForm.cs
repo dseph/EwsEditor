@@ -854,6 +854,8 @@ namespace EWSEditor.Forms
                     oForm.ShowDialog();
                     oForm = null;
                 }
+
+ 
             }
 
             //if (this.currentFolder.FolderClass == "IPF.Appointment")
