@@ -147,6 +147,12 @@
     <Compile Include="ContactsForm.designer.cs">
       <DependentUpon>ContactsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AttachmentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AttachmentsForm.designer.cs">
+      <DependentUpon>AttachmentsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CalendarForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -573,6 +579,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AppointmentsContentForm.resx">
       <DependentUpon>AppointmentsContentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AttachmentsForm.resx">
+      <DependentUpon>AttachmentsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AutodiscoverViewerForm.resx">
       <DependentUpon>AutodiscoverViewerForm.cs</DependentUpon>

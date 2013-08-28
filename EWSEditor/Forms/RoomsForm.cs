@@ -120,7 +120,7 @@ namespace EWSEditor.Forms
         {
             string sSMTP = string.Empty;
 
-            if (lvRoomLists.SelectedItems[0].IndentCount != 0)
+            if (lvRoomLists.SelectedItems.Count != 0)
             {
                 sSMTP = lvRoomLists.SelectedItems[0].Text;
                 if (sSMTP.Length != 0)

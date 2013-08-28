@@ -92,20 +92,20 @@ namespace EWSEditor.Common
 
         public static void DisplaySelectedItemAttachments(ExchangeService oExchangeService, ref ListView oListView)
         {
-            //if (oListView.SelectedItems.Count > 0)
-            //{
-            //    string sInfo = string.Empty;
-            //    ItemTag oItemTag = (ItemTag)oListView.SelectedItems[0].Tag;
-        
+            if (oListView.SelectedItems.Count > 0)
+            {
+                string sInfo = string.Empty;
+                ItemTag oItemTag = (ItemTag)oListView.SelectedItems[0].Tag;
 
-            //    //sInfo = _EwsCaller.GetItemInfo(oItemTag.Id);
 
-            //    AttachmentsForm oForm = new AttachmentsForm(oEwsCAller, oItemTag.Id);
+                //sInfo = _EwsCaller.GetItemInfo(oItemTag.Id);
+                
+                AttachmentsForm oForm = new AttachmentsForm(oExchangeService, oItemTag.Id);
 
-            //    oForm.ShowDialog();
-            //    oForm = null;
+                oForm.ShowDialog();
+                oForm = null;
 
-            //}
+            }
         }
 
         public static void GetMessageBody(Item oItem, BodyType oBodyType, ref string sMessageBody)
