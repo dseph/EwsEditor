@@ -1,12 +1,19 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using System.Text;
 using EWSEditor.Common;
 using EWSEditor.Exchange;
 using EWSEditor.Logging;
 using EWSEditor.Resources;
 using EWSEditor.Settings;
+using System.Net;
+using System.Xml;
 using Microsoft.Exchange.WebServices.Data;
+
+ 
 
 namespace EWSEditor.Forms
 {
@@ -720,7 +727,7 @@ namespace EWSEditor.Forms
 
         private void mnuItemContext_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            HandleItemMenuOpening();
         }
 
         private void ContentsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -731,6 +738,164 @@ namespace EWSEditor.Forms
         private void ContentsGrid_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void mnuDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditCurrentItemByType()
+        {
+            ItemId id = GetSelectedContentId();
+            Item oItem = Item.Bind(CurrentService, id);
+            string sClass = string.Empty;
+            sClass = GetBaseClass(oItem.ItemClass);
+
+            EditItemByClass(oItem, sClass);
+
+        }
+
+        private void EditItemByClass(Item oItem, string sClass)
+        {
+ 
+            if (sClass.Length != 0)
+            {
+
+                switch (sClass)
+                {
+                    case "IPM.Note":
+                        MessageForm oMessageForm = new MessageForm(CurrentService, oItem.Id);
+                        oMessageForm.ShowDialog();
+                        oMessageForm = null;
+                        break;
+                    case "IPM.Contact":
+                        Contact oContact = Contact.Bind(CurrentService, oItem.Id);
+                        ContactsForm oContactsForm = new ContactsForm(CurrentService, ref oContact);
+                        oContactsForm.ShowDialog();
+                        oContactsForm = null;
+                        break;
+
+                    case "IPM.Appointment":
+                        CalendarForm oCalendarForm = new CalendarForm(CurrentService, oItem.Id);
+                        oCalendarForm.ShowDialog();
+                        oCalendarForm = null;
+                        break;
+
+                    //case "IPM.Task":
+                    //    TasksForm oTasksForm = new TasksForm(_EwsCaller, oItemTag.Id);
+                    //    oTasksForm.ShowDialog();
+                    //    oTasksForm = null;
+                    //    break;
+                    //case "IPM.Activity":
+                    //    TasksForm oJournalForm = new JournalForm(_EwsCaller, oItemTag.Id);
+                    //    oJournalForm.ShowDialog();
+                    //    oJournalForm = null;
+                    //case "IPM.StickyNote":
+                    //    TasksForm oStickyNoteForm = new StickyNoteForm(_EwsCaller, oItemTag.Id);
+                    //    oStickyNoteForm.ShowDialog();
+                    //    oStickyNoteForm = null;
+                    //    break;
+                    default:
+                        //EditMailItem();
+                        break;
+                }
+            }
+        }
+
+        public string GetBaseClass(string ClassName)
+        {
+            string sClass = string.Empty;
+            char[] splitchar = { '.' };
+            string[] NameParts;
+             
+ 
+            NameParts = ClassName.Split(splitchar);
+            if (NameParts.Count() > 1)    
+                sClass = NameParts[0] + "." + NameParts[1];
+            else
+                sClass = ClassName;
+
+            return sClass;
+        }
+
+        private void mnuCopyItem_Click(object sender, EventArgs e)
+        {
+            FolderId destId = null;
+            if (FolderIdDialog.ShowDialog(ref destId) != DialogResult.OK)
+            {
+                return;
+            }
+
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                ItemId id = GetSelectedContentId();
+                if (id == null)
+                {
+                    return;
+                }
+
+                List<ItemId> itemId = new List<ItemId>();
+                itemId.Add(id);
+
+                this.CurrentService.CopyItems(itemId, destId);
+
+                // Refresh the view
+                this.RefreshContentAndDetails();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void mnuItemContext_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuClientEditItem_Click(object sender, EventArgs e)
+        {
+            EditCurrentItemByType();
+        }
+
+        private void HandleItemMenuOpening()
+        {
+            ItemId id = GetSelectedContentId();
+            Item oItem = Item.Bind(CurrentService, id);
+            string sClass = string.Empty;
+            sClass = GetBaseClass(oItem.ItemClass);
+
+            if (sClass.Length != 0)
+            {
+
+                switch (sClass)
+                {
+                    case "IPM.Note":
+                        mnuClientEditItem.Visible = true;
+                        break;
+                    case "IPM.Contact":
+                        mnuClientEditItem.Visible = false;
+                        break;
+                    case "IPM.Appointment":
+                        mnuClientEditItem.Visible = true;
+                        break;
+                    case "IPM.Task":
+                        mnuClientEditItem.Visible = false;
+                        break;
+                    case "IPM.Activity":
+                        mnuClientEditItem.Visible = false;
+                        break;
+                    case "IPM.StickyNote":
+                        mnuClientEditItem.Visible = false;
+                        break;
+                    default:
+                        mnuClientEditItem.Visible = false;
+                        break;
+                }
+            }
         }
 
     }

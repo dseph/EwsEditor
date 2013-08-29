@@ -1,4 +1,4 @@
-﻿namespace EwsClient
+﻿namespace EWSEditor.Forms
 {
     partial class ContactsForm
     {

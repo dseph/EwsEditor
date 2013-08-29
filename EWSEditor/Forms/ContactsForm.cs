@@ -7,10 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Exchange.WebServices.Data;
-using EwsClient;
+using EWSEditor.Common;
+using EWSEditor.Exchange;
+using EWSEditor.Logging;
+using EWSEditor.Resources;
+using EWSEditor.Settings;
  
 
-namespace EwsClient
+
+namespace EWSEditor.Forms
 {
     public partial class ContactsForm : Form
     {

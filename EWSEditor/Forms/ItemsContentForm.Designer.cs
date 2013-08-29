@@ -35,7 +35,9 @@
             this.mnuAddFileAttach = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAddItemAttach = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemSplit1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuClientEditItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMoveItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCopyItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHardDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSoftDelete = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,15 +63,18 @@
             this.mnuAddFileAttach,
             this.mnuAddItemAttach,
             this.mnuItemSplit1,
+            this.mnuClientEditItem,
             this.mnuMoveItem,
+            this.mnuCopyItem,
             this.mnuDelete,
             this.mnuItemSplit2,
             this.mnuExportItem,
             this.mnuItemSplit3,
             this.mnuResponse});
             this.mnuItemContext.Name = "mnuItemContext";
-            this.mnuItemContext.Size = new System.Drawing.Size(196, 176);
+            this.mnuItemContext.Size = new System.Drawing.Size(196, 242);
             this.mnuItemContext.Opening += new System.ComponentModel.CancelEventHandler(this.mnuItemContext_Opening);
+            this.mnuItemContext.Click += new System.EventHandler(this.mnuItemContext_Click);
             // 
             // mnuAttachments
             // 
@@ -97,12 +102,26 @@
             this.mnuItemSplit1.Name = "mnuItemSplit1";
             this.mnuItemSplit1.Size = new System.Drawing.Size(192, 6);
             // 
+            // mnuClientEditItem
+            // 
+            this.mnuClientEditItem.Name = "mnuClientEditItem";
+            this.mnuClientEditItem.Size = new System.Drawing.Size(195, 22);
+            this.mnuClientEditItem.Text = "Edit Item";
+            this.mnuClientEditItem.Click += new System.EventHandler(this.mnuClientEditItem_Click);
+            // 
             // mnuMoveItem
             // 
             this.mnuMoveItem.Name = "mnuMoveItem";
             this.mnuMoveItem.Size = new System.Drawing.Size(195, 22);
             this.mnuMoveItem.Text = "Move Item...";
             this.mnuMoveItem.Click += new System.EventHandler(this.MnuMoveItem_Click);
+            // 
+            // mnuCopyItem
+            // 
+            this.mnuCopyItem.Name = "mnuCopyItem";
+            this.mnuCopyItem.Size = new System.Drawing.Size(195, 22);
+            this.mnuCopyItem.Text = "Copy Item...";
+            this.mnuCopyItem.Click += new System.EventHandler(this.mnuCopyItem_Click);
             // 
             // mnuDelete
             // 
@@ -113,6 +132,7 @@
             this.mnuDelete.Name = "mnuDelete";
             this.mnuDelete.Size = new System.Drawing.Size(195, 22);
             this.mnuDelete.Text = "Delete Item";
+            this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
             // mnuHardDelete
             // 
@@ -251,5 +271,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuExportXml;
         private System.Windows.Forms.ToolStripMenuItem exportToStreamToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuViewMIMEContent;
+        private System.Windows.Forms.ToolStripMenuItem mnuCopyItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuClientEditItem;
     }
 }

@@ -95,7 +95,7 @@
             // 
             // btnHeaders
             // 
-            this.btnHeaders.Location = new System.Drawing.Point(536, 60);
+            this.btnHeaders.Location = new System.Drawing.Point(723, 25);
             this.btnHeaders.Name = "btnHeaders";
             this.btnHeaders.Size = new System.Drawing.Size(75, 23);
             this.btnHeaders.TabIndex = 17;
