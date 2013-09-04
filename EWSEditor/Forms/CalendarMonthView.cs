@@ -15,7 +15,7 @@ namespace EWSEditor.Forms
 {
     public partial class CalendarMonthView : Form
     {
-        private ExchangeService CurrentService = null;
+        private ExchangeService _CurrentService = null;
         private FolderId _SelectedFolder = null;
         private bool _IsInitializingCalendar = true;
 
@@ -28,33 +28,12 @@ namespace EWSEditor.Forms
         public CalendarMonthView(Form parent, ExchangeService oExchangeService, FolderId oFolderId) 
         {
 
-            CurrentService = oExchangeService;
+            _CurrentService = oExchangeService;
 
             _SelectedFolder = oFolderId;
 
             InitializeComponent();
-
-            //mcSelect.ShowToday = true;
-            //mcSelect.ShowTodayCircle = true;
-            //mcSelect.MaxSelectionCount = 1;
-
  
-            //// Set the default displayed meetings to todays.
-            //DateTime oDateTime= new DateTime();
-            //oDateTime = DateTime.Now;
-            //DateTime oDateTimeStart = TimeHelper.StartTimeOfDate(oDateTime);
-            //DateTime oDateTimeEnd =  TimeHelper.EndTimeOfDate(oDateTime);
-
-  
-            //_IsInitializingCalendar = true;
-            //mcSelect.SelectionStart = oDateTimeStart;
-            //mcSelect.SelectionEnd = oDateTimeEnd;
-            //_IsInitializingCalendar = false;
-
-            //ListViewItemHelper.LoadCalendarInstances(CurrentService, _SelectedFolder, 
-            //        ref lvItems,
-            //        mcSelect.SelectionStart, mcSelect.SelectionEnd);
-
              
 
         }
@@ -79,7 +58,7 @@ namespace EWSEditor.Forms
             mcSelect.SelectionEnd = oDateTimeEnd;
             _IsInitializingCalendar = false;
 
-            ListViewItemHelper.LoadCalendarInstances(CurrentService, _SelectedFolder,
+            ListViewItemHelper.LoadCalendarInstances(_CurrentService, _SelectedFolder,
                     ref lvItems,
                     mcSelect.SelectionStart, mcSelect.SelectionEnd);
  
@@ -103,7 +82,7 @@ namespace EWSEditor.Forms
         private void mcSelect_DateChanged(object sender, DateRangeEventArgs e)
         {
             if (_IsInitializingCalendar == false)
-                ListViewItemHelper.LoadCalendarInstances(CurrentService, _SelectedFolder, 
+                ListViewItemHelper.LoadCalendarInstances(_CurrentService, _SelectedFolder, 
                             ref lvItems, 
                             e.Start, e.End);
         }
@@ -126,17 +105,17 @@ namespace EWSEditor.Forms
                 ItemTag oItemTag = null;
                 oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
                 //Item oSomeItem = Item.Bind(CurrentService, oItemTag.Id);
-                Appointment oSomeAppointment = Appointment.Bind(CurrentService, oItemTag.Id);
+                Appointment oSomeAppointment = Appointment.Bind(_CurrentService, oItemTag.Id);
                 string sAppointmentType = oSomeAppointment.AppointmentType.ToString();
                 if (sAppointmentType == "Single")
                 {
-                    CalendarForm oForm = new CalendarForm(CurrentService, oSomeAppointment.Id);
+                    CalendarForm oForm = new CalendarForm(_CurrentService, oSomeAppointment.Id);
                     oForm.ShowDialog();
                     oForm = null;
                 }
                 else
                 {
-                    CalendarInstanceForm oForm = new CalendarInstanceForm(CurrentService, oSomeAppointment.Id);
+                    CalendarInstanceForm oForm = new CalendarInstanceForm(_CurrentService, oSomeAppointment.Id);
                     oForm.ShowDialog();
                     oForm = null;
                 }
@@ -149,7 +128,7 @@ namespace EWSEditor.Forms
         private void btnNew_Click(object sender, EventArgs e)
         {
 
-            CalendarForm oForm = new CalendarForm(CurrentService, _SelectedFolder);
+            CalendarForm oForm = new CalendarForm(_CurrentService, _SelectedFolder);
             oForm.ShowDialog();
             oForm = null;
  
@@ -163,22 +142,22 @@ namespace EWSEditor.Forms
 
         private void cmsItemsViewMimeText_Click(object sender, EventArgs e)
         {
-            ItemHelper.DisplaySelectedItemMIMEasText(CurrentService, lvItems);
+            ItemHelper.DisplaySelectedItemMIMEasText(_CurrentService, lvItems);
         }
 
         private void cmsItemsViewMimeHexDump_Click(object sender, EventArgs e)
         {
-            ItemHelper.DisplaySelectedItemMIMEasHexDump(CurrentService, lvItems);
+            ItemHelper.DisplaySelectedItemMIMEasHexDump(_CurrentService, lvItems);
         }
 
         private void cmsItemsProperties_Click(object sender, EventArgs e)
         {
-            ItemHelper.DisplaySelectedItemProperties(CurrentService, lvItems);
+            ItemHelper.DisplaySelectedItemProperties(_CurrentService, lvItems);
         }
 
         private void cmsItemsAttachments_Click(object sender, EventArgs e)
         {
-            ItemHelper.DisplaySelectedItemAttachments(CurrentService, ref lvItems);
+            ItemHelper.DisplaySelectedItemAttachments(_CurrentService, ref lvItems);
         }
 
         private void cmsItemsEdit_Click(object sender, EventArgs e)
@@ -188,7 +167,7 @@ namespace EWSEditor.Forms
 
         private void cmsItemsAdd_Click(object sender, EventArgs e)
         {
-            ItemHelper.NewItemByFolderClass("IPF.Appointment", CurrentService, _SelectedFolder);
+            ItemHelper.NewItemByFolderClass("IPF.Appointment", _CurrentService, _SelectedFolder);
         }
 
         private void cmsItemsAttendeeStatus_Click(object sender, EventArgs e)
@@ -199,7 +178,7 @@ namespace EWSEditor.Forms
                 ItemTag oItemTag = (ItemTag)this.lvItems.SelectedItems[0].Tag;
 
                 oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
-                Appointment oAppointment = Appointment.Bind(CurrentService, oItemTag.Id);
+                Appointment oAppointment = Appointment.Bind(_CurrentService, oItemTag.Id);
                 string s = AppointmentHelper.GetAttendeeStatusAsInfoString(oAppointment);
 
                 ShowTextDocument oForm = new ShowTextDocument();
@@ -219,9 +198,9 @@ namespace EWSEditor.Forms
             {
                 ItemTag oItemTag = null;
                 oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
-                Appointment oAppointment = Appointment.BindToRecurringMaster(CurrentService, oItemTag.Id);
+                Appointment oAppointment = Appointment.BindToRecurringMaster(_CurrentService, oItemTag.Id);
 
-                CalendarForm oForm = new CalendarForm(CurrentService, oAppointment.Id);
+                CalendarForm oForm = new CalendarForm(_CurrentService, oAppointment.Id);
                 oForm.ShowDialog();
                 oForm = null;
                 oItemTag = null;

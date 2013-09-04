@@ -54,6 +54,7 @@
             this.mnuDisplayDelegates = new System.Windows.Forms.ToolStripMenuItem();
             this.UserOofSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserAvailabilityMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MeetingRoomsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConvertIdMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeZonemenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -65,7 +66,7 @@
             this.mnuFindAppointments = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.MeetingRoomsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InboxRulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -167,6 +168,7 @@
             this.UserOofSettingsMenuItem,
             this.UserAvailabilityMenuItem,
             this.MeetingRoomsMenuItem,
+            this.InboxRulesMenuItem,
             this.ConvertIdMenuItem,
             this.TimeZonemenuitem,
             this.toolStripMenuItem1,
@@ -265,6 +267,13 @@
             this.UserAvailabilityMenuItem.Text = "User Availability...";
             this.UserAvailabilityMenuItem.Click += new System.EventHandler(this.MnuAvailability_Click);
             // 
+            // MeetingRoomsMenuItem
+            // 
+            this.MeetingRoomsMenuItem.Name = "MeetingRoomsMenuItem";
+            this.MeetingRoomsMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.MeetingRoomsMenuItem.Text = "Meeting Rooms...";
+            this.MeetingRoomsMenuItem.Click += new System.EventHandler(this.MeetingRoomsMenuItem_Click);
+            // 
             // ConvertIdMenuItem
             // 
             this.ConvertIdMenuItem.Name = "ConvertIdMenuItem";
@@ -276,7 +285,7 @@
             // 
             this.TimeZonemenuitem.Name = "TimeZonemenuitem";
             this.TimeZonemenuitem.Size = new System.Drawing.Size(246, 22);
-            this.TimeZonemenuitem.Text = "TimeZone";
+            this.TimeZonemenuitem.Text = "TimeZone...";
             this.TimeZonemenuitem.Click += new System.EventHandler(this.TimeZonemenuitem_Click);
             // 
             // toolStripMenuItem1
@@ -343,12 +352,12 @@
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
-            // MeetingRoomsMenuItem
+            // InboxRulesMenuItem
             // 
-            this.MeetingRoomsMenuItem.Name = "MeetingRoomsMenuItem";
-            this.MeetingRoomsMenuItem.Size = new System.Drawing.Size(246, 22);
-            this.MeetingRoomsMenuItem.Text = "Meeting Rooms";
-            this.MeetingRoomsMenuItem.Click += new System.EventHandler(this.MeetingRoomsMenuItem_Click);
+            this.InboxRulesMenuItem.Name = "InboxRulesMenuItem";
+            this.InboxRulesMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.InboxRulesMenuItem.Text = "Inbox Rules...";
+            this.InboxRulesMenuItem.Click += new System.EventHandler(this.InboxRulesMenuItem_Click);
             // 
             // BrowserForm
             // 
@@ -409,5 +418,6 @@
         public System.Windows.Forms.ToolStripMenuItem mnuStreamingNotification;
         private System.Windows.Forms.ToolStripMenuItem TimeZonemenuitem;
         private System.Windows.Forms.ToolStripMenuItem MeetingRoomsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem InboxRulesMenuItem;
     }
 }
