@@ -183,6 +183,12 @@
     <Compile Include="Forms\Dialogs\TimeZonesForm.designer.cs">
       <DependentUpon>TimeZonesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\InboxRulesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InboxRulesForm.Designer.cs">
+      <DependentUpon>InboxRulesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MessageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +227,12 @@
     </Compile>
     <Compile Include="Forms\UploadItemForm.Designer.cs">
       <DependentUpon>UploadItemForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MimeEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MimeEntry.Designer.cs">
+      <DependentUpon>MimeEntry.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -637,6 +649,9 @@
     <EmbeddedResource Include="Forms\FolderContentForm.resx">
       <DependentUpon>FolderContentForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InboxRulesForm.resx">
+      <DependentUpon>InboxRulesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ItemsContentForm.resx">
       <DependentUpon>ItemsContentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -764,6 +779,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UploadItemForm.resx">
       <DependentUpon>UploadItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MimeEntry.resx">
+      <DependentUpon>MimeEntry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

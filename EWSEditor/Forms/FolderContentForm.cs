@@ -48,7 +48,8 @@ namespace EWSEditor.Forms
                 this.mnuAssociatedItems,
                 this.mnuSoftDeletedItems,
                 this.mnuFolderSplit1,
-                this.mnuCreateFromMIME,
+                this.mnuCreateFromMimeFile,
+                this.mnuCreateFromMimeEntry,
                 this.mnuCreateFromStream,
                 this.mnuFolderSplit2,
                 this.mnuPermissions,
@@ -82,10 +83,15 @@ namespace EWSEditor.Forms
             this.mnuFolderSplit1.Name = "mnuFolderSplit1";
             this.mnuFolderSplit1.Size = new System.Drawing.Size(302, 6);
  
-            this.mnuCreateFromMIME.Name = "mnuCreateFromMIME";
-            this.mnuCreateFromMIME.Size = new System.Drawing.Size(305, 22);
-            this.mnuCreateFromMIME.Text = "Create Item From MIME...";
-            this.mnuCreateFromMIME.Click += new System.EventHandler(this.MnuCreateFromMIME_Click);
+            this.mnuCreateFromMimeFile.Name = "mnuCreateFromMIMEFile";
+            this.mnuCreateFromMimeFile.Size = new System.Drawing.Size(305, 22);
+            this.mnuCreateFromMimeFile.Text = "Create Item From MIME (File)...";
+            this.mnuCreateFromMimeFile.Click += new System.EventHandler(this.MnuCreateFromMimeFile_Click);
+
+            this.mnuCreateFromMimeEntry.Name = "mnuCreateFromMIMEEntry";
+            this.mnuCreateFromMimeEntry.Size = new System.Drawing.Size(305, 22);
+            this.mnuCreateFromMimeEntry.Text = "Create Item From MIME (Entry)...";
+            this.mnuCreateFromMimeEntry.Click += new System.EventHandler(this.MnuCreateFromMimeEntry_Click);
 
             this.mnuCreateFromStream.Name = "mnuCreateFromStream";
             this.mnuCreateFromStream.Size = new System.Drawing.Size(305, 22);
@@ -354,11 +360,11 @@ namespace EWSEditor.Forms
         }
 
         /// <summary>
-        /// Create a new item in a folder based on a input MIME stream
+        /// Create a new item in a folder based on a input MIME stream stored in a file
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void MnuCreateFromMIME_Click(object sender, EventArgs e)
+        private void MnuCreateFromMimeFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Choose a MIME file to import...";
@@ -368,6 +374,7 @@ namespace EWSEditor.Forms
             // The dialog doesn't return OK, bail out...
             if (ofd.ShowDialog() != DialogResult.OK)
             {
+                this.Cursor = Cursors.Default;
                 return;
             }
             bool bItemSaved = false;
@@ -377,7 +384,7 @@ namespace EWSEditor.Forms
             bItemSaved = bjunk;
             bjunk = bItemSaved;
             // Defeat warnings on bItemSaved - end
-             
+
             bool bSupportedFolderType = false;
 
             if (this.currentFolder.FolderClass.StartsWith("IPF.Appointment"))
@@ -429,6 +436,107 @@ namespace EWSEditor.Forms
             {
                 MessageBox.Show("Loading for this folder type not implemented.");
             }
+
+
+
+            this.Cursor = Cursors.Default;
+        }
+
+        /// <summary>
+        /// Create a new item in a folder based on a input MIME stream entered by user
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void MnuCreateFromMimeEntry_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "Choose a MIME file to import...";
+            ofd.Multiselect = false;
+            this.Cursor = Cursors.WaitCursor;
+ 
+            bool bItemCreated = false;
+
+            // Defeat warnings on bItemSaved - end
+            bool bjunk = false;
+            bItemCreated = bjunk;
+            bjunk = bItemCreated;
+            // Defeat warnings on bItemSaved - end
+             
+            bool bSupportedFolderType = false;
+
+            if (this.currentFolder.FolderClass.StartsWith("IPF.Appointment"))
+            {
+                bSupportedFolderType = true;
+                Appointment item = new Appointment(this.CurrentService);
+                item.MimeContent = new MimeContent();
+
+                MimeEntry oMimeEntry = new MimeEntry();
+                oMimeEntry.ShowDialog();
+                string sContent = string.Empty;
+                 
+                if (oMimeEntry.ChoseOK == true)
+                {
+                    if (oMimeEntry.chkIsBase64Encoded.Checked == true)
+                        item.MimeContent.Content = Convert.FromBase64String(oMimeEntry.txtEntry.Text.Trim());
+                    else
+                        item.MimeContent.Content = System.Text.Encoding.UTF8.GetBytes(oMimeEntry.txtEntry.Text);
+                }
+
+               
+ 
+                item.Save(this.currentFolder.Id);
+                this.RefreshContentAndDetails();
+                bItemCreated = true;
+                item = null;
+                 
+            }
+            if (this.currentFolder.FolderClass.StartsWith("IPF.Contact"))
+            {
+                bSupportedFolderType = true;
+                Contact item = new Contact(this.CurrentService);
+                item.MimeContent = new MimeContent();
+
+                MimeEntry oMimeEntry = new MimeEntry();
+                oMimeEntry.ShowDialog();
+                if (oMimeEntry.ChoseOK == true)
+                {
+                    if (oMimeEntry.chkIsBase64Encoded.Checked == true)
+                        item.MimeContent.Content = Convert.FromBase64String(oMimeEntry.txtEntry.Text.Trim());
+                    else
+                        item.MimeContent.Content = System.Text.Encoding.UTF8.GetBytes(oMimeEntry.txtEntry.Text);
+                }
+
+                item.Save(this.currentFolder.Id);
+                this.RefreshContentAndDetails();
+                bItemCreated = true;
+                item = null;
+            }
+            if (this.currentFolder.FolderClass.StartsWith("IPF.Note"))
+            {
+                bSupportedFolderType = true;
+                EmailMessage item = new EmailMessage(this.CurrentService);
+                item.MimeContent = new MimeContent();
+
+                MimeEntry oMimeEntry = new MimeEntry();
+
+                oMimeEntry.ShowDialog();
+                if (oMimeEntry.ChoseOK == true)
+                {
+                    if (oMimeEntry.chkIsBase64Encoded.Checked == true)
+                        item.MimeContent.Content = Convert.FromBase64String(oMimeEntry.txtEntry.Text.Trim());
+                    else
+                        item.MimeContent.Content = System.Text.Encoding.UTF8.GetBytes(oMimeEntry.txtEntry.Text);
+                }
+ 
+                item.Save(this.currentFolder.Id);
+                this.RefreshContentAndDetails();
+                bItemCreated = true;
+                item = null;
+            }
+            if (bSupportedFolderType == false)
+            {
+                MessageBox.Show("MIME loading for this folder type not implemented.");
+            }
  
  
  
@@ -448,6 +556,16 @@ namespace EWSEditor.Forms
         }
 
         private void ContentsGrid_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ContentsGrid_CellContentClick_3(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ContentsGrid_CellContentClick_4(object sender, DataGridViewCellEventArgs e)
         {
 
         }

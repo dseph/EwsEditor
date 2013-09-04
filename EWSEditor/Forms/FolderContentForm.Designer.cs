@@ -12,7 +12,8 @@ namespace EWSEditor.Forms
         private ToolStripSeparator mnuFolderSplit1 = new ToolStripSeparator();
         private ToolStripMenuItem mnuCreateStdItems = new ToolStripMenuItem();
         private ToolStripMenuItem mnuCreateSpcItems = new ToolStripMenuItem();
-        private ToolStripMenuItem mnuCreateFromMIME = new ToolStripMenuItem();
+        private ToolStripMenuItem mnuCreateFromMimeFile = new ToolStripMenuItem();
+        private ToolStripMenuItem mnuCreateFromMimeEntry = new ToolStripMenuItem();
         private ToolStripSeparator mnuFolderSplit2 = new ToolStripSeparator();
         private ToolStripMenuItem mnuPermissions = new ToolStripMenuItem();
         private ToolStripSeparator mnuFolderSplit3 = new ToolStripSeparator();
