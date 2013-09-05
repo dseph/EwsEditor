@@ -45,7 +45,7 @@
             this.lvRoomLists.Location = new System.Drawing.Point(3, 55);
             this.lvRoomLists.Name = "lvRoomLists";
             this.lvRoomLists.Size = new System.Drawing.Size(692, 178);
-            this.lvRoomLists.TabIndex = 0;
+            this.lvRoomLists.TabIndex = 2;
             this.lvRoomLists.UseCompatibleStateImageBehavior = false;
             this.lvRoomLists.SelectedIndexChanged += new System.EventHandler(this.lvRoomLists_SelectedIndexChanged);
             this.lvRoomLists.Click += new System.EventHandler(this.lvRoomLists_Click);
@@ -56,7 +56,7 @@
             this.btnRoomLists.Location = new System.Drawing.Point(3, 13);
             this.btnRoomLists.Name = "btnRoomLists";
             this.btnRoomLists.Size = new System.Drawing.Size(126, 23);
-            this.btnRoomLists.TabIndex = 1;
+            this.btnRoomLists.TabIndex = 0;
             this.btnRoomLists.Text = "Room Lists";
             this.btnRoomLists.UseVisualStyleBackColor = true;
             this.btnRoomLists.Click += new System.EventHandler(this.btnRoomLists_Click);
@@ -67,7 +67,7 @@
             this.lblRoomLists.Location = new System.Drawing.Point(1, 39);
             this.lblRoomLists.Name = "lblRoomLists";
             this.lblRoomLists.Size = new System.Drawing.Size(59, 13);
-            this.lblRoomLists.TabIndex = 2;
+            this.lblRoomLists.TabIndex = 1;
             this.lblRoomLists.Text = "RoomLists:";
             // 
             // lblGetRooms
@@ -76,7 +76,7 @@
             this.lblGetRooms.Location = new System.Drawing.Point(3, 271);
             this.lblGetRooms.Name = "lblGetRooms";
             this.lblGetRooms.Size = new System.Drawing.Size(60, 13);
-            this.lblGetRooms.TabIndex = 5;
+            this.lblGetRooms.TabIndex = 6;
             this.lblGetRooms.Text = "GetRooms:";
             // 
             // btnGetRooms
@@ -85,7 +85,7 @@
             this.btnGetRooms.Location = new System.Drawing.Point(549, 239);
             this.btnGetRooms.Name = "btnGetRooms";
             this.btnGetRooms.Size = new System.Drawing.Size(126, 23);
-            this.btnGetRooms.TabIndex = 4;
+            this.btnGetRooms.TabIndex = 5;
             this.btnGetRooms.Text = "Call GetRooms";
             this.btnGetRooms.UseVisualStyleBackColor = true;
             this.btnGetRooms.Click += new System.EventHandler(this.btnGetRooms_Click);
@@ -98,7 +98,7 @@
             this.lvRooms.Location = new System.Drawing.Point(6, 287);
             this.lvRooms.Name = "lvRooms";
             this.lvRooms.Size = new System.Drawing.Size(680, 124);
-            this.lvRooms.TabIndex = 3;
+            this.lvRooms.TabIndex = 7;
             this.lvRooms.UseCompatibleStateImageBehavior = false;
             this.lvRooms.SelectedIndexChanged += new System.EventHandler(this.lvRooms_SelectedIndexChanged);
             // 
@@ -109,7 +109,7 @@
             this.txtListSmtp.Location = new System.Drawing.Point(116, 242);
             this.txtListSmtp.Name = "txtListSmtp";
             this.txtListSmtp.Size = new System.Drawing.Size(425, 20);
-            this.txtListSmtp.TabIndex = 6;
+            this.txtListSmtp.TabIndex = 4;
             // 
             // label1
             // 
@@ -117,7 +117,7 @@
             this.label1.Location = new System.Drawing.Point(3, 249);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 13);
-            this.label1.TabIndex = 7;
+            this.label1.TabIndex = 3;
             this.label1.Text = "List SMTP Address:";
             // 
             // RoomsForm
