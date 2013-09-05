@@ -89,7 +89,7 @@
             this.btnDelete.Location = new System.Drawing.Point(102, 12);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 85;
+            this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
@@ -98,7 +98,7 @@
             this.btnSave.Location = new System.Drawing.Point(12, 12);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 84;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -110,7 +110,7 @@
             this.chkIsRecurring.Location = new System.Drawing.Point(704, 73);
             this.chkIsRecurring.Name = "chkIsRecurring";
             this.chkIsRecurring.Size = new System.Drawing.Size(83, 17);
-            this.chkIsRecurring.TabIndex = 72;
+            this.chkIsRecurring.TabIndex = 15;
             this.chkIsRecurring.Text = "Is Recurring";
             this.chkIsRecurring.UseVisualStyleBackColor = true;
             // 
@@ -120,7 +120,7 @@
             this.label8.Location = new System.Drawing.Point(16, 81);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 13);
-            this.label8.TabIndex = 83;
+            this.label8.TabIndex = 10;
             this.label8.Text = "Importance:";
             // 
             // cmboImportance
@@ -134,7 +134,7 @@
             this.cmboImportance.Location = new System.Drawing.Point(85, 73);
             this.cmboImportance.Name = "cmboImportance";
             this.cmboImportance.Size = new System.Drawing.Size(121, 21);
-            this.cmboImportance.TabIndex = 82;
+            this.cmboImportance.TabIndex = 11;
             this.cmboImportance.Text = "Normal";
             this.cmboImportance.SelectedIndexChanged += new System.EventHandler(this.cmboImportance_SelectedIndexChanged);
             // 
@@ -144,7 +144,7 @@
             this.chkIsAllDayEvent.Location = new System.Drawing.Point(704, 50);
             this.chkIsAllDayEvent.Name = "chkIsAllDayEvent";
             this.chkIsAllDayEvent.Size = new System.Drawing.Size(101, 17);
-            this.chkIsAllDayEvent.TabIndex = 71;
+            this.chkIsAllDayEvent.TabIndex = 14;
             this.chkIsAllDayEvent.Text = "Is All Day Event";
             this.chkIsAllDayEvent.UseVisualStyleBackColor = true;
             // 
@@ -153,7 +153,7 @@
             this.btnSend.Location = new System.Drawing.Point(189, 12);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
-            this.btnSend.TabIndex = 81;
+            this.btnSend.TabIndex = 2;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
@@ -163,7 +163,7 @@
             this.txtLocation.Location = new System.Drawing.Point(66, 207);
             this.txtLocation.Name = "txtLocation";
             this.txtLocation.Size = new System.Drawing.Size(484, 20);
-            this.txtLocation.TabIndex = 80;
+            this.txtLocation.TabIndex = 25;
             this.txtLocation.TextChanged += new System.EventHandler(this.txtLocation_TextChanged);
             // 
             // label6
@@ -172,7 +172,7 @@
             this.label6.Location = new System.Drawing.Point(9, 210);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 13);
-            this.label6.TabIndex = 79;
+            this.label6.TabIndex = 24;
             this.label6.Text = "Location:";
             // 
             // txtSubject
@@ -180,7 +180,7 @@
             this.txtSubject.Location = new System.Drawing.Point(66, 181);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(484, 20);
-            this.txtSubject.TabIndex = 78;
+            this.txtSubject.TabIndex = 23;
             this.txtSubject.TextChanged += new System.EventHandler(this.txtSubject_TextChanged);
             // 
             // label5
@@ -189,7 +189,7 @@
             this.label5.Location = new System.Drawing.Point(9, 184);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 13);
-            this.label5.TabIndex = 77;
+            this.label5.TabIndex = 22;
             this.label5.Text = "Subject:";
             // 
             // txtOptionalAttendees
@@ -197,7 +197,7 @@
             this.txtOptionalAttendees.Location = new System.Drawing.Point(121, 129);
             this.txtOptionalAttendees.Name = "txtOptionalAttendees";
             this.txtOptionalAttendees.Size = new System.Drawing.Size(535, 20);
-            this.txtOptionalAttendees.TabIndex = 76;
+            this.txtOptionalAttendees.TabIndex = 19;
             this.txtOptionalAttendees.TextChanged += new System.EventHandler(this.txtOptionalAttendees_TextChanged);
             // 
             // label4
@@ -206,7 +206,7 @@
             this.label4.Location = new System.Drawing.Point(17, 129);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 13);
-            this.label4.TabIndex = 75;
+            this.label4.TabIndex = 18;
             this.label4.Text = "Optional Attendees:";
             // 
             // txtRequiredAttendees
@@ -214,7 +214,7 @@
             this.txtRequiredAttendees.Location = new System.Drawing.Point(121, 102);
             this.txtRequiredAttendees.Name = "txtRequiredAttendees";
             this.txtRequiredAttendees.Size = new System.Drawing.Size(535, 20);
-            this.txtRequiredAttendees.TabIndex = 74;
+            this.txtRequiredAttendees.TabIndex = 17;
             this.txtRequiredAttendees.TextChanged += new System.EventHandler(this.txtRequiredAttendees_TextChanged);
             // 
             // label1
@@ -223,7 +223,7 @@
             this.label1.Location = new System.Drawing.Point(18, 105);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 13);
-            this.label1.TabIndex = 73;
+            this.label1.TabIndex = 16;
             this.label1.Text = "RequiredAttendees:";
             // 
             // txtBody
@@ -233,7 +233,7 @@
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtBody.Size = new System.Drawing.Size(757, 80);
-            this.txtBody.TabIndex = 70;
+            this.txtBody.TabIndex = 29;
             this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
             // lblBody
@@ -242,7 +242,7 @@
             this.lblBody.Location = new System.Drawing.Point(8, 233);
             this.lblBody.Name = "lblBody";
             this.lblBody.Size = new System.Drawing.Size(34, 13);
-            this.lblBody.TabIndex = 69;
+            this.lblBody.TabIndex = 28;
             this.lblBody.Text = "Body:";
             // 
             // txtOrganizer
@@ -252,7 +252,7 @@
             this.txtOrganizer.Name = "txtOrganizer";
             this.txtOrganizer.ReadOnly = true;
             this.txtOrganizer.Size = new System.Drawing.Size(214, 20);
-            this.txtOrganizer.TabIndex = 68;
+            this.txtOrganizer.TabIndex = 7;
             // 
             // lblOrganizer
             // 
@@ -260,7 +260,7 @@
             this.lblOrganizer.Location = new System.Drawing.Point(17, 47);
             this.lblOrganizer.Name = "lblOrganizer";
             this.lblOrganizer.Size = new System.Drawing.Size(55, 13);
-            this.lblOrganizer.TabIndex = 67;
+            this.lblOrganizer.TabIndex = 6;
             this.lblOrganizer.Text = "Organizer:";
             // 
             // txtAppointmentType
@@ -270,7 +270,7 @@
             this.txtAppointmentType.Name = "txtAppointmentType";
             this.txtAppointmentType.ReadOnly = true;
             this.txtAppointmentType.Size = new System.Drawing.Size(214, 20);
-            this.txtAppointmentType.TabIndex = 66;
+            this.txtAppointmentType.TabIndex = 9;
             // 
             // lblAppointmentType
             // 
@@ -278,7 +278,7 @@
             this.lblAppointmentType.Location = new System.Drawing.Point(350, 47);
             this.lblAppointmentType.Name = "lblAppointmentType";
             this.lblAppointmentType.Size = new System.Drawing.Size(93, 13);
-            this.lblAppointmentType.TabIndex = 65;
+            this.lblAppointmentType.TabIndex = 8;
             this.lblAppointmentType.Text = "AppointmentType:";
             // 
             // grpSchedule
@@ -296,7 +296,7 @@
             this.grpSchedule.Location = new System.Drawing.Point(12, 319);
             this.grpSchedule.Name = "grpSchedule";
             this.grpSchedule.Size = new System.Drawing.Size(799, 75);
-            this.grpSchedule.TabIndex = 86;
+            this.grpSchedule.TabIndex = 30;
             this.grpSchedule.TabStop = false;
             this.grpSchedule.Text = "Scheduled:";
             this.grpSchedule.Enter += new System.EventHandler(this.grpSchedule_Enter);
@@ -312,7 +312,7 @@
             this.cmboDurationEndTimezone.Location = new System.Drawing.Point(468, 40);
             this.cmboDurationEndTimezone.Name = "cmboDurationEndTimezone";
             this.cmboDurationEndTimezone.Size = new System.Drawing.Size(325, 21);
-            this.cmboDurationEndTimezone.TabIndex = 65;
+            this.cmboDurationEndTimezone.TabIndex = 9;
             this.cmboDurationEndTimezone.SelectedIndexChanged += new System.EventHandler(this.cmboDurationEndTimezone_SelectedIndexChanged);
             // 
             // lblDurationEndTimezone
@@ -321,7 +321,7 @@
             this.lblDurationEndTimezone.Location = new System.Drawing.Point(438, 43);
             this.lblDurationEndTimezone.Name = "lblDurationEndTimezone";
             this.lblDurationEndTimezone.Size = new System.Drawing.Size(24, 13);
-            this.lblDurationEndTimezone.TabIndex = 64;
+            this.lblDurationEndTimezone.TabIndex = 8;
             this.lblDurationEndTimezone.Text = "TZ:";
             // 
             // label12
@@ -330,7 +330,7 @@
             this.label12.Location = new System.Drawing.Point(438, 21);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(24, 13);
-            this.label12.TabIndex = 63;
+            this.label12.TabIndex = 3;
             this.label12.Text = "TZ:";
             // 
             // cmboDurationStartTimezone
@@ -344,7 +344,7 @@
             this.cmboDurationStartTimezone.Location = new System.Drawing.Point(468, 17);
             this.cmboDurationStartTimezone.Name = "cmboDurationStartTimezone";
             this.cmboDurationStartTimezone.Size = new System.Drawing.Size(325, 21);
-            this.cmboDurationStartTimezone.TabIndex = 61;
+            this.cmboDurationStartTimezone.TabIndex = 4;
             this.cmboDurationStartTimezone.SelectedIndexChanged += new System.EventHandler(this.cmboDurationStartTimezone_SelectedIndexChanged);
             // 
             // label3
@@ -353,7 +353,7 @@
             this.label3.Location = new System.Drawing.Point(19, 43);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
-            this.label3.TabIndex = 19;
+            this.label3.TabIndex = 5;
             this.label3.Text = "Duration End:";
             // 
             // dtDurationEndTime
@@ -363,7 +363,7 @@
             this.dtDurationEndTime.Name = "dtDurationEndTime";
             this.dtDurationEndTime.ShowUpDown = true;
             this.dtDurationEndTime.Size = new System.Drawing.Size(113, 20);
-            this.dtDurationEndTime.TabIndex = 21;
+            this.dtDurationEndTime.TabIndex = 7;
             this.dtDurationEndTime.ValueChanged += new System.EventHandler(this.dtDurationEndTime_ValueChanged);
             // 
             // label2
@@ -372,7 +372,7 @@
             this.label2.Location = new System.Drawing.Point(19, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
-            this.label2.TabIndex = 15;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Duration Start:";
             // 
             // dtDurationEndDate
@@ -380,7 +380,7 @@
             this.dtDurationEndDate.Location = new System.Drawing.Point(95, 43);
             this.dtDurationEndDate.Name = "dtDurationEndDate";
             this.dtDurationEndDate.Size = new System.Drawing.Size(200, 20);
-            this.dtDurationEndDate.TabIndex = 20;
+            this.dtDurationEndDate.TabIndex = 6;
             this.dtDurationEndDate.ValueChanged += new System.EventHandler(this.dtDurationEndDate_ValueChanged);
             // 
             // dtDurationStartDate
@@ -388,7 +388,7 @@
             this.dtDurationStartDate.Location = new System.Drawing.Point(95, 17);
             this.dtDurationStartDate.Name = "dtDurationStartDate";
             this.dtDurationStartDate.Size = new System.Drawing.Size(200, 20);
-            this.dtDurationStartDate.TabIndex = 16;
+            this.dtDurationStartDate.TabIndex = 1;
             this.dtDurationStartDate.ValueChanged += new System.EventHandler(this.dtDurationStartDate_ValueChanged);
             // 
             // dtDurationStartTime
@@ -398,7 +398,7 @@
             this.dtDurationStartTime.Name = "dtDurationStartTime";
             this.dtDurationStartTime.ShowUpDown = true;
             this.dtDurationStartTime.Size = new System.Drawing.Size(113, 20);
-            this.dtDurationStartTime.TabIndex = 17;
+            this.dtDurationStartTime.TabIndex = 2;
             this.dtDurationStartTime.ValueChanged += new System.EventHandler(this.dtDurationStartTime_ValueChanged);
             // 
             // txtResourceAttendees
@@ -406,7 +406,7 @@
             this.txtResourceAttendees.Location = new System.Drawing.Point(123, 155);
             this.txtResourceAttendees.Name = "txtResourceAttendees";
             this.txtResourceAttendees.Size = new System.Drawing.Size(535, 20);
-            this.txtResourceAttendees.TabIndex = 88;
+            this.txtResourceAttendees.TabIndex = 21;
             this.txtResourceAttendees.TextChanged += new System.EventHandler(this.txtResourceAttendees_TextChanged);
             // 
             // label7
@@ -415,7 +415,7 @@
             this.label7.Location = new System.Drawing.Point(17, 155);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(107, 13);
-            this.label7.TabIndex = 87;
+            this.label7.TabIndex = 20;
             this.label7.Text = "Resource Attendees:";
             // 
             // txtICalDateTimeStamp
@@ -424,7 +424,7 @@
             this.txtICalDateTimeStamp.Name = "txtICalDateTimeStamp";
             this.txtICalDateTimeStamp.ReadOnly = true;
             this.txtICalDateTimeStamp.Size = new System.Drawing.Size(244, 20);
-            this.txtICalDateTimeStamp.TabIndex = 94;
+            this.txtICalDateTimeStamp.TabIndex = 40;
             // 
             // lblICalDateTimeStamp
             // 
@@ -432,7 +432,7 @@
             this.lblICalDateTimeStamp.Location = new System.Drawing.Point(16, 456);
             this.lblICalDateTimeStamp.Name = "lblICalDateTimeStamp";
             this.lblICalDateTimeStamp.Size = new System.Drawing.Size(104, 13);
-            this.lblICalDateTimeStamp.TabIndex = 93;
+            this.lblICalDateTimeStamp.TabIndex = 39;
             this.lblICalDateTimeStamp.Text = "ICalDateTimeStamp:";
             // 
             // txtICalRecurrenceId
@@ -441,7 +441,7 @@
             this.txtICalRecurrenceId.Name = "txtICalRecurrenceId";
             this.txtICalRecurrenceId.ReadOnly = true;
             this.txtICalRecurrenceId.Size = new System.Drawing.Size(244, 20);
-            this.txtICalRecurrenceId.TabIndex = 92;
+            this.txtICalRecurrenceId.TabIndex = 36;
             // 
             // lblICalRecurrenceId
             // 
@@ -449,7 +449,7 @@
             this.lblICalRecurrenceId.Location = new System.Drawing.Point(16, 430);
             this.lblICalRecurrenceId.Name = "lblICalRecurrenceId";
             this.lblICalRecurrenceId.Size = new System.Drawing.Size(93, 13);
-            this.lblICalRecurrenceId.TabIndex = 91;
+            this.lblICalRecurrenceId.TabIndex = 35;
             this.lblICalRecurrenceId.Text = "ICalRecurrenceId:";
             // 
             // txtICalUid
@@ -458,7 +458,7 @@
             this.txtICalUid.Name = "txtICalUid";
             this.txtICalUid.ReadOnly = true;
             this.txtICalUid.Size = new System.Drawing.Size(244, 20);
-            this.txtICalUid.TabIndex = 90;
+            this.txtICalUid.TabIndex = 32;
             // 
             // lblICalUid
             // 
@@ -466,7 +466,7 @@
             this.lblICalUid.Location = new System.Drawing.Point(17, 406);
             this.lblICalUid.Name = "lblICalUid";
             this.lblICalUid.Size = new System.Drawing.Size(44, 13);
-            this.lblICalUid.TabIndex = 89;
+            this.lblICalUid.TabIndex = 31;
             this.lblICalUid.Text = "ICalUid:";
             // 
             // txtConversationId
@@ -475,7 +475,7 @@
             this.txtConversationId.Name = "txtConversationId";
             this.txtConversationId.ReadOnly = true;
             this.txtConversationId.Size = new System.Drawing.Size(244, 20);
-            this.txtConversationId.TabIndex = 100;
+            this.txtConversationId.TabIndex = 42;
             this.txtConversationId.Visible = false;
             // 
             // label9
@@ -484,7 +484,7 @@
             this.label9.Location = new System.Drawing.Point(387, 459);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(81, 13);
-            this.label9.TabIndex = 99;
+            this.label9.TabIndex = 41;
             this.label9.Text = "ConversationId:";
             this.label9.Visible = false;
             // 
@@ -494,7 +494,7 @@
             this.txtChangeKey.Name = "txtChangeKey";
             this.txtChangeKey.ReadOnly = true;
             this.txtChangeKey.Size = new System.Drawing.Size(244, 20);
-            this.txtChangeKey.TabIndex = 98;
+            this.txtChangeKey.TabIndex = 38;
             // 
             // label11
             // 
@@ -502,7 +502,7 @@
             this.label11.Location = new System.Drawing.Point(387, 433);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 13);
-            this.label11.TabIndex = 97;
+            this.label11.TabIndex = 37;
             this.label11.Text = "ChangeKey:";
             // 
             // txtItemId
@@ -511,7 +511,7 @@
             this.txtItemId.Name = "txtItemId";
             this.txtItemId.ReadOnly = true;
             this.txtItemId.Size = new System.Drawing.Size(244, 20);
-            this.txtItemId.TabIndex = 96;
+            this.txtItemId.TabIndex = 34;
             // 
             // label14
             // 
@@ -519,7 +519,7 @@
             this.label14.Location = new System.Drawing.Point(388, 409);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(39, 13);
-            this.label14.TabIndex = 95;
+            this.label14.TabIndex = 33;
             this.label14.Text = "ItemId:";
             // 
             // label34
@@ -528,7 +528,7 @@
             this.label34.Location = new System.Drawing.Point(223, 74);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(84, 13);
-            this.label34.TabIndex = 108;
+            this.label34.TabIndex = 12;
             this.label34.Text = "FreeBusyStatus:";
             // 
             // cmboLegacyFreeBusyStatus
@@ -542,7 +542,7 @@
             this.cmboLegacyFreeBusyStatus.Location = new System.Drawing.Point(313, 69);
             this.cmboLegacyFreeBusyStatus.Name = "cmboLegacyFreeBusyStatus";
             this.cmboLegacyFreeBusyStatus.Size = new System.Drawing.Size(98, 21);
-            this.cmboLegacyFreeBusyStatus.TabIndex = 107;
+            this.cmboLegacyFreeBusyStatus.TabIndex = 13;
             this.cmboLegacyFreeBusyStatus.Text = "OOF";
             // 
             // btnAttendeeStatus
@@ -550,7 +550,7 @@
             this.btnAttendeeStatus.Location = new System.Drawing.Point(717, 12);
             this.btnAttendeeStatus.Name = "btnAttendeeStatus";
             this.btnAttendeeStatus.Size = new System.Drawing.Size(94, 23);
-            this.btnAttendeeStatus.TabIndex = 109;
+            this.btnAttendeeStatus.TabIndex = 5;
             this.btnAttendeeStatus.Text = "Attendee Status";
             this.btnAttendeeStatus.UseVisualStyleBackColor = true;
             this.btnAttendeeStatus.Click += new System.EventHandler(this.btnAttendeeStatus_Click);
@@ -561,7 +561,7 @@
             this.cmboCategories.Location = new System.Drawing.Point(676, 202);
             this.cmboCategories.Name = "cmboCategories";
             this.cmboCategories.Size = new System.Drawing.Size(121, 21);
-            this.cmboCategories.TabIndex = 110;
+            this.cmboCategories.TabIndex = 27;
             this.cmboCategories.Text = "Normal";
             // 
             // label10
@@ -570,7 +570,7 @@
             this.label10.Location = new System.Drawing.Point(610, 205);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(60, 13);
-            this.label10.TabIndex = 111;
+            this.label10.TabIndex = 26;
             this.label10.Text = "Categories:";
             // 
             // lblGlobalObjectId
@@ -579,7 +579,7 @@
             this.lblGlobalObjectId.Location = new System.Drawing.Point(350, 17);
             this.lblGlobalObjectId.Name = "lblGlobalObjectId";
             this.lblGlobalObjectId.Size = new System.Drawing.Size(86, 13);
-            this.lblGlobalObjectId.TabIndex = 112;
+            this.lblGlobalObjectId.TabIndex = 3;
             this.lblGlobalObjectId.Text = "Global Object Id:";
             // 
             // txtGlobalObjectId
@@ -589,7 +589,7 @@
             this.txtGlobalObjectId.Name = "txtGlobalObjectId";
             this.txtGlobalObjectId.ReadOnly = true;
             this.txtGlobalObjectId.Size = new System.Drawing.Size(214, 20);
-            this.txtGlobalObjectId.TabIndex = 113;
+            this.txtGlobalObjectId.TabIndex = 4;
             // 
             // CalendarInstanceForm
             // 
