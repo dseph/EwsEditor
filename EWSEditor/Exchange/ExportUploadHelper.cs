@@ -47,6 +47,18 @@ namespace EWSEditor.Exchange
                 item
             };
 
+            //// Set headers which help with affinity when Impersonation is being used against Exchange 2013 and Exchagne Online 15.
+            //// http://blogs.msdn.com/b/mstehle/archive/2013/07/17/more-affinity-considerations-for-exchange-online-and-exchange-2013.aspx
+            //if (service.RequestedServerVersion.ToString().StartsWith("Exchange2007") == false &&
+            //    service.RequestedServerVersion.ToString().StartsWith("Exchange2010") == false)
+            //{
+            //    // Should set for 365:
+            //    if (service.HttpHeaders.ContainsKey("X-AnchorMailbox") == false)
+            //        service.HttpHeaders.Add("X-AnchorMailbox", service.ImpersonatedUserId.Id);
+            //    else
+            //        service.HttpHeaders["X-AnchorMailbox"] = service.ImpersonatedUserId.Id;
+            //}
+ 
             UploadItemsResponseType response = client.UploadItems(upload);
 
             // Look for errors in the response
@@ -134,6 +146,7 @@ namespace EWSEditor.Exchange
             binding.Credentials = service.GetNetworkCredential();
             binding.UserAgent = service.UserAgent;
             binding.Timeout = service.Timeout;
+             
 
             if (service.UseDefaultCredentials)
             {
@@ -158,19 +171,6 @@ namespace EWSEditor.Exchange
                         binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SmtpAddress;
                         break;
                 }
-
-                // Set headers which help with affinity when Impersonation is being used against Exchange 2013 and Exchagne Online 15.
-                // http://blogs.msdn.com/b/mstehle/archive/2013/07/17/more-affinity-considerations-for-exchange-online-and-exchange-2013.aspx
-                if (binding.RequestServerVersionValue.Version.ToString().StartsWith("Exchange2007") == false &&
-                    binding.RequestServerVersionValue.Version.ToString().StartsWith("Exchange2010") == false)
-                {
-                    // Should set for 365:
-                    if (service.HttpHeaders.ContainsKey("X-AnchorMailbox") == false)
-                        service.HttpHeaders.Add("X-AnchorMailbox", service.ImpersonatedUserId.Id);
-                    else
-                        service.HttpHeaders["X-AnchorMailbox"] = service.ImpersonatedUserId.Id;
-                }
-
  
             }
 
