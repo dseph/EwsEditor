@@ -91,84 +91,108 @@ namespace EWSEditor.Exchange
             if (UserToImpersonate != null)
             {
                 service.ImpersonatedUserId = UserToImpersonate;
+
+                // Set headers which help with affinity when Impersonation is being used against Exchange 2013 and Exchagne Online 15.
+                // http://blogs.msdn.com/b/mstehle/archive/2013/07/17/more-affinity-considerations-for-exchange-online-and-exchange-2013.aspx
+                if (service.RequestedServerVersion.ToString().StartsWith("Exchange2007") == false &&
+                    service.RequestedServerVersion.ToString().StartsWith("Exchange2010") == false)
+                {
+                    // Should set for 365:
+                    if (service.HttpHeaders.ContainsKey("X-AnchorMailbox") == false)
+                        service.HttpHeaders.Add("X-AnchorMailbox", service.ImpersonatedUserId.Id);
+                    else
+                        service.HttpHeaders["X-AnchorMailbox"] = service.ImpersonatedUserId.Id;
+                } 
             }
 
             return service;
         }
 
-        public static ExchangeServiceBinding CreateExchangeServiceBinding()
-        {
-            var binding = new ExchangeServiceBinding();
-            binding.AllowAutoRedirect = false;
+        //public static ExchangeServiceBinding CreateExchangeServiceBinding()
+        //{
+        //    var binding = new ExchangeServiceBinding();
+        //    binding.AllowAutoRedirect = false;
 
-            binding.UserAgent = GlobalSettings.UserAgent;
+        //    binding.UserAgent = GlobalSettings.UserAgent;
 
-            // Set the RequestServerVersionValue
-            binding.RequestServerVersionValue = new EwsVsProxy.RequestServerVersion();
-            switch (RequestedExchangeVersion)
-            {
-                case ExchangeVersion.Exchange2007_SP1:
-                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2007_SP1;
-                    break;
-                case ExchangeVersion.Exchange2010:
-                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010;
-                    break;
-                case ExchangeVersion.Exchange2010_SP1:
-                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010_SP1;
-                    break;
-                case ExchangeVersion.Exchange2010_SP2:
-                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010_SP2;
-                    break;
-                case ExchangeVersion.Exchange2013:
-                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2013;
-                    break;
-                default:
-                    DebugLog.WriteVerbose("Requested ExchangeVersion was '" + RequestedExchangeVersion.Value.ToString() + "' which is not expected");
-                    throw new ApplicationException("Unexpected ExchangeVersion");
-            }
+        //    // Set the RequestServerVersionValue
+        //    binding.RequestServerVersionValue = new EwsVsProxy.RequestServerVersion();
+        //    switch (RequestedExchangeVersion)
+        //    {
+        //        case ExchangeVersion.Exchange2007_SP1:
+        //            binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2007_SP1;
+        //            break;
+        //        case ExchangeVersion.Exchange2010:
+        //            binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010;
+        //            break;
+        //        case ExchangeVersion.Exchange2010_SP1:
+        //            binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010_SP1;
+        //            break;
+        //        case ExchangeVersion.Exchange2010_SP2:
+        //            binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010_SP2;
+        //            break;
+        //        case ExchangeVersion.Exchange2013:
+        //            binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2013;
+        //            break;
+        //        default:
+        //            DebugLog.WriteVerbose("Requested ExchangeVersion was '" + RequestedExchangeVersion.Value.ToString() + "' which is not expected");
+        //            throw new ApplicationException("Unexpected ExchangeVersion");
+        //    }
 
-            if (EwsUrl != null)
-            {
-                binding.Url = EwsUrl.AbsoluteUri;
-            }
+        //    if (EwsUrl != null)
+        //    {
+        //        binding.Url = EwsUrl.AbsoluteUri;
+        //    }
 
-            if (ServiceCredential != null)
-            {
-                binding.Credentials = ServiceCredential;
-            }
+        //    if (ServiceCredential != null)
+        //    {
+        //        binding.Credentials = ServiceCredential;
+        //    }
 
-            if (UseDefaultCredentials.HasValue)
-            {
-                binding.UseDefaultCredentials = UseDefaultCredentials.Value;
-            }
+        //    if (UseDefaultCredentials.HasValue)
+        //    {
+        //        binding.UseDefaultCredentials = UseDefaultCredentials.Value;
+        //    }
 
-            if (Timeout.HasValue)
-            {
-                binding.Timeout = Timeout.Value;
-            }
+        //    if (Timeout.HasValue)
+        //    {
+        //        binding.Timeout = Timeout.Value;
+        //    }
 
-            // Create the ExchangeImpersonationType if needed
-            if (UserToImpersonate != null)
-            {
-                binding.ExchangeImpersonation = new ExchangeImpersonationType();
-                binding.ExchangeImpersonation.ConnectingSID = new ConnectingSIDType();
-                binding.ExchangeImpersonation.ConnectingSID.Item = UserToImpersonate.Id;
-                switch (UserToImpersonate.IdType)
-                {
-                    case ConnectingIdType.PrincipalName:
-                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.PrincipalName;
-                        break;
-                    case ConnectingIdType.SID:
-                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SID;
-                        break;
-                    case ConnectingIdType.SmtpAddress:
-                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SmtpAddress;
-                        break;
-                }
-            }
+        //    // Create the ExchangeImpersonationType if needed
+        //    if (UserToImpersonate != null)
+        //    {
+        //        binding.ExchangeImpersonation = new ExchangeImpersonationType();
+        //        binding.ExchangeImpersonation.ConnectingSID = new ConnectingSIDType();
+        //        binding.ExchangeImpersonation.ConnectingSID.Item = UserToImpersonate.Id;
+        //        switch (UserToImpersonate.IdType)
+        //        {
+        //            case ConnectingIdType.PrincipalName:
+        //                binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.PrincipalName;
+        //                break;
+        //            case ConnectingIdType.SID:
+        //                binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SID;
+        //                break;
+        //            case ConnectingIdType.SmtpAddress:
+        //                binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SmtpAddress;
+        //                break;
+        //        }
 
-            return binding;
-        }
+        //        // Set headers which help with affinity when Impersonation is being used against Exchange 2013 and Exchagne Online 15.
+        //        // http://blogs.msdn.com/b/mstehle/archive/2013/07/17/more-affinity-considerations-for-exchange-online-and-exchange-2013.aspx
+        //        if (binding.RequestServerVersionValue.Version.ToString().StartsWith("Exchange2007") == false &&
+        //            binding.RequestServerVersionValue.Version.ToString().StartsWith("Exchange2010") == false)
+        //        {
+        //            //// Should set for 365:
+        //            //if (binding.ContainsKey("X-AnchorMailbox") == false)
+        //            //    binding.HttpHeaders.Add("X-AnchorMailbox", binding.ImpersonatedUserId.Id);
+        //            //else
+        //            //    binding.HttpHeaders["X-AnchorMailbox"] = binding.ImpersonatedUserId.Id;
+        //        }
+        //    }
+
+        //    return binding;
+        //}
 
         public static void InitializeWithDefaults()
         {
