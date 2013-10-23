@@ -49,6 +49,7 @@ namespace EWSEditor.Forms
             this.Close();
         }
 
+        // Load global options 
         private void LoadSettings()
         {
             this.UserAgentText.Text = GlobalSettings.UserAgent;

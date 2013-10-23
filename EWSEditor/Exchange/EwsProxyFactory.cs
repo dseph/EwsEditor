@@ -97,11 +97,17 @@ namespace EWSEditor.Exchange
                 if (service.RequestedServerVersion.ToString().StartsWith("Exchange2007") == false &&
                     service.RequestedServerVersion.ToString().StartsWith("Exchange2010") == false)
                 {
-                    // Should set for 365:
+                    // Should set for 365...:
+
                     if (service.HttpHeaders.ContainsKey("X-AnchorMailbox") == false)
                         service.HttpHeaders.Add("X-AnchorMailbox", service.ImpersonatedUserId.Id);
                     else
                         service.HttpHeaders["X-AnchorMailbox"] = service.ImpersonatedUserId.Id;
+
+                    if (service.HttpHeaders.ContainsKey("X-PreferServerAffinity") == false)
+                        service.HttpHeaders.Add("X-PreferServerAffinity", "true");
+                    else
+                        service.HttpHeaders["X-PreferServerAffinity"] = "true";
                 } 
             }
 

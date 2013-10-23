@@ -54,14 +54,15 @@ namespace EWSEditor.Forms
             }
 
             // Validation for Autodiscover input...
-            if (this.UseAutodiscoverCheck.Checked && String.IsNullOrEmpty(this.AutodiscoverEmailText.Text))
+ 
+            if (this.rdoAutodiscoverEmail.Checked && String.IsNullOrEmpty(this.AutodiscoverEmailText.Text))
             {
                 ErrorDialog.ShowInfo(DisplayStrings.MSG_SERVICE_REQ);
                 return;
             }
 
             // Validation for URL input...
-            if (!this.UseAutodiscoverCheck.Checked && String.IsNullOrEmpty(this.ExchangeServiceURLText.Text))
+            if (this.rdoServiceUrl.Checked && String.IsNullOrEmpty(this.ExchangeServiceURLText.Text))
             {
                 ErrorDialog.ShowInfo(DisplayStrings.MSG_SERVICE_REQ);
                 return;
@@ -98,14 +99,15 @@ namespace EWSEditor.Forms
                         this.txtDomain.Text.Trim()) :
                     null;
 
-                EwsProxyFactory.EwsUrl = UseAutodiscoverCheck.Checked ?
+                 
+                EwsProxyFactory.EwsUrl = this.rdoAutodiscoverEmail.Checked ?
                     null : new Uri(ExchangeServiceURLText.Text.Trim());
 
                 EwsProxyFactory.UserToImpersonate = this.ImpersonationCheck.Checked ?
                     new ImpersonatedUserId(this.connectingIdCombo.SelectedItem.Value, this.ImpersonatedIdTextBox.Text.Trim()) : null;
 
                 EwsProxyFactory.ServiceEmailAddress = this.AutodiscoverEmailText.Text.Trim();
-                if (this.UseAutodiscoverCheck.Checked)
+                if (this.rdoAutodiscoverEmail.Checked)
                 {
                     EwsProxyFactory.DoAutodiscover();
                 }
@@ -146,21 +148,23 @@ namespace EWSEditor.Forms
             lblImpIdType.Enabled = ImpersonationCheck.Checked;
         }
 
-        private void UseAutodiscoverCheck_CheckedChanged(object sender, EventArgs e)
-        {
-            this.AutodiscoverEmailText.Enabled = this.UseAutodiscoverCheck.Checked;
-            this.ExchangeServiceURLText.ReadOnly = this.UseAutodiscoverCheck.Checked;
+ 
 
-            if (!this.UseAutodiscoverCheck.Checked)
-            {
-                this.ExchangeServiceURLText.Text = string.Empty;
-                this.ExchangeServiceURLText.Focus();
-            }
-            else
-            {
-                this.AutodiscoverEmailText.Focus();
-            }
-        }
+        //private void UseAutodiscoverCheck_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    this.AutodiscoverEmailText.Enabled = this.UseAutodiscoverCheck.Checked;
+        //    this.ExchangeServiceURLText.ReadOnly = this.UseAutodiscoverCheck.Checked;
+
+        //    if (!this.UseAutodiscoverCheck.Checked)
+        //    {
+        //        this.ExchangeServiceURLText.Text = string.Empty;
+        //        this.ExchangeServiceURLText.Focus();
+        //    }
+        //    else
+        //    {
+        //        this.AutodiscoverEmailText.Focus();
+        //    }
+        //}
 
         /// <summary>
         /// Display the GetMailboxNameDialog to get the SMTP address and
@@ -227,8 +231,8 @@ namespace EWSEditor.Forms
             if (this.CurrentService != null)
             {
                 if (this.CurrentService.Url != null)
-                {
-                    this.UseAutodiscoverCheck.Checked = false;
+                { 
+                    this.rdoAutodiscoverEmail.Checked = false;
                     this.ExchangeServiceURLText.Text = this.CurrentService.Url.ToString();
                 }
 
@@ -252,6 +256,8 @@ namespace EWSEditor.Forms
                     this.ImpersonatedIdTextBox.Text = this.CurrentService.ImpersonatedUserId.Id;
                 }
             }
+
+            SetAutoDiscoverSelection();
         }
 
         private void chkUseSpecifiedTimezone_CheckedChanged(object sender, EventArgs e)
@@ -267,6 +273,57 @@ namespace EWSEditor.Forms
         private void btnOptions_Click(object sender, EventArgs e)
         {
             OptionsDialog.ShowDialog();
+        }
+
+        private void cmboTimeZoneIds_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdoAutodiscoverEmail_CheckedChanged(object sender, EventArgs e)
+        {
+
+            SetAutoDiscoverSelection();
+        }
+
+        private void SetAutoDiscoverSelection()
+        {
+            if (this.rdoAutodiscoverEmail.Checked == true)
+            {
+                this.AutodiscoverEmailText.Text = string.Empty;
+                this.AutodiscoverEmailText.Enabled = true;
+                this.lblAutodiscoverEmailDesc.Enabled = true;
+                this.AutodiscoverEmailText.Focus();
+
+                this.ExchangeServiceURLText.Enabled = false;
+                this.lblExchangeServiceURLTextDesc.Enabled = false;
+            }
+
+            if (this.rdoServiceUrl.Checked == true)
+            {
+                this.ExchangeServiceURLText.Text = string.Empty;
+                this.ExchangeServiceURLText.Enabled = true;
+                this.lblExchangeServiceURLTextDesc.Enabled = true;
+                this.ExchangeServiceURLText.Focus();
+
+                this.AutodiscoverEmailText.Enabled = false;
+                this.lblAutodiscoverEmailDesc.Enabled = false;
+            }
+        }
+
+        private void rdoServiceUrl_CheckedChanged(object sender, EventArgs e)
+        {
+            SetAutoDiscoverSelection();
+        }
+
+        private void lblImpId_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+             
         }
 
         //private void btnOptions_Click(object sender, EventArgs e)
