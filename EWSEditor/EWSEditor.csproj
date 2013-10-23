@@ -138,6 +138,7 @@
     <Compile Include="Common\ListViewItemHelper.cs" />
     <Compile Include="Common\PropertyGridHelper.cs" />
     <Compile Include="Common\RecipientHelper.cs" />
+    <Compile Include="Common\SerialHelper.cs" />
     <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Common\TimeHelper.cs" />
     <Compile Include="Common\UserIoHelper.cs" />
@@ -171,11 +172,11 @@
     <Compile Include="Forms\CalendarMonthView.designer.cs">
       <DependentUpon>CalendarMonthView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dialogs\OptionsDialog.cs">
+    <Compile Include="Forms\Dialogs\GlobalOptionsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dialogs\OptionsDialog.Designer.cs">
-      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    <Compile Include="Forms\Dialogs\GlobalOptionsDialog.Designer.cs">
+      <DependentUpon>GlobalOptionsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\TimeZonesForm.cs">
       <SubType>Form</SubType>
@@ -581,6 +582,7 @@
     <Compile Include="Forms\StreamingNotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Settings\ServiceSessionSetting.cs" />
     <Compile Include="Web References\EwsVsProxy\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -640,8 +642,8 @@
     <EmbeddedResource Include="Forms\Dialogs\OofForm.resx">
       <DependentUpon>OofForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\OptionsDialog.resx">
-      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Dialogs\GlobalOptionsDialog.resx">
+      <DependentUpon>GlobalOptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\TimeZonesForm.resx">
       <DependentUpon>TimeZonesForm.cs</DependentUpon>

@@ -55,6 +55,7 @@
             this.UserOofSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserAvailabilityMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MeetingRoomsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InboxRulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConvertIdMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeZonemenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -66,7 +67,6 @@
             this.mnuFindAppointments = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.InboxRulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +98,7 @@
             this.mnuMain.Name = "mnuMain";
             this.mnuMain.Size = new System.Drawing.Size(699, 24);
             this.mnuMain.TabIndex = 4;
+            this.mnuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnuMain_ItemClicked);
             // 
             // mnuFile
             // 
@@ -106,11 +107,12 @@
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "File";
+            this.mnuFile.Click += new System.EventHandler(this.mnuFile_Click);
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(92, 22);
+            this.mnuExit.Size = new System.Drawing.Size(152, 22);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.MnuExit_Click);
             // 
@@ -274,6 +276,13 @@
             this.MeetingRoomsMenuItem.Text = "Meeting Rooms...";
             this.MeetingRoomsMenuItem.Click += new System.EventHandler(this.MeetingRoomsMenuItem_Click);
             // 
+            // InboxRulesMenuItem
+            // 
+            this.InboxRulesMenuItem.Name = "InboxRulesMenuItem";
+            this.InboxRulesMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.InboxRulesMenuItem.Text = "Inbox Rules...";
+            this.InboxRulesMenuItem.Click += new System.EventHandler(this.InboxRulesMenuItem_Click);
+            // 
             // ConvertIdMenuItem
             // 
             this.ConvertIdMenuItem.Name = "ConvertIdMenuItem";
@@ -351,13 +360,6 @@
             this.mnuAbout.Size = new System.Drawing.Size(164, 22);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
-            // 
-            // InboxRulesMenuItem
-            // 
-            this.InboxRulesMenuItem.Name = "InboxRulesMenuItem";
-            this.InboxRulesMenuItem.Size = new System.Drawing.Size(246, 22);
-            this.InboxRulesMenuItem.Text = "Inbox Rules...";
-            this.InboxRulesMenuItem.Click += new System.EventHandler(this.InboxRulesMenuItem_Click);
             // 
             // BrowserForm
             // 
