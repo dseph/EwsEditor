@@ -36,6 +36,7 @@ namespace EWSEditor.Forms
         protected const string ColNameCategories = "colCategories";
         protected const string ColNameCulture = "colCulture";
         protected const string ColNameItemId = "colItemId";
+        //protected const string ColNameItemId = "colTimeZone";
 
         private List<ItemId> currentItemIds = new List<ItemId>();
         private ItemView contentItemView = new ItemView(GlobalSettings.FindItemViewSize);
@@ -896,6 +897,11 @@ namespace EWSEditor.Forms
                         break;
                 }
             }
+        }
+
+        private void ContentsGrid_CellContentClick_2(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
     }
