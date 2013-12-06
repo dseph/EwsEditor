@@ -44,6 +44,8 @@ namespace EWSEditor
 
         private void btnSynchronize_Click(object sender, EventArgs e)
         {
+
+            
             try
             {
                 this.Cursor = Cursors.WaitCursor;
@@ -72,7 +74,18 @@ namespace EWSEditor
                         item.Text = change.ChangeType.ToString();
                         item.SubItems.Add(change.IsRead.ToString());
                         item.SubItems.Add(change.ItemId.UniqueId);
-                         
+                        //if (change.Item != null)
+                        //{
+                        //    item.SubItems.Add(change.Item.Subject);
+                        //    item.SubItems.Add(change.Item.ItemClass);
+                        //    item.SubItems.Add(change.Item.LastModifiedTime.ToString());
+                        //}
+                        //else
+                        //{
+                        //    item.SubItems.Add("");
+                        //    item.SubItems.Add("");
+                        //    item.SubItems.Add("");
+                        //}
                         lstChanges.Items.Add(item);
                     }
 
@@ -141,105 +154,227 @@ namespace EWSEditor
 
         }
 
-        private string GatherChanges( ItemChange oItemChange)
+        //private string GatherChanges( ItemChange oItemChange)
+        //{
+        private string GatherChanges(List<Item> oItemList)
         {
             StringBuilder oSB = new StringBuilder();
+             
 
-            List<Item> itemList = new List<Item>();
-            itemList.Add(oItemChange.Item);
+            //List<Item> itemList = new List<Item>();
+            //itemList.Add(oItemChange.Item);
             PropertySet oPropertySet = new PropertySet(BasePropertySet.FirstClassProperties);
-
+            ServiceResponseCollection<ServiceResponse> oServiceResponse = null;
             try
             {
-                ServiceResponseCollection<ServiceResponse> oServiceResponse = CurrentService.LoadPropertiesForItems(itemList, oPropertySet);
-                oSB.AppendFormat("[Change Event]===================================================================\r\n");
-                oSB.AppendFormat("ItemId:             {0}\r\n", oItemChange.ItemId.ToString());
-                oSB.AppendFormat("ChangeType:         {0}\r\n", oItemChange.ChangeType);
-                oSB.AppendFormat("IsRead:             {0}\r\n", oItemChange.IsRead);
 
-
+                oServiceResponse = CurrentService.LoadPropertiesForItems(oItemList, oPropertySet);
+            }
+            catch (ServiceObjectPropertyException oServiceObjectPropertyException)
+            {
+                //MessageBox.Show(oXmlSchemaInferenceException.ToString(), "XmlSchemaInferenceException");
                 oSB.AppendLine("");
-                oSB.AppendFormat("[Some Item Properties loaded by LoadPropertiesForItems]-------------------------\r\n");
-                oSB.AppendFormat("UniqueId:           {0}\r\n", itemList[0].Id.UniqueId);
-                oSB.AppendFormat("Subject:            {0}\r\n", itemList[0].Subject);
-                oSB.AppendFormat("ItemClass:          {0}\r\n", itemList[0].ItemClass);
-                oSB.AppendFormat("LastModifiedTime:   {0}\r\n", itemList[0].LastModifiedTime.ToString());
-                oSB.AppendFormat("LastModifiedName:   {0}\r\n", itemList[0].LastModifiedName.ToString());
-                oSB.AppendFormat("DateTimeReceived:   {0}\r\n", itemList[0].DateTimeReceived.ToString());
-                oSB.AppendFormat("DateTimeSent:       {0}\r\n", itemList[0].DateTimeSent.ToString());
-                oSB.AppendFormat("DateTimeCreated:    {0}\r\n", itemList[0].DateTimeCreated.ToString());
-                oSB.AppendFormat("DisplayTo:          {0}\r\n", itemList[0].DisplayTo);
-                oSB.AppendFormat("DisplayCc:          {0}\r\n", itemList[0].DisplayCc);
-
-                oSB.AppendLine("");
-                oSB.AppendFormat("[ServiceResponse returned]----------------------------------------------------\r\n");
-                foreach (ServiceResponse o in oServiceResponse)
-                {
-                    oSB.AppendFormat("ErrorCode:        {0}\r\n", o.ErrorCode.ToString());
-                    oSB.AppendFormat("ErrorDetails:  \r\n");
-                    if (o.ErrorProperties != null)
-                    {
-                          
-                        foreach (KeyValuePair<string, string> oProp in o.ErrorDetails)
-                        {
-                            //oSB.AppendFormat("  ErrorDetails:     {0}\r\n");
-                            oSB.AppendFormat("  Key:     {0}\r\n", oProp.Key);
-                            oSB.AppendFormat("  Value:   {0}\r\n", oProp.Value);
-                            oSB.AppendLine("");
-                        }
-                    }
-                    oSB.AppendFormat("ErrorMessage:     {0}\r\n", o.ErrorMessage);
-                    oSB.AppendFormat("ErrorProperties:  \r\n" );
-                    if (o.ErrorProperties != null)
-                    {
-                        foreach (PropertyDefinitionBase oProps in o.ErrorProperties)
-                        {
-                            //oSB.AppendFormat("  ErrorProperties:  {0}\r\n");
-                            oSB.AppendFormat("  ToString(): {0}\r\n", oProps.ToString());
-                            oSB.AppendFormat("  Type:       {0}\r\n", oProps.Type);
-                            oSB.AppendFormat("  Version:    {0}\r\n", oProps.Version);
-
-                            //System.Collections.ObjectModel.Collection<PropertyDefinitionBase>
-                        }
-                    }
-                    oSB.AppendFormat("Result:           {0}\r\n", o.Result.ToString());
-                }
+                oSB.Append("[ServiceObjectPropertyException - Exception of type 'ServiceObjectPropertyException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                oSB.AppendFormat("Exception: {0}", oServiceObjectPropertyException.ToString());
 
             }
+            catch (NullReferenceException oNullReferenceException)
+            {
+                //MessageBox.Show(oXmlSchemaInferenceException.ToString(), "XmlSchemaInferenceException");
+                oSB.AppendLine("");
+                oSB.Append("[NullReferenceException - Exception of type 'NullReferenceException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                oSB.AppendFormat("Exception: {0}", oNullReferenceException.ToString());
+
+            }
+            catch (NoNullAllowedException oNoNullAllowedException)
+            {
+                //MessageBox.Show(oXmlSchemaInferenceException.ToString(), "XmlSchemaInferenceException");
+                oSB.AppendLine("");
+                oSB.Append("[NoNullAllowedException - Exception of type 'NoNullAllowedException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                oSB.AppendFormat("Exception: {0}", oNoNullAllowedException.ToString());
+
+            }
+ 
             catch (System.Xml.Schema.XmlSchemaInferenceException oXmlSchemaInferenceException)
             {
-                MessageBox.Show(oXmlSchemaInferenceException.ToString(), "XmlSchemaInferenceException");
-                oSB.Append("[Exception of type 'XmlSchemaInferenceException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                //MessageBox.Show(oXmlSchemaInferenceException.ToString(), "XmlSchemaInferenceException");
+                oSB.AppendLine("");
+                oSB.Append("[LoadPropertiesForItems - Exception of type 'XmlSchemaInferenceException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
                 oSB.AppendFormat("Exception: {0}", oXmlSchemaInferenceException.ToString());
             }
             catch (System.Xml.Schema.XmlSchemaValidationException oXmlSchemaValidationException)
             {
-                MessageBox.Show(oXmlSchemaValidationException.ToString(), "XmlSchemaValidationException");
-                oSB.Append("[Exception of type 'XmlSchemaValidationException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                //MessageBox.Show(oXmlSchemaValidationException.ToString(), "XmlSchemaValidationException");
+                oSB.AppendLine("");
+                oSB.Append("[LoadPropertiesForItems - Exception of type 'XmlSchemaValidationException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
                 oSB.AppendFormat("Exception: {0}", oXmlSchemaValidationException.ToString());
-            } 
+            }
             catch (System.Xml.Schema.XmlSchemaException oXmlSchemaException)
             {
-                MessageBox.Show(oXmlSchemaException.ToString(), "XmlSchemaException");
-                oSB.Append("[Exception of type 'XmlSchemaException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                //MessageBox.Show(oXmlSchemaException.ToString(), "XmlSchemaException");
+                oSB.AppendLine("");
+                oSB.Append("[LoadPropertiesForItems - Exception of type 'XmlSchemaException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
                 oSB.AppendFormat("Exception: {0}", oXmlSchemaException.ToString());
             }
-
+ 
             catch (XmlException oXmlException)
             {
-                MessageBox.Show(oXmlException.ToString(), "XmlException");
-                oSB.Append("[Exception of type 'XmlException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                //MessageBox.Show(oXmlException.ToString(), "XmlException");
+                oSB.AppendLine("");
+                oSB.Append("[LoadPropertiesForItems - Exception of type 'XmlException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
                 oSB.AppendFormat("Exception: {0}", oXmlException.ToString());
             }
-
+            catch (InvalidEnumArgumentException oInvalidEnumArgumentException)
+            {
+                //MessageBox.Show(oXmlException.ToString(), "XmlException");
+                oSB.AppendLine("");
+                oSB.Append("[LoadPropertiesForItems - Exception of type 'InvalidEnumArgumentException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                oSB.AppendFormat("Exception: {0}", oInvalidEnumArgumentException.ToString());
+            }
+            catch (ArgumentNullException oArgumentNullException)
+            {
+                //MessageBox.Show(oXmlException.ToString(), "XmlException");
+                oSB.AppendLine("");
+                oSB.Append("[LoadPropertiesForItems - Exception of type 'ArgumentNullException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                oSB.AppendFormat("Exception: {0}", oArgumentNullException.ToString());
+            }
+            catch (ArgumentOutOfRangeException oArgumentOutOfRangeException)
+            {
+                //MessageBox.Show(oXmlException.ToString(), "XmlException");
+                oSB.AppendLine("");
+                oSB.Append("[LoadPropertiesForItems - Exception of type 'ArgumentOutOfRangeException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                oSB.AppendFormat("Exception: {0}", oArgumentOutOfRangeException.ToString());
+            }
+            catch (ArgumentException oArgumentException)
+            {
+                //MessageBox.Show(oXmlException.ToString(), "XmlException");
+                oSB.AppendLine("");
+                oSB.Append("[LoadPropertiesForItems - Exception of type 'ArgumentException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                oSB.AppendFormat("Exception: {0}", oArgumentException.ToString());
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Exception");
-                oSB.Append("[Exception of type 'Exception' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                //MessageBox.Show(ex.ToString(), "Exception");
+                oSB.AppendLine("");
+                oSB.Append("[LoadPropertiesForItems - Exception of type 'Exception' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
                 oSB.AppendFormat("Exception: {0}", ex.ToString());
             }
 
-            oSB.Append("");
+            int iItemTotal = oItemList.Count;
+            int iItemCount = 0;
+
+            foreach (Item oItem in oItemList)
+            {
+
+                iItemCount += 1;
+                //lblStatus.Text = string.Format("Gathering properties for {0} of {1}.", iItemCount, iItemTotal);
+                try
+                {
+ 
+                    //oSB.AppendFormat("[Change Event]===================================================================\r\n");
+                    //oSB.AppendFormat("ItemId:             {0}\r\n", oItemChange.ItemId.ToString());
+                    //oSB.AppendFormat("ChangeType:         {0}\r\n", oItemChange.ChangeType);
+                    //oSB.AppendFormat("IsRead:             {0}\r\n", oItemChange.IsRead);
+
+
+                    oSB.AppendLine("");
+                    oSB.AppendFormat("[Some Item Properties loaded by LoadPropertiesForItems]-------------------------\r\n");
+                    if (oItem.Id == null)
+                        oSB.AppendFormat("Problem with Item - its Id is null:           {0}\r\n", oItem.Id.UniqueId);
+                    else
+                        oSB.AppendFormat("UniqueId:           {0}\r\n", oItem.Id.UniqueId);
+                    oSB.AppendFormat("Subject:            {0}\r\n", oItem.Subject);
+                    oSB.AppendFormat("ItemClass:          {0}\r\n", oItem.ItemClass);
+                    oSB.AppendFormat("LastModifiedTime:   {0}\r\n", oItem.LastModifiedTime.ToString());
+                    oSB.AppendFormat("LastModifiedName:   {0}\r\n", oItem.LastModifiedName.ToString());
+                    oSB.AppendFormat("DateTimeReceived:   {0}\r\n", oItem.DateTimeReceived.ToString());
+                    oSB.AppendFormat("DateTimeSent:       {0}\r\n", oItem.DateTimeSent.ToString());
+                    oSB.AppendFormat("DateTimeCreated:    {0}\r\n", oItem.DateTimeCreated.ToString());
+                    oSB.AppendFormat("DisplayTo:          {0}\r\n", oItem.DisplayTo);
+                    oSB.AppendFormat("DisplayCc:          {0}\r\n", oItem.DisplayCc);
+                   
+
+                    oSB.AppendLine("");
+                    oSB.AppendFormat("[ServiceResponse returned]----------------------------------------------------\r\n");
+
+                    foreach (ServiceResponse o in oServiceResponse)
+                    {
+                        oSB.AppendFormat("ErrorCode:        {0}\r\n", o.ErrorCode.ToString());
+                        oSB.AppendFormat("ErrorDetails:  \r\n");
+                        if (o.ErrorProperties != null)
+                        {
+
+                            foreach (KeyValuePair<string, string> oProp in o.ErrorDetails)
+                            {
+                                //oSB.AppendFormat("  ErrorDetails:     {0}\r\n");
+                                oSB.AppendFormat("  Key:     {0}\r\n", oProp.Key);
+                                oSB.AppendFormat("  Value:   {0}\r\n", oProp.Value);
+                                oSB.AppendLine("");
+                            }
+                        }
+                        oSB.AppendFormat("ErrorMessage:     {0}\r\n", o.ErrorMessage);
+                        oSB.AppendFormat("ErrorProperties:  \r\n");
+                        if (o.ErrorProperties != null)
+                        {
+                            foreach (PropertyDefinitionBase oProps in o.ErrorProperties)
+                            {
+                                //oSB.AppendFormat("  ErrorProperties:  {0}\r\n");
+                                oSB.AppendFormat("  ToString(): {0}\r\n", oProps.ToString());
+                                oSB.AppendFormat("  Type:       {0}\r\n", oProps.Type);
+                                oSB.AppendFormat("  Version:    {0}\r\n", oProps.Version);
+
+                                //System.Collections.ObjectModel.Collection<PropertyDefinitionBase>
+                            }
+                        }
+                        oSB.AppendFormat("Result:           {0}\r\n", o.Result.ToString());
+                        oSB.AppendLine("");
+                    }
+
+                }
+                catch (System.Xml.Schema.XmlSchemaInferenceException oXmlSchemaInferenceException)
+                {
+                    //MessageBox.Show(oXmlSchemaInferenceException.ToString(), "XmlSchemaInferenceException");
+                    oSB.AppendLine("");
+                    oSB.Append("[Exception of type 'XmlSchemaInferenceException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                    oSB.AppendFormat("Exception: {0}", oXmlSchemaInferenceException.ToString());
+                }
+                catch (System.Xml.Schema.XmlSchemaValidationException oXmlSchemaValidationException)
+                {
+                    //MessageBox.Show(oXmlSchemaValidationException.ToString(), "XmlSchemaValidationException");
+                    oSB.AppendLine("");
+                    oSB.Append("[Exception of type 'XmlSchemaValidationException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                    oSB.AppendFormat("Exception: {0}", oXmlSchemaValidationException.ToString());
+                } 
+                catch (System.Xml.Schema.XmlSchemaException oXmlSchemaException)
+                {
+                    //MessageBox.Show(oXmlSchemaException.ToString(), "XmlSchemaException");
+                    oSB.AppendLine("");
+                    oSB.Append("[Exception of type 'XmlSchemaException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                    oSB.AppendFormat("Exception: {0}", oXmlSchemaException.ToString());
+                }
+
+                catch (XmlException oXmlException)
+                {
+                    //MessageBox.Show(oXmlException.ToString(), "XmlException");
+                    oSB.AppendLine("");
+                    oSB.Append("[Exception of type 'XmlException' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                    oSB.AppendFormat("Exception: {0}", oXmlException.ToString());
+                   
+                }
+
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.ToString(), "Exception");
+                    oSB.AppendLine("");
+                    oSB.Append("[Exception of type 'Exception' was thrown]!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+                    oSB.AppendFormat("Exception: {0}", ex.ToString());
+                }
+
+                oSB.AppendLine("");
+                oSB.Append("");
+  
+
+            }
             string sRet = oSB.ToString();
 
             return sRet;
@@ -253,20 +388,32 @@ namespace EWSEditor
 
                 ItemChange oItemChange = (ItemChange)lstChanges.SelectedItems[0].Tag;
 
-                string sContent = GatherChanges(oItemChange);
+                List<Item> oItemList = new List<Item>();
+                oItemList.Add(oItemChange.Item);
+
+                StringBuilder oSB = new StringBuilder();
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("=================================================================================\r\n");
+                oSB.AppendFormat("[Change Event]===================================================================\r\n");
+                oSB.AppendFormat("ItemId:             {0}\r\n", oItemChange.ItemId.ToString());
+                oSB.AppendFormat("ChangeType:         {0}\r\n", oItemChange.ChangeType);
+                oSB.AppendFormat("IsRead:             {0}\r\n", oItemChange.IsRead);
+                oSB.Append(GatherChanges(oItemList));
+                string sContent = oSB.ToString();
 
                 ShowTextDocument oForm = new ShowTextDocument();
                 oForm.txtEntry.WordWrap = false;
-                oForm.Text = "Information";
+                oForm.Text = "Properties for item";
                 oForm.txtEntry.Text = sContent;
                 oForm.ShowDialog();
             }
         }
 
-        private void btnTestGetAllChanges_Click(object sender, EventArgs e)
+        private void LoadPropertiesForAll_SeperateCalls()
         {
             if (lstChanges.Items.Count > 0)
             {
+                this.Cursor = Cursors.WaitCursor;
 
                 StringBuilder oSB = new StringBuilder();
 
@@ -274,19 +421,81 @@ namespace EWSEditor
                 {
                     ItemChange oItemChange = (ItemChange)oLVI.Tag;
 
-                   oSB.Append(GatherChanges(oItemChange));
+                    List<Item> oItemList = new List<Item>();  // next!
+                    oItemList.Add(oItemChange.Item);
+                    oSB.AppendFormat("");
+                    oSB.AppendFormat("=========================================================================================================================\r\n");
+                    oSB.AppendFormat("[Change Event]===========================================================================================================\r\n");
+                    oSB.AppendFormat("ItemId:             {0}\r\n", oItemChange.ItemId.ToString());
+                    oSB.AppendFormat("ChangeType:         {0}\r\n", oItemChange.ChangeType);
+                    oSB.AppendFormat("IsRead:             {0}\r\n", oItemChange.IsRead);
+
+                    oSB.Append(GatherChanges(oItemList));  // get props for this one changed item
 
                 }
 
-                string sContent = oSB.ToString();
+                string sContent = oSB.ToString();  // get results
 
                 ShowTextDocument oForm = new ShowTextDocument();
                 oForm.txtEntry.WordWrap = false;
-                oForm.Text = "Information";
+                oForm.Text = "Properties for all items";
                 oForm.txtEntry.Text = sContent;
                 oForm.ShowDialog();
+                this.Cursor = Cursors.Default;
             }
         }
 
+        private void LoadPropertiesForAll_OneCall()
+        {
+            if (lstChanges.Items.Count > 0)
+            {
+                this.Cursor = Cursors.WaitCursor;
+ 
+                List<Item> oItemList = new List<Item>();
+
+                foreach (ListViewItem oLVI in lstChanges.Items)
+                {
+                    ItemChange oItemChange = (ItemChange)oLVI.Tag;
+                    oItemList.Add(oItemChange.Item);  // build a list of all items
+                }
+
+                string sContent = GatherChanges(oItemList);  // now do once call to get props for all.
+ 
+                ShowTextDocument oForm = new ShowTextDocument();
+                oForm.txtEntry.WordWrap = false;
+                oForm.Text = "Properties for all items";
+                oForm.txtEntry.Text = sContent;
+                oForm.ShowDialog();
+
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        // btnTestGetAllChanges_Click
+        //private void btnShowAllCalendar_Click(object sender, EventArgs e)
+        //{
+        //    GetAllChanges();
+        //}
+
+        private void btnTestGetAllChanges_Click(object sender, EventArgs e)
+        {
+            LoadPropertiesForAll_OneCall();
+        }
+
+        private void lblLastSyncTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SyncFolderItemsForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPropertiesForAllSeperateCalls_Click(object sender, EventArgs e)
+        {
+            LoadPropertiesForAll_SeperateCalls();
+        }
+ 
     }
 }

@@ -39,12 +39,13 @@
             this.btnPropSet = new System.Windows.Forms.Button();
             this.txtFolderId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnSynchronize = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblLastSyncTime = new System.Windows.Forms.Label();
             this.btnTestGetAllChanges = new System.Windows.Forms.Button();
+            this.btnPropertiesForAllSeperateCalls = new System.Windows.Forms.Button();
             this.grpSynchronize.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +62,7 @@
             this.lstChanges.Location = new System.Drawing.Point(16, 157);
             this.lstChanges.MultiSelect = false;
             this.lstChanges.Name = "lstChanges";
-            this.lstChanges.Size = new System.Drawing.Size(596, 411);
+            this.lstChanges.Size = new System.Drawing.Size(764, 404);
             this.lstChanges.TabIndex = 2;
             this.lstChanges.UseCompatibleStateImageBehavior = false;
             this.lstChanges.View = System.Windows.Forms.View.Details;
@@ -80,7 +81,7 @@
             // colItemId
             // 
             this.colItemId.Text = "ItemId";
-            this.colItemId.Width = 400;
+            this.colItemId.Width = 500;
             // 
             // grpSynchronize
             // 
@@ -92,17 +93,19 @@
             this.grpSynchronize.Controls.Add(this.btnPropSet);
             this.grpSynchronize.Controls.Add(this.txtFolderId);
             this.grpSynchronize.Controls.Add(this.label2);
+            this.grpSynchronize.Controls.Add(this.btnSynchronize);
             this.grpSynchronize.Controls.Add(this.label1);
             this.grpSynchronize.Location = new System.Drawing.Point(12, 12);
             this.grpSynchronize.Name = "grpSynchronize";
-            this.grpSynchronize.Size = new System.Drawing.Size(604, 116);
+            this.grpSynchronize.Size = new System.Drawing.Size(768, 116);
             this.grpSynchronize.TabIndex = 6;
             this.grpSynchronize.TabStop = false;
             this.grpSynchronize.Text = "SyncFolderItems Settings...";
             // 
             // btnGetFolderId
             // 
-            this.btnGetFolderId.Location = new System.Drawing.Point(561, 24);
+            this.btnGetFolderId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGetFolderId.Location = new System.Drawing.Point(737, 22);
             this.btnGetFolderId.Name = "btnGetFolderId";
             this.btnGetFolderId.Size = new System.Drawing.Size(25, 23);
             this.btnGetFolderId.TabIndex = 24;
@@ -112,10 +115,12 @@
             // 
             // txtSyncState
             // 
+            this.txtSyncState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSyncState.Location = new System.Drawing.Point(104, 55);
             this.txtSyncState.Multiline = true;
             this.txtSyncState.Name = "txtSyncState";
-            this.txtSyncState.Size = new System.Drawing.Size(477, 21);
+            this.txtSyncState.Size = new System.Drawing.Size(627, 21);
             this.txtSyncState.TabIndex = 13;
             // 
             // label3
@@ -138,10 +143,12 @@
             // 
             // txtFolderId
             // 
+            this.txtFolderId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFolderId.Location = new System.Drawing.Point(104, 24);
             this.txtFolderId.Name = "txtFolderId";
             this.txtFolderId.ReadOnly = true;
-            this.txtFolderId.Size = new System.Drawing.Size(452, 20);
+            this.txtFolderId.Size = new System.Drawing.Size(627, 20);
             this.txtFolderId.TabIndex = 9;
             // 
             // label2
@@ -152,6 +159,17 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Folder Id:";
             // 
+            // btnSynchronize
+            // 
+            this.btnSynchronize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSynchronize.Location = new System.Drawing.Point(687, 87);
+            this.btnSynchronize.Name = "btnSynchronize";
+            this.btnSynchronize.Size = new System.Drawing.Size(75, 23);
+            this.btnSynchronize.TabIndex = 10;
+            this.btnSynchronize.Text = "Sync";
+            this.btnSynchronize.UseVisualStyleBackColor = true;
+            this.btnSynchronize.Click += new System.EventHandler(this.btnSynchronize_Click);
+            // 
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(6, 55);
@@ -159,17 +177,6 @@
             this.label1.Size = new System.Drawing.Size(93, 23);
             this.label1.TabIndex = 6;
             this.label1.Text = "Sync State:";
-            // 
-            // btnSynchronize
-            // 
-            this.btnSynchronize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSynchronize.Location = new System.Drawing.Point(355, 574);
-            this.btnSynchronize.Name = "btnSynchronize";
-            this.btnSynchronize.Size = new System.Drawing.Size(75, 23);
-            this.btnSynchronize.TabIndex = 10;
-            this.btnSynchronize.Text = "Sync";
-            this.btnSynchronize.UseVisualStyleBackColor = true;
-            this.btnSynchronize.Click += new System.EventHandler(this.btnSynchronize_Click);
             // 
             // label4
             // 
@@ -183,7 +190,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(537, 574);
+            this.btnClose.Location = new System.Drawing.Point(705, 598);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 14;
@@ -194,37 +201,50 @@
             // lblLastSyncTime
             // 
             this.lblLastSyncTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblLastSyncTime.Location = new System.Drawing.Point(18, 574);
+            this.lblLastSyncTime.Location = new System.Drawing.Point(18, 594);
             this.lblLastSyncTime.Name = "lblLastSyncTime";
-            this.lblLastSyncTime.Size = new System.Drawing.Size(331, 23);
+            this.lblLastSyncTime.Size = new System.Drawing.Size(310, 23);
             this.lblLastSyncTime.TabIndex = 15;
             this.lblLastSyncTime.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.lblLastSyncTime.Click += new System.EventHandler(this.lblLastSyncTime_Click);
             // 
             // btnTestGetAllChanges
             // 
             this.btnTestGetAllChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTestGetAllChanges.Location = new System.Drawing.Point(447, 574);
+            this.btnTestGetAllChanges.Location = new System.Drawing.Point(16, 567);
             this.btnTestGetAllChanges.Name = "btnTestGetAllChanges";
-            this.btnTestGetAllChanges.Size = new System.Drawing.Size(75, 23);
+            this.btnTestGetAllChanges.Size = new System.Drawing.Size(346, 23);
             this.btnTestGetAllChanges.TabIndex = 16;
-            this.btnTestGetAllChanges.Text = "Show All Changed";
+            this.btnTestGetAllChanges.Text = "Show Properties of All Items - one LoadPropertiesForItems call";
             this.btnTestGetAllChanges.UseVisualStyleBackColor = true;
             this.btnTestGetAllChanges.Click += new System.EventHandler(this.btnTestGetAllChanges_Click);
+            // 
+            // btnPropertiesForAllSeperateCalls
+            // 
+            this.btnPropertiesForAllSeperateCalls.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPropertiesForAllSeperateCalls.Location = new System.Drawing.Point(368, 567);
+            this.btnPropertiesForAllSeperateCalls.Name = "btnPropertiesForAllSeperateCalls";
+            this.btnPropertiesForAllSeperateCalls.Size = new System.Drawing.Size(346, 23);
+            this.btnPropertiesForAllSeperateCalls.TabIndex = 17;
+            this.btnPropertiesForAllSeperateCalls.Text = "Show Properties of All Items - seperate LoadPropertiesForItems calls";
+            this.btnPropertiesForAllSeperateCalls.UseVisualStyleBackColor = true;
+            this.btnPropertiesForAllSeperateCalls.Click += new System.EventHandler(this.btnPropertiesForAllSeperateCalls_Click);
             // 
             // SyncFolderItemsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(628, 622);
+            this.ClientSize = new System.Drawing.Size(792, 626);
+            this.Controls.Add(this.btnPropertiesForAllSeperateCalls);
             this.Controls.Add(this.btnTestGetAllChanges);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.grpSynchronize);
             this.Controls.Add(this.lblLastSyncTime);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lstChanges);
-            this.Controls.Add(this.btnSynchronize);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "SyncFolderItemsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.SyncFolderItemsForm_Load);
             this.grpSynchronize.ResumeLayout(false);
             this.grpSynchronize.PerformLayout();
             this.ResumeLayout(false);
@@ -250,5 +270,6 @@
         private System.Windows.Forms.Button btnGetFolderId;
         private System.Windows.Forms.Label lblLastSyncTime;
         private System.Windows.Forms.Button btnTestGetAllChanges;
+        private System.Windows.Forms.Button btnPropertiesForAllSeperateCalls;
     }
 }
