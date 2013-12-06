@@ -72,7 +72,7 @@
             this.mnuItemSplit3,
             this.mnuResponse});
             this.mnuItemContext.Name = "mnuItemContext";
-            this.mnuItemContext.Size = new System.Drawing.Size(196, 242);
+            this.mnuItemContext.Size = new System.Drawing.Size(196, 220);
             this.mnuItemContext.Opening += new System.ComponentModel.CancelEventHandler(this.mnuItemContext_Opening);
             this.mnuItemContext.Click += new System.EventHandler(this.mnuItemContext_Click);
             // 
