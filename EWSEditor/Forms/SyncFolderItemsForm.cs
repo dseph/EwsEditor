@@ -74,18 +74,38 @@ namespace EWSEditor
                         item.Text = change.ChangeType.ToString();
                         item.SubItems.Add(change.IsRead.ToString());
                         item.SubItems.Add(change.ItemId.UniqueId);
-                        //if (change.Item != null)
-                        //{
-                        //    item.SubItems.Add(change.Item.Subject);
-                        //    item.SubItems.Add(change.Item.ItemClass);
-                        //    item.SubItems.Add(change.Item.LastModifiedTime.ToString());
-                        //}
-                        //else
-                        //{
-                        //    item.SubItems.Add("");
-                        //    item.SubItems.Add("");
-                        //    item.SubItems.Add("");
-                        //}
+
+                        try
+                        {
+                            if (item.SubItems != null)
+                            {
+                                if (change.Item.Subject != null)
+                                    item.SubItems.Add(change.Item.Subject);
+                                else
+                                    item.SubItems.Add("");
+
+                                if (change.Item.ItemClass != null)
+                                    item.SubItems.Add(change.Item.ItemClass);
+                                else
+                                    item.SubItems.Add("");
+
+                                if (change.Item.LastModifiedTime != null)
+                                    item.SubItems.Add(change.Item.LastModifiedTime.ToString());
+                                else
+                                    item.SubItems.Add("");
+                            }
+                            else
+                            {
+                                item.SubItems.Add("");
+                                item.SubItems.Add("");
+                                item.SubItems.Add("");
+                            }
+                        }
+                        catch (Exception oEx)
+                        {
+                            System.Diagnostics.Debug.WriteLine(oEx.ToString());  // Catch error in case no no-id propreties were not returned.
+                        }
+ 
                         lstChanges.Items.Add(item);
                     }
 
@@ -167,6 +187,8 @@ namespace EWSEditor
             ServiceResponseCollection<ServiceResponse> oServiceResponse = null;
             try
             {
+                oSB.AppendLine("");
+                oSB.AppendFormat("[Calling LoadPropertiesForItems]-------------------------\r\n");
 
                 oServiceResponse = CurrentService.LoadPropertiesForItems(oItemList, oPropertySet);
             }
@@ -271,63 +293,54 @@ namespace EWSEditor
                 try
                 {
  
-                    //oSB.AppendFormat("[Change Event]===================================================================\r\n");
-                    //oSB.AppendFormat("ItemId:             {0}\r\n", oItemChange.ItemId.ToString());
-                    //oSB.AppendFormat("ChangeType:         {0}\r\n", oItemChange.ChangeType);
-                    //oSB.AppendFormat("IsRead:             {0}\r\n", oItemChange.IsRead);
+ 
+                    oSB.AppendLine("");
+                    oSB.AppendFormat("[Item loaded by LoadPropertiesForItems]======================================\r\n");
 
+                    oSB.AppendFormat("UniqueId:           {0}\r\n", oItem.Id.UniqueId);
+
+                    AddItemProps(oItem, ref oSB);
 
                     oSB.AppendLine("");
-                    oSB.AppendFormat("[Some Item Properties loaded by LoadPropertiesForItems]-------------------------\r\n");
-                    if (oItem.Id == null)
-                        oSB.AppendFormat("Problem with Item - its Id is null:           {0}\r\n", oItem.Id.UniqueId);
-                    else
-                        oSB.AppendFormat("UniqueId:           {0}\r\n", oItem.Id.UniqueId);
-                    oSB.AppendFormat("Subject:            {0}\r\n", oItem.Subject);
-                    oSB.AppendFormat("ItemClass:          {0}\r\n", oItem.ItemClass);
-                    oSB.AppendFormat("LastModifiedTime:   {0}\r\n", oItem.LastModifiedTime.ToString());
-                    oSB.AppendFormat("LastModifiedName:   {0}\r\n", oItem.LastModifiedName.ToString());
-                    oSB.AppendFormat("DateTimeReceived:   {0}\r\n", oItem.DateTimeReceived.ToString());
-                    oSB.AppendFormat("DateTimeSent:       {0}\r\n", oItem.DateTimeSent.ToString());
-                    oSB.AppendFormat("DateTimeCreated:    {0}\r\n", oItem.DateTimeCreated.ToString());
-                    oSB.AppendFormat("DisplayTo:          {0}\r\n", oItem.DisplayTo);
-                    oSB.AppendFormat("DisplayCc:          {0}\r\n", oItem.DisplayCc);
-                   
-
-                    oSB.AppendLine("");
-                    oSB.AppendFormat("[ServiceResponse returned]----------------------------------------------------\r\n");
-
-                    foreach (ServiceResponse o in oServiceResponse)
+                    oSB.AppendFormat("[ServiceResponse]-------------------------------------------------------------\r\n");
+                    if (oServiceResponse == null)
                     {
-                        oSB.AppendFormat("ErrorCode:        {0}\r\n", o.ErrorCode.ToString());
-                        oSB.AppendFormat("ErrorDetails:  \r\n");
-                        if (o.ErrorProperties != null)
+                        oSB.AppendLine("Service response was null.");
+                    }
+                    else
+                    {
+                        foreach (ServiceResponse o in oServiceResponse)
                         {
-
-                            foreach (KeyValuePair<string, string> oProp in o.ErrorDetails)
+                            oSB.AppendFormat("ErrorCode:        {0}\r\n", o.ErrorCode.ToString());
+                            oSB.AppendFormat("ErrorDetails:  \r\n");
+                            if (o.ErrorProperties != null)
                             {
-                                //oSB.AppendFormat("  ErrorDetails:     {0}\r\n");
-                                oSB.AppendFormat("  Key:     {0}\r\n", oProp.Key);
-                                oSB.AppendFormat("  Value:   {0}\r\n", oProp.Value);
-                                oSB.AppendLine("");
-                            }
-                        }
-                        oSB.AppendFormat("ErrorMessage:     {0}\r\n", o.ErrorMessage);
-                        oSB.AppendFormat("ErrorProperties:  \r\n");
-                        if (o.ErrorProperties != null)
-                        {
-                            foreach (PropertyDefinitionBase oProps in o.ErrorProperties)
-                            {
-                                //oSB.AppendFormat("  ErrorProperties:  {0}\r\n");
-                                oSB.AppendFormat("  ToString(): {0}\r\n", oProps.ToString());
-                                oSB.AppendFormat("  Type:       {0}\r\n", oProps.Type);
-                                oSB.AppendFormat("  Version:    {0}\r\n", oProps.Version);
 
-                                //System.Collections.ObjectModel.Collection<PropertyDefinitionBase>
+                                foreach (KeyValuePair<string, string> oProp in o.ErrorDetails)
+                                {
+                                    //oSB.AppendFormat("  ErrorDetails:     {0}\r\n");
+                                    oSB.AppendFormat("  Key:     {0}\r\n", oProp.Key);
+                                    oSB.AppendFormat("  Value:   {0}\r\n", oProp.Value);
+                                    oSB.AppendLine("");
+                                }
                             }
+                            oSB.AppendFormat("ErrorMessage:     {0}\r\n", o.ErrorMessage);
+                            oSB.AppendFormat("ErrorProperties:  \r\n");
+                            if (o.ErrorProperties != null)
+                            {
+                                foreach (PropertyDefinitionBase oProps in o.ErrorProperties)
+                                {
+                                    //oSB.AppendFormat("  ErrorProperties:  {0}\r\n");
+                                    oSB.AppendFormat("  ToString(): {0}\r\n", oProps.ToString());
+                                    oSB.AppendFormat("  Type:       {0}\r\n", oProps.Type);
+                                    oSB.AppendFormat("  Version:    {0}\r\n", oProps.Version);
+
+                                    //System.Collections.ObjectModel.Collection<PropertyDefinitionBase>
+                                }
+                            }
+                            oSB.AppendFormat("Result:           {0}\r\n", o.Result.ToString());
+                            oSB.AppendLine("");
                         }
-                        oSB.AppendFormat("Result:           {0}\r\n", o.Result.ToString());
-                        oSB.AppendLine("");
                     }
 
                 }
@@ -393,11 +406,26 @@ namespace EWSEditor
 
                 StringBuilder oSB = new StringBuilder();
                 oSB.AppendFormat("\r\n");
-                oSB.AppendFormat("=================================================================================\r\n");
-                oSB.AppendFormat("[Change Event]===================================================================\r\n");
+                oSB.AppendFormat("********************************************************************************************\r\n");
+                oSB.AppendFormat("[Change Event]******************************************************************************\r\n");
                 oSB.AppendFormat("ItemId:             {0}\r\n", oItemChange.ItemId.ToString());
                 oSB.AppendFormat("ChangeType:         {0}\r\n", oItemChange.ChangeType);
                 oSB.AppendFormat("IsRead:             {0}\r\n", oItemChange.IsRead);
+
+                 
+                if (oItemChange.Item != null)
+                {
+                    Item oItem = oItemChange.Item;
+                    oSB.AppendLine("");
+                    oSB.AppendFormat("[Change Object's Item properties.]-------------------------\r\n");
+                    if (oItem.Id == null)
+                        oSB.AppendFormat("Problem with Item - its Id is null:           {0}\r\n", oItem.Id.UniqueId);
+                    else
+                        oSB.AppendFormat("UniqueId:           {0}\r\n", oItem.Id.UniqueId);
+
+                    AddItemProps(oItem, ref oSB);
+ 
+                }
                 oSB.Append(GatherChanges(oItemList));
                 string sContent = oSB.ToString();
 
@@ -409,13 +437,46 @@ namespace EWSEditor
             }
         }
 
+        private void AddItemProps(Item oItem , ref StringBuilder oSB)
+        {
+            try
+            {
+
+                if (oItem.Subject != null)
+                    oSB.AppendFormat("Subject:            {0}\r\n", oItem.Subject);
+                if (oItem.ItemClass != null)
+                    oSB.AppendFormat("ItemClass:          {0}\r\n", oItem.ItemClass);
+                if (oItem.LastModifiedTime != null)
+                    oSB.AppendFormat("LastModifiedTime:   {0}\r\n", oItem.LastModifiedTime.ToString());
+                if (oItem.LastModifiedName != null)
+                    oSB.AppendFormat("LastModifiedName:   {0}\r\n", oItem.LastModifiedName.ToString());
+                if (oItem.DateTimeReceived != null)
+                    oSB.AppendFormat("DateTimeReceived:   {0}\r\n", oItem.DateTimeReceived.ToString());
+                if (oItem.DateTimeSent != null)
+                    oSB.AppendFormat("DateTimeSent:       {0}\r\n", oItem.DateTimeSent.ToString());
+                if (oItem.DateTimeCreated != null)
+                    oSB.AppendFormat("DateTimeCreated:    {0}\r\n", oItem.DateTimeCreated.ToString());
+                if (oItem.DisplayTo != null)
+                    oSB.AppendFormat("DisplayTo:          {0}\r\n", oItem.DisplayTo);
+                if (oItem.DisplayCc != null)
+                    oSB.AppendFormat("DisplayCc:          {0}\r\n", oItem.DisplayCc);
+                oSB.AppendFormat("Size:               {0}\r\n", oItem.Size.ToString());
+            }
+            catch (Exception oEx)  // Catch in case onlyIds was specified
+            {
+                System.Diagnostics.Debug.WriteLine(oEx.ToString());
+            }
+        }
+
         private void LoadPropertiesForAll_SeperateCalls()
         {
-            if (lstChanges.Items.Count > 0)
+            StringBuilder oSB = new StringBuilder();
+
+ 
+           if (lstChanges.Items.Count > 0)
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                StringBuilder oSB = new StringBuilder();
 
                 foreach (ListViewItem oLVI in lstChanges.Items)
                 {
@@ -424,8 +485,8 @@ namespace EWSEditor
                     List<Item> oItemList = new List<Item>();  // next!
                     oItemList.Add(oItemChange.Item);
                     oSB.AppendFormat("");
-                    oSB.AppendFormat("=========================================================================================================================\r\n");
-                    oSB.AppendFormat("[Change Event]===========================================================================================================\r\n");
+                    oSB.AppendFormat("******************************************************************************************** *r\n");
+                    oSB.AppendFormat("[Change Event]******************************************************************************\r\n");
                     oSB.AppendFormat("ItemId:             {0}\r\n", oItemChange.ItemId.ToString());
                     oSB.AppendFormat("ChangeType:         {0}\r\n", oItemChange.ChangeType);
                     oSB.AppendFormat("IsRead:             {0}\r\n", oItemChange.IsRead);
@@ -459,7 +520,15 @@ namespace EWSEditor
                     oItemList.Add(oItemChange.Item);  // build a list of all items
                 }
 
-                string sContent = GatherChanges(oItemList);  // now do once call to get props for all.
+                StringBuilder oSB = new StringBuilder();
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("=================================================================================\r\n");
+                oSB.AppendFormat("[ All Change Events in on call + LoadPropertiesForItems]=========================\r\n");
+                oSB.AppendFormat("");
+ 
+
+                oSB.Append(GatherChanges(oItemList));  // now do once call to get props for all.
+                string sContent = oSB.ToString();
  
                 ShowTextDocument oForm = new ShowTextDocument();
                 oForm.txtEntry.WordWrap = false;
