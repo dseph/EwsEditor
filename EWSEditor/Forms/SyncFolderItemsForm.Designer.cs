@@ -122,6 +122,7 @@
             this.grpSynchronize.TabIndex = 6;
             this.grpSynchronize.TabStop = false;
             this.grpSynchronize.Text = "SyncFolderItems Settings...";
+            this.grpSynchronize.Enter += new System.EventHandler(this.grpSynchronize_Enter);
             // 
             // btnGetFolderId
             // 
