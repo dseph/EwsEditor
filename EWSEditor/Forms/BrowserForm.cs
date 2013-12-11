@@ -478,5 +478,15 @@
         {
 
         }
+
+        private void checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.CurrentService != null)
+            {
+                //CheckFolderItemsForPropertyLoadingIssues oCheckFolderItemsForPropertyLoadingIssues = new CheckFolderItemsForPropertyLoadingIssues();
+                //oCheckFolderItemsForPropertyLoadingIssues.Show();
+                CheckFolderItemsForPropertyLoadingIssues.Show(this.CurrentService);
+            }
+        }
     }
 }

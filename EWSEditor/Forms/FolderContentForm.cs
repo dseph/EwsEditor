@@ -569,5 +569,10 @@ namespace EWSEditor.Forms
         {
 
         }
+
+        private void ContentsGrid_CellContentClick_5(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

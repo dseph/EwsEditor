@@ -282,6 +282,60 @@ namespace EWSEditor
                 oSB.AppendFormat("Exception: {0}", ex.ToString());
             }
 
+            oSB.AppendLine("");
+            oSB.AppendFormat("[ServiceResponse]-------------------------------------------------------------\r\n");
+            if (oServiceResponse == null)
+            {
+                oSB.AppendLine("Service response was null.");
+            }
+            else
+            {
+
+                foreach (ServiceResponse o in oServiceResponse)
+                {
+                    oSB.AppendFormat("ErrorCode:        {0}\r\n", o.ErrorCode.ToString());
+                    oSB.AppendLine("");
+                    oSB.AppendFormat("ErrorMessage:     {0}\r\n", o.ErrorMessage);
+                    oSB.AppendLine("");
+
+                    if (o.ErrorDetails != null)
+                    {
+                        if (o.ErrorDetails.Count != 0)
+                        {
+                
+                            oSB.AppendFormat("ErrorDetails:  \r\n");
+                            foreach (KeyValuePair<string, string> oProp in o.ErrorDetails)
+                            {
+                                oSB.AppendFormat("  Key:     {0}\r\n", oProp.Key);
+                                oSB.AppendFormat("  Value:   {0}\r\n", oProp.Value);
+                                oSB.AppendLine("");
+                            }
+                        }
+                    }
+
+                    if (o.ErrorProperties != null)
+                    {
+                        if (o.ErrorProperties.Count != 0)
+                        {
+                            oSB.AppendFormat("ErrorProperties:  \r\n");
+                        
+                            foreach (PropertyDefinitionBase oProps in o.ErrorProperties)
+                            {
+                                //oSB.AppendFormat("  ErrorProperties:  {0}\r\n");
+                                oSB.AppendFormat("  ToString(): {0}\r\n", oProps.ToString());
+                                oSB.AppendFormat("  Type:       {0}\r\n", oProps.Type);
+                                oSB.AppendFormat("  Version:    {0}\r\n", oProps.Version);
+
+                                //System.Collections.ObjectModel.Collection<PropertyDefinitionBase>
+                            }
+                        }
+                    }
+                    oSB.AppendLine("");
+                    oSB.AppendFormat("Result:           {0}\r\n", o.Result.ToString());
+                    oSB.AppendLine("");
+                }
+            }
+
             int iItemTotal = oItemList.Count;
             int iItemCount = 0;
 
@@ -300,49 +354,7 @@ namespace EWSEditor
                     oSB.AppendFormat("UniqueId:           {0}\r\n", oItem.Id.UniqueId);
 
                     AddItemProps(oItem, ref oSB);
-
-                    oSB.AppendLine("");
-                    oSB.AppendFormat("[ServiceResponse]-------------------------------------------------------------\r\n");
-                    if (oServiceResponse == null)
-                    {
-                        oSB.AppendLine("Service response was null.");
-                    }
-                    else
-                    {
-                        foreach (ServiceResponse o in oServiceResponse)
-                        {
-                            oSB.AppendFormat("ErrorCode:        {0}\r\n", o.ErrorCode.ToString());
-                            oSB.AppendFormat("ErrorDetails:  \r\n");
-                            if (o.ErrorProperties != null)
-                            {
-
-                                foreach (KeyValuePair<string, string> oProp in o.ErrorDetails)
-                                {
-                                    //oSB.AppendFormat("  ErrorDetails:     {0}\r\n");
-                                    oSB.AppendFormat("  Key:     {0}\r\n", oProp.Key);
-                                    oSB.AppendFormat("  Value:   {0}\r\n", oProp.Value);
-                                    oSB.AppendLine("");
-                                }
-                            }
-                            oSB.AppendFormat("ErrorMessage:     {0}\r\n", o.ErrorMessage);
-                            oSB.AppendFormat("ErrorProperties:  \r\n");
-                            if (o.ErrorProperties != null)
-                            {
-                                foreach (PropertyDefinitionBase oProps in o.ErrorProperties)
-                                {
-                                    //oSB.AppendFormat("  ErrorProperties:  {0}\r\n");
-                                    oSB.AppendFormat("  ToString(): {0}\r\n", oProps.ToString());
-                                    oSB.AppendFormat("  Type:       {0}\r\n", oProps.Type);
-                                    oSB.AppendFormat("  Version:    {0}\r\n", oProps.Version);
-
-                                    //System.Collections.ObjectModel.Collection<PropertyDefinitionBase>
-                                }
-                            }
-                            oSB.AppendFormat("Result:           {0}\r\n", o.Result.ToString());
-                            oSB.AppendLine("");
-                        }
-                    }
-
+ 
                 }
                 catch (System.Xml.Schema.XmlSchemaInferenceException oXmlSchemaInferenceException)
                 {
@@ -564,6 +576,11 @@ namespace EWSEditor
         private void btnPropertiesForAllSeperateCalls_Click(object sender, EventArgs e)
         {
             LoadPropertiesForAll_SeperateCalls();
+        }
+
+        private void grpSynchronize_Enter(object sender, EventArgs e)
+        {
+
         }
  
     }
