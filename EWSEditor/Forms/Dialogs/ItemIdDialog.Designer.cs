@@ -86,21 +86,21 @@
             this.txtUniqueId.Size = new System.Drawing.Size(322, 79);
             this.txtUniqueId.TabIndex = 5;
             // 
-            // GetItemIdDialog
+            // ItemIdDialog
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(402, 154);
-            this.ControlBox = true;
             this.Controls.Add(this.txtUniqueId);
             this.Controls.Add(this.lblUnique);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox1);
-            this.Name = "GetItemIdDialog";
+            this.Name = "ItemIdDialog";
             this.Text = "Input ItemId Details";
+            this.Load += new System.EventHandler(this.ItemIdDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

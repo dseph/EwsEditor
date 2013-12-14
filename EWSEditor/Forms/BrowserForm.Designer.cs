@@ -68,6 +68,7 @@
             this.mnuFindAppointments = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGetConversationItems = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -323,6 +324,7 @@
             this.mnuOther.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuOpenItemById,
             this.mnuOpenFolderById,
+            this.mnuGetConversationItems,
             this.mnuOtherSplit1,
             this.mnuFindAppointments});
             this.mnuOther.Name = "mnuOther";
@@ -369,6 +371,13 @@
             this.mnuAbout.Size = new System.Drawing.Size(164, 22);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
+            // 
+            // mnuGetConversationItems
+            // 
+            this.mnuGetConversationItems.Name = "mnuGetConversationItems";
+            this.mnuGetConversationItems.Size = new System.Drawing.Size(268, 22);
+            this.mnuGetConversationItems.Text = "Get Conversation Items";
+            this.mnuGetConversationItems.Click += new System.EventHandler(this.mnuGetConversationItems_Click);
             // 
             // BrowserForm
             // 
@@ -431,5 +440,6 @@
         private System.Windows.Forms.ToolStripMenuItem MeetingRoomsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem InboxRulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuGetConversationItems;
     }
 }

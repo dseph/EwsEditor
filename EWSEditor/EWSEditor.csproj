@@ -178,6 +178,12 @@
     <Compile Include="Forms\CalendarMonthView.designer.cs">
       <DependentUpon>CalendarMonthView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dialogs\ConversationIdDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\ConversationIdDialog.Designer.cs">
+      <DependentUpon>ConversationIdDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dialogs\GlobalOptionsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +246,12 @@
     </Compile>
     <Compile Include="Forms\MimeEntry.Designer.cs">
       <DependentUpon>MimeEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserConfigForm.Designer.cs">
+      <DependentUpon>UserConfigForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -645,6 +657,10 @@
     <EmbeddedResource Include="Forms\Dialogs\AttendeeInfoDialog.resx">
       <DependentUpon>AttendeeInfoDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\ConversationIdDialog.resx">
+      <DependentUpon>ConversationIdDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\ManagedApiDialog.resx">
       <DependentUpon>ManagedApiDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -793,6 +809,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MimeEntry.resx">
       <DependentUpon>MimeEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserConfigForm.resx">
+      <DependentUpon>UserConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
