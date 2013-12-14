@@ -33,5 +33,10 @@ namespace EWSEditor.Forms
 
             return res;
         }
+
+        private void ItemIdDialog_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

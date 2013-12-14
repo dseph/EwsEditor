@@ -8,6 +8,8 @@
     using System.Linq;
     using System.Text;
     using System.Windows.Forms;
+   
+    using System.Collections.ObjectModel;
 
     using EWSEditor.Common;
     using EWSEditor.Common.Extensions;
@@ -486,6 +488,76 @@
                 //CheckFolderItemsForPropertyLoadingIssues oCheckFolderItemsForPropertyLoadingIssues = new CheckFolderItemsForPropertyLoadingIssues();
                 //oCheckFolderItemsForPropertyLoadingIssues.Show();
                 CheckFolderItemsForPropertyLoadingIssues.Show(this.CurrentService);
+            }
+        }
+
+        private void mnuGetConversationItems_Click(object sender, EventArgs e)
+        {
+            List<ItemId> oConversationItems = new List<ItemId>();
+
+            PropertySet oPropertySet = null;
+            ConversationId oConversationId = null;
+            FolderId oFolderId = null; 
+ 
+            ConversationIdDialog oConversationIdDialog = new ConversationIdDialog();
+            oConversationIdDialog.ShowDialog();
+
+             
+             
+            if (oConversationIdDialog.ChoseOK == true)
+            {
+                oPropertySet = oConversationIdDialog.CurrentPropertySet;
+                oConversationId = oConversationIdDialog.CurrentConversationId;
+                oFolderId = oConversationIdDialog.CurrentFolderId;
+
+                List<FolderId> folder = new List<FolderId>();
+                folder.Add(oFolderId);
+
+                // Identify the folders to ignore.
+                Collection<FolderId> foldersToIgnore =
+                        new  Collection<FolderId>() { WellKnownFolderName.DeletedItems, WellKnownFolderName.Drafts };
+ 
+                ConversationResponse oResponses = null;
+                oResponses = CurrentService.GetConversationItems(
+                        oConversationId,
+                        oPropertySet, 
+                        null,
+                        foldersToIgnore, 
+                        ConversationSortOrder.TreeOrderDescending
+                        );
+       
+                //Console.WriteLine("SyncState: " + oResponses.SyncState); // Get the synchronization state of the conversation.
+
+                 
+                try {
+ 
+                    foreach (ConversationNode node in oResponses.ConversationNodes) // Process each node of conversation items.
+                    {
+                        //Console.WriteLine("Parent conversation index: " + node.ParentConversationIndex);
+                        //Console.WriteLine("Conversation index: " + node.ConversationIndex);
+                        //Console.WriteLine("Conversation node items:");
+
+                        // Process each item in the conversation node.
+                        foreach (Item item in node.Items)
+                        {
+                        //Console.WriteLine("   Item ID: " + item.Id.UniqueId);
+                        //Console.WriteLine("   Subject: " + item.Subject);
+                        //Console.WriteLine("   Received: " + item.DateTimeReceived);
+                        oConversationItems.Add(item.Id);
+                        }
+                    }
+               }
+               // This exception may occur if there is an error with the service.
+               catch (ServiceResponseException srException)
+               {
+                  Console.WriteLine(srException);
+               }
+
+                ItemsContentForm.Show(
+                    "Displaying item by Conversation",
+                    oConversationItems,
+                    this.CurrentService,
+                    this);
             }
         }
     }
