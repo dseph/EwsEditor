@@ -104,6 +104,13 @@ namespace EWSEditor.Logging
             WriteLogItem(DateTime.Now, frame.GetMethod().Name, DebugLogType.Error, title, ExceptionToString(ex));
         }
 
+        internal static void WriteException(string title, AutodiscoverLocalException ex)
+        {
+            StackTrace stack = new StackTrace();
+            StackFrame frame = stack.GetFrame(1);
+            WriteLogItem(DateTime.Now, frame.GetMethod().Name, DebugLogType.Error, title, ExceptionToString(ex));
+        }
+
         internal static void WriteInfo(string title, params string[] lines)
         {
             StackTrace stack = new StackTrace();

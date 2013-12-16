@@ -6,6 +6,7 @@ using EWSEditor.Logging;
 using EWSEditor.Settings;
 using EWSEditor.Common.Extensions;
 using Microsoft.Exchange.WebServices.Data;
+using EWSEditor.Forms;
 
 namespace EWSEditor.Exchange
 {
@@ -31,10 +32,22 @@ namespace EWSEditor.Exchange
         {
             ExchangeService service = CreateExchangeService();
             service.EnableScpLookup = GlobalSettings.EnableScpLookups;
-            service.AutodiscoverUrl(emailAddress.Address, ValidationCallbackHelper.RedirectionUrlValidationCallback );
+            service.AutodiscoverUrl(emailAddress.Address, ValidationCallbackHelper.RedirectionUrlValidationCallback);
             EwsUrl = service.Url;
-        }
 
+            try
+            {
+                service.EnableScpLookup = GlobalSettings.EnableScpLookups;
+                service.AutodiscoverUrl(emailAddress.Address, ValidationCallbackHelper.RedirectionUrlValidationCallback);
+                EwsUrl = service.Url;
+            }
+            catch (AutodiscoverLocalException oException)
+            {
+                ErrorDialog.ShowError(oException.ToString());
+            }
+ 
+        }
+ 
         public static ExchangeService CreateExchangeService()
         {
             ExchangeService service = null;
