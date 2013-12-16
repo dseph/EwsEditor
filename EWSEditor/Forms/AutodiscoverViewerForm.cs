@@ -38,7 +38,9 @@ namespace EWSEditor.Forms
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
+                txtResults.Text = string.Empty;
+                txtResults.Update();
+                
                 // Create the AutodiscoverService object and set the request
                 // ExchangeVersion if one was selected
                 AutodiscoverService service = null;
@@ -55,7 +57,7 @@ namespace EWSEditor.Forms
                 service.UseDefaultCredentials = this.chkDefaultWindowsCredentials.Checked;
                 if (!service.UseDefaultCredentials)
                 {
-                    service.Credentials = new WebCredentials(txtUser.Text, txtPassword.Text, txtDomain.Text);
+                    service.Credentials = new WebCredentials(txtUser.Text.Trim(), txtPassword.Text.Trim(), txtDomain.Text.Trim());
                 }
 
                 // Enable/Disable the SCP lookup against Active Directory
@@ -71,8 +73,14 @@ namespace EWSEditor.Forms
                 // Allow/Disallow following 302 redirects in the Autodiscover sequence
                 service.RedirectionUrlValidationCallback = ValidationCallbackHelper.RedirectionUrlValidationCallback;
 
-                GetUserSettingsResponse response = service.GetUserSettings(this.TargetMailboxText.Text, System.Enum.GetValues(typeof(UserSettingName)) as UserSettingName[]);
-                ErrorDialog.ShowInfo("Autodiscover completed successfully!  Check the EWSEditor Log Viewer for detailed output.");
+                AutodiscoverGetUserSettings(ref service, this.TargetMailboxText.Text.Trim());
+
+                //GetUserSettingsResponse response = service.GetUserSettings(this.TargetMailboxText.Text, System.Enum.GetValues(typeof(UserSettingName)) as UserSettingName[]);
+                //ErrorDialog.ShowInfo("Autodiscover completed successfully!  Check the EWSEditor Log Viewer for detailed output.");
+
+                 
+                //ErrorDialog.ShowInfo(sResponse);
+                this.Cursor = Cursors.Default;
             }
             finally
             {
@@ -80,84 +88,134 @@ namespace EWSEditor.Forms
             }
         }
 
-        public string AutodiscoverGetUserSettings(ref AutodiscoverService service, string sUserSmtpAddress)
+        public void AutodiscoverGetUserSettings(ref AutodiscoverService service, string sUserSmtpAddress)
         { 
             string sRet = string.Empty;
+            lvItems.Items.Clear();
+            txtResults.Text = string.Empty;
 
             try
             {
                 GetUserSettingsResponse response = service.GetUserSettings(
                     sUserSmtpAddress,
                     System.Enum.GetValues(typeof(UserSettingName)) as UserSettingName[]);
-
-                string sLine = string.Empty;
-
-                // Display each retrieved value. The settings are part of a key value pair.
-                string sValue = string.Empty;
-                string sType = string.Empty;
-                foreach (KeyValuePair<UserSettingName, Object> usersetting in response.Settings)
+                
+               
+                if (response.ErrorCode == AutodiscoverErrorCode.NoError)
                 {
-                    sValue = string.Empty;
+                    string sLine = string.Empty;
+                    sLine += "Finished.  \r\n";
+                    sLine += "Response Redirect Target: " + response.RedirectTarget + "\r\n";
+                    sLine += "\r\n";
 
-                    sType = usersetting.Value.ToString();
-                    switch (sType)
+                    // Display each retrieved value. The settings are part of a key value pair.
+                    string sValue = string.Empty;
+                    string sType = string.Empty;
+                    int ValueCount = 0;
+                    foreach (KeyValuePair<UserSettingName, Object> usersetting in response.Settings)
                     {
-                        case ("Microsoft.Exchange.WebServices.Autodiscover.WebClientUrlCollection"):
-                            Microsoft.Exchange.WebServices.Autodiscover.WebClientUrlCollection oCollection1;
-                            oCollection1 = (Microsoft.Exchange.WebServices.Autodiscover.WebClientUrlCollection)usersetting.Value;
-                            foreach (WebClientUrl oUrl in oCollection1.Urls)
-                            {
-                                sValue = string.Format("\r\n    Url: {0} - Authentication: {1}\r\n", oUrl.Url, oUrl.AuthenticationMethods);
-                            }
-                            break;
-                        case ("Microsoft.Exchange.WebServices.Autodiscover.ProtocolConnectionCollection"):
-                            Microsoft.Exchange.WebServices.Autodiscover.ProtocolConnectionCollection oCollection2;
-                            oCollection2 = (Microsoft.Exchange.WebServices.Autodiscover.ProtocolConnectionCollection)usersetting.Value;
-                            foreach (ProtocolConnection oProtocolConnection in oCollection2.Connections)
-                            {
-                                sValue = string.Format("\r\n    Hostname: {0} - Port: {1} - EncryptionMethod: {2}\r\n", oProtocolConnection.Hostname, oProtocolConnection.Port, oProtocolConnection.EncryptionMethod);
-                            }
+                        sValue = string.Empty;
 
-                            break;
-                        default:
-                            sValue = string.Format("{0}\r\n", usersetting.Value.ToString());
-                            break;
+                        ValueCount = 0;
+                        sType = usersetting.Value.ToString();
+                        switch (sType)
+                        {
+                            case ("Microsoft.Exchange.WebServices.Autodiscover.WebClientUrlCollection"):
+                                Microsoft.Exchange.WebServices.Autodiscover.WebClientUrlCollection oCollection1;
+                                oCollection1 = (Microsoft.Exchange.WebServices.Autodiscover.WebClientUrlCollection)usersetting.Value;
+                                foreach (WebClientUrl oUrl in oCollection1.Urls)
+                                {
+                                    sValue += string.Format("Url: {0} - Authentication: {1}\r\n", oUrl.Url, oUrl.AuthenticationMethods);
+                                    ValueCount++;
+                                }
+                                break;
+                            case ("Microsoft.Exchange.WebServices.Autodiscover.ProtocolConnectionCollection"):
+                                Microsoft.Exchange.WebServices.Autodiscover.ProtocolConnectionCollection oCollection2;
+                                oCollection2 = (Microsoft.Exchange.WebServices.Autodiscover.ProtocolConnectionCollection)usersetting.Value;
+                                foreach (ProtocolConnection oProtocolConnection in oCollection2.Connections)
+                                {
+                                    sValue += string.Format("Hostname: {0} - Port: {1} - EncryptionMethod: {2}\r\n", oProtocolConnection.Hostname, oProtocolConnection.Port, oProtocolConnection.EncryptionMethod);
+                                    ValueCount++;
+                                }
+
+                                break;
+                            default:
+                                sValue = string.Format("{0}\r\n", usersetting.Value.ToString());
+                                break;
 
 
+                        }
+                        ListViewItem oItem = new ListViewItem(usersetting.Key.ToString());
+                        ListViewItem.ListViewSubItem o = oItem.SubItems.Add(sValue);
+                        if (ValueCount > 1)
+                            o.ForeColor = System.Drawing.Color.DarkBlue;
+                        lvItems.Items.Add(oItem); // Add to grid
+
+
+                        //sLine = string.Format("{0}:               {1}", usersetting.Key.ToString(), sValue);
+
+                        //sRet += sLine;
                     }
-                    sLine = string.Format("{0}:               {1}", usersetting.Key.ToString(), sValue);
 
-                    sRet += sLine;
+                    //sRet += "\r\n\r\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n\r\n";
+                    //sRet += "Response Information: \r\n\r\n";
+                    //sRet += "  Response Redirect Target: " + response.RedirectTarget + "\r\n";
+                    //sRet += "  Response Errors: \r\n";
+                    //sRet += "     ErrorCode: " + response.ErrorCode + "\r\n";
+                    //sRet += "     ErrorMessage: " + response.ErrorMessage + "\r\n";
+                    //sRet += "     Error on settings not returned:  \r\n";
+                    //sRet += "\r\n";
+                    //foreach (UserSettingError oError in response.UserSettingErrors)
+                    //{
+                    //    sRet += "Setting: " + oError.SettingName + "\r\n";
+                    //    sRet += "   ErrorCode: " + oError.ErrorCode + "\r\n";
+                    //    sRet += "   ErrorCode: " + oError.ErrorMessage + "\r\n";
+                    //    sRet += "\r\n--\r\n";
+                    //}
+           
                 }
-
-                sRet += "\r\n\r\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n\r\n";
-                sRet += "Response Information: \r\n\r\n";
-                sRet += "  Response Redirect Target: " + response.RedirectTarget + "\r\n";
-                sRet += "  Response Errors: \r\n";
-                sRet += "     ErrorCode: " + response.ErrorCode + "\r\n";
-                sRet += "     ErrorMessage: " + response.ErrorMessage + "\r\n";
-                sRet += "     Error on settings not returned:  \r\n";
-                foreach (UserSettingError oError in response.UserSettingErrors)
+                else
                 {
-                    sRet += "Setting: " + oError.SettingName + "\r\n";
-                    sRet += "   ErrorCode: " + oError.ErrorCode + "\r\n";
-                    sRet += "   ErrorCode: " + oError.ErrorMessage + "\r\n";
-                    sRet += "\r\n--\r\n";
+                    sRet += "Response Error:\r\n\r\n";
+                    sRet += "    AutodiscoverErrorCode : " + response.ErrorCode.ToString() + "\r\n";
+                    sRet += "    Error Message:          " + response.ErrorMessage + "\r\n";
                 }
-                sRet += "\r\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n\r\n";
+            }
+            catch (AutodiscoverLocalException oAutodiscoverLocalException)
+            {
+                sRet += "Caught AutodiscoverLocalException Exception:\r\n\r\n";
+                sRet += "    Error Message: " + oAutodiscoverLocalException.Message + "\r\n";
+                sRet += "    Inner Error Message: " + oAutodiscoverLocalException.InnerException + "\r\n";
+                sRet += "    Stack Trace: " + oAutodiscoverLocalException.StackTrace + "\r\n";
+                sRet += "    See: " + oAutodiscoverLocalException.HelpLink + "\r\n";
+            }
 
+            catch (AutodiscoverRemoteException oAutodiscoverRemoteException)
+            {
+                sRet += "Caught AutodiscoverRemoteException Exception:\r\n\r\n";
+                sRet += "    Error Message: " + oAutodiscoverRemoteException.Message + "\r\n";
+                sRet += "    Inner Error Message: " + oAutodiscoverRemoteException.InnerException + "\r\n";
+                sRet += "    Stack Trace: " + oAutodiscoverRemoteException.StackTrace + "\r\n";
+                sRet += "    See: " + oAutodiscoverRemoteException.HelpLink + "\r\n";
+            }
+            catch (AutodiscoverResponseException oAutodiscoverResponseException)
+            {
+                sRet += "Caught AutodiscoverResponseException Exception:\r\n\r\n";
+                sRet += "    Error Message: " + oAutodiscoverResponseException.Message + "\r\n";
+                sRet += "    Inner Error Message: " + oAutodiscoverResponseException.InnerException + "\r\n";
+                sRet += "    Stack Trace: " + oAutodiscoverResponseException.StackTrace + "\r\n";
+                sRet += "    See: " + oAutodiscoverResponseException.HelpLink + "\r\n";
             }
             catch (Exception ex)
             {
-
-                sRet += "\r\n\r\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n\r\n";
-                sRet += "Error thrown in code:\r\n\r\n";
+                sRet += "Caught Exception:\r\n\r\n";
                 sRet += "    Error Message: " + ex.Message + "\r\n";
-                sRet += "    Inner Error Message: " + ex.Message + "\r\n";
-                sRet += "\r\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\r\n";
+                sRet += "    Inner Error Message: " + ex.InnerException + "\r\n";
+                sRet += "    Stack Trace: " + ex.StackTrace + "\r\n";
+                sRet += "    See: " + ex.HelpLink + "\r\n";
             }
 
-            return sRet;
+            txtResults.Text = sRet;
         }
 
         private void chkDefaultWindowsCredentials_CheckedChanged(object sender, EventArgs e)
@@ -178,6 +236,37 @@ namespace EWSEditor.Forms
                 txtUser.Enabled = true;
                 txtPassword.Enabled = true;
                 txtDomain.Enabled = true;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lvItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvItems_DoubleClick(object sender, EventArgs e)
+        {
+            string sDisplay = string.Empty;
+            if (lvItems.SelectedItems.Count > 0)
+            {
+                sDisplay += "Type: \r\n";  
+                sDisplay += "-----\r\n" + lvItems.SelectedItems[0].Text;
+           
+                sDisplay += "\r\n\r\n";
+
+                sDisplay += "Value(s): \r\n";
+                sDisplay += "---------\r\n" + lvItems.SelectedItems[0].SubItems[1].Text;
+
+                ShowTextDocument oForm = new ShowTextDocument();
+                oForm.txtEntry.WordWrap = false;
+                oForm.Text = "Values for item";
+                oForm.txtEntry.Text = sDisplay;
+                oForm.ShowDialog();
             }
         }
     }

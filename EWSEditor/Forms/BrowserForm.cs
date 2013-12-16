@@ -502,10 +502,11 @@
             ConversationIdDialog oConversationIdDialog = new ConversationIdDialog();
             oConversationIdDialog.ShowDialog();
 
-             
+            this.Cursor = Cursors.WaitCursor; 
              
             if (oConversationIdDialog.ChoseOK == true)
             {
+                 
                 oPropertySet = oConversationIdDialog.CurrentPropertySet;
                 oConversationId = oConversationIdDialog.CurrentConversationId;
                 oFolderId = oConversationIdDialog.CurrentFolderId;
@@ -546,12 +547,13 @@
                         oConversationItems.Add(item.Id);
                         }
                     }
-               }
-               // This exception may occur if there is an error with the service.
-               catch (ServiceResponseException srException)
-               {
+                }
+                // This exception may occur if there is an error with the service.
+                catch (ServiceResponseException srException)
+                {
                   Console.WriteLine(srException);
-               }
+                }
+                this.Cursor = Cursors.Default;
 
                 ItemsContentForm.Show(
                     "Displaying item by Conversation",
