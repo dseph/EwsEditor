@@ -108,7 +108,7 @@ namespace EWSEditor.Common
             oListView.Columns.Add("Location", 100, HorizontalAlignment.Left);
             oListView.Columns.Add("From", 150, HorizontalAlignment.Left);
             oListView.Columns.Add("To", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("IsRecurring", 50, HorizontalAlignment.Left);
+            oListView.Columns.Add("IsRecurring", 80, HorizontalAlignment.Left);
             oListView.Columns.Add("AppointmentType", 100, HorizontalAlignment.Left);
 
             oListView.Columns.Add("Id", 100, HorizontalAlignment.Left);

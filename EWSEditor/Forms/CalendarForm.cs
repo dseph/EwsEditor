@@ -1089,7 +1089,9 @@ namespace EWSEditor.Forms
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (SaveSend(false) == true)
+            {
                 this.Close();
+            }
         }
 
         private bool SaveSend(bool bSend)
@@ -1118,6 +1120,8 @@ namespace EWSEditor.Forms
                                 oForm.ShowDialog();
                                 if (oForm.ChoseOK == true)
                                 {
+                                     
+                          
                                     _Appointment.Update(ConflictResolutionMode.AlwaysOverwrite, oForm.SelectedSendInvitationsOrCancellationsMode);
                                     _WasSaved = true;
                                     _WasSent = true;
@@ -1141,7 +1145,7 @@ namespace EWSEditor.Forms
 
                         }  
                         else
-                        {
+                        {       // New item.
                             if (bSend == true)
                             {
                                 SelectSendNewMeetingNotificationOptions oForm = new SelectSendNewMeetingNotificationOptions();
@@ -1569,7 +1573,9 @@ namespace EWSEditor.Forms
         private void btnSend_Click(object sender, EventArgs e)
         {
             if (SaveSend(true) == true)
+            {
                 this.Close();
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

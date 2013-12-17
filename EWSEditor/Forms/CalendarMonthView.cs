@@ -198,11 +198,25 @@ namespace EWSEditor.Forms
             {
                 ItemTag oItemTag = null;
                 oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
-                Appointment oAppointment = Appointment.BindToRecurringMaster(_CurrentService, oItemTag.Id);
 
-                CalendarForm oForm = new CalendarForm(_CurrentService, oAppointment.Id);
-                oForm.ShowDialog();
-                oForm = null;
+                if (lvItems.SelectedItems[0].SubItems[4].Text == "False")
+                {
+                    CalendarForm oForm = new CalendarForm(_CurrentService, oItemTag.Id);
+                    oForm.ShowDialog();
+                    oForm = null;
+ 
+                }
+                else
+                {
+ 
+                    Appointment oAppointment = Appointment.BindToRecurringMaster(_CurrentService, oItemTag.Id);
+
+                    CalendarForm oForm = new CalendarForm(_CurrentService, oAppointment.Id);
+                    oForm.ShowDialog();
+                    oForm = null;
+                     
+                }
+
                 oItemTag = null;
             }
         }

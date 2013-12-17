@@ -35,16 +35,16 @@ namespace EWSEditor.Exchange
             service.AutodiscoverUrl(emailAddress.Address, ValidationCallbackHelper.RedirectionUrlValidationCallback);
             EwsUrl = service.Url;
 
-            try
-            {
-                service.EnableScpLookup = GlobalSettings.EnableScpLookups;
-                service.AutodiscoverUrl(emailAddress.Address, ValidationCallbackHelper.RedirectionUrlValidationCallback);
-                EwsUrl = service.Url;
-            }
-            catch (AutodiscoverLocalException oException)
-            {
-                ErrorDialog.ShowError(oException.ToString());
-            }
+            //try
+            //{
+            //    service.EnableScpLookup = GlobalSettings.EnableScpLookups;
+            //    service.AutodiscoverUrl(emailAddress.Address, ValidationCallbackHelper.RedirectionUrlValidationCallback);
+            //    EwsUrl = service.Url;
+            //}
+            //catch (AutodiscoverLocalException oException)
+            //{
+            //    ErrorDialog.ShowError(oException.ToString());
+            //}
  
         }
  
