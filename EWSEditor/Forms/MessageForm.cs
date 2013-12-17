@@ -65,24 +65,38 @@ namespace EWSEditor.Forms
             _CanEdit = false;
             _CanSend = false;
             _CanReply = true;
-            if (_EmailMessage.IsNew)  // is stored?
-            {
-                // _EditMessageType = EditMessageType.IsNew;
-                _CanEdit = true;
-                _CanSend = true;
-                _CanReply = false;
-            }
 
-
-            //if (_EmailMessage.IsSubmitted)  // is stored?
+            //bool IsItemInDraftsFolder = false;
+            //Folder oDrafts = Folder.Bind(_CurrentService, WellKnownFolderName.Drafts);
+            //if (_EmailMessage.ParentFolderId == oDrafts.Id)
             //{
-            //    //_EditMessageType = EditMessageType.IsNew;
-            //    _CanEdit = false;
-            //    _CanSend = false;
-            //    _CanReply = true;
+            //    IsItemInDraftsFolder = true;
+            //    //_CanReply = false;
             //}
 
+            // Edit Fields?
+            if (_EmailMessage.IsNew == false)
+                _CanEdit = true;
+            else
+                _CanEdit = false;
+                
 
+            // Enable buttons.
+            if (_EmailMessage.IsDraft == true) 
+            {
+                _CanEdit = true;                 // Edit
+                _CanSend = true;
+                _CanReply = false;
+
+            }
+            else
+            {
+                _CanEdit = false;    // view  - only view existing
+                _CanSend = false;
+                _CanReply = true;    // starts edit on a new message using this current message.
+
+            }
+ 
             SetFormFromMessage(_EmailMessage, _CanEdit, _CanSend, _CanReply);
         }
 
@@ -263,8 +277,8 @@ namespace EWSEditor.Forms
         private bool SetMessageFromForm(ref EmailMessage oEmailMessage)
         {
             bool bRet = true;
-            
 
+            
             bRet = SetRecipientsFromString(ref oEmailMessage, "To", txtTo.Text.Trim());
             if (bRet) bRet = SetRecipientsFromString(ref oEmailMessage, "CC", txtCC.Text.Trim());
             if (bRet) bRet = SetRecipientsFromString(ref oEmailMessage, "BCC", txtBCC.Text.Trim());
@@ -318,6 +332,9 @@ namespace EWSEditor.Forms
             int iEndAddress = 0;
             int iStartAddress = 0;
             string sCurrentAddress = string.Empty;
+
+             
+
             try
             {
                 foreach (string sAddress in sAddresses)
@@ -422,6 +439,8 @@ namespace EWSEditor.Forms
 
             ClearForm();
 
+            txtFrom.Text = oEmailMessage.Sender.Address;
+
             if (_IsExistingEmail == true)
             {
 
@@ -499,14 +518,14 @@ namespace EWSEditor.Forms
                 btnReply.Enabled = CanReply;
                 btnReplyAll.Enabled = CanReply;
                 btnForward.Enabled = CanReply;
-                System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
-                System.Diagnostics.Debug.WriteLine("Loaded existing email:");
-                System.Diagnostics.Debug.WriteLine("    ChangeKey: ", oEmailMessage.ConversationId.ChangeKey);
-                System.Diagnostics.Debug.WriteLine("    UniqueId: ", oEmailMessage.ConversationId.UniqueId);
-                System.Diagnostics.Debug.WriteLine("    Subject: ", oEmailMessage.Subject);
-                System.Diagnostics.Debug.WriteLine("    ConversationTopic: ", oEmailMessage.ConversationTopic);
-                System.Diagnostics.Debug.WriteLine("    ConversationIndex: \r\n", StringHelper.HexStringFromByteArray(oEmailMessage.ConversationIndex) + "\r\n");
-                System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
+                //System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
+                //System.Diagnostics.Debug.WriteLine("Loaded existing email:");
+                //System.Diagnostics.Debug.WriteLine("    ChangeKey: ", oEmailMessage.ConversationId.ChangeKey);
+                //System.Diagnostics.Debug.WriteLine("    UniqueId: ", oEmailMessage.ConversationId.UniqueId);
+                //System.Diagnostics.Debug.WriteLine("    Subject: ", oEmailMessage.Subject);
+                //System.Diagnostics.Debug.WriteLine("    ConversationTopic: ", oEmailMessage.ConversationTopic);
+                //System.Diagnostics.Debug.WriteLine("    ConversationIndex: \r\n", StringHelper.HexStringFromByteArray(oEmailMessage.ConversationIndex) + "\r\n");
+                //System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
             }
             else
             {
@@ -515,9 +534,9 @@ namespace EWSEditor.Forms
                 chkReadReceipt.Enabled = true;
                 chkDeliveryReceipt.Enabled = true;
                 cmboMessageType.Text = "Text";
-                System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
-                System.Diagnostics.Debug.WriteLine("New email started.");
-                System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
+                //System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
+                //System.Diagnostics.Debug.WriteLine("New email started.");
+                //System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
             }
              
  
@@ -606,7 +625,8 @@ namespace EWSEditor.Forms
 
                 }
 
-                oResponseMessage.BodyPrefix = "===========\r\n";
+                //oResponseMessage.BodyPrefix = "===========\r\n";
+               
                 // Save as drafts AND set as new current message.
                 _EmailMessage = oResponseMessage.Save(WellKnownFolderName.Drafts);
                 _EmailMessage.Load();
@@ -719,8 +739,8 @@ namespace EWSEditor.Forms
 
         private void btnReplyAll_Click(object sender, EventArgs e)
         {
-            //bool bRet = true;
-            //bRet = MakeResponseMessage(ResponseMessageType.ReplyAll);
+            bool bRet = false;
+            bRet = MakeResponseMessage(ResponseMessageType.ReplyAll);
  
         }
 

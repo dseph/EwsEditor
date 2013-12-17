@@ -49,6 +49,8 @@
             this.txtBody = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFrom = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -157,7 +159,7 @@
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(11, 97);
+            this.lblTo.Location = new System.Drawing.Point(11, 109);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(23, 13);
             this.lblTo.TabIndex = 7;
@@ -167,7 +169,7 @@
             // 
             this.txtTo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTo.Location = new System.Drawing.Point(58, 90);
+            this.txtTo.Location = new System.Drawing.Point(58, 102);
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(753, 20);
             this.txtTo.TabIndex = 8;
@@ -175,7 +177,7 @@
             // lblCC
             // 
             this.lblCC.AutoSize = true;
-            this.lblCC.Location = new System.Drawing.Point(11, 123);
+            this.lblCC.Location = new System.Drawing.Point(11, 135);
             this.lblCC.Name = "lblCC";
             this.lblCC.Size = new System.Drawing.Size(24, 13);
             this.lblCC.TabIndex = 9;
@@ -185,7 +187,7 @@
             // 
             this.txtCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCC.Location = new System.Drawing.Point(58, 116);
+            this.txtCC.Location = new System.Drawing.Point(58, 128);
             this.txtCC.Name = "txtCC";
             this.txtCC.Size = new System.Drawing.Size(753, 20);
             this.txtCC.TabIndex = 10;
@@ -193,7 +195,7 @@
             // lblBCC
             // 
             this.lblBCC.AutoSize = true;
-            this.lblBCC.Location = new System.Drawing.Point(11, 149);
+            this.lblBCC.Location = new System.Drawing.Point(11, 161);
             this.lblBCC.Name = "lblBCC";
             this.lblBCC.Size = new System.Drawing.Size(31, 13);
             this.lblBCC.TabIndex = 11;
@@ -203,7 +205,7 @@
             // 
             this.txtBCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBCC.Location = new System.Drawing.Point(58, 142);
+            this.txtBCC.Location = new System.Drawing.Point(58, 154);
             this.txtBCC.Name = "txtBCC";
             this.txtBCC.Size = new System.Drawing.Size(753, 20);
             this.txtBCC.TabIndex = 12;
@@ -211,7 +213,7 @@
             // lblSubject
             // 
             this.lblSubject.AutoSize = true;
-            this.lblSubject.Location = new System.Drawing.Point(11, 175);
+            this.lblSubject.Location = new System.Drawing.Point(11, 187);
             this.lblSubject.Name = "lblSubject";
             this.lblSubject.Size = new System.Drawing.Size(46, 13);
             this.lblSubject.TabIndex = 13;
@@ -221,7 +223,7 @@
             // 
             this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSubject.Location = new System.Drawing.Point(58, 168);
+            this.txtSubject.Location = new System.Drawing.Point(58, 180);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(753, 20);
             this.txtSubject.TabIndex = 14;
@@ -231,11 +233,11 @@
             this.txtBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBody.Location = new System.Drawing.Point(12, 194);
+            this.txtBody.Location = new System.Drawing.Point(12, 206);
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBody.Size = new System.Drawing.Size(799, 263);
+            this.txtBody.Size = new System.Drawing.Size(799, 281);
             this.txtBody.TabIndex = 15;
             this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
@@ -260,11 +262,32 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 80);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "From:";
+            // 
+            // txtFrom
+            // 
+            this.txtFrom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFrom.Enabled = false;
+            this.txtFrom.Location = new System.Drawing.Point(58, 77);
+            this.txtFrom.Name = "txtFrom";
+            this.txtFrom.Size = new System.Drawing.Size(753, 20);
+            this.txtFrom.TabIndex = 17;
+            // 
             // MessageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 481);
+            this.ClientSize = new System.Drawing.Size(823, 499);
+            this.Controls.Add(this.txtFrom);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSave);
@@ -315,6 +338,8 @@
         private System.Windows.Forms.TextBox txtBody;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFrom;
 
     }
 }

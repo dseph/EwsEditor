@@ -40,7 +40,6 @@
             "SendOnlyToAll",
             "SendOnlyToChanged",
             "SendToAllAndSaveCopy",
-            "SendToAllAndSaveCopy",
             "SendToChangedAndSaveCopy",
             "SendToNone"});
             this.lbOptions.Location = new System.Drawing.Point(12, 22);
