@@ -878,7 +878,7 @@ namespace EWSEditor.Forms
                         mnuClientEditItem.Visible = true;
                         break;
                     case "IPM.Contact":
-                        mnuClientEditItem.Visible = false;
+                        mnuClientEditItem.Visible = true;
                         break;
                     case "IPM.Appointment":
                         mnuClientEditItem.Visible = true;

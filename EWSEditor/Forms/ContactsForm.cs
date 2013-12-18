@@ -163,12 +163,13 @@ namespace EWSEditor.Forms
             oContact.Surname = txtSurname.Text ;
             oContact.CompanyName =  txtCompanyName.Text;
             oContact.JobTitle = txtJobTitle.Text;
-
+            //oContact.Notes = txtNotes.Text;  /// Its read only???
 
             PhysicalAddressEntry oBusinessAddress = null;
             if (
                 (txtBA_Street.Text.Trim().Length != 0) ||
                 (txtBA_City.Text.Trim().Length != 0) ||
+                (txtBA_State.Text.Trim().Length != 0) ||
                 (txtBA_CountryOrRegion.Text.Trim().Length != 0) ||
                 (txtBA_PostalCode.Text.Trim().Length != 0)
                 )
@@ -176,6 +177,7 @@ namespace EWSEditor.Forms
                 oBusinessAddress = new PhysicalAddressEntry();
                 oBusinessAddress.Street = txtBA_Street.Text;
                 oBusinessAddress.City = txtBA_City.Text;
+                oBusinessAddress.State = txtBA_State.Text;
                 oBusinessAddress.CountryOrRegion = txtBA_CountryOrRegion.Text;
                 oBusinessAddress.PostalCode = txtBA_PostalCode.Text;
                 oContact.PhysicalAddresses[PhysicalAddressKey.Business] = oBusinessAddress;
@@ -187,6 +189,7 @@ namespace EWSEditor.Forms
             if (
                 (txtHA_Street.Text.Trim().Length != 0) ||
                 (txtHA_City.Text.Trim().Length != 0) ||
+                (txtHA_State.Text.Trim().Length != 0) ||
                 (txtHA_CountryOrRegion.Text.Trim().Length != 0) ||
                 (txtHA_PostalCode.Text.Trim().Length != 0)
                 )
@@ -194,6 +197,7 @@ namespace EWSEditor.Forms
                 oHomeAddress = new PhysicalAddressEntry();
                 oHomeAddress.Street = txtHA_Street.Text;
                 oHomeAddress.City = txtHA_City.Text;
+                oHomeAddress.State = txtHA_State.Text;
                 oHomeAddress.CountryOrRegion = txtHA_CountryOrRegion.Text;
                 oHomeAddress.PostalCode = txtHA_PostalCode.Text;
                 oContact.PhysicalAddresses[PhysicalAddressKey.Home] = oHomeAddress;
@@ -204,6 +208,7 @@ namespace EWSEditor.Forms
             if (
                 (txtOA_Street.Text.Trim().Length != 0) ||
                 (txtOA_City.Text.Trim().Length != 0) ||
+                (txtOA_State.Text.Trim().Length != 0) ||
                 (txtOA_CountryOrRegion.Text.Trim().Length != 0) ||
                 (txtOA_PostalCode.Text.Trim().Length != 0)
                 )
@@ -211,6 +216,7 @@ namespace EWSEditor.Forms
                 oOtherAddress = new PhysicalAddressEntry();
                 oOtherAddress.Street = txtOA_Street.Text;
                 oOtherAddress.City = txtOA_City.Text;
+                oOtherAddress.State = txtOA_State.Text;
                 oOtherAddress.CountryOrRegion = txtOA_CountryOrRegion.Text;
                 oOtherAddress.PostalCode = txtOA_PostalCode.Text;
                 oContact.PhysicalAddresses[PhysicalAddressKey.Other] = oOtherAddress;
@@ -612,6 +618,11 @@ namespace EWSEditor.Forms
         }
 
         private void textBox12_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNotes_TextChanged(object sender, EventArgs e)
         {
 
         }
