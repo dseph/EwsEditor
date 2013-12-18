@@ -151,7 +151,7 @@ namespace EWSEditor.Forms
         private void ExtendedPropertyDialog_Load(object sender, EventArgs e)
         {
             this.propertyTypeCombo.TransformComboBox(this.TempPropertyTypeCombo);
-            this.propertyTypeCombo.HasEmptyItem = true;
+            this.propertyTypeCombo.HasEmptyItem = true; 
 
             this.extendedPropertySetCombo.TransformComboBox(this.TempExtendedPropertySetComboBox);
             this.extendedPropertySetCombo.HasEmptyItem = true;
