@@ -462,6 +462,15 @@
             }
         }
 
+        private void DistributionListMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.CurrentService != null)
+            {
+                DistributionListExpansionForm oDistributionListForm = new DistributionListExpansionForm(this.CurrentService);
+                oDistributionListForm.ShowDialog();
+            }
+        }
+        
         private void InboxRulesMenuItem_Click(object sender, EventArgs e)
         {
             if (this.CurrentService != null)
