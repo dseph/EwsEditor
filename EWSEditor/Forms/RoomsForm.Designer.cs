@@ -134,7 +134,7 @@
             this.Controls.Add(this.btnRoomLists);
             this.Controls.Add(this.lvRoomLists);
             this.Name = "RoomsForm";
-            this.Text = "Rooms ";
+            this.Text = "Meeting Rooms";
             this.Load += new System.EventHandler(this.RoomsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

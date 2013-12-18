@@ -83,6 +83,7 @@ namespace EWSEditor.Forms
 
                 // If there is no principal mailbox then there's nothing to do
                 if (this.PrincipalMailbox == null) { return; }
+                if (this.PrincipalMailbox.Address == string.Empty) { return; }
 
                 GetDelegateInformation();
             }

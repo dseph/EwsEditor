@@ -56,6 +56,7 @@
             this.UserOofSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserAvailabilityMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MeetingRoomsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DistributionListMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InboxRulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConvertIdMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeZonemenuitem = new System.Windows.Forms.ToolStripMenuItem();
@@ -173,6 +174,7 @@
             this.UserOofSettingsMenuItem,
             this.UserAvailabilityMenuItem,
             this.MeetingRoomsMenuItem,
+            this.DistributionListMenuItem,
             this.InboxRulesMenuItem,
             this.ConvertIdMenuItem,
             this.TimeZonemenuitem,
@@ -285,6 +287,14 @@
             this.MeetingRoomsMenuItem.Size = new System.Drawing.Size(315, 22);
             this.MeetingRoomsMenuItem.Text = "Meeting Rooms...";
             this.MeetingRoomsMenuItem.Click += new System.EventHandler(this.MeetingRoomsMenuItem_Click);
+            // 
+            // MeetingRoomsMenuItem
+            // 
+            this.DistributionListMenuItem.Name = "DistributionListMenuItem";
+            this.DistributionListMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.DistributionListMenuItem.Text = "Distibution List Expansion...";
+            this.DistributionListMenuItem.Click += new System.EventHandler(this.DistributionListMenuItem_Click);
+ 
             // 
             // InboxRulesMenuItem
             // 
@@ -438,6 +448,7 @@
         public System.Windows.Forms.ToolStripMenuItem mnuStreamingNotification;
         private System.Windows.Forms.ToolStripMenuItem TimeZonemenuitem;
         private System.Windows.Forms.ToolStripMenuItem MeetingRoomsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DistributionListMenuItem;
         private System.Windows.Forms.ToolStripMenuItem InboxRulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuGetConversationItems;
