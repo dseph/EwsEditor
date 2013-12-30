@@ -132,7 +132,8 @@ namespace EWSEditor.Forms
                 this.mnuOpenFolderById.Enabled = isCurrentService;
                 this.mnuResolveName.Enabled = isCurrentService;
                 this.mnuFindAppointments.Enabled = isCurrentService;
-
+                //this.mnuGetConversationItems.Enabled = isCurrentService;
+ 
                 // View Menu
                 this.mnuRefresh.Enabled = isCurrentService;
                 this.mnuViewResetPropertySet.Enabled = isCurrentService;
@@ -146,6 +147,8 @@ namespace EWSEditor.Forms
                 this.UserAvailabilityMenuItem.Enabled = isCurrentService;
                 this.UserOofSettingsMenuItem.Enabled = isCurrentService;
                 this.ConvertIdMenuItem.Enabled = isCurrentService;
+
+                 
             }
         }
 
@@ -923,23 +926,56 @@ namespace EWSEditor.Forms
                 {
                     this.Cursor = Cursors.WaitCursor;
 
-                    Folder folder = new Folder(this.CurrentService);
-                    folder.DisplayName = "NewFolder";
-                    folder.Save(parentFolder.Id);
+                    string sFolderName = "NewFolder";
+                    string sFolderClass = "IPF.Note";
+ 
 
-                    // Load the current PropertySet for this new folder
-                    folder.Load(this.CurrentDetailPropertySet);
+                    NewFolderForm oForm = new NewFolderForm();
+                    oForm.ShowDialog();
 
-                    TreeNode newNode = this.AddFolderToTreeView(folder, this.FolderTreeView.SelectedNode);
-                    this.FolderTreeView.SelectedNode = newNode;
+                    if (oForm.ChoseOK == true)
+                    {
 
-                    // Refresh the tree view node
-                    this.BindSelectedNode();
+                        sFolderName = oForm.ChosenFolderName;
+                        sFolderClass = oForm.ChosenFolderClass;
+
+                        Folder folder = new Folder(this.CurrentService);
+
+                        folder.DisplayName = sFolderName;
+                        if (sFolderClass.Trim().Length != 0)
+                            folder.FolderClass = sFolderClass;
+
+                        folder.Save(parentFolder.Id);
+ 
+                        //// Load the current PropertySet for this new folder
+                        //folder.Load(this.CurrentDetailPropertySet);  // not working if folder class is set
+                        //TreeNode newNode = this.AddFolderToTreeView(folder, this.FolderTreeView.SelectedNode);
+                        //this.FolderTreeView.SelectedNode = newNode;
+
+                        Folder folder2 = Folder.Bind(this.CurrentService, folder.Id);
+                        folder2.Load(this.CurrentDetailPropertySet);
+                        TreeNode newNode = this.AddFolderToTreeView(folder2, this.FolderTreeView.SelectedNode);
+                        this.FolderTreeView.SelectedNode = newNode;
+
+                        // Refresh the tree view node
+                        this.BindSelectedNode();
+
+                        // Calendar items
+                        // Contact items
+                        // Mail and post items
+                        // InfoPath  Form items
+                        // Journal items
+                        // Note items
+                        // Task Items
+                    }
+
                 }
                 finally
                 {
                     this.Cursor = Cursors.Default;
                 }
+
+                this.Cursor = Cursors.Default;
             }
         }
 

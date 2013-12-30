@@ -162,7 +162,7 @@ namespace EWSEditor.Forms
             this.toolStripMenuItem14,
             this.mnuFolderCalendarView});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
-            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 354);
+            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 332);
             // 
             // mnuOpenContents
             // 

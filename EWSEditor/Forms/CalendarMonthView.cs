@@ -22,7 +22,6 @@ namespace EWSEditor.Forms
         public CalendarMonthView()
         {
             InitializeComponent();
- 
         }
 
         public CalendarMonthView(Form parent, ExchangeService oExchangeService, FolderId oFolderId) 

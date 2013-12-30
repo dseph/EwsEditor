@@ -63,6 +63,7 @@ namespace EWSEditor.Forms
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnOptions = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.txtDefaultSmtp = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -258,7 +259,7 @@ namespace EWSEditor.Forms
             // 
             this.AutodiscoverEmailText.Location = new System.Drawing.Point(152, 34);
             this.AutodiscoverEmailText.Name = "AutodiscoverEmailText";
-            this.AutodiscoverEmailText.Size = new System.Drawing.Size(351, 20);
+            this.AutodiscoverEmailText.Size = new System.Drawing.Size(295, 20);
             this.AutodiscoverEmailText.TabIndex = 2;
             // 
             // Worker
@@ -297,6 +298,7 @@ namespace EWSEditor.Forms
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtDefaultSmtp);
             this.panel1.Controls.Add(this.rdoServiceUrl);
             this.panel1.Controls.Add(this.rdoAutodiscoverEmail);
             this.panel1.Controls.Add(this.lblUseAutodiscoverCheck);
@@ -426,6 +428,17 @@ namespace EWSEditor.Forms
             this.panel4.Size = new System.Drawing.Size(509, 116);
             this.panel4.TabIndex = 10;
             // 
+            // txtDefaultSmtp
+            // 
+            this.txtDefaultSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDefaultSmtp.Location = new System.Drawing.Point(453, 31);
+            this.txtDefaultSmtp.Name = "txtDefaultSmtp";
+            this.txtDefaultSmtp.Size = new System.Drawing.Size(49, 23);
+            this.txtDefaultSmtp.TabIndex = 4;
+            this.txtDefaultSmtp.Text = "Default";
+            this.txtDefaultSmtp.UseVisualStyleBackColor = true;
+            this.txtDefaultSmtp.Click += new System.EventHandler(this.txtDefaultSmtp_Click);
+            // 
             // ServiceDialog
             // 
             this.AcceptButton = this.btnOK;
@@ -491,5 +504,6 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.Label lblUseAutodiscoverCheck;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button txtDefaultSmtp;
     }
 }
