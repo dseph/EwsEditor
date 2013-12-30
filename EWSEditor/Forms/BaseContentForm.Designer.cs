@@ -77,6 +77,7 @@
             this.ContentsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ContentsGrid.Size = new System.Drawing.Size(981, 300);
             this.ContentsGrid.TabIndex = 1;
+            this.ContentsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ContentsGrid_CellContentClick);
             this.ContentsGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ContentsGrid_CellMouseClick);
             this.ContentsGrid.SelectionChanged += new System.EventHandler(this.ContentsGrid_SelectionChanged);
             this.ContentsGrid.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.ContentsGrid_SortCompare);

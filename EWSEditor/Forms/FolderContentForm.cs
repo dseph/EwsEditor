@@ -312,6 +312,8 @@ namespace EWSEditor.Forms
             {
                 this.Cursor = Cursors.Default;
             }
+
+            this.Cursor = Cursors.Default;
         }
 
         private void PropertyDetailsGrid_PropertyChanged(object sender, EventArgs e)
@@ -357,6 +359,8 @@ namespace EWSEditor.Forms
             {
                 this.Cursor = Cursors.Default;
             }
+
+            this.Cursor = Cursors.Default;
         }
 
         /// <summary>
@@ -436,9 +440,7 @@ namespace EWSEditor.Forms
             {
                 MessageBox.Show("Loading for this folder type not implemented.");
             }
-
-
-
+ 
             this.Cursor = Cursors.Default;
         }
 
@@ -538,8 +540,6 @@ namespace EWSEditor.Forms
                 MessageBox.Show("MIME loading for this folder type not implemented.");
             }
  
- 
- 
             this.Cursor = Cursors.Default;
         }
 
@@ -576,6 +576,11 @@ namespace EWSEditor.Forms
         }
 
         private void ContentsGrid_CellContentClick_6(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ContentsGrid_CellContentClick_7(object sender, DataGridViewCellEventArgs e)
         {
 
         }

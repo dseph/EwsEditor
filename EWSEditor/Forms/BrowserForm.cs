@@ -8,6 +8,7 @@
     using System.Linq;
     using System.Text;
     using System.Windows.Forms;
+    using System.DirectoryServices.AccountManagement;
    
     using System.Collections.ObjectModel;
 
@@ -570,6 +571,41 @@
                     this.CurrentService,
                     this);
             }
+        }
+
+        private void mnuWindowsUserInformation_Click(object sender, EventArgs e)
+        {
+            string sInfo = string.Empty;
+            StringBuilder oSB = new StringBuilder();
+            oSB.AppendFormat("DisplayName: {0}\r\n", UserPrincipal.Current.DisplayName);
+            oSB.AppendFormat("GivenName: {0}\r\n", UserPrincipal.Current.GivenName);
+            oSB.AppendFormat("DistinguishedName: {0}\r\n", UserPrincipal.Current.DistinguishedName);
+            oSB.AppendFormat("Name: {0}\r\n", UserPrincipal.Current.Name);
+            oSB.AppendFormat("MiddleName: {0}\r\n", UserPrincipal.Current.MiddleName);
+            oSB.AppendFormat("\r\n");
+            oSB.AppendFormat("EmailAddress: {0}\r\n", UserPrincipal.Current.EmailAddress);
+            oSB.AppendFormat("SamAccountName: {0}\r\n", UserPrincipal.Current.SamAccountName);
+            oSB.AppendFormat("Sid: {0}\r\n", UserPrincipal.Current.Sid.Value);
+            oSB.AppendFormat("\r\n");
+            oSB.AppendFormat("PasswordNeverExpires: {0}\r\n", UserPrincipal.Current.PasswordNeverExpires.ToString());
+            oSB.AppendFormat("PasswordNotRequired: {0}\r\n", UserPrincipal.Current.PasswordNotRequired.ToString());
+            oSB.AppendFormat("UserCannotChangePassword: {0}\r\n", UserPrincipal.Current.UserCannotChangePassword.ToString());
+            oSB.AppendFormat("SmartcardLogonRequired: {0}\r\n", UserPrincipal.Current.SmartcardLogonRequired.ToString());
+ 
+            if (UserPrincipal.Current.AccountExpirationDate.HasValue)
+                oSB.AppendFormat("AccountExpirationDate: {0}\r\n", UserPrincipal.Current.AccountExpirationDate.ToString());
+            if (UserPrincipal.Current.AccountLockoutTime.HasValue)
+                oSB.AppendFormat("AccountLockoutTime: {0}\r\n", UserPrincipal.Current.AccountLockoutTime.ToString());
+
+ 
+            string sContent = oSB.ToString();
+
+            ShowTextDocument oForm = new ShowTextDocument();
+            oForm.txtEntry.WordWrap = false;
+            oForm.Text = "Current Windows User Information";
+            oForm.txtEntry.Text = sContent;
+            oForm.ShowDialog();
+ 
         }
     }
 }

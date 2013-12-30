@@ -69,8 +69,12 @@ namespace EWSEditor.Forms
                     return;
                 }
 
+
                 DateTime start = Convert.ToDateTime(txtStartTime.Text);
                 DateTime end = Convert.ToDateTime(txtEndTime.Text);
+
+
+
 
                 CalendarView view = new CalendarView(start, end, GlobalSettings.CalendarViewSize);
                 view.PropertySet = new PropertySet(BasePropertySet.FirstClassProperties);
@@ -104,6 +108,11 @@ namespace EWSEditor.Forms
             {
                 lblFolderId.Text = PropertyInterpretation.GetPropertyValue(this.CurrentCalendar);
             }
+        }
+
+        private void FindAppointmentsDialog_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -273,5 +273,10 @@ namespace EWSEditor.Forms
                 e.Handled = true;
             }
         }
+
+        private void ContentsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

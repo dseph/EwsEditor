@@ -65,11 +65,13 @@
             this.mnuOther = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenItemById = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenFolderById = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGetConversationItems = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOtherSplit1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuFindAppointments = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuWindowsUserInformation = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuGetConversationItems = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -288,13 +290,12 @@
             this.MeetingRoomsMenuItem.Text = "Meeting Rooms...";
             this.MeetingRoomsMenuItem.Click += new System.EventHandler(this.MeetingRoomsMenuItem_Click);
             // 
-            // MeetingRoomsMenuItem
+            // DistributionListMenuItem
             // 
             this.DistributionListMenuItem.Name = "DistributionListMenuItem";
             this.DistributionListMenuItem.Size = new System.Drawing.Size(315, 22);
             this.DistributionListMenuItem.Text = "Distibution List Expansion...";
             this.DistributionListMenuItem.Click += new System.EventHandler(this.DistributionListMenuItem_Click);
- 
             // 
             // InboxRulesMenuItem
             // 
@@ -336,7 +337,9 @@
             this.mnuOpenFolderById,
             this.mnuGetConversationItems,
             this.mnuOtherSplit1,
-            this.mnuFindAppointments});
+            this.mnuFindAppointments,
+            this.toolStripSeparator1,
+            this.mnuWindowsUserInformation});
             this.mnuOther.Name = "mnuOther";
             this.mnuOther.Size = new System.Drawing.Size(49, 20);
             this.mnuOther.Text = "Other";
@@ -355,6 +358,13 @@
             this.mnuOpenFolderById.Text = "Open Folder by Id...";
             this.mnuOpenFolderById.Click += new System.EventHandler(this.MnuOpenFolderById_Click);
             // 
+            // mnuGetConversationItems
+            // 
+            this.mnuGetConversationItems.Name = "mnuGetConversationItems";
+            this.mnuGetConversationItems.Size = new System.Drawing.Size(268, 22);
+            this.mnuGetConversationItems.Text = "Get Items by Conversation Id...";
+            this.mnuGetConversationItems.Click += new System.EventHandler(this.mnuGetConversationItems_Click);
+            // 
             // mnuOtherSplit1
             // 
             this.mnuOtherSplit1.Name = "mnuOtherSplit1";
@@ -366,6 +376,18 @@
             this.mnuFindAppointments.Size = new System.Drawing.Size(268, 22);
             this.mnuFindAppointments.Text = "Find Appointments (CalendarView)...";
             this.mnuFindAppointments.Click += new System.EventHandler(this.MnuFindAppointments_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(265, 6);
+            // 
+            // mnuWindowsUserInformation
+            // 
+            this.mnuWindowsUserInformation.Name = "mnuWindowsUserInformation";
+            this.mnuWindowsUserInformation.Size = new System.Drawing.Size(268, 22);
+            this.mnuWindowsUserInformation.Text = "Windows User Information...";
+            this.mnuWindowsUserInformation.Click += new System.EventHandler(this.mnuWindowsUserInformation_Click);
             // 
             // mnuHelp
             // 
@@ -381,13 +403,6 @@
             this.mnuAbout.Size = new System.Drawing.Size(164, 22);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
-            // 
-            // mnuGetConversationItems
-            // 
-            this.mnuGetConversationItems.Name = "mnuGetConversationItems";
-            this.mnuGetConversationItems.Size = new System.Drawing.Size(268, 22);
-            this.mnuGetConversationItems.Text = "Get Conversation Items";
-            this.mnuGetConversationItems.Click += new System.EventHandler(this.mnuGetConversationItems_Click);
             // 
             // BrowserForm
             // 
@@ -452,5 +467,7 @@
         private System.Windows.Forms.ToolStripMenuItem InboxRulesMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuGetConversationItems;
+        private System.Windows.Forms.ToolStripMenuItem mnuWindowsUserInformation;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

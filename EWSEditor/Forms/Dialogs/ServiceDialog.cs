@@ -7,7 +7,9 @@ using EWSEditor.Forms.Controls;
 using EWSEditor.Resources;
 using EWSEditor.Settings;
 using Microsoft.Exchange.WebServices.Data;
+using System.DirectoryServices.AccountManagement;
 
+ 
 namespace EWSEditor.Forms
 {
     public partial class ServiceDialog : DialogForm
@@ -324,6 +326,11 @@ namespace EWSEditor.Forms
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
              
+        }
+
+        private void txtDefaultSmtp_Click(object sender, EventArgs e)
+        {
+            AutodiscoverEmailText.Text =  UserPrincipal.Current.EmailAddress;
         }
 
         //private void btnOptions_Click(object sender, EventArgs e)
