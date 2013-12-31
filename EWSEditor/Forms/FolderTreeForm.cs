@@ -1563,7 +1563,7 @@ namespace EWSEditor.Forms
 
         private void FolderPropertyDetailsGrid_Load(object sender, EventArgs e)
         {
-
+             
         }
     }
 }
