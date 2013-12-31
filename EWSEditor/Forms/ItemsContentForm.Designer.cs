@@ -42,6 +42,7 @@
             this.mnuHardDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSoftDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMoveToDeleted = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPlayOnPhone = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemSplit2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExportItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExportMIMEContent = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,12 +68,13 @@
             this.mnuMoveItem,
             this.mnuCopyItem,
             this.mnuDelete,
+            this.mnuPlayOnPhone,
             this.mnuItemSplit2,
             this.mnuExportItem,
             this.mnuItemSplit3,
             this.mnuResponse});
             this.mnuItemContext.Name = "mnuItemContext";
-            this.mnuItemContext.Size = new System.Drawing.Size(196, 220);
+            this.mnuItemContext.Size = new System.Drawing.Size(196, 242);
             this.mnuItemContext.Opening += new System.ComponentModel.CancelEventHandler(this.mnuItemContext_Opening);
             this.mnuItemContext.Click += new System.EventHandler(this.mnuItemContext_Click);
             // 
@@ -154,6 +156,13 @@
             this.mnuMoveToDeleted.Size = new System.Drawing.Size(193, 22);
             this.mnuMoveToDeleted.Text = "Move to Deleted Items";
             this.mnuMoveToDeleted.Click += new System.EventHandler(this.MnuMoveToDeleted_Click);
+            // 
+            // mnuPlayOnPhone
+            // 
+            this.mnuPlayOnPhone.Name = "mnuPlayOnPhone";
+            this.mnuPlayOnPhone.Size = new System.Drawing.Size(195, 22);
+            this.mnuPlayOnPhone.Text = "Play on phone...";
+            this.mnuPlayOnPhone.Click += new System.EventHandler(this.mnuPlayOnPhone_Click);
             // 
             // mnuItemSplit2
             // 
@@ -273,5 +282,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuViewMIMEContent;
         private System.Windows.Forms.ToolStripMenuItem mnuCopyItem;
         private System.Windows.Forms.ToolStripMenuItem mnuClientEditItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuPlayOnPhone;
     }
 }

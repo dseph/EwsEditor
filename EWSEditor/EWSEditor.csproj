@@ -37,6 +37,8 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -103,8 +105,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>deps\Microsoft.Exchange.WebServices.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -117,6 +119,7 @@
     </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Web.Extensions">
@@ -214,11 +217,29 @@
     <Compile Include="Forms\MessageForm.designer.cs">
       <DependentUpon>MessageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NewFolderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewFolderForm.Designer.cs">
+      <DependentUpon>NewFolderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlayItemOnPhoneForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlayItemOnPhoneForm.Designer.cs">
+      <DependentUpon>PlayItemOnPhoneForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\RoomsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\RoomsForm.Designer.cs">
       <DependentUpon>RoomsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SearchCalendar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchCalendar.Designer.cs">
+      <DependentUpon>SearchCalendar.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SelectSendMeetingUpdateNotificationOptions.cs">
       <SubType>Form</SubType>
@@ -732,11 +753,20 @@
     <EmbeddedResource Include="Forms\MessageForm.resx">
       <DependentUpon>MessageForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewFolderForm.resx">
+      <DependentUpon>NewFolderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlayItemOnPhoneForm.resx">
+      <DependentUpon>PlayItemOnPhoneForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PullNotificationForm.resx">
       <DependentUpon>PullNotificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RoomsForm.resx">
       <DependentUpon>RoomsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchCalendar.resx">
+      <DependentUpon>SearchCalendar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectSendMeetingUpdateNotificationOptions.resx">
       <DependentUpon>SelectSendMeetingUpdateNotificationOptions.cs</DependentUpon>

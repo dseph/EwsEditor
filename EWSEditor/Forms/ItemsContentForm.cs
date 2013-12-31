@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Text;
+
+
 using EWSEditor.Common;
 using EWSEditor.Exchange;
 using EWSEditor.Logging;
@@ -903,6 +905,39 @@ namespace EWSEditor.Forms
         {
 
         }
+
+        private void mnuPlayOnPhone_Click(object sender, EventArgs e)
+        {
+ 
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                ItemId id = GetSelectedContentId();
+                if (id == null)
+                {
+                    return;
+                }
+                string sDialString = string.Empty;
+                PlayItemOnPhoneForm oForm = new PlayItemOnPhoneForm(this.CurrentService, id, sDialString);
+                oForm.ShowDialog();
+
+                // Refresh the view
+                this.RefreshContentAndDetails();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void ContentsGrid_CellContentClick_3(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+  
+
 
     }
 }
