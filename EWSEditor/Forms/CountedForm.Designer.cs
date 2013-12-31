@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(754, 555);
             this.Name = "CountedForm";
             this.Text = "CountedForm";
+            this.Load += new System.EventHandler(this.CountedForm_Load_1);
             this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.CountedForm_HelpRequested);
             this.ResumeLayout(false);
 

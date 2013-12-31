@@ -30,7 +30,7 @@
         {
             this.btnPlayOnPhone = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txtDialString = new System.Windows.Forms.TextBox();
             this.lblOrganizer = new System.Windows.Forms.Label();
             this.txtBody = new System.Windows.Forms.TextBox();
             this.btnEndCall = new System.Windows.Forms.Button();
@@ -48,7 +48,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(634, 253);
+            this.btnOK.Location = new System.Drawing.Point(634, 262);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 67;
@@ -56,22 +56,21 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // txtPhoneNumber
+            // txtDialString
             // 
-            this.txtPhoneNumber.Enabled = false;
-            this.txtPhoneNumber.Location = new System.Drawing.Point(111, 16);
-            this.txtPhoneNumber.Name = "txtPhoneNumber";
-            this.txtPhoneNumber.Size = new System.Drawing.Size(341, 20);
-            this.txtPhoneNumber.TabIndex = 66;
+            this.txtDialString.Location = new System.Drawing.Point(88, 16);
+            this.txtDialString.Name = "txtDialString";
+            this.txtDialString.Size = new System.Drawing.Size(348, 20);
+            this.txtDialString.TabIndex = 66;
             // 
             // lblOrganizer
             // 
             this.lblOrganizer.AutoSize = true;
             this.lblOrganizer.Location = new System.Drawing.Point(24, 19);
             this.lblOrganizer.Name = "lblOrganizer";
-            this.lblOrganizer.Size = new System.Drawing.Size(81, 13);
+            this.lblOrganizer.Size = new System.Drawing.Size(58, 13);
             this.lblOrganizer.TabIndex = 65;
-            this.lblOrganizer.Text = "Phone Number:";
+            this.lblOrganizer.Text = "Dial String:";
             // 
             // txtBody
             // 
@@ -79,12 +78,13 @@
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBody.Size = new System.Drawing.Size(682, 192);
+            this.txtBody.Size = new System.Drawing.Size(682, 211);
             this.txtBody.TabIndex = 70;
             this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
             // btnEndCall
             // 
+            this.btnEndCall.Enabled = false;
             this.btnEndCall.Location = new System.Drawing.Point(588, 14);
             this.btnEndCall.Name = "btnEndCall";
             this.btnEndCall.Size = new System.Drawing.Size(121, 23);
@@ -102,8 +102,9 @@
             this.Controls.Add(this.txtBody);
             this.Controls.Add(this.btnPlayOnPhone);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.txtPhoneNumber);
+            this.Controls.Add(this.txtDialString);
             this.Controls.Add(this.lblOrganizer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PlayItemOnPhoneForm";
             this.Text = "PlayItemOnPhone";
             this.Load += new System.EventHandler(this.PlayItemOnPhoneForm_Load);
@@ -116,7 +117,7 @@
 
         private System.Windows.Forms.Button btnPlayOnPhone;
         private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.TextBox txtPhoneNumber;
+        private System.Windows.Forms.TextBox txtDialString;
         private System.Windows.Forms.Label lblOrganizer;
         private System.Windows.Forms.TextBox txtBody;
         private System.Windows.Forms.Button btnEndCall;

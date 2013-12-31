@@ -71,5 +71,10 @@ namespace EWSEditor.Forms
 
             return suffix;
         }
+
+        private void BaseForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

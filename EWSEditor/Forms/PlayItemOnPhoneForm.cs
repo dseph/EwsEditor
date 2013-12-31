@@ -37,7 +37,17 @@ namespace EWSEditor.Forms
 
         private void btnPlayOnPhone_Click(object sender, EventArgs e)
         {
-            PlayOnPhone(_service, _itemId, _dialString);
+            string dialString = txtDialString.Text.Trim();
+            if (dialString.Length < 3)
+            {
+                MessageBox.Show("Phone number is not long enough.");
+            }
+            else
+            {
+                PlayOnPhone(_service, _itemId, dialString);
+                btnEndCall.Enabled = true;
+                btnPlayOnPhone.Enabled = false;
+            }
         }
 
         private void PlayOnPhone(ExchangeService service, ItemId itemId, string dialstring)
@@ -45,19 +55,19 @@ namespace EWSEditor.Forms
             txtBody.Text = "";
 
             _phoneCall = service.UnifiedMessaging.PlayOnPhone(itemId, dialstring);
-            txtBody.Text += string.Format("Call Number: {0}", dialstring);
-            txtBody.Text += string.Format("Call Status: {0}", _phoneCall.State);
+            txtBody.Text += string.Format("Call Number: {0}\r\n", dialstring);
+            txtBody.Text += string.Format("Call Status: {0}\r\n", _phoneCall.State);
 
-            // Create a timer that will start immediately. The timer will call callback every two seconds.
-            _callTimer = new System.Threading.Timer(RefreshPhoneCallState, _phoneCall, 0, 2000);
+            // Create a timer that will start immediately. The timer will call callback every three seconds.
+            _callTimer = new System.Threading.Timer(RefreshPhoneCallState, _phoneCall, 0, 3000);
         }
 
         // Callback method for refreshing call state for the phone call.
-        static void RefreshPhoneCallState(object pCall)
+        private void RefreshPhoneCallState(object pCall)
         {
             PhoneCall call = (PhoneCall)pCall;
             call.Refresh();
-            string sAdd = "Call Status: " + call.State + "\r\n";
+            //string sAdd = "Call Status: " + call.State + "\r\n";
             //txtBody.Text += sAdd;  // TODO: need to get the body to display updates...
         }
 
@@ -65,7 +75,7 @@ namespace EWSEditor.Forms
         {
 
         }
-
+ 
         private void btnOK_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -78,19 +88,21 @@ namespace EWSEditor.Forms
 
         private void btnEndCall_Click(object sender, EventArgs e)
         {
-            // Create a timer that will start immediately. The timer will call callback every two seconds.
-            _callTimer = new System.Threading.Timer(RefreshPhoneCallState, _phoneCall, 0, 2000);
  
             // Disconnect the phone call if it is not already disconnected.
             if (_phoneCall.State != PhoneCallState.Disconnected)
             {
-                txtBody.Text += string.Format("Disconnecting...");
+                txtBody.Text += string.Format("Disconnecting...\r\n");
                 _phoneCall.Disconnect();
-                txtBody.Text += string.Format("Disconnected.");
+                txtBody.Text += string.Format("Disconnected.\r\n\r\n");
+              
             }
 
             // Clean up the timer.
             _callTimer.Dispose();
+
+            btnPlayOnPhone.Enabled = true;
+            btnEndCall.Enabled = false;
         }
     }
 }
