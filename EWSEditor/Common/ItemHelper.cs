@@ -18,20 +18,24 @@ namespace EWSEditor.Common
             switch (sFolderClass)
             {
                 case "IPF.Note":
-
-                    //MessageForm oMessageForm = new MessageForm(oExchangeService, oFolderId);
-                    //oMessageForm.ShowDialog();
-                    //oMessageForm = null;
-                    //break;
+                    MessageForm oMessageForm = new MessageForm(oExchangeService, WellKnownFolderName.Drafts);
+                    oMessageForm.ShowDialog();
+                    oMessageForm = null;
+                    break;
                 case "IPF.Contact":
-                    //ContactsForm oContactsFormForm = new ContactsForm(oExchangeService, oFolderId);
-                    //oContactsFormForm.ShowDialog();
-                    //oContactsFormForm = null;
-                    //break;
+                    ContactsForm oContactsFormForm = new ContactsForm(oExchangeService, oFolderId);
+                    oContactsFormForm.ShowDialog();
+                    oContactsFormForm = null;
+                    break;
                 case "IPF.Appointment":
                     CalendarForm oCalendarFormForm = new CalendarForm(oExchangeService, oFolderId);
                     oCalendarFormForm.ShowDialog();
                     oCalendarFormForm = null;
+                    break;
+                case "IPF.Task":
+                    TaskForm oTaskFormForm = new TaskForm(oExchangeService, oFolderId);
+                    oTaskFormForm.ShowDialog();
+                    oTaskFormForm = null;
                     break;
             }
         }

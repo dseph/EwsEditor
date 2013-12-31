@@ -9,6 +9,7 @@ using EWSEditor.Resources;
 using EWSEditor.Settings;
 using Microsoft.Exchange.WebServices.Data;
 using EWSEditor.Exchange;
+using EWSEditor.Common;
 
 namespace EWSEditor.Forms
 {
@@ -616,7 +617,8 @@ namespace EWSEditor.Forms
 
                     if (oFolder.FolderClass == "IPF.Note" ||
                         oFolder.FolderClass == "IPF.Appointment" ||
-                        oFolder.FolderClass == "IPF.Contact")
+                        oFolder.FolderClass == "IPF.Contact" ||
+                        oFolder.FolderClass == "IPF.Task")
                     {
                         mnuNewItem.Visible = true;
                         bShowStrip = true;
@@ -894,25 +896,34 @@ namespace EWSEditor.Forms
             Folder folder = GetFolderFromNode(FolderTreeView.SelectedNode);
             if (folder != null)
             {
-                if (folder.FolderClass == "IPF.Appointment")
-                {
-                    CalendarForm oForm = new CalendarForm(this.CurrentService, folder.Id);
-                    oForm.ShowDialog();
-                    oForm = null;
-                }
-                if (folder.FolderClass == "IPF.Note")
-                {
-                    MessageForm oForm = new MessageForm(this.CurrentService, WellKnownFolderName.Drafts);
-                    oForm.ShowDialog();   
-                    oForm = null;
-                }
-                if (folder.FolderClass == "IPF.Contact")
-                {
-                    ContactsForm oForm = new ContactsForm(this.CurrentService, folder.Id);
-                    oForm.ShowDialog();
-                    oForm = null;
-                }
-                
+
+                ItemHelper.NewItemByFolderClass(folder.FolderClass, this.CurrentService, folder.Id);
+
+                //if (folder.FolderClass == "IPF.Appointment")
+                //{
+                //    CalendarForm oForm = new CalendarForm(this.CurrentService, folder.Id);
+                //    oForm.ShowDialog();
+                //    oForm = null;
+                //}
+                //if (folder.FolderClass == "IPF.Note")
+                //{
+                //    MessageForm oForm = new MessageForm(this.CurrentService, WellKnownFolderName.Drafts);
+                //    oForm.ShowDialog();   
+                //    oForm = null;
+                //}
+                //if (folder.FolderClass == "IPF.Contact")
+                //{
+                //    ContactsForm oForm = new ContactsForm(this.CurrentService, folder.Id);
+                //    oForm.ShowDialog();
+                //    oForm = null;
+                //}
+
+                //if (folder.FolderClass == "IPF.Task")
+                //{
+                //    TaskForm oForm = new TaskForm(this.CurrentService, folder.Id);
+                //    oForm.ShowDialog();
+                //    oForm = null;
+                //}
        
  
             }
