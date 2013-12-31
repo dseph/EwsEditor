@@ -71,23 +71,7 @@ namespace EWSEditor.Forms
 
         private Contact LoadContactForEdit(ExchangeService CurrentService, ItemId oItemId)
         {
-            //Microsoft.Exchange.WebServices.Data.MeetingMessageSchema;
-            //Microsoft.Exchange.WebServices.Data.SearchFolderSchema;
-            //Microsoft.Exchange.WebServices.Data.MeetingRequestSchema;
-            //Microsoft.Exchange.WebServices.Data.FolderSchema;
-            //Microsoft.Exchange.WebServices.Data.EmailMessageSchema;
-            //Microsoft.Exchange.WebServices.Data.ContactGroupSchema;
-            //Microsoft.Exchange.WebServices.Data.AppointmentSchema;
-            //Microsoft.Exchange.WebServices.Data.ContactSchema;
-            //Microsoft.Exchange.WebServices.Data.TaskSchema;
-
-
-            //Contact oContact = new Contact(oEwsCaller.ExchService);
-
-            //PropertySet oPropertySet = new PropertySet(BasePropertySet.FirstClassProperties);
-            //oPropertySet.Add(ItemSchema.ExtendedProperties);
-            //oPropertySet.Add(ContactGroupSchema.ExtendedProperties);
-        
+ 
            
             ItemView oView = new ItemView(9999);
             //PropertySet oPropertySet = new PropertySet(EmailMessageSchema.ExtendedProperties);
@@ -139,12 +123,9 @@ namespace EWSEditor.Forms
                 );
 
  
-            //PropertySet oPropertySet = new PropertySet(BasePropertySet.FirstClassProperties);
-            //oPropertySet.Add(EmailMessageSchema.ExtendedProperties);
             Contact oContact = Contact.Bind(CurrentService, oItemId, oPropertySet);
              
  
-
             return oContact;
         }
 
@@ -222,10 +203,10 @@ namespace EWSEditor.Forms
                 oContact.PhysicalAddresses[PhysicalAddressKey.Other] = oOtherAddress;
                 //oOtherAddress = null;
             }
- 
 
-            
-          
+
+
+            bRet = true;
  
 
             return bRet;
@@ -507,7 +488,7 @@ namespace EWSEditor.Forms
             //txtBody.Text = oEmailMessage.Body.Text;
             //chkDeliveryReceipt.Checked = oEmailMessage.IsReadReceiptRequested;
             //chkReadReceipt.Checked = oEmailMessage.IsDeliveryReceiptRequested;
-
+            bRet = true;
             return bRet;
         }
 

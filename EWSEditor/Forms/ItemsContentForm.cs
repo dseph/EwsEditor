@@ -772,6 +772,7 @@ namespace EWSEditor.Forms
                         oMessageForm.ShowDialog();
                         oMessageForm = null;
                         break;
+
                     case "IPM.Contact":
                         Contact oContact = Contact.Bind(CurrentService, oItem.Id);
                         ContactsForm oContactsForm = new ContactsForm(CurrentService, ref oContact);
@@ -785,11 +786,12 @@ namespace EWSEditor.Forms
                         oCalendarForm = null;
                         break;
 
-                    //case "IPM.Task":
-                    //    TasksForm oTasksForm = new TasksForm(_EwsCaller, oItemTag.Id);
-                    //    oTasksForm.ShowDialog();
-                    //    oTasksForm = null;
-                    //    break;
+                    case "IPM.Task":
+                        TaskForm oTasksForm = new TaskForm(CurrentService, oItem.Id);
+                        oTasksForm.ShowDialog();
+                        oTasksForm = null;
+                        break;
+
                     //case "IPM.Activity":
                     //    TasksForm oJournalForm = new JournalForm(_EwsCaller, oItemTag.Id);
                     //    oJournalForm.ShowDialog();
@@ -886,10 +888,7 @@ namespace EWSEditor.Forms
                         mnuClientEditItem.Visible = true;
                         break;
                     case "IPM.Task":
-                        mnuClientEditItem.Visible = false;
-                        break;
-                    case "IPM.Activity":
-                        mnuClientEditItem.Visible = false;
+                        mnuClientEditItem.Visible = true;
                         break;
                     case "IPM.StickyNote":
                         mnuClientEditItem.Visible = false;

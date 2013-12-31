@@ -262,6 +262,12 @@
     <Compile Include="Forms\StreamingNotificationForm.Designer.cs">
       <DependentUpon>StreamingNotificationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TaskForm.Designer.cs">
+      <DependentUpon>TaskForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UploadItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -842,6 +848,9 @@
     <EmbeddedResource Include="Forms\HiddenMainForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>HiddenMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TaskForm.resx">
+      <DependentUpon>TaskForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UploadItemForm.resx">
       <DependentUpon>UploadItemForm.cs</DependentUpon>
