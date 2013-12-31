@@ -439,11 +439,23 @@ namespace EWSEditor.Forms
 
             ClearForm();
 
-            txtFrom.Text = oEmailMessage.Sender.Address;
+            if (_IsExistingEmail == false)
+            {
+                btnForward.Enabled = false;
+                btnReply.Enabled = false;
+                btnReplyAll.Enabled = false;
+            }
+
 
             if (_IsExistingEmail == true)
             {
-
+                if (oEmailMessage.IsDraft == false)
+                {
+                    txtFrom.Text = oEmailMessage.Sender.Address;
+                    btnForward.Enabled = false;
+                    btnReply.Enabled = false;
+                    btnReplyAll.Enabled = false;
+                }
 
                 //message.Attachments.AddFileAttachment("<path to file>");
                 foreach (EmailAddress oAddress in oEmailMessage.ToRecipients)
@@ -557,7 +569,10 @@ namespace EWSEditor.Forms
                 {
 
                     if (_IsExistingEmail == false)
-                        _EmailMessage.Save(_EmailMessage.ParentFolderId);
+                    {
+                        _EmailMessage.Save(WellKnownFolderName.Drafts);
+                        //_EmailMessage.Save(_EmailMessage.ParentFolderId);
+                    }
                     else
                         _EmailMessage.Update(ConflictResolutionMode.AutoResolve);
                 }

@@ -38,8 +38,7 @@
             this.lblMiddleName = new System.Windows.Forms.Label();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.lblSurname = new System.Windows.Forms.Label();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.txtHA_State = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtHA_City = new System.Windows.Forms.TextBox();
@@ -105,18 +104,20 @@
             this.tabHome = new System.Windows.Forms.TabPage();
             this.tabOther = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbContactPhoto)).BeginInit();
             this.tabAddresses.SuspendLayout();
             this.tabBusiness.SuspendLayout();
             this.tabHome.SuspendLayout();
             this.tabOther.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblGivenName
             // 
             this.lblGivenName.AutoSize = true;
-            this.lblGivenName.Location = new System.Drawing.Point(24, 7);
+            this.lblGivenName.Location = new System.Drawing.Point(3, 56);
             this.lblGivenName.Name = "lblGivenName";
             this.lblGivenName.Size = new System.Drawing.Size(69, 13);
             this.lblGivenName.TabIndex = 0;
@@ -124,14 +125,14 @@
             // 
             // txtGivenName
             // 
-            this.txtGivenName.Location = new System.Drawing.Point(102, 7);
+            this.txtGivenName.Location = new System.Drawing.Point(81, 56);
             this.txtGivenName.Name = "txtGivenName";
             this.txtGivenName.Size = new System.Drawing.Size(329, 20);
             this.txtGivenName.TabIndex = 1;
             // 
             // txtCompanyName
             // 
-            this.txtCompanyName.Location = new System.Drawing.Point(102, 91);
+            this.txtCompanyName.Location = new System.Drawing.Point(81, 140);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(329, 20);
             this.txtCompanyName.TabIndex = 3;
@@ -139,7 +140,7 @@
             // lblCompany
             // 
             this.lblCompany.AutoSize = true;
-            this.lblCompany.Location = new System.Drawing.Point(39, 92);
+            this.lblCompany.Location = new System.Drawing.Point(18, 141);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(54, 13);
             this.lblCompany.TabIndex = 2;
@@ -147,7 +148,7 @@
             // 
             // txtJobTitle
             // 
-            this.txtJobTitle.Location = new System.Drawing.Point(102, 117);
+            this.txtJobTitle.Location = new System.Drawing.Point(81, 166);
             this.txtJobTitle.Name = "txtJobTitle";
             this.txtJobTitle.Size = new System.Drawing.Size(329, 20);
             this.txtJobTitle.TabIndex = 5;
@@ -155,7 +156,7 @@
             // lblJobTitle
             // 
             this.lblJobTitle.AutoSize = true;
-            this.lblJobTitle.Location = new System.Drawing.Point(43, 117);
+            this.lblJobTitle.Location = new System.Drawing.Point(22, 166);
             this.lblJobTitle.Name = "lblJobTitle";
             this.lblJobTitle.Size = new System.Drawing.Size(50, 13);
             this.lblJobTitle.TabIndex = 4;
@@ -163,7 +164,7 @@
             // 
             // txtMiddleName
             // 
-            this.txtMiddleName.Location = new System.Drawing.Point(102, 33);
+            this.txtMiddleName.Location = new System.Drawing.Point(81, 82);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(329, 20);
             this.txtMiddleName.TabIndex = 7;
@@ -171,7 +172,7 @@
             // lblMiddleName
             // 
             this.lblMiddleName.AutoSize = true;
-            this.lblMiddleName.Location = new System.Drawing.Point(23, 33);
+            this.lblMiddleName.Location = new System.Drawing.Point(2, 82);
             this.lblMiddleName.Name = "lblMiddleName";
             this.lblMiddleName.Size = new System.Drawing.Size(72, 13);
             this.lblMiddleName.TabIndex = 6;
@@ -179,7 +180,7 @@
             // 
             // txtSurname
             // 
-            this.txtSurname.Location = new System.Drawing.Point(102, 59);
+            this.txtSurname.Location = new System.Drawing.Point(81, 108);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(329, 20);
             this.txtSurname.TabIndex = 9;
@@ -187,31 +188,21 @@
             // lblSurname
             // 
             this.lblSurname.AutoSize = true;
-            this.lblSurname.Location = new System.Drawing.Point(39, 62);
+            this.lblSurname.Location = new System.Drawing.Point(18, 111);
             this.lblSurname.Name = "lblSurname";
             this.lblSurname.Size = new System.Drawing.Size(52, 13);
             this.lblSurname.TabIndex = 8;
             this.lblSurname.Text = "Surname:";
             // 
-            // btnOK
+            // btnSave
             // 
-            this.btnOK.Location = new System.Drawing.Point(771, 621);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 17;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(861, 621);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 16;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnSave.Location = new System.Drawing.Point(6, 13);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 17;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // txtHA_State
             // 
@@ -463,7 +454,7 @@
             // pbContactPhoto
             // 
             this.pbContactPhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbContactPhoto.Location = new System.Drawing.Point(567, 7);
+            this.pbContactPhoto.Location = new System.Drawing.Point(580, 49);
             this.pbContactPhoto.Name = "pbContactPhoto";
             this.pbContactPhoto.Size = new System.Drawing.Size(130, 130);
             this.pbContactPhoto.TabIndex = 43;
@@ -472,7 +463,7 @@
             // 
             // txtNotes
             // 
-            this.txtNotes.Location = new System.Drawing.Point(471, 165);
+            this.txtNotes.Location = new System.Drawing.Point(468, 214);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.ReadOnly = true;
@@ -484,7 +475,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(468, 149);
+            this.label16.Location = new System.Drawing.Point(465, 198);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(90, 13);
             this.label16.TabIndex = 48;
@@ -492,7 +483,7 @@
             // 
             // txtAttachments
             // 
-            this.txtAttachments.Location = new System.Drawing.Point(16, 384);
+            this.txtAttachments.Location = new System.Drawing.Point(12, 428);
             this.txtAttachments.Multiline = true;
             this.txtAttachments.Name = "txtAttachments";
             this.txtAttachments.ReadOnly = true;
@@ -503,7 +494,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(13, 368);
+            this.label17.Location = new System.Drawing.Point(12, 412);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(121, 13);
             this.label17.TabIndex = 50;
@@ -512,7 +503,7 @@
             // lblContactPicture
             // 
             this.lblContactPicture.AutoSize = true;
-            this.lblContactPicture.Location = new System.Drawing.Point(466, 7);
+            this.lblContactPicture.Location = new System.Drawing.Point(460, 49);
             this.lblContactPicture.Name = "lblContactPicture";
             this.lblContactPicture.Size = new System.Drawing.Size(95, 13);
             this.lblContactPicture.TabIndex = 51;
@@ -704,7 +695,7 @@
             this.tabAddresses.Controls.Add(this.tabBusiness);
             this.tabAddresses.Controls.Add(this.tabHome);
             this.tabAddresses.Controls.Add(this.tabOther);
-            this.tabAddresses.Location = new System.Drawing.Point(13, 143);
+            this.tabAddresses.Location = new System.Drawing.Point(11, 192);
             this.tabAddresses.Name = "tabAddresses";
             this.tabAddresses.SelectedIndex = 0;
             this.tabAddresses.Size = new System.Drawing.Size(418, 218);
@@ -795,18 +786,28 @@
             this.groupBox1.Controls.Add(this.txtEmailAddress3_Name);
             this.groupBox1.Controls.Add(this.txtEmailAddress2_MailboxType);
             this.groupBox1.Controls.Add(this.txtEmailAddress2_RoutingType);
-            this.groupBox1.Location = new System.Drawing.Point(17, 487);
+            this.groupBox1.Location = new System.Drawing.Point(14, 522);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(817, 118);
             this.groupBox1.TabIndex = 77;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Addresses (read only)";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnSave);
+            this.groupBox3.Location = new System.Drawing.Point(5, 7);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(99, 43);
+            this.groupBox3.TabIndex = 78;
+            this.groupBox3.TabStop = false;
+            // 
             // ContactsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 652);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabAddresses);
             this.Controls.Add(this.lblContactPicture);
@@ -814,8 +815,6 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.pbContactPhoto);
-            this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.txtAttachments);
             this.Controls.Add(this.lblSurname);
@@ -840,6 +839,7 @@
             this.tabOther.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -857,8 +857,7 @@
         private System.Windows.Forms.Label lblMiddleName;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.Label lblSurname;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtHA_State;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtHA_City;
@@ -924,5 +923,6 @@
         private System.Windows.Forms.TabPage tabHome;
         private System.Windows.Forms.TabPage tabOther;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

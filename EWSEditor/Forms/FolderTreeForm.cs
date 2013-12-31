@@ -597,6 +597,7 @@ namespace EWSEditor.Forms
 
                 // Specific folder type configurations
                 Folder oFolder = (GetFolderFromNode(e.Node));
+                bool bShowStrip = false;
                 if (oFolder != null)
                 {
                     // Calendar folders get the calendar view folder
@@ -604,12 +605,31 @@ namespace EWSEditor.Forms
                     {
                         mnuFolderCalendarView.Visible = true;
                         toolStripMenuItem14.Visible = true;
+                        bShowStrip = true;
                     }
                     else
                     {
                         mnuFolderCalendarView.Visible = false;
                         toolStripMenuItem14.Visible = false;
                     }
+                    
+
+                    if (oFolder.FolderClass == "IPF.Note" ||
+                        oFolder.FolderClass == "IPF.Appointment" ||
+                        oFolder.FolderClass == "IPF.Contact")
+                    {
+                        mnuNewItem.Visible = true;
+                        bShowStrip = true;
+                    }
+                    else
+                    {
+                        mnuNewItem.Visible = false;
+                    }
+
+                   
+                    toolStripMenuItem14.Visible = bShowStrip;
+
+
                     oFolder = null;
                 }
             }
@@ -860,13 +880,46 @@ namespace EWSEditor.Forms
 
  
             }
-
-            //if (this.currentFolder.FolderClass == "IPF.Appointment")
-            //    MnuFolderCalendarView.Enabled = true;
-            //else
-            //    mnuFolderCalendarView.Enabled = false;
+ 
  
         }
+
+            /// <summary>
+        /// Open Calendar series view.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void MnuNewItem_Click(object sender, EventArgs e)
+        {
+            Folder folder = GetFolderFromNode(FolderTreeView.SelectedNode);
+            if (folder != null)
+            {
+                if (folder.FolderClass == "IPF.Appointment")
+                {
+                    CalendarForm oForm = new CalendarForm(this.CurrentService, folder.Id);
+                    oForm.ShowDialog();
+                    oForm = null;
+                }
+                if (folder.FolderClass == "IPF.Note")
+                {
+                    MessageForm oForm = new MessageForm(this.CurrentService, WellKnownFolderName.Drafts);
+                    oForm.ShowDialog();   
+                    oForm = null;
+                }
+                if (folder.FolderClass == "IPF.Contact")
+                {
+                    ContactsForm oForm = new ContactsForm(this.CurrentService, folder.Id);
+                    oForm.ShowDialog();
+                    oForm = null;
+                }
+                
+       
+ 
+            }
+ 
+ 
+        }
+     
 
         /// <summary>
         /// Open the PermissionsDialog for the selected folder.

@@ -553,19 +553,19 @@ namespace EWSEditor.Forms
 
             if (this.txtSubject.Text.Trim().Length == 0)
             {
-                MessageBox.Show("txtSubject Needs to be set", "Entry Error");
+                MessageBox.Show("Subject Needs to be set", "Entry Error");
                 bNoErrors = false;
             }
 
             if (this.txtLocation.Text.Trim().Length == 0)
             {
-                MessageBox.Show("txtLocation Needs to be set", "Entry Error");
+                MessageBox.Show("Location Needs to be set", "Entry Error");
                 bNoErrors = false;
             }
 
             if (this.txtBody.Text.Trim().Length == 0)
             {
-                MessageBox.Show("txtBody Needs to be set", "Entry Error");
+                MessageBox.Show("Body Needs to be set", "Entry Error");
                 bNoErrors = false;
             }
 
@@ -613,7 +613,7 @@ namespace EWSEditor.Forms
                         result = Int32.TryParse(cmboRecurrYearlyOnSpecificDay.Text.Trim(), out iTest);
                         if (result == false)
                         {
-                            MessageBox.Show("cmboRecurrYearlyOnSpecificDay is not set to an integer value", "Entry Error");
+                            MessageBox.Show("RecurrYearlyOnSpecificDay is not set to an integer value", "Entry Error");
                             bNoErrors = false;
                         }
 
@@ -624,7 +624,7 @@ namespace EWSEditor.Forms
                         result = Int32.TryParse(cmboRecurrInterval.Text.Trim(), out iTest);
                         if (result == false)
                         {
-                            MessageBox.Show("cmboRecurrInterval is not set to an integer value", "Entry Error");
+                            MessageBox.Show("Recurrence Interval is not set to an integer value", "Entry Error");
                             bNoErrors = false;
                         }
                     }
@@ -768,7 +768,7 @@ namespace EWSEditor.Forms
             _Appointment = new Appointment(_ExchangeService);
             _isDirty = true;
             _IsExistingAppointment = false;
-
+ 
             DateTime oDateTimeStart = new DateTime();
             DateTime oDateTimeEnd = new DateTime();
             oDateTimeStart = DateTime.Now;
@@ -1064,14 +1064,14 @@ namespace EWSEditor.Forms
         private void SetButtonState()
         {
 
-            if (_IsExistingAppointment == true)
-            {
-                btnDelete.Enabled = true;
-            }
-            else
-            {
-                btnDelete.Enabled = false;
-            }
+            //if (_IsExistingAppointment == true)
+            //{
+            //    btnDelete.Enabled = true;
+            //}
+            //else
+            //{
+            //    btnDelete.Enabled = false;
+            //}
 
             if (_isDirty == true)
             {
@@ -1578,20 +1578,20 @@ namespace EWSEditor.Forms
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (_IsExistingAppointment == false)
-            {
-                _WasDeleted = true;
-                this.Close();
-            }
-            else
-            {
-                _Appointment.Delete(DeleteMode.MoveToDeletedItems, SendCancellationsMode.SendToAllAndSaveCopy);
-                _WasDeleted = true;
-                this.Close();
-            }
-        }
+        //private void btnDelete_Click(object sender, EventArgs e)
+        //{
+        //    if (_IsExistingAppointment == false)
+        //    {
+        //        _WasDeleted = true;
+        //        this.Close();
+        //    }
+        //    else
+        //    {
+        //        _Appointment.Delete(DeleteMode.MoveToDeletedItems, SendCancellationsMode.SendToAllAndSaveCopy);
+        //        _WasDeleted = true;
+        //        this.Close();
+        //    }
+        //}
 
         private void grpSchedule_Enter(object sender, EventArgs e)
         {

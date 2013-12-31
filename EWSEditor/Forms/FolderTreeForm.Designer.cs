@@ -58,6 +58,7 @@ namespace EWSEditor.Forms
             this.addExtendedPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuFolderCalendarView = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuNewItem = new System.Windows.Forms.ToolStripMenuItem();
             this.propertyListItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -160,7 +161,8 @@ namespace EWSEditor.Forms
             this.toolStripMenuItem1,
             this.addExtendedPropertyToolStripMenuItem,
             this.toolStripMenuItem14,
-            this.mnuFolderCalendarView});
+            this.mnuFolderCalendarView,
+            this.mnuNewItem});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
             this.cmsFolderMenu.Size = new System.Drawing.Size(270, 332);
             // 
@@ -315,6 +317,15 @@ namespace EWSEditor.Forms
             this.mnuFolderCalendarView.Size = new System.Drawing.Size(269, 22);
             this.mnuFolderCalendarView.Text = "CalendarView... ";
             this.mnuFolderCalendarView.Click += new System.EventHandler(this.MnuFolderCalendarView_Click);
+
+            // 
+            // mnuFolderCalendarView
+            // 
+            this.mnuNewItem.Name = "mnuNewItem";
+            this.mnuNewItem.Size = new System.Drawing.Size(269, 22);
+            this.mnuNewItem.Text = "New... ";
+            this.mnuNewItem.Click += new System.EventHandler(this.MnuNewItem_Click);
+
             // 
             // saveFileDialog
             // 
@@ -430,5 +441,7 @@ namespace EWSEditor.Forms
 
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem14;
         private System.Windows.Forms.ToolStripMenuItem mnuFolderCalendarView; 
+        private System.Windows.Forms.ToolStripMenuItem mnuNewItem; 
+     
     }
 }
