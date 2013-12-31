@@ -41,7 +41,7 @@
             this.btnPlayOnPhone.Location = new System.Drawing.Point(458, 13);
             this.btnPlayOnPhone.Name = "btnPlayOnPhone";
             this.btnPlayOnPhone.Size = new System.Drawing.Size(121, 23);
-            this.btnPlayOnPhone.TabIndex = 68;
+            this.btnPlayOnPhone.TabIndex = 1;
             this.btnPlayOnPhone.Text = "Play On Phone";
             this.btnPlayOnPhone.UseVisualStyleBackColor = true;
             this.btnPlayOnPhone.Click += new System.EventHandler(this.btnPlayOnPhone_Click);
@@ -51,7 +51,7 @@
             this.btnOK.Location = new System.Drawing.Point(634, 262);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 67;
+            this.btnOK.TabIndex = 4;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -69,7 +69,7 @@
             this.lblOrganizer.Location = new System.Drawing.Point(24, 19);
             this.lblOrganizer.Name = "lblOrganizer";
             this.lblOrganizer.Size = new System.Drawing.Size(58, 13);
-            this.lblOrganizer.TabIndex = 65;
+            this.lblOrganizer.TabIndex = 0;
             this.lblOrganizer.Text = "Dial String:";
             // 
             // txtBody
@@ -79,7 +79,7 @@
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtBody.Size = new System.Drawing.Size(682, 211);
-            this.txtBody.TabIndex = 70;
+            this.txtBody.TabIndex = 3;
             this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
             // btnEndCall
@@ -88,7 +88,7 @@
             this.btnEndCall.Location = new System.Drawing.Point(588, 14);
             this.btnEndCall.Name = "btnEndCall";
             this.btnEndCall.Size = new System.Drawing.Size(121, 23);
-            this.btnEndCall.TabIndex = 71;
+            this.btnEndCall.TabIndex = 2;
             this.btnEndCall.Text = "End Call";
             this.btnEndCall.UseVisualStyleBackColor = true;
             this.btnEndCall.Click += new System.EventHandler(this.btnEndCall_Click);

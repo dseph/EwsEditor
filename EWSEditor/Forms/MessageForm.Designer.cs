@@ -57,9 +57,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 12);
+            this.btnSave.Location = new System.Drawing.Point(6, 13);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(45, 23);
+            this.btnSave.Size = new System.Drawing.Size(59, 23);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -67,49 +67,49 @@
             // 
             // btnForward
             // 
-            this.btnForward.Location = new System.Drawing.Point(6, 13);
+            this.btnForward.Location = new System.Drawing.Point(158, 13);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(58, 23);
-            this.btnForward.TabIndex = 0;
+            this.btnForward.TabIndex = 2;
             this.btnForward.Text = "Forward";
             this.btnForward.UseVisualStyleBackColor = true;
             this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
             // 
             // btnReply
             // 
-            this.btnReply.Location = new System.Drawing.Point(70, 13);
+            this.btnReply.Location = new System.Drawing.Point(222, 13);
             this.btnReply.Name = "btnReply";
             this.btnReply.Size = new System.Drawing.Size(58, 23);
-            this.btnReply.TabIndex = 1;
+            this.btnReply.TabIndex = 3;
             this.btnReply.Text = "Reply";
             this.btnReply.UseVisualStyleBackColor = true;
             this.btnReply.Click += new System.EventHandler(this.btnReply_Click);
             // 
             // btnReplyAll
             // 
-            this.btnReplyAll.Location = new System.Drawing.Point(134, 13);
+            this.btnReplyAll.Location = new System.Drawing.Point(286, 13);
             this.btnReplyAll.Name = "btnReplyAll";
             this.btnReplyAll.Size = new System.Drawing.Size(58, 23);
-            this.btnReplyAll.TabIndex = 2;
+            this.btnReplyAll.TabIndex = 4;
             this.btnReplyAll.Text = "Reply All";
             this.btnReplyAll.UseVisualStyleBackColor = true;
             this.btnReplyAll.Click += new System.EventHandler(this.btnReplyAll_Click);
             // 
             // btnHeaders
             // 
-            this.btnHeaders.Location = new System.Drawing.Point(723, 25);
+            this.btnHeaders.Location = new System.Drawing.Point(736, 12);
             this.btnHeaders.Name = "btnHeaders";
             this.btnHeaders.Size = new System.Drawing.Size(75, 23);
-            this.btnHeaders.TabIndex = 4;
+            this.btnHeaders.TabIndex = 14;
             this.btnHeaders.Text = "Headers";
             this.btnHeaders.UseVisualStyleBackColor = true;
             this.btnHeaders.Click += new System.EventHandler(this.btnHeaders_Click);
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(63, 12);
+            this.btnSend.Location = new System.Drawing.Point(71, 13);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(58, 23);
+            this.btnSend.Size = new System.Drawing.Size(64, 23);
             this.btnSend.TabIndex = 1;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -139,10 +139,10 @@
             // lblMessageType
             // 
             this.lblMessageType.AutoSize = true;
-            this.lblMessageType.Location = new System.Drawing.Point(12, 51);
+            this.lblMessageType.Location = new System.Drawing.Point(11, 246);
             this.lblMessageType.Name = "lblMessageType";
             this.lblMessageType.Size = new System.Drawing.Size(80, 13);
-            this.lblMessageType.TabIndex = 5;
+            this.lblMessageType.TabIndex = 11;
             this.lblMessageType.Text = "Message Type:";
             // 
             // cmboMessageType
@@ -151,112 +151,114 @@
             this.cmboMessageType.Items.AddRange(new object[] {
             "Text",
             "HTML"});
-            this.cmboMessageType.Location = new System.Drawing.Point(98, 49);
+            this.cmboMessageType.Location = new System.Drawing.Point(98, 243);
             this.cmboMessageType.Name = "cmboMessageType";
             this.cmboMessageType.Size = new System.Drawing.Size(110, 21);
-            this.cmboMessageType.TabIndex = 6;
+            this.cmboMessageType.TabIndex = 12;
             // 
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(11, 109);
+            this.lblTo.Location = new System.Drawing.Point(11, 142);
             this.lblTo.Name = "lblTo";
             this.lblTo.Size = new System.Drawing.Size(23, 13);
-            this.lblTo.TabIndex = 7;
+            this.lblTo.TabIndex = 3;
             this.lblTo.Text = "To:";
             // 
             // txtTo
             // 
             this.txtTo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTo.Location = new System.Drawing.Point(58, 102);
+            this.txtTo.Location = new System.Drawing.Point(58, 135);
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(753, 20);
-            this.txtTo.TabIndex = 8;
+            this.txtTo.TabIndex = 4;
             // 
             // lblCC
             // 
             this.lblCC.AutoSize = true;
-            this.lblCC.Location = new System.Drawing.Point(11, 135);
+            this.lblCC.Location = new System.Drawing.Point(11, 168);
             this.lblCC.Name = "lblCC";
             this.lblCC.Size = new System.Drawing.Size(24, 13);
-            this.lblCC.TabIndex = 9;
+            this.lblCC.TabIndex = 5;
             this.lblCC.Text = "CC:";
             // 
             // txtCC
             // 
             this.txtCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCC.Location = new System.Drawing.Point(58, 128);
+            this.txtCC.Location = new System.Drawing.Point(58, 161);
             this.txtCC.Name = "txtCC";
             this.txtCC.Size = new System.Drawing.Size(753, 20);
-            this.txtCC.TabIndex = 10;
+            this.txtCC.TabIndex = 6;
             // 
             // lblBCC
             // 
             this.lblBCC.AutoSize = true;
-            this.lblBCC.Location = new System.Drawing.Point(11, 161);
+            this.lblBCC.Location = new System.Drawing.Point(11, 194);
             this.lblBCC.Name = "lblBCC";
             this.lblBCC.Size = new System.Drawing.Size(31, 13);
-            this.lblBCC.TabIndex = 11;
+            this.lblBCC.TabIndex = 7;
             this.lblBCC.Text = "BCC:";
             // 
             // txtBCC
             // 
             this.txtBCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBCC.Location = new System.Drawing.Point(58, 154);
+            this.txtBCC.Location = new System.Drawing.Point(58, 187);
             this.txtBCC.Name = "txtBCC";
             this.txtBCC.Size = new System.Drawing.Size(753, 20);
-            this.txtBCC.TabIndex = 12;
+            this.txtBCC.TabIndex = 8;
             // 
             // lblSubject
             // 
             this.lblSubject.AutoSize = true;
-            this.lblSubject.Location = new System.Drawing.Point(11, 187);
+            this.lblSubject.Location = new System.Drawing.Point(11, 220);
             this.lblSubject.Name = "lblSubject";
             this.lblSubject.Size = new System.Drawing.Size(46, 13);
-            this.lblSubject.TabIndex = 13;
+            this.lblSubject.TabIndex = 9;
             this.lblSubject.Text = "Subject:";
             // 
             // txtSubject
             // 
             this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSubject.Location = new System.Drawing.Point(58, 180);
+            this.txtSubject.Location = new System.Drawing.Point(58, 213);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(753, 20);
-            this.txtSubject.TabIndex = 14;
+            this.txtSubject.TabIndex = 10;
             // 
             // txtBody
             // 
             this.txtBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBody.Location = new System.Drawing.Point(12, 206);
+            this.txtBody.Location = new System.Drawing.Point(12, 267);
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBody.Size = new System.Drawing.Size(799, 281);
-            this.txtBody.TabIndex = 15;
+            this.txtBody.Size = new System.Drawing.Size(799, 220);
+            this.txtBody.TabIndex = 13;
             this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSend);
+            this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.btnReplyAll);
             this.groupBox1.Controls.Add(this.btnReply);
             this.groupBox1.Controls.Add(this.btnForward);
-            this.groupBox1.Location = new System.Drawing.Point(483, 12);
+            this.groupBox1.Location = new System.Drawing.Point(15, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 42);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.Size = new System.Drawing.Size(349, 42);
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.chkDeliveryReceipt);
             this.groupBox2.Controls.Add(this.chkReadReceipt);
-            this.groupBox2.Location = new System.Drawing.Point(237, 11);
+            this.groupBox2.Location = new System.Drawing.Point(15, 50);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(240, 41);
             this.groupBox2.TabIndex = 2;
@@ -265,10 +267,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 80);
+            this.label1.Location = new System.Drawing.Point(12, 113);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 16;
+            this.label1.TabIndex = 1;
             this.label1.Text = "From:";
             // 
             // txtFrom
@@ -276,10 +278,10 @@
             this.txtFrom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFrom.Enabled = false;
-            this.txtFrom.Location = new System.Drawing.Point(58, 77);
+            this.txtFrom.Location = new System.Drawing.Point(58, 110);
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.Size = new System.Drawing.Size(753, 20);
-            this.txtFrom.TabIndex = 17;
+            this.txtFrom.TabIndex = 2;
             // 
             // MessageForm
             // 
@@ -290,7 +292,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblMessageType);
             this.Controls.Add(this.cmboMessageType);
             this.Controls.Add(this.btnHeaders);
@@ -303,7 +304,6 @@
             this.Controls.Add(this.lblCC);
             this.Controls.Add(this.txtTo);
             this.Controls.Add(this.lblTo);
-            this.Controls.Add(this.btnSend);
             this.Name = "MessageForm";
             this.Text = "MessageForm";
             this.Load += new System.EventHandler(this.MessageForm_Load);

@@ -122,7 +122,6 @@
             this.dtRecurrEndTime = new System.Windows.Forms.DateTimePicker();
             this.dtRecurrStartTime = new System.Windows.Forms.DateTimePicker();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.txtResourceAttendees = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtChangeKey = new System.Windows.Forms.TextBox();
@@ -134,12 +133,14 @@
             this.label34 = new System.Windows.Forms.Label();
             this.cmboLegacyFreeBusyStatus = new System.Windows.Forms.ComboBox();
             this.btnAttendeeStatus = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.grpSchedule.SuspendLayout();
             this.grpRecurring.SuspendLayout();
             this.grpRange.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.grpMonthly.SuspendLayout();
             this.grpDaily.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtBody
@@ -398,7 +399,7 @@
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(189, 12);
+            this.btnSend.Location = new System.Drawing.Point(87, 13);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 57;
@@ -1291,23 +1292,13 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(12, 12);
+            this.btnSave.Location = new System.Drawing.Point(6, 13);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 63;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(102, 12);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 64;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtResourceAttendees
             // 
@@ -1405,11 +1396,22 @@
             this.btnAttendeeStatus.UseVisualStyleBackColor = true;
             this.btnAttendeeStatus.Click += new System.EventHandler(this.btnAttendeeStatus_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnSave);
+            this.groupBox3.Controls.Add(this.btnSend);
+            this.groupBox3.Location = new System.Drawing.Point(12, 2);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(172, 39);
+            this.groupBox3.TabIndex = 108;
+            this.groupBox3.TabStop = false;
+            // 
             // CalendarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(894, 827);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnAttendeeStatus);
             this.Controls.Add(this.label34);
             this.Controls.Add(this.cmboLegacyFreeBusyStatus);
@@ -1421,14 +1423,11 @@
             this.Controls.Add(this.label33);
             this.Controls.Add(this.txtResourceAttendees);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.grpRecurring);
             this.Controls.Add(this.chkIsRecurring);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmboImportance);
             this.Controls.Add(this.chkIsAllDayEvent);
-            this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtLocation);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtSubject);
@@ -1459,6 +1458,7 @@
             this.grpMonthly.PerformLayout();
             this.grpDaily.ResumeLayout(false);
             this.grpDaily.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1533,7 +1533,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ComboBox cmboRecurrYearlyOnSpecificDayForMonthOf;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtResourceAttendees;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DateTimePicker dtRangeEndByDate;
@@ -1572,5 +1571,6 @@
         private System.Windows.Forms.ComboBox cmboLegacyFreeBusyStatus;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnAttendeeStatus;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

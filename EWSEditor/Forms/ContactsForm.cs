@@ -224,62 +224,8 @@ namespace EWSEditor.Forms
             }
  
 
-            //oContact.Body.Text = txtNotes.Text;
-            //oContact.Department;
-             
-            //oContact.ImAddresses;
-            //oContact.Initials;
-            //oContact.Manager;
-            //oContact.NickName;
-            //oContact.OfficeLocation;
-            //oContact.PhoneNumbers;
-            //oContact.PhysicalAddresses;
-            //oContact.PostalAddressIndex;
-            //oContact.Profession;
-            //oContact.SpouseName;
- 
-
-            //string sPhoneNumber = string.Empty;
-            //if (oContact.PhoneNumbers.TryGetValue(PhoneNumberKey.BusinessPhone, out sPhoneNumber))
-            //{
- 
-            //    //PhoneNumberKey.AssistantPhone;
-            //    //PhoneNumberKey.BusinessFax;
-            //    //PhoneNumberKey.BusinessPhone;
-            //    //PhoneNumberKey.BusinessPhone2;
-            //    //PhoneNumberKey.Callback;
-            //    //PhoneNumberKey.CarPhone;
-            //    //PhoneNumberKey.CompanyMainPhone;
-            //    //PhoneNumberKey.HomeFax;
-            //    //PhoneNumberKey.HomePhone;
-            //    //PhoneNumberKey.HomePhone2;
-            //    //PhoneNumberKey.Isdn;
-            //    //PhoneNumberKey.MobilePhone;
-
-                
-            //}
-
-            //oContact.Department;
-            //oContact.HasPicture;
-            //oContact.ImAddresses;
-            //oContact.Initials;
-            //oContact.Manager;
-            //oContact.NickName;
-            //oContact.OfficeLocation;
-            //oContact.PhoneNumbers;
-            //oContact.PhysicalAddresses;
-            //oContact.PostalAddressIndex;
-            //oContact.Profession;
-            //oContact.SpouseName;
-      
-            //oContact.WeddingAnniversary;
-            //oContact.Children;
-            //oContact.BusinessHomePage;
-            //oContact.Birthday;
-            //oContact.AssistantName;
-            //oContact.EmailAddresses;
-             
-             
+            
+          
  
 
             return bRet;
