@@ -56,7 +56,7 @@
             // GoRun
             // 
             this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GoRun.Location = new System.Drawing.Point(660, 444);
+            this.GoRun.Location = new System.Drawing.Point(758, 415);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(74, 23);
             this.GoRun.TabIndex = 5;
@@ -206,7 +206,7 @@
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResults.Size = new System.Drawing.Size(822, 130);
+            this.txtResults.Size = new System.Drawing.Size(920, 130);
             this.txtResults.TabIndex = 63;
             // 
             // lvItems
@@ -221,7 +221,7 @@
             this.lvItems.Location = new System.Drawing.Point(8, 293);
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(819, 145);
+            this.lvItems.Size = new System.Drawing.Size(917, 116);
             this.lvItems.TabIndex = 64;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -241,7 +241,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(753, 444);
+            this.btnClose.Location = new System.Drawing.Point(851, 415);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(74, 23);
             this.btnClose.TabIndex = 65;
@@ -271,7 +271,7 @@
             // 
             this.AcceptButton = this.GoRun;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(846, 479);
+            this.ClientSize = new System.Drawing.Size(944, 450);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnClose);
@@ -285,7 +285,6 @@
             this.Controls.Add(this.TargetMailboxLabel);
             this.Controls.Add(this.TargetMailboxText);
             this.Controls.Add(this.GoRun);
-            this.MaximizeBox = false;
             this.Name = "AutodiscoverViewerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Autodiscover";
