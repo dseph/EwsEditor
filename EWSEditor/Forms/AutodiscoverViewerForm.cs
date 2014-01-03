@@ -137,7 +137,21 @@ namespace EWSEditor.Forms
                                     sValue += string.Format("Hostname: {0} - Port: {1} - EncryptionMethod: {2}\r\n", oProtocolConnection.Hostname, oProtocolConnection.Port, oProtocolConnection.EncryptionMethod);
                                     ValueCount++;
                                 }
-
+                                break;
+                            case ("Microsoft.Exchange.WebServices.Autodiscover.AlternateMailboxCollection"):
+                                Microsoft.Exchange.WebServices.Autodiscover.AlternateMailboxCollection oCollection3;
+                                oCollection3 = (Microsoft.Exchange.WebServices.Autodiscover.AlternateMailboxCollection)usersetting.Value;
+                                foreach (AlternateMailbox oAlternativeMailbox in oCollection3.Entries)
+                                {
+                                    sValue += string.Format("Type: {0} - SmtpAddress: {1} - DisplayName: {2} - Server: {3} - LegacyDN: {4}\r\n", 
+                                        oAlternativeMailbox.Type,
+                                        oAlternativeMailbox.SmtpAddress,
+                                        oAlternativeMailbox.DisplayName,
+                                        oAlternativeMailbox.Server,
+                                        oAlternativeMailbox.LegacyDN 
+                                        );
+                                    ValueCount++;
+                                }
                                 break;
                             default:
                                 sValue = string.Format("{0}\r\n", usersetting.Value.ToString());
