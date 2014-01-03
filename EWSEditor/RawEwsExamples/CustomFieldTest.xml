@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <CreateItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+                MessageDisposition="SendAndSaveCopy">
+      <Items>
+        <t:Task>
+          <t:Subject>
+            THIS IS AN INVALID EWS REQUEST.  THIS FILE IS ONLY USED FOR TESTING CUSTOM FIELDS
+          </t:Subject>
+          <t:DueDate>
+          </t:DueDate>
+          <t:Status>
+          </t:Status>
+          <t:CustomFields>
+            <!--FIELD:String;string;Default-->
+            <!--FIELD:Numeric;numeric;0-->
+            <!--FIELD:Date;date-->
+            <!--FIELD:Date/Time;datetime-->
+            <!--FIELD:Formatted Date;date;dd MMMM, yyyy-->
+            <!--FIELD:List;list;Option 1,Option 2,Option 3,Option 4,Option 5-->
+            <t:EventTypes>
+              <!--FIELD:ElementCheckedList;ElementCheckedList;t:EventType;CreatedEvent,DeletedEvent,ModifiedEvent,CopiedEvent,MovedEvent,NewMailEvent,FreeBusyChangedEvent-->
+            </t:EventTypes>
+            <!--FIELD:FolderId;FolderId-->
+            <!--FIELD:DistinguishedFolderId;DistinguishedFolderId-->
+            <!--FIELD:ListenerURL;ListenerURL-->
+          </t:CustomFields>
+        </t:Task>
+      </Items>
+    </CreateItem>
+  </soap:Body>
+</soap:Envelope>

@@ -12,10 +12,11 @@ namespace EWSEditor.Common
 {
     public class HttpHelper
     {
-        public static bool RawPost(
+        public static bool RawHtppCall(
+            string sVerb,
             string sUrl,
             string sContentType,
-            NetworkCredential oNetworkCredential,
+            CredentialCache oCrentialCache,
             string sRequestBody,
 
             int iTimeoutSeconds,
@@ -51,14 +52,14 @@ namespace EWSEditor.Common
             {
 
                 oHttpWebRequest = (HttpWebRequest)WebRequest.Create(sUrl);
-                oHttpWebRequest.Method = "POST";
+                oHttpWebRequest.Method = sVerb;
                 oHttpWebRequest.ContentType = sContentType;
                 //oHttpWebRequest.UserAgent = sUserAgent;
 
                 oHttpWebRequest.Timeout = 1000 * iTimeoutSeconds;
 
 
-                oHttpWebRequest.Credentials = oNetworkCredential;
+                oHttpWebRequest.Credentials = oCrentialCache;
  
                 if (bTranslateF)
                     oHttpWebRequest.Headers.Add("Translate", "f");

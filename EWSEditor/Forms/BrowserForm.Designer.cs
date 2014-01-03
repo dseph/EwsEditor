@@ -43,6 +43,7 @@
             this.DebugLogVeiwerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuAutoDiscoverView = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuRawHttpCall = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsSplit1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuResolveName = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuResolveExProp = new System.Windows.Forms.ToolStripMenuItem();
@@ -163,6 +164,7 @@
             this.DebugLogVeiwerMenuItem,
             this.toolStripMenuItem2,
             this.mnuAutoDiscoverView,
+            this.mnuRawHttpCall,
             this.mnuToolsSplit1,
             this.mnuResolveName,
             this.mnuResolveExProp,
@@ -204,6 +206,14 @@
             this.mnuAutoDiscoverView.Size = new System.Drawing.Size(315, 22);
             this.mnuAutoDiscoverView.Text = "Autodiscover Viewer...";
             this.mnuAutoDiscoverView.Click += new System.EventHandler(this.MnuAutoDiscoverView_Click);
+
+            // 
+            // MnuRawHttpCall_Click
+            // 
+            this.mnuRawHttpCall.Name = "mnuRawHttpCall";
+            this.mnuRawHttpCall.Size = new System.Drawing.Size(315, 22);
+            this.mnuRawHttpCall.Text = "Raw Http Call...";
+            this.mnuRawHttpCall.Click += new System.EventHandler(this.mnuRawHttpCall_Click);
             // 
             // mnuToolsSplit1
             // 
@@ -453,6 +463,7 @@
         public System.Windows.Forms.ToolStripMenuItem mnuAbout;
         public System.Windows.Forms.ToolStripMenuItem mnuTools;
         private System.Windows.Forms.ToolStripMenuItem mnuAutoDiscoverView;
+        private System.Windows.Forms.ToolStripMenuItem mnuRawHttpCall;
         protected System.Windows.Forms.ToolStripMenuItem UserOofSettingsMenuItem;
         protected System.Windows.Forms.ToolStripMenuItem UserAvailabilityMenuItem;
         protected System.Windows.Forms.ToolStripMenuItem ConvertIdMenuItem;
