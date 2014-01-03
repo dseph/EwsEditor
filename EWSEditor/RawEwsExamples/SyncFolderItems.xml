@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <SyncFolderItems xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <ItemShape>
+        <t:BaseShape>Default</t:BaseShape>
+      </ItemShape>
+      <SyncFolderId>
+        <!--FIELD:Folder;FolderId-->
+      </SyncFolderId>
+      <SyncState>
+        <!--FIELD:SyncState;string-->
+      </SyncState>
+      <MaxChangesReturned>100</MaxChangesReturned>
+    </SyncFolderItems>
+  </soap:Body>
+</soap:Envelope>

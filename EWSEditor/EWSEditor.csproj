@@ -139,8 +139,14 @@
     <Compile Include="Common\ItemTag.cs" />
     <Compile Include="Common\ListViewColumnSorter.cs" />
     <Compile Include="Common\ListViewItemHelper.cs" />
+    <Compile Include="Forms\PostForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PostForm.Designer.cs">
+      <DependentUpon>PostForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\PropertyGridHelper.cs" />
-    <Compile Include="Common\RecipientHelper.cs" />
+    <Compile Include="Forms\RecipientHelper.cs" />
     <Compile Include="Common\SerialHelper.cs" />
     <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Common\TimeHelper.cs" />
@@ -639,6 +645,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\PostForm.resx">
+      <DependentUpon>PostForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CheckFolderItemsForPropertyLoadingIssues.resx">
       <DependentUpon>CheckFolderItemsForPropertyLoadingIssues.cs</DependentUpon>
     </EmbeddedResource>
@@ -1282,6 +1291,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="deps\Microsoft.Exchange.WebServices.dll" />
+    <Content Include="RawEwsExamples\AddDelegate.xml" />
+    <Content Include="RawEwsExamples\CreateItem %28CalendarItem%29.xml" />
+    <Content Include="RawEwsExamples\CreateItem %28Message%29.xml" />
+    <Content Include="RawEwsExamples\CreateItem %28Task%29.xml" />
+    <Content Include="RawEwsExamples\CustomFieldTest.xml" />
+    <Content Include="RawEwsExamples\FindFolder.xml" />
+    <Content Include="RawEwsExamples\FindItem.xml" />
+    <Content Include="RawEwsExamples\GetAttachment.xml" />
+    <Content Include="RawEwsExamples\GetFolder.xml" />
+    <Content Include="RawEwsExamples\GetItem %28Appointment%29.xml" />
+    <Content Include="RawEwsExamples\GetItem %28Contact%29.xml" />
+    <Content Include="RawEwsExamples\GetItem %28Email%29.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="RawEwsExamples\GetUserAvailability.xml" />
+    <Content Include="RawEwsExamples\GetUserOOFSettings.xml" />
+    <Content Include="RawEwsExamples\PushSubscribe.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="RawEwsExamples\SetUserOOFSettings.xml" />
+    <Content Include="RawEwsExamples\SyncFolderItems.xml" />
+    <Content Include="RawEwsExamples\UpdateInboxRules %28Create Rule%29.xml" />
     <Content Include="Resources\EWSEditor2.ico" />
     <Content Include="Resources\EWSEditor2.png" />
   </ItemGroup>

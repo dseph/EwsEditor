@@ -335,6 +335,19 @@
             AutodiscoverViewerForm.Show();
         }
 
+        /// <summary>
+        /// Display the RawHttpCall
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void mnuRawHttpCall_Click(object sender, EventArgs e)
+        {
+            PostForm oPostForm = new PostForm();
+            oPostForm.ShowDialog();
+ 
+        }
+
+         
         private void OptionsMenuItem_Click(object sender, EventArgs e)
         {
             OptionsDialog.ShowDialog();

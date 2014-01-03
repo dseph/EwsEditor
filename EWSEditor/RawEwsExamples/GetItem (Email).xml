@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <GetItem
+      xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <ItemShape>
+        <t:BaseShape>Default</t:BaseShape>
+        <t:IncludeMimeContent>true</t:IncludeMimeContent>
+      </ItemShape>
+      <ItemIds>
+        <!--FIELD:Item;ItemId-->
+      </ItemIds>
+    </GetItem>
+  </soap:Body>
+</soap:Envelope>

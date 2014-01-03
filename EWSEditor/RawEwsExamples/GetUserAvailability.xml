@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2010_SP1"/>
+  </soap:Header>
+  <soap:Body>
+    <m:GetUserAvailabilityRequest>
+      <t:TimeZone>
+        <t:Bias>0</t:Bias>
+        <t:StandardTime>
+          <t:Bias>0</t:Bias>
+          <t:Time>02:00:00</t:Time>
+          <t:DayOrder>1</t:DayOrder>
+          <t:Month>3</t:Month>
+          <t:DayOfWeek>Sunday</t:DayOfWeek>
+        </t:StandardTime>
+        <t:DaylightTime>
+          <t:Bias>0</t:Bias>
+          <t:Time>02:00:00</t:Time>
+          <t:DayOrder>1</t:DayOrder>
+          <t:Month>10</t:Month>
+          <t:DayOfWeek>Sunday</t:DayOfWeek>
+        </t:DaylightTime>
+      </t:TimeZone>
+      <m:MailboxDataArray>
+        <t:MailboxData>
+          <t:Email>
+            <t:Address>
+              <!--FIELD:User 1;string;user1.ex2k10-->
+            </t:Address>
+          </t:Email>
+          <t:AttendeeType>Organizer</t:AttendeeType>
+          <t:ExcludeConflicts>true</t:ExcludeConflicts>
+        </t:MailboxData>
+        <t:MailboxData>
+          <t:Email>
+            <t:Address>
+              <!--FIELD:User 2;string;user2.ex2k10-->
+            </t:Address>
+          </t:Email>
+          <t:AttendeeType>Required</t:AttendeeType>
+          <t:ExcludeConflicts>false</t:ExcludeConflicts>
+        </t:MailboxData>
+        <t:MailboxData>
+          <t:Email>
+            <t:Address>
+              <!--FIELD:User 3;string;user3.ex2k10-->
+            </t:Address>
+          </t:Email>
+          <t:AttendeeType>Required</t:AttendeeType>
+          <t:ExcludeConflicts>false</t:ExcludeConflicts>
+        </t:MailboxData>
+        <t:MailboxData>
+          <t:Email>
+            <t:Address>
+              <!--FIELD:User 4;string;user4.ex2k10-->
+            </t:Address>
+          </t:Email>
+          <t:AttendeeType>Required</t:AttendeeType>
+          <t:ExcludeConflicts>false</t:ExcludeConflicts>
+        </t:MailboxData>
+      </m:MailboxDataArray>
+      <t:SuggestionsViewOptions>
+        <t:GoodThreshold>
+          <!--FIELD:Good threshold;numeric;25-->
+        </t:GoodThreshold>
+        <t:MaximumResultsByDay>
+          <!--FIELD:Maximum results by day;numeric;24-->
+        </t:MaximumResultsByDay>
+        <t:MaximumNonWorkHourResultsByDay>0</t:MaximumNonWorkHourResultsByDay>
+        <t:MeetingDurationInMinutes>
+          <!--FIELD:Meeting duration in minutes;numeric;30-->
+        </t:MeetingDurationInMinutes>
+        <t:MinimumSuggestionQuality>
+          <!--FIELD:Minimum suggestion quality;string;Poor-->
+        </t:MinimumSuggestionQuality>
+        <t:DetailedSuggestionsWindow>
+          <t:StartTime>
+            <!--FIELD:Start Time;date;yyyy-MM-ddT00:00:00Z-->
+          </t:StartTime>
+          <t:EndTime>
+            <!--FIELD:End Time;date;yyyy-MM-ddT00:00:00Z-->
+          </t:EndTime>
+        </t:DetailedSuggestionsWindow>
+      </t:SuggestionsViewOptions>
+    </m:GetUserAvailabilityRequest>
+  </soap:Body>
+</soap:Envelope>

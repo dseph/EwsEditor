@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <CreateItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+                SendMeetingInvitations="SendToAllAndSaveCopy" >
+      <SavedItemFolderId>
+        <t:DistinguishedFolderId Id="calendar"/>
+      </SavedItemFolderId>
+      <Items>
+        <t:CalendarItem xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
+          <Subject>
+            <!--FIELD:Subject;string-->
+          </Subject>
+          <Body BodyType="Text">
+            <!--FIELD:Body;string-->
+          </Body>
+          <ReminderIsSet>
+            <!--FIELD:ReminderIsSet;list;True,False-->
+          </ReminderIsSet>
+          <!--DELETEMARKERSTART:ReminderMinutesBeforeStart-->
+          <ReminderMinutesBeforeStart>
+            <!--FIELD:ReminderMinutesBeforeStart;numeric;15-->
+          </ReminderMinutesBeforeStart>
+          <!--DELETEMARKEREND:ReminderMinutesBeforeStart-->
+          <Start>
+            <!--FIELD:Start;date-->
+          </Start>
+          <End>
+            <!--FIELD:End;date-->
+          </End>
+          <IsAllDayEvent>
+            <!--FIELD:IsAllDayEvent;list;True,False-->
+          </IsAllDayEvent>
+          <LegacyFreeBusyStatus>
+            <!--FIELD:LegacyFreeBusyStatus;list;Free,Tentative,Busy,OOF;Busy-->
+          </LegacyFreeBusyStatus>
+          <!--DELETEMARKERSTART:Location-->
+          <Location>
+            <!--FIELD:Location;string-->
+          </Location>
+          <!--DELETEMARKEREND:Location-->
+          <!--DELETEMARKERSTART:RequiredAttendee1-->
+          <RequiredAttendees>
+            <Attendee>
+              <Mailbox>
+                <EmailAddress>
+                  <!--FIELD:RequiredAttendee1;string-->
+                </EmailAddress>
+              </Mailbox>
+            </Attendee>
+          </RequiredAttendees>
+          <!--DELETEMARKEREND:RequiredAttendee1-->
+        </t:CalendarItem>
+      </Items>
+    </CreateItem>
+  </soap:Body>
+</soap:Envelope>

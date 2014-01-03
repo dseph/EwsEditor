@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <soap:Header>
+    <t:RequestServerVersion Version ="Exchange2010_SP1"/>
+  </soap:Header>
+  <soap:Body>
+    <m:UpdateInboxRules>
+      <m:RemoveOutlookRuleBlob>true</m:RemoveOutlookRuleBlob>
+      <m:Operations>
+        <t:CreateRuleOperation>
+          <t:Rule>
+            <t:DisplayName>
+              <!--FIELD:DisplayName;string-->
+            </t:DisplayName>
+            <t:Priority>1</t:Priority>
+            <t:IsEnabled>true</t:IsEnabled>
+            <t:Conditions>
+              <t:ContainsSubjectStrings>
+                <t:String>
+                  <!--FIELD:Contains this text in the subject;string-->
+                </t:String>
+              </t:ContainsSubjectStrings>
+            </t:Conditions>
+            <t:Exceptions />
+            <t:Actions>
+              <t:MoveToFolder>
+                <!--FIELD:Move to folder;FolderId-->
+              </t:MoveToFolder>
+            </t:Actions>
+          </t:Rule>
+        </t:CreateRuleOperation>
+      </m:Operations>
+    </m:UpdateInboxRules>
+  </soap:Body>
+</soap:Envelope>
