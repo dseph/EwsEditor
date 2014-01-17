@@ -10,6 +10,12 @@ using EWSEditor.Common;
 using System.Net;
 using System.Web;
 
+ 
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
+using System.Xml;
+
 namespace EWSEditor.Common
 {
     public partial class PostForm : Form
@@ -58,6 +64,10 @@ namespace EWSEditor.Common
             int  iResponseStatusCodeNumber = 0;
             string sResponseStatusDescription = string.Empty; 
 
+            bool bPragmaNoCache = true;
+            bool bTranslateF = false;
+            bool bAllowAutoRedirect = false; 
+
             CredentialCache oCredentialCache = new CredentialCache();
             oCredentialCache = GetCredentials(
                                     chkDefaultWindowsCredentials.Checked, 
@@ -66,50 +76,215 @@ namespace EWSEditor.Common
                                     txtDomain.Text.Trim(), 
                                     txtUrl.Text.Trim());
 
+            bool bRet = false;
 
-            EWSEditor.Common.HttpHelper.RawHtppCall(
+            bRet = EWSEditor.Common.HttpHelper.RawHtppCall(
                 cmboVerb.Text,
                 txtUrl.Text.Trim(),
                 cmboContentType.Text,
                 oCredentialCache,
                 txtRequest.Text,
-                90,
-                true,
-                false,
-                true,
+                (int)numericUpDownTimeoutSeconds.Value,
+                bPragmaNoCache,
+                bTranslateF,
+                bAllowAutoRedirect,
+                txtUserAgent.Text,
                 ref sResult,
                 ref sError,
                 ref sResponseStatusCode,
                 ref iResponseStatusCodeNumber,
                 ref sResponseStatusDescription
                 );
-                
-
-
- 
-            //public static bool RawPost(
-            //    string sUrl,
-            //    string sContentType,
-            //    NetworkCredential oNetworkCredential,
-            //    string sRequestBody,
-
-            //    int iTimeoutSeconds,
-            //    bool bPragmaNoCache,
-            //    bool bTranslateF,
-            //    bool bAllowAutoRedirect,
- 
-            //    ref string sResult,
-            //    ref string sError,
-            //    ref string sResponseStatusCode,
-            //    ref int iResponseStatusCodeNumber,
-            //    ref string sResponseStatusDescription 
-       
-            //)
+            
+            StringBuilder oSB = new StringBuilder();
+            oSB.AppendFormat("sResult: {0}\r\n\r\n", sResult); 
+            oSB.AppendFormat("More information on the response:\r\n"); 
+            oSB.AppendFormat("Error: {0}\r\n\r\n", sError);
+            oSB.AppendFormat("ResponseStatusCode: {0}\r\n\r\n", sResponseStatusCode);
+            oSB.AppendFormat("ResponseCodeNumber{0}\r\n\r\n", iResponseStatusCodeNumber);
+            oSB.AppendFormat("ResponseStatusDescription: {0}\r\n\r\n", sResponseStatusDescription);
+            oSB.AppendFormat("sResult: {0}\r\n", sResult);
+            txtResponse.Text = oSB.ToString();
         }
 
         private void PostForm_Load(object sender, EventArgs e)
         {
 
         }
+
+        private void btnLoadSettings_Click(object sender, EventArgs e)
+        {
+            string sFile = string.Empty;
+            string sConnectionSettings = string.Empty;
+            PostFormSetting oPostFormSetting = null;
+            string sFileContents = string.Empty;
+
+            if (UserIoHelper.PickLoadFromFile(Application.UserAppDataPath, "*.xml", ref sFile, "XML files (*.xml)|*.xml"))
+            {
+                try
+                {
+                    sFileContents = System.IO.File.ReadAllText(sFile);
+                    oPostFormSetting = SerialHelper.DeserializeObjectFromString<PostFormSetting>(sFileContents);
+                    if (oPostFormSetting == null)
+                        throw new Exception("Settings file cannot be deserialized.");
+                    SetFormFromSettings(oPostFormSetting);
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.ToString(), "Error Loading File");
+                }
+
+            }
+            oPostFormSetting = null;
+        }
+
+        private void btnSaveSettings_Click(object sender, EventArgs e)
+        {
+            string sFile = string.Empty;
+            string sConnectionSettings = string.Empty;
+            PostFormSetting oPostFormSetting = new PostFormSetting();
+
+            SetSettingsFromForm(ref oPostFormSetting);
+
+            if (UserIoHelper.PickSaveFileToFolder(Application.UserAppDataPath, "Connection Settings " + TimeHelper.NowMashup() + ".xml", ref sFile, "XML files (*.xml)|*.xml"))
+            {
+                sConnectionSettings = SerialHelper.SerializeObjectToString<PostFormSetting>(oPostFormSetting);
+                if (sConnectionSettings != string.Empty)
+                {
+                    try
+                    {
+                        System.IO.File.WriteAllText(sFile, sConnectionSettings);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error Saving File");
+                    }
+                }
+            }
+        }
+
+        private void btnLoadExample_Click(object sender, EventArgs e)
+        {
+            string sInitialDirectory = Application.StartupPath + "\\EwsPostExamples";
+
+            string sSuggestedFilename = "*.xml";
+            string sSelectedfile = string.Empty;
+            string sFilter = "Text files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            if (UserIoHelper.PickLoadFromFile(sInitialDirectory, sSuggestedFilename, ref  sSelectedfile, sFilter))
+            {
+                try
+                {
+
+                    txtRequest.Text = System.IO.File.ReadAllText(sSelectedfile);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error reading file.");
+                }
+
+            }
+ 
+        }
+
+        private void btnSaveExample_Click(object sender, EventArgs e)
+        {
+            string sInitialDirectory = Application.StartupPath + "\\EwsPostExamples";
+
+            string sSuggestedFilename = "*.xml";
+            string sSelectedfile = string.Empty;
+            string sFilter = "Text files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            if ( UserIoHelper.PickSaveFileToFolder(sInitialDirectory, sSuggestedFilename, ref  sSelectedfile, sFilter))
+            {
+                try
+                {
+                    System.IO.File.WriteAllText(sSelectedfile, txtRequest.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error writting file.");
+                }
+
+            }
+        }
+
+        private void SetSettingsFromForm(ref PostFormSetting oPostFormSetting)
+        {
+ 
+            oPostFormSetting.User = this.txtUser.Text;
+            oPostFormSetting.Domain = this.txtDomain.Text;
+
+            oPostFormSetting.Url = this.txtUrl.Text;
+            oPostFormSetting.Verb = this.cmboVerb.Text;
+            oPostFormSetting.ContentType = this.cmboContentType.Text;
+
+ 
+            oPostFormSetting.TimeoutSeconds = (int)this.numericUpDownTimeoutSeconds.Value;
+
+            oPostFormSetting.UserAgent = this.txtUserAgent.Text;
+
+            oPostFormSetting.EasRequest = this.txtRequest.Text;
+            oPostFormSetting.EasResponse = this.txtResponse.Text;
+
+        }
+
+        private void SetFormFromSettings(PostFormSetting oPostFormSetting)
+        {
+            try
+            {
+ 
+                this.txtUser.Text = FixSetting(oPostFormSetting.User);
+                this.txtDomain.Text = FixSetting(oPostFormSetting.Domain);
+
+                this.txtUrl.Text = FixSetting(oPostFormSetting.Url);
+                this.cmboVerb.Text = FixSetting(oPostFormSetting.Verb);
+                this.cmboContentType.Text = FixSetting(oPostFormSetting.ContentType);
+
+                UInt32 iTimeoutSeconds = 0;
+                iTimeoutSeconds = Convert.ToUInt32(oPostFormSetting.TimeoutSeconds);
+                this.numericUpDownTimeoutSeconds.Value = iTimeoutSeconds;
+                this.txtUserAgent.Text = FixSetting(oPostFormSetting.UserAgent);
+ 
+                this.txtRequest.Text = FixSetting(oPostFormSetting.EasRequest); // .Replace("\n", "\r\n");
+                this.txtResponse.Text = FixSetting(oPostFormSetting.EasResponse); //.Replace("\n", "\r\n");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error loading settings into form");
+            }
+
+        }
+
+
+        private string FixSetting(string sSetting)
+        {
+            if (sSetting == null)
+                return "";
+            else
+                return sSetting;
+
+        }
+    }
+
+    public class PostFormSetting
+    {
+
+        public string MailDomain = string.Empty;
+
+        public string User = string.Empty;
+        public string Domain = string.Empty;
+        public string Password = string.Empty;
+        public string Url = string.Empty;
+        public string Verb = string.Empty;
+        public string ContentType = string.Empty;
+        public int TimeoutSeconds = 90;
+
+        public string UserAgent = string.Empty;
+
+        public string EasRequest = string.Empty;
+        public string EasResponse = string.Empty;
+
     }
 }

@@ -23,7 +23,7 @@ namespace EWSEditor.Common
             bool bPragmaNoCache,
             bool bTranslateF,
             bool bAllowAutoRedirect,
-            //string sUserAgent,
+            string sUserAgent,
 
             ref string sResult,
             ref string sError,
@@ -54,7 +54,8 @@ namespace EWSEditor.Common
                 oHttpWebRequest = (HttpWebRequest)WebRequest.Create(sUrl);
                 oHttpWebRequest.Method = sVerb;
                 oHttpWebRequest.ContentType = sContentType;
-                //oHttpWebRequest.UserAgent = sUserAgent;
+                if (sUserAgent.TrimEnd().Length != 0)
+                    oHttpWebRequest.UserAgent = sUserAgent.TrimEnd();
 
                 oHttpWebRequest.Timeout = 1000 * iTimeoutSeconds;
 
@@ -66,6 +67,7 @@ namespace EWSEditor.Common
                 if (bPragmaNoCache)
                     oHttpWebRequest.Headers.Add("Pragma", "no-cache");
                 oHttpWebRequest.AllowAutoRedirect = bAllowAutoRedirect;
+
 
                 byte[] bytes = Encoding.UTF8.GetBytes(sRequestBody);
                 oHttpWebRequest.ContentLength = bytes.Length;

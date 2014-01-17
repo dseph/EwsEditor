@@ -1291,28 +1291,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="deps\Microsoft.Exchange.WebServices.dll" />
-    <Content Include="RawEwsExamples\AddDelegate.xml" />
-    <Content Include="RawEwsExamples\CreateItem %28CalendarItem%29.xml" />
-    <Content Include="RawEwsExamples\CreateItem %28Message%29.xml" />
-    <Content Include="RawEwsExamples\CreateItem %28Task%29.xml" />
-    <Content Include="RawEwsExamples\CustomFieldTest.xml" />
-    <Content Include="RawEwsExamples\FindFolder.xml" />
-    <Content Include="RawEwsExamples\FindItem.xml" />
-    <Content Include="RawEwsExamples\GetAttachment.xml" />
-    <Content Include="RawEwsExamples\GetFolder.xml" />
-    <Content Include="RawEwsExamples\GetItem %28Appointment%29.xml" />
-    <Content Include="RawEwsExamples\GetItem %28Contact%29.xml" />
-    <Content Include="RawEwsExamples\GetItem %28Email%29.xml">
+    <Content Include="EwsPostExamples\AddDelegate.xml" />
+    <Content Include="EwsPostExamples\CreateItem %28CalendarItem%29.xml" />
+    <Content Include="EwsPostExamples\CreateItem %28Message%29.xml" />
+    <Content Include="EwsPostExamples\CreateItem %28Task%29.xml" />
+    <Content Include="EwsPostExamples\CustomFieldTest.xml" />
+    <Content Include="EwsPostExamples\FindFolder.xml" />
+    <Content Include="EwsPostExamples\FindItem.xml" />
+    <Content Include="EwsPostExamples\GetAttachment.xml" />
+    <Content Include="EwsPostExamples\GetFolder.xml" />
+    <Content Include="EwsPostExamples\GetItem %28Appointment%29.xml" />
+    <Content Include="EwsPostExamples\GetItem %28Contact%29.xml" />
+    <Content Include="EwsPostExamples\GetItem %28Email%29.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="RawEwsExamples\GetUserAvailability.xml" />
-    <Content Include="RawEwsExamples\GetUserOOFSettings.xml" />
-    <Content Include="RawEwsExamples\PushSubscribe.xml">
+    <Content Include="EwsPostExamples\GetUserAvailability.xml" />
+    <Content Include="EwsPostExamples\GetUserOOFSettings.xml" />
+    <Content Include="EwsPostExamples\PushSubscribe.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="RawEwsExamples\SetUserOOFSettings.xml" />
-    <Content Include="RawEwsExamples\SyncFolderItems.xml" />
-    <Content Include="RawEwsExamples\UpdateInboxRules %28Create Rule%29.xml" />
+    <Content Include="EwsPostExamples\SetUserOOFSettings.xml" />
+    <Content Include="EwsPostExamples\SyncFolderItems.xml" />
+    <Content Include="EwsPostExamples\UpdateInboxRules %28Create Rule%29.xml" />
     <Content Include="Resources\EWSEditor2.ico" />
     <Content Include="Resources\EWSEditor2.png" />
   </ItemGroup>
@@ -1338,6 +1338,12 @@
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>md "$(TargetDir)EwsPostExamples"
+md "$(TargetDir)PostAppData"
+Copy /Y "$(ProjectDir)EwsPostExamples\*.*" "$(TargetDir)EwsPostExamples\*.*"
+</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
