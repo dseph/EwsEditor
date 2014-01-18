@@ -1,38 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2010_SP1" />
+  </soap:Header>
   <soap:Body>
-    <SetUserOofSettingsRequest xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
-      <Mailbox xmlns ="http://schemas.microsoft.com/exchange/services/2006/types">
-        <Address>
-          <!--FIELD:User email address;string-->
-        </Address>
-      </Mailbox>
-      <UserOofSettings xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
-        <OofState>
-          <!--FIELD:OOF State;list;Enabled;Disabled-->
-        </OofState>
-        <ExternalAudience>
-          <!--FIELD:External Audience;list;All;Known;None-->
-        </ExternalAudience>
-        <Duration>
-          <StartTime>
-            <!--FIELD:Start time;date-->
-          </StartTime>
-          <EndTime>
-            <!--FIELD:End time;date-->
-          </EndTime>
-        </Duration>
-        <InternalReply>
-          <Message>
-            <!--FIELD:Internal reply;string-->
-          </Message>
-        </InternalReply>
-        <ExternalReply>
-          <Message>
-            <!--FIELD:External reply;string-->
-          </Message>
-        </ExternalReply>
-      </UserOofSettings>
-    </SetUserOofSettingsRequest>
+    <m:SetUserOofSettingsRequest>
+      <t:Mailbox>
+        <t:Address>someone@example.com</t:Address>
+      </t:Mailbox>
+      <t:UserOofSettings>
+        <t:OofState>Scheduled</t:OofState>
+        <t:ExternalAudience>All</t:ExternalAudience>
+        <t:Duration>
+          <t:StartTime>2011-10-29T18:45:08.243Z</t:StartTime>
+          <t:EndTime>2011-10-30T18:45:08.243Z</t:EndTime>
+        </t:Duration>
+        <t:InternalReply xml:lang="en-US">
+          <t:Message>I'm currently out of office. Please contact my manager for critical issues. Thanks!</t:Message>
+        </t:InternalReply>
+        <t:ExternalReply xml:lang="en-US">
+          <t:Message>I am currently out of the office but will reply to emails when I return. Thanks!</t:Message>
+        </t:ExternalReply>
+      </t:UserOofSettings>
+    </m:SetUserOofSettingsRequest>
   </soap:Body>
 </soap:Envelope>
