@@ -94,6 +94,8 @@ namespace EWSEditor.Forms
                 }
                 EwsProxyFactory.AllowAutodiscoverRedirect = GlobalSettings.AllowAutodiscoverRedirect;
                 EwsProxyFactory.UseDefaultCredentials = !chkCredentials.Checked;
+                EwsProxyFactory.EnableScpLookup = GlobalSettings.EnableScpLookups;
+
                 EwsProxyFactory.ServiceCredential = chkCredentials.Checked ?
                     new NetworkCredential(
                         this.txtUserName.Text.Trim(), 

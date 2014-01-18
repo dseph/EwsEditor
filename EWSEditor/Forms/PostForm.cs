@@ -33,10 +33,10 @@ namespace EWSEditor.Common
              
  
             oCredentialCache = new CredentialCache();
-             
+           
             Uri oUri = new Uri(Url);
 
-            if (UseDefault == false) 
+            if (UseDefault == false)
             {
                 if (txtDomain.Text.Trim().Length == 0)
                 {
@@ -49,7 +49,12 @@ namespace EWSEditor.Common
                 }
 
                 oCredentialCache.Add(oUri, "Basic", oNetworkCredential);
-                //oCredentialCache.Add(oUri, "NTLM", oNetworkCredential);
+                oCredentialCache.Add(oUri, "NTLM", oNetworkCredential);
+                oCredentialCache.Add(oUri, "Digest", oNetworkCredential);
+            }
+            else
+            {
+                 
             }
  
             return  oCredentialCache;
@@ -69,12 +74,16 @@ namespace EWSEditor.Common
             bool bAllowAutoRedirect = false; 
 
             CredentialCache oCredentialCache = new CredentialCache();
-            oCredentialCache = GetCredentials(
-                                    chkDefaultWindowsCredentials.Checked, 
-                                    txtUser.Text.Trim(),
-                                    txtPassword.Text.Trim(), 
-                                    txtDomain.Text.Trim(), 
-                                    txtUrl.Text.Trim());
+            if (chkDefaultWindowsCredentials.Checked == false)
+            {
+
+                oCredentialCache = GetCredentials(
+                                        chkDefaultWindowsCredentials.Checked,
+                                        txtUser.Text.Trim(),
+                                        txtPassword.Text.Trim(),
+                                        txtDomain.Text.Trim(),
+                                        txtUrl.Text.Trim());
+            }
 
             bool bRet = false;
 
@@ -82,8 +91,11 @@ namespace EWSEditor.Common
                 cmboVerb.Text,
                 txtUrl.Text.Trim(),
                 cmboContentType.Text,
+                chkDefaultWindowsCredentials.Checked,
                 oCredentialCache,
                 txtRequest.Text,
+                //txtProxyServer.Text,
+                //txtProxyPort.Text,
                 (int)numericUpDownTimeoutSeconds.Value,
                 bPragmaNoCache,
                 bTranslateF,
@@ -97,13 +109,22 @@ namespace EWSEditor.Common
                 );
             
             StringBuilder oSB = new StringBuilder();
-            oSB.AppendFormat("sResult: {0}\r\n\r\n", sResult); 
-            oSB.AppendFormat("More information on the response:\r\n"); 
+
+            sResult = SerialHelper.RestoreCrLfAndIndents(sResult);
+             
+            if (bRet == true)
+            {  
+                oSB.AppendFormat("{0}\r\n\r\n", sResult); 
+            }
+            else
+            { 
+            oSB.AppendFormat("Failed:\r\n"); 
             oSB.AppendFormat("Error: {0}\r\n\r\n", sError);
             oSB.AppendFormat("ResponseStatusCode: {0}\r\n\r\n", sResponseStatusCode);
             oSB.AppendFormat("ResponseCodeNumber{0}\r\n\r\n", iResponseStatusCodeNumber);
             oSB.AppendFormat("ResponseStatusDescription: {0}\r\n\r\n", sResponseStatusDescription);
             oSB.AppendFormat("sResult: {0}\r\n", sResult);
+            }
             txtResponse.Text = oSB.ToString();
         }
 
@@ -135,8 +156,10 @@ namespace EWSEditor.Common
                     MessageBox.Show(ex.ToString(), "Error Loading File");
                 }
 
+                SetFields(); 
+
             }
-            oPostFormSetting = null;
+             
         }
 
         private void btnSaveSettings_Click(object sender, EventArgs e)
@@ -149,6 +172,8 @@ namespace EWSEditor.Common
 
             if (UserIoHelper.PickSaveFileToFolder(Application.UserAppDataPath, "Connection Settings " + TimeHelper.NowMashup() + ".xml", ref sFile, "XML files (*.xml)|*.xml"))
             {
+
+                //http://msdn.microsoft.com/en-us/library/system.xml.xmlwritersettings.newlinehandling(v=vs.110).aspx
                 sConnectionSettings = SerialHelper.SerializeObjectToString<PostFormSetting>(oPostFormSetting);
                 if (sConnectionSettings != string.Empty)
                 {
@@ -249,6 +274,8 @@ namespace EWSEditor.Common
  
                 this.txtRequest.Text = FixSetting(oPostFormSetting.EasRequest); // .Replace("\n", "\r\n");
                 this.txtResponse.Text = FixSetting(oPostFormSetting.EasResponse); //.Replace("\n", "\r\n");
+
+                oPostFormSetting = null;
             }
             catch (Exception ex)
             {
@@ -265,6 +292,27 @@ namespace EWSEditor.Common
             else
                 return sSetting;
 
+        }
+
+        private void chkDefaultWindowsCredentials_CheckedChanged(object sender, EventArgs e)
+        {
+            SetFields();  
+        }
+
+        private void SetFields()
+        {
+            if (chkDefaultWindowsCredentials.Checked == true)
+            {
+                txtUser.Enabled = false;
+                txtPassword.Enabled = false;
+                txtDomain.Enabled = false;
+            }
+            else
+            {
+                txtUser.Enabled = true;
+                txtPassword.Enabled = true;
+                txtDomain.Enabled = true;
+            }
         }
     }
 

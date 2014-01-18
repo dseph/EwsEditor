@@ -101,6 +101,7 @@
             this.chkDefaultWindowsCredentials.TabIndex = 42;
             this.chkDefaultWindowsCredentials.Text = "Default Windows Credentials";
             this.chkDefaultWindowsCredentials.UseVisualStyleBackColor = true;
+            this.chkDefaultWindowsCredentials.CheckedChanged += new System.EventHandler(this.chkDefaultWindowsCredentials_CheckedChanged);
             // 
             // txtUser
             // 
@@ -151,12 +152,12 @@
             // 
             // txtUrl
             // 
-            this.txtUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUrl.Location = new System.Drawing.Point(83, 158);
+            this.txtUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUrl.Location = new System.Drawing.Point(46, 158);
             this.txtUrl.Margin = new System.Windows.Forms.Padding(4);
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(1063, 22);
+            this.txtUrl.Size = new System.Drawing.Size(1115, 22);
             this.txtUrl.TabIndex = 46;
             this.txtUrl.Text = "https://mail.contoso.com/EWS/Exchange.asmx";
             // 
@@ -166,21 +167,21 @@
             this.label4.Location = new System.Drawing.Point(3, 162);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 16);
+            this.label4.Size = new System.Drawing.Size(38, 16);
             this.label4.TabIndex = 47;
-            this.label4.Text = "EWS URL:";
+            this.label4.Text = "URL:";
             // 
             // txtRequest
             // 
-            this.txtRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRequest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRequest.Location = new System.Drawing.Point(6, 237);
             this.txtRequest.Margin = new System.Windows.Forms.Padding(4);
             this.txtRequest.MaxLength = 0;
             this.txtRequest.Multiline = true;
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRequest.Size = new System.Drawing.Size(1144, 213);
+            this.txtRequest.Size = new System.Drawing.Size(1155, 213);
             this.txtRequest.TabIndex = 64;
             // 
             // label5
@@ -205,25 +206,25 @@
             // 
             // txtResponse
             // 
-            this.txtResponse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtResponse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResponse.Location = new System.Drawing.Point(6, 474);
             this.txtResponse.Margin = new System.Windows.Forms.Padding(4);
             this.txtResponse.MaxLength = 0;
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1144, 197);
+            this.txtResponse.Size = new System.Drawing.Size(1155, 197);
             this.txtResponse.TabIndex = 66;
             // 
             // GoRun
             // 
             this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GoRun.Location = new System.Drawing.Point(1047, 122);
+            this.GoRun.Location = new System.Drawing.Point(1060, 122);
             this.GoRun.Margin = new System.Windows.Forms.Padding(4);
             this.GoRun.Name = "GoRun";
-            this.GoRun.Size = new System.Drawing.Size(99, 28);
+            this.GoRun.Size = new System.Drawing.Size(101, 28);
             this.GoRun.TabIndex = 68;
             this.GoRun.Text = "Run";
             this.GoRun.UseVisualStyleBackColor = true;
@@ -304,7 +305,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.btnLoadExample);
             this.panel2.Controls.Add(this.btnSaveExample);
-            this.panel2.Location = new System.Drawing.Point(851, 57);
+            this.panel2.Location = new System.Drawing.Point(864, 57);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(297, 36);
@@ -337,7 +338,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnLoadSettings);
             this.panel1.Controls.Add(this.btnSaveSettings);
-            this.panel1.Location = new System.Drawing.Point(851, 13);
+            this.panel1.Location = new System.Drawing.Point(864, 13);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(297, 36);
@@ -368,13 +369,13 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(83, 184);
+            this.label10.Location = new System.Drawing.Point(43, 184);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(753, 16);
             this.label10.TabIndex = 92;
             this.label10.Text = "Note: This is the URL to the Exchange Web Service for the Mailbox.  Example:  htt" +
-                "ps://mail.contoso.com/EWS/Exchange.asmx ";
+    "ps://mail.contoso.com/EWS/Exchange.asmx ";
             // 
             // label11
             // 
@@ -391,7 +392,6 @@
             this.txtUserAgent.Location = new System.Drawing.Point(574, 116);
             this.txtUserAgent.Margin = new System.Windows.Forms.Padding(4);
             this.txtUserAgent.Name = "txtUserAgent";
-            this.txtUserAgent.PasswordChar = '•';
             this.txtUserAgent.Size = new System.Drawing.Size(160, 22);
             this.txtUserAgent.TabIndex = 94;
             // 

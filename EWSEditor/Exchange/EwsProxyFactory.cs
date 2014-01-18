@@ -31,9 +31,21 @@ namespace EWSEditor.Exchange
         public static void DoAutodiscover(Microsoft.Exchange.WebServices.Data.EmailAddress emailAddress)
         {
             ExchangeService service = CreateExchangeService();
-            service.EnableScpLookup = GlobalSettings.EnableScpLookups;
-            service.AutodiscoverUrl(emailAddress.Address, ValidationCallbackHelper.RedirectionUrlValidationCallback);
-            EwsUrl = service.Url;
+            //service.EnableScpLookup = GlobalSettings.EnableScpLookups;
+
+            try
+            { 
+                service.AutodiscoverUrl(emailAddress.Address, ValidationCallbackHelper.RedirectionUrlValidationCallback);
+                EwsUrl = service.Url;
+            }
+            catch (AutodiscoverLocalException oException)
+            {
+                ErrorDialog.ShowError(oException.ToString());
+            }
+            catch (System.IO.IOException oIOException)
+            {
+                ErrorDialog.ShowError(oIOException.ToString());
+            }
 
             //try
             //{
