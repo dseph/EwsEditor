@@ -123,7 +123,7 @@ namespace EWSEditor.Common
 
             return sResult;
         }
-
+         
 
         static public string RestoreCrLfAndIndents(XmlDocument oXmlDocument)
         {

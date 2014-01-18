@@ -1,17 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<soap:Envelope xmlns:xsi="http://www.w
-               
-org/2001/XMLSchema-instance"
-               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2010_SP1" />
+  </soap:Header>
   <soap:Body>
-    <GetUserOofSettingsRequest xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+    <m:GetUserOofSettingsRequest>
       <t:Mailbox>
-        <t:Address>
-          <!--FIELD:User email address;string-->
-        </t:Address>
+        <t:Address>user1@contoso.com</t:Address>
       </t:Mailbox>
-    </GetUserOofSettingsRequest>
+    </m:GetUserOofSettingsRequest>
   </soap:Body>
 </soap:Envelope>

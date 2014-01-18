@@ -1299,52 +1299,12 @@
     <Content Include="deps\Microsoft.Exchange.WebServices.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="EwsPostExamples\AddDelegate.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="EwsPostExamples\CreateItem %28CalendarItem%29.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="EwsPostExamples\CreateItem %28Message%29.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="EwsPostExamples\CreateItem %28Task%29.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="EwsPostExamples\CustomFieldTest.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="EwsPostExamples\FindFolder.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="EwsPostExamples\FindItem.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="EwsPostExamples\GetAttachment.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="EwsPostExamples\GetFolder.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="EwsPostExamples\GetItem %28Appointment%29.xml" />
-    <Content Include="EwsPostExamples\GetItem %28Contact%29.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="EwsPostExamples\GetItem %28Email%29.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="EwsPostExamples\GetUserAvailability.xml">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="EwsPostExamples\FindItemCalendarView.xml" />
+    <Content Include="EwsPostExamples\GetFolderMsgRootFolder.xml" />
     <Content Include="EwsPostExamples\GetUserOOFSettings.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="EwsPostExamples\PushSubscribe.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="EwsPostExamples\SetUserOOFSettings.xml" />
-    <Content Include="EwsPostExamples\SyncFolderItems.xml" />
-    <Content Include="EwsPostExamples\UpdateInboxRules %28Create Rule%29.xml" />
     <Content Include="Resources\EWSEditor2.ico" />
     <Content Include="Resources\EWSEditor2.png" />
   </ItemGroup>
