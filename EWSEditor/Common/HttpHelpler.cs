@@ -16,8 +16,12 @@ namespace EWSEditor.Common
             string sVerb,
             string sUrl,
             string sContentType,
+            bool bUseDefaultCredentials,
             CredentialCache oCrentialCache,
             string sRequestBody,
+
+            //string sProxyServer,
+            //int iProxyPort,
 
             int iTimeoutSeconds,
             bool bPragmaNoCache,
@@ -59,8 +63,15 @@ namespace EWSEditor.Common
 
                 oHttpWebRequest.Timeout = 1000 * iTimeoutSeconds;
 
+                if (bUseDefaultCredentials == true)
+                    oHttpWebRequest.UseDefaultCredentials = true;
+                else
+                    oHttpWebRequest.Credentials = oCrentialCache;
 
-                oHttpWebRequest.Credentials = oCrentialCache;
+                //if (sProxyServer.Trim().Length != 0)
+                //{
+                //    oHttpWebRequest.Proxy = new WebProxy(sProxyServer, iProxyPort);
+                //}
  
                 if (bTranslateF)
                     oHttpWebRequest.Headers.Add("Translate", "f");

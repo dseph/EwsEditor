@@ -11,7 +11,7 @@ namespace EWSEditor
     {
         static Program()
         {
-            AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
+            //AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
         }
 
         /// <summary>
@@ -29,10 +29,17 @@ namespace EWSEditor
             if (args.Name.Contains("Microsoft.Exchange.WebServices"))
             {
                 // Try to load the DLL from the install location if not found in the .NET assembly path
-                if (System.IO.File.Exists(EnvironmentInfo.EwsManagedApiInstallPath))
+                string sLocalEwsManagedApiInstallPath = System.IO.Path.GetDirectoryName(Application.ExecutablePath) + "\\Microsoft.Exchange.WebServices.dll";
+                if (System.IO.File.Exists(sLocalEwsManagedApiInstallPath))
                 {
-                    return System.Reflection.Assembly.LoadFrom(EnvironmentInfo.EwsManagedApiInstallPath);
+                    return System.Reflection.Assembly.LoadFrom(sLocalEwsManagedApiInstallPath);
                 }
+
+                //// Try to load the DLL from the install location if not found in the .NET assembly path
+                //if (System.IO.File.Exists(EnvironmentInfo.EwsManagedApiInstallPath))
+                //{
+                //    return System.Reflection.Assembly.LoadFrom(EnvironmentInfo.EwsManagedApiInstallPath);
+                //}
 
                 // If the API is not found on the machine then display an error message and offer to
                 // take the user to the download page.
@@ -57,11 +64,11 @@ namespace EWSEditor
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
 
-                // Require .NET Framework 3.5 SP1 before starting
-                if (!EnvironmentInfo.IsDotNetFramework35SP1)
+                // Require .NET Framework 4.0 SP1 before starting
+                if (!EnvironmentInfo.IsDotNetFramework4)
                 {
-                    ErrorDialog.ShowError("EWSEditor and the Exchange Web Services Managed API require at least the .NET Framework 3.5 SP1.");
-                    DebugLog.WriteInfo("Wrong .NET Framework version", String.Format("Framework version {0}, is not .NET Framework 3.5 SP1", EnvironmentInfo.DotNetFrameworkVersion));
+                    ErrorDialog.ShowError("EWSEditor and the Exchange Web Services Managed API require at least the .NET Framework 4.0");
+                    DebugLog.WriteInfo("Wrong .NET Framework version", String.Format("Framework version {0}, is not .NET Framework 4.0", EnvironmentInfo.DotNetFrameworkVersion));
                     return;
                 }
 
