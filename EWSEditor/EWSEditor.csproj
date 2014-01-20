@@ -1336,7 +1336,6 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>md "$(TargetDir)EwsPostExamples"
-md "$(TargetDir)PostAppData"
 Copy /Y "$(ProjectDir)EwsPostExamples\*.*" "$(TargetDir)EwsPostExamples\*.*"
 </PostBuildEvent>
   </PropertyGroup>
