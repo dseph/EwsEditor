@@ -4,14 +4,13 @@
     <t:RequestServerVersion Version="Exchange2010_SP2" />
   </soap:Header>
   <soap:Body>
-    <m:FindFolder Traversal="Shallow">
-      <m:FolderShape>
+    <m:GetItem>
+      <m:ItemShape>
         <t:BaseShape>AllProperties</t:BaseShape>
-      </m:FolderShape>
-      <m:IndexedPageFolderView MaxEntriesReturned="50" Offset="0" BasePoint="Beginning" />
-      <m:ParentFolderIds>
-        <t:FolderId Id="AAMkA..." ChangeKey="AQAAA..." />
-      </m:ParentFolderIds>
-    </m:FindFolder>
+      </m:ItemShape>
+      <m:ItemIds>
+        <t:ItemId Id="AAMk..." />
+      </m:ItemIds>
+    </m:GetItem>
   </soap:Body>
 </soap:Envelope>

@@ -16,7 +16,7 @@ namespace EWSEditor.Common
             string sVerb,
             string sUrl,
             string sContentType,
-            bool bUseDefaultCredentials,
+            string sAuthentication,
             CredentialCache oCrentialCache,
             string sRequestBody,
 
@@ -63,7 +63,7 @@ namespace EWSEditor.Common
 
                 oHttpWebRequest.Timeout = 1000 * iTimeoutSeconds;
 
-                if (bUseDefaultCredentials == true)
+                if (sAuthentication == "DEFAULT")
                     oHttpWebRequest.UseDefaultCredentials = true;
                 else
                     oHttpWebRequest.Credentials = oCrentialCache;
@@ -77,6 +77,7 @@ namespace EWSEditor.Common
                     oHttpWebRequest.Headers.Add("Translate", "f");
                 if (bPragmaNoCache)
                     oHttpWebRequest.Headers.Add("Pragma", "no-cache");
+
                 oHttpWebRequest.AllowAutoRedirect = bAllowAutoRedirect;
 
 

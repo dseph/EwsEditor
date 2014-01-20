@@ -25,18 +25,16 @@ namespace EWSEditor.Common
             InitializeComponent();
         }
 
-        private CredentialCache GetCredentials(bool UseDefault, string User, string Password, string Domain, string Url)
+        private CredentialCache GetCredentials(string sAuthentication, string User, string Password, string Domain, string Url)
         {
-            NetworkCredential oNetworkCredential = null;
+            NetworkCredential oNetworkCredential = null; 
             CredentialCache oCredentialCache = null;
-            
-             
  
             oCredentialCache = new CredentialCache();
            
             Uri oUri = new Uri(Url);
 
-            if (UseDefault == false)
+            if (sAuthentication != "DEFAULT")
             {
                 if (txtDomain.Text.Trim().Length == 0)
                 {
@@ -48,9 +46,10 @@ namespace EWSEditor.Common
 
                 }
 
-                oCredentialCache.Add(oUri, "Basic", oNetworkCredential);
-                oCredentialCache.Add(oUri, "NTLM", oNetworkCredential);
-                oCredentialCache.Add(oUri, "Digest", oNetworkCredential);
+                oCredentialCache.Add(oUri, sAuthentication, oNetworkCredential);
+                //oCredentialCache.Add(oUri, "Basic", oNetworkCredential);
+                //oCredentialCache.Add(oUri, "NTLM", oNetworkCredential);
+                //oCredentialCache.Add(oUri, "Digest", oNetworkCredential);
             }
             else
             {
@@ -69,37 +68,34 @@ namespace EWSEditor.Common
             int  iResponseStatusCodeNumber = 0;
             string sResponseStatusDescription = string.Empty; 
 
-            bool bPragmaNoCache = true;
-            bool bTranslateF = false;
-            bool bAllowAutoRedirect = false; 
+            //bool bPragmaNoCache = true;
+            //bool bTranslateF = false;
+            //bool bAllowAutoRedirect = false; 
 
             CredentialCache oCredentialCache = new CredentialCache();
-            if (chkDefaultWindowsCredentials.Checked == false)
-            {
-
+ 
                 oCredentialCache = GetCredentials(
-                                        chkDefaultWindowsCredentials.Checked,
+                                        cmboAuthentication.Text,
                                         txtUser.Text.Trim(),
                                         txtPassword.Text.Trim(),
                                         txtDomain.Text.Trim(),
                                         txtUrl.Text.Trim());
-            }
-
+ 
             bool bRet = false;
 
             bRet = EWSEditor.Common.HttpHelper.RawHtppCall(
                 cmboVerb.Text,
                 txtUrl.Text.Trim(),
                 cmboContentType.Text,
-                chkDefaultWindowsCredentials.Checked,
+                cmboAuthentication.Text,
                 oCredentialCache,
                 txtRequest.Text,
                 //txtProxyServer.Text,
                 //txtProxyPort.Text,
                 (int)numericUpDownTimeoutSeconds.Value,
-                bPragmaNoCache,
-                bTranslateF,
-                bAllowAutoRedirect,
+                chkPragmaNocache.Checked,
+                chkTranslateF.Checked,
+                chkAllowRedirect.Checked,
                 txtUserAgent.Text,
                 ref sResult,
                 ref sError,
@@ -130,7 +126,7 @@ namespace EWSEditor.Common
 
         private void PostForm_Load(object sender, EventArgs e)
         {
-
+            SetFields();
         }
 
         private void btnLoadSettings_Click(object sender, EventArgs e)
@@ -241,6 +237,7 @@ namespace EWSEditor.Common
             oPostFormSetting.User = this.txtUser.Text;
             oPostFormSetting.Domain = this.txtDomain.Text;
 
+            oPostFormSetting.Authentication = this.cmboAuthentication.Text;
             oPostFormSetting.Url = this.txtUrl.Text;
             oPostFormSetting.Verb = this.cmboVerb.Text;
             oPostFormSetting.ContentType = this.cmboContentType.Text;
@@ -249,6 +246,10 @@ namespace EWSEditor.Common
             oPostFormSetting.TimeoutSeconds = (int)this.numericUpDownTimeoutSeconds.Value;
 
             oPostFormSetting.UserAgent = this.txtUserAgent.Text;
+
+            oPostFormSetting.PragmaNoCache = this.chkPragmaNocache.Checked = oPostFormSetting.PragmaNoCache;
+            oPostFormSetting.TranslateF = this.chkTranslateF.Checked;
+            oPostFormSetting.AllowAutoRedirect = this.chkAllowRedirect.Checked = oPostFormSetting.AllowAutoRedirect;
 
             oPostFormSetting.EasRequest = this.txtRequest.Text;
             oPostFormSetting.EasResponse = this.txtResponse.Text;
@@ -263,6 +264,7 @@ namespace EWSEditor.Common
                 this.txtUser.Text = FixSetting(oPostFormSetting.User);
                 this.txtDomain.Text = FixSetting(oPostFormSetting.Domain);
 
+                this.cmboAuthentication.Text = FixSetting(oPostFormSetting.Authentication);
                 this.txtUrl.Text = FixSetting(oPostFormSetting.Url);
                 this.cmboVerb.Text = FixSetting(oPostFormSetting.Verb);
                 this.cmboContentType.Text = FixSetting(oPostFormSetting.ContentType);
@@ -271,6 +273,10 @@ namespace EWSEditor.Common
                 iTimeoutSeconds = Convert.ToUInt32(oPostFormSetting.TimeoutSeconds);
                 this.numericUpDownTimeoutSeconds.Value = iTimeoutSeconds;
                 this.txtUserAgent.Text = FixSetting(oPostFormSetting.UserAgent);
+
+                this.chkPragmaNocache.Checked = oPostFormSetting.PragmaNoCache;
+                this.chkTranslateF.Checked = oPostFormSetting.TranslateF;
+                this.chkAllowRedirect.Checked = oPostFormSetting.AllowAutoRedirect;
  
                 this.txtRequest.Text = FixSetting(oPostFormSetting.EasRequest); // .Replace("\n", "\r\n");
                 this.txtResponse.Text = FixSetting(oPostFormSetting.EasResponse); //.Replace("\n", "\r\n");
@@ -301,7 +307,7 @@ namespace EWSEditor.Common
 
         private void SetFields()
         {
-            if (chkDefaultWindowsCredentials.Checked == true)
+            if (cmboAuthentication.Text == "DEFAULT")
             {
                 txtUser.Enabled = false;
                 txtPassword.Enabled = false;
@@ -314,10 +320,17 @@ namespace EWSEditor.Common
                 txtDomain.Enabled = true;
             }
         }
+
+        private void cmboAuthentication_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetFields();
+        }
     }
 
     public class PostFormSetting
     {
+
+        public string Authentication = string.Empty;
 
         public string MailDomain = string.Empty;
 
@@ -330,6 +343,10 @@ namespace EWSEditor.Common
         public int TimeoutSeconds = 90;
 
         public string UserAgent = string.Empty;
+
+        public bool PragmaNoCache = true;
+        public bool TranslateF = false;
+        public bool AllowAutoRedirect = false; 
 
         public string EasRequest = string.Empty;
         public string EasResponse = string.Empty;
