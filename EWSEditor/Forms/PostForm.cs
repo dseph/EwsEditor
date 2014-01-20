@@ -66,7 +66,9 @@ namespace EWSEditor.Common
             string  sResponseStatusCodeNumber = string.Empty;
             string sResponseStatusCode = string.Empty;
             int  iResponseStatusCodeNumber = 0;
-            string sResponseStatusDescription = string.Empty; 
+            string sResponseStatusDescription = string.Empty;
+
+            this.Cursor = Cursors.WaitCursor;
 
             //bool bPragmaNoCache = true;
             //bool bTranslateF = false;
@@ -122,6 +124,8 @@ namespace EWSEditor.Common
             oSB.AppendFormat("sResult: {0}\r\n", sResult);
             }
             txtResponse.Text = oSB.ToString();
+
+            this.Cursor = Cursors.Default;
         }
 
         private void PostForm_Load(object sender, EventArgs e)
