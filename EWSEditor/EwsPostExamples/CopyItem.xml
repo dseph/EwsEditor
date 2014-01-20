@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <CopyItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <ToFolderId>
+        <t:DistinguishedFolderId Id="inbox"/>
+      </ToFolderId>
+      <ItemIds>
+        <t:ItemId Id="AS4AUnV="/>
+      </ItemIds>
+    </CopyItem>
+  </soap:Body>
+</soap:Envelope>

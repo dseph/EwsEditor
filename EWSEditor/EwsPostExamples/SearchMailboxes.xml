@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2013" />
+  </soap:Header>
+  <soap:Body >
+    <m:SearchMailboxes>
+      <m:SearchQueries>
+        <t:MailboxQuery>
+          <t:Query>Test Item</t:Query>
+          <t:MailboxSearchScopes>
+            <t:MailboxSearchScope>
+              <t:Mailbox>/o=First Organization/ou=Exchange Administrative Group (FYDLT)/cn=Recipients/cn=12311a742f0e47e392c8201a60d13ecf-Steve</t:Mailbox>
+              <t:SearchScope>All</t:SearchScope>
+            </t:MailboxSearchScope>
+            <t:MailboxSearchScope>
+              <t:Mailbox>/o=First Organization/ou=Exchange Administrative Group (FYDLT)/cn=Recipients/cn=f00c9f70539844beb52341d8f40c572e-Antho</t:Mailbox>
+              <t:SearchScope>PrimaryOnly</t:SearchScope>
+            </t:MailboxSearchScope>
+          </t:MailboxSearchScopes>
+        </t:MailboxQuery>
+        <t:MailboxQuery>
+          <t:Query></t:Query>
+          <t:MailboxSearchScopes>
+            <t:MailboxSearchScope>
+              <t:Mailbox>/o=First Organization/ou=Exchange Administrative Group (FYDLT)/cn=Recipients/cn=accba4fd5ddf12214a0e82ce1645f4e-Danie</t:Mailbox>
+              <t:SearchScope>ArchiveOnly</t:SearchScope>
+            </t:MailboxSearchScope>
+          </t:MailboxSearchScopes>
+        </t:MailboxQuery>
+      </m:SearchQueries>
+      <m:ResultType>StatisticsOnly</m:ResultType>
+    </m:SearchMailboxes>
+  </soap:Body>
+</soap:Envelope>

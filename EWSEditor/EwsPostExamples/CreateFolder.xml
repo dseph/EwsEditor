@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+      xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <CreateFolder xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <ParentFolderId>
+        <t:DistinguishedFolderId Id="msgfolderroot"/>
+      </ParentFolderId>
+      <Folders>
+        <t:Folder>
+          <t:DisplayName>Folder1</t:DisplayName>
+        </t:Folder>
+        <t:Folder>
+          <t:DisplayName>Folder2</t:DisplayName>
+        </t:Folder>
+      </Folders>
+    </CreateFolder>
+  </soap:Body>
+</soap:Envelope>

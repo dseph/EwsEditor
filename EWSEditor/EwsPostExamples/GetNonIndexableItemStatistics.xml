@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2013" />
+  </soap:Header>
+  <soap:Body >
+    <m:GetNonIndexableItemStatistics>
+      <m:Mailboxes>
+        <t:LegacyDN>/o=First Organization/ou=Exchange Administrative Group (FYDIDLT)/cn=Recipients/cn=3518cf-Steve</t:LegacyDN>
+      </m:Mailboxes>
+      <m:SearchArchiveOnly>false</m:SearchArchiveOnly>
+    </m:GetNonIndexableItemStatistics>
+  </soap:Body>
+</soap:Envelope>

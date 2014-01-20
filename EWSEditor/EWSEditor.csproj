@@ -1299,15 +1299,41 @@
     <Content Include="deps\Microsoft.Exchange.WebServices.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="EwsPostExamples\CopyFolder.xml" />
+    <Content Include="EwsPostExamples\CopyItem.xml" />
+    <Content Include="EwsPostExamples\CreateAttachment.xml" />
+    <Content Include="EwsPostExamples\CreateFolder.xml" />
+    <Content Include="EwsPostExamples\CreateFolderPath.xml" />
+    <Content Include="EwsPostExamples\CreateManagedFolder.xml" />
     <Content Include="EwsPostExamples\FindFolder.xml" />
     <Content Include="EwsPostExamples\FindItem - CalendarView.xml" />
+    <Content Include="EwsPostExamples\FindPeople.xml" />
+    <Content Include="EwsPostExamples\GetAppManifests.xml" />
+    <Content Include="EwsPostExamples\GetAppMarketplaceUrl.xml" />
+    <Content Include="EwsPostExamples\GetAttachment.xml" />
+    <Content Include="EwsPostExamples\GetClientAccessToken.xml" />
+    <Content Include="EwsPostExamples\GetDelegate.xml" />
+    <Content Include="EwsPostExamples\GetDiscoverySearchConfiguration.xml" />
+    <Content Include="EwsPostExamples\GetEvents.xml" />
     <Content Include="EwsPostExamples\GetFolder.xml" />
     <Content Include="EwsPostExamples\GetFolder - MsgRootFolder.xml" />
+    <Content Include="EwsPostExamples\GetHoldOnMailboxes.xml" />
+    <Content Include="EwsPostExamples\GetImItemList.xml" />
+    <Content Include="EwsPostExamples\GetImItems.xml" />
+    <Content Include="EwsPostExamples\GetInboxRules.xml" />
     <Content Include="EwsPostExamples\GetItem - AllKnownProperties.xml" />
     <Content Include="EwsPostExamples\GetItem.xml" />
+    <Content Include="EwsPostExamples\GetMailTips.xml" />
+    <Content Include="EwsPostExamples\GetNonIndexableItemStatistics.xml" />
+    <Content Include="EwsPostExamples\GetPersona.xml" />
+    <Content Include="EwsPostExamples\GetSearchableMailboxes.xml" />
     <Content Include="EwsPostExamples\GetUserOOFSettings.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="EwsPostExamples\MoveFolder.xml" />
+    <Content Include="EwsPostExamples\MoveItem.xml" />
+    <Content Include="EwsPostExamples\ResolveNames.xml" />
+    <Content Include="EwsPostExamples\SearchMailboxes.xml" />
     <Content Include="EwsPostExamples\SetUserOOFSettings.xml" />
     <Content Include="Resources\EWSEditor2.ico" />
     <Content Include="Resources\EWSEditor2.png" />

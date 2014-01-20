@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2010" />
+  </soap:Header>
+  <soap:Body>
+    <GetMailTips xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <SendingAs>
+        <t:EmailAddress> user1@contoso.com </t:EmailAddress>
+        <t:RoutingType>SMTP</t:RoutingType>
+      </SendingAs>
+      <Recipients>
+        <t:Mailbox>
+          <t:EmailAddress> user2@contoso.com </t:EmailAddress>
+          <t:RoutingType>SMTP</t:RoutingType>
+        </t:Mailbox>
+      </Recipients>
+      <MailTipsRequested>All</MailTipsRequested>
+    </GetMailTips>
+  </soap:Body>
+</soap:Envelope>

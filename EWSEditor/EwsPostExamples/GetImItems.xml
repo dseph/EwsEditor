@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2013" />
+    <t:MailboxCulture>en-US</t:MailboxCulture>
+  </soap:Header>
+  <soap:Body >
+    <m:GetImItems>
+      <m:ContactIds>
+        <t:ItemId Id="AAMkADEzOTExYACABmEhpSAAA=" ChangeKey="EQAAABBmNDjF"/>
+      </m:ContactIds>
+      <m:GroupIds>
+        <t:ItemId Id="AAMkADEzOTExYjJkBY7+0EAAA=" ChangeKey="EgAAAA=="/>
+      </m:GroupIds>
+      <m:ExtendedProperties>
+        <t:ExtendedProperty PropertyTag="0x3001" PropertyType="String"/>
+      </m:ExtendedProperties>
+    </m:GetImItems>
+  </soap:Body>
+</soap:Envelope>
