@@ -1,0 +1,1079 @@
+﻿ 
+  <?xml version="1.0" encoding="utf-8"?>
+  <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Header>
+      <t:RequestServerVersion Version="Exchange2010_SP2" />
+    </soap:Header>
+    <soap:Body>
+      <m:GetItem>
+        <m:ItemShape>
+          <t:BaseShape>AllProperties</t:BaseShape>
+          <t:AdditionalProperties>
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32809" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32808" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32989" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34062" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="29" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33336" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33350" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32846" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33287" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33300" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33367" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33299" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33297" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33296" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33294" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33283" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="36" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33370" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33369" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33366" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33361" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33360" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33302" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33328" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33312" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33281" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33282" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33298" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33295" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33293" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33303" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33301" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33375" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33376" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33374" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33341" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33318" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="1" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33338" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32805" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34074" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33348" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33349" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34101" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32845" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32833" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32832" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33285" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="28" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyId="9000" PropertyType="StringArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33340" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33284" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34230" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34231" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34232" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34234" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34229" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="35" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33334" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33333" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33351" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34071" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34070" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34105" PropertyType="StringArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33344" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33345" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32803" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32775" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34181" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34182" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34180" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34106" PropertyType="StringArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32847" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32848" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32849" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32850" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34130" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34132" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="4096" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="9" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32784" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33346" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32844" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32853" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32851" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32852" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32898" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32896" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32899" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32903" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32900" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32901" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32914" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32912" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32915" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32913" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32916" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32917" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32930" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32928" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32931" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32929" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32932" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32933" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32807" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="15" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="16" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33320" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32946" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32947" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32948" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32949" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32962" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32963" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32964" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32965" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32978" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32979" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32980" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32981" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33323" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33286" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32773" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32774" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32806" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33321" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34096" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34240" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33290" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33327" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32984" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="3" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32789" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32794" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32986" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32811" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="4097" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32866" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33316" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34176" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34177" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="10" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="5" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="4" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33292" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33288" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="0006200a-0000-0000-c000-000000000046" PropertyId="34577" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertySetId="0006200a-0000-0000-c000-000000000046" PropertyId="34574" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertySetId="0006200a-0000-0000-c000-000000000046" PropertyId="34576" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertySetId="0006200a-0000-0000-c000-000000000046" PropertyId="34575" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertySetId="0006200a-0000-0000-c000-000000000046" PropertyId="34567" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="0006200a-0000-0000-c000-000000000046" PropertyId="34568" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="0006200a-0000-0000-c000-000000000046" PropertyId="34572" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="0006200a-0000-0000-c000-000000000046" PropertyId="34566" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="0006200a-0000-0000-c000-000000000046" PropertyId="34560" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="0006200a-0000-0000-c000-000000000046" PropertyId="34578" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="38" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33289" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="4102" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="23" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33352" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="4107" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34104" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34103" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34102" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34117" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34116" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34115" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI PropertySetId="0006200e-0000-0000-c000-000000000046" PropertyId="35584" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="0006200e-0000-0000-c000-000000000046" PropertyId="35587" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="0006200e-0000-0000-c000-000000000046" PropertyId="35586" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="0006200e-0000-0000-c000-000000000046" PropertyId="35588" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="0006200e-0000-0000-c000-000000000046" PropertyId="35589" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="4101" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="40" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="42" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="41" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33353" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="7" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33347" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33335" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32796" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32988" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="26" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33326" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33026" PropertyType="ApplicationTime" />
+            <t:ExtendedFieldURI PropertySetId="d5cdd502-2e9c-101b-9397-08002b2cf9ae" PropertyId="17" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32802" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062041-0000-0000-c000-000000000046" PropertyId="35076" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062041-0000-0000-c000-000000000046" PropertyId="35072" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062041-0000-0000-c000-000000000046" PropertyId="35075" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062041-0000-0000-c000-000000000046" PropertyId="35074" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062041-0000-0000-c000-000000000046" PropertyId="35073" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062041-0000-0000-c000-000000000046" PropertyId="35077" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062041-0000-0000-c000-000000000046" PropertyId="35078" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34054" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="4109" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33330" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33329" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33315" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34237" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32782" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34049" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34079" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34076" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34078" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34051" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34144" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34050" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34053" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34052" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34077" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34065" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="6" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="8" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33304" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33280" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertySetId="11000e07-b51b-40d6-af21-caa85edab1d0" PropertyId="34252" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertySetId="11000e07-b51b-40d6-af21-caa85edab1d0" PropertyId="34253" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35353" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35373" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35409" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35351" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35364" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35397" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35396" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35371" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35361" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35347" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35338" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35352" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35349" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35374" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35337" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35335" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35336" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35413" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35359" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35405" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35363" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35343" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35342" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35401" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35348" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35344" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35369" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35420" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35358" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35355" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35339" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35329" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35330" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35331" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35399" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35398" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35354" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35403" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35375" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35404" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35362" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35407" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35333" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35341" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35332" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35400" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35357" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35334" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35340" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35419" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35368" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35367" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35406" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35365" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35328" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35366" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35424" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35370" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35372" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35414" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35394" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35393" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35392" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertySetId="00062040-0000-0000-c000-000000000046" PropertyId="35395" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34064" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="11" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34068" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34204" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="13" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="14" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33066" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33032" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33040" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33057" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33047" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33052" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33039" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33033" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33029" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33041" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33054" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33068" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33062" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34073" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33050" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33061" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33045" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33058" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34072" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33056" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33060" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33059" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33055" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33065" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33046" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33031" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33063" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33028" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33043" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33025" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33049" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33051" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33042" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Task" PropertyId="33027" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="12" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33332" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33331" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Appointment" PropertyId="33339" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34208" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34209" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34212" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34178" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34239" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34084" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34080" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Meeting" PropertyId="2" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32795" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32838" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32841" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32987" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32840" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32842" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32839" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32837" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32814" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32812" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Address" PropertyId="32813" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="Common" PropertyId="34225" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Accept-Language" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="AppName" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Approved" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="96357f7f-59e1-47d0-99a7-46515c183b54" PropertyName="AttachmentMacContentType" PropertyType="String" />
+            <t:ExtendedFieldURI PropertySetId="96357f7f-59e1-47d0-99a7-46515c183b54" PropertyName="AttachmentMacInfo" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="UnifiedMessaging" PropertyName="UMAudioNotes" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Author" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Bcc" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="ByteCount" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:attendeerole" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:busystatus" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:contact" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:contacturl" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:created" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:descriptionurl" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:duration" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:exdate" PropertyType="SystemTimeArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:exrule" PropertyType="StringArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:geolatitude" PropertyType="Float" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:geolongitude" PropertyType="Float" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:instancetype" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:isorganizer" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:lastmodified" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:locationurl" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:meetingstatus" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:method" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:prodid" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:recurrenceidrange" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:reminderoffset" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:resources" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:rsvp" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:sequence" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:timezone" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:timezoneid" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:transparent" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:uid" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:version" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Category" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Cc" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="CharCount" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Comments" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Company" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:alternaterecipient" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:c" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:email1" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:email2" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:email3" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:fileas" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:fileasid" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:homelatitude" PropertyType="Float" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:homelongitude" PropertyType="Float" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:hometimezone" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:mapurl" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:othercountrycode" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:otherpager" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:othertimezone" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:proxyaddresses" PropertyType="StringArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:secretaryurl" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:contacts:sourceurl" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Content-Base" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Content-Class" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Content-Disposition" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Content-ID" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Content-Language" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Content-Location" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Content-Transfer-Encoding" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Content-Type" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Control" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="CreateDtmRo" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Xref" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="DAV:id" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="DAV:iscollection" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="DAV:isstructureddocument" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="DAV:parentname" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="DAV:resourcetype" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="DAV:searchrequest" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="DAV:searchtype" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="DAV:uid" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Disposition" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Disposition-Notification-Options" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Disposition-Notification-To" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Distribution" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="DocParts" PropertyType="StringArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="EditTime" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/archive" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/composefontcolor" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/composefontflags" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/composefontname" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/composefontsize" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/intendedbusystatus" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/junkemailmovestamp" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/mailbox-owner-entryid" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/mailbox-owner-name" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/modifyexceptionstruct" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/msexchembdefaultmailfolder" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/msexchembdefaultmailfoldertype" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/newmailnotify" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/nomodifyexceptions" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/oof-state" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/patternend" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/patternstart" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/previewmarkasread" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/prevreaddelaytime" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/publicfolderemailaddress" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/readreceipt" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/reminderinterval" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/smallicon" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/smimeencrypt" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/smimesign" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/exchange/user-entryid" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas-microsoft-com:exch-data:baseschema" PropertyType="StringArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas-microsoft-com:exch-data:expected-content-class" PropertyType="StringArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas-microsoft-com:exch-data:schema-collection-ref" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Expires" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Expiry-Date" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Followup-To" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="From" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="HeadingPairs" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="HiddenCount" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:bcc" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:calendar" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:cc" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:contacts" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:content-disposition-type" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:content-media-type" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:deleteditems" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:drafts" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:from" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:fromemail" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:htmldescription" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:inbox" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:junkemail" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:msgfolderroot" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:notes" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:outbox" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:reply-to" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:savedestination" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:saveinsent" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:sender" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:senderemail" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:sendmsg" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:sentitems" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:special" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:submitted" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:httpmail:to" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:rdate" PropertyType="SystemTimeArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="urn:schemas:calendar:rrule" PropertyType="StringArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Importance" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="In-Reply-To" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Comment" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Keywords" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Subject" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Keywords" PropertyType="StringArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="LastAuthor" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="LastPrinted" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="LastSaveDtm" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="LineCount" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Lines" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="LinksDirty" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Manager" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Message-ID" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Mime-Version" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="MMClipCount" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Newsgroups" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="NNTP-Posting-Host" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="NNTP-Posting-User" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="NoteCount" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="OMSAccountGuid" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="OMSMobileModel" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="OMSScheduleTime" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="OMSServiceType" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="OMSSourceType" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Organization" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Original-Recipient" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="http://schemas.microsoft.com/outlook/phishingstamp" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="PageCount" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="ParCount" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Path" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Posting-Version" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="PresFormat" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Priority" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Received" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="References" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Relay-Version" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Reply-By" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Reply-To" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Return-Path" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Return-Receipt-To" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="RevNumber" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="DRMLicense" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Scale" PropertyType="Boolean" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Security" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Sender" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Sensitivity" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="SlideCount" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Subject" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Summary" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Template" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Thread-Index" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="Thread-Topic" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Thumbnail" PropertyType="Binary" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="Title" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="To" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="WordCount" PropertyType="Integer" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Mailer" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Message-Completed" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Message-Flag" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Browse-Url" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Capabilities" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Config-Url" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Exended-Caps" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Flavor" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Instance-Guid" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Local-Type" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Provider-Guid" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Provider-Name" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Provider-Url" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Remote-Name" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Remote-Path" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Remote-Store-Uid" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Remote-Type" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Sharing-Remote-Uid" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-Unsent" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="quarantine-original-sender" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-CallID" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-CallingTelephoneNumber" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-AttachmentOrder" PropertyType="String" />
+            <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-VoiceMessageSenderName" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14847" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4084" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4087" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14848" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14040" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI PropertyTag="14041" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26171" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26447" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="2055" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="2057" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="12290" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="2" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="13836" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14896" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14894" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26538" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="14095" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14097" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14098" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14099" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14081" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14082" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14083" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14084" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14100" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14087" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14093" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="32767" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="32765" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="32766" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="32762" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14085" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14094" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3617" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14088" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14106" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14105" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14089" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="3616" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14090" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14092" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4340" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="4342" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="4341" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="5" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="16351" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14914" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="4246" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4096" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4117" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4116" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14875" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14884" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14929" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14856" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14850" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26630" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14878" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4293" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="26082" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26167" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26532" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14936" PropertyType="StringArray" />
+            <t:ExtendedFieldURI PropertyTag="26181" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="57" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="26578" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26518" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26586" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26307" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="12292" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14935" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14870" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14921" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="16368" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="4248" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI PropertyTag="13843" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="13824" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="13826" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="16502" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="13827" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="113" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="112" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14886" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="12295" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="16377" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16376" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="16440" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14922" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26183" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26182" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14053" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="15" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="16363" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="16367" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="16364" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="16355" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26731" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI PropertyTag="126" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="3585" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26255" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="14872" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="12293" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="3586" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3587" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="12289" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14917" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3588" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14592" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14597" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="16399" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="12291" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="97" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="4095" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="32764" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="32761" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="32763" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="3716" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16365" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="21" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="16366" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14042" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="3737" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="3738" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="3739" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26628" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4241" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="4240" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26382" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26440" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="13825" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4245" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26729" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14052" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI PropertyTag="26697" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26696" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26695" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26728" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="14924" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="16406" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26694" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="14925" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14853" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14854" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14855" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3611" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="16362" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26186" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26170" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26174" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14915" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14895" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14937" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14938" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14939" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14942" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14940" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14941" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14885" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14857" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4115" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="4292" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="4298" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="4291" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="4224" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26597" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26515" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16407" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="16429" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16417" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16430" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="4336" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="23" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26220" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="16506" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="16508" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="16136" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14858" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4162" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4086" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26446" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26445" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="3619" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="16350" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4148" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="22786" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4149" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4153" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4166" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14032" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14033" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14039" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14034" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14035" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14036" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14893" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4247" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="24835" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="24832" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="24834" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="24839" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="24833" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14859" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14860" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="12296" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="16379" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16378" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="16441" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4225" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4226" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="4163" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4164" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4165" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26377" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="26273" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14887" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14861" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26139" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26140" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14926" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4088" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26221" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26226" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26227" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="88" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="16381" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="3590" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="22793" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="3591" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14863" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="16369" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="89" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="3592" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="3607" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="71" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="87" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="14916" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14876" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26480" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="16401" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="3625" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14927" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3613" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26291" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4094" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14873" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26633" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26626" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26634" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26632" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26631" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26627" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26624" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26625" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26629" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI PropertyTag="14050" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14864" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="77" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="85" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="114" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="115" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14867" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="116" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14866" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="75" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14868" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="102" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="103" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="91" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="90" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="92" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="46" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="104" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="105" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="94" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="93" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="95" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="73" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="78" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="35" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="3080" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="14943" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14944" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14945" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14948" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14946" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14947" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14879" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26141" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="98" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14881" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3593" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26441" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="37" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26081" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14928" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14869" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14890" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14891" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26083" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14883" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3624" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14846" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14874" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="38" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="32001" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="14918" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26218" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26222" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="72" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="26396" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26397" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16515" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14877" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3689" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="70" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="41" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="83" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="117" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="118" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="63" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16411" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="64" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="81" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="119" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="120" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="67" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16412" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="68" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="82" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16437" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="24566" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="24567" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="24573" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="24543" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="24545" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="24548" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="24547" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="43" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="24542" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="24575" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="24571" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="3093" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4089" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14919" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14037" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14091" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="79" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="80" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3095" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26050" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="48" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="69" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="84" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="49" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="4097" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="50" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="16359" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="99" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="3599" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26169" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="31750" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="31751" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="31752" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="12288" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4085" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4105" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="3615" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="4103" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4102" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4104" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4112" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4113" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26192" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26240" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26185" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26233" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26184" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26193" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26228" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26243" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26089" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26093" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26092" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26091" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26094" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26099" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26090" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26242" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26241" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26244" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26230" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26231" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26232" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26730" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26733" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26693" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI PropertyTag="26692" PropertyType="StringArray" />
+            <t:ExtendedFieldURI PropertyTag="26698" PropertyType="StringArray" />
+            <t:ExtendedFieldURI PropertyTag="26690" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26699" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26735" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26734" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26691" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26732" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26710" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI PropertyTag="26708" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI PropertyTag="26704" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI PropertyTag="26706" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI PropertyTag="26709" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI PropertyTag="26707" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI PropertyTag="26703" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI PropertyTag="26705" PropertyType="IntegerArray" />
+            <t:ExtendedFieldURI PropertyTag="26689" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26146" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="4" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26682" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26676" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="12299" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26054" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="3623" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="3690" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="13833" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="3102" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3103" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3097" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16409" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="16505" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="3098" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3101" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16432" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14961" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14912" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="54" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="3594" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26432" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="100" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="101" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="65" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16410" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="66" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="59" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16433" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26373" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="26080" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14920" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="96" PropertyType="SystemTime" />
+            <t:ExtendedFieldURI PropertyTag="14888" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="4091" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="13326" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="13325" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14889" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="26376" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="13834" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="55" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="61" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3604" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14865" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3629" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="3628" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="12304" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14923" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14892" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="1" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14594" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="16160" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14107" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14871" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="127" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="3627" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14880" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="125" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3705" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="4339" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="3682" PropertyType="Boolean" />
+            <t:ExtendedFieldURI PropertyTag="26375" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="14882" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="26137" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="14960" PropertyType="BinaryArray" />
+            <t:ExtendedFieldURI PropertyTag="28673" PropertyType="Binary" />
+            <t:ExtendedFieldURI PropertyTag="28678" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="28674" PropertyType="String" />
+            <t:ExtendedFieldURI PropertyTag="28679" PropertyType="Integer" />
+            <t:ExtendedFieldURI PropertyTag="14913" PropertyType="SystemTime" />
+          </t:AdditionalProperties>
+        </m:ItemShape>
+        <m:ItemIds>
+          <t:ItemId Id="AAMkADE3ZDEyNzIyLWNmYTEtNDJjNC1iMDcxLWQ1YzRlOTllNThmZgBGAAAAAAAPhJtWhlq+R7kfwUCSYEOdBwCeCZYs75uRSZ9sPl4zz6MKAAAA+R15AAAWr5IeYQQBTIN3xVR9csBoADKACC4GAAA=" />
+        </m:ItemIds>
+      </m:GetItem>
+    </soap:Body>
+  </soap:Envelope>
+ 

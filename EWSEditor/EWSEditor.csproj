@@ -1299,8 +1299,12 @@
     <Content Include="deps\Microsoft.Exchange.WebServices.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="EwsPostExamples\FindItemCalendarView.xml" />
-    <Content Include="EwsPostExamples\GetFolderMsgRootFolder.xml" />
+    <Content Include="EwsPostExamples\FindFolder.xml" />
+    <Content Include="EwsPostExamples\FindItem - CalendarView.xml" />
+    <Content Include="EwsPostExamples\GetFolder.xml" />
+    <Content Include="EwsPostExamples\GetFolder - MsgRootFolder.xml" />
+    <Content Include="EwsPostExamples\GetItem - AllKnownProperties.xml" />
+    <Content Include="EwsPostExamples\GetItem.xml" />
     <Content Include="EwsPostExamples\GetUserOOFSettings.xml">
       <SubType>Designer</SubType>
     </Content>

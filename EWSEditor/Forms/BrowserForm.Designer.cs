@@ -43,7 +43,7 @@
             this.DebugLogVeiwerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuAutoDiscoverView = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuRawHttpCall = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEwsPost = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsSplit1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuResolveName = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuResolveExProp = new System.Windows.Forms.ToolStripMenuItem();
@@ -164,7 +164,7 @@
             this.DebugLogVeiwerMenuItem,
             this.toolStripMenuItem2,
             this.mnuAutoDiscoverView,
-            this.mnuRawHttpCall,
+            this.mnuEwsPost,
             this.mnuToolsSplit1,
             this.mnuResolveName,
             this.mnuResolveExProp,
@@ -208,12 +208,12 @@
             this.mnuAutoDiscoverView.Click += new System.EventHandler(this.MnuAutoDiscoverView_Click);
 
             // 
-            // MnuRawHttpCall_Click
+            // mnuEwsPost_Click
             // 
-            this.mnuRawHttpCall.Name = "mnuRawHttpCall";
-            this.mnuRawHttpCall.Size = new System.Drawing.Size(315, 22);
-            this.mnuRawHttpCall.Text = "Raw Http Call...";
-            this.mnuRawHttpCall.Click += new System.EventHandler(this.mnuRawHttpCall_Click);
+            this.mnuEwsPost.Name = "mnuEwsPost";
+            this.mnuEwsPost.Size = new System.Drawing.Size(315, 22);
+            this.mnuEwsPost.Text = "EWS POST...";
+            this.mnuEwsPost.Click += new System.EventHandler(this.mnuEwsPost_Click);
             // 
             // mnuToolsSplit1
             // 
@@ -462,23 +462,23 @@
         public System.Windows.Forms.ToolStripMenuItem mnuHelp;
         public System.Windows.Forms.ToolStripMenuItem mnuAbout;
         public System.Windows.Forms.ToolStripMenuItem mnuTools;
-        private System.Windows.Forms.ToolStripMenuItem mnuAutoDiscoverView;
-        private System.Windows.Forms.ToolStripMenuItem mnuRawHttpCall;
-        protected System.Windows.Forms.ToolStripMenuItem UserOofSettingsMenuItem;
-        protected System.Windows.Forms.ToolStripMenuItem UserAvailabilityMenuItem;
-        protected System.Windows.Forms.ToolStripMenuItem ConvertIdMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem OptionsMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DebugLogVeiwerMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        public System.Windows.Forms.ToolStripMenuItem mnuAutoDiscoverView;
+        public System.Windows.Forms.ToolStripMenuItem mnuEwsPost;
+        public System.Windows.Forms.ToolStripMenuItem UserOofSettingsMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem UserAvailabilityMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem ConvertIdMenuItem;
+        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        public System.Windows.Forms.ToolStripMenuItem OptionsMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem DebugLogVeiwerMenuItem;
+        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         public System.Windows.Forms.ToolStripMenuItem mnuStreamingNotification;
-        private System.Windows.Forms.ToolStripMenuItem TimeZonemenuitem;
-        private System.Windows.Forms.ToolStripMenuItem MeetingRoomsMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem DistributionListMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem InboxRulesMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuGetConversationItems;
-        private System.Windows.Forms.ToolStripMenuItem mnuWindowsUserInformation;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        public System.Windows.Forms.ToolStripMenuItem TimeZonemenuitem;
+        public System.Windows.Forms.ToolStripMenuItem MeetingRoomsMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem DistributionListMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem InboxRulesMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem mnuGetConversationItems;
+        public System.Windows.Forms.ToolStripMenuItem mnuWindowsUserInformation;
+        public System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

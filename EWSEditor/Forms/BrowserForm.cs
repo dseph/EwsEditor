@@ -340,7 +340,7 @@
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void mnuRawHttpCall_Click(object sender, EventArgs e)
+        private void mnuEwsPost_Click(object sender, EventArgs e)
         {
             PostForm oPostForm = new PostForm();
             oPostForm.ShowDialog();

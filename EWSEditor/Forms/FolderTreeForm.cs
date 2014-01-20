@@ -141,6 +141,7 @@ namespace EWSEditor.Forms
                 this.mnuViewConfigPropertySet.Enabled = isCurrentService;
 
                 // Tools Menu
+                 
                 this.mnuSynchronization.Enabled = isCurrentService;
                 this.mnuNotification.Enabled = isCurrentService;
                 this.mnuStreamingNotification.Enabled = isCurrentService && CurrentService.RequestedServerVersion.CompareTo(ExchangeVersion.Exchange2010_SP1) >=0;  // Only enable streaming notifications for 2k10 SP1+
@@ -148,6 +149,18 @@ namespace EWSEditor.Forms
                 this.UserAvailabilityMenuItem.Enabled = isCurrentService;
                 this.UserOofSettingsMenuItem.Enabled = isCurrentService;
                 this.ConvertIdMenuItem.Enabled = isCurrentService;
+                this.InboxRulesMenuItem.Enabled = isCurrentService;
+
+                this.mnuResolveName.Enabled = isCurrentService;
+                this.mnuResolveExProp.Enabled = isCurrentService;
+
+                this.TimeZonemenuitem.Enabled = isCurrentService;
+                this.MeetingRoomsMenuItem.Enabled = isCurrentService;
+                this.DistributionListMenuItem.Enabled = isCurrentService;
+         
+                this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem.Enabled = isCurrentService;
+                this.mnuGetConversationItems.Enabled = isCurrentService;
+ 
 
                  
             }
