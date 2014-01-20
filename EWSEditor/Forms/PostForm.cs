@@ -70,6 +70,9 @@ namespace EWSEditor.Common
 
             this.Cursor = Cursors.WaitCursor;
 
+
+            // http://msdn.microsoft.com/en-us/library/office/bb409286(v=exchg.150).aspx
+
             //bool bPragmaNoCache = true;
             //bool bTranslateF = false;
             //bool bAllowAutoRedirect = false; 

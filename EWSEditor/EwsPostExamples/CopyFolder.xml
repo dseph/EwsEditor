@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <CopyFolder xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <ToFolderId>
+        <t:DistinguishedFolderId Id="inbox"/>
+      </ToFolderId>
+      <FolderIds>
+        <t:FolderId Id="AS4A=" ChangeKey="fsVU4=="/>
+        <t:FolderId Id="AS4AU=" ChangeKey="fsVU4o=="/>
+      </FolderIds>
+    </CopyFolder>
+  </soap:Body>
+</soap:Envelope>

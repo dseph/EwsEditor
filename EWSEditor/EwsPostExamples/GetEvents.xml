@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <GetEvents xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <SubscriptionId>f6bc657d-dde1-4f94-952d-143b95d6483d</SubscriptionId>
+      <Watermark>AAAAAMAGAAAAAAAAAQ==</Watermark>
+    </GetEvents>
+  </soap:Body>
+</soap:Envelope>

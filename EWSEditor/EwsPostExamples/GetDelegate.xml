@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2007_SP1"/>
+  </soap:Header>
+  <soap:Body>
+    <GetDelegate xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+                 xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+                 IncludePermissions="true">
+      <Mailbox>
+        <t:EmailAddress>user3@example.com</t:EmailAddress>
+      </Mailbox>
+    </GetDelegate>
+  </soap:Body>
+</soap:Envelope>

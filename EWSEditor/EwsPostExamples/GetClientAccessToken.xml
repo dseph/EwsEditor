@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2013" />
+  </soap:Header>
+  <soap:Body >
+    <m:GetClientAccessToken>
+      <m:TokenRequests>
+        <t:TokenRequest>
+          <t:Id>1C50226D-04B5-4AB2-9FCD-42E236B59E4B</t:Id>
+          <t:TokenType>CallerIdentity</t:TokenType>
+        </t:TokenRequest>
+      </m:TokenRequests>
+    </m:GetClientAccessToken>
+  </soap:Body>
+</soap:Envelope>

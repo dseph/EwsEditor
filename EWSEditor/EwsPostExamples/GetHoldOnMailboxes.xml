@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2013" />
+
+  </soap:Header>
+  <soap:Body >
+    <m:GetHoldOnMailboxes>
+      <m:HoldId>HoldId2</m:HoldId>
+    </m:GetHoldOnMailboxes>
+  </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2013"/>
+  </soap:Header>
+  <soap:Body xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+    <GetPersona>
+      <PersonaId Id="AAQkADEzAQAKtOtR/l4MlLqHWORfhSYKU="/>
+    </GetPersona>
+  </soap:Body>
+</soap:Envelope>
