@@ -82,7 +82,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(396, 137);
+            this.groupBox1.Size = new System.Drawing.Size(413, 137);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -90,16 +90,19 @@
             // 
             this.cmboAuthentication.FormattingEnabled = true;
             this.cmboAuthentication.Items.AddRange(new object[] {
-            "DEFAULT",
-            "BASIC",
+            "DefaultNetworkCredentials",
+            "DefaultCredentials",
+            "Basic",
             "NTLM",
-            "DIGEST"});
+            "Kerberos",
+            "Negotiate",
+            "Digest"});
             this.cmboAuthentication.Location = new System.Drawing.Point(107, 17);
             this.cmboAuthentication.Margin = new System.Windows.Forms.Padding(4);
             this.cmboAuthentication.Name = "cmboAuthentication";
-            this.cmboAuthentication.Size = new System.Drawing.Size(277, 24);
+            this.cmboAuthentication.Size = new System.Drawing.Size(293, 24);
             this.cmboAuthentication.TabIndex = 95;
-            this.cmboAuthentication.Text = "DEFAULT";
+            this.cmboAuthentication.Text = "DefaultNetworkCredentials";
             this.cmboAuthentication.SelectedIndexChanged += new System.EventHandler(this.cmboAuthentication_SelectedIndexChanged);
             // 
             // lblAuthentication
@@ -117,7 +120,7 @@
             this.txtDomain.Location = new System.Drawing.Point(107, 109);
             this.txtDomain.Margin = new System.Windows.Forms.Padding(4);
             this.txtDomain.Name = "txtDomain";
-            this.txtDomain.Size = new System.Drawing.Size(277, 22);
+            this.txtDomain.Size = new System.Drawing.Size(293, 22);
             this.txtDomain.TabIndex = 2;
             // 
             // txtUser
@@ -125,7 +128,7 @@
             this.txtUser.Location = new System.Drawing.Point(107, 49);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(277, 22);
+            this.txtUser.Size = new System.Drawing.Size(293, 22);
             this.txtUser.TabIndex = 0;
             // 
             // txtPassword
@@ -134,7 +137,7 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(277, 22);
+            this.txtPassword.Size = new System.Drawing.Size(293, 22);
             this.txtPassword.TabIndex = 1;
             // 
             // label1
@@ -250,7 +253,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(417, 105);
+            this.label7.Location = new System.Drawing.Point(483, 108);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(88, 16);
@@ -260,7 +263,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(417, 70);
+            this.label8.Location = new System.Drawing.Point(483, 73);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 16);
@@ -274,7 +277,7 @@
             "POST",
             "GET",
             "PUT"});
-            this.cmboVerb.Location = new System.Drawing.Point(546, 62);
+            this.cmboVerb.Location = new System.Drawing.Point(612, 65);
             this.cmboVerb.Margin = new System.Windows.Forms.Padding(4);
             this.cmboVerb.Name = "cmboVerb";
             this.cmboVerb.Size = new System.Drawing.Size(159, 24);
@@ -287,7 +290,7 @@
             this.cmboContentType.Items.AddRange(new object[] {
             "text/xml",
             "text/html"});
-            this.cmboContentType.Location = new System.Drawing.Point(546, 95);
+            this.cmboContentType.Location = new System.Drawing.Point(612, 98);
             this.cmboContentType.Margin = new System.Windows.Forms.Padding(4);
             this.cmboContentType.Name = "cmboContentType";
             this.cmboContentType.Size = new System.Drawing.Size(159, 24);
@@ -297,7 +300,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(417, 135);
+            this.label9.Location = new System.Drawing.Point(483, 138);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(117, 16);
@@ -306,7 +309,7 @@
             // 
             // numericUpDownTimeoutSeconds
             // 
-            this.numericUpDownTimeoutSeconds.Location = new System.Drawing.Point(546, 129);
+            this.numericUpDownTimeoutSeconds.Location = new System.Drawing.Point(612, 132);
             this.numericUpDownTimeoutSeconds.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownTimeoutSeconds.Name = "numericUpDownTimeoutSeconds";
             this.numericUpDownTimeoutSeconds.Size = new System.Drawing.Size(160, 22);
@@ -397,7 +400,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(417, 169);
+            this.label11.Location = new System.Drawing.Point(483, 172);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 16);
@@ -406,7 +409,7 @@
             // 
             // txtUserAgent
             // 
-            this.txtUserAgent.Location = new System.Drawing.Point(546, 163);
+            this.txtUserAgent.Location = new System.Drawing.Point(612, 166);
             this.txtUserAgent.Margin = new System.Windows.Forms.Padding(4);
             this.txtUserAgent.Name = "txtUserAgent";
             this.txtUserAgent.Size = new System.Drawing.Size(160, 22);
@@ -415,7 +418,7 @@
             // chkTranslateF
             // 
             this.chkTranslateF.AutoSize = true;
-            this.chkTranslateF.Location = new System.Drawing.Point(736, 96);
+            this.chkTranslateF.Location = new System.Drawing.Point(802, 99);
             this.chkTranslateF.Name = "chkTranslateF";
             this.chkTranslateF.Size = new System.Drawing.Size(98, 20);
             this.chkTranslateF.TabIndex = 95;
@@ -427,7 +430,7 @@
             this.chkPragmaNocache.AutoSize = true;
             this.chkPragmaNocache.Checked = true;
             this.chkPragmaNocache.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPragmaNocache.Location = new System.Drawing.Point(736, 64);
+            this.chkPragmaNocache.Location = new System.Drawing.Point(802, 67);
             this.chkPragmaNocache.Name = "chkPragmaNocache";
             this.chkPragmaNocache.Size = new System.Drawing.Size(137, 20);
             this.chkPragmaNocache.TabIndex = 96;
@@ -437,7 +440,7 @@
             // chkAllowRedirect
             // 
             this.chkAllowRedirect.AutoSize = true;
-            this.chkAllowRedirect.Location = new System.Drawing.Point(736, 129);
+            this.chkAllowRedirect.Location = new System.Drawing.Point(802, 132);
             this.chkAllowRedirect.Name = "chkAllowRedirect";
             this.chkAllowRedirect.Size = new System.Drawing.Size(113, 20);
             this.chkAllowRedirect.TabIndex = 97;

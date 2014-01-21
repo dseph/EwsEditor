@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.IO;
-
+using System.Net;
 
 //using Microsoft.Exchange.WebServices.Data
 
@@ -63,10 +63,21 @@ namespace EWSEditor.Common
 
                 oHttpWebRequest.Timeout = 1000 * iTimeoutSeconds;
 
-                if (sAuthentication == "DEFAULT")
+
+                if (sAuthentication != "DefaultCredentials")
+                {
                     oHttpWebRequest.UseDefaultCredentials = true;
+                    oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
+                }
                 else
-                    oHttpWebRequest.Credentials = oCrentialCache;
+                {
+                    if (sAuthentication != "DefaultNetworkCredentials")
+                        oHttpWebRequest.Credentials = CredentialCache.DefaultNetworkCredentials;
+                    else
+                    {
+                        oHttpWebRequest.Credentials = oCrentialCache;
+                    }
+                }
 
                 //if (sProxyServer.Trim().Length != 0)
                 //{
