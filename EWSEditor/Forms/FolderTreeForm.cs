@@ -1578,5 +1578,10 @@ namespace EWSEditor.Forms
         {
              
         }
+
+        private void propertyListItemBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
