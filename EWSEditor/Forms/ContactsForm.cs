@@ -155,18 +155,30 @@ namespace EWSEditor.Forms
                 (txtBA_PostalCode.Text.Trim().Length != 0)
                 )
             {
-                oBusinessAddress = new PhysicalAddressEntry();
-                oBusinessAddress.Street = txtBA_Street.Text;
-                oBusinessAddress.City = txtBA_City.Text;
-                oBusinessAddress.State = txtBA_State.Text;
-                oBusinessAddress.CountryOrRegion = txtBA_CountryOrRegion.Text;
-                oBusinessAddress.PostalCode = txtBA_PostalCode.Text;
-                oContact.PhysicalAddresses[PhysicalAddressKey.Business] = oBusinessAddress;
-                //oBusinessAddress = null;
-               
+
+                if (oContact.PhysicalAddresses[PhysicalAddressKey.Business] == null)
+                    oContact.PhysicalAddresses[PhysicalAddressKey.Business] = new PhysicalAddressEntry();
+
+
+                oContact.PhysicalAddresses[PhysicalAddressKey.Business].Street = txtBA_Street.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Business].City = txtBA_City.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Business].State = txtBA_State.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Business].CountryOrRegion = txtBA_CountryOrRegion.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Business].PostalCode = txtBA_PostalCode.Text;
+       
+
+
+                //oBusinessAddress = new PhysicalAddressEntry();
+                //oBusinessAddress.Street = txtBA_Street.Text;
+                //oBusinessAddress.City = txtBA_City.Text;
+                //oBusinessAddress.State = txtBA_State.Text;
+                //oBusinessAddress.CountryOrRegion = txtBA_CountryOrRegion.Text;
+                //oBusinessAddress.PostalCode = txtBA_PostalCode.Text;
+                //oContact.PhysicalAddresses[PhysicalAddressKey.Business] = oBusinessAddress;
+ 
             }
 
-            PhysicalAddressEntry oHomeAddress = null;
+            //PhysicalAddressEntry oHomeAddress = null;
             if (
                 (txtHA_Street.Text.Trim().Length != 0) ||
                 (txtHA_City.Text.Trim().Length != 0) ||
@@ -175,17 +187,27 @@ namespace EWSEditor.Forms
                 (txtHA_PostalCode.Text.Trim().Length != 0)
                 )
             {
-                oHomeAddress = new PhysicalAddressEntry();
-                oHomeAddress.Street = txtHA_Street.Text;
-                oHomeAddress.City = txtHA_City.Text;
-                oHomeAddress.State = txtHA_State.Text;
-                oHomeAddress.CountryOrRegion = txtHA_CountryOrRegion.Text;
-                oHomeAddress.PostalCode = txtHA_PostalCode.Text;
-                oContact.PhysicalAddresses[PhysicalAddressKey.Home] = oHomeAddress;
-                //oHomeAddress = null;
+                if (oContact.PhysicalAddresses[PhysicalAddressKey.Home] == null)
+                    oContact.PhysicalAddresses[PhysicalAddressKey.Home] = new PhysicalAddressEntry();
+ 
+                oContact.PhysicalAddresses[PhysicalAddressKey.Home].Street = txtHA_Street.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Home].City = txtHA_City.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Home].State = txtHA_State.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Home].CountryOrRegion = txtHA_CountryOrRegion.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Home].PostalCode = txtHA_PostalCode.Text;
+           
+
+                //oHomeAddress = new PhysicalAddressEntry();
+                //oHomeAddress.Street = txtHA_Street.Text;
+                //oHomeAddress.City = txtHA_City.Text;
+                //oHomeAddress.State = txtHA_State.Text;
+                //oHomeAddress.CountryOrRegion = txtHA_CountryOrRegion.Text;
+                //oHomeAddress.PostalCode = txtHA_PostalCode.Text;
+                //oContact.PhysicalAddresses[PhysicalAddressKey.Home] = oHomeAddress;
+                
             }
 
-            PhysicalAddressEntry oOtherAddress = null;
+            //PhysicalAddressEntry oOtherAddress = null;
             if (
                 (txtOA_Street.Text.Trim().Length != 0) ||
                 (txtOA_City.Text.Trim().Length != 0) ||
@@ -194,14 +216,24 @@ namespace EWSEditor.Forms
                 (txtOA_PostalCode.Text.Trim().Length != 0)
                 )
             {
-                oOtherAddress = new PhysicalAddressEntry();
-                oOtherAddress.Street = txtOA_Street.Text;
-                oOtherAddress.City = txtOA_City.Text;
-                oOtherAddress.State = txtOA_State.Text;
-                oOtherAddress.CountryOrRegion = txtOA_CountryOrRegion.Text;
-                oOtherAddress.PostalCode = txtOA_PostalCode.Text;
-                oContact.PhysicalAddresses[PhysicalAddressKey.Other] = oOtherAddress;
-                //oOtherAddress = null;
+                if (oContact.PhysicalAddresses[PhysicalAddressKey.Other] == null)
+                    oContact.PhysicalAddresses[PhysicalAddressKey.Other] = new PhysicalAddressEntry();
+
+                oContact.PhysicalAddresses[PhysicalAddressKey.Other].Street = txtOA_Street.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Other].City = txtOA_City.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Other].State = txtOA_State.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Other].CountryOrRegion = txtOA_CountryOrRegion.Text;
+                oContact.PhysicalAddresses[PhysicalAddressKey.Other].PostalCode = txtOA_PostalCode.Text;
+
+
+                //oOtherAddress = new PhysicalAddressEntry();
+                //oOtherAddress.Street = txtOA_Street.Text;
+                //oOtherAddress.City = txtOA_City.Text;
+                //oOtherAddress.State = txtOA_State.Text;
+                //oOtherAddress.CountryOrRegion = txtOA_CountryOrRegion.Text;
+                //oOtherAddress.PostalCode = txtOA_PostalCode.Text;
+                //oContact.PhysicalAddresses[PhysicalAddressKey.Other]. = oOtherAddress;
+                
             }
 
 
