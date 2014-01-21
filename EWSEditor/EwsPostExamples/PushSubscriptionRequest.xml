@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <Subscribe xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <PushSubscriptionRequest xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+        <FolderIds xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
+          <DistinguishedFolderId Id="inbox" />
+        </FolderIds>
+        <EventTypes xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
+          <EventType>NewMailEvent</EventType>
+          <EventType>CopiedEvent</EventType>
+          <EventType>CreatedEvent</EventType>
+          <EventType>DeletedEvent</EventType>
+          <EventType>ModifiedEvent</EventType>
+          <EventType>MovedEvent</EventType>
+        </EventTypes>
+        <StatusFrequency xmlns="http://schemas.microsoft.com/exchange/services/2006/types">1</StatusFrequency>
+        <URL xmlns="http://schemas.microsoft.com/exchange/services/2006/types">http://clientWebService/Service.asmx</URL>
+      </PushSubscriptionRequest>
+    </Subscribe>
+  </soap:Body>
+</soap:Envelope>

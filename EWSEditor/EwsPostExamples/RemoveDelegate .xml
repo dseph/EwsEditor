@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2007_SP1"/>
+  </soap:Header>
+  <soap:Body>
+    <RemoveDelegate xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+                    xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+      <Mailbox>
+        <t:EmailAddress>user1@example.com</t:EmailAddress>
+      </Mailbox>
+      <UserIds>
+        <t:UserId>
+          <t:PrimarySmtpAddress>user2@example.com</t:PrimarySmtpAddress>
+        </t:UserId>
+        <t:UserId>
+          <t:SID>S-1-5-21-1333220396-2200287332-232816053-1118</t:SID>
+        </t:UserId>
+      </UserIds>
+    </RemoveDelegate>
+  </soap:Body>
+</soap:Envelope>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <soap:Header>
+    <t:RequestServerVersion Version ="Exchange2010_SP1"/>
+  </soap:Header>
+  <soap:Body>
+    <m:UpdateInboxRules>
+      <m:RemoveOutlookRuleBlob>true</m:RemoveOutlookRuleBlob>
+      <m:Operations>
+        <t:CreateRuleOperation>
+          <t:Rule>
+            <t:DisplayName>MoveInterestingToJunk</t:DisplayName>
+            <t:Priority>1</t:Priority>
+            <t:IsEnabled>true</t:IsEnabled>
+            <t:Conditions>
+              <t:ContainsSubjectStrings>
+                <t:String>Interesting</t:String>
+              </t:ContainsSubjectStrings>
+            </t:Conditions>
+            <t:Exceptions />
+            <t:Actions>
+              <t:MoveToFolder>
+                <t:DistinguishedFolderId Id="junkemail" />
+              </t:MoveToFolder>
+            </t:Actions>
+          </t:Rule>
+        </t:CreateRuleOperation>
+      </m:Operations>
+    </m:UpdateInboxRules>
+  </soap:Body>
+</soap:Envelope>
