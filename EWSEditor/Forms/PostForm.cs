@@ -34,7 +34,7 @@ namespace EWSEditor.Common
            
             Uri oUri = new Uri(Url);
 
-            if (sAuthentication != "DEFAULT")
+            if (sAuthentication != "DefaultCredentials" && sAuthentication != "DefaultNetworkCredentials")
             {
                 if (txtDomain.Text.Trim().Length == 0)
                 {
@@ -43,9 +43,9 @@ namespace EWSEditor.Common
                 else
                 {
                     oNetworkCredential = new NetworkCredential(User, Password, Domain);
-
+                     
                 }
-
+                 
                 oCredentialCache.Add(oUri, sAuthentication, oNetworkCredential);
                 //oCredentialCache.Add(oUri, "Basic", oNetworkCredential);
                 //oCredentialCache.Add(oUri, "NTLM", oNetworkCredential);
