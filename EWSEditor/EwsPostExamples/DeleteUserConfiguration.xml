@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2010" />
+  </soap:Header>
+  <soap:Body>
+    <m:DeleteUserConfiguration>
+      <m:UserConfigurationName Name="TestConfig">
+        <t:DistinguishedFolderId Id="drafts"/>
+      </m:UserConfigurationName>
+    </m:DeleteUserConfiguration>
+  </soap:Body>
+</soap:Envelope>

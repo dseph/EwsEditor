@@ -1,0 +1,26 @@
+﻿<soap:Envelope
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <UpdateItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+                ConflictResolution="AlwaysOverwrite">
+      <ItemChanges>
+        <t:ItemChange>
+          <t:ItemId Id="AAAtAA=" ChangeKey="EQAAABYi" />
+          <t:Updates>
+            <t:SetItemField>
+              <t:IndexedFieldURI FieldURI="contacts:EmailAddress" FieldIndex="EmailAddress1"/>
+              <t:Contact>
+                <t:EmailAddresses>
+                  <t:Entry Key="EmailAddress1">changedemail@example.com</t:Entry>
+                </t:EmailAddresses>
+              </t:Contact>
+            </t:SetItemField>
+          </t:Updates>
+        </t:ItemChange>
+      </ItemChanges>
+    </UpdateItem>
+  </soap:Body>
+</soap:Envelope>

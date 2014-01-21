@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2010" />
+  </soap:Header>
+  <soap:Body>
+    <m:CreateUserConfiguration>
+      <m:UserConfiguration>
+        <t:UserConfigurationName Name="TestConfig">
+          <t:DistinguishedFolderId Id="drafts">
+          </t:DistinguishedFolderId>
+        </t:UserConfigurationName>
+        <t:Dictionary>
+          <t:DictionaryEntry>
+            <t:DictionaryKey>
+              <t:Type>String</t:Type>
+              <t:Value>PhoneNumber</t:Value>
+            </t:DictionaryKey>
+            <t:DictionaryValue>
+              <t:Type>String</t:Type>
+              <t:Value>555-555-1111</t:Value>
+            </t:DictionaryValue>
+          </t:DictionaryEntry>
+        </t:Dictionary>
+      </m:UserConfiguration>
+    </m:CreateUserConfiguration>
+  </soap:Body>
+</soap:Envelope>

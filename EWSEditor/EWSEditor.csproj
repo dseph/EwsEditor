@@ -1299,12 +1299,32 @@
     <Content Include="deps\Microsoft.Exchange.WebServices.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="EwsPostExamples\AddDelegate.xml" />
+    <Content Include="EwsPostExamples\AddDistributionGroupToImList.xml" />
+    <Content Include="EwsPostExamples\AddImContactToGroup.xml" />
+    <Content Include="EwsPostExamples\AddImGroup.xml" />
+    <Content Include="EwsPostExamples\AddNewImContactToGroup.xml" />
+    <Content Include="EwsPostExamples\AddNewTelUriContactToGroup.xml" />
+    <Content Include="EwsPostExamples\ApplyConversationAction.xml" />
+    <Content Include="EwsPostExamples\ArchiveItem.xml" />
+    <Content Include="EwsPostExamples\ConvertId.xml" />
     <Content Include="EwsPostExamples\CopyFolder.xml" />
     <Content Include="EwsPostExamples\CopyItem.xml" />
     <Content Include="EwsPostExamples\CreateAttachment.xml" />
     <Content Include="EwsPostExamples\CreateFolder.xml" />
     <Content Include="EwsPostExamples\CreateFolderPath.xml" />
     <Content Include="EwsPostExamples\CreateManagedFolder.xml" />
+    <Content Include="EwsPostExamples\CreateUserConfiguration.xml" />
+    <Content Include="EwsPostExamples\DeleteAttachment.xml" />
+    <Content Include="EwsPostExamples\DeleteFolder.xml" />
+    <Content Include="EwsPostExamples\DeleteItem.xml" />
+    <Content Include="EwsPostExamples\DeleteUserConfiguration.xml" />
+    <Content Include="EwsPostExamples\DisableApp.xml" />
+    <Content Include="EwsPostExamples\DisconnectPhoneCall.xml" />
+    <Content Include="EwsPostExamples\EmptyFolder - HardDelete - SubFolders.xml" />
+    <Content Include="EwsPostExamples\ExpandDL.xml" />
+    <Content Include="EwsPostExamples\ExportItems.xml" />
+    <Content Include="EwsPostExamples\FindConversation.xml" />
     <Content Include="EwsPostExamples\FindFolder.xml" />
     <Content Include="EwsPostExamples\FindItem - CalendarView.xml" />
     <Content Include="EwsPostExamples\FindPeople.xml" />
@@ -1326,15 +1346,40 @@
     <Content Include="EwsPostExamples\GetMailTips.xml" />
     <Content Include="EwsPostExamples\GetNonIndexableItemStatistics.xml" />
     <Content Include="EwsPostExamples\GetPersona.xml" />
+    <Content Include="EwsPostExamples\GetPhoneCallInformation.xml" />
+    <Content Include="EwsPostExamples\GetRoomLists .xml" />
+    <Content Include="EwsPostExamples\GetRooms.xml" />
     <Content Include="EwsPostExamples\GetSearchableMailboxes.xml" />
     <Content Include="EwsPostExamples\GetUserOOFSettings.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="EwsPostExamples\GetUserPhoto.xml" />
+    <Content Include="EwsPostExamples\GetUserRetentionPolicyTags .xml" />
+    <Content Include="EwsPostExamples\MarkAllItemsAsRead.xml" />
     <Content Include="EwsPostExamples\MoveFolder.xml" />
     <Content Include="EwsPostExamples\MoveItem.xml" />
+    <Content Include="EwsPostExamples\PullSubscriptionRequest.xml" />
+    <Content Include="EwsPostExamples\PushSubscriptionRequest.xml" />
+    <Content Include="EwsPostExamples\RemoveContactFromImList.xml" />
+    <Content Include="EwsPostExamples\RemoveDelegate .xml" />
+    <Content Include="EwsPostExamples\RemoveDistributionGroupFromImList.xml" />
+    <Content Include="EwsPostExamples\RemoveImContactFromGroup.xml" />
+    <Content Include="EwsPostExamples\RemoveImGroup.xml" />
     <Content Include="EwsPostExamples\ResolveNames.xml" />
     <Content Include="EwsPostExamples\SearchMailboxes.xml" />
+    <Content Include="EwsPostExamples\SendItem.xml" />
+    <Content Include="EwsPostExamples\SetHoldOnMailboxes.xml" />
     <Content Include="EwsPostExamples\SetUserOOFSettings.xml" />
+    <Content Include="EwsPostExamples\SyncFolderHierarchy.xml" />
+    <Content Include="EwsPostExamples\SyncFolderItems.xml" />
+    <Content Include="EwsPostExamples\Unsubscribe.xml" />
+    <Content Include="EwsPostExamples\UpdateDelegate.xml" />
+    <Content Include="EwsPostExamples\UpdateFolder.xml" />
+    <Content Include="EwsPostExamples\UpdateInboxRules.xml" />
+    <Content Include="EwsPostExamples\UpdateItem - Contact.xml" />
+    <Content Include="EwsPostExamples\UpdateItem - Item.xml" />
+    <Content Include="EwsPostExamples\UpdateUserConfiguration.xml" />
+    <Content Include="EwsPostExamples\UploadItems.xml" />
     <Content Include="Resources\EWSEditor2.ico" />
     <Content Include="Resources\EWSEditor2.png" />
   </ItemGroup>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2007_SP1"/>
+  </soap:Header>
+  <soap:Body>
+    <UpdateDelegate xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+                    xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+      <Mailbox>
+        <t:EmailAddress>user1@example.com</t:EmailAddress>
+      </Mailbox>
+      <DelegateUsers>
+        <t:DelegateUser>
+          <t:UserId>
+            <t:PrimarySmtpAddress>user2@example.com</t:PrimarySmtpAddress>
+          </t:UserId>
+          <t:DelegatePermissions>
+            <t:TasksFolderPermissionLevel>None</t:TasksFolderPermissionLevel>
+          </t:DelegatePermissions>
+          <t:ViewPrivateItems>true</t:ViewPrivateItems>
+        </t:DelegateUser>
+        <t:DelegateUser>
+          <t:UserId>
+            <t:PrimarySmtpAddress>user3@example.com</t:PrimarySmtpAddress>
+          </t:UserId>
+          <t:DelegatePermissions>
+            <t:JournalFolderPermissionLevel>Reviewer</t:JournalFolderPermissionLevel>
+          </t:DelegatePermissions>
+        </t:DelegateUser>
+      </DelegateUsers>
+      <DeliverMeetingRequests>DelegatesAndSendInformationToMe</DeliverMeetingRequests>
+    </UpdateDelegate>
+  </soap:Body>
+</soap:Envelope>

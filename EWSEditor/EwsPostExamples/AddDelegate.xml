@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2007_SP1"/>
+  </soap:Header>
+  <soap:Body xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+    <AddDelegate>
+      <Mailbox>
+        <t:EmailAddress>user2@example.com</t:EmailAddress>
+      </Mailbox>
+      <DelegateUsers>
+        <t:DelegateUser>
+          <t:UserId>
+            <t:PrimarySmtpAddress>user1@example.com</t:PrimarySmtpAddress>
+          </t:UserId>
+          <t:DelegatePermissions>
+            <t:CalendarFolderPermissionLevel>Author</t:CalendarFolderPermissionLevel>
+            <t:ContactsFolderPermissionLevel>Reviewer</t:ContactsFolderPermissionLevel>
+          </t:DelegatePermissions>
+          <t:ReceiveCopiesOfMeetingMessages>false</t:ReceiveCopiesOfMeetingMessages>
+          <t:ViewPrivateItems>false</t:ViewPrivateItems>
+        </t:DelegateUser>
+      </DelegateUsers>
+      <DeliverMeetingRequests>DelegatesAndMe</DeliverMeetingRequests>
+    </AddDelegate>
+  </soap:Body>
+</soap:Envelope>

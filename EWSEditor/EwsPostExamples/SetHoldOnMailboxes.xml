@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2013" />
+  </soap:Header>
+  <soap:Body >
+    <m:SetHoldOnMailboxes>
+      <m:ActionType>Create</m:ActionType>
+      <m:HoldId>HoldId2</m:HoldId>
+      <m:Query>test</m:Query>
+      <m:Mailboxes>
+        <t:String>/o=First/ou=Exchange(DLT)/cn=Recipients/cn=1fa441ff5e4749ba43ecc0fd94c21adf-Willi</t:String>
+        <t:String>/o=First/ou=Exchange(DLT)/cn=Recipients/cn=aed2346adaa34ffc9f0f339917e8de95-Micha</t:String>
+      </m:Mailboxes>
+      <m:Language>English</m:Language>
+      <m:IncludeNonIndexableItems>false</m:IncludeNonIndexableItems>
+      <m:Deduplication>true</m:Deduplication>
+    </m:SetHoldOnMailboxes>
+  </soap:Body>
+</soap:Envelope>

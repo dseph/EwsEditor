@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <UpdateFolder xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+                  xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+      <FolderChanges>
+        <t:FolderChange>
+          <t:FolderId Id="AScA" ChangeKey="GO3u/"/>
+          <t:Updates>
+            <t:SetFolderField>
+              <t:FieldURI FieldURI="folder:DisplayName"/>
+              <t:Folder>
+                <t:DisplayName>NewFolderName</t:DisplayName>
+              </t:Folder>
+            </t:SetFolderField>
+          </t:Updates>
+        </t:FolderChange>
+      </FolderChanges>
+    </UpdateFolder>
+  </soap:Body>
+</soap:Envelope>

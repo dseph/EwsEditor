@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <Subscribe xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <PullSubscriptionRequest>
+        <t:FolderIds>
+          <t:DistinguishedFolderId Id="Inbox"/>
+        </t:FolderIds>
+        <t:EventTypes>
+          <t:EventType>NewMailEvent</t:EventType>
+          <t:EventType>DeletedEvent</t:EventType>
+        </t:EventTypes>
+        <t:Timeout>10</t:Timeout>
+      </PullSubscriptionRequest>
+    </Subscribe>
+  </soap:Body>
+</soap:Envelope>

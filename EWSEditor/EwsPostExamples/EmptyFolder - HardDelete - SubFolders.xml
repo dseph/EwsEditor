@@ -1,0 +1,15 @@
+﻿<soap:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <soap:Header>
+    <t:RequestServerVersion Version ="Exchange2010_SP1"/>
+  </soap:Header>
+  <soap:Body>
+    <m:EmptyFolder DeleteType="HardDelete" DeleteSubFolders="true">
+      <m:FolderIds>
+        <t:FolderId Id="AQMkADhhOGU0"  ChangeKey="AQAAABYAAABsMB" />
+      </m:FolderIds>
+    </m:EmptyFolder>
+  </soap:Body>
+</soap:Envelope>
