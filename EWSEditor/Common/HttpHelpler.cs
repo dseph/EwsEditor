@@ -64,14 +64,14 @@ namespace EWSEditor.Common
                 oHttpWebRequest.Timeout = 1000 * iTimeoutSeconds;
 
 
-                if (sAuthentication != "DefaultCredentials")
+                if (sAuthentication == "DefaultCredentials")
                 {
                     oHttpWebRequest.UseDefaultCredentials = true;
                     oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
                 }
                 else
                 {
-                    if (sAuthentication != "DefaultNetworkCredentials")
+                    if (sAuthentication == "DefaultNetworkCredentials")
                         oHttpWebRequest.Credentials = CredentialCache.DefaultNetworkCredentials;
                     else
                     {

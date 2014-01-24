@@ -1355,6 +1355,9 @@
     </Content>
     <Content Include="EwsPostExamples\GetUserPhoto.xml" />
     <Content Include="EwsPostExamples\GetUserRetentionPolicyTags .xml" />
+    <Content Include="EwsPostExamples\GetUserSettings - for autodiscover.svc.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\MarkAllItemsAsRead.xml" />
     <Content Include="EwsPostExamples\MoveFolder.xml" />
     <Content Include="EwsPostExamples\MoveItem.xml" />
@@ -1380,8 +1383,14 @@
     <Content Include="EwsPostExamples\UpdateItem - Item.xml" />
     <Content Include="EwsPostExamples\UpdateUserConfiguration.xml" />
     <Content Include="EwsPostExamples\UploadItems.xml" />
+    <None Include="Resources\action_add_16xLG.bmp" />
+    <Content Include="Resources\action_add_16xLG.png" />
+    <Content Include="Resources\Error_red_16x16_exp.png" />
     <Content Include="Resources\EWSEditor2.ico" />
     <Content Include="Resources\EWSEditor2.png" />
+    <Content Include="Resources\SingleMessage_5727.ico" />
+    <Content Include="Resources\StatusAnnotations_Blocked_16xLG.png" />
+    <Content Include="Resources\StatusAnnotations_Critical_16xLG.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Dialogs\SmartEditors\" />
