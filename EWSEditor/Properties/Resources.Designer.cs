@@ -63,6 +63,16 @@ namespace EWSEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap action_add_16xLG {
+            get {
+                object obj = ResourceManager.GetObject("action_add_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Blank {
             get {
                 object obj = ResourceManager.GetObject("Blank", resourceCulture);
@@ -86,6 +96,26 @@ namespace EWSEditor.Properties {
         internal static System.Drawing.Bitmap FirstProp {
             get {
                 object obj = ResourceManager.GetObject("FirstProp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusAnnotations_Blocked_16xLG {
+            get {
+                object obj = ResourceManager.GetObject("StatusAnnotations_Blocked_16xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusAnnotations_Critical_16xLG {
+            get {
+                object obj = ResourceManager.GetObject("StatusAnnotations_Critical_16xLG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

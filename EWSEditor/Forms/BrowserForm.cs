@@ -620,5 +620,10 @@
             oForm.ShowDialog();
  
         }
+
+        private void mnuSnmClient_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

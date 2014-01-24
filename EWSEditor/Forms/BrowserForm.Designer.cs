@@ -81,9 +81,10 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblExchangeService});
-            this.statusStrip.Location = new System.Drawing.Point(0, 513);
+            this.statusStrip.Location = new System.Drawing.Point(0, 636);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(699, 22);
+            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip.Size = new System.Drawing.Size(932, 22);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 3;
             // 
@@ -102,7 +103,8 @@
             this.mnuHelp});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(699, 24);
+            this.mnuMain.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.mnuMain.Size = new System.Drawing.Size(932, 24);
             this.mnuMain.TabIndex = 4;
             this.mnuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnuMain_ItemClicked);
             // 
@@ -206,9 +208,8 @@
             this.mnuAutoDiscoverView.Size = new System.Drawing.Size(315, 22);
             this.mnuAutoDiscoverView.Text = "Autodiscover Viewer...";
             this.mnuAutoDiscoverView.Click += new System.EventHandler(this.MnuAutoDiscoverView_Click);
-
             // 
-            // mnuEwsPost_Click
+            // mnuEwsPost
             // 
             this.mnuEwsPost.Name = "mnuEwsPost";
             this.mnuEwsPost.Size = new System.Drawing.Size(315, 22);
@@ -416,12 +417,13 @@
             // 
             // BrowserForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 535);
+            this.ClientSize = new System.Drawing.Size(932, 658);
             this.Controls.Add(this.mnuMain);
             this.Controls.Add(this.statusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "BrowserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.BrowserForm_Load_1);
