@@ -145,6 +145,12 @@
     <Compile Include="Common\ItemTag.cs" />
     <Compile Include="Common\ListViewColumnSorter.cs" />
     <Compile Include="Common\ListViewItemHelper.cs" />
+    <Compile Include="Forms\MailHeadersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MailHeadersForm.Designer.cs">
+      <DependentUpon>MailHeadersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PostForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +279,12 @@
     </Compile>
     <Compile Include="Forms\StreamingNotificationForm.Designer.cs">
       <DependentUpon>StreamingNotificationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SystemNetMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SystemNetMainForm.Designer.cs">
+      <DependentUpon>SystemNetMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TaskForm.cs">
       <SubType>Form</SubType>
@@ -651,6 +663,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\MailHeadersForm.resx">
+      <DependentUpon>MailHeadersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PostForm.resx">
       <DependentUpon>PostForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -863,6 +878,9 @@
     <EmbeddedResource Include="Forms\HiddenMainForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>HiddenMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SystemNetMainForm.resx">
+      <DependentUpon>SystemNetMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TaskForm.resx">
       <DependentUpon>TaskForm.cs</DependentUpon>

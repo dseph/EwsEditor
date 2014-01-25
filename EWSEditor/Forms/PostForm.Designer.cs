@@ -207,7 +207,7 @@
             this.txtRequest.Multiline = true;
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRequest.Size = new System.Drawing.Size(1119, 192);
+            this.txtRequest.Size = new System.Drawing.Size(1119, 191);
             this.txtRequest.TabIndex = 64;
             // 
             // txtResponse
@@ -221,7 +221,7 @@
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1119, 228);
+            this.txtResponse.Size = new System.Drawing.Size(1119, 229);
             this.txtResponse.TabIndex = 66;
             // 
             // GoRun
@@ -454,7 +454,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.txtResponse);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(1129, 500);
-            this.splitContainer1.SplitterDistance = 229;
+            this.splitContainer1.SplitterDistance = 228;
             this.splitContainer1.TabIndex = 98;
             // 
             // label5
@@ -503,7 +503,7 @@
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PostForm";
-            this.Text = "PostForm";
+            this.Text = "EWS POST";
             this.Load += new System.EventHandler(this.PostForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

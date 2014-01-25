@@ -73,6 +73,7 @@
             this.mnuWindowsUserInformation = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSnmClient = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -350,7 +351,8 @@
             this.mnuOtherSplit1,
             this.mnuFindAppointments,
             this.toolStripSeparator1,
-            this.mnuWindowsUserInformation});
+            this.mnuWindowsUserInformation,
+            this.mnuSnmClient});
             this.mnuOther.Name = "mnuOther";
             this.mnuOther.Size = new System.Drawing.Size(49, 20);
             this.mnuOther.Text = "Other";
@@ -414,6 +416,13 @@
             this.mnuAbout.Size = new System.Drawing.Size(164, 22);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
+            // 
+            // mnuSnmClient
+            // 
+            this.mnuSnmClient.Name = "mnuSnmClient";
+            this.mnuSnmClient.Size = new System.Drawing.Size(268, 22);
+            this.mnuSnmClient.Text = "System.Net.Mail Client";
+            this.mnuSnmClient.Click += new System.EventHandler(this.mnuSnmClient_Click_1);
             // 
             // BrowserForm
             // 
@@ -482,5 +491,6 @@
         public System.Windows.Forms.ToolStripMenuItem mnuGetConversationItems;
         public System.Windows.Forms.ToolStripMenuItem mnuWindowsUserInformation;
         public System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mnuSnmClient;
     }
 }
