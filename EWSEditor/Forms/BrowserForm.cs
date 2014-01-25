@@ -625,5 +625,11 @@
         {
             
         }
+
+        private void mnuSnmClient_Click_1(object sender, EventArgs e)
+        {
+            SystemNetMainForm oForm = new SystemNetMainForm();
+            oForm.ShowDialog();
+        }
     }
 }
