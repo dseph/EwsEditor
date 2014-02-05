@@ -1331,6 +1331,12 @@
     <Content Include="EwsPostExamples\CreateAttachment.xml" />
     <Content Include="EwsPostExamples\CreateFolder.xml" />
     <Content Include="EwsPostExamples\CreateFolderPath.xml" />
+    <Content Include="EwsPostExamples\CreateItem - AcceptSharingInvitation.xml" />
+    <Content Include="EwsPostExamples\CreateItem - calendar item.xml" />
+    <Content Include="EwsPostExamples\CreateItem - contact.xml" />
+    <Content Include="EwsPostExamples\CreateItem - email message.xml" />
+    <Content Include="EwsPostExamples\CreateItem - accept meeting request.xml" />
+    <Content Include="EwsPostExamples\CreateItem - task.xml" />
     <Content Include="EwsPostExamples\CreateManagedFolder.xml" />
     <Content Include="EwsPostExamples\CreateUserConfiguration.xml" />
     <Content Include="EwsPostExamples\DeleteAttachment.xml" />
@@ -1350,6 +1356,7 @@
     <Content Include="EwsPostExamples\GetAppMarketplaceUrl.xml" />
     <Content Include="EwsPostExamples\GetAttachment.xml" />
     <Content Include="EwsPostExamples\GetClientAccessToken.xml" />
+    <Content Include="EwsPostExamples\GetConversationItems.xml" />
     <Content Include="EwsPostExamples\GetDelegate.xml" />
     <Content Include="EwsPostExamples\GetDiscoverySearchConfiguration.xml" />
     <Content Include="EwsPostExamples\GetEvents.xml" />
@@ -1360,14 +1367,26 @@
     <Content Include="EwsPostExamples\GetImItems.xml" />
     <Content Include="EwsPostExamples\GetInboxRules.xml" />
     <Content Include="EwsPostExamples\GetItem - AllKnownProperties.xml" />
+    <Content Include="EwsPostExamples\GetItem - calendar.xml" />
+    <Content Include="EwsPostExamples\GetItem - contact.xml" />
+    <Content Include="EwsPostExamples\GetItem - email message.xml" />
+    <Content Include="EwsPostExamples\GetItem - task.xml" />
     <Content Include="EwsPostExamples\GetItem.xml" />
     <Content Include="EwsPostExamples\GetMailTips.xml" />
+    <Content Include="EwsPostExamples\GetNonIndexableItemDetails.xml" />
     <Content Include="EwsPostExamples\GetNonIndexableItemStatistics.xml" />
+    <Content Include="EwsPostExamples\GetPasswordExpirationDate.xml" />
     <Content Include="EwsPostExamples\GetPersona.xml" />
     <Content Include="EwsPostExamples\GetPhoneCallInformation.xml" />
     <Content Include="EwsPostExamples\GetRoomLists .xml" />
     <Content Include="EwsPostExamples\GetRooms.xml" />
     <Content Include="EwsPostExamples\GetSearchableMailboxes.xml" />
+    <Content Include="EwsPostExamples\GetServerTimeZones.xml" />
+    <Content Include="EwsPostExamples\GetServiceConfiguration.xml" />
+    <Content Include="EwsPostExamples\GetSharingFolder.xml" />
+    <Content Include="EwsPostExamples\GetStreamingEvents.xml" />
+    <Content Include="EwsPostExamples\GetUserAvailability.xml" />
+    <Content Include="EwsPostExamples\GetUserConfiguration.xml" />
     <Content Include="EwsPostExamples\GetUserOOFSettings.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -1376,11 +1395,15 @@
     <Content Include="EwsPostExamples\GetUserSettings - for autodiscover.svc.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="EwsPostExamples\InstallApp.xml" />
+    <Content Include="EwsPostExamples\MarkAllItemsAsJunk.xml" />
     <Content Include="EwsPostExamples\MarkAllItemsAsRead.xml" />
     <Content Include="EwsPostExamples\MoveFolder.xml" />
     <Content Include="EwsPostExamples\MoveItem.xml" />
-    <Content Include="EwsPostExamples\PullSubscriptionRequest.xml" />
-    <Content Include="EwsPostExamples\PushSubscriptionRequest.xml" />
+    <Content Include="EwsPostExamples\PlayOnPhone.xml" />
+    <Content Include="EwsPostExamples\SetImGroup.xml" />
+    <Content Include="EwsPostExamples\Subscribe - PullSubscriptionRequest.xml" />
+    <Content Include="EwsPostExamples\Subscribe - PushSubscriptionRequest.xml" />
     <Content Include="EwsPostExamples\RemoveContactFromImList.xml" />
     <Content Include="EwsPostExamples\RemoveDelegate .xml" />
     <Content Include="EwsPostExamples\RemoveDistributionGroupFromImList.xml" />
@@ -1393,6 +1416,7 @@
     <Content Include="EwsPostExamples\SetUserOOFSettings.xml" />
     <Content Include="EwsPostExamples\SyncFolderHierarchy.xml" />
     <Content Include="EwsPostExamples\SyncFolderItems.xml" />
+    <Content Include="EwsPostExamples\UninstallApp.xml" />
     <Content Include="EwsPostExamples\Unsubscribe.xml" />
     <Content Include="EwsPostExamples\UpdateDelegate.xml" />
     <Content Include="EwsPostExamples\UpdateFolder.xml" />

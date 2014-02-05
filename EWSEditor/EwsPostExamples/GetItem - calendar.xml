@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <GetItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <ItemShape>
+        <t:BaseShape>IdOnly</t:BaseShape>
+        <t:AdditionalProperties>
+          <t:FieldURI FieldURI="item:Subject"/>
+        </t:AdditionalProperties>
+      </ItemShape>
+      <ItemIds>
+        <t:ItemId Id="AsdD89=" ChangeKey="Jajs3=="/>
+      </ItemIds>
+    </GetItem>
+  </soap:Body>
+</soap:Envelope>
