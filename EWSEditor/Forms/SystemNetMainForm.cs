@@ -79,7 +79,7 @@ namespace EWSEditor.Forms
                 if (bRet == false)
                     oSB.AppendFormat("BCC address is not valid. \r\n");
             }
-            AddLineToLog(oSB.ToString(), false);
+            AddLineToLog(oSB.ToString(), true);
 
             return bRet;
         }
@@ -113,7 +113,7 @@ namespace EWSEditor.Forms
 
             try
             {
-                AddLineToLog(string.Format("Sending message. {0}\r\n", DateTime.Now), false);
+                //AddLineToLog(string.Format("Sending message. {0}\r\n", DateTime.Now), false);
 
                 // create the mail message
                 MailMessage mail = new MailMessage();
@@ -224,7 +224,8 @@ namespace EWSEditor.Forms
             }
             catch (Exception ex)
             {
-                AddLineToLog(ex.Message + "\r\n" + "\r\n" + "StackTrace: " + "\r\n" + ex.StackTrace, true);
+                AddLineToLog(string.Format("\r\nError sending message:  {0}\r\n", DateTime.Now), true);
+                AddLineToLog(ex.Message + "\r\n\r\n" + "StackTrace: " + "\r\n" + ex.StackTrace, true);
                 bRet = false;
             }
 
@@ -333,13 +334,13 @@ namespace EWSEditor.Forms
 
             if (ValidateForm())
             {
-                txtBoxErrorLog.AppendText(string.Format("Started sending email loop.\r\n"));
+                AddLineToLog(string.Format("Started sending email loop.\r\n"), true);
 
                 while (ContinueTimerRun == true)
                 {
                     iMessageCount++;
-                    txtBoxErrorLog.AppendText(string.Format("Message {0}...\r\n", iMessageCount));
-
+                    AddLineToLog(string.Format("Message {0}...\r\n", iMessageCount), true);
+ 
                     SendEmail();
 
                     WaitLoop((int)numericUpDownResendSeconds.Value);
@@ -347,7 +348,7 @@ namespace EWSEditor.Forms
 
                 }
 
-                txtBoxErrorLog.AppendText(string.Format("Finished sending email loop.\r\n"));
+                AddLineToLog(string.Format("Finished sending email loop.\r\n"), true);
 
             }
         }
@@ -355,7 +356,7 @@ namespace EWSEditor.Forms
         private void btnTimedSendEnd_Click(object sender, EventArgs e)
         {
             ContinueTimerRun = false;
-            txtBoxErrorLog.AppendText(string.Format("User chose to stop email loop.\r\n"));
+            AddLineToLog(string.Format("User chose to stop email loop.\r\n"), true);
         }
 
         private void chkSendByPort_CheckedChanged(object sender, EventArgs e)
@@ -394,9 +395,9 @@ namespace EWSEditor.Forms
 
         }
 
-        private void AddLineToLog(string Lines, bool IsError)
+        private void AddLineToLog(string Lines, bool bAlwaysLog)
         {
-            if (IsError)
+            if (bAlwaysLog)
                 txtBoxErrorLog.AppendText(Lines);
             else
             {

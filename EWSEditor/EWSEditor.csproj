@@ -1314,6 +1314,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Autodiscover - POX .xml" />
     <Content Include="deps\Microsoft.Exchange.WebServices.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
