@@ -1315,9 +1315,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Autodiscover - POX .xml" />
-    <Content Include="deps\Microsoft.Exchange.WebServices.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="deps\Microsoft.Exchange.WebServices.dll" />
     <Content Include="EwsPostExamples\AddDelegate.xml" />
     <Content Include="EwsPostExamples\AddDistributionGroupToImList.xml" />
     <Content Include="EwsPostExamples\AddImContactToGroup.xml" />
@@ -1460,7 +1458,7 @@
   <PropertyGroup>
     <PostBuildEvent>md "$(TargetDir)EwsPostExamples"
 Copy /Y "$(ProjectDir)EwsPostExamples\*.*" "$(TargetDir)EwsPostExamples\*.*"
-</PostBuildEvent>
+Copy /Y "$(ProjectDir)deps\Microsoft.Exchange.WebServices.dll" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
