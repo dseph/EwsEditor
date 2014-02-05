@@ -37,40 +37,49 @@ namespace EWSEditor.Forms
             bool bRet = true;
             StringBuilder oSB = new System.Text.StringBuilder();
 
-            if (txtPassword.Text.Trim() == "")
+            if (chkSendByPort.Checked == true)
             {
-                oSB.AppendFormat("Password is required.\r\n");
-                bRet = false;
+                if (txtPassword.Text.Trim() == "")
+                {
+                    oSB.AppendFormat("Password is required.\r\n");
+                    bRet = false;
+                }
             }
 
-            if (txtBoxTo.Text.Trim() == "")
+            //if (txtFrom.Text.Trim() == "")
+            //{
+            //    oSB.AppendFormat("From: is a required field.\r\n");
+            //    bRet = false;
+            //}
+
+            if (txtTo.Text.Trim() == "")
             {
                 oSB.AppendFormat("To: is a required field.\r\n");
                 bRet = false;
             }
 
-            if (txtBoxTo.Text.Trim() != "")
+            if (txtTo.Text.Trim() != "")
             {
-                bRet = CheckEmailAddress(txtBoxTo.Text);
+                bRet = CheckEmailAddress(txtTo.Text);
                 if (bRet == false)
                     oSB.AppendFormat("To address is not valid. \r\n");
             }
 
 
-            if (txtBoxCC.Text.Trim() != "")
+            if (txtCc.Text.Trim() != "")
             {
-                bRet = CheckEmailAddress(txtBoxCC.Text);
+                bRet = CheckEmailAddress(txtCc.Text);
                 if (bRet == false)
                     oSB.AppendFormat("CC address is not valid. \r\n");
             }
 
-            if (txtBoxBCC.Text.Trim() != "")
+            if (txtBcc.Text.Trim() != "")
             {
-                bRet = CheckEmailAddress(txtBoxBCC.Text);
+                bRet = CheckEmailAddress(txtBcc.Text);
                 if (bRet == false)
                     oSB.AppendFormat("BCC address is not valid. \r\n");
             }
-            txtBoxErrorLog.AppendText(oSB.ToString());
+            AddLineToLog(oSB.ToString(), false);
 
             return bRet;
         }
@@ -92,6 +101,7 @@ namespace EWSEditor.Forms
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
                 bRet = false;
             }
             return bRet;
@@ -103,33 +113,36 @@ namespace EWSEditor.Forms
 
             try
             {
-                txtBoxErrorLog.AppendText(string.Format("Sending message. {0}\r\n", DateTime.Now));
+                AddLineToLog(string.Format("Sending message. {0}\r\n", DateTime.Now), false);
 
                 // create the mail message
                 MailMessage mail = new MailMessage();
 
 
-                if (txtUser.Text.Trim() != "")
-                    mail.From = new MailAddress(this.txtUser.Text.Trim());
+                if (txtFrom.Text.Trim() != "")
+                    mail.From = new MailAddress(this.txtFrom.Text.Trim());
 
-                if (txtBoxTo.Text.Trim() != "")
-                    mail.To.Add(new MailAddress(this.txtBoxTo.Text.Trim()));
+                if (txtTo.Text.Trim() != "")
+                    mail.To.Add(new MailAddress(this.txtTo.Text.Trim()));
 
-                if (this.txtBoxCC.Text.Trim() != "")
-                    mail.CC.Add(new MailAddress(this.txtBoxCC.Text.Trim()));
+                if (this.txtCc.Text.Trim() != "")
+                    mail.CC.Add(new MailAddress(this.txtCc.Text.Trim()));
 
-                if (this.txtBoxBCC.Text.Trim() != "")
-                    mail.Bcc.Add(new MailAddress(this.txtBoxBCC.Text.Trim()));
+                if (this.txtBcc.Text.Trim() != "")
+                    mail.Bcc.Add(new MailAddress(this.txtBcc.Text.Trim()));
 
                 // set the content
-                mail.Subject = txtBoxSubject.Text;
-                mail.Body = richTxtBody.Text;
+                mail.Subject = txtSubject.Text;
+                mail.Body = rtfMessageBody.Text;
                 mail.IsBodyHtml = chkIsHtml.Checked;
 
                 // set priority for the message
-                if (rdoNormalPri.Checked) { mail.Priority = MailPriority.Normal; }
-                else if (rdoHighPri.Checked) { mail.Priority = MailPriority.High; }
-                else { mail.Priority = MailPriority.Low; }
+                if (rdoNormalPri.Checked) 
+                    { mail.Priority = MailPriority.Normal; }
+                else if (rdoHighPri.Checked) 
+                    { mail.Priority = MailPriority.High; }
+                else 
+                    { mail.Priority = MailPriority.Low; }
 
                 //mail.BodyTransferEncoding = System.Net.Mime.TransferEncoding.QuotedPrintable;
                 //mail.SubjectEncoding = Encoding.UTF8;
@@ -152,6 +165,7 @@ namespace EWSEditor.Forms
                     int count = chkListAttachments.Items.Count;
                     for (int i = 0; i < count; i++)
                     {
+                        
                         mail.Attachments.Add(new Attachment(chkListAttachments.Items[i].ToString()));
                     }
                 }
@@ -204,13 +218,13 @@ namespace EWSEditor.Forms
                 smtp.Dispose();  // Only in 4.0 and later.  This will force the connection closed instead of leaving it open.
                 smtp = null;
 
-                txtBoxErrorLog.AppendText(string.Format("Message sent successfully.  {0}\r\n", DateTime.Now));
+                AddLineToLog(string.Format("Message sent successfully.  {0}\r\n", DateTime.Now), false);
 
                 bRet = true;
             }
             catch (Exception ex)
             {
-                txtBoxErrorLog.Text = ex.Message + "\r\n" + "\r\n" + "StackTrace: " + "\r\n" + ex.StackTrace;
+                AddLineToLog(ex.Message + "\r\n" + "\r\n" + "StackTrace: " + "\r\n" + ex.StackTrace, true);
                 bRet = false;
             }
 
@@ -252,8 +266,8 @@ namespace EWSEditor.Forms
             if (oForm.bChoseSave == true)
             {
                 int n = dataGridView1.Rows.Add();
-                dataGridView1.Rows[n].Cells[0].Value = oForm.txtName;
-                dataGridView1.Rows[n].Cells[1].Value = oForm.txtValue;
+                dataGridView1.Rows[n].Cells[0].Value = oForm.txtName.Text;
+                dataGridView1.Rows[n].Cells[1].Value = oForm.txtValue.Text;
             }
             oForm = null;
         }
@@ -276,11 +290,11 @@ namespace EWSEditor.Forms
                     string text = File.ReadAllText(file);
                     size = text.Length;
                     chkListAttachments.Items.Add(file);
-                    txtBoxErrorLog.Text = "Attachment size = " + size + " bytes." + "\r\n" + "Result: " + result;
+                    AddLineToLog("Attachment size = " + size + " bytes." + "\r\n" + "Result: " + result, false);
                 }
                 catch (IOException ioe)
                 {
-                    txtBoxErrorLog.Text = "Error: " + ioe.Message + "\r\n" + "\r\n" + "StackTrace: " + "\r\n" + ioe.StackTrace;
+                    AddLineToLog("Error: " + ioe.Message + "\r\n" + "\r\n" + "StackTrace: " + "\r\n" + ioe.StackTrace, true);
                 }
             }
         }
@@ -303,7 +317,7 @@ namespace EWSEditor.Forms
 
         private void SystemNetMainForm_Load(object sender, EventArgs e)
         {
-           
+             
             SetSendByEnablement();
         }
 
@@ -363,8 +377,10 @@ namespace EWSEditor.Forms
             this.txtPassword.Enabled = chkSendByPort.Checked;
             this.txtDomain.Enabled = chkSendByPort.Checked;
 
-            this.txtPickupFolder.Enabled = rdoSendByPickupFolder.Checked;
+             
             this.chkSpecifyPickupFolder.Enabled = rdoSendByPickupFolder.Checked;
+
+            this.txtPickupFolder.Enabled = (rdoSendByPickupFolder.Checked && this.chkSpecifyPickupFolder.Checked);
  
         }
 
@@ -376,6 +392,21 @@ namespace EWSEditor.Forms
         private void grpMailMessage_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void AddLineToLog(string Lines, bool IsError)
+        {
+            if (IsError)
+                txtBoxErrorLog.AppendText(Lines);
+            else
+            {
+                if (chkMinimalLogging.Checked == false)
+                {
+                    txtBoxErrorLog.AppendText(Lines);
+
+                }
+
+            }
         }
     }
 }
