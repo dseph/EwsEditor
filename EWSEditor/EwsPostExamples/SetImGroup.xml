@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <h:ServerVersionInfo MajorVersion="15"
+                         MinorVersion="0"
+                         MajorBuildNumber="349"
+                         MinorBuildNumber="0"
+                         Version="Exchange2013"
+                         xmlns:h="http://schemas.microsoft.com/exchange/services/2006/types"
+                         xmlns="http://schemas.microsoft.com/exchange/services/2006/types"
+                         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+  </s:Header>
+  <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <SetImGroupResponse ResponseClass="Success"
+                        xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <ResponseCode>NoError</ResponseCode>
+    </SetImGroupResponse>
+  </s:Body>
+</s:Envelope>

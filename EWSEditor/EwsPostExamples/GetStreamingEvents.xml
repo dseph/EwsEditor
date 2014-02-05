@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+  xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages">
+  <soap:Body>
+    <GetStreamingEvents xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <SubscriptionId>f6bc657d-dde1-4f94-952d-143b95d6483d</SubscriptionId>
+      <ConnectionTimeout>30</ConnectionTimeout>
+    </GetStreamingEvents>
+  </soap:Body>
+</soap:Envelope>

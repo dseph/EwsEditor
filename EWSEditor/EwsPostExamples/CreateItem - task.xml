@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <CreateItem xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+                xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+                MessageDisposition="SaveOnly">
+      <Items>
+        <t:Task>
+          <t:Subject>My task</t:Subject>
+          <t:DueDate>2006-10-26T21:32:52</t:DueDate>
+          <t:Status>NotStarted</t:Status>
+        </t:Task>
+      </Items>
+    </CreateItem>
+  </soap:Body>
+</soap:Envelope>

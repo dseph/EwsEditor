@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <GetUserAvailabilityRequest xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"
+                xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+      <t:TimeZone xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
+        <Bias>480</Bias>
+        <StandardTime>
+          <Bias>0</Bias>
+          <Time>02:00:00</Time>
+          <DayOrder>5</DayOrder>
+          <Month>10</Month>
+          <DayOfWeek>Sunday</DayOfWeek>
+        </StandardTime>
+        <DaylightTime>
+          <Bias>-60</Bias>
+          <Time>02:00:00</Time>
+          <DayOrder>1</DayOrder>
+          <Month>4</Month>
+          <DayOfWeek>Sunday</DayOfWeek>
+        </DaylightTime>
+      </t:TimeZone>
+      <MailboxDataArray>
+        <t:MailboxData>
+          <t:Email>
+            <t:Address>user1@example.com</t:Address>
+          </t:Email>
+          <t:AttendeeType>Required</t:AttendeeType>
+          <t:ExcludeConflicts>false</t:ExcludeConflicts>
+        </t:MailboxData>
+        <t:MailboxData>
+          <t:Email>
+            <t:Address>user2@example.com</t:Address>
+          </t:Email>
+          <t:AttendeeType>Required</t:AttendeeType>
+          <t:ExcludeConflicts>false</t:ExcludeConflicts>
+        </t:MailboxData>
+      </MailboxDataArray>
+      <t:FreeBusyViewOptions>
+        <t:TimeWindow>
+          <t:StartTime>2006-10-16T00:00:00</t:StartTime>
+          <t:EndTime>2006-10-16T23:59:59</t:EndTime>
+        </t:TimeWindow>
+        <t:MergedFreeBusyIntervalInMinutes>60</t:MergedFreeBusyIntervalInMinutes>
+        <t:RequestedView>DetailedMerged</t:RequestedView>
+      </t:FreeBusyViewOptions>
+    </GetUserAvailabilityRequest>
+  </soap:Body>
+</soap:Envelope>
