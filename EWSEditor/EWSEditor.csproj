@@ -1314,7 +1314,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Autodiscover - POX .xml" />
+    <Content Include="EwsPostExamples\Autodiscover - POX .xml" />
     <Content Include="deps\Microsoft.Exchange.WebServices.dll" />
     <Content Include="EwsPostExamples\AddDelegate.xml" />
     <Content Include="EwsPostExamples\AddDistributionGroupToImList.xml" />
@@ -1377,6 +1377,7 @@
     <Content Include="EwsPostExamples\GetPasswordExpirationDate.xml" />
     <Content Include="EwsPostExamples\GetPersona.xml" />
     <Content Include="EwsPostExamples\GetPhoneCallInformation.xml" />
+    <Content Include="EwsPostExamples\GetReminders.xml" />
     <Content Include="EwsPostExamples\GetRoomLists .xml" />
     <Content Include="EwsPostExamples\GetRooms.xml" />
     <Content Include="EwsPostExamples\GetSearchableMailboxes.xml" />
@@ -1425,6 +1426,7 @@
     <Content Include="EwsPostExamples\UpdateUserConfiguration.xml" />
     <Content Include="EwsPostExamples\UploadItems.xml" />
     <None Include="Resources\action_add_16xLG.bmp" />
+    <Content Include="EwsPostExamples\XMLFile1.xml" />
     <Content Include="Resources\action_add_16xLG.png" />
     <Content Include="Resources\Error_red_16x16_exp.png" />
     <Content Include="Resources\EWSEditor2.ico" />

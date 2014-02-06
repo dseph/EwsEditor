@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2013" />
+  </soap:Header>
+  <soap:Body>
+    <m:GetReminders>
+      <m:BeginTime>2014-01-01T00:00:00Z</m:BeginTime>
+      <m:EndTime>2014-03-03T00:00:00Z</m:EndTime>
+      <m:MaxItems>10</m:MaxItems>
+      <m:ReminderType>All</m:ReminderType>
+    </m:GetReminders>
+  </soap:Body>
+</soap:Envelope>
