@@ -1426,7 +1426,6 @@
     <Content Include="EwsPostExamples\UpdateUserConfiguration.xml" />
     <Content Include="EwsPostExamples\UploadItems.xml" />
     <None Include="Resources\action_add_16xLG.bmp" />
-    <Content Include="EwsPostExamples\XMLFile1.xml" />
     <Content Include="Resources\action_add_16xLG.png" />
     <Content Include="Resources\Error_red_16x16_exp.png" />
     <Content Include="Resources\EWSEditor2.ico" />

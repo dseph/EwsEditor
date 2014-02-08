@@ -12,6 +12,7 @@ using System.Net.Mail;
 using System.IO;
 using System.Text.RegularExpressions;
 
+
 namespace EWSEditor.Forms
 {
     public partial class SystemNetMainForm : Form
@@ -158,7 +159,9 @@ namespace EWSEditor.Forms
                     }
                 }
 
-                // add attachements
+ 
+
+                // add attachements 
                 if (chkListAttachments.Items.Count > 0)
                 {
                     // get the current list count and add each path as an attachment

@@ -61,6 +61,20 @@ namespace EWSEditor.Common
 
         private void GoRun_Click(object sender, EventArgs e)
         {
+            if (chkRawPost.Checked == false)
+                DoPostByHttpVerb();
+            else
+                DoRawPost();
+        }
+        private void DoRawPost()
+        {
+
+
+         
+
+        }
+        private void DoPostByHttpVerb()
+        { 
             string  sResult = string.Empty;
             string  sError = string.Empty;
             string  sResponseStatusCodeNumber = string.Empty;
@@ -77,14 +91,23 @@ namespace EWSEditor.Common
             //bool bTranslateF = false;
             //bool bAllowAutoRedirect = false; 
 
+            List<KeyValuePair<string, string>> oHeadersList = new List<KeyValuePair<string, string>>();
+            foreach (DataGridViewRow row in dgvOptions.Rows)
+            {
+                if (row.Cells[0].Value != null)
+                {
+                    oHeadersList.Add(new KeyValuePair<string, string>(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString()));
+                }
+            }
+             
+
             CredentialCache oCredentialCache = new CredentialCache();
- 
-                oCredentialCache = GetCredentials(
-                                        cmboAuthentication.Text,
-                                        txtUser.Text.Trim(),
-                                        txtPassword.Text.Trim(),
-                                        txtDomain.Text.Trim(),
-                                        txtUrl.Text.Trim());
+            oCredentialCache = GetCredentials(
+                                    cmboAuthentication.Text,
+                                    txtUser.Text.Trim(),
+                                    txtPassword.Text.Trim(),
+                                    txtDomain.Text.Trim(),
+                                    txtUrl.Text.Trim());
  
             bool bRet = false;
 
@@ -94,6 +117,7 @@ namespace EWSEditor.Common
                 cmboContentType.Text,
                 cmboAuthentication.Text,
                 oCredentialCache,
+                oHeadersList,
                 txtRequest.Text,
                 //txtProxyServer.Text,
                 //txtProxyPort.Text,
@@ -134,6 +158,7 @@ namespace EWSEditor.Common
         private void PostForm_Load(object sender, EventArgs e)
         {
             SetFields();
+            EwsPostEnablement();
         }
 
         private void btnLoadSettings_Click(object sender, EventArgs e)
@@ -276,6 +301,7 @@ namespace EWSEditor.Common
                 this.cmboVerb.Text = FixSetting(oPostFormSetting.Verb);
                 this.cmboContentType.Text = FixSetting(oPostFormSetting.ContentType);
 
+                this.chkRawPost.Checked = oPostFormSetting.RawPost;
                 UInt32 iTimeoutSeconds = 0;
                 iTimeoutSeconds = Convert.ToUInt32(oPostFormSetting.TimeoutSeconds);
                 this.numericUpDownTimeoutSeconds.Value = iTimeoutSeconds;
@@ -326,6 +352,8 @@ namespace EWSEditor.Common
                 txtPassword.Enabled = true;
                 txtDomain.Enabled = true;
             }
+
+             
         }
 
         private void cmboAuthentication_SelectedIndexChanged(object sender, EventArgs e)
@@ -337,7 +365,47 @@ namespace EWSEditor.Common
         {
 
         }
+
+        private void btnAddHeaders_Click(object sender, EventArgs e)
+        {
+             
+            EWSEditor.Forms.MailHeadersForm oForm = new EWSEditor.Forms.MailHeadersForm ();
+
+            oForm.ShowDialog(this);
+            if (oForm.bChoseSave == true)
+            {
+                int n = dgvOptions.Rows.Add();
+                dgvOptions.Rows[n].Cells[0].Value = oForm.txtName.Text;
+                dgvOptions.Rows[n].Cells[1].Value = oForm.txtValue.Text;
+            }
+            oForm = null;
+        }
+
+        private void btnDeleteHeader_Click(object sender, EventArgs e)
+        {
+            if (dgvOptions.SelectedRows.Count > 0) { dgvOptions.Rows.RemoveAt(dgvOptions.SelectedRows[0].Index); }
+        }
+
+        private void chkRawPost_CheckedChanged(object sender, EventArgs e)
+        {
+            EwsPostEnablement();
+        }
+
+        private void EwsPostEnablement()
+        {
+            if (chkRawPost.Checked == true)
+            {
+                grpHttpVerbOptions.Enabled = false;
+            }
+            else
+            {
+                grpHttpVerbOptions.Enabled = true;
+            }
+
+        }
     }
+
+    
 
     public class PostFormSetting
     {
@@ -350,6 +418,9 @@ namespace EWSEditor.Common
         public string Domain = string.Empty;
         public string Password = string.Empty;
         public string Url = string.Empty;
+
+        public bool RawPost = false;
+
         public string Verb = string.Empty;
         public string ContentType = string.Empty;
         public int TimeoutSeconds = 90;
