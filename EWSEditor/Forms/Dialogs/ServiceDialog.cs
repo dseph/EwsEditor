@@ -96,6 +96,9 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.UseDefaultCredentials = !chkCredentials.Checked;
                 EwsProxyFactory.EnableScpLookup = GlobalSettings.EnableScpLookups;
 
+                if (GlobalSettings.OverrideTimeout == true)
+                    EwsProxyFactory.Timeout = GlobalSettings.Timeout;
+
                 EwsProxyFactory.ServiceCredential = chkCredentials.Checked ?
                     new NetworkCredential(
                         this.txtUserName.Text.Trim(), 

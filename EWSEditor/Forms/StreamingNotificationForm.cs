@@ -242,6 +242,7 @@ namespace EWSEditor.Forms
                 CurrentConnection.OnDisconnect += OnDisconnect;
                 CurrentConnection.OnSubscriptionError += OnSubscriptionError;
                 CurrentConnection.OnNotificationEvent += OnStreamingEvent;
+                 
 
                 // Add the Subscriptions to the Connection
                 foreach (StreamingSubscription CurrentSubscription in ThreadLocalSubscriptions)

@@ -346,9 +346,11 @@ namespace EWSEditor.Forms
                 _Appointment.EndTimeZone = TimeHelper.GetTzIdFromTimeZoneStringUsedByComboBoxes(this.cmboDurationEndTimezone.Text);
       
             }
- 
- 
-            _Appointment.Body = new MessageBody(this.txtBody.Text);
+  
+            if (cmboBodyType.Text == "HTML")
+                _Appointment.Body = new MessageBody(BodyType.HTML, this.txtBody.Text);
+            else
+                _Appointment.Body = new MessageBody(BodyType.Text, this.txtBody.Text);
  
             _Appointment.IsAllDayEvent = chkIsAllDayEvent.Checked;
 
@@ -691,6 +693,7 @@ namespace EWSEditor.Forms
             this.cmboRecurrEndTimezone.Text = TimeHelper.GetTimezoneStringForCombobox(TimeZoneInfo.Local);
 
             txtBody.Text = string.Empty;
+            cmboBodyType.Text = "Text";
 
             chkIsAllDayEvent.Checked = false;
             chkIsRecurring.Checked = false;
@@ -847,7 +850,10 @@ namespace EWSEditor.Forms
 
          
             //this.cmboImportance.Text =   oAppointment.Importance;
-
+            if (oAppointment.Body.BodyType == BodyType.HTML)
+                cmboBodyType.Text = "HTML";
+            else
+                cmboBodyType.Text = "Text";
             txtBody.Text = oAppointment.Body.Text;
             chkIsAllDayEvent.Checked = oAppointment.IsAllDayEvent;
             chkIsRecurring.Checked = oAppointment.IsRecurring;
@@ -1679,6 +1685,21 @@ namespace EWSEditor.Forms
         private void cmboRecurrMonthlyPatternEveryMonths_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAttachments_Click(object sender, EventArgs e)
+        {
+            if (_isDirty == true)
+            {
+                DialogResult oDlg = MessageBox.Show("Save?", "Item needs to be saved before working with attachments.", MessageBoxButtons.OKCancel);
+                if (oDlg == System.Windows.Forms.DialogResult.OK)
+                { 
+                    Item oItem = (Item)_Appointment;
+                    AddRemoveAttachments oAddRemoveAttachments = new AddRemoveAttachments(ref oItem);
+                    oAddRemoveAttachments.ShowDialog();
+                }
+            }
+ 
         }
     }
 }

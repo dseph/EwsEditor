@@ -631,5 +631,11 @@
             SystemNetMainForm oForm = new SystemNetMainForm();
             oForm.ShowDialog();
         }
+
+        private void mnuEncode_Click(object sender, EventArgs e)
+        {
+            EncodeForm oForm = new EncodeForm();
+            oForm.ShowDialog();
+        }
     }
 }

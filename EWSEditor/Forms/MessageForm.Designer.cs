@@ -37,7 +37,7 @@
             this.chkReadReceipt = new System.Windows.Forms.CheckBox();
             this.chkDeliveryReceipt = new System.Windows.Forms.CheckBox();
             this.lblMessageType = new System.Windows.Forms.Label();
-            this.cmboMessageType = new System.Windows.Forms.ComboBox();
+            this.cmboBodyType = new System.Windows.Forms.ComboBox();
             this.lblTo = new System.Windows.Forms.Label();
             this.txtTo = new System.Windows.Forms.TextBox();
             this.lblCC = new System.Windows.Forms.Label();
@@ -51,15 +51,17 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFrom = new System.Windows.Forms.TextBox();
+            this.btnAttachments = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(6, 13);
+            this.btnSave.Location = new System.Drawing.Point(8, 16);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(59, 23);
+            this.btnSave.Size = new System.Drawing.Size(79, 28);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -67,9 +69,10 @@
             // 
             // btnForward
             // 
-            this.btnForward.Location = new System.Drawing.Point(158, 13);
+            this.btnForward.Location = new System.Drawing.Point(211, 16);
+            this.btnForward.Margin = new System.Windows.Forms.Padding(4);
             this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(58, 23);
+            this.btnForward.Size = new System.Drawing.Size(77, 28);
             this.btnForward.TabIndex = 2;
             this.btnForward.Text = "Forward";
             this.btnForward.UseVisualStyleBackColor = true;
@@ -77,9 +80,10 @@
             // 
             // btnReply
             // 
-            this.btnReply.Location = new System.Drawing.Point(222, 13);
+            this.btnReply.Location = new System.Drawing.Point(296, 16);
+            this.btnReply.Margin = new System.Windows.Forms.Padding(4);
             this.btnReply.Name = "btnReply";
-            this.btnReply.Size = new System.Drawing.Size(58, 23);
+            this.btnReply.Size = new System.Drawing.Size(77, 28);
             this.btnReply.TabIndex = 3;
             this.btnReply.Text = "Reply";
             this.btnReply.UseVisualStyleBackColor = true;
@@ -87,9 +91,10 @@
             // 
             // btnReplyAll
             // 
-            this.btnReplyAll.Location = new System.Drawing.Point(286, 13);
+            this.btnReplyAll.Location = new System.Drawing.Point(381, 16);
+            this.btnReplyAll.Margin = new System.Windows.Forms.Padding(4);
             this.btnReplyAll.Name = "btnReplyAll";
-            this.btnReplyAll.Size = new System.Drawing.Size(58, 23);
+            this.btnReplyAll.Size = new System.Drawing.Size(77, 28);
             this.btnReplyAll.TabIndex = 4;
             this.btnReplyAll.Text = "Reply All";
             this.btnReplyAll.UseVisualStyleBackColor = true;
@@ -97,9 +102,10 @@
             // 
             // btnHeaders
             // 
-            this.btnHeaders.Location = new System.Drawing.Point(736, 12);
+            this.btnHeaders.Location = new System.Drawing.Point(955, 15);
+            this.btnHeaders.Margin = new System.Windows.Forms.Padding(4);
             this.btnHeaders.Name = "btnHeaders";
-            this.btnHeaders.Size = new System.Drawing.Size(75, 23);
+            this.btnHeaders.Size = new System.Drawing.Size(126, 28);
             this.btnHeaders.TabIndex = 14;
             this.btnHeaders.Text = "Headers";
             this.btnHeaders.UseVisualStyleBackColor = true;
@@ -107,9 +113,10 @@
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(71, 13);
+            this.btnSend.Location = new System.Drawing.Point(95, 16);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(4);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(64, 23);
+            this.btnSend.Size = new System.Drawing.Size(85, 28);
             this.btnSend.TabIndex = 1;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -118,9 +125,10 @@
             // chkReadReceipt
             // 
             this.chkReadReceipt.AutoSize = true;
-            this.chkReadReceipt.Location = new System.Drawing.Point(134, 18);
+            this.chkReadReceipt.Location = new System.Drawing.Point(179, 22);
+            this.chkReadReceipt.Margin = new System.Windows.Forms.Padding(4);
             this.chkReadReceipt.Name = "chkReadReceipt";
-            this.chkReadReceipt.Size = new System.Drawing.Size(92, 17);
+            this.chkReadReceipt.Size = new System.Drawing.Size(116, 21);
             this.chkReadReceipt.TabIndex = 1;
             this.chkReadReceipt.Text = "Read Receipt";
             this.chkReadReceipt.UseVisualStyleBackColor = true;
@@ -128,9 +136,10 @@
             // chkDeliveryReceipt
             // 
             this.chkDeliveryReceipt.AutoSize = true;
-            this.chkDeliveryReceipt.Location = new System.Drawing.Point(24, 18);
+            this.chkDeliveryReceipt.Location = new System.Drawing.Point(32, 22);
+            this.chkDeliveryReceipt.Margin = new System.Windows.Forms.Padding(4);
             this.chkDeliveryReceipt.Name = "chkDeliveryReceipt";
-            this.chkDeliveryReceipt.Size = new System.Drawing.Size(104, 17);
+            this.chkDeliveryReceipt.Size = new System.Drawing.Size(133, 21);
             this.chkDeliveryReceipt.TabIndex = 0;
             this.chkDeliveryReceipt.Text = "Delivery Receipt";
             this.chkDeliveryReceipt.UseVisualStyleBackColor = true;
@@ -139,105 +148,116 @@
             // lblMessageType
             // 
             this.lblMessageType.AutoSize = true;
-            this.lblMessageType.Location = new System.Drawing.Point(11, 246);
+            this.lblMessageType.Location = new System.Drawing.Point(15, 303);
+            this.lblMessageType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMessageType.Name = "lblMessageType";
-            this.lblMessageType.Size = new System.Drawing.Size(80, 13);
+            this.lblMessageType.Size = new System.Drawing.Size(80, 17);
             this.lblMessageType.TabIndex = 11;
-            this.lblMessageType.Text = "Message Type:";
+            this.lblMessageType.Text = "Body Type:";
             // 
-            // cmboMessageType
+            // cmboBodyType
             // 
-            this.cmboMessageType.FormattingEnabled = true;
-            this.cmboMessageType.Items.AddRange(new object[] {
+            this.cmboBodyType.FormattingEnabled = true;
+            this.cmboBodyType.Items.AddRange(new object[] {
             "Text",
             "HTML"});
-            this.cmboMessageType.Location = new System.Drawing.Point(98, 243);
-            this.cmboMessageType.Name = "cmboMessageType";
-            this.cmboMessageType.Size = new System.Drawing.Size(110, 21);
-            this.cmboMessageType.TabIndex = 12;
+            this.cmboBodyType.Location = new System.Drawing.Point(103, 296);
+            this.cmboBodyType.Margin = new System.Windows.Forms.Padding(4);
+            this.cmboBodyType.Name = "cmboBodyType";
+            this.cmboBodyType.Size = new System.Drawing.Size(145, 24);
+            this.cmboBodyType.TabIndex = 12;
             // 
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(11, 142);
+            this.lblTo.Location = new System.Drawing.Point(15, 175);
+            this.lblTo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(23, 13);
+            this.lblTo.Size = new System.Drawing.Size(29, 17);
             this.lblTo.TabIndex = 3;
             this.lblTo.Text = "To:";
             // 
             // txtTo
             // 
-            this.txtTo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTo.Location = new System.Drawing.Point(58, 135);
+            this.txtTo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTo.Location = new System.Drawing.Point(77, 166);
+            this.txtTo.Margin = new System.Windows.Forms.Padding(4);
             this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(753, 20);
+            this.txtTo.Size = new System.Drawing.Size(1003, 22);
             this.txtTo.TabIndex = 4;
             // 
             // lblCC
             // 
             this.lblCC.AutoSize = true;
-            this.lblCC.Location = new System.Drawing.Point(11, 168);
+            this.lblCC.Location = new System.Drawing.Point(15, 207);
+            this.lblCC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCC.Name = "lblCC";
-            this.lblCC.Size = new System.Drawing.Size(24, 13);
+            this.lblCC.Size = new System.Drawing.Size(30, 17);
             this.lblCC.TabIndex = 5;
             this.lblCC.Text = "CC:";
             // 
             // txtCC
             // 
-            this.txtCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCC.Location = new System.Drawing.Point(58, 161);
+            this.txtCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCC.Location = new System.Drawing.Point(77, 198);
+            this.txtCC.Margin = new System.Windows.Forms.Padding(4);
             this.txtCC.Name = "txtCC";
-            this.txtCC.Size = new System.Drawing.Size(753, 20);
+            this.txtCC.Size = new System.Drawing.Size(1003, 22);
             this.txtCC.TabIndex = 6;
             // 
             // lblBCC
             // 
             this.lblBCC.AutoSize = true;
-            this.lblBCC.Location = new System.Drawing.Point(11, 194);
+            this.lblBCC.Location = new System.Drawing.Point(15, 239);
+            this.lblBCC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBCC.Name = "lblBCC";
-            this.lblBCC.Size = new System.Drawing.Size(31, 13);
+            this.lblBCC.Size = new System.Drawing.Size(39, 17);
             this.lblBCC.TabIndex = 7;
             this.lblBCC.Text = "BCC:";
             // 
             // txtBCC
             // 
-            this.txtBCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBCC.Location = new System.Drawing.Point(58, 187);
+            this.txtBCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBCC.Location = new System.Drawing.Point(77, 230);
+            this.txtBCC.Margin = new System.Windows.Forms.Padding(4);
             this.txtBCC.Name = "txtBCC";
-            this.txtBCC.Size = new System.Drawing.Size(753, 20);
+            this.txtBCC.Size = new System.Drawing.Size(1003, 22);
             this.txtBCC.TabIndex = 8;
             // 
             // lblSubject
             // 
             this.lblSubject.AutoSize = true;
-            this.lblSubject.Location = new System.Drawing.Point(11, 220);
+            this.lblSubject.Location = new System.Drawing.Point(15, 271);
+            this.lblSubject.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSubject.Name = "lblSubject";
-            this.lblSubject.Size = new System.Drawing.Size(46, 13);
+            this.lblSubject.Size = new System.Drawing.Size(59, 17);
             this.lblSubject.TabIndex = 9;
             this.lblSubject.Text = "Subject:";
             // 
             // txtSubject
             // 
-            this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSubject.Location = new System.Drawing.Point(58, 213);
+            this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSubject.Location = new System.Drawing.Point(77, 262);
+            this.txtSubject.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(753, 20);
+            this.txtSubject.Size = new System.Drawing.Size(1003, 22);
             this.txtSubject.TabIndex = 10;
             // 
             // txtBody
             // 
-            this.txtBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBody.Location = new System.Drawing.Point(12, 267);
+            this.txtBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBody.Location = new System.Drawing.Point(16, 329);
+            this.txtBody.Margin = new System.Windows.Forms.Padding(4);
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBody.Size = new System.Drawing.Size(799, 220);
+            this.txtBody.Size = new System.Drawing.Size(1064, 219);
             this.txtBody.TabIndex = 13;
             this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
@@ -248,9 +268,11 @@
             this.groupBox1.Controls.Add(this.btnReplyAll);
             this.groupBox1.Controls.Add(this.btnReply);
             this.groupBox1.Controls.Add(this.btnForward);
-            this.groupBox1.Location = new System.Drawing.Point(15, 2);
+            this.groupBox1.Location = new System.Drawing.Point(20, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(349, 42);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(465, 52);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -258,42 +280,60 @@
             // 
             this.groupBox2.Controls.Add(this.chkDeliveryReceipt);
             this.groupBox2.Controls.Add(this.chkReadReceipt);
-            this.groupBox2.Location = new System.Drawing.Point(15, 50);
+            this.groupBox2.Location = new System.Drawing.Point(20, 62);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(240, 41);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(320, 50);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 113);
+            this.label1.Location = new System.Drawing.Point(16, 139);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
+            this.label1.Size = new System.Drawing.Size(44, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "From:";
             // 
             // txtFrom
             // 
-            this.txtFrom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFrom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFrom.Enabled = false;
-            this.txtFrom.Location = new System.Drawing.Point(58, 110);
+            this.txtFrom.Location = new System.Drawing.Point(77, 135);
+            this.txtFrom.Margin = new System.Windows.Forms.Padding(4);
             this.txtFrom.Name = "txtFrom";
-            this.txtFrom.Size = new System.Drawing.Size(753, 20);
+            this.txtFrom.Size = new System.Drawing.Size(1003, 22);
             this.txtFrom.TabIndex = 2;
+            // 
+            // btnAttachments
+            // 
+            this.btnAttachments.Location = new System.Drawing.Point(955, 51);
+            this.btnAttachments.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAttachments.Name = "btnAttachments";
+            this.btnAttachments.Size = new System.Drawing.Size(125, 28);
+            this.btnAttachments.TabIndex = 112;
+            this.btnAttachments.Tag = "";
+            this.btnAttachments.Text = "Attachments";
+            this.btnAttachments.UseVisualStyleBackColor = true;
+            this.btnAttachments.Visible = false;
+            this.btnAttachments.Click += new System.EventHandler(this.btnAttachments_Click);
             // 
             // MessageForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 499);
+            this.ClientSize = new System.Drawing.Size(1097, 761);
+            this.Controls.Add(this.btnAttachments);
             this.Controls.Add(this.txtFrom);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblMessageType);
-            this.Controls.Add(this.cmboMessageType);
+            this.Controls.Add(this.cmboBodyType);
             this.Controls.Add(this.btnHeaders);
             this.Controls.Add(this.txtBody);
             this.Controls.Add(this.txtSubject);
@@ -304,6 +344,7 @@
             this.Controls.Add(this.lblCC);
             this.Controls.Add(this.txtTo);
             this.Controls.Add(this.lblTo);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MessageForm";
             this.Text = "MessageForm";
             this.Load += new System.EventHandler(this.MessageForm_Load);
@@ -326,7 +367,7 @@
         private System.Windows.Forms.CheckBox chkReadReceipt;
         private System.Windows.Forms.CheckBox chkDeliveryReceipt;
         private System.Windows.Forms.Label lblMessageType;
-        private System.Windows.Forms.ComboBox cmboMessageType;
+        private System.Windows.Forms.ComboBox cmboBodyType;
         private System.Windows.Forms.Label lblTo;
         private System.Windows.Forms.TextBox txtTo;
         private System.Windows.Forms.Label lblCC;
@@ -340,6 +381,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFrom;
+        private System.Windows.Forms.Button btnAttachments;
 
     }
 }

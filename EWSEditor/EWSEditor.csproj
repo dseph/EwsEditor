@@ -128,6 +128,7 @@
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -145,6 +146,18 @@
     <Compile Include="Common\ItemTag.cs" />
     <Compile Include="Common\ListViewColumnSorter.cs" />
     <Compile Include="Common\ListViewItemHelper.cs" />
+    <Compile Include="Forms\AddRemoveAttachments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddRemoveAttachments.Designer.cs">
+      <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EncodeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EncodeForm.designer.cs">
+      <DependentUpon>EncodeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MailHeadersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +271,12 @@
     </Compile>
     <Compile Include="Forms\SearchCalendar.Designer.cs">
       <DependentUpon>SearchCalendar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AttachmentSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AttachmentSelect.Designer.cs">
+      <DependentUpon>AttachmentSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SelectSendMeetingUpdateNotificationOptions.cs">
       <SubType>Form</SubType>
@@ -663,6 +682,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\AddRemoveAttachments.resx">
+      <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EncodeForm.resx">
+      <DependentUpon>EncodeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MailHeadersForm.resx">
       <DependentUpon>MailHeadersForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -803,6 +828,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SearchCalendar.resx">
       <DependentUpon>SearchCalendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AttachmentSelect.resx">
+      <DependentUpon>AttachmentSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectSendMeetingUpdateNotificationOptions.resx">
       <DependentUpon>SelectSendMeetingUpdateNotificationOptions.cs</DependentUpon>
@@ -1350,6 +1378,9 @@
     <Content Include="EwsPostExamples\FindConversation.xml" />
     <Content Include="EwsPostExamples\FindFolder.xml" />
     <Content Include="EwsPostExamples\FindItem - CalendarView.xml" />
+    <Content Include="EwsPostExamples\FindPeople - AQS Search against GAL and return specified properties.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\FindPeople.xml" />
     <Content Include="EwsPostExamples\GetAppManifests.xml" />
     <Content Include="EwsPostExamples\GetAppMarketplaceUrl.xml" />
@@ -1384,7 +1415,9 @@
     <Content Include="EwsPostExamples\GetServerTimeZones.xml" />
     <Content Include="EwsPostExamples\GetServiceConfiguration.xml" />
     <Content Include="EwsPostExamples\GetSharingFolder.xml" />
-    <Content Include="EwsPostExamples\GetStreamingEvents.xml" />
+    <Content Include="EwsPostExamples\GetStreamingEvents.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\GetUserAvailability.xml" />
     <Content Include="EwsPostExamples\GetUserConfiguration.xml" />
     <Content Include="EwsPostExamples\GetUserOOFSettings.xml">
@@ -1402,7 +1435,9 @@
     <Content Include="EwsPostExamples\MoveItem.xml" />
     <Content Include="EwsPostExamples\PlayOnPhone.xml" />
     <Content Include="EwsPostExamples\SetImGroup.xml" />
-    <Content Include="EwsPostExamples\Subscribe - PullSubscriptionRequest.xml" />
+    <Content Include="EwsPostExamples\Subscribe - PullSubscriptionRequest.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\Subscribe - PushSubscriptionRequest.xml" />
     <Content Include="EwsPostExamples\RemoveContactFromImList.xml" />
     <Content Include="EwsPostExamples\RemoveDelegate .xml" />
@@ -1424,7 +1459,9 @@
     <Content Include="EwsPostExamples\UpdateItem - Contact.xml" />
     <Content Include="EwsPostExamples\UpdateItem - Item.xml" />
     <Content Include="EwsPostExamples\UpdateUserConfiguration.xml" />
-    <Content Include="EwsPostExamples\UploadItems.xml" />
+    <Content Include="EwsPostExamples\UploadItems.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Resources\action_add_16xLG.bmp" />
     <Content Include="Resources\action_add_16xLG.png" />
     <Content Include="Resources\Error_red_16x16_exp.png" />

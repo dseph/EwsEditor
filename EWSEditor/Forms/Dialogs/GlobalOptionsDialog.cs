@@ -66,6 +66,9 @@ namespace EWSEditor.Forms
             this.EnableSslDetailCheck.Checked = GlobalSettings.EnableSslDetailLogging;
             this.AllowRedirectsCheck.Checked = GlobalSettings.AllowAutodiscoverRedirect;
             this.EnableScpLookups.Checked = GlobalSettings.EnableScpLookups;
+
+            this.chkOverrideTimeout.Checked = GlobalSettings.OverrideTimeout;
+            this.numericUpDownTimeout.Value = GlobalSettings.Timeout;
         }
 
         private void SaveSettings()
@@ -84,9 +87,17 @@ namespace EWSEditor.Forms
             GlobalSettings.EnableSslDetailLogging = this.EnableSslDetailCheck.Checked;
             GlobalSettings.AllowAutodiscoverRedirect = this.AllowRedirectsCheck.Checked;
             GlobalSettings.EnableScpLookups = this.EnableScpLookups.Checked;
+
+            GlobalSettings.OverrideTimeout = this.chkOverrideTimeout.Checked;
+            GlobalSettings.Timeout = (int)this.numericUpDownTimeout.Value;
         }
 
         private void EnableScpLookups_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MiscSettingsGroup_Enter(object sender, EventArgs e)
         {
 
         }
