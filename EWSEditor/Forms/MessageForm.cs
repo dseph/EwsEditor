@@ -292,7 +292,7 @@ namespace EWSEditor.Forms
                     oEmailMessage.Subject = txtSubject.Text.Trim();
                      
  
-                    if (cmboMessageType.Text == "HTML")
+                    if (cmboBodyType.Text == "HTML")
                     {
                         //oEmailMessage.Body.BodyType = BodyType.HTML;
                         oEmailMessage.Body = new MessageBody(BodyType.HTML, txtBody.Text);
@@ -425,7 +425,7 @@ namespace EWSEditor.Forms
             txtBody.Text = string.Empty;
             chkDeliveryReceipt.Checked = false;
             chkReadReceipt.Checked = false;
-            cmboMessageType.Text = string.Empty;
+            cmboBodyType.Text = string.Empty;
         }
  
         private bool SetFormFromMessage(EmailMessage oEmailMessage, bool  CanEdit, bool  CanSend, bool  CanReply) 
@@ -474,9 +474,9 @@ namespace EWSEditor.Forms
                 txtSubject.Text = oEmailMessage.Subject;
 
                 if (oEmailMessage.Body.BodyType == BodyType.HTML)
-                    cmboMessageType.Text = "HTML";
+                    cmboBodyType.Text = "HTML";
                 else
-                    cmboMessageType.Text = "Text";
+                    cmboBodyType.Text = "Text";
 
 
 
@@ -545,7 +545,7 @@ namespace EWSEditor.Forms
                 btnSave.Enabled = true;
                 chkReadReceipt.Enabled = true;
                 chkDeliveryReceipt.Enabled = true;
-                cmboMessageType.Text = "Text";
+                cmboBodyType.Text = "Text";
                 //System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
                 //System.Diagnostics.Debug.WriteLine("New email started.");
                 //System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
@@ -749,6 +749,7 @@ namespace EWSEditor.Forms
             //{
             //    MessageBox.Show("Message has no headers");
             //}
+            //_EmailMessage.Attachments.AddFileAttachment();
  
         }
 
@@ -791,6 +792,30 @@ namespace EWSEditor.Forms
         private void txtTo_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnInsertAttachment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteAttachment_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAttachments_Click(object sender, EventArgs e)
+        {
+        //    if (_isDirty == true)
+        //    {
+        //        DialogResult oDlg = MessageBox.Show("Save?", "Item needs to be saved before working with attachments.", MessageBoxButtons.OKCancel);
+        //        if (oDlg == System.Windows.Forms.DialogResult.OK)
+        //        {
+        //            Item oItem = (Item)_EmailMessage;
+        //            AddRemoveAttachments oAddRemoveAttachments = new AddRemoveAttachments(ref oItem);
+        //            oAddRemoveAttachments.ShowDialog();
+        //        }
+        //    }
         }
         
 

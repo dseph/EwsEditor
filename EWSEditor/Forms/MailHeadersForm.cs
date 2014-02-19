@@ -20,8 +20,15 @@ namespace EWSEditor.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            bChoseSave = true;
-            this.Close();
+            if (this.txtName.Text.Length == 0 || this.txtName.Text.Length == 0)
+            {
+
+            }
+            else
+            { 
+                bChoseSave = true;
+                this.Close();
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

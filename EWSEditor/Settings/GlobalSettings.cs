@@ -228,6 +228,42 @@ namespace EWSEditor.Settings
             }
         }
 
+ 
+
+        /// <summary>
+        /// This indicates if the timeout should be overriden on the session object. 
+        ///  
+        /// </summary>
+        public static bool OverrideTimeout
+        {
+            get
+            {
+                return UserSettings.Default.OverrideTimeout;
+            }
+            set
+            {
+                UserSettings.Default.OverrideTimeout = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// This integer sets the timeout override on the session object
+        /// sent from EWSEditor
+        /// </summary>
+        public static int Timeout
+        {
+            get
+            {
+                return UserSettings.Default.Timeout;
+            }
+            set
+            {
+                UserSettings.Default.Timeout = value;
+                UserSettings.Default.Save();
+            }
+        }
+
         #region Private Methods
 
         /// <summary>

@@ -166,5 +166,29 @@ namespace EWSEditor.Settings.Internals {
                 this["OverrideCertValidation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int Timeout {
+            get {
+                return ((int)(this["Timeout"]));
+            }
+            set {
+                this["Timeout"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OverrideTimeout {
+            get {
+                return ((bool)(this["OverrideTimeout"]));
+            }
+            set {
+                this["OverrideTimeout"] = value;
+            }
+        }
     }
 }

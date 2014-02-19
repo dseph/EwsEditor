@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.OkButton = new System.Windows.Forms.Button();
+            this.MyCancelButton = new System.Windows.Forms.Button();
             this.MiscSettingsGroup = new System.Windows.Forms.GroupBox();
+            this.chkOverrideTimeout = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.numericUpDownTimeout = new System.Windows.Forms.NumericUpDown();
             this.EnableScpLookups = new System.Windows.Forms.CheckBox();
             this.UserAgentText = new System.Windows.Forms.TextBox();
             this.UserAgentLabel = new System.Windows.Forms.Label();
@@ -43,18 +48,46 @@
             this.FindItemLabel = new System.Windows.Forms.Label();
             this.FindFolderLabel = new System.Windows.Forms.Label();
             this.CalendarViewLabel = new System.Windows.Forms.Label();
-            this.MyCancelButton = new System.Windows.Forms.Button();
-            this.OkButton = new System.Windows.Forms.Button();
-            this.SaveLogFileCheck = new System.Windows.Forms.CheckBox();
-            this.LogFilePathLabel = new System.Windows.Forms.Label();
-            this.LogFilePathText = new System.Windows.Forms.TextBox();
             this.LoggingGroup = new System.Windows.Forms.GroupBox();
+            this.LogFilePathText = new System.Windows.Forms.TextBox();
+            this.LogFilePathLabel = new System.Windows.Forms.Label();
+            this.SaveLogFileCheck = new System.Windows.Forms.CheckBox();
             this.MiscSettingsGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).BeginInit();
             this.LoggingGroup.SuspendLayout();
             this.SuspendLayout();
             // 
+            // OkButton
+            // 
+            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.OkButton.Location = new System.Drawing.Point(428, 556);
+            this.OkButton.Margin = new System.Windows.Forms.Padding(4);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(100, 28);
+            this.OkButton.TabIndex = 2;
+            this.OkButton.Text = "OK";
+            this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
+            // 
+            // MyCancelButton
+            // 
+            this.MyCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.MyCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.MyCancelButton.Location = new System.Drawing.Point(536, 556);
+            this.MyCancelButton.Margin = new System.Windows.Forms.Padding(4);
+            this.MyCancelButton.Name = "MyCancelButton";
+            this.MyCancelButton.Size = new System.Drawing.Size(100, 28);
+            this.MyCancelButton.TabIndex = 3;
+            this.MyCancelButton.Text = "Cancel";
+            this.MyCancelButton.UseVisualStyleBackColor = true;
+            this.MyCancelButton.Click += new System.EventHandler(this.MyCancelButton_Click);
+            // 
             // MiscSettingsGroup
             // 
+            this.MiscSettingsGroup.Controls.Add(this.chkOverrideTimeout);
+            this.MiscSettingsGroup.Controls.Add(this.label9);
+            this.MiscSettingsGroup.Controls.Add(this.numericUpDownTimeout);
             this.MiscSettingsGroup.Controls.Add(this.EnableScpLookups);
             this.MiscSettingsGroup.Controls.Add(this.UserAgentText);
             this.MiscSettingsGroup.Controls.Add(this.UserAgentLabel);
@@ -69,18 +102,60 @@
             this.MiscSettingsGroup.Controls.Add(this.FindItemLabel);
             this.MiscSettingsGroup.Controls.Add(this.FindFolderLabel);
             this.MiscSettingsGroup.Controls.Add(this.CalendarViewLabel);
-            this.MiscSettingsGroup.Location = new System.Drawing.Point(13, 12);
+            this.MiscSettingsGroup.Location = new System.Drawing.Point(17, 15);
+            this.MiscSettingsGroup.Margin = new System.Windows.Forms.Padding(4);
             this.MiscSettingsGroup.Name = "MiscSettingsGroup";
-            this.MiscSettingsGroup.Size = new System.Drawing.Size(462, 251);
+            this.MiscSettingsGroup.Padding = new System.Windows.Forms.Padding(4);
+            this.MiscSettingsGroup.Size = new System.Drawing.Size(616, 363);
             this.MiscSettingsGroup.TabIndex = 0;
             this.MiscSettingsGroup.TabStop = false;
             this.MiscSettingsGroup.Text = "Miscellaneous";
+            this.MiscSettingsGroup.Enter += new System.EventHandler(this.MiscSettingsGroup_Enter);
+            // 
+            // chkOverrideTimeout
+            // 
+            this.chkOverrideTimeout.Location = new System.Drawing.Point(16, 317);
+            this.chkOverrideTimeout.Margin = new System.Windows.Forms.Padding(4);
+            this.chkOverrideTimeout.Name = "chkOverrideTimeout";
+            this.chkOverrideTimeout.Size = new System.Drawing.Size(166, 30);
+            this.chkOverrideTimeout.TabIndex = 79;
+            this.chkOverrideTimeout.Text = "Override timeout:";
+            this.chkOverrideTimeout.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(192, 323);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(147, 17);
+            this.label9.TabIndex = 77;
+            this.label9.Text = "Timeout milliseconds :";
+            // 
+            // numericUpDownTimeout
+            // 
+            this.numericUpDownTimeout.Location = new System.Drawing.Point(347, 318);
+            this.numericUpDownTimeout.Margin = new System.Windows.Forms.Padding(4);
+            this.numericUpDownTimeout.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.numericUpDownTimeout.Name = "numericUpDownTimeout";
+            this.numericUpDownTimeout.Size = new System.Drawing.Size(130, 22);
+            this.numericUpDownTimeout.TabIndex = 78;
+            this.numericUpDownTimeout.Value = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             // 
             // EnableScpLookups
             // 
-            this.EnableScpLookups.Location = new System.Drawing.Point(13, 102);
+            this.EnableScpLookups.Location = new System.Drawing.Point(17, 138);
+            this.EnableScpLookups.Margin = new System.Windows.Forms.Padding(4);
             this.EnableScpLookups.Name = "EnableScpLookups";
-            this.EnableScpLookups.Size = new System.Drawing.Size(231, 24);
+            this.EnableScpLookups.Size = new System.Drawing.Size(308, 30);
             this.EnableScpLookups.TabIndex = 5;
             this.EnableScpLookups.Text = "Enable SCP Lookups";
             this.EnableScpLookups.UseVisualStyleBackColor = true;
@@ -88,178 +163,173 @@
             // 
             // UserAgentText
             // 
-            this.UserAgentText.Location = new System.Drawing.Point(144, 16);
+            this.UserAgentText.Location = new System.Drawing.Point(192, 20);
+            this.UserAgentText.Margin = new System.Windows.Forms.Padding(4);
             this.UserAgentText.Name = "UserAgentText";
-            this.UserAgentText.Size = new System.Drawing.Size(309, 20);
+            this.UserAgentText.Size = new System.Drawing.Size(411, 22);
             this.UserAgentText.TabIndex = 1;
             // 
             // UserAgentLabel
             // 
-            this.UserAgentLabel.Location = new System.Drawing.Point(10, 19);
+            this.UserAgentLabel.Location = new System.Drawing.Point(13, 23);
+            this.UserAgentLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.UserAgentLabel.Name = "UserAgentLabel";
-            this.UserAgentLabel.Size = new System.Drawing.Size(128, 23);
+            this.UserAgentLabel.Size = new System.Drawing.Size(171, 28);
             this.UserAgentLabel.TabIndex = 0;
             this.UserAgentLabel.Text = "UserAgent Value:";
             // 
             // EnableSslDetailCheck
             // 
-            this.EnableSslDetailCheck.Location = new System.Drawing.Point(13, 63);
+            this.EnableSslDetailCheck.Location = new System.Drawing.Point(17, 90);
+            this.EnableSslDetailCheck.Margin = new System.Windows.Forms.Padding(4);
             this.EnableSslDetailCheck.Name = "EnableSslDetailCheck";
-            this.EnableSslDetailCheck.Size = new System.Drawing.Size(231, 24);
+            this.EnableSslDetailCheck.Size = new System.Drawing.Size(308, 30);
             this.EnableSslDetailCheck.TabIndex = 3;
             this.EnableSslDetailCheck.Text = "Enable detailed SSL certificate log output";
             this.EnableSslDetailCheck.UseVisualStyleBackColor = true;
             // 
             // DumpFolderText
             // 
-            this.DumpFolderText.Location = new System.Drawing.Point(146, 215);
+            this.DumpFolderText.Location = new System.Drawing.Point(195, 265);
+            this.DumpFolderText.Margin = new System.Windows.Forms.Padding(4);
             this.DumpFolderText.Name = "DumpFolderText";
-            this.DumpFolderText.Size = new System.Drawing.Size(100, 20);
+            this.DumpFolderText.Size = new System.Drawing.Size(132, 22);
             this.DumpFolderText.TabIndex = 13;
             // 
             // AllowRedirectsCheck
             // 
-            this.AllowRedirectsCheck.Location = new System.Drawing.Point(13, 82);
+            this.AllowRedirectsCheck.Location = new System.Drawing.Point(17, 116);
+            this.AllowRedirectsCheck.Margin = new System.Windows.Forms.Padding(4);
             this.AllowRedirectsCheck.Name = "AllowRedirectsCheck";
-            this.AllowRedirectsCheck.Size = new System.Drawing.Size(231, 24);
+            this.AllowRedirectsCheck.Size = new System.Drawing.Size(308, 30);
             this.AllowRedirectsCheck.TabIndex = 4;
             this.AllowRedirectsCheck.Text = "Allow Autodiscover redirects";
             this.AllowRedirectsCheck.UseVisualStyleBackColor = true;
             // 
             // FindItemText
             // 
-            this.FindItemText.Location = new System.Drawing.Point(146, 192);
+            this.FindItemText.Location = new System.Drawing.Point(195, 236);
+            this.FindItemText.Margin = new System.Windows.Forms.Padding(4);
             this.FindItemText.Name = "FindItemText";
-            this.FindItemText.Size = new System.Drawing.Size(100, 20);
+            this.FindItemText.Size = new System.Drawing.Size(132, 22);
             this.FindItemText.TabIndex = 11;
             // 
             // OverrideSslCheck
             // 
-            this.OverrideSslCheck.Location = new System.Drawing.Point(13, 42);
+            this.OverrideSslCheck.Location = new System.Drawing.Point(16, 65);
+            this.OverrideSslCheck.Margin = new System.Windows.Forms.Padding(4);
             this.OverrideSslCheck.Name = "OverrideSslCheck";
-            this.OverrideSslCheck.Size = new System.Drawing.Size(231, 24);
+            this.OverrideSslCheck.Size = new System.Drawing.Size(308, 30);
             this.OverrideSslCheck.TabIndex = 2;
             this.OverrideSslCheck.Text = "Override SSL certificate verification";
             this.OverrideSslCheck.UseVisualStyleBackColor = true;
             // 
             // FindFolderText
             // 
-            this.FindFolderText.Location = new System.Drawing.Point(146, 169);
+            this.FindFolderText.Location = new System.Drawing.Point(195, 208);
+            this.FindFolderText.Margin = new System.Windows.Forms.Padding(4);
             this.FindFolderText.Name = "FindFolderText";
-            this.FindFolderText.Size = new System.Drawing.Size(100, 20);
+            this.FindFolderText.Size = new System.Drawing.Size(132, 22);
             this.FindFolderText.TabIndex = 9;
             // 
             // CalendarViewText
             // 
-            this.CalendarViewText.Location = new System.Drawing.Point(146, 143);
+            this.CalendarViewText.Location = new System.Drawing.Point(195, 176);
+            this.CalendarViewText.Margin = new System.Windows.Forms.Padding(4);
             this.CalendarViewText.Name = "CalendarViewText";
-            this.CalendarViewText.Size = new System.Drawing.Size(100, 20);
+            this.CalendarViewText.Size = new System.Drawing.Size(132, 22);
             this.CalendarViewText.TabIndex = 7;
             // 
             // DumpFolderLabel
             // 
-            this.DumpFolderLabel.Location = new System.Drawing.Point(12, 215);
+            this.DumpFolderLabel.Location = new System.Drawing.Point(16, 265);
+            this.DumpFolderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DumpFolderLabel.Name = "DumpFolderLabel";
-            this.DumpFolderLabel.Size = new System.Drawing.Size(128, 23);
+            this.DumpFolderLabel.Size = new System.Drawing.Size(171, 28);
             this.DumpFolderLabel.TabIndex = 12;
             this.DumpFolderLabel.Text = "Dump Folder View Size:";
             // 
             // FindItemLabel
             // 
-            this.FindItemLabel.Location = new System.Drawing.Point(12, 192);
+            this.FindItemLabel.Location = new System.Drawing.Point(16, 236);
+            this.FindItemLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FindItemLabel.Name = "FindItemLabel";
-            this.FindItemLabel.Size = new System.Drawing.Size(128, 23);
+            this.FindItemLabel.Size = new System.Drawing.Size(171, 28);
             this.FindItemLabel.TabIndex = 10;
             this.FindItemLabel.Text = "FindItem View Size:";
             // 
             // FindFolderLabel
             // 
-            this.FindFolderLabel.Location = new System.Drawing.Point(12, 169);
+            this.FindFolderLabel.Location = new System.Drawing.Point(16, 208);
+            this.FindFolderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FindFolderLabel.Name = "FindFolderLabel";
-            this.FindFolderLabel.Size = new System.Drawing.Size(128, 23);
+            this.FindFolderLabel.Size = new System.Drawing.Size(171, 28);
             this.FindFolderLabel.TabIndex = 8;
             this.FindFolderLabel.Text = "FindFolder View Size:";
             // 
             // CalendarViewLabel
             // 
-            this.CalendarViewLabel.Location = new System.Drawing.Point(12, 146);
+            this.CalendarViewLabel.Location = new System.Drawing.Point(16, 180);
+            this.CalendarViewLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CalendarViewLabel.Name = "CalendarViewLabel";
-            this.CalendarViewLabel.Size = new System.Drawing.Size(128, 23);
+            this.CalendarViewLabel.Size = new System.Drawing.Size(171, 28);
             this.CalendarViewLabel.TabIndex = 6;
             this.CalendarViewLabel.Text = "CalendarView Size:";
-            // 
-            // MyCancelButton
-            // 
-            this.MyCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MyCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.MyCancelButton.Location = new System.Drawing.Point(400, 379);
-            this.MyCancelButton.Name = "MyCancelButton";
-            this.MyCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.MyCancelButton.TabIndex = 3;
-            this.MyCancelButton.Text = "Cancel";
-            this.MyCancelButton.UseVisualStyleBackColor = true;
-            this.MyCancelButton.Click += new System.EventHandler(this.MyCancelButton_Click);
-            // 
-            // OkButton
-            // 
-            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(319, 379);
-            this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(75, 23);
-            this.OkButton.TabIndex = 2;
-            this.OkButton.Text = "OK";
-            this.OkButton.UseVisualStyleBackColor = true;
-            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
-            // 
-            // SaveLogFileCheck
-            // 
-            this.SaveLogFileCheck.Location = new System.Drawing.Point(13, 19);
-            this.SaveLogFileCheck.Name = "SaveLogFileCheck";
-            this.SaveLogFileCheck.Size = new System.Drawing.Size(161, 24);
-            this.SaveLogFileCheck.TabIndex = 0;
-            this.SaveLogFileCheck.Text = "Save logging output to a file";
-            this.SaveLogFileCheck.UseVisualStyleBackColor = true;
-            // 
-            // LogFilePathLabel
-            // 
-            this.LogFilePathLabel.Location = new System.Drawing.Point(13, 50);
-            this.LogFilePathLabel.Name = "LogFilePathLabel";
-            this.LogFilePathLabel.Size = new System.Drawing.Size(443, 23);
-            this.LogFilePathLabel.TabIndex = 1;
-            this.LogFilePathLabel.Text = "Log file path:";
-            // 
-            // LogFilePathText
-            // 
-            this.LogFilePathText.Location = new System.Drawing.Point(13, 67);
-            this.LogFilePathText.Name = "LogFilePathText";
-            this.LogFilePathText.Size = new System.Drawing.Size(440, 20);
-            this.LogFilePathText.TabIndex = 2;
             // 
             // LoggingGroup
             // 
             this.LoggingGroup.Controls.Add(this.LogFilePathText);
             this.LoggingGroup.Controls.Add(this.LogFilePathLabel);
             this.LoggingGroup.Controls.Add(this.SaveLogFileCheck);
-            this.LoggingGroup.Location = new System.Drawing.Point(12, 269);
+            this.LoggingGroup.Location = new System.Drawing.Point(20, 419);
+            this.LoggingGroup.Margin = new System.Windows.Forms.Padding(4);
             this.LoggingGroup.Name = "LoggingGroup";
-            this.LoggingGroup.Size = new System.Drawing.Size(462, 105);
+            this.LoggingGroup.Padding = new System.Windows.Forms.Padding(4);
+            this.LoggingGroup.Size = new System.Drawing.Size(616, 129);
             this.LoggingGroup.TabIndex = 1;
             this.LoggingGroup.TabStop = false;
             this.LoggingGroup.Text = "Logging...";
             // 
+            // LogFilePathText
+            // 
+            this.LogFilePathText.Location = new System.Drawing.Point(52, 82);
+            this.LogFilePathText.Margin = new System.Windows.Forms.Padding(4);
+            this.LogFilePathText.Name = "LogFilePathText";
+            this.LogFilePathText.Size = new System.Drawing.Size(550, 22);
+            this.LogFilePathText.TabIndex = 2;
+            // 
+            // LogFilePathLabel
+            // 
+            this.LogFilePathLabel.Location = new System.Drawing.Point(49, 57);
+            this.LogFilePathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LogFilePathLabel.Name = "LogFilePathLabel";
+            this.LogFilePathLabel.Size = new System.Drawing.Size(591, 28);
+            this.LogFilePathLabel.TabIndex = 1;
+            this.LogFilePathLabel.Text = "Log file path:";
+            // 
+            // SaveLogFileCheck
+            // 
+            this.SaveLogFileCheck.Location = new System.Drawing.Point(17, 23);
+            this.SaveLogFileCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.SaveLogFileCheck.Name = "SaveLogFileCheck";
+            this.SaveLogFileCheck.Size = new System.Drawing.Size(215, 30);
+            this.SaveLogFileCheck.TabIndex = 0;
+            this.SaveLogFileCheck.Text = "Save logging output to a file";
+            this.SaveLogFileCheck.UseVisualStyleBackColor = true;
+            // 
             // OptionsDialog
             // 
             this.AcceptButton = this.OkButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.MyCancelButton;
-            this.ClientSize = new System.Drawing.Size(487, 414);
+            this.ClientSize = new System.Drawing.Size(649, 597);
             this.Controls.Add(this.MyCancelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.MiscSettingsGroup);
             this.Controls.Add(this.LoggingGroup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OptionsDialog";
@@ -267,6 +337,7 @@
             this.Load += new System.EventHandler(this.OptionsDialog_Load);
             this.MiscSettingsGroup.ResumeLayout(false);
             this.MiscSettingsGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).EndInit();
             this.LoggingGroup.ResumeLayout(false);
             this.LoggingGroup.PerformLayout();
             this.ResumeLayout(false);
@@ -296,5 +367,8 @@
         private System.Windows.Forms.TextBox UserAgentText;
         private System.Windows.Forms.Label UserAgentLabel;
         private System.Windows.Forms.CheckBox EnableScpLookups;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown numericUpDownTimeout;
+        private System.Windows.Forms.CheckBox chkOverrideTimeout;
     }
 }

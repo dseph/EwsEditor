@@ -38,9 +38,9 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(363, 75);
+            this.btnCancel.Location = new System.Drawing.Point(417, 84);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(81, 33);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -48,9 +48,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(282, 75);
+            this.btnSave.Location = new System.Drawing.Point(330, 84);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(81, 33);
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -60,14 +60,14 @@
             // 
             this.txtValue.Location = new System.Drawing.Point(60, 36);
             this.txtValue.Name = "txtValue";
-            this.txtValue.Size = new System.Drawing.Size(378, 22);
+            this.txtValue.Size = new System.Drawing.Size(432, 22);
             this.txtValue.TabIndex = 3;
             // 
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(60, 6);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(378, 22);
+            this.txtName.Size = new System.Drawing.Size(432, 22);
             this.txtName.TabIndex = 2;
             // 
             // label2
@@ -75,7 +75,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 16);
+            this.label2.Size = new System.Drawing.Size(48, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Value:";
             // 
@@ -84,7 +84,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 16);
+            this.label1.Size = new System.Drawing.Size(49, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name:";
             // 
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 110);
+            this.ClientSize = new System.Drawing.Size(504, 129);
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.txtName);
