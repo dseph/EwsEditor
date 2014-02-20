@@ -66,9 +66,23 @@ namespace EWSEditor.Forms
             this.EnableSslDetailCheck.Checked = GlobalSettings.EnableSslDetailLogging;
             this.AllowRedirectsCheck.Checked = GlobalSettings.AllowAutodiscoverRedirect;
             this.EnableScpLookups.Checked = GlobalSettings.EnableScpLookups;
+            this.PreAuthenticate.Checked = GlobalSettings.PreAuthenticate;
 
             this.chkOverrideTimeout.Checked = GlobalSettings.OverrideTimeout;
             this.numericUpDownTimeout.Value = GlobalSettings.Timeout;
+
+            foreach (TimeZoneInfo tzinfo in TimeZoneInfo.GetSystemTimeZones())
+            {
+                this.cmboSelectedTimeZoneId.Items.Add(tzinfo.Id);
+            }
+            string sDefaultTimezone = TimeZone.CurrentTimeZone.StandardName;
+            int SelectedTimezoneLength = GlobalSettings.SelectedTimeZoneId.Trim().Length;
+            if (SelectedTimezoneLength == 0)
+                this.cmboSelectedTimeZoneId.Text = sDefaultTimezone;
+            else
+                this.cmboSelectedTimeZoneId.Text = GlobalSettings.SelectedTimeZoneId; //TimeZone.CurrentTimeZone.DaylightName;
+            this.chkOverrideTimezone.Checked = GlobalSettings.OverrideTimezone;
+            this.cmboSelectedTimeZoneId.Enabled = this.chkOverrideTimezone.Checked;
         }
 
         private void SaveSettings()
@@ -87,9 +101,14 @@ namespace EWSEditor.Forms
             GlobalSettings.EnableSslDetailLogging = this.EnableSslDetailCheck.Checked;
             GlobalSettings.AllowAutodiscoverRedirect = this.AllowRedirectsCheck.Checked;
             GlobalSettings.EnableScpLookups = this.EnableScpLookups.Checked;
+            GlobalSettings.PreAuthenticate = this.PreAuthenticate.Checked;
 
             GlobalSettings.OverrideTimeout = this.chkOverrideTimeout.Checked;
             GlobalSettings.Timeout = (int)this.numericUpDownTimeout.Value;
+
+            GlobalSettings.OverrideTimezone = this.chkOverrideTimezone.Checked;
+            GlobalSettings.SelectedTimeZoneId = this.cmboSelectedTimeZoneId.Text;
+             
         }
 
         private void EnableScpLookups_CheckedChanged(object sender, EventArgs e)
@@ -100,6 +119,23 @@ namespace EWSEditor.Forms
         private void MiscSettingsGroup_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void chkUseSpecifiedTimezone_CheckedChanged(object sender, EventArgs e)
+        {
+             
+        }
+
+        private void chkOverrideTimezone_CheckedChanged(object sender, EventArgs e)
+        {
+            this.cmboSelectedTimeZoneId.Enabled = this.chkOverrideTimezone.Checked;
+
+
+        }
+
+        private void SaveLogFileCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            this.LogFilePathText.Enabled = this.SaveLogFileCheck.Checked;
         }
     }
 }

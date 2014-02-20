@@ -177,7 +177,7 @@ namespace EWSEditor.Settings
             }
         }
 
-                /// <summary>
+        /// <summary>
         /// Enables SCP Lookups used for Autodisocver
         /// </summary>
         public static bool EnableScpLookups
@@ -192,6 +192,24 @@ namespace EWSEditor.Settings
                 UserSettings.Default.Save();
             }
         }
+
+        /// <summary>
+        /// Enables PreAuthenticate used for EWS calls.
+        /// </summary>
+        public static bool PreAuthenticate
+        {
+            get
+            {
+                return UserSettings.Default.PreAuthenticate;
+            }
+            set
+            {
+                UserSettings.Default.PreAuthenticate = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+     
 
  
         /// <summary>
@@ -224,6 +242,38 @@ namespace EWSEditor.Settings
             set
             {
                 UserSettings.Default.UserAgent = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// This bool indicates if the client timezone should be overrridden on the service object.
+        /// </summary>
+        public static bool OverrideTimezone
+        {
+            get
+            {
+                return UserSettings.Default.OverrideTimezone;
+            }
+            set
+            {
+                UserSettings.Default.OverrideTimezone = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// This bool indicates if the client timezone should be overrridden on the service object.
+        /// </summary>
+        public static string SelectedTimeZoneId
+        {
+            get
+            {
+                return UserSettings.Default.SelectedTimeZoneId;
+            }
+            set
+            {
+                UserSettings.Default.SelectedTimeZoneId = value;
                 UserSettings.Default.Save();
             }
         }
@@ -263,6 +313,8 @@ namespace EWSEditor.Settings
                 UserSettings.Default.Save();
             }
         }
+
+
 
         #region Private Methods
 
