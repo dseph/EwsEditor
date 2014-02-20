@@ -194,8 +194,8 @@ namespace EWSEditor.Common.ServiceProfiles
                 }
 
                 row.UsesDefaultCredentials = item.Service.UseDefaultCredentials;
-                row.UserName = item.Service.GetNetworkCredential().UserName;
-                row.Domain = item.Service.GetNetworkCredential().Domain;
+                //row.UserName = item.Service.GetNetworkCredential().UserName;  //TODO:  The saving and loading of profiles needs to be reworked. 
+                //row.Domain = item.Service.GetNetworkCredential().Domain;
 
                 // Add root folders to the data table.
                 StringBuilder sb = new StringBuilder();

@@ -13,12 +13,15 @@ namespace EWSEditor.Exchange
     public class EwsProxyFactory
     {
         public static ExchangeVersion? RequestedExchangeVersion = null;
-        public static TimeZoneInfo SelectedTimeZone = null;
+        public static bool? OverrideTimezone;
+        public static string SelectedTimeZoneId;
         public static bool? AllowAutodiscoverRedirect = null;
         public static bool? EnableScpLookup;
+        public static bool? PreAuthenticate;
         public static NetworkCredential ServiceCredential = null;
         public static Microsoft.Exchange.WebServices.Data.EmailAddress ServiceEmailAddress = null;
         public static Uri EwsUrl;
+        public static bool? OverrideTimeout;
         public static int? Timeout = null;
         public static bool? UseDefaultCredentials = null;
         public static ImpersonatedUserId UserToImpersonate = null;
@@ -64,10 +67,19 @@ namespace EWSEditor.Exchange
         {
             ExchangeService service = null;
 
+            TimeZoneInfo oTimeZone = null;
+            if (SelectedTimeZoneId != null)
+            {
+                if (OverrideTimezone == true)
+                {
+                    oTimeZone = TimeZoneInfo.FindSystemTimeZoneById(SelectedTimeZoneId);
+                }
+            }
+
             if (RequestedExchangeVersion.HasValue)
             {
-                if (SelectedTimeZone != null)
-                    service = new ExchangeService(RequestedExchangeVersion.Value, SelectedTimeZone);
+                if (oTimeZone != null)
+                    service = new ExchangeService(RequestedExchangeVersion.Value, oTimeZone);
                 else
                     service = new ExchangeService(RequestedExchangeVersion.Value);
 
@@ -77,8 +89,8 @@ namespace EWSEditor.Exchange
             }
             else
             {
-                if (SelectedTimeZone != null)
-                    service = new ExchangeService(SelectedTimeZone);
+                if (oTimeZone != null)
+                    service = new ExchangeService(oTimeZone);
                 else
                     service = new ExchangeService( ); 
             }
@@ -88,10 +100,27 @@ namespace EWSEditor.Exchange
             service.TraceEnabled = true;
             service.TraceListener = new EWSEditor.Logging.EwsTraceListener();
 
+            service.ReturnClientRequestId = true;
+
             if (EnableScpLookup.HasValue)
             {
                 service.EnableScpLookup = EnableScpLookup.Value;
             }
+
+            if (PreAuthenticate.HasValue)
+            {
+                service.PreAuthenticate = PreAuthenticate.Value;
+            }
+
+            if (OverrideTimeout.HasValue)
+            {
+                if (OverrideTimeout == true)
+                {
+                    if (Timeout.HasValue)
+                        service.Timeout = (int)Timeout;
+                }
+            }
+
 
             if (ServiceCredential != null)
             {
@@ -103,10 +132,10 @@ namespace EWSEditor.Exchange
                 service.Url = EwsUrl;
             }
 
-            if (Timeout.HasValue)
-            {
-                service.Timeout = Timeout.Value;
-            }
+            //if (Timeout.HasValue)
+            //{
+            //    service.Timeout = Timeout.Value;
+            //}
 
             if (UseDefaultCredentials.HasValue)
             {

@@ -83,21 +83,28 @@ namespace EWSEditor.Forms
  
                 //EwsProxyFactory.InitializeWithDefaults(exchangeVersionCombo.SelectedIndex,
                 EwsProxyFactory.RequestedExchangeVersion = exchangeVersionCombo.SelectedItem;
-                if (this.chkUseSpecifiedTimezone.Checked)
-                {
-                    TimeZoneInfo oTimeZone = TimeZoneInfo.FindSystemTimeZoneById(cmboTimeZoneIds.Text);
-                    EwsProxyFactory.SelectedTimeZone = oTimeZone;
-                }
-                else
-                {
-                    EwsProxyFactory.SelectedTimeZone = null;
-                }
+
+
+                //if (this.chkUseSpecifiedTimezone.Checked)
+                //{
+                //    TimeZoneInfo oTimeZone = TimeZoneInfo.FindSystemTimeZoneById(cmboTimeZoneIds.Text);
+                //    EwsProxyFactory.SelectedTimeZone = oTimeZone;
+                //}
+                //else
+                //{
+                //    EwsProxyFactory.SelectedTimeZone = null;
+                //}
+
+                EwsProxyFactory.OverrideTimezone = GlobalSettings.OverrideTimezone;
+                EwsProxyFactory.SelectedTimeZoneId = GlobalSettings.SelectedTimeZoneId;
+
                 EwsProxyFactory.AllowAutodiscoverRedirect = GlobalSettings.AllowAutodiscoverRedirect;
                 EwsProxyFactory.UseDefaultCredentials = !chkCredentials.Checked;
                 EwsProxyFactory.EnableScpLookup = GlobalSettings.EnableScpLookups;
+                EwsProxyFactory.PreAuthenticate = GlobalSettings.PreAuthenticate;
 
-                if (GlobalSettings.OverrideTimeout == true)
-                    EwsProxyFactory.Timeout = GlobalSettings.Timeout;
+                EwsProxyFactory.OverrideTimeout = GlobalSettings.OverrideTimeout;
+                EwsProxyFactory.Timeout = GlobalSettings.Timeout;
 
                 EwsProxyFactory.ServiceCredential = chkCredentials.Checked ?
                     new NetworkCredential(
@@ -227,11 +234,7 @@ namespace EWSEditor.Forms
             this.connectingIdCombo.SelectedItem = ConnectingIdType.SmtpAddress;
 
              
-            foreach (TimeZoneInfo tzinfo in TimeZoneInfo.GetSystemTimeZones())
-            {
-                cmboTimeZoneIds.Items.Add(tzinfo.Id);
-            }
-            cmboTimeZoneIds.Text = TimeZone.CurrentTimeZone.DaylightName;
+ 
 
             // If CurrentService is already set then we are editing an
             // existing ExchangeService and need to load it first.
@@ -269,7 +272,7 @@ namespace EWSEditor.Forms
 
         private void chkUseSpecifiedTimezone_CheckedChanged(object sender, EventArgs e)
         {
-            cmboTimeZoneIds.Enabled = chkUseSpecifiedTimezone.Checked;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -336,6 +339,11 @@ namespace EWSEditor.Forms
         private void txtDefaultSmtp_Click(object sender, EventArgs e)
         {
             AutodiscoverEmailText.Text =  UserPrincipal.Current.EmailAddress;
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         //private void btnOptions_Click(object sender, EventArgs e)

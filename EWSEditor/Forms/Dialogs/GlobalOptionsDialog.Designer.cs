@@ -31,7 +31,11 @@
             this.OkButton = new System.Windows.Forms.Button();
             this.MyCancelButton = new System.Windows.Forms.Button();
             this.MiscSettingsGroup = new System.Windows.Forms.GroupBox();
+            this.chkOverrideTimezone = new System.Windows.Forms.CheckBox();
+            this.PreAuthenticate = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.chkOverrideTimeout = new System.Windows.Forms.CheckBox();
+            this.cmboSelectedTimeZoneId = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.numericUpDownTimeout = new System.Windows.Forms.NumericUpDown();
             this.EnableScpLookups = new System.Windows.Forms.CheckBox();
@@ -61,7 +65,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(428, 556);
+            this.OkButton.Location = new System.Drawing.Point(430, 570);
             this.OkButton.Margin = new System.Windows.Forms.Padding(4);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 28);
@@ -74,7 +78,7 @@
             // 
             this.MyCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MyCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.MyCancelButton.Location = new System.Drawing.Point(536, 556);
+            this.MyCancelButton.Location = new System.Drawing.Point(538, 570);
             this.MyCancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.MyCancelButton.Name = "MyCancelButton";
             this.MyCancelButton.Size = new System.Drawing.Size(100, 28);
@@ -85,7 +89,11 @@
             // 
             // MiscSettingsGroup
             // 
+            this.MiscSettingsGroup.Controls.Add(this.chkOverrideTimezone);
+            this.MiscSettingsGroup.Controls.Add(this.PreAuthenticate);
+            this.MiscSettingsGroup.Controls.Add(this.label1);
             this.MiscSettingsGroup.Controls.Add(this.chkOverrideTimeout);
+            this.MiscSettingsGroup.Controls.Add(this.cmboSelectedTimeZoneId);
             this.MiscSettingsGroup.Controls.Add(this.label9);
             this.MiscSettingsGroup.Controls.Add(this.numericUpDownTimeout);
             this.MiscSettingsGroup.Controls.Add(this.EnableScpLookups);
@@ -106,15 +114,46 @@
             this.MiscSettingsGroup.Margin = new System.Windows.Forms.Padding(4);
             this.MiscSettingsGroup.Name = "MiscSettingsGroup";
             this.MiscSettingsGroup.Padding = new System.Windows.Forms.Padding(4);
-            this.MiscSettingsGroup.Size = new System.Drawing.Size(616, 363);
+            this.MiscSettingsGroup.Size = new System.Drawing.Size(616, 426);
             this.MiscSettingsGroup.TabIndex = 0;
             this.MiscSettingsGroup.TabStop = false;
             this.MiscSettingsGroup.Text = "Miscellaneous";
             this.MiscSettingsGroup.Enter += new System.EventHandler(this.MiscSettingsGroup_Enter);
             // 
+            // chkOverrideTimezone
+            // 
+            this.chkOverrideTimezone.Location = new System.Drawing.Point(16, 353);
+            this.chkOverrideTimezone.Margin = new System.Windows.Forms.Padding(4);
+            this.chkOverrideTimezone.Name = "chkOverrideTimezone";
+            this.chkOverrideTimezone.Size = new System.Drawing.Size(469, 23);
+            this.chkOverrideTimezone.TabIndex = 5;
+            this.chkOverrideTimezone.Text = "Use specified timezone:";
+            this.chkOverrideTimezone.UseVisualStyleBackColor = true;
+            this.chkOverrideTimezone.CheckedChanged += new System.EventHandler(this.chkOverrideTimezone_CheckedChanged);
+            // 
+            // PreAuthenticate
+            // 
+            this.PreAuthenticate.AutoSize = true;
+            this.PreAuthenticate.Location = new System.Drawing.Point(17, 166);
+            this.PreAuthenticate.Margin = new System.Windows.Forms.Padding(4);
+            this.PreAuthenticate.Name = "PreAuthenticate";
+            this.PreAuthenticate.Size = new System.Drawing.Size(220, 20);
+            this.PreAuthenticate.TabIndex = 6;
+            this.PreAuthenticate.Text = "Pre-Authenticate HTTP requests";
+            this.PreAuthenticate.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(40, 388);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 22);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "TimeZone:";
+            // 
             // chkOverrideTimeout
             // 
-            this.chkOverrideTimeout.Location = new System.Drawing.Point(16, 317);
+            this.chkOverrideTimeout.Location = new System.Drawing.Point(17, 189);
             this.chkOverrideTimeout.Margin = new System.Windows.Forms.Padding(4);
             this.chkOverrideTimeout.Name = "chkOverrideTimeout";
             this.chkOverrideTimeout.Size = new System.Drawing.Size(166, 30);
@@ -122,19 +161,30 @@
             this.chkOverrideTimeout.Text = "Override timeout:";
             this.chkOverrideTimeout.UseVisualStyleBackColor = true;
             // 
+            // cmboSelectedTimeZoneId
+            // 
+            this.cmboSelectedTimeZoneId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboSelectedTimeZoneId.Enabled = false;
+            this.cmboSelectedTimeZoneId.FormattingEnabled = true;
+            this.cmboSelectedTimeZoneId.Location = new System.Drawing.Point(149, 384);
+            this.cmboSelectedTimeZoneId.Margin = new System.Windows.Forms.Padding(4);
+            this.cmboSelectedTimeZoneId.Name = "cmboSelectedTimeZoneId";
+            this.cmboSelectedTimeZoneId.Size = new System.Drawing.Size(408, 24);
+            this.cmboSelectedTimeZoneId.TabIndex = 6;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(192, 323);
+            this.label9.Location = new System.Drawing.Point(190, 194);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(147, 17);
+            this.label9.Size = new System.Drawing.Size(141, 16);
             this.label9.TabIndex = 77;
             this.label9.Text = "Timeout milliseconds :";
             // 
             // numericUpDownTimeout
             // 
-            this.numericUpDownTimeout.Location = new System.Drawing.Point(347, 318);
+            this.numericUpDownTimeout.Location = new System.Drawing.Point(345, 189);
             this.numericUpDownTimeout.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDownTimeout.Maximum = new decimal(new int[] {
             10000000,
@@ -155,9 +205,9 @@
             this.EnableScpLookups.Location = new System.Drawing.Point(17, 138);
             this.EnableScpLookups.Margin = new System.Windows.Forms.Padding(4);
             this.EnableScpLookups.Name = "EnableScpLookups";
-            this.EnableScpLookups.Size = new System.Drawing.Size(308, 30);
+            this.EnableScpLookups.Size = new System.Drawing.Size(494, 30);
             this.EnableScpLookups.TabIndex = 5;
-            this.EnableScpLookups.Text = "Enable SCP Lookups";
+            this.EnableScpLookups.Text = "Enable SCP Lookups (Disabling will skip AD lookup of Autodiscover URLs)";
             this.EnableScpLookups.UseVisualStyleBackColor = true;
             this.EnableScpLookups.CheckedChanged += new System.EventHandler(this.EnableScpLookups_CheckedChanged);
             // 
@@ -190,7 +240,7 @@
             // 
             // DumpFolderText
             // 
-            this.DumpFolderText.Location = new System.Drawing.Point(195, 265);
+            this.DumpFolderText.Location = new System.Drawing.Point(192, 320);
             this.DumpFolderText.Margin = new System.Windows.Forms.Padding(4);
             this.DumpFolderText.Name = "DumpFolderText";
             this.DumpFolderText.Size = new System.Drawing.Size(132, 22);
@@ -208,7 +258,7 @@
             // 
             // FindItemText
             // 
-            this.FindItemText.Location = new System.Drawing.Point(195, 236);
+            this.FindItemText.Location = new System.Drawing.Point(192, 291);
             this.FindItemText.Margin = new System.Windows.Forms.Padding(4);
             this.FindItemText.Name = "FindItemText";
             this.FindItemText.Size = new System.Drawing.Size(132, 22);
@@ -226,7 +276,7 @@
             // 
             // FindFolderText
             // 
-            this.FindFolderText.Location = new System.Drawing.Point(195, 208);
+            this.FindFolderText.Location = new System.Drawing.Point(192, 263);
             this.FindFolderText.Margin = new System.Windows.Forms.Padding(4);
             this.FindFolderText.Name = "FindFolderText";
             this.FindFolderText.Size = new System.Drawing.Size(132, 22);
@@ -234,7 +284,7 @@
             // 
             // CalendarViewText
             // 
-            this.CalendarViewText.Location = new System.Drawing.Point(195, 176);
+            this.CalendarViewText.Location = new System.Drawing.Point(192, 231);
             this.CalendarViewText.Margin = new System.Windows.Forms.Padding(4);
             this.CalendarViewText.Name = "CalendarViewText";
             this.CalendarViewText.Size = new System.Drawing.Size(132, 22);
@@ -242,7 +292,7 @@
             // 
             // DumpFolderLabel
             // 
-            this.DumpFolderLabel.Location = new System.Drawing.Point(16, 265);
+            this.DumpFolderLabel.Location = new System.Drawing.Point(13, 320);
             this.DumpFolderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DumpFolderLabel.Name = "DumpFolderLabel";
             this.DumpFolderLabel.Size = new System.Drawing.Size(171, 28);
@@ -251,7 +301,7 @@
             // 
             // FindItemLabel
             // 
-            this.FindItemLabel.Location = new System.Drawing.Point(16, 236);
+            this.FindItemLabel.Location = new System.Drawing.Point(13, 291);
             this.FindItemLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FindItemLabel.Name = "FindItemLabel";
             this.FindItemLabel.Size = new System.Drawing.Size(171, 28);
@@ -260,7 +310,7 @@
             // 
             // FindFolderLabel
             // 
-            this.FindFolderLabel.Location = new System.Drawing.Point(16, 208);
+            this.FindFolderLabel.Location = new System.Drawing.Point(13, 263);
             this.FindFolderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.FindFolderLabel.Name = "FindFolderLabel";
             this.FindFolderLabel.Size = new System.Drawing.Size(171, 28);
@@ -269,7 +319,7 @@
             // 
             // CalendarViewLabel
             // 
-            this.CalendarViewLabel.Location = new System.Drawing.Point(16, 180);
+            this.CalendarViewLabel.Location = new System.Drawing.Point(13, 235);
             this.CalendarViewLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CalendarViewLabel.Name = "CalendarViewLabel";
             this.CalendarViewLabel.Size = new System.Drawing.Size(171, 28);
@@ -281,21 +331,21 @@
             this.LoggingGroup.Controls.Add(this.LogFilePathText);
             this.LoggingGroup.Controls.Add(this.LogFilePathLabel);
             this.LoggingGroup.Controls.Add(this.SaveLogFileCheck);
-            this.LoggingGroup.Location = new System.Drawing.Point(20, 419);
+            this.LoggingGroup.Location = new System.Drawing.Point(17, 449);
             this.LoggingGroup.Margin = new System.Windows.Forms.Padding(4);
             this.LoggingGroup.Name = "LoggingGroup";
             this.LoggingGroup.Padding = new System.Windows.Forms.Padding(4);
-            this.LoggingGroup.Size = new System.Drawing.Size(616, 129);
+            this.LoggingGroup.Size = new System.Drawing.Size(616, 84);
             this.LoggingGroup.TabIndex = 1;
             this.LoggingGroup.TabStop = false;
             this.LoggingGroup.Text = "Logging...";
             // 
             // LogFilePathText
             // 
-            this.LogFilePathText.Location = new System.Drawing.Point(52, 82);
+            this.LogFilePathText.Location = new System.Drawing.Point(137, 54);
             this.LogFilePathText.Margin = new System.Windows.Forms.Padding(4);
             this.LogFilePathText.Name = "LogFilePathText";
-            this.LogFilePathText.Size = new System.Drawing.Size(550, 22);
+            this.LogFilePathText.Size = new System.Drawing.Size(466, 22);
             this.LogFilePathText.TabIndex = 2;
             // 
             // LogFilePathLabel
@@ -303,7 +353,7 @@
             this.LogFilePathLabel.Location = new System.Drawing.Point(49, 57);
             this.LogFilePathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LogFilePathLabel.Name = "LogFilePathLabel";
-            this.LogFilePathLabel.Size = new System.Drawing.Size(591, 28);
+            this.LogFilePathLabel.Size = new System.Drawing.Size(459, 21);
             this.LogFilePathLabel.TabIndex = 1;
             this.LogFilePathLabel.Text = "Log file path:";
             // 
@@ -316,6 +366,7 @@
             this.SaveLogFileCheck.TabIndex = 0;
             this.SaveLogFileCheck.Text = "Save logging output to a file";
             this.SaveLogFileCheck.UseVisualStyleBackColor = true;
+            this.SaveLogFileCheck.CheckedChanged += new System.EventHandler(this.SaveLogFileCheck_CheckedChanged);
             // 
             // OptionsDialog
             // 
@@ -323,7 +374,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.MyCancelButton;
-            this.ClientSize = new System.Drawing.Size(649, 597);
+            this.ClientSize = new System.Drawing.Size(651, 611);
             this.Controls.Add(this.MyCancelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.MiscSettingsGroup);
@@ -370,5 +421,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown numericUpDownTimeout;
         private System.Windows.Forms.CheckBox chkOverrideTimeout;
+        private System.Windows.Forms.CheckBox PreAuthenticate;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmboSelectedTimeZoneId;
+        private System.Windows.Forms.CheckBox chkOverrideTimezone;
     }
 }
