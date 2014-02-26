@@ -16,6 +16,8 @@
     using EWSEditor.Common.Extensions;
     using EWSEditor.Resources;
 
+    using System.Net;
+
     using Microsoft.Exchange.WebServices.Data;
 
     public partial class BrowserForm : CountedForm
@@ -610,7 +612,44 @@
             if (UserPrincipal.Current.AccountLockoutTime.HasValue)
                 oSB.AppendFormat("AccountLockoutTime: {0}\r\n", UserPrincipal.Current.AccountLockoutTime.ToString());
 
+            // Machine Information:
+            try
+            {
+                oSB.AppendFormat("\r\n");
+                string sHostMachineName = Dns.GetHostName();
+                IPHostEntry hostInfo = Dns.GetHostEntry(sHostMachineName);
+                IPAddress[] address = hostInfo.AddressList;
+                String[] alias = hostInfo.Aliases;
+
+                oSB.AppendFormat("Machine Name: {0}\r\n", sHostMachineName);
+
+                oSB.AppendFormat("Aliases :\r\n");
+                for (int index = 0; index < alias.Length; index++)
+                {
+                     
+                    oSB.AppendFormat("    {0}\r\n", alias[index]);
+                }
+
+                oSB.AppendFormat("IP address list : \r\n");
+                for (int index = 0; index < address.Length; index++)
+                {
+                    oSB.AppendFormat("    {0}\r\n", address[index] );
+                }
+         
  
+
+
+            }
+            catch(Exception ex)
+            {
+                oSB.AppendFormat("\r\n");
+                oSB.AppendFormat("Error trying to retrieve Host information for this machine:\r\n");
+                oSB.AppendFormat("{0}\r\n", ex.Source);
+                oSB.AppendFormat("{0}\r\n", ex.Message);
+            }
+
+             
+
             string sContent = oSB.ToString();
 
             ShowTextDocument oForm = new ShowTextDocument();
