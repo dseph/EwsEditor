@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:tns="http://schemas.microsoft.com/exchange/services/2006/messages" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/exchange/services/2006/messages" version="Exchange2013" id="messages" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:tns="http://schemas.microsoft.com/exchange/services/2006/messages" xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/exchange/services/2006/messages" version="Exchange2013_SP1" id="messages" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="types.xsd" namespace="http://schemas.microsoft.com/exchange/services/2006/types" />
   <xs:simpleType name="ResponseCodeType">
     <xs:annotation>
@@ -61,7 +61,7 @@
       <xs:enumeration value="ErrorCallerIsInvalidADAccount" />
       <xs:enumeration value="ErrorCannotArchiveCalendarContactTaskFolderException" />
       <xs:enumeration value="ErrorCannotArchiveItemsInPublicFolders" />
-      <xs:enumeration value="ErrorCannotArchiveItemsInArchiveMailbo" />
+      <xs:enumeration value="ErrorCannotArchiveItemsInArchiveMailbox" />
       <xs:enumeration value="ErrorCannotCreateCalendarItemInNonCalendarFolder" />
       <xs:enumeration value="ErrorCannotCreateContactInNonContactFolder" />
       <xs:enumeration value="ErrorCannotCreatePostItemInNonMailFolder" />
@@ -375,6 +375,7 @@
       <xs:enumeration value="ErrorTimeZone" />
       <xs:enumeration value="ErrorToFolderNotFound" />
       <xs:enumeration value="ErrorTokenSerializationDenied" />
+      <xs:enumeration value="ErrorTooManyObjectsOpened" />
       <xs:enumeration value="ErrorUpdatePropertyMismatch" />
       <xs:enumeration value="ErrorUnifiedMessagingDialPlanNotFound" />
       <xs:enumeration value="ErrorUnifiedMessagingReportDataNotFound" />
@@ -445,14 +446,23 @@
       <xs:enumeration value="ErrorLocationServicesRequestTimedOut" />
       <xs:enumeration value="ErrorLocationServicesRequestFailed" />
       <xs:enumeration value="ErrorLocationServicesInvalidRequest" />
+      <xs:enumeration value="ErrorWeatherServiceDisabled" />
       <xs:enumeration value="ErrorMailboxScopeNotAllowedWithoutQueryString" />
       <xs:enumeration value="ErrorArchiveMailboxSearchFailed" />
-      <xs:enumeration value="ErrorArchiveMailboxServiceDiscoveryFailed" />
+      <xs:enumeration value="ErrorGetRemoteArchiveFolderFailed" />
+      <xs:enumeration value="ErrorFindRemoteArchiveFolderFailed" />
+      <xs:enumeration value="ErrorGetRemoteArchiveItemFailed" />
+      <xs:enumeration value="ErrorExportRemoteArchiveItemsFailed" />
       <xs:enumeration value="ErrorInvalidPhotoSize" />
       <xs:enumeration value="ErrorSearchQueryHasTooManyKeywords" />
       <xs:enumeration value="ErrorSearchTooManyMailboxes" />
       <xs:enumeration value="ErrorInvalidRetentionTagNone" />
       <xs:enumeration value="ErrorDiscoverySearchesDisabled" />
+      <xs:enumeration value="ErrorCalendarSeekToConditionNotSupported" />
+      <xs:enumeration value="ErrorCalendarIsGroupMailboxForAccept" />
+      <xs:enumeration value="ErrorCalendarIsGroupMailboxForDecline" />
+      <xs:enumeration value="ErrorCalendarIsGroupMailboxForTentative" />
+      <xs:enumeration value="ErrorCalendarIsGroupMailboxForSuppressReadReceipt" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ResponseMessageType">
@@ -497,6 +507,8 @@
       <xs:element name="GetAppManifestsResponseMessage" type="m:ResponseMessageType" />
       <xs:element name="GetClientExtensionResponseMessage" type="m:ResponseMessageType" />
       <xs:element name="SetClientExtensionResponseMessage" type="m:ResponseMessageType" />
+      <xs:element name="GetEncryptionConfigurationResponseMessage" type="m:ResponseMessageType" />
+      <xs:element name="SetEncryptionConfigurationResponseMessage" type="m:ResponseMessageType" />
       <xs:element name="FindItemResponseMessage" type="m:FindItemResponseMessageType" />
       <xs:element name="MoveItemResponseMessage" type="m:ItemInfoResponseMessageType" />
       <xs:element name="ArchiveItemResponseMessage" type="m:ItemInfoResponseMessageType" />
@@ -540,6 +552,7 @@
       <xs:element name="GetUserRetentionPolicyTagsResponseMessage" type="m:GetUserRetentionPolicyTagsResponseMessageType" />
       <xs:element name="GetUserPhotoResponseMessage" type="m:GetUserPhotoResponseMessageType" />
       <xs:element name="MarkAsJunkResponseMessage" type="m:MarkAsJunkResponseMessageType" />
+      <xs:element name="UpdateMailboxAssociationResponseMessage" type="m:ResponseMessageType" />
     </xs:choice>
   </xs:complexType>
   <xs:complexType name="BaseResponseMessageType">
@@ -810,6 +823,7 @@
         <xs:attribute name="ConflictResolution" type="t:ConflictResolutionType" use="required" />
         <xs:attribute name="MessageDisposition" type="t:MessageDispositionType" use="optional" />
         <xs:attribute name="SendMeetingInvitationsOrCancellations" type="t:CalendarItemUpdateOperationType" use="optional" />
+        <xs:attribute name="SuppressReadReceipts" type="xs:boolean" use="optional" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -864,6 +878,7 @@
         <xs:attribute name="DeleteType" type="t:DisposalType" use="required" />
         <xs:attribute name="SendMeetingCancellations" type="t:CalendarItemCreateOrDeleteOperationType" use="optional" />
         <xs:attribute name="AffectedTaskOccurrences" type="t:AffectedTaskOccurrencesType" use="optional" />
+        <xs:attribute name="SuppressReadReceipts" type="xs:boolean" use="optional" />
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -1044,6 +1059,8 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="People" type="t:ArrayOfPeopleType" />
           <xs:element minOccurs="0" name="TotalNumberOfPeopleInView" type="xs:int" />
+          <xs:element minOccurs="0" name="FirstMatchingRowIndex" type="xs:int" />
+          <xs:element minOccurs="0" name="FirstLoadedRowIndex" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1053,7 +1070,8 @@
     <xs:complexContent mixed="false">
       <xs:extension base="m:BaseRequestType">
         <xs:sequence>
-          <xs:element minOccurs="1" name="PersonaId" type="t:ItemIdType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PersonaId" type="t:ItemIdType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="t:EmailAddressType" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1069,6 +1087,66 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="GetPersonaResponseMessage" type="m:GetPersonaResponseMessageType" />
+  <xs:complexType name="UpdateMailboxAssociationType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="m:BaseRequestType">
+        <xs:sequence>
+          <xs:element minOccurs="1" maxOccurs="1" name="Association" type="t:MailboxAssociationType" />
+          <xs:element minOccurs="1" maxOccurs="1" name="Master" type="t:MasterMailboxType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateMailboxAssociation" type="m:UpdateMailboxAssociationType" />
+  <xs:complexType name="UpdateMailboxAssociationResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="m:BaseResponseMessageType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateMailboxAssociationResponse" type="m:UpdateMailboxAssociationResponseType" />
+  <xs:complexType name="GetFederatedDirectoryUserType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="m:BaseRequestType">
+        <xs:sequence>
+          <xs:element name="ExternalDirectoryObjectId" type="t:NonEmptyStringType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFederatedDirectoryUser" type="m:GetFederatedDirectoryUserType" />
+  <xs:complexType name="GetFederatedDirectoryUserResponseMessageType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="m:ResponseMessageType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Groups" type="t:ArrayOfFederatedDirectoryGroupsType" />
+          <xs:element minOccurs="0" name="PhotoUrl" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFederatedDirectoryUserResponse" type="m:GetFederatedDirectoryUserResponseMessageType" />
+  <xs:complexType name="GetFederatedDirectoryGroupType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="m:BaseRequestType">
+        <xs:sequence>
+          <xs:element name="Properties" type="t:ArrayOfStringsType" />
+          <xs:element name="Identity" type="t:NonEmptyStringType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFederatedDirectoryGroup" type="m:GetFederatedDirectoryGroupType" />
+  <xs:complexType name="GetFederatedDirectoryGroupResponseMessageType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="m:BaseResponseMessageType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Members" type="t:ArrayOfFederatedDirectoryIdentityDetailsType" />
+          <xs:element minOccurs="0" name="Owners" type="t:ArrayOfFederatedDirectoryIdentityDetailsType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFederatedDirectoryGroupResponse" type="m:GetFederatedDirectoryGroupResponseMessageType" />
   <xs:complexType name="CreateAttachmentType">
     <xs:complexContent mixed="false">
       <xs:extension base="m:BaseRequestType">
@@ -2516,6 +2594,7 @@
           <xs:element minOccurs="0" name="IncludeNonIndexableItems" type="xs:boolean" />
           <xs:element minOccurs="0" name="Deduplication" type="xs:boolean" />
           <xs:element minOccurs="0" name="InPlaceHoldIdentity" type="xs:string" />
+          <xs:element minOccurs="0" name="ItemHoldPeriod" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -2672,6 +2751,25 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="GetClientExtensionResponse" type="m:ClientExtensionResponseType" />
+  <xs:complexType name="GetEncryptionConfigurationType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="m:BaseRequestType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetEncryptionConfiguration" type="m:GetEncryptionConfigurationType" />
+  <xs:complexType name="EncryptionConfigurationResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="m:ResponseMessageType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ImageBase64" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EmailText" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PortalText" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DisclaimerText" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetEncryptionConfigurationResponse" type="m:EncryptionConfigurationResponseType" />
   <xs:complexType name="SetClientExtensionType">
     <xs:complexContent mixed="false">
       <xs:extension base="m:BaseRequestType">
@@ -2688,6 +2786,25 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="SetClientExtensionResponse" type="m:SetClientExtensionResponseType" />
+  <xs:complexType name="SetEncryptionConfigurationType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="m:BaseRequestType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ImageBase64" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EmailText" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PortalText" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DisclaimerText" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SetEncryptionConfiguration" type="m:SetEncryptionConfigurationType" />
+  <xs:complexType name="SetEncryptionConfigurationResponseType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="m:ResponseMessageType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SetEncryptionConfigurationResponse" type="m:SetEncryptionConfigurationResponseType" />
   <xs:complexType name="GetAppManifestsType">
     <xs:complexContent mixed="false">
       <xs:extension base="m:BaseRequestType" />
