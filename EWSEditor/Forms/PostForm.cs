@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using EWSEditor.Common;
 using System.Net;
 using System.Web;
-
+using System.Net.Sockets;
  
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
@@ -61,18 +61,17 @@ namespace EWSEditor.Common
 
         private void GoRun_Click(object sender, EventArgs e)
         {
-            if (chkRawPost.Checked == false)
-                DoPostByHttpVerb();
+            Int32 UsePort = 443;
+            string sResponse = string.Empty;
+            if (cmboVerb.Text == "Sockets")
+            {
+                DoRawPost(txtUrl.Text, txtRequest.Text, UsePort, ref sResponse, 10000);
+                txtResponse.Text = sResponse;
+            }
             else
-                DoRawPost();
+                DoPostByHttpVerb();
         }
-        private void DoRawPost()
-        {
 
-
-         
-
-        }
         private void DoPostByHttpVerb()
         { 
             string  sResult = string.Empty;
@@ -99,6 +98,17 @@ namespace EWSEditor.Common
                     oHeadersList.Add(new KeyValuePair<string, string>(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString()));
                 }
             }
+
+            //string sUrl = string.Empty;
+            //if (cmboVerb.Text == "  ")
+            //{
+            //    sUrl = txtUrl.Text.Trim();
+            //}
+            //else
+            //{
+            //    sUrl = txtUrl.Text.Trim();
+
+            //}
              
 
             CredentialCache oCredentialCache = new CredentialCache();
@@ -158,7 +168,15 @@ namespace EWSEditor.Common
         private void PostForm_Load(object sender, EventArgs e)
         {
             SetFields();
-            EwsPostEnablement();
+
+            cmboVerb.Items.Clear();
+            cmboVerb.Items.Add("POST");
+            cmboVerb.Items.Add("GET");
+            cmboVerb.Items.Add("PUT");
+            //cmboVerb.Items.Add("Sockets");
+            //cmboVerb.Items.Add("HttpWebRequest RAW");
+ 
+            //EwsPostEnablement();
         }
 
         private void btnLoadSettings_Click(object sender, EventArgs e)
@@ -301,7 +319,7 @@ namespace EWSEditor.Common
                 this.cmboVerb.Text = FixSetting(oPostFormSetting.Verb);
                 this.cmboContentType.Text = FixSetting(oPostFormSetting.ContentType);
 
-                this.chkRawPost.Checked = oPostFormSetting.RawPost;
+                //this.chkRawPost.Checked = oPostFormSetting.RawPost;
                 UInt32 iTimeoutSeconds = 0;
                 iTimeoutSeconds = Convert.ToUInt32(oPostFormSetting.TimeoutSeconds);
                 this.numericUpDownTimeoutSeconds.Value = iTimeoutSeconds;
@@ -388,21 +406,246 @@ namespace EWSEditor.Common
 
         private void chkRawPost_CheckedChanged(object sender, EventArgs e)
         {
-            EwsPostEnablement();
+            //EwsPostEnablement();
         }
 
-        private void EwsPostEnablement()
+        //private void EwsPostEnablement()
+        //{
+        //    if (chkRawPost.Checked == true)
+        //    {
+        //        grpHttpVerbOptions.Enabled = false;
+        //    }
+        //    else
+        //    {
+        //        grpHttpVerbOptions.Enabled = true;
+        //    }
+
+        //}
+
+
+        // Sockets code taken from sample from: http://code.msdn.microsoft.com/windowsdesktop/Communication-through-91a2582b
+        private bool DoRawPost(string sServer, string sRequest, Int32 PortNumber, ref string sResponse, int iTimeOut)
         {
-            if (chkRawPost.Checked == true)
+            // Receiving byte array  
+            byte[] bytes = new byte[1024]; 
+            Socket senderSock = null;
+            int iMaxTick = 0;
+            
+            bool bError = false;
+
+            string sInfo = string.Empty;
+
+            try
             {
-                grpHttpVerbOptions.Enabled = false;
+
+                // Connection ---------------------------------------------------------------------------------------
+
+ 
+                SocketPermission permission = new SocketPermission(
+                    NetworkAccess.Connect,     
+                    TransportType.Tcp,         
+                    "",                       
+                    SocketPermission.AllPorts  
+                    );
+
+ 
+                permission.Demand();  // Make sure we have permisssion to access the socket.
+
+                IPHostEntry ipHost = Dns.GetHostEntry(sServer);
+                IPAddress ipAddr = ipHost.AddressList[0];  // Get first IP
+
+                IPEndPoint ipEndPoint = new IPEndPoint(ipAddr, PortNumber);  // Set endpoint
+ 
+                senderSock = new Socket(
+                    ipAddr.AddressFamily, 
+                    SocketType.Stream,   
+                    ProtocolType.Tcp     
+                    );
+
+                senderSock.NoDelay = false;    
+                senderSock.Connect(ipEndPoint);   
+
+                System.Diagnostics.Debug.WriteLine("Socket is connected to: " + senderSock.RemoteEndPoint.ToString());
+ 
             }
-            else
+            catch (SocketException SocketEx)
             {
-                grpHttpVerbOptions.Enabled = true;
+                //MessageBox.Show(exc.ToString());
+                sInfo += "\r\n\r\n" + SocketEx.ToString() + "\r\n\r\n";
+                bError = true;
+
+            }
+            catch (Exception exc) 
+            { 
+                //MessageBox.Show(exc.ToString());
+                sInfo += "\r\n\r\n" + exc.ToString() + "\r\n\r\n";
+                bError = true;
+            
             }
 
+            // Send -----------------------------------------------------------------------------------------------
+            if (bError == false)
+            {
+                bool bDoLoopSend = false;
+                iMaxTick = Environment.TickCount + iTimeOut;
+
+                do {
+
+                    if (Environment.TickCount > iMaxTick)
+                    {
+                        sInfo += "\r\n\r\n" + "Error - Timed Out on Send" + "\r\n\r\n";
+                        bError = true;
+                        bDoLoopSend = false;
+                    }
+
+                    if (bError == false)
+                    {
+                        try
+                        {
+
+                            //<Client Quit> is the sign for end of data 
+                            string theMessageToSend = sRequest;
+                            byte[] msg = Encoding.Unicode.GetBytes(theMessageToSend + "<Client Quit>");  //<Client Quit> is the sign for end of data 
+
+                            // Sends data to a connected Socket. 
+                            int bytesSend = senderSock.Send(msg);
+                            bDoLoopSend = false;
+
+                        }
+                        catch (SocketException SocketEx)
+                        {
+                            if (SocketEx.SocketErrorCode == SocketError.IOPending || SocketEx.SocketErrorCode == SocketError.WouldBlock || SocketEx.SocketErrorCode == SocketError.NoBufferSpaceAvailable)
+                            {
+                                bDoLoopSend = true;
+                                System.Threading.Thread.Sleep(100);  // Wait 1/10th of a second.
+                            }
+                            else
+                            {
+                                sInfo += "\r\n\r\n" + "Error sending - " + SocketEx.ToString() + "\r\n\r\n";
+                                bError = true;
+                            }
+
+                        }
+                        catch (Exception exc)
+                        {
+                            //MessageBox.Show(exc.ToString());
+                            sInfo += "\r\n\r\n" + "Error sending - " + exc.ToString() + "\r\n\r\n";
+                            bError = true;
+
+                        }
+
+                    }
+
+                } while (bDoLoopSend == true);
+            }
+
+            // Receive Data ------------------------------------------------------------------------------------------
+            // http://www.csharp-examples.net/socket-send-receive/
+
+            if (bError == false)
+            {
+                bool bDoReceiveLoop= false;
+                iMaxTick = Environment.TickCount + iTimeOut;
+                StringBuilder oSB = new StringBuilder();
+                int iReceivedBytes = 0;
+                do {
+
+                    if (Environment.TickCount > iMaxTick)
+                    {
+                        sInfo += "\r\n\r\n" + "Error - Timed Out on Send" + "\r\n\r\n";
+                        bError = true;
+                        bDoReceiveLoop = false;
+                    }
+
+                    if (bError == false)
+                    {
+
+                        try
+                        {
+                            // Receives data from a bound Socket. 
+                            iReceivedBytes = senderSock.Receive(bytes);
+ 
+                            // Converts byte array to string 
+                            String theMessageToReceive = Encoding.Unicode.GetString(bytes, 0, iReceivedBytes);
+                            // Continues to read the data till data isn't available 
+                            while (senderSock.Available > 0)
+                            {
+                                iReceivedBytes += senderSock.Receive(bytes);
+                                oSB.Append(Encoding.Unicode.GetString(bytes, 0, iReceivedBytes));
+                                bDoReceiveLoop = false;
+
+                                //theMessageToReceive += Encoding.Unicode.GetString(bytes, 0, iReceivedBytes);
+                            }
+
+                            theMessageToReceive = oSB.ToString();
+
+                            sInfo = theMessageToReceive;
+                            //tbReceivedMsg.Text = "The server reply: " + theMessageToReceive;
+                        }
+                        catch (SocketException SocketEx)
+                        {
+                            if (SocketEx.SocketErrorCode == SocketError.IOPending || SocketEx.SocketErrorCode == SocketError.WouldBlock || SocketEx.SocketErrorCode == SocketError.NoBufferSpaceAvailable)
+                            {
+                                bDoReceiveLoop = true;
+                                System.Threading.Thread.Sleep(100);  // Wait 1/10th of a second.
+                            }
+                            else
+                            {
+                                sInfo += "\r\n\r\n" + "Error receiving - " + SocketEx.ToString() + "\r\n\r\n";
+                                bError = true;
+                            }
+
+
+                        }
+                        catch (Exception exc)
+                        {
+                            //MessageBox.Show(exc.ToString());
+                            sInfo += "\r\n\r\n" + "Error receiving - " + exc.ToString() + "\r\n\r\n";
+                            bError = true;
+                        }
+
+                    }
+                } while (bDoReceiveLoop == true);
+            
+            }
+
+            // Disconnect ---------------------------------------------------------------------------------------
+            try
+            {
+                // Disables sends and receives on a Socket. 
+                senderSock.Shutdown(SocketShutdown.Both);
+
+                //Closes the Socket connection and releases all resources 
+                senderSock.Close();
+
+                //Disconnect_Button.IsEnabled = false;
+            }
+            catch (SocketException SocketEx)
+            {
+                //MessageBox.Show(exc.ToString());
+                sInfo += "\r\n\r\n" + SocketEx.ToString() + "\r\n\r\n";
+                bError = true;
+
+            }
+            catch (Exception exc) 
+            { 
+                MessageBox.Show(exc.ToString());
+                sInfo += "\r\n\r\n" + exc.ToString() + "\r\n\r\n";
+                bError = true;
+            }
+
+            sResponse = sInfo;
+
+            return bError;
         }
+
+        private void cmboVerb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+ 
+         
+        // End of class
     }
 
     

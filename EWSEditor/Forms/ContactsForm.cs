@@ -146,7 +146,7 @@ namespace EWSEditor.Forms
             oContact.JobTitle = txtJobTitle.Text;
             //oContact.Notes = txtNotes.Text;  /// Its read only???
 
-            PhysicalAddressEntry oBusinessAddress = null;
+           // PhysicalAddressEntry oBusinessAddress = null;
             if (
                 (txtBA_Street.Text.Trim().Length != 0) ||
                 (txtBA_City.Text.Trim().Length != 0) ||
