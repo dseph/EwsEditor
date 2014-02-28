@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/exchange/services/2006/types" version="Exchange2013" id="types" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.microsoft.com/exchange/services/2006/types" xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/exchange/services/2006/types" version="Exchange2013_SP1" id="types" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://www.w3.org/XML/1998/namespace" />
   <xs:complexType name="MailboxCultureType">
     <xs:simpleContent>
@@ -57,11 +57,31 @@
   <xs:element name="SerializedSecurityContext" type="t:SerializedSecurityContextType" />
   <xs:complexType name="ConnectingSIDType">
     <xs:choice>
-      <xs:element name="PrincipalName" type="t:NonEmptyStringType" />
-      <xs:element name="SID" type="t:NonEmptyStringType" />
-      <xs:element name="PrimarySmtpAddress" type="t:NonEmptyStringType" />
-      <xs:element name="SmtpAddress" type="t:NonEmptyStringType" />
+      <xs:element name="PrincipalName" type="t:PrincipalNameType" />
+      <xs:element name="SID" type="t:SIDType" />
+      <xs:element name="PrimarySmtpAddress" type="t:PrimarySmtpAddressType" />
+      <xs:element name="SmtpAddress" type="t:SmtpAddressType" />
     </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="PrincipalNameType">
+    <xs:simpleContent>
+      <xs:extension base="t:NonEmptyStringType" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SIDType">
+    <xs:simpleContent>
+      <xs:extension base="t:NonEmptyStringType" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="PrimarySmtpAddressType">
+    <xs:simpleContent>
+      <xs:extension base="t:NonEmptyStringType" />
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="SmtpAddressType">
+    <xs:simpleContent>
+      <xs:extension base="t:NonEmptyStringType" />
+    </xs:simpleContent>
   </xs:complexType>
   <xs:complexType name="ExchangeImpersonationType">
     <xs:sequence>
@@ -105,6 +125,7 @@
       <xs:enumeration value="Exchange2010_SP1" />
       <xs:enumeration value="Exchange2010_SP2" />
       <xs:enumeration value="Exchange2013" />
+      <xs:enumeration value="Exchange2013_SP1" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="ProxySecurityContextType">
@@ -132,7 +153,7 @@
   </xs:element>
   <xs:element name="RequestServerVersion">
     <xs:complexType>
-      <xs:attribute fixed="Exchange2013" name="Version" type="t:ExchangeVersionType" use="required" />
+      <xs:attribute fixed="Exchange2013_SP1" name="Version" type="t:ExchangeVersionType" use="required" />
       <xs:anyAttribute namespace="http://schemas.xmlsoap.org/soap/envelope/">
         <xs:annotation>
           <xs:documentation>Allow attributes in the soap namespace to be used here</xs:documentation>
@@ -165,6 +186,7 @@
       <xs:enumeration value="PrivateDL" />
       <xs:enumeration value="Contact" />
       <xs:enumeration value="PublicFolder" />
+      <xs:enumeration value="GroupMailbox" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="EmailAddressType">
@@ -220,6 +242,7 @@
       <xs:element minOccurs="1" maxOccurs="1" name="ItemId" type="t:ItemIdType" />
       <xs:element minOccurs="0" maxOccurs="1" name="RecurringMasterItemId" type="t:ItemIdType" />
       <xs:element minOccurs="0" maxOccurs="1" name="ReminderGroup" type="t:ReminderGroupType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="UID" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ArrayOfRemindersType">
@@ -301,6 +324,8 @@
       <xs:enumeration value="item:Preview" />
       <xs:enumeration value="item:NextPredictedAction" />
       <xs:enumeration value="item:GroupingAction" />
+      <xs:enumeration value="item:PredictedActionReasons" />
+      <xs:enumeration value="item:IsClutter" />
       <xs:enumeration value="item:RightsManagementLicenseData" />
       <xs:enumeration value="item:BlockStatus" />
       <xs:enumeration value="item:HasBlockedImages" />
@@ -324,6 +349,9 @@
       <xs:enumeration value="message:ToRecipients" />
       <xs:enumeration value="message:CcRecipients" />
       <xs:enumeration value="message:BccRecipients" />
+      <xs:enumeration value="message:ApprovalRequestData" />
+      <xs:enumeration value="message:VotingInformation" />
+      <xs:enumeration value="message:ReminderMessageData" />
       <xs:enumeration value="meeting:AssociatedCalendarItemId" />
       <xs:enumeration value="meeting:IsDelegated" />
       <xs:enumeration value="meeting:IsOutOfDate" />
@@ -468,6 +496,8 @@
       <xs:enumeration value="conversation:GlobalFlagStatus" />
       <xs:enumeration value="conversation:HasAttachments" />
       <xs:enumeration value="conversation:GlobalHasAttachments" />
+      <xs:enumeration value="conversation:HasIrm" />
+      <xs:enumeration value="conversation:GlobalHasIrm" />
       <xs:enumeration value="conversation:MessageCount" />
       <xs:enumeration value="conversation:GlobalMessageCount" />
       <xs:enumeration value="conversation:UnreadCount" />
@@ -488,6 +518,7 @@
       <xs:enumeration value="conversation:IconIndex" />
       <xs:enumeration value="conversation:GlobalIconIndex" />
       <xs:enumeration value="conversation:DraftItemIds" />
+      <xs:enumeration value="conversation:HasClutter" />
       <xs:enumeration value="persona:PersonaId" />
       <xs:enumeration value="persona:PersonaType" />
       <xs:enumeration value="persona:GivenName" />
@@ -829,6 +860,8 @@
       <xs:element name="BaseShape" type="t:DefaultShapeNamesType" />
       <xs:element minOccurs="0" name="IncludeMimeContent" type="xs:boolean" />
       <xs:element minOccurs="0" name="BodyType" type="t:BodyTypeResponseType" />
+      <xs:element minOccurs="0" name="UniqueBodyType" type="t:BodyTypeResponseType" />
+      <xs:element minOccurs="0" name="NormalizedBodyType" type="t:BodyTypeResponseType" />
       <xs:element minOccurs="0" maxOccurs="1" name="FilterHtmlContent" type="xs:boolean" />
       <xs:element minOccurs="0" maxOccurs="1" name="ConvertHtmlCodePageToUTF8" type="xs:boolean" />
       <xs:element minOccurs="0" maxOccurs="1" name="InlineImageUrlTemplate" type="xs:string" />
@@ -879,6 +912,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="CallerIdentity" />
       <xs:enumeration value="ExtensionCallback" />
+      <xs:enumeration value="ScopedToken" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="NonEmptyArrayOfClientAccessTokenRequestsType">
@@ -890,6 +924,7 @@
     <xs:sequence>
       <xs:element name="Id" type="xs:string" />
       <xs:element name="TokenType" type="t:ClientAccessTokenTypeType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Scope" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ClientAccessTokenType">
@@ -1043,6 +1078,11 @@
       <xs:element maxOccurs="unbounded" name="InternetMessageHeader" type="t:InternetHeaderType" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="NonEmptyArrayOfPredictedActionReasonType">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="PredictedActionReason" type="t:PredictedActionReasonType" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="RequestAttachmentIdType">
     <xs:complexContent mixed="false">
       <xs:extension base="t:BaseItemIdType">
@@ -1126,6 +1166,15 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="ReferenceAttachmentType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="t:AttachmentType">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="AttachLongPathName" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="ArrayOfAttachmentsType">
     <xs:choice minOccurs="0" maxOccurs="unbounded">
       <xs:element name="ItemAttachment" type="t:ItemAttachmentType" />
@@ -1163,6 +1212,22 @@
     <xs:simpleContent>
       <xs:extension base="xs:string">
         <xs:attribute name="BodyType" type="t:BodyTypeType" use="required" />
+        <xs:attribute name="IsTruncated" type="xs:boolean" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="UniqueBodyType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="UniqueBodyType" type="t:BodyTypeType" use="required" />
+        <xs:attribute name="IsTruncated" type="xs:boolean" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="NormalizedBodyType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="NormalizedBodyType" type="t:BodyTypeType" use="required" />
         <xs:attribute name="IsTruncated" type="xs:boolean" use="optional" />
       </xs:extension>
     </xs:simpleContent>
@@ -1220,6 +1285,7 @@
       <xs:enumeration value="directory" />
       <xs:enumeration value="imcontactlist" />
       <xs:enumeration value="peopleconnect" />
+      <xs:enumeration value="favorites" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="DistinguishedFolderIdType">
@@ -1317,9 +1383,8 @@
       <xs:enumeration value="TaskActive" />
       <xs:enumeration value="TaskOverdue" />
       <xs:enumeration value="TaskCompleted" />
-      <xs:enumeration value="Suggestions" />
-      <xs:enumeration value="SuggestionsRespond" />
-      <xs:enumeration value="SuggestionsDelete" />
+      <xs:enumeration value="NoClutter" />
+      <xs:enumeration value="Clutter" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="FindFolderParentType">
@@ -1527,6 +1592,8 @@
       <xs:element name="SuppressReadReceipt" type="t:SuppressReadReceiptType" />
       <xs:element name="PostReplyItem" type="t:PostReplyItemType" />
       <xs:element name="AcceptSharingInvitation" type="t:AcceptSharingInvitationType" />
+      <xs:element name="AddItemToMyCalendar" type="t:AddItemToMyCalendarType" />
+      <xs:element name="ProposeNewTime" type="t:ProposeNewTimeType" />
     </xs:choice>
   </xs:complexType>
   <xs:complexType name="FolderChangeType">
@@ -1687,6 +1754,8 @@
       <xs:element minOccurs="0" name="RightsManagementLicenseData" type="t:RightsManagementLicenseDataType" />
       <xs:element minOccurs="0" name="NextPredictedAction" type="t:PredictedMessageActionType" />
       <xs:element minOccurs="0" name="GroupingAction" type="t:PredictedMessageActionType" />
+      <xs:element minOccurs="0" name="PredictedActionReasons" type="t:NonEmptyArrayOfPredictedActionReasonType" />
+      <xs:element minOccurs="0" name="IsClutter" type="xs:boolean" />
       <xs:element minOccurs="0" name="BlockStatus" type="xs:boolean" />
       <xs:element minOccurs="0" name="HasBlockedImages" type="xs:boolean" />
       <xs:element minOccurs="0" name="TextBody" type="t:BodyType" />
@@ -1716,12 +1785,27 @@
   <xs:simpleType name="PredictedMessageActionType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="None" />
-      <xs:enumeration value="Respond" />
-      <xs:enumeration value="FollowUp" />
-      <xs:enumeration value="MoveToFolder" />
-      <xs:enumeration value="Delete" />
-      <xs:enumeration value="Read" />
-      <xs:enumeration value="Ignore" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="PredictedActionReasonType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="ConversationStarterIsYou" />
+      <xs:enumeration value="OnlyRecipient" />
+      <xs:enumeration value="ConversationContributions" />
+      <xs:enumeration value="MarkedImportantBySender" />
+      <xs:enumeration value="SenderIsManager" />
+      <xs:enumeration value="SenderIsInManagementChain" />
+      <xs:enumeration value="SenderIsDirectReport" />
+      <xs:enumeration value="ActionBasedOnSender" />
+      <xs:enumeration value="NameOnToLine" />
+      <xs:enumeration value="NameOnCcLine" />
+      <xs:enumeration value="ManagerPosition" />
+      <xs:enumeration value="ReplyToAMessageFromMe" />
+      <xs:enumeration value="PreviouslyFlagged" />
+      <xs:enumeration value="ActionBasedOnRecipients" />
+      <xs:enumeration value="ActionBasedOnSubjectWords" />
+      <xs:enumeration value="ActionBasedOnBasedOnBodyWords" />
     </xs:restriction>
   </xs:simpleType>
   <xs:complexType name="EntityType">
@@ -1993,6 +2077,8 @@
       <xs:element minOccurs="0" name="IconIndex" type="t:IconIndexType" />
       <xs:element minOccurs="0" name="GlobalIconIndex" type="t:IconIndexType" />
       <xs:element minOccurs="0" name="DraftItemIds" type="t:NonEmptyArrayOfBaseItemIdsType" />
+      <xs:element minOccurs="0" name="HasIrm" type="xs:boolean" />
+      <xs:element minOccurs="0" name="GlobalHasIrm" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="HighlightTermType">
@@ -2289,6 +2375,95 @@
       <xs:element name="Persona" type="t:PersonaType" />
     </xs:choice>
   </xs:complexType>
+  <xs:complexType name="MailboxLocatorType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ExternalDirectoryObjectId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LegacyDn" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GroupLocatorType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="t:MailboxLocatorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="UserLocatorType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="t:MailboxLocatorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="MailboxAssociationType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Group" type="t:GroupLocatorType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="User" type="t:UserLocatorType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IsMember" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="JoinDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IsPin" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="JoinedBy" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MasterMailboxType">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="MailboxType" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Alias" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DisplayName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SmtpAddress" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="GroupType" type="t:ModernGroupTypeType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Photo" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SharePointUrl" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InboxUrl" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CalendarUrl" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DomainController" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="ModernGroupTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Private" />
+      <xs:enumeration value="Secret" />
+      <xs:enumeration value="Public" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="FederatedDirectoryGroupType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Alias" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="CalendarUrl" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="DisplayName" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExternalDirectoryObjectId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="GroupType" type="t:FederatedDirectoryGroupTypeType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="InboxUrl" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IsMember" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="IsPinned" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="JoinDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LegacyDn" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PeopleUrl" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PhotoUrl" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="SmtpAddress" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfFederatedDirectoryGroupsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Group" type="t:FederatedDirectoryGroupType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FederatedDirectoryIdentityDetailsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="ExternalDirectoryObjectId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfFederatedDirectoryIdentityDetailsType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IdentityDetails" type="t:FederatedDirectoryIdentityDetailsType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="FederatedDirectoryGroupTypeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Private" />
+      <xs:enumeration value="Secret" />
+      <xs:enumeration value="Public" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:complexType name="ArrayOfStringsType">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="String" type="xs:string" />
@@ -2339,22 +2514,42 @@
       </xs:choice>
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="MeetingRegistrationResponseObjectType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="t:WellKnownResponseObjectType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ProposedStart" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ProposedEnd" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="AcceptItemType">
     <xs:complexContent mixed="false">
-      <xs:extension base="t:WellKnownResponseObjectType" />
+      <xs:extension base="t:MeetingRegistrationResponseObjectType" />
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="TentativelyAcceptItemType">
     <xs:complexContent mixed="false">
-      <xs:extension base="t:WellKnownResponseObjectType" />
+      <xs:extension base="t:MeetingRegistrationResponseObjectType" />
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="DeclineItemType">
     <xs:complexContent mixed="false">
-      <xs:extension base="t:WellKnownResponseObjectType" />
+      <xs:extension base="t:MeetingRegistrationResponseObjectType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ProposeNewTimeType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="t:ResponseObjectType" />
     </xs:complexContent>
   </xs:complexType>
   <xs:complexType name="RemoveItemType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="t:ResponseObjectType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="AddItemToMyCalendarType">
     <xs:complexContent mixed="false">
       <xs:extension base="t:ResponseObjectType" />
     </xs:complexContent>
@@ -2436,6 +2631,9 @@
           <xs:element minOccurs="0" name="ReplyTo" type="t:ArrayOfRecipientsType" />
           <xs:element minOccurs="0" name="ReceivedBy" type="t:SingleRecipientType" />
           <xs:element minOccurs="0" name="ReceivedRepresenting" type="t:SingleRecipientType" />
+          <xs:element minOccurs="0" name="ApprovalRequestData" type="t:ApprovalRequestDataType" />
+          <xs:element minOccurs="0" name="VotingInformation" type="t:VotingInformationType" />
+          <xs:element minOccurs="0" name="ReminderMessageData" type="t:ReminderMessageDataType" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -2680,6 +2878,8 @@
       <xs:element name="Mailbox" type="t:EmailAddressType" />
       <xs:element minOccurs="0" name="ResponseType" type="t:ResponseTypeType" />
       <xs:element minOccurs="0" name="LastResponseTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ProposedStart" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ProposedEnd" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="NonEmptyArrayOfAttendeesType">
@@ -4249,6 +4449,46 @@
     </xs:simpleContent>
   </xs:complexType>
   <xs:element name="Value" type="t:Value" />
+  <xs:complexType name="ApprovalRequestDataType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsUndecidedApprovalRequest" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ApprovalDecision" type="xs:int" />
+      <xs:element minOccurs="0" name="ApprovalDecisionMaker" type="xs:string" />
+      <xs:element minOccurs="0" name="ApprovalDecisionTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ReminderMessageDataType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ReminderText" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EndTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="SendPromptType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Send" />
+      <xs:enumeration value="VotingOption" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="VotingOptionDataType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayName" type="xs:string" />
+      <xs:element minOccurs="0" name="SendPrompt" type="t:SendPromptType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfVotingOptionDataType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VotingOptionData" type="t:VotingOptionDataType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="VotingInformationType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="UserOptions" type="t:ArrayOfVotingOptionDataType" />
+      <xs:element minOccurs="0" name="VotingResponse" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:simpleType name="IdFormatType">
     <xs:annotation>
       <xs:documentation>Surfaces the various id types that are supported for conversion</xs:documentation>
@@ -5386,6 +5626,27 @@
       <xs:element minOccurs="0" maxOccurs="1" name="KeywordStatisticsSearchResult" type="t:KeywordStatisticsSearchResultType" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="ExtendedAttributeType">
+    <xs:annotation>
+      <xs:documentation>
+        Extended attributes of a target mailbox.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="Name" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="Value" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfExtendedAttributesType">
+    <xs:annotation>
+      <xs:documentation>
+        Array of extended attributes of a target mailbox
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExtendedAttribute" type="t:ExtendedAttributeType" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:simpleType name="MailboxSearchLocationType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="PrimaryOnly" />
@@ -5396,12 +5657,13 @@
   <xs:complexType name="MailboxSearchScopeType">
     <xs:annotation>
       <xs:documentation>
-        Pair of mailbox and its search scope.
+        Set of mailbox, search scope and its extended attributes.
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element minOccurs="1" maxOccurs="1" name="Mailbox" type="xs:string" />
       <xs:element minOccurs="1" maxOccurs="1" name="SearchScope" type="t:MailboxSearchLocationType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ExtendedAttributes" type="t:ArrayOfExtendedAttributesType" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="NonEmptyArrayOfMailboxSearchScopesType">
@@ -5744,6 +6006,7 @@
       <xs:element minOccurs="0" maxOccurs="1" name="SearchableMailboxes" type="t:ArrayOfSearchableMailboxesType" />
       <xs:element minOccurs="0" maxOccurs="1" name="InPlaceHoldIdentity" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="1" name="ManagedByOrganization" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Language" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="ArrayOfDiscoverySearchConfigurationType">
@@ -5878,6 +6141,8 @@
     <xs:attribute name="Scope" type="t:ClientExtensionScopeType" use="optional" />
     <xs:attribute name="MarketplaceAssetId" type="xs:string" use="optional" />
     <xs:attribute name="MarketplaceContentMarket" type="xs:string" use="optional" />
+    <xs:attribute name="AppStatus" type="xs:string" use="optional" />
+    <xs:attribute name="Etoken" type="xs:string" use="optional" />
   </xs:complexType>
   <xs:complexType name="GetClientExtensionUserParametersType">
     <xs:sequence>
