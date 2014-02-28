@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.IO;
-using System.Net;
+ 
 
 //using Microsoft.Exchange.WebServices.Data
 
@@ -58,13 +58,6 @@ namespace EWSEditor.Common
             {
 
                 oHttpWebRequest = (HttpWebRequest)WebRequest.Create(sUrl);
-                oHttpWebRequest.Method = sVerb;
-                oHttpWebRequest.ContentType = sContentType;
-                if (sUserAgent.TrimEnd().Length != 0)
-                    oHttpWebRequest.UserAgent = sUserAgent.TrimEnd();
-
-                oHttpWebRequest.Timeout = 1000 * iTimeoutSeconds;
-
 
                 if (sAuthentication == "DefaultCredentials")
                 {
@@ -80,88 +73,88 @@ namespace EWSEditor.Common
                         oHttpWebRequest.Credentials = oCrentialCache;
                     }
                 }
-
-                //if (sProxyServer.Trim().Length != 0)
-                //{
-                //    oHttpWebRequest.Proxy = new WebProxy(sProxyServer, iProxyPort);
-                //}
-
-                //FileWebRequest x = FileWebRequest.Create("");
-                //WebRequest o = WebRequest.Create(); // http://msdn.microsoft.com/en-us/library/debx8sh9(v=vs.110).aspx
-                //WebRequest s = WebRequest.CreateHttp("");
-             
  
+
+                oHttpWebRequest.Method = sVerb;
+                oHttpWebRequest.ContentType = sContentType;
+                if (sUserAgent.TrimEnd().Length != 0)
+                    oHttpWebRequest.UserAgent = sUserAgent.TrimEnd();
+
+                oHttpWebRequest.Timeout = 1000 * iTimeoutSeconds;
+ 
+                oHttpWebRequest.AllowAutoRedirect = bAllowAutoRedirect;
+
                 if (bTranslateF)
                     oHttpWebRequest.Headers.Add("Translate", "f");
                 if (bPragmaNoCache)
                     oHttpWebRequest.Headers.Add("Pragma", "no-cache");
 
-                // Add Additional Headers:
-                List<string> oPropertySetHeaders = (List<string>)GetPropertySetHeadersList();
-                IFormatProvider oCulture = new System.Globalization.CultureInfo("en-US", true);
-                string sKey = string.Empty;
-                // http://msdn.microsoft.com/en-us/library/system.net.httpwebrequest(v=vs.110).aspx
-                foreach (KeyValuePair<string, string> k in oHeadersList)
-                {
-                    sKey = k.Key.ToUpper();
-                    if (oPropertySetHeaders.Contains(sKey) == false)
-                    {
-                        oHttpWebRequest.Headers.Add(k.Key, k.Value);
-                    }
-                    else
-                    {
-                        switch(sKey)
-                        {
-                            case "CONNECTION":
-                                oHttpWebRequest.Connection = k.Key;
-                                break;
-                            case "CONTENT-LENGTH":
-                                oHttpWebRequest.ContentLength = Convert.ToUInt32(Convert.ToUInt32(k.Key));
-                                break;
-                            case "CONTENT-TYPE":
-                                oHttpWebRequest.ContentType = k.Key;
-                                break;
-                            case "EXPECT":
-                                oHttpWebRequest.Expect = k.Key;
-                                break;
-                            case "DATE":
-                                 DateTime oDtDate = DateTime.Parse(k.Key, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
-                                 oHttpWebRequest.Date = oDtDate;
-                                break;
-                            case "HOST":
-                                oHttpWebRequest.Host = k.Key;
-                                break;
-                            case "IF-MODIFIED-SINCE":
-                                DateTime oDtIfModifiedSince = DateTime.Parse(k.Key, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
-                                oHttpWebRequest.IfModifiedSince = oDtIfModifiedSince;
-                                break;
-                            case "RANGE":
-                                oHttpWebRequest.AddRange(Convert.ToUInt32(Convert.ToUInt32(k.Key)));
-                                break;
-                            case "REFERRER":
-                                oHttpWebRequest.Referer  = k.Key;
-                                break;
-                            case "TRANSFER-ENCODING":
-                                oHttpWebRequest.TransferEncoding  = k.Key;
-                                break;
-                            case "USER-AGENT":
-                                oHttpWebRequest.UserAgent  = k.Key;
-                                break;
-                            default:
-                                break;
  
+                    // Add Additional Headers:
+                    List<string> oPropertySetHeaders = (List<string>)GetPropertySetHeadersList();
+                    IFormatProvider oCulture = new System.Globalization.CultureInfo("en-US", true);
+                    string sKey = string.Empty;
+                    // http://msdn.microsoft.com/en-us/library/system.net.httpwebrequest(v=vs.110).aspx
+                    foreach (KeyValuePair<string, string> k in oHeadersList)
+                    {
+                        sKey = k.Key.ToUpper();
+                        if (oPropertySetHeaders.Contains(sKey) == false)
+                        {
+                            oHttpWebRequest.Headers.Add(k.Key, k.Value);  // These are headers not covered by properties.
                         }
+                        else
+                        {
+                            switch (sKey)
+                            {
+                                case "CONNECTION":
+                                    oHttpWebRequest.Connection = k.Key;
+                                    break;
+                                case "CONTENT-LENGTH":
+                                    oHttpWebRequest.ContentLength = Convert.ToUInt32(Convert.ToUInt32(k.Key));
+                                    break;
+                                case "CONTENT-TYPE":
+                                    oHttpWebRequest.ContentType = k.Key;
+                                    break;
+                                case "EXPECT":
+                                    oHttpWebRequest.Expect = k.Key;
+                                    break;
+                                case "DATE":
+                                    DateTime oDtDate = DateTime.Parse(k.Key, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
+                                    oHttpWebRequest.Date = oDtDate;
+                                    break;
+                                case "HOST":
+                                    oHttpWebRequest.Host = k.Key;
+                                    break;
+                                case "IF-MODIFIED-SINCE":
+                                    DateTime oDtIfModifiedSince = DateTime.Parse(k.Key, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
+                                    oHttpWebRequest.IfModifiedSince = oDtIfModifiedSince;
+                                    break;
+                                case "RANGE":
+                                    oHttpWebRequest.AddRange(Convert.ToUInt32(Convert.ToUInt32(k.Key)));
+                                    break;
+                                case "REFERRER":
+                                    oHttpWebRequest.Referer = k.Key;
+                                    break;
+                                case "TRANSFER-ENCODING":
+                                    oHttpWebRequest.TransferEncoding = k.Key;
+                                    break;
+                                case "USER-AGENT":
+                                    oHttpWebRequest.UserAgent = k.Key;
+                                    break;
+                                default:
+                                    break;
 
-                    }
+                            }
+
+                        }
+     
+
+
+                    // TODO: Finish
+
                 }
-
-                
-                // TODO: Finish
-
-
-                oHttpWebRequest.AllowAutoRedirect = bAllowAutoRedirect;
-
-
+         
+ 
                 byte[] bytes = Encoding.UTF8.GetBytes(sRequestBody);
                 oHttpWebRequest.ContentLength = bytes.Length;
                 if (sRequestBody.Trim().Length != 0)
@@ -235,7 +228,7 @@ namespace EWSEditor.Common
             bool bReachedStart = false;
             bool bProcessingHeaders = false;
             bool bProcessingBody = false;
-            bool bReachedBlankLineAfterPostLine = false;
+            //bool bReachedBlankLineAfterPostLine = false;
 
             foreach (string sLine in sArr)
             {
