@@ -1342,8 +1342,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EwsPostExamples\Autodiscover - POX .xml" />
     <Content Include="deps\Microsoft.Exchange.WebServices.dll" />
+    <Content Include="EwsPostExamples\Autodiscover - POX .xml" />
     <Content Include="EwsPostExamples\AddDelegate.xml" />
     <Content Include="EwsPostExamples\AddDistributionGroupToImList.xml" />
     <Content Include="EwsPostExamples\AddImContactToGroup.xml" />
@@ -1478,10 +1478,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="https://65.53.1.36/ews/Services.wsdl">
+    <WebReferenceUrl Include="https://mail.exchangexpert.com/ews/Services.wsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\EwsVsProxy\</RelPath>
-      <UpdateFromURL>https://65.53.1.36/ews/Services.wsdl</UpdateFromURL>
+      <UpdateFromURL>https://mail.exchangexpert.com/ews/Services.wsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

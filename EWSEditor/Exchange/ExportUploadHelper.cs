@@ -146,6 +146,8 @@ namespace EWSEditor.Exchange
             binding.Credentials = service.GetNetworkCredential();
             binding.UserAgent = service.UserAgent;
             binding.Timeout = service.Timeout;
+
+            binding.ExchangeImpersonation = new ExchangeImpersonationType();
              
 
             if (service.UseDefaultCredentials)
@@ -156,19 +158,24 @@ namespace EWSEditor.Exchange
             // Create the ExchangeImpersonationType if needed
             if (service.ImpersonatedUserId != null)
             {
-                binding.ExchangeImpersonation = new ExchangeImpersonationType();
+
+                 
                 binding.ExchangeImpersonation.ConnectingSID = new ConnectingSIDType();
                 binding.ExchangeImpersonation.ConnectingSID.Item = service.ImpersonatedUserId.Id;
                 switch (service.ImpersonatedUserId.IdType)
                 {
                     case ConnectingIdType.PrincipalName:
-                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.PrincipalName;
+                           
+                        binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.PrincipalName;
+                        ExchangeImpersonationType x = new ExchangeImpersonationType();
                         break;
+
                     case ConnectingIdType.SID:
-                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SID;
+                        binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.SID;
                         break;
+
                     case ConnectingIdType.SmtpAddress:
-                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SmtpAddress;
+                        binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.SmtpAddress; 
                         break;
                 }
  
@@ -199,6 +206,9 @@ namespace EWSEditor.Exchange
                     break;
                 case ExchangeVersion.Exchange2013:
                     binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2013;
+                    break;
+                case ExchangeVersion.Exchange2013_SP1:
+                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2013_SP1;
                     break;
             }
 
