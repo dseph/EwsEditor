@@ -158,26 +158,45 @@ namespace EWSEditor.Exchange
             // Create the ExchangeImpersonationType if needed
             if (service.ImpersonatedUserId != null)
             {
-
-                 
+                binding.ExchangeImpersonation = new ExchangeImpersonationType();
                 binding.ExchangeImpersonation.ConnectingSID = new ConnectingSIDType();
                 binding.ExchangeImpersonation.ConnectingSID.Item = service.ImpersonatedUserId.Id;
                 switch (service.ImpersonatedUserId.IdType)
                 {
                     case ConnectingIdType.PrincipalName:
-                           
-                        binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.PrincipalName;
-                        ExchangeImpersonationType x = new ExchangeImpersonationType();
+                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.PrincipalName;
                         break;
-
                     case ConnectingIdType.SID:
-                        binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.SID;
+                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SID;
                         break;
-
                     case ConnectingIdType.SmtpAddress:
-                        binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.SmtpAddress; 
+                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SmtpAddress;
                         break;
                 }
+          
+            //// Create the ExchangeImpersonationType if needed
+            //if (service.ImpersonatedUserId != null)
+            //{
+
+                 
+            //    binding.ExchangeImpersonation.ConnectingSID = new ConnectingSIDType();
+            //    binding.ExchangeImpersonation.ConnectingSID.Item = service.ImpersonatedUserId.Id;
+            //    switch (service.ImpersonatedUserId.IdType)
+            //    {
+            //        case ConnectingIdType.PrincipalName:
+                        
+            //            binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.PrincipalName;
+            //            ExchangeImpersonationType x = new ExchangeImpersonationType();
+            //            break;
+
+            //        case ConnectingIdType.SID:
+            //            binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.SID;
+            //            break;
+
+            //        case ConnectingIdType.SmtpAddress:
+            //            binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.SmtpAddress; 
+            //            break;
+            //    }
  
             }
 
