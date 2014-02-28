@@ -93,11 +93,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(11, 48);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(8, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(411, 150);
+            this.groupBox1.Size = new System.Drawing.Size(308, 122);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -114,10 +112,9 @@
             "Kerberos",
             "Negotiate",
             "Digest"});
-            this.cmboAuthentication.Location = new System.Drawing.Point(120, 17);
-            this.cmboAuthentication.Margin = new System.Windows.Forms.Padding(4);
+            this.cmboAuthentication.Location = new System.Drawing.Point(90, 14);
             this.cmboAuthentication.Name = "cmboAuthentication";
-            this.cmboAuthentication.Size = new System.Drawing.Size(280, 24);
+            this.cmboAuthentication.Size = new System.Drawing.Size(211, 21);
             this.cmboAuthentication.TabIndex = 95;
             this.cmboAuthentication.Text = "DefaultNetworkCredentials";
             this.cmboAuthentication.SelectedIndexChanged += new System.EventHandler(this.cmboAuthentication_SelectedIndexChanged);
@@ -125,10 +122,9 @@
             // lblAuthentication
             // 
             this.lblAuthentication.AutoSize = true;
-            this.lblAuthentication.Location = new System.Drawing.Point(8, 20);
-            this.lblAuthentication.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAuthentication.Location = new System.Drawing.Point(6, 16);
             this.lblAuthentication.Name = "lblAuthentication";
-            this.lblAuthentication.Size = new System.Drawing.Size(94, 16);
+            this.lblAuthentication.Size = new System.Drawing.Size(78, 13);
             this.lblAuthentication.TabIndex = 73;
             this.lblAuthentication.Text = "Authentication:";
             // 
@@ -136,60 +132,54 @@
             // 
             this.txtDomain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDomain.Location = new System.Drawing.Point(120, 110);
-            this.txtDomain.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDomain.Location = new System.Drawing.Point(90, 89);
             this.txtDomain.Name = "txtDomain";
-            this.txtDomain.Size = new System.Drawing.Size(280, 22);
+            this.txtDomain.Size = new System.Drawing.Size(211, 20);
             this.txtDomain.TabIndex = 2;
             // 
             // txtUser
             // 
             this.txtUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUser.Location = new System.Drawing.Point(120, 49);
-            this.txtUser.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUser.Location = new System.Drawing.Point(90, 40);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(280, 22);
+            this.txtUser.Size = new System.Drawing.Size(211, 20);
             this.txtUser.TabIndex = 0;
             // 
             // txtPassword
             // 
             this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.Location = new System.Drawing.Point(120, 79);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPassword.Location = new System.Drawing.Point(90, 64);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(280, 22);
+            this.txtPassword.Size = new System.Drawing.Size(211, 20);
             this.txtPassword.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 55);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(8, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 16);
+            this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 45;
             this.label1.Text = "User:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 112);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(8, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 16);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 46;
             this.label2.Text = "Domain:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 82);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(8, 67);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 16);
+            this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 47;
             this.label3.Text = "Password:";
             // 
@@ -197,20 +187,18 @@
             // 
             this.txtUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUrl.Location = new System.Drawing.Point(45, 241);
-            this.txtUrl.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUrl.Location = new System.Drawing.Point(34, 196);
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(1381, 22);
+            this.txtUrl.Size = new System.Drawing.Size(1037, 20);
             this.txtUrl.TabIndex = 46;
             this.txtUrl.Text = "https://mail.contoso.com/EWS/Exchange.asmx";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 245);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(2, 199);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 16);
+            this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 47;
             this.label4.Text = "URL:";
             // 
@@ -219,13 +207,12 @@
             this.txtRequest.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRequest.Location = new System.Drawing.Point(4, 31);
-            this.txtRequest.Margin = new System.Windows.Forms.Padding(4);
+            this.txtRequest.Location = new System.Drawing.Point(3, 25);
             this.txtRequest.MaxLength = 0;
             this.txtRequest.Multiline = true;
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRequest.Size = new System.Drawing.Size(1413, 197);
+            this.txtRequest.Size = new System.Drawing.Size(1060, 160);
             this.txtRequest.TabIndex = 64;
             // 
             // txtResponse
@@ -233,22 +220,20 @@
             this.txtResponse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResponse.Location = new System.Drawing.Point(4, 20);
-            this.txtResponse.Margin = new System.Windows.Forms.Padding(4);
+            this.txtResponse.Location = new System.Drawing.Point(3, 16);
             this.txtResponse.MaxLength = 0;
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1413, 221);
+            this.txtResponse.Size = new System.Drawing.Size(1060, 181);
             this.txtResponse.TabIndex = 66;
             // 
             // GoRun
             // 
             this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GoRun.Location = new System.Drawing.Point(1327, 14);
-            this.GoRun.Margin = new System.Windows.Forms.Padding(4);
+            this.GoRun.Location = new System.Drawing.Point(995, 11);
             this.GoRun.Name = "GoRun";
-            this.GoRun.Size = new System.Drawing.Size(101, 28);
+            this.GoRun.Size = new System.Drawing.Size(76, 23);
             this.GoRun.TabIndex = 68;
             this.GoRun.Text = "Run";
             this.GoRun.UseVisualStyleBackColor = true;
@@ -257,33 +242,33 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 73);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(6, 59);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 16);
+            this.label7.Size = new System.Drawing.Size(71, 13);
             this.label7.TabIndex = 71;
             this.label7.Text = "ContentType:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 31);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(6, 25);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 16);
+            this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 72;
             this.label8.Text = "Verb:";
             // 
             // cmboVerb
             // 
             this.cmboVerb.FormattingEnabled = true;
-            this.cmboVerb.Location = new System.Drawing.Point(136, 25);
-            this.cmboVerb.Margin = new System.Windows.Forms.Padding(4);
+            this.cmboVerb.Items.AddRange(new object[] {
+            "POST",
+            "GET",
+            "PUT"});
+            this.cmboVerb.Location = new System.Drawing.Point(102, 20);
             this.cmboVerb.Name = "cmboVerb";
-            this.cmboVerb.Size = new System.Drawing.Size(160, 24);
+            this.cmboVerb.Size = new System.Drawing.Size(120, 21);
             this.cmboVerb.TabIndex = 73;
             this.cmboVerb.Text = "POST";
-            this.cmboVerb.SelectedIndexChanged += new System.EventHandler(this.cmboVerb_SelectedIndexChanged);
             // 
             // cmboContentType
             // 
@@ -291,29 +276,26 @@
             this.cmboContentType.Items.AddRange(new object[] {
             "text/xml",
             "text/html"});
-            this.cmboContentType.Location = new System.Drawing.Point(136, 68);
-            this.cmboContentType.Margin = new System.Windows.Forms.Padding(4);
+            this.cmboContentType.Location = new System.Drawing.Point(102, 55);
             this.cmboContentType.Name = "cmboContentType";
-            this.cmboContentType.Size = new System.Drawing.Size(159, 24);
+            this.cmboContentType.Size = new System.Drawing.Size(120, 21);
             this.cmboContentType.TabIndex = 74;
             this.cmboContentType.Text = "text/xml";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 107);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(5, 87);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(117, 16);
+            this.label9.Size = new System.Drawing.Size(93, 13);
             this.label9.TabIndex = 75;
             this.label9.Text = "Timeout Seconds:";
             // 
             // numericUpDownTimeoutSeconds
             // 
-            this.numericUpDownTimeoutSeconds.Location = new System.Drawing.Point(136, 101);
-            this.numericUpDownTimeoutSeconds.Margin = new System.Windows.Forms.Padding(4);
+            this.numericUpDownTimeoutSeconds.Location = new System.Drawing.Point(102, 82);
             this.numericUpDownTimeoutSeconds.Name = "numericUpDownTimeoutSeconds";
-            this.numericUpDownTimeoutSeconds.Size = new System.Drawing.Size(160, 22);
+            this.numericUpDownTimeoutSeconds.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownTimeoutSeconds.TabIndex = 76;
             this.numericUpDownTimeoutSeconds.Value = new decimal(new int[] {
             90,
@@ -326,18 +308,16 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.btnLoadExample);
             this.panel2.Controls.Add(this.btnSaveExample);
-            this.panel2.Location = new System.Drawing.Point(311, 5);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(233, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(297, 36);
+            this.panel2.Size = new System.Drawing.Size(223, 30);
             this.panel2.TabIndex = 91;
             // 
             // btnLoadExample
             // 
-            this.btnLoadExample.Location = new System.Drawing.Point(4, 4);
-            this.btnLoadExample.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLoadExample.Location = new System.Drawing.Point(3, 3);
             this.btnLoadExample.Name = "btnLoadExample";
-            this.btnLoadExample.Size = new System.Drawing.Size(140, 28);
+            this.btnLoadExample.Size = new System.Drawing.Size(105, 23);
             this.btnLoadExample.TabIndex = 47;
             this.btnLoadExample.Text = "Load Example";
             this.btnLoadExample.UseVisualStyleBackColor = true;
@@ -345,10 +325,9 @@
             // 
             // btnSaveExample
             // 
-            this.btnSaveExample.Location = new System.Drawing.Point(152, 4);
-            this.btnSaveExample.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSaveExample.Location = new System.Drawing.Point(114, 3);
             this.btnSaveExample.Name = "btnSaveExample";
-            this.btnSaveExample.Size = new System.Drawing.Size(139, 28);
+            this.btnSaveExample.Size = new System.Drawing.Size(104, 23);
             this.btnSaveExample.TabIndex = 45;
             this.btnSaveExample.Text = "Save Example";
             this.btnSaveExample.UseVisualStyleBackColor = true;
@@ -359,18 +338,16 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnLoadSettings);
             this.panel1.Controls.Add(this.btnSaveSettings);
-            this.panel1.Location = new System.Drawing.Point(5, 5);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(297, 36);
+            this.panel1.Size = new System.Drawing.Size(223, 30);
             this.panel1.TabIndex = 90;
             // 
             // btnLoadSettings
             // 
-            this.btnLoadSettings.Location = new System.Drawing.Point(4, 4);
-            this.btnLoadSettings.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLoadSettings.Location = new System.Drawing.Point(3, 3);
             this.btnLoadSettings.Name = "btnLoadSettings";
-            this.btnLoadSettings.Size = new System.Drawing.Size(140, 28);
+            this.btnLoadSettings.Size = new System.Drawing.Size(105, 23);
             this.btnLoadSettings.TabIndex = 49;
             this.btnLoadSettings.Text = "Load Settings";
             this.btnLoadSettings.UseVisualStyleBackColor = true;
@@ -378,10 +355,9 @@
             // 
             // btnSaveSettings
             // 
-            this.btnSaveSettings.Location = new System.Drawing.Point(152, 4);
-            this.btnSaveSettings.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSaveSettings.Location = new System.Drawing.Point(114, 3);
             this.btnSaveSettings.Name = "btnSaveSettings";
-            this.btnSaveSettings.Size = new System.Drawing.Size(139, 28);
+            this.btnSaveSettings.Size = new System.Drawing.Size(104, 23);
             this.btnSaveSettings.TabIndex = 50;
             this.btnSaveSettings.Text = "Save Settings";
             this.btnSaveSettings.UseVisualStyleBackColor = true;
@@ -390,10 +366,9 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(43, 267);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(32, 217);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(753, 16);
+            this.label10.Size = new System.Drawing.Size(616, 13);
             this.label10.TabIndex = 92;
             this.label10.Text = "Note: This is the URL to the Exchange Web Service for the Mailbox.  Example:  htt" +
     "ps://mail.contoso.com/EWS/Exchange.asmx ";
@@ -401,28 +376,26 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 142);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(5, 115);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 16);
+            this.label11.Size = new System.Drawing.Size(60, 13);
             this.label11.TabIndex = 93;
             this.label11.Text = "UserAgent:";
             // 
             // txtUserAgent
             // 
-            this.txtUserAgent.Location = new System.Drawing.Point(136, 135);
-            this.txtUserAgent.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUserAgent.Location = new System.Drawing.Point(102, 110);
             this.txtUserAgent.Name = "txtUserAgent";
-            this.txtUserAgent.Size = new System.Drawing.Size(160, 22);
+            this.txtUserAgent.Size = new System.Drawing.Size(121, 20);
             this.txtUserAgent.TabIndex = 94;
             // 
             // chkTranslateF
             // 
             this.chkTranslateF.AutoSize = true;
-            this.chkTranslateF.Location = new System.Drawing.Point(316, 103);
-            this.chkTranslateF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkTranslateF.Location = new System.Drawing.Point(232, 51);
+            this.chkTranslateF.Margin = new System.Windows.Forms.Padding(2);
             this.chkTranslateF.Name = "chkTranslateF";
-            this.chkTranslateF.Size = new System.Drawing.Size(98, 20);
+            this.chkTranslateF.Size = new System.Drawing.Size(82, 17);
             this.chkTranslateF.TabIndex = 95;
             this.chkTranslateF.Text = "Translate: F";
             this.chkTranslateF.UseVisualStyleBackColor = true;
@@ -432,10 +405,10 @@
             this.chkPragmaNocache.AutoSize = true;
             this.chkPragmaNocache.Checked = true;
             this.chkPragmaNocache.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPragmaNocache.Location = new System.Drawing.Point(316, 71);
-            this.chkPragmaNocache.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkPragmaNocache.Location = new System.Drawing.Point(232, 25);
+            this.chkPragmaNocache.Margin = new System.Windows.Forms.Padding(2);
             this.chkPragmaNocache.Name = "chkPragmaNocache";
-            this.chkPragmaNocache.Size = new System.Drawing.Size(137, 20);
+            this.chkPragmaNocache.Size = new System.Drawing.Size(113, 17);
             this.chkPragmaNocache.TabIndex = 96;
             this.chkPragmaNocache.Text = "Pragma: no-cache";
             this.chkPragmaNocache.UseVisualStyleBackColor = true;
@@ -443,10 +416,10 @@
             // chkAllowRedirect
             // 
             this.chkAllowRedirect.AutoSize = true;
-            this.chkAllowRedirect.Location = new System.Drawing.Point(316, 137);
-            this.chkAllowRedirect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkAllowRedirect.Location = new System.Drawing.Point(232, 78);
+            this.chkAllowRedirect.Margin = new System.Windows.Forms.Padding(2);
             this.chkAllowRedirect.Name = "chkAllowRedirect";
-            this.chkAllowRedirect.Size = new System.Drawing.Size(113, 20);
+            this.chkAllowRedirect.Size = new System.Drawing.Size(94, 17);
             this.chkAllowRedirect.TabIndex = 97;
             this.chkAllowRedirect.Text = "AllowRedirect:";
             this.chkAllowRedirect.UseVisualStyleBackColor = true;
@@ -457,8 +430,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Location = new System.Drawing.Point(5, 287);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.splitContainer1.Location = new System.Drawing.Point(4, 233);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -472,27 +445,26 @@
             this.splitContainer1.Panel2.Controls.Add(this.label6);
             this.splitContainer1.Panel2.Controls.Add(this.txtResponse);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(1423, 478);
-            this.splitContainer1.SplitterDistance = 234;
+            this.splitContainer1.Size = new System.Drawing.Size(1067, 388);
+            this.splitContainer1.SplitterDistance = 190;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 98;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 11);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(3, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 16);
+            this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 65;
             this.label5.Text = "Request:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 0);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 16);
+            this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 67;
             this.label6.Text = "Response:";
             // 
@@ -501,11 +473,11 @@
             this.groupBox2.Controls.Add(this.dgvOptions);
             this.groupBox2.Controls.Add(this.btnDeleteHeader);
             this.groupBox2.Controls.Add(this.btnAddHeaders);
-            this.groupBox2.Location = new System.Drawing.Point(485, 22);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Location = new System.Drawing.Point(364, 18);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(507, 139);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(380, 113);
             this.groupBox2.TabIndex = 99;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Headers - (select row to use delete button)";
@@ -519,10 +491,10 @@
             this.dgvOptions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colName,
             this.colValue});
-            this.dgvOptions.Location = new System.Drawing.Point(7, 16);
-            this.dgvOptions.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvOptions.Location = new System.Drawing.Point(5, 13);
+            this.dgvOptions.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOptions.Name = "dgvOptions";
-            this.dgvOptions.Size = new System.Drawing.Size(443, 117);
+            this.dgvOptions.Size = new System.Drawing.Size(332, 95);
             this.dgvOptions.TabIndex = 20;
             // 
             // colName
@@ -531,7 +503,7 @@
             this.colName.FillWeight = 150F;
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
-            this.colName.Width = 70;
+            this.colName.Width = 60;
             // 
             // colValue
             // 
@@ -539,16 +511,16 @@
             this.colValue.FillWeight = 150F;
             this.colValue.HeaderText = "Value";
             this.colValue.Name = "colValue";
-            this.colValue.Width = 68;
+            this.colValue.Width = 59;
             // 
             // btnDeleteHeader
             // 
             this.btnDeleteHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDeleteHeader.Image = global::EWSEditor.Properties.Resources.StatusAnnotations_Blocked_16xLG;
-            this.btnDeleteHeader.Location = new System.Drawing.Point(455, 63);
-            this.btnDeleteHeader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteHeader.Location = new System.Drawing.Point(341, 51);
+            this.btnDeleteHeader.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteHeader.Name = "btnDeleteHeader";
-            this.btnDeleteHeader.Size = new System.Drawing.Size(43, 39);
+            this.btnDeleteHeader.Size = new System.Drawing.Size(32, 32);
             this.btnDeleteHeader.TabIndex = 19;
             this.btnDeleteHeader.UseVisualStyleBackColor = true;
             this.btnDeleteHeader.Click += new System.EventHandler(this.btnDeleteHeader_Click);
@@ -557,10 +529,10 @@
             // 
             this.btnAddHeaders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddHeaders.Image = global::EWSEditor.Properties.Resources.action_add_16xLG;
-            this.btnAddHeaders.Location = new System.Drawing.Point(456, 18);
-            this.btnAddHeaders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddHeaders.Location = new System.Drawing.Point(342, 15);
+            this.btnAddHeaders.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddHeaders.Name = "btnAddHeaders";
-            this.btnAddHeaders.Size = new System.Drawing.Size(43, 39);
+            this.btnAddHeaders.Size = new System.Drawing.Size(32, 32);
             this.btnAddHeaders.TabIndex = 14;
             this.btnAddHeaders.UseVisualStyleBackColor = true;
             this.btnAddHeaders.Click += new System.EventHandler(this.btnAddHeaders_Click);
@@ -579,19 +551,17 @@
             this.grpHttpVerbOptions.Controls.Add(this.numericUpDownTimeoutSeconds);
             this.grpHttpVerbOptions.Controls.Add(this.txtUserAgent);
             this.grpHttpVerbOptions.Controls.Add(this.label11);
-            this.grpHttpVerbOptions.Location = new System.Drawing.Point(429, 49);
-            this.grpHttpVerbOptions.Margin = new System.Windows.Forms.Padding(4);
+            this.grpHttpVerbOptions.Location = new System.Drawing.Point(322, 40);
             this.grpHttpVerbOptions.Name = "grpHttpVerbOptions";
-            this.grpHttpVerbOptions.Padding = new System.Windows.Forms.Padding(4);
-            this.grpHttpVerbOptions.Size = new System.Drawing.Size(999, 182);
+            this.grpHttpVerbOptions.Size = new System.Drawing.Size(749, 148);
             this.grpHttpVerbOptions.TabIndex = 100;
             this.grpHttpVerbOptions.TabStop = false;
             // 
             // PostForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1440, 767);
+            this.ClientSize = new System.Drawing.Size(1080, 623);
             this.Controls.Add(this.grpHttpVerbOptions);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.label10);
@@ -601,7 +571,6 @@
             this.Controls.Add(this.txtUrl);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PostForm";
             this.Text = "EWS POST";
             this.Load += new System.EventHandler(this.PostForm_Load);
