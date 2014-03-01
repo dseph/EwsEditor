@@ -75,7 +75,7 @@ namespace EWSEditor.Exchange
         public static void ExportItem(ExchangeService service, ItemId itemId, out byte[] data)
         {
             data = null;
-
+            
             ExchangeServiceBinding client = ConvertExchangeService(service);
             ExportItemsType export = new ExportItemsType();
             export.ItemIds = new ItemIdType[]
@@ -174,29 +174,7 @@ namespace EWSEditor.Exchange
                         break;
                 }
           
-            //// Create the ExchangeImpersonationType if needed
-            //if (service.ImpersonatedUserId != null)
-            //{
-
-                 
-            //    binding.ExchangeImpersonation.ConnectingSID = new ConnectingSIDType();
-            //    binding.ExchangeImpersonation.ConnectingSID.Item = service.ImpersonatedUserId.Id;
-            //    switch (service.ImpersonatedUserId.IdType)
-            //    {
-            //        case ConnectingIdType.PrincipalName:
-                        
-            //            binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.PrincipalName;
-            //            ExchangeImpersonationType x = new ExchangeImpersonationType();
-            //            break;
-
-            //        case ConnectingIdType.SID:
-            //            binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.SID;
-            //            break;
-
-            //        case ConnectingIdType.SmtpAddress:
-            //            binding.ExchangeImpersonation.ConnectingSID.Item = ConnectingIdType.SmtpAddress; 
-            //            break;
-            //    }
+               
  
             }
 
@@ -227,7 +205,7 @@ namespace EWSEditor.Exchange
                     binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2013;
                     break;
                 case ExchangeVersion.Exchange2013_SP1:
-                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2013_SP1;
+                    binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2013_SP1; 
                     break;
             }
 

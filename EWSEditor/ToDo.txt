@@ -1,0 +1,23 @@
+﻿Must do before cut:
+
+1 - Finish changes for 2013 SP1.  Retest functionality in each area.
+2 - Finish changes for adding inline attachments
+3 - Add code to show response headers in EWS POST window.
+4 - Full POST code needs to be finished for Ews POST window
+ 
+
+Wish List
+Add setting useragent header to: "Microsoft Office/15.0 (Windows NT 6.1; Microsoft Outlook 15.0.4551; Pro)" 
+for all Autodiscover calls. The user should be able to override this.
+
+In the Options and AutodiscoverViewer window have a place to set additional headers - this should be similar to what 
+EwsPost has. 
+
+Change saving of sessions for main login to use a class, then add ability for user to load and save settings by 
+serializing the class and writting/reading to file.
+
+Add processing for working with custom search folders.
+
+Add hex editing ability for binary properties.
+
+Add grouping infomation processing to AutodiscoverViewer.  This is new for managed api 2.1
