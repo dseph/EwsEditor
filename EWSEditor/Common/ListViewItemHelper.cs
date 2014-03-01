@@ -208,7 +208,7 @@ namespace EWSEditor.Common
             ItemView oView = new ItemView(9999);
             try
             {
-                Folder folder = Folder.Bind(oExchangeService, oFolder);
+                Folder folder = Folder.Bind(oExchangeService, oFolder);  
                 //Folder folder = GetFolderBinding(oFolder);
                 try
                 {
