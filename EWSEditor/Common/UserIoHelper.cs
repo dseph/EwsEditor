@@ -39,6 +39,14 @@ namespace EWSEditor.Common
             return bRet;
         }
 
+        //public static bool PickSaveFileToFolder(string InitialDirectory, string SuggestedName, ref string SelectedFile, string FileFilter)
+        //{
+
+        //    bool bRet = false;
+        //    bRet = PickSaveFileToFolder(InitialDirectory, SuggestedName, ref SelectedFile, FileFilter);
+        //    return bRet;
+        //}
+
         public static bool PickSaveFileToFolder(string InitialDirectory, string SuggestedName, ref string SelectedFile, string FileFilter)
         {
 
@@ -48,7 +56,7 @@ namespace EWSEditor.Common
             SelectedFile = SuggestedName;
             fsd.InitialDirectory = InitialDirectory;
             fsd.FileName = SuggestedName;
-            fsd.Filter = "All files (*.*)|*.*";
+            fsd.Filter = FileFilter;  // "All files (*.*)|*.*";
             fsd.FilterIndex = 1;
             fsd.RestoreDirectory = false;
             fsd.Title = "Save File To Folder";
