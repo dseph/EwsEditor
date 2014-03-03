@@ -150,7 +150,8 @@ namespace EWSEditor.Forms
         {
             PropertySet oPropertySet = null;
             if (oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2010") == true ||
-                oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013") == true)
+                oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013") == true ||
+                oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013_SP1") == true)
             {   // 2010 and above
                 oPropertySet = new PropertySet(BasePropertySet.IdOnly,
                 AppointmentSchema.Subject,
