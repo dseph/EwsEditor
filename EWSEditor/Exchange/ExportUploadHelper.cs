@@ -164,13 +164,16 @@ namespace EWSEditor.Exchange
                 switch (service.ImpersonatedUserId.IdType)
                 {
                     case ConnectingIdType.PrincipalName:
-                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.PrincipalName;
+                        //binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.PrincipalName;
+                        binding.ExchangeImpersonation.ConnectingSID.Item = new PrincipalNameType { Value = service.ImpersonatedUserId.Id };
                         break;
                     case ConnectingIdType.SID:
-                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SID;
+                        //binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SID;
+                        binding.ExchangeImpersonation.ConnectingSID.Item = new SIDType { Value = service.ImpersonatedUserId.Id };
                         break;
                     case ConnectingIdType.SmtpAddress:
-                        binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SmtpAddress;
+                        //binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SmtpAddress;
+                        binding.ExchangeImpersonation.ConnectingSID.Item = new SmtpAddressType { Value = service.ImpersonatedUserId.Id };
                         break;
                 }
           

@@ -1479,10 +1479,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="https://65.53.0.125/ews/services.wsdl">
+    <WebReferenceUrl Include="https://mail.exchangexpert.com/ews/services.wsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\EwsVsProxy\</RelPath>
-      <UpdateFromURL>https://65.53.0.125/ews/services.wsdl</UpdateFromURL>
+      <UpdateFromURL>https://mail.exchangexpert.com/ews/services.wsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

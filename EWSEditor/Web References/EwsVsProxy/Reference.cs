@@ -34,6 +34,7 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(BaseCalendarItemStateDefinitionType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RuleOperationType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(BaseSubscriptionRequestType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MailboxLocatorType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(BaseGroupByType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RecurrenceRangeBaseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RecurrencePatternBaseType))]
@@ -4237,6 +4238,8 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(MarkAsJunkResponseMessageType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetAppMarketplaceUrlResponseMessageType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetAppManifestsResponseType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SetEncryptionConfigurationResponseType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(EncryptionConfigurationResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ClientExtensionResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetConversationItemsResponseMessageType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetNonIndexableItemDetailsResponseMessageType))]
@@ -4291,6 +4294,7 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ResolveNamesResponseMessageType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetClientAccessTokenResponseMessageType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(FindItemResponseMessageType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetFederatedDirectoryUserResponseMessageType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetPersonaResponseMessageType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(FindPeopleResponseMessageType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(FindConversationResponseMessageType))]
@@ -5719,10 +5723,25 @@ namespace EWSEditor.EwsVsProxy {
         ErrorLocationServicesInvalidRequest,
         
         /// <remarks/>
+        ErrorWeatherServiceDisabled,
+        
+        /// <remarks/>
         ErrorMailboxScopeNotAllowedWithoutQueryString,
         
         /// <remarks/>
         ErrorArchiveMailboxSearchFailed,
+        
+        /// <remarks/>
+        ErrorGetRemoteArchiveFolderFailed,
+        
+        /// <remarks/>
+        ErrorFindRemoteArchiveFolderFailed,
+        
+        /// <remarks/>
+        ErrorGetRemoteArchiveItemFailed,
+        
+        /// <remarks/>
+        ErrorExportRemoteArchiveItemsFailed,
         
         /// <remarks/>
         ErrorInvalidPhotoSize,
@@ -5741,6 +5760,18 @@ namespace EWSEditor.EwsVsProxy {
         
         /// <remarks/>
         ErrorCalendarSeekToConditionNotSupported,
+        
+        /// <remarks/>
+        ErrorCalendarIsGroupMailboxForAccept,
+        
+        /// <remarks/>
+        ErrorCalendarIsGroupMailboxForDecline,
+        
+        /// <remarks/>
+        ErrorCalendarIsGroupMailboxForTentative,
+        
+        /// <remarks/>
+        ErrorCalendarIsGroupMailboxForSuppressReadReceipt,
     }
     
     /// <remarks/>
@@ -8651,6 +8682,10 @@ namespace EWSEditor.EwsVsProxy {
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("message:VotingInformation")]
         messageVotingInformation,
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlEnumAttribute("message:ReminderMessageData")]
+        messageReminderMessageData,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("meeting:AssociatedCalendarItemId")]
@@ -12284,6 +12319,72 @@ namespace EWSEditor.EwsVsProxy {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
+    public partial class SetEncryptionConfigurationResponseType : ResponseMessageType {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
+    public partial class EncryptionConfigurationResponseType : ResponseMessageType {
+        
+        private string imageBase64Field;
+        
+        private string emailTextField;
+        
+        private string portalTextField;
+        
+        private string disclaimerTextField;
+        
+        /// <remarks/>
+        public string ImageBase64 {
+            get {
+                return this.imageBase64Field;
+            }
+            set {
+                this.imageBase64Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EmailText {
+            get {
+                return this.emailTextField;
+            }
+            set {
+                this.emailTextField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PortalText {
+            get {
+                return this.portalTextField;
+            }
+            set {
+                this.portalTextField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DisclaimerText {
+            get {
+                return this.disclaimerTextField;
+            }
+            set {
+                this.disclaimerTextField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
     public partial class ClientExtensionResponseType : ResponseMessageType {
         
         private ClientExtensionType[] clientExtensionsField;
@@ -12351,6 +12452,10 @@ namespace EWSEditor.EwsVsProxy {
         private string marketplaceAssetIdField;
         
         private string marketplaceContentMarketField;
+        
+        private string appStatusField;
+        
+        private string etokenField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("String", IsNullable=false)]
@@ -12525,6 +12630,28 @@ namespace EWSEditor.EwsVsProxy {
             }
             set {
                 this.marketplaceContentMarketField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string AppStatus {
+            get {
+                return this.appStatusField;
+            }
+            set {
+                this.appStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Etoken {
+            get {
+                return this.etokenField;
+            }
+            set {
+                this.etokenField = value;
             }
         }
     }
@@ -12739,10 +12866,73 @@ namespace EWSEditor.EwsVsProxy {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
-    public partial class AcceptItemType : WellKnownResponseObjectType {
+    public partial class AcceptItemType : MeetingRegistrationResponseObjectType {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeclineItemType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TentativelyAcceptItemType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AcceptItemType))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class MeetingRegistrationResponseObjectType : WellKnownResponseObjectType {
+        
+        private System.DateTime proposedStartField;
+        
+        private bool proposedStartFieldSpecified;
+        
+        private System.DateTime proposedEndField;
+        
+        private bool proposedEndFieldSpecified;
+        
+        /// <remarks/>
+        public System.DateTime ProposedStart {
+            get {
+                return this.proposedStartField;
+            }
+            set {
+                this.proposedStartField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ProposedStartSpecified {
+            get {
+                return this.proposedStartFieldSpecified;
+            }
+            set {
+                this.proposedStartFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ProposedEnd {
+            get {
+                return this.proposedEndField;
+            }
+            set {
+                this.proposedEndField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ProposedEndSpecified {
+            get {
+                return this.proposedEndFieldSpecified;
+            }
+            set {
+                this.proposedEndFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MeetingRegistrationResponseObjectType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeclineItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TentativelyAcceptItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AcceptItemType))]
@@ -12757,7 +12947,9 @@ namespace EWSEditor.EwsVsProxy {
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostReplyItemBaseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostReplyItemType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AddItemToMyCalendarType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RemoveItemType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProposeNewTimeType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReferenceItemResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AcceptSharingInvitationType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SuppressReadReceiptType))]
@@ -12768,6 +12960,7 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReplyAllToItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReplyToItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(WellKnownResponseObjectType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MeetingRegistrationResponseObjectType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeclineItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TentativelyAcceptItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AcceptItemType))]
@@ -12796,7 +12989,9 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ResponseObjectType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostReplyItemBaseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostReplyItemType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AddItemToMyCalendarType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RemoveItemType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProposeNewTimeType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReferenceItemResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AcceptSharingInvitationType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SuppressReadReceiptType))]
@@ -12807,6 +13002,7 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReplyAllToItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReplyToItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(WellKnownResponseObjectType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MeetingRegistrationResponseObjectType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeclineItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TentativelyAcceptItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AcceptItemType))]
@@ -12839,7 +13035,9 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ResponseObjectType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostReplyItemBaseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostReplyItemType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AddItemToMyCalendarType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RemoveItemType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProposeNewTimeType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReferenceItemResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AcceptSharingInvitationType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SuppressReadReceiptType))]
@@ -12850,6 +13048,7 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReplyAllToItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReplyToItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(WellKnownResponseObjectType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MeetingRegistrationResponseObjectType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeclineItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TentativelyAcceptItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AcceptItemType))]
@@ -12903,6 +13102,8 @@ namespace EWSEditor.EwsVsProxy {
         private ApprovalRequestDataType approvalRequestDataField;
         
         private VotingInformationType votingInformationField;
+        
+        private ReminderMessageDataType reminderMessageDataField;
         
         /// <remarks/>
         public SingleRecipientType Sender {
@@ -13132,6 +13333,16 @@ namespace EWSEditor.EwsVsProxy {
                 this.votingInformationField = value;
             }
         }
+        
+        /// <remarks/>
+        public ReminderMessageDataType ReminderMessageData {
+            get {
+                return this.reminderMessageDataField;
+            }
+            set {
+                this.reminderMessageDataField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -13349,6 +13560,89 @@ namespace EWSEditor.EwsVsProxy {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class ReminderMessageDataType {
+        
+        private string reminderTextField;
+        
+        private string locationField;
+        
+        private System.DateTime startTimeField;
+        
+        private bool startTimeFieldSpecified;
+        
+        private System.DateTime endTimeField;
+        
+        private bool endTimeFieldSpecified;
+        
+        /// <remarks/>
+        public string ReminderText {
+            get {
+                return this.reminderTextField;
+            }
+            set {
+                this.reminderTextField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Location {
+            get {
+                return this.locationField;
+            }
+            set {
+                this.locationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime StartTime {
+            get {
+                return this.startTimeField;
+            }
+            set {
+                this.startTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool StartTimeSpecified {
+            get {
+                return this.startTimeFieldSpecified;
+            }
+            set {
+                this.startTimeFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime EndTime {
+            get {
+                return this.endTimeField;
+            }
+            set {
+                this.endTimeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool EndTimeSpecified {
+            get {
+                return this.endTimeFieldSpecified;
+            }
+            set {
+                this.endTimeFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TaskType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DistributionListType))]
@@ -13363,7 +13657,9 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ResponseObjectType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostReplyItemBaseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(PostReplyItemType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AddItemToMyCalendarType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(RemoveItemType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ProposeNewTimeType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReferenceItemResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AcceptSharingInvitationType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SuppressReadReceiptType))]
@@ -13374,6 +13670,7 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReplyAllToItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReplyToItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(WellKnownResponseObjectType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MeetingRegistrationResponseObjectType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeclineItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TentativelyAcceptItemType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AcceptItemType))]
@@ -13884,10 +14181,12 @@ namespace EWSEditor.EwsVsProxy {
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("AcceptItem", typeof(AcceptItemType), IsNullable=false)]
         [System.Xml.Serialization.XmlArrayItemAttribute("AcceptSharingInvitation", typeof(AcceptSharingInvitationType), IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("AddItemToMyCalendar", typeof(AddItemToMyCalendarType), IsNullable=false)]
         [System.Xml.Serialization.XmlArrayItemAttribute("CancelCalendarItem", typeof(CancelCalendarItemType), IsNullable=false)]
         [System.Xml.Serialization.XmlArrayItemAttribute("DeclineItem", typeof(DeclineItemType), IsNullable=false)]
         [System.Xml.Serialization.XmlArrayItemAttribute("ForwardItem", typeof(ForwardItemType), IsNullable=false)]
         [System.Xml.Serialization.XmlArrayItemAttribute("PostReplyItem", typeof(PostReplyItemType), IsNullable=false)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("ProposeNewTime", typeof(ProposeNewTimeType), IsNullable=false)]
         [System.Xml.Serialization.XmlArrayItemAttribute("RemoveItem", typeof(RemoveItemType), IsNullable=false)]
         [System.Xml.Serialization.XmlArrayItemAttribute("ReplyAllToItem", typeof(ReplyAllToItemType), IsNullable=false)]
         [System.Xml.Serialization.XmlArrayItemAttribute("ReplyToItem", typeof(ReplyToItemType), IsNullable=false)]
@@ -14564,6 +14863,7 @@ namespace EWSEditor.EwsVsProxy {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ReferenceAttachmentType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(FileAttachmentType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ItemAttachmentType))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
@@ -14705,6 +15005,27 @@ namespace EWSEditor.EwsVsProxy {
             }
             set {
                 this.isInlineFieldSpecified = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class ReferenceAttachmentType : AttachmentType {
+        
+        private string attachLongPathNameField;
+        
+        /// <remarks/>
+        public string AttachLongPathName {
+            get {
+                return this.attachLongPathNameField;
+            }
+            set {
+                this.attachLongPathNameField = value;
             }
         }
     }
@@ -15804,6 +16125,14 @@ namespace EWSEditor.EwsVsProxy {
         
         private bool lastResponseTimeFieldSpecified;
         
+        private System.DateTime proposedStartField;
+        
+        private bool proposedStartFieldSpecified;
+        
+        private System.DateTime proposedEndField;
+        
+        private bool proposedEndFieldSpecified;
+        
         /// <remarks/>
         public EmailAddressType Mailbox {
             get {
@@ -15853,6 +16182,48 @@ namespace EWSEditor.EwsVsProxy {
             }
             set {
                 this.lastResponseTimeFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ProposedStart {
+            get {
+                return this.proposedStartField;
+            }
+            set {
+                this.proposedStartField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ProposedStartSpecified {
+            get {
+                return this.proposedStartFieldSpecified;
+            }
+            set {
+                this.proposedStartFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime ProposedEnd {
+            get {
+                return this.proposedEndField;
+            }
+            set {
+                this.proposedEndField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool ProposedEndSpecified {
+            get {
+                return this.proposedEndFieldSpecified;
+            }
+            set {
+                this.proposedEndFieldSpecified = value;
             }
         }
     }
@@ -20158,6 +20529,15 @@ namespace EWSEditor.EwsVsProxy {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class AddItemToMyCalendarType : ResponseObjectType {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
     public partial class CancelCalendarItemType : SmartResponseType {
     }
     
@@ -20233,7 +20613,7 @@ namespace EWSEditor.EwsVsProxy {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
-    public partial class DeclineItemType : WellKnownResponseObjectType {
+    public partial class DeclineItemType : MeetingRegistrationResponseObjectType {
     }
     
     /// <remarks/>
@@ -20273,6 +20653,15 @@ namespace EWSEditor.EwsVsProxy {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class ProposeNewTimeType : ResponseObjectType {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
     public partial class RemoveItemType : ResponseObjectType {
     }
     
@@ -20282,7 +20671,7 @@ namespace EWSEditor.EwsVsProxy {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
-    public partial class TentativelyAcceptItemType : WellKnownResponseObjectType {
+    public partial class TentativelyAcceptItemType : MeetingRegistrationResponseObjectType {
     }
     
     /// <remarks/>
@@ -22691,6 +23080,8 @@ namespace EWSEditor.EwsVsProxy {
         
         private MailboxSearchLocationType searchScopeField;
         
+        private ExtendedAttributeType[] extendedAttributesField;
+        
         /// <remarks/>
         public string Mailbox {
             get {
@@ -22710,6 +23101,17 @@ namespace EWSEditor.EwsVsProxy {
                 this.searchScopeField = value;
             }
         }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("ExtendedAttribute", IsNullable=false)]
+        public ExtendedAttributeType[] ExtendedAttributes {
+            get {
+                return this.extendedAttributesField;
+            }
+            set {
+                this.extendedAttributesField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -22726,6 +23128,39 @@ namespace EWSEditor.EwsVsProxy {
         
         /// <remarks/>
         All,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class ExtendedAttributeType {
+        
+        private string nameField;
+        
+        private string valueField;
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -26232,7 +26667,7 @@ namespace EWSEditor.EwsVsProxy {
         
         private object itemField;
         
-        private ItemChoiceType1 itemElementNameField;
+        private ItemChoiceType itemElementNameField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("AllInternal", typeof(string))]
@@ -26252,7 +26687,7 @@ namespace EWSEditor.EwsVsProxy {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemChoiceType1 ItemElementName {
+        public ItemChoiceType ItemElementName {
             get {
                 return this.itemElementNameField;
             }
@@ -26373,7 +26808,7 @@ namespace EWSEditor.EwsVsProxy {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types", IncludeInSchema=false)]
-    public enum ItemChoiceType1 {
+    public enum ItemChoiceType {
         
         /// <remarks/>
         AllInternal,
@@ -31972,6 +32407,276 @@ namespace EWSEditor.EwsVsProxy {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
+    public partial class GetFederatedDirectoryUserResponseMessageType : ResponseMessageType {
+        
+        private FederatedDirectoryGroupType[] groupsField;
+        
+        private string photoUrlField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("Group", Namespace="http://schemas.microsoft.com/exchange/services/2006/types", IsNullable=false)]
+        public FederatedDirectoryGroupType[] Groups {
+            get {
+                return this.groupsField;
+            }
+            set {
+                this.groupsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PhotoUrl {
+            get {
+                return this.photoUrlField;
+            }
+            set {
+                this.photoUrlField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class FederatedDirectoryGroupType {
+        
+        private string aliasField;
+        
+        private string calendarUrlField;
+        
+        private string displayNameField;
+        
+        private string externalDirectoryObjectIdField;
+        
+        private FederatedDirectoryGroupTypeType groupTypeField;
+        
+        private bool groupTypeFieldSpecified;
+        
+        private string inboxUrlField;
+        
+        private bool isMemberField;
+        
+        private bool isMemberFieldSpecified;
+        
+        private bool isPinnedField;
+        
+        private bool isPinnedFieldSpecified;
+        
+        private System.DateTime joinDateField;
+        
+        private bool joinDateFieldSpecified;
+        
+        private string legacyDnField;
+        
+        private string peopleUrlField;
+        
+        private string photoUrlField;
+        
+        private string smtpAddressField;
+        
+        /// <remarks/>
+        public string Alias {
+            get {
+                return this.aliasField;
+            }
+            set {
+                this.aliasField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CalendarUrl {
+            get {
+                return this.calendarUrlField;
+            }
+            set {
+                this.calendarUrlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DisplayName {
+            get {
+                return this.displayNameField;
+            }
+            set {
+                this.displayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ExternalDirectoryObjectId {
+            get {
+                return this.externalDirectoryObjectIdField;
+            }
+            set {
+                this.externalDirectoryObjectIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public FederatedDirectoryGroupTypeType GroupType {
+            get {
+                return this.groupTypeField;
+            }
+            set {
+                this.groupTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool GroupTypeSpecified {
+            get {
+                return this.groupTypeFieldSpecified;
+            }
+            set {
+                this.groupTypeFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string InboxUrl {
+            get {
+                return this.inboxUrlField;
+            }
+            set {
+                this.inboxUrlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsMember {
+            get {
+                return this.isMemberField;
+            }
+            set {
+                this.isMemberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IsMemberSpecified {
+            get {
+                return this.isMemberFieldSpecified;
+            }
+            set {
+                this.isMemberFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsPinned {
+            get {
+                return this.isPinnedField;
+            }
+            set {
+                this.isPinnedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IsPinnedSpecified {
+            get {
+                return this.isPinnedFieldSpecified;
+            }
+            set {
+                this.isPinnedFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime JoinDate {
+            get {
+                return this.joinDateField;
+            }
+            set {
+                this.joinDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool JoinDateSpecified {
+            get {
+                return this.joinDateFieldSpecified;
+            }
+            set {
+                this.joinDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string LegacyDn {
+            get {
+                return this.legacyDnField;
+            }
+            set {
+                this.legacyDnField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PeopleUrl {
+            get {
+                return this.peopleUrlField;
+            }
+            set {
+                this.peopleUrlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PhotoUrl {
+            get {
+                return this.photoUrlField;
+            }
+            set {
+                this.photoUrlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string SmtpAddress {
+            get {
+                return this.smtpAddressField;
+            }
+            set {
+                this.smtpAddressField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public enum FederatedDirectoryGroupTypeType {
+        
+        /// <remarks/>
+        None,
+        
+        /// <remarks/>
+        Private,
+        
+        /// <remarks/>
+        Secret,
+        
+        /// <remarks/>
+        Public,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
     public partial class GetPersonaResponseMessageType : ResponseMessageType {
         
         private PersonaType personaField;
@@ -34309,6 +35014,27 @@ namespace EWSEditor.EwsVsProxy {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class FederatedDirectoryIdentityDetailsType {
+        
+        private string externalDirectoryObjectIdField;
+        
+        /// <remarks/>
+        public string ExternalDirectoryObjectId {
+            get {
+                return this.externalDirectoryObjectIdField;
+            }
+            set {
+                this.externalDirectoryObjectIdField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
     public partial class ArrayOfResponseMessagesType {
         
@@ -34345,6 +35071,7 @@ namespace EWSEditor.EwsVsProxy {
         [System.Xml.Serialization.XmlElementAttribute("GetClientExtensionResponseMessage", typeof(ResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("GetConversationItemsResponseMessage", typeof(GetConversationItemsResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("GetDiscoverySearchConfigurationResponseMessage", typeof(GetDiscoverySearchConfigurationResponseMessageType))]
+        [System.Xml.Serialization.XmlElementAttribute("GetEncryptionConfigurationResponseMessage", typeof(ResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("GetEventsResponseMessage", typeof(GetEventsResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("GetFolderResponseMessage", typeof(FolderInfoResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("GetHoldOnMailboxesResponseMessage", typeof(GetHoldOnMailboxesResponseMessageType))]
@@ -34375,6 +35102,7 @@ namespace EWSEditor.EwsVsProxy {
         [System.Xml.Serialization.XmlElementAttribute("SendItemResponseMessage", typeof(ResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("SendNotificationResponseMessage", typeof(SendNotificationResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("SetClientExtensionResponseMessage", typeof(ResponseMessageType))]
+        [System.Xml.Serialization.XmlElementAttribute("SetEncryptionConfigurationResponseMessage", typeof(ResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("SetHoldOnMailboxesResponseMessage", typeof(SetHoldOnMailboxesResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("SubscribeResponseMessage", typeof(SubscribeResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("SyncFolderHierarchyResponseMessage", typeof(SyncFolderHierarchyResponseMessageType))]
@@ -34383,6 +35111,7 @@ namespace EWSEditor.EwsVsProxy {
         [System.Xml.Serialization.XmlElementAttribute("UpdateFolderResponseMessage", typeof(FolderInfoResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("UpdateItemInRecoverableItemsResponseMessage", typeof(UpdateItemInRecoverableItemsResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("UpdateItemResponseMessage", typeof(UpdateItemResponseMessageType))]
+        [System.Xml.Serialization.XmlElementAttribute("UpdateMailboxAssociationResponseMessage", typeof(ResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("UpdateUserConfigurationResponseMessage", typeof(ResponseMessageType))]
         [System.Xml.Serialization.XmlElementAttribute("UploadItemsResponseMessage", typeof(UploadItemsResponseMessageType))]
         [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemsElementName")]
@@ -34499,6 +35228,9 @@ namespace EWSEditor.EwsVsProxy {
         GetDiscoverySearchConfigurationResponseMessage,
         
         /// <remarks/>
+        GetEncryptionConfigurationResponseMessage,
+        
+        /// <remarks/>
         GetEventsResponseMessage,
         
         /// <remarks/>
@@ -34589,6 +35321,9 @@ namespace EWSEditor.EwsVsProxy {
         SetClientExtensionResponseMessage,
         
         /// <remarks/>
+        SetEncryptionConfigurationResponseMessage,
+        
+        /// <remarks/>
         SetHoldOnMailboxesResponseMessage,
         
         /// <remarks/>
@@ -34611,6 +35346,9 @@ namespace EWSEditor.EwsVsProxy {
         
         /// <remarks/>
         UpdateItemResponseMessage,
+        
+        /// <remarks/>
+        UpdateMailboxAssociationResponseMessage,
         
         /// <remarks/>
         UpdateUserConfigurationResponseMessage,
@@ -34656,6 +35394,8 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetAttachmentResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeleteAttachmentResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CreateAttachmentResponseType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetFederatedDirectoryGroupResponseMessageType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(UpdateMailboxAssociationResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ApplyConversationActionResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SendItemResponseType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CreateFolderPathResponseType))]
@@ -35011,6 +35751,50 @@ namespace EWSEditor.EwsVsProxy {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
     public partial class CreateAttachmentResponseType : BaseResponseMessageType {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
+    public partial class GetFederatedDirectoryGroupResponseMessageType : BaseResponseMessageType {
+        
+        private FederatedDirectoryIdentityDetailsType[] membersField;
+        
+        private FederatedDirectoryIdentityDetailsType[] ownersField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("IdentityDetails", Namespace="http://schemas.microsoft.com/exchange/services/2006/types", IsNullable=false)]
+        public FederatedDirectoryIdentityDetailsType[] Members {
+            get {
+                return this.membersField;
+            }
+            set {
+                this.membersField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("IdentityDetails", Namespace="http://schemas.microsoft.com/exchange/services/2006/types", IsNullable=false)]
+        public FederatedDirectoryIdentityDetailsType[] Owners {
+            get {
+                return this.ownersField;
+            }
+            set {
+                this.ownersField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
+    public partial class UpdateMailboxAssociationResponseType : BaseResponseMessageType {
     }
     
     /// <remarks/>
@@ -36397,6 +37181,352 @@ namespace EWSEditor.EwsVsProxy {
         
         /// <remarks/>
         Text,
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class MasterMailboxType {
+        
+        private string mailboxTypeField;
+        
+        private string aliasField;
+        
+        private string displayNameField;
+        
+        private string smtpAddressField;
+        
+        private ModernGroupTypeType groupTypeField;
+        
+        private bool groupTypeFieldSpecified;
+        
+        private string descriptionField;
+        
+        private string photoField;
+        
+        private string sharePointUrlField;
+        
+        private string inboxUrlField;
+        
+        private string calendarUrlField;
+        
+        private string domainControllerField;
+        
+        /// <remarks/>
+        public string MailboxType {
+            get {
+                return this.mailboxTypeField;
+            }
+            set {
+                this.mailboxTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Alias {
+            get {
+                return this.aliasField;
+            }
+            set {
+                this.aliasField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DisplayName {
+            get {
+                return this.displayNameField;
+            }
+            set {
+                this.displayNameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string SmtpAddress {
+            get {
+                return this.smtpAddressField;
+            }
+            set {
+                this.smtpAddressField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public ModernGroupTypeType GroupType {
+            get {
+                return this.groupTypeField;
+            }
+            set {
+                this.groupTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool GroupTypeSpecified {
+            get {
+                return this.groupTypeFieldSpecified;
+            }
+            set {
+                this.groupTypeFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Photo {
+            get {
+                return this.photoField;
+            }
+            set {
+                this.photoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string SharePointUrl {
+            get {
+                return this.sharePointUrlField;
+            }
+            set {
+                this.sharePointUrlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string InboxUrl {
+            get {
+                return this.inboxUrlField;
+            }
+            set {
+                this.inboxUrlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CalendarUrl {
+            get {
+                return this.calendarUrlField;
+            }
+            set {
+                this.calendarUrlField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DomainController {
+            get {
+                return this.domainControllerField;
+            }
+            set {
+                this.domainControllerField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public enum ModernGroupTypeType {
+        
+        /// <remarks/>
+        None,
+        
+        /// <remarks/>
+        Private,
+        
+        /// <remarks/>
+        Secret,
+        
+        /// <remarks/>
+        Public,
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(UserLocatorType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GroupLocatorType))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class MailboxLocatorType {
+        
+        private string externalDirectoryObjectIdField;
+        
+        private string legacyDnField;
+        
+        /// <remarks/>
+        public string ExternalDirectoryObjectId {
+            get {
+                return this.externalDirectoryObjectIdField;
+            }
+            set {
+                this.externalDirectoryObjectIdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string LegacyDn {
+            get {
+                return this.legacyDnField;
+            }
+            set {
+                this.legacyDnField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class UserLocatorType : MailboxLocatorType {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class GroupLocatorType : MailboxLocatorType {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class MailboxAssociationType {
+        
+        private GroupLocatorType groupField;
+        
+        private UserLocatorType userField;
+        
+        private bool isMemberField;
+        
+        private bool isMemberFieldSpecified;
+        
+        private System.DateTime joinDateField;
+        
+        private bool joinDateFieldSpecified;
+        
+        private bool isPinField;
+        
+        private bool isPinFieldSpecified;
+        
+        private string joinedByField;
+        
+        /// <remarks/>
+        public GroupLocatorType Group {
+            get {
+                return this.groupField;
+            }
+            set {
+                this.groupField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public UserLocatorType User {
+            get {
+                return this.userField;
+            }
+            set {
+                this.userField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsMember {
+            get {
+                return this.isMemberField;
+            }
+            set {
+                this.isMemberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IsMemberSpecified {
+            get {
+                return this.isMemberFieldSpecified;
+            }
+            set {
+                this.isMemberFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime JoinDate {
+            get {
+                return this.joinDateField;
+            }
+            set {
+                this.joinDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool JoinDateSpecified {
+            get {
+                return this.joinDateFieldSpecified;
+            }
+            set {
+                this.joinDateFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsPin {
+            get {
+                return this.isPinField;
+            }
+            set {
+                this.isPinField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool IsPinSpecified {
+            get {
+                return this.isPinFieldSpecified;
+            }
+            set {
+                this.isPinFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string JoinedBy {
+            get {
+                return this.joinedByField;
+            }
+            set {
+                this.joinedByField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -38274,7 +39404,9 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(MarkAsJunkType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetAppMarketplaceUrlType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetAppManifestsType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(SetEncryptionConfigurationType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(SetClientExtensionType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetEncryptionConfigurationType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetClientExtensionType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetConversationItemsType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(MarkAllItemsAsReadType))]
@@ -38336,6 +39468,9 @@ namespace EWSEditor.EwsVsProxy {
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetAttachmentType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(DeleteAttachmentType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(CreateAttachmentType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetFederatedDirectoryGroupType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetFederatedDirectoryUserType))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(UpdateMailboxAssociationType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(GetPersonaType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(FindPeopleType))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ApplyConversationActionType))]
@@ -39511,6 +40646,63 @@ namespace EWSEditor.EwsVsProxy {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
+    public partial class SetEncryptionConfigurationType : BaseRequestType {
+        
+        private string imageBase64Field;
+        
+        private string emailTextField;
+        
+        private string portalTextField;
+        
+        private string disclaimerTextField;
+        
+        /// <remarks/>
+        public string ImageBase64 {
+            get {
+                return this.imageBase64Field;
+            }
+            set {
+                this.imageBase64Field = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string EmailText {
+            get {
+                return this.emailTextField;
+            }
+            set {
+                this.emailTextField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string PortalText {
+            get {
+                return this.portalTextField;
+            }
+            set {
+                this.portalTextField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DisclaimerText {
+            get {
+                return this.disclaimerTextField;
+            }
+            set {
+                this.disclaimerTextField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
     public partial class SetClientExtensionType : BaseRequestType {
         
         private SetClientExtensionActionType[] actionsField;
@@ -39525,6 +40717,15 @@ namespace EWSEditor.EwsVsProxy {
                 this.actionsField = value;
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
+    public partial class GetEncryptionConfigurationType : BaseRequestType {
     }
     
     /// <remarks/>
@@ -42849,6 +44050,94 @@ namespace EWSEditor.EwsVsProxy {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
+    public partial class GetFederatedDirectoryGroupType : BaseRequestType {
+        
+        private string[] propertiesField;
+        
+        private string identityField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("String", Namespace="http://schemas.microsoft.com/exchange/services/2006/types", IsNullable=false)]
+        public string[] Properties {
+            get {
+                return this.propertiesField;
+            }
+            set {
+                this.propertiesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Identity {
+            get {
+                return this.identityField;
+            }
+            set {
+                this.identityField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
+    public partial class GetFederatedDirectoryUserType : BaseRequestType {
+        
+        private string externalDirectoryObjectIdField;
+        
+        /// <remarks/>
+        public string ExternalDirectoryObjectId {
+            get {
+                return this.externalDirectoryObjectIdField;
+            }
+            set {
+                this.externalDirectoryObjectIdField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
+    public partial class UpdateMailboxAssociationType : BaseRequestType {
+        
+        private MailboxAssociationType associationField;
+        
+        private MasterMailboxType masterField;
+        
+        /// <remarks/>
+        public MailboxAssociationType Association {
+            get {
+                return this.associationField;
+            }
+            set {
+                this.associationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public MasterMailboxType Master {
+            get {
+                return this.masterField;
+            }
+            set {
+                this.masterField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/messages")]
     public partial class GetPersonaType : BaseRequestType {
         
         private ItemIdType personaIdField;
@@ -43512,6 +44801,10 @@ namespace EWSEditor.EwsVsProxy {
         
         private bool affectedTaskOccurrencesFieldSpecified;
         
+        private bool suppressReadReceiptsField;
+        
+        private bool suppressReadReceiptsFieldSpecified;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("ItemId", typeof(ItemIdType), Namespace="http://schemas.microsoft.com/exchange/services/2006/types", IsNullable=false)]
         [System.Xml.Serialization.XmlArrayItemAttribute("OccurrenceItemId", typeof(OccurrenceItemIdType), Namespace="http://schemas.microsoft.com/exchange/services/2006/types", IsNullable=false)]
@@ -43578,6 +44871,28 @@ namespace EWSEditor.EwsVsProxy {
             }
             set {
                 this.affectedTaskOccurrencesFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool SuppressReadReceipts {
+            get {
+                return this.suppressReadReceiptsField;
+            }
+            set {
+                this.suppressReadReceiptsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool SuppressReadReceiptsSpecified {
+            get {
+                return this.suppressReadReceiptsFieldSpecified;
+            }
+            set {
+                this.suppressReadReceiptsFieldSpecified = value;
             }
         }
     }
@@ -43708,6 +45023,10 @@ namespace EWSEditor.EwsVsProxy {
         
         private bool sendMeetingInvitationsOrCancellationsFieldSpecified;
         
+        private bool suppressReadReceiptsField;
+        
+        private bool suppressReadReceiptsFieldSpecified;
+        
         /// <remarks/>
         public TargetFolderIdType SavedItemFolderId {
             get {
@@ -43781,6 +45100,28 @@ namespace EWSEditor.EwsVsProxy {
             }
             set {
                 this.sendMeetingInvitationsOrCancellationsFieldSpecified = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool SuppressReadReceipts {
+            get {
+                return this.suppressReadReceiptsField;
+            }
+            set {
+                this.suppressReadReceiptsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool SuppressReadReceiptsSpecified {
+            get {
+                return this.suppressReadReceiptsFieldSpecified;
+            }
+            set {
+                this.suppressReadReceiptsFieldSpecified = value;
             }
         }
     }
@@ -44374,35 +45715,18 @@ namespace EWSEditor.EwsVsProxy {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
-    public partial class ConnectingSIDType {
+    public partial class SmtpAddressType {
         
-        private string itemField;
-        
-        private ItemChoiceType itemElementNameField;
+        private string valueField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("PrimarySmtpAddress", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("PrincipalName", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("SID", typeof(string))]
-        [System.Xml.Serialization.XmlElementAttribute("SmtpAddress", typeof(string))]
-        [System.Xml.Serialization.XmlChoiceIdentifierAttribute("ItemElementName")]
-        public string Item {
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
             get {
-                return this.itemField;
+                return this.valueField;
             }
             set {
-                this.itemField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public ItemChoiceType ItemElementName {
-            get {
-                return this.itemElementNameField;
-            }
-            set {
-                this.itemElementNameField = value;
+                this.valueField = value;
             }
         }
     }
@@ -44410,20 +45734,92 @@ namespace EWSEditor.EwsVsProxy {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
     [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types", IncludeInSchema=false)]
-    public enum ItemChoiceType {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class PrimarySmtpAddressType {
+        
+        private string valueField;
         
         /// <remarks/>
-        PrimarySmtpAddress,
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class SIDType {
+        
+        private string valueField;
         
         /// <remarks/>
-        PrincipalName,
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class PrincipalNameType {
+        
+        private string valueField;
         
         /// <remarks/>
-        SID,
+        [System.Xml.Serialization.XmlTextAttribute()]
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.33440")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://schemas.microsoft.com/exchange/services/2006/types")]
+    public partial class ConnectingSIDType {
+        
+        private object itemField;
         
         /// <remarks/>
-        SmtpAddress,
+        [System.Xml.Serialization.XmlElementAttribute("PrimarySmtpAddress", typeof(PrimarySmtpAddressType))]
+        [System.Xml.Serialization.XmlElementAttribute("PrincipalName", typeof(PrincipalNameType))]
+        [System.Xml.Serialization.XmlElementAttribute("SID", typeof(SIDType))]
+        [System.Xml.Serialization.XmlElementAttribute("SmtpAddress", typeof(SmtpAddressType))]
+        public object Item {
+            get {
+                return this.itemField;
+            }
+            set {
+                this.itemField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -44638,7 +46034,7 @@ namespace EWSEditor.EwsVsProxy {
         private System.Xml.XmlAttribute[] anyAttrField;
         
         public RequestServerVersion() {
-            this.versionField = ExchangeVersionType.Exchange2013;
+            this.versionField = ExchangeVersionType.Exchange2013_SP1;
         }
         
         /// <remarks/>
@@ -44687,8 +46083,9 @@ namespace EWSEditor.EwsVsProxy {
         
         /// <remarks/>
         Exchange2013,
-
-        Exchange2013_SP1 
+        
+        /// <remarks/>
+        Exchange2013_SP1,
     }
     
     /// <remarks/>
