@@ -50,13 +50,16 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmboUserAgent = new System.Windows.Forms.ComboBox();
+            this.chkOverrideUserAgent = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GoRun
             // 
             this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GoRun.Location = new System.Drawing.Point(758, 415);
+            this.GoRun.Location = new System.Drawing.Point(755, 492);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(74, 23);
             this.GoRun.TabIndex = 5;
@@ -199,29 +202,29 @@
             // 
             // txtResults
             // 
-            this.txtResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResults.Location = new System.Drawing.Point(8, 144);
+            this.txtResults.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtResults.Location = new System.Drawing.Point(8, 171);
             this.txtResults.MaxLength = 0;
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResults.Size = new System.Drawing.Size(920, 130);
+            this.txtResults.Size = new System.Drawing.Size(917, 130);
             this.txtResults.TabIndex = 63;
             // 
             // lvItems
             // 
-            this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colType,
             this.colValue});
             this.lvItems.FullRowSelect = true;
-            this.lvItems.Location = new System.Drawing.Point(8, 293);
+            this.lvItems.Location = new System.Drawing.Point(8, 320);
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(917, 116);
+            this.lvItems.Size = new System.Drawing.Size(914, 166);
             this.lvItems.TabIndex = 64;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -241,7 +244,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(851, 415);
+            this.btnClose.Location = new System.Drawing.Point(848, 492);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(74, 23);
             this.btnClose.TabIndex = 65;
@@ -252,7 +255,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 277);
+            this.label4.Location = new System.Drawing.Point(9, 304);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 66;
@@ -261,17 +264,51 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 128);
+            this.label5.Location = new System.Drawing.Point(9, 155);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 67;
             this.label5.Text = "Errors:";
             // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 489);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(243, 13);
+            this.label6.TabIndex = 68;
+            this.label6.Text = "Note: Be sure to double click on results for details.";
+            // 
+            // cmboUserAgent
+            // 
+            this.cmboUserAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmboUserAgent.FormattingEnabled = true;
+            this.cmboUserAgent.Location = new System.Drawing.Point(152, 128);
+            this.cmboUserAgent.Name = "cmboUserAgent";
+            this.cmboUserAgent.Size = new System.Drawing.Size(649, 21);
+            this.cmboUserAgent.TabIndex = 71;
+            // 
+            // chkOverrideUserAgent
+            // 
+            this.chkOverrideUserAgent.AutoSize = true;
+            this.chkOverrideUserAgent.Location = new System.Drawing.Point(18, 130);
+            this.chkOverrideUserAgent.Name = "chkOverrideUserAgent";
+            this.chkOverrideUserAgent.Size = new System.Drawing.Size(125, 17);
+            this.chkOverrideUserAgent.TabIndex = 72;
+            this.chkOverrideUserAgent.Text = "Override User-Agent:";
+            this.chkOverrideUserAgent.UseVisualStyleBackColor = true;
+            this.chkOverrideUserAgent.CheckedChanged += new System.EventHandler(this.chkOverrideUserAgent_CheckedChanged);
+            // 
             // AutodiscoverViewerForm
             // 
             this.AcceptButton = this.GoRun;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(944, 450);
+            this.ClientSize = new System.Drawing.Size(941, 527);
+            this.Controls.Add(this.chkOverrideUserAgent);
+            this.Controls.Add(this.cmboUserAgent);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnClose);
@@ -320,6 +357,9 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmboUserAgent;
+        private System.Windows.Forms.CheckBox chkOverrideUserAgent;
 
     }
 }

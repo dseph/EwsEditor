@@ -7,8 +7,6 @@
  
 
 Wish List
-Add setting useragent header to: "Microsoft Office/15.0 (Windows NT 6.1; Microsoft Outlook 15.0.4551; Pro)" 
-for all Autodiscover calls. The user should be able to override this.
 
 In the Options and AutodiscoverViewer window have a place to set additional headers - this should be similar to what 
 EwsPost has. 
@@ -20,4 +18,5 @@ Add processing for working with custom search folders.
 
 Add hex editing ability for binary properties.
 
-Add grouping infomation processing to AutodiscoverViewer.  This is new for managed api 2.1
+In Autodiscover Viewer window have the abilility to specify the Autodiscover asmx URL instead of only allowing Autodiscover to it.
+ 

@@ -30,6 +30,17 @@ namespace EWSEditor.Forms
             this.exchangeVersionCombo.TransformComboBox(this.TempExchangeVersionCombo);
             this.exchangeVersionCombo.HasEmptyItem = true;
             //this.TempExchangeVersionCombo.Text = "Exchange2007_SP1";
+
+            AutodiscoverService oTempService = new AutodiscoverService();
+            cmboUserAgent.Items.Add(oTempService.UserAgent);
+            cmboUserAgent.Items.Add("EwsEditor");
+            cmboUserAgent.Items.Add("Microsoft Office/15.0 (Windows NT 6.1; Microsoft Outlook 15.0.4551; Pro)");
+            cmboUserAgent.Items.Add("Microsoft Office/14.0 (Windows NT 5.1; Microsoft Outlook 14.0.4536; Pro; MSOffice 14)");
+            cmboUserAgent.Items.Add("Microsoft Office/14.0 (Windows NT 6.1; Microsoft Outlook 14.0.5128; Pro)");
+            cmboUserAgent.Items.Add("Microsoft Office/12.0 (Windows NT 6.1; Microsoft Office Word 12.0.6425; Pro)");
+            cmboUserAgent.Items.Add("Microsoft Office/12.0 (Windows NT 5.1; Microsoft Office Outlook 12.0.6554; Pro)");
+            cmboUserAgent.Items.Add("Microsoft Office/12.0 (Windows NT 5.2; Pro)");
+
             SetFields();
         }
 
@@ -65,6 +76,9 @@ namespace EWSEditor.Forms
 
                 // Enable/Disable pre-authenticating requests
                 service.PreAuthenticate = this.chkPreAuthenticate.Checked;
+
+                if (cmboUserAgent.Text.Trim().Length != 0)
+                    service.UserAgent = cmboUserAgent.Text.Trim();
 
                 // Create and set the trace listener
                 service.TraceEnabled = true;
@@ -251,6 +265,9 @@ namespace EWSEditor.Forms
                 txtPassword.Enabled = true;
                 txtDomain.Enabled = true;
             }
+
+            
+            this.cmboUserAgent.Enabled = chkOverrideUserAgent.Checked;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -282,6 +299,11 @@ namespace EWSEditor.Forms
                 oForm.txtEntry.Text = sDisplay;
                 oForm.ShowDialog();
             }
+        }
+
+        private void chkOverrideUserAgent_CheckedChanged(object sender, EventArgs e)
+        {
+            this.cmboUserAgent.Enabled = chkOverrideUserAgent.Checked;
         }
     }
 }
