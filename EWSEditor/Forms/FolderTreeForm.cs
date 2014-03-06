@@ -150,6 +150,7 @@ namespace EWSEditor.Forms
                 this.UserOofSettingsMenuItem.Enabled = isCurrentService;
                 this.ConvertIdMenuItem.Enabled = isCurrentService;
                 this.InboxRulesMenuItem.Enabled = isCurrentService;
+                this.UserConfigurationMenuItem.Enabled = isCurrentService;
 
                 this.mnuResolveName.Enabled = isCurrentService;
                 this.mnuResolveExProp.Enabled = isCurrentService;

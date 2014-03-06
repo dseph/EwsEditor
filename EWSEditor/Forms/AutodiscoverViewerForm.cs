@@ -74,6 +74,8 @@ namespace EWSEditor.Forms
                 // Enable/Disable the SCP lookup against Active Directory
                 service.EnableScpLookup = this.chkEnableScpLookup.Checked;
 
+                service.ReturnClientRequestId = true;  // This will give us more data back about the servers used in the response headers
+
                 // Enable/Disable pre-authenticating requests
                 service.PreAuthenticate = this.chkPreAuthenticate.Checked;
 
@@ -83,6 +85,8 @@ namespace EWSEditor.Forms
                 // Create and set the trace listener
                 service.TraceEnabled = true;
                 service.TraceListener = new EwsTraceListener();
+
+                 
 
                 // Allow/Disallow following 302 redirects in the Autodiscover sequence
                 service.RedirectionUrlValidationCallback = ValidationCallbackHelper.RedirectionUrlValidationCallback;

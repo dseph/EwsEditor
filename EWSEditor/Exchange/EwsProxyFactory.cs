@@ -100,7 +100,7 @@ namespace EWSEditor.Exchange
             service.TraceEnabled = true;
             service.TraceListener = new EWSEditor.Logging.EwsTraceListener();
 
-            service.ReturnClientRequestId = true;
+            service.ReturnClientRequestId = true;  // This will give us more data back about the servers used in the response headers
 
             if (EnableScpLookup.HasValue)
             {
