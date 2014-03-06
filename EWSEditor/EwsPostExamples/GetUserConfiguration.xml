@@ -18,34 +18,7 @@
   </soap:Body>
 </soap:Envelope>
 
-
-
-
-
-
-GetUserConfiguration Response Example
-
-
-
-
-Description
-
-
-The following example shows a successful response to the GetUserConfiguration request.
-
-Code
-
-
-
-
-XML
-
-
-
-
-Copy
-
-
+ 
 <?xml version="1.0" encoding="utf-8"?>
 <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
   <s:Header>

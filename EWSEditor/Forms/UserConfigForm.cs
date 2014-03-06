@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using System.IO;
 
 using Microsoft.Exchange.WebServices.Data;
 using EWSEditor.Common;
@@ -19,22 +20,30 @@ namespace EWSEditor.Forms
 {
     public partial class UserConfigForm : CountedForm
     {
+
+        private ExchangeService _CurrentService = null;
         public UserConfigForm()
         {
             InitializeComponent();
+        }
+
+        public UserConfigForm(ExchangeService oExchangeService)
+        {
+            InitializeComponent();
+            _CurrentService = oExchangeService;
             SetForm();
         }
 
+
         private void UserConfigForm_Load(object sender, EventArgs e)
         {
-
+             
         }
 
  
         private void SetForm()
         {
-            LoadUserConfigIntoTreeView(CurrentService, ref treeView1);
-
+            LoadUserConfigIntoTreeView(_CurrentService, ref treeView1);
         }
 
         public static void LoadUserConfigIntoTreeView(ExchangeService service, ref TreeView oTreeView)
@@ -46,41 +55,38 @@ namespace EWSEditor.Forms
 
             TreeNode oNode = null;
 
-            oNode = oParentNode.Nodes.Add("OWA.UserOptions");
-            oNode.Tag = null;
-            LoadUserConfigIntoTreeViewNode(service, ref oNode, "OWA.UserOptions");
+            Folder RootFolder = Folder.Bind(service, WellKnownFolderName.Root);
 
             oNode = oParentNode.Nodes.Add("OWA.UserOptions");
             oNode.Tag = null;
-            LoadUserConfigIntoTreeViewNode(service, ref oNode, "OWA.UserOptions");
+            LoadUserConfigIntoTreeViewNode(service, ref oNode, RootFolder.Id, "OWA.UserOptions");
 
+ 
+
+            Folder CalendarFolder = Folder.Bind(service, WellKnownFolderName.Calendar);
+              
+            oNode = oParentNode.Nodes.Add("WellKnownFolderName.Calendar CategoryList");
+            oNode.Tag = null;
+            LoadUserConfigIntoTreeViewNodeCategoryList(service, ref oNode, CalendarFolder.Id, "CategoryList");
+
+            oParentNode.ExpandAll();
+ 
         }
-
-        public static void EnumUserConfig(ExchangeService service, ref string UserSettings)
-        {
-            string sResult = string.Empty;
-            Folder Root = Folder.Bind(service, WellKnownFolderName.Root);
-            UserConfiguration OWAConfiguration = UserConfiguration.Bind(service,
-                "OWA.UserOptions",
-                Root.ParentFolderId,
-                UserConfigurationProperties.All);
-
-            IDictionaryEnumerator OWAEnum = (IDictionaryEnumerator)OWAConfiguration.Dictionary.GetEnumerator();
-            while (OWAEnum.MoveNext())
-            {
-                sResult += "Key : " + OWAEnum.Key;
-                sResult += "Value : " + OWAEnum.Value;
-            }
-
-            UserSettings = sResult;
-        }
+ 
 
         public static void LoadUserConfigIntoTreeViewNode(ExchangeService service, ref TreeNode oNode, string sSettingsName)
         {
             Folder Root = Folder.Bind(service, WellKnownFolderName.Root);
+            LoadUserConfigIntoTreeViewNode(service, ref  oNode, Root.ParentFolderId, sSettingsName);
+        }
+
+        public static void LoadUserConfigIntoTreeViewNode(ExchangeService service, ref TreeNode oNode, FolderId oFolderId, string sSettingsName)
+        {
+             
+
             UserConfiguration OWAConfiguration = UserConfiguration.Bind(service,
                 sSettingsName,
-                Root.ParentFolderId,
+                oFolderId,
                 UserConfigurationProperties.All);
 
             TreeNode xNode = null;
@@ -94,6 +100,28 @@ namespace EWSEditor.Forms
             }
         }
 
+        // Note: Accessing hidden folders such as the one for categories is not something which is considered supportable or advised by MS.
+        public static void LoadUserConfigIntoTreeViewNodeCategoryList(ExchangeService service, ref TreeNode oNode, FolderId oFolderId, string sSettingsName)
+        {
+
+
+            UserConfiguration oUserConfiguration = UserConfiguration.Bind(service,
+                sSettingsName,
+                oFolderId,
+                UserConfigurationProperties.XmlData);
+ 
+            TreeNode xNode = null;
+            xNode = new TreeNode("XmlData");
+            xNode.Tag = Encoding.UTF8.GetString(oUserConfiguration.XmlData);
+            oNode.Nodes.Add(xNode);
+ 
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            txtValue.Text = (string)treeView1.SelectedNode.Tag;
+        }
+       
 
     }
 }

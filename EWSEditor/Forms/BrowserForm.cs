@@ -345,7 +345,7 @@
         private void mnuEwsPost_Click(object sender, EventArgs e)
         {
             PostForm oPostForm = new PostForm();
-            oPostForm.ShowDialog();
+            oPostForm.Show();
  
         }
 
@@ -674,6 +674,12 @@
         private void mnuEncode_Click(object sender, EventArgs e)
         {
             EncodeForm oForm = new EncodeForm();
+            oForm.ShowDialog();
+        }
+
+        private void UserConfigurationMenuItem_Click(object sender, EventArgs e)
+        {
+            UserConfigForm oForm = new UserConfigForm(this.CurrentService);
             oForm.ShowDialog();
         }
     }
