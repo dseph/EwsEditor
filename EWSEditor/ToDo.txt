@@ -8,15 +8,19 @@
 
 Wish List
 
-In the Options and AutodiscoverViewer window have a place to set additional headers - this should be similar to what 
-EwsPost has. 
-
-Change saving of sessions for main login to use a class, then add ability for user to load and save settings by 
-serializing the class and writting/reading to file.
+In Autodiscover Viewer window have the abilility to specify the Autodiscover asmx URL instead of only allowing Autodiscover to it.
 
 Add processing for working with custom search folders.
 
 Add hex editing ability for binary properties.
 
-In Autodiscover Viewer window have the abilility to specify the Autodiscover asmx URL instead of only allowing Autodiscover to it.
+In the Options and AutodiscoverViewer window have a place to set additional headers - this should be similar to what 
+EwsPost has. 
+
+Change saving of sessions for main login to use a class, then add ability for user to load and save settings by 
+serializing the class and writting/reading to file.
+ 
+ 
+
+ 
  
