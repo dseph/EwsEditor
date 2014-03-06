@@ -1,4 +1,4 @@
-﻿Must do before cut:
+﻿Do before cut:
 
 1 - Finish changes for 2013 SP1.  Retest functionality in each area.
 2 - Finish changes for adding inline attachments
