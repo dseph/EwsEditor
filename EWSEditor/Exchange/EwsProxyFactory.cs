@@ -111,6 +111,7 @@ namespace EWSEditor.Exchange
             {
                 service.PreAuthenticate = PreAuthenticate.Value;
             }
+            
 
             if (OverrideTimeout.HasValue)
             {

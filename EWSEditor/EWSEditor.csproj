@@ -278,6 +278,12 @@
     <Compile Include="Forms\AttachmentSelect.Designer.cs">
       <DependentUpon>AttachmentSelect.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SearchForm.Designer.cs">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SelectSendMeetingUpdateNotificationOptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -832,6 +838,9 @@
     <EmbeddedResource Include="Forms\AttachmentSelect.resx">
       <DependentUpon>AttachmentSelect.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SearchForm.resx">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectSendMeetingUpdateNotificationOptions.resx">
       <DependentUpon>SelectSendMeetingUpdateNotificationOptions.cs</DependentUpon>
     </EmbeddedResource>
@@ -1377,7 +1386,9 @@
     <Content Include="EwsPostExamples\ExportItems.xml" />
     <Content Include="EwsPostExamples\FindConversation.xml" />
     <Content Include="EwsPostExamples\FindFolder.xml" />
-    <Content Include="EwsPostExamples\FindItem - CalendarView.xml" />
+    <Content Include="EwsPostExamples\FindItem - CalendarView.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\FindPeople - AQS Search against GAL and return specified properties.xml">
       <SubType>Designer</SubType>
     </Content>
