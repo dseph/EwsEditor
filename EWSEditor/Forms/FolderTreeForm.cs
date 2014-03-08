@@ -1584,5 +1584,18 @@ namespace EWSEditor.Forms
         {
 
         }
+
+        private void SearchItemsMenuItem_Click(object sender, EventArgs e)
+        {
+            Folder oFolder = (GetFolderFromNode(FolderTreeView.SelectedNode));
+            SearchForm oForm = new SearchForm(this.CurrentService, oFolder.Id);
+            oForm.ShowDialog();
+
+        }
+
+        private void mnuDeleteFolder_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

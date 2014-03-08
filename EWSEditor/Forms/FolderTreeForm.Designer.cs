@@ -57,6 +57,7 @@ namespace EWSEditor.Forms
             this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuFolderCalendarView = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNewItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SearchItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.propertyListItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -82,7 +83,6 @@ namespace EWSEditor.Forms
             this.splitter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitter.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitter.Location = new System.Drawing.Point(0, 24);
-            this.splitter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitter.Name = "splitter";
             // 
             // splitter.Panel1
@@ -92,9 +92,8 @@ namespace EWSEditor.Forms
             // splitter.Panel2
             // 
             this.splitter.Panel2.Controls.Add(this.FolderPropertyDetailsGrid);
-            this.splitter.Size = new System.Drawing.Size(1187, 804);
+            this.splitter.Size = new System.Drawing.Size(890, 645);
             this.splitter.SplitterDistance = 228;
-            this.splitter.SplitterWidth = 5;
             this.splitter.TabIndex = 4;
             // 
             // FolderTreeView
@@ -107,11 +106,10 @@ namespace EWSEditor.Forms
             this.FolderTreeView.ImageList = this.imageList;
             this.FolderTreeView.ItemHeight = 16;
             this.FolderTreeView.Location = new System.Drawing.Point(0, 0);
-            this.FolderTreeView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FolderTreeView.Name = "FolderTreeView";
             this.FolderTreeView.SelectedImageIndex = 1;
             this.FolderTreeView.ShowNodeToolTips = true;
-            this.FolderTreeView.Size = new System.Drawing.Size(228, 804);
+            this.FolderTreeView.Size = new System.Drawing.Size(228, 645);
             this.FolderTreeView.TabIndex = 0;
             this.FolderTreeView.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.FolderTreeView_BeforeCollapse);
             this.FolderTreeView.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.FolderTreeView_BeforeExpand);
@@ -137,9 +135,9 @@ namespace EWSEditor.Forms
             // 
             this.FolderPropertyDetailsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FolderPropertyDetailsGrid.Location = new System.Drawing.Point(0, 0);
-            this.FolderPropertyDetailsGrid.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.FolderPropertyDetailsGrid.Margin = new System.Windows.Forms.Padding(4);
             this.FolderPropertyDetailsGrid.Name = "FolderPropertyDetailsGrid";
-            this.FolderPropertyDetailsGrid.Size = new System.Drawing.Size(954, 804);
+            this.FolderPropertyDetailsGrid.Size = new System.Drawing.Size(658, 645);
             this.FolderPropertyDetailsGrid.TabIndex = 0;
             this.FolderPropertyDetailsGrid.PropertyChanged += new EWSEditor.Forms.Controls.PropertyDetialsGrid.PropertyChangedEventHandler(this.FolderPropertyDetailsGrid_PropertyChanged);
             this.FolderPropertyDetailsGrid.Load += new System.EventHandler(this.FolderPropertyDetailsGrid_Load);
@@ -165,9 +163,10 @@ namespace EWSEditor.Forms
             this.addExtendedPropertyToolStripMenuItem,
             this.toolStripMenuItem14,
             this.mnuFolderCalendarView,
-            this.mnuNewItem});
+            this.mnuNewItem,
+            this.SearchItemsMenuItem});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
-            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 354);
+            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 364);
             // 
             // mnuOpenContents
             // 
@@ -237,6 +236,7 @@ namespace EWSEditor.Forms
             this.mnuDeleteFolder.Name = "mnuDeleteFolder";
             this.mnuDeleteFolder.Size = new System.Drawing.Size(269, 22);
             this.mnuDeleteFolder.Text = "Delete Folder";
+            this.mnuDeleteFolder.Click += new System.EventHandler(this.mnuDeleteFolder_Click);
             // 
             // DeleteHardMenu
             // 
@@ -318,6 +318,13 @@ namespace EWSEditor.Forms
             this.mnuNewItem.Text = "New... ";
             this.mnuNewItem.Click += new System.EventHandler(this.MnuNewItem_Click);
             // 
+            // SearchItemsMenuItem
+            // 
+            this.SearchItemsMenuItem.Name = "SearchItemsMenuItem";
+            this.SearchItemsMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.SearchItemsMenuItem.Text = "Search...";
+            this.SearchItemsMenuItem.Click += new System.EventHandler(this.SearchItemsMenuItem_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -384,12 +391,12 @@ namespace EWSEditor.Forms
             // 
             // FolderTreeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 850);
+            this.ClientSize = new System.Drawing.Size(890, 691);
             this.Controls.Add(this.splitter);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(9, 7, 9, 7);
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "FolderTreeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FolderTreeForm_Load);
@@ -448,7 +455,8 @@ namespace EWSEditor.Forms
 
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem14;
         private System.Windows.Forms.ToolStripMenuItem mnuFolderCalendarView; 
-        private System.Windows.Forms.ToolStripMenuItem mnuNewItem; 
+        private System.Windows.Forms.ToolStripMenuItem mnuNewItem;
+        private System.Windows.Forms.ToolStripMenuItem SearchItemsMenuItem; 
      
     }
 }

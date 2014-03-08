@@ -140,10 +140,7 @@ namespace EWSEditor.Forms
             this.mnuFolderSplit4.Name = "mnuFolderSplit5";
             this.mnuFolderSplit4.Size = new System.Drawing.Size(302, 6);
 
-            //this.mnuFolderCalendarView.Name = "mnuFolderCalendarView";
-            //this.mnuFolderCalendarView.Size = new System.Drawing.Size(305, 22);
-            //this.mnuFolderCalendarView.Text = "CalendarView... (This Folder) ";
-            //this.mnuFolderCalendarView.Click += new System.EventHandler(this.MnuFolderCalendarView_Click);
+ 
 
              
 
