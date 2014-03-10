@@ -682,5 +682,11 @@
             UserConfigForm oForm = new UserConfigForm(this.CurrentService);
             oForm.ShowDialog();
         }
+
+        private void eDiscoverySearchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EDiscoverySearchForm oForm = new EDiscoverySearchForm(this.CurrentService);
+            oForm.ShowDialog();
+        }
     }
 }

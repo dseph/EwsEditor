@@ -30,10 +30,11 @@ namespace EWSEditor.Forms
 
         public SearchForm(ExchangeService oExchangeService, FolderId oCurrentFolderId)
         {
-            InitializeComponent();
-
             _CurrentService = oExchangeService;
             _CurrentFolderId = oCurrentFolderId;
+
+            InitializeComponent();
+ 
         }
 
 
@@ -273,8 +274,6 @@ namespace EWSEditor.Forms
                         lvItems.Clear();
                         lvItems.View = View.Details;
                         lvItems.GridLines = true;
-      
-
                         lvItems.Columns.Add("Count", 100, HorizontalAlignment.Left);
                         lvItems.Columns.Add("Subject", 150, HorizontalAlignment.Left);
                         lvItems.Columns.Add("Class", 150, HorizontalAlignment.Left);
@@ -405,78 +404,13 @@ namespace EWSEditor.Forms
 
         private void btnMailboxSearch_Click(object sender, EventArgs e)
         {
-            DoMailboxSearch();
+            //DoMailboxSearch();
         }
 
-        private void DoMailboxSearch()
-        {
-             
-            //// http://gsexdev.blogspot.com/2014/01/paging-ediscovery-results-with-ews.html 
-            //// http://technet.microsoft.com/en-us/library/dd298021(v=exchg.150).aspx#roles
-
-                Folder oFolder = Folder.Bind(_CurrentService,_CurrentFolderId);
-                ServiceResponseCollection<SearchMailboxesResponse> oServiceResponseCollection = null;
-
-                MailboxSearchScope[]  oMailboxSearchScope = new MailboxSearchScope[1];  
-                oMailboxSearchScope[0].SearchScope = MailboxSearchLocation.PrimaryOnly;
-
-                MailboxQuery oMailboxQuery = new MailboxQuery(this.txtAQS.Text, oMailboxSearchScope);
-                MailboxQuery[] arrMailboxQuery = { oMailboxQuery };
-            
-                SearchMailboxesParameters oSearchMailboxesParameters = new SearchMailboxesParameters();
-                oSearchMailboxesParameters.SearchQueries = arrMailboxQuery;
-                oSearchMailboxesParameters.PageSize = (int)numPageSize.Value;
-                oSearchMailboxesParameters.PageDirection = SearchPageDirection.Next;
-                oSearchMailboxesParameters.PerformDeduplication = false;
-                oSearchMailboxesParameters.ResultType = SearchResultType.PreviewOnly;
-
-
-                oServiceResponseCollection = _CurrentService.SearchMailboxes(oSearchMailboxesParameters);
-
-                if (oServiceResponseCollection.OverallResult == ServiceResult.Success)
-                {
-                    if (oServiceResponseCollection.Count > 0 )
-                    {
-
-                        //do{
-                            //foreach (SearchPreviewItem oSPI in oServiceResponseCollection[])
-                            //{
-                            
-                            //}
-
-                        //} while ()
- 
-
-                    }
-
-                }
-                else
-                {
-
-
-                }
-
-
-                //$srCol = $service.SearchMailboxes($smSearchMailbox);  
-  
-                //if ($srCol[0].Result -eq [Microsoft.Exchange.WebServices.Data.ServiceResult]::Success)  
-                //{  
-                //    if ($srCol[0].SearchResult.ItemCount -gt 0)  
-                //    {                    
-                //        do  
-                //        {  
-                //            $smSearchMailbox.PageItemReference = $srCol[0].SearchResult.PreviewItems[$srCol[0].SearchResult.PreviewItems.Length - 1].SortValue;  
-                //            foreach ($PvItem in $srCol[0].SearchResult.PreviewItems) {  
-                //                Write-Host ($PvItem.Subject);  
-                //            }                          
-                //            $srCol = $service.SearchMailboxes($smSearchMailbox);  
-                //            Write-Host("Items Remaining : " + $srCol[0].SearchResult.ItemCount);  
-                //        } while ($srCol[0].SearchResult.ItemCount-gt 0 );  
-          
-                //    }  
       
-                //}  
 
+        private void btnListSearchableMailboxes_Click(object sender, EventArgs e)
+        {
         }
     }
 }
