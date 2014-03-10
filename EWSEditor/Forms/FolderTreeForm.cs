@@ -161,7 +161,7 @@ namespace EWSEditor.Forms
          
                 this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem.Enabled = isCurrentService;
                 this.mnuGetConversationItems.Enabled = isCurrentService;
- 
+                this.eDiscoverySearchToolStripMenuItem.Enabled = isCurrentService;
 
                  
             }

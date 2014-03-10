@@ -45,9 +45,6 @@
             this.rdoFindItemSearch = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.numPageSize = new System.Windows.Forms.NumericUpDown();
-            this.btnMailboxSearch = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtMailbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).BeginInit();
             this.SuspendLayout();
             // 
@@ -165,9 +162,9 @@
             this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvItems.Location = new System.Drawing.Point(2, 251);
+            this.lvItems.Location = new System.Drawing.Point(2, 248);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(958, 322);
+            this.lvItems.Size = new System.Drawing.Size(958, 325);
             this.lvItems.TabIndex = 32;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             // 
@@ -231,41 +228,11 @@
             0,
             0});
             // 
-            // btnMailboxSearch
-            // 
-            this.btnMailboxSearch.Location = new System.Drawing.Point(662, 160);
-            this.btnMailboxSearch.Name = "btnMailboxSearch";
-            this.btnMailboxSearch.Size = new System.Drawing.Size(123, 23);
-            this.btnMailboxSearch.TabIndex = 39;
-            this.btnMailboxSearch.Text = "Mailbox Search";
-            this.btnMailboxSearch.UseVisualStyleBackColor = true;
-            this.btnMailboxSearch.Click += new System.EventHandler(this.btnMailboxSearch_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(659, 192);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 40;
-            this.label3.Text = "Mailbox:";
-            // 
-            // txtMailbox
-            // 
-            this.txtMailbox.Enabled = false;
-            this.txtMailbox.Location = new System.Drawing.Point(736, 189);
-            this.txtMailbox.Name = "txtMailbox";
-            this.txtMailbox.Size = new System.Drawing.Size(180, 20);
-            this.txtMailbox.TabIndex = 41;
-            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(960, 574);
-            this.Controls.Add(this.txtMailbox);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnMailboxSearch);
             this.Controls.Add(this.numPageSize);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rdoFindItemSearch);
@@ -311,8 +278,5 @@
         private System.Windows.Forms.RadioButton rdoFindItemSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numPageSize;
-        private System.Windows.Forms.Button btnMailboxSearch;
-        private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox txtMailbox;
     }
 }
