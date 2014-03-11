@@ -118,11 +118,12 @@
             this.lvMailboxes.Size = new System.Drawing.Size(851, 165);
             this.lvMailboxes.TabIndex = 53;
             this.lvMailboxes.UseCompatibleStateImageBehavior = false;
+            this.lvMailboxes.SelectedIndexChanged += new System.EventHandler(this.lvMailboxes_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 309);
+            this.label3.Location = new System.Drawing.Point(14, 305);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 47;

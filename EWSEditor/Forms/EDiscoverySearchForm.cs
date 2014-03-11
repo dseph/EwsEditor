@@ -76,22 +76,24 @@ namespace EWSEditor.Forms
                     break;
             }
 
-            DoMailboxSearch(_CurrentService, sMailboxIds, txtMailboxSearchString.Text.Trim(), oMailboxSearchLocation, oSearchResultType, (int)this.numPageSize.Value, ref this.lvItems);
+            DoMailboxSearchPreviewItems(_CurrentService, sMailboxIds, txtMailboxSearchString.Text.Trim(), oMailboxSearchLocation, oSearchResultType, (int)this.numPageSize.Value, ref this.lvItems);
         }
 
         private void ListOfSearchableMailboxes(ExchangeService oExchangeService, string sSearchMailboxString, bool bExpandGroupMemberships, ref ListView oListView)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             ListViewItem oListItem = null;
             oListView.Clear();
             oListView.View = View.Details;
             oListView.GridLines = true;
-            oListView.Columns.Add("ReferenceId", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("ReferenceId", 300, HorizontalAlignment.Left);
             oListView.Columns.Add("SmtpAddress", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("DisplayName", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("ExternalEmailAddress", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("IsMembershipGroup", 50, HorizontalAlignment.Left);
-            oListView.Columns.Add("IsMembershipGroup", 50, HorizontalAlignment.Left);
-            oListView.Columns.Add("Guid", 50, HorizontalAlignment.Left);
+            oListView.Columns.Add("DisplayName", 200, HorizontalAlignment.Left);
+            oListView.Columns.Add("IsExternalMailbox", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("ExternalEmailAddress", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("IsMembershipGroup", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("Guid", 500, HorizontalAlignment.Left);
  
 
 
@@ -117,12 +119,14 @@ namespace EWSEditor.Forms
                     oListItem = null;
                 }
             }
-
+            this.Cursor = Cursors.Default;
 
         }
 
-        private void DoMailboxSearch(ExchangeService oExchangeService, string[] sMailboxIds, string sSearchText, MailboxSearchLocation oMailboxSearchLocation, SearchResultType oSearchResultType, int iPageSize, ref ListView oListView)
+        private void DoMailboxSearchPreviewItems(ExchangeService oExchangeService, string[] sMailboxIds, string sSearchText, MailboxSearchLocation oMailboxSearchLocation, SearchResultType oSearchResultType, int iPageSize, ref ListView oListView)
         {
+            this.Cursor = Cursors.WaitCursor;
+
             //// Note: Specific RBAC Audit permissions needs to be set to use eDiscovery
             //// http://gsexdev.blogspot.com/2014/01/paging-ediscovery-results-with-ews.html 
             //// http://technet.microsoft.com/en-us/library/dd298021(v=exchg.150).aspx#roles
@@ -152,44 +156,47 @@ namespace EWSEditor.Forms
             oListView.Clear();
             oListView.View = View.Details;
             oListView.GridLines = true;
-            oListView.Columns.Add("Count", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("MailboxId", 250, HorizontalAlignment.Left);
+            oListView.Columns.Add("Count", 60, HorizontalAlignment.Left);
+            oListView.Columns.Add("MailboxId", 500, HorizontalAlignment.Left);
             oListView.Columns.Add("PrimarySmtpAddress", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("Id", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("ParentId", 50, HorizontalAlignment.Left);
-            oListView.Columns.Add("Subject", 50, HorizontalAlignment.Left);
-            oListView.Columns.Add("ItemClass", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("CreatedTime", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("SentTime", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("ToRecipients", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("CcRecipients", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("BccRecipients", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("HasAttachment", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("Importance", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("OwaLink", 1000, HorizontalAlignment.Left);
+            oListView.Columns.Add("Id", 200, HorizontalAlignment.Left);
+            oListView.Columns.Add("ParentId", 200, HorizontalAlignment.Left);
+            oListView.Columns.Add("Subject", 500, HorizontalAlignment.Left);
+            oListView.Columns.Add("ItemClass", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("CreatedTime", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("SentTime", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("ToRecipients", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("CcRecipients", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("BccRecipients", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("HasAttachment", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("Importance", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("OwaLink", 500, HorizontalAlignment.Left);
 
             oServiceResponseCollection = _CurrentService.SearchMailboxes(oSearchMailboxesParameters);
  
  
-            int iMailboxCount = 0;
+            //int iMailboxCount = 0;
             int iResponseCount = 0;
             if (oServiceResponseCollection.OverallResult == ServiceResult.Success)
             {
-                if (oServiceResponseCollection.Count > 0)
+                if ((oServiceResponseCollection.Count > 0) && (oServiceResponseCollection[0].SearchResult.PreviewItems != null))
                 {
-
+     
                     do
                     {
-                        iMailboxCount++;
-                        iResponseCount = 0;
+                        //iMailboxCount++;
+                        //iResponseCount = 0;
+
 
                         oSearchMailboxesParameters.PageItemReference = oServiceResponseCollection[0].SearchResult.PreviewItems[oServiceResponseCollection[0].SearchResult.PreviewItems.Length - 1].SortValue;
+
 
                         foreach (SearchPreviewItem oSearchPreviewItem in oServiceResponseCollection[0].SearchResult.PreviewItems)
                         {
                             iResponseCount++;
 
-                            oListItem = new ListViewItem(iMailboxCount.ToString() + " : " + iResponseCount.ToString(), 0);
+                            oListItem = new ListViewItem(iResponseCount.ToString());
+                            //oListItem = new ListViewItem(iMailboxCount.ToString() + " : " + iResponseCount.ToString(), 0);
 
                             oListItem.SubItems.Add(oSearchPreviewItem.Mailbox.MailboxId);
                             oListItem.SubItems.Add(oSearchPreviewItem.Mailbox.PrimarySmtpAddress);
@@ -218,7 +225,7 @@ namespace EWSEditor.Forms
                             else
                                 oListItem.SubItems.Add("");
 
-                            if (oSearchPreviewItem.ToRecipients != null) 
+                            if (oSearchPreviewItem.ToRecipients != null)
                                 oListItem.SubItems.Add(ExpandAddrerssArray(oSearchPreviewItem.ToRecipients));
                             else
                                 oListItem.SubItems.Add("");
@@ -236,14 +243,14 @@ namespace EWSEditor.Forms
                             oListItem.SubItems.Add(oSearchPreviewItem.HasAttachment.ToString());
                             oListItem.SubItems.Add(oSearchPreviewItem.Importance.ToString());
                             oListItem.SubItems.Add(oSearchPreviewItem.OwaLink);
- 
+
 
                             oListItem.Tag = new ItemTag(oSearchPreviewItem.Id, oSearchPreviewItem.ItemClass);
                             oListView.Items.AddRange(new ListViewItem[] { oListItem }); ;
                             oListItem = null;
-                             
-                        }
 
+                        }
+ 
                         oServiceResponseCollection = _CurrentService.SearchMailboxes(oSearchMailboxesParameters); 
                          
                     } while (oServiceResponseCollection[0].SearchResult.ItemCount > 0);
@@ -256,6 +263,7 @@ namespace EWSEditor.Forms
 
             }
 
+            this.Cursor = Cursors.Default;
         }
 
         private string ExpandAddrerssArray(string[] sAddresses)
@@ -274,6 +282,11 @@ namespace EWSEditor.Forms
         }
 
         private void EDiscoverySearchForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvMailboxes_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
