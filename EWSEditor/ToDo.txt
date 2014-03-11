@@ -1,9 +1,8 @@
-﻿Do before cut:
+﻿Plannded for future releases:
 
-1 - Finish changes for 2013 SP1.  Retest functionality in each area.
-2 - Finish changes for adding inline attachments
-3 - Add code to show response headers in EWS POST window.
-4 - Full POST code needs to be finished for Ews POST window
+1 - Add inline attachment ability.
+2 - Add code to show response headers in EWS POST window.
+3 - Full POST for Ews POST window
  
 
 Wish List
