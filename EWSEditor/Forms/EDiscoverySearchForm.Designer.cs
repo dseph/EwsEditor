@@ -230,7 +230,7 @@
             this.Controls.Add(this.btnMailboxSearch);
             this.Controls.Add(this.lvItems);
             this.Name = "EDiscoverySearchForm";
-            this.Text = "EDiscoverySearchForm";
+            this.Text = "eDiscoverySearchForm";
             this.Load += new System.EventHandler(this.EDiscoverySearchForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).EndInit();
             this.ResumeLayout(false);
