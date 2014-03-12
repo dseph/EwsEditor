@@ -226,5 +226,113 @@ namespace EWSEditor.Settings.Internals {
                 this["SelectedTimeZoneId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ProxyServerName {
+            get {
+                return ((string)(this["ProxyServerName"]));
+            }
+            set {
+                this["ProxyServerName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("8080")]
+        public int ProxyServerPort {
+            get {
+                return ((int)(this["ProxyServerPort"]));
+            }
+            set {
+                this["ProxyServerPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ProxyServerUser {
+            get {
+                return ((string)(this["ProxyServerUser"]));
+            }
+            set {
+                this["ProxyServerUser"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ProxyServerPassword {
+            get {
+                return ((string)(this["ProxyServerPassword"]));
+            }
+            set {
+                this["ProxyServerPassword"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ProxyServerDomain {
+            get {
+                return ((string)(this["ProxyServerDomain"]));
+            }
+            set {
+                this["ProxyServerDomain"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SpecifyProxySettings {
+            get {
+                return ((bool)(this["SpecifyProxySettings"]));
+            }
+            set {
+                this["SpecifyProxySettings"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OverrideProxyCredentials {
+            get {
+                return ((bool)(this["OverrideProxyCredentials"]));
+            }
+            set {
+                this["OverrideProxyCredentials"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SetDefaultProxy {
+            get {
+                return ((bool)(this["SetDefaultProxy"]));
+            }
+            set {
+                this["SetDefaultProxy"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool BypassProxyForLocalAddress {
+            get {
+                return ((bool)(this["BypassProxyForLocalAddress"]));
+            }
+            set {
+                this["BypassProxyForLocalAddress"] = value;
+            }
+        }
     }
 }

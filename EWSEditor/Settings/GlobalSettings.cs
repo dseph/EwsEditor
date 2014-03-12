@@ -314,7 +314,163 @@ namespace EWSEditor.Settings
             }
         }
 
+   
+ 
+ 
+        /// <summary>
+        /// Gets or sets a bool to override to indicate that the WebProxy settings should be overridden and set to the respose to getdefaultproxy
+        /// </summary>
+        public static bool SetDefaultProxy
+        {
+            get
+            {
+                return UserSettings.Default.SetDefaultProxy;
+            }
+            set
+            {
+                UserSettings.Default.SetDefaultProxy = value;
+                UserSettings.Default.Save();
+            }
+        }
 
+        /// <summary>
+        /// Gets or sets a bool to override to indicate that the WebProxy settings should be overridden.
+        /// </summary>
+        public static bool SpecifyProxySettings
+        {
+            get
+            {
+                return UserSettings.Default.SpecifyProxySettings;
+            }
+            set
+            {
+                UserSettings.Default.SpecifyProxySettings = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the override proxy server name
+        /// </summary>
+        public static string ProxyServerName
+        {
+            get
+            {
+                return UserSettings.Default.ProxyServerName;
+ 
+            }
+            set
+            {
+                UserSettings.Default.ProxyServerName = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the override proxy server name
+        /// </summary>
+        public static int ProxyServerPort
+        {
+            get
+            {
+                return UserSettings.Default.ProxyServerPort;
+ 
+            }
+            set
+            {
+                UserSettings.Default.ProxyServerPort = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a bool to override to indicate that the WebProxy settings should Bypass the proxy for a local address
+        /// </summary>
+        public static bool BypassProxyForLocalAddress
+        {
+            get
+            {
+                return UserSettings.Default.BypassProxyForLocalAddress;
+            }
+            set
+            {
+                UserSettings.Default.BypassProxyForLocalAddress = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+
+
+ 
+
+        /// <summary>
+        /// Gets or sets a bool to override to indicate that the WebProxy credentials should be overridden.
+        /// </summary>
+        public static bool OverrideProxyCredentials
+        {
+            get
+            {
+                return UserSettings.Default.OverrideProxyCredentials;
+            }
+            set
+            {
+                UserSettings.Default.OverrideProxyCredentials = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the override proxy user
+        /// </summary>
+        public static string ProxyServerUser
+        {
+            get
+            {
+                return UserSettings.Default.ProxyServerUser;
+
+            }
+            set
+            {
+                UserSettings.Default.ProxyServerUser = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the override proxy password
+        /// </summary>
+        public static string ProxyServerPassword
+        {
+            get
+            {
+                return UserSettings.Default.ProxyServerPassword;
+ 
+            }
+            set
+            {
+                UserSettings.Default.ProxyServerPassword = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+                /// <summary>
+        /// Gets or sets the override proxy domain
+        /// </summary>
+        public static string ProxyServerDomain
+        {
+            get
+            {
+                return UserSettings.Default.ProxyServerDomain;
+ 
+            }
+            set
+            {
+                UserSettings.Default.ProxyServerDomain = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+ 
 
         #region Private Methods
 

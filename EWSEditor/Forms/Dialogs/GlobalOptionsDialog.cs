@@ -83,6 +83,31 @@ namespace EWSEditor.Forms
                 this.cmboSelectedTimeZoneId.Text = GlobalSettings.SelectedTimeZoneId; //TimeZone.CurrentTimeZone.DaylightName;
             this.chkOverrideTimezone.Checked = GlobalSettings.OverrideTimezone;
             this.cmboSelectedTimeZoneId.Enabled = this.chkOverrideTimezone.Checked;
+
+            this.rdoDontOverrideProxySettings.Checked = true; // Default
+
+            //if (GlobalSettings.SetDefaultProxy == true)
+            //    this.rdoGetAndSetDefaultProxy.Checked = true;
+
+            if (GlobalSettings.SpecifyProxySettings == true)
+                this.rdoSpecifyProxySettings.Checked = true;
+            this.txtProxyServerName.Text = GlobalSettings.ProxyServerName;
+            this.txtProxyServerPort.Text = GlobalSettings.ProxyServerPort.ToString();
+            this.chkBypassProxyForLocalAddress.Checked = GlobalSettings.BypassProxyForLocalAddress;
+             
+            this.chkOverrideProxyCredentials.Checked = GlobalSettings.OverrideProxyCredentials;
+            this.txtProxyServerUserName.Text = GlobalSettings.ProxyServerUser;
+            this.txtProxyServerPassword.Text = GlobalSettings.ProxyServerPassword;
+            this.txtProxyServerDomain.Text = GlobalSettings.ProxyServerDomain;
+
+            //if (rdoSpecifyProxySettings.Checked == false && chkOverrideProxyCredentials.Checked == false)
+            //    rdoDontOverrideProxySettings.Checked = false;
+            //else
+            //    rdoDontOverrideProxySettings.Checked = true;
+
+            SetCheckedProxyOverride();
+            SetCheckedOverrideProxyCredentials();
+
         }
 
         private void SaveSettings()
@@ -108,6 +133,18 @@ namespace EWSEditor.Forms
 
             GlobalSettings.OverrideTimezone = this.chkOverrideTimezone.Checked;
             GlobalSettings.SelectedTimeZoneId = this.cmboSelectedTimeZoneId.Text;
+
+            //GlobalSettings.SetDefaultProxy = this.rdoGetAndSetDefaultProxy.Checked;
+ 
+            GlobalSettings.SpecifyProxySettings = this.rdoSpecifyProxySettings.Checked;
+            GlobalSettings.ProxyServerName =  this.txtProxyServerName.Text;
+            GlobalSettings.ProxyServerPort = Convert.ToInt32(this.txtProxyServerPort.Text.Trim());
+            GlobalSettings.BypassProxyForLocalAddress = this.chkBypassProxyForLocalAddress.Checked;
+
+            GlobalSettings.OverrideProxyCredentials = this.chkOverrideProxyCredentials.Checked;
+            GlobalSettings.ProxyServerUser = this.txtProxyServerUserName.Text;
+            GlobalSettings.ProxyServerPassword = this.txtProxyServerPassword.Text;
+            GlobalSettings.ProxyServerDomain = this.txtProxyServerDomain.Text; 
              
         }
 
@@ -137,5 +174,63 @@ namespace EWSEditor.Forms
         {
             this.LogFilePathText.Enabled = this.SaveLogFileCheck.Checked;
         }
+
+        private void SetCheckedProxyOverride()
+        {
+            bool bState = this.rdoSpecifyProxySettings.Checked;
+            this.txtProxyServerName.Enabled = bState;
+            this.txtProxyServerPort.Enabled = bState;
+            this.chkOverrideProxyCredentials.Enabled = bState;
+            this.chkBypassProxyForLocalAddress.Enabled = bState;
+
+            SetCheckedOverrideProxyCredentials();
+ 
+        }
+
+        private void chkOverrideProxyServerDefaults_CheckedChanged(object sender, EventArgs e)
+        {
+            SetCheckedProxyOverride();
+        }
+
+        private void chkOverrideProxyCredentials_CheckedChanged(object sender, EventArgs e)
+        {
+            SetCheckedOverrideProxyCredentials();
+
+        }
+
+        private void SetCheckedOverrideProxyCredentials()
+        {
+            bool bState = false;
+       
+            if (this.rdoSpecifyProxySettings.Checked == true)
+                if (this.chkOverrideProxyCredentials.Checked == true)
+                    bState = true;
+
+             
+            this.txtProxyServerUserName.Enabled = bState;
+            this.txtProxyServerPassword.Enabled = bState;
+            this.txtProxyServerDomain.Enabled = bState;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdoSpecifyProxySettings_CheckedChanged(object sender, EventArgs e)
+        {
+            SetCheckedProxyOverride();
+        }
+
+        private void rdoDontOverrideProxySettings_CheckedChanged(object sender, EventArgs e)
+        {
+            SetCheckedProxyOverride();
+        }
+
+        private void rdoGetAndSetDefaultProxy_CheckedChanged(object sender, EventArgs e)
+        {
+            SetCheckedProxyOverride();
+        }
+
     }
 }

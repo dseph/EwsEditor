@@ -26,6 +26,18 @@ namespace EWSEditor.Exchange
         public static bool? UseDefaultCredentials = null;
         public static ImpersonatedUserId UserToImpersonate = null;
 
+        public static bool SetDefaultProxy =  false;
+        public static bool BypassProxyForLocalAddress = false;
+        public static bool SpecifyProxySettings;
+        public static string ProxyServerName;
+        public static int ProxyServerPort;
+        public static bool OverrideProxyCredentials;
+        public static string ProxyServerUser;
+        public static string ProxyServerPassword;
+        public static string ProxyServerDomain;
+
+ 
+
         public static void DoAutodiscover()
         {
             DoAutodiscover(ServiceEmailAddress);
@@ -122,6 +134,27 @@ namespace EWSEditor.Exchange
                 }
             }
 
+            if (SpecifyProxySettings == true)
+            {
+                WebProxy oWebProxy  = null;
+                oWebProxy = new WebProxy(ProxyServerName, ProxyServerPort);
+
+ 
+                oWebProxy.BypassProxyOnLocal = BypassProxyForLocalAddress;
+   
+
+                if (OverrideProxyCredentials == true)
+                {
+                    service.WebProxy.Credentials = new NetworkCredential(ProxyServerUser, ProxyServerPassword, ProxyServerDomain);
+                }   
+                service.WebProxy = oWebProxy;
+
+            }
+            //if (SetDefaultProxy == true)
+            //{
+            //    service.WebProxy = WebProxy.GetDefaultProxy();  // Obsolete
+            //}
+
 
             if (ServiceCredential != null)
             {
@@ -133,10 +166,7 @@ namespace EWSEditor.Exchange
                 service.Url = EwsUrl;
             }
 
-            //if (Timeout.HasValue)
-            //{
-            //    service.Timeout = Timeout.Value;
-            //}
+ 
 
             if (UseDefaultCredentials.HasValue)
             {
