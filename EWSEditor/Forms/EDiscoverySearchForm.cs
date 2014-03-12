@@ -38,7 +38,7 @@ namespace EWSEditor.Forms
         private void btnListSearchableMailboxes_Click(object sender, EventArgs e)
         {
             ListOfSearchableMailboxes(_CurrentService, this.txtSearchForMailboxes.Text, chkExpandGroupMemberships.Checked, ref this.lvMailboxes);
-
+             
         }
 
         private void btnMailboxSearch_Click(object sender, EventArgs e)

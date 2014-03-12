@@ -30,6 +30,20 @@
         {
             this.OkButton = new System.Windows.Forms.Button();
             this.MyCancelButton = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rdoSpecifyProxySettings = new System.Windows.Forms.RadioButton();
+            this.rdoDontOverrideProxySettings = new System.Windows.Forms.RadioButton();
+            this.chkOverrideProxyCredentials = new System.Windows.Forms.CheckBox();
+            this.txtProxyServerDomain = new System.Windows.Forms.TextBox();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.lblDomain = new System.Windows.Forms.Label();
+            this.txtProxyServerPassword = new System.Windows.Forms.TextBox();
+            this.txtProxyServerUserName = new System.Windows.Forms.TextBox();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.txtProxyServerPort = new System.Windows.Forms.TextBox();
+            this.lblProxyPort = new System.Windows.Forms.Label();
+            this.txtProxyServerName = new System.Windows.Forms.TextBox();
+            this.lblProxyServer = new System.Windows.Forms.Label();
             this.MiscSettingsGroup = new System.Windows.Forms.GroupBox();
             this.chkOverrideTimezone = new System.Windows.Forms.CheckBox();
             this.PreAuthenticate = new System.Windows.Forms.CheckBox();
@@ -56,6 +70,8 @@
             this.LogFilePathText = new System.Windows.Forms.TextBox();
             this.LogFilePathLabel = new System.Windows.Forms.Label();
             this.SaveLogFileCheck = new System.Windows.Forms.CheckBox();
+            this.chkBypassProxyForLocalAddress = new System.Windows.Forms.CheckBox();
+            this.groupBox1.SuspendLayout();
             this.MiscSettingsGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).BeginInit();
             this.LoggingGroup.SuspendLayout();
@@ -65,10 +81,9 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(430, 570);
-            this.OkButton.Margin = new System.Windows.Forms.Padding(4);
+            this.OkButton.Location = new System.Drawing.Point(701, 409);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(100, 28);
+            this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 2;
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = true;
@@ -78,14 +93,153 @@
             // 
             this.MyCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MyCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.MyCancelButton.Location = new System.Drawing.Point(538, 570);
-            this.MyCancelButton.Margin = new System.Windows.Forms.Padding(4);
+            this.MyCancelButton.Location = new System.Drawing.Point(783, 409);
             this.MyCancelButton.Name = "MyCancelButton";
-            this.MyCancelButton.Size = new System.Drawing.Size(100, 28);
+            this.MyCancelButton.Size = new System.Drawing.Size(75, 23);
             this.MyCancelButton.TabIndex = 3;
             this.MyCancelButton.Text = "Cancel";
             this.MyCancelButton.UseVisualStyleBackColor = true;
             this.MyCancelButton.Click += new System.EventHandler(this.MyCancelButton_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.chkBypassProxyForLocalAddress);
+            this.groupBox1.Controls.Add(this.rdoSpecifyProxySettings);
+            this.groupBox1.Controls.Add(this.rdoDontOverrideProxySettings);
+            this.groupBox1.Controls.Add(this.chkOverrideProxyCredentials);
+            this.groupBox1.Controls.Add(this.txtProxyServerDomain);
+            this.groupBox1.Controls.Add(this.lblPassword);
+            this.groupBox1.Controls.Add(this.lblDomain);
+            this.groupBox1.Controls.Add(this.txtProxyServerPassword);
+            this.groupBox1.Controls.Add(this.txtProxyServerUserName);
+            this.groupBox1.Controls.Add(this.lblUserName);
+            this.groupBox1.Controls.Add(this.txtProxyServerPort);
+            this.groupBox1.Controls.Add(this.lblProxyPort);
+            this.groupBox1.Controls.Add(this.txtProxyServerName);
+            this.groupBox1.Controls.Add(this.lblProxyServer);
+            this.groupBox1.Location = new System.Drawing.Point(481, 22);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(376, 312);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Set WebProxy Settings";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // rdoSpecifyProxySettings
+            // 
+            this.rdoSpecifyProxySettings.AutoSize = true;
+            this.rdoSpecifyProxySettings.Location = new System.Drawing.Point(6, 63);
+            this.rdoSpecifyProxySettings.Name = "rdoSpecifyProxySettings";
+            this.rdoSpecifyProxySettings.Size = new System.Drawing.Size(130, 17);
+            this.rdoSpecifyProxySettings.TabIndex = 17;
+            this.rdoSpecifyProxySettings.Text = "Specify Proxy Settings";
+            this.rdoSpecifyProxySettings.UseVisualStyleBackColor = true;
+            this.rdoSpecifyProxySettings.CheckedChanged += new System.EventHandler(this.rdoSpecifyProxySettings_CheckedChanged);
+            // 
+            // rdoDontOverrideProxySettings
+            // 
+            this.rdoDontOverrideProxySettings.AutoSize = true;
+            this.rdoDontOverrideProxySettings.Checked = true;
+            this.rdoDontOverrideProxySettings.Location = new System.Drawing.Point(6, 28);
+            this.rdoDontOverrideProxySettings.Name = "rdoDontOverrideProxySettings";
+            this.rdoDontOverrideProxySettings.Size = new System.Drawing.Size(163, 17);
+            this.rdoDontOverrideProxySettings.TabIndex = 4;
+            this.rdoDontOverrideProxySettings.TabStop = true;
+            this.rdoDontOverrideProxySettings.Text = "Don\'t Override Proxy Settings";
+            this.rdoDontOverrideProxySettings.UseVisualStyleBackColor = true;
+            this.rdoDontOverrideProxySettings.CheckedChanged += new System.EventHandler(this.rdoDontOverrideProxySettings_CheckedChanged);
+            // 
+            // chkOverrideProxyCredentials
+            // 
+            this.chkOverrideProxyCredentials.Location = new System.Drawing.Point(26, 178);
+            this.chkOverrideProxyCredentials.Name = "chkOverrideProxyCredentials";
+            this.chkOverrideProxyCredentials.Size = new System.Drawing.Size(268, 19);
+            this.chkOverrideProxyCredentials.TabIndex = 14;
+            this.chkOverrideProxyCredentials.Text = "Override Proxy Server Credentials";
+            this.chkOverrideProxyCredentials.UseVisualStyleBackColor = true;
+            this.chkOverrideProxyCredentials.CheckedChanged += new System.EventHandler(this.chkOverrideProxyCredentials_CheckedChanged);
+            // 
+            // txtProxyServerDomain
+            // 
+            this.txtProxyServerDomain.Enabled = false;
+            this.txtProxyServerDomain.Location = new System.Drawing.Point(147, 254);
+            this.txtProxyServerDomain.Name = "txtProxyServerDomain";
+            this.txtProxyServerDomain.Size = new System.Drawing.Size(173, 20);
+            this.txtProxyServerDomain.TabIndex = 13;
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Location = new System.Drawing.Point(51, 236);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(56, 13);
+            this.lblPassword.TabIndex = 10;
+            this.lblPassword.Text = "Password:";
+            // 
+            // lblDomain
+            // 
+            this.lblDomain.AutoSize = true;
+            this.lblDomain.Location = new System.Drawing.Point(51, 257);
+            this.lblDomain.Name = "lblDomain";
+            this.lblDomain.Size = new System.Drawing.Size(46, 13);
+            this.lblDomain.TabIndex = 12;
+            this.lblDomain.Text = "Domain:";
+            // 
+            // txtProxyServerPassword
+            // 
+            this.txtProxyServerPassword.Enabled = false;
+            this.txtProxyServerPassword.Location = new System.Drawing.Point(147, 229);
+            this.txtProxyServerPassword.Name = "txtProxyServerPassword";
+            this.txtProxyServerPassword.PasswordChar = '•';
+            this.txtProxyServerPassword.Size = new System.Drawing.Size(173, 20);
+            this.txtProxyServerPassword.TabIndex = 11;
+            // 
+            // txtProxyServerUserName
+            // 
+            this.txtProxyServerUserName.Enabled = false;
+            this.txtProxyServerUserName.Location = new System.Drawing.Point(147, 203);
+            this.txtProxyServerUserName.Name = "txtProxyServerUserName";
+            this.txtProxyServerUserName.Size = new System.Drawing.Size(173, 20);
+            this.txtProxyServerUserName.TabIndex = 9;
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Location = new System.Drawing.Point(51, 210);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(32, 13);
+            this.lblUserName.TabIndex = 8;
+            this.lblUserName.Text = "User:";
+            // 
+            // txtProxyServerPort
+            // 
+            this.txtProxyServerPort.Location = new System.Drawing.Point(118, 120);
+            this.txtProxyServerPort.Name = "txtProxyServerPort";
+            this.txtProxyServerPort.Size = new System.Drawing.Size(202, 20);
+            this.txtProxyServerPort.TabIndex = 4;
+            // 
+            // lblProxyPort
+            // 
+            this.lblProxyPort.Location = new System.Drawing.Point(23, 122);
+            this.lblProxyPort.Name = "lblProxyPort";
+            this.lblProxyPort.Size = new System.Drawing.Size(77, 17);
+            this.lblProxyPort.TabIndex = 3;
+            this.lblProxyPort.Text = "Proxy Port:";
+            // 
+            // txtProxyServerName
+            // 
+            this.txtProxyServerName.Location = new System.Drawing.Point(118, 94);
+            this.txtProxyServerName.Name = "txtProxyServerName";
+            this.txtProxyServerName.Size = new System.Drawing.Size(202, 20);
+            this.txtProxyServerName.TabIndex = 2;
+            // 
+            // lblProxyServer
+            // 
+            this.lblProxyServer.Location = new System.Drawing.Point(23, 94);
+            this.lblProxyServer.Name = "lblProxyServer";
+            this.lblProxyServer.Size = new System.Drawing.Size(77, 17);
+            this.lblProxyServer.TabIndex = 1;
+            this.lblProxyServer.Text = "Proxy Server:";
             // 
             // MiscSettingsGroup
             // 
@@ -110,11 +264,9 @@
             this.MiscSettingsGroup.Controls.Add(this.FindItemLabel);
             this.MiscSettingsGroup.Controls.Add(this.FindFolderLabel);
             this.MiscSettingsGroup.Controls.Add(this.CalendarViewLabel);
-            this.MiscSettingsGroup.Location = new System.Drawing.Point(17, 15);
-            this.MiscSettingsGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.MiscSettingsGroup.Location = new System.Drawing.Point(13, 12);
             this.MiscSettingsGroup.Name = "MiscSettingsGroup";
-            this.MiscSettingsGroup.Padding = new System.Windows.Forms.Padding(4);
-            this.MiscSettingsGroup.Size = new System.Drawing.Size(616, 426);
+            this.MiscSettingsGroup.Size = new System.Drawing.Size(462, 346);
             this.MiscSettingsGroup.TabIndex = 0;
             this.MiscSettingsGroup.TabStop = false;
             this.MiscSettingsGroup.Text = "Miscellaneous";
@@ -122,10 +274,9 @@
             // 
             // chkOverrideTimezone
             // 
-            this.chkOverrideTimezone.Location = new System.Drawing.Point(16, 353);
-            this.chkOverrideTimezone.Margin = new System.Windows.Forms.Padding(4);
+            this.chkOverrideTimezone.Location = new System.Drawing.Point(12, 287);
             this.chkOverrideTimezone.Name = "chkOverrideTimezone";
-            this.chkOverrideTimezone.Size = new System.Drawing.Size(469, 23);
+            this.chkOverrideTimezone.Size = new System.Drawing.Size(352, 19);
             this.chkOverrideTimezone.TabIndex = 5;
             this.chkOverrideTimezone.Text = "Use specified timezone:";
             this.chkOverrideTimezone.UseVisualStyleBackColor = true;
@@ -134,29 +285,26 @@
             // PreAuthenticate
             // 
             this.PreAuthenticate.AutoSize = true;
-            this.PreAuthenticate.Location = new System.Drawing.Point(17, 166);
-            this.PreAuthenticate.Margin = new System.Windows.Forms.Padding(4);
+            this.PreAuthenticate.Location = new System.Drawing.Point(13, 135);
             this.PreAuthenticate.Name = "PreAuthenticate";
-            this.PreAuthenticate.Size = new System.Drawing.Size(220, 20);
+            this.PreAuthenticate.Size = new System.Drawing.Size(180, 17);
             this.PreAuthenticate.TabIndex = 6;
             this.PreAuthenticate.Text = "Pre-Authenticate HTTP requests";
             this.PreAuthenticate.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(40, 388);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(30, 315);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 22);
+            this.label1.Size = new System.Drawing.Size(64, 18);
             this.label1.TabIndex = 5;
             this.label1.Text = "TimeZone:";
             // 
             // chkOverrideTimeout
             // 
-            this.chkOverrideTimeout.Location = new System.Drawing.Point(17, 189);
-            this.chkOverrideTimeout.Margin = new System.Windows.Forms.Padding(4);
+            this.chkOverrideTimeout.Location = new System.Drawing.Point(13, 154);
             this.chkOverrideTimeout.Name = "chkOverrideTimeout";
-            this.chkOverrideTimeout.Size = new System.Drawing.Size(166, 30);
+            this.chkOverrideTimeout.Size = new System.Drawing.Size(124, 24);
             this.chkOverrideTimeout.TabIndex = 79;
             this.chkOverrideTimeout.Text = "Override timeout:";
             this.chkOverrideTimeout.UseVisualStyleBackColor = true;
@@ -166,33 +314,30 @@
             this.cmboSelectedTimeZoneId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboSelectedTimeZoneId.Enabled = false;
             this.cmboSelectedTimeZoneId.FormattingEnabled = true;
-            this.cmboSelectedTimeZoneId.Location = new System.Drawing.Point(149, 384);
-            this.cmboSelectedTimeZoneId.Margin = new System.Windows.Forms.Padding(4);
+            this.cmboSelectedTimeZoneId.Location = new System.Drawing.Point(112, 312);
             this.cmboSelectedTimeZoneId.Name = "cmboSelectedTimeZoneId";
-            this.cmboSelectedTimeZoneId.Size = new System.Drawing.Size(408, 24);
+            this.cmboSelectedTimeZoneId.Size = new System.Drawing.Size(307, 21);
             this.cmboSelectedTimeZoneId.TabIndex = 6;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(190, 194);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(142, 158);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(141, 16);
+            this.label9.Size = new System.Drawing.Size(110, 13);
             this.label9.TabIndex = 77;
             this.label9.Text = "Timeout milliseconds :";
             // 
             // numericUpDownTimeout
             // 
-            this.numericUpDownTimeout.Location = new System.Drawing.Point(345, 189);
-            this.numericUpDownTimeout.Margin = new System.Windows.Forms.Padding(4);
+            this.numericUpDownTimeout.Location = new System.Drawing.Point(259, 154);
             this.numericUpDownTimeout.Maximum = new decimal(new int[] {
             10000000,
             0,
             0,
             0});
             this.numericUpDownTimeout.Name = "numericUpDownTimeout";
-            this.numericUpDownTimeout.Size = new System.Drawing.Size(130, 22);
+            this.numericUpDownTimeout.Size = new System.Drawing.Size(98, 20);
             this.numericUpDownTimeout.TabIndex = 78;
             this.numericUpDownTimeout.Value = new decimal(new int[] {
             100000,
@@ -202,10 +347,9 @@
             // 
             // EnableScpLookups
             // 
-            this.EnableScpLookups.Location = new System.Drawing.Point(17, 138);
-            this.EnableScpLookups.Margin = new System.Windows.Forms.Padding(4);
+            this.EnableScpLookups.Location = new System.Drawing.Point(13, 112);
             this.EnableScpLookups.Name = "EnableScpLookups";
-            this.EnableScpLookups.Size = new System.Drawing.Size(494, 30);
+            this.EnableScpLookups.Size = new System.Drawing.Size(370, 24);
             this.EnableScpLookups.TabIndex = 5;
             this.EnableScpLookups.Text = "Enable SCP Lookups (Disabling will skip AD lookup of Autodiscover URLs)";
             this.EnableScpLookups.UseVisualStyleBackColor = true;
@@ -213,116 +357,103 @@
             // 
             // UserAgentText
             // 
-            this.UserAgentText.Location = new System.Drawing.Point(192, 20);
-            this.UserAgentText.Margin = new System.Windows.Forms.Padding(4);
+            this.UserAgentText.Location = new System.Drawing.Point(144, 16);
             this.UserAgentText.Name = "UserAgentText";
-            this.UserAgentText.Size = new System.Drawing.Size(411, 22);
+            this.UserAgentText.Size = new System.Drawing.Size(309, 20);
             this.UserAgentText.TabIndex = 1;
             // 
             // UserAgentLabel
             // 
-            this.UserAgentLabel.Location = new System.Drawing.Point(13, 23);
-            this.UserAgentLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.UserAgentLabel.Location = new System.Drawing.Point(10, 19);
             this.UserAgentLabel.Name = "UserAgentLabel";
-            this.UserAgentLabel.Size = new System.Drawing.Size(171, 28);
+            this.UserAgentLabel.Size = new System.Drawing.Size(128, 23);
             this.UserAgentLabel.TabIndex = 0;
             this.UserAgentLabel.Text = "UserAgent Value:";
             // 
             // EnableSslDetailCheck
             // 
-            this.EnableSslDetailCheck.Location = new System.Drawing.Point(17, 90);
-            this.EnableSslDetailCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.EnableSslDetailCheck.Location = new System.Drawing.Point(13, 73);
             this.EnableSslDetailCheck.Name = "EnableSslDetailCheck";
-            this.EnableSslDetailCheck.Size = new System.Drawing.Size(308, 30);
+            this.EnableSslDetailCheck.Size = new System.Drawing.Size(231, 24);
             this.EnableSslDetailCheck.TabIndex = 3;
             this.EnableSslDetailCheck.Text = "Enable detailed SSL certificate log output";
             this.EnableSslDetailCheck.UseVisualStyleBackColor = true;
             // 
             // DumpFolderText
             // 
-            this.DumpFolderText.Location = new System.Drawing.Point(192, 320);
-            this.DumpFolderText.Margin = new System.Windows.Forms.Padding(4);
+            this.DumpFolderText.Location = new System.Drawing.Point(144, 260);
             this.DumpFolderText.Name = "DumpFolderText";
-            this.DumpFolderText.Size = new System.Drawing.Size(132, 22);
+            this.DumpFolderText.Size = new System.Drawing.Size(100, 20);
             this.DumpFolderText.TabIndex = 13;
             // 
             // AllowRedirectsCheck
             // 
-            this.AllowRedirectsCheck.Location = new System.Drawing.Point(17, 116);
-            this.AllowRedirectsCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.AllowRedirectsCheck.Location = new System.Drawing.Point(13, 94);
             this.AllowRedirectsCheck.Name = "AllowRedirectsCheck";
-            this.AllowRedirectsCheck.Size = new System.Drawing.Size(308, 30);
+            this.AllowRedirectsCheck.Size = new System.Drawing.Size(231, 24);
             this.AllowRedirectsCheck.TabIndex = 4;
             this.AllowRedirectsCheck.Text = "Allow Autodiscover redirects";
             this.AllowRedirectsCheck.UseVisualStyleBackColor = true;
             // 
             // FindItemText
             // 
-            this.FindItemText.Location = new System.Drawing.Point(192, 291);
-            this.FindItemText.Margin = new System.Windows.Forms.Padding(4);
+            this.FindItemText.Location = new System.Drawing.Point(144, 236);
             this.FindItemText.Name = "FindItemText";
-            this.FindItemText.Size = new System.Drawing.Size(132, 22);
+            this.FindItemText.Size = new System.Drawing.Size(100, 20);
             this.FindItemText.TabIndex = 11;
             // 
             // OverrideSslCheck
             // 
-            this.OverrideSslCheck.Location = new System.Drawing.Point(16, 65);
-            this.OverrideSslCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.OverrideSslCheck.Location = new System.Drawing.Point(12, 53);
             this.OverrideSslCheck.Name = "OverrideSslCheck";
-            this.OverrideSslCheck.Size = new System.Drawing.Size(308, 30);
+            this.OverrideSslCheck.Size = new System.Drawing.Size(231, 24);
             this.OverrideSslCheck.TabIndex = 2;
             this.OverrideSslCheck.Text = "Override SSL certificate verification";
             this.OverrideSslCheck.UseVisualStyleBackColor = true;
             // 
             // FindFolderText
             // 
-            this.FindFolderText.Location = new System.Drawing.Point(192, 263);
-            this.FindFolderText.Margin = new System.Windows.Forms.Padding(4);
+            this.FindFolderText.Location = new System.Drawing.Point(144, 214);
             this.FindFolderText.Name = "FindFolderText";
-            this.FindFolderText.Size = new System.Drawing.Size(132, 22);
+            this.FindFolderText.Size = new System.Drawing.Size(100, 20);
             this.FindFolderText.TabIndex = 9;
             // 
             // CalendarViewText
             // 
-            this.CalendarViewText.Location = new System.Drawing.Point(192, 231);
-            this.CalendarViewText.Margin = new System.Windows.Forms.Padding(4);
+            this.CalendarViewText.Location = new System.Drawing.Point(144, 188);
             this.CalendarViewText.Name = "CalendarViewText";
-            this.CalendarViewText.Size = new System.Drawing.Size(132, 22);
+            this.CalendarViewText.Size = new System.Drawing.Size(100, 20);
             this.CalendarViewText.TabIndex = 7;
             // 
             // DumpFolderLabel
             // 
-            this.DumpFolderLabel.Location = new System.Drawing.Point(13, 320);
-            this.DumpFolderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DumpFolderLabel.Location = new System.Drawing.Point(10, 260);
             this.DumpFolderLabel.Name = "DumpFolderLabel";
-            this.DumpFolderLabel.Size = new System.Drawing.Size(171, 28);
+            this.DumpFolderLabel.Size = new System.Drawing.Size(128, 23);
             this.DumpFolderLabel.TabIndex = 12;
             this.DumpFolderLabel.Text = "Dump Folder View Size:";
             // 
             // FindItemLabel
             // 
-            this.FindItemLabel.Location = new System.Drawing.Point(13, 291);
-            this.FindItemLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.FindItemLabel.Location = new System.Drawing.Point(10, 236);
             this.FindItemLabel.Name = "FindItemLabel";
-            this.FindItemLabel.Size = new System.Drawing.Size(171, 28);
+            this.FindItemLabel.Size = new System.Drawing.Size(128, 23);
             this.FindItemLabel.TabIndex = 10;
             this.FindItemLabel.Text = "FindItem View Size:";
             // 
             // FindFolderLabel
             // 
-            this.FindFolderLabel.Location = new System.Drawing.Point(13, 263);
-            this.FindFolderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.FindFolderLabel.Location = new System.Drawing.Point(10, 214);
             this.FindFolderLabel.Name = "FindFolderLabel";
-            this.FindFolderLabel.Size = new System.Drawing.Size(171, 28);
+            this.FindFolderLabel.Size = new System.Drawing.Size(128, 23);
             this.FindFolderLabel.TabIndex = 8;
             this.FindFolderLabel.Text = "FindFolder View Size:";
             // 
             // CalendarViewLabel
             // 
-            this.CalendarViewLabel.Location = new System.Drawing.Point(13, 235);
-            this.CalendarViewLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CalendarViewLabel.Location = new System.Drawing.Point(10, 191);
             this.CalendarViewLabel.Name = "CalendarViewLabel";
-            this.CalendarViewLabel.Size = new System.Drawing.Size(171, 28);
+            this.CalendarViewLabel.Size = new System.Drawing.Size(128, 23);
             this.CalendarViewLabel.TabIndex = 6;
             this.CalendarViewLabel.Text = "CalendarView Size:";
             // 
@@ -331,61 +462,68 @@
             this.LoggingGroup.Controls.Add(this.LogFilePathText);
             this.LoggingGroup.Controls.Add(this.LogFilePathLabel);
             this.LoggingGroup.Controls.Add(this.SaveLogFileCheck);
-            this.LoggingGroup.Location = new System.Drawing.Point(17, 449);
-            this.LoggingGroup.Margin = new System.Windows.Forms.Padding(4);
+            this.LoggingGroup.Location = new System.Drawing.Point(13, 365);
             this.LoggingGroup.Name = "LoggingGroup";
-            this.LoggingGroup.Padding = new System.Windows.Forms.Padding(4);
-            this.LoggingGroup.Size = new System.Drawing.Size(616, 84);
+            this.LoggingGroup.Size = new System.Drawing.Size(462, 68);
             this.LoggingGroup.TabIndex = 1;
             this.LoggingGroup.TabStop = false;
             this.LoggingGroup.Text = "Logging...";
             // 
             // LogFilePathText
             // 
-            this.LogFilePathText.Location = new System.Drawing.Point(137, 54);
-            this.LogFilePathText.Margin = new System.Windows.Forms.Padding(4);
+            this.LogFilePathText.Location = new System.Drawing.Point(111, 44);
             this.LogFilePathText.Name = "LogFilePathText";
-            this.LogFilePathText.Size = new System.Drawing.Size(466, 22);
+            this.LogFilePathText.Size = new System.Drawing.Size(342, 20);
             this.LogFilePathText.TabIndex = 2;
             // 
             // LogFilePathLabel
             // 
-            this.LogFilePathLabel.Location = new System.Drawing.Point(49, 57);
-            this.LogFilePathLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LogFilePathLabel.Location = new System.Drawing.Point(37, 46);
             this.LogFilePathLabel.Name = "LogFilePathLabel";
-            this.LogFilePathLabel.Size = new System.Drawing.Size(459, 21);
+            this.LogFilePathLabel.Size = new System.Drawing.Size(68, 17);
             this.LogFilePathLabel.TabIndex = 1;
             this.LogFilePathLabel.Text = "Log file path:";
             // 
             // SaveLogFileCheck
             // 
-            this.SaveLogFileCheck.Location = new System.Drawing.Point(17, 23);
-            this.SaveLogFileCheck.Margin = new System.Windows.Forms.Padding(4);
+            this.SaveLogFileCheck.Location = new System.Drawing.Point(13, 19);
             this.SaveLogFileCheck.Name = "SaveLogFileCheck";
-            this.SaveLogFileCheck.Size = new System.Drawing.Size(215, 30);
+            this.SaveLogFileCheck.Size = new System.Drawing.Size(161, 24);
             this.SaveLogFileCheck.TabIndex = 0;
             this.SaveLogFileCheck.Text = "Save logging output to a file";
             this.SaveLogFileCheck.UseVisualStyleBackColor = true;
             this.SaveLogFileCheck.CheckedChanged += new System.EventHandler(this.SaveLogFileCheck_CheckedChanged);
             // 
+            // chkBypassProxyForLocalAddress
+            // 
+            this.chkBypassProxyForLocalAddress.Location = new System.Drawing.Point(26, 147);
+            this.chkBypassProxyForLocalAddress.Name = "chkBypassProxyForLocalAddress";
+            this.chkBypassProxyForLocalAddress.Size = new System.Drawing.Size(268, 19);
+            this.chkBypassProxyForLocalAddress.TabIndex = 18;
+            this.chkBypassProxyForLocalAddress.Text = "BypassProxy For Local Address";
+            this.chkBypassProxyForLocalAddress.UseVisualStyleBackColor = true;
+            // 
             // OptionsDialog
             // 
             this.AcceptButton = this.OkButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.MyCancelButton;
-            this.ClientSize = new System.Drawing.Size(651, 611);
+            this.ClientSize = new System.Drawing.Size(869, 444);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.MyCancelButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.MiscSettingsGroup);
             this.Controls.Add(this.LoggingGroup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OptionsDialog";
             this.Text = "Options";
             this.Load += new System.EventHandler(this.OptionsDialog_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.MiscSettingsGroup.ResumeLayout(false);
             this.MiscSettingsGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).EndInit();
@@ -425,5 +563,20 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmboSelectedTimeZoneId;
         private System.Windows.Forms.CheckBox chkOverrideTimezone;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtProxyServerPort;
+        private System.Windows.Forms.Label lblProxyPort;
+        private System.Windows.Forms.TextBox txtProxyServerName;
+        private System.Windows.Forms.Label lblProxyServer;
+        private System.Windows.Forms.TextBox txtProxyServerDomain;
+        private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label lblDomain;
+        private System.Windows.Forms.TextBox txtProxyServerPassword;
+        private System.Windows.Forms.TextBox txtProxyServerUserName;
+        private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.CheckBox chkOverrideProxyCredentials;
+        private System.Windows.Forms.RadioButton rdoSpecifyProxySettings;
+        private System.Windows.Forms.RadioButton rdoDontOverrideProxySettings;
+        private System.Windows.Forms.CheckBox chkBypassProxyForLocalAddress;
     }
 }

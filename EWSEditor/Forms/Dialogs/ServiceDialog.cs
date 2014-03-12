@@ -106,6 +106,16 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.OverrideTimeout = GlobalSettings.OverrideTimeout;
                 EwsProxyFactory.Timeout = GlobalSettings.Timeout;
 
+                EwsProxyFactory.SetDefaultProxy = GlobalSettings.SetDefaultProxy;
+                EwsProxyFactory.BypassProxyForLocalAddress = GlobalSettings.BypassProxyForLocalAddress;
+                EwsProxyFactory.SpecifyProxySettings = GlobalSettings.SpecifyProxySettings;
+                EwsProxyFactory.ProxyServerName = GlobalSettings.ProxyServerName;
+                EwsProxyFactory.ProxyServerPort = GlobalSettings.ProxyServerPort;
+                EwsProxyFactory.OverrideProxyCredentials = GlobalSettings.OverrideProxyCredentials;
+                EwsProxyFactory.ProxyServerUser = GlobalSettings.ProxyServerUser;
+                EwsProxyFactory.ProxyServerPassword = GlobalSettings.ProxyServerPassword;
+                EwsProxyFactory.ProxyServerDomain = GlobalSettings.ProxyServerDomain;
+
                 EwsProxyFactory.ServiceCredential = chkCredentials.Checked ?
                     new NetworkCredential(
                         this.txtUserName.Text.Trim(), 
@@ -125,6 +135,8 @@ namespace EWSEditor.Forms
                 {
                     EwsProxyFactory.DoAutodiscover();
                 }
+
+ 
 
                 CurrentService = EwsProxyFactory.CreateExchangeService();
 
@@ -268,6 +280,7 @@ namespace EWSEditor.Forms
             }
 
             SetAutoDiscoverSelection();
+            
         }
 
         private void chkUseSpecifiedTimezone_CheckedChanged(object sender, EventArgs e)
