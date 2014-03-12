@@ -44,26 +44,29 @@
             // lblFile
             // 
             this.lblFile.AutoSize = true;
-            this.lblFile.Location = new System.Drawing.Point(13, 13);
+            this.lblFile.Location = new System.Drawing.Point(10, 11);
+            this.lblFile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFile.Name = "lblFile";
-            this.lblFile.Size = new System.Drawing.Size(34, 17);
-            this.lblFile.TabIndex = 0;
+            this.lblFile.Size = new System.Drawing.Size(26, 13);
+            this.lblFile.TabIndex = 1;
             this.lblFile.Text = "File:";
             // 
             // txtFile
             // 
-            this.txtFile.Location = new System.Drawing.Point(53, 10);
+            this.txtFile.Location = new System.Drawing.Point(40, 8);
+            this.txtFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFile.Name = "txtFile";
-            this.txtFile.Size = new System.Drawing.Size(531, 22);
+            this.txtFile.Size = new System.Drawing.Size(399, 20);
             this.txtFile.TabIndex = 1;
             // 
             // rdoCreateNew
             // 
             this.rdoCreateNew.AutoSize = true;
             this.rdoCreateNew.Checked = true;
-            this.rdoCreateNew.Location = new System.Drawing.Point(38, 76);
+            this.rdoCreateNew.Location = new System.Drawing.Point(28, 62);
+            this.rdoCreateNew.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdoCreateNew.Name = "rdoCreateNew";
-            this.rdoCreateNew.Size = new System.Drawing.Size(98, 21);
+            this.rdoCreateNew.Size = new System.Drawing.Size(78, 17);
             this.rdoCreateNew.TabIndex = 3;
             this.rdoCreateNew.TabStop = true;
             this.rdoCreateNew.Text = "CreateNew";
@@ -73,9 +76,10 @@
             // rdoUpdate
             // 
             this.rdoUpdate.AutoSize = true;
-            this.rdoUpdate.Location = new System.Drawing.Point(38, 103);
+            this.rdoUpdate.Location = new System.Drawing.Point(28, 84);
+            this.rdoUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdoUpdate.Name = "rdoUpdate";
-            this.rdoUpdate.Size = new System.Drawing.Size(75, 21);
+            this.rdoUpdate.Size = new System.Drawing.Size(60, 17);
             this.rdoUpdate.TabIndex = 4;
             this.rdoUpdate.Text = "Update";
             this.rdoUpdate.UseVisualStyleBackColor = true;
@@ -84,9 +88,10 @@
             // rdoUpdateOrCreate
             // 
             this.rdoUpdateOrCreate.AutoSize = true;
-            this.rdoUpdateOrCreate.Location = new System.Drawing.Point(38, 130);
+            this.rdoUpdateOrCreate.Location = new System.Drawing.Point(28, 106);
+            this.rdoUpdateOrCreate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdoUpdateOrCreate.Name = "rdoUpdateOrCreate";
-            this.rdoUpdateOrCreate.Size = new System.Drawing.Size(133, 21);
+            this.rdoUpdateOrCreate.Size = new System.Drawing.Size(102, 17);
             this.rdoUpdateOrCreate.TabIndex = 5;
             this.rdoUpdateOrCreate.Text = "UpdateOrCreate";
             this.rdoUpdateOrCreate.UseVisualStyleBackColor = true;
@@ -95,24 +100,27 @@
             // lblItemId
             // 
             this.lblItemId.AutoSize = true;
-            this.lblItemId.Location = new System.Drawing.Point(10, 166);
+            this.lblItemId.Location = new System.Drawing.Point(8, 135);
+            this.lblItemId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblItemId.Name = "lblItemId";
-            this.lblItemId.Size = new System.Drawing.Size(49, 17);
+            this.lblItemId.Size = new System.Drawing.Size(39, 13);
             this.lblItemId.TabIndex = 6;
             this.lblItemId.Text = "ItemId:";
             // 
             // txtItemId
             // 
-            this.txtItemId.Location = new System.Drawing.Point(65, 166);
+            this.txtItemId.Location = new System.Drawing.Point(49, 135);
+            this.txtItemId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtItemId.Name = "txtItemId";
-            this.txtItemId.Size = new System.Drawing.Size(565, 22);
+            this.txtItemId.Size = new System.Drawing.Size(425, 20);
             this.txtItemId.TabIndex = 7;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(458, 213);
+            this.btnCancel.Location = new System.Drawing.Point(344, 173);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(56, 19);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -121,27 +129,30 @@
             // lblCreateAction
             // 
             this.lblCreateAction.AutoSize = true;
-            this.lblCreateAction.Location = new System.Drawing.Point(10, 54);
+            this.lblCreateAction.Location = new System.Drawing.Point(8, 44);
+            this.lblCreateAction.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCreateAction.Name = "lblCreateAction";
-            this.lblCreateAction.Size = new System.Drawing.Size(97, 17);
-            this.lblCreateAction.TabIndex = 10;
+            this.lblCreateAction.Size = new System.Drawing.Size(74, 13);
+            this.lblCreateAction.TabIndex = 2;
             this.lblCreateAction.Text = "Create Action:";
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(546, 213);
+            this.btnOK.Location = new System.Drawing.Point(410, 173);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 11;
+            this.btnOK.Size = new System.Drawing.Size(56, 19);
+            this.btnOK.TabIndex = 9;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnSelectFile
             // 
-            this.btnSelectFile.Location = new System.Drawing.Point(590, 10);
+            this.btnSelectFile.Location = new System.Drawing.Point(442, 8);
+            this.btnSelectFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSelectFile.Name = "btnSelectFile";
-            this.btnSelectFile.Size = new System.Drawing.Size(36, 23);
+            this.btnSelectFile.Size = new System.Drawing.Size(27, 19);
             this.btnSelectFile.TabIndex = 12;
             this.btnSelectFile.Text = "...";
             this.btnSelectFile.UseVisualStyleBackColor = true;
@@ -149,9 +160,9 @@
             // 
             // UploadItemForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 248);
+            this.ClientSize = new System.Drawing.Size(484, 202);
             this.Controls.Add(this.btnSelectFile);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.lblCreateAction);
@@ -163,6 +174,7 @@
             this.Controls.Add(this.rdoCreateNew);
             this.Controls.Add(this.txtFile);
             this.Controls.Add(this.lblFile);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UploadItemForm";
             this.Text = "Upload Item";
             this.Load += new System.EventHandler(this.UploadItemForm_Load);

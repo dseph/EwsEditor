@@ -72,7 +72,7 @@ namespace EWSEditor.Forms
             this.btnOK.Location = new System.Drawing.Point(360, 472);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 8;
+            this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
@@ -84,7 +84,7 @@ namespace EWSEditor.Forms
             this.btnCancel.Location = new System.Drawing.Point(441, 472);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 9;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -277,7 +277,7 @@ namespace EWSEditor.Forms
             this.txtDefaultSmtp.Location = new System.Drawing.Point(453, 31);
             this.txtDefaultSmtp.Name = "txtDefaultSmtp";
             this.txtDefaultSmtp.Size = new System.Drawing.Size(49, 23);
-            this.txtDefaultSmtp.TabIndex = 4;
+            this.txtDefaultSmtp.TabIndex = 3;
             this.txtDefaultSmtp.Text = "Default";
             this.txtDefaultSmtp.UseVisualStyleBackColor = true;
             this.txtDefaultSmtp.Click += new System.EventHandler(this.txtDefaultSmtp_Click);
@@ -288,7 +288,7 @@ namespace EWSEditor.Forms
             this.rdoServiceUrl.Location = new System.Drawing.Point(31, 79);
             this.rdoServiceUrl.Name = "rdoServiceUrl";
             this.rdoServiceUrl.Size = new System.Drawing.Size(89, 17);
-            this.rdoServiceUrl.TabIndex = 3;
+            this.rdoServiceUrl.TabIndex = 4;
             this.rdoServiceUrl.TabStop = true;
             this.rdoServiceUrl.Text = "Service URL:";
             this.rdoServiceUrl.UseVisualStyleBackColor = true;
@@ -380,7 +380,7 @@ namespace EWSEditor.Forms
             this.btnOptions.Location = new System.Drawing.Point(5, 10);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(101, 23);
-            this.btnOptions.TabIndex = 3;
+            this.btnOptions.TabIndex = 0;
             this.btnOptions.Text = "Global Options";
             this.btnOptions.UseVisualStyleBackColor = true;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
@@ -407,7 +407,7 @@ namespace EWSEditor.Forms
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ServiceDialog";
             this.Text = "EWS Editor - Exchange Service Configuration";
             this.Load += new System.EventHandler(this.ServiceDialog_Load);

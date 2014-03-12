@@ -44,10 +44,10 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(170, 158);
+            this.btnOK.Location = new System.Drawing.Point(223, 158);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 3;
+            this.btnOK.TabIndex = 8;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -56,19 +56,19 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(251, 158);
+            this.btnCancel.Location = new System.Drawing.Point(304, 158);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnFolderId
             // 
-            this.btnFolderId.Location = new System.Drawing.Point(298, 42);
+            this.btnFolderId.Location = new System.Drawing.Point(355, 42);
             this.btnFolderId.Name = "btnFolderId";
             this.btnFolderId.Size = new System.Drawing.Size(25, 20);
-            this.btnFolderId.TabIndex = 0;
+            this.btnFolderId.TabIndex = 2;
             this.btnFolderId.Text = "...";
             this.btnFolderId.UseVisualStyleBackColor = true;
             this.btnFolderId.Click += new System.EventHandler(this.btnFolderId_Click);
@@ -78,15 +78,15 @@
             this.lblFolderId.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblFolderId.Location = new System.Drawing.Point(12, 42);
             this.lblFolderId.Name = "lblFolderId";
-            this.lblFolderId.Size = new System.Drawing.Size(280, 18);
-            this.lblFolderId.TabIndex = 8;
+            this.lblFolderId.Size = new System.Drawing.Size(337, 18);
+            this.lblFolderId.TabIndex = 1;
             // 
             // lblEnd
             // 
             this.lblEnd.Location = new System.Drawing.Point(12, 122);
             this.lblEnd.Name = "lblEnd";
             this.lblEnd.Size = new System.Drawing.Size(71, 23);
-            this.lblEnd.TabIndex = 13;
+            this.lblEnd.TabIndex = 6;
             this.lblEnd.Text = "End Time:";
             // 
             // txtEndTime
@@ -94,14 +94,14 @@
             this.txtEndTime.Location = new System.Drawing.Point(97, 119);
             this.txtEndTime.Name = "txtEndTime";
             this.txtEndTime.Size = new System.Drawing.Size(198, 20);
-            this.txtEndTime.TabIndex = 2;
+            this.txtEndTime.TabIndex = 7;
             // 
             // lblStart
             // 
             this.lblStart.Location = new System.Drawing.Point(12, 99);
             this.lblStart.Name = "lblStart";
             this.lblStart.Size = new System.Drawing.Size(79, 23);
-            this.lblStart.TabIndex = 11;
+            this.lblStart.TabIndex = 4;
             this.lblStart.Text = "Start Time:";
             // 
             // txtStartTime
@@ -109,7 +109,7 @@
             this.txtStartTime.Location = new System.Drawing.Point(97, 96);
             this.txtStartTime.Name = "txtStartTime";
             this.txtStartTime.Size = new System.Drawing.Size(198, 20);
-            this.txtStartTime.TabIndex = 1;
+            this.txtStartTime.TabIndex = 5;
             // 
             // label1
             // 
@@ -117,7 +117,7 @@
             this.label1.Location = new System.Drawing.Point(12, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(180, 13);
-            this.label1.TabIndex = 14;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Select a calendar folder to search in:";
             // 
             // label2
@@ -126,7 +126,7 @@
             this.label2.Location = new System.Drawing.Point(12, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 13);
-            this.label2.TabIndex = 15;
+            this.label2.TabIndex = 3;
             this.label2.Text = "Specify a date range to search:";
             // 
             // FindAppointmentsDialog
@@ -135,7 +135,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(339, 193);
+            this.ClientSize = new System.Drawing.Size(392, 193);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblEnd);

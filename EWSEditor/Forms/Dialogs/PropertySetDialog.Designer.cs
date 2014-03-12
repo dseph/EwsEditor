@@ -54,9 +54,9 @@
             this.PropertiesGrid.AllowUserToAddRows = false;
             this.PropertiesGrid.AllowUserToDeleteRows = false;
             this.PropertiesGrid.AllowUserToResizeRows = false;
-            this.PropertiesGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.PropertiesGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PropertiesGrid.BackgroundColor = System.Drawing.SystemColors.Control;
             this.PropertiesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PropertiesGrid.Location = new System.Drawing.Point(12, 162);
@@ -67,7 +67,7 @@
             this.PropertiesGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.PropertiesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PropertiesGrid.Size = new System.Drawing.Size(561, 288);
-            this.PropertiesGrid.TabIndex = 18;
+            this.PropertiesGrid.TabIndex = 10;
             this.PropertiesGrid.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.PropertiesGrid_SortCompare);
             // 
             // lblProperties
@@ -75,7 +75,7 @@
             this.lblProperties.Location = new System.Drawing.Point(9, 143);
             this.lblProperties.Name = "lblProperties";
             this.lblProperties.Size = new System.Drawing.Size(177, 16);
-            this.lblProperties.TabIndex = 19;
+            this.lblProperties.TabIndex = 1;
             this.lblProperties.Text = "Additional Properties...";
             // 
             // grpLine1
@@ -83,7 +83,7 @@
             this.grpLine1.Location = new System.Drawing.Point(12, 456);
             this.grpLine1.Name = "grpLine1";
             this.grpLine1.Size = new System.Drawing.Size(708, 10);
-            this.grpLine1.TabIndex = 20;
+            this.grpLine1.TabIndex = 7;
             this.grpLine1.TabStop = false;
             // 
             // btnCancel
@@ -92,7 +92,7 @@
             this.btnCancel.Location = new System.Drawing.Point(637, 476);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 21;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -102,7 +102,7 @@
             this.btnOK.Location = new System.Drawing.Point(556, 476);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 22;
+            this.btnOK.TabIndex = 8;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
@@ -111,7 +111,7 @@
             this.btnAddSchemaProps.Location = new System.Drawing.Point(579, 162);
             this.btnAddSchemaProps.Name = "btnAddSchemaProps";
             this.btnAddSchemaProps.Size = new System.Drawing.Size(133, 34);
-            this.btnAddSchemaProps.TabIndex = 23;
+            this.btnAddSchemaProps.TabIndex = 2;
             this.btnAddSchemaProps.Text = "Add Schema Property";
             this.btnAddSchemaProps.UseVisualStyleBackColor = true;
             this.btnAddSchemaProps.Click += new System.EventHandler(this.BtnAddSchema_Click);
@@ -121,7 +121,7 @@
             this.btnAddExtProps.Location = new System.Drawing.Point(579, 202);
             this.btnAddExtProps.Name = "btnAddExtProps";
             this.btnAddExtProps.Size = new System.Drawing.Size(133, 34);
-            this.btnAddExtProps.TabIndex = 24;
+            this.btnAddExtProps.TabIndex = 3;
             this.btnAddExtProps.Text = "Add Extended Property";
             this.btnAddExtProps.UseVisualStyleBackColor = true;
             this.btnAddExtProps.Click += new System.EventHandler(this.BtnAddExtended_Click);
@@ -131,7 +131,7 @@
             this.btnAddKnownProps.Location = new System.Drawing.Point(579, 242);
             this.btnAddKnownProps.Name = "btnAddKnownProps";
             this.btnAddKnownProps.Size = new System.Drawing.Size(133, 34);
-            this.btnAddKnownProps.TabIndex = 25;
+            this.btnAddKnownProps.TabIndex = 4;
             this.btnAddKnownProps.Text = "Add All Known Extended Properties";
             this.btnAddKnownProps.UseVisualStyleBackColor = true;
             this.btnAddKnownProps.Click += new System.EventHandler(this.BtnAddAllProps_Click);
@@ -141,7 +141,7 @@
             this.btnRemove.Location = new System.Drawing.Point(579, 375);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(133, 34);
-            this.btnRemove.TabIndex = 26;
+            this.btnRemove.TabIndex = 5;
             this.btnRemove.Text = "Remove Property";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
@@ -157,7 +157,7 @@
             this.grpBox1.Location = new System.Drawing.Point(12, 13);
             this.grpBox1.Name = "grpBox1";
             this.grpBox1.Size = new System.Drawing.Size(700, 127);
-            this.grpBox1.TabIndex = 27;
+            this.grpBox1.TabIndex = 0;
             this.grpBox1.TabStop = false;
             this.grpBox1.Text = "Property Set Configuration...";
             // 
@@ -168,14 +168,14 @@
             this.TempFilterHtmlCombo.Location = new System.Drawing.Point(158, 62);
             this.TempFilterHtmlCombo.Name = "TempFilterHtmlCombo";
             this.TempFilterHtmlCombo.Size = new System.Drawing.Size(218, 21);
-            this.TempFilterHtmlCombo.TabIndex = 5;
+            this.TempFilterHtmlCombo.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.Location = new System.Drawing.Point(7, 65);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(145, 23);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 2;
             this.label3.Text = "Filter HTML Content:";
             // 
             // label2
@@ -183,7 +183,7 @@
             this.label2.Location = new System.Drawing.Point(6, 104);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 18);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 4;
             this.label2.Text = "Requested Body Type:";
             // 
             // TempBodyTypeCombo
@@ -193,14 +193,14 @@
             this.TempBodyTypeCombo.Location = new System.Drawing.Point(158, 101);
             this.TempBodyTypeCombo.Name = "TempBodyTypeCombo";
             this.TempBodyTypeCombo.Size = new System.Drawing.Size(218, 21);
-            this.TempBodyTypeCombo.TabIndex = 2;
+            this.TempBodyTypeCombo.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(7, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(145, 23);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Base Property Set:";
             // 
             // TempBasePropertySetCombo
@@ -210,14 +210,14 @@
             this.TempBasePropertySetCombo.Location = new System.Drawing.Point(158, 23);
             this.TempBasePropertySetCombo.Name = "TempBasePropertySetCombo";
             this.TempBasePropertySetCombo.Size = new System.Drawing.Size(218, 21);
-            this.TempBasePropertySetCombo.TabIndex = 0;
+            this.TempBasePropertySetCombo.TabIndex = 1;
             // 
             // btnRemoveAll
             // 
             this.btnRemoveAll.Location = new System.Drawing.Point(579, 415);
             this.btnRemoveAll.Name = "btnRemoveAll";
             this.btnRemoveAll.Size = new System.Drawing.Size(133, 34);
-            this.btnRemoveAll.TabIndex = 28;
+            this.btnRemoveAll.TabIndex = 6;
             this.btnRemoveAll.Text = "Remove All";
             this.btnRemoveAll.UseVisualStyleBackColor = true;
             this.btnRemoveAll.Click += new System.EventHandler(this.BtnRemoveAll_Click);

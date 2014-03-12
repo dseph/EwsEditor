@@ -47,45 +47,45 @@
             this.label1.Location = new System.Drawing.Point(12, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(162, 13);
-            this.label1.TabIndex = 6;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Distribution List address or name:";
             // 
             // txtListSmtp
             // 
-            this.txtListSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtListSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtListSmtp.Location = new System.Drawing.Point(180, 11);
             this.txtListSmtp.Name = "txtListSmtp";
-            this.txtListSmtp.Size = new System.Drawing.Size(593, 20);
-            this.txtListSmtp.TabIndex = 7;
+            this.txtListSmtp.Size = new System.Drawing.Size(590, 20);
+            this.txtListSmtp.TabIndex = 1;
             // 
             // btnExpand
             // 
             this.btnExpand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExpand.Location = new System.Drawing.Point(779, 9);
+            this.btnExpand.Location = new System.Drawing.Point(776, 9);
             this.btnExpand.Name = "btnExpand";
             this.btnExpand.Size = new System.Drawing.Size(126, 23);
-            this.btnExpand.TabIndex = 8;
+            this.btnExpand.TabIndex = 2;
             this.btnExpand.Text = "Expand";
             this.btnExpand.UseVisualStyleBackColor = true;
             this.btnExpand.Click += new System.EventHandler(this.btnExpand_Click);
             // 
             // tvDistributionLists
             // 
-            this.tvDistributionLists.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tvDistributionLists.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tvDistributionLists.Location = new System.Drawing.Point(12, 37);
             this.tvDistributionLists.Name = "tvDistributionLists";
-            this.tvDistributionLists.Size = new System.Drawing.Size(893, 141);
-            this.tvDistributionLists.TabIndex = 9;
+            this.tvDistributionLists.Size = new System.Drawing.Size(890, 141);
+            this.tvDistributionLists.TabIndex = 3;
             this.tvDistributionLists.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvDistributionLists_BeforeExpand);
             this.tvDistributionLists.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvDistributionLists_AfterSelect);
             // 
             // lvItems
             // 
-            this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colName,
             this.colAddress,
@@ -97,8 +97,8 @@
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
             this.lvItems.ShowItemToolTips = true;
-            this.lvItems.Size = new System.Drawing.Size(893, 185);
-            this.lvItems.TabIndex = 15;
+            this.lvItems.Size = new System.Drawing.Size(890, 179);
+            this.lvItems.TabIndex = 4;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
             this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lstEvents_SelectedIndexChanged);
@@ -132,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(917, 392);
+            this.ClientSize = new System.Drawing.Size(914, 387);
             this.Controls.Add(this.lvItems);
             this.Controls.Add(this.tvDistributionLists);
             this.Controls.Add(this.label1);

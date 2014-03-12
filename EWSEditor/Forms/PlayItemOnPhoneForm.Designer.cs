@@ -38,27 +38,31 @@
             // 
             // btnPlayOnPhone
             // 
-            this.btnPlayOnPhone.Location = new System.Drawing.Point(458, 13);
+            this.btnPlayOnPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPlayOnPhone.Location = new System.Drawing.Point(462, 13);
             this.btnPlayOnPhone.Name = "btnPlayOnPhone";
             this.btnPlayOnPhone.Size = new System.Drawing.Size(121, 23);
-            this.btnPlayOnPhone.TabIndex = 1;
+            this.btnPlayOnPhone.TabIndex = 2;
             this.btnPlayOnPhone.Text = "Play On Phone";
             this.btnPlayOnPhone.UseVisualStyleBackColor = true;
             this.btnPlayOnPhone.Click += new System.EventHandler(this.btnPlayOnPhone_Click);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(634, 262);
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.Location = new System.Drawing.Point(619, 275);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 4;
+            this.btnOK.TabIndex = 5;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // txtDialString
             // 
-            this.txtDialString.Location = new System.Drawing.Point(88, 16);
+            this.txtDialString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDialString.Location = new System.Drawing.Point(77, 15);
             this.txtDialString.Name = "txtDialString";
             this.txtDialString.Size = new System.Drawing.Size(348, 20);
             this.txtDialString.TabIndex = 66;
@@ -66,29 +70,33 @@
             // lblOrganizer
             // 
             this.lblOrganizer.AutoSize = true;
-            this.lblOrganizer.Location = new System.Drawing.Point(24, 19);
+            this.lblOrganizer.Location = new System.Drawing.Point(13, 18);
             this.lblOrganizer.Name = "lblOrganizer";
             this.lblOrganizer.Size = new System.Drawing.Size(58, 13);
-            this.lblOrganizer.TabIndex = 0;
+            this.lblOrganizer.TabIndex = 1;
             this.lblOrganizer.Text = "Dial String:";
             // 
             // txtBody
             // 
-            this.txtBody.Location = new System.Drawing.Point(27, 45);
+            this.txtBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBody.Location = new System.Drawing.Point(12, 43);
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBody.Size = new System.Drawing.Size(682, 211);
-            this.txtBody.TabIndex = 3;
+            this.txtBody.Size = new System.Drawing.Size(701, 211);
+            this.txtBody.TabIndex = 4;
             this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
             // btnEndCall
             // 
+            this.btnEndCall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEndCall.Enabled = false;
-            this.btnEndCall.Location = new System.Drawing.Point(588, 14);
+            this.btnEndCall.Location = new System.Drawing.Point(592, 14);
             this.btnEndCall.Name = "btnEndCall";
             this.btnEndCall.Size = new System.Drawing.Size(121, 23);
-            this.btnEndCall.TabIndex = 2;
+            this.btnEndCall.TabIndex = 3;
             this.btnEndCall.Text = "End Call";
             this.btnEndCall.UseVisualStyleBackColor = true;
             this.btnEndCall.Click += new System.EventHandler(this.btnEndCall_Click);
@@ -97,7 +105,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 297);
+            this.ClientSize = new System.Drawing.Size(725, 310);
             this.Controls.Add(this.btnEndCall);
             this.Controls.Add(this.txtBody);
             this.Controls.Add(this.btnPlayOnPhone);

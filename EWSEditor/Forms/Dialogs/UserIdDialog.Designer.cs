@@ -58,7 +58,7 @@
             this.DisplayNameText.Location = new System.Drawing.Point(99, 31);
             this.DisplayNameText.Name = "DisplayNameText";
             this.DisplayNameText.Size = new System.Drawing.Size(219, 20);
-            this.DisplayNameText.TabIndex = 11;
+            this.DisplayNameText.TabIndex = 2;
             // 
             // label4
             // 
@@ -66,7 +66,7 @@
             this.label4.Location = new System.Drawing.Point(12, 34);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
-            this.label4.TabIndex = 12;
+            this.label4.TabIndex = 1;
             this.label4.Text = "Display Name:";
             // 
             // SmtpAddressText
@@ -74,7 +74,7 @@
             this.SmtpAddressText.Location = new System.Drawing.Point(99, 61);
             this.SmtpAddressText.Name = "SmtpAddressText";
             this.SmtpAddressText.Size = new System.Drawing.Size(219, 20);
-            this.SmtpAddressText.TabIndex = 13;
+            this.SmtpAddressText.TabIndex = 4;
             // 
             // label2
             // 
@@ -82,7 +82,7 @@
             this.label2.Location = new System.Drawing.Point(12, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 13);
-            this.label2.TabIndex = 14;
+            this.label2.TabIndex = 3;
             this.label2.Text = "Primary SMTP:";
             // 
             // UserSidText
@@ -90,7 +90,7 @@
             this.UserSidText.Location = new System.Drawing.Point(99, 92);
             this.UserSidText.Name = "UserSidText";
             this.UserSidText.Size = new System.Drawing.Size(219, 20);
-            this.UserSidText.TabIndex = 15;
+            this.UserSidText.TabIndex = 6;
             // 
             // label3
             // 
@@ -98,7 +98,7 @@
             this.label3.Location = new System.Drawing.Point(12, 95);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 16;
+            this.label3.TabIndex = 5;
             this.label3.Text = "User SID:";
             // 
             // TempStandardUserCombo
@@ -108,7 +108,7 @@
             this.TempStandardUserCombo.Location = new System.Drawing.Point(99, 129);
             this.TempStandardUserCombo.Name = "TempStandardUserCombo";
             this.TempStandardUserCombo.Size = new System.Drawing.Size(219, 21);
-            this.TempStandardUserCombo.TabIndex = 17;
+            this.TempStandardUserCombo.TabIndex = 8;
             // 
             // label5
             // 
@@ -116,17 +116,17 @@
             this.label5.Location = new System.Drawing.Point(12, 132);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 13);
-            this.label5.TabIndex = 18;
+            this.label5.TabIndex = 7;
             this.label5.Text = "Standard User:";
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Location = new System.Drawing.Point(8, 183);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(328, 10);
-            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
             // btnCancel
@@ -136,7 +136,7 @@
             this.btnCancel.Location = new System.Drawing.Point(261, 202);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 21;
+            this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -147,7 +147,7 @@
             this.btnOK.Location = new System.Drawing.Point(180, 202);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 20;
+            this.btnOK.TabIndex = 12;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
@@ -157,7 +157,7 @@
             this.ResolveNameButton.Location = new System.Drawing.Point(271, 162);
             this.ResolveNameButton.Name = "ResolveNameButton";
             this.ResolveNameButton.Size = new System.Drawing.Size(26, 23);
-            this.ResolveNameButton.TabIndex = 22;
+            this.ResolveNameButton.TabIndex = 10;
             this.ResolveNameButton.Text = "...";
             this.ResolveNameButton.UseVisualStyleBackColor = true;
             this.ResolveNameButton.Click += new System.EventHandler(this.ResolveNameButton_Click);
@@ -169,7 +169,7 @@
             this.label6.Location = new System.Drawing.Point(12, 167);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(253, 13);
-            this.label6.TabIndex = 23;
+            this.label6.TabIndex = 9;
             this.label6.Text = "User ResolveNames dialog to get UserId information";
             // 
             // UserIdDialog

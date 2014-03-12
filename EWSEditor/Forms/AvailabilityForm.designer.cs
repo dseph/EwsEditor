@@ -46,28 +46,28 @@
             this.StartDetailDate = new System.Windows.Forms.DateTimePicker();
             this.AttendeeAvailabilityGroup = new System.Windows.Forms.GroupBox();
             this.SuggestionsList = new System.Windows.Forms.ListView();
-            this.DateColumn = new System.Windows.Forms.ColumnHeader();
-            this.DateQualityColumn = new System.Windows.Forms.ColumnHeader();
-            this.TimeColumn = new System.Windows.Forms.ColumnHeader();
-            this.TimeQualityColumn = new System.Windows.Forms.ColumnHeader();
-            this.ConflictsColumn = new System.Windows.Forms.ColumnHeader();
-            this.IsWorkTimeColumn = new System.Windows.Forms.ColumnHeader();
+            this.DateColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DateQualityColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TimeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TimeQualityColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ConflictsColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IsWorkTimeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AttendeeAvailabilityList = new System.Windows.Forms.ListView();
-            this.ViewTypeColumn = new System.Windows.Forms.ColumnHeader();
-            this.WorkingHoursColumn = new System.Windows.Forms.ColumnHeader();
-            this.MergedFreeBusyStatusColumn = new System.Windows.Forms.ColumnHeader();
+            this.ViewTypeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.WorkingHoursColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.MergedFreeBusyStatusColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CalEventsList = new System.Windows.Forms.ListView();
-            this.FreeBusyStatusColumn = new System.Windows.Forms.ColumnHeader();
-            this.StartTimeColumn = new System.Windows.Forms.ColumnHeader();
-            this.EndTimeColumn = new System.Windows.Forms.ColumnHeader();
-            this.SubjectColumn = new System.Windows.Forms.ColumnHeader();
-            this.LocationColumn = new System.Windows.Forms.ColumnHeader();
-            this.IsExceptionColumn = new System.Windows.Forms.ColumnHeader();
-            this.IsMeetingColumn = new System.Windows.Forms.ColumnHeader();
-            this.IsPrivateColumn = new System.Windows.Forms.ColumnHeader();
-            this.IsRecurringColumn = new System.Windows.Forms.ColumnHeader();
-            this.IsReminderSetColumn = new System.Windows.Forms.ColumnHeader();
-            this.StoreIdColumn = new System.Windows.Forms.ColumnHeader();
+            this.FreeBusyStatusColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.StartTimeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.EndTimeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.SubjectColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LocationColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IsExceptionColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IsMeetingColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IsPrivateColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IsRecurringColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IsReminderSetColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.StoreIdColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AddAttendeeButton = new System.Windows.Forms.Button();
             this.SuggestionsGroup = new System.Windows.Forms.GroupBox();
             this.GoodSuggestThresholdText = new System.Windows.Forms.TextBox();
@@ -91,9 +91,9 @@
             this.RemoveAttendeeButton = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.AttendeeList = new System.Windows.Forms.ListView();
-            this.SmtpColumn = new System.Windows.Forms.ColumnHeader();
-            this.TypeColumn = new System.Windows.Forms.ColumnHeader();
-            this.ExcludeConflictsColumn = new System.Windows.Forms.ColumnHeader();
+            this.SmtpColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TypeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ExcludeConflictsColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TimeWindowGroup.SuspendLayout();
             this.DetailWindowGroup.SuspendLayout();
             this.AttendeeAvailabilityGroup.SuspendLayout();
@@ -119,7 +119,7 @@
             this.StartTimeWindowLabel.Location = new System.Drawing.Point(9, 19);
             this.StartTimeWindowLabel.Name = "StartTimeWindowLabel";
             this.StartTimeWindowLabel.Size = new System.Drawing.Size(58, 16);
-            this.StartTimeWindowLabel.TabIndex = 41;
+            this.StartTimeWindowLabel.TabIndex = 0;
             this.StartTimeWindowLabel.Text = "Start Time:";
             // 
             // EndWindowDate
@@ -129,7 +129,7 @@
             this.EndWindowDate.Location = new System.Drawing.Point(355, 16);
             this.EndWindowDate.Name = "EndWindowDate";
             this.EndWindowDate.Size = new System.Drawing.Size(162, 20);
-            this.EndWindowDate.TabIndex = 40;
+            this.EndWindowDate.TabIndex = 3;
             // 
             // StartWindowDate
             // 
@@ -138,14 +138,14 @@
             this.StartWindowDate.Location = new System.Drawing.Point(89, 17);
             this.StartWindowDate.Name = "StartWindowDate";
             this.StartWindowDate.Size = new System.Drawing.Size(162, 20);
-            this.StartWindowDate.TabIndex = 39;
+            this.StartWindowDate.TabIndex = 1;
             // 
             // EndTimeWindowLabel
             // 
             this.EndTimeWindowLabel.Location = new System.Drawing.Point(257, 18);
             this.EndTimeWindowLabel.Name = "EndTimeWindowLabel";
             this.EndTimeWindowLabel.Size = new System.Drawing.Size(58, 16);
-            this.EndTimeWindowLabel.TabIndex = 42;
+            this.EndTimeWindowLabel.TabIndex = 2;
             this.EndTimeWindowLabel.Text = "End Time:";
             // 
             // TimeWindowGroup
@@ -162,7 +162,7 @@
             this.TimeWindowGroup.Location = new System.Drawing.Point(313, 12);
             this.TimeWindowGroup.Name = "TimeWindowGroup";
             this.TimeWindowGroup.Size = new System.Drawing.Size(600, 107);
-            this.TimeWindowGroup.TabIndex = 40;
+            this.TimeWindowGroup.TabIndex = 0;
             this.TimeWindowGroup.TabStop = false;
             this.TimeWindowGroup.Text = "Availability Time Window and Current Meeting Info";
             // 
@@ -172,7 +172,7 @@
             this.CurrentMeetingLabel.Location = new System.Drawing.Point(9, 72);
             this.CurrentMeetingLabel.Name = "CurrentMeetingLabel";
             this.CurrentMeetingLabel.Size = new System.Drawing.Size(61, 16);
-            this.CurrentMeetingLabel.TabIndex = 110;
+            this.CurrentMeetingLabel.TabIndex = 5;
             this.CurrentMeetingLabel.Text = "Meet Time:";
             // 
             // MeetingDurationText
@@ -180,14 +180,14 @@
             this.MeetingDurationText.Location = new System.Drawing.Point(355, 70);
             this.MeetingDurationText.Name = "MeetingDurationText";
             this.MeetingDurationText.Size = new System.Drawing.Size(42, 20);
-            this.MeetingDurationText.TabIndex = 106;
+            this.MeetingDurationText.TabIndex = 8;
             // 
             // CurrentMeetingCheck
             // 
             this.CurrentMeetingCheck.Location = new System.Drawing.Point(6, 47);
             this.CurrentMeetingCheck.Name = "CurrentMeetingCheck";
             this.CurrentMeetingCheck.Size = new System.Drawing.Size(168, 17);
-            this.CurrentMeetingCheck.TabIndex = 108;
+            this.CurrentMeetingCheck.TabIndex = 4;
             this.CurrentMeetingCheck.Text = "Specify a current meeting time";
             this.CurrentMeetingCheck.UseVisualStyleBackColor = true;
             // 
@@ -196,7 +196,7 @@
             this.lblMeetingDuration.Location = new System.Drawing.Point(257, 71);
             this.lblMeetingDuration.Name = "lblMeetingDuration";
             this.lblMeetingDuration.Size = new System.Drawing.Size(94, 19);
-            this.lblMeetingDuration.TabIndex = 100;
+            this.lblMeetingDuration.TabIndex = 7;
             this.lblMeetingDuration.Text = "Meeting Duration:";
             // 
             // CurrentMeetingDate
@@ -207,7 +207,7 @@
             this.CurrentMeetingDate.Location = new System.Drawing.Point(89, 70);
             this.CurrentMeetingDate.Name = "CurrentMeetingDate";
             this.CurrentMeetingDate.Size = new System.Drawing.Size(162, 20);
-            this.CurrentMeetingDate.TabIndex = 109;
+            this.CurrentMeetingDate.TabIndex = 6;
             // 
             // DetailWindowGroup
             // 
@@ -218,7 +218,7 @@
             this.DetailWindowGroup.Location = new System.Drawing.Point(6, 19);
             this.DetailWindowGroup.Name = "DetailWindowGroup";
             this.DetailWindowGroup.Size = new System.Drawing.Size(258, 80);
-            this.DetailWindowGroup.TabIndex = 48;
+            this.DetailWindowGroup.TabIndex = 0;
             this.DetailWindowGroup.TabStop = false;
             this.DetailWindowGroup.Text = "Detailed Suggestions Time Window";
             // 
@@ -227,7 +227,7 @@
             this.StartDetailLabel.Location = new System.Drawing.Point(16, 26);
             this.StartDetailLabel.Name = "StartDetailLabel";
             this.StartDetailLabel.Size = new System.Drawing.Size(58, 16);
-            this.StartDetailLabel.TabIndex = 41;
+            this.StartDetailLabel.TabIndex = 0;
             this.StartDetailLabel.Text = "Start Time:";
             // 
             // EndDetailDate
@@ -237,14 +237,14 @@
             this.EndDetailDate.Location = new System.Drawing.Point(86, 48);
             this.EndDetailDate.Name = "EndDetailDate";
             this.EndDetailDate.Size = new System.Drawing.Size(162, 20);
-            this.EndDetailDate.TabIndex = 40;
+            this.EndDetailDate.TabIndex = 3;
             // 
             // EndDetailLabel
             // 
             this.EndDetailLabel.Location = new System.Drawing.Point(16, 52);
             this.EndDetailLabel.Name = "EndDetailLabel";
             this.EndDetailLabel.Size = new System.Drawing.Size(58, 16);
-            this.EndDetailLabel.TabIndex = 42;
+            this.EndDetailLabel.TabIndex = 2;
             this.EndDetailLabel.Text = "End Time:";
             // 
             // StartDetailDate
@@ -254,7 +254,7 @@
             this.StartDetailDate.Location = new System.Drawing.Point(86, 22);
             this.StartDetailDate.Name = "StartDetailDate";
             this.StartDetailDate.Size = new System.Drawing.Size(162, 20);
-            this.StartDetailDate.TabIndex = 39;
+            this.StartDetailDate.TabIndex = 1;
             // 
             // AttendeeAvailabilityGroup
             // 
@@ -280,7 +280,7 @@
             this.SuggestionsList.Location = new System.Drawing.Point(13, 203);
             this.SuggestionsList.Name = "SuggestionsList";
             this.SuggestionsList.Size = new System.Drawing.Size(884, 140);
-            this.SuggestionsList.TabIndex = 33;
+            this.SuggestionsList.TabIndex = 2;
             this.SuggestionsList.UseCompatibleStateImageBehavior = false;
             this.SuggestionsList.View = System.Windows.Forms.View.Details;
             // 
@@ -325,7 +325,7 @@
             this.AttendeeAvailabilityList.MultiSelect = false;
             this.AttendeeAvailabilityList.Name = "AttendeeAvailabilityList";
             this.AttendeeAvailabilityList.Size = new System.Drawing.Size(884, 72);
-            this.AttendeeAvailabilityList.TabIndex = 32;
+            this.AttendeeAvailabilityList.TabIndex = 0;
             this.AttendeeAvailabilityList.UseCompatibleStateImageBehavior = false;
             this.AttendeeAvailabilityList.View = System.Windows.Forms.View.Details;
             // 
@@ -363,7 +363,7 @@
             this.CalEventsList.MultiSelect = false;
             this.CalEventsList.Name = "CalEventsList";
             this.CalEventsList.Size = new System.Drawing.Size(884, 100);
-            this.CalEventsList.TabIndex = 31;
+            this.CalEventsList.TabIndex = 1;
             this.CalEventsList.UseCompatibleStateImageBehavior = false;
             this.CalEventsList.View = System.Windows.Forms.View.Details;
             // 
@@ -426,7 +426,7 @@
             this.AddAttendeeButton.Location = new System.Drawing.Point(117, 296);
             this.AddAttendeeButton.Name = "AddAttendeeButton";
             this.AddAttendeeButton.Size = new System.Drawing.Size(90, 23);
-            this.AddAttendeeButton.TabIndex = 30;
+            this.AddAttendeeButton.TabIndex = 0;
             this.AddAttendeeButton.Text = "Add Attendee...";
             this.AddAttendeeButton.UseVisualStyleBackColor = true;
             this.AddAttendeeButton.Click += new System.EventHandler(this.AddAttendeeButton_Click);
@@ -446,7 +446,7 @@
             this.SuggestionsGroup.Location = new System.Drawing.Point(638, 125);
             this.SuggestionsGroup.Name = "SuggestionsGroup";
             this.SuggestionsGroup.Size = new System.Drawing.Size(275, 221);
-            this.SuggestionsGroup.TabIndex = 50;
+            this.SuggestionsGroup.TabIndex = 2;
             this.SuggestionsGroup.TabStop = false;
             this.SuggestionsGroup.Text = "Suggestion Options";
             // 
@@ -462,7 +462,7 @@
             this.lblGoodSuggestThreshold.Location = new System.Drawing.Point(6, 150);
             this.lblGoodSuggestThreshold.Name = "lblGoodSuggestThreshold";
             this.lblGoodSuggestThreshold.Size = new System.Drawing.Size(171, 20);
-            this.lblGoodSuggestThreshold.TabIndex = 107;
+            this.lblGoodSuggestThreshold.TabIndex = 3;
             this.lblGoodSuggestThreshold.Text = "Good Suggestion Thresold (%):";
             // 
             // MaxNonWorkSuggestText
@@ -472,12 +472,12 @@
             this.MaxNonWorkSuggestText.Size = new System.Drawing.Size(42, 20);
             this.MaxNonWorkSuggestText.TabIndex = 104;
             // 
-            // MinSuggestQualDrop
+            // TempMinSuggestQualCombo
             // 
             this.TempMinSuggestQualCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempMinSuggestQualCombo.FormattingEnabled = true;
             this.TempMinSuggestQualCombo.Location = new System.Drawing.Point(148, 180);
-            this.TempMinSuggestQualCombo.Name = "MinSuggestQualDrop";
+            this.TempMinSuggestQualCombo.Name = "TempMinSuggestQualCombo";
             this.TempMinSuggestQualCombo.Size = new System.Drawing.Size(116, 21);
             this.TempMinSuggestQualCombo.TabIndex = 106;
             // 
@@ -493,7 +493,7 @@
             this.lblMaxNonWorkSuggest.Location = new System.Drawing.Point(6, 102);
             this.lblMaxNonWorkSuggest.Name = "lblMaxNonWorkSuggest";
             this.lblMaxNonWorkSuggest.Size = new System.Drawing.Size(185, 19);
-            this.lblMaxNonWorkSuggest.TabIndex = 98;
+            this.lblMaxNonWorkSuggest.TabIndex = 1;
             this.lblMaxNonWorkSuggest.Text = "Max Non-work Hours Suggestions:";
             // 
             // lblMaxSuggestPerDay
@@ -501,7 +501,7 @@
             this.lblMaxSuggestPerDay.Location = new System.Drawing.Point(6, 127);
             this.lblMaxSuggestPerDay.Name = "lblMaxSuggestPerDay";
             this.lblMaxSuggestPerDay.Size = new System.Drawing.Size(171, 19);
-            this.lblMaxSuggestPerDay.TabIndex = 99;
+            this.lblMaxSuggestPerDay.TabIndex = 2;
             this.lblMaxSuggestPerDay.Text = "Max Suggestions Per Day:";
             // 
             // lblMinSuggestQual
@@ -509,24 +509,24 @@
             this.lblMinSuggestQual.Location = new System.Drawing.Point(6, 183);
             this.lblMinSuggestQual.Name = "lblMinSuggestQual";
             this.lblMinSuggestQual.Size = new System.Drawing.Size(124, 19);
-            this.lblMinSuggestQual.TabIndex = 81;
+            this.lblMinSuggestQual.TabIndex = 4;
             this.lblMinSuggestQual.Text = "Min. Suggestion Quality:";
             // 
-            // RequestFBViewDrop
+            // TempRequestFBViewCombo
             // 
             this.TempRequestFBViewCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempRequestFBViewCombo.FormattingEnabled = true;
             this.TempRequestFBViewCombo.Location = new System.Drawing.Point(151, 41);
-            this.TempRequestFBViewCombo.Name = "RequestFBViewDrop";
+            this.TempRequestFBViewCombo.Name = "TempRequestFBViewCombo";
             this.TempRequestFBViewCombo.Size = new System.Drawing.Size(156, 21);
-            this.TempRequestFBViewCombo.TabIndex = 83;
+            this.TempRequestFBViewCombo.TabIndex = 3;
             // 
             // lblRequestFBView
             // 
             this.lblRequestFBView.Location = new System.Drawing.Point(6, 43);
             this.lblRequestFBView.Name = "lblRequestFBView";
             this.lblRequestFBView.Size = new System.Drawing.Size(141, 19);
-            this.lblRequestFBView.TabIndex = 82;
+            this.lblRequestFBView.TabIndex = 2;
             this.lblRequestFBView.Text = "Requested Free/Busy View:";
             // 
             // MergeFBIntervalText
@@ -534,31 +534,33 @@
             this.MergeFBIntervalText.Location = new System.Drawing.Point(151, 71);
             this.MergeFBIntervalText.Name = "MergeFBIntervalText";
             this.MergeFBIntervalText.Size = new System.Drawing.Size(42, 20);
-            this.MergeFBIntervalText.TabIndex = 107;
+            this.MergeFBIntervalText.TabIndex = 5;
             // 
             // lblMergeFBInterval
             // 
             this.lblMergeFBInterval.Location = new System.Drawing.Point(6, 72);
             this.lblMergeFBInterval.Name = "lblMergeFBInterval";
             this.lblMergeFBInterval.Size = new System.Drawing.Size(138, 19);
-            this.lblMergeFBInterval.TabIndex = 101;
+            this.lblMergeFBInterval.TabIndex = 4;
             this.lblMergeFBInterval.Text = "Merged Free/Busy Interval:";
             // 
-            // AvailDataDrop
+            // TempAvailDataCombo
             // 
             this.TempAvailDataCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempAvailDataCombo.FormattingEnabled = true;
+           // this.TempAvailDataCombo.HasEmptyItem = false;
             this.TempAvailDataCombo.Location = new System.Drawing.Point(151, 14);
-            this.TempAvailDataCombo.Name = "AvailDataDrop";
+            this.TempAvailDataCombo.Name = "TempAvailDataCombo";
+            this.TempAvailDataCombo.SelectedItem = null;
             this.TempAvailDataCombo.Size = new System.Drawing.Size(156, 21);
-            this.TempAvailDataCombo.TabIndex = 85;
+            this.TempAvailDataCombo.TabIndex = 200;
             // 
             // label1
             // 
             this.label1.Location = new System.Drawing.Point(6, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(141, 19);
-            this.label1.TabIndex = 84;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Requested Availability Data:";
             // 
             // GetAvailabilityButton
@@ -585,7 +587,7 @@
             this.AvailabilityDataGroup.Location = new System.Drawing.Point(313, 125);
             this.AvailabilityDataGroup.Name = "AvailabilityDataGroup";
             this.AvailabilityDataGroup.Size = new System.Drawing.Size(319, 221);
-            this.AvailabilityDataGroup.TabIndex = 111;
+            this.AvailabilityDataGroup.TabIndex = 1;
             this.AvailabilityDataGroup.TabStop = false;
             this.AvailabilityDataGroup.Text = "Availability Data Options";
             // 
@@ -594,14 +596,14 @@
             this.GlobalObjectIdText.Location = new System.Drawing.Point(151, 99);
             this.GlobalObjectIdText.Name = "GlobalObjectIdText";
             this.GlobalObjectIdText.Size = new System.Drawing.Size(156, 20);
-            this.GlobalObjectIdText.TabIndex = 113;
+            this.GlobalObjectIdText.TabIndex = 7;
             // 
             // GlobalObjectIdLabel
             // 
             this.GlobalObjectIdLabel.Location = new System.Drawing.Point(6, 102);
             this.GlobalObjectIdLabel.Name = "GlobalObjectIdLabel";
             this.GlobalObjectIdLabel.Size = new System.Drawing.Size(138, 19);
-            this.GlobalObjectIdLabel.TabIndex = 112;
+            this.GlobalObjectIdLabel.TabIndex = 6;
             this.GlobalObjectIdLabel.Text = "Global Object ID:";
             // 
             // RemoveAttendeeButton
@@ -610,7 +612,7 @@
             this.RemoveAttendeeButton.Location = new System.Drawing.Point(211, 296);
             this.RemoveAttendeeButton.Name = "RemoveAttendeeButton";
             this.RemoveAttendeeButton.Size = new System.Drawing.Size(88, 23);
-            this.RemoveAttendeeButton.TabIndex = 34;
+            this.RemoveAttendeeButton.TabIndex = 1;
             this.RemoveAttendeeButton.Text = "Remove";
             this.RemoveAttendeeButton.UseVisualStyleBackColor = true;
             this.RemoveAttendeeButton.Click += new System.EventHandler(this.RemoveAttendeeButton_Click);
@@ -640,7 +642,7 @@
             this.AttendeeList.MultiSelect = false;
             this.AttendeeList.Name = "AttendeeList";
             this.AttendeeList.Size = new System.Drawing.Size(296, 274);
-            this.AttendeeList.TabIndex = 1;
+            this.AttendeeList.TabIndex = 2;
             this.AttendeeList.UseCompatibleStateImageBehavior = false;
             this.AttendeeList.View = System.Windows.Forms.View.Details;
             this.AttendeeList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.AttendeeList_ItemSelectionChanged);

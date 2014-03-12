@@ -62,7 +62,7 @@
             this.GoRun.Location = new System.Drawing.Point(755, 492);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(74, 23);
-            this.GoRun.TabIndex = 5;
+            this.GoRun.TabIndex = 15;
             this.GoRun.Text = "Run";
             this.GoRun.UseVisualStyleBackColor = true;
             this.GoRun.Click += new System.EventHandler(this.btnGo_Click);
@@ -73,7 +73,7 @@
             this.TargetMailboxLabel.Location = new System.Drawing.Point(467, 8);
             this.TargetMailboxLabel.Name = "TargetMailboxLabel";
             this.TargetMailboxLabel.Size = new System.Drawing.Size(130, 13);
-            this.TargetMailboxLabel.TabIndex = 38;
+            this.TargetMailboxLabel.TabIndex = 3;
             this.TargetMailboxLabel.Text = "SMTP address of mailbox:";
             // 
             // TargetMailboxText
@@ -81,7 +81,7 @@
             this.TargetMailboxText.Location = new System.Drawing.Point(625, 5);
             this.TargetMailboxText.Name = "TargetMailboxText";
             this.TargetMailboxText.Size = new System.Drawing.Size(199, 20);
-            this.TargetMailboxText.TabIndex = 1;
+            this.TargetMailboxText.TabIndex = 4;
             // 
             // chkDefaultWindowsCredentials
             // 
@@ -91,7 +91,7 @@
             this.chkDefaultWindowsCredentials.Location = new System.Drawing.Point(6, 13);
             this.chkDefaultWindowsCredentials.Name = "chkDefaultWindowsCredentials";
             this.chkDefaultWindowsCredentials.Size = new System.Drawing.Size(162, 17);
-            this.chkDefaultWindowsCredentials.TabIndex = 42;
+            this.chkDefaultWindowsCredentials.TabIndex = 0;
             this.chkDefaultWindowsCredentials.Text = "Default Windows Credentials";
             this.chkDefaultWindowsCredentials.UseVisualStyleBackColor = true;
             this.chkDefaultWindowsCredentials.CheckedChanged += new System.EventHandler(this.chkDefaultWindowsCredentials_CheckedChanged);
@@ -101,7 +101,7 @@
             this.txtUser.Location = new System.Drawing.Point(90, 32);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(295, 20);
-            this.txtUser.TabIndex = 0;
+            this.txtUser.TabIndex = 2;
             // 
             // txtPassword
             // 
@@ -109,7 +109,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(295, 20);
-            this.txtPassword.TabIndex = 1;
+            this.txtPassword.TabIndex = 4;
             // 
             // label1
             // 
@@ -117,7 +117,7 @@
             this.label1.Location = new System.Drawing.Point(28, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 45;
+            this.label1.TabIndex = 1;
             this.label1.Text = "User:";
             // 
             // label2
@@ -126,7 +126,7 @@
             this.label2.Location = new System.Drawing.Point(28, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
-            this.label2.TabIndex = 46;
+            this.label2.TabIndex = 5;
             this.label2.Text = "Domain:";
             // 
             // label3
@@ -135,7 +135,7 @@
             this.label3.Location = new System.Drawing.Point(28, 62);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
-            this.label3.TabIndex = 47;
+            this.label3.TabIndex = 3;
             this.label3.Text = "Password:";
             // 
             // txtDomain
@@ -157,7 +157,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, -1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(408, 111);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
             // chkPreAuthenticate
@@ -166,7 +166,7 @@
             this.chkPreAuthenticate.Location = new System.Drawing.Point(470, 103);
             this.chkPreAuthenticate.Name = "chkPreAuthenticate";
             this.chkPreAuthenticate.Size = new System.Drawing.Size(180, 17);
-            this.chkPreAuthenticate.TabIndex = 4;
+            this.chkPreAuthenticate.TabIndex = 8;
             this.chkPreAuthenticate.Text = "Pre-Authenticate HTTP requests";
             this.chkPreAuthenticate.UseVisualStyleBackColor = true;
             // 
@@ -178,7 +178,7 @@
             this.chkEnableScpLookup.Location = new System.Drawing.Point(470, 65);
             this.chkEnableScpLookup.Name = "chkEnableScpLookup";
             this.chkEnableScpLookup.Size = new System.Drawing.Size(354, 32);
-            this.chkEnableScpLookup.TabIndex = 3;
+            this.chkEnableScpLookup.TabIndex = 7;
             this.chkEnableScpLookup.Text = "Enable SCP record lookup (Disabling will skip AD lookup of Autodiscover URLs)";
             this.chkEnableScpLookup.UseVisualStyleBackColor = true;
             // 
@@ -189,7 +189,7 @@
             this.TempExchangeVersionCombo.Location = new System.Drawing.Point(624, 34);
             this.TempExchangeVersionCombo.Name = "TempExchangeVersionCombo";
             this.TempExchangeVersionCombo.Size = new System.Drawing.Size(200, 21);
-            this.TempExchangeVersionCombo.TabIndex = 2;
+            this.TempExchangeVersionCombo.TabIndex = 6;
             // 
             // label7
             // 
@@ -197,7 +197,7 @@
             this.label7.Location = new System.Drawing.Point(467, 37);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(151, 13);
-            this.label7.TabIndex = 62;
+            this.label7.TabIndex = 5;
             this.label7.Text = "Requested Exchange Version:";
             // 
             // txtResults
@@ -210,7 +210,7 @@
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtResults.Size = new System.Drawing.Size(917, 130);
-            this.txtResults.TabIndex = 63;
+            this.txtResults.TabIndex = 11;
             // 
             // lvItems
             // 
@@ -225,7 +225,7 @@
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
             this.lvItems.Size = new System.Drawing.Size(914, 166);
-            this.lvItems.TabIndex = 64;
+            this.lvItems.TabIndex = 13;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
             this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
@@ -247,7 +247,7 @@
             this.btnClose.Location = new System.Drawing.Point(848, 492);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(74, 23);
-            this.btnClose.TabIndex = 65;
+            this.btnClose.TabIndex = 0;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -258,7 +258,7 @@
             this.label4.Location = new System.Drawing.Point(9, 304);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
-            this.label4.TabIndex = 66;
+            this.label4.TabIndex = 12;
             this.label4.Text = "Data:";
             // 
             // label5
@@ -267,7 +267,7 @@
             this.label5.Location = new System.Drawing.Point(9, 155);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
-            this.label5.TabIndex = 67;
+            this.label5.TabIndex = 10;
             this.label5.Text = "Errors:";
             // 
             // label6
@@ -277,7 +277,7 @@
             this.label6.Location = new System.Drawing.Point(9, 489);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(243, 13);
-            this.label6.TabIndex = 68;
+            this.label6.TabIndex = 14;
             this.label6.Text = "Note: Be sure to double click on results for details.";
             // 
             // cmboUserAgent
@@ -288,7 +288,7 @@
             this.cmboUserAgent.Location = new System.Drawing.Point(152, 128);
             this.cmboUserAgent.Name = "cmboUserAgent";
             this.cmboUserAgent.Size = new System.Drawing.Size(649, 21);
-            this.cmboUserAgent.TabIndex = 71;
+            this.cmboUserAgent.TabIndex = 9;
             // 
             // chkOverrideUserAgent
             // 

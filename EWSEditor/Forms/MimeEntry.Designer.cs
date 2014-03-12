@@ -37,15 +37,15 @@
             // 
             // txtEntry
             // 
-            this.txtEntry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEntry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEntry.Location = new System.Drawing.Point(12, 28);
             this.txtEntry.Multiline = true;
             this.txtEntry.Name = "txtEntry";
             this.txtEntry.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtEntry.Size = new System.Drawing.Size(871, 441);
-            this.txtEntry.TabIndex = 0;
+            this.txtEntry.TabIndex = 2;
             // 
             // label1
             // 
@@ -53,7 +53,7 @@
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "MIME:";
             // 
             // chkIsBase64Encoded
@@ -63,7 +63,7 @@
             this.chkIsBase64Encoded.Location = new System.Drawing.Point(750, 5);
             this.chkIsBase64Encoded.Name = "chkIsBase64Encoded";
             this.chkIsBase64Encoded.Size = new System.Drawing.Size(126, 17);
-            this.chkIsBase64Encoded.TabIndex = 3;
+            this.chkIsBase64Encoded.TabIndex = 1;
             this.chkIsBase64Encoded.Text = "Is base 64 encoded?";
             this.chkIsBase64Encoded.UseVisualStyleBackColor = true;
             // 
@@ -73,7 +73,7 @@
             this.btnOK.Location = new System.Drawing.Point(720, 475);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 4;
+            this.btnOK.TabIndex = 3;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -84,7 +84,7 @@
             this.btnCancel.Location = new System.Drawing.Point(801, 475);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);

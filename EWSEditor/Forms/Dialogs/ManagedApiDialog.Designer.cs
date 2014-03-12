@@ -58,8 +58,8 @@
             // 
             // lblText
             // 
-            this.lblText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblText.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblText.Location = new System.Drawing.Point(65, 9);
             this.lblText.Name = "lblText";
@@ -83,7 +83,7 @@
             this.lnkDownload.Location = new System.Drawing.Point(7, 64);
             this.lnkDownload.Name = "lnkDownload";
             this.lnkDownload.Size = new System.Drawing.Size(402, 26);
-            this.lnkDownload.TabIndex = 10;
+            this.lnkDownload.TabIndex = 3;
             this.lnkDownload.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lnkDownload.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LnkDownload_LinkClicked);
             // 

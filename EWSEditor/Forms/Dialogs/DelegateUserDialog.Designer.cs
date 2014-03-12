@@ -79,7 +79,7 @@
             this.DelegateReceivesCopyCheck.Location = new System.Drawing.Point(20, 181);
             this.DelegateReceivesCopyCheck.Name = "DelegateReceivesCopyCheck";
             this.DelegateReceivesCopyCheck.Size = new System.Drawing.Size(311, 36);
-            this.DelegateReceivesCopyCheck.TabIndex = 14;
+            this.DelegateReceivesCopyCheck.TabIndex = 12;
             this.DelegateReceivesCopyCheck.Text = "Delegate receives copies of meeting-related messages sent to me";
             this.DelegateReceivesCopyCheck.UseVisualStyleBackColor = true;
             // 
@@ -97,7 +97,7 @@
             this.label6.Location = new System.Drawing.Point(17, 150);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 23);
-            this.label6.TabIndex = 12;
+            this.label6.TabIndex = 10;
             this.label6.Text = "Journal";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -106,7 +106,7 @@
             this.label5.Location = new System.Drawing.Point(17, 124);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 23);
-            this.label5.TabIndex = 11;
+            this.label5.TabIndex = 8;
             this.label5.Text = "Notes";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -115,7 +115,7 @@
             this.label4.Location = new System.Drawing.Point(17, 98);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 23);
-            this.label4.TabIndex = 10;
+            this.label4.TabIndex = 6;
             this.label4.Text = "Contacts";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -124,7 +124,7 @@
             this.label3.Location = new System.Drawing.Point(17, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 23);
-            this.label3.TabIndex = 9;
+            this.label3.TabIndex = 4;
             this.label3.Text = "Inbox";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -133,7 +133,7 @@
             this.label2.Location = new System.Drawing.Point(17, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 23);
-            this.label2.TabIndex = 8;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Calendar";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -142,7 +142,7 @@
             this.label1.Location = new System.Drawing.Point(17, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 23);
-            this.label1.TabIndex = 7;
+            this.label1.TabIndex = 2;
             this.label1.Text = "Tasks";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -153,7 +153,7 @@
             this.TempJournalPermissionComboBox.Location = new System.Drawing.Point(109, 154);
             this.TempJournalPermissionComboBox.Name = "TempJournalPermissionComboBox";
             this.TempJournalPermissionComboBox.Size = new System.Drawing.Size(222, 21);
-            this.TempJournalPermissionComboBox.TabIndex = 5;
+            this.TempJournalPermissionComboBox.TabIndex = 11;
             // 
             // TempNotesPermissionComboBox
             // 
@@ -162,7 +162,7 @@
             this.TempNotesPermissionComboBox.Location = new System.Drawing.Point(109, 127);
             this.TempNotesPermissionComboBox.Name = "TempNotesPermissionComboBox";
             this.TempNotesPermissionComboBox.Size = new System.Drawing.Size(222, 21);
-            this.TempNotesPermissionComboBox.TabIndex = 4;
+            this.TempNotesPermissionComboBox.TabIndex = 9;
             // 
             // TempContactsPermissionComboBox
             // 
@@ -171,7 +171,7 @@
             this.TempContactsPermissionComboBox.Location = new System.Drawing.Point(109, 100);
             this.TempContactsPermissionComboBox.Name = "TempContactsPermissionComboBox";
             this.TempContactsPermissionComboBox.Size = new System.Drawing.Size(222, 21);
-            this.TempContactsPermissionComboBox.TabIndex = 3;
+            this.TempContactsPermissionComboBox.TabIndex = 7;
             // 
             // TempInboxPermissionComboBox
             // 
@@ -180,7 +180,7 @@
             this.TempInboxPermissionComboBox.Location = new System.Drawing.Point(109, 73);
             this.TempInboxPermissionComboBox.Name = "TempInboxPermissionComboBox";
             this.TempInboxPermissionComboBox.Size = new System.Drawing.Size(222, 21);
-            this.TempInboxPermissionComboBox.TabIndex = 2;
+            this.TempInboxPermissionComboBox.TabIndex = 5;
             // 
             // TempTasksPermissionComboBox
             // 
@@ -189,7 +189,7 @@
             this.TempTasksPermissionComboBox.Location = new System.Drawing.Point(109, 46);
             this.TempTasksPermissionComboBox.Name = "TempTasksPermissionComboBox";
             this.TempTasksPermissionComboBox.Size = new System.Drawing.Size(222, 21);
-            this.TempTasksPermissionComboBox.TabIndex = 1;
+            this.TempTasksPermissionComboBox.TabIndex = 3;
             // 
             // TempCalendarPermissionComboBox
             // 
@@ -198,7 +198,7 @@
             this.TempCalendarPermissionComboBox.Location = new System.Drawing.Point(109, 20);
             this.TempCalendarPermissionComboBox.Name = "TempCalendarPermissionComboBox";
             this.TempCalendarPermissionComboBox.Size = new System.Drawing.Size(222, 21);
-            this.TempCalendarPermissionComboBox.TabIndex = 0;
+            this.TempCalendarPermissionComboBox.TabIndex = 1;
             // 
             // btnCancel
             // 
@@ -207,7 +207,7 @@
             this.btnCancel.Location = new System.Drawing.Point(275, 301);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 6;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -218,7 +218,7 @@
             this.btnOK.Location = new System.Drawing.Point(194, 301);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 5;
+            this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
@@ -237,14 +237,14 @@
             this.UserIdText.Name = "UserIdText";
             this.UserIdText.ReadOnly = true;
             this.UserIdText.Size = new System.Drawing.Size(223, 20);
-            this.UserIdText.TabIndex = 8;
+            this.UserIdText.TabIndex = 0;
             // 
             // GetUserIdButton
             // 
             this.GetUserIdButton.Location = new System.Drawing.Point(324, 8);
             this.GetUserIdButton.Name = "GetUserIdButton";
             this.GetUserIdButton.Size = new System.Drawing.Size(27, 23);
-            this.GetUserIdButton.TabIndex = 9;
+            this.GetUserIdButton.TabIndex = 1;
             this.GetUserIdButton.Text = "...";
             this.GetUserIdButton.UseVisualStyleBackColor = true;
             this.GetUserIdButton.Click += new System.EventHandler(this.GetUserIdButton_Click);

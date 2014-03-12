@@ -115,7 +115,7 @@
             this.cmboAuthentication.Location = new System.Drawing.Point(90, 14);
             this.cmboAuthentication.Name = "cmboAuthentication";
             this.cmboAuthentication.Size = new System.Drawing.Size(211, 21);
-            this.cmboAuthentication.TabIndex = 95;
+            this.cmboAuthentication.TabIndex = 1;
             this.cmboAuthentication.Text = "DefaultNetworkCredentials";
             this.cmboAuthentication.SelectedIndexChanged += new System.EventHandler(this.cmboAuthentication_SelectedIndexChanged);
             // 
@@ -125,7 +125,7 @@
             this.lblAuthentication.Location = new System.Drawing.Point(6, 16);
             this.lblAuthentication.Name = "lblAuthentication";
             this.lblAuthentication.Size = new System.Drawing.Size(78, 13);
-            this.lblAuthentication.TabIndex = 73;
+            this.lblAuthentication.TabIndex = 0;
             this.lblAuthentication.Text = "Authentication:";
             // 
             // txtDomain
@@ -144,7 +144,7 @@
             this.txtUser.Location = new System.Drawing.Point(90, 40);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(211, 20);
-            this.txtUser.TabIndex = 0;
+            this.txtUser.TabIndex = 3;
             // 
             // txtPassword
             // 
@@ -154,7 +154,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(211, 20);
-            this.txtPassword.TabIndex = 1;
+            this.txtPassword.TabIndex = 5;
             // 
             // label1
             // 
@@ -162,7 +162,7 @@
             this.label1.Location = new System.Drawing.Point(8, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 45;
+            this.label1.TabIndex = 2;
             this.label1.Text = "User:";
             // 
             // label2
@@ -171,7 +171,7 @@
             this.label2.Location = new System.Drawing.Point(8, 91);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
-            this.label2.TabIndex = 46;
+            this.label2.TabIndex = 7;
             this.label2.Text = "Domain:";
             // 
             // label3
@@ -180,7 +180,7 @@
             this.label3.Location = new System.Drawing.Point(8, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
-            this.label3.TabIndex = 47;
+            this.label3.TabIndex = 4;
             this.label3.Text = "Password:";
             // 
             // txtUrl
@@ -213,7 +213,7 @@
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtRequest.Size = new System.Drawing.Size(1060, 160);
-            this.txtRequest.TabIndex = 64;
+            this.txtRequest.TabIndex = 0;
             // 
             // txtResponse
             // 
@@ -225,8 +225,8 @@
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1060, 181);
-            this.txtResponse.TabIndex = 66;
+            this.txtResponse.Size = new System.Drawing.Size(1060, 182);
+            this.txtResponse.TabIndex = 0;
             // 
             // GoRun
             // 
@@ -234,7 +234,7 @@
             this.GoRun.Location = new System.Drawing.Point(995, 11);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(76, 23);
-            this.GoRun.TabIndex = 68;
+            this.GoRun.TabIndex = 200;
             this.GoRun.Text = "Run";
             this.GoRun.UseVisualStyleBackColor = true;
             this.GoRun.Click += new System.EventHandler(this.GoRun_Click);
@@ -245,7 +245,7 @@
             this.label7.Location = new System.Drawing.Point(6, 59);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 13);
-            this.label7.TabIndex = 71;
+            this.label7.TabIndex = 2;
             this.label7.Text = "ContentType:";
             // 
             // label8
@@ -254,7 +254,7 @@
             this.label8.Location = new System.Drawing.Point(6, 25);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
-            this.label8.TabIndex = 72;
+            this.label8.TabIndex = 0;
             this.label8.Text = "Verb:";
             // 
             // cmboVerb
@@ -267,7 +267,7 @@
             this.cmboVerb.Location = new System.Drawing.Point(102, 20);
             this.cmboVerb.Name = "cmboVerb";
             this.cmboVerb.Size = new System.Drawing.Size(120, 21);
-            this.cmboVerb.TabIndex = 73;
+            this.cmboVerb.TabIndex = 1;
             this.cmboVerb.Text = "POST";
             // 
             // cmboContentType
@@ -279,7 +279,7 @@
             this.cmboContentType.Location = new System.Drawing.Point(102, 55);
             this.cmboContentType.Name = "cmboContentType";
             this.cmboContentType.Size = new System.Drawing.Size(120, 21);
-            this.cmboContentType.TabIndex = 74;
+            this.cmboContentType.TabIndex = 3;
             this.cmboContentType.Text = "text/xml";
             // 
             // label9
@@ -288,7 +288,7 @@
             this.label9.Location = new System.Drawing.Point(5, 87);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 13);
-            this.label9.TabIndex = 75;
+            this.label9.TabIndex = 4;
             this.label9.Text = "Timeout Seconds:";
             // 
             // numericUpDownTimeoutSeconds
@@ -296,7 +296,7 @@
             this.numericUpDownTimeoutSeconds.Location = new System.Drawing.Point(102, 82);
             this.numericUpDownTimeoutSeconds.Name = "numericUpDownTimeoutSeconds";
             this.numericUpDownTimeoutSeconds.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDownTimeoutSeconds.TabIndex = 76;
+            this.numericUpDownTimeoutSeconds.TabIndex = 5;
             this.numericUpDownTimeoutSeconds.Value = new decimal(new int[] {
             90,
             0,
@@ -318,7 +318,7 @@
             this.btnLoadExample.Location = new System.Drawing.Point(3, 3);
             this.btnLoadExample.Name = "btnLoadExample";
             this.btnLoadExample.Size = new System.Drawing.Size(105, 23);
-            this.btnLoadExample.TabIndex = 47;
+            this.btnLoadExample.TabIndex = 0;
             this.btnLoadExample.Text = "Load Example";
             this.btnLoadExample.UseVisualStyleBackColor = true;
             this.btnLoadExample.Click += new System.EventHandler(this.btnLoadExample_Click);
@@ -328,7 +328,7 @@
             this.btnSaveExample.Location = new System.Drawing.Point(114, 3);
             this.btnSaveExample.Name = "btnSaveExample";
             this.btnSaveExample.Size = new System.Drawing.Size(104, 23);
-            this.btnSaveExample.TabIndex = 45;
+            this.btnSaveExample.TabIndex = 1;
             this.btnSaveExample.Text = "Save Example";
             this.btnSaveExample.UseVisualStyleBackColor = true;
             this.btnSaveExample.Click += new System.EventHandler(this.btnSaveExample_Click);
@@ -348,7 +348,7 @@
             this.btnLoadSettings.Location = new System.Drawing.Point(3, 3);
             this.btnLoadSettings.Name = "btnLoadSettings";
             this.btnLoadSettings.Size = new System.Drawing.Size(105, 23);
-            this.btnLoadSettings.TabIndex = 49;
+            this.btnLoadSettings.TabIndex = 0;
             this.btnLoadSettings.Text = "Load Settings";
             this.btnLoadSettings.UseVisualStyleBackColor = true;
             this.btnLoadSettings.Click += new System.EventHandler(this.btnLoadSettings_Click);
@@ -358,7 +358,7 @@
             this.btnSaveSettings.Location = new System.Drawing.Point(114, 3);
             this.btnSaveSettings.Name = "btnSaveSettings";
             this.btnSaveSettings.Size = new System.Drawing.Size(104, 23);
-            this.btnSaveSettings.TabIndex = 50;
+            this.btnSaveSettings.TabIndex = 1;
             this.btnSaveSettings.Text = "Save Settings";
             this.btnSaveSettings.UseVisualStyleBackColor = true;
             this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
@@ -379,7 +379,7 @@
             this.label11.Location = new System.Drawing.Point(5, 115);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(60, 13);
-            this.label11.TabIndex = 93;
+            this.label11.TabIndex = 6;
             this.label11.Text = "UserAgent:";
             // 
             // txtUserAgent
@@ -396,7 +396,7 @@
             this.chkTranslateF.Margin = new System.Windows.Forms.Padding(2);
             this.chkTranslateF.Name = "chkTranslateF";
             this.chkTranslateF.Size = new System.Drawing.Size(82, 17);
-            this.chkTranslateF.TabIndex = 95;
+            this.chkTranslateF.TabIndex = 8;
             this.chkTranslateF.Text = "Translate: F";
             this.chkTranslateF.UseVisualStyleBackColor = true;
             // 
@@ -409,7 +409,7 @@
             this.chkPragmaNocache.Margin = new System.Windows.Forms.Padding(2);
             this.chkPragmaNocache.Name = "chkPragmaNocache";
             this.chkPragmaNocache.Size = new System.Drawing.Size(113, 17);
-            this.chkPragmaNocache.TabIndex = 96;
+            this.chkPragmaNocache.TabIndex = 7;
             this.chkPragmaNocache.Text = "Pragma: no-cache";
             this.chkPragmaNocache.UseVisualStyleBackColor = true;
             // 
@@ -420,7 +420,7 @@
             this.chkAllowRedirect.Margin = new System.Windows.Forms.Padding(2);
             this.chkAllowRedirect.Name = "chkAllowRedirect";
             this.chkAllowRedirect.Size = new System.Drawing.Size(94, 17);
-            this.chkAllowRedirect.TabIndex = 97;
+            this.chkAllowRedirect.TabIndex = 9;
             this.chkAllowRedirect.Text = "AllowRedirect:";
             this.chkAllowRedirect.UseVisualStyleBackColor = true;
             // 
@@ -478,7 +478,7 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(380, 113);
-            this.groupBox2.TabIndex = 99;
+            this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Headers - (select row to use delete button)";
             // 
@@ -495,7 +495,7 @@
             this.dgvOptions.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOptions.Name = "dgvOptions";
             this.dgvOptions.Size = new System.Drawing.Size(332, 95);
-            this.dgvOptions.TabIndex = 20;
+            this.dgvOptions.TabIndex = 0;
             // 
             // colName
             // 
@@ -521,7 +521,7 @@
             this.btnDeleteHeader.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteHeader.Name = "btnDeleteHeader";
             this.btnDeleteHeader.Size = new System.Drawing.Size(32, 32);
-            this.btnDeleteHeader.TabIndex = 19;
+            this.btnDeleteHeader.TabIndex = 2;
             this.btnDeleteHeader.UseVisualStyleBackColor = true;
             this.btnDeleteHeader.Click += new System.EventHandler(this.btnDeleteHeader_Click);
             // 
@@ -533,7 +533,7 @@
             this.btnAddHeaders.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddHeaders.Name = "btnAddHeaders";
             this.btnAddHeaders.Size = new System.Drawing.Size(32, 32);
-            this.btnAddHeaders.TabIndex = 14;
+            this.btnAddHeaders.TabIndex = 1;
             this.btnAddHeaders.UseVisualStyleBackColor = true;
             this.btnAddHeaders.Click += new System.EventHandler(this.btnAddHeaders_Click);
             // 

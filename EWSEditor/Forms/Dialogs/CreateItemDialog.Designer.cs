@@ -48,7 +48,7 @@
             this.btnCancel.Location = new System.Drawing.Point(615, 460);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 1;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -57,7 +57,7 @@
             this.btnOK.Location = new System.Drawing.Point(534, 460);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 2;
+            this.btnOK.TabIndex = 3;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
@@ -66,7 +66,7 @@
             this.button1.Location = new System.Drawing.Point(13, 460);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(143, 23);
-            this.button1.TabIndex = 3;
+            this.button1.TabIndex = 1;
             this.button1.Text = "Add Schema Property...";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -75,7 +75,7 @@
             this.button2.Location = new System.Drawing.Point(162, 460);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(143, 23);
-            this.button2.TabIndex = 4;
+            this.button2.TabIndex = 2;
             this.button2.Text = "Add Extended Property...";
             this.button2.UseVisualStyleBackColor = true;
             // 

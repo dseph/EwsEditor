@@ -61,17 +61,17 @@ namespace EWSEditor.Forms
             this.btnCancel.Location = new System.Drawing.Point(306, 449);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // btnOK
+            // OKButton
             // 
             this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OKButton.Location = new System.Drawing.Point(225, 449);
-            this.OKButton.Name = "btnOK";
+            this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(75, 23);
-            this.OKButton.TabIndex = 4;
+            this.OKButton.TabIndex = 6;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = true;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
@@ -82,17 +82,17 @@ namespace EWSEditor.Forms
             this.label2.Location = new System.Drawing.Point(41, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 13);
-            this.label2.TabIndex = 20;
+            this.label2.TabIndex = 1;
             this.label2.Text = "Property Type:";
             // 
-            // cboDataType
+            // TempPropertyTypeCombo
             // 
             this.TempPropertyTypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempPropertyTypeCombo.FormattingEnabled = true;
             this.TempPropertyTypeCombo.Location = new System.Drawing.Point(150, 35);
-            this.TempPropertyTypeCombo.Name = "cboDataType";
+            this.TempPropertyTypeCombo.Name = "TempPropertyTypeCombo";
             this.TempPropertyTypeCombo.Size = new System.Drawing.Size(211, 21);
-            this.TempPropertyTypeCombo.TabIndex = 0;
+            this.TempPropertyTypeCombo.TabIndex = 2;
             this.TempPropertyTypeCombo.Leave += new System.EventHandler(this.PropertyDefinitionControl_Leave);
             // 
             // grpIdentifier
@@ -108,43 +108,43 @@ namespace EWSEditor.Forms
             this.grpIdentifier.Location = new System.Drawing.Point(9, 65);
             this.grpIdentifier.Name = "grpIdentifier";
             this.grpIdentifier.Size = new System.Drawing.Size(372, 179);
-            this.grpIdentifier.TabIndex = 1;
+            this.grpIdentifier.TabIndex = 3;
             this.grpIdentifier.TabStop = false;
             this.grpIdentifier.Text = "Property Identifier";
             // 
-            // rdoNamedProp
+            // NamedPropRadio
             // 
             this.NamedPropRadio.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.NamedPropRadio.Location = new System.Drawing.Point(10, 70);
-            this.NamedPropRadio.Name = "rdoNamedProp";
+            this.NamedPropRadio.Name = "NamedPropRadio";
             this.NamedPropRadio.Size = new System.Drawing.Size(349, 30);
-            this.NamedPropRadio.TabIndex = 37;
+            this.NamedPropRadio.TabIndex = 3;
             this.NamedPropRadio.Text = "Use a named property name or Id along with a property set to identify the extende" +
-                "d property.";
+    "d property.";
             this.NamedPropRadio.UseVisualStyleBackColor = true;
             this.NamedPropRadio.CheckedChanged += new System.EventHandler(this.NamedPropRadio_CheckedChanged);
             // 
-            // rdoTag
+            // TagRadio
             // 
             this.TagRadio.AutoSize = true;
             this.TagRadio.Checked = true;
             this.TagRadio.Location = new System.Drawing.Point(10, 20);
-            this.TagRadio.Name = "rdoTag";
+            this.TagRadio.Name = "TagRadio";
             this.TagRadio.Size = new System.Drawing.Size(269, 17);
-            this.TagRadio.TabIndex = 36;
+            this.TagRadio.TabIndex = 0;
             this.TagRadio.TabStop = true;
             this.TagRadio.Text = "Use a property tag to identify the extended property.";
             this.TagRadio.UseVisualStyleBackColor = true;
             this.TagRadio.CheckedChanged += new System.EventHandler(this.TagRadio_CheckedChanged);
             // 
-            // cboExPropSet
+            // TempExtendedPropertySetComboBox
             // 
             this.TempExtendedPropertySetComboBox.Enabled = false;
             this.TempExtendedPropertySetComboBox.FormattingEnabled = true;
             this.TempExtendedPropertySetComboBox.Location = new System.Drawing.Point(149, 137);
-            this.TempExtendedPropertySetComboBox.Name = "cboExPropSet";
+            this.TempExtendedPropertySetComboBox.Name = "TempExtendedPropertySetComboBox";
             this.TempExtendedPropertySetComboBox.Size = new System.Drawing.Size(211, 21);
-            this.TempExtendedPropertySetComboBox.TabIndex = 2;
+            this.TempExtendedPropertySetComboBox.TabIndex = 7;
             this.TempExtendedPropertySetComboBox.Leave += new System.EventHandler(this.PropertyDefinitionControl_Leave);
             // 
             // label5
@@ -153,16 +153,16 @@ namespace EWSEditor.Forms
             this.label5.Location = new System.Drawing.Point(41, 145);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 13);
-            this.label5.TabIndex = 34;
+            this.label5.TabIndex = 6;
             this.label5.Text = "Property Set:";
             // 
-            // txtNamedPropName
+            // PropertyNameOrIdText
             // 
             this.PropertyNameOrIdText.Enabled = false;
             this.PropertyNameOrIdText.Location = new System.Drawing.Point(149, 106);
-            this.PropertyNameOrIdText.Name = "txtNamedPropName";
+            this.PropertyNameOrIdText.Name = "PropertyNameOrIdText";
             this.PropertyNameOrIdText.Size = new System.Drawing.Size(211, 20);
-            this.PropertyNameOrIdText.TabIndex = 1;
+            this.PropertyNameOrIdText.TabIndex = 5;
             this.PropertyNameOrIdText.Leave += new System.EventHandler(this.PropertyDefinitionControl_Leave);
             // 
             // label4
@@ -171,15 +171,15 @@ namespace EWSEditor.Forms
             this.label4.Location = new System.Drawing.Point(41, 113);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 13);
-            this.label4.TabIndex = 32;
+            this.label4.TabIndex = 4;
             this.label4.Text = "Name or ID:";
             // 
-            // txtPropTag
+            // PropTagText
             // 
             this.PropTagText.Location = new System.Drawing.Point(149, 44);
-            this.PropTagText.Name = "txtPropTag";
+            this.PropTagText.Name = "PropTagText";
             this.PropTagText.Size = new System.Drawing.Size(211, 20);
-            this.PropTagText.TabIndex = 0;
+            this.PropTagText.TabIndex = 2;
             this.PropTagText.Leave += new System.EventHandler(this.PropertyDefinitionControl_Leave);
             // 
             // label1
@@ -188,7 +188,7 @@ namespace EWSEditor.Forms
             this.label1.Location = new System.Drawing.Point(41, 51);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 30;
+            this.label1.TabIndex = 1;
             this.label1.Text = "Property Tag:";
             // 
             // grpType
@@ -199,7 +199,7 @@ namespace EWSEditor.Forms
             this.grpType.Location = new System.Drawing.Point(9, 250);
             this.grpType.Name = "grpType";
             this.grpType.Size = new System.Drawing.Size(372, 73);
-            this.grpType.TabIndex = 2;
+            this.grpType.TabIndex = 4;
             this.grpType.TabStop = false;
             this.grpType.Text = "Property Type";
             // 
@@ -209,7 +209,7 @@ namespace EWSEditor.Forms
             this.lblType.Location = new System.Drawing.Point(10, 20);
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(217, 13);
-            this.lblType.TabIndex = 22;
+            this.lblType.TabIndex = 0;
             this.lblType.Text = "Select a data type for the extended property.";
             // 
             // groupBox1
@@ -219,7 +219,7 @@ namespace EWSEditor.Forms
             this.groupBox1.Location = new System.Drawing.Point(9, 329);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(372, 111);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Alternate Known Names";
             // 
@@ -230,7 +230,7 @@ namespace EWSEditor.Forms
             this.txtKnownNames.Name = "txtKnownNames";
             this.txtKnownNames.ReadOnly = true;
             this.txtKnownNames.Size = new System.Drawing.Size(348, 63);
-            this.txtKnownNames.TabIndex = 0;
+            this.txtKnownNames.TabIndex = 1;
             // 
             // label7
             // 
@@ -238,15 +238,15 @@ namespace EWSEditor.Forms
             this.label7.Location = new System.Drawing.Point(10, 21);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(293, 13);
-            this.label7.TabIndex = 24;
+            this.label7.TabIndex = 0;
             this.label7.Text = "This property definition is also known by the following names:";
             // 
-            // txtKnownName
+            // KnownNameText
             // 
             this.KnownNameText.Location = new System.Drawing.Point(156, 30);
-            this.KnownNameText.Name = "txtKnownName";
+            this.KnownNameText.Name = "KnownNameText";
             this.KnownNameText.Size = new System.Drawing.Size(211, 20);
-            this.KnownNameText.TabIndex = 0;
+            this.KnownNameText.TabIndex = 2;
             this.KnownNameText.TextChanged += new System.EventHandler(this.KnownNameText_TextChanged);
             // 
             // label6
@@ -255,7 +255,7 @@ namespace EWSEditor.Forms
             this.label6.Location = new System.Drawing.Point(16, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(257, 13);
-            this.label6.TabIndex = 27;
+            this.label6.TabIndex = 0;
             this.label6.Text = "Lookup extended property definition by known name.";
             // 
             // label3
@@ -264,7 +264,7 @@ namespace EWSEditor.Forms
             this.label3.Location = new System.Drawing.Point(47, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 13);
-            this.label3.TabIndex = 26;
+            this.label3.TabIndex = 1;
             this.label3.Text = "Known Name:";
             // 
             // ExtendedPropertyDialog

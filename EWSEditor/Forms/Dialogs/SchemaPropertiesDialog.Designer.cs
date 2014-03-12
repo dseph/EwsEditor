@@ -88,7 +88,7 @@
             this.btnOK.Location = new System.Drawing.Point(364, 338);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 6;
+            this.btnOK.TabIndex = 4;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -101,7 +101,7 @@
             this.lstProps.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstProps.Size = new System.Drawing.Size(210, 303);
             this.lstProps.Sorted = true;
-            this.lstProps.TabIndex = 7;
+            this.lstProps.TabIndex = 3;
             // 
             // SchemaPropertiesDialog
             // 

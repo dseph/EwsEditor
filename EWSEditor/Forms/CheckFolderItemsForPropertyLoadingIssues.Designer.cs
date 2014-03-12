@@ -47,15 +47,15 @@
             this.btnPropSet.Location = new System.Drawing.Point(12, 50);
             this.btnPropSet.Name = "btnPropSet";
             this.btnPropSet.Size = new System.Drawing.Size(143, 23);
-            this.btnPropSet.TabIndex = 12;
+            this.btnPropSet.TabIndex = 3;
             this.btnPropSet.Text = "Configure Property Set";
             this.btnPropSet.UseVisualStyleBackColor = true;
             this.btnPropSet.Click += new System.EventHandler(this.btnPropSet_Click);
             // 
             // lstErrors
             // 
-            this.lstErrors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstErrors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstErrors.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.lstErrors.FullRowSelect = true;
@@ -63,7 +63,7 @@
             this.lstErrors.MultiSelect = false;
             this.lstErrors.Name = "lstErrors";
             this.lstErrors.Size = new System.Drawing.Size(895, 204);
-            this.lstErrors.TabIndex = 21;
+            this.lstErrors.TabIndex = 8;
             this.lstErrors.UseCompatibleStateImageBehavior = false;
             this.lstErrors.View = System.Windows.Forms.View.Details;
             this.lstErrors.SelectedIndexChanged += new System.EventHandler(this.lstErrors_SelectedIndexChanged);
@@ -80,7 +80,7 @@
             this.label1.Location = new System.Drawing.Point(12, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 13);
-            this.label1.TabIndex = 22;
+            this.label1.TabIndex = 7;
             this.label1.Text = "Items with loading errors:";
             // 
             // btnGetFolderId
@@ -89,27 +89,27 @@
             this.btnGetFolderId.Location = new System.Drawing.Point(871, 9);
             this.btnGetFolderId.Name = "btnGetFolderId";
             this.btnGetFolderId.Size = new System.Drawing.Size(25, 23);
-            this.btnGetFolderId.TabIndex = 27;
+            this.btnGetFolderId.TabIndex = 2;
             this.btnGetFolderId.Text = "...";
             this.btnGetFolderId.UseVisualStyleBackColor = true;
             this.btnGetFolderId.Click += new System.EventHandler(this.btnGetFolderId_Click);
             // 
             // txtFolderId
             // 
-            this.txtFolderId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFolderId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFolderId.Location = new System.Drawing.Point(110, 11);
             this.txtFolderId.Name = "txtFolderId";
             this.txtFolderId.ReadOnly = true;
             this.txtFolderId.Size = new System.Drawing.Size(755, 20);
-            this.txtFolderId.TabIndex = 26;
+            this.txtFolderId.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 23);
-            this.label2.TabIndex = 25;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Folder Id:";
             // 
             // txtErrorInfo
@@ -120,7 +120,7 @@
             this.txtErrorInfo.Name = "txtErrorInfo";
             this.txtErrorInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtErrorInfo.Size = new System.Drawing.Size(895, 245);
-            this.txtErrorInfo.TabIndex = 28;
+            this.txtErrorInfo.TabIndex = 10;
             // 
             // label3
             // 
@@ -128,7 +128,7 @@
             this.label3.Location = new System.Drawing.Point(12, 311);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 29;
+            this.label3.TabIndex = 9;
             this.label3.Text = "Error:";
             // 
             // btnRunTest
@@ -136,7 +136,7 @@
             this.btnRunTest.Location = new System.Drawing.Point(171, 50);
             this.btnRunTest.Name = "btnRunTest";
             this.btnRunTest.Size = new System.Drawing.Size(96, 23);
-            this.btnRunTest.TabIndex = 30;
+            this.btnRunTest.TabIndex = 4;
             this.btnRunTest.Text = "Run Test";
             this.btnRunTest.UseVisualStyleBackColor = true;
             this.btnRunTest.Click += new System.EventHandler(this.btnRunTest_Click);
@@ -147,7 +147,7 @@
             this.lblStatus.Location = new System.Drawing.Point(381, 55);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(13, 13);
-            this.lblStatus.TabIndex = 31;
+            this.lblStatus.TabIndex = 6;
             this.lblStatus.Text = "0";
             // 
             // label4
@@ -156,7 +156,7 @@
             this.label4.Location = new System.Drawing.Point(290, 55);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 13);
-            this.label4.TabIndex = 32;
+            this.label4.TabIndex = 5;
             this.label4.Text = "Processing Item:";
             // 
             // CheckFolderItemsForPropertyLoadingIssues

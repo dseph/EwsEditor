@@ -54,7 +54,7 @@
             this.label1.Location = new System.Drawing.Point(20, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 31;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Search Type:";
             // 
             // cmboSearchType
@@ -66,7 +66,7 @@
             this.cmboSearchType.Location = new System.Drawing.Point(112, 12);
             this.cmboSearchType.Name = "cmboSearchType";
             this.cmboSearchType.Size = new System.Drawing.Size(121, 21);
-            this.cmboSearchType.TabIndex = 30;
+            this.cmboSearchType.TabIndex = 1;
             this.cmboSearchType.Text = "More Available";
             // 
             // txtAQS
@@ -75,7 +75,7 @@
             this.txtAQS.Location = new System.Drawing.Point(38, 71);
             this.txtAQS.Name = "txtAQS";
             this.txtAQS.Size = new System.Drawing.Size(559, 20);
-            this.txtAQS.TabIndex = 29;
+            this.txtAQS.TabIndex = 5;
             // 
             // txtBody
             // 
@@ -83,7 +83,7 @@
             this.txtBody.Location = new System.Drawing.Point(124, 212);
             this.txtBody.Name = "txtBody";
             this.txtBody.Size = new System.Drawing.Size(310, 20);
-            this.txtBody.TabIndex = 24;
+            this.txtBody.TabIndex = 14;
             // 
             // chkBody
             // 
@@ -92,7 +92,7 @@
             this.chkBody.Location = new System.Drawing.Point(38, 215);
             this.chkBody.Name = "chkBody";
             this.chkBody.Size = new System.Drawing.Size(50, 17);
-            this.chkBody.TabIndex = 23;
+            this.chkBody.TabIndex = 13;
             this.chkBody.Text = "Body";
             this.chkBody.UseVisualStyleBackColor = true;
             this.chkBody.CheckedChanged += new System.EventHandler(this.chkBody_CheckedChanged);
@@ -103,7 +103,7 @@
             this.txtCC.Location = new System.Drawing.Point(124, 186);
             this.txtCC.Name = "txtCC";
             this.txtCC.Size = new System.Drawing.Size(310, 20);
-            this.txtCC.TabIndex = 22;
+            this.txtCC.TabIndex = 12;
             // 
             // chkCC
             // 
@@ -112,7 +112,7 @@
             this.chkCC.Location = new System.Drawing.Point(38, 189);
             this.chkCC.Name = "chkCC";
             this.chkCC.Size = new System.Drawing.Size(40, 17);
-            this.chkCC.TabIndex = 21;
+            this.chkCC.TabIndex = 11;
             this.chkCC.Text = "CC";
             this.chkCC.UseVisualStyleBackColor = true;
             this.chkCC.CheckedChanged += new System.EventHandler(this.chkCC_CheckedChanged);
@@ -123,7 +123,7 @@
             this.txtTo.Location = new System.Drawing.Point(124, 160);
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(310, 20);
-            this.txtTo.TabIndex = 20;
+            this.txtTo.TabIndex = 10;
             // 
             // chkTo
             // 
@@ -132,7 +132,7 @@
             this.chkTo.Location = new System.Drawing.Point(38, 163);
             this.chkTo.Name = "chkTo";
             this.chkTo.Size = new System.Drawing.Size(39, 17);
-            this.chkTo.TabIndex = 19;
+            this.chkTo.TabIndex = 9;
             this.chkTo.Text = "To";
             this.chkTo.UseVisualStyleBackColor = true;
             this.chkTo.CheckedChanged += new System.EventHandler(this.chkTo_CheckedChanged);
@@ -143,7 +143,7 @@
             this.txtSubject.Location = new System.Drawing.Point(124, 134);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(310, 20);
-            this.txtSubject.TabIndex = 18;
+            this.txtSubject.TabIndex = 8;
             // 
             // chkSubject
             // 
@@ -152,7 +152,7 @@
             this.chkSubject.Location = new System.Drawing.Point(38, 137);
             this.chkSubject.Name = "chkSubject";
             this.chkSubject.Size = new System.Drawing.Size(62, 17);
-            this.chkSubject.TabIndex = 17;
+            this.chkSubject.TabIndex = 7;
             this.chkSubject.Text = "Subject";
             this.chkSubject.UseVisualStyleBackColor = true;
             this.chkSubject.CheckedChanged += new System.EventHandler(this.chkSubject_CheckedChanged);
@@ -165,7 +165,7 @@
             this.lvItems.Location = new System.Drawing.Point(2, 248);
             this.lvItems.Name = "lvItems";
             this.lvItems.Size = new System.Drawing.Size(958, 325);
-            this.lvItems.TabIndex = 32;
+            this.lvItems.TabIndex = 15;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             // 
             // btnSearch
@@ -173,7 +173,7 @@
             this.btnSearch.Location = new System.Drawing.Point(825, 15);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(123, 23);
-            this.btnSearch.TabIndex = 33;
+            this.btnSearch.TabIndex = 16;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -185,7 +185,7 @@
             this.rdoAqsSearch.Location = new System.Drawing.Point(22, 48);
             this.rdoAqsSearch.Name = "rdoAqsSearch";
             this.rdoAqsSearch.Size = new System.Drawing.Size(84, 17);
-            this.rdoAqsSearch.TabIndex = 34;
+            this.rdoAqsSearch.TabIndex = 4;
             this.rdoAqsSearch.TabStop = true;
             this.rdoAqsSearch.Text = "AQS Search";
             this.rdoAqsSearch.UseVisualStyleBackColor = true;
@@ -197,7 +197,7 @@
             this.rdoFindItemSearch.Location = new System.Drawing.Point(20, 104);
             this.rdoFindItemSearch.Name = "rdoFindItemSearch";
             this.rdoFindItemSearch.Size = new System.Drawing.Size(105, 17);
-            this.rdoFindItemSearch.TabIndex = 35;
+            this.rdoFindItemSearch.TabIndex = 6;
             this.rdoFindItemSearch.Text = "Find Item Search";
             this.rdoFindItemSearch.UseVisualStyleBackColor = true;
             this.rdoFindItemSearch.CheckedChanged += new System.EventHandler(this.rdoFindItemSearch_CheckedChanged);
@@ -208,7 +208,7 @@
             this.label2.Location = new System.Drawing.Point(294, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 36;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Page Size:";
             // 
             // numPageSize
@@ -221,7 +221,7 @@
             0});
             this.numPageSize.Name = "numPageSize";
             this.numPageSize.Size = new System.Drawing.Size(120, 20);
-            this.numPageSize.TabIndex = 38;
+            this.numPageSize.TabIndex = 3;
             this.numPageSize.Value = new decimal(new int[] {
             250,
             0,

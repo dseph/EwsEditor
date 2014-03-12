@@ -40,7 +40,7 @@ namespace EWSEditor.Forms
             this.txtSMTP.Location = new System.Drawing.Point(95, 12);
             this.txtSMTP.Name = "txtSMTP";
             this.txtSMTP.Size = new System.Drawing.Size(219, 20);
-            this.txtSMTP.TabIndex = 9;
+            this.txtSMTP.TabIndex = 1;
             // 
             // label4
             // 
@@ -48,7 +48,7 @@ namespace EWSEditor.Forms
             this.label4.Location = new System.Drawing.Point(8, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 13);
-            this.label4.TabIndex = 10;
+            this.label4.TabIndex = 0;
             this.label4.Text = "SMTP Address:";
             // 
             // btnCancel
@@ -58,7 +58,7 @@ namespace EWSEditor.Forms
             this.btnCancel.Location = new System.Drawing.Point(239, 58);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 12;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -69,18 +69,18 @@ namespace EWSEditor.Forms
             this.btnOK.Location = new System.Drawing.Point(158, 58);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 11;
+            this.btnOK.TabIndex = 3;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Location = new System.Drawing.Point(6, 42);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(317, 10);
-            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
             // GetMailboxNameDialog

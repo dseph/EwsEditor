@@ -45,24 +45,24 @@
             // 
             // mcSelect
             // 
-            this.mcSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.mcSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.mcSelect.CalendarDimensions = new System.Drawing.Size(4, 1);
             this.mcSelect.Location = new System.Drawing.Point(6, 18);
             this.mcSelect.Name = "mcSelect";
-            this.mcSelect.TabIndex = 2;
+            this.mcSelect.TabIndex = 0;
             this.mcSelect.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.mcSelect_DateChanged);
             // 
             // lvItems
             // 
-            this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItems.ContextMenuStrip = this.cmsItems;
             this.lvItems.Location = new System.Drawing.Point(6, 187);
             this.lvItems.Name = "lvItems";
             this.lvItems.Size = new System.Drawing.Size(920, 374);
-            this.lvItems.TabIndex = 3;
+            this.lvItems.TabIndex = 1;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
             this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_DoubleClick);
@@ -77,7 +77,7 @@
             this.cmsItemsAttendeeStatus,
             this.openMasterToolStripMenuItem});
             this.cmsItems.Name = "cmsItems";
-            this.cmsItems.Size = new System.Drawing.Size(164, 158);
+            this.cmsItems.Size = new System.Drawing.Size(164, 136);
             this.cmsItems.Opening += new System.ComponentModel.CancelEventHandler(this.cmsItems_Opening);
             // 
             // cmsItemsViewMime

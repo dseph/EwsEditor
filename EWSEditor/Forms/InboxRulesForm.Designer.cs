@@ -36,16 +36,16 @@
             // 
             // txtResults
             // 
-            this.txtResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResults.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtResults.Location = new System.Drawing.Point(2, 41);
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtResults.Size = new System.Drawing.Size(739, 440);
-            this.txtResults.TabIndex = 13;
+            this.txtResults.TabIndex = 3;
             // 
             // label1
             // 
@@ -53,7 +53,7 @@
             this.label1.Location = new System.Drawing.Point(8, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 19;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Smtp Address:";
             // 
             // txtSmtpAddress
@@ -61,14 +61,14 @@
             this.txtSmtpAddress.Location = new System.Drawing.Point(89, 12);
             this.txtSmtpAddress.Name = "txtSmtpAddress";
             this.txtSmtpAddress.Size = new System.Drawing.Size(421, 20);
-            this.txtSmtpAddress.TabIndex = 18;
+            this.txtSmtpAddress.TabIndex = 1;
             // 
             // btnGetInboxRules
             // 
             this.btnGetInboxRules.Location = new System.Drawing.Point(649, 12);
             this.btnGetInboxRules.Name = "btnGetInboxRules";
             this.btnGetInboxRules.Size = new System.Drawing.Size(75, 23);
-            this.btnGetInboxRules.TabIndex = 17;
+            this.btnGetInboxRules.TabIndex = 2;
             this.btnGetInboxRules.Text = "Get Availability";
             this.btnGetInboxRules.UseVisualStyleBackColor = true;
             this.btnGetInboxRules.Click += new System.EventHandler(this.btnGetInboxRules_Click);
