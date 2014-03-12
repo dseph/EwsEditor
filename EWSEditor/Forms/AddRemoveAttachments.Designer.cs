@@ -49,11 +49,11 @@
             this.groupBox3.Controls.Add(this.lvFileAttachments);
             this.groupBox3.Controls.Add(this.btnInsertFileAttachment);
             this.groupBox3.Controls.Add(this.btnDeleteFileAttachment);
-            this.groupBox3.Location = new System.Drawing.Point(12, 11);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Location = new System.Drawing.Point(9, 9);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(1317, 482);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Size = new System.Drawing.Size(988, 392);
             this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
@@ -61,11 +61,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 13);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(5, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 17);
-            this.label1.TabIndex = 22;
+            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.TabIndex = 0;
             this.label1.Text = "File Attachments:";
             // 
             // lvFileAttachments
@@ -78,11 +77,10 @@
             this.colContentId,
             this.colType,
             this.colIsInline});
-            this.lvFileAttachments.Location = new System.Drawing.Point(7, 34);
-            this.lvFileAttachments.Margin = new System.Windows.Forms.Padding(4);
+            this.lvFileAttachments.Location = new System.Drawing.Point(5, 28);
             this.lvFileAttachments.Name = "lvFileAttachments";
-            this.lvFileAttachments.Size = new System.Drawing.Size(1253, 442);
-            this.lvFileAttachments.TabIndex = 13;
+            this.lvFileAttachments.Size = new System.Drawing.Size(941, 360);
+            this.lvFileAttachments.TabIndex = 1;
             this.lvFileAttachments.UseCompatibleStateImageBehavior = false;
             this.lvFileAttachments.SelectedIndexChanged += new System.EventHandler(this.lvFileAttachments_SelectedIndexChanged);
             this.lvFileAttachments.DoubleClick += new System.EventHandler(this.lvFileAttachments_DoubleClick);
@@ -91,11 +89,11 @@
             // 
             this.btnInsertFileAttachment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnInsertFileAttachment.Image = global::EWSEditor.Properties.Resources.action_add_16xLG;
-            this.btnInsertFileAttachment.Location = new System.Drawing.Point(1268, 34);
-            this.btnInsertFileAttachment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInsertFileAttachment.Location = new System.Drawing.Point(951, 28);
+            this.btnInsertFileAttachment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnInsertFileAttachment.Name = "btnInsertFileAttachment";
-            this.btnInsertFileAttachment.Size = new System.Drawing.Size(43, 39);
-            this.btnInsertFileAttachment.TabIndex = 12;
+            this.btnInsertFileAttachment.Size = new System.Drawing.Size(32, 32);
+            this.btnInsertFileAttachment.TabIndex = 2;
             this.btnInsertFileAttachment.UseVisualStyleBackColor = true;
             this.btnInsertFileAttachment.Click += new System.EventHandler(this.btnInsertAttachment_Click);
             // 
@@ -103,11 +101,11 @@
             // 
             this.btnDeleteFileAttachment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDeleteFileAttachment.Image = global::EWSEditor.Properties.Resources.StatusAnnotations_Blocked_16xLG;
-            this.btnDeleteFileAttachment.Location = new System.Drawing.Point(1267, 77);
-            this.btnDeleteFileAttachment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDeleteFileAttachment.Location = new System.Drawing.Point(950, 63);
+            this.btnDeleteFileAttachment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDeleteFileAttachment.Name = "btnDeleteFileAttachment";
-            this.btnDeleteFileAttachment.Size = new System.Drawing.Size(43, 39);
-            this.btnDeleteFileAttachment.TabIndex = 2;
+            this.btnDeleteFileAttachment.Size = new System.Drawing.Size(32, 32);
+            this.btnDeleteFileAttachment.TabIndex = 3;
             this.btnDeleteFileAttachment.UseVisualStyleBackColor = true;
             this.btnDeleteFileAttachment.Click += new System.EventHandler(this.btnDeleteAttachment_Click);
             // 
@@ -117,10 +115,11 @@
             // 
             // AddRemoveAttachments
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1341, 504);
+            this.ClientSize = new System.Drawing.Size(1006, 410);
             this.Controls.Add(this.groupBox3);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AddRemoveAttachments";
             this.Text = "AddRemoveAttachments";
             this.Load += new System.EventHandler(this.AddRemoveAttachments_Load);

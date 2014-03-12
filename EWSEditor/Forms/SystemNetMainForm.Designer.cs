@@ -46,6 +46,7 @@
             this.cboServer = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.grpMailMessage = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtFrom = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -84,7 +85,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label10 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.grpSmtpSettings.SuspendLayout();
             this.grpUserCreds.SuspendLayout();
             this.grpMailMessage.SuspendLayout();
@@ -114,7 +114,7 @@
             this.grpSmtpSettings.Name = "grpSmtpSettings";
             this.grpSmtpSettings.Padding = new System.Windows.Forms.Padding(2);
             this.grpSmtpSettings.Size = new System.Drawing.Size(511, 149);
-            this.grpSmtpSettings.TabIndex = 7;
+            this.grpSmtpSettings.TabIndex = 0;
             this.grpSmtpSettings.TabStop = false;
             this.grpSmtpSettings.Text = "SMTP Settings";
             this.grpSmtpSettings.Enter += new System.EventHandler(this.grpSmtpSettings_Enter);
@@ -125,7 +125,7 @@
             this.txtPickupFolder.Margin = new System.Windows.Forms.Padding(2);
             this.txtPickupFolder.Name = "txtPickupFolder";
             this.txtPickupFolder.Size = new System.Drawing.Size(350, 20);
-            this.txtPickupFolder.TabIndex = 19;
+            this.txtPickupFolder.TabIndex = 8;
             // 
             // chkSpecifyPickupFolder
             // 
@@ -134,7 +134,7 @@
             this.chkSpecifyPickupFolder.Margin = new System.Windows.Forms.Padding(2);
             this.chkSpecifyPickupFolder.Name = "chkSpecifyPickupFolder";
             this.chkSpecifyPickupFolder.Size = new System.Drawing.Size(132, 17);
-            this.chkSpecifyPickupFolder.TabIndex = 21;
+            this.chkSpecifyPickupFolder.TabIndex = 7;
             this.chkSpecifyPickupFolder.Text = "Specify Pickup Folder:";
             this.chkSpecifyPickupFolder.UseVisualStyleBackColor = true;
             this.chkSpecifyPickupFolder.CheckedChanged += new System.EventHandler(this.chkSpecifyPickupFolder_CheckedChanged);
@@ -146,7 +146,7 @@
             this.rdoSendByPickupFolder.Margin = new System.Windows.Forms.Padding(2);
             this.rdoSendByPickupFolder.Name = "rdoSendByPickupFolder";
             this.rdoSendByPickupFolder.Size = new System.Drawing.Size(128, 17);
-            this.rdoSendByPickupFolder.TabIndex = 20;
+            this.rdoSendByPickupFolder.TabIndex = 6;
             this.rdoSendByPickupFolder.Text = "Send by pickup folder";
             this.rdoSendByPickupFolder.UseVisualStyleBackColor = true;
             this.rdoSendByPickupFolder.CheckedChanged += new System.EventHandler(this.rdoSendByPickupFolder_CheckedChanged);
@@ -159,7 +159,7 @@
             this.chkSendByPort.Margin = new System.Windows.Forms.Padding(2);
             this.chkSendByPort.Name = "chkSendByPort";
             this.chkSendByPort.Size = new System.Drawing.Size(84, 17);
-            this.chkSendByPort.TabIndex = 19;
+            this.chkSendByPort.TabIndex = 0;
             this.chkSendByPort.TabStop = true;
             this.chkSendByPort.Text = "SendByPort:";
             this.chkSendByPort.UseVisualStyleBackColor = true;
@@ -172,7 +172,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 3;
             this.label2.Text = "Port:";
             // 
             // chkEnableSSL
@@ -184,7 +184,7 @@
             this.chkEnableSSL.Margin = new System.Windows.Forms.Padding(2);
             this.chkEnableSSL.Name = "chkEnableSSL";
             this.chkEnableSSL.Size = new System.Drawing.Size(82, 17);
-            this.chkEnableSSL.TabIndex = 3;
+            this.chkEnableSSL.TabIndex = 5;
             this.chkEnableSSL.Text = "Enable SSL";
             this.chkEnableSSL.UseVisualStyleBackColor = true;
             // 
@@ -215,7 +215,7 @@
             this.grpUserCreds.Name = "grpUserCreds";
             this.grpUserCreds.Padding = new System.Windows.Forms.Padding(2);
             this.grpUserCreds.Size = new System.Drawing.Size(260, 86);
-            this.grpUserCreds.TabIndex = 5;
+            this.grpUserCreds.TabIndex = 9;
             this.grpUserCreds.TabStop = false;
             this.grpUserCreds.Text = "User Credentials";
             // 
@@ -225,7 +225,7 @@
             this.txtDomain.Margin = new System.Windows.Forms.Padding(2);
             this.txtDomain.Name = "txtDomain";
             this.txtDomain.Size = new System.Drawing.Size(178, 20);
-            this.txtDomain.TabIndex = 4;
+            this.txtDomain.TabIndex = 5;
             // 
             // label8
             // 
@@ -234,7 +234,7 @@
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 13);
-            this.label8.TabIndex = 3;
+            this.label8.TabIndex = 4;
             this.label8.Text = "Domain:";
             // 
             // txtUser
@@ -251,7 +251,7 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(178, 20);
-            this.txtPassword.TabIndex = 2;
+            this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
             // lblPassword
@@ -261,7 +261,7 @@
             this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(56, 13);
-            this.lblPassword.TabIndex = 1;
+            this.lblPassword.TabIndex = 2;
             this.lblPassword.Text = "Password:";
             // 
             // lblUserSmtp
@@ -295,7 +295,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 2;
             this.label1.Text = "Server:";
             // 
             // grpMailMessage
@@ -319,10 +319,20 @@
             this.grpMailMessage.Name = "grpMailMessage";
             this.grpMailMessage.Padding = new System.Windows.Forms.Padding(2);
             this.grpMailMessage.Size = new System.Drawing.Size(506, 349);
-            this.grpMailMessage.TabIndex = 6;
+            this.grpMailMessage.TabIndex = 2;
             this.grpMailMessage.TabStop = false;
             this.grpMailMessage.Text = "Mail Message";
             this.grpMailMessage.Enter += new System.EventHandler(this.grpMailMessage_Enter);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(9, 119);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(231, 13);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Note: Recipeints support one address currently.";
             // 
             // txtFrom
             // 
@@ -330,7 +340,7 @@
             this.txtFrom.Margin = new System.Windows.Forms.Padding(2);
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.Size = new System.Drawing.Size(397, 20);
-            this.txtFrom.TabIndex = 21;
+            this.txtFrom.TabIndex = 1;
             // 
             // label11
             // 
@@ -339,7 +349,7 @@
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(33, 13);
-            this.label11.TabIndex = 20;
+            this.label11.TabIndex = 0;
             this.label11.Text = "From:";
             // 
             // label7
@@ -359,7 +369,7 @@
             this.rtfMessageBody.MaxLength = 0;
             this.rtfMessageBody.Name = "rtfMessageBody";
             this.rtfMessageBody.Size = new System.Drawing.Size(498, 147);
-            this.rtfMessageBody.TabIndex = 9;
+            this.rtfMessageBody.TabIndex = 11;
             this.rtfMessageBody.Text = "";
             // 
             // txtSubject
@@ -368,7 +378,7 @@
             this.txtSubject.Margin = new System.Windows.Forms.Padding(2);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(424, 20);
-            this.txtSubject.TabIndex = 8;
+            this.txtSubject.TabIndex = 10;
             // 
             // chkIsHtml
             // 
@@ -395,7 +405,7 @@
             this.txtCc.Margin = new System.Windows.Forms.Padding(2);
             this.txtCc.Name = "txtCc";
             this.txtCc.Size = new System.Drawing.Size(397, 20);
-            this.txtCc.TabIndex = 6;
+            this.txtCc.TabIndex = 5;
             // 
             // label6
             // 
@@ -404,7 +414,7 @@
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
-            this.label6.TabIndex = 4;
+            this.label6.TabIndex = 9;
             this.label6.Text = "Subject:";
             // 
             // label5
@@ -414,7 +424,7 @@
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 13);
-            this.label5.TabIndex = 3;
+            this.label5.TabIndex = 6;
             this.label5.Text = "Bcc:";
             // 
             // label4
@@ -424,7 +434,7 @@
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(23, 13);
-            this.label4.TabIndex = 2;
+            this.label4.TabIndex = 4;
             this.label4.Text = "Cc:";
             // 
             // txtTo
@@ -433,7 +443,7 @@
             this.txtTo.Margin = new System.Windows.Forms.Padding(2);
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(397, 20);
-            this.txtTo.TabIndex = 5;
+            this.txtTo.TabIndex = 3;
             // 
             // label3
             // 
@@ -442,7 +452,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 13);
-            this.label3.TabIndex = 0;
+            this.label3.TabIndex = 2;
             this.label3.Text = "To:";
             // 
             // rdoLowPri
@@ -452,7 +462,7 @@
             this.rdoLowPri.Margin = new System.Windows.Forms.Padding(2);
             this.rdoLowPri.Name = "rdoLowPri";
             this.rdoLowPri.Size = new System.Drawing.Size(45, 17);
-            this.rdoLowPri.TabIndex = 2;
+            this.rdoLowPri.TabIndex = 3;
             this.rdoLowPri.Text = "Low";
             this.rdoLowPri.UseVisualStyleBackColor = true;
             // 
@@ -463,7 +473,7 @@
             this.rdoHighPri.Margin = new System.Windows.Forms.Padding(2);
             this.rdoHighPri.Name = "rdoHighPri";
             this.rdoHighPri.Size = new System.Drawing.Size(47, 17);
-            this.rdoHighPri.TabIndex = 1;
+            this.rdoHighPri.TabIndex = 2;
             this.rdoHighPri.Text = "High";
             this.rdoHighPri.UseVisualStyleBackColor = true;
             // 
@@ -475,7 +485,7 @@
             this.rdoNormalPri.Margin = new System.Windows.Forms.Padding(2);
             this.rdoNormalPri.Name = "rdoNormalPri";
             this.rdoNormalPri.Size = new System.Drawing.Size(58, 17);
-            this.rdoNormalPri.TabIndex = 0;
+            this.rdoNormalPri.TabIndex = 1;
             this.rdoNormalPri.TabStop = true;
             this.rdoNormalPri.Text = "Normal";
             this.rdoNormalPri.UseVisualStyleBackColor = true;
@@ -490,7 +500,7 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(472, 124);
-            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Headers - (select row to use delete button)";
             // 
@@ -507,7 +517,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(424, 106);
-            this.dataGridView1.TabIndex = 20;
+            this.dataGridView1.TabIndex = 0;
             // 
             // colName
             // 
@@ -531,7 +541,7 @@
             this.btnDeleteHeader.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteHeader.Name = "btnDeleteHeader";
             this.btnDeleteHeader.Size = new System.Drawing.Size(32, 32);
-            this.btnDeleteHeader.TabIndex = 19;
+            this.btnDeleteHeader.TabIndex = 2;
             this.btnDeleteHeader.UseVisualStyleBackColor = true;
             this.btnDeleteHeader.Click += new System.EventHandler(this.btnDeleteHeader_Click);
             // 
@@ -543,7 +553,7 @@
             this.btnAddHeaders.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddHeaders.Name = "btnAddHeaders";
             this.btnAddHeaders.Size = new System.Drawing.Size(32, 32);
-            this.btnAddHeaders.TabIndex = 14;
+            this.btnAddHeaders.TabIndex = 1;
             this.btnAddHeaders.UseVisualStyleBackColor = true;
             this.btnAddHeaders.Click += new System.EventHandler(this.btnAddHeaders_Click);
             // 
@@ -557,7 +567,7 @@
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(472, 151);
-            this.groupBox3.TabIndex = 18;
+            this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Message Attachments - (check item to use delete button)";
             // 
@@ -573,7 +583,7 @@
             this.chkListAttachments.Margin = new System.Windows.Forms.Padding(2);
             this.chkListAttachments.Name = "chkListAttachments";
             this.chkListAttachments.Size = new System.Drawing.Size(425, 124);
-            this.chkListAttachments.TabIndex = 1;
+            this.chkListAttachments.TabIndex = 0;
             // 
             // btnInsertAttachment
             // 
@@ -583,7 +593,7 @@
             this.btnInsertAttachment.Margin = new System.Windows.Forms.Padding(2);
             this.btnInsertAttachment.Name = "btnInsertAttachment";
             this.btnInsertAttachment.Size = new System.Drawing.Size(32, 32);
-            this.btnInsertAttachment.TabIndex = 12;
+            this.btnInsertAttachment.TabIndex = 1;
             this.btnInsertAttachment.UseVisualStyleBackColor = true;
             this.btnInsertAttachment.Click += new System.EventHandler(this.btnInsertAttachment_Click);
             // 
@@ -608,7 +618,7 @@
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(472, 190);
-            this.groupBox1.TabIndex = 19;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Error Log";
             // 
@@ -619,7 +629,7 @@
             this.chkMinimalLogging.Margin = new System.Windows.Forms.Padding(2);
             this.chkMinimalLogging.Name = "chkMinimalLogging";
             this.chkMinimalLogging.Size = new System.Drawing.Size(102, 17);
-            this.chkMinimalLogging.TabIndex = 22;
+            this.chkMinimalLogging.TabIndex = 0;
             this.chkMinimalLogging.Text = "Minimal Logging";
             this.chkMinimalLogging.UseVisualStyleBackColor = true;
             // 
@@ -635,7 +645,7 @@
             this.txtBoxErrorLog.Name = "txtBoxErrorLog";
             this.txtBoxErrorLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtBoxErrorLog.Size = new System.Drawing.Size(463, 142);
-            this.txtBoxErrorLog.TabIndex = 0;
+            this.txtBoxErrorLog.TabIndex = 1;
             // 
             // groupBox4
             // 
@@ -648,7 +658,7 @@
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(227, 72);
-            this.groupBox4.TabIndex = 26;
+            this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Sending Loop";
             // 
@@ -658,7 +668,7 @@
             this.btnTimedSendEnd.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimedSendEnd.Name = "btnTimedSendEnd";
             this.btnTimedSendEnd.Size = new System.Drawing.Size(68, 22);
-            this.btnTimedSendEnd.TabIndex = 20;
+            this.btnTimedSendEnd.TabIndex = 3;
             this.btnTimedSendEnd.Text = "Stop";
             this.btnTimedSendEnd.UseVisualStyleBackColor = true;
             this.btnTimedSendEnd.Click += new System.EventHandler(this.btnTimedSendEnd_Click);
@@ -669,7 +679,7 @@
             this.btnTimedSendStart.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimedSendStart.Name = "btnTimedSendStart";
             this.btnTimedSendStart.Size = new System.Drawing.Size(61, 19);
-            this.btnTimedSendStart.TabIndex = 19;
+            this.btnTimedSendStart.TabIndex = 2;
             this.btnTimedSendStart.Text = "Start";
             this.btnTimedSendStart.UseVisualStyleBackColor = true;
             this.btnTimedSendStart.Click += new System.EventHandler(this.btnTimedSendStart_Click);
@@ -681,7 +691,7 @@
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(150, 13);
-            this.label9.TabIndex = 22;
+            this.label9.TabIndex = 0;
             this.label9.Text = "Wait seconds between sends:";
             // 
             // numericUpDownResendSeconds
@@ -690,7 +700,7 @@
             this.numericUpDownResendSeconds.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDownResendSeconds.Name = "numericUpDownResendSeconds";
             this.numericUpDownResendSeconds.Size = new System.Drawing.Size(62, 20);
-            this.numericUpDownResendSeconds.TabIndex = 21;
+            this.numericUpDownResendSeconds.TabIndex = 1;
             this.numericUpDownResendSeconds.Value = new decimal(new int[] {
             5,
             0,
@@ -703,7 +713,7 @@
             this.btnSendEmail.Margin = new System.Windows.Forms.Padding(2);
             this.btnSendEmail.Name = "btnSendEmail";
             this.btnSendEmail.Size = new System.Drawing.Size(150, 26);
-            this.btnSendEmail.TabIndex = 27;
+            this.btnSendEmail.TabIndex = 4;
             this.btnSendEmail.Text = "Send one email";
             this.btnSendEmail.UseVisualStyleBackColor = true;
             this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
@@ -719,7 +729,7 @@
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
-            this.label10.TabIndex = 20;
+            this.label10.TabIndex = 0;
             this.label10.Text = "Priority:";
             // 
             // groupBox5
@@ -733,19 +743,9 @@
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox5.Size = new System.Drawing.Size(511, 70);
-            this.groupBox5.TabIndex = 29;
+            this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Options:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 119);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(231, 13);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "Note: Recipeints support one address currently.";
             // 
             // SystemNetMainForm
             // 

@@ -41,12 +41,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Location = new System.Drawing.Point(12, 122);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(916, 10);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
             // btnCancel
@@ -56,7 +56,7 @@
             this.btnCancel.Location = new System.Drawing.Point(848, 138);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 1;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -68,7 +68,7 @@
             this.btnOK.Location = new System.Drawing.Point(767, 138);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 2;
+            this.btnOK.TabIndex = 6;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -84,13 +84,13 @@
             // 
             // txtConversationId
             // 
-            this.txtConversationId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtConversationId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtConversationId.Location = new System.Drawing.Point(103, 46);
             this.txtConversationId.Multiline = true;
             this.txtConversationId.Name = "txtConversationId";
             this.txtConversationId.Size = new System.Drawing.Size(774, 55);
-            this.txtConversationId.TabIndex = 5;
+            this.txtConversationId.TabIndex = 4;
             // 
             // btnGetFolderId
             // 
@@ -98,20 +98,20 @@
             this.btnGetFolderId.Location = new System.Drawing.Point(727, 12);
             this.btnGetFolderId.Name = "btnGetFolderId";
             this.btnGetFolderId.Size = new System.Drawing.Size(25, 23);
-            this.btnGetFolderId.TabIndex = 30;
+            this.btnGetFolderId.TabIndex = 1;
             this.btnGetFolderId.Text = "...";
             this.btnGetFolderId.UseVisualStyleBackColor = true;
             this.btnGetFolderId.Click += new System.EventHandler(this.btnGetFolderId_Click);
             // 
             // txtFolderId
             // 
-            this.txtFolderId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFolderId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFolderId.Location = new System.Drawing.Point(102, 12);
             this.txtFolderId.Name = "txtFolderId";
             this.txtFolderId.ReadOnly = true;
             this.txtFolderId.Size = new System.Drawing.Size(619, 20);
-            this.txtFolderId.TabIndex = 29;
+            this.txtFolderId.TabIndex = 0;
             // 
             // label2
             // 
@@ -127,7 +127,7 @@
             this.btnPropSet.Location = new System.Drawing.Point(776, 12);
             this.btnPropSet.Name = "btnPropSet";
             this.btnPropSet.Size = new System.Drawing.Size(143, 23);
-            this.btnPropSet.TabIndex = 31;
+            this.btnPropSet.TabIndex = 2;
             this.btnPropSet.Text = "Configure Property Set";
             this.btnPropSet.UseVisualStyleBackColor = true;
             this.btnPropSet.Click += new System.EventHandler(this.btnPropSet_Click);

@@ -31,6 +31,7 @@
             this.OkButton = new System.Windows.Forms.Button();
             this.MyCancelButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkBypassProxyForLocalAddress = new System.Windows.Forms.CheckBox();
             this.rdoSpecifyProxySettings = new System.Windows.Forms.RadioButton();
             this.rdoDontOverrideProxySettings = new System.Windows.Forms.RadioButton();
             this.chkOverrideProxyCredentials = new System.Windows.Forms.CheckBox();
@@ -70,7 +71,6 @@
             this.LogFilePathText = new System.Windows.Forms.TextBox();
             this.LogFilePathLabel = new System.Windows.Forms.Label();
             this.SaveLogFileCheck = new System.Windows.Forms.CheckBox();
-            this.chkBypassProxyForLocalAddress = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.MiscSettingsGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).BeginInit();
@@ -84,7 +84,7 @@
             this.OkButton.Location = new System.Drawing.Point(701, 409);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
-            this.OkButton.TabIndex = 2;
+            this.OkButton.TabIndex = 4;
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = true;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
@@ -96,7 +96,7 @@
             this.MyCancelButton.Location = new System.Drawing.Point(783, 409);
             this.MyCancelButton.Name = "MyCancelButton";
             this.MyCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.MyCancelButton.TabIndex = 3;
+            this.MyCancelButton.TabIndex = 0;
             this.MyCancelButton.Text = "Cancel";
             this.MyCancelButton.UseVisualStyleBackColor = true;
             this.MyCancelButton.Click += new System.EventHandler(this.MyCancelButton_Click);
@@ -125,13 +125,22 @@
             this.groupBox1.Text = "Set WebProxy Settings";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // chkBypassProxyForLocalAddress
+            // 
+            this.chkBypassProxyForLocalAddress.Location = new System.Drawing.Point(26, 147);
+            this.chkBypassProxyForLocalAddress.Name = "chkBypassProxyForLocalAddress";
+            this.chkBypassProxyForLocalAddress.Size = new System.Drawing.Size(268, 19);
+            this.chkBypassProxyForLocalAddress.TabIndex = 6;
+            this.chkBypassProxyForLocalAddress.Text = "BypassProxy For Local Address";
+            this.chkBypassProxyForLocalAddress.UseVisualStyleBackColor = true;
+            // 
             // rdoSpecifyProxySettings
             // 
             this.rdoSpecifyProxySettings.AutoSize = true;
             this.rdoSpecifyProxySettings.Location = new System.Drawing.Point(6, 63);
             this.rdoSpecifyProxySettings.Name = "rdoSpecifyProxySettings";
             this.rdoSpecifyProxySettings.Size = new System.Drawing.Size(130, 17);
-            this.rdoSpecifyProxySettings.TabIndex = 17;
+            this.rdoSpecifyProxySettings.TabIndex = 1;
             this.rdoSpecifyProxySettings.Text = "Specify Proxy Settings";
             this.rdoSpecifyProxySettings.UseVisualStyleBackColor = true;
             this.rdoSpecifyProxySettings.CheckedChanged += new System.EventHandler(this.rdoSpecifyProxySettings_CheckedChanged);
@@ -143,7 +152,7 @@
             this.rdoDontOverrideProxySettings.Location = new System.Drawing.Point(6, 28);
             this.rdoDontOverrideProxySettings.Name = "rdoDontOverrideProxySettings";
             this.rdoDontOverrideProxySettings.Size = new System.Drawing.Size(163, 17);
-            this.rdoDontOverrideProxySettings.TabIndex = 4;
+            this.rdoDontOverrideProxySettings.TabIndex = 0;
             this.rdoDontOverrideProxySettings.TabStop = true;
             this.rdoDontOverrideProxySettings.Text = "Don\'t Override Proxy Settings";
             this.rdoDontOverrideProxySettings.UseVisualStyleBackColor = true;
@@ -154,7 +163,7 @@
             this.chkOverrideProxyCredentials.Location = new System.Drawing.Point(26, 178);
             this.chkOverrideProxyCredentials.Name = "chkOverrideProxyCredentials";
             this.chkOverrideProxyCredentials.Size = new System.Drawing.Size(268, 19);
-            this.chkOverrideProxyCredentials.TabIndex = 14;
+            this.chkOverrideProxyCredentials.TabIndex = 7;
             this.chkOverrideProxyCredentials.Text = "Override Proxy Server Credentials";
             this.chkOverrideProxyCredentials.UseVisualStyleBackColor = true;
             this.chkOverrideProxyCredentials.CheckedChanged += new System.EventHandler(this.chkOverrideProxyCredentials_CheckedChanged);
@@ -216,14 +225,14 @@
             this.txtProxyServerPort.Location = new System.Drawing.Point(118, 120);
             this.txtProxyServerPort.Name = "txtProxyServerPort";
             this.txtProxyServerPort.Size = new System.Drawing.Size(202, 20);
-            this.txtProxyServerPort.TabIndex = 4;
+            this.txtProxyServerPort.TabIndex = 5;
             // 
             // lblProxyPort
             // 
             this.lblProxyPort.Location = new System.Drawing.Point(23, 122);
             this.lblProxyPort.Name = "lblProxyPort";
             this.lblProxyPort.Size = new System.Drawing.Size(77, 17);
-            this.lblProxyPort.TabIndex = 3;
+            this.lblProxyPort.TabIndex = 4;
             this.lblProxyPort.Text = "Proxy Port:";
             // 
             // txtProxyServerName
@@ -231,14 +240,14 @@
             this.txtProxyServerName.Location = new System.Drawing.Point(118, 94);
             this.txtProxyServerName.Name = "txtProxyServerName";
             this.txtProxyServerName.Size = new System.Drawing.Size(202, 20);
-            this.txtProxyServerName.TabIndex = 2;
+            this.txtProxyServerName.TabIndex = 3;
             // 
             // lblProxyServer
             // 
             this.lblProxyServer.Location = new System.Drawing.Point(23, 94);
             this.lblProxyServer.Name = "lblProxyServer";
             this.lblProxyServer.Size = new System.Drawing.Size(77, 17);
-            this.lblProxyServer.TabIndex = 1;
+            this.lblProxyServer.TabIndex = 2;
             this.lblProxyServer.Text = "Proxy Server:";
             // 
             // MiscSettingsGroup
@@ -267,7 +276,7 @@
             this.MiscSettingsGroup.Location = new System.Drawing.Point(13, 12);
             this.MiscSettingsGroup.Name = "MiscSettingsGroup";
             this.MiscSettingsGroup.Size = new System.Drawing.Size(462, 346);
-            this.MiscSettingsGroup.TabIndex = 0;
+            this.MiscSettingsGroup.TabIndex = 1;
             this.MiscSettingsGroup.TabStop = false;
             this.MiscSettingsGroup.Text = "Miscellaneous";
             this.MiscSettingsGroup.Enter += new System.EventHandler(this.MiscSettingsGroup_Enter);
@@ -277,7 +286,7 @@
             this.chkOverrideTimezone.Location = new System.Drawing.Point(12, 287);
             this.chkOverrideTimezone.Name = "chkOverrideTimezone";
             this.chkOverrideTimezone.Size = new System.Drawing.Size(352, 19);
-            this.chkOverrideTimezone.TabIndex = 5;
+            this.chkOverrideTimezone.TabIndex = 17;
             this.chkOverrideTimezone.Text = "Use specified timezone:";
             this.chkOverrideTimezone.UseVisualStyleBackColor = true;
             this.chkOverrideTimezone.CheckedChanged += new System.EventHandler(this.chkOverrideTimezone_CheckedChanged);
@@ -297,7 +306,7 @@
             this.label1.Location = new System.Drawing.Point(30, 315);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 18);
-            this.label1.TabIndex = 5;
+            this.label1.TabIndex = 18;
             this.label1.Text = "TimeZone:";
             // 
             // chkOverrideTimeout
@@ -305,7 +314,7 @@
             this.chkOverrideTimeout.Location = new System.Drawing.Point(13, 154);
             this.chkOverrideTimeout.Name = "chkOverrideTimeout";
             this.chkOverrideTimeout.Size = new System.Drawing.Size(124, 24);
-            this.chkOverrideTimeout.TabIndex = 79;
+            this.chkOverrideTimeout.TabIndex = 7;
             this.chkOverrideTimeout.Text = "Override timeout:";
             this.chkOverrideTimeout.UseVisualStyleBackColor = true;
             // 
@@ -317,7 +326,7 @@
             this.cmboSelectedTimeZoneId.Location = new System.Drawing.Point(112, 312);
             this.cmboSelectedTimeZoneId.Name = "cmboSelectedTimeZoneId";
             this.cmboSelectedTimeZoneId.Size = new System.Drawing.Size(307, 21);
-            this.cmboSelectedTimeZoneId.TabIndex = 6;
+            this.cmboSelectedTimeZoneId.TabIndex = 19;
             // 
             // label9
             // 
@@ -338,7 +347,7 @@
             0});
             this.numericUpDownTimeout.Name = "numericUpDownTimeout";
             this.numericUpDownTimeout.Size = new System.Drawing.Size(98, 20);
-            this.numericUpDownTimeout.TabIndex = 78;
+            this.numericUpDownTimeout.TabIndex = 8;
             this.numericUpDownTimeout.Value = new decimal(new int[] {
             100000,
             0,
@@ -384,7 +393,7 @@
             this.DumpFolderText.Location = new System.Drawing.Point(144, 260);
             this.DumpFolderText.Name = "DumpFolderText";
             this.DumpFolderText.Size = new System.Drawing.Size(100, 20);
-            this.DumpFolderText.TabIndex = 13;
+            this.DumpFolderText.TabIndex = 16;
             // 
             // AllowRedirectsCheck
             // 
@@ -400,7 +409,7 @@
             this.FindItemText.Location = new System.Drawing.Point(144, 236);
             this.FindItemText.Name = "FindItemText";
             this.FindItemText.Size = new System.Drawing.Size(100, 20);
-            this.FindItemText.TabIndex = 11;
+            this.FindItemText.TabIndex = 14;
             // 
             // OverrideSslCheck
             // 
@@ -416,21 +425,21 @@
             this.FindFolderText.Location = new System.Drawing.Point(144, 214);
             this.FindFolderText.Name = "FindFolderText";
             this.FindFolderText.Size = new System.Drawing.Size(100, 20);
-            this.FindFolderText.TabIndex = 9;
+            this.FindFolderText.TabIndex = 12;
             // 
             // CalendarViewText
             // 
             this.CalendarViewText.Location = new System.Drawing.Point(144, 188);
             this.CalendarViewText.Name = "CalendarViewText";
             this.CalendarViewText.Size = new System.Drawing.Size(100, 20);
-            this.CalendarViewText.TabIndex = 7;
+            this.CalendarViewText.TabIndex = 10;
             // 
             // DumpFolderLabel
             // 
             this.DumpFolderLabel.Location = new System.Drawing.Point(10, 260);
             this.DumpFolderLabel.Name = "DumpFolderLabel";
             this.DumpFolderLabel.Size = new System.Drawing.Size(128, 23);
-            this.DumpFolderLabel.TabIndex = 12;
+            this.DumpFolderLabel.TabIndex = 15;
             this.DumpFolderLabel.Text = "Dump Folder View Size:";
             // 
             // FindItemLabel
@@ -438,7 +447,7 @@
             this.FindItemLabel.Location = new System.Drawing.Point(10, 236);
             this.FindItemLabel.Name = "FindItemLabel";
             this.FindItemLabel.Size = new System.Drawing.Size(128, 23);
-            this.FindItemLabel.TabIndex = 10;
+            this.FindItemLabel.TabIndex = 13;
             this.FindItemLabel.Text = "FindItem View Size:";
             // 
             // FindFolderLabel
@@ -446,7 +455,7 @@
             this.FindFolderLabel.Location = new System.Drawing.Point(10, 214);
             this.FindFolderLabel.Name = "FindFolderLabel";
             this.FindFolderLabel.Size = new System.Drawing.Size(128, 23);
-            this.FindFolderLabel.TabIndex = 8;
+            this.FindFolderLabel.TabIndex = 11;
             this.FindFolderLabel.Text = "FindFolder View Size:";
             // 
             // CalendarViewLabel
@@ -454,7 +463,7 @@
             this.CalendarViewLabel.Location = new System.Drawing.Point(10, 191);
             this.CalendarViewLabel.Name = "CalendarViewLabel";
             this.CalendarViewLabel.Size = new System.Drawing.Size(128, 23);
-            this.CalendarViewLabel.TabIndex = 6;
+            this.CalendarViewLabel.TabIndex = 9;
             this.CalendarViewLabel.Text = "CalendarView Size:";
             // 
             // LoggingGroup
@@ -465,7 +474,7 @@
             this.LoggingGroup.Location = new System.Drawing.Point(13, 365);
             this.LoggingGroup.Name = "LoggingGroup";
             this.LoggingGroup.Size = new System.Drawing.Size(462, 68);
-            this.LoggingGroup.TabIndex = 1;
+            this.LoggingGroup.TabIndex = 2;
             this.LoggingGroup.TabStop = false;
             this.LoggingGroup.Text = "Logging...";
             // 
@@ -493,15 +502,6 @@
             this.SaveLogFileCheck.Text = "Save logging output to a file";
             this.SaveLogFileCheck.UseVisualStyleBackColor = true;
             this.SaveLogFileCheck.CheckedChanged += new System.EventHandler(this.SaveLogFileCheck_CheckedChanged);
-            // 
-            // chkBypassProxyForLocalAddress
-            // 
-            this.chkBypassProxyForLocalAddress.Location = new System.Drawing.Point(26, 147);
-            this.chkBypassProxyForLocalAddress.Name = "chkBypassProxyForLocalAddress";
-            this.chkBypassProxyForLocalAddress.Size = new System.Drawing.Size(268, 19);
-            this.chkBypassProxyForLocalAddress.TabIndex = 18;
-            this.chkBypassProxyForLocalAddress.Text = "BypassProxy For Local Address";
-            this.chkBypassProxyForLocalAddress.UseVisualStyleBackColor = true;
             // 
             // OptionsDialog
             // 

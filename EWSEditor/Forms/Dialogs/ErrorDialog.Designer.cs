@@ -51,9 +51,9 @@
             // 
             // ExceptionDetailBox
             // 
-            this.ExceptionDetailBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExceptionDetailBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ExceptionDetailBox.BackColor = System.Drawing.SystemColors.Control;
             this.ExceptionDetailBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ExceptionDetailBox.Location = new System.Drawing.Point(4, 86);
@@ -61,7 +61,7 @@
             this.ExceptionDetailBox.ReadOnly = true;
             this.ExceptionDetailBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.ExceptionDetailBox.Size = new System.Drawing.Size(508, 324);
-            this.ExceptionDetailBox.TabIndex = 10;
+            this.ExceptionDetailBox.TabIndex = 1;
             this.ExceptionDetailBox.Text = "[ExceptionDetails]";
             this.ExceptionDetailBox.WordWrap = false;
             // 
@@ -75,16 +75,16 @@
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Name = "Header";
             this.Header.Size = new System.Drawing.Size(516, 80);
-            this.Header.TabIndex = 11;
+            this.Header.TabIndex = 2;
             // 
             // FromWhere
             // 
-            this.FromWhere.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.FromWhere.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.FromWhere.Location = new System.Drawing.Point(73, 41);
             this.FromWhere.Name = "FromWhere";
             this.FromWhere.Size = new System.Drawing.Size(439, 23);
-            this.FromWhere.TabIndex = 14;
+            this.FromWhere.TabIndex = 1;
             this.FromWhere.Text = "[FromWhere]";
             // 
             // ErrorIcon
@@ -97,13 +97,13 @@
             // 
             // ExceptionMessage
             // 
-            this.ExceptionMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExceptionMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ExceptionMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExceptionMessage.Location = new System.Drawing.Point(72, 12);
             this.ExceptionMessage.Name = "ExceptionMessage";
             this.ExceptionMessage.Size = new System.Drawing.Size(440, 20);
-            this.ExceptionMessage.TabIndex = 13;
+            this.ExceptionMessage.TabIndex = 0;
             this.ExceptionMessage.Text = "[ExceptionMessage]";
             // 
             // ErrorDialog

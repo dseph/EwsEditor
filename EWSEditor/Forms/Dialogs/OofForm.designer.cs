@@ -79,7 +79,7 @@
             this.GetOofButton.Location = new System.Drawing.Point(449, 60);
             this.GetOofButton.Name = "GetOofButton";
             this.GetOofButton.Size = new System.Drawing.Size(75, 23);
-            this.GetOofButton.TabIndex = 9;
+            this.GetOofButton.TabIndex = 3;
             this.GetOofButton.Text = "Get OOF";
             this.GetOofButton.UseVisualStyleBackColor = true;
             this.GetOofButton.Click += new System.EventHandler(this.GetOofButton_Click);
@@ -101,7 +101,7 @@
             this.TargetMailboxLabel.Location = new System.Drawing.Point(12, 9);
             this.TargetMailboxLabel.Name = "TargetMailboxLabel";
             this.TargetMailboxLabel.Size = new System.Drawing.Size(337, 13);
-            this.TargetMailboxLabel.TabIndex = 34;
+            this.TargetMailboxLabel.TabIndex = 0;
             this.TargetMailboxLabel.Text = "Enter the SMTP address of the mailbox to retrieve OOF settings from...";
             // 
             // ResolveTargetButton
@@ -110,32 +110,32 @@
             this.ResolveTargetButton.Location = new System.Drawing.Point(530, 31);
             this.ResolveTargetButton.Name = "ResolveTargetButton";
             this.ResolveTargetButton.Size = new System.Drawing.Size(24, 23);
-            this.ResolveTargetButton.TabIndex = 32;
+            this.ResolveTargetButton.TabIndex = 2;
             this.ResolveTargetButton.Text = "...";
             this.ResolveTargetButton.UseVisualStyleBackColor = true;
             this.ResolveTargetButton.Click += new System.EventHandler(this.ResolveTargetButton_Click);
             // 
             // TargetMailboxText
             // 
-            this.TargetMailboxText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.TargetMailboxText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TargetMailboxText.Location = new System.Drawing.Point(14, 33);
             this.TargetMailboxText.Name = "TargetMailboxText";
             this.TargetMailboxText.Size = new System.Drawing.Size(510, 20);
-            this.TargetMailboxText.TabIndex = 31;
+            this.TargetMailboxText.TabIndex = 1;
             // 
             // OofSettingsGroup
             // 
-            this.OofSettingsGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.OofSettingsGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.OofSettingsGroup.Controls.Add(this.OofEnabledOption);
             this.OofSettingsGroup.Controls.Add(this.OofDisabledOption);
             this.OofSettingsGroup.Controls.Add(this.OofSettingsPanel);
             this.OofSettingsGroup.Location = new System.Drawing.Point(15, 88);
             this.OofSettingsGroup.Name = "OofSettingsGroup";
             this.OofSettingsGroup.Size = new System.Drawing.Size(542, 495);
-            this.OofSettingsGroup.TabIndex = 36;
+            this.OofSettingsGroup.TabIndex = 4;
             this.OofSettingsGroup.TabStop = false;
             this.OofSettingsGroup.Text = "OOF Settings";
             // 
@@ -145,7 +145,7 @@
             this.OofEnabledOption.Location = new System.Drawing.Point(14, 43);
             this.OofEnabledOption.Name = "OofEnabledOption";
             this.OofEnabledOption.Size = new System.Drawing.Size(132, 17);
-            this.OofEnabledOption.TabIndex = 49;
+            this.OofEnabledOption.TabIndex = 1;
             this.OofEnabledOption.Text = "Send automatic replies";
             this.OofEnabledOption.UseVisualStyleBackColor = true;
             this.OofEnabledOption.CheckedChanged += new System.EventHandler(this.OofEnabledOption_CheckedChanged);
@@ -157,7 +157,7 @@
             this.OofDisabledOption.Location = new System.Drawing.Point(14, 20);
             this.OofDisabledOption.Name = "OofDisabledOption";
             this.OofDisabledOption.Size = new System.Drawing.Size(165, 17);
-            this.OofDisabledOption.TabIndex = 48;
+            this.OofDisabledOption.TabIndex = 0;
             this.OofDisabledOption.TabStop = true;
             this.OofDisabledOption.Text = "Do not send automatic replies";
             this.OofDisabledOption.UseVisualStyleBackColor = true;
@@ -165,9 +165,9 @@
             // 
             // OofSettingsPanel
             // 
-            this.OofSettingsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.OofSettingsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.OofSettingsPanel.Controls.Add(this.OofScheduledCheck);
             this.OofSettingsPanel.Controls.Add(this.ReplyMessageTabs);
             this.OofSettingsPanel.Controls.Add(this.ScheduleEndTimeLabel);
@@ -177,7 +177,7 @@
             this.OofSettingsPanel.Location = new System.Drawing.Point(6, 66);
             this.OofSettingsPanel.Name = "OofSettingsPanel";
             this.OofSettingsPanel.Size = new System.Drawing.Size(530, 423);
-            this.OofSettingsPanel.TabIndex = 47;
+            this.OofSettingsPanel.TabIndex = 2;
             // 
             // OofScheduledCheck
             // 
@@ -185,23 +185,23 @@
             this.OofScheduledCheck.Location = new System.Drawing.Point(59, 3);
             this.OofScheduledCheck.Name = "OofScheduledCheck";
             this.OofScheduledCheck.Size = new System.Drawing.Size(179, 17);
-            this.OofScheduledCheck.TabIndex = 50;
+            this.OofScheduledCheck.TabIndex = 0;
             this.OofScheduledCheck.Text = "Only send during this time range:";
             this.OofScheduledCheck.UseVisualStyleBackColor = true;
             this.OofScheduledCheck.CheckedChanged += new System.EventHandler(this.OofScheduledCheck_CheckedChanged);
             // 
             // ReplyMessageTabs
             // 
-            this.ReplyMessageTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReplyMessageTabs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReplyMessageTabs.Controls.Add(this.InternalReplyTab);
             this.ReplyMessageTabs.Controls.Add(this.ExternalReplyTab);
             this.ReplyMessageTabs.Location = new System.Drawing.Point(3, 80);
             this.ReplyMessageTabs.Name = "ReplyMessageTabs";
             this.ReplyMessageTabs.SelectedIndex = 0;
             this.ReplyMessageTabs.Size = new System.Drawing.Size(524, 340);
-            this.ReplyMessageTabs.TabIndex = 47;
+            this.ReplyMessageTabs.TabIndex = 5;
             // 
             // InternalReplyTab
             // 
@@ -218,23 +218,23 @@
             // 
             // InternalReplyText
             // 
-            this.InternalReplyText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.InternalReplyText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.InternalReplyText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InternalReplyText.Location = new System.Drawing.Point(7, 35);
             this.InternalReplyText.Multiline = true;
             this.InternalReplyText.Name = "InternalReplyText";
             this.InternalReplyText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.InternalReplyText.Size = new System.Drawing.Size(503, 273);
-            this.InternalReplyText.TabIndex = 33;
+            this.InternalReplyText.TabIndex = 2;
             // 
             // InternalReplyCulture
             // 
             this.InternalReplyCulture.Location = new System.Drawing.Point(55, 9);
             this.InternalReplyCulture.Name = "InternalReplyCulture";
             this.InternalReplyCulture.Size = new System.Drawing.Size(105, 20);
-            this.InternalReplyCulture.TabIndex = 31;
+            this.InternalReplyCulture.TabIndex = 1;
             // 
             // InternalReplyCultureLabel
             // 
@@ -242,7 +242,7 @@
             this.InternalReplyCultureLabel.Location = new System.Drawing.Point(6, 12);
             this.InternalReplyCultureLabel.Name = "InternalReplyCultureLabel";
             this.InternalReplyCultureLabel.Size = new System.Drawing.Size(43, 13);
-            this.InternalReplyCultureLabel.TabIndex = 32;
+            this.InternalReplyCultureLabel.TabIndex = 0;
             this.InternalReplyCultureLabel.Text = "Culture:";
             // 
             // ExternalReplyTab
@@ -255,16 +255,16 @@
             this.ExternalReplyTab.Location = new System.Drawing.Point(4, 22);
             this.ExternalReplyTab.Name = "ExternalReplyTab";
             this.ExternalReplyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ExternalReplyTab.Size = new System.Drawing.Size(516, 266);
+            this.ExternalReplyTab.Size = new System.Drawing.Size(516, 314);
             this.ExternalReplyTab.TabIndex = 1;
             this.ExternalReplyTab.Text = "External Reply";
             this.ExternalReplyTab.UseVisualStyleBackColor = true;
             // 
             // ExternalReplyText
             // 
-            this.ExternalReplyText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExternalReplyText.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ExternalReplyText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExternalReplyText.Location = new System.Drawing.Point(7, 35);
             this.ExternalReplyText.Multiline = true;
@@ -273,12 +273,12 @@
             this.ExternalReplyText.Size = new System.Drawing.Size(503, 240);
             this.ExternalReplyText.TabIndex = 52;
             // 
-            // ExternalAudienceDrop
+            // TempExternalAudienceCombo
             // 
             this.TempExternalAudienceCombo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TempExternalAudienceCombo.FormattingEnabled = true;
             this.TempExternalAudienceCombo.Location = new System.Drawing.Point(336, 6);
-            this.TempExternalAudienceCombo.Name = "ExternalAudienceDrop";
+            this.TempExternalAudienceCombo.Name = "TempExternalAudienceCombo";
             this.TempExternalAudienceCombo.Size = new System.Drawing.Size(159, 21);
             this.TempExternalAudienceCombo.TabIndex = 51;
             // 
@@ -315,7 +315,7 @@
             this.ScheduleEndTimeLabel.Location = new System.Drawing.Point(93, 60);
             this.ScheduleEndTimeLabel.Name = "ScheduleEndTimeLabel";
             this.ScheduleEndTimeLabel.Size = new System.Drawing.Size(55, 13);
-            this.ScheduleEndTimeLabel.TabIndex = 40;
+            this.ScheduleEndTimeLabel.TabIndex = 3;
             this.ScheduleEndTimeLabel.Text = "End Time:";
             // 
             // ScheduleStartTimeLabel
@@ -325,7 +325,7 @@
             this.ScheduleStartTimeLabel.Location = new System.Drawing.Point(90, 34);
             this.ScheduleStartTimeLabel.Name = "ScheduleStartTimeLabel";
             this.ScheduleStartTimeLabel.Size = new System.Drawing.Size(58, 13);
-            this.ScheduleStartTimeLabel.TabIndex = 37;
+            this.ScheduleStartTimeLabel.TabIndex = 1;
             this.ScheduleStartTimeLabel.Text = "Start Time:";
             // 
             // ScheduledStartTime
@@ -336,7 +336,7 @@
             this.ScheduledStartTime.Location = new System.Drawing.Point(171, 28);
             this.ScheduledStartTime.Name = "ScheduledStartTime";
             this.ScheduledStartTime.Size = new System.Drawing.Size(159, 20);
-            this.ScheduledStartTime.TabIndex = 38;
+            this.ScheduledStartTime.TabIndex = 2;
             // 
             // ScheduledEndTime
             // 
@@ -346,7 +346,7 @@
             this.ScheduledEndTime.Location = new System.Drawing.Point(171, 54);
             this.ScheduledEndTime.Name = "ScheduledEndTime";
             this.ScheduledEndTime.Size = new System.Drawing.Size(159, 20);
-            this.ScheduledEndTime.TabIndex = 41;
+            this.ScheduledEndTime.TabIndex = 4;
             // 
             // OofForm
             // 

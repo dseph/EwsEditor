@@ -55,7 +55,7 @@
             this.btnOK.Location = new System.Drawing.Point(222, 432);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 13;
+            this.btnOK.TabIndex = 4;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -67,7 +67,7 @@
             this.btnCancel.Location = new System.Drawing.Point(303, 432);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 12;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -92,7 +92,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(272, 88);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(79, 23);
-            this.btnUpdate.TabIndex = 17;
+            this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Update...";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -102,7 +102,7 @@
             this.btnRemove.Location = new System.Drawing.Point(271, 59);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(80, 23);
-            this.btnRemove.TabIndex = 16;
+            this.btnRemove.TabIndex = 1;
             this.btnRemove.Text = "Remove...";
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
@@ -112,7 +112,7 @@
             this.btnAdd.Location = new System.Drawing.Point(272, 30);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(79, 23);
-            this.btnAdd.TabIndex = 15;
+            this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add...";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -123,7 +123,7 @@
             this.lstDelegates.Location = new System.Drawing.Point(19, 30);
             this.lstDelegates.Name = "lstDelegates";
             this.lstDelegates.Size = new System.Drawing.Size(246, 121);
-            this.lstDelegates.TabIndex = 14;
+            this.lstDelegates.TabIndex = 3;
             // 
             // panel1
             // 
@@ -177,7 +177,7 @@
             this.lblDescription.Location = new System.Drawing.Point(16, 162);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(321, 33);
-            this.lblDescription.TabIndex = 12;
+            this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "Deliver meeting requests addresed to me and responses to meeting requests where I" +
     " am the organizer to:";
             // 
@@ -186,14 +186,14 @@
             this.txtPrincipal.Location = new System.Drawing.Point(31, 38);
             this.txtPrincipal.Name = "txtPrincipal";
             this.txtPrincipal.Size = new System.Drawing.Size(302, 20);
-            this.txtPrincipal.TabIndex = 15;
+            this.txtPrincipal.TabIndex = 1;
             // 
             // btnResolvePrin
             // 
             this.btnResolvePrin.Location = new System.Drawing.Point(339, 36);
             this.btnResolvePrin.Name = "btnResolvePrin";
             this.btnResolvePrin.Size = new System.Drawing.Size(24, 23);
-            this.btnResolvePrin.TabIndex = 16;
+            this.btnResolvePrin.TabIndex = 2;
             this.btnResolvePrin.Text = "...";
             this.btnResolvePrin.UseVisualStyleBackColor = true;
             this.btnResolvePrin.Click += new System.EventHandler(this.btnResolvePrin_Click);
@@ -203,7 +203,7 @@
             this.btnGetDelegates.Location = new System.Drawing.Point(262, 65);
             this.btnGetDelegates.Name = "btnGetDelegates";
             this.btnGetDelegates.Size = new System.Drawing.Size(101, 23);
-            this.btnGetDelegates.TabIndex = 17;
+            this.btnGetDelegates.TabIndex = 3;
             this.btnGetDelegates.Text = "Get Delegates";
             this.btnGetDelegates.UseVisualStyleBackColor = true;
             this.btnGetDelegates.Click += new System.EventHandler(this.btnGetDelegates_Click);
@@ -214,7 +214,7 @@
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(364, 13);
-            this.label1.TabIndex = 18;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Enter the SMTP address of the principal mailbox to retrieve delegates from...";
             // 
             // DelegateDialog

@@ -40,8 +40,8 @@
             // 
             // lvRoomLists
             // 
-            this.lvRoomLists.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvRoomLists.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvRoomLists.Location = new System.Drawing.Point(3, 55);
             this.lvRoomLists.Name = "lvRoomLists";
             this.lvRoomLists.Size = new System.Drawing.Size(692, 178);
@@ -92,9 +92,9 @@
             // 
             // lvRooms
             // 
-            this.lvRooms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvRooms.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvRooms.Location = new System.Drawing.Point(6, 287);
             this.lvRooms.Name = "lvRooms";
             this.lvRooms.Size = new System.Drawing.Size(680, 124);
@@ -104,8 +104,8 @@
             // 
             // txtListSmtp
             // 
-            this.txtListSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtListSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtListSmtp.Location = new System.Drawing.Point(116, 242);
             this.txtListSmtp.Name = "txtListSmtp";
             this.txtListSmtp.Size = new System.Drawing.Size(425, 20);

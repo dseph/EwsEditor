@@ -56,7 +56,7 @@
             this.label2.Location = new System.Drawing.Point(12, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 13);
-            this.label2.TabIndex = 25;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Specify a date range to search:";
             // 
             // label1
@@ -65,7 +65,7 @@
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(180, 13);
-            this.label1.TabIndex = 24;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Select a calendar folder to search in:";
             // 
             // lblEnd
@@ -73,7 +73,7 @@
             this.lblEnd.Location = new System.Drawing.Point(323, 87);
             this.lblEnd.Name = "lblEnd";
             this.lblEnd.Size = new System.Drawing.Size(71, 23);
-            this.lblEnd.TabIndex = 23;
+            this.lblEnd.TabIndex = 5;
             this.lblEnd.Text = "End Time:";
             // 
             // txtEndTime
@@ -81,14 +81,14 @@
             this.txtEndTime.Location = new System.Drawing.Point(400, 87);
             this.txtEndTime.Name = "txtEndTime";
             this.txtEndTime.Size = new System.Drawing.Size(198, 20);
-            this.txtEndTime.TabIndex = 18;
+            this.txtEndTime.TabIndex = 6;
             // 
             // lblStart
             // 
             this.lblStart.Location = new System.Drawing.Point(12, 90);
             this.lblStart.Name = "lblStart";
             this.lblStart.Size = new System.Drawing.Size(79, 23);
-            this.lblStart.TabIndex = 22;
+            this.lblStart.TabIndex = 3;
             this.lblStart.Text = "Start Time:";
             // 
             // txtStartTime
@@ -96,7 +96,7 @@
             this.txtStartTime.Location = new System.Drawing.Point(107, 87);
             this.txtStartTime.Name = "txtStartTime";
             this.txtStartTime.Size = new System.Drawing.Size(198, 20);
-            this.txtStartTime.TabIndex = 17;
+            this.txtStartTime.TabIndex = 4;
             // 
             // btnFolderId
             // 
@@ -114,7 +114,7 @@
             this.lblFolderId.Location = new System.Drawing.Point(12, 33);
             this.lblFolderId.Name = "lblFolderId";
             this.lblFolderId.Size = new System.Drawing.Size(555, 18);
-            this.lblFolderId.TabIndex = 21;
+            this.lblFolderId.TabIndex = 1;
             // 
             // btnCancel
             // 
@@ -123,7 +123,7 @@
             this.btnCancel.Location = new System.Drawing.Point(528, 289);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 20;
+            this.btnCancel.TabIndex = 17;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -134,7 +134,7 @@
             this.btnOK.Location = new System.Drawing.Point(432, 289);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 19;
+            this.btnOK.TabIndex = 16;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -144,7 +144,7 @@
             this.txtSubject.Location = new System.Drawing.Point(107, 124);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(478, 20);
-            this.txtSubject.TabIndex = 27;
+            this.txtSubject.TabIndex = 8;
             // 
             // chkSearchSubject
             // 
@@ -152,7 +152,7 @@
             this.chkSearchSubject.Location = new System.Drawing.Point(15, 124);
             this.chkSearchSubject.Name = "chkSearchSubject";
             this.chkSearchSubject.Size = new System.Drawing.Size(65, 17);
-            this.chkSearchSubject.TabIndex = 28;
+            this.chkSearchSubject.TabIndex = 7;
             this.chkSearchSubject.Text = "Subject:";
             this.chkSearchSubject.UseVisualStyleBackColor = true;
             // 
@@ -162,7 +162,7 @@
             this.chkSearchBody.Location = new System.Drawing.Point(15, 150);
             this.chkSearchBody.Name = "chkSearchBody";
             this.chkSearchBody.Size = new System.Drawing.Size(53, 17);
-            this.chkSearchBody.TabIndex = 30;
+            this.chkSearchBody.TabIndex = 9;
             this.chkSearchBody.Text = "Body:";
             this.chkSearchBody.UseVisualStyleBackColor = true;
             // 
@@ -171,7 +171,7 @@
             this.txtBody.Location = new System.Drawing.Point(107, 150);
             this.txtBody.Name = "txtBody";
             this.txtBody.Size = new System.Drawing.Size(478, 20);
-            this.txtBody.TabIndex = 29;
+            this.txtBody.TabIndex = 10;
             // 
             // chkSearchCCAttendee
             // 
@@ -179,7 +179,7 @@
             this.chkSearchCCAttendee.Location = new System.Drawing.Point(15, 201);
             this.chkSearchCCAttendee.Name = "chkSearchCCAttendee";
             this.chkSearchCCAttendee.Size = new System.Drawing.Size(89, 17);
-            this.chkSearchCCAttendee.TabIndex = 34;
+            this.chkSearchCCAttendee.TabIndex = 13;
             this.chkSearchCCAttendee.Text = "CC Attendee:";
             this.chkSearchCCAttendee.UseVisualStyleBackColor = true;
             // 
@@ -188,7 +188,7 @@
             this.txtCCAttendee.Location = new System.Drawing.Point(107, 201);
             this.txtCCAttendee.Name = "txtCCAttendee";
             this.txtCCAttendee.Size = new System.Drawing.Size(478, 20);
-            this.txtCCAttendee.TabIndex = 33;
+            this.txtCCAttendee.TabIndex = 14;
             // 
             // chkSearchToAttendee
             // 
@@ -196,7 +196,7 @@
             this.chkSearchToAttendee.Location = new System.Drawing.Point(15, 175);
             this.chkSearchToAttendee.Name = "chkSearchToAttendee";
             this.chkSearchToAttendee.Size = new System.Drawing.Size(88, 17);
-            this.chkSearchToAttendee.TabIndex = 32;
+            this.chkSearchToAttendee.TabIndex = 11;
             this.chkSearchToAttendee.Text = "To Attendee:";
             this.chkSearchToAttendee.UseVisualStyleBackColor = true;
             // 
@@ -205,14 +205,14 @@
             this.txtToAttendee.Location = new System.Drawing.Point(107, 175);
             this.txtToAttendee.Name = "txtToAttendee";
             this.txtToAttendee.Size = new System.Drawing.Size(478, 20);
-            this.txtToAttendee.TabIndex = 31;
+            this.txtToAttendee.TabIndex = 12;
             // 
             // label3
             // 
             this.label3.Location = new System.Drawing.Point(9, 289);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(415, 16);
-            this.label3.TabIndex = 35;
+            this.label3.TabIndex = 15;
             this.label3.Text = "Note: This uses FindItems instead of FindAppointments.";
             // 
             // label4

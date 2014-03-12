@@ -58,7 +58,7 @@
             this.lblProductName.Location = new System.Drawing.Point(93, 13);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(114, 13);
-            this.lblProductName.TabIndex = 14;
+            this.lblProductName.TabIndex = 3;
             this.lblProductName.Text = "[PRODUCT NAME]";
             // 
             // lblProductVersion
@@ -67,7 +67,7 @@
             this.lblProductVersion.Location = new System.Drawing.Point(93, 38);
             this.lblProductVersion.Name = "lblProductVersion";
             this.lblProductVersion.Size = new System.Drawing.Size(117, 13);
-            this.lblProductVersion.TabIndex = 15;
+            this.lblProductVersion.TabIndex = 4;
             this.lblProductVersion.Text = "[PRODUCT VERSION]";
             // 
             // lblCopyright
@@ -76,7 +76,7 @@
             this.lblCopyright.Location = new System.Drawing.Point(93, 65);
             this.lblCopyright.Name = "lblCopyright";
             this.lblCopyright.Size = new System.Drawing.Size(76, 13);
-            this.lblCopyright.TabIndex = 16;
+            this.lblCopyright.TabIndex = 5;
             this.lblCopyright.Text = "[COPYRIGHT]";
             // 
             // grpLine1
@@ -85,20 +85,20 @@
             this.grpLine1.Location = new System.Drawing.Point(12, 84);
             this.grpLine1.Name = "grpLine1";
             this.grpLine1.Size = new System.Drawing.Size(599, 13);
-            this.grpLine1.TabIndex = 17;
+            this.grpLine1.TabIndex = 6;
             this.grpLine1.TabStop = false;
             // 
             // txtDescription
             // 
-            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescription.Location = new System.Drawing.Point(12, 103);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescription.Size = new System.Drawing.Size(599, 296);
-            this.txtDescription.TabIndex = 24;
+            this.txtDescription.TabIndex = 7;
             // 
             // btnOK
             // 
@@ -107,7 +107,7 @@
             this.btnOK.Location = new System.Drawing.Point(536, 12);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 25;
+            this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
@@ -120,7 +120,7 @@
             this.chkStartup.Location = new System.Drawing.Point(12, 406);
             this.chkStartup.Name = "chkStartup";
             this.chkStartup.Size = new System.Drawing.Size(107, 17);
-            this.chkStartup.TabIndex = 26;
+            this.chkStartup.TabIndex = 8;
             this.chkStartup.Text = "Display at startup";
             this.chkStartup.UseVisualStyleBackColor = true;
             this.chkStartup.CheckedChanged += new System.EventHandler(this.ChkStartup_CheckedChanged);
@@ -131,7 +131,7 @@
             this.MoreEwsEditor.Location = new System.Drawing.Point(399, 65);
             this.MoreEwsEditor.Name = "MoreEwsEditor";
             this.MoreEwsEditor.Size = new System.Drawing.Size(212, 13);
-            this.MoreEwsEditor.TabIndex = 27;
+            this.MoreEwsEditor.TabIndex = 2;
             this.MoreEwsEditor.TabStop = true;
             this.MoreEwsEditor.Text = "More EWSEditor Info...";
             this.MoreEwsEditor.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -143,7 +143,7 @@
             this.CodeGalleryLink.Location = new System.Drawing.Point(381, 38);
             this.CodeGalleryLink.Name = "CodeGalleryLink";
             this.CodeGalleryLink.Size = new System.Drawing.Size(230, 13);
-            this.CodeGalleryLink.TabIndex = 28;
+            this.CodeGalleryLink.TabIndex = 1;
             this.CodeGalleryLink.TabStop = true;
             this.CodeGalleryLink.Text = "EWSEditor Project Website";
             this.CodeGalleryLink.TextAlign = System.Drawing.ContentAlignment.TopRight;

@@ -54,7 +54,7 @@
             this.lvItems.Location = new System.Drawing.Point(1, 383);
             this.lvItems.Name = "lvItems";
             this.lvItems.Size = new System.Drawing.Size(851, 151);
-            this.lvItems.TabIndex = 33;
+            this.lvItems.TabIndex = 14;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             // 
             // txtSearchForMailboxes
@@ -66,7 +66,7 @@
             this.txtSearchForMailboxes.Multiline = true;
             this.txtSearchForMailboxes.Name = "txtSearchForMailboxes";
             this.txtSearchForMailboxes.Size = new System.Drawing.Size(788, 43);
-            this.txtSearchForMailboxes.TabIndex = 52;
+            this.txtSearchForMailboxes.TabIndex = 3;
             // 
             // chkExpandGroupMemberships
             // 
@@ -74,7 +74,7 @@
             this.chkExpandGroupMemberships.Location = new System.Drawing.Point(179, 16);
             this.chkExpandGroupMemberships.Name = "chkExpandGroupMemberships";
             this.chkExpandGroupMemberships.Size = new System.Drawing.Size(159, 17);
-            this.chkExpandGroupMemberships.TabIndex = 51;
+            this.chkExpandGroupMemberships.TabIndex = 1;
             this.chkExpandGroupMemberships.Text = "Expand Group Memberships";
             this.chkExpandGroupMemberships.UseVisualStyleBackColor = true;
             // 
@@ -83,7 +83,7 @@
             this.btnListSearchableMailboxes.Location = new System.Drawing.Point(12, 12);
             this.btnListSearchableMailboxes.Name = "btnListSearchableMailboxes";
             this.btnListSearchableMailboxes.Size = new System.Drawing.Size(146, 23);
-            this.btnListSearchableMailboxes.TabIndex = 49;
+            this.btnListSearchableMailboxes.TabIndex = 0;
             this.btnListSearchableMailboxes.Text = "List Searchable Mailboxes";
             this.btnListSearchableMailboxes.UseVisualStyleBackColor = true;
             this.btnListSearchableMailboxes.Click += new System.EventHandler(this.btnListSearchableMailboxes_Click);
@@ -97,14 +97,14 @@
             this.txtMailboxSearchString.Multiline = true;
             this.txtMailboxSearchString.Name = "txtMailboxSearchString";
             this.txtMailboxSearchString.Size = new System.Drawing.Size(791, 75);
-            this.txtMailboxSearchString.TabIndex = 48;
+            this.txtMailboxSearchString.TabIndex = 13;
             // 
             // btnMailboxSearch
             // 
             this.btnMailboxSearch.Location = new System.Drawing.Point(12, 273);
             this.btnMailboxSearch.Name = "btnMailboxSearch";
             this.btnMailboxSearch.Size = new System.Drawing.Size(123, 23);
-            this.btnMailboxSearch.TabIndex = 46;
+            this.btnMailboxSearch.TabIndex = 5;
             this.btnMailboxSearch.Text = "Mailbox Search";
             this.btnMailboxSearch.UseVisualStyleBackColor = true;
             this.btnMailboxSearch.Click += new System.EventHandler(this.btnMailboxSearch_Click);
@@ -116,7 +116,7 @@
             this.lvMailboxes.Location = new System.Drawing.Point(1, 88);
             this.lvMailboxes.Name = "lvMailboxes";
             this.lvMailboxes.Size = new System.Drawing.Size(851, 165);
-            this.lvMailboxes.TabIndex = 53;
+            this.lvMailboxes.TabIndex = 4;
             this.lvMailboxes.UseCompatibleStateImageBehavior = false;
             this.lvMailboxes.SelectedIndexChanged += new System.EventHandler(this.lvMailboxes_SelectedIndexChanged);
             // 
@@ -126,7 +126,7 @@
             this.label3.Location = new System.Drawing.Point(14, 305);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
-            this.label3.TabIndex = 47;
+            this.label3.TabIndex = 12;
             this.label3.Text = "Serach:";
             // 
             // label4
@@ -135,7 +135,7 @@
             this.label4.Location = new System.Drawing.Point(14, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
-            this.label4.TabIndex = 50;
+            this.label4.TabIndex = 2;
             this.label4.Text = "Search:";
             // 
             // numPageSize
@@ -148,7 +148,7 @@
             0});
             this.numPageSize.Name = "numPageSize";
             this.numPageSize.Size = new System.Drawing.Size(120, 20);
-            this.numPageSize.TabIndex = 55;
+            this.numPageSize.TabIndex = 9;
             this.numPageSize.Value = new decimal(new int[] {
             1000,
             0,
@@ -161,7 +161,7 @@
             this.label2.Location = new System.Drawing.Point(393, 276);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 54;
+            this.label2.TabIndex = 8;
             this.label2.Text = "Page Size:";
             // 
             // label1
@@ -170,7 +170,7 @@
             this.label1.Location = new System.Drawing.Point(141, 282);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 13);
-            this.label1.TabIndex = 57;
+            this.label1.TabIndex = 6;
             this.label1.Text = "Search Location:";
             // 
             // cmboSearchLocation
@@ -183,7 +183,7 @@
             this.cmboSearchLocation.Location = new System.Drawing.Point(235, 276);
             this.cmboSearchLocation.Name = "cmboSearchLocation";
             this.cmboSearchLocation.Size = new System.Drawing.Size(132, 21);
-            this.cmboSearchLocation.TabIndex = 56;
+            this.cmboSearchLocation.TabIndex = 7;
             this.cmboSearchLocation.Text = "PrimaryOnly";
             // 
             // label5
@@ -192,7 +192,7 @@
             this.label5.Location = new System.Drawing.Point(600, 278);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 13);
-            this.label5.TabIndex = 59;
+            this.label5.TabIndex = 10;
             this.label5.Text = "SearchResultType:";
             this.label5.Visible = false;
             // 
@@ -205,7 +205,7 @@
             this.txtSearchResultType.Location = new System.Drawing.Point(716, 273);
             this.txtSearchResultType.Name = "txtSearchResultType";
             this.txtSearchResultType.Size = new System.Drawing.Size(126, 21);
-            this.txtSearchResultType.TabIndex = 58;
+            this.txtSearchResultType.TabIndex = 11;
             this.txtSearchResultType.Text = "PreviewOnly";
             this.txtSearchResultType.Visible = false;
             // 

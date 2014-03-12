@@ -50,7 +50,7 @@
             this.OkButton.Location = new System.Drawing.Point(153, 214);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
-            this.OkButton.TabIndex = 1;
+            this.OkButton.TabIndex = 5;
             this.OkButton.Text = "OK";
             this.OkButton.UseVisualStyleBackColor = true;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
@@ -62,7 +62,7 @@
             this.MyCancelButton.Location = new System.Drawing.Point(234, 214);
             this.MyCancelButton.Name = "MyCancelButton";
             this.MyCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.MyCancelButton.TabIndex = 2;
+            this.MyCancelButton.TabIndex = 6;
             this.MyCancelButton.Text = "Cancel";
             this.MyCancelButton.UseVisualStyleBackColor = true;
             // 
@@ -76,7 +76,7 @@
             this.AttendeeInfoGroup.Location = new System.Drawing.Point(10, 70);
             this.AttendeeInfoGroup.Name = "AttendeeInfoGroup";
             this.AttendeeInfoGroup.Size = new System.Drawing.Size(299, 131);
-            this.AttendeeInfoGroup.TabIndex = 44;
+            this.AttendeeInfoGroup.TabIndex = 4;
             this.AttendeeInfoGroup.TabStop = false;
             this.AttendeeInfoGroup.Text = "Attendee Settings";
             // 
@@ -85,7 +85,7 @@
             this.AttendeeTypeLabelName.Location = new System.Drawing.Point(25, 37);
             this.AttendeeTypeLabelName.Name = "AttendeeTypeLabelName";
             this.AttendeeTypeLabelName.Size = new System.Drawing.Size(75, 18);
-            this.AttendeeTypeLabelName.TabIndex = 49;
+            this.AttendeeTypeLabelName.TabIndex = 1;
             this.AttendeeTypeLabelName.Text = "AttendeeType:";
             // 
             // ExcludeConflictsLabelDesc
@@ -93,7 +93,7 @@
             this.ExcludeConflictsLabelDesc.Location = new System.Drawing.Point(11, 73);
             this.ExcludeConflictsLabelDesc.Name = "ExcludeConflictsLabelDesc";
             this.ExcludeConflictsLabelDesc.Size = new System.Drawing.Size(262, 18);
-            this.ExcludeConflictsLabelDesc.TabIndex = 48;
+            this.ExcludeConflictsLabelDesc.TabIndex = 3;
             this.ExcludeConflictsLabelDesc.Text = "Should conflicts be excluded from availabilty results?";
             // 
             // ExcludeConflictsCheck
@@ -102,7 +102,7 @@
             this.ExcludeConflictsCheck.Location = new System.Drawing.Point(28, 94);
             this.ExcludeConflictsCheck.Name = "ExcludeConflictsCheck";
             this.ExcludeConflictsCheck.Size = new System.Drawing.Size(110, 20);
-            this.ExcludeConflictsCheck.TabIndex = 1;
+            this.ExcludeConflictsCheck.TabIndex = 4;
             this.ExcludeConflictsCheck.Text = "ExcludeConflicts:";
             this.ExcludeConflictsCheck.UseVisualStyleBackColor = true;
             // 
@@ -111,23 +111,23 @@
             this.AttendeeTypeLabelDesc.Location = new System.Drawing.Point(11, 16);
             this.AttendeeTypeLabelDesc.Name = "AttendeeTypeLabelDesc";
             this.AttendeeTypeLabelDesc.Size = new System.Drawing.Size(262, 18);
-            this.AttendeeTypeLabelDesc.TabIndex = 46;
+            this.AttendeeTypeLabelDesc.TabIndex = 0;
             this.AttendeeTypeLabelDesc.Text = "Select the meeting attendee type.";
             // 
-            // AttendeeTypeCombo
+            // TempAttendeeTypeCombo
             // 
             this.TempAttendeeTypeCombo.FormattingEnabled = true;
             this.TempAttendeeTypeCombo.Location = new System.Drawing.Point(106, 36);
-            this.TempAttendeeTypeCombo.Name = "AttendeeTypeCombo";
+            this.TempAttendeeTypeCombo.Name = "TempAttendeeTypeCombo";
             this.TempAttendeeTypeCombo.Size = new System.Drawing.Size(164, 21);
-            this.TempAttendeeTypeCombo.TabIndex = 0;
+            this.TempAttendeeTypeCombo.TabIndex = 2;
             // 
             // SmtpAddressLabelName
             // 
             this.SmtpAddressLabelName.Location = new System.Drawing.Point(21, 46);
             this.SmtpAddressLabelName.Name = "SmtpAddressLabelName";
             this.SmtpAddressLabelName.Size = new System.Drawing.Size(89, 18);
-            this.SmtpAddressLabelName.TabIndex = 50;
+            this.SmtpAddressLabelName.TabIndex = 1;
             this.SmtpAddressLabelName.Text = "Attendee SMTP:";
             // 
             // SmtpAddressLabelDesc
@@ -135,7 +135,7 @@
             this.SmtpAddressLabelDesc.Location = new System.Drawing.Point(7, 9);
             this.SmtpAddressLabelDesc.Name = "SmtpAddressLabelDesc";
             this.SmtpAddressLabelDesc.Size = new System.Drawing.Size(302, 32);
-            this.SmtpAddressLabelDesc.TabIndex = 44;
+            this.SmtpAddressLabelDesc.TabIndex = 0;
             this.SmtpAddressLabelDesc.Text = "Enter the attendee\'s SMTP address or use the ResolveNames dialog to find it.";
             // 
             // ResolveNamesButton
@@ -143,7 +143,7 @@
             this.ResolveNamesButton.Location = new System.Drawing.Point(280, 44);
             this.ResolveNamesButton.Name = "ResolveNamesButton";
             this.ResolveNamesButton.Size = new System.Drawing.Size(26, 20);
-            this.ResolveNamesButton.TabIndex = 43;
+            this.ResolveNamesButton.TabIndex = 3;
             this.ResolveNamesButton.Text = "...";
             this.ResolveNamesButton.UseVisualStyleBackColor = true;
             this.ResolveNamesButton.Click += new System.EventHandler(this.ResolveNamesButton_Click);
@@ -153,7 +153,7 @@
             this.SmtpAddressText.Location = new System.Drawing.Point(116, 44);
             this.SmtpAddressText.Name = "SmtpAddressText";
             this.SmtpAddressText.Size = new System.Drawing.Size(164, 20);
-            this.SmtpAddressText.TabIndex = 0;
+            this.SmtpAddressText.TabIndex = 2;
             // 
             // AttendeeInfoDialog
             // 

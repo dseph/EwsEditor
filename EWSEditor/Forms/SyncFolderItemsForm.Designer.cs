@@ -54,9 +54,9 @@
             // 
             // lstChanges
             // 
-            this.lstChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lstChanges.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colChangeType,
             this.colIsRead,
@@ -106,8 +106,8 @@
             // 
             // grpSynchronize
             // 
-            this.grpSynchronize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSynchronize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpSynchronize.Controls.Add(this.btnGetFolderId);
             this.grpSynchronize.Controls.Add(this.txtSyncState);
             this.grpSynchronize.Controls.Add(this.label3);
@@ -119,7 +119,7 @@
             this.grpSynchronize.Location = new System.Drawing.Point(12, 12);
             this.grpSynchronize.Name = "grpSynchronize";
             this.grpSynchronize.Size = new System.Drawing.Size(858, 158);
-            this.grpSynchronize.TabIndex = 6;
+            this.grpSynchronize.TabIndex = 0;
             this.grpSynchronize.TabStop = false;
             this.grpSynchronize.Text = "SyncFolderItems Settings...";
             this.grpSynchronize.Enter += new System.EventHandler(this.grpSynchronize_Enter);
@@ -130,28 +130,28 @@
             this.btnGetFolderId.Location = new System.Drawing.Point(827, 22);
             this.btnGetFolderId.Name = "btnGetFolderId";
             this.btnGetFolderId.Size = new System.Drawing.Size(25, 23);
-            this.btnGetFolderId.TabIndex = 24;
+            this.btnGetFolderId.TabIndex = 2;
             this.btnGetFolderId.Text = "...";
             this.btnGetFolderId.UseVisualStyleBackColor = true;
             this.btnGetFolderId.Click += new System.EventHandler(this.btnGetFolderId_Click);
             // 
             // txtSyncState
             // 
-            this.txtSyncState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSyncState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSyncState.Location = new System.Drawing.Point(104, 55);
             this.txtSyncState.Multiline = true;
             this.txtSyncState.Name = "txtSyncState";
             this.txtSyncState.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtSyncState.Size = new System.Drawing.Size(748, 68);
-            this.txtSyncState.TabIndex = 13;
+            this.txtSyncState.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.Location = new System.Drawing.Point(7, 137);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 15);
-            this.label3.TabIndex = 12;
+            this.label3.TabIndex = 5;
             this.label3.Text = "Property Set:";
             // 
             // btnPropSet
@@ -159,27 +159,27 @@
             this.btnPropSet.Location = new System.Drawing.Point(105, 129);
             this.btnPropSet.Name = "btnPropSet";
             this.btnPropSet.Size = new System.Drawing.Size(96, 23);
-            this.btnPropSet.TabIndex = 11;
+            this.btnPropSet.TabIndex = 6;
             this.btnPropSet.Text = "Configure...";
             this.btnPropSet.UseVisualStyleBackColor = true;
             this.btnPropSet.Click += new System.EventHandler(this.btnPropSet_Click);
             // 
             // txtFolderId
             // 
-            this.txtFolderId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFolderId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFolderId.Location = new System.Drawing.Point(104, 24);
             this.txtFolderId.Name = "txtFolderId";
             this.txtFolderId.ReadOnly = true;
             this.txtFolderId.Size = new System.Drawing.Size(717, 20);
-            this.txtFolderId.TabIndex = 9;
+            this.txtFolderId.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.Location = new System.Drawing.Point(6, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 23);
-            this.label2.TabIndex = 8;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Folder Id:";
             // 
             // btnSynchronize
@@ -188,7 +188,7 @@
             this.btnSynchronize.Location = new System.Drawing.Point(777, 129);
             this.btnSynchronize.Name = "btnSynchronize";
             this.btnSynchronize.Size = new System.Drawing.Size(75, 23);
-            this.btnSynchronize.TabIndex = 10;
+            this.btnSynchronize.TabIndex = 7;
             this.btnSynchronize.Text = "Sync";
             this.btnSynchronize.UseVisualStyleBackColor = true;
             this.btnSynchronize.Click += new System.EventHandler(this.btnSynchronize_Click);
@@ -198,7 +198,7 @@
             this.label1.Location = new System.Drawing.Point(6, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 23);
-            this.label1.TabIndex = 6;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Sync State:";
             // 
             // label4
@@ -206,7 +206,7 @@
             this.label4.Location = new System.Drawing.Point(18, 173);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 23);
-            this.label4.TabIndex = 13;
+            this.label4.TabIndex = 1;
             this.label4.Text = "Changes Returned...";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
@@ -216,7 +216,7 @@
             this.btnClose.Location = new System.Drawing.Point(795, 580);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 14;
+            this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -237,7 +237,7 @@
             this.btnTestGetAllChanges.Location = new System.Drawing.Point(16, 549);
             this.btnTestGetAllChanges.Name = "btnTestGetAllChanges";
             this.btnTestGetAllChanges.Size = new System.Drawing.Size(346, 23);
-            this.btnTestGetAllChanges.TabIndex = 16;
+            this.btnTestGetAllChanges.TabIndex = 3;
             this.btnTestGetAllChanges.Text = "Show Properties of All Items - one LoadPropertiesForItems call";
             this.btnTestGetAllChanges.UseVisualStyleBackColor = true;
             this.btnTestGetAllChanges.Click += new System.EventHandler(this.btnTestGetAllChanges_Click);
@@ -248,7 +248,7 @@
             this.btnPropertiesForAllSeperateCalls.Location = new System.Drawing.Point(368, 549);
             this.btnPropertiesForAllSeperateCalls.Name = "btnPropertiesForAllSeperateCalls";
             this.btnPropertiesForAllSeperateCalls.Size = new System.Drawing.Size(346, 23);
-            this.btnPropertiesForAllSeperateCalls.TabIndex = 17;
+            this.btnPropertiesForAllSeperateCalls.TabIndex = 4;
             this.btnPropertiesForAllSeperateCalls.Text = "Show Properties of All Items - seperate LoadPropertiesForItems calls";
             this.btnPropertiesForAllSeperateCalls.UseVisualStyleBackColor = true;
             this.btnPropertiesForAllSeperateCalls.Click += new System.EventHandler(this.btnPropertiesForAllSeperateCalls_Click);

@@ -135,7 +135,7 @@
             this.txtCompanyName.Location = new System.Drawing.Point(81, 140);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(329, 20);
-            this.txtCompanyName.TabIndex = 3;
+            this.txtCompanyName.TabIndex = 7;
             // 
             // lblCompany
             // 
@@ -143,7 +143,7 @@
             this.lblCompany.Location = new System.Drawing.Point(18, 141);
             this.lblCompany.Name = "lblCompany";
             this.lblCompany.Size = new System.Drawing.Size(54, 13);
-            this.lblCompany.TabIndex = 2;
+            this.lblCompany.TabIndex = 6;
             this.lblCompany.Text = "Company:";
             // 
             // txtJobTitle
@@ -151,7 +151,7 @@
             this.txtJobTitle.Location = new System.Drawing.Point(81, 166);
             this.txtJobTitle.Name = "txtJobTitle";
             this.txtJobTitle.Size = new System.Drawing.Size(329, 20);
-            this.txtJobTitle.TabIndex = 5;
+            this.txtJobTitle.TabIndex = 9;
             // 
             // lblJobTitle
             // 
@@ -159,7 +159,7 @@
             this.lblJobTitle.Location = new System.Drawing.Point(22, 166);
             this.lblJobTitle.Name = "lblJobTitle";
             this.lblJobTitle.Size = new System.Drawing.Size(50, 13);
-            this.lblJobTitle.TabIndex = 4;
+            this.lblJobTitle.TabIndex = 8;
             this.lblJobTitle.Text = "Job Title:";
             // 
             // txtMiddleName
@@ -167,7 +167,7 @@
             this.txtMiddleName.Location = new System.Drawing.Point(81, 82);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(329, 20);
-            this.txtMiddleName.TabIndex = 7;
+            this.txtMiddleName.TabIndex = 3;
             // 
             // lblMiddleName
             // 
@@ -175,7 +175,7 @@
             this.lblMiddleName.Location = new System.Drawing.Point(2, 82);
             this.lblMiddleName.Name = "lblMiddleName";
             this.lblMiddleName.Size = new System.Drawing.Size(72, 13);
-            this.lblMiddleName.TabIndex = 6;
+            this.lblMiddleName.TabIndex = 2;
             this.lblMiddleName.Text = "Middle Name:";
             // 
             // txtSurname
@@ -183,7 +183,7 @@
             this.txtSurname.Location = new System.Drawing.Point(81, 108);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(329, 20);
-            this.txtSurname.TabIndex = 9;
+            this.txtSurname.TabIndex = 5;
             // 
             // lblSurname
             // 
@@ -191,7 +191,7 @@
             this.lblSurname.Location = new System.Drawing.Point(18, 111);
             this.lblSurname.Name = "lblSurname";
             this.lblSurname.Size = new System.Drawing.Size(52, 13);
-            this.lblSurname.TabIndex = 8;
+            this.lblSurname.TabIndex = 4;
             this.lblSurname.Text = "Surname:";
             // 
             // btnSave
@@ -199,7 +199,7 @@
             this.btnSave.Location = new System.Drawing.Point(6, 13);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 17;
+            this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnOK_Click);
@@ -291,7 +291,7 @@
             this.txtBA_State.Location = new System.Drawing.Point(66, 103);
             this.txtBA_State.Name = "txtBA_State";
             this.txtBA_State.Size = new System.Drawing.Size(314, 20);
-            this.txtBA_State.TabIndex = 37;
+            this.txtBA_State.TabIndex = 5;
             // 
             // label1
             // 
@@ -299,7 +299,7 @@
             this.label1.Location = new System.Drawing.Point(23, 106);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 36;
+            this.label1.TabIndex = 3;
             this.label1.Text = "State:";
             // 
             // txtBA_City
@@ -307,7 +307,7 @@
             this.txtBA_City.Location = new System.Drawing.Point(66, 77);
             this.txtBA_City.Name = "txtBA_City";
             this.txtBA_City.Size = new System.Drawing.Size(314, 20);
-            this.txtBA_City.TabIndex = 35;
+            this.txtBA_City.TabIndex = 2;
             this.txtBA_City.TextChanged += new System.EventHandler(this.txtBA_City_TextChanged);
             // 
             // label2
@@ -316,7 +316,7 @@
             this.label2.Location = new System.Drawing.Point(31, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 13);
-            this.label2.TabIndex = 34;
+            this.label2.TabIndex = 2;
             this.label2.Text = "City:";
             // 
             // txtBA_CountryOrRegion
@@ -324,7 +324,7 @@
             this.txtBA_CountryOrRegion.Location = new System.Drawing.Point(66, 155);
             this.txtBA_CountryOrRegion.Name = "txtBA_CountryOrRegion";
             this.txtBA_CountryOrRegion.Size = new System.Drawing.Size(314, 20);
-            this.txtBA_CountryOrRegion.TabIndex = 33;
+            this.txtBA_CountryOrRegion.TabIndex = 7;
             // 
             // label3
             // 
@@ -332,7 +332,7 @@
             this.label3.Location = new System.Drawing.Point(12, 158);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 32;
+            this.label3.TabIndex = 6;
             this.label3.Text = "Country:";
             // 
             // txtBA_PostalCode
@@ -340,7 +340,7 @@
             this.txtBA_PostalCode.Location = new System.Drawing.Point(66, 129);
             this.txtBA_PostalCode.Name = "txtBA_PostalCode";
             this.txtBA_PostalCode.Size = new System.Drawing.Size(314, 20);
-            this.txtBA_PostalCode.TabIndex = 31;
+            this.txtBA_PostalCode.TabIndex = 5;
             // 
             // label4
             // 
@@ -348,7 +348,7 @@
             this.label4.Location = new System.Drawing.Point(5, 129);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
-            this.label4.TabIndex = 30;
+            this.label4.TabIndex = 4;
             this.label4.Text = "Zip Code:";
             // 
             // txtBA_Street
@@ -358,7 +358,7 @@
             this.txtBA_Street.Name = "txtBA_Street";
             this.txtBA_Street.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtBA_Street.Size = new System.Drawing.Size(314, 57);
-            this.txtBA_Street.TabIndex = 29;
+            this.txtBA_Street.TabIndex = 1;
             // 
             // label5
             // 
@@ -366,7 +366,7 @@
             this.label5.Location = new System.Drawing.Point(10, 17);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 13);
-            this.label5.TabIndex = 28;
+            this.label5.TabIndex = 0;
             this.label5.Text = "Address:";
             // 
             // txtOA_CountryOrRegion
@@ -469,7 +469,7 @@
             this.txtNotes.ReadOnly = true;
             this.txtNotes.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtNotes.Size = new System.Drawing.Size(465, 196);
-            this.txtNotes.TabIndex = 47;
+            this.txtNotes.TabIndex = 12;
             this.txtNotes.TextChanged += new System.EventHandler(this.txtNotes_TextChanged);
             // 
             // label16
@@ -478,7 +478,7 @@
             this.label16.Location = new System.Drawing.Point(465, 198);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(90, 13);
-            this.label16.TabIndex = 48;
+            this.label16.TabIndex = 11;
             this.label16.Text = "Notes (read only):";
             // 
             // txtAttachments
@@ -489,7 +489,7 @@
             this.txtAttachments.ReadOnly = true;
             this.txtAttachments.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtAttachments.Size = new System.Drawing.Size(921, 88);
-            this.txtAttachments.TabIndex = 49;
+            this.txtAttachments.TabIndex = 12;
             // 
             // label17
             // 
@@ -497,7 +497,7 @@
             this.label17.Location = new System.Drawing.Point(12, 412);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(121, 13);
-            this.label17.TabIndex = 50;
+            this.label17.TabIndex = 11;
             this.label17.Text = "Attachments (read only):";
             // 
             // lblContactPicture
@@ -515,7 +515,7 @@
             this.label18.Location = new System.Drawing.Point(17, 23);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(73, 13);
-            this.label18.TabIndex = 52;
+            this.label18.TabIndex = 0;
             this.label18.Text = "Email Address";
             // 
             // txtEmailAddress1_Address
@@ -523,28 +523,28 @@
             this.txtEmailAddress1_Address.Location = new System.Drawing.Point(20, 39);
             this.txtEmailAddress1_Address.Name = "txtEmailAddress1_Address";
             this.txtEmailAddress1_Address.Size = new System.Drawing.Size(166, 20);
-            this.txtEmailAddress1_Address.TabIndex = 53;
+            this.txtEmailAddress1_Address.TabIndex = 6;
             // 
             // txtEmailAddress1_Name
             // 
             this.txtEmailAddress1_Name.Location = new System.Drawing.Point(193, 34);
             this.txtEmailAddress1_Name.Name = "txtEmailAddress1_Name";
             this.txtEmailAddress1_Name.Size = new System.Drawing.Size(166, 20);
-            this.txtEmailAddress1_Name.TabIndex = 54;
+            this.txtEmailAddress1_Name.TabIndex = 7;
             // 
             // txtEmailAddress1_MailboxType
             // 
             this.txtEmailAddress1_MailboxType.Location = new System.Drawing.Point(365, 32);
             this.txtEmailAddress1_MailboxType.Name = "txtEmailAddress1_MailboxType";
             this.txtEmailAddress1_MailboxType.Size = new System.Drawing.Size(100, 20);
-            this.txtEmailAddress1_MailboxType.TabIndex = 55;
+            this.txtEmailAddress1_MailboxType.TabIndex = 8;
             // 
             // txtEmailAddress1_RoutingType
             // 
             this.txtEmailAddress1_RoutingType.Location = new System.Drawing.Point(479, 30);
             this.txtEmailAddress1_RoutingType.Name = "txtEmailAddress1_RoutingType";
             this.txtEmailAddress1_RoutingType.Size = new System.Drawing.Size(91, 20);
-            this.txtEmailAddress1_RoutingType.TabIndex = 56;
+            this.txtEmailAddress1_RoutingType.TabIndex = 9;
             // 
             // label19
             // 
@@ -552,7 +552,7 @@
             this.label19.Location = new System.Drawing.Point(190, 18);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(35, 13);
-            this.label19.TabIndex = 57;
+            this.label19.TabIndex = 1;
             this.label19.Text = "Name";
             // 
             // label20
@@ -561,7 +561,7 @@
             this.label20.Location = new System.Drawing.Point(362, 14);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(67, 13);
-            this.label20.TabIndex = 58;
+            this.label20.TabIndex = 2;
             this.label20.Text = "MailboxType";
             // 
             // label21
@@ -570,7 +570,7 @@
             this.label21.Location = new System.Drawing.Point(483, 14);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(68, 13);
-            this.label21.TabIndex = 59;
+            this.label21.TabIndex = 3;
             this.label21.Text = "RoutingType";
             // 
             // label22
@@ -579,7 +579,7 @@
             this.label22.Location = new System.Drawing.Point(573, 14);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(62, 13);
-            this.label22.TabIndex = 60;
+            this.label22.TabIndex = 4;
             this.label22.Text = "Id.UniqueId";
             // 
             // label23
@@ -588,7 +588,7 @@
             this.label23.Location = new System.Drawing.Point(673, 12);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(74, 13);
-            this.label23.TabIndex = 61;
+            this.label23.TabIndex = 5;
             this.label23.Text = "Id.ChangeKey";
             // 
             // txtEmailAddress1_Id_UniqueId
@@ -596,91 +596,91 @@
             this.txtEmailAddress1_Id_UniqueId.Location = new System.Drawing.Point(576, 30);
             this.txtEmailAddress1_Id_UniqueId.Name = "txtEmailAddress1_Id_UniqueId";
             this.txtEmailAddress1_Id_UniqueId.Size = new System.Drawing.Size(94, 20);
-            this.txtEmailAddress1_Id_UniqueId.TabIndex = 62;
+            this.txtEmailAddress1_Id_UniqueId.TabIndex = 10;
             // 
             // txtEmailAddress1_Id_ChangeKey
             // 
             this.txtEmailAddress1_Id_ChangeKey.Location = new System.Drawing.Point(676, 28);
             this.txtEmailAddress1_Id_ChangeKey.Name = "txtEmailAddress1_Id_ChangeKey";
             this.txtEmailAddress1_Id_ChangeKey.Size = new System.Drawing.Size(108, 20);
-            this.txtEmailAddress1_Id_ChangeKey.TabIndex = 63;
+            this.txtEmailAddress1_Id_ChangeKey.TabIndex = 11;
             // 
             // txtEmailAddress2_Id_ChangeKey
             // 
             this.txtEmailAddress2_Id_ChangeKey.Location = new System.Drawing.Point(676, 54);
             this.txtEmailAddress2_Id_ChangeKey.Name = "txtEmailAddress2_Id_ChangeKey";
             this.txtEmailAddress2_Id_ChangeKey.Size = new System.Drawing.Size(108, 20);
-            this.txtEmailAddress2_Id_ChangeKey.TabIndex = 69;
+            this.txtEmailAddress2_Id_ChangeKey.TabIndex = 17;
             // 
             // txtEmailAddress2_Id_UniqueId
             // 
             this.txtEmailAddress2_Id_UniqueId.Location = new System.Drawing.Point(576, 56);
             this.txtEmailAddress2_Id_UniqueId.Name = "txtEmailAddress2_Id_UniqueId";
             this.txtEmailAddress2_Id_UniqueId.Size = new System.Drawing.Size(94, 20);
-            this.txtEmailAddress2_Id_UniqueId.TabIndex = 68;
+            this.txtEmailAddress2_Id_UniqueId.TabIndex = 16;
             // 
             // txtEmailAddress2_RoutingType
             // 
             this.txtEmailAddress2_RoutingType.Location = new System.Drawing.Point(479, 57);
             this.txtEmailAddress2_RoutingType.Name = "txtEmailAddress2_RoutingType";
             this.txtEmailAddress2_RoutingType.Size = new System.Drawing.Size(91, 20);
-            this.txtEmailAddress2_RoutingType.TabIndex = 67;
+            this.txtEmailAddress2_RoutingType.TabIndex = 15;
             // 
             // txtEmailAddress2_MailboxType
             // 
             this.txtEmailAddress2_MailboxType.Location = new System.Drawing.Point(365, 59);
             this.txtEmailAddress2_MailboxType.Name = "txtEmailAddress2_MailboxType";
             this.txtEmailAddress2_MailboxType.Size = new System.Drawing.Size(100, 20);
-            this.txtEmailAddress2_MailboxType.TabIndex = 66;
+            this.txtEmailAddress2_MailboxType.TabIndex = 14;
             // 
             // txtEmailAddress2_Name
             // 
             this.txtEmailAddress2_Name.Location = new System.Drawing.Point(193, 61);
             this.txtEmailAddress2_Name.Name = "txtEmailAddress2_Name";
             this.txtEmailAddress2_Name.Size = new System.Drawing.Size(166, 20);
-            this.txtEmailAddress2_Name.TabIndex = 65;
+            this.txtEmailAddress2_Name.TabIndex = 13;
             // 
             // txtEmailAddress2_Address
             // 
             this.txtEmailAddress2_Address.Location = new System.Drawing.Point(20, 65);
             this.txtEmailAddress2_Address.Name = "txtEmailAddress2_Address";
             this.txtEmailAddress2_Address.Size = new System.Drawing.Size(166, 20);
-            this.txtEmailAddress2_Address.TabIndex = 64;
+            this.txtEmailAddress2_Address.TabIndex = 12;
             // 
             // txtEmailAddress3_Id_ChangeKey
             // 
             this.txtEmailAddress3_Id_ChangeKey.Location = new System.Drawing.Point(676, 80);
             this.txtEmailAddress3_Id_ChangeKey.Name = "txtEmailAddress3_Id_ChangeKey";
             this.txtEmailAddress3_Id_ChangeKey.Size = new System.Drawing.Size(108, 20);
-            this.txtEmailAddress3_Id_ChangeKey.TabIndex = 75;
+            this.txtEmailAddress3_Id_ChangeKey.TabIndex = 23;
             // 
             // txtEmailAddress3_Id_UniqueId
             // 
             this.txtEmailAddress3_Id_UniqueId.Location = new System.Drawing.Point(576, 82);
             this.txtEmailAddress3_Id_UniqueId.Name = "txtEmailAddress3_Id_UniqueId";
             this.txtEmailAddress3_Id_UniqueId.Size = new System.Drawing.Size(94, 20);
-            this.txtEmailAddress3_Id_UniqueId.TabIndex = 74;
+            this.txtEmailAddress3_Id_UniqueId.TabIndex = 22;
             // 
             // txtEmailAddress3_RoutingType
             // 
             this.txtEmailAddress3_RoutingType.Location = new System.Drawing.Point(479, 83);
             this.txtEmailAddress3_RoutingType.Name = "txtEmailAddress3_RoutingType";
             this.txtEmailAddress3_RoutingType.Size = new System.Drawing.Size(91, 20);
-            this.txtEmailAddress3_RoutingType.TabIndex = 73;
+            this.txtEmailAddress3_RoutingType.TabIndex = 21;
             // 
             // txtEmailAddress3_MailboxType
             // 
             this.txtEmailAddress3_MailboxType.Location = new System.Drawing.Point(365, 85);
             this.txtEmailAddress3_MailboxType.Name = "txtEmailAddress3_MailboxType";
             this.txtEmailAddress3_MailboxType.Size = new System.Drawing.Size(100, 20);
-            this.txtEmailAddress3_MailboxType.TabIndex = 72;
+            this.txtEmailAddress3_MailboxType.TabIndex = 20;
             // 
             // txtEmailAddress3_Name
             // 
             this.txtEmailAddress3_Name.Location = new System.Drawing.Point(193, 87);
             this.txtEmailAddress3_Name.Name = "txtEmailAddress3_Name";
             this.txtEmailAddress3_Name.Size = new System.Drawing.Size(166, 20);
-            this.txtEmailAddress3_Name.TabIndex = 71;
+            this.txtEmailAddress3_Name.TabIndex = 19;
             this.txtEmailAddress3_Name.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
             // 
             // txtEmailAddress3_Address
@@ -688,7 +688,7 @@
             this.txtEmailAddress3_Address.Location = new System.Drawing.Point(20, 91);
             this.txtEmailAddress3_Address.Name = "txtEmailAddress3_Address";
             this.txtEmailAddress3_Address.Size = new System.Drawing.Size(166, 20);
-            this.txtEmailAddress3_Address.TabIndex = 70;
+            this.txtEmailAddress3_Address.TabIndex = 18;
             // 
             // tabAddresses
             // 
@@ -699,7 +699,7 @@
             this.tabAddresses.Name = "tabAddresses";
             this.tabAddresses.SelectedIndex = 0;
             this.tabAddresses.Size = new System.Drawing.Size(418, 218);
-            this.tabAddresses.TabIndex = 76;
+            this.tabAddresses.TabIndex = 10;
             // 
             // tabBusiness
             // 
@@ -789,7 +789,7 @@
             this.groupBox1.Location = new System.Drawing.Point(14, 522);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(817, 118);
-            this.groupBox1.TabIndex = 77;
+            this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Addresses (read only)";
             // 
