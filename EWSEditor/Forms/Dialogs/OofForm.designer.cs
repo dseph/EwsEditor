@@ -138,6 +138,7 @@
             this.OofSettingsGroup.TabIndex = 4;
             this.OofSettingsGroup.TabStop = false;
             this.OofSettingsGroup.Text = "OOF Settings";
+            this.OofSettingsGroup.Enter += new System.EventHandler(this.OofSettingsGroup_Enter);
             // 
             // OofEnabledOption
             // 

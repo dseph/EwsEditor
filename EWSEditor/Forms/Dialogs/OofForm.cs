@@ -414,5 +414,10 @@
         }
 
         #endregion
+
+        private void OofSettingsGroup_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -146,6 +146,7 @@
     <Compile Include="Common\ItemTag.cs" />
     <Compile Include="Common\ListViewColumnSorter.cs" />
     <Compile Include="Common\ListViewItemHelper.cs" />
+    <Compile Include="Common\UserAgentHelper.cs" />
     <Compile Include="Forms\AddRemoveAttachments.cs">
       <SubType>Form</SubType>
     </Compile>
