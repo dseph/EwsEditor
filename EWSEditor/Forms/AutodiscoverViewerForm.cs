@@ -32,14 +32,12 @@ namespace EWSEditor.Forms
             //this.TempExchangeVersionCombo.Text = "Exchange2007_SP1";
 
             AutodiscoverService oTempService = new AutodiscoverService();
+
+            cmboUserAgent.Items.Clear();
             cmboUserAgent.Items.Add(oTempService.UserAgent);
-            cmboUserAgent.Items.Add("EwsEditor");
-            cmboUserAgent.Items.Add("Microsoft Office/15.0 (Windows NT 6.1; Microsoft Outlook 15.0.4551; Pro)");
-            cmboUserAgent.Items.Add("Microsoft Office/14.0 (Windows NT 5.1; Microsoft Outlook 14.0.4536; Pro; MSOffice 14)");
-            cmboUserAgent.Items.Add("Microsoft Office/14.0 (Windows NT 6.1; Microsoft Outlook 14.0.5128; Pro)");
-            cmboUserAgent.Items.Add("Microsoft Office/12.0 (Windows NT 6.1; Microsoft Office Word 12.0.6425; Pro)");
-            cmboUserAgent.Items.Add("Microsoft Office/12.0 (Windows NT 5.1; Microsoft Office Outlook 12.0.6554; Pro)");
-            cmboUserAgent.Items.Add("Microsoft Office/12.0 (Windows NT 5.2; Pro)");
+            UserAgentHelper.AddUserAgentsToComboBox(ref cmboUserAgent);
+            cmboUserAgent.Text = oTempService.UserAgent;
+
 
             SetFields();
         }
@@ -63,7 +61,7 @@ namespace EWSEditor.Forms
                 {
                     service = new AutodiscoverService();
                 }
-
+                 
                 // Set the AutodiscoverService credentials
                 service.UseDefaultCredentials = this.chkDefaultWindowsCredentials.Checked;
                 if (!service.UseDefaultCredentials)

@@ -151,7 +151,7 @@ namespace EWSEditor.Forms
             oSearchMailboxesParameters.PageDirection = SearchPageDirection.Next;
             oSearchMailboxesParameters.PerformDeduplication = false;
             oSearchMailboxesParameters.ResultType = oSearchResultType;
-
+             
             ListViewItem oListItem = null;
             oListView.Clear();
             oListView.View = View.Details;
@@ -173,7 +173,7 @@ namespace EWSEditor.Forms
             oListView.Columns.Add("OwaLink", 500, HorizontalAlignment.Left);
 
             oServiceResponseCollection = _CurrentService.SearchMailboxes(oSearchMailboxesParameters);
- 
+            //oSearchMailboxesParameters.PreviewItemResponseShape = new PreviewItemResponseShape( baseshape, extended properties)
  
             //int iMailboxCount = 0;
             int iResponseCount = 0;
