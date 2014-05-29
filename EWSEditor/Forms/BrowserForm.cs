@@ -406,7 +406,7 @@
                     this.CurrentService,
                     folderId,
                     this.CurrentDetailPropertySet);
-
+                 
                 FolderContentForm.Show(
                     string.Format(DisplayStrings.TITLE_CONTENTS_FOLDER, folder.DisplayName),
                     folder,

@@ -347,10 +347,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Resources\EwsRequests.Designer.cs">
+    <Compile Include="Resources\TemplateEwsRequests.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EwsRequests.resx</DependentUpon>
+      <DependentUpon>TemplateEwsRequests.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings\EnvironmentInfo.cs" />
     <Compile Include="Common\ConversionHelper.cs" />
@@ -951,9 +951,9 @@
       <LastGenOutput>DisplayStrings.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\EwsRequests.resx">
+    <EmbeddedResource Include="Resources\TemplateEwsRequests.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>EwsRequests.Designer.cs</LastGenOutput>
+      <LastGenOutput>TemplateEwsRequests.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
