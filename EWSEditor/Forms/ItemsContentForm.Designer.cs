@@ -57,6 +57,10 @@
             this.mnuItemContext.SuspendLayout();
             this.SuspendLayout();
             // 
+            // PropertyDetailsGrid
+            // 
+            this.PropertyDetailsGrid.Load += new System.EventHandler(this.PropertyDetailsGrid_Load);
+            // 
             // mnuItemContext
             // 
             this.mnuItemContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {

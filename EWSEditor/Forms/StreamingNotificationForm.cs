@@ -232,6 +232,7 @@ namespace EWSEditor.Forms
 
                 // Create a new StreamingSubscriptionConnection
                 StreamingSubscriptionConnection CurrentConnection = new StreamingSubscriptionConnection(ThreadLocalService, (int)SubscriptionLifetime.Value);
+               
                 lock (ActiveConnections)
                 {
                     ActiveConnections.Add(CurrentConnection);
@@ -257,7 +258,7 @@ namespace EWSEditor.Forms
                     if (ThreadLocalService.CookieContainer.Count > 0)
                     {
                         System.Net.CookieCollection MyCookies = ThreadLocalService.CookieContainer.GetCookies(ThreadLocalService.Url);
-
+                         
                     }
                     CurrentConnection.Open();
                     
@@ -435,7 +436,7 @@ namespace EWSEditor.Forms
             {
                 ListViewItem item = new ListViewItem();
                 item.Tag = evt;
-                item.Text = evt.GetType().Name;
+                item.Text = evt.GetType().Name;   
 
                 ItemEvent itemevt = (evt is ItemEvent) ? (ItemEvent)evt : null;
 

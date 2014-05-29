@@ -151,6 +151,20 @@ namespace EWSEditor.Forms
             oSearchMailboxesParameters.PageDirection = SearchPageDirection.Next;
             oSearchMailboxesParameters.PerformDeduplication = false;
             oSearchMailboxesParameters.ResultType = oSearchResultType;
+
+            ////*********************************************************************//
+            //PreviewItemResponseShape PIR = new PreviewItemResponseShape();
+
+            //ExtendedPropertyDefinition epd1 = new
+            //    ExtendedPropertyDefinition(0x001A, MapiPropertyType.String); // PR_MESSAGE_CLASS
+            //ExtendedPropertyDefinition epd2 = new
+            //    ExtendedPropertyDefinition(0x0037, MapiPropertyType.String);  // PR_SUBJECT
+            //ExtendedPropertyDefinition[] epa = new ExtendedPropertyDefinition[] { epd1, epd2 };
+            //PIR.BaseShape = PreviewItemBaseShape.Default;
+            //PIR.AdditionalProperties = epa;
+            //oSearchMailboxesParameters.PreviewItemResponseShape = PIR;
+            ////*********************************************************************//
+
              
             ListViewItem oListItem = null;
             oListView.Clear();
@@ -174,7 +188,7 @@ namespace EWSEditor.Forms
 
             oServiceResponseCollection = _CurrentService.SearchMailboxes(oSearchMailboxesParameters);
             //oSearchMailboxesParameters.PreviewItemResponseShape = new PreviewItemResponseShape( baseshape, extended properties)
- 
+  
             //int iMailboxCount = 0;
             int iResponseCount = 0;
             if (oServiceResponseCollection.OverallResult == ServiceResult.Success)
@@ -243,6 +257,19 @@ namespace EWSEditor.Forms
                             oListItem.SubItems.Add(oSearchPreviewItem.HasAttachment.ToString());
                             oListItem.SubItems.Add(oSearchPreviewItem.Importance.ToString());
                             oListItem.SubItems.Add(oSearchPreviewItem.OwaLink);
+
+                             
+                            //if (oSearchPreviewItem.ExtendedProperties != null)
+                            //{
+                            //    foreach (ExtendedProperty oProp in oSearchPreviewItem.ExtendedProperties)
+                            //    {
+                            //        System.Diagnostics.Debug.WriteLine("Name:" + oProp.PropertyDefinition.Name);
+                            //        System.Diagnostics.Debug.WriteLine("Id:" + oProp.PropertyDefinition.Id.ToString());
+                            //        System.Diagnostics.Debug.WriteLine("Tag:"  + oProp.PropertyDefinition.Tag.ToString());
+                            //        System.Diagnostics.Debug.WriteLine("Value:" + oProp.Value.ToString());
+                            //        System.Diagnostics.Debug.WriteLine("------------------------------");
+                            //    }
+                            //}
 
 
                             oListItem.Tag = new ItemTag(oSearchPreviewItem.Id, oSearchPreviewItem.ItemClass);

@@ -137,6 +137,7 @@ namespace EWSEditor.Common
             
             StringBuilder oSB = new StringBuilder();
 
+            //sResult = SerialHelper.RestoreCrLfAndIndents(sResult);
             sResult = SerialHelper.RestoreCrLfAndIndents(sResult);
              
             if (bRet == true)

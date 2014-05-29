@@ -31,6 +31,8 @@ namespace EWSEditor.Forms
  
         private const string XmlEncode = "Xml Encode";
         private const string XmlDecode = "Xml Decode";
+
+        private const string XmlConvertVerifyXmlChars = "XmlConvert - VerifyXmlChars";
  
 
  
@@ -170,6 +172,22 @@ namespace EWSEditor.Forms
                     }
                     break;
 
+ 
+                
+                //case XmlEscape:
+                //    try
+                //    {
+                //        ToText = System.Security.SecurityElement.Escape(FromText);
+ 
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        MessageBox.Show(ex.ToString(), "Error");
+                //    }
+                //    break;
+
+                     
+
                 case XmlDecode:
                     try
                     {
@@ -190,7 +208,24 @@ namespace EWSEditor.Forms
                     }
                     break;
 
+                case XmlConvertVerifyXmlChars:
 
+                    try
+                    {
+
+                        ToText = XmlConvert.VerifyXmlChars(FromText);
+                        if (ToText != null)
+                            MessageBox.Show("Xml characters verfied.");
+                    }
+                    catch (XmlException XmlExx)
+                    {
+                        MessageBox.Show(XmlExx.ToString(), "Error");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
                 //case Utf8DecodeToAscii:
                 //    oUtf8Encoding = System.Text.Encoding.UTF8;
                 //    oFromBytes = oUtf8Encoding.GetBytes(FromText);
