@@ -935,6 +935,11 @@ namespace EWSEditor.Forms
 
         }
 
+        private void PropertyDetailsGrid_Load(object sender, EventArgs e)
+        {
+
+        }
+
   
 
 

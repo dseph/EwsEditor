@@ -163,6 +163,7 @@ namespace EWSEditor.Common
             {
 
                 PropertySet oMimePropertySet = new PropertySet(ItemSchema.MimeContent);
+                //Appointment oItem = (Appointment)Item.Bind(service, oItemId, oMimePropertySet);
                 Item oItem = Item.Bind(service, oItemId, oMimePropertySet);
                 if (oItem.MimeContent == null)
                     throw new ApplicationException("No MIME content to write");

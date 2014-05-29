@@ -186,7 +186,7 @@ namespace EWSEditor.Forms
 
                     if (sUser.Length != 0)
                     {
-                        if (sDomain.Length != 0)
+                        if (sDomain.Length == 0)
                             smtp.Credentials = new NetworkCredential(sUser, sPassword);
                         else
                             smtp.Credentials = new NetworkCredential(sUser, sPassword, sDomain);
@@ -411,6 +411,16 @@ namespace EWSEditor.Forms
                 }
 
             }
+        }
+
+        private void chkEnableSSL_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboServer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

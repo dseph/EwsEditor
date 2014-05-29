@@ -14,9 +14,12 @@ namespace EWSEditor.Forms
 {
     public partial class ResolveNameDialog : DialogForm
     {
+   
+        //private PropertySet _CurrentPropSet;
+
         private ResolveNameDialog()
         {
-            InitializeComponent();
+            InitializeComponent();   
         }
 
         /// <summary>
@@ -46,6 +49,9 @@ namespace EWSEditor.Forms
                 name = null;
             }
 
+      
+             
+
             return res;
         }
 
@@ -64,21 +70,50 @@ namespace EWSEditor.Forms
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                NameResolutionCollection names = this.CurrentService.ResolveName(
-                    txtName.Text,
-                    ResolveNameSearchLocation.DirectoryThenContacts, 
-                    true);
+                //NameResolutionCollection oNameResolutionCollection = this.CurrentService.ResolveName(
+                //    txtName.Text,
+                //    ResolveNameSearchLocation.DirectoryThenContacts, 
+                //    chkReturnContactDetails.Checked 
+                //    );
+
+                ResolveNameSearchLocation oResolveNameSearchLocation = ResolveNameSearchLocation.ContactsThenDirectory;
+                switch (cmboResolveNameSearchLocation.Text)
+                {
+                    case "DirectoryOnly":
+                        oResolveNameSearchLocation = ResolveNameSearchLocation.DirectoryOnly;
+                        break;
+                    case "DirectoryThenContacts":
+                        oResolveNameSearchLocation = ResolveNameSearchLocation.ContactsThenDirectory;
+                        break;
+                    case "ContactsOnly":
+                        oResolveNameSearchLocation = ResolveNameSearchLocation.ContactsOnly;
+                        break;
+                    case "ContactsThenDirectory":
+                        oResolveNameSearchLocation = ResolveNameSearchLocation.DirectoryThenContacts;
+                        break;
+                }
+
+                NameResolutionCollection oNameResolutionCollection = this.CurrentService.ResolveName(
+                        txtName.Text,
+                       oResolveNameSearchLocation,
+                        chkReturnContactDetails.Checked
+                );
 
                 // Clear out previous results
                 lstNames.Items.Clear();
 
                 // Load new results
-                foreach (NameResolution name in names)
+                foreach (NameResolution name in oNameResolutionCollection)
                 {
                     ListViewItem item = new ListViewItem();
                     item.Text = name.Mailbox.Name;
                     item.Tag = name;
                     item.SubItems.Add(name.Mailbox.Address);
+                    item.SubItems.Add(name.Mailbox.RoutingType);
+                    if (name.Mailbox.Id != null)
+                        item.SubItems.Add(name.Mailbox.Id.UniqueId);
+                    else
+                        item.SubItems.Add("");
                     lstNames.Items.Add(item);
                 }
 
@@ -110,6 +145,65 @@ namespace EWSEditor.Forms
         {
             // Pressing <enter> will now execute the Go button
             this.AcceptButton = this.btnGo;
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+ 
+        }
+
+        private void ResolveNameDialog_Load(object sender, EventArgs e)
+        {
+
+            //_CurrentPropSet = new PropertySet(
+            //    BasePropertySet.FirstClassProperties,
+            //    ContactSchema.GivenName,
+            //    ContactSchema.MiddleName,
+            //    ContactSchema.Surname,
+            //    ContactSchema.CompanyName,
+            //    ContactSchema.JobTitle,
+            //    ContactSchema.Body,
+            //    ContactSchema.PhysicalAddresses,
+            //    ContactSchema.PhoneNumbers,
+            //    ContactSchema.HasPicture,
+            //    ContactSchema.HasAttachments,
+            //    ContactSchema.IsAssociated,
+            //    ContactSchema.Isdn,
+            //    ContactSchema.IsDraft,
+            //    ContactSchema.IsFromMe,
+            //    ContactSchema.IsReminderSet,
+            //    ContactSchema.IsReminderSet,
+            //    ContactSchema.IsResend,
+            //    ContactSchema.IsSubmitted,
+            //    ContactSchema.IsUnmodified,
+            //    ContactSchema.ItemClass,
+            //    ContactSchema.JobTitle,
+            //    ContactSchema.LastModifiedName,
+            //    ContactSchema.LastModifiedTime,
+            //    ContactSchema.Manager,
+            //    ContactSchema.MiddleName,
+            //    ContactSchema.PhoneNumbers,
+            //    ContactSchema.Profession,
+            //    ContactSchema.SpouseName,
+            //    ContactSchema.Subject,
+            //    ContactSchema.Sensitivity,
+            //    ContactSchema.Surname,
+            //    ContactSchema.UniqueBody,
+            //    ContactSchema.WeddingAnniversary,
+            //    ContactSchema.DateTimeCreated,
+            //    ContactSchema.DateTimeReceived,
+            //    ContactSchema.DateTimeSent,
+            //    ContactSchema.LastModifiedTime,
+            //    ContactSchema.LastModifiedName,
+            //    ContactSchema.AssistantName,
+            //    ContactSchema.AssistantPhone,
+            //    ContactSchema.Categories,
+            //    ContactSchema.Attachments,
+            //    new ExtendedPropertyDefinition(0x001A, MapiPropertyType.String) // item class
+
+            //);
+
+ 
         }
     }
 }

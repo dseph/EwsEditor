@@ -49,7 +49,7 @@ namespace EWSEditor.Forms
         {
             InitializeComponent();
             _CurrentService = CurrentService;
-
+             
             _Contact = LoadContactForEdit(CurrentService, oItemId);
             _IsExistingContact = true;
             SetFormFromContact(_Contact);
@@ -158,7 +158,7 @@ namespace EWSEditor.Forms
 
                 if (oContact.PhysicalAddresses[PhysicalAddressKey.Business] == null)
                     oContact.PhysicalAddresses[PhysicalAddressKey.Business] = new PhysicalAddressEntry();
-
+                
 
                 oContact.PhysicalAddresses[PhysicalAddressKey.Business].Street = txtBA_Street.Text;
                 oContact.PhysicalAddresses[PhysicalAddressKey.Business].City = txtBA_City.Text;

@@ -47,6 +47,7 @@ namespace EWSEditor.Exchange
         {
             ExchangeService service = CreateExchangeService();
             //service.EnableScpLookup = GlobalSettings.EnableScpLookups;
+            string sError = string.Empty;
 
             try
             { 
@@ -55,11 +56,15 @@ namespace EWSEditor.Exchange
             }
             catch (AutodiscoverLocalException oException)
             {
-                ErrorDialog.ShowError(oException.ToString());
+                sError += string.Format("Error: {0}\r\n", oException.HResult);
+                sError += oException.ToString();
+                ErrorDialog.ShowError(sError);
             }
             catch (System.IO.IOException oIOException)
             {
-                ErrorDialog.ShowError(oIOException.ToString());
+                sError += string.Format("Error: {0}\r\n", oIOException.HResult);
+                sError = oIOException.ToString();
+                ErrorDialog.ShowError(sError);
             }
 
             //try
@@ -145,8 +150,24 @@ namespace EWSEditor.Exchange
 
                 if (OverrideProxyCredentials == true)
                 {
-                    service.WebProxy.Credentials = new NetworkCredential(ProxyServerUser, ProxyServerPassword, ProxyServerDomain);
+                     
+                    if (ProxyServerUser.Trim().Length == 0)
+                    {
+                        oWebProxy.UseDefaultCredentials = true;
+                    }
+                    else
+                    { 
+                        if (ProxyServerDomain.Trim().Length == 0)
+                            oWebProxy.Credentials = new NetworkCredential(ProxyServerUser, ProxyServerPassword);
+                        else
+                            oWebProxy.Credentials = new NetworkCredential(ProxyServerUser, ProxyServerPassword, ProxyServerDomain);
+                    }
                 }   
+                else
+                {
+
+                    oWebProxy.UseDefaultCredentials = true;
+                }
                 service.WebProxy = oWebProxy;
 
             }
@@ -182,17 +203,17 @@ namespace EWSEditor.Exchange
                 if (service.RequestedServerVersion.ToString().StartsWith("Exchange2007") == false &&
                     service.RequestedServerVersion.ToString().StartsWith("Exchange2010") == false)
                 {
-                    // Should set for 365...:
+                    //// Should set for 365...:
 
-                    if (service.HttpHeaders.ContainsKey("X-AnchorMailbox") == false)
-                        service.HttpHeaders.Add("X-AnchorMailbox", service.ImpersonatedUserId.Id);
-                    else
-                        service.HttpHeaders["X-AnchorMailbox"] = service.ImpersonatedUserId.Id;
+                    //if (service.HttpHeaders.ContainsKey("X-AnchorMailbox") == false)
+                    //    service.HttpHeaders.Add("X-AnchorMailbox", service.ImpersonatedUserId.Id);
+                    //else
+                    //    service.HttpHeaders["X-AnchorMailbox"] = service.ImpersonatedUserId.Id;
 
-                    if (service.HttpHeaders.ContainsKey("X-PreferServerAffinity") == false)
-                        service.HttpHeaders.Add("X-PreferServerAffinity", "true");
-                    else
-                        service.HttpHeaders["X-PreferServerAffinity"] = "true";
+                    //if (service.HttpHeaders.ContainsKey("X-PreferServerAffinity") == false)
+                    //    service.HttpHeaders.Add("X-PreferServerAffinity", "true");
+                    //else
+                    //    service.HttpHeaders["X-PreferServerAffinity"] = "true";
                 } 
             }
 

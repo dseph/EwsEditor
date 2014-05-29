@@ -187,6 +187,7 @@
             this.chkEnableSSL.TabIndex = 5;
             this.chkEnableSSL.Text = "Enable SSL";
             this.chkEnableSSL.UseVisualStyleBackColor = true;
+            this.chkEnableSSL.CheckedChanged += new System.EventHandler(this.chkEnableSSL_CheckedChanged);
             // 
             // cboPort
             // 
@@ -287,6 +288,7 @@
             this.cboServer.Size = new System.Drawing.Size(177, 21);
             this.cboServer.TabIndex = 3;
             this.cboServer.Text = "smtp.live.com";
+            this.cboServer.SelectedIndexChanged += new System.EventHandler(this.cboServer_SelectedIndexChanged);
             // 
             // label1
             // 

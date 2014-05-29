@@ -130,6 +130,7 @@ namespace EWSEditor.Common
             XmlWriterSettings oXmlWriterSettings = new XmlWriterSettings();
             StringBuilder oSB = new StringBuilder();
 
+            oXmlWriterSettings.CheckCharacters = false;
             oXmlWriterSettings.Indent = true;
             oXmlWriterSettings.IndentChars = "    ";
             oXmlWriterSettings.NewLineChars = "\r\n";
