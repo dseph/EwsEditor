@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 using EWSEditor.Common;
-using EWSEditor.com.office365.outlook;
+using EWSEditor.EwsVsProxy;
 using EWSEditor.Logging;
 using EWSEditor.Settings;
 using EWSEditor.Common.Extensions;
@@ -25,6 +25,7 @@ namespace EWSEditor.Exchange
         public static int? Timeout = null;
         public static bool? UseDefaultCredentials = null;
         public static ImpersonatedUserId UserToImpersonate = null;
+        public static string UserAgent;
 
         public static bool SetDefaultProxy =  false;
         public static bool BypassProxyForLocalAddress = false;
@@ -102,7 +103,7 @@ namespace EWSEditor.Exchange
 
               
                 //System.Diagnostics.Debug.WriteLine(service.PreferredCulture);
-                 
+   
             }
             else
             {
@@ -112,7 +113,8 @@ namespace EWSEditor.Exchange
                     service = new ExchangeService( ); 
             }
 
-            service.UserAgent = GlobalSettings.UserAgent;
+            if (UserAgent.Length != 0)
+                service.UserAgent = UserAgent;
 
             service.TraceEnabled = true;
             service.TraceListener = new EWSEditor.Logging.EwsTraceListener();
@@ -171,11 +173,7 @@ namespace EWSEditor.Exchange
                 service.WebProxy = oWebProxy;
 
             }
-            //if (SetDefaultProxy == true)
-            //{
-            //    service.WebProxy = WebProxy.GetDefaultProxy();  // Obsolete
-            //}
-
+ 
 
             if (ServiceCredential != null)
             {
@@ -220,91 +218,144 @@ namespace EWSEditor.Exchange
             return service;
         }
 
-        //public static ExchangeServiceBinding CreateExchangeServiceBinding()
-        //{
-        //    var binding = new ExchangeServiceBinding();
-        //    binding.AllowAutoRedirect = false;
+        /// <summary>
+        ///  This is used for preparing an HttpWebRequest for a raw post.
+        /// </summary>
+        /// <param name="oRequest"></param>
+        public HttpWebRequest CreateHttpWebRequest()
+        {
+            HttpWebRequest oHttpWebRequest = (HttpWebRequest)WebRequest.Create(EwsUrl);
+             
+            if (UserAgent.Length != 0)
+                oHttpWebRequest.Headers.Add("UserAgent", UserAgent);
 
-        //    binding.UserAgent = GlobalSettings.UserAgent;
+            oHttpWebRequest.Method = "POST";
+            oHttpWebRequest.ContentType = "text/xml";
 
-        //    // Set the RequestServerVersionValue
-        //    binding.RequestServerVersionValue = new EwsVsProxy.RequestServerVersion();
-        //    switch (RequestedExchangeVersion)
-        //    {
-        //        case ExchangeVersion.Exchange2007_SP1:
-        //            binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2007_SP1;
-        //            break;
-        //        case ExchangeVersion.Exchange2010:
-        //            binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010;
-        //            break;
-        //        case ExchangeVersion.Exchange2010_SP1:
-        //            binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010_SP1;
-        //            break;
-        //        case ExchangeVersion.Exchange2010_SP2:
-        //            binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2010_SP2;
-        //            break;
-        //        case ExchangeVersion.Exchange2013:
-        //            binding.RequestServerVersionValue.Version = ExchangeVersionType.Exchange2013;
-        //            break;
-        //        default:
-        //            DebugLog.WriteVerbose("Requested ExchangeVersion was '" + RequestedExchangeVersion.Value.ToString() + "' which is not expected");
-        //            throw new ApplicationException("Unexpected ExchangeVersion");
-        //    }
+            if (OverrideTimeout.HasValue)
+            {
+                if (OverrideTimeout == true)
+                {
+                    if (Timeout.HasValue)
+                        oHttpWebRequest.Timeout = (int)Timeout;
+                }
+            }
 
-        //    if (EwsUrl != null)
-        //    {
-        //        binding.Url = EwsUrl.AbsoluteUri;
-        //    }
+            oHttpWebRequest.Headers.Add("Translate", "f");
+            oHttpWebRequest.Headers.Add("Pragma", "no-cache");
+            oHttpWebRequest.Headers.Add("return-client-request-id", "true");  // This will give us more data back about the servers used in the response headers
+            if (PreAuthenticate.HasValue)
+            {
+                oHttpWebRequest.Headers.Add("PreAuthenticate", PreAuthenticate.Value.ToString());
+            }
 
-        //    if (ServiceCredential != null)
-        //    {
-        //        binding.Credentials = ServiceCredential;
-        //    }
+            // TODO:  Add timezone injection
+            //TimeZoneInfo oTimeZone = null;
+            //if (SelectedTimeZoneId != null)
+            //{
+            //    if (OverrideTimezone == true)
+            //    {
+            //        oTimeZone = TimeZoneInfo.FindSystemTimeZoneById(SelectedTimeZoneId);
+            //    }
+            //}
 
-        //    if (UseDefaultCredentials.HasValue)
-        //    {
-        //        binding.UseDefaultCredentials = UseDefaultCredentials.Value;
-        //    }
+            //if (RequestedExchangeVersion.HasValue)
+            //{
+            //    if (oTimeZone != null)
+            //        service = new ExchangeService(RequestedExchangeVersion.Value, oTimeZone);
+            //    else
+            //        service = new ExchangeService(RequestedExchangeVersion.Value);
 
-        //    if (Timeout.HasValue)
-        //    {
-        //        binding.Timeout = Timeout.Value;
-        //    }
 
-        //    // Create the ExchangeImpersonationType if needed
-        //    if (UserToImpersonate != null)
-        //    {
-        //        binding.ExchangeImpersonation = new ExchangeImpersonationType();
-        //        binding.ExchangeImpersonation.ConnectingSID = new ConnectingSIDType();
-        //        binding.ExchangeImpersonation.ConnectingSID.Item = UserToImpersonate.Id;
-        //        switch (UserToImpersonate.IdType)
-        //        {
-        //            case ConnectingIdType.PrincipalName:
-        //                binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.PrincipalName;
-        //                break;
-        //            case ConnectingIdType.SID:
-        //                binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SID;
-        //                break;
-        //            case ConnectingIdType.SmtpAddress:
-        //                binding.ExchangeImpersonation.ConnectingSID.ItemElementName = ItemChoiceType.SmtpAddress;
-        //                break;
-        //        }
+            //    //System.Diagnostics.Debug.WriteLine(service.PreferredCulture);
 
-        //        // Set headers which help with affinity when Impersonation is being used against Exchange 2013 and Exchagne Online 15.
-        //        // http://blogs.msdn.com/b/mstehle/archive/2013/07/17/more-affinity-considerations-for-exchange-online-and-exchange-2013.aspx
-        //        if (binding.RequestServerVersionValue.Version.ToString().StartsWith("Exchange2007") == false &&
-        //            binding.RequestServerVersionValue.Version.ToString().StartsWith("Exchange2010") == false)
-        //        {
-        //            //// Should set for 365:
-        //            //if (binding.ContainsKey("X-AnchorMailbox") == false)
-        //            //    binding.HttpHeaders.Add("X-AnchorMailbox", binding.ImpersonatedUserId.Id);
-        //            //else
-        //            //    binding.HttpHeaders["X-AnchorMailbox"] = binding.ImpersonatedUserId.Id;
-        //        }
-        //    }
+            //}
+            //else
+            //{
+            //    if (oTimeZone != null)
+            //        service = new ExchangeService(oTimeZone);
+            //    else
+            //        service = new ExchangeService();
+            //}
 
-        //    return binding;
-        //}
+
+            if (SpecifyProxySettings == true)
+            {
+                 WebProxy oWebProxy  = null;
+                 oWebProxy = new WebProxy(ProxyServerName, ProxyServerPort);
+ 
+                oWebProxy.BypassProxyOnLocal = BypassProxyForLocalAddress;
+   
+
+                if (OverrideProxyCredentials == true)
+                {
+                     
+                    if (ProxyServerUser.Trim().Length == 0)
+                    {
+                        oWebProxy.UseDefaultCredentials = true;
+                    }
+                    else
+                    { 
+                        if (ProxyServerDomain.Trim().Length == 0)
+                            oWebProxy.Credentials = new NetworkCredential(ProxyServerUser, ProxyServerPassword);
+                        else
+                            oWebProxy.Credentials = new NetworkCredential(ProxyServerUser, ProxyServerPassword, ProxyServerDomain);
+                    }
+                }   
+                else
+                {
+
+                    oWebProxy.UseDefaultCredentials = true;
+                }
+                oHttpWebRequest.Proxy = oWebProxy;
+            }
+
+            if (ServiceCredential != null)
+            {
+                oHttpWebRequest.Credentials = ServiceCredential;
+            }
+
+ 
+
+            //if (ServiceCredential != null)
+            //{
+            //    service.Credentials = ServiceCredential;
+            //}
+
+            //    if (sAuthentication == "DefaultCredentials")
+            //    {
+            //        oHttpWebRequest.UseDefaultCredentials = true;
+            //        oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
+            //    }
+            //    else
+            //    {
+            //        if (sAuthentication == "DefaultNetworkCredentials")
+            //            oHttpWebRequest.Credentials = CredentialCache.DefaultNetworkCredentials;
+            //        else
+            //        {
+            //            oHttpWebRequest.Credentials = oCrentialCache;
+            //        }
+            //    }
+
+ 
+            if (UseDefaultCredentials.HasValue)
+            {
+                oHttpWebRequest.UseDefaultCredentials = UseDefaultCredentials.Value;
+            }
+
+            if (UserToImpersonate != null)
+            {
+                //service.ImpersonatedUserId = UserToImpersonate;
+                // TODO: Add injection of impersonation.
+ 
+            }
+
+            return oHttpWebRequest;
+ 
+
+        }
+
+         
 
         public static void InitializeWithDefaults()
         {

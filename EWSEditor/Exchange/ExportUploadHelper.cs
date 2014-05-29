@@ -3,6 +3,8 @@ using System.Net;
 using EWSEditor.Common.Extensions;
 using EWSEditor.EwsVsProxy;
 using Microsoft.Exchange.WebServices.Data;
+using EWSEditor.Resources;
+ 
 
 namespace EWSEditor.Exchange
 {
@@ -98,6 +100,29 @@ namespace EWSEditor.Exchange
 
             data = exportResponse.Data;
         }
+
+
+        public void ExportItemPost(EwsProxyFactory CurrentService, string ServerVersion, string sItemId)
+        {
+            System.Net.HttpWebRequest ExchangeWebRequest = CurrentService.CreateHttpWebRequest();
+
+            string EwsRequest = TemplateEwsRequests.ExportItems;
+            EwsRequest = EwsRequest.Replace("##RequestServerVersion##", ServerVersion);
+            EwsRequest = EwsRequest.Replace("##ItemId##", sItemId);
+      
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+ 
+        }
+
+         
 
         /// <summary>
         /// Throw an exception if an error message is found in the response

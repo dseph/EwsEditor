@@ -105,6 +105,7 @@ namespace EWSEditor.Forms
 
                 EwsProxyFactory.OverrideTimeout = GlobalSettings.OverrideTimeout;
                 EwsProxyFactory.Timeout = GlobalSettings.Timeout;
+                EwsProxyFactory.UserAgent = GlobalSettings.UserAgent;
 
                 EwsProxyFactory.SetDefaultProxy = GlobalSettings.SetDefaultProxy;
                 EwsProxyFactory.BypassProxyForLocalAddress = GlobalSettings.BypassProxyForLocalAddress;
