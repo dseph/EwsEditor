@@ -1236,7 +1236,7 @@
     <None Include="Web References\EwsVsProxy\SendItemResponseType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\EwsVsProxy\Services.wsdl" />
+    <None Include="Web References\EwsVsProxy\services.wsdl" />
     <None Include="Web References\EwsVsProxy\SetHoldOnMailboxesResponseMessageType.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -1501,10 +1501,13 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="https://mail.exchangexpert.com/ews/services.wsdl">
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://outlook.office365.com/ews/services.wsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\EwsVsProxy\</RelPath>
-      <UpdateFromURL>https://mail.exchangexpert.com/ews/services.wsdl</UpdateFromURL>
+      <UpdateFromURL>https://outlook.office365.com/ews/services.wsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

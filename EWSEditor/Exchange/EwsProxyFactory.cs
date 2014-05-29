@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 using EWSEditor.Common;
-using EWSEditor.EwsVsProxy;
+using EWSEditor.com.office365.outlook;
 using EWSEditor.Logging;
 using EWSEditor.Settings;
 using EWSEditor.Common.Extensions;
