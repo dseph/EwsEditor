@@ -589,16 +589,18 @@ namespace EWSEditor.Forms
 
             try
             {
-                byte[] data = null;
+                ExportUploadHelper.ExportItemPost("Exchange2013", id.UniqueId, dialog.FileName);
 
-                ExportUploadHelper.ExportItem(
-                    this.CurrentService,
-                    id,
-                    out data);
+                //byte[] data = null;
 
-                System.IO.File.WriteAllBytes(
-                    dialog.FileName,
-                    data);
+                //ExportUploadHelper.ExportItem(
+                //    this.CurrentService,
+                //    id,
+                //    out data);
+
+                //System.IO.File.WriteAllBytes(
+                //    dialog.FileName,
+                //    data);
             }
             finally
             {

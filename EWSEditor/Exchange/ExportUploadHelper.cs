@@ -4,7 +4,9 @@ using EWSEditor.Common.Extensions;
 using EWSEditor.EwsVsProxy;
 using Microsoft.Exchange.WebServices.Data;
 using EWSEditor.Resources;
- 
+using System.Text;
+using System.IO;
+using System.Xml;
 
 namespace EWSEditor.Exchange
 {
@@ -49,17 +51,6 @@ namespace EWSEditor.Exchange
                 item
             };
 
-            //// Set headers which help with affinity when Impersonation is being used against Exchange 2013 and Exchagne Online 15.
-            //// http://blogs.msdn.com/b/mstehle/archive/2013/07/17/more-affinity-considerations-for-exchange-online-and-exchange-2013.aspx
-            //if (service.RequestedServerVersion.ToString().StartsWith("Exchange2007") == false &&
-            //    service.RequestedServerVersion.ToString().StartsWith("Exchange2010") == false)
-            //{
-            //    // Should set for 365:
-            //    if (service.HttpHeaders.ContainsKey("X-AnchorMailbox") == false)
-            //        service.HttpHeaders.Add("X-AnchorMailbox", service.ImpersonatedUserId.Id);
-            //    else
-            //        service.HttpHeaders["X-AnchorMailbox"] = service.ImpersonatedUserId.Id;
-            //}
  
             UploadItemsResponseType response = client.UploadItems(upload);
 
@@ -102,24 +93,161 @@ namespace EWSEditor.Exchange
         }
 
 
-        public void ExportItemPost(EwsProxyFactory CurrentService, string ServerVersion, string sItemId)
+        public static bool ExportItemPost(string ServerVersion, string sItemId, string sFile)
         {
-            System.Net.HttpWebRequest ExchangeWebRequest = CurrentService.CreateHttpWebRequest();
+            bool bSuccess = false;
+            string sResponseText = string.Empty;
+            System.Net.HttpWebRequest oHttpWebRequest = null;
+            EwsProxyFactory.CreateHttpWebRequest(ref oHttpWebRequest);
 
             string EwsRequest = TemplateEwsRequests.ExportItems;
             EwsRequest = EwsRequest.Replace("##RequestServerVersion##", ServerVersion);
             EwsRequest = EwsRequest.Replace("##ItemId##", sItemId);
-      
+       
+            try
+            {
+ 
+                //oHttpWebRequest.AllowAutoRedirect = bAllowAutoRedirect;
+
+                byte[] bytes = Encoding.UTF8.GetBytes(EwsRequest);
+                oHttpWebRequest.ContentLength = bytes.Length;
+ 
+                using (Stream requestStream = oHttpWebRequest.GetRequestStream())
+                {
+                    requestStream.Write(bytes, 0, bytes.Length);
+                    requestStream.Flush();
+                    requestStream.Close();
+                }
+ 
+                // Get response
+                HttpWebResponse oHttpWebResponse = (HttpWebResponse)oHttpWebRequest.GetResponse();
+
+                StreamReader oStreadReader = new StreamReader(oHttpWebResponse.GetResponseStream());
+                sResponseText = oStreadReader.ReadToEnd();
+
+   
+
+                if (oHttpWebResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    int BUFFER_SIZE = 1024;
+                    int iReadBytes = 0;
+
+                    XmlDocument oDoc = new XmlDocument();
+                    XmlNamespaceManager namespaces = new XmlNamespaceManager(oDoc.NameTable);
+                    namespaces.AddNamespace("m", "http://schemas.microsoft.com/exchange/services/2006/messages");
+                    oDoc.LoadXml(sResponseText);
+                    XmlNode oData = oDoc.SelectSingleNode("//m:Data", namespaces);
+
+                    //string sContent = oData.InnerText;
+                    //sContent = sContent.Replace(" ", "");
+                    //sContent = sContent.Replace("\r", "");
+                    //sContent = sContent.Replace("\n", "");
+
+                    BinaryWriter oBinaryWriter = new BinaryWriter(File.Open(sFile, FileMode.Create));
+                    StringReader oStringReader = new StringReader(oData.OuterXml);
+                    XmlTextReader oXmlTextReader = new XmlTextReader(oStringReader);
+                    oXmlTextReader.MoveToContent();
+
+                    byte[] buffer = new byte[BUFFER_SIZE];
+
+                    do
+                    {
+                        iReadBytes = oXmlTextReader.ReadBase64(buffer, 0, BUFFER_SIZE);
+                        oBinaryWriter.Write(buffer, 0, iReadBytes);
+                    }
+                    while (iReadBytes >= BUFFER_SIZE);
+                    oXmlTextReader.Close();
+
+                    oBinaryWriter.Flush();
+                    oBinaryWriter.Close();
+
+                    bSuccess = true;
+                }
+                
+ 
+            }
+            finally 
+            {
+ 
+
+            }
+
+            return bSuccess;
+ 
+        }
+
+
+        public static bool UploadItemPost(string ServerVersion, FolderId folderId, CreateActionType oCreateActionType, string sItemId, byte[] data)
+        { 
+
+            bool bSuccess = false;
+            string sResponseText = string.Empty;
+            System.Net.HttpWebRequest oHttpWebRequest = null;
+            EwsProxyFactory.CreateHttpWebRequest(ref oHttpWebRequest);
+
+            string EwsRequest = string.Empty;
+
+            if (oCreateActionType != CreateActionType.CreateNew)
+            {  
+                EwsRequest = TemplateEwsRequests.UploadItems_Update;
+                 
+                if (oCreateActionType == CreateActionType.Update)
+                    EwsRequest = EwsRequest.Replace("##CreateAction##", "Update");
+                else
+                    EwsRequest = EwsRequest.Replace("##CreateAction##", "UpdateOrCreate");
+                EwsRequest = EwsRequest.Replace("##ItemId##", sItemId);    
+            }
+            else
+            {
+                EwsRequest = TemplateEwsRequests.UploadItems_CreateNew;
+                EwsRequest = EwsRequest.Replace("##CreateAction##", "CreateNew");
+            }
+            EwsRequest = EwsRequest.Replace("##RequestServerVersion##", ServerVersion);
+            EwsRequest = EwsRequest.Replace("##ParentFolderId_Id##", sItemId);
+
+            string sBase64 = string.Empty;
+            sBase64 = Convert.ToBase64String(data);
+            // Convert byte array to base64
+            EwsRequest = EwsRequest.Replace("##Data##", sBase64);
+
             try
             {
 
+                //oHttpWebRequest.AllowAutoRedirect = bAllowAutoRedirect;
+
+                byte[] bytes = Encoding.UTF8.GetBytes(EwsRequest);
+                oHttpWebRequest.ContentLength = bytes.Length;
+
+                using (Stream requestStream = oHttpWebRequest.GetRequestStream())
+                {
+                    requestStream.Write(bytes, 0, bytes.Length);
+                    requestStream.Flush();
+                    requestStream.Close();
+                }
+
+                // Get response
+                HttpWebResponse oHttpWebResponse = (HttpWebResponse)oHttpWebRequest.GetResponse();
+
+                StreamReader oStreadReader = new StreamReader(oHttpWebResponse.GetResponseStream());
+                sResponseText = oStreadReader.ReadToEnd();
+ 
+
+                if (oHttpWebResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    bSuccess = true;
+                }
+                else
+                {
+
+                }
             }
-            catch (Exception ex)
+            finally
             {
 
 
             }
- 
+
+            return bSuccess;
         }
 
          

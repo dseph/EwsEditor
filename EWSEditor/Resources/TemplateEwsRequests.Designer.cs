@@ -83,13 +83,47 @@ namespace EWSEditor.Resources {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;soap:Envelope xmlns:a=&quot;http://schemas.microsoft.com/exchange/2010/Autodiscover&quot; xmlns:wsa=&quot;http://www.w3.org/2005/08/addressing&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
         ///  &lt;soap:Header&gt;
-        ///    &lt;a:RequestedServerVersion&gt;XXXExchangeVersionXXX&lt;/a:RequestedServerVersion&gt;
+        ///    &lt;a:RequestedServerVersion&gt;##ExchangeVersion##&lt;/a:RequestedServerVersion&gt;
         ///    &lt;wsa:Action&gt;http://schemas.microsoft.com/exchange/2010/Autodiscover/Autodiscover/GetUserSettings&lt;/wsa:Action&gt;
-        ///    &lt;wsa:To&gt;XXXAuto [rest of string was truncated]&quot;;.
+        ///    &lt;wsa:To&gt;##AutoDis [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string GroupingInformationTemplateRequest {
             get {
                 return ResourceManager.GetString("GroupingInformationTemplateRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        ///               xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+        ///               xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;
+        ///               xmlns:t=&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot;
+        ///               xmlns:m=&quot;http://schemas.microsoft.com/exchange/services/2006/messages&quot;&gt;
+        ///  &lt;soap:Header&gt;
+        ///    &lt;t:RequestServerVersion Version=&quot;##RequestServerVersion##&quot; /&gt;
+        ///  &lt;/soap:Head [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string UploadItems_CreateNew {
+            get {
+                return ResourceManager.GetString("UploadItems_CreateNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        ///               xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+        ///               xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;
+        ///               xmlns:t=&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot;
+        ///               xmlns:m=&quot;http://schemas.microsoft.com/exchange/services/2006/messages&quot;&gt;
+        ///  &lt;soap:Header&gt;
+        ///    &lt;t:RequestServerVersion Version=&quot;##RequestServerVersion##&quot; /&gt;
+        ///  &lt;/soap:Head [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string UploadItems_Update {
+            get {
+                return ResourceManager.GetString("UploadItems_Update", resourceCulture);
             }
         }
     }

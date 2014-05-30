@@ -141,16 +141,16 @@
     <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;soap:Envelope xmlns:a="http://schemas.microsoft.com/exchange/2010/Autodiscover" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
   &lt;soap:Header&gt;
-    &lt;a:RequestedServerVersion&gt;XXXExchangeVersionXXX&lt;/a:RequestedServerVersion&gt;
+    &lt;a:RequestedServerVersion&gt;##ExchangeVersion##&lt;/a:RequestedServerVersion&gt;
     &lt;wsa:Action&gt;http://schemas.microsoft.com/exchange/2010/Autodiscover/Autodiscover/GetUserSettings&lt;/wsa:Action&gt;
-    &lt;wsa:To&gt;XXXAutoDiscoverServiceServerXXX/autodiscover/autodiscover.svc&lt;/wsa:To&gt;
+    &lt;wsa:To&gt;##AutoDiscoverServiceServer##/autodiscover/autodiscover.svc&lt;/wsa:To&gt;
   &lt;/soap:Header&gt;
   &lt;soap:Body&gt;
     &lt;a:GetUserSettingsRequestMessage xmlns:a="http://schemas.microsoft.com/exchange/2010/Autodiscover"&gt;
       &lt;a:Request&gt;
         &lt;a:Users&gt;
           &lt;a:User&gt;
-            &lt;a:Mailbox&gt;XXXMailboxSmtpXXX&lt;/a:Mailbox&gt;
+            &lt;a:Mailbox&gt;##MailboxSmtp##&lt;/a:Mailbox&gt;
           &lt;/a:User&gt;
         &lt;/a:Users&gt;
         &lt;a:RequestedSettings&gt;
@@ -162,5 +162,53 @@
   &lt;/soap:Body&gt;
 &lt;/soap:Envelope&gt;</value>
     <comment>Use this as a template for getting GroupingInformation.  You will need to replace the values marked with XXX to build a proper request.</comment>
+  </data>
+  <data name="UploadItems_CreateNew" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"&gt;
+  &lt;soap:Header&gt;
+    &lt;t:RequestServerVersion Version="##RequestServerVersion##" /&gt;
+  &lt;/soap:Header&gt;
+  &lt;soap:Body&gt;
+    &lt;m:UploadItems&gt;
+      &lt;m:Items&gt;
+        &lt;t:Item CreateAction="##CreateAction##"&gt;
+          &lt;t:ParentFolderId Id="##ParentFolderId_Id##" /&gt;
+          &lt;t:Data&gt;
+            ##DATA##
+          &lt;/t:Data&gt;
+        &lt;/t:Item&gt;
+    &lt;/m:UploadItems&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</value>
+  </data>
+  <data name="UploadItems_Update" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"&gt;
+  &lt;soap:Header&gt;
+    &lt;t:RequestServerVersion Version="##RequestServerVersion##" /&gt;
+  &lt;/soap:Header&gt;
+  &lt;soap:Body&gt;
+    &lt;m:UploadItems&gt;
+      &lt;m:Items&gt;
+        &lt;t:Item CreateAction="##CreateAction##"&gt;
+           &lt;t:ItemId Id="##ItemId##="/&gt;
+          &lt;t:ParentFolderId Id="##ParentFolderId_Id##" /&gt;
+          &lt;t:Data&gt;
+            ##DATA##
+          &lt;/t:Data&gt;
+        &lt;/t:Item&gt;
+    &lt;/m:UploadItems&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</value>
+    <comment>Used in POST for loading a saved item into a folder.</comment>
   </data>
 </root>
