@@ -177,7 +177,7 @@ namespace EWSEditor.Exchange
         }
 
 
-        public static bool UploadItemPost(string ServerVersion, FolderId folderId, CreateActionType oCreateActionType, string sItemId, byte[] data)
+        public static bool UploadItemPost(string ServerVersion, FolderId ParentFolderId, CreateActionType oCreateActionType, string sItemId, byte[] data)
         { 
 
             bool bSuccess = false;
@@ -203,12 +203,14 @@ namespace EWSEditor.Exchange
                 EwsRequest = EwsRequest.Replace("##CreateAction##", "CreateNew");
             }
             EwsRequest = EwsRequest.Replace("##RequestServerVersion##", ServerVersion);
-            EwsRequest = EwsRequest.Replace("##ParentFolderId_Id##", sItemId);
+            EwsRequest = EwsRequest.Replace("##ParentFolderId_Id##", ParentFolderId.UniqueId);
 
             string sBase64 = string.Empty;
             sBase64 = Convert.ToBase64String(data);
             // Convert byte array to base64
             EwsRequest = EwsRequest.Replace("##Data##", sBase64);
+
+            EwsRequest = EwsRequest.Replace("\r\n", "");
 
             try
             {

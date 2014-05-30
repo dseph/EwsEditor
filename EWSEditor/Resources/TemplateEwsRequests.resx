@@ -178,9 +178,7 @@
       &lt;m:Items&gt;
         &lt;t:Item CreateAction="##CreateAction##"&gt;
           &lt;t:ParentFolderId Id="##ParentFolderId_Id##" /&gt;
-          &lt;t:Data&gt;
-            ##DATA##
-          &lt;/t:Data&gt;
+          &lt;t:Data&gt;##Data##&lt;/t:Data&gt;
         &lt;/t:Item&gt;
     &lt;/m:UploadItems&gt;
   &lt;/soap:Body&gt;
@@ -202,9 +200,7 @@
         &lt;t:Item CreateAction="##CreateAction##"&gt;
            &lt;t:ItemId Id="##ItemId##="/&gt;
           &lt;t:ParentFolderId Id="##ParentFolderId_Id##" /&gt;
-          &lt;t:Data&gt;
-            ##DATA##
-          &lt;/t:Data&gt;
+          &lt;t:Data&gt;##Data##&lt;/t:Data&gt;
         &lt;/t:Item&gt;
     &lt;/m:UploadItems&gt;
   &lt;/soap:Body&gt;
