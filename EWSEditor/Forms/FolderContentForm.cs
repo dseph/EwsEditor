@@ -343,8 +343,15 @@ namespace EWSEditor.Forms
 
                 byte[] data = System.IO.File.ReadAllBytes(oUploadItemForm.ChoseFileToUpload);
 
-                ExportUploadHelper.UploadItem(
-                    this.CurrentService,
+                //ExportUploadHelper.UploadItem(
+                //    this.CurrentService,
+                //    this.currentFolder.Id,
+                //    oUploadItemForm.ChoseCreateActionType,
+                //    oUploadItemForm.ChoseItemId,
+                //    data);
+
+                ExportUploadHelper.UploadItemPost(
+                    this.CurrentService.RequestedServerVersion.ToString(),
                     this.currentFolder.Id,
                     oUploadItemForm.ChoseCreateActionType,
                     oUploadItemForm.ChoseItemId,

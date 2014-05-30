@@ -222,7 +222,7 @@ namespace EWSEditor.Exchange
         ///  This is used for preparing an HttpWebRequest for a raw post.
         /// </summary>
         /// <param name="oRequest"></param>
-        public HttpWebRequest CreateHttpWebRequest()
+        public static void CreateHttpWebRequest(ref HttpWebRequest oRequest)
         {
             HttpWebRequest oHttpWebRequest = (HttpWebRequest)WebRequest.Create(EwsUrl);
              
@@ -310,10 +310,22 @@ namespace EWSEditor.Exchange
                 oHttpWebRequest.Proxy = oWebProxy;
             }
 
+
+            if (UseDefaultCredentials.HasValue)
+            {
+                oHttpWebRequest.UseDefaultCredentials = UseDefaultCredentials.Value;
+            }
+
+
             if (ServiceCredential != null)
             {
                 oHttpWebRequest.Credentials = ServiceCredential;
             }
+            //else
+            //{
+            //    oHttpWebRequest.Credentials =   GetNetworkCredential();
+   
+            //}
 
  
 
@@ -338,11 +350,6 @@ namespace EWSEditor.Exchange
             //    }
 
  
-            if (UseDefaultCredentials.HasValue)
-            {
-                oHttpWebRequest.UseDefaultCredentials = UseDefaultCredentials.Value;
-            }
-
             if (UserToImpersonate != null)
             {
                 //service.ImpersonatedUserId = UserToImpersonate;
@@ -350,7 +357,7 @@ namespace EWSEditor.Exchange
  
             }
 
-            return oHttpWebRequest;
+            oRequest = oHttpWebRequest;
  
 
         }
