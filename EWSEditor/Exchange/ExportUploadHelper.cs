@@ -206,7 +206,8 @@ namespace EWSEditor.Exchange
             EwsRequest = EwsRequest.Replace("##ParentFolderId_Id##", ParentFolderId.UniqueId);
 
             string sBase64 = string.Empty;
-            sBase64 = Convert.ToBase64String(data);
+            sBase64 = Convert.ToBase64String(data, Base64FormattingOptions.InsertLineBreaks);
+            System.Diagnostics.Debug.WriteLine("sBase64: " + sBase64);
             // Convert byte array to base64
             EwsRequest = EwsRequest.Replace("##Data##", sBase64);
 
