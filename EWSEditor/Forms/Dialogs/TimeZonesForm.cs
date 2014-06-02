@@ -189,6 +189,8 @@ namespace EWSEditor.Forms
                 foreach (TimeZoneInfo tzinfo in TimeZoneInfo.GetSystemTimeZones())
                 {
                     cmboTimeZoneIds.Items.Add(tzinfo.Id);
+                    cmboFromTimeZone.Items.Add(tzinfo.Id);
+                    cmboToTimeZone.Items.Add(tzinfo.Id);
                 }
             }
             catch (Exception ex)
@@ -297,6 +299,104 @@ namespace EWSEditor.Forms
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConvertTimezone_Click(object sender, EventArgs e)
+        {
+            string s = string.Empty;
+            StringBuilder sb = new StringBuilder();
+
+            
+            this.txtFromTimeZone.Text = string.Empty;
+            this.txtToTimeZone.Text = string.Empty;
+
+            string sFromTimeZone = this.cmboFromTimeZone.Text.Trim();
+            string sToTimeZone = this.cmboToTimeZone.Text.Trim();
+            DateTime oDateTime = TimeHelper.GetDateFromDateTimePickers(dtStartDate, dtStartTime);
+
+            if (sFromTimeZone.Length != 0)
+            {
+                try
+                {
+
+                    //oTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(cmboTimeZoneIds.Text);
+ 
+
+                    sb.Append("GetValuesFromTimezoneString: ");
+                    sb.Append(GetValuesFromTimezoneString(cmboFromTimeZone.Text.Trim()));
+                    sb.Append("\r\n");
+                    sb.Append("GetValuesFromTimezoneString using " + oDateTime.ToString() + ":");
+                    sb.Append(GetValuesFromTimezoneStringAndDateTime(cmboFromTimeZone.Text.Trim(), oDateTime));
+                    sb.Append("\r\n");
+
+                    s = sb.ToString();
+                    txtFromTimeZone.Text = s;
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error finding From TimeZone");
+                }
+            }
+            else
+            {
+                MessageBox.Show("A From Time Zone must be selectd first.", "Error");
+            }
+
+            
+        if (sToTimeZone.Length != 0)
+            {
+                try
+                {
+ 
+
+                    sb.Append("GetValuesFromTimezoneString: ");
+                    sb.Append(GetValuesFromTimezoneString(cmboToTimeZone.Text.Trim()));
+                    sb.Append("\r\n");
+                    sb.Append("GetValuesFromTimezoneString using " + oDateTime.ToString() + ":");
+                    sb.Append(GetValuesFromTimezoneStringAndDateTime(this.cmboToTimeZone.Text.Trim(), oDateTime));
+                    sb.Append("\r\n");
+
+                    s = sb.ToString();
+                    txtToTimeZone.Text = s;
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error finding To TimeZone");
+                }
+            }
+            else
+            {
+                MessageBox.Show("A To Time Zone must be selectd first.", "Error");
+            }
+
+            TimeZoneInfo oFromTimeZoneInfo = null;
+            oFromTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(sFromTimeZone);
+
+            TimeZoneInfo oToTimeZoneInfo = null;
+            oToTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(sToTimeZone);
+
+            DateTime oResultDateTime = System.TimeZoneInfo.ConvertTime(oDateTime, oFromTimeZoneInfo, oToTimeZoneInfo);
+
+            this.txtConversionResults.Text =
+                    "DateTime: " + oDateTime.ToString();
+              
+        }
+ 
+
+        private void ToTimeZone_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+         
+
+ 
 
     }
 }

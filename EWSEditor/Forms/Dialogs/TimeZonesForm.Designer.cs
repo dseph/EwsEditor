@@ -44,11 +44,25 @@
             this.tabClientCurrentTimeZone = new System.Windows.Forms.TabPage();
             this.txtClientCurrentTimezone = new System.Windows.Forms.TextBox();
             this.btnClientCurrentTimeZone = new System.Windows.Forms.Button();
+            this.tabConvertTime = new System.Windows.Forms.TabPage();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.cmboFromTimeZone = new System.Windows.Forms.ComboBox();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.cmboToTimeZone = new System.Windows.Forms.ComboBox();
+            this.lblToTZ = new System.Windows.Forms.Label();
+            this.lblFromTZ = new System.Windows.Forms.Label();
+            this.btnConvertTimezone = new System.Windows.Forms.Button();
+            this.txtFromTimeZone = new System.Windows.Forms.TextBox();
+            this.txtToTimeZone = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtConversionResults = new System.Windows.Forms.TextBox();
+            this.lblConversionResult = new System.Windows.Forms.Label();
             this.tabTimeZones.SuspendLayout();
             this.tabExchangeServerTimeZone.SuspendLayout();
             this.tabClientTimeZones.SuspendLayout();
             this.tabClientTimezoneLookup.SuspendLayout();
             this.tabClientCurrentTimeZone.SuspendLayout();
+            this.tabConvertTime.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnServerTimeZone
@@ -100,9 +114,9 @@
             // 
             // txtServerTimezoneResults
             // 
-            this.txtServerTimezoneResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtServerTimezoneResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtServerTimezoneResults.Location = new System.Drawing.Point(3, 36);
             this.txtServerTimezoneResults.Multiline = true;
             this.txtServerTimezoneResults.Name = "txtServerTimezoneResults";
@@ -122,13 +136,14 @@
             // 
             // tabTimeZones
             // 
-            this.tabTimeZones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabTimeZones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabTimeZones.Controls.Add(this.tabExchangeServerTimeZone);
             this.tabTimeZones.Controls.Add(this.tabClientTimeZones);
             this.tabTimeZones.Controls.Add(this.tabClientTimezoneLookup);
             this.tabTimeZones.Controls.Add(this.tabClientCurrentTimeZone);
+            this.tabTimeZones.Controls.Add(this.tabConvertTime);
             this.tabTimeZones.Font = new System.Drawing.Font("Times New Roman", 9.75F);
             this.tabTimeZones.Location = new System.Drawing.Point(7, 12);
             this.tabTimeZones.Name = "tabTimeZones";
@@ -161,9 +176,9 @@
             // 
             // lvMachineTimeZones
             // 
-            this.lvMachineTimeZones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvMachineTimeZones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvMachineTimeZones.Location = new System.Drawing.Point(0, 36);
             this.lvMachineTimeZones.Name = "lvMachineTimeZones";
             this.lvMachineTimeZones.Size = new System.Drawing.Size(884, 401);
@@ -187,9 +202,9 @@
             // 
             // txtTimeZoneLookupResults
             // 
-            this.txtTimeZoneLookupResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTimeZoneLookupResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTimeZoneLookupResults.Location = new System.Drawing.Point(0, 39);
             this.txtTimeZoneLookupResults.Multiline = true;
             this.txtTimeZoneLookupResults.Name = "txtTimeZoneLookupResults";
@@ -202,18 +217,18 @@
             // 
             this.tabClientCurrentTimeZone.Controls.Add(this.txtClientCurrentTimezone);
             this.tabClientCurrentTimeZone.Controls.Add(this.btnClientCurrentTimeZone);
-            this.tabClientCurrentTimeZone.Location = new System.Drawing.Point(4, 22);
+            this.tabClientCurrentTimeZone.Location = new System.Drawing.Point(4, 24);
             this.tabClientCurrentTimeZone.Name = "tabClientCurrentTimeZone";
-            this.tabClientCurrentTimeZone.Size = new System.Drawing.Size(890, 445);
+            this.tabClientCurrentTimeZone.Size = new System.Drawing.Size(890, 443);
             this.tabClientCurrentTimeZone.TabIndex = 3;
             this.tabClientCurrentTimeZone.Text = "Client Current TimeZone";
             this.tabClientCurrentTimeZone.UseVisualStyleBackColor = true;
             // 
             // txtClientCurrentTimezone
             // 
-            this.txtClientCurrentTimezone.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtClientCurrentTimezone.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtClientCurrentTimezone.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClientCurrentTimezone.Location = new System.Drawing.Point(3, 36);
             this.txtClientCurrentTimezone.Multiline = true;
@@ -233,6 +248,133 @@
             this.btnClientCurrentTimeZone.UseVisualStyleBackColor = true;
             this.btnClientCurrentTimeZone.Click += new System.EventHandler(this.btnClientCurrentTimeZone_Click);
             // 
+            // tabConvertTime
+            // 
+            this.tabConvertTime.Controls.Add(this.lblConversionResult);
+            this.tabConvertTime.Controls.Add(this.txtConversionResults);
+            this.tabConvertTime.Controls.Add(this.label1);
+            this.tabConvertTime.Controls.Add(this.txtToTimeZone);
+            this.tabConvertTime.Controls.Add(this.txtFromTimeZone);
+            this.tabConvertTime.Controls.Add(this.btnConvertTimezone);
+            this.tabConvertTime.Controls.Add(this.lblFromTZ);
+            this.tabConvertTime.Controls.Add(this.lblToTZ);
+            this.tabConvertTime.Controls.Add(this.cmboToTimeZone);
+            this.tabConvertTime.Controls.Add(this.dateTimePicker1);
+            this.tabConvertTime.Controls.Add(this.cmboFromTimeZone);
+            this.tabConvertTime.Controls.Add(this.dateTimePicker2);
+            this.tabConvertTime.Location = new System.Drawing.Point(4, 24);
+            this.tabConvertTime.Name = "tabConvertTime";
+            this.tabConvertTime.Padding = new System.Windows.Forms.Padding(3);
+            this.tabConvertTime.Size = new System.Drawing.Size(890, 443);
+            this.tabConvertTime.TabIndex = 4;
+            this.tabConvertTime.Text = "Convert Time";
+            this.tabConvertTime.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(291, 22);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(135, 22);
+            this.dateTimePicker1.TabIndex = 41;
+            // 
+            // cmboFromTimeZone
+            // 
+            this.cmboFromTimeZone.FormattingEnabled = true;
+            this.cmboFromTimeZone.Location = new System.Drawing.Point(85, 56);
+            this.cmboFromTimeZone.Name = "cmboFromTimeZone";
+            this.cmboFromTimeZone.Size = new System.Drawing.Size(380, 23);
+            this.cmboFromTimeZone.TabIndex = 39;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(85, 22);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker2.TabIndex = 40;
+            // 
+            // cmboToTimeZone
+            // 
+            this.cmboToTimeZone.FormattingEnabled = true;
+            this.cmboToTimeZone.Location = new System.Drawing.Point(85, 193);
+            this.cmboToTimeZone.Name = "cmboToTimeZone";
+            this.cmboToTimeZone.Size = new System.Drawing.Size(380, 23);
+            this.cmboToTimeZone.TabIndex = 43;
+            this.cmboToTimeZone.SelectedIndexChanged += new System.EventHandler(this.ToTimeZone_SelectedIndexChanged);
+            // 
+            // lblToTZ
+            // 
+            this.lblToTZ.AutoSize = true;
+            this.lblToTZ.Location = new System.Drawing.Point(9, 201);
+            this.lblToTZ.Name = "lblToTZ";
+            this.lblToTZ.Size = new System.Drawing.Size(24, 15);
+            this.lblToTZ.TabIndex = 44;
+            this.lblToTZ.Text = "To:";
+            // 
+            // lblFromTZ
+            // 
+            this.lblFromTZ.AutoSize = true;
+            this.lblFromTZ.Location = new System.Drawing.Point(12, 59);
+            this.lblFromTZ.Name = "lblFromTZ";
+            this.lblFromTZ.Size = new System.Drawing.Size(37, 15);
+            this.lblFromTZ.TabIndex = 45;
+            this.lblFromTZ.Text = "From:";
+            // 
+            // btnConvertTimezone
+            // 
+            this.btnConvertTimezone.Location = new System.Drawing.Point(15, 410);
+            this.btnConvertTimezone.Name = "btnConvertTimezone";
+            this.btnConvertTimezone.Size = new System.Drawing.Size(140, 27);
+            this.btnConvertTimezone.TabIndex = 46;
+            this.btnConvertTimezone.Text = "Convert Time";
+            this.btnConvertTimezone.UseVisualStyleBackColor = true;
+            this.btnConvertTimezone.Click += new System.EventHandler(this.btnConvertTimezone_Click);
+            // 
+            // txtFromTimeZone
+            // 
+            this.txtFromTimeZone.Location = new System.Drawing.Point(85, 85);
+            this.txtFromTimeZone.Multiline = true;
+            this.txtFromTimeZone.Name = "txtFromTimeZone";
+            this.txtFromTimeZone.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtFromTimeZone.Size = new System.Drawing.Size(736, 102);
+            this.txtFromTimeZone.TabIndex = 47;
+            // 
+            // txtToTimeZone
+            // 
+            this.txtToTimeZone.Location = new System.Drawing.Point(85, 222);
+            this.txtToTimeZone.Multiline = true;
+            this.txtToTimeZone.Name = "txtToTimeZone";
+            this.txtToTimeZone.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtToTimeZone.Size = new System.Drawing.Size(736, 102);
+            this.txtToTimeZone.TabIndex = 48;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 15);
+            this.label1.TabIndex = 49;
+            this.label1.Text = "Date/Time:";
+            // 
+            // txtConversionResults
+            // 
+            this.txtConversionResults.Location = new System.Drawing.Point(85, 330);
+            this.txtConversionResults.Multiline = true;
+            this.txtConversionResults.Name = "txtConversionResults";
+            this.txtConversionResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtConversionResults.Size = new System.Drawing.Size(736, 74);
+            this.txtConversionResults.TabIndex = 50;
+            // 
+            // lblConversionResult
+            // 
+            this.lblConversionResult.AutoSize = true;
+            this.lblConversionResult.Location = new System.Drawing.Point(12, 333);
+            this.lblConversionResult.Name = "lblConversionResult";
+            this.lblConversionResult.Size = new System.Drawing.Size(41, 15);
+            this.lblConversionResult.TabIndex = 51;
+            this.lblConversionResult.Text = "Result";
+            // 
             // TimeZonesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,6 +392,8 @@
             this.tabClientTimezoneLookup.PerformLayout();
             this.tabClientCurrentTimeZone.ResumeLayout(false);
             this.tabClientCurrentTimeZone.PerformLayout();
+            this.tabConvertTime.ResumeLayout(false);
+            this.tabConvertTime.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -272,5 +416,18 @@
         private System.Windows.Forms.TabPage tabClientCurrentTimeZone;
         private System.Windows.Forms.TextBox txtClientCurrentTimezone;
         private System.Windows.Forms.Button btnClientCurrentTimeZone;
+        private System.Windows.Forms.TabPage tabConvertTime;
+        private System.Windows.Forms.Label lblFromTZ;
+        private System.Windows.Forms.Label lblToTZ;
+        private System.Windows.Forms.ComboBox cmboToTimeZone;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox cmboFromTimeZone;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button btnConvertTimezone;
+        private System.Windows.Forms.TextBox txtToTimeZone;
+        private System.Windows.Forms.TextBox txtFromTimeZone;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblConversionResult;
+        private System.Windows.Forms.TextBox txtConversionResults;
     }
 }
