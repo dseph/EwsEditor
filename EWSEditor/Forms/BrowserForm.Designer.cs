@@ -62,6 +62,7 @@
             this.ConvertIdMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeZonemenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserConfigurationMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eDiscoverySearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOther = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +77,6 @@
             this.mnuEncodingHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.eDiscoverySearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -340,6 +340,13 @@
             this.UserConfigurationMenuItem.Text = "User Configuration";
             this.UserConfigurationMenuItem.Click += new System.EventHandler(this.UserConfigurationMenuItem_Click);
             // 
+            // eDiscoverySearchToolStripMenuItem
+            // 
+            this.eDiscoverySearchToolStripMenuItem.Name = "eDiscoverySearchToolStripMenuItem";
+            this.eDiscoverySearchToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.eDiscoverySearchToolStripMenuItem.Text = "eDiscoverySearch";
+            this.eDiscoverySearchToolStripMenuItem.Click += new System.EventHandler(this.eDiscoverySearchToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -441,13 +448,6 @@
             this.mnuAbout.Size = new System.Drawing.Size(164, 22);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
-            // 
-            // eDiscoverySearchToolStripMenuItem
-            // 
-            this.eDiscoverySearchToolStripMenuItem.Name = "eDiscoverySearchToolStripMenuItem";
-            this.eDiscoverySearchToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
-            this.eDiscoverySearchToolStripMenuItem.Text = "eDiscoverySearch";
-            this.eDiscoverySearchToolStripMenuItem.Click += new System.EventHandler(this.eDiscoverySearchToolStripMenuItem_Click);
             // 
             // BrowserForm
             // 

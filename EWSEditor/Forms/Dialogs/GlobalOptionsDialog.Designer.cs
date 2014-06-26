@@ -54,7 +54,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.numericUpDownTimeout = new System.Windows.Forms.NumericUpDown();
             this.EnableScpLookups = new System.Windows.Forms.CheckBox();
-            this.UserAgentText = new System.Windows.Forms.TextBox();
             this.UserAgentLabel = new System.Windows.Forms.Label();
             this.EnableSslDetailCheck = new System.Windows.Forms.CheckBox();
             this.DumpFolderText = new System.Windows.Forms.TextBox();
@@ -71,6 +70,7 @@
             this.LogFilePathText = new System.Windows.Forms.TextBox();
             this.LogFilePathLabel = new System.Windows.Forms.Label();
             this.SaveLogFileCheck = new System.Windows.Forms.CheckBox();
+            this.cmboUserAgent = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.MiscSettingsGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).BeginInit();
@@ -252,6 +252,7 @@
             // 
             // MiscSettingsGroup
             // 
+            this.MiscSettingsGroup.Controls.Add(this.cmboUserAgent);
             this.MiscSettingsGroup.Controls.Add(this.chkOverrideTimezone);
             this.MiscSettingsGroup.Controls.Add(this.PreAuthenticate);
             this.MiscSettingsGroup.Controls.Add(this.label1);
@@ -260,7 +261,6 @@
             this.MiscSettingsGroup.Controls.Add(this.label9);
             this.MiscSettingsGroup.Controls.Add(this.numericUpDownTimeout);
             this.MiscSettingsGroup.Controls.Add(this.EnableScpLookups);
-            this.MiscSettingsGroup.Controls.Add(this.UserAgentText);
             this.MiscSettingsGroup.Controls.Add(this.UserAgentLabel);
             this.MiscSettingsGroup.Controls.Add(this.EnableSslDetailCheck);
             this.MiscSettingsGroup.Controls.Add(this.DumpFolderText);
@@ -363,13 +363,6 @@
             this.EnableScpLookups.Text = "Enable SCP Lookups (Disabling will skip AD lookup of Autodiscover URLs)";
             this.EnableScpLookups.UseVisualStyleBackColor = true;
             this.EnableScpLookups.CheckedChanged += new System.EventHandler(this.EnableScpLookups_CheckedChanged);
-            // 
-            // UserAgentText
-            // 
-            this.UserAgentText.Location = new System.Drawing.Point(144, 16);
-            this.UserAgentText.Name = "UserAgentText";
-            this.UserAgentText.Size = new System.Drawing.Size(309, 20);
-            this.UserAgentText.TabIndex = 1;
             // 
             // UserAgentLabel
             // 
@@ -503,6 +496,16 @@
             this.SaveLogFileCheck.UseVisualStyleBackColor = true;
             this.SaveLogFileCheck.CheckedChanged += new System.EventHandler(this.SaveLogFileCheck_CheckedChanged);
             // 
+            // cmboUserAgent
+            // 
+            this.cmboUserAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmboUserAgent.FormattingEnabled = true;
+            this.cmboUserAgent.Location = new System.Drawing.Point(111, 16);
+            this.cmboUserAgent.Name = "cmboUserAgent";
+            this.cmboUserAgent.Size = new System.Drawing.Size(319, 21);
+            this.cmboUserAgent.TabIndex = 10;
+            // 
             // OptionsDialog
             // 
             this.AcceptButton = this.OkButton;
@@ -553,7 +556,6 @@
         private System.Windows.Forms.Label LogFilePathLabel;
         private System.Windows.Forms.TextBox LogFilePathText;
         private System.Windows.Forms.GroupBox LoggingGroup;
-        private System.Windows.Forms.TextBox UserAgentText;
         private System.Windows.Forms.Label UserAgentLabel;
         private System.Windows.Forms.CheckBox EnableScpLookups;
         private System.Windows.Forms.Label label9;
@@ -578,5 +580,6 @@
         private System.Windows.Forms.RadioButton rdoSpecifyProxySettings;
         private System.Windows.Forms.RadioButton rdoDontOverrideProxySettings;
         private System.Windows.Forms.CheckBox chkBypassProxyForLocalAddress;
+        private System.Windows.Forms.ComboBox cmboUserAgent;
     }
 }

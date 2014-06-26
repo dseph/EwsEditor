@@ -127,7 +127,7 @@ namespace EWSEditor.Common
                 chkPragmaNocache.Checked,
                 chkTranslateF.Checked,
                 chkAllowRedirect.Checked,
-                txtUserAgent.Text,
+                cmboUserAgent.Text,
                 ref sResult,
                 ref sError,
                 ref sResponseStatusCode,
@@ -280,7 +280,7 @@ namespace EWSEditor.Common
  
             oPostFormSetting.TimeoutSeconds = (int)this.numericUpDownTimeoutSeconds.Value;
 
-            oPostFormSetting.UserAgent = this.txtUserAgent.Text;
+            oPostFormSetting.UserAgent = this.cmboUserAgent.Text;
 
             oPostFormSetting.PragmaNoCache = this.chkPragmaNocache.Checked = oPostFormSetting.PragmaNoCache;
             oPostFormSetting.TranslateF = this.chkTranslateF.Checked;
@@ -308,7 +308,7 @@ namespace EWSEditor.Common
                 UInt32 iTimeoutSeconds = 0;
                 iTimeoutSeconds = Convert.ToUInt32(oPostFormSetting.TimeoutSeconds);
                 this.numericUpDownTimeoutSeconds.Value = iTimeoutSeconds;
-                this.txtUserAgent.Text = FixSetting(oPostFormSetting.UserAgent);
+                this.cmboUserAgent.Text = FixSetting(oPostFormSetting.UserAgent);
 
                 this.chkPragmaNocache.Checked = oPostFormSetting.PragmaNoCache;
                 this.chkTranslateF.Checked = oPostFormSetting.TranslateF;

@@ -585,6 +585,7 @@
                     oConversationItems,
                     this.CurrentService,
                     this);
+ 
             }
         }
 

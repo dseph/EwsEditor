@@ -362,8 +362,9 @@ namespace EWSEditor.Forms
 
                     Item item = Item.Bind(this.CurrentService, id, this.CurrentDetailPropertySet);
                     ItemAttachment<Item> itemAttach = item.Attachments.AddItemAttachment<Item>();
-
+ 
                     item.Update(ConflictResolutionMode.AutoResolve);
+          
 
                     // Refresh the view
                     this.RefreshContentAndDetails();
