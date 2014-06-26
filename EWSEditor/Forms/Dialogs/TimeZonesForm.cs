@@ -517,6 +517,7 @@ namespace EWSEditor.Forms
             string sFromTimeZone = this.cmboFromTimeZone.Text.Trim();
             string sToTimeZone = this.cmboToTimeZone.Text.Trim();
 
+ 
             DateTime oDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified); 
 
             if (rdoConvertByDateTime.Checked == true)
@@ -538,6 +539,24 @@ namespace EWSEditor.Forms
                     MessageBox.Show("The Ticks value is not an int64.");
                     return;
                 }
+            }
+            if (rdoConvertByNow.Checked == true)
+            {
+                DateTimeKind oDateTimeKind = DateTimeKind.Unspecified;
+                switch (this.cmboConversionKind.Text)
+                {
+                    case "Unspecified":
+                        oDateTimeKind = DateTimeKind.Unspecified;
+                        break;
+                    case "Utc":
+                        oDateTimeKind = DateTimeKind.Utc;
+                        break;
+                    case "Local":
+                        oDateTimeKind = DateTimeKind.Local;
+                        break;
+                }
+
+                oDateTime = DateTime.SpecifyKind(DateTime.Now, oDateTimeKind); 
             }
 
             txtConversionDateInfo.Text = GetDateTimeInfo(oDateTime);
@@ -655,7 +674,7 @@ namespace EWSEditor.Forms
 
         private void rdoNow_CheckedChanged(object sender, EventArgs e)
         {
-
+            SetConversionEnablement();
         }
 
         private void SetConversionEnablement()
@@ -676,7 +695,7 @@ namespace EWSEditor.Forms
                 txtTicks.Enabled = true;
             }
 
-            if (this.rdoNow.Checked == true)
+            if (this.rdoConvertByNow.Checked == true)
             {
                 dtConvertStartTime.Enabled = false;
                 dtConvertStartDate.Enabled = false;
@@ -688,6 +707,21 @@ namespace EWSEditor.Forms
         }
 
         private void tabConvertTime_Click(object sender, EventArgs e)
+        {
+            SetConversionEnablement();
+        }
+
+        private void rdoConvertByDateTime_CheckedChanged(object sender, EventArgs e)
+        {
+            SetConversionEnablement();
+        }
+
+        private void rdoConvertByTicks_CheckedChanged(object sender, EventArgs e)
+        {
+            SetConversionEnablement();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }
