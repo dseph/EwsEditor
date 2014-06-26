@@ -45,7 +45,7 @@
             this.txtClientCurrentTimezone = new System.Windows.Forms.TextBox();
             this.btnClientCurrentTimeZone = new System.Windows.Forms.Button();
             this.tabConvertTime = new System.Windows.Forms.TabPage();
-            this.rdoNow = new System.Windows.Forms.RadioButton();
+            this.rdoConvertByNow = new System.Windows.Forms.RadioButton();
             this.txtTicks = new System.Windows.Forms.TextBox();
             this.rdoConvertByTicks = new System.Windows.Forms.RadioButton();
             this.rdoConvertByDateTime = new System.Windows.Forms.RadioButton();
@@ -66,12 +66,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtConversionDateInfo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmboConversionKind = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabTimeZones.SuspendLayout();
             this.tabExchangeServerTimeZone.SuspendLayout();
             this.tabClientTimeZones.SuspendLayout();
             this.tabClientTimezoneLookup.SuspendLayout();
             this.tabClientCurrentTimeZone.SuspendLayout();
             this.tabConvertTime.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnServerTimeZone
@@ -259,27 +263,15 @@
             // 
             // tabConvertTime
             // 
+            this.tabConvertTime.Controls.Add(this.groupBox1);
             this.tabConvertTime.Controls.Add(this.label5);
             this.tabConvertTime.Controls.Add(this.txtConversionDateInfo);
-            this.tabConvertTime.Controls.Add(this.label4);
             this.tabConvertTime.Controls.Add(this.label3);
             this.tabConvertTime.Controls.Add(this.label2);
-            this.tabConvertTime.Controls.Add(this.rdoNow);
-            this.tabConvertTime.Controls.Add(this.txtTicks);
-            this.tabConvertTime.Controls.Add(this.rdoConvertByTicks);
-            this.tabConvertTime.Controls.Add(this.rdoConvertByDateTime);
-            this.tabConvertTime.Controls.Add(this.dtConvertStartTime);
-            this.tabConvertTime.Controls.Add(this.dtConvertStartDate);
             this.tabConvertTime.Controls.Add(this.lblConversionResult);
-            this.tabConvertTime.Controls.Add(this.label1);
             this.tabConvertTime.Controls.Add(this.txtConversionResults);
             this.tabConvertTime.Controls.Add(this.txtToTimeZone);
             this.tabConvertTime.Controls.Add(this.txtFromTimeZone);
-            this.tabConvertTime.Controls.Add(this.btnConvertTimezone);
-            this.tabConvertTime.Controls.Add(this.lblFromTZ);
-            this.tabConvertTime.Controls.Add(this.lblToTZ);
-            this.tabConvertTime.Controls.Add(this.cmboToTimeZone);
-            this.tabConvertTime.Controls.Add(this.cmboFromTimeZone);
             this.tabConvertTime.Location = new System.Drawing.Point(4, 24);
             this.tabConvertTime.Name = "tabConvertTime";
             this.tabConvertTime.Padding = new System.Windows.Forms.Padding(3);
@@ -289,60 +281,62 @@
             this.tabConvertTime.UseVisualStyleBackColor = true;
             this.tabConvertTime.Click += new System.EventHandler(this.tabConvertTime_Click);
             // 
-            // rdoNow
+            // rdoConvertByNow
             // 
-            this.rdoNow.AutoSize = true;
-            this.rdoNow.Location = new System.Drawing.Point(56, 102);
-            this.rdoNow.Name = "rdoNow";
-            this.rdoNow.Size = new System.Drawing.Size(144, 19);
-            this.rdoNow.TabIndex = 55;
-            this.rdoNow.Text = "Current Machine Time";
-            this.rdoNow.UseVisualStyleBackColor = true;
-            this.rdoNow.CheckedChanged += new System.EventHandler(this.rdoNow_CheckedChanged);
+            this.rdoConvertByNow.AutoSize = true;
+            this.rdoConvertByNow.Location = new System.Drawing.Point(31, 89);
+            this.rdoConvertByNow.Name = "rdoConvertByNow";
+            this.rdoConvertByNow.Size = new System.Drawing.Size(144, 19);
+            this.rdoConvertByNow.TabIndex = 8;
+            this.rdoConvertByNow.Text = "Current Machine Time";
+            this.rdoConvertByNow.UseVisualStyleBackColor = true;
+            this.rdoConvertByNow.CheckedChanged += new System.EventHandler(this.rdoNow_CheckedChanged);
             // 
             // txtTicks
             // 
-            this.txtTicks.Location = new System.Drawing.Point(209, 74);
+            this.txtTicks.Location = new System.Drawing.Point(192, 61);
             this.txtTicks.Name = "txtTicks";
             this.txtTicks.Size = new System.Drawing.Size(414, 22);
-            this.txtTicks.TabIndex = 54;
+            this.txtTicks.TabIndex = 7;
             // 
             // rdoConvertByTicks
             // 
             this.rdoConvertByTicks.AutoSize = true;
-            this.rdoConvertByTicks.Location = new System.Drawing.Point(54, 77);
+            this.rdoConvertByTicks.Location = new System.Drawing.Point(31, 64);
             this.rdoConvertByTicks.Name = "rdoConvertByTicks";
             this.rdoConvertByTicks.Size = new System.Drawing.Size(118, 19);
-            this.rdoConvertByTicks.TabIndex = 53;
+            this.rdoConvertByTicks.TabIndex = 6;
             this.rdoConvertByTicks.Text = "Convert By Ticks";
             this.rdoConvertByTicks.UseVisualStyleBackColor = true;
+            this.rdoConvertByTicks.CheckedChanged += new System.EventHandler(this.rdoConvertByTicks_CheckedChanged);
             // 
             // rdoConvertByDateTime
             // 
             this.rdoConvertByDateTime.AutoSize = true;
             this.rdoConvertByDateTime.Checked = true;
-            this.rdoConvertByDateTime.Location = new System.Drawing.Point(56, 50);
+            this.rdoConvertByDateTime.Location = new System.Drawing.Point(31, 37);
             this.rdoConvertByDateTime.Name = "rdoConvertByDateTime";
             this.rdoConvertByDateTime.Size = new System.Drawing.Size(140, 19);
-            this.rdoConvertByDateTime.TabIndex = 52;
+            this.rdoConvertByDateTime.TabIndex = 2;
             this.rdoConvertByDateTime.TabStop = true;
             this.rdoConvertByDateTime.Text = "Convert By DateTime";
             this.rdoConvertByDateTime.UseVisualStyleBackColor = true;
+            this.rdoConvertByDateTime.CheckedChanged += new System.EventHandler(this.rdoConvertByDateTime_CheckedChanged);
             // 
             // dtConvertStartTime
             // 
             this.dtConvertStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtConvertStartTime.Location = new System.Drawing.Point(488, 46);
+            this.dtConvertStartTime.Location = new System.Drawing.Point(471, 33);
             this.dtConvertStartTime.Name = "dtConvertStartTime";
             this.dtConvertStartTime.Size = new System.Drawing.Size(135, 22);
-            this.dtConvertStartTime.TabIndex = 41;
+            this.dtConvertStartTime.TabIndex = 5;
             // 
             // dtConvertStartDate
             // 
-            this.dtConvertStartDate.Location = new System.Drawing.Point(282, 46);
+            this.dtConvertStartDate.Location = new System.Drawing.Point(265, 33);
             this.dtConvertStartDate.Name = "dtConvertStartDate";
             this.dtConvertStartDate.Size = new System.Drawing.Size(200, 22);
-            this.dtConvertStartDate.TabIndex = 40;
+            this.dtConvertStartDate.TabIndex = 4;
             // 
             // lblConversionResult
             // 
@@ -350,16 +344,16 @@
             this.lblConversionResult.Location = new System.Drawing.Point(9, 410);
             this.lblConversionResult.Name = "lblConversionResult";
             this.lblConversionResult.Size = new System.Drawing.Size(41, 15);
-            this.lblConversionResult.TabIndex = 51;
+            this.lblConversionResult.TabIndex = 6;
             this.lblConversionResult.Text = "Result";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(206, 52);
+            this.label1.Location = new System.Drawing.Point(189, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 15);
-            this.label1.TabIndex = 49;
+            this.label1.TabIndex = 3;
             this.label1.Text = "Date/Time:";
             // 
             // txtConversionResults
@@ -372,7 +366,7 @@
             this.txtConversionResults.Name = "txtConversionResults";
             this.txtConversionResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtConversionResults.Size = new System.Drawing.Size(935, 131);
-            this.txtConversionResults.TabIndex = 50;
+            this.txtConversionResults.TabIndex = 7;
             // 
             // txtToTimeZone
             // 
@@ -383,7 +377,7 @@
             this.txtToTimeZone.Name = "txtToTimeZone";
             this.txtToTimeZone.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtToTimeZone.Size = new System.Drawing.Size(935, 70);
-            this.txtToTimeZone.TabIndex = 48;
+            this.txtToTimeZone.TabIndex = 5;
             // 
             // txtFromTimeZone
             // 
@@ -394,15 +388,15 @@
             this.txtFromTimeZone.Name = "txtFromTimeZone";
             this.txtFromTimeZone.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtFromTimeZone.Size = new System.Drawing.Size(935, 58);
-            this.txtFromTimeZone.TabIndex = 47;
+            this.txtFromTimeZone.TabIndex = 3;
             // 
             // btnConvertTimezone
             // 
             this.btnConvertTimezone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConvertTimezone.Location = new System.Drawing.Point(820, 12);
+            this.btnConvertTimezone.Location = new System.Drawing.Point(805, 9);
             this.btnConvertTimezone.Name = "btnConvertTimezone";
             this.btnConvertTimezone.Size = new System.Drawing.Size(140, 27);
-            this.btnConvertTimezone.TabIndex = 46;
+            this.btnConvertTimezone.TabIndex = 0;
             this.btnConvertTimezone.Text = "Convert Time";
             this.btnConvertTimezone.UseVisualStyleBackColor = true;
             this.btnConvertTimezone.Click += new System.EventHandler(this.btnConvertTimezone_Click);
@@ -410,37 +404,37 @@
             // lblFromTZ
             // 
             this.lblFromTZ.AutoSize = true;
-            this.lblFromTZ.Location = new System.Drawing.Point(6, 137);
+            this.lblFromTZ.Location = new System.Drawing.Point(9, 128);
             this.lblFromTZ.Name = "lblFromTZ";
             this.lblFromTZ.Size = new System.Drawing.Size(94, 15);
-            this.lblFromTZ.TabIndex = 45;
+            this.lblFromTZ.TabIndex = 11;
             this.lblFromTZ.Text = "From TimeZone:";
             // 
             // lblToTZ
             // 
             this.lblToTZ.AutoSize = true;
-            this.lblToTZ.Location = new System.Drawing.Point(485, 137);
+            this.lblToTZ.Location = new System.Drawing.Point(500, 128);
             this.lblToTZ.Name = "lblToTZ";
             this.lblToTZ.Size = new System.Drawing.Size(81, 15);
-            this.lblToTZ.TabIndex = 44;
+            this.lblToTZ.TabIndex = 13;
             this.lblToTZ.Text = "To TimeZone:";
             // 
             // cmboToTimeZone
             // 
             this.cmboToTimeZone.FormattingEnabled = true;
-            this.cmboToTimeZone.Location = new System.Drawing.Point(572, 134);
+            this.cmboToTimeZone.Location = new System.Drawing.Point(587, 125);
             this.cmboToTimeZone.Name = "cmboToTimeZone";
             this.cmboToTimeZone.Size = new System.Drawing.Size(326, 23);
-            this.cmboToTimeZone.TabIndex = 43;
+            this.cmboToTimeZone.TabIndex = 14;
             this.cmboToTimeZone.SelectedIndexChanged += new System.EventHandler(this.ToTimeZone_SelectedIndexChanged);
             // 
             // cmboFromTimeZone
             // 
             this.cmboFromTimeZone.FormattingEnabled = true;
-            this.cmboFromTimeZone.Location = new System.Drawing.Point(122, 134);
+            this.cmboFromTimeZone.Location = new System.Drawing.Point(125, 125);
             this.cmboFromTimeZone.Name = "cmboFromTimeZone";
             this.cmboFromTimeZone.Size = new System.Drawing.Size(326, 23);
-            this.cmboFromTimeZone.TabIndex = 39;
+            this.cmboFromTimeZone.TabIndex = 12;
             // 
             // label2
             // 
@@ -448,7 +442,7 @@
             this.label2.Location = new System.Drawing.Point(3, 242);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 15);
-            this.label2.TabIndex = 56;
+            this.label2.TabIndex = 2;
             this.label2.Text = "From Timezone Info:";
             // 
             // label3
@@ -457,16 +451,16 @@
             this.label3.Location = new System.Drawing.Point(9, 319);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 15);
-            this.label3.TabIndex = 57;
+            this.label3.TabIndex = 4;
             this.label3.Text = "To Timezone Info:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 24);
+            this.label4.Location = new System.Drawing.Point(6, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 15);
-            this.label4.TabIndex = 58;
+            this.label4.TabIndex = 1;
             this.label4.Text = "Date for conversion:";
             // 
             // txtConversionDateInfo
@@ -478,7 +472,7 @@
             this.txtConversionDateInfo.Name = "txtConversionDateInfo";
             this.txtConversionDateInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtConversionDateInfo.Size = new System.Drawing.Size(935, 52);
-            this.txtConversionDateInfo.TabIndex = 59;
+            this.txtConversionDateInfo.TabIndex = 1;
             // 
             // label5
             // 
@@ -486,8 +480,56 @@
             this.label5.Location = new System.Drawing.Point(3, 169);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(129, 15);
-            this.label5.TabIndex = 60;
+            this.label5.TabIndex = 0;
             this.label5.Text = "Converstion Date Info:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cmboConversionKind);
+            this.groupBox1.Controls.Add(this.cmboToTimeZone);
+            this.groupBox1.Controls.Add(this.cmboFromTimeZone);
+            this.groupBox1.Controls.Add(this.lblToTZ);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lblFromTZ);
+            this.groupBox1.Controls.Add(this.btnConvertTimezone);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.rdoConvertByNow);
+            this.groupBox1.Controls.Add(this.dtConvertStartDate);
+            this.groupBox1.Controls.Add(this.txtTicks);
+            this.groupBox1.Controls.Add(this.dtConvertStartTime);
+            this.groupBox1.Controls.Add(this.rdoConvertByTicks);
+            this.groupBox1.Controls.Add(this.rdoConvertByDateTime);
+            this.groupBox1.Location = new System.Drawing.Point(9, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(951, 166);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // cmboConversionKind
+            // 
+            this.cmboConversionKind.FormattingEnabled = true;
+            this.cmboConversionKind.Items.AddRange(new object[] {
+            "Unspecified",
+            "Local",
+            "Utc"});
+            this.cmboConversionKind.Location = new System.Drawing.Point(231, 88);
+            this.cmboConversionKind.Name = "cmboConversionKind";
+            this.cmboConversionKind.Size = new System.Drawing.Size(134, 23);
+            this.cmboConversionKind.TabIndex = 10;
+            this.cmboConversionKind.Text = "Unspecified";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(189, 93);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 15);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Kind:";
             // 
             // TimeZonesForm
             // 
@@ -508,6 +550,8 @@
             this.tabClientCurrentTimeZone.PerformLayout();
             this.tabConvertTime.ResumeLayout(false);
             this.tabConvertTime.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -546,11 +590,14 @@
         private System.Windows.Forms.RadioButton rdoConvertByTicks;
         private System.Windows.Forms.RadioButton rdoConvertByDateTime;
         private System.Windows.Forms.TextBox txtTicks;
-        private System.Windows.Forms.RadioButton rdoNow;
+        private System.Windows.Forms.RadioButton rdoConvertByNow;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtConversionDateInfo;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmboConversionKind;
     }
 }
