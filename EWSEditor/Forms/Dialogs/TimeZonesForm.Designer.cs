@@ -134,7 +134,7 @@
             this.txtServerTimezoneResults.Multiline = true;
             this.txtServerTimezoneResults.Name = "txtServerTimezoneResults";
             this.txtServerTimezoneResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtServerTimezoneResults.Size = new System.Drawing.Size(866, 466);
+            this.txtServerTimezoneResults.Size = new System.Drawing.Size(960, 526);
             this.txtServerTimezoneResults.TabIndex = 36;
             this.txtServerTimezoneResults.WordWrap = false;
             // 
@@ -194,7 +194,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvMachineTimeZones.Location = new System.Drawing.Point(0, 36);
             this.lvMachineTimeZones.Name = "lvMachineTimeZones";
-            this.lvMachineTimeZones.Size = new System.Drawing.Size(887, 450);
+            this.lvMachineTimeZones.Size = new System.Drawing.Size(960, 523);
             this.lvMachineTimeZones.TabIndex = 32;
             this.lvMachineTimeZones.UseCompatibleStateImageBehavior = false;
             // 
@@ -222,7 +222,7 @@
             this.txtTimeZoneLookupResults.Multiline = true;
             this.txtTimeZoneLookupResults.Name = "txtTimeZoneLookupResults";
             this.txtTimeZoneLookupResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTimeZoneLookupResults.Size = new System.Drawing.Size(890, 450);
+            this.txtTimeZoneLookupResults.Size = new System.Drawing.Size(960, 520);
             this.txtTimeZoneLookupResults.TabIndex = 38;
             this.txtTimeZoneLookupResults.WordWrap = false;
             // 
@@ -232,7 +232,7 @@
             this.tabClientCurrentTimeZone.Controls.Add(this.btnClientCurrentTimeZone);
             this.tabClientCurrentTimeZone.Location = new System.Drawing.Point(4, 24);
             this.tabClientCurrentTimeZone.Name = "tabClientCurrentTimeZone";
-            this.tabClientCurrentTimeZone.Size = new System.Drawing.Size(963, 565);
+            this.tabClientCurrentTimeZone.Size = new System.Drawing.Size(966, 565);
             this.tabClientCurrentTimeZone.TabIndex = 3;
             this.tabClientCurrentTimeZone.Text = "Client Current TimeZone";
             this.tabClientCurrentTimeZone.UseVisualStyleBackColor = true;
@@ -247,7 +247,7 @@
             this.txtClientCurrentTimezone.Multiline = true;
             this.txtClientCurrentTimezone.Name = "txtClientCurrentTimezone";
             this.txtClientCurrentTimezone.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtClientCurrentTimezone.Size = new System.Drawing.Size(978, 498);
+            this.txtClientCurrentTimezone.Size = new System.Drawing.Size(960, 526);
             this.txtClientCurrentTimezone.TabIndex = 37;
             this.txtClientCurrentTimezone.WordWrap = false;
             // 
