@@ -56,7 +56,6 @@
             this.btnSaveSettings = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtUserAgent = new System.Windows.Forms.TextBox();
             this.chkTranslateF = new System.Windows.Forms.CheckBox();
             this.chkPragmaNocache = new System.Windows.Forms.CheckBox();
             this.chkAllowRedirect = new System.Windows.Forms.CheckBox();
@@ -70,6 +69,7 @@
             this.btnDeleteHeader = new System.Windows.Forms.Button();
             this.btnAddHeaders = new System.Windows.Forms.Button();
             this.grpHttpVerbOptions = new System.Windows.Forms.GroupBox();
+            this.cmboUserAgent = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeoutSeconds)).BeginInit();
             this.panel2.SuspendLayout();
@@ -225,7 +225,7 @@
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1060, 182);
+            this.txtResponse.Size = new System.Drawing.Size(1060, 183);
             this.txtResponse.TabIndex = 0;
             // 
             // GoRun
@@ -382,13 +382,6 @@
             this.label11.TabIndex = 6;
             this.label11.Text = "UserAgent:";
             // 
-            // txtUserAgent
-            // 
-            this.txtUserAgent.Location = new System.Drawing.Point(102, 110);
-            this.txtUserAgent.Name = "txtUserAgent";
-            this.txtUserAgent.Size = new System.Drawing.Size(121, 20);
-            this.txtUserAgent.TabIndex = 94;
-            // 
             // chkTranslateF
             // 
             this.chkTranslateF.AutoSize = true;
@@ -539,6 +532,7 @@
             // 
             // grpHttpVerbOptions
             // 
+            this.grpHttpVerbOptions.Controls.Add(this.cmboUserAgent);
             this.grpHttpVerbOptions.Controls.Add(this.groupBox2);
             this.grpHttpVerbOptions.Controls.Add(this.chkPragmaNocache);
             this.grpHttpVerbOptions.Controls.Add(this.label7);
@@ -549,13 +543,22 @@
             this.grpHttpVerbOptions.Controls.Add(this.chkTranslateF);
             this.grpHttpVerbOptions.Controls.Add(this.label8);
             this.grpHttpVerbOptions.Controls.Add(this.numericUpDownTimeoutSeconds);
-            this.grpHttpVerbOptions.Controls.Add(this.txtUserAgent);
             this.grpHttpVerbOptions.Controls.Add(this.label11);
             this.grpHttpVerbOptions.Location = new System.Drawing.Point(322, 40);
             this.grpHttpVerbOptions.Name = "grpHttpVerbOptions";
             this.grpHttpVerbOptions.Size = new System.Drawing.Size(749, 148);
             this.grpHttpVerbOptions.TabIndex = 100;
             this.grpHttpVerbOptions.TabStop = false;
+            // 
+            // cmboUserAgent
+            // 
+            this.cmboUserAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmboUserAgent.FormattingEnabled = true;
+            this.cmboUserAgent.Location = new System.Drawing.Point(102, 108);
+            this.cmboUserAgent.Name = "cmboUserAgent";
+            this.cmboUserAgent.Size = new System.Drawing.Size(243, 21);
+            this.cmboUserAgent.TabIndex = 95;
             // 
             // PostForm
             // 
@@ -622,7 +625,6 @@
         private System.Windows.Forms.Button btnSaveSettings;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtUserAgent;
         private System.Windows.Forms.ComboBox cmboAuthentication;
         private System.Windows.Forms.Label lblAuthentication;
         private System.Windows.Forms.CheckBox chkTranslateF;
@@ -638,5 +640,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colValue;
         private System.Windows.Forms.GroupBox grpHttpVerbOptions;
+        private System.Windows.Forms.ComboBox cmboUserAgent;
     }
 }

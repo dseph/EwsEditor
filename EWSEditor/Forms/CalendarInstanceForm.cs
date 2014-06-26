@@ -148,6 +148,7 @@ namespace EWSEditor.Forms
                 AppointmentSchema.StartTimeZone,
                 AppointmentSchema.TimeZone,
                 AppointmentSchema.EndTimeZone
+                 
                 );
             }
             else
@@ -216,7 +217,8 @@ namespace EWSEditor.Forms
                 AppointmentSchema.Sensitivity,
                 AppointmentSchema.Size,
                 AppointmentSchema.StartTimeZone,
-                AppointmentSchema.TimeZone
+                AppointmentSchema.TimeZone,
+                AppointmentSchema.EndTimeZone
                 );
             }
            
@@ -265,6 +267,7 @@ namespace EWSEditor.Forms
             //http://msdn.microsoft.com/en-us/library/dd633707(EXCHG.80).aspx
             this.cmboDurationStartTimezone.Text = TimeHelper.GetTimezoneStringForCombobox(TimeZoneInfo.Local);
             this.cmboDurationStartTimezone.Text = TimeHelper.GetTimezoneStringForCombobox(TimeZoneInfo.Local);
+            //this.cmboTimezone.Text = TimeHelper.GetTimezoneStringForCombobox(TimeZoneInfo.Local);
             txtBody.Text = string.Empty;
 
             chkIsAllDayEvent.Checked = false;
@@ -317,6 +320,8 @@ namespace EWSEditor.Forms
                 this.cmboDurationEndTimezone.Visible = false;
                 this.lblDurationEndTimezone.Visible = false;
             }
+
+            
 
           
             //this.cmboImportance.Text =   oAppointment.Importance;

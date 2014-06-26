@@ -40,6 +40,10 @@ namespace EWSEditor.Forms
 
         private void OptionsDialog_Load(object sender, EventArgs e)
         {
+
+            cmboUserAgent.Items.Clear();
+            EWSEditor.Common.UserAgentHelper.AddUserAgentsToComboBox(ref cmboUserAgent);
+
             LoadSettings();
         }
 
@@ -52,7 +56,11 @@ namespace EWSEditor.Forms
         // Load global options 
         private void LoadSettings()
         {
-            this.UserAgentText.Text = GlobalSettings.UserAgent;
+            cmboUserAgent.Items.Clear();
+            //cmboUserAgent.Items.Add(oTempService.UserAgent);
+            EWSEditor.Common.UserAgentHelper.AddUserAgentsToComboBox(ref cmboUserAgent);
+ 
+            this.cmboUserAgent.Text = GlobalSettings.UserAgent;
 
             this.SaveLogFileCheck.Checked = GlobalSettings.ShouldSaveLogToFile;
             this.LogFilePathText.Text = GlobalSettings.LogFilePath;
@@ -112,7 +120,7 @@ namespace EWSEditor.Forms
 
         private void SaveSettings()
         {
-            GlobalSettings.UserAgent = this.UserAgentText.Text;
+            GlobalSettings.UserAgent = this.cmboUserAgent.Text;
 
             GlobalSettings.ShouldSaveLogToFile = this.SaveLogFileCheck.Checked;
             GlobalSettings.LogFilePath = this.LogFilePathText.Text;
@@ -230,6 +238,11 @@ namespace EWSEditor.Forms
         private void rdoGetAndSetDefaultProxy_CheckedChanged(object sender, EventArgs e)
         {
             SetCheckedProxyOverride();
+        }
+
+        private void UserAgentText_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }
