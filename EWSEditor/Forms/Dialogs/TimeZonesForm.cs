@@ -88,6 +88,15 @@ namespace EWSEditor.Forms
  
         }
 
+        private enum WeekOfMonth
+        {
+            First = 1,
+            Second = 2,
+            Third = 3,
+            Fourth = 4,
+            Last = 5
+        }
+
         private string GetValuesFromTimeZoneInfo(TimeZoneInfo oTimeZoneInfo)
         {
             string s = string.Empty;
@@ -105,39 +114,22 @@ namespace EWSEditor.Forms
                 oSB.AppendLine("    SupportsDaylightSavingTime: " + oTimeZoneInfo.SupportsDaylightSavingTime.ToString());
                 oSB.AppendLine("    BaseUtcOffset: " + oTimeZoneInfo.BaseUtcOffset.ToString());
                 oSB.AppendLine("        Days: " + oTimeZoneInfo.BaseUtcOffset.Days.ToString());
-                oSB.AppendLine("        Hours: " + oTimeZoneInfo.BaseUtcOffset.Hours.ToString());
-                oSB.AppendLine("        Milliseconds: " + oTimeZoneInfo.BaseUtcOffset.Milliseconds.ToString());
+                oSB.AppendLine("        Hours: " + oTimeZoneInfo.BaseUtcOffset.Hours.ToString()); 
                 oSB.AppendLine("        Minutes: " + oTimeZoneInfo.BaseUtcOffset.Minutes.ToString());
                 oSB.AppendLine("        Seconds: " + oTimeZoneInfo.BaseUtcOffset.Seconds.ToString());
-                oSB.AppendLine("        Ticks: " + oTimeZoneInfo.BaseUtcOffset.Ticks.ToString());
+                oSB.AppendLine("        Milliseconds: " + oTimeZoneInfo.BaseUtcOffset.Milliseconds.ToString());    
                 oSB.AppendLine("        TotalDays: " + oTimeZoneInfo.BaseUtcOffset.TotalDays.ToString());
-                oSB.AppendLine("        TotalHours: " + oTimeZoneInfo.BaseUtcOffset.TotalHours.ToString());
-                oSB.AppendLine("        TotalMilliseconds: " + oTimeZoneInfo.BaseUtcOffset.TotalMilliseconds.ToString());
+                oSB.AppendLine("        TotalHours: " + oTimeZoneInfo.BaseUtcOffset.TotalHours.ToString()); 
                 oSB.AppendLine("        TotalMinutes: " + oTimeZoneInfo.BaseUtcOffset.TotalMinutes.ToString());
                 oSB.AppendLine("        TotalSeconds: " + oTimeZoneInfo.BaseUtcOffset.TotalSeconds.ToString());
+                oSB.AppendLine("        TotalMilliseconds: " + oTimeZoneInfo.BaseUtcOffset.TotalMilliseconds.ToString());
+                oSB.AppendLine("        Ticks: " + oTimeZoneInfo.BaseUtcOffset.Ticks.ToString());
                 oSB.AppendLine("    ToSerializedString: " + oTimeZoneInfo.ToSerializedString());
 
-                oSB.AppendLine("  AdjustmentRules:");
-                foreach (TimeZoneInfo.AdjustmentRule ars in oTimeZoneInfo.GetAdjustmentRules())
-                {
-                    oSB.AppendLine("    DateStart: " + ars.DateStart.ToString());
-                    oSB.AppendLine("    DateEnd: " + ars.DateEnd.ToString());
-                    oSB.AppendLine("    DaylightTransitionStart: ");
-                    oSB.AppendLine("        Month: " + ars.DaylightTransitionStart.Month.ToString());
-                    oSB.AppendLine("        Day: " + ars.DaylightTransitionStart.Day.ToString());
-                    oSB.AppendLine("        DayOfWeek: " + ars.DaylightTransitionStart.DayOfWeek.ToString());
-                    oSB.AppendLine("        TimeOfDay: " + ars.DaylightTransitionStart.TimeOfDay.ToString());
-                    oSB.AppendLine("        Week: " + ars.DaylightTransitionStart.Week.ToString());
-                    oSB.AppendLine("        IsFixedDateRule: " + ars.DaylightTransitionStart.IsFixedDateRule.ToString());
-                    oSB.AppendLine("    DaylightTransitionEnd: ");
-                    oSB.AppendLine("        Month: " + ars.DaylightTransitionEnd.Month.ToString());
-                    oSB.AppendLine("        Day: " + ars.DaylightTransitionEnd.Day.ToString());
-                    oSB.AppendLine("        DayOfWeek: " + ars.DaylightTransitionEnd.DayOfWeek.ToString());
-                    oSB.AppendLine("        TimeOfDay: " + ars.DaylightTransitionEnd.TimeOfDay.ToString());
-                    oSB.AppendLine("        Week: " + ars.DaylightTransitionEnd.Week.ToString());
-                    oSB.AppendLine("        IsFixedDateRule: " + ars.DaylightTransitionEnd.IsFixedDateRule.ToString());
-                    oSB.AppendLine("    DaylightDelta: " + ars.DaylightDelta.ToString());
-                }
+                oSB.AppendLine(" ");
+                oSB.AppendLine(GetAdjustmentRules(oTimeZoneInfo));
+
+ 
  
                 s = oSB.ToString();
 
@@ -149,6 +141,87 @@ namespace EWSEditor.Forms
             }
 
             return s;
+        }
+
+        private string GetAdjustmentRules(TimeZoneInfo oTimeZoneInfo)
+        {
+            StringBuilder oSB = new StringBuilder();
+
+            oSB.AppendLine("    AdjustmentRules:");
+            TimeZoneInfo.AdjustmentRule[] adjustmentRules = oTimeZoneInfo.GetAdjustmentRules();
+            DateTimeFormatInfo dateInfo = CultureInfo.CurrentCulture.DateTimeFormat;
+
+            int iAdjustmentRuleCount = 0;
+
+            foreach (TimeZoneInfo.AdjustmentRule ars in adjustmentRules)
+            {
+                iAdjustmentRuleCount++;
+
+                oSB.AppendLine("        Transition Rule (" + iAdjustmentRuleCount.ToString() + "):");
+                oSB.AppendLine("            DateStart: " + ars.DateStart.ToString());
+                oSB.AppendLine("            DateEnd: " + ars.DateEnd.ToString());
+                // http://msdn.microsoft.com/en-us/library/system.timezoneinfo.transitiontime.week(v=vs.110).aspx
+
+
+                TimeZoneInfo.TransitionTime daylightStart = ars.DaylightTransitionStart;
+                if (daylightStart.IsFixedDateRule)
+                {
+                    oSB.AppendLine("            Transition - Fixed rule - Start: ");
+                    oSB.AppendLine("                IsFixedDateRule: " + daylightStart.IsFixedDateRule.ToString());
+                    oSB.AppendLine("                Month: " + dateInfo.GetMonthName(daylightStart.Month));
+                    oSB.AppendLine("                Day: " + daylightStart.Day.ToString());
+                    oSB.AppendLine("                TimeOfDay: " + daylightStart.TimeOfDay.ToString());
+                }
+
+                if (!daylightStart.IsFixedDateRule)
+                {
+                    oSB.AppendLine("            Transition - Non-fixed rule - Start: ");
+                    oSB.AppendLine("                IsFixedDateRule: " + daylightStart.IsFixedDateRule.ToString());
+                    oSB.AppendLine("                TimeOfDay: " + daylightStart.TimeOfDay.ToString());
+                    oSB.AppendLine("                WeekOfMonth: " + ((WeekOfMonth)daylightStart.Week).ToString());
+                    oSB.AppendLine("                DayOfWeek: " + daylightStart.DayOfWeek.ToString());
+                    oSB.AppendLine("                Month: " + dateInfo.GetMonthName(daylightStart.Month));
+
+                }
+
+                TimeZoneInfo.TransitionTime daylightEnd = ars.DaylightTransitionEnd;
+
+                if (daylightEnd.IsFixedDateRule)
+                {
+                    oSB.AppendLine("            Transition - Fixed rule - End: ");
+                    oSB.AppendLine("                IsFixedDateRule: " + daylightEnd.IsFixedDateRule.ToString());
+                    oSB.AppendLine("                Month: " + dateInfo.GetMonthName(daylightEnd.Month));
+                    oSB.AppendLine("                Day: " + daylightEnd.Day.ToString());
+                    oSB.AppendLine("                TimeOfDay: " + daylightEnd.TimeOfDay.ToString());
+                }
+
+                if (!daylightEnd.IsFixedDateRule)
+                {
+                    oSB.AppendLine("            Transition - Non-fixed rule - End: ");
+                    oSB.AppendLine("                IsFixedDateRule: " + daylightEnd.IsFixedDateRule.ToString());
+                    oSB.AppendLine("                TimeOfDay: " + daylightEnd.TimeOfDay.ToString());
+                    oSB.AppendLine("                WeekOfMonth: " + ((WeekOfMonth)daylightEnd.Week).ToString());
+                    oSB.AppendLine("                DayOfWeek: " + daylightEnd.DayOfWeek.ToString());
+                    oSB.AppendLine("                Month: " + dateInfo.GetMonthName(daylightEnd.Month));
+                }
+
+                oSB.AppendLine("            DaylightDelta: " + ars.DaylightDelta.ToString());
+                oSB.AppendLine("                Ticks: " + ars.DaylightDelta.Ticks.ToString());
+                oSB.AppendLine("                Days: " + ars.DaylightDelta.Days.ToString());
+                oSB.AppendLine("                Hours: " + ars.DaylightDelta.Hours.ToString());
+                oSB.AppendLine("                Minutes: " + ars.DaylightDelta.Minutes.ToString());
+                oSB.AppendLine("                Seconds: " + ars.DaylightDelta.Seconds.ToString());
+                oSB.AppendLine("                Miliseconds: " + ars.DaylightDelta.Milliseconds.ToString());
+                oSB.AppendLine("                Ticks: " + ars.DaylightDelta.Ticks.ToString());
+                oSB.AppendLine("                TotalDays: " + ars.DaylightDelta.TotalDays.ToString());
+                oSB.AppendLine("                TotalHours: " + ars.DaylightDelta.TotalHours.ToString());
+                oSB.AppendLine("                TotalMinutes: " + ars.DaylightDelta.TotalMinutes.ToString());
+                oSB.AppendLine("                TotalSeconds: " + ars.DaylightDelta.TotalSeconds.ToString());
+                oSB.AppendLine("                TotalMiliseconds: " + ars.DaylightDelta.TotalMilliseconds.ToString());
+
+            }
+
+            return oSB.ToString();
         }
 
         private string GetValuesFromTimezoneStringAndDateTime(string sTimeZone, DateTime oDateTime)
@@ -236,27 +309,29 @@ namespace EWSEditor.Forms
 
             oSB.AppendLine(" ");
 
-            oSB.AppendLine("  AdjustmentRules:");
-            foreach (TimeZoneInfo.AdjustmentRule ars in oTimeZoneInfo.GetAdjustmentRules())
-            {
-                oSB.AppendLine("    Adjustment Rule:   DateStart: " + ars.DateStart.ToString()  + "   DateEnd: " + ars.DateEnd.ToString());
-                oSB.AppendLine("        DaylightTransitionStart: ");
-                oSB.AppendLine("            Month: " + ars.DaylightTransitionStart.Month.ToString());
-                oSB.AppendLine("            Day: " + ars.DaylightTransitionStart.Day.ToString());
-                oSB.AppendLine("            DayOfWeek: " + ars.DaylightTransitionStart.DayOfWeek.ToString());
-                oSB.AppendLine("            TimeOfDay: " + ars.DaylightTransitionStart.TimeOfDay.ToString());
-                oSB.AppendLine("            Week: " + ars.DaylightTransitionStart.Week.ToString());
-                oSB.AppendLine("            IsFixedDateRule: " + ars.DaylightTransitionStart.IsFixedDateRule.ToString());
-                oSB.AppendLine("        DaylightTransitionEnd: ");
-                oSB.AppendLine("            Month: " + ars.DaylightTransitionEnd.Month.ToString());
-                oSB.AppendLine("            Day: " + ars.DaylightTransitionEnd.Day.ToString());
-                oSB.AppendLine("            DayOfWeek: " + ars.DaylightTransitionEnd.DayOfWeek.ToString());
-                oSB.AppendLine("            TimeOfDay: " + ars.DaylightTransitionEnd.TimeOfDay.ToString());
-                oSB.AppendLine("            Week: " + ars.DaylightTransitionEnd.Week.ToString());
-                oSB.AppendLine("            IsFixedDateRule: " + ars.DaylightTransitionEnd.IsFixedDateRule.ToString());
-                oSB.AppendLine("        DaylightDelta: " + ars.DaylightDelta.ToString());
+            oSB.AppendLine(GetAdjustmentRules(oTimeZoneInfo));
+
+            //oSB.AppendLine("  AdjustmentRules:");
+            //foreach (TimeZoneInfo.AdjustmentRule ars in oTimeZoneInfo.GetAdjustmentRules())
+            //{
+            //    oSB.AppendLine("    Adjustment Rule:   DateStart: " + ars.DateStart.ToString()  + "   DateEnd: " + ars.DateEnd.ToString());
+            //    oSB.AppendLine("        DaylightTransitionStart: ");
+            //    oSB.AppendLine("            Month: " + ars.DaylightTransitionStart.Month.ToString());
+            //    oSB.AppendLine("            Day: " + ars.DaylightTransitionStart.Day.ToString());
+            //    oSB.AppendLine("            DayOfWeek: " + ars.DaylightTransitionStart.DayOfWeek.ToString());
+            //    oSB.AppendLine("            TimeOfDay: " + ars.DaylightTransitionStart.TimeOfDay.ToString());
+            //    oSB.AppendLine("            Week: " + ars.DaylightTransitionStart.Week.ToString());
+            //    oSB.AppendLine("            IsFixedDateRule: " + ars.DaylightTransitionStart.IsFixedDateRule.ToString());
+            //    oSB.AppendLine("        DaylightTransitionEnd: ");
+            //    oSB.AppendLine("            Month: " + ars.DaylightTransitionEnd.Month.ToString());
+            //    oSB.AppendLine("            Day: " + ars.DaylightTransitionEnd.Day.ToString());
+            //    oSB.AppendLine("            DayOfWeek: " + ars.DaylightTransitionEnd.DayOfWeek.ToString());
+            //    oSB.AppendLine("            TimeOfDay: " + ars.DaylightTransitionEnd.TimeOfDay.ToString());
+            //    oSB.AppendLine("            Week: " + ars.DaylightTransitionEnd.Week.ToString());
+            //    oSB.AppendLine("            IsFixedDateRule: " + ars.DaylightTransitionEnd.IsFixedDateRule.ToString());
+            //    oSB.AppendLine("        DaylightDelta: " + ars.DaylightDelta.ToString());
                  
-            }
+            //}
             oSB.AppendLine(" ");
 
             oSB.AppendLine("    GetAmbiguousTimeOffsets:");
@@ -724,6 +799,46 @@ namespace EWSEditor.Forms
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void lvMachineTimeZones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvMachineTimeZones.SelectedItems.Count > 0)
+            {
+                TimeZoneInfo oTimeZoneInfo = null;
+                string sTimezone = lvMachineTimeZones.SelectedItems[0].Text;
+                oTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(sTimezone);
+ 
+                this.txtMachineTimeZones.Text = GetValuesFromTimeZoneInfo(oTimeZoneInfo);
+            }
+        }
+
+        private void txtMachineTimeZones_TextChanged(object sender, EventArgs e)
+        {
+ 
+        }
+
+        private void txtTicks_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                long lTicks = 0;   // its a Int64
+                DateTime oDateTime = new DateTime();  // test current
+                this.txtTicksTime.Text = "";
+                string sString = this.txtTicks.Text.Trim();
+                if (Int64.TryParse(sString, out lTicks))
+                {
+                    //iTicks = Convert.ToInt64(sString);
+                    oDateTime = new DateTime(lTicks);
+                    this.txtTicksTime.Text = oDateTime.ToString();
+                }
+ 
+            }
+            catch (Exception ex)
+            {
+
+            }
+           
         }
 
          
