@@ -60,6 +60,7 @@
             this.DistributionListMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InboxRulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConvertIdMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serverTimeZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeZonemenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserConfigurationMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eDiscoverySearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -185,6 +186,7 @@
             this.DistributionListMenuItem,
             this.InboxRulesMenuItem,
             this.ConvertIdMenuItem,
+            this.serverTimeZoneToolStripMenuItem,
             this.TimeZonemenuitem,
             this.UserConfigurationMenuItem,
             this.eDiscoverySearchToolStripMenuItem,
@@ -326,11 +328,18 @@
             this.ConvertIdMenuItem.Text = "ConvertId...";
             this.ConvertIdMenuItem.Click += new System.EventHandler(this.ConvertIdMenu_Click);
             // 
+            // serverTimeZoneToolStripMenuItem
+            // 
+            this.serverTimeZoneToolStripMenuItem.Name = "serverTimeZoneToolStripMenuItem";
+            this.serverTimeZoneToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.serverTimeZoneToolStripMenuItem.Text = "Server TimeZone";
+            this.serverTimeZoneToolStripMenuItem.Click += new System.EventHandler(this.serverTimeZoneToolStripMenuItem_Click);
+            // 
             // TimeZonemenuitem
             // 
             this.TimeZonemenuitem.Name = "TimeZonemenuitem";
             this.TimeZonemenuitem.Size = new System.Drawing.Size(315, 22);
-            this.TimeZonemenuitem.Text = "TimeZone...";
+            this.TimeZonemenuitem.Text = "TimeZone Helper...";
             this.TimeZonemenuitem.Click += new System.EventHandler(this.TimeZonemenuitem_Click);
             // 
             // UserConfigurationMenuItem
@@ -520,5 +529,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEncodingHelper;
         public System.Windows.Forms.ToolStripMenuItem UserConfigurationMenuItem;
         public System.Windows.Forms.ToolStripMenuItem eDiscoverySearchToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem serverTimeZoneToolStripMenuItem;
     }
 }

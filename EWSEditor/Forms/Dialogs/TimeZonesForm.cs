@@ -10,24 +10,25 @@ using System.Windows.Forms;
 using EWSEditor.Common;
 using Microsoft.Exchange.WebServices.Data;
  
+ 
 
 namespace EWSEditor.Forms 
 {
     public partial class TimeZonesForm : Form
     {
-        private ExchangeService _ExchangeService = null;
+        //private ExchangeService _ExchangeService = null;
 
         public TimeZonesForm()
         {
             InitializeComponent();
         }
 
-        public TimeZonesForm(ExchangeService oService)
-        {
-            _ExchangeService = oService;
-            InitializeComponent();
+        //public TimeZonesForm(ExchangeService oService)
+        //{
+        //    _ExchangeService = oService;
+        //    InitializeComponent();
 
-        }
+        //}
 
          
 
@@ -76,336 +77,27 @@ namespace EWSEditor.Forms
 
         private void btnServerTimeZone_Click(object sender, EventArgs e)
         {
-            DateTime oDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
-
-            StringBuilder oSB = new StringBuilder();
-            oSB.AppendLine("Server TimeZoneInfo:");
-            oSB.AppendLine(GetValuesFromTimeZoneInfo(_ExchangeService.TimeZone));
-            oSB.AppendLine("");
-
- 
-            txtServerTimezoneResults.Text = oSB.ToString();
+            ServerTimeZone();
  
         }
 
-        private enum WeekOfMonth
+        private void ServerTimeZone()
         {
-            First = 1,
-            Second = 2,
-            Third = 3,
-            Fourth = 4,
-            Last = 5
+            //DateTime oDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
+
+            //StringBuilder oSB = new StringBuilder();
+            //oSB.AppendLine("Server TimeZoneInfo:");
+            //oSB.AppendLine(TimeHelper.GetValuesFromTimeZoneInfo(_ExchangeService.TimeZone));
+            //oSB.AppendLine("");
+
+
+            //txtServerTimezoneResults.Text = oSB.ToString();
+
         }
 
-        private string GetValuesFromTimeZoneInfo(TimeZoneInfo oTimeZoneInfo)
-        {
-            string s = string.Empty;
-
-            StringBuilder oSB = new StringBuilder();
-
-            try{ 
-
-                oSB.AppendLine("    Using this: " + oTimeZoneInfo.ToString());
-                oSB.AppendLine("    Id: " + oTimeZoneInfo.Id);
-                oSB.AppendLine("    DisplayName: " + oTimeZoneInfo.DisplayName);
-                oSB.AppendLine("    StandardName: " + oTimeZoneInfo.StandardName);
-                oSB.AppendLine("    DaylightName: " + oTimeZoneInfo.DaylightName);
-                oSB.AppendLine("    BaseUtcOffset: " + oTimeZoneInfo.BaseUtcOffset.ToString());
-                oSB.AppendLine("    SupportsDaylightSavingTime: " + oTimeZoneInfo.SupportsDaylightSavingTime.ToString());
-                oSB.AppendLine("    BaseUtcOffset: " + oTimeZoneInfo.BaseUtcOffset.ToString());
-                oSB.AppendLine("        Days: " + oTimeZoneInfo.BaseUtcOffset.Days.ToString());
-                oSB.AppendLine("        Hours: " + oTimeZoneInfo.BaseUtcOffset.Hours.ToString()); 
-                oSB.AppendLine("        Minutes: " + oTimeZoneInfo.BaseUtcOffset.Minutes.ToString());
-                oSB.AppendLine("        Seconds: " + oTimeZoneInfo.BaseUtcOffset.Seconds.ToString());
-                oSB.AppendLine("        Milliseconds: " + oTimeZoneInfo.BaseUtcOffset.Milliseconds.ToString());    
-                oSB.AppendLine("        TotalDays: " + oTimeZoneInfo.BaseUtcOffset.TotalDays.ToString());
-                oSB.AppendLine("        TotalHours: " + oTimeZoneInfo.BaseUtcOffset.TotalHours.ToString()); 
-                oSB.AppendLine("        TotalMinutes: " + oTimeZoneInfo.BaseUtcOffset.TotalMinutes.ToString());
-                oSB.AppendLine("        TotalSeconds: " + oTimeZoneInfo.BaseUtcOffset.TotalSeconds.ToString());
-                oSB.AppendLine("        TotalMilliseconds: " + oTimeZoneInfo.BaseUtcOffset.TotalMilliseconds.ToString());
-                oSB.AppendLine("        Ticks: " + oTimeZoneInfo.BaseUtcOffset.Ticks.ToString());
-                oSB.AppendLine("    ToSerializedString: " + oTimeZoneInfo.ToSerializedString());
-
-                oSB.AppendLine(" ");
-                oSB.AppendLine(GetAdjustmentRules(oTimeZoneInfo));
-
- 
- 
-                s = oSB.ToString();
-
-             
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error");
-            }
-
-            return s;
-        }
-
-        private string GetAdjustmentRules(TimeZoneInfo oTimeZoneInfo)
-        {
-            StringBuilder oSB = new StringBuilder();
-
-            oSB.AppendLine("    AdjustmentRules:");
-            TimeZoneInfo.AdjustmentRule[] adjustmentRules = oTimeZoneInfo.GetAdjustmentRules();
-            DateTimeFormatInfo dateInfo = CultureInfo.CurrentCulture.DateTimeFormat;
-
-            int iAdjustmentRuleCount = 0;
-
-            foreach (TimeZoneInfo.AdjustmentRule ars in adjustmentRules)
-            {
-                iAdjustmentRuleCount++;
-
-                oSB.AppendLine("        Transition Rule (" + iAdjustmentRuleCount.ToString() + "):");
-                oSB.AppendLine("            DateStart: " + ars.DateStart.ToString());
-                oSB.AppendLine("            DateEnd: " + ars.DateEnd.ToString());
-                // http://msdn.microsoft.com/en-us/library/system.timezoneinfo.transitiontime.week(v=vs.110).aspx
-
-
-                TimeZoneInfo.TransitionTime daylightStart = ars.DaylightTransitionStart;
-                if (daylightStart.IsFixedDateRule)
-                {
-                    oSB.AppendLine("            Transition - Fixed rule - Start: ");
-                    oSB.AppendLine("                IsFixedDateRule: " + daylightStart.IsFixedDateRule.ToString());
-                    oSB.AppendLine("                Month: " + dateInfo.GetMonthName(daylightStart.Month));
-                    oSB.AppendLine("                Day: " + daylightStart.Day.ToString());
-                    oSB.AppendLine("                TimeOfDay: " + daylightStart.TimeOfDay.ToString());
-                }
-
-                if (!daylightStart.IsFixedDateRule)
-                {
-                    oSB.AppendLine("            Transition - Non-fixed rule - Start: ");
-                    oSB.AppendLine("                IsFixedDateRule: " + daylightStart.IsFixedDateRule.ToString());
-                    oSB.AppendLine("                TimeOfDay: " + daylightStart.TimeOfDay.ToString());
-                    oSB.AppendLine("                WeekOfMonth: " + ((WeekOfMonth)daylightStart.Week).ToString());
-                    oSB.AppendLine("                DayOfWeek: " + daylightStart.DayOfWeek.ToString());
-                    oSB.AppendLine("                Month: " + dateInfo.GetMonthName(daylightStart.Month));
-
-                }
-
-                TimeZoneInfo.TransitionTime daylightEnd = ars.DaylightTransitionEnd;
-
-                if (daylightEnd.IsFixedDateRule)
-                {
-                    oSB.AppendLine("            Transition - Fixed rule - End: ");
-                    oSB.AppendLine("                IsFixedDateRule: " + daylightEnd.IsFixedDateRule.ToString());
-                    oSB.AppendLine("                Month: " + dateInfo.GetMonthName(daylightEnd.Month));
-                    oSB.AppendLine("                Day: " + daylightEnd.Day.ToString());
-                    oSB.AppendLine("                TimeOfDay: " + daylightEnd.TimeOfDay.ToString());
-                }
-
-                if (!daylightEnd.IsFixedDateRule)
-                {
-                    oSB.AppendLine("            Transition - Non-fixed rule - End: ");
-                    oSB.AppendLine("                IsFixedDateRule: " + daylightEnd.IsFixedDateRule.ToString());
-                    oSB.AppendLine("                TimeOfDay: " + daylightEnd.TimeOfDay.ToString());
-                    oSB.AppendLine("                WeekOfMonth: " + ((WeekOfMonth)daylightEnd.Week).ToString());
-                    oSB.AppendLine("                DayOfWeek: " + daylightEnd.DayOfWeek.ToString());
-                    oSB.AppendLine("                Month: " + dateInfo.GetMonthName(daylightEnd.Month));
-                }
-
-                oSB.AppendLine("            DaylightDelta: " + ars.DaylightDelta.ToString());
-                oSB.AppendLine("                Ticks: " + ars.DaylightDelta.Ticks.ToString());
-                oSB.AppendLine("                Days: " + ars.DaylightDelta.Days.ToString());
-                oSB.AppendLine("                Hours: " + ars.DaylightDelta.Hours.ToString());
-                oSB.AppendLine("                Minutes: " + ars.DaylightDelta.Minutes.ToString());
-                oSB.AppendLine("                Seconds: " + ars.DaylightDelta.Seconds.ToString());
-                oSB.AppendLine("                Miliseconds: " + ars.DaylightDelta.Milliseconds.ToString());
-                oSB.AppendLine("                Ticks: " + ars.DaylightDelta.Ticks.ToString());
-                oSB.AppendLine("                TotalDays: " + ars.DaylightDelta.TotalDays.ToString());
-                oSB.AppendLine("                TotalHours: " + ars.DaylightDelta.TotalHours.ToString());
-                oSB.AppendLine("                TotalMinutes: " + ars.DaylightDelta.TotalMinutes.ToString());
-                oSB.AppendLine("                TotalSeconds: " + ars.DaylightDelta.TotalSeconds.ToString());
-                oSB.AppendLine("                TotalMiliseconds: " + ars.DaylightDelta.TotalMilliseconds.ToString());
-
-            }
-
-            return oSB.ToString();
-        }
-
-        private string GetValuesFromTimezoneStringAndDateTime(string sTimeZone, DateTime oDateTime)
-        {
-            TimeZoneInfo oTimeZoneInfo = null;
-            oTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(sTimeZone);
-            return GetValuesFromTimezoneStringAndDateTime(oTimeZoneInfo, oDateTime);
-        }
-
-        string GetDateTimeInfo(DateTime oDateTime)
-        {
-            StringBuilder oSB = new StringBuilder();
-
-            oSB.AppendLine("    Date: " + oDateTime.Date.ToString());
-            oSB.AppendLine("    Ticks: " + oDateTime.Ticks.ToString());
-            oSB.AppendLine("    Kind: " + oDateTime.Kind.ToString());
-            oSB.AppendLine("    IsDaylightSavingTime: " + oDateTime.IsDaylightSavingTime().ToString());
-
-            oSB.AppendLine("    Month: " + oDateTime.Month.ToString());
-            oSB.AppendLine("    Day: " + oDateTime.Day.ToString());
-            oSB.AppendLine("    Year: " + oDateTime.Year.ToString());
-            oSB.AppendLine("    DayOfYear: " + oDateTime.DayOfYear.ToString());
-            oSB.AppendLine("    DayOfWeek: " + oDateTime.DayOfWeek.ToString());
-
-            oSB.AppendLine("    TimeOfDay: " + oDateTime.TimeOfDay.ToString());
-            oSB.AppendLine("    Hour: " + oDateTime.Hour.ToString());
-            oSB.AppendLine("    Minute: " + oDateTime.Minute.ToString());
-            oSB.AppendLine("    Second: " + oDateTime.Second.ToString());
-            oSB.AppendLine("    Millisecond: " + oDateTime.Millisecond.ToString());
-
-            oSB.AppendLine("    ToBinary: " + oDateTime.ToBinary().ToString());
-            oSB.AppendLine("    ToFileTime: " + oDateTime.ToFileTime().ToString());
-            oSB.AppendLine("    ToFileTimeUtc: " + oDateTime.ToFileTimeUtc().ToString());
-            oSB.AppendLine("    ToLocalTime: " + oDateTime.ToLocalTime().ToString());
-            oSB.AppendLine("    ToLongDateString: " + oDateTime.ToLongDateString().ToString());
-            oSB.AppendLine("    ToLongTimeString: " + oDateTime.ToLongTimeString().ToString());
-            oSB.AppendLine("    ToOADate: " + oDateTime.ToOADate().ToString());
-            oSB.AppendLine("    ToShortDateString: " + oDateTime.ToShortDateString().ToString());
-            oSB.AppendLine("    ToShortTimeString: " + oDateTime.ToShortTimeString().ToString());
-            oSB.AppendLine("    ToString: " + oDateTime.ToString().ToString());
-            oSB.AppendLine("    ToUniversalTime: " + oDateTime.ToUniversalTime().ToString());
-
-            oSB.AppendLine("    TimeZoneInfo.Local.IsInvalidTime: " + TimeZoneInfo.Local.IsInvalidTime(oDateTime));
-            oSB.AppendLine("    TimeZoneInfo.Local.IsAmbiguousTime: " + TimeZoneInfo.Local.IsAmbiguousTime(oDateTime));
-            oSB.AppendLine("    TimeZoneInfo.Local.IsDaylightSavingTime: " + TimeZoneInfo.Local.IsDaylightSavingTime(oDateTime));
-
-            oSB.AppendLine("    TimeZoneInfo.Utc.IsAmbiguousTime: " + TimeZoneInfo.Utc.IsAmbiguousTime(oDateTime));
-            oSB.AppendLine("    TimeZoneInfo.Utc.IsDaylightSavingTime: " + TimeZoneInfo.Utc.IsDaylightSavingTime(oDateTime));
-            oSB.AppendLine("    TimeZoneInfo.Utc.IsInvalidTime: " + TimeZoneInfo.Utc.IsInvalidTime(oDateTime));
-
-            return oSB.ToString();
-        }
-
-        private string GetValuesFromTimezoneStringAndDateTime(TimeZoneInfo oTimeZoneInfo, DateTime oDateTime)
-        {
-            string s = string.Empty;
-            StringBuilder oSB = new StringBuilder();
 
 
 
-            oSB.AppendLine("    Using this Date: " + oDateTime.ToString());
-            oSB.AppendLine("    Using this TimeZone: " + oTimeZoneInfo.ToString());
-            oSB.AppendLine("    Id: " + oTimeZoneInfo.Id);
-            oSB.AppendLine("    DisplayName: " + oTimeZoneInfo.DisplayName);
-            oSB.AppendLine("    StandardName: " + oTimeZoneInfo.StandardName);
-            oSB.AppendLine("    DaylightName: " + oTimeZoneInfo.DaylightName);
-            oSB.AppendLine("    BaseUtcOffset: " + oTimeZoneInfo.BaseUtcOffset.ToString());
-            oSB.AppendLine("    SupportsDaylightSavingTime: " + oTimeZoneInfo.SupportsDaylightSavingTime.ToString());
-            oSB.AppendLine("    BaseUtcOffset: " + oTimeZoneInfo.BaseUtcOffset.ToString());
-            oSB.AppendLine("        Days: " + oTimeZoneInfo.BaseUtcOffset.Days.ToString());
-            oSB.AppendLine("        Hours: " + oTimeZoneInfo.BaseUtcOffset.Hours.ToString());
-            oSB.AppendLine("        Milliseconds: " + oTimeZoneInfo.BaseUtcOffset.Milliseconds.ToString());
-            oSB.AppendLine("        Minutes: " + oTimeZoneInfo.BaseUtcOffset.Minutes.ToString());
-            oSB.AppendLine("        Seconds: " + oTimeZoneInfo.BaseUtcOffset.Seconds.ToString());
-            oSB.AppendLine("        Ticks: " + oTimeZoneInfo.BaseUtcOffset.Ticks.ToString());
-            oSB.AppendLine("        TotalDays: " + oTimeZoneInfo.BaseUtcOffset.TotalDays.ToString());
-            oSB.AppendLine("        TotalHours: " + oTimeZoneInfo.BaseUtcOffset.TotalHours.ToString());
-            oSB.AppendLine("        TotalMilliseconds: " + oTimeZoneInfo.BaseUtcOffset.TotalMilliseconds.ToString());
-            oSB.AppendLine("        TotalMinutes: " + oTimeZoneInfo.BaseUtcOffset.TotalMinutes.ToString());
-            oSB.AppendLine("        TotalSeconds: " + oTimeZoneInfo.BaseUtcOffset.TotalSeconds.ToString());
-            oSB.AppendLine("    IsAmbiguousTime: " + oTimeZoneInfo.IsAmbiguousTime(oDateTime).ToString());
-            oSB.AppendLine("    IsDaylightSavingTime: " + oTimeZoneInfo.IsDaylightSavingTime(oDateTime).ToString());
-            oSB.AppendLine("    IsInvalidTime: " + oTimeZoneInfo.IsInvalidTime(oDateTime).ToString());
-            oSB.AppendLine("    ToSerializedString: " + oTimeZoneInfo.ToSerializedString());
-
-            oSB.AppendLine(" ");
-
-            oSB.AppendLine(GetAdjustmentRules(oTimeZoneInfo));
-
-            //oSB.AppendLine("  AdjustmentRules:");
-            //foreach (TimeZoneInfo.AdjustmentRule ars in oTimeZoneInfo.GetAdjustmentRules())
-            //{
-            //    oSB.AppendLine("    Adjustment Rule:   DateStart: " + ars.DateStart.ToString()  + "   DateEnd: " + ars.DateEnd.ToString());
-            //    oSB.AppendLine("        DaylightTransitionStart: ");
-            //    oSB.AppendLine("            Month: " + ars.DaylightTransitionStart.Month.ToString());
-            //    oSB.AppendLine("            Day: " + ars.DaylightTransitionStart.Day.ToString());
-            //    oSB.AppendLine("            DayOfWeek: " + ars.DaylightTransitionStart.DayOfWeek.ToString());
-            //    oSB.AppendLine("            TimeOfDay: " + ars.DaylightTransitionStart.TimeOfDay.ToString());
-            //    oSB.AppendLine("            Week: " + ars.DaylightTransitionStart.Week.ToString());
-            //    oSB.AppendLine("            IsFixedDateRule: " + ars.DaylightTransitionStart.IsFixedDateRule.ToString());
-            //    oSB.AppendLine("        DaylightTransitionEnd: ");
-            //    oSB.AppendLine("            Month: " + ars.DaylightTransitionEnd.Month.ToString());
-            //    oSB.AppendLine("            Day: " + ars.DaylightTransitionEnd.Day.ToString());
-            //    oSB.AppendLine("            DayOfWeek: " + ars.DaylightTransitionEnd.DayOfWeek.ToString());
-            //    oSB.AppendLine("            TimeOfDay: " + ars.DaylightTransitionEnd.TimeOfDay.ToString());
-            //    oSB.AppendLine("            Week: " + ars.DaylightTransitionEnd.Week.ToString());
-            //    oSB.AppendLine("            IsFixedDateRule: " + ars.DaylightTransitionEnd.IsFixedDateRule.ToString());
-            //    oSB.AppendLine("        DaylightDelta: " + ars.DaylightDelta.ToString());
-                 
-            //}
-            oSB.AppendLine(" ");
-
-            oSB.AppendLine("    GetAmbiguousTimeOffsets:");
-            if (oTimeZoneInfo.IsAmbiguousTime(oDateTime) == false)
-            {
-                oSB.AppendLine("        The time is not Ambiguous for ths timezone.");
-            }
-            else
-            {
- 
-                foreach (TimeSpan oTzTimeSpan in oTimeZoneInfo.GetAmbiguousTimeOffsets(oDateTime))
-                {
- 
-                    oSB.AppendLine("    TimeSpan: " + oTzTimeSpan.ToString());
-                    oSB.AppendLine("        Days: " + oTzTimeSpan.Days.ToString());
-                    oSB.AppendLine("        Hours: " + oTzTimeSpan.Hours.ToString());
-                    oSB.AppendLine("        Milliseconds: " + oTzTimeSpan.Milliseconds.ToString());
-                    oSB.AppendLine("        Minutes: " + oTzTimeSpan.Minutes.ToString());
-                    oSB.AppendLine("        Seconds: " + oTzTimeSpan.Seconds.ToString());
-                    oSB.AppendLine("        Ticks: " + oTzTimeSpan.Ticks.ToString());
-                    oSB.AppendLine("        TotalDays: " + oTzTimeSpan.TotalDays.ToString());
-                    oSB.AppendLine("        TotalHours: " + oTzTimeSpan.TotalHours.ToString());
-                    oSB.AppendLine("        TotalMilliseconds: " + oTzTimeSpan.TotalMilliseconds.ToString());
-                    oSB.AppendLine("        TotalMinutes: " + oTzTimeSpan.TotalMinutes.ToString());
-                    oSB.AppendLine("        TotalSeconds: " + oTzTimeSpan.TotalSeconds.ToString());
-                }
-            }
-
-            oSB.AppendLine(" ");
-
-            //// http://msdn.microsoft.com/en-us/library/bb495915(v=vs.110).aspx
-            //// Convert to local time
-            try
-            {
-                DateTime localTime = TimeZoneInfo.ConvertTime(oDateTime, oTimeZoneInfo, TimeZoneInfo.Local);
-                oSB.AppendLine("    In Local: ");
-                oSB.AppendLine("        DateTime: " + localTime.ToString());
-                oSB.AppendLine("        IsDaylightSavingTime: " + TimeZoneInfo.Local.IsDaylightSavingTime(localTime).ToString());
-                oSB.AppendLine(" ");
-            }
-            catch (Exception exConvertLocal)
-            {
-                oSB.AppendLine(" ");
-                oSB.AppendLine("****************");
-                oSB.AppendLine("Error trying to use TimeZoneInfo.ConvertTime to convert timezone to Local time using spedified DateTime");
-                oSB.AppendLine(exConvertLocal.ToString());
-                oSB.AppendLine("****************");
-                oSB.AppendLine(" ");
-            }
-
-            try
-            {
-                // Convert to UTC
-                DateTime utcTime = TimeZoneInfo.ConvertTime(oDateTime, oTimeZoneInfo, TimeZoneInfo.Utc);
-
-                oSB.AppendLine("    In UTC - ConvertTime: ");
-                oSB.AppendLine("        DateTime: " + utcTime);
-                oSB.AppendLine("        IsDaylightSavingTime: " + TimeZoneInfo.Local.IsDaylightSavingTime(utcTime).ToString());
-                oSB.AppendLine(" ");
-            }
-            catch (Exception exConvertLocal)
-            {
-                oSB.AppendLine(" ");
-                oSB.AppendLine("****************");
-                oSB.AppendLine("Error trying to use TimeZoneInfo.ConvertTime to convert timezone to UTC time using spedified DateTime");
-                oSB.AppendLine(exConvertLocal.ToString());
-                oSB.AppendLine("****************");
-                oSB.AppendLine(" ");
-            }
- 
-            s = oSB.ToString();
- 
-            return s;
-        }
 
         private void TimeZoneByIdString_Click(object sender, EventArgs e)
         {
@@ -428,7 +120,7 @@ namespace EWSEditor.Forms
                     //sb.Append(GetValuesFromTimezoneString(cmboTimeZoneIds.Text.Trim()));
                     //sb.Append("\r\n");
                     sb.Append("Timezone Information:" );
-                    sb.Append(GetValuesFromTimezoneStringAndDateTime(cmboTimeZoneIds.Text.Trim(), oDateTime));
+                    sb.Append(TimeHelper.GetValuesFromTimezoneStringAndDateTime(cmboTimeZoneIds.Text.Trim(), oDateTime));
                     sb.Append("\r\n");
 
                     s = sb.ToString();
@@ -484,7 +176,7 @@ namespace EWSEditor.Forms
                 TimeZoneInfo oTimeZoneInfo = null;
                 oTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(sTimeZone);
 
-                 s = GetValuesFromTimeZoneInfo(oTimeZoneInfo);
+                s = TimeHelper.GetValuesFromTimeZoneInfo(oTimeZoneInfo);
 
                 //s = sb.ToString();
                 
@@ -506,7 +198,7 @@ namespace EWSEditor.Forms
                  
 
                 StringBuilder sb = new StringBuilder();
-                DaylightTime oDaylightTime = null;
+                //DaylightTime oDaylightTime = null;
                 TimeZone oCurrentTimeZone = TimeZone.CurrentTimeZone;
 
                 TimeZoneInfo x = TimeZoneInfo.Local;
@@ -540,7 +232,7 @@ namespace EWSEditor.Forms
                 //sb.Append(string.Format("        Delta:      {0} \r\n", oDaylightTime.Delta));
 
                 sb.AppendLine("Local TimeZoneInfo:");
-                sb.Append(GetValuesFromTimeZoneInfo(x));
+                sb.Append(TimeHelper.GetValuesFromTimeZoneInfo(x));
 
                 s = sb.ToString();
             }
@@ -588,7 +280,7 @@ namespace EWSEditor.Forms
             
             this.txtFromTimeZone.Text = string.Empty;
             this.txtToTimeZone.Text = string.Empty;
-
+           
             string sFromTimeZone = this.cmboFromTimeZone.Text.Trim();
             string sToTimeZone = this.cmboToTimeZone.Text.Trim();
 
@@ -634,7 +326,7 @@ namespace EWSEditor.Forms
                 oDateTime = DateTime.SpecifyKind(DateTime.Now, oDateTimeKind); 
             }
 
-            txtConversionDateInfo.Text = GetDateTimeInfo(oDateTime);
+            txtConversionDateInfo.Text = TimeHelper.GetDateTimeInfo(oDateTime);
  
             if (sFromTimeZone.Length != 0)
             {
@@ -648,7 +340,7 @@ namespace EWSEditor.Forms
                     //sbFrom.Append(GetValuesFromTimezoneString(cmboFromTimeZone.Text.Trim()));
                     //sbFrom.Append("\r\n");
                     sbFrom.Append("Timezone Information:");
-                    sbFrom.Append(GetValuesFromTimezoneStringAndDateTime(cmboFromTimeZone.Text.Trim(), oDateTime));
+                    sbFrom.Append(TimeHelper.GetValuesFromTimezoneStringAndDateTime(cmboFromTimeZone.Text.Trim(), oDateTime));
                     sbFrom.Append("\r\n");
 
                     s = sbFrom.ToString();
@@ -674,7 +366,7 @@ namespace EWSEditor.Forms
                 {
 
                     sbTo.Append("Timezone Information:");
-                    sbTo.Append(GetValuesFromTimezoneStringAndDateTime(this.cmboToTimeZone.Text.Trim(), oDateTime));
+                    sbTo.Append(TimeHelper.GetValuesFromTimezoneStringAndDateTime(this.cmboToTimeZone.Text.Trim(), oDateTime));
                     sbTo.Append("\r\n");
 
                     s = sbTo.ToString();
@@ -699,6 +391,18 @@ namespace EWSEditor.Forms
             TimeZoneInfo oToTimeZoneInfo = null;
             oToTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(sToTimeZone);
 
+            // Some times are not valid for certain timezones.  This can happen when time (often an hour) is skipped for DST changes.  Timezone conversion routines will throw
+            // an error rather than adjusting the time forward to what the time would be after a DST/trasition time change.
+            lblConversionError.Text = "";
+            if (oFromTimeZoneInfo.IsInvalidTime(oDateTime))
+            {
+                lblConversionError.Text += oDateTime.ToString() + " is invalid for " + oFromTimeZoneInfo.StandardName + ".  ";
+            }
+            if (oToTimeZoneInfo.IsInvalidTime(oDateTime))
+            {
+                lblConversionError.Text += oDateTime.ToString() + " is invalid for " + oToTimeZoneInfo.StandardName;
+            }
+ 
             try
             {
 
@@ -706,7 +410,7 @@ namespace EWSEditor.Forms
 
                 StringBuilder oSbRestults = new StringBuilder();
                 oSbRestults.AppendLine("New DateTime: " + oResultDateTime.ToString());
-                oSbRestults.Append(GetDateTimeInfo(oResultDateTime));
+                oSbRestults.Append(TimeHelper.GetDateTimeInfo(oResultDateTime));
                 oSbRestults.AppendLine(" ");
  
                 this.txtConversionResults.Text = oSbRestults.ToString();
@@ -808,8 +512,8 @@ namespace EWSEditor.Forms
                 TimeZoneInfo oTimeZoneInfo = null;
                 string sTimezone = lvMachineTimeZones.SelectedItems[0].Text;
                 oTimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(sTimezone);
- 
-                this.txtMachineTimeZones.Text = GetValuesFromTimeZoneInfo(oTimeZoneInfo);
+
+                this.txtMachineTimeZones.Text = TimeHelper.GetValuesFromTimeZoneInfo(oTimeZoneInfo);
             }
         }
 

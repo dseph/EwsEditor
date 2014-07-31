@@ -38,7 +38,9 @@
             this.tabTimeZones = new System.Windows.Forms.TabControl();
             this.tabExchangeServerTimeZone = new System.Windows.Forms.TabPage();
             this.tabClientTimeZones = new System.Windows.Forms.TabPage();
+            this.scMachineTimezones = new System.Windows.Forms.SplitContainer();
             this.lvMachineTimeZones = new System.Windows.Forms.ListView();
+            this.txtMachineTimeZones = new System.Windows.Forms.TextBox();
             this.tabClientTimezoneLookup = new System.Windows.Forms.TabPage();
             this.txtTimeZoneLookupResults = new System.Windows.Forms.TextBox();
             this.tabClientCurrentTimeZone = new System.Windows.Forms.TabPage();
@@ -46,6 +48,8 @@
             this.btnClientCurrentTimeZone = new System.Windows.Forms.Button();
             this.tabConvertTime = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTicksTime = new System.Windows.Forms.TextBox();
+            this.lblTicksTime = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cmboConversionKind = new System.Windows.Forms.ComboBox();
             this.cmboToTimeZone = new System.Windows.Forms.ComboBox();
@@ -69,21 +73,18 @@
             this.txtConversionResults = new System.Windows.Forms.TextBox();
             this.txtToTimeZone = new System.Windows.Forms.TextBox();
             this.txtFromTimeZone = new System.Windows.Forms.TextBox();
-            this.txtMachineTimeZones = new System.Windows.Forms.TextBox();
-            this.scMachineTimezones = new System.Windows.Forms.SplitContainer();
-            this.lblTicksTime = new System.Windows.Forms.Label();
-            this.txtTicksTime = new System.Windows.Forms.TextBox();
+            this.lblConversionError = new System.Windows.Forms.Label();
             this.tabTimeZones.SuspendLayout();
             this.tabExchangeServerTimeZone.SuspendLayout();
             this.tabClientTimeZones.SuspendLayout();
-            this.tabClientTimezoneLookup.SuspendLayout();
-            this.tabClientCurrentTimeZone.SuspendLayout();
-            this.tabConvertTime.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMachineTimezones)).BeginInit();
             this.scMachineTimezones.Panel1.SuspendLayout();
             this.scMachineTimezones.Panel2.SuspendLayout();
             this.scMachineTimezones.SuspendLayout();
+            this.tabClientTimezoneLookup.SuspendLayout();
+            this.tabClientCurrentTimeZone.SuspendLayout();
+            this.tabConvertTime.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnServerTimeZone
@@ -195,6 +196,26 @@
             this.tabClientTimeZones.Text = "Client TimeZones";
             this.tabClientTimeZones.UseVisualStyleBackColor = true;
             // 
+            // scMachineTimezones
+            // 
+            this.scMachineTimezones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.scMachineTimezones.Location = new System.Drawing.Point(0, 36);
+            this.scMachineTimezones.Name = "scMachineTimezones";
+            this.scMachineTimezones.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // scMachineTimezones.Panel1
+            // 
+            this.scMachineTimezones.Panel1.Controls.Add(this.lvMachineTimeZones);
+            // 
+            // scMachineTimezones.Panel2
+            // 
+            this.scMachineTimezones.Panel2.Controls.Add(this.txtMachineTimeZones);
+            this.scMachineTimezones.Size = new System.Drawing.Size(966, 519);
+            this.scMachineTimezones.SplitterDistance = 259;
+            this.scMachineTimezones.TabIndex = 38;
+            // 
             // lvMachineTimeZones
             // 
             this.lvMachineTimeZones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -202,10 +223,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvMachineTimeZones.Location = new System.Drawing.Point(3, 3);
             this.lvMachineTimeZones.Name = "lvMachineTimeZones";
-            this.lvMachineTimeZones.Size = new System.Drawing.Size(957, 258);
+            this.lvMachineTimeZones.Size = new System.Drawing.Size(957, 253);
             this.lvMachineTimeZones.TabIndex = 32;
             this.lvMachineTimeZones.UseCompatibleStateImageBehavior = false;
             this.lvMachineTimeZones.SelectedIndexChanged += new System.EventHandler(this.lvMachineTimeZones_SelectedIndexChanged);
+            // 
+            // txtMachineTimeZones
+            // 
+            this.txtMachineTimeZones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMachineTimeZones.Location = new System.Drawing.Point(1, 3);
+            this.txtMachineTimeZones.Multiline = true;
+            this.txtMachineTimeZones.Name = "txtMachineTimeZones";
+            this.txtMachineTimeZones.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtMachineTimeZones.Size = new System.Drawing.Size(962, 247);
+            this.txtMachineTimeZones.TabIndex = 37;
+            this.txtMachineTimeZones.WordWrap = false;
+            this.txtMachineTimeZones.TextChanged += new System.EventHandler(this.txtMachineTimeZones_TextChanged);
             // 
             // tabClientTimezoneLookup
             // 
@@ -227,11 +262,11 @@
             this.txtTimeZoneLookupResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTimeZoneLookupResults.Location = new System.Drawing.Point(0, 39);
+            this.txtTimeZoneLookupResults.Location = new System.Drawing.Point(0, 41);
             this.txtTimeZoneLookupResults.Multiline = true;
             this.txtTimeZoneLookupResults.Name = "txtTimeZoneLookupResults";
             this.txtTimeZoneLookupResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTimeZoneLookupResults.Size = new System.Drawing.Size(960, 520);
+            this.txtTimeZoneLookupResults.Size = new System.Drawing.Size(960, 506);
             this.txtTimeZoneLookupResults.TabIndex = 38;
             this.txtTimeZoneLookupResults.WordWrap = false;
             // 
@@ -256,7 +291,7 @@
             this.txtClientCurrentTimezone.Multiline = true;
             this.txtClientCurrentTimezone.Name = "txtClientCurrentTimezone";
             this.txtClientCurrentTimezone.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtClientCurrentTimezone.Size = new System.Drawing.Size(960, 526);
+            this.txtClientCurrentTimezone.Size = new System.Drawing.Size(960, 516);
             this.txtClientCurrentTimezone.TabIndex = 37;
             this.txtClientCurrentTimezone.WordWrap = false;
             // 
@@ -294,6 +329,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.lblConversionError);
             this.groupBox1.Controls.Add(this.txtTicksTime);
             this.groupBox1.Controls.Add(this.lblTicksTime);
             this.groupBox1.Controls.Add(this.label6);
@@ -317,6 +353,23 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // txtTicksTime
+            // 
+            this.txtTicksTime.Location = new System.Drawing.Point(686, 61);
+            this.txtTicksTime.Name = "txtTicksTime";
+            this.txtTicksTime.ReadOnly = true;
+            this.txtTicksTime.Size = new System.Drawing.Size(250, 22);
+            this.txtTicksTime.TabIndex = 16;
+            // 
+            // lblTicksTime
+            // 
+            this.lblTicksTime.AutoSize = true;
+            this.lblTicksTime.Location = new System.Drawing.Point(612, 66);
+            this.lblTicksTime.Name = "lblTicksTime";
+            this.lblTicksTime.Size = new System.Drawing.Size(68, 15);
+            this.lblTicksTime.TabIndex = 15;
+            this.lblTicksTime.Text = "Ticks Time:";
             // 
             // label6
             // 
@@ -343,7 +396,7 @@
             // cmboToTimeZone
             // 
             this.cmboToTimeZone.FormattingEnabled = true;
-            this.cmboToTimeZone.Location = new System.Drawing.Point(587, 125);
+            this.cmboToTimeZone.Location = new System.Drawing.Point(592, 120);
             this.cmboToTimeZone.Name = "cmboToTimeZone";
             this.cmboToTimeZone.Size = new System.Drawing.Size(326, 23);
             this.cmboToTimeZone.TabIndex = 14;
@@ -360,7 +413,7 @@
             // lblToTZ
             // 
             this.lblToTZ.AutoSize = true;
-            this.lblToTZ.Location = new System.Drawing.Point(500, 128);
+            this.lblToTZ.Location = new System.Drawing.Point(505, 128);
             this.lblToTZ.Name = "lblToTZ";
             this.lblToTZ.Size = new System.Drawing.Size(81, 15);
             this.lblToTZ.TabIndex = 13;
@@ -543,56 +596,16 @@
             this.txtFromTimeZone.Size = new System.Drawing.Size(935, 58);
             this.txtFromTimeZone.TabIndex = 3;
             // 
-            // txtMachineTimeZones
+            // lblConversionError
             // 
-            this.txtMachineTimeZones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMachineTimeZones.Location = new System.Drawing.Point(1, 3);
-            this.txtMachineTimeZones.Multiline = true;
-            this.txtMachineTimeZones.Name = "txtMachineTimeZones";
-            this.txtMachineTimeZones.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMachineTimeZones.Size = new System.Drawing.Size(962, 252);
-            this.txtMachineTimeZones.TabIndex = 37;
-            this.txtMachineTimeZones.WordWrap = false;
-            this.txtMachineTimeZones.TextChanged += new System.EventHandler(this.txtMachineTimeZones_TextChanged);
-            // 
-            // scMachineTimezones
-            // 
-            this.scMachineTimezones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.scMachineTimezones.Location = new System.Drawing.Point(0, 36);
-            this.scMachineTimezones.Name = "scMachineTimezones";
-            this.scMachineTimezones.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // scMachineTimezones.Panel1
-            // 
-            this.scMachineTimezones.Panel1.Controls.Add(this.lvMachineTimeZones);
-            // 
-            // scMachineTimezones.Panel2
-            // 
-            this.scMachineTimezones.Panel2.Controls.Add(this.txtMachineTimeZones);
-            this.scMachineTimezones.Size = new System.Drawing.Size(966, 529);
-            this.scMachineTimezones.SplitterDistance = 264;
-            this.scMachineTimezones.TabIndex = 38;
-            // 
-            // lblTicksTime
-            // 
-            this.lblTicksTime.AutoSize = true;
-            this.lblTicksTime.Location = new System.Drawing.Point(612, 66);
-            this.lblTicksTime.Name = "lblTicksTime";
-            this.lblTicksTime.Size = new System.Drawing.Size(68, 15);
-            this.lblTicksTime.TabIndex = 15;
-            this.lblTicksTime.Text = "Ticks Time:";
-            // 
-            // txtTicksTime
-            // 
-            this.txtTicksTime.Location = new System.Drawing.Point(686, 61);
-            this.txtTicksTime.Name = "txtTicksTime";
-            this.txtTicksTime.ReadOnly = true;
-            this.txtTicksTime.Size = new System.Drawing.Size(250, 22);
-            this.txtTicksTime.TabIndex = 16;
+            this.lblConversionError.AutoSize = true;
+            this.lblConversionError.ForeColor = System.Drawing.Color.Red;
+            this.lblConversionError.Location = new System.Drawing.Point(13, 148);
+            this.lblConversionError.Name = "lblConversionError";
+            this.lblConversionError.Size = new System.Drawing.Size(28, 15);
+            this.lblConversionError.TabIndex = 17;
+            this.lblConversionError.Tag = "            ";
+            this.lblConversionError.Text = "       ";
             // 
             // TimeZonesForm
             // 
@@ -607,6 +620,11 @@
             this.tabExchangeServerTimeZone.ResumeLayout(false);
             this.tabExchangeServerTimeZone.PerformLayout();
             this.tabClientTimeZones.ResumeLayout(false);
+            this.scMachineTimezones.Panel1.ResumeLayout(false);
+            this.scMachineTimezones.Panel2.ResumeLayout(false);
+            this.scMachineTimezones.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scMachineTimezones)).EndInit();
+            this.scMachineTimezones.ResumeLayout(false);
             this.tabClientTimezoneLookup.ResumeLayout(false);
             this.tabClientTimezoneLookup.PerformLayout();
             this.tabClientCurrentTimeZone.ResumeLayout(false);
@@ -615,11 +633,6 @@
             this.tabConvertTime.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.scMachineTimezones.Panel1.ResumeLayout(false);
-            this.scMachineTimezones.Panel2.ResumeLayout(false);
-            this.scMachineTimezones.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.scMachineTimezones)).EndInit();
-            this.scMachineTimezones.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -671,5 +684,6 @@
         private System.Windows.Forms.TextBox txtMachineTimeZones;
         private System.Windows.Forms.TextBox txtTicksTime;
         private System.Windows.Forms.Label lblTicksTime;
+        private System.Windows.Forms.Label lblConversionError;
     }
 }

@@ -451,7 +451,7 @@
             // If there is no CurrentService then we can't do anything
             if (this.CurrentService != null)
             {
-                TimeZonesForm oTimeZonesForm = new TimeZonesForm(this.CurrentService);
+                TimeZonesForm oTimeZonesForm = new TimeZonesForm();
                 oTimeZonesForm.ShowDialog();
             }
 
@@ -688,6 +688,24 @@
         {
             EDiscoverySearchForm oForm = new EDiscoverySearchForm(this.CurrentService);
             oForm.ShowDialog();
+        }
+
+        private void serverTimeZoneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DateTime oDateTime = DateTime.SpecifyKind(DateTime.Now, DateTimeKind.Unspecified);
+
+            StringBuilder oSB = new StringBuilder();
+            oSB.AppendLine("Server TimeZoneInfo:");
+            oSB.AppendLine(TimeHelper.GetValuesFromTimeZoneInfo(CurrentService.TimeZone));
+            oSB.AppendLine("");
+
+            ShowTextDocument oForm = new ShowTextDocument();
+            oForm.txtEntry.WordWrap = false;
+            oForm.Text = "Server TimeZone";
+            oForm.txtEntry.Text = oSB.ToString();
+            oForm.ShowDialog();
+           
+             
         }
     }
 }
