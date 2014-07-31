@@ -449,11 +449,11 @@
             //this.Cursor = Cursors.WaitCursor;
 
             // If there is no CurrentService then we can't do anything
-            if (this.CurrentService != null)
-            {
+            //if (this.CurrentService != null)
+            //{
                 TimeZonesForm oTimeZonesForm = new TimeZonesForm();
                 oTimeZonesForm.ShowDialog();
-            }
+            //}
 
             //this.Cursor = Cursors.Default;
 
