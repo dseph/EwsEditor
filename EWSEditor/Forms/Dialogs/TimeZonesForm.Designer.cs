@@ -28,15 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnServerTimeZone = new System.Windows.Forms.Button();
             this.cmboTimeZoneIds = new System.Windows.Forms.ComboBox();
             this.TimeZoneByIdString = new System.Windows.Forms.Button();
             this.btnListTimezones = new System.Windows.Forms.Button();
             this.dtStartDate = new System.Windows.Forms.DateTimePicker();
-            this.txtServerTimezoneResults = new System.Windows.Forms.TextBox();
             this.dtStartTime = new System.Windows.Forms.DateTimePicker();
             this.tabTimeZones = new System.Windows.Forms.TabControl();
-            this.tabExchangeServerTimeZone = new System.Windows.Forms.TabPage();
             this.tabClientTimeZones = new System.Windows.Forms.TabPage();
             this.scMachineTimezones = new System.Windows.Forms.SplitContainer();
             this.lvMachineTimeZones = new System.Windows.Forms.ListView();
@@ -48,6 +45,7 @@
             this.btnClientCurrentTimeZone = new System.Windows.Forms.Button();
             this.tabConvertTime = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblConversionError = new System.Windows.Forms.Label();
             this.txtTicksTime = new System.Windows.Forms.TextBox();
             this.lblTicksTime = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,9 +71,7 @@
             this.txtConversionResults = new System.Windows.Forms.TextBox();
             this.txtToTimeZone = new System.Windows.Forms.TextBox();
             this.txtFromTimeZone = new System.Windows.Forms.TextBox();
-            this.lblConversionError = new System.Windows.Forms.Label();
             this.tabTimeZones.SuspendLayout();
-            this.tabExchangeServerTimeZone.SuspendLayout();
             this.tabClientTimeZones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMachineTimezones)).BeginInit();
             this.scMachineTimezones.Panel1.SuspendLayout();
@@ -86,16 +82,6 @@
             this.tabConvertTime.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnServerTimeZone
-            // 
-            this.btnServerTimeZone.Location = new System.Drawing.Point(3, 3);
-            this.btnServerTimeZone.Name = "btnServerTimeZone";
-            this.btnServerTimeZone.Size = new System.Drawing.Size(156, 27);
-            this.btnServerTimeZone.TabIndex = 34;
-            this.btnServerTimeZone.Text = "Exchange Server TimeZone";
-            this.btnServerTimeZone.UseVisualStyleBackColor = true;
-            this.btnServerTimeZone.Click += new System.EventHandler(this.btnServerTimeZone_Click);
             // 
             // cmboTimeZoneIds
             // 
@@ -134,19 +120,6 @@
             this.dtStartDate.TabIndex = 35;
             this.dtStartDate.ValueChanged += new System.EventHandler(this.dtStartDate_ValueChanged);
             // 
-            // txtServerTimezoneResults
-            // 
-            this.txtServerTimezoneResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtServerTimezoneResults.Location = new System.Drawing.Point(3, 36);
-            this.txtServerTimezoneResults.Multiline = true;
-            this.txtServerTimezoneResults.Name = "txtServerTimezoneResults";
-            this.txtServerTimezoneResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtServerTimezoneResults.Size = new System.Drawing.Size(960, 526);
-            this.txtServerTimezoneResults.TabIndex = 36;
-            this.txtServerTimezoneResults.WordWrap = false;
-            // 
             // dtStartTime
             // 
             this.dtStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
@@ -161,7 +134,6 @@
             this.tabTimeZones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabTimeZones.Controls.Add(this.tabExchangeServerTimeZone);
             this.tabTimeZones.Controls.Add(this.tabClientTimeZones);
             this.tabTimeZones.Controls.Add(this.tabClientTimezoneLookup);
             this.tabTimeZones.Controls.Add(this.tabClientCurrentTimeZone);
@@ -172,17 +144,6 @@
             this.tabTimeZones.SelectedIndex = 0;
             this.tabTimeZones.Size = new System.Drawing.Size(974, 593);
             this.tabTimeZones.TabIndex = 38;
-            // 
-            // tabExchangeServerTimeZone
-            // 
-            this.tabExchangeServerTimeZone.Controls.Add(this.btnServerTimeZone);
-            this.tabExchangeServerTimeZone.Controls.Add(this.txtServerTimezoneResults);
-            this.tabExchangeServerTimeZone.Location = new System.Drawing.Point(4, 24);
-            this.tabExchangeServerTimeZone.Name = "tabExchangeServerTimeZone";
-            this.tabExchangeServerTimeZone.Size = new System.Drawing.Size(966, 565);
-            this.tabExchangeServerTimeZone.TabIndex = 2;
-            this.tabExchangeServerTimeZone.Text = "Exchange Server TimeZone";
-            this.tabExchangeServerTimeZone.UseVisualStyleBackColor = true;
             // 
             // tabClientTimeZones
             // 
@@ -353,6 +314,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // lblConversionError
+            // 
+            this.lblConversionError.AutoSize = true;
+            this.lblConversionError.ForeColor = System.Drawing.Color.Red;
+            this.lblConversionError.Location = new System.Drawing.Point(13, 148);
+            this.lblConversionError.Name = "lblConversionError";
+            this.lblConversionError.Size = new System.Drawing.Size(28, 15);
+            this.lblConversionError.TabIndex = 17;
+            this.lblConversionError.Tag = "            ";
+            this.lblConversionError.Text = "       ";
             // 
             // txtTicksTime
             // 
@@ -596,17 +568,6 @@
             this.txtFromTimeZone.Size = new System.Drawing.Size(935, 58);
             this.txtFromTimeZone.TabIndex = 3;
             // 
-            // lblConversionError
-            // 
-            this.lblConversionError.AutoSize = true;
-            this.lblConversionError.ForeColor = System.Drawing.Color.Red;
-            this.lblConversionError.Location = new System.Drawing.Point(13, 148);
-            this.lblConversionError.Name = "lblConversionError";
-            this.lblConversionError.Size = new System.Drawing.Size(28, 15);
-            this.lblConversionError.TabIndex = 17;
-            this.lblConversionError.Tag = "            ";
-            this.lblConversionError.Text = "       ";
-            // 
             // TimeZonesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -617,8 +578,6 @@
             this.Text = "Time Zones ";
             this.Load += new System.EventHandler(this.TimeZonesForm_Load);
             this.tabTimeZones.ResumeLayout(false);
-            this.tabExchangeServerTimeZone.ResumeLayout(false);
-            this.tabExchangeServerTimeZone.PerformLayout();
             this.tabClientTimeZones.ResumeLayout(false);
             this.scMachineTimezones.Panel1.ResumeLayout(false);
             this.scMachineTimezones.Panel2.ResumeLayout(false);
@@ -639,17 +598,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnServerTimeZone;
         private System.Windows.Forms.ComboBox cmboTimeZoneIds;
         private System.Windows.Forms.Button TimeZoneByIdString;
         private System.Windows.Forms.Button btnListTimezones;
         private System.Windows.Forms.DateTimePicker dtStartDate;
-        private System.Windows.Forms.TextBox txtServerTimezoneResults;
         private System.Windows.Forms.DateTimePicker dtStartTime;
         private System.Windows.Forms.TabControl tabTimeZones;
         private System.Windows.Forms.TabPage tabClientTimeZones;
         private System.Windows.Forms.TabPage tabClientTimezoneLookup;
-        private System.Windows.Forms.TabPage tabExchangeServerTimeZone;
         private System.Windows.Forms.ListView lvMachineTimeZones;
         private System.Windows.Forms.TextBox txtTimeZoneLookupResults;
         private System.Windows.Forms.TabPage tabClientCurrentTimeZone;
