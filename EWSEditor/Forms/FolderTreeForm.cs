@@ -155,7 +155,8 @@ namespace EWSEditor.Forms
                 this.mnuResolveName.Enabled = isCurrentService;
                 this.mnuResolveExProp.Enabled = isCurrentService;
 
-                this.TimeZonemenuitem.Enabled = isCurrentService;
+                this.serverTimeZoneToolStripMenuItem.Enabled = isCurrentService;
+                //this.TimeZonemenuitem.Enabled = isCurrentService;
                 this.MeetingRoomsMenuItem.Enabled = isCurrentService;
                 this.DistributionListMenuItem.Enabled = isCurrentService;
          

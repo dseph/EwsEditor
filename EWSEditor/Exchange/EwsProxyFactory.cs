@@ -116,10 +116,13 @@ namespace EWSEditor.Exchange
             if (UserAgent.Length != 0)
                 service.UserAgent = UserAgent;
 
+            // EWS Tracing: http://msdn.microsoft.com/en-us/library/office/dn495632(v=exchg.150).aspx
             service.TraceEnabled = true;
             service.TraceListener = new EWSEditor.Logging.EwsTraceListener();
 
+            // Instrumentation settings: http://msdn.microsoft.com/en-us/library/office/dn720380(v=exchg.150).aspx
             service.ReturnClientRequestId = true;  // This will give us more data back about the servers used in the response headers
+            service.SendClientLatencies = true;  // sends latency info which is used by Microsoft to improve EWS and Exchagne 365.
 
             if (EnableScpLookup.HasValue)
             {
