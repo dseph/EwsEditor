@@ -41,6 +41,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEntry.Location = new System.Drawing.Point(12, 28);
+            this.txtEntry.MaxLength = 0;
             this.txtEntry.Multiline = true;
             this.txtEntry.Name = "txtEntry";
             this.txtEntry.ScrollBars = System.Windows.Forms.ScrollBars.Both;

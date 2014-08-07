@@ -41,6 +41,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResults.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtResults.Location = new System.Drawing.Point(2, 41);
+            this.txtResults.MaxLength = 0;
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;

@@ -195,6 +195,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMachineTimeZones.Location = new System.Drawing.Point(1, 3);
+            this.txtMachineTimeZones.MaxLength = 0;
             this.txtMachineTimeZones.Multiline = true;
             this.txtMachineTimeZones.Name = "txtMachineTimeZones";
             this.txtMachineTimeZones.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -249,6 +250,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtClientCurrentTimezone.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtClientCurrentTimezone.Location = new System.Drawing.Point(3, 36);
+            this.txtClientCurrentTimezone.MaxLength = 0;
             this.txtClientCurrentTimezone.Multiline = true;
             this.txtClientCurrentTimezone.Name = "txtClientCurrentTimezone";
             this.txtClientCurrentTimezone.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -501,6 +503,7 @@
             this.txtConversionDateInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtConversionDateInfo.Location = new System.Drawing.Point(25, 187);
+            this.txtConversionDateInfo.MaxLength = 0;
             this.txtConversionDateInfo.Multiline = true;
             this.txtConversionDateInfo.Name = "txtConversionDateInfo";
             this.txtConversionDateInfo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -540,6 +543,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtConversionResults.Location = new System.Drawing.Point(25, 428);
+            this.txtConversionResults.MaxLength = 0;
             this.txtConversionResults.Multiline = true;
             this.txtConversionResults.Name = "txtConversionResults";
             this.txtConversionResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -551,6 +555,7 @@
             this.txtToTimeZone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtToTimeZone.Location = new System.Drawing.Point(25, 337);
+            this.txtToTimeZone.MaxLength = 0;
             this.txtToTimeZone.Multiline = true;
             this.txtToTimeZone.Name = "txtToTimeZone";
             this.txtToTimeZone.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -562,6 +567,7 @@
             this.txtFromTimeZone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFromTimeZone.Location = new System.Drawing.Point(25, 258);
+            this.txtFromTimeZone.MaxLength = 0;
             this.txtFromTimeZone.Multiline = true;
             this.txtFromTimeZone.Name = "txtFromTimeZone";
             this.txtFromTimeZone.ScrollBars = System.Windows.Forms.ScrollBars.Both;
