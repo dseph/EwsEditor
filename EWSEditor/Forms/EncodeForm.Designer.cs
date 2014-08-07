@@ -48,6 +48,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFrom.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.txtFrom.Location = new System.Drawing.Point(2, 38);
+            this.txtFrom.MaxLength = 0;
             this.txtFrom.Multiline = true;
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -72,6 +73,7 @@
             this.txtTo.BackColor = System.Drawing.Color.LemonChiffon;
             this.txtTo.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTo.Location = new System.Drawing.Point(2, 262);
+            this.txtTo.MaxLength = 0;
             this.txtTo.Multiline = true;
             this.txtTo.Name = "txtTo";
             this.txtTo.ScrollBars = System.Windows.Forms.ScrollBars.Both;

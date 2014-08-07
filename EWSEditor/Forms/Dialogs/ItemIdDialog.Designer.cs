@@ -37,11 +37,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 102);
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Location = new System.Drawing.Point(12, 133);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(387, 10);
+            this.groupBox1.Size = new System.Drawing.Size(571, 10);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -49,7 +49,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(319, 118);
+            this.btnCancel.Location = new System.Drawing.Point(503, 149);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(238, 118);
+            this.btnOK.Location = new System.Drawing.Point(422, 149);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 2;
@@ -71,7 +71,7 @@
             // 
             this.lblUnique.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblUnique.AutoSize = true;
-            this.lblUnique.Location = new System.Drawing.Point(8, 11);
+            this.lblUnique.Location = new System.Drawing.Point(12, 9);
             this.lblUnique.Name = "lblUnique";
             this.lblUnique.Size = new System.Drawing.Size(56, 13);
             this.lblUnique.TabIndex = 3;
@@ -79,11 +79,13 @@
             // 
             // txtUniqueId
             // 
-            this.txtUniqueId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtUniqueId.Location = new System.Drawing.Point(72, 11);
+            this.txtUniqueId.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtUniqueId.Location = new System.Drawing.Point(15, 25);
             this.txtUniqueId.Multiline = true;
             this.txtUniqueId.Name = "txtUniqueId";
-            this.txtUniqueId.Size = new System.Drawing.Size(322, 79);
+            this.txtUniqueId.Size = new System.Drawing.Size(559, 102);
             this.txtUniqueId.TabIndex = 5;
             // 
             // ItemIdDialog
@@ -92,7 +94,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(402, 154);
+            this.ClientSize = new System.Drawing.Size(586, 185);
             this.Controls.Add(this.txtUniqueId);
             this.Controls.Add(this.lblUnique);
             this.Controls.Add(this.btnOK);

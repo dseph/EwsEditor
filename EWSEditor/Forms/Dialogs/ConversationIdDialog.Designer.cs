@@ -87,6 +87,7 @@
             this.txtConversationId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtConversationId.Location = new System.Drawing.Point(103, 46);
+            this.txtConversationId.MaxLength = 0;
             this.txtConversationId.Multiline = true;
             this.txtConversationId.Name = "txtConversationId";
             this.txtConversationId.Size = new System.Drawing.Size(774, 55);

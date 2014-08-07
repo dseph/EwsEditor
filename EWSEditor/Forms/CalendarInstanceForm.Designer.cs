@@ -234,6 +234,7 @@
             // txtBody
             // 
             this.txtBody.Location = new System.Drawing.Point(48, 233);
+            this.txtBody.MaxLength = 0;
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;

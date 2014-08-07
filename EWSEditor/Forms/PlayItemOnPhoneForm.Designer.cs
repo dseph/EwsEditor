@@ -50,7 +50,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(619, 275);
+            this.btnOK.Location = new System.Drawing.Point(638, 275);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 5;
@@ -82,10 +82,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBody.Location = new System.Drawing.Point(12, 43);
+            this.txtBody.MaxLength = 0;
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBody.Size = new System.Drawing.Size(701, 211);
+            this.txtBody.Size = new System.Drawing.Size(701, 226);
             this.txtBody.TabIndex = 4;
             this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
