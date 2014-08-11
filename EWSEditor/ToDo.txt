@@ -1,9 +1,8 @@
 ﻿Plannded for future releases:
 
-1 - Add inline attachment ability.
-2 - Add code to show response headers in EWS POST window.
-3 - Full POST for Ews POST window
- 
+	1 - Add inline attachment ability.
+	2 - Add code to show response headers in EWS POST window.
+	3 - Full POST for Ews POST window
 
 Wish List
 
@@ -19,9 +18,7 @@ EwsPost has.
 Change saving of sessions for main login to use a class, then add ability for user to load and save settings by 
 serializing the class and writting/reading to file.
  
- Add abilty to set WebProxy on service object and in EWS Post window
-	something like: service.WebProxy = new WebProxy(sProxyServer, iProxyPort);
-	http://social.technet.microsoft.com/wiki/contents/articles/12071.what-is-the-ews-managed-api-and-exchange-server-binding.aspx
+ 
  
 
  
