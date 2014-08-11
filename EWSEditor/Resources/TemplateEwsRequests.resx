@@ -164,46 +164,46 @@
     <comment>Use this as a template for getting GroupingInformation.  You will need to replace the values marked with XXX to build a proper request.</comment>
   </data>
   <data name="UploadItems_CreateNew" xml:space="preserve">
-    <value>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
-&lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
-               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"&gt;
-  &lt;soap:Header&gt;
-    &lt;t:RequestServerVersion Version="##RequestServerVersion##" /&gt;
-  &lt;/soap:Header&gt;
-  &lt;soap:Body&gt;
-    &lt;m:UploadItems&gt;
-      &lt;m:Items&gt;
-        &lt;t:Item CreateAction="##CreateAction##"&gt;
-          &lt;t:ParentFolderId Id="##ParentFolderId_Id##" /&gt;
-          &lt;t:Data&gt;##Data##&lt;/t:Data&gt;
-        &lt;/t:Item&gt;
-    &lt;/m:UploadItems&gt;
-  &lt;/soap:Body&gt;
+    <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap:Envelope 
+        xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+&lt;soap:Header&gt;
+    &lt;RequestServerVersion Version="##RequestServerVersion##" xmlns="http://schemas.microsoft.com/exchange/services/2006/types" /&gt;
+&lt;/soap:Header&gt;
+&lt;soap:Body&gt;
+    &lt;UploadItems xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"&gt;
+        &lt;Items&gt;
+        &lt;Item CreateAction="##CreateAction##" xmlns="http://schemas.microsoft.com/exchange/services/2006/types"&gt;
+                    &lt;ParentFolderId Id="##ParentFolderId_Id##"  /&gt;
+                    &lt;Data&gt;##Data##&lt;/Data&gt;
+                &lt;/Item&gt;
+            &lt;/Items&gt;
+        &lt;/UploadItems&gt;
+    &lt;/soap:Body&gt;
 &lt;/soap:Envelope&gt;</value>
   </data>
   <data name="UploadItems_Update" xml:space="preserve">
-    <value>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
-&lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
-               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
-               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"&gt;
-  &lt;soap:Header&gt;
-    &lt;t:RequestServerVersion Version="##RequestServerVersion##" /&gt;
-  &lt;/soap:Header&gt;
-  &lt;soap:Body&gt;
-    &lt;m:UploadItems&gt;
-      &lt;m:Items&gt;
-        &lt;t:Item CreateAction="##CreateAction##"&gt;
-           &lt;t:ItemId Id="##ItemId##="/&gt;
-          &lt;t:ParentFolderId Id="##ParentFolderId_Id##" /&gt;
-          &lt;t:Data&gt;##Data##&lt;/t:Data&gt;
-        &lt;/t:Item&gt;
-    &lt;/m:UploadItems&gt;
-  &lt;/soap:Body&gt;
+    <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap:Envelope 
+        xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+&lt;soap:Header&gt;
+    &lt;RequestServerVersion Version="##RequestServerVersion##" xmlns="http://schemas.microsoft.com/exchange/services/2006/types" /&gt;
+&lt;/soap:Header&gt;
+&lt;soap:Body&gt;
+    &lt;UploadItems xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"&gt;
+        &lt;Items&gt;
+        &lt;Item CreateAction="##CreateAction##" xmlns="http://schemas.microsoft.com/exchange/services/2006/types"&gt;
+                    &lt;ParentFolderId Id="##ParentFolderId_Id##"  /&gt;
+                    &lt;ItemId Id="##ItemId##"/&gt;
+                    &lt;Data&gt;##Data##&lt;/Data&gt;
+                &lt;/Item&gt;
+            &lt;/Items&gt;
+        &lt;/UploadItems&gt;
+    &lt;/soap:Body&gt;
 &lt;/soap:Envelope&gt;</value>
     <comment>Used in POST for loading a saved item into a folder.</comment>
   </data>
