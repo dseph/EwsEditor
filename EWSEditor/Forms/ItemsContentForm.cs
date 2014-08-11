@@ -590,8 +590,11 @@ namespace EWSEditor.Forms
 
             try
             {
-                ExportUploadHelper.ExportItemPost("Exchange2013", id.UniqueId, dialog.FileName);
-
+                string sVersion = this.CurrentService.RequestedServerVersion.ToString();
+                // Note - I tested ExportItemPost and it worked to export and load in EwsEditor 1.7 - so, its working properly
+                ExportUploadHelper.ExportItemPost(sVersion, id.UniqueId, dialog.FileName);
+               
+       
                 //byte[] data = null;
 
                 //ExportUploadHelper.ExportItem(

@@ -132,5 +132,16 @@ namespace EWSEditor.Common
             sw.Close();
             return tempFile;
         }
+
+        // Reads Binary file and turns it into a base64 string.
+        public static string GetBinaryFileAsBase64(string sFile)
+        {
+
+            FileStream oFileStream = new FileStream(sFile, FileMode.Open, FileAccess.Read);
+            BinaryReader oBinaryReader = new BinaryReader(oFileStream);
+            byte[] arrByte = oBinaryReader.ReadBytes((int)oFileStream.Length);
+            string sData = Convert.ToBase64String(arrByte);
+            return sData;
+        }
     }
 }

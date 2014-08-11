@@ -341,7 +341,27 @@ namespace EWSEditor.Forms
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                byte[] data = System.IO.File.ReadAllBytes(oUploadItemForm.ChoseFileToUpload);
+                //byte[] data = System.IO.File.ReadAllBytes(oUploadItemForm.ChoseFileToUpload);
+
+                 
+
+                ////oDoc.LoadXml(sResponseText);
+                ////XmlNode oData = oDoc.SelectSingleNode("//m:Data", namespaces);
+
+                ////// Write base 64 encoded text Data XML string into a binary base 64 text/XML file
+                ////BinaryWriter oBinaryWriter = new BinaryWriter(File.Open(sFile, FileMode.Create));
+                ////StringReader oStringReader = new StringReader(oData.OuterXml);
+                ////XmlTextReader oXmlTextReader = new XmlTextReader(oStringReader);
+                ////oXmlTextReader.MoveToContent();
+                ////byte[] buffer = new byte[BUFFER_SIZE];
+                ////do
+                ////{
+                ////    iReadBytes = oXmlTextReader.ReadBase64(buffer, 0, BUFFER_SIZE);
+                ////    oBinaryWriter.Write(buffer, 0, iReadBytes);
+                ////}
+                ////while (iReadBytes >= BUFFER_SIZE);
+
+                ////oXmlTextReader.Close();
 
                 //ExportUploadHelper.UploadItem(
                 //    this.CurrentService,
@@ -355,7 +375,7 @@ namespace EWSEditor.Forms
                     this.currentFolder.Id,
                     oUploadItemForm.ChoseCreateActionType,
                     oUploadItemForm.ChoseItemId,
-                    data);
+                    oUploadItemForm.ChoseFileToUpload);
 
                 this.RefreshContentAndDetails();
             }
@@ -366,6 +386,8 @@ namespace EWSEditor.Forms
 
             this.Cursor = Cursors.Default;
         }
+
+
 
         /// <summary>
         /// Create a new item in a folder based on a input MIME stream stored in a file

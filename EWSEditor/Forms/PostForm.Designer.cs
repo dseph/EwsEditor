@@ -214,6 +214,7 @@
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtRequest.Size = new System.Drawing.Size(1060, 160);
             this.txtRequest.TabIndex = 0;
+            this.txtRequest.WordWrap = false;
             // 
             // txtResponse
             // 
@@ -225,8 +226,9 @@
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1060, 183);
+            this.txtResponse.Size = new System.Drawing.Size(1060, 184);
             this.txtResponse.TabIndex = 0;
+            this.txtResponse.WordWrap = false;
             // 
             // GoRun
             // 

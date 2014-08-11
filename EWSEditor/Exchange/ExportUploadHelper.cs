@@ -7,6 +7,9 @@ using EWSEditor.Resources;
 using System.Text;
 using System.IO;
 using System.Xml;
+using EWSEditor.Common;
+using EWSEditor.Forms;
+using EWSEditor.Forms.Controls;
 
 namespace EWSEditor.Exchange
 {
@@ -100,6 +103,7 @@ namespace EWSEditor.Exchange
             System.Net.HttpWebRequest oHttpWebRequest = null;
             EwsProxyFactory.CreateHttpWebRequest(ref oHttpWebRequest);
 
+            // Build request body...
             string EwsRequest = TemplateEwsRequests.ExportItems;
             EwsRequest = EwsRequest.Replace("##RequestServerVersion##", ServerVersion);
             EwsRequest = EwsRequest.Replace("##ItemId##", sItemId);
@@ -107,11 +111,9 @@ namespace EWSEditor.Exchange
             try
             {
  
-                //oHttpWebRequest.AllowAutoRedirect = bAllowAutoRedirect;
-
+                // Use request to do POST to EWS so we get back the data for the item to export.
                 byte[] bytes = Encoding.UTF8.GetBytes(EwsRequest);
                 oHttpWebRequest.ContentLength = bytes.Length;
- 
                 using (Stream requestStream = oHttpWebRequest.GetRequestStream())
                 {
                     requestStream.Write(bytes, 0, bytes.Length);
@@ -126,7 +128,7 @@ namespace EWSEditor.Exchange
                 sResponseText = oStreadReader.ReadToEnd();
 
    
-
+                // OK?
                 if (oHttpWebResponse.StatusCode == HttpStatusCode.OK)
                 {
                     int BUFFER_SIZE = 1024;
@@ -137,25 +139,20 @@ namespace EWSEditor.Exchange
                     namespaces.AddNamespace("m", "http://schemas.microsoft.com/exchange/services/2006/messages");
                     oDoc.LoadXml(sResponseText);
                     XmlNode oData = oDoc.SelectSingleNode("//m:Data", namespaces);
-
-                    //string sContent = oData.InnerText;
-                    //sContent = sContent.Replace(" ", "");
-                    //sContent = sContent.Replace("\r", "");
-                    //sContent = sContent.Replace("\n", "");
-
+ 
+                     // Write base 64 encoded text Data XML string into a binary base 64 text/XML file
                     BinaryWriter oBinaryWriter = new BinaryWriter(File.Open(sFile, FileMode.Create));
                     StringReader oStringReader = new StringReader(oData.OuterXml);
                     XmlTextReader oXmlTextReader = new XmlTextReader(oStringReader);
                     oXmlTextReader.MoveToContent();
-
                     byte[] buffer = new byte[BUFFER_SIZE];
-
                     do
                     {
                         iReadBytes = oXmlTextReader.ReadBase64(buffer, 0, BUFFER_SIZE);
                         oBinaryWriter.Write(buffer, 0, iReadBytes);
                     }
                     while (iReadBytes >= BUFFER_SIZE);
+
                     oXmlTextReader.Close();
 
                     oBinaryWriter.Flush();
@@ -177,9 +174,9 @@ namespace EWSEditor.Exchange
         }
 
 
-        public static bool UploadItemPost(string ServerVersion, FolderId ParentFolderId, CreateActionType oCreateActionType, string sItemId, byte[] data)
+        public static bool UploadItemPost(string ServerVersion, FolderId ParentFolderId, CreateActionType oCreateActionType, string sItemId, string sFile)
         { 
-
+            
             bool bSuccess = false;
             string sResponseText = string.Empty;
             System.Net.HttpWebRequest oHttpWebRequest = null;
@@ -205,18 +202,26 @@ namespace EWSEditor.Exchange
             EwsRequest = EwsRequest.Replace("##RequestServerVersion##", ServerVersion);
             EwsRequest = EwsRequest.Replace("##ParentFolderId_Id##", ParentFolderId.UniqueId);
 
-            string sBase64 = string.Empty;
-            sBase64 = Convert.ToBase64String(data, Base64FormattingOptions.InsertLineBreaks);
-            System.Diagnostics.Debug.WriteLine("sBase64: " + sBase64);
+            string sBase64Data = string.Empty;
+            sBase64Data = EWSEditor.Common.FileHelper.GetBinaryFileAsBase64(sFile);
+            System.Diagnostics.Debug.WriteLine("sBase64: " + sBase64Data);
+ 
             // Convert byte array to base64
-            EwsRequest = EwsRequest.Replace("##Data##", sBase64);
+            EwsRequest = EwsRequest.Replace("##Data##", sBase64Data);
 
-            EwsRequest = EwsRequest.Replace("\r\n", "");
+  
 
+            //ShowTextDocument oForm = new ShowTextDocument();
+            //oForm.txtEntry.WordWrap = false;
+            //oForm.Text = "Info";
+            //oForm.txtEntry.Text = EwsRequest;
+            //oForm.ShowDialog();
+
+            // Now inject the base64 body into the stream:
             try
             {
 
-                //oHttpWebRequest.AllowAutoRedirect = bAllowAutoRedirect;
+ 
 
                 byte[] bytes = Encoding.UTF8.GetBytes(EwsRequest);
                 oHttpWebRequest.ContentLength = bytes.Length;
