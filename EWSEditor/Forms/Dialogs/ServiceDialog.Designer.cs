@@ -49,6 +49,7 @@ namespace EWSEditor.Forms
             this.AutodiscoverEmailText = new System.Windows.Forms.TextBox();
             this.Worker = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDefault365Settings = new System.Windows.Forms.Button();
             this.txtDefaultSmtp = new System.Windows.Forms.Button();
             this.rdoServiceUrl = new System.Windows.Forms.RadioButton();
             this.rdoAutodiscoverEmail = new System.Windows.Forms.RadioButton();
@@ -69,7 +70,7 @@ namespace EWSEditor.Forms
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(356, 472);
+            this.btnOK.Location = new System.Drawing.Point(364, 496);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 0;
@@ -81,7 +82,7 @@ namespace EWSEditor.Forms
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(437, 472);
+            this.btnCancel.Location = new System.Drawing.Point(445, 496);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -101,14 +102,14 @@ namespace EWSEditor.Forms
             // 
             this.TempExchangeVersionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempExchangeVersionCombo.FormattingEnabled = true;
-            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(152, 121);
+            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(152, 147);
             this.TempExchangeVersionCombo.Name = "TempExchangeVersionCombo";
             this.TempExchangeVersionCombo.Size = new System.Drawing.Size(290, 21);
             this.TempExchangeVersionCombo.TabIndex = 8;
             // 
             // lblVersion
             // 
-            this.lblVersion.Location = new System.Drawing.Point(8, 121);
+            this.lblVersion.Location = new System.Drawing.Point(8, 147);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(103, 18);
             this.lblVersion.TabIndex = 7;
@@ -255,6 +256,7 @@ namespace EWSEditor.Forms
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnDefault365Settings);
             this.panel1.Controls.Add(this.txtDefaultSmtp);
             this.panel1.Controls.Add(this.rdoServiceUrl);
             this.panel1.Controls.Add(this.rdoAutodiscoverEmail);
@@ -267,14 +269,24 @@ namespace EWSEditor.Forms
             this.panel1.Controls.Add(this.TempExchangeVersionCombo);
             this.panel1.Location = new System.Drawing.Point(6, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(507, 154);
+            this.panel1.Size = new System.Drawing.Size(507, 173);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnDefault365Settings
+            // 
+            this.btnDefault365Settings.Location = new System.Drawing.Point(53, 115);
+            this.btnDefault365Settings.Name = "btnDefault365Settings";
+            this.btnDefault365Settings.Size = new System.Drawing.Size(175, 23);
+            this.btnDefault365Settings.TabIndex = 202;
+            this.btnDefault365Settings.Text = "Default Exchange 365 URL";
+            this.btnDefault365Settings.UseVisualStyleBackColor = true;
+            this.btnDefault365Settings.Click += new System.EventHandler(this.btnDefault365Settings_Click);
             // 
             // txtDefaultSmtp
             // 
             this.txtDefaultSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDefaultSmtp.Location = new System.Drawing.Point(453, 31);
+            this.txtDefaultSmtp.Location = new System.Drawing.Point(451, 34);
             this.txtDefaultSmtp.Name = "txtDefaultSmtp";
             this.txtDefaultSmtp.Size = new System.Drawing.Size(49, 23);
             this.txtDefaultSmtp.TabIndex = 3;
@@ -347,7 +359,7 @@ namespace EWSEditor.Forms
             this.panel2.Controls.Add(this.txtUserName);
             this.panel2.Controls.Add(this.chkCredentials);
             this.panel2.Controls.Add(this.lblUserName);
-            this.panel2.Location = new System.Drawing.Point(4, 172);
+            this.panel2.Location = new System.Drawing.Point(4, 191);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(509, 129);
             this.panel2.TabIndex = 1;
@@ -369,7 +381,7 @@ namespace EWSEditor.Forms
             this.panel3.Controls.Add(this.ImpersonationCheck);
             this.panel3.Controls.Add(this.lblImpId);
             this.panel3.Controls.Add(this.ImpersonatedIdTextBox);
-            this.panel3.Location = new System.Drawing.Point(4, 307);
+            this.panel3.Location = new System.Drawing.Point(4, 326);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(509, 111);
             this.panel3.TabIndex = 2;
@@ -389,7 +401,7 @@ namespace EWSEditor.Forms
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.btnOptions);
-            this.panel4.Location = new System.Drawing.Point(4, 424);
+            this.panel4.Location = new System.Drawing.Point(4, 443);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(509, 38);
             this.panel4.TabIndex = 10;
@@ -400,7 +412,7 @@ namespace EWSEditor.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(519, 507);
+            this.ClientSize = new System.Drawing.Size(527, 531);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -456,5 +468,6 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button txtDefaultSmtp;
+        private System.Windows.Forms.Button btnDefault365Settings;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PostForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmboAuthentication = new System.Windows.Forms.ComboBox();
             this.lblAuthentication = new System.Windows.Forms.Label();
@@ -54,7 +55,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLoadSettings = new System.Windows.Forms.Button();
             this.btnSaveSettings = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.chkTranslateF = new System.Windows.Forms.CheckBox();
             this.chkPragmaNocache = new System.Windows.Forms.CheckBox();
@@ -70,6 +70,7 @@
             this.btnAddHeaders = new System.Windows.Forms.Button();
             this.grpHttpVerbOptions = new System.Windows.Forms.GroupBox();
             this.cmboUserAgent = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeoutSeconds)).BeginInit();
             this.panel2.SuspendLayout();
@@ -95,7 +96,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(8, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(308, 122);
+            this.groupBox1.Size = new System.Drawing.Size(308, 133);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -116,7 +117,7 @@
             this.cmboAuthentication.Name = "cmboAuthentication";
             this.cmboAuthentication.Size = new System.Drawing.Size(211, 21);
             this.cmboAuthentication.TabIndex = 1;
-            this.cmboAuthentication.Text = "DefaultNetworkCredentials";
+            this.cmboAuthentication.Text = "Basic";
             this.cmboAuthentication.SelectedIndexChanged += new System.EventHandler(this.cmboAuthentication_SelectedIndexChanged);
             // 
             // lblAuthentication
@@ -187,16 +188,16 @@
             // 
             this.txtUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUrl.Location = new System.Drawing.Point(34, 196);
+            this.txtUrl.Location = new System.Drawing.Point(35, 178);
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(1037, 20);
+            this.txtUrl.Size = new System.Drawing.Size(1041, 20);
             this.txtUrl.TabIndex = 46;
-            this.txtUrl.Text = "https://mail.contoso.com/EWS/Exchange.asmx";
+            this.txtUrl.Text = "https://outlook.office365.com/EWS/Exchange.asmx";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 199);
+            this.label4.Location = new System.Drawing.Point(3, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 47;
@@ -212,7 +213,7 @@
             this.txtRequest.Multiline = true;
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRequest.Size = new System.Drawing.Size(1060, 160);
+            this.txtRequest.Size = new System.Drawing.Size(1064, 167);
             this.txtRequest.TabIndex = 0;
             this.txtRequest.WordWrap = false;
             // 
@@ -226,14 +227,14 @@
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1060, 184);
+            this.txtResponse.Size = new System.Drawing.Size(1064, 195);
             this.txtResponse.TabIndex = 0;
             this.txtResponse.WordWrap = false;
             // 
             // GoRun
             // 
             this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GoRun.Location = new System.Drawing.Point(995, 11);
+            this.GoRun.Location = new System.Drawing.Point(999, 11);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(76, 23);
             this.GoRun.TabIndex = 200;
@@ -244,7 +245,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 59);
+            this.label7.Location = new System.Drawing.Point(6, 49);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(71, 13);
             this.label7.TabIndex = 2;
@@ -253,7 +254,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 25);
+            this.label8.Location = new System.Drawing.Point(6, 15);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 0;
@@ -266,7 +267,7 @@
             "POST",
             "GET",
             "PUT"});
-            this.cmboVerb.Location = new System.Drawing.Point(102, 20);
+            this.cmboVerb.Location = new System.Drawing.Point(102, 10);
             this.cmboVerb.Name = "cmboVerb";
             this.cmboVerb.Size = new System.Drawing.Size(120, 21);
             this.cmboVerb.TabIndex = 1;
@@ -278,7 +279,7 @@
             this.cmboContentType.Items.AddRange(new object[] {
             "text/xml",
             "text/html"});
-            this.cmboContentType.Location = new System.Drawing.Point(102, 55);
+            this.cmboContentType.Location = new System.Drawing.Point(102, 45);
             this.cmboContentType.Name = "cmboContentType";
             this.cmboContentType.Size = new System.Drawing.Size(120, 21);
             this.cmboContentType.TabIndex = 3;
@@ -287,7 +288,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 87);
+            this.label9.Location = new System.Drawing.Point(5, 77);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 13);
             this.label9.TabIndex = 4;
@@ -295,7 +296,7 @@
             // 
             // numericUpDownTimeoutSeconds
             // 
-            this.numericUpDownTimeoutSeconds.Location = new System.Drawing.Point(102, 82);
+            this.numericUpDownTimeoutSeconds.Location = new System.Drawing.Point(102, 72);
             this.numericUpDownTimeoutSeconds.Name = "numericUpDownTimeoutSeconds";
             this.numericUpDownTimeoutSeconds.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownTimeoutSeconds.TabIndex = 5;
@@ -365,20 +366,10 @@
             this.btnSaveSettings.UseVisualStyleBackColor = true;
             this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(32, 217);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(616, 13);
-            this.label10.TabIndex = 92;
-            this.label10.Text = "Note: This is the URL to the Exchange Web Service for the Mailbox.  Example:  htt" +
-    "ps://mail.contoso.com/EWS/Exchange.asmx ";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(5, 115);
+            this.label11.Location = new System.Drawing.Point(5, 105);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(60, 13);
             this.label11.TabIndex = 6;
@@ -387,7 +378,7 @@
             // chkTranslateF
             // 
             this.chkTranslateF.AutoSize = true;
-            this.chkTranslateF.Location = new System.Drawing.Point(232, 51);
+            this.chkTranslateF.Location = new System.Drawing.Point(232, 41);
             this.chkTranslateF.Margin = new System.Windows.Forms.Padding(2);
             this.chkTranslateF.Name = "chkTranslateF";
             this.chkTranslateF.Size = new System.Drawing.Size(82, 17);
@@ -400,7 +391,7 @@
             this.chkPragmaNocache.AutoSize = true;
             this.chkPragmaNocache.Checked = true;
             this.chkPragmaNocache.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPragmaNocache.Location = new System.Drawing.Point(232, 25);
+            this.chkPragmaNocache.Location = new System.Drawing.Point(232, 15);
             this.chkPragmaNocache.Margin = new System.Windows.Forms.Padding(2);
             this.chkPragmaNocache.Name = "chkPragmaNocache";
             this.chkPragmaNocache.Size = new System.Drawing.Size(113, 17);
@@ -411,7 +402,7 @@
             // chkAllowRedirect
             // 
             this.chkAllowRedirect.AutoSize = true;
-            this.chkAllowRedirect.Location = new System.Drawing.Point(232, 78);
+            this.chkAllowRedirect.Location = new System.Drawing.Point(232, 68);
             this.chkAllowRedirect.Margin = new System.Windows.Forms.Padding(2);
             this.chkAllowRedirect.Name = "chkAllowRedirect";
             this.chkAllowRedirect.Size = new System.Drawing.Size(94, 17);
@@ -425,7 +416,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Location = new System.Drawing.Point(4, 233);
+            this.splitContainer1.Location = new System.Drawing.Point(4, 246);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -440,8 +431,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label6);
             this.splitContainer1.Panel2.Controls.Add(this.txtResponse);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(1067, 388);
-            this.splitContainer1.SplitterDistance = 190;
+            this.splitContainer1.Size = new System.Drawing.Size(1071, 403);
+            this.splitContainer1.SplitterDistance = 197;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 98;
             // 
@@ -468,7 +459,7 @@
             this.groupBox2.Controls.Add(this.dgvOptions);
             this.groupBox2.Controls.Add(this.btnDeleteHeader);
             this.groupBox2.Controls.Add(this.btnAddHeaders);
-            this.groupBox2.Location = new System.Drawing.Point(364, 18);
+            this.groupBox2.Location = new System.Drawing.Point(364, 8);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
@@ -548,7 +539,7 @@
             this.grpHttpVerbOptions.Controls.Add(this.label11);
             this.grpHttpVerbOptions.Location = new System.Drawing.Point(322, 40);
             this.grpHttpVerbOptions.Name = "grpHttpVerbOptions";
-            this.grpHttpVerbOptions.Size = new System.Drawing.Size(749, 148);
+            this.grpHttpVerbOptions.Size = new System.Drawing.Size(749, 132);
             this.grpHttpVerbOptions.TabIndex = 100;
             this.grpHttpVerbOptions.TabStop = false;
             // 
@@ -557,19 +548,32 @@
             this.cmboUserAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmboUserAgent.FormattingEnabled = true;
-            this.cmboUserAgent.Location = new System.Drawing.Point(102, 108);
+            this.cmboUserAgent.Location = new System.Drawing.Point(102, 98);
             this.cmboUserAgent.Name = "cmboUserAgent";
             this.cmboUserAgent.Size = new System.Drawing.Size(243, 21);
             this.cmboUserAgent.TabIndex = 95;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox1.Location = new System.Drawing.Point(35, 204);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(1036, 37);
+            this.textBox1.TabIndex = 8;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // PostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1080, 623);
+            this.ClientSize = new System.Drawing.Size(1084, 651);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.grpHttpVerbOptions);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GoRun);
@@ -625,7 +629,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnLoadSettings;
         private System.Windows.Forms.Button btnSaveSettings;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmboAuthentication;
         private System.Windows.Forms.Label lblAuthentication;
@@ -643,5 +646,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colValue;
         private System.Windows.Forms.GroupBox grpHttpVerbOptions;
         private System.Windows.Forms.ComboBox cmboUserAgent;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

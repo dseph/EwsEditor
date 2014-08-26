@@ -408,6 +408,13 @@ namespace EWSEditor.Common
             //}
 
         }
+
+        private void btnDefault365Settings_Click(object sender, EventArgs e)
+        {
+            cmboAuthentication.Text = "Basic";
+            txtUrl.Text = "https://outlook.office365.com/EWS/Exchange.asmx";
+
+        }
     }
 
     
