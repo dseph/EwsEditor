@@ -163,6 +163,20 @@ namespace EWSEditor.Forms
             lblUserName.Enabled = chkCredentials.Checked;
             lblPassword.Enabled = chkCredentials.Checked;
             lblDomain.Enabled = chkCredentials.Checked;
+
+            if (chkCredentials.Checked== true)
+            {
+                if (rdoAutodiscoverEmail.Checked == true)
+                {
+                    if (txtUserName.Text.Trim().Length == 0)
+                    {
+                        if (AutodiscoverEmailText.Text.Trim().Length != 0)
+                        {
+  	                        txtUserName.Text = AutodiscoverEmailText.Text.Trim();
+                        }
+                    }
+                }
+            }
         }
 
         private void ChkImpersonation_CheckedChanged(object sender, EventArgs e)
@@ -314,24 +328,29 @@ namespace EWSEditor.Forms
         {
             if (this.rdoAutodiscoverEmail.Checked == true)
             {
-                this.AutodiscoverEmailText.Text = string.Empty;
+                //this.AutodiscoverEmailText.Text = string.Empty;
                 this.AutodiscoverEmailText.Enabled = true;
                 this.lblAutodiscoverEmailDesc.Enabled = true;
                 this.AutodiscoverEmailText.Focus();
 
                 this.ExchangeServiceURLText.Enabled = false;
                 this.lblExchangeServiceURLTextDesc.Enabled = false;
+                this.btnDefault365Settings.Enabled = false;
             }
 
             if (this.rdoServiceUrl.Checked == true)
             {
-                this.ExchangeServiceURLText.Text = string.Empty;
+                //this.ExchangeServiceURLText.Text = string.Empty;
                 this.ExchangeServiceURLText.Enabled = true;
                 this.lblExchangeServiceURLTextDesc.Enabled = true;
                 this.ExchangeServiceURLText.Focus();
 
+                this.btnDefault365Settings.Enabled = true;
+
                 this.AutodiscoverEmailText.Enabled = false;
                 this.lblAutodiscoverEmailDesc.Enabled = false;
+
+                 
             }
         }
 
@@ -358,6 +377,11 @@ namespace EWSEditor.Forms
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnDefault365Settings_Click(object sender, EventArgs e)
+        {
+            ExchangeServiceURLText.Text = "https://outlook.office365.com/EWS/Exchange.asmx";
         }
 
         //private void btnOptions_Click(object sender, EventArgs e)
