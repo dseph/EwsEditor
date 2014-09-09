@@ -255,7 +255,7 @@ namespace EWSEditor.Forms
         {
             this.exchangeVersionCombo.TransformComboBox(this.TempExchangeVersionCombo);
             this.exchangeVersionCombo.HasEmptyItem = true;
-            this.exchangeVersionCombo.Text = "Exchange2007_SP1";
+            this.exchangeVersionCombo.Text = "Exchange2010_SP2";
 
             this.connectingIdCombo.TransformComboBox(this.TempConnectingIdCombo);
             this.connectingIdCombo.SelectedItem = ConnectingIdType.SmtpAddress;
