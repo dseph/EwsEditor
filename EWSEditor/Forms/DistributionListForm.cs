@@ -19,6 +19,8 @@ namespace EWSEditor.Forms
     {
         ExchangeService _CurrentService = null;
 
+        MailboxType _MailboxType = MailboxType.PublicGroup;
+
         public DistributionListExpansionForm()
         {
             InitializeComponent();
@@ -52,34 +54,32 @@ namespace EWSEditor.Forms
                 EmailAddress oEmailAddress = new EmailAddress(sSmpt);
                 oRoot.Tag = oEmailAddress;
 
-                ExpandDL(ref oRoot, sSmpt);
+                ExpandDL_PublicGroup(ref oRoot, sSmpt);
  
             }
         }
 
-        private void ExpandDL(ref TreeNode oParentNode, string sSmtp)
+        private void ExpandDL_PublicGroup(ref TreeNode oParentNode, string sSmtp)
         {
-            TreeNode oNode = null;
-
+ 
+             
             try
             {
                 // Return the expanded group.
                 ExpandGroupResults myGroupMembers = _CurrentService.ExpandGroup(sSmtp);
-                 
+         
                 // Display the group members.
-                foreach (EmailAddress address in myGroupMembers.Members)
+                foreach (EmailAddress address in myGroupMembers)
                 {
-
-                    if (address.MailboxType == MailboxType.PublicGroup || address.MailboxType == MailboxType.PublicGroup)
+                    if (address.MailboxType == MailboxType.PublicGroup || address.MailboxType == MailboxType.ContactGroup )
                     {
-                        oNode = AddNode(ref oParentNode, address);
+                        oParentNode = AddNode(ref oParentNode, address);
                         //address.MailboxType = MailboxType.ContactGroup
                         //address.RoutingType = string
-                        oNode.Nodes.Add(""); // Add dummy
-                         
+                        oParentNode.Nodes.Add(""); // Add dummy       
                     }
-
                 }
+ 
             }
             catch (Exception ex)
             {
@@ -87,9 +87,36 @@ namespace EWSEditor.Forms
             }
         }
 
- 
+        //private void ExpandDL_ContactGroup(ref TreeNode oParentNode, string sSmtp)
+        //{
 
-        private TreeNode AddNode(ref TreeNode oParentNode, EmailAddress address)
+        //    try
+        //    {
+        //        // Return the expanded group.
+        //        ExpandGroupResults myGroupMembers = _CurrentService.ExpandGroup(sSmtp);
+
+        //        // Display the group members.
+        //        foreach (EmailAddress address in myGroupMembers.Members)
+        //        {
+        //            if (address.MailboxType == MailboxType.ContactGroup)
+        //            {
+        //                oParentNode = AddNode(ref oParentNode, address);
+        //                //address.MailboxType = MailboxType.ContactGroup
+        //                //address.RoutingType = string
+        //                oParentNode.Nodes.Add(""); // Add dummy       
+        //            }
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
+        //}
+
+
+        //private TreeNode AddNode(ref TreeNode oParentNode, EmailAddress address, string sNote)
+       private TreeNode AddNode(ref TreeNode oParentNode, EmailAddress address)
         {
             TreeNode oNode = null;
             oNode = oParentNode.Nodes.Add(address.Name + " <" + address.Address + "> ( Mbx Type: " + address.MailboxType + ")"+ " (Routing Type: " + address.RoutingType + ")"  );
@@ -162,7 +189,7 @@ namespace EWSEditor.Forms
                     EmailAddress oEmailAddress = (EmailAddress)oNode.Tag;
 
                     oNode.Nodes.Clear();
-                    ExpandDL(ref oNode, oEmailAddress.Address);
+                    ExpandDL_PublicGroup(ref oNode, oEmailAddress.Address);
                 }
             }
         }

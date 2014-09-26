@@ -78,6 +78,7 @@
             this.mnuEncodingHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mailAppsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -190,6 +191,7 @@
             this.TimeZonemenuitem,
             this.UserConfigurationMenuItem,
             this.eDiscoverySearchToolStripMenuItem,
+            this.mailAppsToolStripMenuItem,
             this.toolStripMenuItem1,
             this.OptionsMenuItem});
             this.mnuTools.Name = "mnuTools";
@@ -458,6 +460,13 @@
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
+            // mailAppsToolStripMenuItem
+            // 
+            this.mailAppsToolStripMenuItem.Name = "mailAppsToolStripMenuItem";
+            this.mailAppsToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.mailAppsToolStripMenuItem.Text = "Mail Apps";
+            this.mailAppsToolStripMenuItem.Click += new System.EventHandler(this.mailAppsToolStripMenuItem_Click);
+            // 
             // BrowserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -530,5 +539,6 @@
         public System.Windows.Forms.ToolStripMenuItem UserConfigurationMenuItem;
         public System.Windows.Forms.ToolStripMenuItem eDiscoverySearchToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem serverTimeZoneToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem mailAppsToolStripMenuItem;
     }
 }

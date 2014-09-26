@@ -344,31 +344,7 @@ namespace EWSEditor.Forms
                 //byte[] data = System.IO.File.ReadAllBytes(oUploadItemForm.ChoseFileToUpload);
 
                  
-
-                ////oDoc.LoadXml(sResponseText);
-                ////XmlNode oData = oDoc.SelectSingleNode("//m:Data", namespaces);
-
-                ////// Write base 64 encoded text Data XML string into a binary base 64 text/XML file
-                ////BinaryWriter oBinaryWriter = new BinaryWriter(File.Open(sFile, FileMode.Create));
-                ////StringReader oStringReader = new StringReader(oData.OuterXml);
-                ////XmlTextReader oXmlTextReader = new XmlTextReader(oStringReader);
-                ////oXmlTextReader.MoveToContent();
-                ////byte[] buffer = new byte[BUFFER_SIZE];
-                ////do
-                ////{
-                ////    iReadBytes = oXmlTextReader.ReadBase64(buffer, 0, BUFFER_SIZE);
-                ////    oBinaryWriter.Write(buffer, 0, iReadBytes);
-                ////}
-                ////while (iReadBytes >= BUFFER_SIZE);
-
-                ////oXmlTextReader.Close();
-
-                //ExportUploadHelper.UploadItem(
-                //    this.CurrentService,
-                //    this.currentFolder.Id,
-                //    oUploadItemForm.ChoseCreateActionType,
-                //    oUploadItemForm.ChoseItemId,
-                //    data);
+ 
 
                 ExportUploadHelper.UploadItemPost(
                     this.CurrentService.RequestedServerVersion.ToString(),
