@@ -74,9 +74,9 @@
             // 
             this.tvDistributionLists.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tvDistributionLists.Location = new System.Drawing.Point(12, 37);
+            this.tvDistributionLists.Location = new System.Drawing.Point(12, 38);
             this.tvDistributionLists.Name = "tvDistributionLists";
-            this.tvDistributionLists.Size = new System.Drawing.Size(890, 141);
+            this.tvDistributionLists.Size = new System.Drawing.Size(890, 185);
             this.tvDistributionLists.TabIndex = 3;
             this.tvDistributionLists.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvDistributionLists_BeforeExpand);
             this.tvDistributionLists.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvDistributionLists_AfterSelect);
@@ -93,11 +93,11 @@
             this.colRoutingType,
             this.colId});
             this.lvItems.FullRowSelect = true;
-            this.lvItems.Location = new System.Drawing.Point(12, 195);
+            this.lvItems.Location = new System.Drawing.Point(12, 229);
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
             this.lvItems.ShowItemToolTips = true;
-            this.lvItems.Size = new System.Drawing.Size(890, 179);
+            this.lvItems.Size = new System.Drawing.Size(890, 190);
             this.lvItems.TabIndex = 4;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -132,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 387);
+            this.ClientSize = new System.Drawing.Size(914, 432);
             this.Controls.Add(this.lvItems);
             this.Controls.Add(this.tvDistributionLists);
             this.Controls.Add(this.label1);

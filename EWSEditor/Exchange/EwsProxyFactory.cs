@@ -93,7 +93,10 @@ namespace EWSEditor.Exchange
                     oTimeZone = TimeZoneInfo.FindSystemTimeZoneById(SelectedTimeZoneId);
                 }
             }
-
+             
+            System.Diagnostics.Debug.WriteLine(" ServicePointManager.DefaultConnectionLimit: " +  ServicePointManager.DefaultConnectionLimit.ToString() );
+            System.Diagnostics.Debug.WriteLine(" ServicePointManager.DefaultPersistentConnectionLimit: " +  ServicePointManager.DefaultPersistentConnectionLimit.ToString() );
+       
             if (RequestedExchangeVersion.HasValue)
             {
                 if (oTimeZone != null)
@@ -262,24 +265,7 @@ namespace EWSEditor.Exchange
             //    }
             //}
 
-            //if (RequestedExchangeVersion.HasValue)
-            //{
-            //    if (oTimeZone != null)
-            //        service = new ExchangeService(RequestedExchangeVersion.Value, oTimeZone);
-            //    else
-            //        service = new ExchangeService(RequestedExchangeVersion.Value);
-
-
-            //    //System.Diagnostics.Debug.WriteLine(service.PreferredCulture);
-
-            //}
-            //else
-            //{
-            //    if (oTimeZone != null)
-            //        service = new ExchangeService(oTimeZone);
-            //    else
-            //        service = new ExchangeService();
-            //}
+              
 
 
             if (SpecifyProxySettings == true)

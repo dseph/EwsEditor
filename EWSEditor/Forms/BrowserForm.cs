@@ -707,5 +707,11 @@
            
              
         }
+
+        private void mailAppsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MailApps oForm = new MailApps(CurrentService);
+            oForm.ShowDialog();
+        }
     }
 }

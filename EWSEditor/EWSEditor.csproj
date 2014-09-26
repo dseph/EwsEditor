@@ -153,6 +153,12 @@
     <Compile Include="Forms\AddRemoveAttachments.Designer.cs">
       <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MailApps.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MailApps.Designer.cs">
+      <DependentUpon>MailApps.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EDiscoverySearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -697,6 +703,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\AddRemoveAttachments.resx">
       <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MailApps.resx">
+      <DependentUpon>MailApps.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EDiscoverySearchForm.resx">
       <DependentUpon>EDiscoverySearchForm.cs</DependentUpon>
