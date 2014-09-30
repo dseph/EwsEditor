@@ -147,7 +147,7 @@ namespace EWSEditor.Exchange
                 }
             }
 
-            if (SpecifyProxySettings == true)
+           if (SpecifyProxySettings == true)
             {
                 WebProxy oWebProxy  = null;
                 oWebProxy = new WebProxy(ProxyServerName, ProxyServerPort);

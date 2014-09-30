@@ -34,26 +34,34 @@ namespace EWSEditor.Common
            
             Uri oUri = new Uri(Url);
 
-            if (sAuthentication != "DefaultCredentials" && sAuthentication != "DefaultNetworkCredentials")
+            if (sAuthentication == "Anonymous")
             {
-                if (txtDomain.Text.Trim().Length == 0)
+                oCredentialCache = null;
+            }
+            else
+            {  
+
+                if (sAuthentication != "DefaultCredentials" && sAuthentication != "DefaultNetworkCredentials")
                 {
-                    oNetworkCredential = new NetworkCredential(User, Password);
+                    if (txtDomain.Text.Trim().Length == 0)
+                    {
+                        oNetworkCredential = new NetworkCredential(User, Password);
+                    }
+                    else
+                    {
+                        oNetworkCredential = new NetworkCredential(User, Password, Domain);
+                     
+                    }
+                 
+                    oCredentialCache.Add(oUri, sAuthentication, oNetworkCredential);
+                    //oCredentialCache.Add(oUri, "Basic", oNetworkCredential);
+                    //oCredentialCache.Add(oUri, "NTLM", oNetworkCredential);
+                    //oCredentialCache.Add(oUri, "Digest", oNetworkCredential);
                 }
                 else
                 {
-                    oNetworkCredential = new NetworkCredential(User, Password, Domain);
-                     
+                  
                 }
-                 
-                oCredentialCache.Add(oUri, sAuthentication, oNetworkCredential);
-                //oCredentialCache.Add(oUri, "Basic", oNetworkCredential);
-                //oCredentialCache.Add(oUri, "NTLM", oNetworkCredential);
-                //oCredentialCache.Add(oUri, "Digest", oNetworkCredential);
-            }
-            else
-            {
-                 
             }
  
             return  oCredentialCache;
@@ -110,6 +118,35 @@ namespace EWSEditor.Common
                                     txtPassword.Text.Trim(),
                                     txtDomain.Text.Trim(),
                                     txtUrl.Text.Trim());
+
+
+            System.Net.WebProxy oWebProxy = null;
+            if (this.rdoSpecifyProxySettings.Checked == true)
+            {
+                oWebProxy = new System.Net.WebProxy(this.txtProxyServerName.Text.Trim(), Convert.ToInt32(this.txtProxyServerPort.Text.Trim()));
+
+                // TODO: If space is found for the other proxy settins on the window then add them and use the code below.  You can copy the fields from the GlobalOptionsDialog.cs form.
+                //oWebProxy.BypassProxyOnLocal = this.chkBypassProxyForLocalAddress.Checked;
+                //if (this.rdoOverrideProxyCredentials.Checked == true)
+                //{
+
+                //    if (this.txtProxyServerUser.Text.Trim().Length == 0)
+                //    {
+                //        oWebProxy.UseDefaultCredentials = true;
+                //    }
+                //    else
+                //    {
+                //        if (this.txtProxyServerDomain.Trim().Length == 0)
+                //            oWebProxy.Credentials = new NetworkCredential(this.txtProxyServerUser.Text.Trim(), this.txtProxyServerPassword.Text.Trim());
+                //        else
+                //            oWebProxy.Credentials = new NetworkCredential(this.txtProxyServerUser.Text.Trim(), this.txtProxyServerPassword.Text.Trim(), this.txtProxyServerDomain.Text.Trim());
+                //    }
+                //}
+                //else
+                //{
+                //    oWebProxy.UseDefaultCredentials = true;
+                //}
+            }
  
             bool bRet = false;
 
@@ -120,6 +157,7 @@ namespace EWSEditor.Common
                 cmboAuthentication.Text,
                 oCredentialCache,
                 oHeadersList,
+                oWebProxy,
                 txtRequest.Text,
                 //txtProxyServer.Text,
                 //txtProxyPort.Text,
@@ -146,12 +184,12 @@ namespace EWSEditor.Common
             }
             else
             { 
-            oSB.AppendFormat("Failed:\r\n"); 
-            oSB.AppendFormat("Error: {0}\r\n\r\n", sError);
-            oSB.AppendFormat("ResponseStatusCode: {0}\r\n\r\n", sResponseStatusCode);
-            oSB.AppendFormat("ResponseCodeNumber{0}\r\n\r\n", iResponseStatusCodeNumber);
-            oSB.AppendFormat("ResponseStatusDescription: {0}\r\n\r\n", sResponseStatusDescription);
-            oSB.AppendFormat("sResult: {0}\r\n", sResult);
+                oSB.AppendFormat("Failed:\r\n"); 
+                oSB.AppendFormat("Error: {0}\r\n\r\n", sError);
+                oSB.AppendFormat("ResponseStatusCode: {0}\r\n\r\n", sResponseStatusCode);
+                oSB.AppendFormat("ResponseCodeNumber{0}\r\n\r\n", iResponseStatusCodeNumber);
+                oSB.AppendFormat("ResponseStatusDescription: {0}\r\n\r\n", sResponseStatusDescription);
+                oSB.AppendFormat("sResult: {0}\r\n", sResult);
             }
             txtResponse.Text = oSB.ToString();
 
@@ -356,6 +394,9 @@ namespace EWSEditor.Common
                 txtDomain.Enabled = true;
             }
 
+            cmboUserAgent.Items.Clear();
+            EWSEditor.Common.UserAgentHelper.AddUserAgentsToComboBox(ref cmboUserAgent);
+
              
         }
 
@@ -413,6 +454,11 @@ namespace EWSEditor.Common
         {
             cmboAuthentication.Text = "Basic";
             txtUrl.Text = "https://outlook.office365.com/EWS/Exchange.asmx";
+
+        }
+
+        private void cmboUserAgent_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

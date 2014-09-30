@@ -46,6 +46,7 @@
             this.txtProxyServerName = new System.Windows.Forms.TextBox();
             this.lblProxyServer = new System.Windows.Forms.Label();
             this.MiscSettingsGroup = new System.Windows.Forms.GroupBox();
+            this.cmboUserAgent = new System.Windows.Forms.ComboBox();
             this.chkOverrideTimezone = new System.Windows.Forms.CheckBox();
             this.PreAuthenticate = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -70,7 +71,6 @@
             this.LogFilePathText = new System.Windows.Forms.TextBox();
             this.LogFilePathLabel = new System.Windows.Forms.Label();
             this.SaveLogFileCheck = new System.Windows.Forms.CheckBox();
-            this.cmboUserAgent = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.MiscSettingsGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).BeginInit();
@@ -119,7 +119,7 @@
             this.groupBox1.Controls.Add(this.lblProxyServer);
             this.groupBox1.Location = new System.Drawing.Point(481, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(376, 312);
+            this.groupBox1.Size = new System.Drawing.Size(376, 296);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Set WebProxy Settings";
@@ -280,6 +280,16 @@
             this.MiscSettingsGroup.TabStop = false;
             this.MiscSettingsGroup.Text = "Miscellaneous";
             this.MiscSettingsGroup.Enter += new System.EventHandler(this.MiscSettingsGroup_Enter);
+            // 
+            // cmboUserAgent
+            // 
+            this.cmboUserAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmboUserAgent.FormattingEnabled = true;
+            this.cmboUserAgent.Location = new System.Drawing.Point(111, 16);
+            this.cmboUserAgent.Name = "cmboUserAgent";
+            this.cmboUserAgent.Size = new System.Drawing.Size(319, 21);
+            this.cmboUserAgent.TabIndex = 10;
             // 
             // chkOverrideTimezone
             // 
@@ -495,16 +505,6 @@
             this.SaveLogFileCheck.Text = "Save logging output to a file";
             this.SaveLogFileCheck.UseVisualStyleBackColor = true;
             this.SaveLogFileCheck.CheckedChanged += new System.EventHandler(this.SaveLogFileCheck_CheckedChanged);
-            // 
-            // cmboUserAgent
-            // 
-            this.cmboUserAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmboUserAgent.FormattingEnabled = true;
-            this.cmboUserAgent.Location = new System.Drawing.Point(111, 16);
-            this.cmboUserAgent.Name = "cmboUserAgent";
-            this.cmboUserAgent.Size = new System.Drawing.Size(319, 21);
-            this.cmboUserAgent.TabIndex = 10;
             // 
             // OptionsDialog
             // 
