@@ -71,6 +71,13 @@
             this.grpHttpVerbOptions = new System.Windows.Forms.GroupBox();
             this.cmboUserAgent = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rdoSpecifyProxySettings = new System.Windows.Forms.RadioButton();
+            this.rdoDontOverrideProxySettings = new System.Windows.Forms.RadioButton();
+            this.txtProxyServerPort = new System.Windows.Forms.TextBox();
+            this.lblProxyPort = new System.Windows.Forms.Label();
+            this.txtProxyServerName = new System.Windows.Forms.TextBox();
+            this.lblProxyServer = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeoutSeconds)).BeginInit();
             this.panel2.SuspendLayout();
@@ -82,6 +89,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOptions)).BeginInit();
             this.grpHttpVerbOptions.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -96,7 +104,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(8, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(308, 133);
+            this.groupBox1.Size = new System.Drawing.Size(261, 133);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -113,9 +121,9 @@
             "Kerberos",
             "Negotiate",
             "Digest"});
-            this.cmboAuthentication.Location = new System.Drawing.Point(90, 14);
+            this.cmboAuthentication.Location = new System.Drawing.Point(68, 16);
             this.cmboAuthentication.Name = "cmboAuthentication";
-            this.cmboAuthentication.Size = new System.Drawing.Size(211, 21);
+            this.cmboAuthentication.Size = new System.Drawing.Size(187, 21);
             this.cmboAuthentication.TabIndex = 1;
             this.cmboAuthentication.Text = "Basic";
             this.cmboAuthentication.SelectedIndexChanged += new System.EventHandler(this.cmboAuthentication_SelectedIndexChanged);
@@ -125,36 +133,36 @@
             this.lblAuthentication.AutoSize = true;
             this.lblAuthentication.Location = new System.Drawing.Point(6, 16);
             this.lblAuthentication.Name = "lblAuthentication";
-            this.lblAuthentication.Size = new System.Drawing.Size(78, 13);
+            this.lblAuthentication.Size = new System.Drawing.Size(32, 13);
             this.lblAuthentication.TabIndex = 0;
-            this.lblAuthentication.Text = "Authentication:";
+            this.lblAuthentication.Text = "Auth:";
             // 
             // txtDomain
             // 
             this.txtDomain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDomain.Location = new System.Drawing.Point(90, 89);
+            this.txtDomain.Location = new System.Drawing.Point(68, 91);
             this.txtDomain.Name = "txtDomain";
-            this.txtDomain.Size = new System.Drawing.Size(211, 20);
+            this.txtDomain.Size = new System.Drawing.Size(187, 20);
             this.txtDomain.TabIndex = 2;
             // 
             // txtUser
             // 
             this.txtUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtUser.Location = new System.Drawing.Point(90, 40);
+            this.txtUser.Location = new System.Drawing.Point(68, 42);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(211, 20);
+            this.txtUser.Size = new System.Drawing.Size(187, 20);
             this.txtUser.TabIndex = 3;
             // 
             // txtPassword
             // 
             this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPassword.Location = new System.Drawing.Point(90, 64);
+            this.txtPassword.Location = new System.Drawing.Point(68, 66);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(211, 20);
+            this.txtPassword.Size = new System.Drawing.Size(187, 20);
             this.txtPassword.TabIndex = 5;
             // 
             // label1
@@ -190,7 +198,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUrl.Location = new System.Drawing.Point(35, 178);
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(1041, 20);
+            this.txtUrl.Size = new System.Drawing.Size(1273, 20);
             this.txtUrl.TabIndex = 46;
             this.txtUrl.Text = "https://outlook.office365.com/EWS/Exchange.asmx";
             // 
@@ -213,7 +221,7 @@
             this.txtRequest.Multiline = true;
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRequest.Size = new System.Drawing.Size(1064, 167);
+            this.txtRequest.Size = new System.Drawing.Size(1300, 167);
             this.txtRequest.TabIndex = 0;
             this.txtRequest.WordWrap = false;
             // 
@@ -227,14 +235,14 @@
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1064, 195);
+            this.txtResponse.Size = new System.Drawing.Size(1300, 199);
             this.txtResponse.TabIndex = 0;
             this.txtResponse.WordWrap = false;
             // 
             // GoRun
             // 
             this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GoRun.Location = new System.Drawing.Point(999, 11);
+            this.GoRun.Location = new System.Drawing.Point(1232, 8);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(76, 23);
             this.GoRun.TabIndex = 200;
@@ -267,7 +275,7 @@
             "POST",
             "GET",
             "PUT"});
-            this.cmboVerb.Location = new System.Drawing.Point(102, 10);
+            this.cmboVerb.Location = new System.Drawing.Point(85, 12);
             this.cmboVerb.Name = "cmboVerb";
             this.cmboVerb.Size = new System.Drawing.Size(120, 21);
             this.cmboVerb.TabIndex = 1;
@@ -279,7 +287,7 @@
             this.cmboContentType.Items.AddRange(new object[] {
             "text/xml",
             "text/html"});
-            this.cmboContentType.Location = new System.Drawing.Point(102, 45);
+            this.cmboContentType.Location = new System.Drawing.Point(85, 47);
             this.cmboContentType.Name = "cmboContentType";
             this.cmboContentType.Size = new System.Drawing.Size(120, 21);
             this.cmboContentType.TabIndex = 3;
@@ -290,13 +298,13 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(5, 77);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(93, 13);
+            this.label9.Size = new System.Drawing.Size(75, 13);
             this.label9.TabIndex = 4;
-            this.label9.Text = "Timeout Seconds:";
+            this.label9.Text = "Timeout Secs:";
             // 
             // numericUpDownTimeoutSeconds
             // 
-            this.numericUpDownTimeoutSeconds.Location = new System.Drawing.Point(102, 72);
+            this.numericUpDownTimeoutSeconds.Location = new System.Drawing.Point(85, 74);
             this.numericUpDownTimeoutSeconds.Name = "numericUpDownTimeoutSeconds";
             this.numericUpDownTimeoutSeconds.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownTimeoutSeconds.TabIndex = 5;
@@ -378,7 +386,7 @@
             // chkTranslateF
             // 
             this.chkTranslateF.AutoSize = true;
-            this.chkTranslateF.Location = new System.Drawing.Point(232, 41);
+            this.chkTranslateF.Location = new System.Drawing.Point(252, 43);
             this.chkTranslateF.Margin = new System.Windows.Forms.Padding(2);
             this.chkTranslateF.Name = "chkTranslateF";
             this.chkTranslateF.Size = new System.Drawing.Size(82, 17);
@@ -391,7 +399,7 @@
             this.chkPragmaNocache.AutoSize = true;
             this.chkPragmaNocache.Checked = true;
             this.chkPragmaNocache.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPragmaNocache.Location = new System.Drawing.Point(232, 15);
+            this.chkPragmaNocache.Location = new System.Drawing.Point(252, 17);
             this.chkPragmaNocache.Margin = new System.Windows.Forms.Padding(2);
             this.chkPragmaNocache.Name = "chkPragmaNocache";
             this.chkPragmaNocache.Size = new System.Drawing.Size(113, 17);
@@ -402,7 +410,7 @@
             // chkAllowRedirect
             // 
             this.chkAllowRedirect.AutoSize = true;
-            this.chkAllowRedirect.Location = new System.Drawing.Point(232, 68);
+            this.chkAllowRedirect.Location = new System.Drawing.Point(252, 70);
             this.chkAllowRedirect.Margin = new System.Windows.Forms.Padding(2);
             this.chkAllowRedirect.Name = "chkAllowRedirect";
             this.chkAllowRedirect.Size = new System.Drawing.Size(94, 17);
@@ -431,7 +439,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.label6);
             this.splitContainer1.Panel2.Controls.Add(this.txtResponse);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(1071, 403);
+            this.splitContainer1.Size = new System.Drawing.Size(1307, 403);
             this.splitContainer1.SplitterDistance = 197;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 98;
@@ -463,7 +471,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(380, 113);
+            this.groupBox2.Size = new System.Drawing.Size(331, 113);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Headers - (select row to use delete button)";
@@ -480,7 +488,7 @@
             this.dgvOptions.Location = new System.Drawing.Point(5, 13);
             this.dgvOptions.Margin = new System.Windows.Forms.Padding(2);
             this.dgvOptions.Name = "dgvOptions";
-            this.dgvOptions.Size = new System.Drawing.Size(332, 95);
+            this.dgvOptions.Size = new System.Drawing.Size(283, 95);
             this.dgvOptions.TabIndex = 0;
             // 
             // colName
@@ -503,7 +511,7 @@
             // 
             this.btnDeleteHeader.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDeleteHeader.Image = global::EWSEditor.Properties.Resources.StatusAnnotations_Blocked_16xLG;
-            this.btnDeleteHeader.Location = new System.Drawing.Point(341, 51);
+            this.btnDeleteHeader.Location = new System.Drawing.Point(292, 51);
             this.btnDeleteHeader.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteHeader.Name = "btnDeleteHeader";
             this.btnDeleteHeader.Size = new System.Drawing.Size(32, 32);
@@ -515,7 +523,7 @@
             // 
             this.btnAddHeaders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddHeaders.Image = global::EWSEditor.Properties.Resources.action_add_16xLG;
-            this.btnAddHeaders.Location = new System.Drawing.Point(342, 15);
+            this.btnAddHeaders.Location = new System.Drawing.Point(293, 15);
             this.btnAddHeaders.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddHeaders.Name = "btnAddHeaders";
             this.btnAddHeaders.Size = new System.Drawing.Size(32, 32);
@@ -537,9 +545,9 @@
             this.grpHttpVerbOptions.Controls.Add(this.label8);
             this.grpHttpVerbOptions.Controls.Add(this.numericUpDownTimeoutSeconds);
             this.grpHttpVerbOptions.Controls.Add(this.label11);
-            this.grpHttpVerbOptions.Location = new System.Drawing.Point(322, 40);
+            this.grpHttpVerbOptions.Location = new System.Drawing.Point(275, 40);
             this.grpHttpVerbOptions.Name = "grpHttpVerbOptions";
-            this.grpHttpVerbOptions.Size = new System.Drawing.Size(749, 132);
+            this.grpHttpVerbOptions.Size = new System.Drawing.Size(702, 132);
             this.grpHttpVerbOptions.TabIndex = 100;
             this.grpHttpVerbOptions.TabStop = false;
             // 
@@ -548,10 +556,11 @@
             this.cmboUserAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmboUserAgent.FormattingEnabled = true;
-            this.cmboUserAgent.Location = new System.Drawing.Point(102, 98);
+            this.cmboUserAgent.Location = new System.Drawing.Point(85, 100);
             this.cmboUserAgent.Name = "cmboUserAgent";
-            this.cmboUserAgent.Size = new System.Drawing.Size(243, 21);
+            this.cmboUserAgent.Size = new System.Drawing.Size(274, 21);
             this.cmboUserAgent.TabIndex = 95;
+            this.cmboUserAgent.SelectedIndexChanged += new System.EventHandler(this.cmboUserAgent_SelectedIndexChanged);
             // 
             // textBox1
             // 
@@ -562,15 +571,85 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(1036, 37);
+            this.textBox1.Size = new System.Drawing.Size(1273, 37);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = resources.GetString("textBox1.Text");
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.rdoSpecifyProxySettings);
+            this.groupBox3.Controls.Add(this.rdoDontOverrideProxySettings);
+            this.groupBox3.Controls.Add(this.txtProxyServerPort);
+            this.groupBox3.Controls.Add(this.lblProxyPort);
+            this.groupBox3.Controls.Add(this.txtProxyServerName);
+            this.groupBox3.Controls.Add(this.lblProxyServer);
+            this.groupBox3.Location = new System.Drawing.Point(999, 40);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(309, 132);
+            this.groupBox3.TabIndex = 201;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Set WebProxy Settings";
+            // 
+            // rdoSpecifyProxySettings
+            // 
+            this.rdoSpecifyProxySettings.AutoSize = true;
+            this.rdoSpecifyProxySettings.Location = new System.Drawing.Point(9, 39);
+            this.rdoSpecifyProxySettings.Name = "rdoSpecifyProxySettings";
+            this.rdoSpecifyProxySettings.Size = new System.Drawing.Size(130, 17);
+            this.rdoSpecifyProxySettings.TabIndex = 1;
+            this.rdoSpecifyProxySettings.Text = "Specify Proxy Settings";
+            this.rdoSpecifyProxySettings.UseVisualStyleBackColor = true;
+            // 
+            // rdoDontOverrideProxySettings
+            // 
+            this.rdoDontOverrideProxySettings.AutoSize = true;
+            this.rdoDontOverrideProxySettings.Checked = true;
+            this.rdoDontOverrideProxySettings.Location = new System.Drawing.Point(8, 17);
+            this.rdoDontOverrideProxySettings.Name = "rdoDontOverrideProxySettings";
+            this.rdoDontOverrideProxySettings.Size = new System.Drawing.Size(163, 17);
+            this.rdoDontOverrideProxySettings.TabIndex = 0;
+            this.rdoDontOverrideProxySettings.TabStop = true;
+            this.rdoDontOverrideProxySettings.Text = "Don\'t Override Proxy Settings";
+            this.rdoDontOverrideProxySettings.UseVisualStyleBackColor = true;
+            // 
+            // txtProxyServerPort
+            // 
+            this.txtProxyServerPort.Location = new System.Drawing.Point(121, 96);
+            this.txtProxyServerPort.Name = "txtProxyServerPort";
+            this.txtProxyServerPort.Size = new System.Drawing.Size(182, 20);
+            this.txtProxyServerPort.TabIndex = 5;
+            this.txtProxyServerPort.Text = "8888";
+            // 
+            // lblProxyPort
+            // 
+            this.lblProxyPort.Location = new System.Drawing.Point(26, 98);
+            this.lblProxyPort.Name = "lblProxyPort";
+            this.lblProxyPort.Size = new System.Drawing.Size(77, 17);
+            this.lblProxyPort.TabIndex = 4;
+            this.lblProxyPort.Text = "Proxy Port:";
+            // 
+            // txtProxyServerName
+            // 
+            this.txtProxyServerName.Location = new System.Drawing.Point(121, 70);
+            this.txtProxyServerName.Name = "txtProxyServerName";
+            this.txtProxyServerName.Size = new System.Drawing.Size(182, 20);
+            this.txtProxyServerName.TabIndex = 3;
+            this.txtProxyServerName.Text = "127.0.0.1";
+            // 
+            // lblProxyServer
+            // 
+            this.lblProxyServer.Location = new System.Drawing.Point(26, 70);
+            this.lblProxyServer.Name = "lblProxyServer";
+            this.lblProxyServer.Size = new System.Drawing.Size(77, 17);
+            this.lblProxyServer.TabIndex = 2;
+            this.lblProxyServer.Text = "Proxy Server:";
             // 
             // PostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 651);
+            this.ClientSize = new System.Drawing.Size(1320, 651);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.grpHttpVerbOptions);
             this.Controls.Add(this.splitContainer1);
@@ -598,6 +677,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvOptions)).EndInit();
             this.grpHttpVerbOptions.ResumeLayout(false);
             this.grpHttpVerbOptions.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -647,5 +728,12 @@
         private System.Windows.Forms.GroupBox grpHttpVerbOptions;
         private System.Windows.Forms.ComboBox cmboUserAgent;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton rdoSpecifyProxySettings;
+        private System.Windows.Forms.RadioButton rdoDontOverrideProxySettings;
+        private System.Windows.Forms.TextBox txtProxyServerPort;
+        private System.Windows.Forms.Label lblProxyPort;
+        private System.Windows.Forms.TextBox txtProxyServerName;
+        private System.Windows.Forms.Label lblProxyServer;
     }
 }

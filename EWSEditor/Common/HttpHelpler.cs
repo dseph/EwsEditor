@@ -19,7 +19,7 @@ namespace EWSEditor.Common
             string sAuthentication,
             CredentialCache oCrentialCache,
             List<KeyValuePair<string, string>> oHeadersList,
-
+            WebProxy oWebProxy,
             string sRequestBody,
 
             //string sProxyServer,
@@ -65,19 +65,26 @@ namespace EWSEditor.Common
 
                 oHttpWebRequest.Timeout = 1000 * iTimeoutSeconds;
 
-
-                if (sAuthentication == "DefaultCredentials")
+                if (sAuthentication == "Anonymous")
                 {
-                    oHttpWebRequest.UseDefaultCredentials = true;
+                    oHttpWebRequest.UseDefaultCredentials = false;
                     oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
                 }
                 else
                 {
-                    if (sAuthentication == "DefaultNetworkCredentials")
-                        oHttpWebRequest.Credentials = CredentialCache.DefaultNetworkCredentials;
+                    if (sAuthentication == "DefaultCredentials")
+                    {
+                        oHttpWebRequest.UseDefaultCredentials = true;
+                        oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
+                    }
                     else
                     {
-                        oHttpWebRequest.Credentials = oCrentialCache;
+                        if (sAuthentication == "DefaultNetworkCredentials")
+                            oHttpWebRequest.Credentials = CredentialCache.DefaultNetworkCredentials;
+                        else
+                        {
+                            oHttpWebRequest.Credentials = oCrentialCache;
+                        }
                     }
                 }
 
@@ -95,6 +102,9 @@ namespace EWSEditor.Common
                     oHttpWebRequest.Headers.Add("Translate", "f");
                 if (bPragmaNoCache)
                     oHttpWebRequest.Headers.Add("Pragma", "no-cache");
+
+                if (oWebProxy != null)
+                    oHttpWebRequest.Proxy = oWebProxy;
 
                 // Add Additional Headers:
                 //List<string> oPropertySetHeaders = (List<string>)GetPropertySetHeadersList();
