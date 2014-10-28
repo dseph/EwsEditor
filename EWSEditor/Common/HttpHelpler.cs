@@ -32,6 +32,8 @@ namespace EWSEditor.Common
             string sUserAgent,
 
             ref string sResult,
+            ref string sResponeHeaders,
+
             ref string sError,
             ref string sResponseStatusCode,
             ref int iResponseStatusCodeNumber,
@@ -195,18 +197,39 @@ namespace EWSEditor.Common
                 StreamReader oStreadReader = new StreamReader(oHttpWebResponse.GetResponseStream());
                 sResult = oStreadReader.ReadToEnd();
 
+                //StringBuilder oSB_ResponseHeaders = new StringBuilder() ;
+                //foreach (HttpResponseHeader oHeader in oHttpWebResponse.Headers.)
+                //{
+                //    oSB_ResponseHeaders.AppendLine(oHeader.ToString());
+                //}
+
+
+
                 sResponseStatusCode = oHttpWebResponse.StatusCode.ToString();
                 iResponseStatusCodeNumber = (int)oHttpWebResponse.StatusCode;
                 sResponseStatusDescription = oHttpWebResponse.StatusDescription;
 
             }
+            catch (WebException ex)
+            {
+                sError = ex.Message.ToString();
+              
+                bSuccess = false;
+            }
+            catch (System.Net.Sockets.SocketException ex)
+            {
+                sError = ex.Message.ToString();
+                bSuccess = false;
+            }
             catch (Exception ex)
             {
-                sError = ex.Message;
-
+                sError = ex.Message.ToString();
                 bSuccess = false;
-
             }
+            // System.Net.Sockets.SocketException
+
+            //try { HttpWebRequest x; oHttpWebRequest.GetResponse(); }
+            //catch (exce xx) { };
  
             return bSuccess;
 

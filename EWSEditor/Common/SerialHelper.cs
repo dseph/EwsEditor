@@ -111,15 +111,23 @@ namespace EWSEditor.Common
 
         }
 
-        static public string RestoreCrLfAndIndents(string sXml)
+        static public string TryRestoreCrLfAndIndents(string sXml)
         {
-            XmlDocument oXmlDocument = new XmlDocument();
-
-            if (sXml.Trim().Length != 0)
+            string sResult = string.Empty;
+            try
             {
-                oXmlDocument.LoadXml(sXml);
+                XmlDocument oXmlDocument = new XmlDocument();
+
+                if (sXml.Trim().Length != 0)
+                {
+                    oXmlDocument.LoadXml(sXml);
+                }
+                sResult = RestoreCrLfAndIndents(oXmlDocument);
             }
-            string sResult = RestoreCrLfAndIndents(oXmlDocument);
+            catch (Exception ex)
+            {
+                sResult = sXml;
+            }
 
             return sResult;
         }
