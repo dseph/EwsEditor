@@ -19,6 +19,7 @@
     using System.Net;
 
     using Microsoft.Exchange.WebServices.Data;
+    using System.DirectoryServices;
 
     public partial class BrowserForm : CountedForm
     {
@@ -593,25 +594,68 @@
         {
             string sInfo = string.Empty;
             StringBuilder oSB = new StringBuilder();
-            oSB.AppendFormat("DisplayName: {0}\r\n", UserPrincipal.Current.DisplayName);
-            oSB.AppendFormat("GivenName: {0}\r\n", UserPrincipal.Current.GivenName);
-            oSB.AppendFormat("DistinguishedName: {0}\r\n", UserPrincipal.Current.DistinguishedName);
-            oSB.AppendFormat("Name: {0}\r\n", UserPrincipal.Current.Name);
-            oSB.AppendFormat("MiddleName: {0}\r\n", UserPrincipal.Current.MiddleName);
+            oSB.AppendFormat("From UserPrincipal: \r\n");
+            oSB.AppendFormat("  DisplayName: {0}\r\n", UserPrincipal.Current.DisplayName);
+            oSB.AppendFormat("  GivenName: {0}\r\n", UserPrincipal.Current.GivenName);
+            oSB.AppendFormat("  DistinguishedName: {0}\r\n", UserPrincipal.Current.DistinguishedName);
+            oSB.AppendFormat("  Name: {0}\r\n", UserPrincipal.Current.Name);
+            if (UserPrincipal.Current.MiddleName != null)
+                oSB.AppendFormat("  MiddleName: {0}\r\n", UserPrincipal.Current.MiddleName);
             oSB.AppendFormat("\r\n");
-            oSB.AppendFormat("EmailAddress: {0}\r\n", UserPrincipal.Current.EmailAddress);
-            oSB.AppendFormat("SamAccountName: {0}\r\n", UserPrincipal.Current.SamAccountName);
-            oSB.AppendFormat("Sid: {0}\r\n", UserPrincipal.Current.Sid.Value);
-            oSB.AppendFormat("\r\n");
-            oSB.AppendFormat("PasswordNeverExpires: {0}\r\n", UserPrincipal.Current.PasswordNeverExpires.ToString());
-            oSB.AppendFormat("PasswordNotRequired: {0}\r\n", UserPrincipal.Current.PasswordNotRequired.ToString());
-            oSB.AppendFormat("UserCannotChangePassword: {0}\r\n", UserPrincipal.Current.UserCannotChangePassword.ToString());
-            oSB.AppendFormat("SmartcardLogonRequired: {0}\r\n", UserPrincipal.Current.SmartcardLogonRequired.ToString());
+            if (UserPrincipal.Current.EmailAddress != null)
+                oSB.AppendFormat("  EmailAddress: {0}\r\n", UserPrincipal.Current.EmailAddress);
+            if (UserPrincipal.Current.SamAccountName != null)
+                oSB.AppendFormat("  SamAccountName: {0}\r\n", UserPrincipal.Current.SamAccountName);
+            if (UserPrincipal.Current.Sid != null)
+                oSB.AppendFormat("  Sid: {0}\r\n", UserPrincipal.Current.Sid.Value);
+            if (UserPrincipal.Current.UserPrincipalName != null)
+                oSB.AppendFormat("  UserPrincipalName: {0}\r\n", UserPrincipal.Current.UserPrincipalName);
+            if (UserPrincipal.Current.Surname != null)
+                oSB.AppendFormat("  Surname: {0}\r\n", UserPrincipal.Current.Surname);
+            if (UserPrincipal.Current.VoiceTelephoneNumber != null)
+                oSB.AppendFormat("  VoiceTelephoneNumber: {0}\r\n", UserPrincipal.Current.VoiceTelephoneNumber);
+            if (UserPrincipal.Current.HomeDirectory != null)
+                oSB.AppendFormat("  HomeDirectory: {0}\r\n", UserPrincipal.Current.HomeDirectory);
+            if (UserPrincipal.Current.Guid != null)
+                oSB.AppendFormat("  Guid: {0}\r\n", UserPrincipal.Current.Guid.ToString());
+            if (UserPrincipal.Current.Description != null)
+                oSB.AppendFormat("  Description: {0}\r\n", UserPrincipal.Current.Description.ToString());
  
+ 
+            oSB.AppendFormat("\r\n");
+            oSB.AppendFormat("  PasswordNeverExpires: {0}\r\n", UserPrincipal.Current.PasswordNeverExpires.ToString());
+            oSB.AppendFormat("  PasswordNotRequired: {0}\r\n", UserPrincipal.Current.PasswordNotRequired.ToString());
+            oSB.AppendFormat("  UserCannotChangePassword: {0}\r\n", UserPrincipal.Current.UserCannotChangePassword.ToString());
+            oSB.AppendFormat("  SmartcardLogonRequired: {0}\r\n", UserPrincipal.Current.SmartcardLogonRequired.ToString());
+            oSB.AppendFormat("\r\n");
             if (UserPrincipal.Current.AccountExpirationDate.HasValue)
-                oSB.AppendFormat("AccountExpirationDate: {0}\r\n", UserPrincipal.Current.AccountExpirationDate.ToString());
+                oSB.AppendFormat("  AccountExpirationDate: {0}\r\n", UserPrincipal.Current.AccountExpirationDate.ToString());
             if (UserPrincipal.Current.AccountLockoutTime.HasValue)
-                oSB.AppendFormat("AccountLockoutTime: {0}\r\n", UserPrincipal.Current.AccountLockoutTime.ToString());
+                oSB.AppendFormat("  AccountLockoutTime: {0}\r\n", UserPrincipal.Current.AccountLockoutTime.ToString());
+           
+             
+            //string sUserName = UserPrincipal.Current.SamAccountName;
+            //DirectorySearcher oDirectorySearcher = new DirectorySearcher();
+            //oDirectorySearcher.Filter = String.Format("(SAMAccountName={0})", sUserName);
+            //oDirectorySearcher.PropertiesToLoad.Add("cn");
+            //oDirectorySearcher.PropertiesToLoad.Add("samaccountname");
+            //oDirectorySearcher.PropertiesToLoad.Add("givenname");
+            //oDirectorySearcher.PropertiesToLoad.Add("displayname");
+            //oDirectorySearcher.PropertiesToLoad.Add("mail");
+            //oDirectorySearcher.PropertiesToLoad.Add("userPrincipalName");
+            //oDirectorySearcher.PropertiesToLoad.Add("distinguishedName");
+            //SearchResult oSearchResult = oDirectorySearcher.FindOne();
+            //oSB.AppendFormat("From AD Search on SAMAccountName: \r\n");
+            //if (oSearchResult!= null)
+            //{
+
+            //    oSearchResult.Properties["displayname"][0].ToString();
+            //}
+            //else
+            //{
+            //    oSB.AppendFormat("AD Search on SAMAccountName failed to return results. \r\n");
+            //}
+
 
             // Machine Information:
             try

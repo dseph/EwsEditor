@@ -78,6 +78,8 @@
             this.lblProxyPort = new System.Windows.Forms.Label();
             this.txtProxyServerName = new System.Windows.Forms.TextBox();
             this.lblProxyServer = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtResponseSummary = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeoutSeconds)).BeginInit();
             this.panel2.SuspendLayout();
@@ -221,7 +223,7 @@
             this.txtRequest.Multiline = true;
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRequest.Size = new System.Drawing.Size(1300, 167);
+            this.txtRequest.Size = new System.Drawing.Size(1297, 150);
             this.txtRequest.TabIndex = 0;
             this.txtRequest.WordWrap = false;
             // 
@@ -235,14 +237,14 @@
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1300, 199);
+            this.txtResponse.Size = new System.Drawing.Size(1296, 134);
             this.txtResponse.TabIndex = 0;
             this.txtResponse.WordWrap = false;
             // 
             // GoRun
             // 
             this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GoRun.Location = new System.Drawing.Point(1232, 8);
+            this.GoRun.Location = new System.Drawing.Point(1225, 8);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(76, 23);
             this.GoRun.TabIndex = 200;
@@ -436,11 +438,13 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.txtResponseSummary);
+            this.splitContainer1.Panel2.Controls.Add(this.label10);
             this.splitContainer1.Panel2.Controls.Add(this.label6);
             this.splitContainer1.Panel2.Controls.Add(this.txtResponse);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(1307, 403);
-            this.splitContainer1.SplitterDistance = 197;
+            this.splitContainer1.Size = new System.Drawing.Size(1304, 437);
+            this.splitContainer1.SplitterDistance = 180;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 98;
             // 
@@ -644,11 +648,34 @@
             this.lblProxyServer.TabIndex = 2;
             this.lblProxyServer.Text = "Proxy Server:";
             // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 153);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(104, 13);
+            this.label10.TabIndex = 68;
+            this.label10.Text = "Response Summary:";
+            // 
+            // txtResponseSummary
+            // 
+            this.txtResponseSummary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtResponseSummary.Location = new System.Drawing.Point(3, 169);
+            this.txtResponseSummary.MaxLength = 0;
+            this.txtResponseSummary.Multiline = true;
+            this.txtResponseSummary.Name = "txtResponseSummary";
+            this.txtResponseSummary.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtResponseSummary.Size = new System.Drawing.Size(1296, 84);
+            this.txtResponseSummary.TabIndex = 69;
+            this.txtResponseSummary.WordWrap = false;
+            // 
             // PostForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1320, 651);
+            this.ClientSize = new System.Drawing.Size(1313, 685);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.grpHttpVerbOptions);
@@ -735,5 +762,7 @@
         private System.Windows.Forms.Label lblProxyPort;
         private System.Windows.Forms.TextBox txtProxyServerName;
         private System.Windows.Forms.Label lblProxyServer;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtResponseSummary;
     }
 }

@@ -285,6 +285,7 @@
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.Size = new System.Drawing.Size(760, 20);
             this.txtFrom.TabIndex = 3;
+            this.txtFrom.TextChanged += new System.EventHandler(this.txtFrom_TextChanged);
             // 
             // btnAttachments
             // 

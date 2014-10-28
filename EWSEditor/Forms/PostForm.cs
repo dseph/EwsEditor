@@ -25,6 +25,54 @@ namespace EWSEditor.Common
             InitializeComponent();
         }
 
+        //private void SetCredentials(string sAuthentication, string User, string Password, string Domain, string Url, ref HttpWebRequest oHttpWebRequest)
+        //{
+        //    NetworkCredential oNetworkCredential = null;
+        //    CredentialCache oCredentialCache = null;
+             
+
+        //    oCredentialCache = new CredentialCache();
+
+        //    Uri oUri = new Uri(Url);
+
+        //    if (sAuthentication == "Anonymous")
+        //    {
+        //        oCredentialCache = null;
+        //        //oNetworkCredential = new NetworkCredential();
+        //        oHttpWebRequest.UseDefaultCredentials = true;
+        //    }
+        //    else
+        //    {
+
+        //        if (sAuthentication != "DefaultCredentials" && sAuthentication != "DefaultNetworkCredentials")
+        //        {
+        //            if (txtDomain.Text.Trim().Length == 0)
+        //            {
+        //                oNetworkCredential = new NetworkCredential(User, Password);
+        //            }
+        //            else
+        //            {
+        //                oNetworkCredential = new NetworkCredential(User, Password, Domain);
+
+        //            }
+
+        //            oCredentialCache.Add(oUri, sAuthentication, oNetworkCredential);
+        //            //oCredentialCache.Add(oUri, "Basic", oNetworkCredential);
+        //            //oCredentialCache.Add(oUri, "NTLM", oNetworkCredential);
+        //            //oCredentialCache.Add(oUri, "Digest", oNetworkCredential);
+
+        //            oHttpWebRequest.Credentials = oNetworkCredential;
+        //        }
+        //        else
+        //        {
+
+        //        }
+        //    }
+
+            
+        //}
+
+
         private CredentialCache GetCredentials(string sAuthentication, string User, string Password, string Domain, string Url)
         {
             NetworkCredential oNetworkCredential = null; 
@@ -37,6 +85,8 @@ namespace EWSEditor.Common
             if (sAuthentication == "Anonymous")
             {
                 oCredentialCache = null;
+                //oNetworkCredential = new NetworkCredential();
+                 
             }
             else
             {  
@@ -85,9 +135,12 @@ namespace EWSEditor.Common
         }
         private void DoPostByHttpVerb()
         { 
-            string  sResult = string.Empty;
-            string  sError = string.Empty;
-            string  sResponseStatusCodeNumber = string.Empty;
+            string sResult = string.Empty;
+            string sResponeHeaders = string.Empty;
+
+            string sError = string.Empty;
+
+            string sResponseStatusCodeNumber = string.Empty;
             string sResponseStatusCode = string.Empty;
             int  iResponseStatusCodeNumber = 0;
             string sResponseStatusDescription = string.Empty;
@@ -109,7 +162,7 @@ namespace EWSEditor.Common
                     oHeadersList.Add(new KeyValuePair<string, string>(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString()));
                 }
             }
-             
+
 
             CredentialCache oCredentialCache = new CredentialCache();
             oCredentialCache = GetCredentials(
@@ -118,6 +171,8 @@ namespace EWSEditor.Common
                                     txtPassword.Text.Trim(),
                                     txtDomain.Text.Trim(),
                                     txtUrl.Text.Trim());
+
+ 
 
 
             System.Net.WebProxy oWebProxy = null;
@@ -167,32 +222,36 @@ namespace EWSEditor.Common
                 chkAllowRedirect.Checked,
                 cmboUserAgent.Text,
                 ref sResult,
+                ref sResponeHeaders,
                 ref sError,
                 ref sResponseStatusCode,
                 ref iResponseStatusCodeNumber,
                 ref sResponseStatusDescription
                 );
             
-            StringBuilder oSB = new StringBuilder();
-
-            //sResult = SerialHelper.RestoreCrLfAndIndents(sResult);
-            sResult = SerialHelper.RestoreCrLfAndIndents(sResult);
              
-            if (bRet == true)
-            {  
-                oSB.AppendFormat("{0}\r\n\r\n", sResult); 
-            }
-            else
-            { 
-                oSB.AppendFormat("Failed:\r\n"); 
-                oSB.AppendFormat("Error: {0}\r\n\r\n", sError);
-                oSB.AppendFormat("ResponseStatusCode: {0}\r\n\r\n", sResponseStatusCode);
-                oSB.AppendFormat("ResponseCodeNumber{0}\r\n\r\n", iResponseStatusCodeNumber);
-                oSB.AppendFormat("ResponseStatusDescription: {0}\r\n\r\n", sResponseStatusDescription);
-                oSB.AppendFormat("sResult: {0}\r\n", sResult);
-            }
-            txtResponse.Text = oSB.ToString();
+ 
+            sResult = SerialHelper.TryRestoreCrLfAndIndents(sResult);
+            txtResponse.Text = sResult;
 
+            StringBuilder oSB = new StringBuilder();
+            if (bRet != true)
+            {  
+ 
+                oSB.AppendFormat("Failed:\r\n"); 
+                oSB.AppendFormat("    Error: {0}\r\n\r\n", sError);
+            }
+
+            oSB.AppendFormat("ResponseStatusCode: {0}\r\n\r\n", sResponseStatusCode);
+            oSB.AppendFormat("ResponseCodeNumber{0}\r\n\r\n", iResponseStatusCodeNumber);
+            oSB.AppendFormat("ResponseStatusDescription: {0}\r\n\r\n", sResponseStatusDescription);
+            //oSB.AppendFormat("Result: {0}\r\n", sResult);
+
+            oSB.AppendFormat("Response Headers: {0}\r\n", sResponeHeaders);
+
+            txtResponseSummary.Text = oSB.ToString();
+  
+ 
             this.Cursor = Cursors.Default;
         }
 
