@@ -77,7 +77,7 @@
             this.txtTo.Multiline = true;
             this.txtTo.Name = "txtTo";
             this.txtTo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTo.Size = new System.Drawing.Size(709, 263);
+            this.txtTo.Size = new System.Drawing.Size(710, 273);
             this.txtTo.TabIndex = 3;
             // 
             // EncodeForm
