@@ -59,6 +59,7 @@ namespace EWSEditor.Forms
         private void btnGo_Click(object sender, EventArgs e)
         {
             txtTo.Text = ConvertString(txtFrom.Text, cmboFrom.Text);
+            //webBrowser1.DocumentText = ConvertString(txtFrom.Text, cmboFrom.Text);
         }
 
         private string ConvertString(string sFrom, string TypeOfConversion)
