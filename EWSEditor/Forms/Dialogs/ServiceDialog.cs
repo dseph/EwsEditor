@@ -384,6 +384,11 @@ namespace EWSEditor.Forms
             ExchangeServiceURLText.Text = "https://outlook.office365.com/EWS/Exchange.asmx";
         }
 
+        private void btnDefaultSmtp_Click(object sender, EventArgs e)
+        {
+            AutodiscoverEmailText.Text = UserPrincipal.Current.EmailAddress;
+        }
+
         //private void btnOptions_Click(object sender, EventArgs e)
         //{
         //    OptionsDialog.ShowDialog();

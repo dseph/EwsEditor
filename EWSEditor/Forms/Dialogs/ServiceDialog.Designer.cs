@@ -49,8 +49,8 @@ namespace EWSEditor.Forms
             this.AutodiscoverEmailText = new System.Windows.Forms.TextBox();
             this.Worker = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDefaultSmtp = new System.Windows.Forms.Button();
             this.btnDefault365Settings = new System.Windows.Forms.Button();
-            this.txtDefaultSmtp = new System.Windows.Forms.Button();
             this.rdoServiceUrl = new System.Windows.Forms.RadioButton();
             this.rdoAutodiscoverEmail = new System.Windows.Forms.RadioButton();
             this.lblUseAutodiscoverCheck = new System.Windows.Forms.Label();
@@ -73,7 +73,7 @@ namespace EWSEditor.Forms
             this.btnOK.Location = new System.Drawing.Point(364, 496);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 0;
+            this.btnOK.TabIndex = 4;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
@@ -85,7 +85,7 @@ namespace EWSEditor.Forms
             this.btnCancel.Location = new System.Drawing.Point(445, 496);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 1;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -105,15 +105,15 @@ namespace EWSEditor.Forms
             this.TempExchangeVersionCombo.Location = new System.Drawing.Point(152, 147);
             this.TempExchangeVersionCombo.Name = "TempExchangeVersionCombo";
             this.TempExchangeVersionCombo.Size = new System.Drawing.Size(290, 21);
-            this.TempExchangeVersionCombo.TabIndex = 8;
+            this.TempExchangeVersionCombo.TabIndex = 10;
             // 
             // lblVersion
             // 
             this.lblVersion.Location = new System.Drawing.Point(8, 147);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(103, 18);
-            this.lblVersion.TabIndex = 7;
-            this.lblVersion.Text = "Exchange Version:";
+            this.lblVersion.Size = new System.Drawing.Size(125, 18);
+            this.lblVersion.TabIndex = 9;
+            this.lblVersion.Text = "EWS Schema Version:";
             // 
             // lblImpId
             // 
@@ -240,7 +240,7 @@ namespace EWSEditor.Forms
             this.ExchangeServiceURLText.Location = new System.Drawing.Point(152, 76);
             this.ExchangeServiceURLText.Name = "ExchangeServiceURLText";
             this.ExchangeServiceURLText.Size = new System.Drawing.Size(351, 20);
-            this.ExchangeServiceURLText.TabIndex = 5;
+            this.ExchangeServiceURLText.TabIndex = 6;
             // 
             // AutodiscoverEmailText
             // 
@@ -256,8 +256,8 @@ namespace EWSEditor.Forms
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnDefaultSmtp);
             this.panel1.Controls.Add(this.btnDefault365Settings);
-            this.panel1.Controls.Add(this.txtDefaultSmtp);
             this.panel1.Controls.Add(this.rdoServiceUrl);
             this.panel1.Controls.Add(this.rdoAutodiscoverEmail);
             this.panel1.Controls.Add(this.lblUseAutodiscoverCheck);
@@ -273,26 +273,26 @@ namespace EWSEditor.Forms
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // btnDefaultSmtp
+            // 
+            this.btnDefaultSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDefaultSmtp.Location = new System.Drawing.Point(453, 31);
+            this.btnDefaultSmtp.Name = "btnDefaultSmtp";
+            this.btnDefaultSmtp.Size = new System.Drawing.Size(49, 23);
+            this.btnDefaultSmtp.TabIndex = 3;
+            this.btnDefaultSmtp.Text = "Default";
+            this.btnDefaultSmtp.UseVisualStyleBackColor = true;
+            this.btnDefaultSmtp.Click += new System.EventHandler(this.btnDefaultSmtp_Click);
+            // 
             // btnDefault365Settings
             // 
-            this.btnDefault365Settings.Location = new System.Drawing.Point(53, 115);
+            this.btnDefault365Settings.Location = new System.Drawing.Point(152, 115);
             this.btnDefault365Settings.Name = "btnDefault365Settings";
-            this.btnDefault365Settings.Size = new System.Drawing.Size(175, 23);
-            this.btnDefault365Settings.TabIndex = 202;
+            this.btnDefault365Settings.Size = new System.Drawing.Size(159, 23);
+            this.btnDefault365Settings.TabIndex = 8;
             this.btnDefault365Settings.Text = "Default Exchange 365 URL";
             this.btnDefault365Settings.UseVisualStyleBackColor = true;
             this.btnDefault365Settings.Click += new System.EventHandler(this.btnDefault365Settings_Click);
-            // 
-            // txtDefaultSmtp
-            // 
-            this.txtDefaultSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDefaultSmtp.Location = new System.Drawing.Point(451, 34);
-            this.txtDefaultSmtp.Name = "txtDefaultSmtp";
-            this.txtDefaultSmtp.Size = new System.Drawing.Size(49, 23);
-            this.txtDefaultSmtp.TabIndex = 3;
-            this.txtDefaultSmtp.Text = "Default";
-            this.txtDefaultSmtp.UseVisualStyleBackColor = true;
-            this.txtDefaultSmtp.Click += new System.EventHandler(this.txtDefaultSmtp_Click);
             // 
             // rdoServiceUrl
             // 
@@ -300,7 +300,7 @@ namespace EWSEditor.Forms
             this.rdoServiceUrl.Location = new System.Drawing.Point(31, 79);
             this.rdoServiceUrl.Name = "rdoServiceUrl";
             this.rdoServiceUrl.Size = new System.Drawing.Size(89, 17);
-            this.rdoServiceUrl.TabIndex = 4;
+            this.rdoServiceUrl.TabIndex = 5;
             this.rdoServiceUrl.TabStop = true;
             this.rdoServiceUrl.Text = "Service URL:";
             this.rdoServiceUrl.UseVisualStyleBackColor = true;
@@ -335,7 +335,7 @@ namespace EWSEditor.Forms
             this.lblExchangeServiceURLTextDesc.Location = new System.Drawing.Point(149, 99);
             this.lblExchangeServiceURLTextDesc.Name = "lblExchangeServiceURLTextDesc";
             this.lblExchangeServiceURLTextDesc.Size = new System.Drawing.Size(281, 13);
-            this.lblExchangeServiceURLTextDesc.TabIndex = 6;
+            this.lblExchangeServiceURLTextDesc.TabIndex = 7;
             this.lblExchangeServiceURLTextDesc.Text = "Example: https://mail.contoso.com/EWS/Exchange.asmx";
             // 
             // lblAutodiscoverEmailDesc
@@ -404,7 +404,7 @@ namespace EWSEditor.Forms
             this.panel4.Location = new System.Drawing.Point(4, 443);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(509, 38);
-            this.panel4.TabIndex = 10;
+            this.panel4.TabIndex = 3;
             // 
             // ServiceDialog
             // 
@@ -467,7 +467,7 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.Label lblUseAutodiscoverCheck;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button txtDefaultSmtp;
         private System.Windows.Forms.Button btnDefault365Settings;
+        private System.Windows.Forms.Button btnDefaultSmtp;
     }
 }

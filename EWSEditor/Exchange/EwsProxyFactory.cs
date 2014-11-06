@@ -116,8 +116,9 @@ namespace EWSEditor.Exchange
                     service = new ExchangeService( ); 
             }
 
-            if (UserAgent.Length != 0)
-                service.UserAgent = UserAgent;
+            if (UserAgent != null)
+                if (UserAgent.Length != 0)
+                    service.UserAgent = UserAgent;
 
             // EWS Tracing: http://msdn.microsoft.com/en-us/library/office/dn495632(v=exchg.150).aspx
             service.TraceEnabled = true;

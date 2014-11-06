@@ -7,6 +7,7 @@ using EWSEditor.Settings;
 using Microsoft.Exchange.WebServices.Autodiscover;
 using Microsoft.Exchange.WebServices.Data;
 using EWSEditor.Common;
+using System.DirectoryServices.AccountManagement;
 
 namespace EWSEditor.Forms
 {
@@ -85,7 +86,13 @@ namespace EWSEditor.Forms
                 service.TraceEnabled = true;
                 service.TraceListener = new EwsTraceListener();
 
-                 
+                System.Net.WebProxy oWebProxy = null;
+                if (this.rdoSpecifyProxySettings.Checked == true)
+                {
+                    oWebProxy = new System.Net.WebProxy(this.txtProxyServerName.Text.Trim(), Convert.ToInt32(this.txtProxyServerPort.Text.Trim()));
+
+                    service.WebProxy = oWebProxy;
+                }
 
                 // Allow/Disallow following 302 redirects in the Autodiscover sequence
                 service.RedirectionUrlValidationCallback = ValidationCallbackHelper.RedirectionUrlValidationCallback;
@@ -280,7 +287,14 @@ namespace EWSEditor.Forms
 
         private void lvItems_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (lvItems.SelectedItems.Count > 0)
+            {
+                txtValues.Text = lvItems.SelectedItems[0].SubItems[1].Text;
+            }
+            else
+            {
+                txtValues.Text = string.Empty;
+            }
         }
 
         private void lvItems_DoubleClick(object sender, EventArgs e)
@@ -307,6 +321,34 @@ namespace EWSEditor.Forms
         private void chkOverrideUserAgent_CheckedChanged(object sender, EventArgs e)
         {
             this.cmboUserAgent.Enabled = chkOverrideUserAgent.Checked;
+        }
+
+        private void lvItems_Click(object sender, EventArgs e)
+        {
+ 
+            if (lvItems.SelectedItems.Count > 0)
+            {
+                txtValues.Text = lvItems.SelectedItems[0].SubItems[1].Text;
+            }
+            else
+            {
+                txtValues.Text = string.Empty;
+            }
+        }
+
+        private void btnDefaultSmtp_Click(object sender, EventArgs e)
+        {
+            TargetMailboxText.Text = UserPrincipal.Current.EmailAddress;
+        }
+
+        private void btnDefaultUser_Click(object sender, EventArgs e)
+        {
+            txtUser.Text = UserPrincipal.Current.EmailAddress;
+        }
+
+        private void txtValues_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
