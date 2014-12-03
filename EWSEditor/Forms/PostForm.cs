@@ -134,7 +134,8 @@ namespace EWSEditor.Common
 
         }
         private void DoPostByHttpVerb()
-        { 
+        {
+            string sRequestHeaders = string.Empty;
             string sResult = string.Empty;
             string sResponeHeaders = string.Empty;
 
@@ -221,6 +222,7 @@ namespace EWSEditor.Common
                 chkTranslateF.Checked,
                 chkAllowRedirect.Checked,
                 cmboUserAgent.Text,
+                ref sRequestHeaders,
                 ref sResult,
                 ref sResponeHeaders,
                 ref sError,
@@ -243,11 +245,14 @@ namespace EWSEditor.Common
             }
 
             oSB.AppendFormat("ResponseStatusCode: {0}\r\n\r\n", sResponseStatusCode);
-            oSB.AppendFormat("ResponseCodeNumber{0}\r\n\r\n", iResponseStatusCodeNumber);
+            oSB.AppendFormat("ResponseCodeNumber: {0}\r\n\r\n", iResponseStatusCodeNumber);
             oSB.AppendFormat("ResponseStatusDescription: {0}\r\n\r\n", sResponseStatusDescription);
             //oSB.AppendFormat("Result: {0}\r\n", sResult);
 
-            oSB.AppendFormat("Response Headers: {0}\r\n", sResponeHeaders);
+             
+
+            oSB.AppendFormat("Request Headers: \r\n{0}\r\n", sRequestHeaders);
+            oSB.AppendFormat("Response Headers: \r\n{0}\r\n", sResponeHeaders);
 
             txtResponseSummary.Text = oSB.ToString();
   
@@ -517,6 +522,11 @@ namespace EWSEditor.Common
         }
 
         private void cmboUserAgent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtResponse_TextChanged(object sender, EventArgs e)
         {
 
         }

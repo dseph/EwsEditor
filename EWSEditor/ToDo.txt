@@ -19,7 +19,54 @@ Wish List
     In the Options and AutodiscoverViewer window have a place to set additional headers - this should be similar to what 
 EwsPost has. 
 
- 
+12/3/2014 - Planning changes for loading and saving settings:
+
+	The way "Save Services Profile", "Open Services Profile", "Open Default Exchange Services" is not a good model. 
+	When you load you have to enter credentails for each mailbox - not good.
+	Only a fraction of the info from the New Services window is stored and loaded - also not good.
+	The saving goes off of curent service information rather than saving what the user specified.  Since the service object is 
+	used only part of the data is going to get stored.
+	There should be one winndow to open a new profile session.  
+	The "Open Default Exchange Services" does not really do anything "New Exchange Services does or could do".
+	The saving of profile settings goes off of a service object stored on the tag property on each root node in the service/folder treeview control.
+	  The problem with this approach is that unless credentials are entered each time, the user would need to enter the passowrd for each service entry.
+	  Storing the password is a bad idea - ie not secure.
+	  Being asked many times for each password and knowing which is tied to which mailbox adds to confusion.
+	  The service object itself stored in the root node tag can only provide some of the most basic information for saving and is just not enough.
+	  It would be best that everything shown in the "New Exchange Service" and the "Global Options" window were saved each time and all that info was loaded back
+	  into the "New Exchange Service" (or equivelent) when the service profile is reloaded.  
+	  When a profile is saved it should be for one session - same goes for loading.
+	  The current way EwsEditor works is a type of MDI where each mailbox+login info vary - so MDI does not work.
+
+	So, this is what I'm planning: 
+		* EwsEditor will only allow one profile to be accessed at one time.  If the user wants more then a new EwsEditor session needs to be opened.
+		* The log file settings will need to allow you to pick a folder and maybe a log file prefix - however, the log file name will be generated for each and
+		  every new EWS profile session in order to avoid conflicts and overwritting the file.
+		* If there is an active session then the current one needs to be closed.
+		* Global Options Settings window should be a default only for EWSEditor.  Changing its values should not alter settings on the current
+		  session.  The Global Options Settings window  uses the GlobalSettings class to load and save settings.
+		* There should be a class which holds all current session information - SessionSettings. 
+		* When a new session is started a public GlobalSettings class should be instanced (call the instance ServiceOptions) and poplulated off of the 
+		  stored settings which are set by the Global Options Settings window.  At the same time a ServiceSetting object containing ServiceOptions object.
+		  The "New Exchange Service" window needs to work off of the ServiceSettings object and its ServiceOptions.  This means that there will need to be
+		  a new window for working with the ServiceOptions settings or that the existing Global Options window be made to work with global and service settings - 
+		  I like the idea of seperate windows for clarity.  
+	    * When the session is saved, it will be to an xml file (not an mmp). 
+		  Use class to XML serialization to save the ServiceSetting object and it's ServiceOptions object. 
+		  Everything except the password needs to be saved.
+		  Saving will be to a new folder called "ServiceSessions".
+		* A "Load Profile" button will be addeded to the "New Exchange Service" window.  
+		  Loading a profile will overwrite all settings on the window and in the options window.  Keep in mind that the options window settings 
+		  from "New Exchange Service" won't affect global Options any longer.
+		  When the session is loaded, it will be from an xml file (not an mmp). 
+		  Use class to XML deserialization to load the ServiceSetting object and it's ServiceOptions object.
+		  Saving will be to a new folder called "ServiceSessions".
+		  The loaded information will be displayed in the "New Exchange Service" will be poplated with the saved service information. 
+		  The "Open Services Profile" will be removed from the File menu.
+		* All service session related code needs to be checked to use the new ServiceSetting and its ServiceOptions object and not pull info from Global Options.
+	   
+		
+
  
  
  
