@@ -84,6 +84,7 @@ namespace EWSEditor.Forms
 
                 // Create and set the trace listener
                 service.TraceEnabled = true;
+                //service.TraceEnablePrettyPrinting = true;  // Hmmm not implemented in the 2.2 version of the manage api for the autodiscover object - it is for service
                 service.TraceListener = new EwsTraceListener();
 
                 System.Net.WebProxy oWebProxy = null;
@@ -243,6 +244,16 @@ namespace EWSEditor.Forms
                 sRet += "    Inner Error Message: " + oAutodiscoverResponseException.InnerException + "\r\n";
                 sRet += "    Stack Trace: " + oAutodiscoverResponseException.StackTrace + "\r\n";
                 sRet += "    See: " + oAutodiscoverResponseException.HelpLink + "\r\n";
+            }
+            catch (ServerBusyException srBusyException)  // 2013+
+            {
+                Console.WriteLine(srBusyException);
+                sRet += "Caught ServerBusyException Exception:\r\n\r\n";
+                sRet += "    BackOffMilliseconds: " + srBusyException.BackOffMilliseconds.ToString() + "\r\n";
+                sRet += "    Error Message: " + srBusyException.Message + "\r\n";
+                sRet += "    Inner Error Message: " + srBusyException.InnerException + "\r\n";
+                sRet += "    Stack Trace: " + srBusyException.StackTrace + "\r\n";
+                sRet += "    See: " + srBusyException.HelpLink + "\r\n";
             }
             catch (Exception ex)
             {

@@ -229,6 +229,7 @@ namespace EWSEditor.Forms
 
                 ExchangeService tempService = new ExchangeService(ExchangeVersion.Exchange2010);
                 tempService.TraceEnabled = true;
+                tempService.TraceEnablePrettyPrinting = true;
                 tempService.TraceListener = new EWSEditor.Logging.EwsTraceListener();
 
                 if (GlobalSettings.AllowAutodiscoverRedirect)
