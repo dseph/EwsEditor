@@ -67,6 +67,16 @@ namespace EWSEditor.Exchange
                 sError = oIOException.ToString();
                 ErrorDialog.ShowError(sError);
             }
+            catch (ServerBusyException srBusyException)  // 2013+
+            {
+                Console.WriteLine(srBusyException);
+                sError += string.Format("Error: {0}\r\n", srBusyException.HResult);
+                sError += "    BackOffMilliseconds: " + srBusyException.BackOffMilliseconds.ToString() + "\r\n";
+                sError += "    Error Message: " + srBusyException.Message + "\r\n";
+                sError += "    Inner Error Message: " + srBusyException.InnerException + "\r\n";
+                sError += "    Stack Trace: " + srBusyException.StackTrace + "\r\n";
+                sError += "    See: " + srBusyException.HelpLink + "\r\n";
+            }
 
             //try
             //{
@@ -122,6 +132,7 @@ namespace EWSEditor.Exchange
 
             // EWS Tracing: http://msdn.microsoft.com/en-us/library/office/dn495632(v=exchg.150).aspx
             service.TraceEnabled = true;
+            service.TraceEnablePrettyPrinting = true;
             service.TraceListener = new EWSEditor.Logging.EwsTraceListener();
 
             // Instrumentation settings: http://msdn.microsoft.com/en-us/library/office/dn720380(v=exchg.150).aspx

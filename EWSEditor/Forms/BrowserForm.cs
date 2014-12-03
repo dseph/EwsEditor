@@ -316,6 +316,9 @@
             {
                 OofForm.ShowDialog(this.CurrentService);
             }
+
+ 
+
         }
 
         /// <summary>
@@ -573,6 +576,10 @@
                         oConversationItems.Add(item.Id);
                         }
                     }
+                }
+                catch (ServerBusyException srBusyException)  // 2013+
+                {
+                    Console.WriteLine(srBusyException);
                 }
                 // This exception may occur if there is an error with the service.
                 catch (ServiceResponseException srException)

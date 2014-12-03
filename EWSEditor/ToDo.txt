@@ -3,20 +3,23 @@
 	1 - Add inline attachment ability.
 	2 - Add code to show response headers in EWS POST window.
 	3 - Full POST for Ews POST window
+	4 - Add display of headers and abilty to add additional ones in the the windows which send email and meeting requests.
+	    http://msdn.microsoft.com/en-us/library/office/dn596091(v=exchg.150).aspx 
+	5 - Change saving of sessions for main login to use a class, then add ability for user to load and save settings by 
+serializing the class and writting/reading to file.
 
 Wish List
 
-In Autodiscover Viewer window have the abilility to specify the Autodiscover asmx URL instead of only allowing Autodiscover to it.
+    In Autodiscover Viewer window have the abilility to specify the Autodiscover asmx URL instead of only allowing Autodiscover to it.
 
-Add processing for working with custom search folders.
+    Add processing for working with custom search folders.
 
-Add hex editing ability for binary properties.
+    Add hex editing ability for binary properties.
 
-In the Options and AutodiscoverViewer window have a place to set additional headers - this should be similar to what 
+    In the Options and AutodiscoverViewer window have a place to set additional headers - this should be similar to what 
 EwsPost has. 
 
-Change saving of sessions for main login to use a class, then add ability for user to load and save settings by 
-serializing the class and writting/reading to file.
+ 
  
  
  
