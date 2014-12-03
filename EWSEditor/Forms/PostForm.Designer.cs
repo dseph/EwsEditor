@@ -237,9 +237,10 @@
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1208, 136);
+            this.txtResponse.Size = new System.Drawing.Size(1208, 138);
             this.txtResponse.TabIndex = 2;
             this.txtResponse.WordWrap = false;
+            this.txtResponse.TextChanged += new System.EventHandler(this.txtResponse_TextChanged);
             // 
             // GoRun
             // 
@@ -461,7 +462,7 @@
             // 
             this.txtResponseSummary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResponseSummary.Location = new System.Drawing.Point(3, 171);
+            this.txtResponseSummary.Location = new System.Drawing.Point(3, 173);
             this.txtResponseSummary.MaxLength = 0;
             this.txtResponseSummary.Multiline = true;
             this.txtResponseSummary.Name = "txtResponseSummary";
@@ -474,11 +475,11 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 155);
+            this.label10.Location = new System.Drawing.Point(3, 157);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(104, 13);
+            this.label10.Size = new System.Drawing.Size(74, 13);
             this.label10.TabIndex = 0;
-            this.label10.Text = "Response Summary:";
+            this.label10.Text = "EWS call info:";
             // 
             // label6
             // 

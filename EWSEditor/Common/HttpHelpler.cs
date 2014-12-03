@@ -31,6 +31,7 @@ namespace EWSEditor.Common
             bool bAllowAutoRedirect,
             string sUserAgent,
 
+            ref string sRequestHeaders,
             ref string sResult,
             ref string sResponeHeaders,
 
@@ -51,6 +52,8 @@ namespace EWSEditor.Common
             iResponseStatusCodeNumber = 0;
             sResponseStatusDescription = string.Empty;
             //sAdditionalReturnValues = string.Empty;
+
+            string sHeader = string.Empty;
 
             HttpWebResponse oHttpWebResponse = null;
             HttpWebRequest oHttpWebRequest = null;
@@ -190,25 +193,19 @@ namespace EWSEditor.Common
                     }
  
                 }
+ 
 
-                // Get response
+                // =============================================
+                // Do the EWS call:
+
                 oHttpWebResponse = (HttpWebResponse)oHttpWebRequest.GetResponse();
 
                 StreamReader oStreadReader = new StreamReader(oHttpWebResponse.GetResponseStream());
                 sResult = oStreadReader.ReadToEnd();
 
-                //StringBuilder oSB_ResponseHeaders = new StringBuilder() ;
-                //foreach (HttpResponseHeader oHeader in oHttpWebResponse.Headers.)
-                //{
-                //    oSB_ResponseHeaders.AppendLine(oHeader.ToString());
-                //}
+                // ============================================
 
-
-
-                sResponseStatusCode = oHttpWebResponse.StatusCode.ToString();
-                iResponseStatusCodeNumber = (int)oHttpWebResponse.StatusCode;
-                sResponseStatusDescription = oHttpWebResponse.StatusDescription;
-
+ 
             }
             catch (WebException ex)
             {
@@ -226,10 +223,62 @@ namespace EWSEditor.Common
                 sError = ex.Message.ToString();
                 bSuccess = false;
             }
+            finally 
+            {
+
+                // Get Request headers:
+                 
+                if (oHttpWebRequest != null)
+                {
+                    if (oHttpWebRequest.Headers != null)
+                    {
+                        StringBuilder oSB_RequestHeaders = new StringBuilder();
+                        //for (int i = 0; i < oHttpWebRequest.Headers.Count; ++i)
+                        //{
+
+                            foreach (string key in oHttpWebRequest.Headers.AllKeys)
+                            {
+                                sHeader = string.Format("    {0}: {1}", key, oHttpWebRequest.Headers[key]);
+                                oSB_RequestHeaders.AppendLine(sHeader);
+                            }
+                        //}
+                        sRequestHeaders = oSB_RequestHeaders.ToString();
+                    }
+                }
+
+               // Get Response headers:
+                if (oHttpWebResponse != null)
+                {
+                    if (oHttpWebResponse.Headers != null)
+                    {
+                        StringBuilder oSB_ResponseHeaders = new StringBuilder();
+                        //for (int i = 0; i < oHttpWebResponse.Headers.Count; ++i)
+                        //{
+
+                            foreach (string key in oHttpWebResponse.Headers.AllKeys)
+                            {
+                                sHeader = string.Format("    {0}: {1}", key, oHttpWebResponse.Headers[key]);
+                                oSB_ResponseHeaders.AppendLine(sHeader);
+                            }
+                        //}
+                        sResponeHeaders = oSB_ResponseHeaders.ToString();
+                    }
+                }
+
+                if (oHttpWebResponse != null)
+                {
+                    sResponseStatusCode = oHttpWebResponse.StatusCode.ToString();
+                    iResponseStatusCodeNumber = (int)oHttpWebResponse.StatusCode;
+                    sResponseStatusDescription = oHttpWebResponse.StatusDescription;
+                }
+ 
+            }
             // System.Net.Sockets.SocketException
 
             //try { HttpWebRequest x; oHttpWebRequest.GetResponse(); }
             //catch (exce xx) { };
+
+
  
             return bSuccess;
 
