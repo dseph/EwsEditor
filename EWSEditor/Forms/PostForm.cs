@@ -73,6 +73,7 @@ namespace EWSEditor.Common
         //}
 
 
+
         private CredentialCache GetCredentials(string sAuthentication, string User, string Password, string Domain, string Url)
         {
             NetworkCredential oNetworkCredential = null; 
@@ -81,6 +82,8 @@ namespace EWSEditor.Common
             oCredentialCache = new CredentialCache();
            
             Uri oUri = new Uri(Url);
+
+             
 
             if (sAuthentication == "Anonymous")
             {
@@ -94,15 +97,9 @@ namespace EWSEditor.Common
                 if (sAuthentication != "DefaultCredentials" && sAuthentication != "DefaultNetworkCredentials")
                 {
                     if (txtDomain.Text.Trim().Length == 0)
-                    {
                         oNetworkCredential = new NetworkCredential(User, Password);
-                    }
                     else
-                    {
                         oNetworkCredential = new NetworkCredential(User, Password, Domain);
-                     
-                    }
-                 
                     oCredentialCache.Add(oUri, sAuthentication, oNetworkCredential);
                     //oCredentialCache.Add(oUri, "Basic", oNetworkCredential);
                     //oCredentialCache.Add(oUri, "NTLM", oNetworkCredential);
@@ -142,17 +139,16 @@ namespace EWSEditor.Common
                 oWebProxy = new System.Net.WebProxy(this.txtProxyServerName.Text.Trim(), Convert.ToInt32(this.txtProxyServerPort.Text.Trim()));
             }
 
-            CredentialCache oCredentialCache = new CredentialCache();
-            oCredentialCache = GetCredentials(
-                                    cmboAuthentication.Text,
-                                    txtUser.Text.Trim(),
-                                    txtPassword.Text.Trim(),
-                                    txtDomain.Text.Trim(),
-                                    txtUrl.Text.Trim());
- 
-            HttpWebRequest oHttpWebRequest = EWSEditor.Common.HttpHelper.EntirePostRequestToHttpWebRequest(txtRequest.Text, oWebProxy);
 
-            oHttpWebRequest.Credentials = oCredentialCache;
+            HttpWebRequest oHttpWebRequest = EWSEditor.Common.HttpHelper.EntirePostRequestToHttpWebRequest(
+                    txtRequest.Text,
+                    cmboAuthentication.Text,
+                    txtUser.Text.Trim(),
+                    txtPassword.Text.Trim(),
+                    txtDomain.Text.Trim(),
+                    oWebProxy
+                );
+ 
 
             bool bRet = false;
             string sRequestHeaders = string.Empty;
@@ -218,9 +214,6 @@ namespace EWSEditor.Common
 
             // http://msdn.microsoft.com/en-us/library/office/bb409286(v=exchg.150).aspx
 
-            //bool bPragmaNoCache = true;
-            //bool bTranslateF = false;
-            //bool bAllowAutoRedirect = false; 
 
             List<KeyValuePair<string, string>> oHeadersList = new List<KeyValuePair<string, string>>();
             foreach (DataGridViewRow row in dgvOptions.Rows)
@@ -231,16 +224,6 @@ namespace EWSEditor.Common
                 }
             }
 
-
-            CredentialCache oCredentialCache = new CredentialCache();
-            oCredentialCache = GetCredentials(
-                                    cmboAuthentication.Text,
-                                    txtUser.Text.Trim(),
-                                    txtPassword.Text.Trim(),
-                                    txtDomain.Text.Trim(),
-                                    txtUrl.Text.Trim());
-
- 
 
 
             System.Net.WebProxy oWebProxy = null;
@@ -278,7 +261,9 @@ namespace EWSEditor.Common
                 txtUrl.Text.Trim(),
                 cmboContentType.Text,
                 cmboAuthentication.Text,
-                oCredentialCache,
+                txtUser.Text.Trim(),
+                txtPassword.Text.Trim(),
+                txtDomain.Text.Trim(),
                 oHeadersList,
                 oWebProxy,
                 txtRequest.Text,
@@ -330,7 +315,8 @@ namespace EWSEditor.Common
         private void PostForm_Load(object sender, EventArgs e)
         {
             SetFields();
-            EwsPostEnablement();
+            //EwsPostEnablement();
+            SetEnablementForPostByVerb(true);
         }
 
         private void btnLoadSettings_Click(object sender, EventArgs e)
@@ -563,7 +549,7 @@ namespace EWSEditor.Common
 
         private void chkRawPost_CheckedChanged(object sender, EventArgs e)
         {
-           // EwsPostEnablement();
+         
         }
 
         private void EwsPostEnablement()
@@ -599,6 +585,29 @@ namespace EWSEditor.Common
         }
 
         private void cmboVerb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmboVerb.Text == "RAW")
+                SetEnablementForPostByVerb(false);
+            else
+                SetEnablementForPostByVerb(true);
+        }
+
+        private void SetEnablementForPostByVerb(bool bEnable)
+        {
+            cmboContentType.Enabled = bEnable;
+            numericUpDownTimeoutSeconds.Enabled = bEnable;
+            cmboUserAgent.Enabled = bEnable;
+            chkPragmaNocache.Enabled = bEnable;
+            chkTranslateF.Enabled = bEnable;
+            chkPragmaNocache.Enabled = bEnable;
+            chkAllowRedirect.Enabled = bEnable;
+            dgvOptions.Enabled = bEnable;
+            btnAddHeaders.Enabled = bEnable;
+            btnDeleteHeader.Enabled = bEnable;
+            txtUrl.Enabled = bEnable;
+        }
+
+        private void cmboContentType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

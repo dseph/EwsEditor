@@ -223,7 +223,7 @@
             this.txtRequest.Multiline = true;
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRequest.Size = new System.Drawing.Size(1209, 150);
+            this.txtRequest.Size = new System.Drawing.Size(1209, 181);
             this.txtRequest.TabIndex = 1;
             this.txtRequest.WordWrap = false;
             // 
@@ -237,7 +237,7 @@
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1208, 138);
+            this.txtResponse.Size = new System.Drawing.Size(1208, 143);
             this.txtResponse.TabIndex = 2;
             this.txtResponse.WordWrap = false;
             this.txtResponse.TextChanged += new System.EventHandler(this.txtResponse_TextChanged);
@@ -277,7 +277,8 @@
             this.cmboVerb.Items.AddRange(new object[] {
             "POST",
             "GET",
-            "PUT"});
+            "PUT",
+            "RAW"});
             this.cmboVerb.Location = new System.Drawing.Point(85, 12);
             this.cmboVerb.Name = "cmboVerb";
             this.cmboVerb.Size = new System.Drawing.Size(120, 21);
@@ -296,6 +297,7 @@
             this.cmboContentType.Size = new System.Drawing.Size(120, 21);
             this.cmboContentType.TabIndex = 3;
             this.cmboContentType.Text = "text/xml";
+            this.cmboContentType.SelectedIndexChanged += new System.EventHandler(this.cmboContentType_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -445,8 +447,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label6);
             this.splitContainer1.Panel2.Controls.Add(this.txtResponse);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(1216, 437);
-            this.splitContainer1.SplitterDistance = 180;
+            this.splitContainer1.Size = new System.Drawing.Size(1216, 514);
+            this.splitContainer1.SplitterDistance = 211;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 6;
             // 
@@ -463,12 +465,12 @@
             // 
             this.txtResponseSummary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResponseSummary.Location = new System.Drawing.Point(3, 173);
+            this.txtResponseSummary.Location = new System.Drawing.Point(3, 178);
             this.txtResponseSummary.MaxLength = 0;
             this.txtResponseSummary.Multiline = true;
             this.txtResponseSummary.Name = "txtResponseSummary";
             this.txtResponseSummary.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponseSummary.Size = new System.Drawing.Size(1208, 84);
+            this.txtResponseSummary.Size = new System.Drawing.Size(1208, 117);
             this.txtResponseSummary.TabIndex = 1;
             this.txtResponseSummary.WordWrap = false;
             // 
@@ -476,7 +478,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 157);
+            this.label10.Location = new System.Drawing.Point(3, 162);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(74, 13);
             this.label10.TabIndex = 0;
@@ -677,7 +679,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1224, 685);
+            this.ClientSize = new System.Drawing.Size(1224, 762);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.grpHttpVerbOptions);
