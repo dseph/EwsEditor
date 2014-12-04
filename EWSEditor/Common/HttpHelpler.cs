@@ -12,7 +12,7 @@ namespace EWSEditor.Common
 {
     public class HttpHelper
     {
-        public static bool RawHtppCall(
+        public static bool HtppCall(
             string sVerb,
             string sUrl,
             string sContentType,
@@ -93,15 +93,7 @@ namespace EWSEditor.Common
                     }
                 }
 
-                //if (sProxyServer.Trim().Length != 0)
-                //{
-                //    oHttpWebRequest.Proxy = new WebProxy(sProxyServer, iProxyPort);
-                //}
-
-                //FileWebRequest x = FileWebRequest.Create("");
-                //WebRequest o = WebRequest.Create(); // http://msdn.microsoft.com/en-us/library/debx8sh9(v=vs.110).aspx
-                //WebRequest s = WebRequest.CreateHttp("");
-             
+ 
  
                 if (bTranslateF)
                     oHttpWebRequest.Headers.Add("Translate", "f");
@@ -112,74 +104,74 @@ namespace EWSEditor.Common
                     oHttpWebRequest.Proxy = oWebProxy;
 
                 // Add Additional Headers:
-                //List<string> oPropertySetHeaders = (List<string>)GetPropertySetHeadersList();
-                IFormatProvider oCulture = new System.Globalization.CultureInfo("en-US", true);
-                string sKey = string.Empty;
-                //// http://msdn.microsoft.com/en-us/library/system.net.httpwebrequest(v=vs.110).aspx
-                foreach (KeyValuePair<string, string> k in oHeadersList)
-                {
-                    sKey = k.Key.ToUpper();
-                    //if (oPropertySetHeaders.Contains(sKey) == false)
-                    //{
-                    //    oHttpWebRequest.Headers.Add(k.Key, k.Value);
-                    //}
-                    //else
-                    //{
-                        // Note: Every header which maps to a header property on the httpswebrequest object needs to be in this select statement.
-                    //       This article has a table containing that list: http://msdn.microsoft.com/en-us/library/system.net.httpwebrequest(v=vs.110).aspx
-                        switch(sKey)
-                        {
-                            case "CONNECTION":
-                                oHttpWebRequest.Connection = k.Key;
-                                break;
-                            case "CONTENT-LENGTH":
-                                oHttpWebRequest.ContentLength = Convert.ToUInt32(Convert.ToUInt32(k.Key));
-                                break;
-                            case "CONTENT-TYPE":
-                                oHttpWebRequest.ContentType = k.Key;
-                                break;
-                            case "EXPECT":
-                                oHttpWebRequest.Expect = k.Key;
-                                break;
-                            case "DATE":
-                                 DateTime oDtDate = DateTime.Parse(k.Key, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
-                                 oHttpWebRequest.Date = oDtDate;
-                                break;
-                            case "HOST":
-                                oHttpWebRequest.Host = k.Key;
-                                break;
-                            case "IF-MODIFIED-SINCE":
-                                DateTime oDtIfModifiedSince = DateTime.Parse(k.Key, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
-                                oHttpWebRequest.IfModifiedSince = oDtIfModifiedSince;
-                                break;
-                            case "RANGE":
-                                oHttpWebRequest.AddRange(Convert.ToUInt32(Convert.ToUInt32(k.Key)));
-                                break;
-                            case "REFERRER":
-                                oHttpWebRequest.Referer  = k.Key;
-                                break;
-                            case "TRANSFER-ENCODING":
-                                oHttpWebRequest.TransferEncoding  = k.Key;
-                                break;
-                            case "USER-AGENT":
-                                oHttpWebRequest.UserAgent  = k.Key;
-                                break;
-                            default:
-                                oHttpWebRequest.Headers.Add(k.Key, k.Value);
-                                break;
+                SetRequestHeaders(ref oHttpWebRequest, oHeadersList);
+
+                ////List<string> oPropertySetHeaders = (List<string>)GetPropertySetHeadersList();
+                //IFormatProvider oCulture = new System.Globalization.CultureInfo("en-US", true);
+                //string sKey = string.Empty;
+                ////// http://msdn.microsoft.com/en-us/library/system.net.httpwebrequest(v=vs.110).aspx
+                //foreach (KeyValuePair<string, string> k in oHeadersList)
+                //{
+                //    sKey = k.Key.ToUpper();
+                //    //if (oPropertySetHeaders.Contains(sKey) == false)
+                //    //{
+                //    //    oHttpWebRequest.Headers.Add(k.Key, k.Value);
+                //    //}
+                //    //else
+                //    //{
+                //        // Note: Every header which maps to a header property on the httpswebrequest object needs to be in this select statement.
+                //    //       This article has a table containing that list: http://msdn.microsoft.com/en-us/library/system.net.httpwebrequest(v=vs.110).aspx
+                //        switch(sKey)
+                //        {
+                //            case "CONNECTION":
+                //                oHttpWebRequest.Connection = k.Key;
+                //                break;
+                //            case "CONTENT-LENGTH":
+                //                oHttpWebRequest.ContentLength = Convert.ToUInt32(Convert.ToUInt32(k.Key));
+                //                break;
+                //            case "CONTENT-TYPE":
+                //                oHttpWebRequest.ContentType = k.Key;
+                //                break;
+                //            case "EXPECT":
+                //                oHttpWebRequest.Expect = k.Key;
+                //                break;
+                //            case "DATE":
+                //                 DateTime oDtDate = DateTime.Parse(k.Key, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
+                //                 oHttpWebRequest.Date = oDtDate;
+                //                break;
+                //            case "HOST":
+                //                oHttpWebRequest.Host = k.Key;
+                //                break;
+                //            case "IF-MODIFIED-SINCE":
+                //                DateTime oDtIfModifiedSince = DateTime.Parse(k.Key, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
+                //                oHttpWebRequest.IfModifiedSince = oDtIfModifiedSince;
+                //                break;
+                //            case "RANGE":
+                //                oHttpWebRequest.AddRange(Convert.ToUInt32(Convert.ToUInt32(k.Key)));
+                //                break;
+                //            case "REFERRER":
+                //                oHttpWebRequest.Referer  = k.Key;
+                //                break;
+                //            case "TRANSFER-ENCODING":
+                //                oHttpWebRequest.TransferEncoding  = k.Key;
+                //                break;
+                //            case "USER-AGENT":
+                //                oHttpWebRequest.UserAgent  = k.Key;
+                //                break;
+                //            default:
+                //                oHttpWebRequest.Headers.Add(k.Key, k.Value);
+                //                break;
  
-                        }
+                //        }
 
                     //}
-                }
+                //}
 
                 
-                // TODO: Finish
-
-
+ 
                 oHttpWebRequest.AllowAutoRedirect = bAllowAutoRedirect;
 
-
+                // Add body to request
                 byte[] bytes = Encoding.UTF8.GetBytes(sRequestBody);
                 oHttpWebRequest.ContentLength = bytes.Length;
                 if (sRequestBody.Trim().Length != 0)
@@ -193,7 +185,6 @@ namespace EWSEditor.Common
                     }
  
                 }
- 
 
                 // =============================================
                 // Do the EWS call:
@@ -226,8 +217,7 @@ namespace EWSEditor.Common
             finally 
             {
 
-                // Get Request headers:
-                 
+                // Get Request headers:                
                 if (oHttpWebRequest != null)
                 {
                     if (oHttpWebRequest.Headers != null)
@@ -306,87 +296,277 @@ namespace EWSEditor.Common
             return oHeadersList;
         }
 
-        private static HttpWebRequest EntirePostRequestToHttpWebRequest(string sRequest)
+        public static bool DoHttpWebRequest(
+                ref HttpWebRequest oHttpWebRequest,
+                ref string sRequestHeaders,
+                ref string sResult,
+                ref string sResponeHeaders,
+
+                ref string sError,
+                ref string sResponseStatusCode,
+                ref int iResponseStatusCodeNumber,
+                ref string sResponseStatusDescription  
+            )
+        {
+            bool bRet = false;
+             
+            HttpWebResponse oHttpWebResponse = null;
+            string sHeader = string.Empty;
+
+            try
+            { 
+                oHttpWebResponse = (HttpWebResponse)oHttpWebRequest.GetResponse();
+                StreamReader oStreadReader = new StreamReader(oHttpWebResponse.GetResponseStream());
+                sResult = oStreadReader.ReadToEnd();
+                bRet = true;
+            }
+            catch (WebException ex)
+            {
+                sError = ex.Message.ToString();
+            }
+            catch (System.Net.Sockets.SocketException ex)
+            {
+                sError = ex.Message.ToString();
+            }
+            catch (Exception ex)
+            {
+                sError = ex.Message.ToString();
+            }
+            finally 
+            {
+                // Get Request headers:                
+                if (oHttpWebRequest != null)
+                {
+                    if (oHttpWebRequest.Headers != null)
+                    {
+                        StringBuilder oSB_RequestHeaders = new StringBuilder();
+                        //for (int i = 0; i < oHttpWebRequest.Headers.Count; ++i)
+                        //{
+
+                        foreach (string key in oHttpWebRequest.Headers.AllKeys)
+                        {
+                            sHeader = string.Format("    {0}: {1}", key, oHttpWebRequest.Headers[key]);
+                            oSB_RequestHeaders.AppendLine(sHeader);
+                        }
+                        //}
+                        sRequestHeaders = oSB_RequestHeaders.ToString();
+                    }
+                }
+
+
+               // Get Response headers:
+                if (oHttpWebResponse != null)
+                {
+                    if (oHttpWebResponse.Headers != null)
+                    {
+                        StringBuilder oSB_ResponseHeaders = new StringBuilder();
+                        //for (int i = 0; i < oHttpWebResponse.Headers.Count; ++i)
+                        //{
+
+                            foreach (string key in oHttpWebResponse.Headers.AllKeys)
+                            {
+                                sHeader = string.Format("    {0}: {1}", key, oHttpWebResponse.Headers[key]);
+                                oSB_ResponseHeaders.AppendLine(sHeader);
+                            }
+                        //}
+                        sResponeHeaders = oSB_ResponseHeaders.ToString();
+                    }
+                }
+
+                if (oHttpWebResponse != null)
+                {
+                    sResponseStatusCode = oHttpWebResponse.StatusCode.ToString();
+                    iResponseStatusCodeNumber = (int)oHttpWebResponse.StatusCode;
+                    sResponseStatusDescription = oHttpWebResponse.StatusDescription;
+                }
+ 
+            }
+
+            return bRet;
+ 
+        }
+
+        public static HttpWebRequest EntirePostRequestToHttpWebRequest(string sRequest, WebProxy oWebProxy)
         {
             HttpWebRequest oHttpWebRequest = null;
-            string sUseText = string.Empty;
-            sUseText = sRequest.Replace("\r\n", "\n");
-            sUseText = sUseText.Replace("\r", "\n");
-            sUseText = sUseText.Replace("\n", "\r\n");
+            string sUseWholeText = string.Empty;
+            sUseWholeText = sRequest.Replace("\r\n", "\n");
+            sUseWholeText = sUseWholeText.Replace("\r", "\n");
+            sUseWholeText = sUseWholeText.Replace("\n", "\r\n");
             string[] sArrSplit = { "\r\n" };
             string[] sArr;
 
-            sArr = sUseText.Split(sArrSplit, StringSplitOptions.None);
-            bool bReachedStart = false;
+
+            sArr = sUseWholeText.Split(sArrSplit, StringSplitOptions.None);
             bool bProcessingHeaders = false;
             bool bProcessingBody = false;
-            bool bReachedBlankLineAfterPostLine = false;
+            bool bIsFirstLine = true;
+            
+            string sFirstLine = string.Empty;
+            StringBuilder sbBody = new StringBuilder();
+            List<string> listHeaders = new List<string>();
 
             foreach (string sLine in sArr)
             {
-
-                if (sLine.Trim().Length == 0)
+                if (bIsFirstLine)
                 {
-                    if (bProcessingHeaders == true)
-                    {
-                        // shold be at empty line which seperates headers from body
-                        bProcessingHeaders = false;
-                        bProcessingBody = true;
-                       // bReachedBlankLineAfterPostLine = false;
-
-                    }
-
+                    sFirstLine = sLine.Trim();  // Should be like: POST https://outlook.office365.com/EWS/Exchange.asmx  
+                    bIsFirstLine = false;
+                    bProcessingHeaders = true;
+                    bProcessingBody = false;
                 }
                 else
                 {
-                    if (bReachedStart == false)
-                    {
-                        // Should be on first line - ie where the POST/Get/PUT is
-                        bReachedStart = true;
-                        //ProcessPostLine();
+                    // We should be past the first line....
 
-                        bProcessingHeaders = true;  // set this for next loop to start header processing
+                    // Check for blank line - it means we are going from the headers to the body.
+                    if (sLine.Trim().Length == 0 && bProcessingHeaders == true)
+                    {
+
+                        // shold be at empty line which seperates headers from body
+                        bProcessingHeaders = false;
+                        bProcessingBody = true;
+                        // bReachedBlankLineAfterPostLine = false;
                     }
                     else
                     {
-                        if (bProcessingBody == false)
-                        {
-                            if (bProcessingHeaders == true)
-                            {
-                                //ProcessHeaders();
+                        // Now we are either processing the headers or the body...
 
-                            }
- 
-                             
+                        if (bProcessingHeaders == true)
+                        {
+                            listHeaders.Add(sLine);
                         }
 
                         if (bProcessingBody == true)
                         {
-                            //ProcessBody();
+                            sbBody.AppendLine(sLine);
                         }
                     }
-
                 }
 
             }
 
+            // sFirstLine - holds the first line
+            // listHeaders  holds the headers.
+            // sbBody  - holds the body
 
-            // todo: may use this sample for adding headers.
-            //List<KeyValuePair<string, string>> oHeadersList = new List<KeyValuePair<string, string>>();
-            //foreach (DataGridViewRow row in dgvOptions.Rows)
-            //{
-            //    if (row.Cells[0].Value != null)
-            //    {
-            //        oHeadersList.Add(new KeyValuePair<string, string>(row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString()));
-            //    }
-            //}
+            // First line:
+            string[] sFirstLineArrSplit = {" "};
+            string[] sFirstLineArr;
+            sFirstLineArr = sFirstLine.Split(sFirstLineArrSplit, StringSplitOptions.None);
+            string sVerb = sFirstLineArr[0];
+            string sURL = sFirstLineArr[1];
+            oHttpWebRequest = (HttpWebRequest)WebRequest.Create(sURL);
+            oHttpWebRequest.Method = sVerb;
+ 
 
-            //            sBuildRawRequest = ""
-            //sBuildRawRequest = sCommand & " " & sUri & " HTTP/" & HttpWRequest.ProtocolVersion.ToString & vbLf
-            //sBuildRawRequest &= HttpWRequest.Headers.ToString
-            //sBuildRawRequest &= strBody
+            // Headers:
+            char[] sHeadereArrSplit = {':'};
+            string[] sHeaderLineArr;
+            string sKey = string.Empty;
+            string sValue = string.Empty;
+            List<KeyValuePair<string, string>> oHeadersList = new List<KeyValuePair<string, string>>();
+            foreach (string sHeader in listHeaders)
+            {
+                 
+                sHeaderLineArr = sHeader.Split(sHeadereArrSplit);
+                sKey = sHeaderLineArr[0];
+                sValue = sHeaderLineArr[1].TrimStart();
+                oHeadersList.Add(new KeyValuePair<string, string>(sKey, sValue));
+
+            }
+            SetRequestHeaders(ref oHttpWebRequest, oHeadersList);
+
+            // Change proxy settings?
+            if (oWebProxy != null)
+                oHttpWebRequest.Proxy = oWebProxy;
+
+            // Add body to request
+            string sRequestBody = sbBody.ToString();
+            byte[] bytes = Encoding.UTF8.GetBytes(sRequestBody);
+            oHttpWebRequest.ContentLength = bytes.Length;
+            if (sRequestBody.Trim().Length != 0)
+            {
+
+                using (Stream requestStream = oHttpWebRequest.GetRequestStream())
+                {
+                    requestStream.Write(bytes, 0, bytes.Length);
+                    requestStream.Flush();
+                    requestStream.Close();
+                }
+ 
+            }
 
             return oHttpWebRequest;
+
+        }
+
+        public static void SetRequestHeaders(ref HttpWebRequest oHttpWebRequest, List<KeyValuePair<string, string>> oHeadersList)
+        {
+            
+            // Add Additional Headers:
+            //List<string> oPropertySetHeaders = (List<string>)GetPropertySetHeadersList();
+            IFormatProvider oCulture = new System.Globalization.CultureInfo("en-US", true);
+            string sKey = string.Empty;
+            //// http://msdn.microsoft.com/en-us/library/system.net.httpwebrequest(v=vs.110).aspx
+            foreach (KeyValuePair<string, string> k in oHeadersList)
+            {
+          
+                sKey = k.Key.ToUpper();
+                //if (oPropertySetHeaders.Contains(sKey) == false)
+                //{
+                //    oHttpWebRequest.Headers.Add(k.Key, k.Value);
+                //}
+                //else
+                //{
+                // Note: Every header which maps to a header property on the httpswebrequest object needs to be in this select statement.
+                //       This article has a table containing that list: http://msdn.microsoft.com/en-us/library/system.net.httpwebrequest(v=vs.110).aspx
+                switch (sKey)
+                {
+                    //case "AUTHORIZATION":  // This needs to be set on the object by user entered data.
+                    //    break;
+                    case "CONNECTION":
+                        oHttpWebRequest.Connection = k.Value;
+                        break;
+                    case "CONTENT-LENGTH":
+                        oHttpWebRequest.ContentLength = Convert.ToUInt32(Convert.ToUInt32(k.Value));
+                        break;
+                    case "CONTENT-TYPE":
+                        oHttpWebRequest.ContentType = k.Value;
+                        break;
+                    case "EXPECT":
+                        //oHttpWebRequest.Expect =  k.Value;
+                        break;
+                    case "DATE":
+                        DateTime oDtDate = DateTime.Parse(k.Value, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
+                        oHttpWebRequest.Date = oDtDate;
+                        break;
+                    case "HOST":
+                        oHttpWebRequest.Host = k.Value;
+                        break;
+                    case "IF-MODIFIED-SINCE":
+                        DateTime oDtIfModifiedSince = DateTime.Parse(k.Value, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
+                        oHttpWebRequest.IfModifiedSince = oDtIfModifiedSince;
+                        break;
+                    case "RANGE":
+                        oHttpWebRequest.AddRange(Convert.ToUInt32(Convert.ToUInt32(k.Value)));
+                        break;
+                    case "REFERRER":
+                        oHttpWebRequest.Referer = k.Value;
+                        break;
+                    case "TRANSFER-ENCODING":
+                        oHttpWebRequest.TransferEncoding = k.Value;
+                        break;
+                    case "USER-AGENT":
+                        oHttpWebRequest.UserAgent = k.Value;
+                        break;
+                    default:
+                        oHttpWebRequest.Headers.Add(k.Key, k.Value);
+                        break;
+
+                }
+ 
+            }
 
         }
 
@@ -812,6 +992,8 @@ namespace EWSEditor.Common
 
         //    Return sText
         //End Function
+
+
 
 
 
