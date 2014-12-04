@@ -17,7 +17,10 @@ namespace EWSEditor.Common
             string sUrl,
             string sContentType,
             string sAuthentication,
-            CredentialCache oCrentialCache,
+            string User, 
+            string Password, 
+            string Domain, 
+
             List<KeyValuePair<string, string>> oHeadersList,
             WebProxy oWebProxy,
             string sRequestBody,
@@ -70,28 +73,38 @@ namespace EWSEditor.Common
 
                 oHttpWebRequest.Timeout = 1000 * iTimeoutSeconds;
 
-                if (sAuthentication == "Anonymous")
-                {
-                    oHttpWebRequest.UseDefaultCredentials = false;
-                    oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
-                }
-                else
-                {
-                    if (sAuthentication == "DefaultCredentials")
-                    {
-                        oHttpWebRequest.UseDefaultCredentials = true;
-                        oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
-                    }
-                    else
-                    {
-                        if (sAuthentication == "DefaultNetworkCredentials")
-                            oHttpWebRequest.Credentials = CredentialCache.DefaultNetworkCredentials;
-                        else
-                        {
-                            oHttpWebRequest.Credentials = oCrentialCache;
-                        }
-                    }
-                }
+                // Set Credentials
+                SetCredentials(
+                        ref oHttpWebRequest,
+                        sAuthentication,
+                        User,
+                        Password,
+                        Domain,
+                        sUrl
+                    );
+
+                //if (sAuthentication == "Anonymous")
+                //{
+                //    oHttpWebRequest.UseDefaultCredentials = false;
+                //    oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
+                //}
+                //else
+                //{
+                //    if (sAuthentication == "DefaultCredentials")
+                //    {
+                //        oHttpWebRequest.UseDefaultCredentials = true;
+                //        oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
+                //    }
+                //    else
+                //    {
+                //        if (sAuthentication == "DefaultNetworkCredentials")
+                //            oHttpWebRequest.Credentials = CredentialCache.DefaultNetworkCredentials;
+                //        else
+                //        {
+                //            oHttpWebRequest.Credentials = oCrentialCache;
+                //        }
+                //    }
+                //}
 
  
  
@@ -386,7 +399,14 @@ namespace EWSEditor.Common
  
         }
 
-        public static HttpWebRequest EntirePostRequestToHttpWebRequest(string sRequest, WebProxy oWebProxy)
+        public static HttpWebRequest EntirePostRequestToHttpWebRequest(
+                string sRequest, 
+                string sAuthentication,
+                string sUser,
+                string sPassword,
+                string sDomain,
+                WebProxy oWebProxy
+            )
         {
             HttpWebRequest oHttpWebRequest = null;
             string sUseWholeText = string.Empty;
@@ -458,6 +478,17 @@ namespace EWSEditor.Common
             string sURL = sFirstLineArr[1];
             oHttpWebRequest = (HttpWebRequest)WebRequest.Create(sURL);
             oHttpWebRequest.Method = sVerb;
+
+
+            // Set Credentials
+            SetCredentials(
+                ref oHttpWebRequest,
+                sAuthentication,
+                sUser,
+                sPassword,
+                sDomain,
+                sURL
+                );
  
 
             // Headers:
@@ -499,6 +530,45 @@ namespace EWSEditor.Common
 
             return oHttpWebRequest;
 
+        }
+
+        private static void SetCredentials(ref HttpWebRequest oHttpWebRequest, string sAuthentication, string User, string Password, string Domain, string Url)
+        {
+            NetworkCredential oNetworkCredential = null;
+            CredentialCache oCredentialCache = null;
+
+            oCredentialCache = new CredentialCache();
+
+            Uri oUri = new Uri(Url);
+
+            switch (sAuthentication)
+            {
+                case "Anonymous":
+                    oCredentialCache = null;
+                    break;
+                case "DefaultNetworkCredentials":
+                    oHttpWebRequest.Credentials = CredentialCache.DefaultNetworkCredentials;
+                    break;
+                case "DefaultCredentials":
+                    oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
+                    break;
+                case "Basic":
+                case "NTLM":
+                case "Digest":
+                case "Kerberos":
+                case "Negotiate":
+                    if (Domain.Trim().Length == 0)
+                        oNetworkCredential = new NetworkCredential(User, Password);
+                    else
+                        oNetworkCredential = new NetworkCredential(User, Password, Domain);
+                    oCredentialCache.Add(oUri, sAuthentication, oNetworkCredential);
+                    oHttpWebRequest.Credentials = oCredentialCache;
+                    break;
+                default:
+                    break;
+            }
+
+            // http://msdn.microsoft.com/en-us/library/59x2s2s6(v=vs.110).aspx
         }
 
         public static void SetRequestHeaders(ref HttpWebRequest oHttpWebRequest, List<KeyValuePair<string, string>> oHeadersList)
