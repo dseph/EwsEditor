@@ -127,6 +127,7 @@ namespace EWSEditor.Common
             catch (Exception ex)
             {
                 sResult = sXml;
+                Console.WriteLine("Exception: " + ex.ToString());
             }
 
             return sResult;

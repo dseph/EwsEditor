@@ -283,6 +283,7 @@
             this.cmboVerb.Size = new System.Drawing.Size(120, 21);
             this.cmboVerb.TabIndex = 1;
             this.cmboVerb.Text = "POST";
+            this.cmboVerb.SelectedIndexChanged += new System.EventHandler(this.cmboVerb_SelectedIndexChanged);
             // 
             // cmboContentType
             // 

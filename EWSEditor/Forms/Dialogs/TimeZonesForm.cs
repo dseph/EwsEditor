@@ -540,7 +540,7 @@ namespace EWSEditor.Forms
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine("Exception: " + ex.ToString());
             }
            
         }

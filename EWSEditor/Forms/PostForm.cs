@@ -120,7 +120,10 @@ namespace EWSEditor.Common
         private void GoRun_Click(object sender, EventArgs e)
         {
 
-            DoPostByHttpVerb();
+            if (cmboVerb.Text == "RAW")
+                DoRawPost();
+            else
+                DoPostByHttpVerb();
             //if (chkRawPost.Checked == false)
             //    DoPostByHttpVerb();
             //else
@@ -130,8 +133,72 @@ namespace EWSEditor.Common
         {
 
 
-         
+            string sRequest = string.Empty;
+            sRequest = txtRequest.Text;
 
+            System.Net.WebProxy oWebProxy = null;
+            if (this.rdoSpecifyProxySettings.Checked == true)
+            {
+                oWebProxy = new System.Net.WebProxy(this.txtProxyServerName.Text.Trim(), Convert.ToInt32(this.txtProxyServerPort.Text.Trim()));
+            }
+
+            CredentialCache oCredentialCache = new CredentialCache();
+            oCredentialCache = GetCredentials(
+                                    cmboAuthentication.Text,
+                                    txtUser.Text.Trim(),
+                                    txtPassword.Text.Trim(),
+                                    txtDomain.Text.Trim(),
+                                    txtUrl.Text.Trim());
+ 
+            HttpWebRequest oHttpWebRequest = EWSEditor.Common.HttpHelper.EntirePostRequestToHttpWebRequest(txtRequest.Text, oWebProxy);
+
+            oHttpWebRequest.Credentials = oCredentialCache;
+
+            bool bRet = false;
+            string sRequestHeaders = string.Empty;
+            string sResult = string.Empty;
+            string sResponeHeaders= string.Empty;
+            string sError= string.Empty;
+            string sResponseStatusCode= string.Empty;
+            int iResponseStatusCodeNumber = 0;
+            string sResponseStatusDescription= string.Empty;
+
+            bRet = EWSEditor.Common.HttpHelper.DoHttpWebRequest(
+                ref oHttpWebRequest,
+ 
+                ref sRequestHeaders,
+                ref sResult,
+                ref sResponeHeaders,
+                ref sError,
+                ref sResponseStatusCode,
+                ref iResponseStatusCodeNumber,
+                ref sResponseStatusDescription
+            );
+
+            sResult = SerialHelper.TryRestoreCrLfAndIndents(sResult);
+            txtResponse.Text = sResult;
+
+            StringBuilder oSB = new StringBuilder();
+            if (bRet != true)
+            {
+
+                oSB.AppendFormat("Failed:\r\n");
+                oSB.AppendFormat("    Error: {0}\r\n\r\n", sError);
+            }
+
+            oSB.AppendFormat("ResponseStatusCode: {0}\r\n\r\n", sResponseStatusCode);
+            oSB.AppendFormat("ResponseCodeNumber: {0}\r\n\r\n", iResponseStatusCodeNumber);
+            oSB.AppendFormat("ResponseStatusDescription: {0}\r\n\r\n", sResponseStatusDescription);
+            //oSB.AppendFormat("Result: {0}\r\n", sResult);
+ 
+            oSB.AppendFormat("Request Headers: \r\n{0}\r\n", sRequestHeaders);
+            oSB.AppendFormat("Response Headers: \r\n{0}\r\n", sResponeHeaders);
+
+            txtResponseSummary.Text = oSB.ToString();
+
+
+            this.Cursor = Cursors.Default;
+             
         }
         private void DoPostByHttpVerb()
         {
@@ -206,7 +273,7 @@ namespace EWSEditor.Common
  
             bool bRet = false;
 
-            bRet = EWSEditor.Common.HttpHelper.RawHtppCall(
+            bRet = EWSEditor.Common.HttpHelper.HtppCall(
                 cmboVerb.Text,
                 txtUrl.Text.Trim(),
                 cmboContentType.Text,
@@ -527,6 +594,11 @@ namespace EWSEditor.Common
         }
 
         private void txtResponse_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmboVerb_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
