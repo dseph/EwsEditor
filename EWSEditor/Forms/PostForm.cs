@@ -15,6 +15,7 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using System.Xml;
+using System.Diagnostics;
 
 namespace EWSEditor.Common
 {
@@ -139,7 +140,10 @@ namespace EWSEditor.Common
                 oWebProxy = new System.Net.WebProxy(this.txtProxyServerName.Text.Trim(), Convert.ToInt32(this.txtProxyServerPort.Text.Trim()));
             }
 
-
+            DateTime dtStart = DateTime.Now;
+            Stopwatch oStopwatch = new Stopwatch();
+            oStopwatch.Start();
+             
             HttpWebRequest oHttpWebRequest = EWSEditor.Common.HttpHelper.EntirePostRequestToHttpWebRequest(
                     txtRequest.Text,
                     cmboAuthentication.Text,
@@ -171,10 +175,27 @@ namespace EWSEditor.Common
                 ref sResponseStatusDescription
             );
 
+            DateTime dtEnd = DateTime.Now;
+            oStopwatch.Stop();
+            TimeSpan oTimeSpan = oStopwatch.Elapsed;
+            string sElapsed = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                    oTimeSpan.Hours,
+                    oTimeSpan.Minutes,
+                    oTimeSpan.Seconds,
+                    oTimeSpan.Milliseconds / 10);
+
+
             sResult = SerialHelper.TryRestoreCrLfAndIndents(sResult);
             txtResponse.Text = sResult;
 
             StringBuilder oSB = new StringBuilder();
+
+            oSB.AppendFormat("Start: {0}  End: {1}  Timespan: {2}\r\n\r\n",
+                dtStart.ToString(),
+                dtEnd.ToString(),
+                sElapsed
+                );
+
             if (bRet != true)
             {
 
@@ -256,6 +277,10 @@ namespace EWSEditor.Common
  
             bool bRet = false;
 
+            DateTime dtStart = DateTime.Now;
+            Stopwatch oStopwatch = new Stopwatch();
+            oStopwatch.Start();
+
             bRet = EWSEditor.Common.HttpHelper.HtppCall(
                 cmboVerb.Text,
                 txtUrl.Text.Trim(),
@@ -282,13 +307,28 @@ namespace EWSEditor.Common
                 ref iResponseStatusCodeNumber,
                 ref sResponseStatusDescription
                 );
-            
-             
+
+            DateTime dtEnd = DateTime.Now;
+            oStopwatch.Stop();
+            TimeSpan oTimeSpan = oStopwatch.Elapsed;
+            string sElapsed = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                    oTimeSpan.Hours,
+                    oTimeSpan.Minutes,
+                    oTimeSpan.Seconds,
+                    oTimeSpan.Milliseconds / 10);
  
             sResult = SerialHelper.TryRestoreCrLfAndIndents(sResult);
             txtResponse.Text = sResult;
 
+
             StringBuilder oSB = new StringBuilder();
+
+            oSB.AppendFormat("Start: {0}  End: {1}  Timespan: {2}:\r\n\r\n", 
+                dtStart .ToString(),
+                dtEnd.ToString(),
+                sElapsed
+                );
+
             if (bRet != true)
             {  
  
