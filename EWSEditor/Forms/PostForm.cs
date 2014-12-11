@@ -421,7 +421,7 @@ namespace EWSEditor.Common
 
             string sSuggestedFilename = "*.xml";
             string sSelectedfile = string.Empty;
-            string sFilter = "Text files (*.xml)|*.xml|All files (*.*)|*.*";
+            string sFilter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
 
             if (UserIoHelper.PickLoadFromFile(sInitialDirectory, sSuggestedFilename, ref  sSelectedfile, sFilter))
             {
@@ -445,7 +445,7 @@ namespace EWSEditor.Common
 
             string sSuggestedFilename = "*.xml";
             string sSelectedfile = string.Empty;
-            string sFilter = "Text files (*.xml)|*.xml|All files (*.*)|*.*";
+            string sFilter = "XML files (*.xml)|*.xml|All files (*.*)|*.*";
 
             if ( UserIoHelper.PickSaveFileToFolder(sInitialDirectory, sSuggestedFilename, ref  sSelectedfile, sFilter))
             {
