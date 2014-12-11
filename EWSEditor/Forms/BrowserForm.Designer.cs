@@ -458,7 +458,7 @@
             // 
             this.mnuFileContentHelper.Name = "mnuFileContentHelper";
             this.mnuFileContentHelper.Size = new System.Drawing.Size(268, 22);
-            this.mnuFileContentHelper.Text = "File Content Helper";
+            this.mnuFileContentHelper.Text = "File Content Helper...";
             this.mnuFileContentHelper.Click += new System.EventHandler(this.mnuFileContentHelper_Click);
             // 
             // mnuHelp

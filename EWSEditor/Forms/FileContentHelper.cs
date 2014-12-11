@@ -16,7 +16,7 @@ namespace EWSEditor.Forms
 {
     public partial class FileContentHelper : Form
     {
-        public string sInitialDirectory = Application.StartupPath + "\\EwsPostExamples";
+        public string sInitialDirectory = Application.StartupPath + "\\Testing";
         public FileContentHelper()
         {
             InitializeComponent();
@@ -179,7 +179,7 @@ namespace EWSEditor.Forms
             string sSelectedfile = string.Empty;
             string sFilter = "Jpg files (*.jpg)|*.jpg|XML files (*.xml)|*.xml|All files (*.*)|*.*";
 
-            if (UserIoHelper.PickLoadFromFile(txtSaveFile.Text.Trim(), sSuggestedFilename, ref  sSelectedfile, sFilter))
+            if (UserIoHelper.PickSaveFileToFolder(txtSaveFile.Text.Trim(), sSuggestedFilename, ref  sSelectedfile, sFilter))
             {
                 txtSaveFile.Text = sSelectedfile;
             }
