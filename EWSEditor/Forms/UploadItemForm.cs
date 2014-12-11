@@ -130,5 +130,15 @@ namespace EWSEditor.Forms
         {
             UpdateCreateActionRelated(CreateActionType.Update);
         }
+
+        private void txtFile_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblFile_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -764,5 +764,11 @@
             MailApps oForm = new MailApps(CurrentService);
             oForm.ShowDialog();
         }
+
+        private void mnuFileContentHelper_Click(object sender, EventArgs e)
+        {
+            FileContentHelper oForm = new FileContentHelper();
+            oForm.ShowDialog();
+        }
     }
 }

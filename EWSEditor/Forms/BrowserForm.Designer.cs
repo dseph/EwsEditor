@@ -64,6 +64,7 @@
             this.TimeZonemenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.UserConfigurationMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eDiscoverySearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mailAppsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOther = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,9 +77,9 @@
             this.mnuWindowsUserInformation = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSnmClient = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEncodingHelper = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileContentHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mailAppsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -195,7 +196,7 @@
             this.toolStripMenuItem1,
             this.OptionsMenuItem});
             this.mnuTools.Name = "mnuTools";
-            this.mnuTools.Size = new System.Drawing.Size(48, 20);
+            this.mnuTools.Size = new System.Drawing.Size(47, 20);
             this.mnuTools.Text = "Tools";
             // 
             // DebugLogVeiwerMenuItem
@@ -358,6 +359,13 @@
             this.eDiscoverySearchToolStripMenuItem.Text = "eDiscoverySearch";
             this.eDiscoverySearchToolStripMenuItem.Click += new System.EventHandler(this.eDiscoverySearchToolStripMenuItem_Click);
             // 
+            // mailAppsToolStripMenuItem
+            // 
+            this.mailAppsToolStripMenuItem.Name = "mailAppsToolStripMenuItem";
+            this.mailAppsToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.mailAppsToolStripMenuItem.Text = "Mail Apps";
+            this.mailAppsToolStripMenuItem.Click += new System.EventHandler(this.mailAppsToolStripMenuItem_Click);
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -381,7 +389,8 @@
             this.toolStripSeparator1,
             this.mnuWindowsUserInformation,
             this.mnuSnmClient,
-            this.mnuEncodingHelper});
+            this.mnuEncodingHelper,
+            this.mnuFileContentHelper});
             this.mnuOther.Name = "mnuOther";
             this.mnuOther.Size = new System.Drawing.Size(49, 20);
             this.mnuOther.Text = "Other";
@@ -445,6 +454,13 @@
             this.mnuEncodingHelper.Text = "Encoding Helper...";
             this.mnuEncodingHelper.Click += new System.EventHandler(this.mnuEncode_Click);
             // 
+            // mnuFileContentHelper
+            // 
+            this.mnuFileContentHelper.Name = "mnuFileContentHelper";
+            this.mnuFileContentHelper.Size = new System.Drawing.Size(268, 22);
+            this.mnuFileContentHelper.Text = "File Content Helper";
+            this.mnuFileContentHelper.Click += new System.EventHandler(this.mnuFileContentHelper_Click);
+            // 
             // mnuHelp
             // 
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -459,13 +475,6 @@
             this.mnuAbout.Size = new System.Drawing.Size(164, 22);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
-            // 
-            // mailAppsToolStripMenuItem
-            // 
-            this.mailAppsToolStripMenuItem.Name = "mailAppsToolStripMenuItem";
-            this.mailAppsToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
-            this.mailAppsToolStripMenuItem.Text = "Mail Apps";
-            this.mailAppsToolStripMenuItem.Click += new System.EventHandler(this.mailAppsToolStripMenuItem_Click);
             // 
             // BrowserForm
             // 
@@ -540,5 +549,6 @@
         public System.Windows.Forms.ToolStripMenuItem eDiscoverySearchToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem serverTimeZoneToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem mailAppsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileContentHelper;
     }
 }

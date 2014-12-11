@@ -50,21 +50,23 @@
             this.lblFile.Size = new System.Drawing.Size(26, 13);
             this.lblFile.TabIndex = 1;
             this.lblFile.Text = "File:";
+            this.lblFile.Click += new System.EventHandler(this.lblFile_Click);
             // 
             // txtFile
             // 
             this.txtFile.Location = new System.Drawing.Point(40, 8);
-            this.txtFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFile.Margin = new System.Windows.Forms.Padding(2);
             this.txtFile.Name = "txtFile";
             this.txtFile.Size = new System.Drawing.Size(399, 20);
             this.txtFile.TabIndex = 1;
+            this.txtFile.TextChanged += new System.EventHandler(this.txtFile_TextChanged);
             // 
             // rdoCreateNew
             // 
             this.rdoCreateNew.AutoSize = true;
             this.rdoCreateNew.Checked = true;
             this.rdoCreateNew.Location = new System.Drawing.Point(28, 62);
-            this.rdoCreateNew.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdoCreateNew.Margin = new System.Windows.Forms.Padding(2);
             this.rdoCreateNew.Name = "rdoCreateNew";
             this.rdoCreateNew.Size = new System.Drawing.Size(78, 17);
             this.rdoCreateNew.TabIndex = 3;
@@ -77,7 +79,7 @@
             // 
             this.rdoUpdate.AutoSize = true;
             this.rdoUpdate.Location = new System.Drawing.Point(28, 84);
-            this.rdoUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdoUpdate.Margin = new System.Windows.Forms.Padding(2);
             this.rdoUpdate.Name = "rdoUpdate";
             this.rdoUpdate.Size = new System.Drawing.Size(60, 17);
             this.rdoUpdate.TabIndex = 4;
@@ -89,7 +91,7 @@
             // 
             this.rdoUpdateOrCreate.AutoSize = true;
             this.rdoUpdateOrCreate.Location = new System.Drawing.Point(28, 106);
-            this.rdoUpdateOrCreate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdoUpdateOrCreate.Margin = new System.Windows.Forms.Padding(2);
             this.rdoUpdateOrCreate.Name = "rdoUpdateOrCreate";
             this.rdoUpdateOrCreate.Size = new System.Drawing.Size(102, 17);
             this.rdoUpdateOrCreate.TabIndex = 5;
@@ -110,7 +112,7 @@
             // txtItemId
             // 
             this.txtItemId.Location = new System.Drawing.Point(49, 135);
-            this.txtItemId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtItemId.Margin = new System.Windows.Forms.Padding(2);
             this.txtItemId.Name = "txtItemId";
             this.txtItemId.Size = new System.Drawing.Size(425, 20);
             this.txtItemId.TabIndex = 7;
@@ -118,7 +120,7 @@
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(344, 173);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(56, 19);
             this.btnCancel.TabIndex = 8;
@@ -139,7 +141,7 @@
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(410, 173);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(56, 19);
             this.btnOK.TabIndex = 9;
@@ -150,7 +152,7 @@
             // btnSelectFile
             // 
             this.btnSelectFile.Location = new System.Drawing.Point(442, 8);
-            this.btnSelectFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSelectFile.Margin = new System.Windows.Forms.Padding(2);
             this.btnSelectFile.Name = "btnSelectFile";
             this.btnSelectFile.Size = new System.Drawing.Size(27, 19);
             this.btnSelectFile.TabIndex = 12;
@@ -174,7 +176,7 @@
             this.Controls.Add(this.rdoCreateNew);
             this.Controls.Add(this.txtFile);
             this.Controls.Add(this.lblFile);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UploadItemForm";
             this.Text = "Upload Item";
             this.Load += new System.EventHandler(this.UploadItemForm_Load);
