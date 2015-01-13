@@ -20,15 +20,23 @@ namespace EWSEditor.Forms
     public partial class AddRemoveAttachments : Form
     {
         Item _Item = null;
+        bool _IsExistingEmail = false;
+        public bool IsDirty = true;
+
         public AddRemoveAttachments()
         {
             InitializeComponent();
         }
 
-        public AddRemoveAttachments(ref Item oItem)
+        public AddRemoveAttachments(ref Item oItem, bool IsExistingEmail)
         {
             _Item = oItem;
+            _IsExistingEmail = IsExistingEmail;
+
+            IsDirty = false;
             InitializeComponent();
+
+ 
         }
 
         private void PopulateAttachmentsList()
@@ -50,23 +58,39 @@ namespace EWSEditor.Forms
             {
                 FileAttachment oNewFileAttachment = _Item.Attachments.AddFileAttachment(oSelectAttachmentToAdd.txtFile.Text);
 
-                oNewFileAttachment.ContentId = oSelectAttachmentToAdd.txtContentId.Text.Trim();
-                oNewFileAttachment.ContentLocation = oSelectAttachmentToAdd.txtContentLocation.Text.Trim();
-                oNewFileAttachment.ContentType = oSelectAttachmentToAdd.cmboContentType.Text.Trim();
-                //oNewFileAttachment.Name = oSelectAttachmentToAdd.Name.Text.Trim();
-                oNewFileAttachment.IsInline = oSelectAttachmentToAdd.chkIsInline.Checked;
+                if (oSelectAttachmentToAdd.chkIsInline.Checked == true)
+                { 
+                    oNewFileAttachment.ContentId = oSelectAttachmentToAdd.txtContentId.Text.Trim();
+                    oNewFileAttachment.ContentLocation = oSelectAttachmentToAdd.txtContentLocation.Text.Trim();
+                    oNewFileAttachment.ContentType = oSelectAttachmentToAdd.cmboContentType.Text.Trim();
+                    //oNewFileAttachment.Name = oSelectAttachmentToAdd.Name.Text.Trim();
+                    oNewFileAttachment.IsInline = oSelectAttachmentToAdd.chkIsInline.Checked;
+                }
                 oNewFileAttachment.IsContactPhoto = oSelectAttachmentToAdd.chkIsContactPhoto.Checked;
 
                 oListItem = new ListViewItem(oNewFileAttachment.Id, 0);
                 //oListItem.SubItems.Add(oNewFileAttachment.Id);
-                oListItem.SubItems.Add(oNewFileAttachment.ContentId);
-                oListItem.SubItems.Add(oNewFileAttachment.ContentLocation);
-                oListItem.SubItems.Add(oNewFileAttachment.ContentType);
-                oListItem.SubItems.Add(oNewFileAttachment.Name);
-                oListItem.SubItems.Add(oNewFileAttachment.IsInline.ToString());
+                if (oSelectAttachmentToAdd.chkIsInline.Checked == true)
+                {
+                    oListItem.SubItems.Add(oNewFileAttachment.ContentId);
+                    oListItem.SubItems.Add(oNewFileAttachment.ContentLocation);
+                    oListItem.SubItems.Add(oNewFileAttachment.ContentType);
+                    oListItem.SubItems.Add(oNewFileAttachment.Name);
+                    oListItem.SubItems.Add(oNewFileAttachment.IsInline.ToString());
+                }
+                else
+                {
+                    oListItem.SubItems.Add("");
+                    oListItem.SubItems.Add("");
+                    oListItem.SubItems.Add("");
+                    oListItem.SubItems.Add(oNewFileAttachment.Name);
+                    oListItem.SubItems.Add("");
+                }
    
                 lvFileAttachments.Items.AddRange(new ListViewItem[] { oListItem });
                 oListItem = null;
+
+                IsDirty = true;
 
             }
  
@@ -74,19 +98,22 @@ namespace EWSEditor.Forms
 
         private void btnDeleteAttachment_Click(object sender, EventArgs e)
         {
-            //if (chkListAttachments.CheckedItems.Count != 0)
-            //{
-            //    while (chkListAttachments.CheckedIndices.Count > 0)
-            //    {
-            //        chkListAttachments.Items.RemoveAt(chkListAttachments.CheckedIndices[0]);
-            //    }
-            //}
+            if (lvFileAttachments.SelectedItems.Count != 0)
+            {
+                lvFileAttachments.Items.Remove(lvFileAttachments.SelectedItems[0]);
+
+                IsDirty = true;
+            }
         }
 
         private void AddRemoveAttachments_Load(object sender, EventArgs e)
         {
+            btnInsertFileAttachment.Enabled = !(_IsExistingEmail);
+            btnDeleteFileAttachment.Enabled = !(_IsExistingEmail);
+
             AppointmentHelper.LoadFileAttachmentsLv(_Item, ref lvFileAttachments);
-            //AppointmentHelper.LoadItemsAttachmentsListLv(_Item, ref lvItemAttachments);
+
+       
         }
 
         private void groupBox3_Enter(object sender, EventArgs e)

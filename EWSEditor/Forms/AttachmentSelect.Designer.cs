@@ -48,7 +48,7 @@
             this.txtFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFile.Location = new System.Drawing.Point(104, 15);
-            this.txtFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFile.Margin = new System.Windows.Forms.Padding(2);
             this.txtFile.Name = "txtFile";
             this.txtFile.Size = new System.Drawing.Size(481, 20);
             this.txtFile.TabIndex = 1;
@@ -99,17 +99,18 @@
             // chkIsInline
             // 
             this.chkIsInline.AutoSize = true;
-            this.chkIsInline.Location = new System.Drawing.Point(12, 138);
+            this.chkIsInline.Location = new System.Drawing.Point(12, 45);
             this.chkIsInline.Name = "chkIsInline";
             this.chkIsInline.Size = new System.Drawing.Size(62, 17);
             this.chkIsInline.TabIndex = 9;
             this.chkIsInline.Text = "Is Inline";
             this.chkIsInline.UseVisualStyleBackColor = true;
+            this.chkIsInline.CheckedChanged += new System.EventHandler(this.chkIsInline_CheckedChanged);
             // 
             // lblMessageType
             // 
             this.lblMessageType.AutoSize = true;
-            this.lblMessageType.Location = new System.Drawing.Point(10, 110);
+            this.lblMessageType.Location = new System.Drawing.Point(44, 139);
             this.lblMessageType.Name = "lblMessageType";
             this.lblMessageType.Size = new System.Drawing.Size(74, 13);
             this.lblMessageType.TabIndex = 7;
@@ -118,7 +119,7 @@
             // cmboContentType
             // 
             this.cmboContentType.FormattingEnabled = true;
-            this.cmboContentType.Location = new System.Drawing.Point(104, 105);
+            this.cmboContentType.Location = new System.Drawing.Point(138, 134);
             this.cmboContentType.Name = "cmboContentType";
             this.cmboContentType.Size = new System.Drawing.Size(110, 21);
             this.cmboContentType.TabIndex = 8;
@@ -126,7 +127,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 79);
+            this.label1.Location = new System.Drawing.Point(44, 108);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
@@ -135,8 +136,8 @@
             // 
             // txtContentId
             // 
-            this.txtContentId.Location = new System.Drawing.Point(104, 74);
-            this.txtContentId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtContentId.Location = new System.Drawing.Point(138, 103);
+            this.txtContentId.Margin = new System.Windows.Forms.Padding(2);
             this.txtContentId.Name = "txtContentId";
             this.txtContentId.Size = new System.Drawing.Size(196, 20);
             this.txtContentId.TabIndex = 6;
@@ -144,7 +145,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 41);
+            this.label3.Location = new System.Drawing.Point(44, 67);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
@@ -153,8 +154,8 @@
             // 
             // txtContentLocation
             // 
-            this.txtContentLocation.Location = new System.Drawing.Point(103, 41);
-            this.txtContentLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtContentLocation.Location = new System.Drawing.Point(138, 67);
+            this.txtContentLocation.Margin = new System.Windows.Forms.Padding(2);
             this.txtContentLocation.Name = "txtContentLocation";
             this.txtContentLocation.Size = new System.Drawing.Size(196, 20);
             this.txtContentLocation.TabIndex = 4;
@@ -162,7 +163,7 @@
             // chkIsContactPhoto
             // 
             this.chkIsContactPhoto.AutoSize = true;
-            this.chkIsContactPhoto.Location = new System.Drawing.Point(13, 162);
+            this.chkIsContactPhoto.Location = new System.Drawing.Point(13, 169);
             this.chkIsContactPhoto.Name = "chkIsContactPhoto";
             this.chkIsContactPhoto.Size = new System.Drawing.Size(99, 17);
             this.chkIsContactPhoto.TabIndex = 10;
@@ -187,7 +188,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFile);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AttachmentSelect";
             this.Text = "AttachmentSelect";
             this.Load += new System.EventHandler(this.SelectAttachmentToAdd_Load);

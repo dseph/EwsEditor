@@ -1696,7 +1696,7 @@ namespace EWSEditor.Forms
                 if (oDlg == System.Windows.Forms.DialogResult.OK)
                 { 
                     Item oItem = (Item)_Appointment;
-                    AddRemoveAttachments oAddRemoveAttachments = new AddRemoveAttachments(ref oItem);
+                    AddRemoveAttachments oAddRemoveAttachments = new AddRemoveAttachments(ref oItem, _IsExistingAppointment);
                     oAddRemoveAttachments.ShowDialog();
                 }
             }
