@@ -19,6 +19,7 @@ namespace EWSEditor.Forms
         private bool _CanEdit = false;
         private bool _CanSend = false;
         private bool _CanReply = false;
+        private bool _isDirty = false;
 
         private ExchangeService _CurrentService = null;
         private EmailMessage _EmailMessage = null;
@@ -744,12 +745,11 @@ namespace EWSEditor.Forms
                 oForm.ShowDialog();
                 oForm = null;
 
+                //ExtendedPropertyDefinition PidTagMimeSkeleton = new ExtendedPropertyDefinition(0x64F00102, MapiPropertyType.String);
+                // http://msdn.microsoft.com/en-us/library/office/hh545614(v=exchg.140).aspx
+
             }
-            //else
-            //{
-            //    MessageBox.Show("Message has no headers");
-            //}
-            //_EmailMessage.Attachments.AddFileAttachment();
+ 
  
         }
 
@@ -806,16 +806,18 @@ namespace EWSEditor.Forms
 
         private void btnAttachments_Click(object sender, EventArgs e)
         {
-        //    if (_isDirty == true)
-        //    {
-        //        DialogResult oDlg = MessageBox.Show("Save?", "Item needs to be saved before working with attachments.", MessageBoxButtons.OKCancel);
-        //        if (oDlg == System.Windows.Forms.DialogResult.OK)
-        //        {
-        //            Item oItem = (Item)_EmailMessage;
-        //            AddRemoveAttachments oAddRemoveAttachments = new AddRemoveAttachments(ref oItem);
-        //            oAddRemoveAttachments.ShowDialog();
-        //        }
-        //    }
+            //if (_IsExistingEmail == false)
+            //{
+                //DialogResult oDlg = MessageBox.Show("Save?", "Item needs to be saved before working with attachments.", MessageBoxButtons.OKCancel);
+                //if (oDlg == System.Windows.Forms.DialogResult.OK)
+                //{
+                    Item oItem = (Item)_EmailMessage;
+                    AddRemoveAttachments oAddRemoveAttachments = new AddRemoveAttachments(ref oItem, _IsExistingEmail);
+                    oAddRemoveAttachments.ShowDialog();
+                    if (oAddRemoveAttachments.IsDirty == true)
+                        _isDirty = true;
+                //}
+           // }
         }
 
         private void txtFrom_TextChanged(object sender, EventArgs e)

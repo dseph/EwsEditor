@@ -87,6 +87,11 @@ namespace EWSEditor.Common
                     oListItem = null;
                 }
 
+                if (oAttachment is FileAttachment)
+                {
+
+                } 
+
             }
             iAttachmentCount++;
         }
@@ -99,14 +104,14 @@ namespace EWSEditor.Common
             oListView.View = View.Details;
             oListView.GridLines = true;
             oListView.FullRowSelect = true;
-            oListView.Columns.Add("Id", 70, HorizontalAlignment.Left);
-            oListView.Columns.Add("ContentId", 70, HorizontalAlignment.Left);
+            oListView.Columns.Add("Id", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("ContentId", 120, HorizontalAlignment.Left);
             oListView.Columns.Add("ContentLocation", 70, HorizontalAlignment.Left);
-            oListView.Columns.Add("ContentType", 70, HorizontalAlignment.Left);
-            oListView.Columns.Add("Name", 140, HorizontalAlignment.Left);
-            oListView.Columns.Add("FileName", 140, HorizontalAlignment.Left);
+            oListView.Columns.Add("ContentType", 120, HorizontalAlignment.Left);
+            oListView.Columns.Add("Name", 200, HorizontalAlignment.Left);
+            oListView.Columns.Add("FileName", 200, HorizontalAlignment.Left);
             oListView.Columns.Add("IsInline", 50, HorizontalAlignment.Left);  // Exchange 2010 and later.
-            oListView.Columns.Add("IsContactPhoto", 50, HorizontalAlignment.Left);
+            oListView.Columns.Add("IsContactPhoto", 100, HorizontalAlignment.Left);
         
 
             ListViewItem oListItem = null;
@@ -115,6 +120,39 @@ namespace EWSEditor.Common
             foreach (Attachment oAttachment in oItem.Attachments)
             {
                 oAttachment.Load();
+
+                //ExtendedPropertyDefinition PidTagAttachPathname = new ExtendedPropertyDefinition(0x3708, MapiPropertyType.String);
+                //ExtendedPropertyDefinition PidTagAttachEncoding = new ExtendedPropertyDefinition(0x3702, MapiPropertyType.Binary);
+                //ExtendedPropertyDefinition PidTagAttachMethod = new ExtendedPropertyDefinition(0x3705, MapiPropertyType.Long);
+                //ExtendedPropertyDefinition PidTagCreationTime = new ExtendedPropertyDefinition(0x3007, MapiPropertyType.ApplicationTime);
+                //ExtendedPropertyDefinition PidTagDisplayName = new ExtendedPropertyDefinition(0x3001, MapiPropertyType.String);
+                //ExtendedPropertyDefinition PidTagAttachExtension = new ExtendedPropertyDefinition(0x3703, MapiPropertyType.String);
+                //ExtendedPropertyDefinition PidTagAttachLongFilename = new ExtendedPropertyDefinition(0x3707, MapiPropertyType.String);
+                //ExtendedPropertyDefinition PidTagAttachTag = new ExtendedPropertyDefinition(0x370A, MapiPropertyType.Binary);
+                //ExtendedPropertyDefinition PidTagAttachTransportName = new ExtendedPropertyDefinition(0x370C, MapiPropertyType.String);
+                //ExtendedPropertyDefinition PidTagLastModificationTime = new ExtendedPropertyDefinition(0x370B, MapiPropertyType.Long);
+                //ExtendedPropertyDefinition PidTagAttachNumber = new ExtendedPropertyDefinition(0x0E21, MapiPropertyType.Long);
+                //ExtendedPropertyDefinition PidTagInstanceKey = new ExtendedPropertyDefinition(0x0FF6, MapiPropertyType.Binary);
+                //ExtendedPropertyDefinition PidTagRecordKey = new ExtendedPropertyDefinition(0x0FF9, MapiPropertyType.Binary);
+                //ExtendedPropertyDefinition PidTagRenderingPosition = new ExtendedPropertyDefinition(0x370B, MapiPropertyType.Long);
+
+
+                //ExtendedPropertyDefinition TransportMsgHdr = new ExtendedPropertyDefinition(0x007D, MapiPropertyType.String);
+                //ExtendedPropertyDefinition PidTagRtfCompressed = new ExtendedPropertyDefinition(0x1009, MapiPropertyType.Binary);
+                //ExtendedPropertyDefinition PidTagMimeSkeleton = new ExtendedPropertyDefinition(0x64F00102, MapiPropertyType.String);
+                // // http://msdn.microsoft.com/en-us/library/office/hh545614(v=exchg.140).aspx
+
+                //ExtendedPropertyDefinition PidTagRtfCompressed = new ExtendedPropertyDefinition(0x1009, MapiPropertyType.Binary);   
+                //PropertySet propertySet = new PropertySet(
+                //    new PropertyDefinitionBase[] 
+                //        { ItemSchema.MimeContent, 
+                //            ItemSchema.Subject, 
+                //            PidTagRtfCompressed 
+                //        }
+                //    );
+                //message.Load(propertySet); 
+
+                
 
                 if (oAttachment is FileAttachment)
                 {
@@ -137,9 +175,9 @@ namespace EWSEditor.Common
                     {
                         bIsInline = oAttachment.IsInline;
                     }
-                        
-                    if (oAttachment.IsInline == true)
-                    {
+                         
+                    //if (oAttachment.IsInline == true)
+                    //{
                         oListItem = new ListViewItem(oAttach.Id, 0);
                         oListItem.SubItems.Add(oAttach.ContentId);
                         oListItem.SubItems.Add(oAttach.ContentLocation);
@@ -153,8 +191,31 @@ namespace EWSEditor.Common
                         oListView.Items.AddRange(new ListViewItem[] { oListItem });
                         oListItem = null;
                         iAttachments++;
-                    }
+                    //}
+                    //else
+                    //{
+                    //    oListItem = new ListViewItem(oAttach.Id, 0);
+                    //    oListItem.SubItems.Add(oAttach.ContentId);
+                    //    oListItem.SubItems.Add(oAttach.ContentLocation);
+                    //    oListItem.SubItems.Add(oAttach.ContentType);
+                    //    oListItem.SubItems.Add(oAttach.Name);
+                    //    oListItem.SubItems.Add(oAttach.FileName);
+                    //    oListItem.SubItems.Add(bIsInline.ToString());
+                    //    oListItem.SubItems.Add(oAttach.IsContactPhoto.ToString());
+
+                    //    oListItem.Tag = iAttachmentCount;
+                    //    oListView.Items.AddRange(new ListViewItem[] { oListItem });
+                    //    oListItem = null;
+                    //    iAttachments++;
+                    //}
+
                 }
+
+                if (oAttachment is ItemAttachment)
+                {
+
+                }
+
                 iAttachmentCount++;
             }
             return iAttachments;

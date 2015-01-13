@@ -26,12 +26,20 @@ namespace EWSEditor.Forms
 
         private void SelectAttachmentToAdd_Load(object sender, EventArgs e)
         {
+            SetEnablement();
+        }
 
+        private void SetEnablement()
+        {
+            txtContentLocation.Enabled = chkIsInline.Checked;
+            txtContentId.Enabled = chkIsInline.Checked;
+            cmboContentType.Enabled = chkIsInline.Checked;
+            chkIsContactPhoto.Enabled = !chkIsInline.Checked;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            ChoseOK = true;
+            ChoseOK = true; 
             this.Close();
         }
 
@@ -49,6 +57,11 @@ namespace EWSEditor.Forms
             {
                 this.txtFile.Text = sSelectedFile;
             };
+        }
+
+        private void chkIsInline_CheckedChanged(object sender, EventArgs e)
+        {
+            SetEnablement();
         }
     }
 }
