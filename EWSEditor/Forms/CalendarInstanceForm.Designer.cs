@@ -606,7 +606,6 @@
             this.btnAttachments.Tag = "";
             this.btnAttachments.Text = "Attachments";
             this.btnAttachments.UseVisualStyleBackColor = true;
-            this.btnAttachments.Visible = false;
             this.btnAttachments.Click += new System.EventHandler(this.btnAttachments_Click);
             // 
             // cmboTimezone

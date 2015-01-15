@@ -629,15 +629,15 @@ namespace EWSEditor.Forms
         {
             if (_isDirty == true)
             {
-                DialogResult oDlg = MessageBox.Show("Save?", "Item needs to be saved before working with attachments.", MessageBoxButtons.OKCancel);
-                if (oDlg == System.Windows.Forms.DialogResult.OK)
-                {
+                //DialogResult oDlg = MessageBox.Show("Save?", "Item needs to be saved before working with attachments.", MessageBoxButtons.OKCancel);
+                //if (oDlg == System.Windows.Forms.DialogResult.OK)
+                //{
                     Item oItem = (Item)_Appointment;
                     AddRemoveAttachments oAddRemoveAttachments = new AddRemoveAttachments(ref oItem, _IsExistingAppointment);
                     oAddRemoveAttachments.ShowDialog();
                     if (oAddRemoveAttachments.IsDirty == true)
                         _isDirty = true;
-                }
+                //}
             }
         }
 

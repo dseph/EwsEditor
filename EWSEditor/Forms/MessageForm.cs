@@ -40,18 +40,7 @@ namespace EWSEditor.Forms
             InitializeComponent();
         }
 
-        //public MessageForm(EwsCaller oEwsCaller)
-        //{
-        //    InitializeComponent();
-        //    _EwsCaller = oEwsCaller;
-
-        //    _IsExistingEmail = false;
-        //    _CanEdit = true;
-        //    _CanSend = true;
-        //    _CanReply = true;
-             
-        //    ClearForm();
-        //}
+ 
 
         // Existing Message
         public MessageForm(ExchangeService CurrentService, ItemId oItemId)
@@ -67,13 +56,7 @@ namespace EWSEditor.Forms
             _CanSend = false;
             _CanReply = true;
 
-            //bool IsItemInDraftsFolder = false;
-            //Folder oDrafts = Folder.Bind(_CurrentService, WellKnownFolderName.Drafts);
-            //if (_EmailMessage.ParentFolderId == oDrafts.Id)
-            //{
-            //    IsItemInDraftsFolder = true;
-            //    //_CanReply = false;
-            //}
+             
 
             // Edit Fields?
             if (_EmailMessage.IsNew == false)
@@ -141,14 +124,7 @@ namespace EWSEditor.Forms
             }
 
             
-             
-            //if (_EmailMessage.IsSubmitted)  // is sent?
-            //{
-            //    //_EditMessageType = EditMessageType.IsNew;
-            //    _CanEdit = false;
-            //    _CanSend = false;
-            //    _CanReply = true;
-            //}
+  
 
 
             SetFormFromMessage(oEmailMessage, _CanEdit, _CanSend, _CanReply);
@@ -203,76 +179,11 @@ namespace EWSEditor.Forms
                         bRet = false;
                     }
                 }
-            //}
-            //else
-            //    try
-            //    {
-            //        if (bSaveCopy)
-            //            _ResponseMessage.SendAndSaveCopy();
-            //        else
-            //            _ResponseMessage.Send();
-            //        bRet = true;
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message, "Error Sending Response Message");
-            //        bRet = false;
-            //    }
+             
             return bRet;
         }
 
-        //private bool SendReplyMessage(ref EmailMessage oEmailMessage, bool bReplyAll)
-        //{
-        //    bool bRet = false;
-        //    try
-        //    {
-        //        ResponseMessage oResponseMessage = oEmailMessage.CreateReply(bReplyAll);
-        //        if (SetMessageFromForm(ref oEmailMessage))
-        //        {
-        //            oEmailMessage.SendAndSaveCopy();
-        //        }
-        //        btnSave.Enabled = false;
-        //        btnSend.Enabled = false;
-        //        //_EditMessageType = EditMessageType.IsExistingSent;
-        //        bRet = true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message, "Error Sending Reply Message");
-        //    }
-
-        //    return bRet;
-        //}
-
-        //private bool MakeForwardedMessage(ref EmailMessage oEmailMessage)
-        //{
-        //    bool bRet = false;
-        //    MessageResponseForm oMessageResponseForm = null;
-        //    oMessageResponseForm = new MessageResponseForm(ref oEmailMessage, ResponseMessageType.Forward);
-        //    oMessageResponseForm.ShowDialog();
-        //    oMessageResponseForm = null;
-
-        //    //SetFormFromResponseMessage(_ResponseMessage);
- 
-        //    return bRet;
-        //}
-
-        //private bool MakeReplyMessage(ref EmailMessage oEmailMessage, bool bReplyAll)
-        //{
-        //    bool bRet = false;
-            
-        //    MessageResponseForm oMessageResponseForm = null;
-         
-        //    if (bReplyAll == true)
-        //        oMessageResponseForm = new MessageResponseForm(ref oEmailMessage, ResponseMessageType.ReplyAll);
-        //    else
-        //        oMessageResponseForm = new MessageResponseForm(ref oEmailMessage, ResponseMessageType.Reply);
-        //    oMessageResponseForm.ShowDialog();
-        //    oMessageResponseForm = null;
-        //    //SetFormFromResponseMessage(_ResponseMessage);
-        //    return bRet;
-        //}
-
+       
  
 
         private bool SetMessageFromForm(ref EmailMessage oEmailMessage)
@@ -434,10 +345,7 @@ namespace EWSEditor.Forms
             bool bRet = false;
             int iNothing = 0;
             iNothing = iNothing + 0;
-            //_CanEdit =  CanEdit;
-            //_CanSend = CanSend;
-            //_CanReply = CanReply;
-
+   
             ClearForm();
 
             if (_IsExistingEmail == false)
@@ -458,7 +366,7 @@ namespace EWSEditor.Forms
                     btnReplyAll.Enabled = false;
                 }
 
-                //message.Attachments.AddFileAttachment("<path to file>");
+ 
                 foreach (EmailAddress oAddress in oEmailMessage.ToRecipients)
                 {
                     txtTo.Text += oAddress.Address + "; ";
@@ -507,23 +415,20 @@ namespace EWSEditor.Forms
                     { if (ex_IsReadReceiptRequested != null) iNothing = 0; }
                 }
 
-                //oEmailMessage.Sensitivity = Sensitivity.
-
-                //if (oEmailMessage.IsDraft == true)
+ 
                 btnSend.Enabled = CanSend;
 
-
-                // if (oEmailMessage.IsNew)
+ 
                 if (CanEdit == true)
                 {
-                    // _EditMessageType = EditMessageType.IsNew;
+ 
                     btnSave.Enabled = true;
                     chkReadReceipt.Enabled = true;
                     chkDeliveryReceipt.Enabled = true;
                 }
                 else
                 {
-                    // _EditMessageType = EditMessageType.IsExistingSent;
+             
                     btnSave.Enabled = false;
                 }
 
@@ -572,7 +477,7 @@ namespace EWSEditor.Forms
                     if (_IsExistingEmail == false)
                     {
                         _EmailMessage.Save(WellKnownFolderName.Drafts);
-                        //_EmailMessage.Save(_EmailMessage.ParentFolderId);
+   
                     }
                     else
                         _EmailMessage.Update(ConflictResolutionMode.AutoResolve);
@@ -659,66 +564,7 @@ namespace EWSEditor.Forms
             return bRet;
         }
 
- 
-        //private bool SetFormFromResponseMessage(ResponseMessage oEmailMessage)
-        //{
-        //    bool bRet = false;
-        //    ClearForm();
-        //    //message.Attachments.AddFileAttachment("<path to file>");
-        //    foreach (EmailAddress oAddress in oEmailMessage.ToRecipients)
-        //    {
-        //        txtTo.Text += oAddress.Address + "; ";
-        //    }
-        //    foreach (EmailAddress oAddress in oEmailMessage.BccRecipients)
-        //    {
-        //        txtBCC.Text += oAddress.Address + "; ";
-        //    }
-        //    foreach (EmailAddress oAddress in oEmailMessage.CcRecipients)
-        //    {
-        //        txtCC.Text += oAddress.Address + "; ";
-        //    }
-
-        //    txtSubject.Text = oEmailMessage.Subject;
-
-        //    if (oEmailMessage.Body.BodyType == BodyType.HTML)
-        //        cmboMessageType.Text = "HTML";
-        //    else
-        //        cmboMessageType.Text = "Text";
-
-        //    txtBody.Text = oEmailMessage.Body.Text;
-        //    chkDeliveryReceipt.Checked = oEmailMessage.IsReadReceiptRequested;
-        //    chkReadReceipt.Checked = oEmailMessage.IsDeliveryReceiptRequested;
- 
-        //    //if (oEmailMessage.IsDraft == true)
-        //        btnSend.Enabled = true;
-        //    //else
-        //       // btnSend.Enabled = false;
-
-        //    //if (oEmailMessage.IsNew)
-        //    //{
-        //    //    _EditMessageType = EditMessageType.IsNew;
-        //    //    btnSave.Enabled = true;
-        //    //}
-        //    //else
-        //    //{
-        //    //    _EditMessageType = EditMessageType.IsExistingSent;
-        //    //    btnSave.Enabled = false;
-        //    //}
-
-        //    btnReply.Enabled = false;
-        //    btnReplyAll.Enabled = false;
-        //    btnForward.Enabled = false;
-             
-        //    //System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
-        //    //System.Diagnostics.Debug.WriteLine("ChangeKey: ", oEmailMessage.ConversationId.ChangeKey);
-        //    //System.Diagnostics.Debug.WriteLine("UniqueId: ", oEmailMessage.ConversationId.UniqueId);
-        //    //System.Diagnostics.Debug.WriteLine("Subject: ", oEmailMessage.Subject);
-        //    //System.Diagnostics.Debug.WriteLine("ConversationTopic: ", oEmailMessage.ConversationTopic);
-        //    //System.Diagnostics.Debug.WriteLine("ConversationIndex: \r\n", StringHelper.HexStringFromByteArray(oEmailMessage.ConversationIndex) + "\r\n");
-        //    //System.Diagnostics.Debug.WriteLine("----------------------------------------------------");
-        //    return bRet;
-        //}
-         
+  
 
  
 
@@ -732,22 +578,33 @@ namespace EWSEditor.Forms
         {
             string sInfo = string.Empty;
 
-            if (_EmailMessage.InternetMessageHeaders != null)
+            if (_EmailMessage != null)
             {
-                foreach (InternetMessageHeader oHeader in _EmailMessage.InternetMessageHeaders)
+                if (_EmailMessage.InternetMessageHeaders != null)
                 {
-                    sInfo += oHeader.Name + ": " + oHeader.Value + "\r\n";
+                    foreach (InternetMessageHeader oHeader in _EmailMessage.InternetMessageHeaders)
+                    {
+                        sInfo += oHeader.Name + ": " + oHeader.Value + "\r\n";
+                    }
+
+                    ShowTextDocument oForm = new ShowTextDocument();
+                    oForm.Text = "Message Headers";
+                    oForm.txtEntry.Text = sInfo;
+                    oForm.ShowDialog();
+                    oForm = null;
+
+                    //ExtendedPropertyDefinition PidTagMimeSkeleton = new ExtendedPropertyDefinition(0x64F00102, MapiPropertyType.String);
+                    // http://msdn.microsoft.com/en-us/library/office/hh545614(v=exchg.140).aspx
+
                 }
-
-                ShowTextDocument oForm = new ShowTextDocument();
-                oForm.Text = "Message Headers";
-                oForm.txtEntry.Text = sInfo;
-                oForm.ShowDialog();
-                oForm = null;
-
-                //ExtendedPropertyDefinition PidTagMimeSkeleton = new ExtendedPropertyDefinition(0x64F00102, MapiPropertyType.String);
-                // http://msdn.microsoft.com/en-us/library/office/hh545614(v=exchg.140).aspx
-
+                else
+                {
+                    MessageBox.Show("No headers.", "No headers.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("No headers.", "No headers.");
             }
  
  
@@ -773,16 +630,7 @@ namespace EWSEditor.Forms
 
         }
 
-        //private void btnProperties_Click(object sender, EventArgs e)
-        //{
-        //    string sInfo = string.Empty;
-        //    sInfo = _EwsCaller.GetItemInfo(_EmailMessage.Id, "IPM.Note");
-        //    ShowTextDocument oForm = new ShowTextDocument();
-        //    oForm.Text = "Item Properties";
-        //    oForm.txtEntry.Text = sInfo;
-        //    oForm.ShowDialog();
-        //    oForm = null;
-        //}
+ 
 
         private void chkDeliveryReceipt_CheckedChanged(object sender, EventArgs e)
         {

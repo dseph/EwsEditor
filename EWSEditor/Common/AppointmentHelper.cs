@@ -112,29 +112,32 @@ namespace EWSEditor.Common
             oListView.Columns.Add("FileName", 200, HorizontalAlignment.Left);
             oListView.Columns.Add("IsInline", 50, HorizontalAlignment.Left);  // Exchange 2010 and later.
             oListView.Columns.Add("IsContactPhoto", 100, HorizontalAlignment.Left);
-        
+            oListView.Columns.Add("Size", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("LastModifiedTime", 200, HorizontalAlignment.Left);
 
             ListViewItem oListItem = null;
             int iAttachmentCount = 0;
             bool bIsInline = false;
             foreach (Attachment oAttachment in oItem.Attachments)
             {
-                oAttachment.Load();
-
-                //ExtendedPropertyDefinition PidTagAttachPathname = new ExtendedPropertyDefinition(0x3708, MapiPropertyType.String);
-                //ExtendedPropertyDefinition PidTagAttachEncoding = new ExtendedPropertyDefinition(0x3702, MapiPropertyType.Binary);
-                //ExtendedPropertyDefinition PidTagAttachMethod = new ExtendedPropertyDefinition(0x3705, MapiPropertyType.Long);
-                //ExtendedPropertyDefinition PidTagCreationTime = new ExtendedPropertyDefinition(0x3007, MapiPropertyType.ApplicationTime);
-                //ExtendedPropertyDefinition PidTagDisplayName = new ExtendedPropertyDefinition(0x3001, MapiPropertyType.String);
-                //ExtendedPropertyDefinition PidTagAttachExtension = new ExtendedPropertyDefinition(0x3703, MapiPropertyType.String);
-                //ExtendedPropertyDefinition PidTagAttachLongFilename = new ExtendedPropertyDefinition(0x3707, MapiPropertyType.String);
-                //ExtendedPropertyDefinition PidTagAttachTag = new ExtendedPropertyDefinition(0x370A, MapiPropertyType.Binary);
-                //ExtendedPropertyDefinition PidTagAttachTransportName = new ExtendedPropertyDefinition(0x370C, MapiPropertyType.String);
-                //ExtendedPropertyDefinition PidTagLastModificationTime = new ExtendedPropertyDefinition(0x370B, MapiPropertyType.Long);
-                //ExtendedPropertyDefinition PidTagAttachNumber = new ExtendedPropertyDefinition(0x0E21, MapiPropertyType.Long);
-                //ExtendedPropertyDefinition PidTagInstanceKey = new ExtendedPropertyDefinition(0x0FF6, MapiPropertyType.Binary);
-                //ExtendedPropertyDefinition PidTagRecordKey = new ExtendedPropertyDefinition(0x0FF9, MapiPropertyType.Binary);
-                //ExtendedPropertyDefinition PidTagRenderingPosition = new ExtendedPropertyDefinition(0x370B, MapiPropertyType.Long);
+                if (oAttachment.Id != null)   // dont reload if attachment was added but message was not saved yet.
+                    oAttachment.Load();
+               
+                // Note: As of EWS 2013_sp1 the schema for attachments is fixed, so we cannot pull extended properties like the ones below
+                //      ExtendedPropertyDefinition PidTagAttachPathname = new ExtendedPropertyDefinition(0x3708, MapiPropertyType.String);
+                //      ExtendedPropertyDefinition PidTagAttachEncoding = new ExtendedPropertyDefinition(0x3702, MapiPropertyType.Binary);
+                //      ExtendedPropertyDefinition PidTagAttachMethod = new ExtendedPropertyDefinition(0x3705, MapiPropertyType.Long);
+                //      ExtendedPropertyDefinition PidTagCreationTime = new ExtendedPropertyDefinition(0x3007, MapiPropertyType.ApplicationTime);
+                //      ExtendedPropertyDefinition PidTagDisplayName = new ExtendedPropertyDefinition(0x3001, MapiPropertyType.String);
+                //      ExtendedPropertyDefinition PidTagAttachExtension = new ExtendedPropertyDefinition(0x3703, MapiPropertyType.String);
+                //      ExtendedPropertyDefinition PidTagAttachLongFilename = new ExtendedPropertyDefinition(0x3707, MapiPropertyType.String);
+                //      ExtendedPropertyDefinition PidTagAttachTag = new ExtendedPropertyDefinition(0x370A, MapiPropertyType.Binary);
+                //      ExtendedPropertyDefinition PidTagAttachTransportName = new ExtendedPropertyDefinition(0x370C, MapiPropertyType.String);
+                //      ExtendedPropertyDefinition PidTagLastModificationTime = new ExtendedPropertyDefinition(0x370B, MapiPropertyType.Long);
+                //      ExtendedPropertyDefinition PidTagAttachNumber = new ExtendedPropertyDefinition(0x0E21, MapiPropertyType.Long);
+                //      ExtendedPropertyDefinition PidTagInstanceKey = new ExtendedPropertyDefinition(0x0FF6, MapiPropertyType.Binary);
+                //      ExtendedPropertyDefinition PidTagRecordKey = new ExtendedPropertyDefinition(0x0FF9, MapiPropertyType.Binary);
+                //      ExtendedPropertyDefinition PidTagRenderingPosition = new ExtendedPropertyDefinition(0x370B, MapiPropertyType.Long);
 
 
                 //ExtendedPropertyDefinition TransportMsgHdr = new ExtendedPropertyDefinition(0x007D, MapiPropertyType.String);
@@ -186,10 +189,15 @@ namespace EWSEditor.Common
                         oListItem.SubItems.Add(oAttach.FileName);
                         oListItem.SubItems.Add(bIsInline.ToString());  
                         oListItem.SubItems.Add(oAttach.IsContactPhoto.ToString());
- 
-                        oListItem.Tag = iAttachmentCount;
+                        oListItem.SubItems.Add(oAttach.Size.ToString());
+                        oListItem.SubItems.Add(oAttach.LastModifiedTime.ToString());
+
+                        oListItem.Tag = oAttach;
                         oListView.Items.AddRange(new ListViewItem[] { oListItem });
                         oListItem = null;
+
+                        //Attachment oAttachment = (Attachment)lvFileAttachments.SelectedItems[0].Tag;
+
                         iAttachments++;
                     //}
                     //else
