@@ -33,8 +33,11 @@ namespace EWSEditor.Forms
         {
             txtContentLocation.Enabled = chkIsInline.Checked;
             txtContentId.Enabled = chkIsInline.Checked;
-            cmboContentType.Enabled = chkIsInline.Checked;
+            txtContentType.Enabled = chkIsInline.Checked;
             chkIsContactPhoto.Enabled = !chkIsInline.Checked;
+
+            if (chkIsInline.Checked == true)
+                chkIsContactPhoto.Checked = false;
         }
 
         private void btnOK_Click(object sender, EventArgs e)
