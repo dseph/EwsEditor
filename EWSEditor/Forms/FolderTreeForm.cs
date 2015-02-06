@@ -1599,5 +1599,59 @@ namespace EWSEditor.Forms
         {
 
         }
+
+        private void EmptyFolderHardDeletMenu_Click(object sender, EventArgs e)
+        {
+            Folder folder = GetFolderFromNode(FolderTreeView.SelectedNode);
+            if (folder != null)
+            {
+                ToolStripItem item = sender as ToolStripItem;
+                if (item != null)
+                {
+                    try
+                    {
+                        this.Cursor = Cursors.WaitCursor;
+                        folder.Empty(DeleteMode.HardDelete, false);
+
+                        //// Delete the folder in the manner selected in the context menu
+                        //if (item.Name == this.DeleteHardMenu.Name)
+                        //{
+                        //    folder.Delete(DeleteMode.HardDelete);
+                        //}
+                        //else if (item.Name == this.DeleteSoftMenu.Name)
+                        //{
+                        //    folder.Delete(DeleteMode.SoftDelete);
+                        //}
+                        //else if (item.Name == this.DeleteMoveMenu.Name)
+                        //{
+                        //    folder.Delete(DeleteMode.MoveToDeletedItems);
+                        //}
+
+                        //// Remove deleted node from tree view
+                        //TreeNode deletedNode = this.FolderTreeView.SelectedNode;
+                        //this.FolderTreeView.SelectedNode = deletedNode.Parent;
+                        //deletedNode.Remove();
+
+                        this.BindSelectedNode();
+                    }
+                    finally
+                    {
+                        this.Cursor = Cursors.Default;
+                    }
+                }
+            }
+        }
+
+        private void mnuEmptyTheFolder_Click(object sender, EventArgs e)
+        {
+
+             Folder oFolder = GetFolderFromNode(FolderTreeView.SelectedNode);
+             if (oFolder != null)
+             {
+
+                 EmptyFolder oForm = new EmptyFolder(oFolder);
+                 oForm.ShowDialog();
+             }
+        }
     }
 }

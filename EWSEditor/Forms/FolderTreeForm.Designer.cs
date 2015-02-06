@@ -44,10 +44,12 @@ namespace EWSEditor.Forms
             this.mnuPermissions = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuCreateSubFolder = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDeleteFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEmptyFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteHardMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteSoftMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteMoveMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.EmptyFolderMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEmptyTheFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCopyFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMoveFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
@@ -154,7 +156,8 @@ namespace EWSEditor.Forms
             this.mnuPermissions,
             this.toolStripMenuItem13,
             this.mnuCreateSubFolder,
-            this.mnuDeleteFolder,
+            this.mnuEmptyFolder,
+            this.mnuEmptyTheFolder,
             this.mnuCopyFolder,
             this.mnuMoveFolder,
             this.toolStripMenuItem12,
@@ -166,7 +169,7 @@ namespace EWSEditor.Forms
             this.mnuNewItem,
             this.SearchItemsMenuItem});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
-            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 364);
+            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 386);
             // 
             // mnuOpenContents
             // 
@@ -227,16 +230,17 @@ namespace EWSEditor.Forms
             this.mnuCreateSubFolder.Text = "Create SubFolder...";
             this.mnuCreateSubFolder.Click += new System.EventHandler(this.CreateSubFolderMenu_Click);
             // 
-            // mnuDeleteFolder
+            // mnuEmptyFolder
             // 
-            this.mnuDeleteFolder.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuEmptyFolder.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DeleteHardMenu,
             this.DeleteSoftMenu,
-            this.DeleteMoveMenu});
-            this.mnuDeleteFolder.Name = "mnuDeleteFolder";
-            this.mnuDeleteFolder.Size = new System.Drawing.Size(269, 22);
-            this.mnuDeleteFolder.Text = "Delete Folder";
-            this.mnuDeleteFolder.Click += new System.EventHandler(this.mnuDeleteFolder_Click);
+            this.DeleteMoveMenu,
+            this.EmptyFolderMenu});
+            this.mnuEmptyFolder.Name = "mnuEmptyFolder";
+            this.mnuEmptyFolder.Size = new System.Drawing.Size(269, 22);
+            this.mnuEmptyFolder.Text = "Delete Folder";
+            this.mnuEmptyFolder.Click += new System.EventHandler(this.mnuDeleteFolder_Click);
             // 
             // DeleteHardMenu
             // 
@@ -258,6 +262,20 @@ namespace EWSEditor.Forms
             this.DeleteMoveMenu.Size = new System.Drawing.Size(193, 22);
             this.DeleteMoveMenu.Text = "Move to Deleted Items";
             this.DeleteMoveMenu.Click += new System.EventHandler(this.DeleteFolderMenu_Click);
+            // 
+            // EmptyFolderMenu
+            // 
+            this.EmptyFolderMenu.Name = "EmptyFolderMenu";
+            this.EmptyFolderMenu.Size = new System.Drawing.Size(193, 22);
+            this.EmptyFolderMenu.Text = "Empty Folder";
+            this.EmptyFolderMenu.Click += new System.EventHandler(this.EmptyFolderHardDeletMenu_Click);
+            // 
+            // mnuEmptyTheFolder
+            // 
+            this.mnuEmptyTheFolder.Name = "mnuEmptyTheFolder";
+            this.mnuEmptyTheFolder.Size = new System.Drawing.Size(269, 22);
+            this.mnuEmptyTheFolder.Text = "Empty Folder";
+            this.mnuEmptyTheFolder.Click += new System.EventHandler(this.mnuEmptyTheFolder_Click);
             // 
             // mnuCopyFolder
             // 
@@ -435,7 +453,7 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem mnuContextCloseExchangeService;
         private System.Windows.Forms.ToolStripMenuItem mnuCreateSubFolder;
-        private System.Windows.Forms.ToolStripMenuItem mnuDeleteFolder;
+        private System.Windows.Forms.ToolStripMenuItem mnuEmptyFolder;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem12;
         private System.Windows.Forms.ToolStripMenuItem DeleteHardMenu;
         private System.Windows.Forms.ToolStripMenuItem DeleteSoftMenu;
@@ -456,7 +474,9 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem14;
         private System.Windows.Forms.ToolStripMenuItem mnuFolderCalendarView; 
         private System.Windows.Forms.ToolStripMenuItem mnuNewItem;
-        private System.Windows.Forms.ToolStripMenuItem SearchItemsMenuItem; 
+        private System.Windows.Forms.ToolStripMenuItem SearchItemsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EmptyFolderMenu;
+        private System.Windows.Forms.ToolStripMenuItem mnuEmptyTheFolder; 
      
     }
 }
