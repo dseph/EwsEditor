@@ -18,7 +18,7 @@ namespace EWSEditor.Forms
     public partial class AttachmentsForm : Form
     {
         private ExchangeService _CurrentService = null;
-  
+
         //private bool _AttachmentsListModified = false;
         //private ItemId _ItemId = null;     
         private Item _Item = null;
@@ -35,7 +35,7 @@ namespace EWSEditor.Forms
             InitializeComponent();
 
             _CurrentService = CurrentService;  // oEwsCaller contains the ExchangeService object, plus some wraps some additonal common calls.
-
+             
             _Item = Item.Bind(CurrentService, oItemId);
  
             //_Item = Item.Bind(oEwsCaller.ExchService, new ItemId(oItemId.UniqueId),new PropertySet(BasePropertySet.FirstClassProperties, ItemSchema.Attachments));

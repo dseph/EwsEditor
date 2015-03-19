@@ -8,7 +8,7 @@ using EWSEditor.Resources;
 using EWSEditor.Settings;
 using Microsoft.Exchange.WebServices.Data;
 using System.DirectoryServices.AccountManagement;
-
+using System.Xml;
  
 namespace EWSEditor.Forms
 {
@@ -137,11 +137,15 @@ namespace EWSEditor.Forms
                     EwsProxyFactory.DoAutodiscover();
                 }
 
- 
+                EwsProxyFactory.AddTimeZoneContext = GlobalSettings.AddTimeZoneContext;
+                EwsProxyFactory.SelectedTimeZoneContextId = GlobalSettings.SelectedTimeZoneContextId;
 
                 CurrentService = EwsProxyFactory.CreateExchangeService();
 
                 CurrentService.TestExchangeService();
+
+                CurrentService.OnSerializeCustomSoapHeaders += m_Service_OnSerializeCustomSoapHeaders;
+                //CurrentService.OnSerializeCustomSoapHeaders -= m_Service_OnSerializeCustomSoapHeaders;
 
                 DialogResult = DialogResult.OK;
             }
@@ -150,6 +154,24 @@ namespace EWSEditor.Forms
                 Cursor = System.Windows.Forms.Cursors.Default;
             }
         }
+
+        ///// <summary>
+        /////  This is used for adding soap headers not exposed in the EWS Managed API
+        ///// </summary>
+        ///// <param name="oRequest"></param>
+         public void m_Service_OnSerializeCustomSoapHeaders(XmlWriter writer)
+        {
+
+            // Add TimeZoneDefinition...
+            // http://blogs.msdn.com/b/emeamsgdev/archive/2014/04/23/ews-missing-soap-headers-when-using-the-ews-managed-api.aspx
+
+            if (EwsProxyFactory.AddTimeZoneContext == true)
+            {
+                //writer.WriteRaw(Environment.NewLine + "    <t:TimeZoneContext><t:TimeZoneDefinition Id=\"" + CurrentService.TimeZone.StandardName + "\"/></t:TimeZoneContext>" + Environment.NewLine);
+                writer.WriteRaw(Environment.NewLine + "    <t:TimeZoneContext><t:TimeZoneDefinition Id=\"" + GlobalSettings.SelectedTimeZoneContextId + "\"/></t:TimeZoneContext>" + Environment.NewLine);
+            }
+    
+         }
 
         private void ChkCredentials_CheckedChanged(object sender, EventArgs e)
         {

@@ -46,6 +46,9 @@
             this.txtProxyServerName = new System.Windows.Forms.TextBox();
             this.lblProxyServer = new System.Windows.Forms.Label();
             this.MiscSettingsGroup = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmboSelectedTimeZoneContextId = new System.Windows.Forms.ComboBox();
+            this.chkAddTimeZoneContext = new System.Windows.Forms.CheckBox();
             this.cmboUserAgent = new System.Windows.Forms.ComboBox();
             this.chkOverrideTimezone = new System.Windows.Forms.CheckBox();
             this.PreAuthenticate = new System.Windows.Forms.CheckBox();
@@ -81,7 +84,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(701, 409);
+            this.OkButton.Location = new System.Drawing.Point(701, 519);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 4;
@@ -93,7 +96,7 @@
             // 
             this.MyCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MyCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.MyCancelButton.Location = new System.Drawing.Point(783, 409);
+            this.MyCancelButton.Location = new System.Drawing.Point(783, 519);
             this.MyCancelButton.Name = "MyCancelButton";
             this.MyCancelButton.Size = new System.Drawing.Size(75, 23);
             this.MyCancelButton.TabIndex = 0;
@@ -252,6 +255,9 @@
             // 
             // MiscSettingsGroup
             // 
+            this.MiscSettingsGroup.Controls.Add(this.label2);
+            this.MiscSettingsGroup.Controls.Add(this.cmboSelectedTimeZoneContextId);
+            this.MiscSettingsGroup.Controls.Add(this.chkAddTimeZoneContext);
             this.MiscSettingsGroup.Controls.Add(this.cmboUserAgent);
             this.MiscSettingsGroup.Controls.Add(this.chkOverrideTimezone);
             this.MiscSettingsGroup.Controls.Add(this.PreAuthenticate);
@@ -275,11 +281,40 @@
             this.MiscSettingsGroup.Controls.Add(this.CalendarViewLabel);
             this.MiscSettingsGroup.Location = new System.Drawing.Point(13, 12);
             this.MiscSettingsGroup.Name = "MiscSettingsGroup";
-            this.MiscSettingsGroup.Size = new System.Drawing.Size(462, 346);
+            this.MiscSettingsGroup.Size = new System.Drawing.Size(462, 413);
             this.MiscSettingsGroup.TabIndex = 1;
             this.MiscSettingsGroup.TabStop = false;
             this.MiscSettingsGroup.Text = "Miscellaneous";
             this.MiscSettingsGroup.Enter += new System.EventHandler(this.MiscSettingsGroup_Enter);
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(30, 378);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 18);
+            this.label2.TabIndex = 79;
+            this.label2.Text = "TimeZone:";
+            // 
+            // cmboSelectedTimeZoneContextId
+            // 
+            this.cmboSelectedTimeZoneContextId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboSelectedTimeZoneContextId.Enabled = false;
+            this.cmboSelectedTimeZoneContextId.FormattingEnabled = true;
+            this.cmboSelectedTimeZoneContextId.Location = new System.Drawing.Point(112, 375);
+            this.cmboSelectedTimeZoneContextId.Name = "cmboSelectedTimeZoneContextId";
+            this.cmboSelectedTimeZoneContextId.Size = new System.Drawing.Size(307, 21);
+            this.cmboSelectedTimeZoneContextId.TabIndex = 80;
+            this.cmboSelectedTimeZoneContextId.SelectedIndexChanged += new System.EventHandler(this.cmboSelectedTimeZoneContextId_SelectedIndexChanged);
+            // 
+            // chkAddTimeZoneContext
+            // 
+            this.chkAddTimeZoneContext.Location = new System.Drawing.Point(13, 336);
+            this.chkAddTimeZoneContext.Name = "chkAddTimeZoneContext";
+            this.chkAddTimeZoneContext.Size = new System.Drawing.Size(418, 39);
+            this.chkAddTimeZoneContext.TabIndex = 78;
+            this.chkAddTimeZoneContext.Text = "Add TimeZoneContext (not added by default past Exchange2007_SP1).";
+            this.chkAddTimeZoneContext.UseVisualStyleBackColor = true;
+            this.chkAddTimeZoneContext.CheckedChanged += new System.EventHandler(this.chkAddTimeZoneContext_CheckedChanged);
             // 
             // cmboUserAgent
             // 
@@ -422,6 +457,7 @@
             this.OverrideSslCheck.TabIndex = 2;
             this.OverrideSslCheck.Text = "Override SSL certificate verification";
             this.OverrideSslCheck.UseVisualStyleBackColor = true;
+            this.OverrideSslCheck.CheckedChanged += new System.EventHandler(this.OverrideSslCheck_CheckedChanged);
             // 
             // FindFolderText
             // 
@@ -474,7 +510,7 @@
             this.LoggingGroup.Controls.Add(this.LogFilePathText);
             this.LoggingGroup.Controls.Add(this.LogFilePathLabel);
             this.LoggingGroup.Controls.Add(this.SaveLogFileCheck);
-            this.LoggingGroup.Location = new System.Drawing.Point(13, 365);
+            this.LoggingGroup.Location = new System.Drawing.Point(12, 431);
             this.LoggingGroup.Name = "LoggingGroup";
             this.LoggingGroup.Size = new System.Drawing.Size(462, 68);
             this.LoggingGroup.TabIndex = 2;
@@ -512,7 +548,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.MyCancelButton;
-            this.ClientSize = new System.Drawing.Size(869, 444);
+            this.ClientSize = new System.Drawing.Size(869, 554);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.MyCancelButton);
             this.Controls.Add(this.OkButton);
@@ -581,5 +617,8 @@
         private System.Windows.Forms.RadioButton rdoDontOverrideProxySettings;
         private System.Windows.Forms.CheckBox chkBypassProxyForLocalAddress;
         private System.Windows.Forms.ComboBox cmboUserAgent;
+        private System.Windows.Forms.CheckBox chkAddTimeZoneContext;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmboSelectedTimeZoneContextId;
     }
 }

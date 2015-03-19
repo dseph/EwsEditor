@@ -82,8 +82,11 @@ namespace EWSEditor.Forms
             foreach (TimeZoneInfo tzinfo in TimeZoneInfo.GetSystemTimeZones())
             {
                 this.cmboSelectedTimeZoneId.Items.Add(tzinfo.Id);
+                this.cmboSelectedTimeZoneContextId.Items.Add(tzinfo.Id);
             }
+
             string sDefaultTimezone = TimeZone.CurrentTimeZone.StandardName;
+
             int SelectedTimezoneLength = GlobalSettings.SelectedTimeZoneId.Trim().Length;
             if (SelectedTimezoneLength == 0)
                 this.cmboSelectedTimeZoneId.Text = sDefaultTimezone;
@@ -91,6 +94,14 @@ namespace EWSEditor.Forms
                 this.cmboSelectedTimeZoneId.Text = GlobalSettings.SelectedTimeZoneId; //TimeZone.CurrentTimeZone.DaylightName;
             this.chkOverrideTimezone.Checked = GlobalSettings.OverrideTimezone;
             this.cmboSelectedTimeZoneId.Enabled = this.chkOverrideTimezone.Checked;
+
+            int SelectedTimezoneContextLength = GlobalSettings.SelectedTimeZoneContextId.Trim().Length;
+            if (SelectedTimezoneContextLength == 0)
+                this.cmboSelectedTimeZoneContextId.Text = sDefaultTimezone;
+            else
+                this.cmboSelectedTimeZoneContextId.Text = GlobalSettings.SelectedTimeZoneContextId; //TimeZone.CurrentTimeZone.DaylightName;
+            this.chkAddTimeZoneContext.Checked = GlobalSettings.AddTimeZoneContext;
+            this.cmboSelectedTimeZoneContextId.Enabled = this.chkAddTimeZoneContext.Checked;
 
             this.rdoDontOverrideProxySettings.Checked = true; // Default
 
@@ -115,6 +126,8 @@ namespace EWSEditor.Forms
 
             SetCheckedProxyOverride();
             SetCheckedOverrideProxyCredentials();
+
+             
 
         }
 
@@ -141,6 +154,9 @@ namespace EWSEditor.Forms
 
             GlobalSettings.OverrideTimezone = this.chkOverrideTimezone.Checked;
             GlobalSettings.SelectedTimeZoneId = this.cmboSelectedTimeZoneId.Text;
+
+            GlobalSettings.AddTimeZoneContext = this.chkAddTimeZoneContext.Checked;
+            GlobalSettings.SelectedTimeZoneContextId = this.cmboSelectedTimeZoneContextId.Text;
 
             //GlobalSettings.SetDefaultProxy = this.rdoGetAndSetDefaultProxy.Checked;
  
@@ -241,6 +257,21 @@ namespace EWSEditor.Forms
         }
 
         private void UserAgentText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkAddTimeZoneContext_CheckedChanged(object sender, EventArgs e)
+        {
+            this.cmboSelectedTimeZoneContextId.Enabled = this.chkAddTimeZoneContext.Checked;
+        }
+
+        private void OverrideSslCheck_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmboSelectedTimeZoneContextId_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

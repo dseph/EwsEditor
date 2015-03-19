@@ -470,6 +470,39 @@ namespace EWSEditor.Settings
             }
         }
 
+
+        /// <summary>
+        /// Gets or sets a bool to override to indicate that the TimeZoneContext should be set.
+        /// This is not set by the EWS Managed API if the server version is past 2007 SP1.
+        /// </summary>
+        public static bool AddTimeZoneContext
+        {
+            get
+            {
+                return UserSettings.Default.AddTimeZoneContext;
+            }
+            set
+            {
+                UserSettings.Default.AddTimeZoneContext = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// This bool indicates if the client timezone Contex should be overrridden on the service object.
+        /// </summary>
+        public static string SelectedTimeZoneContextId
+        {
+            get
+            {
+                return UserSettings.Default.SelectedTimeZoneContextId;
+            }
+            set
+            {
+                UserSettings.Default.SelectedTimeZoneContextId = value;
+                UserSettings.Default.Save();
+            }
+        }
  
 
         #region Private Methods
