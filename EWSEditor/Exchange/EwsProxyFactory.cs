@@ -7,6 +7,7 @@ using EWSEditor.Settings;
 using EWSEditor.Common.Extensions;
 using Microsoft.Exchange.WebServices.Data;
 using EWSEditor.Forms;
+using System.Xml;
 
 namespace EWSEditor.Exchange
 {
@@ -36,8 +37,8 @@ namespace EWSEditor.Exchange
         public static string ProxyServerUser;
         public static string ProxyServerPassword;
         public static string ProxyServerDomain;
-
- 
+        public static bool AddTimeZoneContext = false;
+        public static string SelectedTimeZoneContextId;
 
         public static void DoAutodiscover()
         {
@@ -47,6 +48,13 @@ namespace EWSEditor.Exchange
         public static void DoAutodiscover(Microsoft.Exchange.WebServices.Data.EmailAddress emailAddress)
         {
             ExchangeService service = CreateExchangeService();
+
+             
+ 
+    //
+    // Your code here
+
+
             //service.EnableScpLookup = GlobalSettings.EnableScpLookups;
             string sError = string.Empty;
 
@@ -96,6 +104,9 @@ namespace EWSEditor.Exchange
             ExchangeService service = null;
 
             TimeZoneInfo oTimeZone = null;
+
+             
+
             if (SelectedTimeZoneId != null)
             {
                 if (OverrideTimezone == true)
@@ -126,6 +137,7 @@ namespace EWSEditor.Exchange
                     service = new ExchangeService( ); 
             }
 
+ 
             if (UserAgent != null)
                 if (UserAgent.Length != 0)
                     service.UserAgent = UserAgent;
@@ -233,8 +245,12 @@ namespace EWSEditor.Exchange
                 } 
             }
 
+ 
             return service;
         }
+
+ 
+
 
         /// <summary>
         ///  This is used for preparing an HttpWebRequest for a raw post.
