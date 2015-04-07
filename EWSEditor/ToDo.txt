@@ -12,10 +12,20 @@ Wish List
 
     Add processing for working with custom search folders.
 
-    Add hex editing ability for binary properties.
+    Add hex editing and/or viewing ability for binary properties.
 
     In the Options and AutodiscoverViewer window have a place to set additional headers - this should be similar to what 
-EwsPost has. 
+	EwsPost has. 
+
+	List .NET versions and their updates which are installed on the current box:
+
+		How to: Determine Which .NET Framework Updates Are Installed
+		https://msdn.microsoft.com/en-us/library/hh925567(v=vs.110).aspx
+
+		How to: Determine Which .NET Framework Versions Are Installed
+		https://msdn.microsoft.com/en-us/library/hh925568(v=vs.110).aspx
+
+	Set x-anchormailbox when doing impersonation.
 
 12/3/2014 - Planning changes for loading and saving settings:
 
