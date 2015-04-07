@@ -131,6 +131,9 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.UserToImpersonate = this.ImpersonationCheck.Checked ?
                     new ImpersonatedUserId(this.connectingIdCombo.SelectedItem.Value, this.ImpersonatedIdTextBox.Text.Trim()) : null;
 
+                EwsProxyFactory.SetXAnchorMailbox = this.chkSetXAnchorMailbox.Checked;
+                EwsProxyFactory.XAnchorMailbox = this.txtXAnchorMailbox.Text.Trim();
+
                 EwsProxyFactory.ServiceEmailAddress = this.AutodiscoverEmailText.Text.Trim();
                 if (this.rdoAutodiscoverEmail.Checked)
                 {
@@ -209,6 +212,9 @@ namespace EWSEditor.Forms
             ImpersonatedIdTextBox.Enabled = ImpersonationCheck.Checked;
             lblImpId.Enabled = ImpersonationCheck.Checked;
             lblImpIdType.Enabled = ImpersonationCheck.Checked;
+
+            this.chkSetXAnchorMailbox.Enabled = ImpersonationCheck.Checked;
+            this.txtXAnchorMailbox.Enabled = ImpersonationCheck.Checked;
         }
 
  

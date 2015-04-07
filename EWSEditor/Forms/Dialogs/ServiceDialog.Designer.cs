@@ -59,6 +59,9 @@ namespace EWSEditor.Forms
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtXAnchorMailbox = new System.Windows.Forms.TextBox();
+            this.chkSetXAnchorMailbox = new System.Windows.Forms.CheckBox();
             this.btnOptions = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -70,7 +73,7 @@ namespace EWSEditor.Forms
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(364, 496);
+            this.btnOK.Location = new System.Drawing.Point(364, 549);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 4;
@@ -82,7 +85,7 @@ namespace EWSEditor.Forms
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(445, 496);
+            this.btnCancel.Location = new System.Drawing.Point(445, 549);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 5;
@@ -155,7 +158,7 @@ namespace EWSEditor.Forms
             this.TempConnectingIdCombo.Enabled = false;
             this.TempConnectingIdCombo.FormattingEnabled = true;
             this.TempConnectingIdCombo.ItemHeight = 13;
-            this.TempConnectingIdCombo.Location = new System.Drawing.Point(112, 51);
+            this.TempConnectingIdCombo.Location = new System.Drawing.Point(87, 51);
             this.TempConnectingIdCombo.Name = "TempConnectingIdCombo";
             this.TempConnectingIdCombo.Size = new System.Drawing.Size(289, 21);
             this.TempConnectingIdCombo.TabIndex = 2;
@@ -163,7 +166,7 @@ namespace EWSEditor.Forms
             // ImpersonatedIdTextBox
             // 
             this.ImpersonatedIdTextBox.Enabled = false;
-            this.ImpersonatedIdTextBox.Location = new System.Drawing.Point(112, 78);
+            this.ImpersonatedIdTextBox.Location = new System.Drawing.Point(87, 78);
             this.ImpersonatedIdTextBox.Name = "ImpersonatedIdTextBox";
             this.ImpersonatedIdTextBox.Size = new System.Drawing.Size(289, 20);
             this.ImpersonatedIdTextBox.TabIndex = 4;
@@ -376,6 +379,9 @@ namespace EWSEditor.Forms
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.txtXAnchorMailbox);
+            this.panel3.Controls.Add(this.chkSetXAnchorMailbox);
             this.panel3.Controls.Add(this.TempConnectingIdCombo);
             this.panel3.Controls.Add(this.lblImpIdType);
             this.panel3.Controls.Add(this.ImpersonationCheck);
@@ -383,8 +389,38 @@ namespace EWSEditor.Forms
             this.panel3.Controls.Add(this.ImpersonatedIdTextBox);
             this.panel3.Location = new System.Drawing.Point(4, 326);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(509, 111);
+            this.panel3.Size = new System.Drawing.Size(509, 153);
             this.panel3.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Enabled = false;
+            this.label1.Location = new System.Drawing.Point(58, 126);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "SMTP:";
+            // 
+            // txtXAnchorMailbox
+            // 
+            this.txtXAnchorMailbox.Enabled = false;
+            this.txtXAnchorMailbox.Location = new System.Drawing.Point(117, 123);
+            this.txtXAnchorMailbox.Name = "txtXAnchorMailbox";
+            this.txtXAnchorMailbox.Size = new System.Drawing.Size(317, 20);
+            this.txtXAnchorMailbox.TabIndex = 7;
+            // 
+            // chkSetXAnchorMailbox
+            // 
+            this.chkSetXAnchorMailbox.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.chkSetXAnchorMailbox.Enabled = false;
+            this.chkSetXAnchorMailbox.Location = new System.Drawing.Point(33, 104);
+            this.chkSetXAnchorMailbox.Name = "chkSetXAnchorMailbox";
+            this.chkSetXAnchorMailbox.Size = new System.Drawing.Size(420, 18);
+            this.chkSetXAnchorMailbox.TabIndex = 5;
+            this.chkSetXAnchorMailbox.Text = "Set X-AnchorMailox header:";
+            this.chkSetXAnchorMailbox.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.chkSetXAnchorMailbox.UseVisualStyleBackColor = true;
             // 
             // btnOptions
             // 
@@ -401,7 +437,7 @@ namespace EWSEditor.Forms
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.btnOptions);
-            this.panel4.Location = new System.Drawing.Point(4, 443);
+            this.panel4.Location = new System.Drawing.Point(6, 505);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(509, 38);
             this.panel4.TabIndex = 3;
@@ -412,7 +448,7 @@ namespace EWSEditor.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(527, 531);
+            this.ClientSize = new System.Drawing.Size(527, 584);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -469,5 +505,8 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnDefault365Settings;
         private System.Windows.Forms.Button btnDefaultSmtp;
+        private System.Windows.Forms.CheckBox chkSetXAnchorMailbox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtXAnchorMailbox;
     }
 }

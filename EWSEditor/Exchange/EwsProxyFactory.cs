@@ -26,6 +26,9 @@ namespace EWSEditor.Exchange
         public static int? Timeout = null;
         public static bool? UseDefaultCredentials = null;
         public static ImpersonatedUserId UserToImpersonate = null;
+        public static bool?  SetXAnchorMailbox = null;
+        public static string XAnchorMailbox;
+
         public static string UserAgent;
 
         public static bool SetDefaultProxy =  false;
@@ -242,7 +245,12 @@ namespace EWSEditor.Exchange
                     //    service.HttpHeaders.Add("X-PreferServerAffinity", "true");
                     //else
                     //    service.HttpHeaders["X-PreferServerAffinity"] = "true";
-                } 
+                }
+
+                if (SetXAnchorMailbox == true)
+                {
+                    service.HttpHeaders.Add("X-AnchorMailbox", XAnchorMailbox);
+                }
             }
 
  
