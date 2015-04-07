@@ -103,7 +103,7 @@ namespace EWSEditor.Forms
         private void btnSaveFileGo_Click(object sender, EventArgs e)
         {
  
-            System.IO.FileStream saveFile;
+            //System.IO.FileStream saveFile;
              
             string sErrors = string.Empty; ;
             string base64String = txtSave.Text.Trim();

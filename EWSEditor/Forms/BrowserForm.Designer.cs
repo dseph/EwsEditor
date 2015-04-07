@@ -437,7 +437,7 @@
             // 
             this.mnuWindowsUserInformation.Name = "mnuWindowsUserInformation";
             this.mnuWindowsUserInformation.Size = new System.Drawing.Size(268, 22);
-            this.mnuWindowsUserInformation.Text = "Windows User Information...";
+            this.mnuWindowsUserInformation.Text = "Run-time Information...";
             this.mnuWindowsUserInformation.Click += new System.EventHandler(this.mnuWindowsUserInformation_Click);
             // 
             // mnuSnmClient

@@ -21,6 +21,9 @@
     using Microsoft.Exchange.WebServices.Data;
     using System.DirectoryServices;
 
+    using Microsoft.Win32;
+    using System.Globalization;
+
     public partial class BrowserForm : CountedForm
     {
         private PropertySet defaultDetailPropertySet = new PropertySet(BasePropertySet.IdOnly);
@@ -688,8 +691,6 @@
                     oSB.AppendFormat("    {0}\r\n", address[index] );
                 }
          
- 
-
 
             }
             catch(Exception ex)
@@ -700,17 +701,137 @@
                 oSB.AppendFormat("{0}\r\n", ex.Message);
             }
 
-             
+            oSB.AppendLine("");
+            oSB.AppendLine(MachineInfo());
+
+            oSB.AppendLine("");
+            oSB.AppendLine(GetDotNetInfo());
+
+            //oSB.AppendLine("");
+            //oSB.AppendLine(GetComputerTimeValues());
+
 
             string sContent = oSB.ToString();
 
             ShowTextDocument oForm = new ShowTextDocument();
             oForm.txtEntry.WordWrap = false;
-            oForm.Text = "Current Windows User Information";
+            oForm.Text = "Run-time Information";
             oForm.txtEntry.Text = sContent;
             oForm.ShowDialog();
  
         }
+
+        private string MachineInfo()
+        {
+            StringBuilder oSB = new StringBuilder();
+            oSB.AppendLine("Environment Information: ");
+            oSB.AppendLine("  MachineName: " + Environment.MachineName);
+            oSB.AppendLine("  UserDomainName: " + Environment.UserDomainName);
+            oSB.AppendLine("  UserName: " + Environment.UserName);
+            oSB.AppendLine("  .NET version currently used: " + Environment.Version);
+            oSB.AppendLine("  Is64BitOperatingSystem: " + Environment.Is64BitOperatingSystem);
+            oSB.AppendLine("  Is64BitProcess: " + Environment.Is64BitProcess);
+            oSB.AppendLine("  OSVersion: " + Environment.OSVersion.VersionString);
+            oSB.AppendLine("  ProcessorCount: " + Environment.ProcessorCount.ToString());             
+            oSB.AppendLine("  WorkingSet (Memory mapped to this process context): " + Environment.WorkingSet.ToString());
+            oSB.AppendLine("  SystemPageSize: " + Environment.SystemPageSize);
+            oSB.AppendLine("  SystemDirectory: " + Environment.SystemDirectory);
+            oSB.AppendLine("  CurrentDirectory: " + Environment.CurrentDirectory); 
+            oSB.AppendLine("  CommandLine: " + Environment.CommandLine);
+ 
+
+            string[] logicalDrives = Environment.GetLogicalDrives();
+            oSB.AppendLine("  Drives: ");
+            foreach (string sDrive in logicalDrives)
+            {
+                oSB.AppendLine("    " + sDrive);
+            }
+ 
+            
+            return oSB.ToString();
+        }
+
+        private string GetDotNetInfo()
+        {
+            StringBuilder oSB = new StringBuilder();
+
+            oSB.AppendLine(".NET version currently used:: " + Environment.Version.ToString());
+
+            oSB.AppendLine("");
+            oSB.AppendLine(DotNetUpdateInfo());
+
+            return oSB.ToString();
+             
+        }
+
+
+        // DotNetUpdateInfo() - Returns .NET updates installed on the machine.
+        // https://msdn.microsoft.com/en-us/library/hh925567(v=vs.110).aspx
+        private string DotNetUpdateInfo()
+        {
+            StringBuilder oSB = new StringBuilder();
+
+            oSB.AppendLine(".NET Updates (Only returned if you are running with administrative credentials):");
+            oSB.AppendLine("");
+            try
+            {
+
+                using (RegistryKey baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\Updates"))
+                {
+                    foreach (string baseKeyName in baseKey.GetSubKeyNames())
+                    {
+                        if (baseKeyName.Contains(".NET Framework") || baseKeyName.StartsWith("KB") || baseKeyName.Contains(".NETFramework"))
+                        {
+
+                            using (RegistryKey updateKey = baseKey.OpenSubKey(baseKeyName))
+                            {
+                                string name = (string)updateKey.GetValue("PackageName", "");
+                                oSB.AppendLine(baseKeyName + "  " + name);
+                                foreach (string kbKeyName in updateKey.GetSubKeyNames())
+                                {
+                                    using (RegistryKey kbKey = updateKey.OpenSubKey(kbKeyName))
+                                    {
+                                        name = (string)kbKey.GetValue("PackageName", "");
+                                        oSB.AppendLine("  " + kbKeyName + "  " + name);
+
+                                        if (kbKey.SubKeyCount > 0)
+                                        {
+                                            foreach (string sbKeyName in kbKey.GetSubKeyNames())
+                                            {
+                                                using (RegistryKey sbSubKey = kbKey.OpenSubKey(sbKeyName))
+                                                {
+                                                    name = (string)sbSubKey.GetValue("PackageName", "");
+                                                    if (name == "")
+                                                        name = (string)sbSubKey.GetValue("Description", "");
+                                                    oSB.AppendLine("    " + sbKeyName + "  " + name);
+
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            };
+
+            return oSB.ToString();
+
+        }
+
+        //private string OtherInfo()
+        //{
+        //    CultureInfo culture;
+        //    Console.WriteLine("Culture Name:    {0}", culture.Name);
+        //    Console.WriteLine("User Overrides:  {0}", culture.UseUserOverride);
+        //    Console.WriteLine("Currency Symbol: {0}\n", culture.NumberFormat.CurrencySymbol);
+        //}
 
         private void mnuSnmClient_Click(object sender, EventArgs e)
         {
