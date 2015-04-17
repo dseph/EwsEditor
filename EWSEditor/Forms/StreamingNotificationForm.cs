@@ -13,6 +13,21 @@ using EWSEditor.Resources;
 using EWSEditor.Logging;
 using EWSEditor.Exchange;
 
+// Suggested reading:
+//
+//    More throttling changes for Exchange Online (This is clearer than the MSDN articles.)
+//      http://blogs.msdn.com/b/exchangedev/archive/2012/04/19/more-throttling-changes-for-exchange-online.aspx 
+//
+//      EWS throttling in Exchange
+//      https://msdn.microsoft.com/en-us/library/office/jj945066(v=exchg.150).aspx
+//
+//      Notification subscriptions, mailbox events, and EWS in Exchange
+//      https://msdn.microsoft.com/en-us/library/office/dn458791(v=exchg.150).aspx
+//
+//      How to: Maintain affinity between a group of subscriptions and the Mailbox server in Exchange
+//      https://msdn.microsoft.com/EN-US/library/office/dn458789(v=exchg.150).aspx
+
+
 namespace EWSEditor.Forms
 {
     public partial class StreamingNotificationForm : CountedForm
@@ -153,8 +168,6 @@ namespace EWSEditor.Forms
         //    // {
         //    //    return error;
         //    // }
-
- 
         //}
  
         private void StreamingSubscribeWork()
@@ -212,6 +225,7 @@ namespace EWSEditor.Forms
                         {
                             ActiveSubscriptions.Add(CurrentSubscription);
                             SetControlText(SubscriptionCount, ActiveSubscriptions.Count.ToString());
+                             
                         }
 
                     }
@@ -248,7 +262,7 @@ namespace EWSEditor.Forms
                 // Add the Subscriptions to the Connection
                 foreach (StreamingSubscription CurrentSubscription in ThreadLocalSubscriptions)
                     CurrentConnection.AddSubscription(CurrentSubscription);
-
+                 
                 if (chkSerialize.Checked)
                     mutConnection.ReleaseMutex();
 

@@ -418,6 +418,11 @@ namespace EWSEditor.Forms
             AutodiscoverEmailText.Text = UserPrincipal.Current.EmailAddress;
         }
 
+        private void TempConnectingIdCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         //private void btnOptions_Click(object sender, EventArgs e)
         //{
         //    OptionsDialog.ShowDialog();
