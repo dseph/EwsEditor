@@ -12,8 +12,6 @@ Wish List
 
     Add processing for working with custom search folders.
 
-    Add hex editing and/or viewing ability for binary properties.
-
     In the Options and AutodiscoverViewer window have a place to set additional headers - this should be similar to what 
 	EwsPost has. 
 
