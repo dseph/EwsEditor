@@ -16,7 +16,7 @@ namespace EWSEditor.Common
         {
 
             string sXML = string.Empty;
-            MemoryStream oMemoryStream = new MemoryStream();
+            MemoryStream oMemoryStream = new MemoryStream(); 
 
             XmlWriterSettings oXmlWriterSettings = new XmlWriterSettings();
             oXmlWriterSettings.NewLineHandling = NewLineHandling.Entitize;

@@ -579,27 +579,33 @@ namespace EWSEditor.Forms
             string sInfo = string.Empty;
 
             if (_EmailMessage != null)
-            {
-                if (_EmailMessage.InternetMessageHeaders != null)
+            {   
+                if (_IsExistingEmail == true)
                 {
-                    foreach (InternetMessageHeader oHeader in _EmailMessage.InternetMessageHeaders)
+                    if (_EmailMessage.IsDraft == false)
                     {
-                        sInfo += oHeader.Name + ": " + oHeader.Value + "\r\n";
+                        foreach (InternetMessageHeader oHeader in _EmailMessage.InternetMessageHeaders)
+                        {
+                            sInfo += oHeader.Name + ": " + oHeader.Value + "\r\n";
+                        }
+
+                        ShowTextDocument oForm = new ShowTextDocument();
+                        oForm.Text = "Message Headers";
+                        oForm.txtEntry.Text = sInfo;
+                        oForm.ShowDialog();
+                        oForm = null;
+
+                        //ExtendedPropertyDefinition PidTagMimeSkeleton = new ExtendedPropertyDefinition(0x64F00102, MapiPropertyType.String);
+                        // http://msdn.microsoft.com/en-us/library/office/hh545614(v=exchg.140).aspx
                     }
-
-                    ShowTextDocument oForm = new ShowTextDocument();
-                    oForm.Text = "Message Headers";
-                    oForm.txtEntry.Text = sInfo;
-                    oForm.ShowDialog();
-                    oForm = null;
-
-                    //ExtendedPropertyDefinition PidTagMimeSkeleton = new ExtendedPropertyDefinition(0x64F00102, MapiPropertyType.String);
-                    // http://msdn.microsoft.com/en-us/library/office/hh545614(v=exchg.140).aspx
-
+                    else
+                    {
+                        MessageBox.Show("Message needs to have been sent to have transport headers.  If you want to set one prior to transport then a custom x-header is needed - this is done by setting an exteded property.", "No headers.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No headers.", "No headers.");
+                    MessageBox.Show("Message needs to have been sent to have transport headers. If you want to set one prior to transport then a custom x-header is needed - this is done by setting an exteded property.", "No headers.");
                 }
             }
             else
