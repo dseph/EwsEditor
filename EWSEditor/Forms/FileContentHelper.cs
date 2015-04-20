@@ -82,7 +82,7 @@ namespace EWSEditor.Forms
                        txtLoad.Text = System.Convert.ToBase64String(System.IO.File.ReadAllBytes(txtLoadFile.Text.Trim()));
                         break;
                     case "Hex Bytes":
-                        string sResults = StringHelper.HexStringFromByteArray(System.IO.File.ReadAllBytes(txtLoadFile.Text.Trim()));
+                        string sResults = StringHelper.HexStringFromByteArray(System.IO.File.ReadAllBytes(txtLoadFile.Text.Trim()), true);
                         txtLoad.Text = sResults.Trim();   
                         break;
                     case "Hex Dump":

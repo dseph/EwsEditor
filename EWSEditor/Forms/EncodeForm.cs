@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Web;
 using System.Xml;
+using EWSEditor.Common;
 
 namespace EWSEditor.Forms
 {
@@ -32,6 +33,13 @@ namespace EWSEditor.Forms
         private const string XmlEncode = "Xml Encode";
         private const string XmlDecode = "Xml Decode";
 
+        private const string XmlBase64ToHex = "Base 64 to Hex";
+        private const string XmlBase64ToHexSpaceDelimited = "Base 64 to Hex - Space delimited";
+        private const string XmlHexToBase64 = "Hex to Base 64";
+
+        private const string XmlHexDumpText = "Hex Dump text";
+        private const string XmlBase64ToHexDump = "Decode Base 64 content and Hex dump";
+
         private const string XmlConvertVerifyXmlChars = "XmlConvert - VerifyXmlChars";
  
 
@@ -51,6 +59,17 @@ namespace EWSEditor.Forms
  
         cmboFrom.Items.Add(XmlEncode);
         cmboFrom.Items.Add(XmlDecode);
+
+        cmboFrom.Items.Add(XmlBase64ToHex);
+        cmboFrom.Items.Add(XmlBase64ToHexSpaceDelimited);
+        cmboFrom.Items.Add(XmlHexToBase64);
+
+        cmboFrom.Items.Add(XmlHexDumpText);
+        cmboFrom.Items.Add(XmlBase64ToHexDump);
+
+        //cmboFrom.Items.Add(XmlConvertVerifyXmlChars);
+
+
         cmboFrom.SelectedIndex = 0;
  
  
@@ -66,10 +85,13 @@ namespace EWSEditor.Forms
         {
             string FromText = txtFrom.Text;
             string ToText = string.Empty;
-            byte[] oFromBytes;
+            byte[] oFromBytes = null;
+            
             //byte[] ToBytes;
             System.Text.Encoding oUtf8Encoding = System.Text.Encoding.UTF8;
             System.Text.Encoding oAsciiEncoding = System.Text.Encoding.ASCII;
+
+            string sError = string.Empty;
 
             switch (TypeOfConversion)
             {
@@ -202,6 +224,76 @@ namespace EWSEditor.Forms
                         oXmlDocument = null;
 
  
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
+
+                case XmlBase64ToHex:
+                    try
+                    {
+                        oFromBytes = System.Convert.FromBase64String(FromText);  // Convert to Bytes first.
+
+                        ToText = StringHelper.HexStringFromByteArray(oFromBytes, false);  // Now convert it to a hex string.
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
+
+                case XmlBase64ToHexSpaceDelimited:
+                    try
+                    {
+                        oFromBytes = System.Convert.FromBase64String(FromText);  // Convert to Bytes first.
+
+                        ToText = StringHelper.HexStringFromByteArray(oFromBytes, true);  // Now convert it to a hex string.
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
+
+                case XmlHexToBase64:
+                    
+                    try
+                    {
+                        if (StringHelper.RoughHexStringToByteArray(FromText, ref oFromBytes, ref sError) == true)
+                        {  
+                            //oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(FromText);  // First Turn hex string into an byte array.
+                            ToText = System.Convert.ToBase64String(oFromBytes);  // Now convert to a Base64 string.
+                        }
+                        else
+                        {
+                            ToText = sError;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
+
+                case XmlHexDumpText:
+                    try
+                    {
+
+                        ToText = StringHelper.DumpString(FromText);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
+
+                case XmlBase64ToHexDump:
+                    try
+                    {
+                        oFromBytes = System.Convert.FromBase64String(FromText);  // Convert to Bytes first.
+                        ToText = StringHelper.HexDumpFromByteArray(oFromBytes);
                     }
                     catch (Exception ex)
                     {
