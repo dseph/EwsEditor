@@ -308,7 +308,7 @@ namespace EWSEditor.Common
 
             //sRet += string.Format("ConversationId.UniqueId: {0}\r\n", oItem.ConversationId);
             sRet += string.Format("ConversationTopic: {0}\r\n", oItem.ConversationTopic);
-            sRet += string.Format("ConversationIndex: {0}\r\n", StringHelper.HexStringFromByteArray(oItem.ConversationIndex));
+            sRet += string.Format("ConversationIndex: {0}\r\n", StringHelper.HexStringFromByteArray(oItem.ConversationIndex, true));
 
 
             sRet += "\r\n";

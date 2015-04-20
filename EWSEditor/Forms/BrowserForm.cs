@@ -717,7 +717,7 @@
             oForm.txtEntry.WordWrap = false;
             oForm.Text = "Run-time Information";
             oForm.txtEntry.Text = sContent;
-            oForm.ShowDialog();
+            oForm.Show();
  
         }
 
@@ -841,13 +841,13 @@
         private void mnuSnmClient_Click_1(object sender, EventArgs e)
         {
             SystemNetMainForm oForm = new SystemNetMainForm();
-            oForm.ShowDialog();
+            oForm.Show();
         }
 
         private void mnuEncode_Click(object sender, EventArgs e)
         {
             EncodeForm oForm = new EncodeForm();
-            oForm.ShowDialog();
+            oForm.Show();
         }
 
         private void UserConfigurationMenuItem_Click(object sender, EventArgs e)
@@ -889,7 +889,7 @@
         private void mnuFileContentHelper_Click(object sender, EventArgs e)
         {
             FileContentHelper oForm = new FileContentHelper();
-            oForm.ShowDialog();
+            oForm.Show();
         }
     }
 }

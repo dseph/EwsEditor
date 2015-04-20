@@ -59,7 +59,10 @@ namespace EWSEditor.Common
             return sResults;
         }
 
-        public static string HexStringFromByteArray(byte[] baArrayToDump)
+
+ 
+
+        public static string HexStringFromByteArray(byte[] baArrayToDump, bool bSpaceDelimit)
         {
             string sRet = string.Empty;
 
@@ -78,6 +81,7 @@ namespace EWSEditor.Common
                 iValue = oByte;
                 iItem += 1;
 
+                // Clean junk charaters...
                 if (char.IsControl((char)iValue))
                 {
                     sText += " ";
@@ -88,8 +92,10 @@ namespace EWSEditor.Common
                     sText += string.Format("{0}", (char)iValue).PadLeft(1, ' ');
                 }
 
- 
-                oSB.Append(" ");
+
+                if (bSpaceDelimit)
+                    oSB.Append(" ");
+
                 sHex = string.Format("{00:X}", iValue).PadLeft(2, '0');
                 oSB.Append(sHex);
                  
@@ -174,6 +180,16 @@ namespace EWSEditor.Common
                                 sHex = string.Empty;
                                 iItem = 0;
                             }
+                        }
+
+                        if (iItem > 0 && iItem != iItemsPerLine)
+                        {
+                            int iPadLength = (3 * (16 - iItem)) + 2;
+                            string sPadding = String.Format("{0:X}", "").PadLeft(iPadLength, ' ');
+                            oSB.Append(sPadding);
+                            oSB.Append(sText); // Add text representation of hex.
+                            oSB.Append("\r\n");
+                            pos++;
                         }
 
 
@@ -262,7 +278,15 @@ namespace EWSEditor.Common
                     }
 
                 }
+            }
 
+            if (iItem > 0 && iItem != iItemsPerLine)
+            {
+                int iPadLength = (3 * (16 - iItem)) + 2;
+                string sPadding = String.Format("{0:X}", "").PadLeft(iPadLength, ' ');
+                oSB.Append(sPadding);
+                oSB.Append(sText); // Add text representation of hex.
+                oSB.Append("\r\n");  
                 pos++;
             }
             sRet = oSB.ToString();
