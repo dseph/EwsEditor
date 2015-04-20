@@ -1,8 +1,10 @@
 ﻿Plannded for future releases:
 
-	1 - Add inline attachment ability.
+	1 - Add inline attachment ability.  x
 	2 - Add display of headers and abilty to add additional ones in the the windows which send email and meeting requests.
 	    http://msdn.microsoft.com/en-us/library/office/dn596091(v=exchg.150).aspx 
+		Now displays transport headers without erroring.
+		Headers can be added as x-headers by using cutom properties.
 	3 - Change saving of sessions for main login to use a class, then add ability for user to load and save 
 	    settings by serializing the class and writting/reading to file.  See writeup below.
 
