@@ -678,6 +678,15 @@ namespace EWSEditor.Forms
         {
 
         }
+
+        private void btnAddXHeaders_Click(object sender, EventArgs e)
+        {
+            //Item oItem = (Item)_EmailMessage;
+            //AddRemoveHeaders oAddRemoveHeaders = new AddRemoveHeaders(ref oItem, _IsExistingEmail);
+            //oAddRemoveHeaders.ShowDialog();
+            //if (oAddRemoveHeadersIsDirty == true)
+            //    _isDirty = true;
+        }
         
 
     }

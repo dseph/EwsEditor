@@ -137,50 +137,7 @@ namespace EWSEditor.Forms
 
         }
 
-        //private void btnInsertInlineAttachment_Click(object sender, EventArgs e)
-        //{
-        //    AttachmentSelect oSelectAttachmentToAdd = new AttachmentSelect();
-        //    oSelectAttachmentToAdd.ShowDialog();
-
-        //    ListViewItem oListItem = null;
-
-        //    if (oSelectAttachmentToAdd.ChoseOK == true)
-        //    {
-        //        FileAttachment oNewFileAttachment = _Item.Attachments.AddFileAttachment(oSelectAttachmentToAdd.txtFile.Text);
-        //        oNewFileAttachment.ContentId = oSelectAttachmentToAdd.txtContentId.Text.Trim();
-        //        oNewFileAttachment.ContentLocation = oSelectAttachmentToAdd.txtContentLocation.Text.Trim();
-        //        oNewFileAttachment.ContentType = oSelectAttachmentToAdd.txtContentId.Text.Trim();
-        //        oNewFileAttachment.Name = oSelectAttachmentToAdd.txtContentId.Text.Trim();
-        //        oNewFileAttachment.IsInline = oSelectAttachmentToAdd.chkIsInline.Checked;
-        //        oNewFileAttachment.IsContactPhoto = oSelectAttachmentToAdd.chkIsContactPhoto.Checked;
-
-
-
-        //        //oListView.Columns.Add("Id", 70, HorizontalAlignment.Left);
-        //        //oListView.Columns.Add("ContentId", 70, HorizontalAlignment.Left);
-        //        //oListView.Columns.Add("ContentLocation", 70, HorizontalAlignment.Left);
-        //        //oListView.Columns.Add("ContentType", 70, HorizontalAlignment.Left);
-        //        //oListView.Columns.Add("Name", 140, HorizontalAlignment.Left);
-        //        //oListView.Columns.Add("FileName", 140, HorizontalAlignment.Left);
-        //        //oListView.Columns.Add("IsInline", 50, HorizontalAlignment.Left);  // Exchange 2010 and later.
-        //        //oListView.Columns.Add("IsContactPhoto", 50, HorizontalAlignment.Left);
-
-
-        //        // Now add to ListView
-        //        oListItem = new ListViewItem(oNewFileAttachment.Id, 0);
-        //        oListItem.SubItems.Add(oNewFileAttachment.ContentId);
-        //        oListItem.SubItems.Add(oNewFileAttachment.ContentLocation);
-        //        oListItem.SubItems.Add(oNewFileAttachment.ContentType);
-        //        oListItem.SubItems.Add(oNewFileAttachment.Name);
-        //        oListItem.SubItems.Add(oNewFileAttachment.FileName);
-        //        oListItem.SubItems.Add(oNewFileAttachment.IsInline.ToString());
-        //        oListItem.SubItems.Add(oNewFileAttachment.IsContactPhoto.ToString());
-
-        //        lvFileAttachments.Items.AddRange(new ListViewItem[] { oListItem });
-        //        oListItem = null;
-
-        //    }
-        //}
+       
 
         private void lvFileAttachments_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -221,6 +178,11 @@ namespace EWSEditor.Forms
                 }
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -138,6 +138,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddRemoveHeaders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddRemoveHeaders.Designer.cs">
+      <DependentUpon>AddRemoveHeaders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\ActiveDirectoryHelper.cs" />
     <Compile Include="Common\AppointmentHelper.cs" />
     <Compile Include="Common\ComboBoxHelper.cs" />
@@ -714,6 +720,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\AddRemoveHeaders.resx">
+      <DependentUpon>AddRemoveHeaders.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddRemoveAttachments.resx">
       <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
     </EmbeddedResource>
