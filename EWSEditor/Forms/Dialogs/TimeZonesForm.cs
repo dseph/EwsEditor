@@ -545,7 +545,54 @@ namespace EWSEditor.Forms
            
         }
 
-         
+        private void btnSummaryListAsText_Click(object sender, EventArgs e)
+        {
+            ShowTextDocument oForm = new ShowTextDocument();
+            oForm.txtEntry.Text = GetTimezoneList();
+            oForm.Text = "Timezone list as text";
+            oForm.Show();
+        }
+
+        private string GetTimezoneList()
+        {
+            StringBuilder oSB = new StringBuilder();
+            try
+            {
+
+
+                foreach (TimeZoneInfo oTimeZoneInfo in TimeZoneInfo.GetSystemTimeZones())
+                {
+
+                    oSB.AppendLine("Using this TimeZone: " + oTimeZoneInfo.ToString());
+                    oSB.AppendLine("    Id: " + oTimeZoneInfo.Id);
+                    oSB.AppendLine("    DisplayName: " + oTimeZoneInfo.DisplayName);
+                    oSB.AppendLine("    StandardName: " + oTimeZoneInfo.StandardName);
+                    oSB.AppendLine("    DaylightName: " + oTimeZoneInfo.DaylightName);
+                    oSB.AppendLine("    BaseUtcOffset: " + oTimeZoneInfo.BaseUtcOffset.ToString());
+                    oSB.AppendLine("    SupportsDaylightSavingTime: " + oTimeZoneInfo.SupportsDaylightSavingTime.ToString());
+                    oSB.AppendLine("    BaseUtcOffset: " + oTimeZoneInfo.BaseUtcOffset.ToString());
+                    oSB.AppendLine("        Days: " + oTimeZoneInfo.BaseUtcOffset.Days.ToString());
+                    oSB.AppendLine("        Hours: " + oTimeZoneInfo.BaseUtcOffset.Hours.ToString());
+                    oSB.AppendLine("        Milliseconds: " + oTimeZoneInfo.BaseUtcOffset.Milliseconds.ToString());
+                    oSB.AppendLine("        Minutes: " + oTimeZoneInfo.BaseUtcOffset.Minutes.ToString());
+                    oSB.AppendLine("        Seconds: " + oTimeZoneInfo.BaseUtcOffset.Seconds.ToString());
+                    oSB.AppendLine("        Ticks: " + oTimeZoneInfo.BaseUtcOffset.Ticks.ToString());
+                    oSB.AppendLine("        TotalDays: " + oTimeZoneInfo.BaseUtcOffset.TotalDays.ToString());
+                    oSB.AppendLine("        TotalHours: " + oTimeZoneInfo.BaseUtcOffset.TotalHours.ToString());
+                    oSB.AppendLine("        TotalMilliseconds: " + oTimeZoneInfo.BaseUtcOffset.TotalMilliseconds.ToString());
+                    oSB.AppendLine("        TotalMinutes: " + oTimeZoneInfo.BaseUtcOffset.TotalMinutes.ToString());
+                    oSB.AppendLine("        TotalSeconds: " + oTimeZoneInfo.BaseUtcOffset.TotalSeconds.ToString());
+                    oSB.AppendLine("");
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
+            return oSB.ToString();
+        }
 
  
 
