@@ -119,7 +119,7 @@ namespace EWSEditor.Forms
                     //sb.Append("GetValuesFromTimezoneString: ");
                     //sb.Append(GetValuesFromTimezoneString(cmboTimeZoneIds.Text.Trim()));
                     //sb.Append("\r\n");
-                    sb.Append("Timezone Information:" );
+                    sb.Append("Timezone Information:\r\n" );
                     sb.Append(TimeHelper.GetValuesFromTimezoneStringAndDateTime(cmboTimeZoneIds.Text.Trim(), oDateTime));
                     sb.Append("\r\n");
 
@@ -339,7 +339,7 @@ namespace EWSEditor.Forms
                     //sbFrom.Append("GetValuesFromTimezoneString: ");
                     //sbFrom.Append(GetValuesFromTimezoneString(cmboFromTimeZone.Text.Trim()));
                     //sbFrom.Append("\r\n");
-                    sbFrom.Append("Timezone Information:");
+                    sbFrom.Append("Timezone Information:\r\n");
                     sbFrom.Append(TimeHelper.GetValuesFromTimezoneStringAndDateTime(cmboFromTimeZone.Text.Trim(), oDateTime));
                     sbFrom.Append("\r\n");
 
@@ -365,7 +365,7 @@ namespace EWSEditor.Forms
                 try
                 {
 
-                    sbTo.Append("Timezone Information:");
+                    sbTo.Append("Timezone Information:\r\n");
                     sbTo.Append(TimeHelper.GetValuesFromTimezoneStringAndDateTime(this.cmboToTimeZone.Text.Trim(), oDateTime));
                     sbTo.Append("\r\n");
 
