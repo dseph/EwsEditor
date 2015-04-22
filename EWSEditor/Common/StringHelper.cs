@@ -309,7 +309,7 @@ namespace EWSEditor.Common
         public static bool CleanHexString(string sFrom, ref string sCleanString, ref string sErrors)
         {
             string sWork = string.Empty;
-            sWork = sFrom;
+            sWork = sFrom.Trim() ;
             string sHexStingErrors = string.Empty;
             bool bContinue = true;
             string sReturn = string.Empty;
