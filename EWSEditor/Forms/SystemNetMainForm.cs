@@ -119,6 +119,10 @@ namespace EWSEditor.Forms
                 // create the mail message
                 MailMessage mail = new MailMessage();
 
+                // mail.BodyEncoding = Encoding.UTF8
+                // mail.BodyTransferEncoding = System.Net.Mime.TransferEncoding.SevenBit
+                // mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure
+                
 
                 if (txtFrom.Text.Trim() != "")
                     mail.From = new MailAddress(this.txtFrom.Text.Trim());
@@ -168,8 +172,9 @@ namespace EWSEditor.Forms
                     int count = chkListAttachments.Items.Count;
                     for (int i = 0; i < count; i++)
                     {
-                        
+                         
                         mail.Attachments.Add(new Attachment(chkListAttachments.Items[i].ToString()));
+                         
                     }
                 }
 
