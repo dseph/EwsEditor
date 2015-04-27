@@ -705,6 +705,10 @@
             oSB.AppendLine(MachineInfo());
 
             oSB.AppendLine("");
+            oSB.AppendLine(ProcessInfo());
+      
+
+            oSB.AppendLine("");
             oSB.AppendLine(GetDotNetInfo());
 
             //oSB.AppendLine("");
@@ -748,6 +752,68 @@
             }
  
             
+            return oSB.ToString();
+        }
+
+        private string ProcessInfo()
+        {
+            System.Diagnostics.Process oProc =  System.Diagnostics.Process.GetCurrentProcess();
+
+            StringBuilder oSB = new StringBuilder();
+            oSB.AppendLine("Process Information: ");
+            oSB.AppendLine("  MachineName: " + oProc.MachineName);
+            oSB.AppendLine("  ProcessName: " + oProc.ProcessName);
+            oSB.AppendLine("  ID: " + oProc.Id.ToString());
+            oSB.AppendLine("  StartTime: " + oProc.StartTime.ToString());
+            oSB.AppendLine("  TotalProcessorTime: " + oProc.TotalProcessorTime.ToString());
+            oSB.AppendLine("  UserProcessorTime: " + oProc.UserProcessorTime.ToString());
+            //oSB.AppendLine("  VirtualMemorySize: " + oProc.VirtualMemorySize.ToString());
+            oSB.AppendLine("  VirtualMemorySize64: " + oProc.VirtualMemorySize64.ToString());
+            //oSB.AppendLine("  WorkingSet: " + oProc.WorkingSet.ToString());
+            oSB.AppendLine("  WorkingSet64: " + oProc.WorkingSet64.ToString());
+            oSB.AppendLine("  UserName: " + Environment.UserName);
+            oSB.AppendLine("  .NET version currently used: " + Environment.Version);
+            oSB.AppendLine("  Is64BitOperatingSystem: " + Environment.Is64BitOperatingSystem);
+            oSB.AppendLine("  Is64BitProcess: " + Environment.Is64BitProcess);
+            oSB.AppendLine("  OSVersion: " + Environment.OSVersion.VersionString);
+            oSB.AppendLine("  ProcessorCount: " + Environment.ProcessorCount.ToString());
+            oSB.AppendLine("  WorkingSet (Memory mapped to this process context): " + Environment.WorkingSet.ToString());
+            oSB.AppendLine("  SystemPageSize: " + Environment.SystemPageSize);
+            oSB.AppendLine("  SystemDirectory: " + Environment.SystemDirectory);
+            oSB.AppendLine("  CurrentDirectory: " + Environment.CurrentDirectory);
+            oSB.AppendLine("  CommandLine: " + Environment.CommandLine);
+            oSB.AppendLine("  MainModule: ");
+            oSB.AppendLine("    FileName: " + oProc.MainModule.FileName);
+            oSB.AppendLine("    FileVersionInfo: "  );
+            oSB.AppendLine("      InternalName: " + oProc.MainModule.FileVersionInfo.InternalName);
+            oSB.AppendLine("      OriginalFilename: " + oProc.MainModule.FileVersionInfo.OriginalFilename);
+            oSB.AppendLine("      FileVersion: " + oProc.MainModule.FileVersionInfo.FileVersion);
+            oSB.AppendLine("      FileDescription: " + oProc.MainModule.FileVersionInfo.FileDescription);
+            oSB.AppendLine("      Product: " + oProc.MainModule.FileVersionInfo.ProductName);
+            oSB.AppendLine("      ProductVersion: " + oProc.MainModule.FileVersionInfo.ProductVersion);
+            oSB.AppendLine("      IsPatched: " + oProc.MainModule.FileVersionInfo.IsPatched.ToString());
+            oSB.AppendLine("      InternalName: " + oProc.MainModule.FileVersionInfo.InternalName);
+            oSB.AppendLine("      IsPreRelease: " + oProc.MainModule.FileVersionInfo.IsPreRelease.ToString());
+            oSB.AppendLine("      PrivateBuild: " + oProc.MainModule.FileVersionInfo.PrivateBuild);
+            oSB.AppendLine("      SpecialBuild: " + oProc.MainModule.FileVersionInfo.SpecialBuild);
+            oSB.AppendLine("      Language: " + oProc.MainModule.FileVersionInfo.Language);
+            oSB.AppendLine("    ModuleName: " + oProc.MainModule.ModuleName.ToString());
+            oSB.AppendLine("    ModuleMemorySize: " + oProc.MainModule.ModuleMemorySize.ToString());
+            if (oProc.MainModule.Site != null)
+            { 
+                oSB.AppendLine("    Site:");
+                oSB.AppendLine("      Name: " + oProc.MainModule.Site.Name);
+            }
+            oSB.AppendLine("  StartInfo: ");
+            oSB.AppendLine("    Arguments: " + oProc.StartInfo.Arguments);
+            oSB.AppendLine("    Domain: " + oProc.StartInfo.Domain);
+            oSB.AppendLine("    FileName: " + oProc.StartInfo.FileName);
+            oSB.AppendLine("    LoadUserProfile: " + oProc.StartInfo.LoadUserProfile.ToString());
+            oSB.AppendLine("    UserName: " + oProc.StartInfo.UserName);
+            oSB.AppendLine("    Verb: " + oProc.StartInfo.Verb);
+            oSB.AppendLine("    WorkingDirectory: " + oProc.StartInfo.WorkingDirectory);
+
+ 
             return oSB.ToString();
         }
 

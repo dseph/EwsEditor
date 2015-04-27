@@ -198,7 +198,9 @@ namespace EWSEditor.Forms
                 item.SubItems.Add(DateTime.Now.ToString());
                 AddToDisplay(lstEvents, item);
 
+                // Note that EWS Managed API objects should not beshared accross threads - So, each thread should have its own service object.
                 ExchangeService ThreadLocalService = EwsProxyFactory.CreateExchangeService();
+
 
                 List<StreamingSubscription> ThreadLocalSubscriptions = new List<StreamingSubscription>();
 
@@ -213,11 +215,17 @@ namespace EWSEditor.Forms
                             CurrentSubscription = ThreadLocalService.SubscribeToStreamingNotifications(
                                                                                 new FolderId[] { this.CurrentFolderId },
                                                                                 EventTypes.ToArray());
+                            //System.Diagnostics.Debug.WriteLine("-");
+                            //System.Diagnostics.Debug.WriteLine("Subscribe - ID: " + CurrentSubscription.Id + "  Watermark: " + CurrentSubscription.Watermark);
+                            //System.Diagnostics.Debug.WriteLine("-");
                         }
                         else
                         {
                             CurrentSubscription = ThreadLocalService.SubscribeToStreamingNotificationsOnAllFolders(
                                                                                  EventTypes.ToArray());
+                            //System.Diagnostics.Debug.WriteLine("-");
+                            //System.Diagnostics.Debug.WriteLine("Subscribe - ID: " + CurrentSubscription.Id + "  Watermark: " + CurrentSubscription.Watermark);
+                            //System.Diagnostics.Debug.WriteLine("-");
                         }
 
                         ThreadLocalSubscriptions.Add(CurrentSubscription);
@@ -231,8 +239,7 @@ namespace EWSEditor.Forms
                     }
                     catch (Exception ex)
                     {
-                        DebugLog.WriteException("Error Subscribe or Add [TID:"
-                            + TID + "]", ex);
+                        DebugLog.WriteException("Error Subscribe or Add [TID:"  + TID + "]", ex);
                         item = new ListViewItem();
                         item.Tag = "[local]SubscribeError";
                         item.Text = "[local]SubscribeError";
@@ -290,6 +297,10 @@ namespace EWSEditor.Forms
                     item.SubItems.Add(DateTime.Now.ToString());
                     AddToDisplay(lstEvents, item);
 
+                    //System.Diagnostics.Debug.WriteLine("-");
+                    //System.Diagnostics.Debug.WriteLine("Error Opening StreamingSubscriptionConnection [TID:" + Thread.CurrentThread.ManagedThreadId.ToString() + "]", ex);
+                    //System.Diagnostics.Debug.WriteLine("-");
+
                 }
 
                 try
@@ -313,6 +324,10 @@ namespace EWSEditor.Forms
                     item.SubItems.Add(DateTime.Now.ToString());
                     AddToDisplay(lstEvents, item);
 
+                    //System.Diagnostics.Debug.WriteLine("-");
+                    //System.Diagnostics.Debug.WriteLine("Error Closing Streaming Connection [TID:" + Thread.CurrentThread.ManagedThreadId.ToString() + "]", ex);
+                    //System.Diagnostics.Debug.WriteLine("-");
+
                 }
                 finally
                 {
@@ -334,6 +349,10 @@ namespace EWSEditor.Forms
                     {
                         CurrentConnection.RemoveSubscription(CurrentSubscription);
                         CurrentSubscription.Unsubscribe();
+
+                        //System.Diagnostics.Debug.WriteLine("-");
+                        //System.Diagnostics.Debug.WriteLine("Unsubscribed - ID: " + CurrentSubscription.Id + "  Watermark: " + CurrentSubscription.Watermark);
+                        //System.Diagnostics.Debug.WriteLine("-");
                     }
                     catch (Exception ex)
                     {
@@ -347,11 +366,21 @@ namespace EWSEditor.Forms
                         item.SubItems.Add(DateTime.Now.ToString());
                         AddToDisplay(lstEvents, item);
 
+                        //System.Diagnostics.Debug.WriteLine("-");
+                        //System.Diagnostics.Debug.WriteLine("Error Removing/Unsubscribing StreamingSubscription Elements [TID:" + Thread.CurrentThread.ManagedThreadId.ToString() + "]", ex);
+                        //System.Diagnostics.Debug.WriteLine("        ID: " + CurrentSubscription.Id + "  Watermark: " + CurrentSubscription.Watermark);
+                        //System.Diagnostics.Debug.WriteLine("-");
+                 
+
                     }
                     finally
                     {
                         lock (ActiveSubscriptions)
                         {
+                            //System.Diagnostics.Debug.WriteLine("-");
+                            //System.Diagnostics.Debug.WriteLine("Removing subscription - ID: " + CurrentSubscription.Id + "  Watermark: " + CurrentSubscription.Watermark);
+                            //System.Diagnostics.Debug.WriteLine("-");
+
                             ActiveSubscriptions.Remove(CurrentSubscription);
                             SetControlText(SubscriptionCount, ActiveSubscriptions.Count.ToString());
                         }
@@ -369,6 +398,35 @@ namespace EWSEditor.Forms
             finally { }
         }
 
+        //// Testing
+        //// https://msdn.microsoft.com/en-us/library/office/hh312849(v=exchg.140).aspx
+        //public static void ProcessChanges(FolderId folderId)
+        //{
+        //    bool moreChangesAvailable;
+        //    do
+        //    {
+        //        // Get all changes since the last call. The synchronization cookie is stored in the _SynchronizationState field.
+        //        // Just get the IDs of the items.
+        //        // For performance reasons, do not use the PropertySet.FirstClassProperties.
+        //        var changes = ThreadLocalService.SyncFolderItems(folderId, PropertySet.IdOnly,
+        //           null, 512, SyncFolderItemsScope.NormalItems, _SynchronizationState);
+        //        // Update the synchronization 
+        //        cookie._SynchronizationState = changes.SyncState;
+        //        // Process all changes. If required, add a GetItem call here to request additional properties.
+        //        foreach (var itemChange in changes)
+        //        {
+        //            // This example just prints the ChangeType and ItemId to the console.
+        //            // A LOB application would apply business rules to each 
+        //            item.Console.Out.WriteLine("ChangeType = {0}", itemChange.ChangeType);
+        //            Console.Out.WriteLine("ChangeType = {0}", itemChange.ItemId.ToString());
+        //        }
+        //        // If more changes are available, issue additional SyncFolderItems requests.
+        //        moreChangesAvailable = changes.MoreChangesAvailable;
+        //    }
+        //    while (moreChangesAvailable);
+        //}
+
+
         private void OnSubscriptionError(object sender, SubscriptionErrorEventArgs args)
         {
             DebugLog.WriteException("SubscriptionError", args.Exception);
@@ -380,11 +438,20 @@ namespace EWSEditor.Forms
             item.SubItems.Add(DateTime.Now.ToString());
             AddToDisplay(lstEvents, item);
 
+            //System.Diagnostics.Debug.WriteLine("-");
+            //System.Diagnostics.Debug.WriteLine("OnSubscriptionError.");
+            //System.Diagnostics.Debug.WriteLine("-");
+
         }
 
         private void OnDisconnect(object sender, SubscriptionErrorEventArgs args)
         {
             string TID = Thread.CurrentThread.ManagedThreadId.ToString("[0]");
+
+            System.Diagnostics.Debug.WriteLine("-");
+            System.Diagnostics.Debug.WriteLine("OnDisconnectDisconnect");
+            System.Diagnostics.Debug.WriteLine("-");
+
             if (SubscriptionsRunning)
             {
                 StreamingSubscriptionConnection CurrentConnection = (StreamingSubscriptionConnection)sender;
@@ -398,6 +465,10 @@ namespace EWSEditor.Forms
                 try
                 {
                     CurrentConnection.Open();
+
+                    //System.Diagnostics.Debug.WriteLine("-");
+                    //System.Diagnostics.Debug.WriteLine("OnDisconnectDisconnect - Reopened.");
+                    //System.Diagnostics.Debug.WriteLine("-");
                 }
                 catch (Exception ex)
                 {
@@ -409,6 +480,10 @@ namespace EWSEditor.Forms
                     item.SubItems.Add(Thread.CurrentThread.ManagedThreadId.ToString("[0]"));
                     item.SubItems.Add(DateTime.Now.ToString());
                     AddToDisplay(lstEvents, item);
+
+                    //System.Diagnostics.Debug.WriteLine("-");
+                    //System.Diagnostics.Debug.WriteLine("OnDisconnect - Error:  " + ex.ToString() );
+                    //System.Diagnostics.Debug.WriteLine("-");
                 }
             }
         }
@@ -444,7 +519,7 @@ namespace EWSEditor.Forms
         {
             string TID = Thread.CurrentThread.ManagedThreadId.ToString("[0]");
 
-             
+
 
             foreach (NotificationEvent evt in args.Events)
             {
@@ -489,6 +564,10 @@ namespace EWSEditor.Forms
 
                 item.SubItems.Add(
                         folderevt == null || folderevt.UnreadCount == null ? "" : folderevt.UnreadCount.ToString());
+
+                //System.Diagnostics.Debug.WriteLine("-");
+                //System.Diagnostics.Debug.WriteLine("Removing OnStreamingEvent - ID: " + TID. + "  Watermark: " + TID.Watermark);
+                //System.Diagnostics.Debug.WriteLine("-");
 
                 //StreamingEventLine oLine = new StreamingEventLine();
                 //oLine.StreamingEventType = item.Text;
