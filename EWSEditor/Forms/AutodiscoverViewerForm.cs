@@ -40,6 +40,11 @@ namespace EWSEditor.Forms
             UserAgentHelper.AddUserAgentsToComboBox(ref cmboUserAgent);
             cmboUserAgent.Text = oTempService.UserAgent;
 
+            rdoUseAutoDiscover.Checked = true;
+            rdoUseUserSpecifiedUrl.Checked = false;
+            txtAutodiscoverServiceURL.Enabled = false;
+
+            lblInfo.Text = String.Empty;
 
             SetFields();
         }
@@ -51,17 +56,37 @@ namespace EWSEditor.Forms
                 this.Cursor = Cursors.WaitCursor;
                 txtResults.Text = string.Empty;
                 txtResults.Update();
+
+                lblInfo.Text = string.Empty;
+                lblInfo.Update();
                 
                 // Create the AutodiscoverService object and set the request
                 // ExchangeVersion if one was selected
                 AutodiscoverService service = null;
-                if (this.exchangeVersionCombo.SelectedItem.HasValue)
+                Uri oURI = null;
+
+                if (this.rdoUseAutoDiscover.Checked == true)
                 {
-                    service = new AutodiscoverService(this.exchangeVersionCombo.SelectedItem.Value);
+                    if (this.exchangeVersionCombo.SelectedItem.HasValue)
+                    {
+                        service = new AutodiscoverService(this.exchangeVersionCombo.SelectedItem.Value);
+                    }
+                    else
+                    {
+                        service = new AutodiscoverService();
+                    }
                 }
                 else
                 {
-                    service = new AutodiscoverService();
+                    oURI = new Uri(this.txtAutodiscoverServiceURL.Text);
+                    if (this.exchangeVersionCombo.SelectedItem.HasValue)
+                    {
+                        service = new AutodiscoverService(oURI, this.exchangeVersionCombo.SelectedItem.Value);
+                    }
+                    else
+                    {
+                        service = new AutodiscoverService(oURI);
+                    }
                 }
                  
                 // Set the AutodiscoverService credentials
@@ -100,6 +125,7 @@ namespace EWSEditor.Forms
 
                 AutodiscoverGetUserSettings(ref service, this.TargetMailboxText.Text.Trim());
 
+                lblInfo.Text = "Autodiscover URL used: " + service.Url;
                 //GetUserSettingsResponse response = service.GetUserSettings(this.TargetMailboxText.Text, System.Enum.GetValues(typeof(UserSettingName)) as UserSettingName[]);
                 //ErrorDialog.ShowInfo("Autodiscover completed successfully!  Check the EWSEditor Log Viewer for detailed output.");
 
@@ -359,7 +385,17 @@ namespace EWSEditor.Forms
 
         private void txtValues_TextChanged(object sender, EventArgs e)
         {
+ 
+        }
 
+        private void rdoUseUserSpecifiedUrl_CheckedChanged(object sender, EventArgs e)
+        {
+            txtAutodiscoverServiceURL.Enabled = rdoUseUserSpecifiedUrl.Checked;
+        }
+
+        private void rdoUseAutoDiscover_CheckedChanged(object sender, EventArgs e)
+        {
+            txtAutodiscoverServiceURL.Enabled = rdoUseUserSpecifiedUrl.Checked;
         }
     }
 }
