@@ -554,6 +554,9 @@ namespace EWSEditor.Common
             cmboUserAgent.Items.Clear();
             EWSEditor.Common.UserAgentHelper.AddUserAgentsToComboBox(ref cmboUserAgent);
 
+            //cmboAuthentication.Text = "Basic";
+            //cmboVerb.Text = "POST";
+            //cmboAuthentication.Text = "text/xml";
              
         }
 
