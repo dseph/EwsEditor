@@ -310,7 +310,8 @@ namespace EWSEditor.Forms
 
         private void EDiscoverySearchForm_Load(object sender, EventArgs e)
         {
-
+            cmboSearchLocation.Text = "PrimaryOnly";
+            txtSearchResultType.Text = "PreviewOnly";
         }
 
         private void lvMailboxes_SelectedIndexChanged(object sender, EventArgs e)

@@ -86,6 +86,7 @@
             // 
             // cmboTimeZoneIds
             // 
+            this.cmboTimeZoneIds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboTimeZoneIds.FormattingEnabled = true;
             this.cmboTimeZoneIds.Location = new System.Drawing.Point(203, 15);
             this.cmboTimeZoneIds.Margin = new System.Windows.Forms.Padding(4);
@@ -96,7 +97,7 @@
             // 
             // TimeZoneByIdString
             // 
-            this.TimeZoneByIdString.Location = new System.Drawing.Point(8, 7);
+            this.TimeZoneByIdString.Location = new System.Drawing.Point(8, 11);
             this.TimeZoneByIdString.Margin = new System.Windows.Forms.Padding(4);
             this.TimeZoneByIdString.Name = "TimeZoneByIdString";
             this.TimeZoneByIdString.Size = new System.Drawing.Size(187, 33);
@@ -223,7 +224,7 @@
             this.txtMachineTimeZones.Multiline = true;
             this.txtMachineTimeZones.Name = "txtMachineTimeZones";
             this.txtMachineTimeZones.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMachineTimeZones.Size = new System.Drawing.Size(1281, 303);
+            this.txtMachineTimeZones.Size = new System.Drawing.Size(1281, 302);
             this.txtMachineTimeZones.TabIndex = 37;
             this.txtMachineTimeZones.WordWrap = false;
             this.txtMachineTimeZones.TextChanged += new System.EventHandler(this.txtMachineTimeZones_TextChanged);
@@ -392,6 +393,7 @@
             // 
             // cmboConversionKind
             // 
+            this.cmboConversionKind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboConversionKind.FormattingEnabled = true;
             this.cmboConversionKind.Items.AddRange(new object[] {
             "Unspecified",
@@ -402,7 +404,6 @@
             this.cmboConversionKind.Name = "cmboConversionKind";
             this.cmboConversionKind.Size = new System.Drawing.Size(177, 27);
             this.cmboConversionKind.TabIndex = 10;
-            this.cmboConversionKind.Text = "Unspecified";
             // 
             // cmboToTimeZone
             // 

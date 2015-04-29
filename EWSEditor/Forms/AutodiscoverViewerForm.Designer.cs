@@ -494,7 +494,7 @@
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(10, 234);
+            this.lblInfo.Location = new System.Drawing.Point(10, 244);
             this.lblInfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(42, 17);

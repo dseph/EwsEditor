@@ -10,8 +10,7 @@
 
 Wish List
 
-    In Autodiscover Viewer window have the abilility to specify the Autodiscover asmx URL instead of only allowing Autodiscover to it.
-
+ 
     Add processing for working with custom search folders.
 
     In the Options and AutodiscoverViewer window have a place to set additional headers - this should be similar to what 
@@ -25,7 +24,7 @@ Wish List
 		How to: Determine Which .NET Framework Versions Are Installed
 		https://msdn.microsoft.com/en-us/library/hh925568(v=vs.110).aspx
 
-	Set x-anchormailbox when doing impersonation.
+ 
 
 12/3/2014 - Planning changes for loading and saving settings:
 
