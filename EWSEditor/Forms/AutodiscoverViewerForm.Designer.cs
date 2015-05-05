@@ -74,8 +74,7 @@
             // 
             // GoRun
             // 
-            this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GoRun.Location = new System.Drawing.Point(1475, 5);
+            this.GoRun.Location = new System.Drawing.Point(1271, 202);
             this.GoRun.Margin = new System.Windows.Forms.Padding(4);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(99, 28);
@@ -99,7 +98,7 @@
             this.TargetMailboxText.Location = new System.Drawing.Point(740, 7);
             this.TargetMailboxText.Margin = new System.Windows.Forms.Padding(4);
             this.TargetMailboxText.Name = "TargetMailboxText";
-            this.TargetMailboxText.Size = new System.Drawing.Size(264, 22);
+            this.TargetMailboxText.Size = new System.Drawing.Size(196, 22);
             this.TargetMailboxText.TabIndex = 3;
             // 
             // chkDefaultWindowsCredentials
@@ -219,7 +218,7 @@
             this.chkEnableScpLookup.Location = new System.Drawing.Point(533, 81);
             this.chkEnableScpLookup.Margin = new System.Windows.Forms.Padding(4);
             this.chkEnableScpLookup.Name = "chkEnableScpLookup";
-            this.chkEnableScpLookup.Size = new System.Drawing.Size(472, 39);
+            this.chkEnableScpLookup.Size = new System.Drawing.Size(370, 39);
             this.chkEnableScpLookup.TabIndex = 7;
             this.chkEnableScpLookup.Text = "Enable SCP record lookup (Disabling will skip AD lookup of Autodiscover URLs)";
             this.chkEnableScpLookup.UseVisualStyleBackColor = true;
@@ -231,7 +230,7 @@
             this.TempExchangeVersionCombo.Location = new System.Drawing.Point(739, 43);
             this.TempExchangeVersionCombo.Margin = new System.Windows.Forms.Padding(4);
             this.TempExchangeVersionCombo.Name = "TempExchangeVersionCombo";
-            this.TempExchangeVersionCombo.Size = new System.Drawing.Size(265, 24);
+            this.TempExchangeVersionCombo.Size = new System.Drawing.Size(197, 24);
             this.TempExchangeVersionCombo.TabIndex = 6;
             // 
             // label7
@@ -254,7 +253,7 @@
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResults.Size = new System.Drawing.Size(1549, 139);
+            this.txtResults.Size = new System.Drawing.Size(1351, 139);
             this.txtResults.TabIndex = 15;
             // 
             // lvItems
@@ -270,7 +269,7 @@
             this.lvItems.Margin = new System.Windows.Forms.Padding(4);
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(1549, 181);
+            this.lvItems.Size = new System.Drawing.Size(1351, 120);
             this.lvItems.TabIndex = 17;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -310,13 +309,11 @@
             // 
             // cmboUserAgent
             // 
-            this.cmboUserAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmboUserAgent.FormattingEnabled = true;
             this.cmboUserAgent.Location = new System.Drawing.Point(705, 162);
             this.cmboUserAgent.Margin = new System.Windows.Forms.Padding(4);
             this.cmboUserAgent.Name = "cmboUserAgent";
-            this.cmboUserAgent.Size = new System.Drawing.Size(374, 24);
+            this.cmboUserAgent.Size = new System.Drawing.Size(304, 24);
             this.cmboUserAgent.TabIndex = 10;
             // 
             // chkOverrideUserAgent
@@ -335,13 +332,13 @@
             // 
             this.txtValues.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValues.Location = new System.Drawing.Point(11, 662);
+            this.txtValues.Location = new System.Drawing.Point(11, 601);
             this.txtValues.Margin = new System.Windows.Forms.Padding(4);
             this.txtValues.MaxLength = 0;
             this.txtValues.Multiline = true;
             this.txtValues.Name = "txtValues";
             this.txtValues.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtValues.Size = new System.Drawing.Size(1549, 95);
+            this.txtValues.Size = new System.Drawing.Size(1351, 95);
             this.txtValues.TabIndex = 19;
             this.txtValues.TextChanged += new System.EventHandler(this.txtValues_TextChanged);
             // 
@@ -349,7 +346,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 642);
+            this.label6.Location = new System.Drawing.Point(12, 581);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(186, 17);
@@ -358,7 +355,7 @@
             // 
             // btnDefaultSmtp
             // 
-            this.btnDefaultSmtp.Location = new System.Drawing.Point(1013, 5);
+            this.btnDefaultSmtp.Location = new System.Drawing.Point(944, 5);
             this.btnDefaultSmtp.Margin = new System.Windows.Forms.Padding(4);
             this.btnDefaultSmtp.Name = "btnDefaultSmtp";
             this.btnDefaultSmtp.Size = new System.Drawing.Size(65, 28);
@@ -375,7 +372,7 @@
             this.groupBox3.Controls.Add(this.lblProxyPort);
             this.groupBox3.Controls.Add(this.txtProxyServerName);
             this.groupBox3.Controls.Add(this.lblProxyServer);
-            this.groupBox3.Location = new System.Drawing.Point(1105, 7);
+            this.groupBox3.Location = new System.Drawing.Point(1017, 5);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
@@ -413,7 +410,7 @@
             this.txtProxyServerPort.Location = new System.Drawing.Point(161, 118);
             this.txtProxyServerPort.Margin = new System.Windows.Forms.Padding(4);
             this.txtProxyServerPort.Name = "txtProxyServerPort";
-            this.txtProxyServerPort.Size = new System.Drawing.Size(184, 22);
+            this.txtProxyServerPort.Size = new System.Drawing.Size(146, 22);
             this.txtProxyServerPort.TabIndex = 5;
             this.txtProxyServerPort.Text = "8888";
             // 
@@ -431,7 +428,7 @@
             this.txtProxyServerName.Location = new System.Drawing.Point(161, 86);
             this.txtProxyServerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtProxyServerName.Name = "txtProxyServerName";
-            this.txtProxyServerName.Size = new System.Drawing.Size(184, 22);
+            this.txtProxyServerName.Size = new System.Drawing.Size(146, 22);
             this.txtProxyServerName.TabIndex = 3;
             this.txtProxyServerName.Text = "127.0.0.1";
             // 
@@ -472,7 +469,7 @@
             // 
             // txtAutodiscoverServiceURL
             // 
-            this.txtAutodiscoverServiceURL.Location = new System.Drawing.Point(76, 53);
+            this.txtAutodiscoverServiceURL.Location = new System.Drawing.Point(68, 53);
             this.txtAutodiscoverServiceURL.Margin = new System.Windows.Forms.Padding(4);
             this.txtAutodiscoverServiceURL.Name = "txtAutodiscoverServiceURL";
             this.txtAutodiscoverServiceURL.Size = new System.Drawing.Size(423, 22);
@@ -505,7 +502,7 @@
             // 
             this.AcceptButton = this.GoRun;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(1577, 762);
+            this.ClientSize = new System.Drawing.Size(1379, 701);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
