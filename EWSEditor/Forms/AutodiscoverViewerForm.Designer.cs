@@ -74,7 +74,7 @@
             // 
             // GoRun
             // 
-            this.GoRun.Location = new System.Drawing.Point(1271, 202);
+            this.GoRun.Location = new System.Drawing.Point(1238, 202);
             this.GoRun.Margin = new System.Windows.Forms.Padding(4);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(99, 28);
@@ -95,10 +95,10 @@
             // 
             // TargetMailboxText
             // 
-            this.TargetMailboxText.Location = new System.Drawing.Point(740, 7);
+            this.TargetMailboxText.Location = new System.Drawing.Point(708, 7);
             this.TargetMailboxText.Margin = new System.Windows.Forms.Padding(4);
             this.TargetMailboxText.Name = "TargetMailboxText";
-            this.TargetMailboxText.Size = new System.Drawing.Size(196, 22);
+            this.TargetMailboxText.Size = new System.Drawing.Size(195, 22);
             this.TargetMailboxText.TabIndex = 3;
             // 
             // chkDefaultWindowsCredentials
@@ -227,10 +227,10 @@
             // 
             this.TempExchangeVersionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempExchangeVersionCombo.FormattingEnabled = true;
-            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(739, 43);
+            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(708, 43);
             this.TempExchangeVersionCombo.Margin = new System.Windows.Forms.Padding(4);
             this.TempExchangeVersionCombo.Name = "TempExchangeVersionCombo";
-            this.TempExchangeVersionCombo.Size = new System.Drawing.Size(197, 24);
+            this.TempExchangeVersionCombo.Size = new System.Drawing.Size(195, 24);
             this.TempExchangeVersionCombo.TabIndex = 6;
             // 
             // label7
@@ -253,7 +253,7 @@
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResults.Size = new System.Drawing.Size(1351, 139);
+            this.txtResults.Size = new System.Drawing.Size(1322, 139);
             this.txtResults.TabIndex = 15;
             // 
             // lvItems
@@ -269,7 +269,7 @@
             this.lvItems.Margin = new System.Windows.Forms.Padding(4);
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(1351, 120);
+            this.lvItems.Size = new System.Drawing.Size(1322, 120);
             this.lvItems.TabIndex = 17;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -313,7 +313,7 @@
             this.cmboUserAgent.Location = new System.Drawing.Point(705, 162);
             this.cmboUserAgent.Margin = new System.Windows.Forms.Padding(4);
             this.cmboUserAgent.Name = "cmboUserAgent";
-            this.cmboUserAgent.Size = new System.Drawing.Size(304, 24);
+            this.cmboUserAgent.Size = new System.Drawing.Size(628, 24);
             this.cmboUserAgent.TabIndex = 10;
             // 
             // chkOverrideUserAgent
@@ -338,7 +338,7 @@
             this.txtValues.Multiline = true;
             this.txtValues.Name = "txtValues";
             this.txtValues.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtValues.Size = new System.Drawing.Size(1351, 95);
+            this.txtValues.Size = new System.Drawing.Size(1322, 95);
             this.txtValues.TabIndex = 19;
             this.txtValues.TextChanged += new System.EventHandler(this.txtValues_TextChanged);
             // 
@@ -355,7 +355,7 @@
             // 
             // btnDefaultSmtp
             // 
-            this.btnDefaultSmtp.Location = new System.Drawing.Point(944, 5);
+            this.btnDefaultSmtp.Location = new System.Drawing.Point(911, 5);
             this.btnDefaultSmtp.Margin = new System.Windows.Forms.Padding(4);
             this.btnDefaultSmtp.Name = "btnDefaultSmtp";
             this.btnDefaultSmtp.Size = new System.Drawing.Size(65, 28);
@@ -372,11 +372,11 @@
             this.groupBox3.Controls.Add(this.lblProxyPort);
             this.groupBox3.Controls.Add(this.txtProxyServerName);
             this.groupBox3.Controls.Add(this.lblProxyServer);
-            this.groupBox3.Location = new System.Drawing.Point(1017, 5);
+            this.groupBox3.Location = new System.Drawing.Point(984, 5);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(353, 162);
+            this.groupBox3.Size = new System.Drawing.Size(353, 149);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Set WebProxy Settings";
@@ -502,7 +502,7 @@
             // 
             this.AcceptButton = this.GoRun;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(1379, 701);
+            this.ClientSize = new System.Drawing.Size(1350, 701);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
@@ -526,7 +526,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "AutodiscoverViewerForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Autodiscover";
+            this.Text = "Autodiscover Viewer";
             this.Load += new System.EventHandler(this.AutodiscoverViewerForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

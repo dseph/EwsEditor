@@ -957,5 +957,12 @@
             FileContentHelper oForm = new FileContentHelper();
             oForm.Show();
         }
+
+        private void mnuMailTips_Click(object sender, EventArgs e)
+        {
+            GetMailTipsForm oForm = new GetMailTipsForm();
+            oForm.ShowDialog();
+            oForm = null;
+        }
     }
 }

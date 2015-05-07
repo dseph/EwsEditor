@@ -213,8 +213,8 @@ namespace EWSEditor.Forms
             lblImpId.Enabled = ImpersonationCheck.Checked;
             lblImpIdType.Enabled = ImpersonationCheck.Checked;
 
-            this.chkSetXAnchorMailbox.Enabled = ImpersonationCheck.Checked;
-            this.txtXAnchorMailbox.Enabled = ImpersonationCheck.Checked;
+            //this.chkSetXAnchorMailbox.Enabled = ImpersonationCheck.Checked;
+            //this.txtXAnchorMailbox.Enabled = ImpersonationCheck.Checked;
         }
 
  
@@ -421,6 +421,11 @@ namespace EWSEditor.Forms
         private void TempConnectingIdCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void chkSetXAnchorMailbox_CheckedChanged(object sender, EventArgs e)
+        {
+            txtXAnchorMailbox.Enabled = chkSetXAnchorMailbox.Checked;
         }
 
         //private void btnOptions_Click(object sender, EventArgs e)

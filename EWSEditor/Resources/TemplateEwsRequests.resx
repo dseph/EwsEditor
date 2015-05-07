@@ -137,6 +137,32 @@
 &lt;/soap:Envelope&gt;</value>
     <comment>Used in POST for getting full fidelity binary of an item.</comment>
   </data>
+  <data name="GetMailTips" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+        xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"&gt;
+  &lt;soap:Header&gt;
+    &lt;t:RequestServerVersion Version="##RequestServerVersion##" /&gt;
+  &lt;/soap:Header&gt;
+  &lt;soap:Body&gt;
+    &lt;GetMailTips xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"&gt;
+      &lt;SendingAs&gt;
+        &lt;t:EmailAddress&gt;##SendingAs.EmailAddress##&lt;/t:EmailAddress&gt;
+        &lt;t:RoutingType&gt;SMTP&lt;/t:RoutingType&gt;
+      &lt;/SendingAs&gt;
+      &lt;Recipients&gt;
+        &lt;t:Mailbox&gt;
+          &lt;t:EmailAddress&gt;##Mailbox.EmailAddress##&lt;/t:EmailAddress&gt;
+          &lt;t:RoutingType&gt;##Mailbox.RoutingType##&lt;/t:RoutingType&gt;
+        &lt;/t:Mailbox&gt;
+      &lt;/Recipients&gt;
+      &lt;MailTipsRequested&gt;##MailTipsRequested##&lt;/MailTipsRequested&gt;
+    &lt;/GetMailTips&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</value>
+  </data>
   <data name="GroupingInformationTemplateRequest" xml:space="preserve">
     <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;soap:Envelope xmlns:a="http://schemas.microsoft.com/exchange/2010/Autodiscover" xmlns:wsa="http://www.w3.org/2005/08/addressing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
