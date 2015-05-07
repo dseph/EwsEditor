@@ -164,6 +164,7 @@ namespace EWSEditor.Forms
                 this.mnuGetConversationItems.Enabled = isCurrentService;
                 this.eDiscoverySearchToolStripMenuItem.Enabled = isCurrentService;
                 this.mailAppsToolStripMenuItem.Enabled = isCurrentService;
+                this.mnuMailTips.Enabled = isCurrentService;
 
                  
             }

@@ -563,6 +563,6 @@
         public System.Windows.Forms.ToolStripMenuItem serverTimeZoneToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem mailAppsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuFileContentHelper;
-        private System.Windows.Forms.ToolStripMenuItem mnuMailTips;
+        public System.Windows.Forms.ToolStripMenuItem mnuMailTips;
     }
 }

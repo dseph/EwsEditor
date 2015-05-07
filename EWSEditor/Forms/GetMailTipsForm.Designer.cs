@@ -134,6 +134,7 @@
             // 
             // btnGetMailTips
             // 
+            this.btnGetMailTips.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGetMailTips.Location = new System.Drawing.Point(626, 12);
             this.btnGetMailTips.Name = "btnGetMailTips";
             this.btnGetMailTips.Size = new System.Drawing.Size(169, 31);
