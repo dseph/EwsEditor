@@ -80,17 +80,20 @@
             this.mnuFileContentHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuMailTips = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
             // 
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblExchangeService});
-            this.statusStrip.Location = new System.Drawing.Point(0, 513);
+            this.statusStrip.Location = new System.Drawing.Point(0, 636);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(699, 22);
+            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+            this.statusStrip.Size = new System.Drawing.Size(932, 22);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 3;
             // 
@@ -101,6 +104,7 @@
             // 
             // mnuMain
             // 
+            this.mnuMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
             this.mnuView,
@@ -109,7 +113,8 @@
             this.mnuHelp});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(699, 24);
+            this.mnuMain.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+            this.mnuMain.Size = new System.Drawing.Size(932, 28);
             this.mnuMain.TabIndex = 4;
             this.mnuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnuMain_ItemClicked);
             // 
@@ -118,14 +123,14 @@
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(37, 20);
+            this.mnuFile.Size = new System.Drawing.Size(44, 24);
             this.mnuFile.Text = "File";
             this.mnuFile.Click += new System.EventHandler(this.mnuFile_Click);
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(92, 22);
+            this.mnuExit.Size = new System.Drawing.Size(102, 24);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.MnuExit_Click);
             // 
@@ -137,32 +142,32 @@
             this.mnuViewSplit1,
             this.mnuRefresh});
             this.mnuView.Name = "mnuView";
-            this.mnuView.Size = new System.Drawing.Size(44, 20);
+            this.mnuView.Size = new System.Drawing.Size(53, 24);
             this.mnuView.Text = "View";
             // 
             // mnuViewConfigPropertySet
             // 
             this.mnuViewConfigPropertySet.Name = "mnuViewConfigPropertySet";
-            this.mnuViewConfigPropertySet.Size = new System.Drawing.Size(236, 22);
+            this.mnuViewConfigPropertySet.Size = new System.Drawing.Size(281, 24);
             this.mnuViewConfigPropertySet.Text = "Configure Detail Property Set...";
             this.mnuViewConfigPropertySet.Click += new System.EventHandler(this.MnuPropertySet_Click);
             // 
             // mnuViewResetPropertySet
             // 
             this.mnuViewResetPropertySet.Name = "mnuViewResetPropertySet";
-            this.mnuViewResetPropertySet.Size = new System.Drawing.Size(236, 22);
+            this.mnuViewResetPropertySet.Size = new System.Drawing.Size(281, 24);
             this.mnuViewResetPropertySet.Text = "Reset Detail Property Set";
             this.mnuViewResetPropertySet.Click += new System.EventHandler(this.MnuRestorePropertySet_Click);
             // 
             // mnuViewSplit1
             // 
             this.mnuViewSplit1.Name = "mnuViewSplit1";
-            this.mnuViewSplit1.Size = new System.Drawing.Size(233, 6);
+            this.mnuViewSplit1.Size = new System.Drawing.Size(278, 6);
             // 
             // mnuRefresh
             // 
             this.mnuRefresh.Name = "mnuRefresh";
-            this.mnuRefresh.Size = new System.Drawing.Size(236, 22);
+            this.mnuRefresh.Size = new System.Drawing.Size(281, 24);
             this.mnuRefresh.Text = "Refresh";
             // 
             // mnuTools
@@ -193,188 +198,189 @@
             this.UserConfigurationMenuItem,
             this.eDiscoverySearchToolStripMenuItem,
             this.mailAppsToolStripMenuItem,
+            this.mnuMailTips,
             this.toolStripMenuItem1,
             this.OptionsMenuItem});
             this.mnuTools.Name = "mnuTools";
-            this.mnuTools.Size = new System.Drawing.Size(47, 20);
+            this.mnuTools.Size = new System.Drawing.Size(57, 24);
             this.mnuTools.Text = "Tools";
             // 
             // DebugLogVeiwerMenuItem
             // 
             this.DebugLogVeiwerMenuItem.Name = "DebugLogVeiwerMenuItem";
-            this.DebugLogVeiwerMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.DebugLogVeiwerMenuItem.Size = new System.Drawing.Size(379, 24);
             this.DebugLogVeiwerMenuItem.Text = "EWSEditor Log Viewer...";
             this.DebugLogVeiwerMenuItem.Click += new System.EventHandler(this.DebugLogVeiwerMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(312, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(376, 6);
             // 
             // mnuAutoDiscoverView
             // 
             this.mnuAutoDiscoverView.Name = "mnuAutoDiscoverView";
-            this.mnuAutoDiscoverView.Size = new System.Drawing.Size(315, 22);
+            this.mnuAutoDiscoverView.Size = new System.Drawing.Size(379, 24);
             this.mnuAutoDiscoverView.Text = "Autodiscover Viewer...";
             this.mnuAutoDiscoverView.Click += new System.EventHandler(this.MnuAutoDiscoverView_Click);
             // 
             // mnuEwsPost
             // 
             this.mnuEwsPost.Name = "mnuEwsPost";
-            this.mnuEwsPost.Size = new System.Drawing.Size(315, 22);
+            this.mnuEwsPost.Size = new System.Drawing.Size(379, 24);
             this.mnuEwsPost.Text = "EWS POST...";
             this.mnuEwsPost.Click += new System.EventHandler(this.mnuEwsPost_Click);
             // 
             // mnuToolsSplit1
             // 
             this.mnuToolsSplit1.Name = "mnuToolsSplit1";
-            this.mnuToolsSplit1.Size = new System.Drawing.Size(312, 6);
+            this.mnuToolsSplit1.Size = new System.Drawing.Size(376, 6);
             // 
             // mnuResolveName
             // 
             this.mnuResolveName.Name = "mnuResolveName";
-            this.mnuResolveName.Size = new System.Drawing.Size(315, 22);
+            this.mnuResolveName.Size = new System.Drawing.Size(379, 24);
             this.mnuResolveName.Text = "Resolve Name...";
             this.mnuResolveName.Click += new System.EventHandler(this.MnuResolveName_Click);
             // 
             // mnuResolveExProp
             // 
             this.mnuResolveExProp.Name = "mnuResolveExProp";
-            this.mnuResolveExProp.Size = new System.Drawing.Size(315, 22);
+            this.mnuResolveExProp.Size = new System.Drawing.Size(379, 24);
             this.mnuResolveExProp.Text = "Extended Property Resolver...";
             this.mnuResolveExProp.Click += new System.EventHandler(this.MnuResolveExProp_Click);
             // 
             // mnuToolsSplit2
             // 
             this.mnuToolsSplit2.Name = "mnuToolsSplit2";
-            this.mnuToolsSplit2.Size = new System.Drawing.Size(312, 6);
+            this.mnuToolsSplit2.Size = new System.Drawing.Size(376, 6);
             // 
             // mnuNotification
             // 
             this.mnuNotification.Name = "mnuNotification";
-            this.mnuNotification.Size = new System.Drawing.Size(315, 22);
+            this.mnuNotification.Size = new System.Drawing.Size(379, 24);
             this.mnuNotification.Text = "Pull Notifications Viewer...";
             this.mnuNotification.Click += new System.EventHandler(this.MnuNotification_Click);
             // 
             // mnuStreamingNotification
             // 
             this.mnuStreamingNotification.Name = "mnuStreamingNotification";
-            this.mnuStreamingNotification.Size = new System.Drawing.Size(315, 22);
+            this.mnuStreamingNotification.Size = new System.Drawing.Size(379, 24);
             this.mnuStreamingNotification.Text = "Streaming Notifications Viewer...";
             this.mnuStreamingNotification.Click += new System.EventHandler(this.MnuStreamingNotification_Click);
             // 
             // mnuSynchronization
             // 
             this.mnuSynchronization.Name = "mnuSynchronization";
-            this.mnuSynchronization.Size = new System.Drawing.Size(315, 22);
+            this.mnuSynchronization.Size = new System.Drawing.Size(379, 24);
             this.mnuSynchronization.Text = "Item Synchronization Viewer..";
             this.mnuSynchronization.Click += new System.EventHandler(this.MnuSynchronization_Click);
             // 
             // mnuToolsSplit3
             // 
             this.mnuToolsSplit3.Name = "mnuToolsSplit3";
-            this.mnuToolsSplit3.Size = new System.Drawing.Size(312, 6);
+            this.mnuToolsSplit3.Size = new System.Drawing.Size(376, 6);
             // 
             // checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem
             // 
             this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem.Name = "checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem";
-            this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem.Size = new System.Drawing.Size(379, 24);
             this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem.Text = "Check for errors loading properties on Items...";
             this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem.Click += new System.EventHandler(this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem_Click);
             // 
             // mnuDisplayDelegates
             // 
             this.mnuDisplayDelegates.Name = "mnuDisplayDelegates";
-            this.mnuDisplayDelegates.Size = new System.Drawing.Size(315, 22);
+            this.mnuDisplayDelegates.Size = new System.Drawing.Size(379, 24);
             this.mnuDisplayDelegates.Text = "Delegate Information...";
             this.mnuDisplayDelegates.Click += new System.EventHandler(this.MnuDelegateInformation_Click);
             // 
             // UserOofSettingsMenuItem
             // 
             this.UserOofSettingsMenuItem.Name = "UserOofSettingsMenuItem";
-            this.UserOofSettingsMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.UserOofSettingsMenuItem.Size = new System.Drawing.Size(379, 24);
             this.UserOofSettingsMenuItem.Text = "User OOF Settings...";
             this.UserOofSettingsMenuItem.Click += new System.EventHandler(this.MnuOOFSettings_Click);
             // 
             // UserAvailabilityMenuItem
             // 
             this.UserAvailabilityMenuItem.Name = "UserAvailabilityMenuItem";
-            this.UserAvailabilityMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.UserAvailabilityMenuItem.Size = new System.Drawing.Size(379, 24);
             this.UserAvailabilityMenuItem.Text = "User Availability...";
             this.UserAvailabilityMenuItem.Click += new System.EventHandler(this.MnuAvailability_Click);
             // 
             // MeetingRoomsMenuItem
             // 
             this.MeetingRoomsMenuItem.Name = "MeetingRoomsMenuItem";
-            this.MeetingRoomsMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.MeetingRoomsMenuItem.Size = new System.Drawing.Size(379, 24);
             this.MeetingRoomsMenuItem.Text = "Meeting Rooms...";
             this.MeetingRoomsMenuItem.Click += new System.EventHandler(this.MeetingRoomsMenuItem_Click);
             // 
             // DistributionListMenuItem
             // 
             this.DistributionListMenuItem.Name = "DistributionListMenuItem";
-            this.DistributionListMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.DistributionListMenuItem.Size = new System.Drawing.Size(379, 24);
             this.DistributionListMenuItem.Text = "Distibution List Expansion...";
             this.DistributionListMenuItem.Click += new System.EventHandler(this.DistributionListMenuItem_Click);
             // 
             // InboxRulesMenuItem
             // 
             this.InboxRulesMenuItem.Name = "InboxRulesMenuItem";
-            this.InboxRulesMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.InboxRulesMenuItem.Size = new System.Drawing.Size(379, 24);
             this.InboxRulesMenuItem.Text = "Inbox Rules...";
             this.InboxRulesMenuItem.Click += new System.EventHandler(this.InboxRulesMenuItem_Click);
             // 
             // ConvertIdMenuItem
             // 
             this.ConvertIdMenuItem.Name = "ConvertIdMenuItem";
-            this.ConvertIdMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.ConvertIdMenuItem.Size = new System.Drawing.Size(379, 24);
             this.ConvertIdMenuItem.Text = "ConvertId...";
             this.ConvertIdMenuItem.Click += new System.EventHandler(this.ConvertIdMenu_Click);
             // 
             // serverTimeZoneToolStripMenuItem
             // 
             this.serverTimeZoneToolStripMenuItem.Name = "serverTimeZoneToolStripMenuItem";
-            this.serverTimeZoneToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.serverTimeZoneToolStripMenuItem.Size = new System.Drawing.Size(379, 24);
             this.serverTimeZoneToolStripMenuItem.Text = "Server TimeZone";
             this.serverTimeZoneToolStripMenuItem.Click += new System.EventHandler(this.serverTimeZoneToolStripMenuItem_Click);
             // 
             // TimeZonemenuitem
             // 
             this.TimeZonemenuitem.Name = "TimeZonemenuitem";
-            this.TimeZonemenuitem.Size = new System.Drawing.Size(315, 22);
+            this.TimeZonemenuitem.Size = new System.Drawing.Size(379, 24);
             this.TimeZonemenuitem.Text = "TimeZone Helper...";
             this.TimeZonemenuitem.Click += new System.EventHandler(this.TimeZonemenuitem_Click);
             // 
             // UserConfigurationMenuItem
             // 
             this.UserConfigurationMenuItem.Name = "UserConfigurationMenuItem";
-            this.UserConfigurationMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.UserConfigurationMenuItem.Size = new System.Drawing.Size(379, 24);
             this.UserConfigurationMenuItem.Text = "User Configuration";
             this.UserConfigurationMenuItem.Click += new System.EventHandler(this.UserConfigurationMenuItem_Click);
             // 
             // eDiscoverySearchToolStripMenuItem
             // 
             this.eDiscoverySearchToolStripMenuItem.Name = "eDiscoverySearchToolStripMenuItem";
-            this.eDiscoverySearchToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.eDiscoverySearchToolStripMenuItem.Size = new System.Drawing.Size(379, 24);
             this.eDiscoverySearchToolStripMenuItem.Text = "eDiscoverySearch";
             this.eDiscoverySearchToolStripMenuItem.Click += new System.EventHandler(this.eDiscoverySearchToolStripMenuItem_Click);
             // 
             // mailAppsToolStripMenuItem
             // 
             this.mailAppsToolStripMenuItem.Name = "mailAppsToolStripMenuItem";
-            this.mailAppsToolStripMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.mailAppsToolStripMenuItem.Size = new System.Drawing.Size(379, 24);
             this.mailAppsToolStripMenuItem.Text = "Mail Apps";
             this.mailAppsToolStripMenuItem.Click += new System.EventHandler(this.mailAppsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(312, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(376, 6);
             // 
             // OptionsMenuItem
             // 
             this.OptionsMenuItem.Name = "OptionsMenuItem";
-            this.OptionsMenuItem.Size = new System.Drawing.Size(315, 22);
+            this.OptionsMenuItem.Size = new System.Drawing.Size(379, 24);
             this.OptionsMenuItem.Text = "Options...";
             this.OptionsMenuItem.Click += new System.EventHandler(this.OptionsMenuItem_Click);
             // 
@@ -392,72 +398,72 @@
             this.mnuEncodingHelper,
             this.mnuFileContentHelper});
             this.mnuOther.Name = "mnuOther";
-            this.mnuOther.Size = new System.Drawing.Size(49, 20);
+            this.mnuOther.Size = new System.Drawing.Size(58, 24);
             this.mnuOther.Text = "Other";
             // 
             // mnuOpenItemById
             // 
             this.mnuOpenItemById.Name = "mnuOpenItemById";
-            this.mnuOpenItemById.Size = new System.Drawing.Size(268, 22);
+            this.mnuOpenItemById.Size = new System.Drawing.Size(318, 24);
             this.mnuOpenItemById.Text = "Open Item by Id...";
             this.mnuOpenItemById.Click += new System.EventHandler(this.MnuOpenItemById_Click);
             // 
             // mnuOpenFolderById
             // 
             this.mnuOpenFolderById.Name = "mnuOpenFolderById";
-            this.mnuOpenFolderById.Size = new System.Drawing.Size(268, 22);
+            this.mnuOpenFolderById.Size = new System.Drawing.Size(318, 24);
             this.mnuOpenFolderById.Text = "Open Folder by Id...";
             this.mnuOpenFolderById.Click += new System.EventHandler(this.MnuOpenFolderById_Click);
             // 
             // mnuGetConversationItems
             // 
             this.mnuGetConversationItems.Name = "mnuGetConversationItems";
-            this.mnuGetConversationItems.Size = new System.Drawing.Size(268, 22);
+            this.mnuGetConversationItems.Size = new System.Drawing.Size(318, 24);
             this.mnuGetConversationItems.Text = "Get Items by Conversation Id...";
             this.mnuGetConversationItems.Click += new System.EventHandler(this.mnuGetConversationItems_Click);
             // 
             // mnuOtherSplit1
             // 
             this.mnuOtherSplit1.Name = "mnuOtherSplit1";
-            this.mnuOtherSplit1.Size = new System.Drawing.Size(265, 6);
+            this.mnuOtherSplit1.Size = new System.Drawing.Size(315, 6);
             // 
             // mnuFindAppointments
             // 
             this.mnuFindAppointments.Name = "mnuFindAppointments";
-            this.mnuFindAppointments.Size = new System.Drawing.Size(268, 22);
+            this.mnuFindAppointments.Size = new System.Drawing.Size(318, 24);
             this.mnuFindAppointments.Text = "Find Appointments (CalendarView)...";
             this.mnuFindAppointments.Click += new System.EventHandler(this.MnuFindAppointments_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(265, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(315, 6);
             // 
             // mnuWindowsUserInformation
             // 
             this.mnuWindowsUserInformation.Name = "mnuWindowsUserInformation";
-            this.mnuWindowsUserInformation.Size = new System.Drawing.Size(268, 22);
+            this.mnuWindowsUserInformation.Size = new System.Drawing.Size(318, 24);
             this.mnuWindowsUserInformation.Text = "Run-time Information...";
             this.mnuWindowsUserInformation.Click += new System.EventHandler(this.mnuWindowsUserInformation_Click);
             // 
             // mnuSnmClient
             // 
             this.mnuSnmClient.Name = "mnuSnmClient";
-            this.mnuSnmClient.Size = new System.Drawing.Size(268, 22);
+            this.mnuSnmClient.Size = new System.Drawing.Size(318, 24);
             this.mnuSnmClient.Text = "System.Net.Mail Client...";
             this.mnuSnmClient.Click += new System.EventHandler(this.mnuSnmClient_Click_1);
             // 
             // mnuEncodingHelper
             // 
             this.mnuEncodingHelper.Name = "mnuEncodingHelper";
-            this.mnuEncodingHelper.Size = new System.Drawing.Size(268, 22);
+            this.mnuEncodingHelper.Size = new System.Drawing.Size(318, 24);
             this.mnuEncodingHelper.Text = "Encoding Helper...";
             this.mnuEncodingHelper.Click += new System.EventHandler(this.mnuEncode_Click);
             // 
             // mnuFileContentHelper
             // 
             this.mnuFileContentHelper.Name = "mnuFileContentHelper";
-            this.mnuFileContentHelper.Size = new System.Drawing.Size(268, 22);
+            this.mnuFileContentHelper.Size = new System.Drawing.Size(318, 24);
             this.mnuFileContentHelper.Text = "File Content Helper...";
             this.mnuFileContentHelper.Click += new System.EventHandler(this.mnuFileContentHelper_Click);
             // 
@@ -466,25 +472,32 @@
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuAbout});
             this.mnuHelp.Name = "mnuHelp";
-            this.mnuHelp.Size = new System.Drawing.Size(44, 20);
+            this.mnuHelp.Size = new System.Drawing.Size(53, 24);
             this.mnuHelp.Text = "Help";
             // 
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(164, 22);
+            this.mnuAbout.Size = new System.Drawing.Size(193, 24);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
+            // mnuMailTips
+            // 
+            this.mnuMailTips.Name = "mnuMailTips";
+            this.mnuMailTips.Size = new System.Drawing.Size(379, 24);
+            this.mnuMailTips.Text = "Mail Tips";
+            this.mnuMailTips.Click += new System.EventHandler(this.mnuMailTips_Click);
+            // 
             // BrowserForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 535);
+            this.ClientSize = new System.Drawing.Size(932, 658);
             this.Controls.Add(this.mnuMain);
             this.Controls.Add(this.statusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5);
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "BrowserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.BrowserForm_Load_1);
@@ -550,5 +563,6 @@
         public System.Windows.Forms.ToolStripMenuItem serverTimeZoneToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem mailAppsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuFileContentHelper;
+        private System.Windows.Forms.ToolStripMenuItem mnuMailTips;
     }
 }

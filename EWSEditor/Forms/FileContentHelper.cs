@@ -26,6 +26,9 @@ namespace EWSEditor.Forms
         {
             txtLoadFile.Text = sInitialDirectory;
             txtSaveFile.Text = sInitialDirectory;
+
+            cmboLoadType.Text = "BASE64";
+            cmboSaveType.Text = "BASE64";
             
         }
 
@@ -185,6 +188,11 @@ namespace EWSEditor.Forms
             }
 
            
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

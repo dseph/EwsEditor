@@ -51,25 +51,22 @@
             // 
             // txtLoad
             // 
-            this.txtLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLoad.Font = new System.Drawing.Font("Courier New", 7.8F);
-            this.txtLoad.Location = new System.Drawing.Point(10, 41);
+            this.txtLoad.Location = new System.Drawing.Point(13, 50);
+            this.txtLoad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtLoad.MaxLength = 0;
             this.txtLoad.Multiline = true;
             this.txtLoad.Name = "txtLoad";
             this.txtLoad.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLoad.Size = new System.Drawing.Size(1012, 209);
+            this.txtLoad.Size = new System.Drawing.Size(1183, 256);
             this.txtLoad.TabIndex = 5;
             // 
             // btnLoadFileSelect
             // 
-            this.btnLoadFileSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLoadFileSelect.Location = new System.Drawing.Point(934, 14);
-            this.btnLoadFileSelect.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLoadFileSelect.Location = new System.Drawing.Point(1102, 15);
+            this.btnLoadFileSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLoadFileSelect.Name = "btnLoadFileSelect";
-            this.btnLoadFileSelect.Size = new System.Drawing.Size(27, 19);
+            this.btnLoadFileSelect.Size = new System.Drawing.Size(36, 23);
             this.btnLoadFileSelect.TabIndex = 15;
             this.btnLoadFileSelect.Text = "...";
             this.btnLoadFileSelect.UseVisualStyleBackColor = true;
@@ -77,32 +74,28 @@
             // 
             // txtLoadFile
             // 
-            this.txtLoadFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLoadFile.Location = new System.Drawing.Point(299, 12);
-            this.txtLoadFile.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLoadFile.Location = new System.Drawing.Point(399, 15);
+            this.txtLoadFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtLoadFile.Name = "txtLoadFile";
-            this.txtLoadFile.Size = new System.Drawing.Size(631, 20);
+            this.txtLoadFile.Size = new System.Drawing.Size(697, 22);
             this.txtLoadFile.TabIndex = 13;
             // 
             // lblLoadFile
             // 
             this.lblLoadFile.AutoSize = true;
-            this.lblLoadFile.Location = new System.Drawing.Point(219, 15);
-            this.lblLoadFile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLoadFile.Location = new System.Drawing.Point(292, 18);
             this.lblLoadFile.Name = "lblLoadFile";
-            this.lblLoadFile.Size = new System.Drawing.Size(73, 13);
+            this.lblLoadFile.Size = new System.Drawing.Size(98, 17);
             this.lblLoadFile.TabIndex = 14;
             this.lblLoadFile.Text = "Load from file:";
             this.lblLoadFile.Click += new System.EventHandler(this.lblFromFile_Click);
             // 
             // btnSaveFileSelect
             // 
-            this.btnSaveFileSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveFileSelect.Location = new System.Drawing.Point(934, 8);
-            this.btnSaveFileSelect.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveFileSelect.Location = new System.Drawing.Point(1102, 6);
+            this.btnSaveFileSelect.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSaveFileSelect.Name = "btnSaveFileSelect";
-            this.btnSaveFileSelect.Size = new System.Drawing.Size(27, 19);
+            this.btnSaveFileSelect.Size = new System.Drawing.Size(36, 23);
             this.btnSaveFileSelect.TabIndex = 20;
             this.btnSaveFileSelect.Text = "...";
             this.btnSaveFileSelect.UseVisualStyleBackColor = true;
@@ -110,89 +103,85 @@
             // 
             // txtSaveFile
             // 
-            this.txtSaveFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSaveFile.Location = new System.Drawing.Point(299, 5);
-            this.txtSaveFile.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSaveFile.Location = new System.Drawing.Point(399, 6);
+            this.txtSaveFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSaveFile.Name = "txtSaveFile";
-            this.txtSaveFile.Size = new System.Drawing.Size(631, 20);
+            this.txtSaveFile.Size = new System.Drawing.Size(697, 22);
             this.txtSaveFile.TabIndex = 18;
             // 
             // lblSaveFile
             // 
             this.lblSaveFile.AutoSize = true;
-            this.lblSaveFile.Location = new System.Drawing.Point(219, 9);
-            this.lblSaveFile.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSaveFile.Location = new System.Drawing.Point(292, 11);
             this.lblSaveFile.Name = "lblSaveFile";
-            this.lblSaveFile.Size = new System.Drawing.Size(63, 13);
+            this.lblSaveFile.Size = new System.Drawing.Size(82, 17);
             this.lblSaveFile.TabIndex = 19;
             this.lblSaveFile.Text = "Save to file:";
             // 
             // txtSave
             // 
-            this.txtSave.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSave.Font = new System.Drawing.Font("Courier New", 7.8F);
-            this.txtSave.Location = new System.Drawing.Point(7, 34);
+            this.txtSave.Location = new System.Drawing.Point(9, 42);
+            this.txtSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSave.MaxLength = 0;
             this.txtSave.Multiline = true;
             this.txtSave.Name = "txtSave";
             this.txtSave.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtSave.Size = new System.Drawing.Size(1015, 216);
+            this.txtSave.Size = new System.Drawing.Size(1187, 266);
             this.txtSave.TabIndex = 16;
             // 
             // cmboSaveType
             // 
+            this.cmboSaveType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboSaveType.FormattingEnabled = true;
             this.cmboSaveType.Items.AddRange(new object[] {
             "BASE64",
             "Hex Bytes"});
-            this.cmboSaveType.Location = new System.Drawing.Point(69, 6);
+            this.cmboSaveType.Location = new System.Drawing.Point(92, 7);
+            this.cmboSaveType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmboSaveType.Name = "cmboSaveType";
-            this.cmboSaveType.Size = new System.Drawing.Size(131, 21);
+            this.cmboSaveType.Size = new System.Drawing.Size(173, 24);
             this.cmboSaveType.TabIndex = 21;
-            this.cmboSaveType.Text = "BASE64";
             // 
             // lblSaveType
             // 
             this.lblSaveType.AutoSize = true;
-            this.lblSaveType.Location = new System.Drawing.Point(4, 11);
-            this.lblSaveType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSaveType.Location = new System.Drawing.Point(5, 14);
             this.lblSaveType.Name = "lblSaveType";
-            this.lblSaveType.Size = new System.Drawing.Size(60, 13);
+            this.lblSaveType.Size = new System.Drawing.Size(78, 17);
             this.lblSaveType.TabIndex = 22;
             this.lblSaveType.Text = "Data Type:";
             // 
             // lblLoadType
             // 
             this.lblLoadType.AutoSize = true;
-            this.lblLoadType.Location = new System.Drawing.Point(4, 17);
-            this.lblLoadType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLoadType.Location = new System.Drawing.Point(5, 21);
             this.lblLoadType.Name = "lblLoadType";
-            this.lblLoadType.Size = new System.Drawing.Size(60, 13);
+            this.lblLoadType.Size = new System.Drawing.Size(78, 17);
             this.lblLoadType.TabIndex = 24;
             this.lblLoadType.Text = "Data Type:";
             // 
             // cmboLoadType
             // 
+            this.cmboLoadType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboLoadType.FormattingEnabled = true;
             this.cmboLoadType.Items.AddRange(new object[] {
             "BASE64",
             "Hex Bytes",
             "Hex Dump"});
-            this.cmboLoadType.Location = new System.Drawing.Point(69, 14);
+            this.cmboLoadType.Location = new System.Drawing.Point(92, 17);
+            this.cmboLoadType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmboLoadType.Name = "cmboLoadType";
-            this.cmboLoadType.Size = new System.Drawing.Size(131, 21);
+            this.cmboLoadType.Size = new System.Drawing.Size(173, 24);
             this.cmboLoadType.TabIndex = 23;
-            this.cmboLoadType.Text = "BASE64";
             // 
             // splitContainer1
             // 
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(5, 2);
+            this.splitContainer1.Location = new System.Drawing.Point(7, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -205,6 +194,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.cmboLoadType);
             this.splitContainer1.Panel1.Controls.Add(this.btnLoadFileSelect);
             this.splitContainer1.Panel1.Controls.Add(this.lblLoadFile);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
@@ -215,16 +205,17 @@
             this.splitContainer1.Panel2.Controls.Add(this.lblSaveType);
             this.splitContainer1.Panel2.Controls.Add(this.btnSaveFileSelect);
             this.splitContainer1.Panel2.Controls.Add(this.txtSaveFile);
-            this.splitContainer1.Size = new System.Drawing.Size(1034, 510);
-            this.splitContainer1.SplitterDistance = 253;
+            this.splitContainer1.Size = new System.Drawing.Size(1214, 628);
+            this.splitContainer1.SplitterDistance = 311;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 25;
             // 
             // btnLoadFile
             // 
-            this.btnLoadFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLoadFile.Location = new System.Drawing.Point(981, 11);
+            this.btnLoadFile.Location = new System.Drawing.Point(1145, 15);
+            this.btnLoadFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLoadFile.Name = "btnLoadFile";
-            this.btnLoadFile.Size = new System.Drawing.Size(41, 25);
+            this.btnLoadFile.Size = new System.Drawing.Size(55, 31);
             this.btnLoadFile.TabIndex = 26;
             this.btnLoadFile.Text = "Go";
             this.btnLoadFile.UseVisualStyleBackColor = true;
@@ -232,10 +223,10 @@
             // 
             // btnSaveFileGo
             // 
-            this.btnSaveFileGo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveFileGo.Location = new System.Drawing.Point(981, 5);
+            this.btnSaveFileGo.Location = new System.Drawing.Point(1145, 4);
+            this.btnSaveFileGo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSaveFileGo.Name = "btnSaveFileGo";
-            this.btnSaveFileGo.Size = new System.Drawing.Size(41, 25);
+            this.btnSaveFileGo.Size = new System.Drawing.Size(55, 31);
             this.btnSaveFileGo.TabIndex = 24;
             this.btnSaveFileGo.Text = "Go";
             this.btnSaveFileGo.UseVisualStyleBackColor = true;
@@ -243,10 +234,11 @@
             // 
             // FileContentHelper
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1042, 514);
+            this.ClientSize = new System.Drawing.Size(1224, 633);
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FileContentHelper";
             this.Text = "File Content Helper";
             this.Load += new System.EventHandler(this.Base64Contenthelper_Load);
