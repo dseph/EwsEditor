@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+      xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+      xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2010" />
+  </soap:Header>
+  <soap:Body>
+    <m:GetItem>
+      <m:ItemShape>
+        <t:BaseShape>Default</t:BaseShape>
+        <t:BodyType>HTML</t:BodyType>
+        <AdditionalProperties xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
+          <FieldURI FieldURI="item:DateTimeReceived" />
+          <FieldURI FieldURI="item:LastModifiedTime" />
+          <FieldURI FieldURI="message:InternetMessageId" />
+          <FieldURI FieldURI="item:Importance" />
+          <FieldURI FieldURI="item:HasAttachments" />
+          <FieldURI FieldURI="message:ConversationIndex" />
+          <FieldURI FieldURI="item:InReplyTo" />
+          <FieldURI FieldURI="item:ParentFolderId" />
+          <ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="crmid" PropertyType="String" />
+          <ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="crmRegardingObjectType" PropertyType="String" />
+          <ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="crmRegardingId" PropertyType="String" />
+          <ExtendedFieldURI DistinguishedPropertySetId="PublicStrings" PropertyName="crmLinkState" PropertyType="Double" />
+        </AdditionalProperties>
+      </m:ItemShape>
+      <m:ItemIds>
+        <t:ItemId Id="AAMkADE3ZDEyNzIyLWNmYTEtNDJjNC1iMDcxLWQ1YzRlOTllNThmZgBGAAAAAAAPhJtWhlq+R7kfwUCSYEOdBwC+QgNrQq+cSZO1EQVBp6FaABgQMgAPAAATi1dys5KiTYjQdU3KXtHXAABcMy9wAAA=" />
+      </m:ItemIds>
+    </m:GetItem>
+  </soap:Body>
+</soap:Envelope>
+
+
