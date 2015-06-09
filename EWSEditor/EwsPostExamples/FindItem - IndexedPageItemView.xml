@@ -1,0 +1,25 @@
+﻿<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Body>
+    <FindItem Traversal="Shallow" xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <ItemShape>
+        <t:BaseShape>IdOnly</t:BaseShape>
+        <t:AdditionalProperties>
+          <t:FieldURI FieldURI="item:Subject"/>
+        </t:AdditionalProperties>
+      </ItemShape>
+      <IndexedPageItemView MaxEntriesReturned="6" BasePoint="Beginning" Offset="0" />
+      <GroupBy Order="Ascending">
+        <t:FieldURI FieldURI="item:Importance"/>
+        <t:AggregateOn Aggregate="Maximum">
+          <t:FieldURI FieldURI="item:Subject"/>
+        </t:AggregateOn>
+      </GroupBy>
+      <ParentFolderIds>
+        <t:DistinguishedFolderId Id="inbox"/>
+      </ParentFolderIds>
+    </FindItem>
+  </soap:Body>
+</soap:Envelope>
