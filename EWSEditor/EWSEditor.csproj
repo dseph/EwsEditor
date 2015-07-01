@@ -1452,6 +1452,8 @@
     <Content Include="EwsPostExamples\FindItem - CalendarView.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="EwsPostExamples\FindItem - FractionalPageItemView.xml" />
+    <Content Include="EwsPostExamples\FindItem - IndexedPageItemView.xml" />
     <Content Include="EwsPostExamples\FindPeople - AQS Search against GAL and return specified properties.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -1473,6 +1475,9 @@
     <Content Include="EwsPostExamples\GetItem - AllKnownProperties.xml" />
     <Content Include="EwsPostExamples\GetItem - calendar.xml" />
     <Content Include="EwsPostExamples\GetItem - contact.xml" />
+    <Content Include="EwsPostExamples\GetItem - Details of a message with CRM properties.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\GetItem - email message.xml" />
     <Content Include="EwsPostExamples\GetItem - task.xml" />
     <Content Include="EwsPostExamples\GetItem.xml" />
