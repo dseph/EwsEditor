@@ -145,6 +145,7 @@ namespace EWSEditor.Forms
             oContact.CompanyName =  txtCompanyName.Text;
             oContact.JobTitle = txtJobTitle.Text;
             //oContact.Notes = txtNotes.Text;  /// Its read only???
+            PhysicalAddressEntry oPhysicalAddress = null;
 
             //PhysicalAddressEntry oBusinessAddress = null;
             if (
@@ -156,8 +157,16 @@ namespace EWSEditor.Forms
                 )
             {
 
-                if (oContact.PhysicalAddresses[PhysicalAddressKey.Business] == null)
+               // if (oContact.PhysicalAddresses.TryGetValue(PhysicalAddressKey.Business, out oPhysicalAddress))
+       
+                //txtBA_Street.Text = oPhysicalAddress.Street;
+                oPhysicalAddress = null;
+                if (oContact.PhysicalAddresses.TryGetValue(PhysicalAddressKey.Business, out oPhysicalAddress) == false)
                     oContact.PhysicalAddresses[PhysicalAddressKey.Business] = new PhysicalAddressEntry();
+                oPhysicalAddress = null;
+
+                //if (oContact.PhysicalAddresses[PhysicalAddressKey.Business] == null)
+                //    oContact.PhysicalAddresses[PhysicalAddressKey.Business] = new PhysicalAddressEntry();
                 
 
                 oContact.PhysicalAddresses[PhysicalAddressKey.Business].Street = txtBA_Street.Text;
@@ -165,16 +174,7 @@ namespace EWSEditor.Forms
                 oContact.PhysicalAddresses[PhysicalAddressKey.Business].State = txtBA_State.Text;
                 oContact.PhysicalAddresses[PhysicalAddressKey.Business].CountryOrRegion = txtBA_CountryOrRegion.Text;
                 oContact.PhysicalAddresses[PhysicalAddressKey.Business].PostalCode = txtBA_PostalCode.Text;
-       
 
-
-                //oBusinessAddress = new PhysicalAddressEntry();
-                //oBusinessAddress.Street = txtBA_Street.Text;
-                //oBusinessAddress.City = txtBA_City.Text;
-                //oBusinessAddress.State = txtBA_State.Text;
-                //oBusinessAddress.CountryOrRegion = txtBA_CountryOrRegion.Text;
-                //oBusinessAddress.PostalCode = txtBA_PostalCode.Text;
-                //oContact.PhysicalAddresses[PhysicalAddressKey.Business] = oBusinessAddress;
  
             }
 
@@ -187,8 +187,14 @@ namespace EWSEditor.Forms
                 (txtHA_PostalCode.Text.Trim().Length != 0)
                 )
             {
-                if (oContact.PhysicalAddresses[PhysicalAddressKey.Home] == null)
+
+                oPhysicalAddress = null;
+                if (oContact.PhysicalAddresses.TryGetValue(PhysicalAddressKey.Home, out oPhysicalAddress) == false)
                     oContact.PhysicalAddresses[PhysicalAddressKey.Home] = new PhysicalAddressEntry();
+                oPhysicalAddress = null;
+
+                //if (oContact.PhysicalAddresses[PhysicalAddressKey.Home] == null)
+               //     oContact.PhysicalAddresses[PhysicalAddressKey.Home] = new PhysicalAddressEntry();
  
                 oContact.PhysicalAddresses[PhysicalAddressKey.Home].Street = txtHA_Street.Text;
                 oContact.PhysicalAddresses[PhysicalAddressKey.Home].City = txtHA_City.Text;
@@ -196,14 +202,7 @@ namespace EWSEditor.Forms
                 oContact.PhysicalAddresses[PhysicalAddressKey.Home].CountryOrRegion = txtHA_CountryOrRegion.Text;
                 oContact.PhysicalAddresses[PhysicalAddressKey.Home].PostalCode = txtHA_PostalCode.Text;
            
-
-                //oHomeAddress = new PhysicalAddressEntry();
-                //oHomeAddress.Street = txtHA_Street.Text;
-                //oHomeAddress.City = txtHA_City.Text;
-                //oHomeAddress.State = txtHA_State.Text;
-                //oHomeAddress.CountryOrRegion = txtHA_CountryOrRegion.Text;
-                //oHomeAddress.PostalCode = txtHA_PostalCode.Text;
-                //oContact.PhysicalAddresses[PhysicalAddressKey.Home] = oHomeAddress;
+ 
                 
             }
 
@@ -216,8 +215,14 @@ namespace EWSEditor.Forms
                 (txtOA_PostalCode.Text.Trim().Length != 0)
                 )
             {
-                if (oContact.PhysicalAddresses[PhysicalAddressKey.Other] == null)
+
+                oPhysicalAddress = null;
+                if (oContact.PhysicalAddresses.TryGetValue(PhysicalAddressKey.Other, out oPhysicalAddress) == false)
                     oContact.PhysicalAddresses[PhysicalAddressKey.Other] = new PhysicalAddressEntry();
+                oPhysicalAddress = null;
+
+                //if (oContact.PhysicalAddresses[PhysicalAddressKey.Other] == null)
+                //    oContact.PhysicalAddresses[PhysicalAddressKey.Other] = new PhysicalAddressEntry();
 
                 oContact.PhysicalAddresses[PhysicalAddressKey.Other].Street = txtOA_Street.Text;
                 oContact.PhysicalAddresses[PhysicalAddressKey.Other].City = txtOA_City.Text;
