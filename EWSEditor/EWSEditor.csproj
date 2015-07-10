@@ -1428,6 +1428,7 @@
     <Content Include="EwsPostExamples\CopyFolder.xml" />
     <Content Include="EwsPostExamples\CopyItem.xml" />
     <Content Include="EwsPostExamples\CreateAttachment.xml" />
+    <Content Include="EwsPostExamples\CreateFolder - SearchFolder- Complex.xml" />
     <Content Include="EwsPostExamples\CreateFolder.xml" />
     <Content Include="EwsPostExamples\CreateFolderPath.xml" />
     <Content Include="EwsPostExamples\CreateItem - AcceptSharingInvitation.xml" />

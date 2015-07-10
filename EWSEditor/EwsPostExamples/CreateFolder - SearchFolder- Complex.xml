@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+      xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+      xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2010" />
+  </soap:Header>
+  <soap:Body>
+    <m:CreateFolder>
+      <m:ParentFolderId>
+        <t:DistinguishedFolderId Id="searchfolders" />
+      </m:ParentFolderId>
+      <m:Folders>
+        <t:SearchFolder>
+          <t:DisplayName>HomeSiteTest</t:DisplayName>
+          <t:PermissionSet>
+            <t:Permissions />
+          </t:PermissionSet>
+          <t:SearchParameters Traversal="Shallow">
+
+            <t:Restriction>
+              <t:And>
+                <t:Or>
+                  <t:IsEqualTo>
+                    <t:FieldURI FieldURI="item:ItemClass"></t:FieldURI>
+                    <t:FieldURIOrConstant>
+                      <t:Constant Value="IPM.Note"></t:Constant>
+                    </t:FieldURIOrConstant>
+                  </t:IsEqualTo>
+                  <t:IsEqualTo>
+                    <t:FieldURI FieldURI="item:ItemClass"></t:FieldURI>
+                    <t:FieldURIOrConstant>
+                      <t:Constant Value="IPM.Note.CustomSomething"></t:Constant>
+                    </t:FieldURIOrConstant>
+                  </t:IsEqualTo>
+                  <t:IsEqualTo>
+                    <t:FieldURI FieldURI="item:ItemClass"></t:FieldURI>
+                    <t:FieldURIOrConstant>
+                      <t:Constant Value="IPM.Schedule.Meeting.Request"></t:Constant>
+                    </t:FieldURIOrConstant>
+                  </t:IsEqualTo>
+                  <t:IsEqualTo>
+                    <t:FieldURI FieldURI="item:ItemClass"></t:FieldURI>
+                    <t:FieldURIOrConstant>
+                      <t:Constant Value="IPM.Appointment"></t:Constant>
+                    </t:FieldURIOrConstant>
+                  </t:IsEqualTo>
+                </t:Or>
+                <t:Or>
+
+                  <t:Exists>
+                    <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="X-TestHeader" PropertyType="String"></t:ExtendedFieldURI>
+                  </t:Exists>
+
+                </t:Or>
+              </t:And>
+
+            </t:Restriction>
+
+            <t:BaseFolderIds>
+              <t:DistinguishedFolderId Id="inbox" />
+              <t:DistinguishedFolderId Id="calendar" />
+              <t:DistinguishedFolderId Id="drafts" />
+              <t:DistinguishedFolderId Id="sentitems" />
+            </t:BaseFolderIds>
+          </t:SearchParameters>
+        </t:SearchFolder>
+      </m:Folders>
+    </m:CreateFolder>
+  </soap:Body>
+</soap:Envelope>
