@@ -176,7 +176,10 @@ namespace EWSEditor.Forms
                                 oCollection1 = (Microsoft.Exchange.WebServices.Autodiscover.WebClientUrlCollection)usersetting.Value;
                                 foreach (WebClientUrl oUrl in oCollection1.Urls)
                                 {
-                                    sValue += string.Format("Url: {0} - Authentication: {1}\r\n", oUrl.Url, oUrl.AuthenticationMethods);
+                                    sValue += string.Format("Url: {0} \r\n" +
+                                                "Authentication: {1}\r\n", 
+                                                oUrl.Url, 
+                                                oUrl.AuthenticationMethods);
                                     ValueCount++;
                                 }
                                 break;
@@ -185,24 +188,39 @@ namespace EWSEditor.Forms
                                 oCollection2 = (Microsoft.Exchange.WebServices.Autodiscover.ProtocolConnectionCollection)usersetting.Value;
                                 foreach (ProtocolConnection oProtocolConnection in oCollection2.Connections)
                                 {
-                                    sValue += string.Format("Hostname: {0} - Port: {1} - EncryptionMethod: {2}\r\n", oProtocolConnection.Hostname, oProtocolConnection.Port, oProtocolConnection.EncryptionMethod);
+                                    sValue += string.Format("Hostname: {0} \r\n" +
+                                                "Port: {1}\r\n" +
+                                                "EncryptionMethod: {2}\r\n", 
+                                                oProtocolConnection.Hostname, 
+                                                oProtocolConnection.Port, 
+                                                oProtocolConnection.EncryptionMethod);
                                     ValueCount++;
                                 }
                                 break;
-                        case ("Microsoft.Exchange.WebServices.Autodiscover.AlternateMailboxCollection"):
-                            Microsoft.Exchange.WebServices.Autodiscover.AlternateMailboxCollection oCollection3;
-                            oCollection3 = (Microsoft.Exchange.WebServices.Autodiscover.AlternateMailboxCollection)usersetting.Value;
-                            foreach (AlternateMailbox oAlternativeMailbox in oCollection3.Entries)
-                            { 
-                                sValue += string.Format("Type: {0} - SmtpAddress: {1} - DisplayName: {2} - Server: {3} - LegacyDN: {4}\r\n", 
-                                    oAlternativeMailbox.Type,
-                                    oAlternativeMailbox.SmtpAddress,
-                                    oAlternativeMailbox.DisplayName,
-                                    oAlternativeMailbox.Server,
-                                    oAlternativeMailbox.LegacyDN 
-                                    );
-                                ValueCount++;
-                            }
+    case ("Microsoft.Exchange.WebServices.Autodiscover.AlternateMailboxCollection"):
+        Microsoft.Exchange.WebServices.Autodiscover.AlternateMailboxCollection oCollection3;
+        oCollection3 = (Microsoft.Exchange.WebServices.Autodiscover.AlternateMailboxCollection)usersetting.Value;
+        foreach (AlternateMailbox oAlternativeMailbox in oCollection3.Entries)
+        {
+            sValue += string.Format(
+                            "Type: {0} \r\n" +
+                            "DisplayName: {1} \r\n" +   
+                            "LegacyDN: {2} \r\n" +      
+                            "Server: {3} \r\n" +
+                            "SmtpAddress: {4} \r\n" +
+                            "OwnerSmtpAddress: {5} \r\n" +
+                            "\r\n", 
+
+                oAlternativeMailbox.Type,
+                oAlternativeMailbox.DisplayName,
+                oAlternativeMailbox.LegacyDN,
+                oAlternativeMailbox.Server,
+                oAlternativeMailbox.SmtpAddress,
+                oAlternativeMailbox.OwnerSmtpAddress
+            
+                );
+            ValueCount++;
+        }
                                 break;
                             default:
                                 sValue = string.Format("{0}\r\n", usersetting.Value.ToString());
