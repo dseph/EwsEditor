@@ -421,6 +421,8 @@ namespace EWSEditor.Forms
                 return;
             }
 
+            StringBuilder oSB = new StringBuilder();
+
             try
             {
                 this.Cursor = Cursors.WaitCursor;
@@ -434,10 +436,95 @@ namespace EWSEditor.Forms
                 List<ItemId> itemId = new List<ItemId>();
                 itemId.Add(id);
 
-                this.CurrentService.MoveItems(itemId, destId);
+                ServiceResponseCollection<MoveCopyItemResponse> oResponses = this.CurrentService.MoveItems(itemId, destId, true);
+
+ 
+
+                if (oResponses.OverallResult != ServiceResult.Success)
+                {
+
+                    oSB.AppendFormat("Errors found in some of {0} response(s) .\r\n", oResponses.Count);
+
+                    foreach (MoveCopyItemResponse oResponse in oResponses)
+                    {
+
+                        oSB.AppendFormat("    Error code: {0}\r\n", oResponse.ErrorCode.ToString());
+                        oSB.AppendFormat("    Item - Id: {0}\r\n", oResponse.Result.ToString());
+                        oSB.AppendFormat("    ErrorMessage: {0}\r\n", oResponse.ErrorMessage.ToString());
+                        if (oResponse.ErrorDetails != null)
+                        {
+                            oSB.AppendFormat("    ErrorDetails: \r\n");
+                            foreach (KeyValuePair<string, string> kvp in oResponse.ErrorDetails)
+                            {
+                                oSB.AppendFormat("         Item: {0}\r\n", kvp.Key);
+                                oSB.AppendFormat("        Value: {0}\r\n", kvp.Value);
+
+                                oSB.AppendLine();
+                            }
+                        }
+
+
+                        if (oResponse.Item != null)
+                        {   // copy/moved item - null if between mailboxes or from mailbox to public folder.
+                            oSB.AppendFormat("    Item - Id: {0}\r\n", oResponse.Item.Id.UniqueId);
+
+                        }
+                        if (oResponse.ErrorProperties != null)
+                        {
+                            oSB.AppendFormat("    ErrorProperties:  \r\n");
+                            foreach (PropertyDefinitionBase oProps in oResponse.ErrorProperties)
+                            {
+                                oSB.AppendFormat("        Property: {0}\r\n", oProps.ToString());
+
+                            }
+                        }
+                        oSB.AppendLine();
+                    }
+                    ShowTextDocument oForm = new ShowTextDocument();
+                    oForm.txtEntry.WordWrap = false;
+                    oForm.Text = "Move Results";
+                    oForm.txtEntry.Text = oSB.ToString();
+                    oForm.ShowDialog();
+                }
+                else
+                {
+                    oSB.AppendFormat("Operation completed.\r\n\r\n");
+                    oSB.AppendFormat("Ending item IDs: \r\n");
+                    foreach (MoveCopyItemResponse oResponse in oResponses)
+                    {
+
+                        if (oResponse.Item != null)
+                        {   // copy/moved item - null if between mailboxes or from mailbox to public folder.
+                            oSB.AppendFormat("    Item - Id: {0}\r\n", oResponse.Item.Id.UniqueId);
+                            //oSB.AppendFormat("           ParentFolderId: {0}\r\n", oResponse.Item.ParentFolderId);
+                        }
+                    }
+
+                    oSB.AppendLine();
+                    oSB.AppendFormat("Note: Ids will not be returned when copying between mailboxes or to a public folder.\r\n");
+
+                    ShowTextDocument oForm = new ShowTextDocument();
+                    oForm.txtEntry.WordWrap = false;
+                    oForm.Text = "Move Result";
+                    oForm.txtEntry.Text = oSB.ToString();
+                    oForm.ShowDialog();
+                }
 
                 // Refresh the view
                 this.RefreshContentAndDetails();
+            }
+            catch (ServiceResponseException ex)
+            {
+
+                oSB.AppendFormat("Error code: {0}\r\n", ex.ErrorCode);
+                oSB.AppendFormat("Error message: {0}\r\n", ex.Message);
+                oSB.AppendFormat("Response: {0}\r\n", ex.Response);
+
+                ShowTextDocument oForm = new ShowTextDocument();
+                oForm.txtEntry.WordWrap = false;
+                oForm.Text = "Move Error";
+                oForm.txtEntry.Text = oSB.ToString();
+                oForm.ShowDialog();
             }
             finally
             {
@@ -838,6 +925,8 @@ namespace EWSEditor.Forms
                 return;
             }
 
+            StringBuilder oSB = new StringBuilder();
+
             try
             {
                 this.Cursor = Cursors.WaitCursor;
@@ -851,15 +940,106 @@ namespace EWSEditor.Forms
                 List<ItemId> itemId = new List<ItemId>();
                 itemId.Add(id);
 
-                this.CurrentService.CopyItems(itemId, destId);
+                //this.CurrentService.CopyItems(itemId, destId);
+
+                // https://msdn.microsoft.com/en-us/library/office/Dn771039(v=EXCHG.150).aspx#bk_ewsmaerrors
+
+                 
+
+                ServiceResponseCollection <MoveCopyItemResponse > oResponses = this.CurrentService.CopyItems(itemId, destId, true);
+
+                if (oResponses.OverallResult != ServiceResult.Success)
+                {
+                    
+                    oSB.AppendFormat("Errors found in some of {0} response(s) .\r\n", oResponses.Count);
+
+                    foreach (MoveCopyItemResponse oResponse in oResponses)
+                    {
+
+                        oSB.AppendFormat("    Error code: {0}\r\n", oResponse.ErrorCode.ToString());
+                        oSB.AppendFormat("    Item - Id: {0}\r\n", oResponse.Result.ToString());
+                        oSB.AppendFormat("    ErrorMessage: {0}\r\n", oResponse.ErrorMessage.ToString());
+                        if (oResponse.ErrorDetails != null)
+                        { 
+                            oSB.AppendFormat("    ErrorDetails: \r\n") ;
+                            foreach (KeyValuePair<string, string> kvp in oResponse.ErrorDetails)
+                            {
+                                oSB.AppendFormat("         Item: {0}\r\n", kvp.Key);
+                                oSB.AppendFormat("        Value: {0}\r\n", kvp.Value);
+
+                                oSB.AppendLine();
+                            }
+                        }
+                       
+
+                        if (oResponse.Item != null)
+                        {   // copy/moved item - null if between mailboxes or from mailbox to public folder.
+                            oSB.AppendFormat("    Item - Id: {0}\r\n", oResponse.Item.Id.UniqueId);
+                             
+                        }
+                        if (oResponse.ErrorProperties != null)
+                        {
+                            oSB.AppendFormat("    ErrorProperties:  \r\n" );
+                            foreach (PropertyDefinitionBase oProps in oResponse.ErrorProperties)
+                            {
+                                oSB.AppendFormat("        Property: {0}\r\n", oProps.ToString());
+
+                            }
+                        }
+                        oSB.AppendLine();
+                    }
+                    ShowTextDocument oForm = new ShowTextDocument();
+                    oForm.txtEntry.WordWrap = false;
+                    oForm.Text = "Copy Results";
+                    oForm.txtEntry.Text = oSB.ToString();
+                    oForm.ShowDialog();
+                }
+                else
+                {
+                    oSB.AppendFormat("Operation completed.\r\n\r\n");
+                    oSB.AppendFormat("Ending item IDs: \r\n");
+                    foreach (MoveCopyItemResponse oResponse in oResponses)
+                    {
+
+                        if (oResponse.Item != null)
+                        {   // copy/moved item - null if between mailboxes or from mailbox to public folder.
+                            oSB.AppendFormat("    Item - Id: {0}\r\n", oResponse.Item.Id.UniqueId);
+                            //oSB.AppendFormat("           ParentFolderId: {0}\r\n", oResponse.Item.ParentFolderId);
+                        }
+                    }
+
+                    oSB.AppendLine();
+                    oSB.AppendFormat("Note: Ids will not be returned when copying between mailboxes or to a public folder.\r\n");
+
+                    ShowTextDocument oForm = new ShowTextDocument();
+                    oForm.txtEntry.WordWrap = false;
+                    oForm.Text = "Copy Result";
+                    oForm.txtEntry.Text = oSB.ToString();
+                    oForm.ShowDialog();
+                }
 
                 // Refresh the view
                 this.RefreshContentAndDetails();
+            }
+            catch (ServiceResponseException ex)
+            {
+
+                oSB.AppendFormat("Error code: {0}\r\n", ex.ErrorCode);
+                oSB.AppendFormat("Error message: {0}\r\n", ex.Message);
+                oSB.AppendFormat("Response: {0}\r\n", ex.Response);
+
+                ShowTextDocument oForm = new ShowTextDocument();
+                oForm.txtEntry.WordWrap = false;
+                oForm.Text = "Copy Error";
+                oForm.txtEntry.Text = oSB.ToString();
+                oForm.ShowDialog();
             }
             finally
             {
                 this.Cursor = Cursors.Default;
             }
+
+ 
         }
 
         private void mnuItemContext_Click(object sender, EventArgs e)
