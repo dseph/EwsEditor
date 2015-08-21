@@ -80,6 +80,9 @@ namespace EWSEditor.Forms
             dialog.ExceptionMessage.Text = ex.Message;
             dialog.FromWhere.Text = EwsMethodFromStackTrace(ex);
 
+            dialog.txtHResult.Text =  ex.HResult.ToString();
+            dialog.txtHResultHex.Text = String.Format("{0:X}", ex.HResult);
+
             // Add verbose exception details
             dialog.ExceptionDetailBox.Text = BuildExceptionDetail(ex);
 
@@ -300,6 +303,16 @@ namespace EWSEditor.Forms
                 details.AppendFormat(" Message: {0}{1}", arex.Error.Message, Crlf);
                 details.AppendFormat(" Time: {0}{1}", arex.Error.Time, Crlf);
             }
+        }
+
+        private void ErrorDialog_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Header_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

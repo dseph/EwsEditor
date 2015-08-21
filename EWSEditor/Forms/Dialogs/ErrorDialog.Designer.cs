@@ -31,9 +31,13 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.ExceptionDetailBox = new System.Windows.Forms.RichTextBox();
             this.Header = new System.Windows.Forms.Panel();
-            this.FromWhere = new System.Windows.Forms.Label();
+            this.lblHResultHex = new System.Windows.Forms.Label();
+            this.txtHResultHex = new System.Windows.Forms.TextBox();
+            this.lblHResult = new System.Windows.Forms.Label();
+            this.txtHResult = new System.Windows.Forms.TextBox();
+            this.ExceptionMessage = new System.Windows.Forms.TextBox();
             this.ErrorIcon = new System.Windows.Forms.PictureBox();
-            this.ExceptionMessage = new System.Windows.Forms.Label();
+            this.FromWhere = new System.Windows.Forms.TextBox();
             this.Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcon)).BeginInit();
             this.SuspendLayout();
@@ -42,9 +46,10 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(429, 423);
+            this.btnOK.Location = new System.Drawing.Point(1020, 724);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(112, 35);
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -56,11 +61,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ExceptionDetailBox.BackColor = System.Drawing.SystemColors.Control;
             this.ExceptionDetailBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ExceptionDetailBox.Location = new System.Drawing.Point(4, 86);
+            this.ExceptionDetailBox.HideSelection = false;
+            this.ExceptionDetailBox.Location = new System.Drawing.Point(6, 232);
+            this.ExceptionDetailBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ExceptionDetailBox.Name = "ExceptionDetailBox";
             this.ExceptionDetailBox.ReadOnly = true;
             this.ExceptionDetailBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.ExceptionDetailBox.Size = new System.Drawing.Size(508, 324);
+            this.ExceptionDetailBox.Size = new System.Drawing.Size(1131, 482);
             this.ExceptionDetailBox.TabIndex = 1;
             this.ExceptionDetailBox.Text = "[ExceptionDetails]";
             this.ExceptionDetailBox.WordWrap = false;
@@ -68,58 +75,108 @@
             // Header
             // 
             this.Header.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Header.Controls.Add(this.FromWhere);
-            this.Header.Controls.Add(this.ErrorIcon);
+            this.Header.Controls.Add(this.lblHResultHex);
+            this.Header.Controls.Add(this.txtHResultHex);
+            this.Header.Controls.Add(this.lblHResult);
+            this.Header.Controls.Add(this.txtHResult);
             this.Header.Controls.Add(this.ExceptionMessage);
+            this.Header.Controls.Add(this.ErrorIcon);
+            this.Header.Controls.Add(this.FromWhere);
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Header.Location = new System.Drawing.Point(0, 0);
+            this.Header.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(516, 80);
+            this.Header.Size = new System.Drawing.Size(1145, 222);
             this.Header.TabIndex = 2;
+            this.Header.Paint += new System.Windows.Forms.PaintEventHandler(this.Header_Paint);
             // 
-            // FromWhere
+            // lblHResultHex
             // 
-            this.FromWhere.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.FromWhere.Location = new System.Drawing.Point(73, 41);
-            this.FromWhere.Name = "FromWhere";
-            this.FromWhere.Size = new System.Drawing.Size(439, 23);
-            this.FromWhere.TabIndex = 1;
-            this.FromWhere.Text = "[FromWhere]";
+            this.lblHResultHex.AutoSize = true;
+            this.lblHResultHex.Location = new System.Drawing.Point(530, 186);
+            this.lblHResultHex.Name = "lblHResultHex";
+            this.lblHResultHex.Size = new System.Drawing.Size(113, 20);
+            this.lblHResultHex.TabIndex = 16;
+            this.lblHResultHex.Text = "HResult (Hex):";
             // 
-            // ErrorIcon
+            // txtHResultHex
             // 
-            this.ErrorIcon.Location = new System.Drawing.Point(12, 12);
-            this.ErrorIcon.Name = "ErrorIcon";
-            this.ErrorIcon.Size = new System.Drawing.Size(52, 52);
-            this.ErrorIcon.TabIndex = 12;
-            this.ErrorIcon.TabStop = false;
+            this.txtHResultHex.Location = new System.Drawing.Point(649, 180);
+            this.txtHResultHex.Name = "txtHResultHex";
+            this.txtHResultHex.ReadOnly = true;
+            this.txtHResultHex.Size = new System.Drawing.Size(304, 26);
+            this.txtHResultHex.TabIndex = 15;
+            // 
+            // lblHResult
+            // 
+            this.lblHResult.AutoSize = true;
+            this.lblHResult.Location = new System.Drawing.Point(113, 187);
+            this.lblHResult.Name = "lblHResult";
+            this.lblHResult.Size = new System.Drawing.Size(71, 20);
+            this.lblHResult.TabIndex = 14;
+            this.lblHResult.Text = "HResult:";
+            // 
+            // txtHResult
+            // 
+            this.txtHResult.Location = new System.Drawing.Point(190, 183);
+            this.txtHResult.Name = "txtHResult";
+            this.txtHResult.ReadOnly = true;
+            this.txtHResult.Size = new System.Drawing.Size(304, 26);
+            this.txtHResult.TabIndex = 13;
             // 
             // ExceptionMessage
             // 
+            this.ExceptionMessage.AllowDrop = true;
             this.ExceptionMessage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExceptionMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExceptionMessage.Location = new System.Drawing.Point(72, 12);
+            this.ExceptionMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.ExceptionMessage.HideSelection = false;
+            this.ExceptionMessage.Location = new System.Drawing.Point(117, 18);
+            this.ExceptionMessage.Multiline = true;
             this.ExceptionMessage.Name = "ExceptionMessage";
-            this.ExceptionMessage.Size = new System.Drawing.Size(440, 20);
-            this.ExceptionMessage.TabIndex = 0;
-            this.ExceptionMessage.Text = "[ExceptionMessage]";
+            this.ExceptionMessage.ReadOnly = true;
+            this.ExceptionMessage.Size = new System.Drawing.Size(1020, 86);
+            this.ExceptionMessage.TabIndex = 3;
+            // 
+            // ErrorIcon
+            // 
+            this.ErrorIcon.Location = new System.Drawing.Point(18, 18);
+            this.ErrorIcon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ErrorIcon.Name = "ErrorIcon";
+            this.ErrorIcon.Size = new System.Drawing.Size(78, 80);
+            this.ErrorIcon.TabIndex = 12;
+            this.ErrorIcon.TabStop = false;
+            // 
+            // FromWhere
+            // 
+            this.FromWhere.AllowDrop = true;
+            this.FromWhere.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.FromWhere.HideSelection = false;
+            this.FromWhere.Location = new System.Drawing.Point(117, 110);
+            this.FromWhere.Multiline = true;
+            this.FromWhere.Name = "FromWhere";
+            this.FromWhere.ReadOnly = true;
+            this.FromWhere.Size = new System.Drawing.Size(1020, 67);
+            this.FromWhere.TabIndex = 3;
             // 
             // ErrorDialog
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(516, 458);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.ClientSize = new System.Drawing.Size(1145, 773);
             this.Controls.Add(this.Header);
             this.Controls.Add(this.ExceptionDetailBox);
             this.Controls.Add(this.btnOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.Margin = new System.Windows.Forms.Padding(9);
             this.Name = "ErrorDialog";
             this.ShowIcon = false;
             this.Text = "";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.ErrorDialog_Load);
             this.Header.ResumeLayout(false);
+            this.Header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorIcon)).EndInit();
             this.ResumeLayout(false);
 
@@ -130,8 +187,12 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.RichTextBox ExceptionDetailBox;
         private System.Windows.Forms.Panel Header;
-        private System.Windows.Forms.Label FromWhere;
         private System.Windows.Forms.PictureBox ErrorIcon;
-        private System.Windows.Forms.Label ExceptionMessage;
+        private System.Windows.Forms.TextBox FromWhere;
+        private System.Windows.Forms.TextBox ExceptionMessage;
+        private System.Windows.Forms.Label lblHResult;
+        private System.Windows.Forms.TextBox txtHResult;
+        private System.Windows.Forms.Label lblHResultHex;
+        private System.Windows.Forms.TextBox txtHResultHex;
     }
 }
