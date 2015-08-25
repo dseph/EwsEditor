@@ -44,9 +44,25 @@ namespace EWSEditor.Forms
             rdoUseUserSpecifiedUrl.Checked = false;
             txtAutodiscoverServiceURL.Enabled = false;
 
-            lblInfo.Text = String.Empty;
+            txtInfo.Text = String.Empty;
+            txtInfo.BackColor = System.Drawing.SystemColors.Control;
 
             SetFields();
+
+            SetEnablementOptionalHeaders();
+        }
+
+        private void SetEnablementOptionalHeaders()
+        {
+            txtHeader1Name.Enabled = chkOptHeader1.Checked;
+            txtHeader1Value.Enabled = chkOptHeader1.Checked;
+
+            txtHeader2Name.Enabled = chkOptHeader2.Checked;
+            txtHeader2Value.Enabled = chkOptHeader2.Checked;
+
+            txtHeader3Name.Enabled = chkOptHeader3.Checked;
+            txtHeader3Value.Enabled = chkOptHeader3.Checked;
+
         }
 
         private void btnGo_Click(object sender, EventArgs e)
@@ -57,8 +73,11 @@ namespace EWSEditor.Forms
                 txtResults.Text = string.Empty;
                 txtResults.Update();
 
-                lblInfo.Text = string.Empty;
-                lblInfo.Update();
+
+                txtInfo.Text = string.Empty;
+                txtInfo.Update();
+ 
+
                 
                 // Create the AutodiscoverService object and set the request
                 // ExchangeVersion if one was selected
@@ -107,6 +126,14 @@ namespace EWSEditor.Forms
                 if (cmboUserAgent.Text.Trim().Length != 0)
                     service.UserAgent = cmboUserAgent.Text.Trim();
 
+                if (chkOptHeader1.Checked == true)
+                    service.HttpHeaders.Add(txtHeader1Name.Text, txtHeader1Value.Text);
+                if (chkOptHeader2.Checked == true)
+                    service.HttpHeaders.Add(txtHeader2Name.Text, txtHeader2Value.Text);
+                if (chkOptHeader3.Checked == true)
+                    service.HttpHeaders.Add(txtHeader3Name.Text, txtHeader3Value.Text);
+
+
                 // Create and set the trace listener
                 service.TraceEnabled = true;
                 //service.TraceEnablePrettyPrinting = true;  // Hmmm not implemented in the 2.2 version of the manage api for the autodiscover object - it is for service
@@ -125,7 +152,8 @@ namespace EWSEditor.Forms
 
                 AutodiscoverGetUserSettings(ref service, this.TargetMailboxText.Text.Trim());
 
-                lblInfo.Text = "Autodiscover URL used: " + service.Url;
+                txtInfo.Text = "Autodiscover URL used: " + service.Url;
+            
                 //GetUserSettingsResponse response = service.GetUserSettings(this.TargetMailboxText.Text, System.Enum.GetValues(typeof(UserSettingName)) as UserSettingName[]);
                 //ErrorDialog.ShowInfo("Autodiscover completed successfully!  Check the EWSEditor Log Viewer for detailed output.");
 
@@ -333,6 +361,8 @@ namespace EWSEditor.Forms
 
             
             this.cmboUserAgent.Enabled = chkOverrideUserAgent.Checked;
+
+             
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -414,6 +444,29 @@ namespace EWSEditor.Forms
         private void rdoUseAutoDiscover_CheckedChanged(object sender, EventArgs e)
         {
             txtAutodiscoverServiceURL.Enabled = rdoUseUserSpecifiedUrl.Checked;
+        }
+
+        private void lblInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkOptHeader1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtHeader1Name.Enabled = chkOptHeader1.Checked;
+            txtHeader1Value.Enabled = chkOptHeader1.Checked;
+        }
+
+        private void chkOptHeader2_CheckedChanged(object sender, EventArgs e)
+        {
+            txtHeader2Name.Enabled = chkOptHeader2.Checked;
+            txtHeader2Value.Enabled = chkOptHeader2.Checked;
+        }
+
+        private void chkOptHeader3_CheckedChanged(object sender, EventArgs e)
+        {
+            txtHeader3Name.Enabled = chkOptHeader3.Checked;
+            txtHeader3Value.Enabled = chkOptHeader3.Checked;
         }
     }
 }
