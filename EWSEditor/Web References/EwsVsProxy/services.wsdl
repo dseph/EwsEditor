@@ -2597,7 +2597,8 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetUserPhoto">
-      <soap:operation soapAction="http://schemas.microsoft.com/exchange/services/2006/messages/GetUserPhoto" />
+      <soap:operation 
+                      ="http://schemas.microsoft.com/exchange/services/2006/messages/GetUserPhoto" />
       <wsdl:input>
         <soap:header message="tns:GetUserPhotoSoapIn" part="RequestVersion" use="literal" />
         <soap:body use="literal" parts="request" />

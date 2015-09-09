@@ -70,7 +70,9 @@ namespace EWSEditor.Forms
             }
             s = TimeZoneInfo.Local.DisplayName + " | " + TimeZoneInfo.Local.Id + " | " + TimeZoneInfo.Local.BaseUtcOffset.ToString();
             this.cmboDurationStartTimezone.Text = s;  
-            this.cmboDurationEndTimezone.Text = s;  
+            this.cmboDurationEndTimezone.Text = s;
+
+         
 
             _WasDeleted = false;
             _WasSaved = false;
@@ -273,7 +275,11 @@ namespace EWSEditor.Forms
             chkIsAllDayEvent.Checked = false;
             chkIsRecurring.Checked = false;
 
+            ComboBoxHelper.AddEnumsToComboBox(ref cmboLegacyFreeBusyStatus, typeof(LegacyFreeBusyStatus));
             cmboLegacyFreeBusyStatus.Text = "OOF";
+             
+
+            ComboBoxHelper.AddEnumsToComboBox(ref cmboImportance, typeof(Importance));
             cmboImportance.Text = "Normal";
 
             cmboCategories.Text = "";
@@ -363,7 +369,7 @@ namespace EWSEditor.Forms
 
             txtICalUid.Text = _Appointment.ICalUid;
             if (_Appointment.ICalRecurrenceId.HasValue)
-                txtICalRecurrenceId.Text = _Appointment.ICalRecurrenceId.Value.ToString();
+                txtICalRecurrenceId.Text = _Appointment.ICalRecurrenceId.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.ffZ");
             else
                 txtICalRecurrenceId.Text = "";
             txtICalUid.Text = _Appointment.ICalUid;
@@ -411,10 +417,10 @@ namespace EWSEditor.Forms
             //this.cmboDurationStartTimezone.Text = oAppointment.StartTimeZone.DisplayName;
             //this.cmboDurationEndTimezone.Text = oAppointment.EndTimeZone.DisplayName;
             //this.cmboImportance.Text =   oAppointment.Importance.;
-
+            
             _Appointment.Body.Text = txtBody.Text;
             _Appointment.IsAllDayEvent = chkIsAllDayEvent.Checked;
-
+             
             //_Appointment.LegacyFreeBusyStatus = AppointmentHelper.GetFreeBusyStatus(cmboLegacyFreeBusyStatus.Text);
             _Appointment.LegacyFreeBusyStatus = (LegacyFreeBusyStatus)Enum.Parse(typeof(LegacyFreeBusyStatus), cmboLegacyFreeBusyStatus.Text.Trim());
             //_Appointment.Importance = AppointmentHelper.GetImportance(cmboImportance.Text);

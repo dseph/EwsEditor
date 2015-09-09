@@ -359,7 +359,7 @@ namespace EWSEditor.Forms
             _Appointment.LegacyFreeBusyStatus = (LegacyFreeBusyStatus)Enum.Parse(typeof(LegacyFreeBusyStatus), cmboLegacyFreeBusyStatus.Text.Trim());
             //_Appointment.Importance = AppointmentHelper.GetImportance(cmboImportance.Text);
             _Appointment.Importance = (Importance)Enum.Parse(typeof(Importance), cmboImportance.Text.Trim());
-
+             
             RecipeintHelper.SetAppointmentRecipientsFromString(ref _Appointment, "Required", txtRequiredAttendees.Text.Trim());
             RecipeintHelper.SetAppointmentRecipientsFromString(ref _Appointment, "Optional", txtOptionalAttendees.Text.Trim());
             RecipeintHelper.SetAppointmentRecipientsFromString(ref _Appointment, "Resource", txtResourceAttendees.Text.Trim());
@@ -703,7 +703,7 @@ namespace EWSEditor.Forms
             cmboLegacyFreeBusyStatus.Text = "OOF";
             ComboBoxHelper.AddEnumsToComboBox(ref cmboImportance, typeof(Importance));
             cmboImportance.Text = "Normal";
-             
+              
  
             // Daily defaults ------------------------------------------------
             rdoDaily.Checked = true;
