@@ -101,11 +101,17 @@ namespace EWSEditor
                                 item.SubItems.Add("");
                             }
                         }
+                        catch (ServiceResponseException oExECF)
+                        {
+                            System.Diagnostics.Debug.WriteLine(oExECF.ToString());  // Catch a connection error.
+                        }                        
                         catch (Exception oEx)
                         {
                             System.Diagnostics.Debug.WriteLine(oEx.ToString());  // Catch error in case no no-id propreties were not returned.
+
+                             
                         }
- 
+
                         lstChanges.Items.Add(item);
                     }
 
@@ -115,6 +121,16 @@ namespace EWSEditor
 
                 this.lblLastSyncTime.Text = string.Format(Application.CurrentCulture, "Last SyncFolderItems: {0}", DateTime.Now.ToString());
             }
+            catch (ServiceResponseException oExECF)
+            {
+                System.Diagnostics.Debug.WriteLine(oExECF.ToString());  // Catch a connection error.
+            }   
+            catch (Exception oEx)
+            {
+                System.Diagnostics.Debug.WriteLine(oEx.ToString());  // Catch error in case no no-id propreties were not returned.
+            }
+ 
+
             finally
             {
                 this.Cursor = Cursors.Default;
