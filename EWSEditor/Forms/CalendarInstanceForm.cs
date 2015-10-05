@@ -82,8 +82,15 @@ namespace EWSEditor.Forms
         private Appointment LoadAppointmentForEdit(ExchangeService oExchangeService, ItemId oItemId)
         {
             PropertySet oPropertySet = null;
+
+            //if (oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2010") == true ||
+            //    oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013") == true ||
+            //    oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013_SP1") == true ||
+            //    oExchangeService.ServerInfo.VersionString.StartsWith("V2_") == true)
+            //{   // 2010 and above
+
             if (_ExchangeService.ServerInfo.VersionString.CompareTo("Exchange2010") >= 0)
-            {   // 2010 and above
+              {   // 2010 and above
                 oPropertySet = new PropertySet(BasePropertySet.IdOnly,
                 AppointmentSchema.Subject,
                 AppointmentSchema.Location,
@@ -106,7 +113,7 @@ namespace EWSEditor.Forms
 
                 AppointmentSchema.Attachments,
                 AppointmentSchema.ConferenceType,
-                AppointmentSchema.ConversationId,
+ //               AppointmentSchema.ConversationId,
                 AppointmentSchema.AppointmentType,
                 AppointmentSchema.AppointmentState,
                 AppointmentSchema.AppointmentSequenceNumber,
@@ -120,7 +127,7 @@ namespace EWSEditor.Forms
                 AppointmentSchema.ICalDateTimeStamp,
                 AppointmentSchema.IsMeeting,
                 AppointmentSchema.IsDraft,
-                AppointmentSchema.IsAssociated,
+  //              AppointmentSchema.IsAssociated,
                 AppointmentSchema.IsCancelled,
                 AppointmentSchema.IsFromMe,
                 AppointmentSchema.IsOnlineMeeting,

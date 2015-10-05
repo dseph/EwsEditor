@@ -1107,6 +1107,8 @@ namespace EWSEditor.Forms
                 PlayItemOnPhoneForm oForm = new PlayItemOnPhoneForm(this.CurrentService, id, sDialString);
                 oForm.ShowDialog();
 
+   
+
                 // Refresh the view
                 this.RefreshContentAndDetails();
             }
@@ -1126,7 +1128,246 @@ namespace EWSEditor.Forms
 
         }
 
-  
+        private void mnuViewItemInOWA_Click(object sender, EventArgs e)
+        {
+
+            ItemId id = GetSelectedContentId();
+            if (id == null)
+            {
+                return;
+            }
+
+            OpenOWAFromWebClientReadFormQueryString(this.CurrentService, id);
+        }
+
+
+
+        // taken from https://msdn.microsoft.com/en-us/library/microsoft.exchange.webservices.data.item.webclientreadformquerystring(v=exchg.80).aspx
+        private void OpenOWAFromWebClientReadFormQueryString(ExchangeService service, ItemId oItemId)
+        {
+
+            ExchangeServerInfo serverInfo = service.ServerInfo;
+            string sWebClientReadFormQueryString = string.Empty;
+
+            string owaReadFormQueryString = string.Empty;
+            var ewsIdentifer = oItemId.UniqueId;
+ 
+            string sClass = string.Empty; 
+            Item oSomeItem = Item.Bind(service, oItemId);
+            sClass =  GetBaseClass(oSomeItem.ItemClass);  // need to get class id.
+            oSomeItem = null;
+
+            Item oWorkItem = Item.Bind(service, oItemId);
+            oWorkItem.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientReadFormQueryString));
+            sWebClientReadFormQueryString = oWorkItem.WebClientReadFormQueryString;
+            oWorkItem = null;
+           
+
+
+            //if (sClass.Length != 0)
+            //{
+
+            //    switch (sClass)
+            //    { 
+            //        case "IPM.Note":
+            //            EmailMessage oWorkEmailMessageItem = EmailMessage.Bind(service, oItemId);
+            //            oWorkEmailMessageItem.Load(new PropertySet(BasePropertySet.IdOnly, EmailMessageSchema.WebClientReadFormQueryString));
+            //            sWebClientReadFormQueryString = oWorkEmailMessageItem.WebClientReadFormQueryString;
+            //            oWorkEmailMessageItem = null; 
+            //            break;
+            //        case "IPM.Contact":  
+            //            Contact oWorkContactItem = Contact.Bind(service, oItemId);
+            //            oWorkContactItem.Load(new PropertySet(BasePropertySet.IdOnly, ContactSchema.WebClientReadFormQueryString));
+            //            sWebClientReadFormQueryString = oWorkContactItem.WebClientReadFormQueryString;
+            //            oWorkContactItem = null; 
+            //            break;
+            //        case "IPM.Appointment":
+            //            Appointment oWorkAppointmentItem = Appointment.Bind(service, oItemId);
+            //            oWorkAppointmentItem.Load(new PropertySet(BasePropertySet.IdOnly, AppointmentSchema.WebClientReadFormQueryString));
+            //            sWebClientReadFormQueryString = oWorkAppointmentItem.WebClientReadFormQueryString;
+            //            oWorkAppointmentItem = null; 
+            //            break;
+            //        case "IPM.Task":
+            //            Task oWorkTaskItem = Task.Bind(service, oItemId);
+            //            oWorkTaskItem.Load(new PropertySet(BasePropertySet.IdOnly, TaskSchema.WebClientReadFormQueryString));
+            //            sWebClientReadFormQueryString = oWorkTaskItem.WebClientReadFormQueryString;
+            //            oWorkTaskItem = null; 
+            //            break;
+            //        default:
+            //            Item oWorkItem = Item.Bind(service, oItemId);
+            //            oWorkItem.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientReadFormQueryString));
+            //            sWebClientReadFormQueryString = oWorkItem.WebClientReadFormQueryString;
+            //            oWorkItem = null; 
+            //            break;
+            //    }
+            //}
+ 
+ 
+            
+            try
+            {
+ 
+
+                //Item msg = Appointment.Bind(service, oItemId);
+                //msg.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientReadFormQueryString));
+                
+
+                // Versions of Exchange starting with major version 15 and ending with Exchange Server 2013 build 15.0.775.09
+                // returned a different query string fragment. This optional check is not required for applications that
+                // target Exchange Online.
+                if ((serverInfo.MajorVersion == 15) && (serverInfo.MajorBuildNumber < 775) && (serverInfo.MinorBuildNumber < 09))
+                {
+                    // If your client is connected to an Exchange 2013 server that has not been updated to CU3,
+                    // this query string will be returned.
+                    owaReadFormQueryString = string.Format("#viewmodel=_y.$Ep&ItemID={0}",
+                      System.Web.HttpUtility.UrlEncode(ewsIdentifer, Encoding.UTF8));
+                }
+                else
+                {
+                    // If your client is connected to an Exchanger 2010, Exchange 2013 CU3, or Exchange Online server,
+                    // the WebClientReadFormQueryString is used.
+                    owaReadFormQueryString = sWebClientReadFormQueryString;
+                }
+
+                // Create the URL that Outlook Web App uses to open the email message.
+                Uri url = service.Url;
+                string owaReadAccessUrl = string.Empty;
+
+                if (owaReadFormQueryString.StartsWith("https:") || owaReadFormQueryString.StartsWith("http:"))
+                    owaReadAccessUrl = owaReadFormQueryString;
+                else
+                    owaReadAccessUrl = string.Format("{0}://{1}/owa/{2}", url.Scheme, url.Host, owaReadFormQueryString);
+                
+
+                if (!string.IsNullOrEmpty(owaReadAccessUrl))
+                {
+                    System.Diagnostics.Process.Start("IEXPLORE.EXE", owaReadAccessUrl);
+                }
+            }
+            catch (System.ComponentModel.Win32Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERRROR: Internet Explorer cannot be found.");
+                //Console.WriteLine(ex.Message);
+                //Console.WriteLine("ERRROR: Internet Explorer cannot be found.");
+            }
+        }
+
+
+        private void OpenOWAFromWebClientEditFormQueryString(ExchangeService service, ItemId oItemId)
+        {
+
+
+            //  The WebClientEditFormQueryString element is not applicable to versions of Exchange starting with Exchange Server 2013, including Exchange Online.
+            //  See:  https://msdn.microsoft.com/en-us/library/office/dd899477(v=exchg.150).aspx
+            //      For versions of Exchange starting with Exchange Server 2013, including Exchange Online, 
+            //      use the information from the WebClientReadFormQueryString element to open a draft item in 
+            //      Outlook Web App and then use the UI to edit the draft item. The WebClientEditFormQueryString 
+            //      element is not applicable to versions of Exchange starting with Exchange Server 2013, including Exchange Online.
+
+            ExchangeServerInfo serverInfo = service.ServerInfo;
+            if (serverInfo.MajorVersion == 15)
+            {
+                MessageBox.Show("The WebClientEditFormQueryString element is not applicable to versions of Exchange starting with Exchange Server 2013, including Exchange Online.", "Not valid for Exchange version.");
+                return;
+            }
+
+             
+            string owaEditFormQueryString = string.Empty;
+            var ewsIdentifer = oItemId.UniqueId;
+
+            try
+            {
+                string sWebClientEditFormQueryString = string.Empty;
+
+                Item oItem = Item.Bind(service, oItemId);
+                oItem.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientEditFormQueryString));
+                owaEditFormQueryString = oItem.WebClientEditFormQueryString;
+
+
+                string sClass = string.Empty;
+                Item oSomeItem = Item.Bind(service, oItemId);
+                sClass = GetBaseClass(oSomeItem.ItemClass);  // need to get class id.
+                oSomeItem = null;
+
+                Item oWorkItem = Item.Bind(service, oItemId);
+                oWorkItem.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientEditFormQueryString));
+                sWebClientEditFormQueryString = oWorkItem.WebClientEditFormQueryString;
+                oWorkItem = null;
+              
+
+                //if (sClass.Length != 0)
+                //{
+
+                //    switch (sClass)
+                //    {
+                //        case "IPM.Note":
+                //            EmailMessage oWorkEmailMessageItem = EmailMessage.Bind(service, oItemId);
+                //            oWorkEmailMessageItem.Load(new PropertySet(BasePropertySet.IdOnly, EmailMessageSchema.WebClientEditFormQueryString));
+                //            sWebClientEditFormQueryString = oWorkEmailMessageItem.WebClientEditFormQueryString;
+                //            oWorkEmailMessageItem = null;
+                //            break;
+                //        case "IPM.Contact":
+                //            Contact oWorkContactItem = Contact.Bind(service, oItemId);
+                //            oWorkContactItem.Load(new PropertySet(BasePropertySet.IdOnly, ContactSchema.WebClientEditFormQueryString));
+                //            sWebClientEditFormQueryString = oWorkContactItem.WebClientEditFormQueryString;
+                //            oWorkContactItem = null;
+                //            break;
+                //        case "IPM.Appointment":
+                //            Appointment oWorkAppointmentItem = Appointment.Bind(service, oItemId);
+                //            oWorkAppointmentItem.Load(new PropertySet(BasePropertySet.IdOnly, AppointmentSchema.WebClientEditFormQueryString));
+                //            sWebClientEditFormQueryString = oWorkAppointmentItem.WebClientEditFormQueryString;
+                //            oWorkAppointmentItem = null;
+                //            break;
+                //        case "IPM.Task":
+                //            Task oWorkTaskItem = Task.Bind(service, oItemId);
+                //            oWorkTaskItem.Load(new PropertySet(BasePropertySet.IdOnly, TaskSchema.WebClientEditFormQueryString));
+                //            sWebClientEditFormQueryString = oWorkTaskItem.WebClientEditFormQueryString;
+                //            oWorkTaskItem = null;
+                //            break;
+                //        default:
+                //            Item oWorkItem = Item.Bind(service, oItemId);
+                //            oWorkItem.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientEditFormQueryString));
+                //            sWebClientEditFormQueryString = oWorkItem.WebClientEditFormQueryString;
+                //            oWorkItem = null;
+                //            break;
+                //    }
+                //}
+
+
+ 
+
+                Uri url = service.Url;
+                string owaEditAccessUrl = string.Empty;
+
+                if (owaEditFormQueryString.StartsWith("https:") || owaEditFormQueryString.StartsWith("http:"))
+                    owaEditAccessUrl = owaEditFormQueryString;
+                else
+                    owaEditAccessUrl = string.Format("{0}://{1}/owa/{2}", url.Scheme, url.Host, owaEditFormQueryString);
+
+
+                if (!string.IsNullOrEmpty(owaEditAccessUrl))
+                {
+                    System.Diagnostics.Process.Start("IEXPLORE.EXE", owaEditAccessUrl);
+                }
+            }
+            catch (System.ComponentModel.Win32Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERRROR: Internet Explorer cannot be found.");
+                //Console.WriteLine(ex.Message);
+                //Console.WriteLine("ERRROR: Internet Explorer cannot be found.");
+            }
+        }
+
+        private void mnuEditItemInOWA_Click(object sender, EventArgs e)
+        {
+            ItemId id = GetSelectedContentId();
+            if (id == null)
+            {
+                return;
+            }
+
+            OpenOWAFromWebClientEditFormQueryString(this.CurrentService, id);
+        }
 
 
     }

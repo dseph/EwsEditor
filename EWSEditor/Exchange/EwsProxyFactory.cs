@@ -127,7 +127,7 @@ namespace EWSEditor.Exchange
                     service = new ExchangeService(RequestedExchangeVersion.Value, oTimeZone);
                 else
                     service = new ExchangeService(RequestedExchangeVersion.Value);
-
+                
               
                 //System.Diagnostics.Debug.WriteLine(service.PreferredCulture);
    
