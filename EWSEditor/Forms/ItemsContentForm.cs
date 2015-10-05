@@ -1366,7 +1366,7 @@ namespace EWSEditor.Forms
                 return;
             }
 
-            OpenOWAFromWebClientEditFormQueryString(this.CurrentService, id);
+            OpenOWAFromWebClientEditFormQueryString(this.CurrentService, id); 
         }
 
 
