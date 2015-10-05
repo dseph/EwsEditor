@@ -891,10 +891,12 @@ namespace EWSEditor.Forms
             {
                 if (folder.FolderClass == "IPF.Appointment")
                 {
-                     
+                    
                     CalendarMonthView oForm = new CalendarMonthView(this, this.CurrentService, folder.Id);
                     oForm.ShowDialog();
                     oForm = null;
+
+
                 }
 
  

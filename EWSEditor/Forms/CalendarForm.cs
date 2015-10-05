@@ -149,10 +149,15 @@ namespace EWSEditor.Forms
         private Appointment LoadAppointmentForEdit(ExchangeService oExchangeService, ItemId oItemId)
         {
             PropertySet oPropertySet = null;
-            if (oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2010") == true ||
-                oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013") == true ||
-                oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013_SP1") == true)
-            {   // 2010 and above
+
+
+            //if (oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2010") == true ||
+            //    oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013") == true ||
+            //    oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013_SP1") == true ||
+            //    oExchangeService.ServerInfo.VersionString.StartsWith("V2_") == true)
+            //{   // 2010 and above
+            if (_ExchangeService.ServerInfo.VersionString.CompareTo("Exchange2010") >= 0)
+              {   // 2010 and above
                 oPropertySet = new PropertySet(BasePropertySet.IdOnly,
                 AppointmentSchema.Subject,
                 AppointmentSchema.Location,
@@ -341,9 +346,12 @@ namespace EWSEditor.Forms
    
             _Appointment.StartTimeZone = TimeHelper.GetTzIdFromTimeZoneStringUsedByComboBoxes(this.cmboDurationStartTimezone.Text);
             
-            if (_ExchangeService.ServerInfo.VersionString.StartsWith("Exchange2010") == true ||
-                _ExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013") == true)
-            {
+            //if (_ExchangeService.ServerInfo.VersionString.StartsWith("Exchange2010") == true ||
+            //    _ExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013") == true ||
+            //    _ExchangeService.ServerInfo.VersionString.StartsWith("V2_") == true)
+
+            if (_ExchangeService.ServerInfo.VersionString.CompareTo("Exchange2010") >= 0)
+            {   // 2010 and above
                 _Appointment.EndTimeZone = TimeHelper.GetTzIdFromTimeZoneStringUsedByComboBoxes(this.cmboDurationEndTimezone.Text);
       
             }
@@ -834,9 +842,12 @@ namespace EWSEditor.Forms
                 oAppointment.StartTimeZone = TimeZoneInfo.Local;
             this.cmboDurationStartTimezone.Text = TimeHelper.GetTimezoneStringForCombobox(oAppointment.StartTimeZone);
 
-            if (_ExchangeService.ServerInfo.VersionString.StartsWith("Exchange2010") == true ||
-                _ExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013") == true)
-            {   // 2010 and above
+            if (_ExchangeService.ServerInfo.VersionString.CompareTo("Exchange2010") >= 0)
+              {   // 2010 and above
+            //if (_ExchangeService.ServerInfo.VersionString.StartsWith("Exchange2010") == true ||
+            //    _ExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013") == true ||
+            //    _ExchangeService.ServerInfo.VersionString.StartsWith("V2") == true)
+            //{   // 2010 and above
                 if (oAppointment.EndTimeZone == null)  // could it ever be not null and be OK???
                     oAppointment.EndTimeZone = TimeZoneInfo.Local;
                 this.cmboDurationEndTimezone.Text = TimeHelper.GetTimezoneStringForCombobox(oAppointment.EndTimeZone);

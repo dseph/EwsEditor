@@ -42,6 +42,19 @@ namespace EWSEditor.Forms
             }
         }
 
+        EwsEditorAppSettings _CurrentAppSettings = null;
+        public EwsEditorAppSettings CurrentAppSettings
+        {
+            get
+            {
+                return _CurrentAppSettings;
+            }
+            set
+            {
+                _CurrentAppSettings = value;
+            }
+        }
+
         public BaseForm()
         {
             InitializeComponent();
@@ -75,6 +88,11 @@ namespace EWSEditor.Forms
         private void BaseForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public class EwsEditorAppSettings 
+        {
+            public string ExchangeSchemaVersion = string.Empty;
         }
     }
 }
