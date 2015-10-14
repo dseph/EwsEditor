@@ -9,6 +9,10 @@ using Microsoft.Exchange.WebServices.Data;
 using EWSEditor.Forms;
 using System.Xml;
 
+using Microsoft.Exchange.WebServices.Autodiscover;
+using System.Configuration;
+//using Microsoft.IdentityModel.Clients.ActiveDirectory;
+
 namespace EWSEditor.Exchange
 {
     public class EwsProxyFactory
@@ -24,7 +28,13 @@ namespace EWSEditor.Exchange
         public static Uri EwsUrl;
         public static bool? OverrideTimeout;
         public static int? Timeout = null;
+
         public static bool? UseDefaultCredentials = null;
+        public static bool? CredentialsUserSpecified = null;
+        public static bool? UseoAuth = null;
+        public static string oAuthRedirectUrl = string.Empty;
+        public static string oAuthClientId = string.Empty;
+
         public static ImpersonatedUserId UserToImpersonate = null;
         public static bool?  SetXAnchorMailbox = null;
         public static string XAnchorMailbox;
@@ -253,6 +263,27 @@ namespace EWSEditor.Exchange
                 }
             }
 
+            if (UseoAuth == true)
+            {
+                //// See // https://msdn.microsoft.com/en-us/library/office/dn903761%28v=exchg.150%29.aspx?f=255&MSPPError=-2147217396#bk_getToken
+                //// get authentication token
+                //string authority = ConfigurationManager.AppSettings["authority"];
+                //string clientID = ConfigurationManager.AppSettings["clientID"];
+                //Uri clientAppUri = new Uri(ConfigurationManager.AppSettings["clientAppUri"]);
+                //string serverName = ConfigurationManager.AppSettings["serverName"];
+
+                //AuthenticationContext authenticationContext = new AuthenticationContext(authority, false);
+
+                //AuthenticationResult authenticationResult = authenticationContext.AcquireToken(serverName, clientID, clientAppUri);
+
+                //AuthenticationContext authenticationContext = new AuthenticationContext(authority, false);
+
+
+                //// Add authenticaiton token to requests
+                //exchangeService.Credentials = new OAuthCredentials(authenticationResult.AccessToken);
+
+            }
+
  
             return service;
         }
@@ -346,6 +377,12 @@ namespace EWSEditor.Exchange
             {
                 oHttpWebRequest.Credentials = ServiceCredential;
             }
+
+             
+ 
+
+  
+
             //else
             //{
             //    oHttpWebRequest.Credentials =   GetNetworkCredential();

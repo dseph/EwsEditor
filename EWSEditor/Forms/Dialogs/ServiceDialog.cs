@@ -49,7 +49,7 @@ namespace EWSEditor.Forms
         private void BtnOK_Click(object sender, EventArgs e)
         {
             // Validation for credential input...
-            if (chkCredentials.Checked && (txtUserName.Text.Length == 0 || txtPassword.Text.Length == 0))
+            if (rdoCredentialsUserSpecified.Checked && (txtUserName.Text.Length == 0 || txtPassword.Text.Length == 0))
             {
                 ErrorDialog.ShowInfo(DisplayStrings.MSG_SPECIFY_CREDS);
                 return;
@@ -99,7 +99,13 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.SelectedTimeZoneId = GlobalSettings.SelectedTimeZoneId;
 
                 EwsProxyFactory.AllowAutodiscoverRedirect = GlobalSettings.AllowAutodiscoverRedirect;
-                EwsProxyFactory.UseDefaultCredentials = !chkCredentials.Checked;
+
+                EwsProxyFactory.UseDefaultCredentials = this.rdoCredentialsDefaultWindows.Checked;
+                EwsProxyFactory.CredentialsUserSpecified = this.rdoCredentialsUserSpecified.Checked;
+                EwsProxyFactory.UseoAuth = this.rdoCredentialsOAuth.Checked;
+                EwsProxyFactory.oAuthRedirectUrl = this.txtOAuthRedirectUri.Text.Trim();
+                EwsProxyFactory.oAuthClientId = this.txtOAuthAppId.Text.Trim();
+
                 EwsProxyFactory.EnableScpLookup = GlobalSettings.EnableScpLookups;
                 EwsProxyFactory.PreAuthenticate = GlobalSettings.PreAuthenticate;
 
@@ -117,7 +123,7 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.ProxyServerPassword = GlobalSettings.ProxyServerPassword;
                 EwsProxyFactory.ProxyServerDomain = GlobalSettings.ProxyServerDomain;
 
-                EwsProxyFactory.ServiceCredential = chkCredentials.Checked ?
+                EwsProxyFactory.ServiceCredential = rdoCredentialsUserSpecified.Checked ?
                     new NetworkCredential(
                         this.txtUserName.Text.Trim(), 
                         this.txtPassword.Text.Trim(), //TODO:  This will fail on passwords ending with whitespace
@@ -178,30 +184,30 @@ namespace EWSEditor.Forms
 
         private void ChkCredentials_CheckedChanged(object sender, EventArgs e)
         {
-            txtUserName.Text = string.Empty;
-            txtPassword.Text = string.Empty;
-            txtDomain.Text = string.Empty;
+            //txtUserName.Text = string.Empty;
+            //txtPassword.Text = string.Empty;
+            //txtDomain.Text = string.Empty;
 
-            txtUserName.Enabled = chkCredentials.Checked;
-            txtPassword.Enabled = chkCredentials.Checked;
-            txtDomain.Enabled = chkCredentials.Checked;
-            lblUserName.Enabled = chkCredentials.Checked;
-            lblPassword.Enabled = chkCredentials.Checked;
-            lblDomain.Enabled = chkCredentials.Checked;
+            //txtUserName.Enabled = chkCredentials.Checked;
+            //txtPassword.Enabled = chkCredentials.Checked;
+            //txtDomain.Enabled = chkCredentials.Checked;
+            //lblUserName.Enabled = chkCredentials.Checked;
+            //lblPassword.Enabled = chkCredentials.Checked;
+            //lblDomain.Enabled = chkCredentials.Checked;
 
-            if (chkCredentials.Checked== true)
-            {
-                if (rdoAutodiscoverEmail.Checked == true)
-                {
-                    if (txtUserName.Text.Trim().Length == 0)
-                    {
-                        if (AutodiscoverEmailText.Text.Trim().Length != 0)
-                        {
-  	                        txtUserName.Text = AutodiscoverEmailText.Text.Trim();
-                        }
-                    }
-                }
-            }
+            //if (chkCredentials.Checked== true)
+            //{
+            //    if (rdoAutodiscoverEmail.Checked == true)
+            //    {
+            //        if (txtUserName.Text.Trim().Length == 0)
+            //        {
+            //            if (AutodiscoverEmailText.Text.Trim().Length != 0)
+            //            {
+            //                txtUserName.Text = AutodiscoverEmailText.Text.Trim();
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private void ChkImpersonation_CheckedChanged(object sender, EventArgs e)
@@ -306,7 +312,7 @@ namespace EWSEditor.Forms
 
                 if (this.CurrentService.Credentials != null)
                 {
-                    this.chkCredentials.Checked = true;
+                    this.rdoCredentialsUserSpecified.Checked = true;
 
                     NetworkCredential cred = this.CurrentService.GetNetworkCredential();
                     this.txtUserName.Text = cred.UserName;
@@ -426,6 +432,36 @@ namespace EWSEditor.Forms
         private void chkSetXAnchorMailbox_CheckedChanged(object sender, EventArgs e)
         {
             txtXAnchorMailbox.Enabled = chkSetXAnchorMailbox.Checked;
+        }
+
+        private void rdoCredentialsUserSpecified_CheckedChanged(object sender, EventArgs e)
+        {
+            txtUserName.Text = string.Empty;
+            txtPassword.Text = string.Empty;
+            txtDomain.Text = string.Empty;
+
+            txtUserName.Enabled = rdoCredentialsUserSpecified.Checked;
+            txtPassword.Enabled = rdoCredentialsUserSpecified.Checked;
+            txtDomain.Enabled = rdoCredentialsUserSpecified.Checked;
+            lblUserName.Enabled = rdoCredentialsUserSpecified.Checked;
+            lblPassword.Enabled = rdoCredentialsUserSpecified.Checked;
+            lblDomain.Enabled = rdoCredentialsUserSpecified.Checked;
+
+            if (this.rdoCredentialsUserSpecified.Checked == true)
+            {
+                if (rdoAutodiscoverEmail.Checked == true)
+                {
+                    if (txtUserName.Text.Trim().Length == 0)
+                    {
+                        if (AutodiscoverEmailText.Text.Trim().Length != 0)
+                        {
+                            txtUserName.Text = AutodiscoverEmailText.Text.Trim();
+                        }
+                    }
+                }
+            }
+
+
         }
 
         //private void btnOptions_Click(object sender, EventArgs e)

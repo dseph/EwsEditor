@@ -1497,6 +1497,9 @@
     <Content Include="EwsPostExamples\GetServerTimeZones.xml" />
     <Content Include="EwsPostExamples\GetServiceConfiguration.xml" />
     <Content Include="EwsPostExamples\GetSharingFolder.xml" />
+    <Content Include="EwsPostExamples\GetSharingMetadata.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\GetStreamingEvents.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -1516,6 +1519,7 @@
     <Content Include="EwsPostExamples\MoveFolder.xml" />
     <Content Include="EwsPostExamples\MoveItem.xml" />
     <Content Include="EwsPostExamples\PlayOnPhone.xml" />
+    <Content Include="EwsPostExamples\RefreshSharingFolder.xml" />
     <Content Include="EwsPostExamples\SetImGroup.xml" />
     <Content Include="EwsPostExamples\Subscribe - PullSubscriptionRequest.xml">
       <SubType>Designer</SubType>
