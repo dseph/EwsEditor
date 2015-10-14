@@ -11,7 +11,7 @@ using System.Xml;
 
 using Microsoft.Exchange.WebServices.Autodiscover;
 using System.Configuration;
-//using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace EWSEditor.Exchange
 {
@@ -34,6 +34,8 @@ namespace EWSEditor.Exchange
         public static bool? UseoAuth = null;
         public static string oAuthRedirectUrl = string.Empty;
         public static string oAuthClientId = string.Empty;
+        public static string oAuthServerName = string.Empty;
+        public static string oAuthAuthority = string.Empty;
 
         public static ImpersonatedUserId UserToImpersonate = null;
         public static bool?  SetXAnchorMailbox = null;
@@ -265,22 +267,37 @@ namespace EWSEditor.Exchange
 
             if (UseoAuth == true)
             {
-                //// See // https://msdn.microsoft.com/en-us/library/office/dn903761%28v=exchg.150%29.aspx?f=255&MSPPError=-2147217396#bk_getToken
-                //// get authentication token
-                //string authority = ConfigurationManager.AppSettings["authority"];
-                //string clientID = ConfigurationManager.AppSettings["clientID"];
-                //Uri clientAppUri = new Uri(ConfigurationManager.AppSettings["clientAppUri"]);
-                //string serverName = ConfigurationManager.AppSettings["serverName"];
 
-                //AuthenticationContext authenticationContext = new AuthenticationContext(authority, false);
+                string sAuthority = string.Empty;
+                string sAppId = string.Empty;
+                string sRedirectURL = string.Empty;
+                string sServername = string.Empty;
 
-                //AuthenticationResult authenticationResult = authenticationContext.AcquireToken(serverName, clientID, clientAppUri);
+                sAuthority = oAuthAuthority;
+                sAppId = oAuthClientId;
+                sRedirectURL = oAuthRedirectUrl;
+                sServername = oAuthServerName;
 
-                //AuthenticationContext authenticationContext = new AuthenticationContext(authority, false);
+                //sAuthority = ConfigurationManager.AppSettings["authority"];
+                //sAppId = ConfigurationManager.AppSettings["clientID"];
+                //sRedirectURL = ConfigurationManager.AppSettings["clientAppUri"];
+                //sServername = ConfigurationManager.AppSettings["serverName"];
+                
+                // See // https://msdn.microsoft.com/en-us/library/office/dn903761%28v=exchg.150%29.aspx?f=255&MSPPError=-2147217396#bk_getToken
+                // get authentication token
+                string authority = sAuthority;
+                string clientID = sAppId;
+                Uri clientAppUri = new Uri(sRedirectURL);
+                string serverName = sServername;
+
+                AuthenticationContext authenticationContext = new AuthenticationContext(authority, false);
+
+                AuthenticationResult authenticationResult = authenticationContext.AcquireToken(serverName, clientID, clientAppUri);
+ 
 
 
-                //// Add authenticaiton token to requests
-                //exchangeService.Credentials = new OAuthCredentials(authenticationResult.AccessToken);
+                // Add authenticaiton token to requests
+                service.Credentials = new OAuthCredentials(authenticationResult.AccessToken);
 
             }
 
