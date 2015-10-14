@@ -275,7 +275,7 @@ namespace EWSEditor.Forms
             this.txtOAuthAuthority.Name = "txtOAuthAuthority";
             this.txtOAuthAuthority.Size = new System.Drawing.Size(589, 26);
             this.txtOAuthAuthority.TabIndex = 17;
-            this.txtOAuthAuthority.Text = "outlook.office365.com";
+            this.txtOAuthAuthority.Text = "https://outlook.office365.com/ ";
             // 
             // lblOAuthAuthority
             // 
@@ -296,7 +296,7 @@ namespace EWSEditor.Forms
             this.txtOAuthServerName.Name = "txtOAuthServerName";
             this.txtOAuthServerName.Size = new System.Drawing.Size(589, 26);
             this.txtOAuthServerName.TabIndex = 15;
-            this.txtOAuthServerName.Text = "http://login.windows.net/<devAccountName>.onmicrosoft.com";
+            this.txtOAuthServerName.Text = "https://login.windows.net/dseph.onmicrosoft.com";
             // 
             // lblOAuthServerName
             // 
@@ -337,9 +337,9 @@ namespace EWSEditor.Forms
             this.lblOAuthAppId.Location = new System.Drawing.Point(45, 265);
             this.lblOAuthAppId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOAuthAppId.Name = "lblOAuthAppId";
-            this.lblOAuthAppId.Size = new System.Drawing.Size(63, 20);
+            this.lblOAuthAppId.Size = new System.Drawing.Size(107, 20);
             this.lblOAuthAppId.TabIndex = 12;
-            this.lblOAuthAppId.Text = "App ID:";
+            this.lblOAuthAppId.Text = "Cliant App ID:";
             // 
             // txtOAuthRedirectUri
             // 
@@ -349,7 +349,7 @@ namespace EWSEditor.Forms
             this.txtOAuthRedirectUri.Name = "txtOAuthRedirectUri";
             this.txtOAuthRedirectUri.Size = new System.Drawing.Size(589, 26);
             this.txtOAuthRedirectUri.TabIndex = 11;
-            this.txtOAuthRedirectUri.Text = "https://EwsEditor";
+            this.txtOAuthRedirectUri.Text = "https://microsoft.com/EwsEditor";
             this.txtOAuthRedirectUri.TextChanged += new System.EventHandler(this.txtOAuthRedirectUri_TextChanged);
             // 
             // rdoCredentialsDefaultWindows
