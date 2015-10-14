@@ -105,6 +105,9 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.UseoAuth = this.rdoCredentialsOAuth.Checked;
                 EwsProxyFactory.oAuthRedirectUrl = this.txtOAuthRedirectUri.Text.Trim();
                 EwsProxyFactory.oAuthClientId = this.txtOAuthAppId.Text.Trim();
+                EwsProxyFactory.oAuthServerName = this.txtOAuthServerName.Text.Trim();
+                EwsProxyFactory.oAuthAuthority = this.txtOAuthAuthority.Text.Trim();
+
 
                 EwsProxyFactory.EnableScpLookup = GlobalSettings.EnableScpLookups;
                 EwsProxyFactory.PreAuthenticate = GlobalSettings.PreAuthenticate;
@@ -330,6 +333,8 @@ namespace EWSEditor.Forms
             }
 
             SetAutoDiscoverSelection();
+
+            SetAuthEnablement();
             
         }
 
@@ -436,16 +441,52 @@ namespace EWSEditor.Forms
 
         private void rdoCredentialsUserSpecified_CheckedChanged(object sender, EventArgs e)
         {
+
+            SetAuthEnablement();
+
+            //txtUserName.Text = string.Empty;
+            //txtPassword.Text = string.Empty;
+            //txtDomain.Text = string.Empty;
+
+            //txtUserName.Enabled = rdoCredentialsUserSpecified.Checked;
+            //txtPassword.Enabled = rdoCredentialsUserSpecified.Checked;
+            //txtDomain.Enabled = rdoCredentialsUserSpecified.Checked;
+            //lblUserName.Enabled = rdoCredentialsUserSpecified.Checked;
+            //lblPassword.Enabled = rdoCredentialsUserSpecified.Checked;
+            //lblDomain.Enabled = rdoCredentialsUserSpecified.Checked;
+
+            //if (this.rdoCredentialsUserSpecified.Checked == true)
+            //{
+            //    if (rdoAutodiscoverEmail.Checked == true)
+            //    {
+            //        if (txtUserName.Text.Trim().Length == 0)
+            //        {
+            //            if (AutodiscoverEmailText.Text.Trim().Length != 0)
+            //            {
+            //                txtUserName.Text = AutodiscoverEmailText.Text.Trim();
+            //            }
+            //        }
+            //    }
+            //}
+
+
+        }
+
+        private void SetAuthEnablement()
+        {
+            bool bUserSpecified = this.rdoCredentialsUserSpecified.Checked;
+            bool bUseOAuth = this.rdoCredentialsOAuth.Checked; 
+
             txtUserName.Text = string.Empty;
             txtPassword.Text = string.Empty;
             txtDomain.Text = string.Empty;
 
-            txtUserName.Enabled = rdoCredentialsUserSpecified.Checked;
-            txtPassword.Enabled = rdoCredentialsUserSpecified.Checked;
-            txtDomain.Enabled = rdoCredentialsUserSpecified.Checked;
-            lblUserName.Enabled = rdoCredentialsUserSpecified.Checked;
-            lblPassword.Enabled = rdoCredentialsUserSpecified.Checked;
-            lblDomain.Enabled = rdoCredentialsUserSpecified.Checked;
+            txtUserName.Enabled = bUserSpecified;
+            txtPassword.Enabled = bUserSpecified;
+            txtDomain.Enabled = bUserSpecified;
+            lblUserName.Enabled = bUserSpecified;
+            lblPassword.Enabled = bUserSpecified;
+            lblDomain.Enabled = bUserSpecified;
 
             if (this.rdoCredentialsUserSpecified.Checked == true)
             {
@@ -461,7 +502,30 @@ namespace EWSEditor.Forms
                 }
             }
 
+            this.lblOAuthAppId.Enabled = bUseOAuth;
+            this.lblOAuthAuthority.Enabled = bUseOAuth;
+            this.lblOAuthRedirectUri.Enabled = bUseOAuth;
+            this.lblOAuthServerName.Enabled = bUseOAuth;
 
+            this.txtOAuthAppId.Enabled = bUseOAuth;
+            this.txtOAuthAuthority.Enabled = bUseOAuth;
+            this.txtOAuthRedirectUri.Enabled = bUseOAuth;
+            this.txtOAuthServerName.Enabled = bUseOAuth;
+        }
+
+        private void txtOAuthRedirectUri_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdoCredentialsOAuth_CheckedChanged(object sender, EventArgs e)
+        {
+            SetAuthEnablement();
+        }
+
+        private void rdoCredentialsDefaultWindows_CheckedChanged(object sender, EventArgs e)
+        {
+            SetAuthEnablement();
         }
 
         //private void btnOptions_Click(object sender, EventArgs e)
