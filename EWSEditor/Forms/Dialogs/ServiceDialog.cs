@@ -528,6 +528,16 @@ namespace EWSEditor.Forms
             SetAuthEnablement();
         }
 
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ImpersonatedIdTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         //private void btnOptions_Click(object sender, EventArgs e)
         //{
         //    OptionsDialog.ShowDialog();

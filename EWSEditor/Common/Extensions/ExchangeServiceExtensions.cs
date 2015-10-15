@@ -124,11 +124,12 @@ namespace EWSEditor.Common.Extensions
             else
             {
                 if (service.Credentials is WebCredentials)
-                {
+                { 
                     return service.GetNetworkCredential().UserName;
                 }
                 else
                 {
+                    
                     // HACK: Don't know what happened if we got here...
                     throw new ApplicationException("Unexpected ExchangeService.Credentials type");
                 }
