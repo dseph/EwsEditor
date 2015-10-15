@@ -87,7 +87,7 @@ namespace EWSEditor.Forms
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(546, 987);
+            this.btnOK.Location = new System.Drawing.Point(533, 719);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(112, 35);
@@ -100,7 +100,7 @@ namespace EWSEditor.Forms
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(667, 984);
+            this.btnCancel.Location = new System.Drawing.Point(659, 719);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(112, 35);
@@ -112,7 +112,7 @@ namespace EWSEditor.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Enabled = false;
-            this.label1.Location = new System.Drawing.Point(41, 38);
+            this.label1.Location = new System.Drawing.Point(264, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 20);
@@ -124,27 +124,25 @@ namespace EWSEditor.Forms
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.txtXAnchorMailbox);
-            this.panel4.Controls.Add(this.btnOptions);
             this.panel4.Controls.Add(this.chkSetXAnchorMailbox);
-            this.panel4.Location = new System.Drawing.Point(9, 859);
+            this.panel4.Location = new System.Drawing.Point(9, 676);
             this.panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(762, 115);
+            this.panel4.Size = new System.Drawing.Size(762, 39);
             this.panel4.TabIndex = 3;
             // 
             // txtXAnchorMailbox
             // 
             this.txtXAnchorMailbox.Enabled = false;
-            this.txtXAnchorMailbox.Location = new System.Drawing.Point(105, 32);
+            this.txtXAnchorMailbox.Location = new System.Drawing.Point(328, 3);
             this.txtXAnchorMailbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtXAnchorMailbox.Name = "txtXAnchorMailbox";
-            this.txtXAnchorMailbox.Size = new System.Drawing.Size(473, 26);
+            this.txtXAnchorMailbox.Size = new System.Drawing.Size(384, 26);
             this.txtXAnchorMailbox.TabIndex = 7;
             // 
             // btnOptions
             // 
-            this.btnOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOptions.Location = new System.Drawing.Point(8, 73);
+            this.btnOptions.Location = new System.Drawing.Point(8, 720);
             this.btnOptions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(152, 35);
@@ -174,11 +172,12 @@ namespace EWSEditor.Forms
             this.panel3.Controls.Add(this.ImpersonationCheck);
             this.panel3.Controls.Add(this.lblImpId);
             this.panel3.Controls.Add(this.ImpersonatedIdTextBox);
-            this.panel3.Location = new System.Drawing.Point(9, 662);
+            this.panel3.Location = new System.Drawing.Point(9, 575);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(762, 187);
+            this.panel3.Size = new System.Drawing.Size(762, 91);
             this.panel3.TabIndex = 2;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // TempConnectingIdCombo
             // 
@@ -186,17 +185,17 @@ namespace EWSEditor.Forms
             this.TempConnectingIdCombo.Enabled = false;
             this.TempConnectingIdCombo.FormattingEnabled = true;
             this.TempConnectingIdCombo.ItemHeight = 20;
-            this.TempConnectingIdCombo.Location = new System.Drawing.Point(130, 79);
+            this.TempConnectingIdCombo.Location = new System.Drawing.Point(105, 55);
             this.TempConnectingIdCombo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TempConnectingIdCombo.Name = "TempConnectingIdCombo";
-            this.TempConnectingIdCombo.Size = new System.Drawing.Size(432, 28);
+            this.TempConnectingIdCombo.Size = new System.Drawing.Size(300, 28);
             this.TempConnectingIdCombo.TabIndex = 2;
             // 
             // lblImpIdType
             // 
             this.lblImpIdType.AutoSize = true;
             this.lblImpIdType.Enabled = false;
-            this.lblImpIdType.Location = new System.Drawing.Point(45, 91);
+            this.lblImpIdType.Location = new System.Drawing.Point(32, 58);
             this.lblImpIdType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblImpIdType.Name = "lblImpIdType";
             this.lblImpIdType.Size = new System.Drawing.Size(65, 20);
@@ -206,7 +205,7 @@ namespace EWSEditor.Forms
             // ImpersonationCheck
             // 
             this.ImpersonationCheck.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.ImpersonationCheck.Location = new System.Drawing.Point(14, 22);
+            this.ImpersonationCheck.Location = new System.Drawing.Point(8, 5);
             this.ImpersonationCheck.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ImpersonationCheck.Name = "ImpersonationCheck";
             this.ImpersonationCheck.Size = new System.Drawing.Size(630, 48);
@@ -221,7 +220,7 @@ namespace EWSEditor.Forms
             // 
             this.lblImpId.AutoSize = true;
             this.lblImpId.Enabled = false;
-            this.lblImpId.Location = new System.Drawing.Point(45, 131);
+            this.lblImpId.Location = new System.Drawing.Point(429, 58);
             this.lblImpId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblImpId.Name = "lblImpId";
             this.lblImpId.Size = new System.Drawing.Size(27, 20);
@@ -232,11 +231,12 @@ namespace EWSEditor.Forms
             // ImpersonatedIdTextBox
             // 
             this.ImpersonatedIdTextBox.Enabled = false;
-            this.ImpersonatedIdTextBox.Location = new System.Drawing.Point(130, 120);
+            this.ImpersonatedIdTextBox.Location = new System.Drawing.Point(461, 55);
             this.ImpersonatedIdTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ImpersonatedIdTextBox.Name = "ImpersonatedIdTextBox";
-            this.ImpersonatedIdTextBox.Size = new System.Drawing.Size(432, 26);
+            this.ImpersonatedIdTextBox.Size = new System.Drawing.Size(282, 26);
             this.ImpersonatedIdTextBox.TabIndex = 4;
+            this.ImpersonatedIdTextBox.TextChanged += new System.EventHandler(this.ImpersonatedIdTextBox_TextChanged);
             // 
             // panel2
             // 
@@ -260,7 +260,7 @@ namespace EWSEditor.Forms
             this.panel2.Controls.Add(this.txtPassword);
             this.panel2.Controls.Add(this.txtUserName);
             this.panel2.Controls.Add(this.lblUserName);
-            this.panel2.Location = new System.Drawing.Point(6, 293);
+            this.panel2.Location = new System.Drawing.Point(9, 212);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(762, 359);
@@ -484,20 +484,20 @@ namespace EWSEditor.Forms
             this.panel1.Controls.Add(this.AutodiscoverEmailText);
             this.panel1.Controls.Add(this.lblVersion);
             this.panel1.Controls.Add(this.TempExchangeVersionCombo);
-            this.panel1.Location = new System.Drawing.Point(9, 19);
+            this.panel1.Location = new System.Drawing.Point(9, 14);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(759, 264);
+            this.panel1.Size = new System.Drawing.Size(759, 188);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnDefaultSmtp
             // 
-            this.btnDefaultSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDefaultSmtp.Location = new System.Drawing.Point(680, 48);
+            this.btnDefaultSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDefaultSmtp.Location = new System.Drawing.Point(643, 33);
             this.btnDefaultSmtp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDefaultSmtp.Name = "btnDefaultSmtp";
-            this.btnDefaultSmtp.Size = new System.Drawing.Size(73, 35);
+            this.btnDefaultSmtp.Size = new System.Drawing.Size(100, 35);
             this.btnDefaultSmtp.TabIndex = 3;
             this.btnDefaultSmtp.Text = "Default";
             this.btnDefaultSmtp.UseVisualStyleBackColor = true;
@@ -505,19 +505,19 @@ namespace EWSEditor.Forms
             // 
             // btnDefault365Settings
             // 
-            this.btnDefault365Settings.Location = new System.Drawing.Point(228, 178);
+            this.btnDefault365Settings.Location = new System.Drawing.Point(639, 93);
             this.btnDefault365Settings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDefault365Settings.Name = "btnDefault365Settings";
-            this.btnDefault365Settings.Size = new System.Drawing.Size(238, 35);
+            this.btnDefault365Settings.Size = new System.Drawing.Size(107, 35);
             this.btnDefault365Settings.TabIndex = 8;
-            this.btnDefault365Settings.Text = "Default Exchange 365 URL";
+            this.btnDefault365Settings.Text = "365 Default";
             this.btnDefault365Settings.UseVisualStyleBackColor = true;
             this.btnDefault365Settings.Click += new System.EventHandler(this.btnDefault365Settings_Click);
             // 
             // rdoServiceUrl
             // 
             this.rdoServiceUrl.AutoSize = true;
-            this.rdoServiceUrl.Location = new System.Drawing.Point(46, 121);
+            this.rdoServiceUrl.Location = new System.Drawing.Point(46, 95);
             this.rdoServiceUrl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rdoServiceUrl.Name = "rdoServiceUrl";
             this.rdoServiceUrl.Size = new System.Drawing.Size(127, 24);
@@ -531,7 +531,7 @@ namespace EWSEditor.Forms
             // 
             this.rdoAutodiscoverEmail.AutoSize = true;
             this.rdoAutodiscoverEmail.Checked = true;
-            this.rdoAutodiscoverEmail.Location = new System.Drawing.Point(46, 58);
+            this.rdoAutodiscoverEmail.Location = new System.Drawing.Point(40, 39);
             this.rdoAutodiscoverEmail.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rdoAutodiscoverEmail.Name = "rdoAutodiscoverEmail";
             this.rdoAutodiscoverEmail.Size = new System.Drawing.Size(173, 24);
@@ -544,7 +544,7 @@ namespace EWSEditor.Forms
             // lblUseAutodiscoverCheck
             // 
             this.lblUseAutodiscoverCheck.AutoSize = true;
-            this.lblUseAutodiscoverCheck.Location = new System.Drawing.Point(12, 20);
+            this.lblUseAutodiscoverCheck.Location = new System.Drawing.Point(12, 12);
             this.lblUseAutodiscoverCheck.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUseAutodiscoverCheck.Name = "lblUseAutodiscoverCheck";
             this.lblUseAutodiscoverCheck.Size = new System.Drawing.Size(444, 20);
@@ -555,7 +555,7 @@ namespace EWSEditor.Forms
             // 
             this.lblExchangeServiceURLTextDesc.AutoSize = true;
             this.lblExchangeServiceURLTextDesc.Enabled = false;
-            this.lblExchangeServiceURLTextDesc.Location = new System.Drawing.Point(224, 152);
+            this.lblExchangeServiceURLTextDesc.Location = new System.Drawing.Point(220, 124);
             this.lblExchangeServiceURLTextDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblExchangeServiceURLTextDesc.Name = "lblExchangeServiceURLTextDesc";
             this.lblExchangeServiceURLTextDesc.Size = new System.Drawing.Size(406, 20);
@@ -565,7 +565,7 @@ namespace EWSEditor.Forms
             // lblAutodiscoverEmailDesc
             // 
             this.lblAutodiscoverEmailDesc.Enabled = false;
-            this.lblAutodiscoverEmailDesc.Location = new System.Drawing.Point(224, 92);
+            this.lblAutodiscoverEmailDesc.Location = new System.Drawing.Point(217, 68);
             this.lblAutodiscoverEmailDesc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAutodiscoverEmailDesc.Name = "lblAutodiscoverEmailDesc";
             this.lblAutodiscoverEmailDesc.Size = new System.Drawing.Size(526, 20);
@@ -574,23 +574,23 @@ namespace EWSEditor.Forms
             // 
             // ExchangeServiceURLText
             // 
-            this.ExchangeServiceURLText.Location = new System.Drawing.Point(228, 118);
+            this.ExchangeServiceURLText.Location = new System.Drawing.Point(221, 93);
             this.ExchangeServiceURLText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ExchangeServiceURLText.Name = "ExchangeServiceURLText";
-            this.ExchangeServiceURLText.Size = new System.Drawing.Size(525, 26);
+            this.ExchangeServiceURLText.Size = new System.Drawing.Size(411, 26);
             this.ExchangeServiceURLText.TabIndex = 6;
             // 
             // AutodiscoverEmailText
             // 
-            this.AutodiscoverEmailText.Location = new System.Drawing.Point(228, 52);
+            this.AutodiscoverEmailText.Location = new System.Drawing.Point(221, 37);
             this.AutodiscoverEmailText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AutodiscoverEmailText.Name = "AutodiscoverEmailText";
-            this.AutodiscoverEmailText.Size = new System.Drawing.Size(440, 26);
+            this.AutodiscoverEmailText.Size = new System.Drawing.Size(411, 26);
             this.AutodiscoverEmailText.TabIndex = 2;
             // 
             // lblVersion
             // 
-            this.lblVersion.Location = new System.Drawing.Point(12, 226);
+            this.lblVersion.Location = new System.Drawing.Point(12, 149);
             this.lblVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(188, 28);
@@ -601,7 +601,7 @@ namespace EWSEditor.Forms
             // 
             this.TempExchangeVersionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempExchangeVersionCombo.FormattingEnabled = true;
-            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(228, 226);
+            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(221, 149);
             this.TempExchangeVersionCombo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TempExchangeVersionCombo.Name = "TempExchangeVersionCombo";
             this.TempExchangeVersionCombo.Size = new System.Drawing.Size(433, 28);
@@ -613,9 +613,10 @@ namespace EWSEditor.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(791, 1041);
+            this.ClientSize = new System.Drawing.Size(788, 758);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
+            this.Controls.Add(this.btnOptions);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);
