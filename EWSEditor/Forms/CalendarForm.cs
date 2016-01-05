@@ -337,9 +337,10 @@ namespace EWSEditor.Forms
                 dtDurationEndDate.Value.Year,
                 dtDurationEndDate.Value.Month,
                 dtDurationEndDate.Value.Day,
-                dtDurationEndDate.Value.Hour,
-                dtDurationEndDate.Value.Minute,
-                dtDurationEndDate.Value.Second);
+                dtDurationEndTime.Value.Hour,
+                dtDurationEndTime.Value.Minute,
+                dtDurationEndTime.Value.Second);
+
             _Appointment.Start = oStartTime;
             _Appointment.End = oEndTime;
 
@@ -684,16 +685,21 @@ namespace EWSEditor.Forms
         {
 
             // Master defaults ---------------------------------------
-            DateTime oDateTime = DateTime.Now;
+            //DateTime oDateTime = DateTime.Now;
 
             txtAppointmentType.Text = string.Empty;
             txtOrganizer.Text = string.Empty;
             txtSubject.Text = string.Empty;
             txtLocation.Text = string.Empty;
-            this.dtDurationStartDate.Value = oDateTime;
-            this.dtDurationStartTime.Value = oDateTime;
-            this.dtDurationEndDate.Value = oDateTime.AddMinutes(30);
-            this.dtDurationEndTime.Value = oDateTime.AddMinutes(30);
+            DateTime oBaseTime = DateTime.Now;
+            DateTime oDefaultTime = new DateTime(oBaseTime.Year, oBaseTime.Month, oBaseTime.Day, oBaseTime.Hour, 0,0);
+
+
+            this.dtDurationStartDate.Value = oDefaultTime;
+            this.dtDurationStartTime.Value = oDefaultTime;
+            this.dtDurationEndDate.Value = oDefaultTime.AddMinutes(30);
+            this.dtDurationEndTime.Value = oDefaultTime.AddMinutes(30);
+
             //http://msdn.microsoft.com/en-us/library/dd633707(EXCHG.80).aspx
             this.cmboDurationStartTimezone.Text = TimeHelper.GetTimezoneStringForCombobox(TimeZoneInfo.Local);
             this.cmboDurationEndTimezone.Text = TimeHelper.GetTimezoneStringForCombobox(TimeZoneInfo.Local);
@@ -780,11 +786,14 @@ namespace EWSEditor.Forms
             _Appointment = new Appointment(_ExchangeService);
             _isDirty = true;
             _IsExistingAppointment = false;
+
+            DateTime oBaseTime = DateTime.Now;
+            DateTime oDefaultTime = new DateTime(oBaseTime.Year, oBaseTime.Month, oBaseTime.Day, oBaseTime.Hour, 0, 0);
  
-            DateTime oDateTimeStart = new DateTime();
-            DateTime oDateTimeEnd = new DateTime();
-            oDateTimeStart = DateTime.Now;
-            oDateTimeEnd = oDateTimeStart.AddMinutes(30);
+            DateTime oDateTimeStart = oDefaultTime;
+            DateTime oDateTimeEnd = oDefaultTime.AddMinutes(30);
+            //oDateTimeStart = DateTime.Now;
+            //oDateTimeEnd = oDateTimeStart.AddMinutes(30);
 
             TimeZoneInfo oTimeZoneInfo;
             oTimeZoneInfo = TimeZoneInfo.Local; 
@@ -836,7 +845,7 @@ namespace EWSEditor.Forms
             this.dtDurationStartDate.Value = oAppointment.Start;
             this.dtDurationStartTime.Value = oAppointment.Start;
             this.dtDurationEndDate.Value = oAppointment.End;
-            //this.dtDurationEndTime.Value = oAppointment.End;
+            this.dtDurationEndTime.Value = oAppointment.End;    //this.dtDurationEndTime.Value = oAppointment.End;
 
             if (oAppointment.StartTimeZone == null)  // could it ever be not null and be OK???
                 oAppointment.StartTimeZone = TimeZoneInfo.Local;
@@ -1212,7 +1221,7 @@ namespace EWSEditor.Forms
         private void dtDurationStartDate_ValueChanged(object sender, EventArgs e)
         {
             _isDirty = true;
-            dtStartingDateRange.Value = dtRecurrStartTime.Value.Date;
+            dtStartingDateRange.Value = dtRecurrStartTime.Value.Date;  // Set default in case they set recurring starting range  
         }
 
         private void dtDurationEndDate_ValueChanged(object sender, EventArgs e)
@@ -1297,41 +1306,12 @@ namespace EWSEditor.Forms
 
         private void CheckRdoRecurringTypeEnablement()
         {
-            //this.dtDurationStartDate.Value = oDateTime;
-            //this.dtDurationStartTime.Value = oDateTime;
-            //this.dtDurationEndDate.Value = oDateTime.AddMinutes(30);
-            //this.dtDurationEndTime.Value = oDateTime.AddMinutes(30);
-            //this.cmboDurationStartTimezone.Text = TimeZoneInfo.Local.ToString();
-            //this.cmboDurationStartTimezone.Text = TimeZoneInfo.Local.ToString();
+ 
 
             _isDirty = true;
-            //if (rdoDaily.Checked == true)
-            //{
-            //    this.rdoWeekly.Checked = false;
-            //    this.rdoMonthly.Checked = false;
-            //    this.rdoYearly.Checked = false;
-            //}
+            
 
-            //if (rdoWeekly.Checked == true)
-            //{
-            //    this.rdoDaily.Checked = false;
-            //    this.rdoMonthly.Checked = false;
-            //    this.rdoYearly.Checked = false;
-            //}
-
-            //if (rdoMonthly.Checked == true)
-            //{
-            //    this.rdoDaily.Checked = false;
-            //    this.rdoWeekly.Checked = false;
-            //    this.rdoYearly.Checked = false;
-            //}
-
-            //if (rdoYearly.Checked == true)
-            //{
-            //    this.rdoDaily.Checked = false;
-            //    this.rdoWeekly.Checked = false;
-            //    this.rdoMonthly.Checked = false;
-            //}
+            
 
             // Daily
             //chkRecurrDailyEveryDays.Enabled = this.rdoDaily.Checked;
@@ -1712,6 +1692,11 @@ namespace EWSEditor.Forms
                 //}
             }
  
+        }
+
+        private void dtDurationEndTime_ValueChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
         }
     }
 }
