@@ -65,8 +65,7 @@ namespace EWSEditor.Forms
         /// <param name="caption">Form caption to display</param>
         /// <param name="service">ExchangeService to clone when making calls.</param>
         /// <param name="folder">Folder to display events from by default</param>
-        public static void Show(string caption,
-            FolderId folderId)
+        public static void Show(string caption, FolderId folderId)
         {
             StreamingNotificationForm diag = new StreamingNotificationForm();
 
@@ -199,8 +198,13 @@ namespace EWSEditor.Forms
                 AddToDisplay(lstEvents, item);
 
                 // Note that EWS Managed API objects should not beshared accross threads - So, each thread should have its own service object.
-                ExchangeService ThreadLocalService = EwsProxyFactory.CreateExchangeService();
+                //EWSEditor.Common.EwsEditorServiceInstanceSettings.EwsEditorAppSettings oSettings = new EWSEditor.Common.EwsEditorServiceInstanceSettings.EwsEditorAppSettings();
 
+
+                EWSEditor.Common.EwsEditorAppSettings oCurrentAppSettings = null; 
+                ExchangeService ThreadLocalService = EwsProxyFactory.CreateExchangeService( );
+                // Todo: Flush out oCurrentAppSettings
+                CurrentAppSettings = oCurrentAppSettings;
 
                 List<StreamingSubscription> ThreadLocalSubscriptions = new List<StreamingSubscription>();
 
@@ -747,8 +751,13 @@ namespace EWSEditor.Forms
                     ItemEvent itemevt = (evt is ItemEvent) ? (ItemEvent)evt : null;
 
                     FolderEvent folderevt = (evt is FolderEvent) ? (FolderEvent)evt : null;
-
+ 
+                    // New service and app settings
+                    EWSEditor.Common.EwsEditorAppSettings oCurrentAppSettings = new EWSEditor.Common.EwsEditorAppSettings();
                     oExchangeService = EwsProxyFactory.CreateExchangeService();
+                    // Todo: Flush out oCurrentAppSettings
+                    CurrentAppSettings = oCurrentAppSettings;
+
                     if (lstEvents.SelectedItems[0].SubItems[4].Text.TrimEnd().Length != 0)
                     {
                         try

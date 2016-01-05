@@ -17,11 +17,13 @@ namespace EWSEditor.Common.ServiceProfiles
     {
         internal readonly ExchangeService Service;
         internal readonly FolderId[] RootFolderIds;
+        internal readonly EWSEditor.Common.EwsEditorAppSettings AppSettings;
 
-        internal ServiceProfileItem(ExchangeService service, FolderId[] rootFolderIds)
+        internal ServiceProfileItem(ExchangeService service, FolderId[] rootFolderIds, EWSEditor.Common.EwsEditorAppSettings oAppSettings)
         {
             Service = service;
             RootFolderIds = rootFolderIds;
+            AppSettings = oAppSettings;
         }
     }
 
@@ -66,6 +68,7 @@ namespace EWSEditor.Common.ServiceProfiles
                 try
                 {
                     ExchangeService service = null;
+                    EWSEditor.Common.EwsEditorAppSettings oAppSettings = null;  
 
                     if (!row.UsesDefaultCredentials)
                     {
@@ -106,7 +109,7 @@ namespace EWSEditor.Common.ServiceProfiles
                         // If we still don't have credentials, throw.
                         if (cred != null)
                         {
-                            service = LoadExchangeServiceFromProfileRow(row, cred);
+                            service = LoadExchangeServiceFromProfileRow(row, cred, out oAppSettings);
                         }
                         else
                         {
@@ -115,7 +118,7 @@ namespace EWSEditor.Common.ServiceProfiles
                     }
                     else
                     {
-                        service = LoadExchangeServiceFromProfileRow(row, null);
+                        service = LoadExchangeServiceFromProfileRow(row, null, out oAppSettings);
                     }
 
                     if (testServices)
@@ -125,7 +128,7 @@ namespace EWSEditor.Common.ServiceProfiles
 
                     FolderId[] rootFolderIds = LoadRootFolderIdsFromProfileRow(row);
 
-                    this.profileItems.Add(new ServiceProfileItem(service, rootFolderIds));
+                    this.profileItems.Add(new ServiceProfileItem(service, rootFolderIds, oAppSettings));
                 }
                 catch (Exception ex)
                 {
@@ -162,11 +165,11 @@ namespace EWSEditor.Common.ServiceProfiles
         /// </summary>
         /// <param name="service">ExchangeService to store in profile.</param>
         /// <param name="rootFolderIds">Array of root folder ids to store with the ExchangeService.</param>
-        internal void AddServiceToProfile(ExchangeService service, FolderId[] rootFolderIds)
+        internal void AddServiceToProfile(ExchangeService service, FolderId[] rootFolderIds, EWSEditor.Common.EwsEditorAppSettings oAppSettings)
         {
-            this.profileItems.Add(new ServiceProfileItem(service, rootFolderIds));
+            this.profileItems.Add(new ServiceProfileItem(service, rootFolderIds, oAppSettings));
         }
-
+        
         /// <summary>
         /// Save the current profile and its items to the given file path.
         /// </summary>
@@ -233,9 +236,11 @@ namespace EWSEditor.Common.ServiceProfiles
         /// </summary>
         private ExchangeService LoadExchangeServiceFromProfileRow(
             ServicesProfile.ServiceBindingRow row,
-            NetworkCredential cred)
-        {
+            NetworkCredential cred,
+            out  EWSEditor.Common.EwsEditorAppSettings oAppSettings)
+        {   
             // Create the ExchangeService
+            
 
             if (!row.IsRequestedServerVersionNull())
             {
@@ -243,6 +248,8 @@ namespace EWSEditor.Common.ServiceProfiles
                 ExchangeVersion req =
                     (ExchangeVersion)System.Enum.Parse(typeof(ExchangeVersion), row.RequestedServerVersion);
                 EwsProxyFactory.RequestedExchangeVersion = req;
+
+                 
             }
 
 
@@ -285,7 +292,14 @@ namespace EWSEditor.Common.ServiceProfiles
                 }
             }
 
-            return EwsProxyFactory.CreateExchangeService();
+             
+            ExchangeService  oService = EwsProxyFactory.CreateExchangeService();
+
+            oAppSettings = new EWSEditor.Common.EwsEditorAppSettings();
+            EwsProxyFactory.SetAppSettingsFromProxyFactory(ref oAppSettings);
+
+            return oService;
+            //return EwsProxyFactory.CreateExchangeService();
         }
 
         /// <summary>

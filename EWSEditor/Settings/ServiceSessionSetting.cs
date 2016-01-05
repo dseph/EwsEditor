@@ -10,6 +10,13 @@ namespace EWSEditor.Settings
     // Items below were commented out for now so that they don't generate warnings since they are not used currently
     public class ServiceSessionSetting
     {
+
+        //public string ExchangeSchemaVersion = string.Empty;
+        //public string MailboxBeingAccessed = string.Empty;
+        //public string AuthenticationMethod = string.Empty;  // Default, UserSpecified, oAuth
+
+
+
         //string AutodiscoverEmailText = string.Empty;
         //bool AutodiscoverEmailTextSelected = true;
         //string ExchangeServiceURLText = string.Empty;
@@ -37,5 +44,23 @@ namespace EWSEditor.Settings
         //string DumpFolder = string.Empty;
         //bool SaveLogFile = false;
         //string LogFilePathText = string.Empty;
+
+        // txtOAuthRedirectUri
+        // txtOAuthAppId
+        // txtOAuthServerName
+        // txtOAuthAuthority
+
+
     }
 }
+
+ 
+
+ 
+                //EwsProxyFactory.UseDefaultCredentials = this.rdoCredentialsDefaultWindows.Checked;
+                //EwsProxyFactory.CredentialsUserSpecified = this.rdoCredentialsUserSpecified.Checked;
+                //EwsProxyFactory.UseoAuth = this.rdoCredentialsOAuth.Checked;
+                //EwsProxyFactory.oAuthRedirectUrl = this.txtOAuthRedirectUri.Text.Trim();
+                //EwsProxyFactory.oAuthClientId = this.txtOAuthAppId.Text.Trim();
+                //EwsProxyFactory.oAuthServerName = this.txtOAuthServerName.Text.Trim();
+                //EwsProxyFactory.oAuthAuthority = this.txtOAuthAuthority.Text.Trim();
