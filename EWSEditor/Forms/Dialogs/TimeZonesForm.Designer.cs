@@ -86,7 +86,6 @@
             // 
             // cmboTimeZoneIds
             // 
-            this.cmboTimeZoneIds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboTimeZoneIds.FormattingEnabled = true;
             this.cmboTimeZoneIds.Location = new System.Drawing.Point(203, 15);
             this.cmboTimeZoneIds.Margin = new System.Windows.Forms.Padding(4);
@@ -224,7 +223,7 @@
             this.txtMachineTimeZones.Multiline = true;
             this.txtMachineTimeZones.Name = "txtMachineTimeZones";
             this.txtMachineTimeZones.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMachineTimeZones.Size = new System.Drawing.Size(1281, 302);
+            this.txtMachineTimeZones.Size = new System.Drawing.Size(1281, 301);
             this.txtMachineTimeZones.TabIndex = 37;
             this.txtMachineTimeZones.WordWrap = false;
             this.txtMachineTimeZones.TextChanged += new System.EventHandler(this.txtMachineTimeZones_TextChanged);
