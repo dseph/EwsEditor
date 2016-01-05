@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Microsoft.Exchange.WebServices.Data;
+ 
 
 namespace EWSEditor.Forms
 {
@@ -42,8 +43,8 @@ namespace EWSEditor.Forms
             }
         }
 
-        EwsEditorAppSettings _CurrentAppSettings = null;
-        public EwsEditorAppSettings CurrentAppSettings
+        EWSEditor.Common.EwsEditorAppSettings _CurrentAppSettings = null;
+        public EWSEditor.Common.EwsEditorAppSettings CurrentAppSettings
         {
             get
             {
@@ -90,9 +91,6 @@ namespace EWSEditor.Forms
 
         }
 
-        public class EwsEditorAppSettings 
-        {
-            public string ExchangeSchemaVersion = string.Empty;
-        }
+
     }
 }

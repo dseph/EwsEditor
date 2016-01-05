@@ -34,8 +34,8 @@ namespace EWSEditor.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtXAnchorMailbox = new System.Windows.Forms.TextBox();
-            this.btnOptions = new System.Windows.Forms.Button();
             this.chkSetXAnchorMailbox = new System.Windows.Forms.CheckBox();
+            this.btnOptions = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.TempConnectingIdCombo = new System.Windows.Forms.ComboBox();
             this.lblImpIdType = new System.Windows.Forms.Label();
@@ -112,7 +112,7 @@ namespace EWSEditor.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Enabled = false;
-            this.label1.Location = new System.Drawing.Point(264, 7);
+            this.label1.Location = new System.Drawing.Point(252, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 20);
@@ -134,22 +134,11 @@ namespace EWSEditor.Forms
             // txtXAnchorMailbox
             // 
             this.txtXAnchorMailbox.Enabled = false;
-            this.txtXAnchorMailbox.Location = new System.Drawing.Point(328, 3);
+            this.txtXAnchorMailbox.Location = new System.Drawing.Point(316, 3);
             this.txtXAnchorMailbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtXAnchorMailbox.Name = "txtXAnchorMailbox";
-            this.txtXAnchorMailbox.Size = new System.Drawing.Size(384, 26);
+            this.txtXAnchorMailbox.Size = new System.Drawing.Size(437, 26);
             this.txtXAnchorMailbox.TabIndex = 7;
-            // 
-            // btnOptions
-            // 
-            this.btnOptions.Location = new System.Drawing.Point(8, 720);
-            this.btnOptions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(152, 35);
-            this.btnOptions.TabIndex = 0;
-            this.btnOptions.Text = "Global Options";
-            this.btnOptions.UseVisualStyleBackColor = true;
-            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
             // chkSetXAnchorMailbox
             // 
@@ -163,6 +152,17 @@ namespace EWSEditor.Forms
             this.chkSetXAnchorMailbox.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.chkSetXAnchorMailbox.UseVisualStyleBackColor = true;
             this.chkSetXAnchorMailbox.CheckedChanged += new System.EventHandler(this.chkSetXAnchorMailbox_CheckedChanged);
+            // 
+            // btnOptions
+            // 
+            this.btnOptions.Location = new System.Drawing.Point(8, 720);
+            this.btnOptions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnOptions.Name = "btnOptions";
+            this.btnOptions.Size = new System.Drawing.Size(152, 35);
+            this.btnOptions.TabIndex = 0;
+            this.btnOptions.Text = "Global Options";
+            this.btnOptions.UseVisualStyleBackColor = true;
+            this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
             // panel3
             // 
@@ -188,7 +188,7 @@ namespace EWSEditor.Forms
             this.TempConnectingIdCombo.Location = new System.Drawing.Point(105, 55);
             this.TempConnectingIdCombo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TempConnectingIdCombo.Name = "TempConnectingIdCombo";
-            this.TempConnectingIdCombo.Size = new System.Drawing.Size(300, 28);
+            this.TempConnectingIdCombo.Size = new System.Drawing.Size(152, 28);
             this.TempConnectingIdCombo.TabIndex = 2;
             // 
             // lblImpIdType
@@ -220,7 +220,7 @@ namespace EWSEditor.Forms
             // 
             this.lblImpId.AutoSize = true;
             this.lblImpId.Enabled = false;
-            this.lblImpId.Location = new System.Drawing.Point(429, 58);
+            this.lblImpId.Location = new System.Drawing.Point(281, 58);
             this.lblImpId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblImpId.Name = "lblImpId";
             this.lblImpId.Size = new System.Drawing.Size(27, 20);
@@ -231,10 +231,10 @@ namespace EWSEditor.Forms
             // ImpersonatedIdTextBox
             // 
             this.ImpersonatedIdTextBox.Enabled = false;
-            this.ImpersonatedIdTextBox.Location = new System.Drawing.Point(461, 55);
+            this.ImpersonatedIdTextBox.Location = new System.Drawing.Point(316, 55);
             this.ImpersonatedIdTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ImpersonatedIdTextBox.Name = "ImpersonatedIdTextBox";
-            this.ImpersonatedIdTextBox.Size = new System.Drawing.Size(282, 26);
+            this.ImpersonatedIdTextBox.Size = new System.Drawing.Size(437, 26);
             this.ImpersonatedIdTextBox.TabIndex = 4;
             this.ImpersonatedIdTextBox.TextChanged += new System.EventHandler(this.ImpersonatedIdTextBox_TextChanged);
             // 
@@ -275,7 +275,7 @@ namespace EWSEditor.Forms
             this.txtOAuthAuthority.Name = "txtOAuthAuthority";
             this.txtOAuthAuthority.Size = new System.Drawing.Size(589, 26);
             this.txtOAuthAuthority.TabIndex = 17;
-            this.txtOAuthAuthority.Text = "https://outlook.office365.com/ ";
+            this.txtOAuthAuthority.Text = "https://login.windows.net/dseph.onmicrosoft.com";
             // 
             // lblOAuthAuthority
             // 
@@ -296,7 +296,7 @@ namespace EWSEditor.Forms
             this.txtOAuthServerName.Name = "txtOAuthServerName";
             this.txtOAuthServerName.Size = new System.Drawing.Size(589, 26);
             this.txtOAuthServerName.TabIndex = 15;
-            this.txtOAuthServerName.Text = "https://login.windows.net/dseph.onmicrosoft.com";
+            this.txtOAuthServerName.Text = "https://outlook.office365.com";
             // 
             // lblOAuthServerName
             // 
@@ -505,7 +505,7 @@ namespace EWSEditor.Forms
             // 
             // btnDefault365Settings
             // 
-            this.btnDefault365Settings.Location = new System.Drawing.Point(639, 93);
+            this.btnDefault365Settings.Location = new System.Drawing.Point(640, 89);
             this.btnDefault365Settings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDefault365Settings.Name = "btnDefault365Settings";
             this.btnDefault365Settings.Size = new System.Drawing.Size(107, 35);

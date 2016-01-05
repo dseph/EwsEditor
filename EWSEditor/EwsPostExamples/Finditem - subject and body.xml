@@ -1,0 +1,41 @@
+﻿<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+     xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+     xmlns:soap="http://schemas.xml
+     soap.org/soap/envelope/">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2010" />
+  </soap:Header>
+  <soap:Body>
+    <m:FindItem Traversal="Shallow">
+      <m:ItemShape>
+        <t:BaseShape>IdOnly</t:BaseShape>
+        <t:AdditionalProperties>
+          <t:FieldURI FieldURI="item:Subject" />
+          <t:FieldURI FieldURI="item:DateTimeReceived" />
+        </t:AdditionalProperties>
+      </m:ItemShape>
+      <m:IndexedPageItemView MaxEntriesReturned="50" Offset="0" BasePoint="Beginning" />
+      <m:Restriction>
+        <t:Or>
+          <t:Contains ContainmentMode="Substring" ContainmentComparison="IgnoreCase">
+            <t:FieldURI FieldURI="item:Subject" />
+            <t:Constant Value="Test" />
+          </t:Contains>
+          <t:Contains ContainmentMode="Substring" ContainmentComparison="IgnoreCase">
+            <t:FieldURI FieldURI="item:Body" />
+            <t:Constant Value="homecoming" />
+          </t:Contains>
+        </t:Or>
+      </m:Restriction>
+      <m:SortOrder>
+        <t:FieldOrder Order="Descending">
+          <t:FieldURI FieldURI="item:DateTimeReceived" />
+        </t:FieldOrder>
+      </m:SortOrder>
+      <m:ParentFolderIds>
+        <t:DistinguishedFolderId Id="inbox" />
+      </m:ParentFolderIds>
+    </m:FindItem>
+  </soap:Body>
+</soap:Envelope>

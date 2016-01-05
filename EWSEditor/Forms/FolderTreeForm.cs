@@ -68,14 +68,14 @@ namespace EWSEditor.Forms
             // Load the file into a ServiceProfile
             ServiceProfile profile = new ServiceProfile(profilePath, true, true);
             foreach (ServiceProfileItem item in profile.Items)
-            {
-                TreeNode serviceNode = this.AddServiceToTreeView(item.Service, false);
+            {   
+                TreeNode serviceNode = this.AddServiceToTreeView(item.Service, item.AppSettings, false);
 
                 foreach (FolderId folder in item.RootFolderIds)
                 {
                     try
                     {
-                        this.AddRootFolderToTreeView(item.Service, folder, serviceNode);
+                        this.AddRootFolderToTreeView(item.Service, item.AppSettings, folder, serviceNode);
                     }
                     catch (Exception ex)
                     {
@@ -94,6 +94,19 @@ namespace EWSEditor.Forms
         }
 
         #endregion
+
+        public new EWSEditor.Common.EwsEditorAppSettings CurrentAppSettings
+        {
+            get
+            {
+                return base.CurrentAppSettings;
+            }
+
+            set
+            {
+                base.CurrentAppSettings = value;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the current ExchangeService selected in the TreeView.  When
@@ -344,6 +357,7 @@ namespace EWSEditor.Forms
         private void FolderTreeForm_Load(object sender, EventArgs e)
         {
             this.CurrentService = null;
+            this.CurrentAppSettings = null;
 
             this.Text = string.Empty;
             this.mnuRefresh.Click += new EventHandler(this.RefreshMenu_Click);
@@ -362,8 +376,12 @@ namespace EWSEditor.Forms
         {
             try
             {
+
+                // New service and appsettings.
+                EWSEditor.Common.EwsEditorAppSettings oAppSettings = null; 
                 ExchangeService service = null;
-                DialogResult result = ServiceDialog.ShowDialog(ref service);
+                DialogResult result = ServiceDialog.ShowDialog(ref service, ref oAppSettings);
+                //CurrentAppSettings = oAppSettings;
 
                 if (result != DialogResult.OK)
                 {
@@ -378,7 +396,7 @@ namespace EWSEditor.Forms
                 }
 
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-                TreeNode serviceNode = this.AddServiceToTreeView(service);
+                TreeNode serviceNode = this.AddServiceToTreeView(service, oAppSettings);
             }
             finally
             {
@@ -418,6 +436,7 @@ namespace EWSEditor.Forms
                 else 
                 {
                     this.CurrentService = null;
+                    this.CurrentAppSettings = null;
                 }
 
                 rootNode.Remove();
@@ -452,7 +471,9 @@ namespace EWSEditor.Forms
                 TreeNode serviceNode = FolderTreeView.TopNode;
                 while (serviceNode != null)
                 {
-                    ExchangeService service = (ExchangeService)serviceNode.Tag;
+
+                    ExchangeService service = (ExchangeService)serviceNode.Tag;  // Todo: - extact both ExchangeService and EwsEditorAppSettings from tag
+                    EWSEditor.Common.EwsEditorAppSettings oAppSettings = null; 
 
                     // Each Service in a ServiceProfile can have multiple root folders
                     List<FolderId> rootFolderIds = new List<FolderId>();
@@ -464,7 +485,7 @@ namespace EWSEditor.Forms
                         }
                     }
 
-                    profile.AddServiceToProfile(service, rootFolderIds.ToArray());
+                    profile.AddServiceToProfile(service, rootFolderIds.ToArray(), oAppSettings);
 
                     // Go to the next ExchangeService node
                     serviceNode = serviceNode.NextNode;
@@ -501,6 +522,7 @@ namespace EWSEditor.Forms
                     if (msgResult == DialogResult.Yes)
                     {
                         this.CurrentService = null;
+                        this.CurrentAppSettings = null;
                         this.FolderTreeView.Nodes.Clear();
                         this.FolderPropertyDetailsGrid.Clear();
                     }
@@ -530,12 +552,12 @@ namespace EWSEditor.Forms
                 ServiceProfile profile = new ServiceProfile(this.openFileDialog.FileName, true, true);
                 foreach (ServiceProfileItem item in profile.Items)
                 {
-                    TreeNode serviceNode = this.AddServiceToTreeView(item.Service, false);
+                    TreeNode serviceNode = this.AddServiceToTreeView(item.Service, item.AppSettings, false);
                     foreach (FolderId folder in item.RootFolderIds)
                     {
                         try
                         {
-                            this.AddRootFolderToTreeView(item.Service, folder, serviceNode);
+                            this.AddRootFolderToTreeView(item.Service, item.AppSettings, folder, serviceNode);
                         }
                         catch (Exception ex)
                         {
@@ -560,6 +582,7 @@ namespace EWSEditor.Forms
             {
                 // If we fail anywhere in here clear the tree view and bail out
                 this.CurrentService = null;
+                this.CurrentAppSettings = null;
                 this.FolderTreeView.Nodes.Clear();
                 throw;
             }
@@ -578,13 +601,24 @@ namespace EWSEditor.Forms
         {
             try
             {
+                this.CurrentAppSettings = new EWSEditor.Common.EwsEditorAppSettings();
+
                 this.Cursor = Cursors.WaitCursor;
                 EwsProxyFactory.InitializeWithDefaults();
-                ExchangeService service = EwsProxyFactory.CreateExchangeService();
 
-                TreeNode newNode = this.AddServiceToTreeView(service);
+                // New service and app settings.
+                ExchangeService service = EwsProxyFactory.CreateExchangeService();
+                
+                EWSEditor.Common.EwsEditorAppSettings oAppSettings = new EwsEditorAppSettings();
+                EwsProxyFactory.SetAppSettingsFromProxyFactory(ref oAppSettings);
+                CurrentAppSettings = oAppSettings;
+
+
+                TreeNode newNode = this.AddServiceToTreeView(service, CurrentAppSettings);
                 this.FolderTreeView.SelectedNode = newNode;
                 this.CurrentService = service;
+
+                 
             }
             catch
             {
@@ -786,7 +820,11 @@ namespace EWSEditor.Forms
         private void EditExchangeServiceMenu_Click(object sender, EventArgs e)
         {
             ExchangeService service = this.CurrentService;
-            if (ServiceDialog.ShowDialog(ref service) == DialogResult.OK)
+
+            EWSEditor.Common.EwsEditorAppSettings oCurrentAppSettings = this.CurrentAppSettings;
+  
+ 
+            if (ServiceDialog.ShowDialog(ref service, ref oCurrentAppSettings) == DialogResult.OK)
             {
                 if (!service.IsEqual(this.CurrentService))
                 {
@@ -1188,18 +1226,18 @@ namespace EWSEditor.Forms
 
         #region Private Methods
 
-        private TreeNode AddServiceToTreeView(ExchangeService service)
+        private TreeNode AddServiceToTreeView(ExchangeService service, EWSEditor.Common.EwsEditorAppSettings oAppSettings)
         {
-            return this.AddServiceToTreeView(service, true);
+            return this.AddServiceToTreeView(service, oAppSettings, true);
         }
 
-        private TreeNode AddServiceToTreeView(ExchangeService service, bool offerRootFolder)
+        private TreeNode AddServiceToTreeView(ExchangeService service, EWSEditor.Common.EwsEditorAppSettings oAppSettings, bool offerRootFolder)
         {
             TreeNode serviceRootNode = null;
 
             // Create a root node for the ExchangeService
             serviceRootNode = FolderTreeView.Nodes.Add(PropertyInterpretation.GetPropertyValue(service));
-            serviceRootNode.Tag = service;
+            serviceRootNode.Tag = service; 
 
             // ExchangeService ToolTip - mstehle 7/29/2009
             // ToolTips are used to give the user a literal definition of
@@ -1243,6 +1281,7 @@ namespace EWSEditor.Forms
                 {
                     this.AddRootFolderToTreeView(
                         service,
+                        oAppSettings,
                         new FolderId(WellKnownFolderName.Root),
                         serviceRootNode);
                 }
@@ -1253,10 +1292,10 @@ namespace EWSEditor.Forms
 
         private TreeNode AddRootFolderToTreeView(FolderId folderId, TreeNode parent)
         {
-            return this.AddRootFolderToTreeView(this.CurrentService, folderId, parent);
+            return this.AddRootFolderToTreeView(this.CurrentService, this.CurrentAppSettings, folderId, parent);
         }
 
-        private TreeNode AddRootFolderToTreeView(ExchangeService service, FolderId folderId, TreeNode parent)
+        private TreeNode AddRootFolderToTreeView(ExchangeService service, EWSEditor.Common.EwsEditorAppSettings oAppSettings,  FolderId folderId, TreeNode parent)
         {
             Folder folder = Folder.Bind(
                 service,
@@ -1395,9 +1434,11 @@ namespace EWSEditor.Forms
                 this.mnuViewConfigPropertySet.Enabled = true;
                 this.CurrentService = folder.Service;
 
+                //this.CurrentAppSettings = folder.  // TODO Load settings
+
                 // Reload folder with the current property set
                 EWSEditor.Forms.FormsUtil.PerformRetryableLoad(folder as ServiceObject, this.CurrentDetailPropertySet);
-
+            
                 // If this folder didn't have subfolders before, put a placeholder folder there to be
                 // expanded later
                 if (this.FolderTreeView.SelectedNode.Nodes.Count == 0 && folder.ChildFolderCount > 0)
@@ -1567,6 +1608,7 @@ namespace EWSEditor.Forms
         {
             internal Folder FolderObject;
             internal FolderId OriginalFolderId;
+            internal EWSEditor.Common.EwsEditorAppSettings oAppSettings;
         }
 
         private void mnuOpenStreamingNotifications_Click(object sender, EventArgs e)

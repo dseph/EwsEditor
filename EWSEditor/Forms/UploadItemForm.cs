@@ -6,8 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using EWSEditor.Common;
 
-using EWSEditor.EwsVsProxy;
+//using EWSEditor.EwsVsProxy;
 
 namespace EWSEditor.Forms
 {

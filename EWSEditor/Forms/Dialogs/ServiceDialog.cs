@@ -9,6 +9,7 @@ using EWSEditor.Settings;
 using Microsoft.Exchange.WebServices.Data;
 using System.DirectoryServices.AccountManagement;
 using System.Xml;
+using EWSEditor.Common;
  
 namespace EWSEditor.Forms
 {
@@ -28,7 +29,7 @@ namespace EWSEditor.Forms
         /// </summary>
         /// <param name="service">ExchangeService to be returned or displayed</param>
         /// <returns>DialogResult indicating the user action which closed the dialog</returns>
-        public static DialogResult ShowDialog(ref ExchangeService service)
+        public static DialogResult ShowDialog(ref ExchangeService service, ref  EwsEditorAppSettings oAppSettings)
         {
             ServiceDialog dialog = new ServiceDialog();
 
@@ -37,10 +38,18 @@ namespace EWSEditor.Forms
                 dialog.CurrentService = service;
             }
 
+            if (oAppSettings != null)
+            {
+                dialog.CurrentAppSettings = oAppSettings;
+            }
+
             DialogResult res = dialog.ShowDialog();
             if (res == DialogResult.OK)
             {
                 service = dialog.CurrentService;
+
+                oAppSettings = dialog.CurrentAppSettings;
+    
             }
 
             return res;
@@ -81,19 +90,7 @@ namespace EWSEditor.Forms
             {
                 Cursor = System.Windows.Forms.Cursors.WaitCursor;
  
-                //EwsProxyFactory.InitializeWithDefaults(exchangeVersionCombo.SelectedIndex,
                 EwsProxyFactory.RequestedExchangeVersion = exchangeVersionCombo.SelectedItem;
-
-
-                //if (this.chkUseSpecifiedTimezone.Checked)
-                //{
-                //    TimeZoneInfo oTimeZone = TimeZoneInfo.FindSystemTimeZoneById(cmboTimeZoneIds.Text);
-                //    EwsProxyFactory.SelectedTimeZone = oTimeZone;
-                //}
-                //else
-                //{
-                //    EwsProxyFactory.SelectedTimeZone = null;
-                //}
 
                 EwsProxyFactory.OverrideTimezone = GlobalSettings.OverrideTimezone;
                 EwsProxyFactory.SelectedTimeZoneId = GlobalSettings.SelectedTimeZoneId;
@@ -101,20 +98,63 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.AllowAutodiscoverRedirect = GlobalSettings.AllowAutodiscoverRedirect;
 
                 EwsProxyFactory.UseDefaultCredentials = this.rdoCredentialsDefaultWindows.Checked;
+                if (this.rdoCredentialsDefaultWindows.Checked)
+                    EwsProxyFactory.AuthenticationMethod = RequestedAuthType.DefaultAuth;
+
                 EwsProxyFactory.CredentialsUserSpecified = this.rdoCredentialsUserSpecified.Checked;
+                if (this.rdoCredentialsUserSpecified.Checked)
+                    EwsProxyFactory.AuthenticationMethod = RequestedAuthType.SpecifiedCredentialsAuth;
+
+                if (this.rdoCredentialsOAuth.Checked)
+                    EwsProxyFactory.AuthenticationMethod = RequestedAuthType.oAuth;
+
+                // MailboxBeingAccessed
+                switch (EwsProxyFactory.AuthenticationMethod)
+                {
+                    case RequestedAuthType.DefaultAuth:
+                        AutodiscoverEmailText.Text = UserPrincipal.Current.EmailAddress;
+                        //if (this.AutodiscoverEmailText.Text.Trim().Length != 0)
+                        //    EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();
+                        break;
+                    case RequestedAuthType.SpecifiedCredentialsAuth:
+                        if (this.AutodiscoverEmailText.Text.Trim().Length != 0)
+                            EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();
+                        else
+                            EwsProxyFactory.MailboxBeingAccessed = this.txtUserName.Text.Trim();
+                        break;
+                    case RequestedAuthType.oAuth:
+                        EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();  // Should be this
+                        break;
+                }
+                if (this.AutodiscoverEmailText.Text.Trim().Length != 0)
+                    EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();
+                if (this.ImpersonationCheck.Checked) // Override
+                    EwsProxyFactory.MailboxBeingAccessed = ImpersonatedIdTextBox.Text.Trim();
+ 
+
+                EwsProxyFactory.UserImpersonationSelected = this.ImpersonationCheck.Checked;
+                //EwsProxyFactory.UserToImpersonate = this.ImpersonatedIdTextBox.Text  // set below
+                EwsProxyFactory.ImpersonationType = this.connectingIdCombo.SelectedItem.Value.ToString();
+                EwsProxyFactory.ImpersonatedId = this.ImpersonatedIdTextBox.Text.Trim();
+
+
                 EwsProxyFactory.UseoAuth = this.rdoCredentialsOAuth.Checked;
                 EwsProxyFactory.oAuthRedirectUrl = this.txtOAuthRedirectUri.Text.Trim();
                 EwsProxyFactory.oAuthClientId = this.txtOAuthAppId.Text.Trim();
                 EwsProxyFactory.oAuthServerName = this.txtOAuthServerName.Text.Trim();
                 EwsProxyFactory.oAuthAuthority = this.txtOAuthAuthority.Text.Trim();
-
-
+ 
+ 
                 EwsProxyFactory.EnableScpLookup = GlobalSettings.EnableScpLookups;
                 EwsProxyFactory.PreAuthenticate = GlobalSettings.PreAuthenticate;
 
                 EwsProxyFactory.OverrideTimeout = GlobalSettings.OverrideTimeout;
                 EwsProxyFactory.Timeout = GlobalSettings.Timeout;
                 EwsProxyFactory.UserAgent = GlobalSettings.UserAgent;
+
+                EwsProxyFactory.UserName = this.txtUserName.Text.Trim();
+               // EwsProxyFactory.Password = this.txtPassword.Text.Trim();   // Don't keep.
+                EwsProxyFactory.Domain = this.txtDomain.Text.Trim(); 
 
                 EwsProxyFactory.SetDefaultProxy = GlobalSettings.SetDefaultProxy;
                 EwsProxyFactory.BypassProxyForLocalAddress = GlobalSettings.BypassProxyForLocalAddress;
@@ -128,12 +168,12 @@ namespace EWSEditor.Forms
 
                 EwsProxyFactory.ServiceCredential = rdoCredentialsUserSpecified.Checked ?
                     new NetworkCredential(
-                        this.txtUserName.Text.Trim(), 
-                        this.txtPassword.Text.Trim(), //TODO:  This will fail on passwords ending with whitespace
+                        this.txtUserName.Text.Trim(),
+                        this.txtPassword.Text.Trim(),  // This will fail on passwords ending with whitespace
                         this.txtDomain.Text.Trim()) :
                     null;
 
-                 
+ 
                 EwsProxyFactory.EwsUrl = this.rdoAutodiscoverEmail.Checked ?
                     null : new Uri(ExchangeServiceURLText.Text.Trim());
 
@@ -144,6 +184,7 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.XAnchorMailbox = this.txtXAnchorMailbox.Text.Trim();
 
                 EwsProxyFactory.ServiceEmailAddress = this.AutodiscoverEmailText.Text.Trim();
+                EwsProxyFactory.UseAutoDiscover = this.rdoAutodiscoverEmail.Checked;
                 if (this.rdoAutodiscoverEmail.Checked)
                 {
                     EwsProxyFactory.DoAutodiscover();
@@ -152,12 +193,19 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.AddTimeZoneContext = GlobalSettings.AddTimeZoneContext;
                 EwsProxyFactory.SelectedTimeZoneContextId = GlobalSettings.SelectedTimeZoneContextId;
 
+
+                // New service & app settings
+                 
                 CurrentService = EwsProxyFactory.CreateExchangeService();
+
+                EWSEditor.Common.EwsEditorAppSettings oAppSettings = new EwsEditorAppSettings();
+                EwsProxyFactory.SetAppSettingsFromProxyFactory(ref oAppSettings);
+                CurrentAppSettings = oAppSettings;
 
                 CurrentService.TestExchangeService();
 
                 CurrentService.OnSerializeCustomSoapHeaders += m_Service_OnSerializeCustomSoapHeaders;
-                //CurrentService.OnSerializeCustomSoapHeaders -= m_Service_OnSerializeCustomSoapHeaders;
+           
 
                 DialogResult = DialogResult.OK;
             }
@@ -179,7 +227,6 @@ namespace EWSEditor.Forms
 
             if (EwsProxyFactory.AddTimeZoneContext == true)
             {
-                //writer.WriteRaw(Environment.NewLine + "    <t:TimeZoneContext><t:TimeZoneDefinition Id=\"" + CurrentService.TimeZone.StandardName + "\"/></t:TimeZoneContext>" + Environment.NewLine);
                 writer.WriteRaw(Environment.NewLine + "    <t:TimeZoneContext><t:TimeZoneDefinition Id=\"" + GlobalSettings.SelectedTimeZoneContextId + "\"/></t:TimeZoneContext>" + Environment.NewLine);
             }
     
@@ -187,30 +234,7 @@ namespace EWSEditor.Forms
 
         private void ChkCredentials_CheckedChanged(object sender, EventArgs e)
         {
-            //txtUserName.Text = string.Empty;
-            //txtPassword.Text = string.Empty;
-            //txtDomain.Text = string.Empty;
-
-            //txtUserName.Enabled = chkCredentials.Checked;
-            //txtPassword.Enabled = chkCredentials.Checked;
-            //txtDomain.Enabled = chkCredentials.Checked;
-            //lblUserName.Enabled = chkCredentials.Checked;
-            //lblPassword.Enabled = chkCredentials.Checked;
-            //lblDomain.Enabled = chkCredentials.Checked;
-
-            //if (chkCredentials.Checked== true)
-            //{
-            //    if (rdoAutodiscoverEmail.Checked == true)
-            //    {
-            //        if (txtUserName.Text.Trim().Length == 0)
-            //        {
-            //            if (AutodiscoverEmailText.Text.Trim().Length != 0)
-            //            {
-            //                txtUserName.Text = AutodiscoverEmailText.Text.Trim();
-            //            }
-            //        }
-            //    }
-            //}
+            
         }
 
         private void ChkImpersonation_CheckedChanged(object sender, EventArgs e)
@@ -221,28 +245,11 @@ namespace EWSEditor.Forms
             ImpersonatedIdTextBox.Enabled = ImpersonationCheck.Checked;
             lblImpId.Enabled = ImpersonationCheck.Checked;
             lblImpIdType.Enabled = ImpersonationCheck.Checked;
-
-            //this.chkSetXAnchorMailbox.Enabled = ImpersonationCheck.Checked;
-            //this.txtXAnchorMailbox.Enabled = ImpersonationCheck.Checked;
+ 
         }
 
  
-
-        //private void UseAutodiscoverCheck_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    this.AutodiscoverEmailText.Enabled = this.UseAutodiscoverCheck.Checked;
-        //    this.ExchangeServiceURLText.ReadOnly = this.UseAutodiscoverCheck.Checked;
-
-        //    if (!this.UseAutodiscoverCheck.Checked)
-        //    {
-        //        this.ExchangeServiceURLText.Text = string.Empty;
-        //        this.ExchangeServiceURLText.Focus();
-        //    }
-        //    else
-        //    {
-        //        this.AutodiscoverEmailText.Focus();
-        //    }
-        //}
+ 
 
         /// <summary>
         /// Display the GetMailboxNameDialog to get the SMTP address and
@@ -297,8 +304,6 @@ namespace EWSEditor.Forms
 
             this.connectingIdCombo.TransformComboBox(this.TempConnectingIdCombo);
             this.connectingIdCombo.SelectedItem = ConnectingIdType.SmtpAddress;
-
-             
  
 
             // If CurrentService is already set then we are editing an
@@ -444,31 +449,7 @@ namespace EWSEditor.Forms
 
             SetAuthEnablement();
 
-            //txtUserName.Text = string.Empty;
-            //txtPassword.Text = string.Empty;
-            //txtDomain.Text = string.Empty;
-
-            //txtUserName.Enabled = rdoCredentialsUserSpecified.Checked;
-            //txtPassword.Enabled = rdoCredentialsUserSpecified.Checked;
-            //txtDomain.Enabled = rdoCredentialsUserSpecified.Checked;
-            //lblUserName.Enabled = rdoCredentialsUserSpecified.Checked;
-            //lblPassword.Enabled = rdoCredentialsUserSpecified.Checked;
-            //lblDomain.Enabled = rdoCredentialsUserSpecified.Checked;
-
-            //if (this.rdoCredentialsUserSpecified.Checked == true)
-            //{
-            //    if (rdoAutodiscoverEmail.Checked == true)
-            //    {
-            //        if (txtUserName.Text.Trim().Length == 0)
-            //        {
-            //            if (AutodiscoverEmailText.Text.Trim().Length != 0)
-            //            {
-            //                txtUserName.Text = AutodiscoverEmailText.Text.Trim();
-            //            }
-            //        }
-            //    }
-            //}
-
+            
 
         }
 
@@ -537,10 +518,6 @@ namespace EWSEditor.Forms
         {
 
         }
-
-        //private void btnOptions_Click(object sender, EventArgs e)
-        //{
-        //    OptionsDialog.ShowDialog();
-        //}
+ 
     }
 }

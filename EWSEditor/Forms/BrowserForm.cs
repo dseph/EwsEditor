@@ -23,11 +23,13 @@
 
     using Microsoft.Win32;
     using System.Globalization;
+    
 
     public partial class BrowserForm : CountedForm
     {
         private PropertySet defaultDetailPropertySet = new PropertySet(BasePropertySet.IdOnly);
         private PropertySet currentDetailPropertySet = null;
+         
 
         public BrowserForm()
         {
@@ -213,11 +215,19 @@
         /// <param name="e">The parameter is not used.</param>
         private void MnuDelegateInformation_Click(object sender, EventArgs e)
         {
+            NameResolutionCollection names = null;
+
             // Attempt to resolve the Act As account name.  If there is only one
             // hit from ResolveNames then assume it is the right one.
-            NameResolutionCollection names = 
-                this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
-
+            if (this.CurrentAppSettings.AuthenticationMethod ==  RequestedAuthType.oAuth)
+            {
+                names = this.CurrentService.ResolveName(this.CurrentAppSettings.MailboxBeingAccessed);
+            }
+            else
+            {
+                names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
+            }
+             
             if (names.Count == 1)
             {
                 DialogResult res = DelegateDialog.ShowDialog(
@@ -300,10 +310,16 @@
                     return;
                 }
 
-                // Attempt to resolve the Act As account name.  If there is only one
-                // hit from ResolveNames then assume it is the right one.
-                names = this.CurrentService.ResolveName(
-                    this.CurrentService.GetActAsAccountName());
+                if (this.CurrentAppSettings.AuthenticationMethod == RequestedAuthType.oAuth)
+                {  
+                    names = this.CurrentService.ResolveName(this.CurrentAppSettings.MailboxBeingAccessed);
+                }
+                else
+                { 
+                    // Attempt to resolve the Act As account name.  If there is only one
+                    // hit from ResolveNames then assume it is the right one.
+                    names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
+                }
             }
             finally
             {

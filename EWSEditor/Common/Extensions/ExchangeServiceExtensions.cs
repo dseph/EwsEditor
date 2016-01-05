@@ -6,11 +6,14 @@ using System.Security.Principal;
 using EWSEditor.Logging;
 using EWSEditor.Settings;
 using Microsoft.Exchange.WebServices.Data;
+using System.Runtime.CompilerServices;
 
 namespace EWSEditor.Common.Extensions
 {
     public static class ExchangeServiceExtensions
     {
+
+ 
         /// <summary>
         /// Determine if this ExchangeService instance is the same as the
         /// given ExchangeService instance.
@@ -110,6 +113,12 @@ namespace EWSEditor.Common.Extensions
         /// request via this ExchangeService object</returns>
         public static string GetServiceAccountName(this ExchangeService service)
         {
+
+            string s = string.Empty;
+            
+            //s = service.GetNetworkCredential().UserName;
+ 
+           
             if (service == null)
             {
                 return string.Empty;
@@ -129,9 +138,10 @@ namespace EWSEditor.Common.Extensions
                 }
                 else
                 {
-                    
+                    return string.Empty;
+
                     // HACK: Don't know what happened if we got here...
-                    throw new ApplicationException("Unexpected ExchangeService.Credentials type");
+                   // throw new ApplicationException("Unexpected ExchangeService.Credentials type");
                 }
             }
         }
@@ -153,6 +163,7 @@ namespace EWSEditor.Common.Extensions
             if (service.ImpersonatedUserId != null)
             {
                 return service.ImpersonatedUserId.Id;
+                 
             }
             else
             {

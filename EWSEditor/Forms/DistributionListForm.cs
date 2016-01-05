@@ -19,7 +19,7 @@ namespace EWSEditor.Forms
     {
         ExchangeService _CurrentService = null;
 
-        MailboxType _MailboxType = MailboxType.PublicGroup;
+        //MailboxType _MailboxType = MailboxType.PublicGroup;
 
         public DistributionListExpansionForm()
         {

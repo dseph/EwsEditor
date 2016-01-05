@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 using EWSEditor.Common;
-using EWSEditor.EwsVsProxy;
+//using EWSEditor.EwsVsProxy;
 using EWSEditor.Logging;
 using EWSEditor.Settings;
 using EWSEditor.Common.Extensions;
@@ -12,6 +12,7 @@ using System.Xml;
 using Microsoft.Exchange.WebServices.Autodiscover;
 using System.Configuration;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+ 
 
 namespace EWSEditor.Exchange
 {
@@ -29,15 +30,32 @@ namespace EWSEditor.Exchange
         public static bool? OverrideTimeout;
         public static int? Timeout = null;
 
+        public static string MailboxBeingAccessed = string.Empty;  // calculated mailbox being accessed.
+
+        public static RequestedAuthType AuthenticationMethod = RequestedAuthType.DefaultAuth;
+
+        public static bool? UseAutoDiscover = null;
+        public static string RequestedAutodiscoverEmail = string.Empty;
+        public static string RequestedExchangeServiceURL = string.Empty;
+
         public static bool? UseDefaultCredentials = null;
         public static bool? CredentialsUserSpecified = null;
+        public static string UserName = string.Empty;
+        public static string Password = string.Empty;
+        public static string Domain = string.Empty;
+
         public static bool? UseoAuth = null;
         public static string oAuthRedirectUrl = string.Empty;
         public static string oAuthClientId = string.Empty;
         public static string oAuthServerName = string.Empty;
         public static string oAuthAuthority = string.Empty;
 
+         
+        public static bool? UserImpersonationSelected = false;
         public static ImpersonatedUserId UserToImpersonate = null;
+        public static string ImpersonationType  = string.Empty;
+        public static string ImpersonatedId  = string.Empty;
+
         public static bool?  SetXAnchorMailbox = null;
         public static string XAnchorMailbox;
 
@@ -52,6 +70,7 @@ namespace EWSEditor.Exchange
         public static string ProxyServerUser;
         public static string ProxyServerPassword;
         public static string ProxyServerDomain;
+
         public static bool AddTimeZoneContext = false;
         public static string SelectedTimeZoneContextId;
 
@@ -62,10 +81,10 @@ namespace EWSEditor.Exchange
 
         public static void DoAutodiscover(Microsoft.Exchange.WebServices.Data.EmailAddress emailAddress)
         {
+            //EWSEditor.Common.EwsEditorAppSettings oSettings = new EWSEditor.Common.EwsEditorAppSettings();
+
             ExchangeService service = CreateExchangeService();
 
-             
- 
     //
     // Your code here
 
@@ -113,7 +132,7 @@ namespace EWSEditor.Exchange
             //}
  
         }
- 
+
         public static ExchangeService CreateExchangeService()
         {
             ExchangeService service = null;
@@ -129,6 +148,7 @@ namespace EWSEditor.Exchange
                     oTimeZone = TimeZoneInfo.FindSystemTimeZoneById(SelectedTimeZoneId);
                 }
             }
+ 
              
             System.Diagnostics.Debug.WriteLine(" ServicePointManager.DefaultConnectionLimit: " +  ServicePointManager.DefaultConnectionLimit.ToString() );
             System.Diagnostics.Debug.WriteLine(" ServicePointManager.DefaultPersistentConnectionLimit: " +  ServicePointManager.DefaultPersistentConnectionLimit.ToString() );
@@ -139,8 +159,8 @@ namespace EWSEditor.Exchange
                     service = new ExchangeService(RequestedExchangeVersion.Value, oTimeZone);
                 else
                     service = new ExchangeService(RequestedExchangeVersion.Value);
+
                 
-              
                 //System.Diagnostics.Debug.WriteLine(service.PreferredCulture);
    
             }
@@ -149,13 +169,19 @@ namespace EWSEditor.Exchange
                 if (oTimeZone != null)
                     service = new ExchangeService(oTimeZone);
                 else
-                    service = new ExchangeService( ); 
+                    service = new ExchangeService( );
+
+                 
             }
+
+             
 
  
             if (UserAgent != null)
                 if (UserAgent.Length != 0)
                     service.UserAgent = UserAgent;
+ 
+
 
             // EWS Tracing: http://msdn.microsoft.com/en-us/library/office/dn495632(v=exchg.150).aspx
             service.TraceEnabled = true;
@@ -277,11 +303,7 @@ namespace EWSEditor.Exchange
                 sAppId = oAuthClientId;
                 sRedirectURL = oAuthRedirectUrl;
                 sServername = oAuthServerName;
-
-                //sAuthority = ConfigurationManager.AppSettings["authority"];
-                //sAppId = ConfigurationManager.AppSettings["clientID"];
-                //sRedirectURL = ConfigurationManager.AppSettings["clientAppUri"];
-                //sServername = ConfigurationManager.AppSettings["serverName"];
+ 
                 
                 // See // https://msdn.microsoft.com/en-us/library/office/dn903761%28v=exchg.150%29.aspx?f=255&MSPPError=-2147217396#bk_getToken
                 // get authentication token
@@ -293,13 +315,14 @@ namespace EWSEditor.Exchange
                 AuthenticationContext authenticationContext = new AuthenticationContext(authority, false);
 
                 AuthenticationResult authenticationResult = authenticationContext.AcquireToken(serverName, clientID, clientAppUri);
- 
-
+        
 
                 // Add authenticaiton token to requests
                 service.Credentials = new OAuthCredentials(authenticationResult.AccessToken);
 
             }
+
+ 
 
  
             return service;
@@ -484,6 +507,7 @@ namespace EWSEditor.Exchange
 
             try
             {
+                //EWSEditor.Common.EwsEditorAppSettings oSettings = new EWSEditor.Common.EwsEditorAppSettings();
                 CreateExchangeService().TestExchangeService();
             }
             catch (ServiceVersionException ex)
@@ -492,6 +516,66 @@ namespace EWSEditor.Exchange
                 // Pass the autodiscover email address and URL if we've already looked those up
                 InitializeWithDefaults(ExchangeVersion.Exchange2007_SP1, EwsUrl, autodiscoverAddress);
             }
+
+        }
+
+        public static void SetProxyFactoryFromAppSettings(ref EWSEditor.Common.EwsEditorAppSettings oSettings)
+        {
+
+            oSettings.MailboxBeingAccessed = MailboxBeingAccessed;
+
+            oSettings.AuthenticationMethod = AuthenticationMethod;  // Default, UserSpecified, oAuth
+
+            oSettings.UseAutoDiscover = (bool)UseAutoDiscover;
+            oSettings.RequestedAutodiscoverEmail = RequestedAutodiscoverEmail;
+            oSettings.RequestedExchangeServiceURL = RequestedExchangeServiceURL;
+
+            oSettings.RequestedExchangeVersion = RequestedExchangeVersion;
+
+            oSettings.UserName = UserName;
+            oSettings.Password = Password;
+            oSettings.Domain = Domain;
+
+            oSettings.UserImpersonationSelected = (bool)UserImpersonationSelected;
+            oSettings.UserToImpersonate = UserToImpersonate;
+            oSettings.ImpersonationType = ImpersonationType;
+            oSettings.ImpersonatedId = ImpersonatedId;
+
+            oSettings.UseoAuth = UseoAuth;
+            oSettings.oAuthRedirectUrl = oAuthRedirectUrl;
+            oSettings.oAuthClientId = oAuthClientId;
+            oSettings.oAuthServerName = oAuthServerName;
+            oSettings.oAuthAuthority = oAuthAuthority;
+
+        }
+
+        public static void SetAppSettingsFromProxyFactory(ref EWSEditor.Common.EwsEditorAppSettings oSettings)
+        {
+
+            MailboxBeingAccessed = oSettings.MailboxBeingAccessed;
+
+            AuthenticationMethod = oSettings.AuthenticationMethod;  // Default, UserSpecified, oAuth
+
+            UseAutoDiscover = (bool)oSettings.UseAutoDiscover;
+            RequestedAutodiscoverEmail = oSettings.RequestedAutodiscoverEmail;
+            RequestedExchangeServiceURL = oSettings.RequestedExchangeServiceURL;
+
+            RequestedExchangeVersion = oSettings.RequestedExchangeVersion;
+
+            UserName = oSettings.UserName;
+            Password = oSettings.Password;
+            Domain = oSettings.Domain;
+
+            UserImpersonationSelected = (bool)oSettings.UserImpersonationSelected;
+            UserToImpersonate = oSettings.UserToImpersonate;
+            ImpersonationType = oSettings.ImpersonationType;
+            ImpersonatedId = oSettings.ImpersonatedId;
+
+            UseoAuth = oSettings.UseoAuth;
+            oAuthRedirectUrl = oSettings.oAuthRedirectUrl;
+            oAuthClientId = oSettings.oAuthClientId;
+            oAuthServerName = oSettings.oAuthServerName;
+            oAuthAuthority = oSettings.oAuthAuthority;
 
         }
     }
