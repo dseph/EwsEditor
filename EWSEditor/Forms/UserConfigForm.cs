@@ -95,9 +95,12 @@ namespace EWSEditor.Forms
             {
                 OWAEnum.Key.ToString();
                 xNode = new TreeNode(OWAEnum.Key.ToString());
-                xNode.Tag = OWAEnum.Value.ToString();
+                if (OWAEnum.Value != null)
+                    xNode.Tag = OWAEnum.Value.ToString();
+                else
+                    xNode.Tag = "";  
                 oNode.Nodes.Add(xNode);
-            }
+            }   
         }
 
         // Note: Accessing hidden folders such as the one for categories is not something which is considered supportable or advised by MS.

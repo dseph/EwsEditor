@@ -60,6 +60,9 @@ namespace EWSEditor.Forms
 
         private void CalendarInstanceForm_Load(object sender, EventArgs e)
         {
+            this.chkSetDurationStartTimezone.Checked = false;
+            this.chkSetDurationEndTimezone.Checked = false;
+
             // http://msdn.microsoft.com/en-us/library/dd633685(EXCHG.80).aspx
             string s = string.Empty;
             foreach (TimeZoneInfo tzinfo in TimeZoneInfo.GetSystemTimeZones())
@@ -82,12 +85,7 @@ namespace EWSEditor.Forms
         private Appointment LoadAppointmentForEdit(ExchangeService oExchangeService, ItemId oItemId)
         {
             PropertySet oPropertySet = null;
-
-            //if (oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2010") == true ||
-            //    oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013") == true ||
-            //    oExchangeService.ServerInfo.VersionString.StartsWith("Exchange2013_SP1") == true ||
-            //    oExchangeService.ServerInfo.VersionString.StartsWith("V2_") == true)
-            //{   // 2010 and above
+ 
 
             if (_ExchangeService.ServerInfo.VersionString.CompareTo("Exchange2010") >= 0)
               {   // 2010 and above
@@ -317,19 +315,38 @@ namespace EWSEditor.Forms
             //this.cmboDurationEndTimezone.Text = TimeHelper.GetTimezoneStringForCombobox(oAppointment.EndTimeZone);
 
             if (oAppointment.StartTimeZone == null)  // could it ever be not null and be OK???
+            {
+                chkSetDurationStartTimezone.Checked = false;
                 oAppointment.StartTimeZone = TimeZoneInfo.Local;
+            }
+            else
+            {
+                chkSetDurationStartTimezone.Checked = true;
+            }
+
             this.cmboDurationStartTimezone.Text = TimeHelper.GetTimezoneStringForCombobox(oAppointment.StartTimeZone);
 
             if (_ExchangeService.ServerInfo.VersionString.CompareTo("Exchange2010") >= 0)
             {   // 2010 and above
                 if (oAppointment.EndTimeZone == null)  // could it ever be not null and be OK???
+                {
+                    chkSetDurationEndTimezone.Checked = false;
                     oAppointment.EndTimeZone = TimeZoneInfo.Local;
+
+                }
+                else
+                {
+                    chkSetDurationEndTimezone.Checked = true;
+                }
+
                 this.cmboDurationEndTimezone.Text = TimeHelper.GetTimezoneStringForCombobox(oAppointment.EndTimeZone);
+                this.chkSetDurationEndTimezone.Visible = true;
                 this.cmboDurationEndTimezone.Visible = true;
                 this.lblDurationEndTimezone.Visible = true;
             }
             else
             {
+                this.chkSetDurationEndTimezone.Visible = false;
                 this.cmboDurationEndTimezone.Visible = false;
                 this.lblDurationEndTimezone.Visible = false;
             }
@@ -413,27 +430,28 @@ namespace EWSEditor.Forms
             _Appointment.Start = oStartTime;
             _Appointment.End = oEndTime;
 
-            _Appointment.StartTimeZone = TimeHelper.GetTzIdFromTimeZoneStringUsedByComboBoxes(this.cmboDurationStartTimezone.Text);
-            //_Appointment.EndTimeZone = TimeHelper.GetTzIdFromTimeZoneStringUsedByComboBoxes(this.cmboDurationEndTimezone.Text);
-
-            if (_ExchangeService.ServerInfo.VersionString.CompareTo("Exchange2010") >= 0)
+            if (this.chkSetDurationStartTimezone.Checked == true)
             {
-                _Appointment.EndTimeZone = TimeHelper.GetTzIdFromTimeZoneStringUsedByComboBoxes(this.cmboDurationEndTimezone.Text);
-                //_Appointment.EndTimeZone = TimeHelper.GetTzIdFromTimeZoneStringUsedByComboBoxes(this.cmboDurationEndTimezone.Text);
+                _Appointment.StartTimeZone = TimeHelper.GetTzIdFromTimeZoneStringUsedByComboBoxes(this.cmboDurationStartTimezone.Text);
             }
-            //this.cmboDurationStartTimezone.Text = oAppointment.StartTimeZone.DisplayName;
-            //this.cmboDurationEndTimezone.Text = oAppointment.EndTimeZone.DisplayName;
-            //this.cmboImportance.Text =   oAppointment.Importance.;
+
+            if (this.chkSetDurationEndTimezone.Checked == true)
+            {
+                if (_ExchangeService.ServerInfo.VersionString.CompareTo("Exchange2010") >= 0)
+                {
+                    _Appointment.EndTimeZone = TimeHelper.GetTzIdFromTimeZoneStringUsedByComboBoxes(this.cmboDurationEndTimezone.Text);
+                }
+            }
             
             _Appointment.Body.Text = txtBody.Text;
             _Appointment.IsAllDayEvent = chkIsAllDayEvent.Checked;
              
-            //_Appointment.LegacyFreeBusyStatus = AppointmentHelper.GetFreeBusyStatus(cmboLegacyFreeBusyStatus.Text);
+ 
             _Appointment.LegacyFreeBusyStatus = (LegacyFreeBusyStatus)Enum.Parse(typeof(LegacyFreeBusyStatus), cmboLegacyFreeBusyStatus.Text.Trim());
-            //_Appointment.Importance = AppointmentHelper.GetImportance(cmboImportance.Text);
+      
             _Appointment.Importance = (Importance)Enum.Parse(typeof(Importance), cmboImportance.Text.Trim());
 
-            //_Appointment.IsRecurring = chkIsRecurring.Checked ; 
+      
              
             RecipeintHelper.SetAppointmentRecipientsFromString(ref _Appointment, "Required", txtRequiredAttendees.Text.Trim());
             RecipeintHelper.SetAppointmentRecipientsFromString(ref _Appointment, "Optional", txtOptionalAttendees.Text.Trim());
@@ -652,6 +670,16 @@ namespace EWSEditor.Forms
                         _isDirty = true;
                 //}
             }
+        }
+
+        private void chkSetDurationStartTimezone_CheckedChanged(object sender, EventArgs e)
+        {
+            cmboDurationStartTimezone.Enabled = chkSetDurationStartTimezone.Checked;
+        }
+
+        private void chkSetDurationEndTimezone_CheckedChanged(object sender, EventArgs e)
+        {
+            cmboDurationEndTimezone.Enabled = chkSetDurationEndTimezone.Checked;
         }
 
     }
