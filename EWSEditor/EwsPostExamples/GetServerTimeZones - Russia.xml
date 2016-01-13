@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2010"/>
+  </soap:Header>
+  <soap:Body>
+    <m:GetServerTimeZones ReturnFullTimeZoneData="false">
+      <m:Ids>
+
+        <t:Id>Kaliningrad Standard Time</t:Id>
+        <t:Id>Russian Standard Time</t:Id>
+        <t:Id>Ekaterinburg Standard Time</t:Id>
+        <t:Id>N. Central Asia Standard Time</t:Id>
+        <t:Id>North Asia East Standard Time</t:Id>
+        <t:Id>Yakutsk Standard Time</t:Id>
+
+        <t:Id>Russia Time Zone 1</t:Id>
+        <t:Id>Russia Time Zone 2</t:Id>
+        <t:Id>Russia Time Zone 3</t:Id>
+        <t:Id>Russia Time Zone 4</t:Id>
+        <t:Id>Russia Time Zone 5</t:Id>
+        <t:Id>Russia Time Zone 6</t:Id>
+        <t:Id>Russia Time Zone 7</t:Id>
+        <t:Id>Russia Time Zone 8</t:Id>
+        <t:Id>Russia Time Zone 9</t:Id>
+        <t:Id>Russia Time Zone 10</t:Id>
+        <t:Id>Russia Time Zone 11</t:Id>
+
+        <t:Id>Vladivostok Standard Time</t:Id>
+        <t:Id>Magadan Standard Time</t:Id>
+
+        <t:Id>Belarus Standard Time</t:Id>
+
+      </m:Ids>
+    </m:GetServerTimeZones>
+  </soap:Body>
+</soap:Envelope>

@@ -1209,6 +1209,7 @@
     <Content Include="EwsPostExamples\GetSearchableMailboxes.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="EwsPostExamples\GetServerTimeZones - Russia.xml" />
     <Content Include="EwsPostExamples\GetServerTimeZones.xml" />
     <Content Include="EwsPostExamples\GetServiceConfiguration.xml" />
     <Content Include="EwsPostExamples\GetSharingFolder.xml" />

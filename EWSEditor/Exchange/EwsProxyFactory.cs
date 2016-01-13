@@ -148,7 +148,8 @@ namespace EWSEditor.Exchange
                     oTimeZone = TimeZoneInfo.FindSystemTimeZoneById(SelectedTimeZoneId);
                 }
             }
- 
+
+            //ServicePointManager.DefaultConnectionLimit = 10;  // Winform default is 2 connections. Need more connections?  Then increase the limit.
              
             System.Diagnostics.Debug.WriteLine(" ServicePointManager.DefaultConnectionLimit: " +  ServicePointManager.DefaultConnectionLimit.ToString() );
             System.Diagnostics.Debug.WriteLine(" ServicePointManager.DefaultPersistentConnectionLimit: " +  ServicePointManager.DefaultPersistentConnectionLimit.ToString() );

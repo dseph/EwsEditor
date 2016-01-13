@@ -82,11 +82,9 @@
             this.lblGlobalObjectId = new System.Windows.Forms.Label();
             this.txtGlobalObjectId = new System.Windows.Forms.TextBox();
             this.btnAttachments = new System.Windows.Forms.Button();
-            this.cmboTimezone = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.grpTimeZone = new System.Windows.Forms.GroupBox();
+            this.chkSetDurationStartTimezone = new System.Windows.Forms.CheckBox();
+            this.chkSetDurationEndTimezone = new System.Windows.Forms.CheckBox();
             this.grpSchedule.SuspendLayout();
-            this.grpTimeZone.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDelete
@@ -310,6 +308,8 @@
             // 
             // grpSchedule
             // 
+            this.grpSchedule.Controls.Add(this.chkSetDurationEndTimezone);
+            this.grpSchedule.Controls.Add(this.chkSetDurationStartTimezone);
             this.grpSchedule.Controls.Add(this.cmboDurationEndTimezone);
             this.grpSchedule.Controls.Add(this.lblDurationEndTimezone);
             this.grpSchedule.Controls.Add(this.label12);
@@ -324,7 +324,7 @@
             this.grpSchedule.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpSchedule.Name = "grpSchedule";
             this.grpSchedule.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpSchedule.Size = new System.Drawing.Size(1198, 114);
+            this.grpSchedule.Size = new System.Drawing.Size(1257, 114);
             this.grpSchedule.TabIndex = 30;
             this.grpSchedule.TabStop = false;
             this.grpSchedule.Text = "Scheduled:";
@@ -338,7 +338,7 @@
             "Tentative",
             "Busy",
             "Out Of Office"});
-            this.cmboDurationEndTimezone.Location = new System.Drawing.Point(702, 62);
+            this.cmboDurationEndTimezone.Location = new System.Drawing.Point(732, 58);
             this.cmboDurationEndTimezone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmboDurationEndTimezone.Name = "cmboDurationEndTimezone";
             this.cmboDurationEndTimezone.Size = new System.Drawing.Size(486, 28);
@@ -373,7 +373,7 @@
             "Tentative",
             "Busy",
             "Out Of Office"});
-            this.cmboDurationStartTimezone.Location = new System.Drawing.Point(702, 26);
+            this.cmboDurationStartTimezone.Location = new System.Drawing.Point(732, 24);
             this.cmboDurationStartTimezone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmboDurationStartTimezone.Name = "cmboDurationStartTimezone";
             this.cmboDurationStartTimezone.Size = new System.Drawing.Size(486, 28);
@@ -461,7 +461,7 @@
             // 
             // txtICalDateTimeStamp
             // 
-            this.txtICalDateTimeStamp.Location = new System.Drawing.Point(178, 769);
+            this.txtICalDateTimeStamp.Location = new System.Drawing.Point(181, 705);
             this.txtICalDateTimeStamp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtICalDateTimeStamp.Name = "txtICalDateTimeStamp";
             this.txtICalDateTimeStamp.ReadOnly = true;
@@ -471,7 +471,7 @@
             // lblICalDateTimeStamp
             // 
             this.lblICalDateTimeStamp.AutoSize = true;
-            this.lblICalDateTimeStamp.Location = new System.Drawing.Point(14, 774);
+            this.lblICalDateTimeStamp.Location = new System.Drawing.Point(17, 710);
             this.lblICalDateTimeStamp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblICalDateTimeStamp.Name = "lblICalDateTimeStamp";
             this.lblICalDateTimeStamp.Size = new System.Drawing.Size(157, 20);
@@ -480,7 +480,7 @@
             // 
             // txtICalRecurrenceId
             // 
-            this.txtICalRecurrenceId.Location = new System.Drawing.Point(176, 729);
+            this.txtICalRecurrenceId.Location = new System.Drawing.Point(179, 665);
             this.txtICalRecurrenceId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtICalRecurrenceId.Name = "txtICalRecurrenceId";
             this.txtICalRecurrenceId.ReadOnly = true;
@@ -490,7 +490,7 @@
             // lblICalRecurrenceId
             // 
             this.lblICalRecurrenceId.AutoSize = true;
-            this.lblICalRecurrenceId.Location = new System.Drawing.Point(14, 734);
+            this.lblICalRecurrenceId.Location = new System.Drawing.Point(17, 670);
             this.lblICalRecurrenceId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblICalRecurrenceId.Name = "lblICalRecurrenceId";
             this.lblICalRecurrenceId.Size = new System.Drawing.Size(138, 20);
@@ -499,7 +499,7 @@
             // 
             // txtICalUid
             // 
-            this.txtICalUid.Location = new System.Drawing.Point(176, 688);
+            this.txtICalUid.Location = new System.Drawing.Point(179, 624);
             this.txtICalUid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtICalUid.Name = "txtICalUid";
             this.txtICalUid.ReadOnly = true;
@@ -509,7 +509,7 @@
             // lblICalUid
             // 
             this.lblICalUid.AutoSize = true;
-            this.lblICalUid.Location = new System.Drawing.Point(15, 697);
+            this.lblICalUid.Location = new System.Drawing.Point(18, 633);
             this.lblICalUid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblICalUid.Name = "lblICalUid";
             this.lblICalUid.Size = new System.Drawing.Size(65, 20);
@@ -518,7 +518,7 @@
             // 
             // txtConversationId
             // 
-            this.txtConversationId.Location = new System.Drawing.Point(735, 774);
+            this.txtConversationId.Location = new System.Drawing.Point(738, 710);
             this.txtConversationId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtConversationId.Name = "txtConversationId";
             this.txtConversationId.ReadOnly = true;
@@ -529,7 +529,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(570, 778);
+            this.label9.Location = new System.Drawing.Point(573, 714);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(120, 20);
@@ -539,7 +539,7 @@
             // 
             // txtChangeKey
             // 
-            this.txtChangeKey.Location = new System.Drawing.Point(732, 734);
+            this.txtChangeKey.Location = new System.Drawing.Point(735, 670);
             this.txtChangeKey.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtChangeKey.Name = "txtChangeKey";
             this.txtChangeKey.ReadOnly = true;
@@ -549,7 +549,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(570, 738);
+            this.label11.Location = new System.Drawing.Point(573, 674);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(95, 20);
@@ -558,7 +558,7 @@
             // 
             // txtItemId
             // 
-            this.txtItemId.Location = new System.Drawing.Point(732, 692);
+            this.txtItemId.Location = new System.Drawing.Point(735, 628);
             this.txtItemId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtItemId.Name = "txtItemId";
             this.txtItemId.ReadOnly = true;
@@ -568,7 +568,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(572, 702);
+            this.label14.Location = new System.Drawing.Point(575, 638);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(59, 20);
@@ -658,49 +658,33 @@
             this.btnAttachments.UseVisualStyleBackColor = true;
             this.btnAttachments.Click += new System.EventHandler(this.btnAttachments_Click);
             // 
-            // cmboTimezone
+            // chkSetDurationStartTimezone
             // 
-            this.cmboTimezone.FormattingEnabled = true;
-            this.cmboTimezone.Items.AddRange(new object[] {
-            "Free",
-            "Tentative",
-            "Busy",
-            "Out Of Office"});
-            this.cmboTimezone.Location = new System.Drawing.Point(136, 20);
-            this.cmboTimezone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.cmboTimezone.Name = "cmboTimezone";
-            this.cmboTimezone.Size = new System.Drawing.Size(486, 28);
-            this.cmboTimezone.TabIndex = 116;
+            this.chkSetDurationStartTimezone.AutoSize = true;
+            this.chkSetDurationStartTimezone.Location = new System.Drawing.Point(697, 31);
+            this.chkSetDurationStartTimezone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkSetDurationStartTimezone.Name = "chkSetDurationStartTimezone";
+            this.chkSetDurationStartTimezone.Size = new System.Drawing.Size(22, 21);
+            this.chkSetDurationStartTimezone.TabIndex = 112;
+            this.chkSetDurationStartTimezone.UseVisualStyleBackColor = true;
+            this.chkSetDurationStartTimezone.CheckedChanged += new System.EventHandler(this.chkSetDurationStartTimezone_CheckedChanged);
             // 
-            // label13
+            // chkSetDurationEndTimezone
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(78, 25);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(32, 20);
-            this.label13.TabIndex = 115;
-            this.label13.Text = "TZ:";
-            // 
-            // grpTimeZone
-            // 
-            this.grpTimeZone.Controls.Add(this.cmboTimezone);
-            this.grpTimeZone.Controls.Add(this.label13);
-            this.grpTimeZone.Location = new System.Drawing.Point(16, 614);
-            this.grpTimeZone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpTimeZone.Name = "grpTimeZone";
-            this.grpTimeZone.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpTimeZone.Size = new System.Drawing.Size(651, 65);
-            this.grpTimeZone.TabIndex = 118;
-            this.grpTimeZone.TabStop = false;
-            this.grpTimeZone.Text = "TimeZone";
+            this.chkSetDurationEndTimezone.AutoSize = true;
+            this.chkSetDurationEndTimezone.Location = new System.Drawing.Point(697, 66);
+            this.chkSetDurationEndTimezone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkSetDurationEndTimezone.Name = "chkSetDurationEndTimezone";
+            this.chkSetDurationEndTimezone.Size = new System.Drawing.Size(22, 21);
+            this.chkSetDurationEndTimezone.TabIndex = 113;
+            this.chkSetDurationEndTimezone.UseVisualStyleBackColor = true;
+            this.chkSetDurationEndTimezone.CheckedChanged += new System.EventHandler(this.chkSetDurationEndTimezone_CheckedChanged);
             // 
             // CalendarInstanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1311, 823);
-            this.Controls.Add(this.grpTimeZone);
+            this.ClientSize = new System.Drawing.Size(1317, 746);
             this.Controls.Add(this.btnAttachments);
             this.Controls.Add(this.txtGlobalObjectId);
             this.Controls.Add(this.lblGlobalObjectId);
@@ -751,8 +735,6 @@
             this.Load += new System.EventHandler(this.CalendarInstanceForm_Load);
             this.grpSchedule.ResumeLayout(false);
             this.grpSchedule.PerformLayout();
-            this.grpTimeZone.ResumeLayout(false);
-            this.grpTimeZone.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -814,8 +796,7 @@
         private System.Windows.Forms.Label lblGlobalObjectId;
         private System.Windows.Forms.TextBox txtGlobalObjectId;
         private System.Windows.Forms.Button btnAttachments;
-        private System.Windows.Forms.ComboBox cmboTimezone;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.GroupBox grpTimeZone;
+        private System.Windows.Forms.CheckBox chkSetDurationStartTimezone;
+        private System.Windows.Forms.CheckBox chkSetDurationEndTimezone;
     }
 }
