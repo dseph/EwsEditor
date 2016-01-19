@@ -61,6 +61,7 @@ namespace EWSEditor.Common
             HttpWebResponse oHttpWebResponse = null;
             HttpWebRequest oHttpWebRequest = null;
 
+            string sErrorBody = string.Empty;  // body of response gathered in thrown error
  
             try
             {
@@ -82,30 +83,6 @@ namespace EWSEditor.Common
                         Domain,
                         sUrl
                     );
-
-                //if (sAuthentication == "Anonymous")
-                //{
-                //    oHttpWebRequest.UseDefaultCredentials = false;
-                //    oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
-                //}
-                //else
-                //{
-                //    if (sAuthentication == "DefaultCredentials")
-                //    {
-                //        oHttpWebRequest.UseDefaultCredentials = true;
-                //        oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
-                //    }
-                //    else
-                //    {
-                //        if (sAuthentication == "DefaultNetworkCredentials")
-                //            oHttpWebRequest.Credentials = CredentialCache.DefaultNetworkCredentials;
-                //        else
-                //        {
-                //            oHttpWebRequest.Credentials = oCrentialCache;
-                //        }
-                //    }
-                //}
-
  
  
                 if (bTranslateF)
@@ -118,69 +95,7 @@ namespace EWSEditor.Common
 
                 // Add Additional Headers:
                 SetRequestHeaders(ref oHttpWebRequest, oHeadersList);
-
-                ////List<string> oPropertySetHeaders = (List<string>)GetPropertySetHeadersList();
-                //IFormatProvider oCulture = new System.Globalization.CultureInfo("en-US", true);
-                //string sKey = string.Empty;
-                ////// http://msdn.microsoft.com/en-us/library/system.net.httpwebrequest(v=vs.110).aspx
-                //foreach (KeyValuePair<string, string> k in oHeadersList)
-                //{
-                //    sKey = k.Key.ToUpper();
-                //    //if (oPropertySetHeaders.Contains(sKey) == false)
-                //    //{
-                //    //    oHttpWebRequest.Headers.Add(k.Key, k.Value);
-                //    //}
-                //    //else
-                //    //{
-                //        // Note: Every header which maps to a header property on the httpswebrequest object needs to be in this select statement.
-                //    //       This article has a table containing that list: http://msdn.microsoft.com/en-us/library/system.net.httpwebrequest(v=vs.110).aspx
-                //        switch(sKey)
-                //        {
-                //            case "CONNECTION":
-                //                oHttpWebRequest.Connection = k.Key;
-                //                break;
-                //            case "CONTENT-LENGTH":
-                //                oHttpWebRequest.ContentLength = Convert.ToUInt32(Convert.ToUInt32(k.Key));
-                //                break;
-                //            case "CONTENT-TYPE":
-                //                oHttpWebRequest.ContentType = k.Key;
-                //                break;
-                //            case "EXPECT":
-                //                oHttpWebRequest.Expect = k.Key;
-                //                break;
-                //            case "DATE":
-                //                 DateTime oDtDate = DateTime.Parse(k.Key, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
-                //                 oHttpWebRequest.Date = oDtDate;
-                //                break;
-                //            case "HOST":
-                //                oHttpWebRequest.Host = k.Key;
-                //                break;
-                //            case "IF-MODIFIED-SINCE":
-                //                DateTime oDtIfModifiedSince = DateTime.Parse(k.Key, oCulture, System.Globalization.DateTimeStyles.AssumeLocal);
-                //                oHttpWebRequest.IfModifiedSince = oDtIfModifiedSince;
-                //                break;
-                //            case "RANGE":
-                //                oHttpWebRequest.AddRange(Convert.ToUInt32(Convert.ToUInt32(k.Key)));
-                //                break;
-                //            case "REFERRER":
-                //                oHttpWebRequest.Referer  = k.Key;
-                //                break;
-                //            case "TRANSFER-ENCODING":
-                //                oHttpWebRequest.TransferEncoding  = k.Key;
-                //                break;
-                //            case "USER-AGENT":
-                //                oHttpWebRequest.UserAgent  = k.Key;
-                //                break;
-                //            default:
-                //                oHttpWebRequest.Headers.Add(k.Key, k.Value);
-                //                break;
  
-                //        }
-
-                    //}
-                //}
-
-                
  
                 oHttpWebRequest.AllowAutoRedirect = bAllowAutoRedirect;
 
@@ -202,9 +117,9 @@ namespace EWSEditor.Common
                 // =============================================
                 // Do the EWS call:
 
+                Encoding oEncoding = System.Text.Encoding.GetEncoding("utf-8");
                 oHttpWebResponse = (HttpWebResponse)oHttpWebRequest.GetResponse();
-
-                StreamReader oStreadReader = new StreamReader(oHttpWebResponse.GetResponseStream());
+                StreamReader oStreadReader = new StreamReader(oHttpWebResponse.GetResponseStream(), oEncoding);
                 sResult = oStreadReader.ReadToEnd();
 
                 // ============================================
@@ -214,6 +129,12 @@ namespace EWSEditor.Common
             catch (WebException ex)
             {
                 sError = ex.Message.ToString();
+
+                using (Stream oStream = ex.Response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(oStream))
+                {
+                    sResult = reader.ReadToEnd() + "\r\n";
+                }
               
                 bSuccess = false;
             }
