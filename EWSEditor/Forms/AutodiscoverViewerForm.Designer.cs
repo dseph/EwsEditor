@@ -87,10 +87,11 @@
             // 
             // GoRun
             // 
-            this.GoRun.Location = new System.Drawing.Point(1391, 335);
+            this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.GoRun.Location = new System.Drawing.Point(1044, 328);
             this.GoRun.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GoRun.Name = "GoRun";
-            this.GoRun.Size = new System.Drawing.Size(111, 35);
+            this.GoRun.Size = new System.Drawing.Size(118, 35);
             this.GoRun.TabIndex = 26;
             this.GoRun.Text = "Run";
             this.GoRun.UseVisualStyleBackColor = true;
@@ -99,19 +100,19 @@
             // TargetMailboxLabel
             // 
             this.TargetMailboxLabel.AutoSize = true;
-            this.TargetMailboxLabel.Location = new System.Drawing.Point(595, 14);
+            this.TargetMailboxLabel.Location = new System.Drawing.Point(19, 271);
             this.TargetMailboxLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TargetMailboxLabel.Name = "TargetMailboxLabel";
-            this.TargetMailboxLabel.Size = new System.Drawing.Size(192, 20);
+            this.TargetMailboxLabel.Size = new System.Drawing.Size(113, 20);
             this.TargetMailboxLabel.TabIndex = 2;
-            this.TargetMailboxLabel.Text = "SMTP address of mailbox:";
+            this.TargetMailboxLabel.Text = "Mailbox SMTP:";
             // 
             // TargetMailboxText
             // 
-            this.TargetMailboxText.Location = new System.Drawing.Point(796, 9);
+            this.TargetMailboxText.Location = new System.Drawing.Point(140, 269);
             this.TargetMailboxText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TargetMailboxText.Name = "TargetMailboxText";
-            this.TargetMailboxText.Size = new System.Drawing.Size(219, 26);
+            this.TargetMailboxText.Size = new System.Drawing.Size(294, 26);
             this.TargetMailboxText.TabIndex = 3;
             // 
             // chkDefaultWindowsCredentials
@@ -130,7 +131,7 @@
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(135, 49);
+            this.txtUser.Location = new System.Drawing.Point(123, 46);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(329, 26);
@@ -138,7 +139,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(135, 89);
+            this.txtPassword.Location = new System.Drawing.Point(123, 77);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
@@ -148,7 +149,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 54);
+            this.label1.Location = new System.Drawing.Point(42, 52);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 20);
@@ -158,7 +159,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 132);
+            this.label2.Location = new System.Drawing.Point(42, 107);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 20);
@@ -168,7 +169,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 95);
+            this.label3.Location = new System.Drawing.Point(42, 77);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(82, 20);
@@ -177,7 +178,7 @@
             // 
             // txtDomain
             // 
-            this.txtDomain.Location = new System.Drawing.Point(135, 128);
+            this.txtDomain.Location = new System.Drawing.Point(123, 107);
             this.txtDomain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDomain.Name = "txtDomain";
             this.txtDomain.Size = new System.Drawing.Size(329, 26);
@@ -197,7 +198,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(561, 171);
+            this.groupBox1.Size = new System.Drawing.Size(561, 146);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -215,7 +216,7 @@
             // chkPreAuthenticate
             // 
             this.chkPreAuthenticate.AutoSize = true;
-            this.chkPreAuthenticate.Location = new System.Drawing.Point(599, 141);
+            this.chkPreAuthenticate.Location = new System.Drawing.Point(581, 84);
             this.chkPreAuthenticate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkPreAuthenticate.Name = "chkPreAuthenticate";
             this.chkPreAuthenticate.Size = new System.Drawing.Size(265, 24);
@@ -228,10 +229,10 @@
             this.chkEnableScpLookup.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
             this.chkEnableScpLookup.Checked = true;
             this.chkEnableScpLookup.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkEnableScpLookup.Location = new System.Drawing.Point(600, 96);
+            this.chkEnableScpLookup.Location = new System.Drawing.Point(582, 15);
             this.chkEnableScpLookup.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkEnableScpLookup.Name = "chkEnableScpLookup";
-            this.chkEnableScpLookup.Size = new System.Drawing.Size(416, 49);
+            this.chkEnableScpLookup.Size = new System.Drawing.Size(335, 49);
             this.chkEnableScpLookup.TabIndex = 7;
             this.chkEnableScpLookup.Text = "Enable SCP record lookup (Disabling will skip AD lookup of Autodiscover URLs)";
             this.chkEnableScpLookup.UseVisualStyleBackColor = true;
@@ -240,21 +241,21 @@
             // 
             this.TempExchangeVersionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempExchangeVersionCombo.FormattingEnabled = true;
-            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(796, 54);
+            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(140, 299);
             this.TempExchangeVersionCombo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TempExchangeVersionCombo.Name = "TempExchangeVersionCombo";
-            this.TempExchangeVersionCombo.Size = new System.Drawing.Size(219, 28);
+            this.TempExchangeVersionCombo.Size = new System.Drawing.Size(294, 28);
             this.TempExchangeVersionCombo.TabIndex = 6;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(595, 59);
+            this.label7.Location = new System.Drawing.Point(19, 303);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(171, 20);
+            this.label7.Size = new System.Drawing.Size(113, 20);
             this.label7.TabIndex = 5;
-            this.label7.Text = "EWS Schema Version:";
+            this.label7.Text = "EWS Schema:";
             // 
             // txtResults
             // 
@@ -266,7 +267,7 @@
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResults.Size = new System.Drawing.Size(1487, 154);
+            this.txtResults.Size = new System.Drawing.Size(1150, 91);
             this.txtResults.TabIndex = 28;
             // 
             // lvItems
@@ -278,11 +279,11 @@
             this.colType,
             this.colValue});
             this.lvItems.FullRowSelect = true;
-            this.lvItems.Location = new System.Drawing.Point(12, 570);
+            this.lvItems.Location = new System.Drawing.Point(12, 505);
             this.lvItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(1487, 149);
+            this.lvItems.Size = new System.Drawing.Size(1150, 103);
             this.lvItems.TabIndex = 30;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -303,7 +304,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 544);
+            this.label4.Location = new System.Drawing.Point(11, 480);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 20);
@@ -323,16 +324,16 @@
             // cmboUserAgent
             // 
             this.cmboUserAgent.FormattingEnabled = true;
-            this.cmboUserAgent.Location = new System.Drawing.Point(793, 176);
+            this.cmboUserAgent.Location = new System.Drawing.Point(609, 171);
             this.cmboUserAgent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmboUserAgent.Name = "cmboUserAgent";
-            this.cmboUserAgent.Size = new System.Drawing.Size(706, 28);
+            this.cmboUserAgent.Size = new System.Drawing.Size(491, 28);
             this.cmboUserAgent.TabIndex = 10;
             // 
             // chkOverrideUserAgent
             // 
             this.chkOverrideUserAgent.AutoSize = true;
-            this.chkOverrideUserAgent.Location = new System.Drawing.Point(601, 180);
+            this.chkOverrideUserAgent.Location = new System.Drawing.Point(581, 136);
             this.chkOverrideUserAgent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkOverrideUserAgent.Name = "chkOverrideUserAgent";
             this.chkOverrideUserAgent.Size = new System.Drawing.Size(184, 24);
@@ -345,13 +346,13 @@
             // 
             this.txtValues.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValues.Location = new System.Drawing.Point(12, 751);
+            this.txtValues.Location = new System.Drawing.Point(6, 638);
             this.txtValues.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtValues.MaxLength = 0;
             this.txtValues.Multiline = true;
             this.txtValues.Name = "txtValues";
             this.txtValues.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtValues.Size = new System.Drawing.Size(1487, 118);
+            this.txtValues.Size = new System.Drawing.Size(1150, 101);
             this.txtValues.TabIndex = 32;
             this.txtValues.TextChanged += new System.EventHandler(this.txtValues_TextChanged);
             // 
@@ -359,7 +360,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 726);
+            this.label6.Location = new System.Drawing.Point(8, 613);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(207, 20);
@@ -368,7 +369,7 @@
             // 
             // btnDefaultSmtp
             // 
-            this.btnDefaultSmtp.Location = new System.Drawing.Point(1025, 6);
+            this.btnDefaultSmtp.Location = new System.Drawing.Point(442, 264);
             this.btnDefaultSmtp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDefaultSmtp.Name = "btnDefaultSmtp";
             this.btnDefaultSmtp.Size = new System.Drawing.Size(73, 35);
@@ -385,11 +386,11 @@
             this.groupBox3.Controls.Add(this.lblProxyPort);
             this.groupBox3.Controls.Add(this.txtProxyServerName);
             this.groupBox3.Controls.Add(this.lblProxyServer);
-            this.groupBox3.Location = new System.Drawing.Point(1107, 6);
+            this.groupBox3.Location = new System.Drawing.Point(912, 6);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Size = new System.Drawing.Size(397, 164);
+            this.groupBox3.Size = new System.Drawing.Size(252, 161);
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Set WebProxy Settings";
@@ -412,18 +413,18 @@
             this.rdoDontOverrideProxySettings.Location = new System.Drawing.Point(12, 26);
             this.rdoDontOverrideProxySettings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rdoDontOverrideProxySettings.Name = "rdoDontOverrideProxySettings";
-            this.rdoDontOverrideProxySettings.Size = new System.Drawing.Size(240, 24);
+            this.rdoDontOverrideProxySettings.Size = new System.Drawing.Size(198, 24);
             this.rdoDontOverrideProxySettings.TabIndex = 0;
             this.rdoDontOverrideProxySettings.TabStop = true;
-            this.rdoDontOverrideProxySettings.Text = "Don\'t Override Proxy Settings";
+            this.rdoDontOverrideProxySettings.Text = "Don\'t Override Settings";
             this.rdoDontOverrideProxySettings.UseVisualStyleBackColor = true;
             // 
             // txtProxyServerPort
             // 
-            this.txtProxyServerPort.Location = new System.Drawing.Point(179, 130);
+            this.txtProxyServerPort.Location = new System.Drawing.Point(97, 123);
             this.txtProxyServerPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtProxyServerPort.Name = "txtProxyServerPort";
-            this.txtProxyServerPort.Size = new System.Drawing.Size(164, 26);
+            this.txtProxyServerPort.Size = new System.Drawing.Size(147, 26);
             this.txtProxyServerPort.TabIndex = 5;
             this.txtProxyServerPort.Text = "8888";
             // 
@@ -434,14 +435,14 @@
             this.lblProxyPort.Name = "lblProxyPort";
             this.lblProxyPort.Size = new System.Drawing.Size(116, 26);
             this.lblProxyPort.TabIndex = 4;
-            this.lblProxyPort.Text = "Proxy Port:";
+            this.lblProxyPort.Text = "Port:";
             // 
             // txtProxyServerName
             // 
-            this.txtProxyServerName.Location = new System.Drawing.Point(179, 90);
+            this.txtProxyServerName.Location = new System.Drawing.Point(97, 87);
             this.txtProxyServerName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtProxyServerName.Name = "txtProxyServerName";
-            this.txtProxyServerName.Size = new System.Drawing.Size(164, 26);
+            this.txtProxyServerName.Size = new System.Drawing.Size(147, 26);
             this.txtProxyServerName.TabIndex = 3;
             this.txtProxyServerName.Text = "127.0.0.1";
             // 
@@ -452,7 +453,7 @@
             this.lblProxyServer.Name = "lblProxyServer";
             this.lblProxyServer.Size = new System.Drawing.Size(116, 26);
             this.lblProxyServer.TabIndex = 2;
-            this.lblProxyServer.Text = "Proxy Server:";
+            this.lblProxyServer.Text = "Server:";
             // 
             // rdoUseAutoDiscover
             // 
@@ -506,7 +507,7 @@
             // chkOptHeader1
             // 
             this.chkOptHeader1.AutoSize = true;
-            this.chkOptHeader1.Location = new System.Drawing.Point(658, 232);
+            this.chkOptHeader1.Location = new System.Drawing.Point(627, 225);
             this.chkOptHeader1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkOptHeader1.Name = "chkOptHeader1";
             this.chkOptHeader1.Size = new System.Drawing.Size(101, 24);
@@ -518,7 +519,7 @@
             // chkOptHeader2
             // 
             this.chkOptHeader2.AutoSize = true;
-            this.chkOptHeader2.Location = new System.Drawing.Point(656, 269);
+            this.chkOptHeader2.Location = new System.Drawing.Point(625, 262);
             this.chkOptHeader2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkOptHeader2.Name = "chkOptHeader2";
             this.chkOptHeader2.Size = new System.Drawing.Size(101, 24);
@@ -530,7 +531,7 @@
             // chkOptHeader3
             // 
             this.chkOptHeader3.AutoSize = true;
-            this.chkOptHeader3.Location = new System.Drawing.Point(656, 303);
+            this.chkOptHeader3.Location = new System.Drawing.Point(625, 296);
             this.chkOptHeader3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkOptHeader3.Name = "chkOptHeader3";
             this.chkOptHeader3.Size = new System.Drawing.Size(101, 24);
@@ -541,56 +542,62 @@
             // 
             // txtHeader1Name
             // 
-            this.txtHeader1Name.Location = new System.Drawing.Point(765, 230);
+            this.txtHeader1Name.Location = new System.Drawing.Point(734, 223);
             this.txtHeader1Name.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHeader1Name.Name = "txtHeader1Name";
-            this.txtHeader1Name.Size = new System.Drawing.Size(272, 26);
+            this.txtHeader1Name.Size = new System.Drawing.Size(170, 26);
             this.txtHeader1Name.TabIndex = 13;
             // 
             // txtHeader2Name
             // 
-            this.txtHeader2Name.Location = new System.Drawing.Point(765, 267);
+            this.txtHeader2Name.Location = new System.Drawing.Point(734, 260);
             this.txtHeader2Name.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHeader2Name.Name = "txtHeader2Name";
-            this.txtHeader2Name.Size = new System.Drawing.Size(272, 26);
+            this.txtHeader2Name.Size = new System.Drawing.Size(170, 26);
             this.txtHeader2Name.TabIndex = 17;
             // 
             // txtHeader3Name
             // 
-            this.txtHeader3Name.Location = new System.Drawing.Point(765, 301);
+            this.txtHeader3Name.Location = new System.Drawing.Point(734, 294);
             this.txtHeader3Name.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHeader3Name.Name = "txtHeader3Name";
-            this.txtHeader3Name.Size = new System.Drawing.Size(272, 26);
+            this.txtHeader3Name.Size = new System.Drawing.Size(170, 26);
             this.txtHeader3Name.TabIndex = 21;
             // 
             // txtHeader1Value
             // 
-            this.txtHeader1Value.Location = new System.Drawing.Point(1107, 230);
+            this.txtHeader1Value.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHeader1Value.Location = new System.Drawing.Point(966, 221);
             this.txtHeader1Value.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHeader1Value.Name = "txtHeader1Value";
-            this.txtHeader1Value.Size = new System.Drawing.Size(392, 26);
+            this.txtHeader1Value.Size = new System.Drawing.Size(198, 26);
             this.txtHeader1Value.TabIndex = 15;
             // 
             // txtHeader2Value
             // 
-            this.txtHeader2Value.Location = new System.Drawing.Point(1107, 267);
+            this.txtHeader2Value.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHeader2Value.Location = new System.Drawing.Point(966, 258);
             this.txtHeader2Value.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHeader2Value.Name = "txtHeader2Value";
-            this.txtHeader2Value.Size = new System.Drawing.Size(392, 26);
+            this.txtHeader2Value.Size = new System.Drawing.Size(198, 26);
             this.txtHeader2Value.TabIndex = 19;
             // 
             // txtHeader3Value
             // 
-            this.txtHeader3Value.Location = new System.Drawing.Point(1107, 301);
+            this.txtHeader3Value.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtHeader3Value.Location = new System.Drawing.Point(966, 292);
             this.txtHeader3Value.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHeader3Value.Name = "txtHeader3Value";
-            this.txtHeader3Value.Size = new System.Drawing.Size(392, 26);
+            this.txtHeader3Value.Size = new System.Drawing.Size(198, 26);
             this.txtHeader3Value.TabIndex = 23;
             // 
             // lblHeader1Value
             // 
             this.lblHeader1Value.AutoSize = true;
-            this.lblHeader1Value.Location = new System.Drawing.Point(1045, 231);
+            this.lblHeader1Value.Location = new System.Drawing.Point(912, 221);
             this.lblHeader1Value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHeader1Value.Name = "lblHeader1Value";
             this.lblHeader1Value.Size = new System.Drawing.Size(54, 20);
@@ -600,7 +607,7 @@
             // lblHeader2Value
             // 
             this.lblHeader2Value.AutoSize = true;
-            this.lblHeader2Value.Location = new System.Drawing.Point(1045, 273);
+            this.lblHeader2Value.Location = new System.Drawing.Point(912, 263);
             this.lblHeader2Value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHeader2Value.Name = "lblHeader2Value";
             this.lblHeader2Value.Size = new System.Drawing.Size(54, 20);
@@ -610,7 +617,7 @@
             // lblHeader3Value
             // 
             this.lblHeader3Value.AutoSize = true;
-            this.lblHeader3Value.Location = new System.Drawing.Point(1045, 307);
+            this.lblHeader3Value.Location = new System.Drawing.Point(912, 297);
             this.lblHeader3Value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHeader3Value.Name = "lblHeader3Value";
             this.lblHeader3Value.Size = new System.Drawing.Size(54, 20);
@@ -620,7 +627,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(596, 211);
+            this.label11.Location = new System.Drawing.Point(586, 204);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(137, 20);
@@ -629,18 +636,20 @@
             // 
             // txtInfo
             // 
+            this.txtInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtInfo.Location = new System.Drawing.Point(17, 335);
             this.txtInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtInfo.Name = "txtInfo";
-            this.txtInfo.Size = new System.Drawing.Size(1357, 19);
+            this.txtInfo.Size = new System.Drawing.Size(1001, 19);
             this.txtInfo.TabIndex = 25;
             // 
             // AutodiscoverViewerForm
             // 
             this.AcceptButton = this.GoRun;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.ClientSize = new System.Drawing.Size(1519, 876);
+            this.ClientSize = new System.Drawing.Size(1175, 743);
             this.Controls.Add(this.txtInfo);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.lblHeader3Value);
