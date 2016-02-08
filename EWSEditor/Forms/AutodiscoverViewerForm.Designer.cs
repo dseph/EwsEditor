@@ -648,7 +648,7 @@
             // AutodiscoverViewerForm
             // 
             this.AcceptButton = this.GoRun;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1175, 743);
             this.Controls.Add(this.txtInfo);
             this.Controls.Add(this.label11);

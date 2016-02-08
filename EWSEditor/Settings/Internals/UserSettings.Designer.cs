@@ -358,5 +358,113 @@ namespace EWSEditor.Settings.Internals {
                 this["SelectedTimeZoneContextId"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableAdditionalHeader1 {
+            get {
+                return ((bool)(this["EnableAdditionalHeader1"]));
+            }
+            set {
+                this["EnableAdditionalHeader1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AdditionalHeader1 {
+            get {
+                return ((string)(this["AdditionalHeader1"]));
+            }
+            set {
+                this["AdditionalHeader1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AdditionalHeaderValue1 {
+            get {
+                return ((string)(this["AdditionalHeaderValue1"]));
+            }
+            set {
+                this["AdditionalHeaderValue1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableAdditionalHeader2 {
+            get {
+                return ((bool)(this["EnableAdditionalHeader2"]));
+            }
+            set {
+                this["EnableAdditionalHeader2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AdditionalHeader2 {
+            get {
+                return ((string)(this["AdditionalHeader2"]));
+            }
+            set {
+                this["AdditionalHeader2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AdditionalHeaderValue2 {
+            get {
+                return ((string)(this["AdditionalHeaderValue2"]));
+            }
+            set {
+                this["AdditionalHeaderValue2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnableAdditionalHeader3 {
+            get {
+                return ((bool)(this["EnableAdditionalHeader3"]));
+            }
+            set {
+                this["EnableAdditionalHeader3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AdditionalHeader3 {
+            get {
+                return ((string)(this["AdditionalHeader3"]));
+            }
+            set {
+                this["AdditionalHeader3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AdditionalHeaderValue3 {
+            get {
+                return ((string)(this["AdditionalHeaderValue3"]));
+            }
+            set {
+                this["AdditionalHeaderValue3"] = value;
+            }
+        }
     }
 }

@@ -503,6 +503,174 @@ namespace EWSEditor.Settings
                 UserSettings.Default.Save();
             }
         }
+
+        //
+            //        this.chkAdditionalHeader1.Text = GlobalSettings.EnableAdditionalHeader1;
+            //this.txtAdditionalHeader1.Text = GlobalSettings.AdditionalHeader1;
+            //this.txtAdditionalHeaderValue1.Text = GlobalSettings.AdditionalHeaderValue1;
+            //this.chkAdditionalHeader2.Text = GlobalSettings.EnableAdditionalHeader2;
+            //this.txtAdditionalHeader2.Text = GlobalSettings.AdditionalHeader2;
+            //this.txtAdditionalHeaderValue2.Text = GlobalSettings.AdditionalHeaderValue2;
+            //this.chkAdditionalHeader3.Text = GlobalSettings.EnableAdditionalHeader3;
+            //this.txtAdditionalHeader3.Text = GlobalSettings.AdditionalHeader3;
+            //this.txtAdditionalHeaderValue3.Text = GlobalSettings.AdditionalHeaderValue3;
+
+        /// <summary>
+        /// Enables setting of Additional Header 1
+        /// </summary>
+        /// 
+        public static bool EnableAdditionalHeader1
+        {
+            get
+            {
+                return UserSettings.Default.EnableAdditionalHeader1;
+            }
+            set
+            {
+                UserSettings.Default.EnableAdditionalHeader1 = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets Additional Header 1
+        /// </summary>
+        public static string AdditionalHeader1
+        {
+            get
+            {
+                return UserSettings.Default.AdditionalHeader1;
+
+            }
+            set
+            {
+                UserSettings.Default.AdditionalHeader1 = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets Additional Header Value 1
+        /// </summary>
+        public static string AdditionalHeaderValue1
+        {
+            get
+            {
+                return UserSettings.Default.AdditionalHeaderValue1;
+
+            }
+            set
+            {
+                UserSettings.Default.AdditionalHeaderValue1 = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        //
+
+
+
+        /// <summary>
+        /// Enables setting of Additional Header 2
+        /// </summary>
+        /// 
+        public static bool EnableAdditionalHeader2
+        {
+            get
+            {
+                return UserSettings.Default.EnableAdditionalHeader2;
+            }
+            set
+            {
+                UserSettings.Default.EnableAdditionalHeader2 = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets Additional Header 2
+        /// </summary>
+        public static string AdditionalHeader2
+        {
+            get
+            {
+                return UserSettings.Default.AdditionalHeader2;
+
+            }
+            set
+            {
+                UserSettings.Default.AdditionalHeader2 = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets Additional Header Value 2
+        /// </summary>
+        public static string AdditionalHeaderValue2
+        {
+            get
+            {
+                return UserSettings.Default.AdditionalHeaderValue2;
+
+            }
+            set
+            {
+                UserSettings.Default.AdditionalHeaderValue2 = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Enables setting of Additional Header 3
+        /// </summary>
+        /// 
+        public static bool EnableAdditionalHeader3
+        {
+            get
+            {
+                return UserSettings.Default.EnableAdditionalHeader3;
+            }
+            set
+            {
+                UserSettings.Default.EnableAdditionalHeader3 = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets Additional Header 3
+        /// </summary>
+        public static string AdditionalHeader3
+        {
+            get
+            {
+                return UserSettings.Default.AdditionalHeader3;
+
+            }
+            set
+            {
+                UserSettings.Default.AdditionalHeader3 = value;
+                UserSettings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets Additional Header Value 3
+        /// </summary>
+        public static string AdditionalHeaderValue3
+        {
+            get
+            {
+                return UserSettings.Default.AdditionalHeaderValue3;
+
+            }
+            set
+            {
+                UserSettings.Default.AdditionalHeaderValue3 = value;
+                UserSettings.Default.Save();
+            }
+        }
  
 
         #region Private Methods

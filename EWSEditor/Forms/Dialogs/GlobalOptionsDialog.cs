@@ -119,6 +119,17 @@ namespace EWSEditor.Forms
             this.txtProxyServerPassword.Text = GlobalSettings.ProxyServerPassword;
             this.txtProxyServerDomain.Text = GlobalSettings.ProxyServerDomain;
 
+            this.chkAdditionalHeader1.Checked = GlobalSettings.EnableAdditionalHeader1;
+            this.txtAdditionalHeader1.Text = GlobalSettings.AdditionalHeader1;
+            this.txtAdditionalHeaderValue1.Text = GlobalSettings.AdditionalHeaderValue1;
+            this.chkAdditionalHeader2.Checked = GlobalSettings.EnableAdditionalHeader2;
+            this.txtAdditionalHeader2.Text = GlobalSettings.AdditionalHeader2;
+            this.txtAdditionalHeaderValue2.Text = GlobalSettings.AdditionalHeaderValue2;
+            this.chkAdditionalHeader3.Checked = GlobalSettings.EnableAdditionalHeader3;
+            this.txtAdditionalHeader3.Text = GlobalSettings.AdditionalHeader3;
+            this.txtAdditionalHeaderValue3.Text = GlobalSettings.AdditionalHeaderValue3;
+
+
             //if (rdoSpecifyProxySettings.Checked == false && chkOverrideProxyCredentials.Checked == false)
             //    rdoDontOverrideProxySettings.Checked = false;
             //else
@@ -126,7 +137,7 @@ namespace EWSEditor.Forms
 
             SetCheckedProxyOverride();
             SetCheckedOverrideProxyCredentials();
-
+            SetCheckedAdditionalHeaders();
              
 
         }
@@ -168,7 +179,19 @@ namespace EWSEditor.Forms
             GlobalSettings.OverrideProxyCredentials = this.chkOverrideProxyCredentials.Checked;
             GlobalSettings.ProxyServerUser = this.txtProxyServerUserName.Text;
             GlobalSettings.ProxyServerPassword = this.txtProxyServerPassword.Text;
-            GlobalSettings.ProxyServerDomain = this.txtProxyServerDomain.Text; 
+            GlobalSettings.ProxyServerDomain = this.txtProxyServerDomain.Text;
+
+            GlobalSettings.EnableAdditionalHeader1= this.chkAdditionalHeader1.Checked;
+            GlobalSettings.AdditionalHeader1 = this.txtAdditionalHeader1.Text;
+            GlobalSettings.AdditionalHeaderValue1= this.txtAdditionalHeaderValue1.Text;
+            GlobalSettings.EnableAdditionalHeader2 =this.chkAdditionalHeader2.Checked;
+            GlobalSettings.AdditionalHeader2 =this.txtAdditionalHeader2.Text; 
+            GlobalSettings.AdditionalHeaderValue2 =this.txtAdditionalHeaderValue2.Text;
+            GlobalSettings.EnableAdditionalHeader3 =this.chkAdditionalHeader3.Checked; 
+            GlobalSettings.AdditionalHeader3 = this.txtAdditionalHeader3.Text;
+            GlobalSettings.AdditionalHeaderValue3 = this.txtAdditionalHeaderValue3.Text; 
+
+
              
         }
 
@@ -209,6 +232,19 @@ namespace EWSEditor.Forms
 
             SetCheckedOverrideProxyCredentials();
  
+        }
+
+        private void SetCheckedAdditionalHeaders()
+        {
+            txtAdditionalHeader1.Enabled = chkAdditionalHeader1.Checked;
+            txtAdditionalHeaderValue1.Enabled = chkAdditionalHeader1.Checked;
+
+            txtAdditionalHeader2.Enabled = chkAdditionalHeader2.Checked;
+            txtAdditionalHeaderValue2.Enabled = chkAdditionalHeader2.Checked;
+
+            txtAdditionalHeader3.Enabled = chkAdditionalHeader3.Checked;
+            txtAdditionalHeaderValue3.Enabled = chkAdditionalHeader3.Checked;
+
         }
 
         private void chkOverrideProxyServerDefaults_CheckedChanged(object sender, EventArgs e)
@@ -272,6 +308,26 @@ namespace EWSEditor.Forms
         }
 
         private void cmboSelectedTimeZoneContextId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkAdditionalHeader1_CheckedChanged(object sender, EventArgs e)
+        {
+            SetCheckedAdditionalHeaders();
+        }
+
+        private void chkAdditionalHeader2_CheckedChanged(object sender, EventArgs e)
+        {
+            SetCheckedAdditionalHeaders();
+        }
+
+        private void chkAdditionalHeader3_CheckedChanged(object sender, EventArgs e)
+        {
+            SetCheckedAdditionalHeaders();
+        }
+
+        private void txtProxyServerName_TextChanged(object sender, EventArgs e)
         {
 
         }

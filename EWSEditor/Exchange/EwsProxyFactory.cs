@@ -74,6 +74,17 @@ namespace EWSEditor.Exchange
         public static bool AddTimeZoneContext = false;
         public static string SelectedTimeZoneContextId;
 
+        public static bool EnableAdditionalHeader1 = false;
+        public static string AdditionalHeader1;
+        public static string AdditionalHeaderValue1;
+        public static bool EnableAdditionalHeader2;
+        public static string  AdditionalHeader2;
+        public static string AdditionalHeaderValue2;
+        public static bool EnableAdditionalHeader3;
+        public static string AdditionalHeader3;
+        public static string AdditionalHeaderValue3;
+
+
         public static void DoAutodiscover()
         {
             DoAutodiscover(ServiceEmailAddress);
@@ -291,6 +302,17 @@ namespace EWSEditor.Exchange
                     service.HttpHeaders.Add("X-AnchorMailbox", XAnchorMailbox);
                 }
             }
+
+
+            // Additional headers for service object to add to requests.
+            if (EnableAdditionalHeader1 == true)
+                service.HttpHeaders.Add(AdditionalHeader1, AdditionalHeaderValue1);
+            if (EnableAdditionalHeader2 == true)
+                service.HttpHeaders.Add(AdditionalHeader2, AdditionalHeaderValue2);
+            if (EnableAdditionalHeader3 == true)
+                service.HttpHeaders.Add(AdditionalHeader3, AdditionalHeaderValue3);
+
+ 
 
             if (UseoAuth == true)
             {
@@ -548,6 +570,16 @@ namespace EWSEditor.Exchange
             oSettings.oAuthServerName = oAuthServerName;
             oSettings.oAuthAuthority = oAuthAuthority;
 
+            oSettings.EnableAdditionalHeader1 = EnableAdditionalHeader1;
+            oSettings.AdditionalHeader1 = AdditionalHeader1;
+            oSettings.AdditionalHeaderValue1 = AdditionalHeaderValue1;
+            oSettings.EnableAdditionalHeader2 = EnableAdditionalHeader2;
+            oSettings.AdditionalHeader2 = AdditionalHeader2;
+            oSettings.AdditionalHeaderValue2 = AdditionalHeaderValue2;
+            oSettings.EnableAdditionalHeader3 = EnableAdditionalHeader3;
+            oSettings.AdditionalHeader3 = AdditionalHeader3;
+            oSettings.AdditionalHeaderValue3 = AdditionalHeaderValue3;
+
         }
 
         public static void SetAppSettingsFromProxyFactory(ref EWSEditor.Common.EwsEditorAppSettings oSettings)
@@ -577,6 +609,16 @@ namespace EWSEditor.Exchange
             oAuthClientId = oSettings.oAuthClientId;
             oAuthServerName = oSettings.oAuthServerName;
             oAuthAuthority = oSettings.oAuthAuthority;
+
+            EnableAdditionalHeader1 =  oSettings.EnableAdditionalHeader1;
+            AdditionalHeader1 = oSettings.AdditionalHeader1;
+            AdditionalHeaderValue1 = oSettings.AdditionalHeaderValue1;
+            EnableAdditionalHeader2 = oSettings.EnableAdditionalHeader2;
+            AdditionalHeader2 = oSettings.AdditionalHeader2;
+            AdditionalHeaderValue2 = oSettings.AdditionalHeaderValue2;
+            EnableAdditionalHeader3 = oSettings.EnableAdditionalHeader3;
+            AdditionalHeader3 = oSettings.AdditionalHeader3;
+            AdditionalHeaderValue3 =  oSettings.AdditionalHeaderValue3;
 
         }
     }

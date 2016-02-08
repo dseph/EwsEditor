@@ -74,17 +74,30 @@
             this.LogFilePathText = new System.Windows.Forms.TextBox();
             this.LogFilePathLabel = new System.Windows.Forms.Label();
             this.SaveLogFileCheck = new System.Windows.Forms.CheckBox();
+            this.grpAdditionalHeaders = new System.Windows.Forms.GroupBox();
+            this.txtAdditionalHeaderValue3 = new System.Windows.Forms.TextBox();
+            this.txtAdditionalHeader3 = new System.Windows.Forms.TextBox();
+            this.txtAdditionalHeaderValue2 = new System.Windows.Forms.TextBox();
+            this.chkAdditionalHeader3 = new System.Windows.Forms.CheckBox();
+            this.txtAdditionalHeader2 = new System.Windows.Forms.TextBox();
+            this.chkAdditionalHeader2 = new System.Windows.Forms.CheckBox();
+            this.txtAdditionalHeaderValue1 = new System.Windows.Forms.TextBox();
+            this.txtAdditionalHeader1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chkAdditionalHeader1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.MiscSettingsGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).BeginInit();
             this.LoggingGroup.SuspendLayout();
+            this.grpAdditionalHeaders.SuspendLayout();
             this.SuspendLayout();
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(701, 519);
+            this.OkButton.Location = new System.Drawing.Point(656, 496);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 4;
@@ -96,10 +109,10 @@
             // 
             this.MyCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MyCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.MyCancelButton.Location = new System.Drawing.Point(783, 519);
+            this.MyCancelButton.Location = new System.Drawing.Point(738, 496);
             this.MyCancelButton.Name = "MyCancelButton";
             this.MyCancelButton.Size = new System.Drawing.Size(75, 23);
-            this.MyCancelButton.TabIndex = 0;
+            this.MyCancelButton.TabIndex = 5;
             this.MyCancelButton.Text = "Cancel";
             this.MyCancelButton.UseVisualStyleBackColor = true;
             this.MyCancelButton.Click += new System.EventHandler(this.MyCancelButton_Click);
@@ -122,8 +135,8 @@
             this.groupBox1.Controls.Add(this.lblProxyServer);
             this.groupBox1.Location = new System.Drawing.Point(481, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(376, 296);
-            this.groupBox1.TabIndex = 3;
+            this.groupBox1.Size = new System.Drawing.Size(332, 296);
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Set WebProxy Settings";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -244,6 +257,7 @@
             this.txtProxyServerName.Name = "txtProxyServerName";
             this.txtProxyServerName.Size = new System.Drawing.Size(202, 20);
             this.txtProxyServerName.TabIndex = 3;
+            this.txtProxyServerName.TextChanged += new System.EventHandler(this.txtProxyServerName_TextChanged);
             // 
             // lblProxyServer
             // 
@@ -282,7 +296,7 @@
             this.MiscSettingsGroup.Location = new System.Drawing.Point(13, 12);
             this.MiscSettingsGroup.Name = "MiscSettingsGroup";
             this.MiscSettingsGroup.Size = new System.Drawing.Size(462, 413);
-            this.MiscSettingsGroup.TabIndex = 1;
+            this.MiscSettingsGroup.TabIndex = 0;
             this.MiscSettingsGroup.TabStop = false;
             this.MiscSettingsGroup.Text = "Miscellaneous";
             this.MiscSettingsGroup.Enter += new System.EventHandler(this.MiscSettingsGroup_Enter);
@@ -513,7 +527,7 @@
             this.LoggingGroup.Location = new System.Drawing.Point(12, 431);
             this.LoggingGroup.Name = "LoggingGroup";
             this.LoggingGroup.Size = new System.Drawing.Size(462, 68);
-            this.LoggingGroup.TabIndex = 2;
+            this.LoggingGroup.TabIndex = 1;
             this.LoggingGroup.TabStop = false;
             this.LoggingGroup.Text = "Logging...";
             // 
@@ -542,13 +556,127 @@
             this.SaveLogFileCheck.UseVisualStyleBackColor = true;
             this.SaveLogFileCheck.CheckedChanged += new System.EventHandler(this.SaveLogFileCheck_CheckedChanged);
             // 
+            // grpAdditionalHeaders
+            // 
+            this.grpAdditionalHeaders.Controls.Add(this.txtAdditionalHeaderValue3);
+            this.grpAdditionalHeaders.Controls.Add(this.txtAdditionalHeader3);
+            this.grpAdditionalHeaders.Controls.Add(this.txtAdditionalHeaderValue2);
+            this.grpAdditionalHeaders.Controls.Add(this.chkAdditionalHeader3);
+            this.grpAdditionalHeaders.Controls.Add(this.txtAdditionalHeader2);
+            this.grpAdditionalHeaders.Controls.Add(this.chkAdditionalHeader2);
+            this.grpAdditionalHeaders.Controls.Add(this.txtAdditionalHeaderValue1);
+            this.grpAdditionalHeaders.Controls.Add(this.txtAdditionalHeader1);
+            this.grpAdditionalHeaders.Controls.Add(this.label4);
+            this.grpAdditionalHeaders.Controls.Add(this.label3);
+            this.grpAdditionalHeaders.Controls.Add(this.chkAdditionalHeader1);
+            this.grpAdditionalHeaders.Location = new System.Drawing.Point(481, 327);
+            this.grpAdditionalHeaders.Name = "grpAdditionalHeaders";
+            this.grpAdditionalHeaders.Size = new System.Drawing.Size(332, 121);
+            this.grpAdditionalHeaders.TabIndex = 3;
+            this.grpAdditionalHeaders.TabStop = false;
+            this.grpAdditionalHeaders.Text = "Additional Headers";
+            // 
+            // txtAdditionalHeaderValue3
+            // 
+            this.txtAdditionalHeaderValue3.Enabled = false;
+            this.txtAdditionalHeaderValue3.Location = new System.Drawing.Point(186, 89);
+            this.txtAdditionalHeaderValue3.Name = "txtAdditionalHeaderValue3";
+            this.txtAdditionalHeaderValue3.Size = new System.Drawing.Size(134, 20);
+            this.txtAdditionalHeaderValue3.TabIndex = 10;
+            // 
+            // txtAdditionalHeader3
+            // 
+            this.txtAdditionalHeader3.Enabled = false;
+            this.txtAdditionalHeader3.Location = new System.Drawing.Point(26, 89);
+            this.txtAdditionalHeader3.Name = "txtAdditionalHeader3";
+            this.txtAdditionalHeader3.Size = new System.Drawing.Size(143, 20);
+            this.txtAdditionalHeader3.TabIndex = 9;
+            // 
+            // txtAdditionalHeaderValue2
+            // 
+            this.txtAdditionalHeaderValue2.Enabled = false;
+            this.txtAdditionalHeaderValue2.Location = new System.Drawing.Point(186, 63);
+            this.txtAdditionalHeaderValue2.Name = "txtAdditionalHeaderValue2";
+            this.txtAdditionalHeaderValue2.Size = new System.Drawing.Size(134, 20);
+            this.txtAdditionalHeaderValue2.TabIndex = 7;
+            // 
+            // chkAdditionalHeader3
+            // 
+            this.chkAdditionalHeader3.Location = new System.Drawing.Point(6, 89);
+            this.chkAdditionalHeader3.Name = "chkAdditionalHeader3";
+            this.chkAdditionalHeader3.Size = new System.Drawing.Size(14, 24);
+            this.chkAdditionalHeader3.TabIndex = 8;
+            this.chkAdditionalHeader3.UseVisualStyleBackColor = true;
+            this.chkAdditionalHeader3.CheckedChanged += new System.EventHandler(this.chkAdditionalHeader3_CheckedChanged);
+            // 
+            // txtAdditionalHeader2
+            // 
+            this.txtAdditionalHeader2.Enabled = false;
+            this.txtAdditionalHeader2.Location = new System.Drawing.Point(26, 63);
+            this.txtAdditionalHeader2.Name = "txtAdditionalHeader2";
+            this.txtAdditionalHeader2.Size = new System.Drawing.Size(143, 20);
+            this.txtAdditionalHeader2.TabIndex = 6;
+            // 
+            // chkAdditionalHeader2
+            // 
+            this.chkAdditionalHeader2.Location = new System.Drawing.Point(6, 63);
+            this.chkAdditionalHeader2.Name = "chkAdditionalHeader2";
+            this.chkAdditionalHeader2.Size = new System.Drawing.Size(14, 24);
+            this.chkAdditionalHeader2.TabIndex = 5;
+            this.chkAdditionalHeader2.UseVisualStyleBackColor = true;
+            this.chkAdditionalHeader2.CheckedChanged += new System.EventHandler(this.chkAdditionalHeader2_CheckedChanged);
+            // 
+            // txtAdditionalHeaderValue1
+            // 
+            this.txtAdditionalHeaderValue1.Enabled = false;
+            this.txtAdditionalHeaderValue1.Location = new System.Drawing.Point(186, 40);
+            this.txtAdditionalHeaderValue1.Name = "txtAdditionalHeaderValue1";
+            this.txtAdditionalHeaderValue1.Size = new System.Drawing.Size(134, 20);
+            this.txtAdditionalHeaderValue1.TabIndex = 4;
+            // 
+            // txtAdditionalHeader1
+            // 
+            this.txtAdditionalHeader1.Enabled = false;
+            this.txtAdditionalHeader1.Location = new System.Drawing.Point(26, 40);
+            this.txtAdditionalHeader1.Name = "txtAdditionalHeader1";
+            this.txtAdditionalHeader1.Size = new System.Drawing.Size(143, 20);
+            this.txtAdditionalHeader1.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(183, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Value";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Header";
+            // 
+            // chkAdditionalHeader1
+            // 
+            this.chkAdditionalHeader1.Location = new System.Drawing.Point(6, 40);
+            this.chkAdditionalHeader1.Name = "chkAdditionalHeader1";
+            this.chkAdditionalHeader1.Size = new System.Drawing.Size(14, 24);
+            this.chkAdditionalHeader1.TabIndex = 2;
+            this.chkAdditionalHeader1.UseVisualStyleBackColor = true;
+            this.chkAdditionalHeader1.CheckedChanged += new System.EventHandler(this.chkAdditionalHeader1_CheckedChanged);
+            // 
             // OptionsDialog
             // 
             this.AcceptButton = this.OkButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.MyCancelButton;
-            this.ClientSize = new System.Drawing.Size(869, 554);
+            this.ClientSize = new System.Drawing.Size(824, 531);
+            this.Controls.Add(this.grpAdditionalHeaders);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.MyCancelButton);
             this.Controls.Add(this.OkButton);
@@ -568,6 +696,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).EndInit();
             this.LoggingGroup.ResumeLayout(false);
             this.LoggingGroup.PerformLayout();
+            this.grpAdditionalHeaders.ResumeLayout(false);
+            this.grpAdditionalHeaders.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -620,5 +750,17 @@
         private System.Windows.Forms.CheckBox chkAddTimeZoneContext;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmboSelectedTimeZoneContextId;
+        private System.Windows.Forms.GroupBox grpAdditionalHeaders;
+        private System.Windows.Forms.TextBox txtAdditionalHeaderValue3;
+        private System.Windows.Forms.TextBox txtAdditionalHeader3;
+        private System.Windows.Forms.TextBox txtAdditionalHeaderValue2;
+        private System.Windows.Forms.CheckBox chkAdditionalHeader3;
+        private System.Windows.Forms.TextBox txtAdditionalHeader2;
+        private System.Windows.Forms.CheckBox chkAdditionalHeader2;
+        private System.Windows.Forms.TextBox txtAdditionalHeaderValue1;
+        private System.Windows.Forms.TextBox txtAdditionalHeader1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox chkAdditionalHeader1;
     }
 }
