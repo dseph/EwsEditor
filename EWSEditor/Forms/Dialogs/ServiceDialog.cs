@@ -183,6 +183,18 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.SetXAnchorMailbox = this.chkSetXAnchorMailbox.Checked;
                 EwsProxyFactory.XAnchorMailbox = this.txtXAnchorMailbox.Text.Trim();
 
+
+                EwsProxyFactory.EnableAdditionalHeader1 = GlobalSettings.EnableAdditionalHeader1;
+                EwsProxyFactory.AdditionalHeader1 = GlobalSettings.AdditionalHeader1;
+                EwsProxyFactory.AdditionalHeaderValue1 = GlobalSettings.AdditionalHeaderValue1;
+                EwsProxyFactory.EnableAdditionalHeader2 = GlobalSettings.EnableAdditionalHeader2;
+                EwsProxyFactory.AdditionalHeader2 = GlobalSettings.AdditionalHeader2;
+                EwsProxyFactory.AdditionalHeaderValue2 = GlobalSettings.AdditionalHeaderValue2;
+                EwsProxyFactory.EnableAdditionalHeader3 = GlobalSettings.EnableAdditionalHeader3;
+                EwsProxyFactory.AdditionalHeader3 = GlobalSettings.AdditionalHeader3;
+                EwsProxyFactory.AdditionalHeaderValue3 = GlobalSettings.AdditionalHeaderValue3;
+
+
                 EwsProxyFactory.ServiceEmailAddress = this.AutodiscoverEmailText.Text.Trim();
                 EwsProxyFactory.UseAutoDiscover = this.rdoAutodiscoverEmail.Checked;
                 if (this.rdoAutodiscoverEmail.Checked)

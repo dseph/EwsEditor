@@ -9,7 +9,7 @@ using System.Globalization;
 using System.Windows.Forms;
 using EWSEditor.Common;
 using Microsoft.Exchange.WebServices.Data;
- 
+using System.Globalization;
  
 
 namespace EWSEditor.Forms 
@@ -592,6 +592,24 @@ namespace EWSEditor.Forms
                 MessageBox.Show(ex.Message, "Error");
             }
             return oSB.ToString();
+        }
+
+        private void btnListCultures_Click(object sender, EventArgs e)
+        {
+             
+            //List<CultureInfo> cultures = CultureInfo.GetCultures(CultureTypes.AllCultures).ToList();
+            //foreach (CultureInfo ci in cultures)
+            //{
+            //    ci.?????????
+            //}
+            //List<TimeZoneInfo > tzList = TimeZoneInfo.GetSystemTimeZones().ToList();
+            //foreach (TimeZoneInfo tzi in tzList)
+            //{
+                 
+            //}
+
+ 
+
         }
 
  
