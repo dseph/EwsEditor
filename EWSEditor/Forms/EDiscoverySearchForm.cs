@@ -83,6 +83,8 @@ namespace EWSEditor.Forms
         {
             this.Cursor = Cursors.WaitCursor;
 
+            lvItems.Clear(); // Clear lower results.
+
             ListViewItem oListItem = null;
             oListView.Clear();
             oListView.View = View.Details;
