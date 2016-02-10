@@ -41,12 +41,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.UniqueIdRadio = new System.Windows.Forms.RadioButton();
             this.WellKnownRadio = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.WellKnownGroup.SuspendLayout();
             this.UniqueIdGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // WellKnownGroup
             // 
+            this.WellKnownGroup.Controls.Add(this.label1);
             this.WellKnownGroup.Controls.Add(this.TempWellKnownFolderCombo);
             this.WellKnownGroup.Controls.Add(this.label8);
             this.WellKnownGroup.Controls.Add(this.label12);
@@ -54,7 +56,7 @@
             this.WellKnownGroup.Controls.Add(this.label11);
             this.WellKnownGroup.Location = new System.Drawing.Point(24, 143);
             this.WellKnownGroup.Name = "WellKnownGroup";
-            this.WellKnownGroup.Size = new System.Drawing.Size(350, 132);
+            this.WellKnownGroup.Size = new System.Drawing.Size(350, 184);
             this.WellKnownGroup.TabIndex = 3;
             this.WellKnownGroup.TabStop = false;
             this.WellKnownGroup.Text = "Well Known Folder Name";
@@ -79,24 +81,24 @@
             // 
             // label12
             // 
-            this.label12.Location = new System.Drawing.Point(6, 67);
+            this.label12.Location = new System.Drawing.Point(22, 118);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(328, 26);
+            this.label12.Size = new System.Drawing.Size(295, 51);
             this.label12.TabIndex = 2;
-            this.label12.Text = "Enter the SMTP address of the mailbox to access.  Leave this field empty to acces" +
-    "s the default mailbox.";
+            this.label12.Text = "Enter the SMTP address of the mailbox to access using delegate access.  Leave thi" +
+    "s field empty to access the default mailbox.  ";
             // 
             // MailboxAddressText
             // 
-            this.MailboxAddressText.Location = new System.Drawing.Point(97, 96);
+            this.MailboxAddressText.Location = new System.Drawing.Point(117, 95);
             this.MailboxAddressText.Name = "MailboxAddressText";
-            this.MailboxAddressText.Size = new System.Drawing.Size(237, 20);
+            this.MailboxAddressText.Size = new System.Drawing.Size(217, 20);
             this.MailboxAddressText.TabIndex = 4;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 99);
+            this.label11.Location = new System.Drawing.Point(22, 98);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(75, 13);
             this.label11.TabIndex = 3;
@@ -106,7 +108,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(299, 296);
+            this.btnCancel.Location = new System.Drawing.Point(299, 333);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 5;
@@ -117,7 +119,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(218, 296);
+            this.OkButton.Location = new System.Drawing.Point(218, 333);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
             this.OkButton.TabIndex = 4;
@@ -173,13 +175,22 @@
             this.WellKnownRadio.UseVisualStyleBackColor = true;
             this.WellKnownRadio.CheckedChanged += new System.EventHandler(this.WellKnownRadio_CheckedChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 76);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(271, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "SMTP address for the mailbox to do delegate access to:";
+            // 
             // FolderIdDialog
             // 
             this.AcceptButton = this.OkButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(386, 331);
+            this.ClientSize = new System.Drawing.Size(386, 368);
             this.Controls.Add(this.WellKnownRadio);
             this.Controls.Add(this.UniqueIdRadio);
             this.Controls.Add(this.UniqueIdGroup);
@@ -212,5 +223,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.RadioButton UniqueIdRadio;
         private System.Windows.Forms.RadioButton WellKnownRadio;
+        private System.Windows.Forms.Label label1;
     }
 }
