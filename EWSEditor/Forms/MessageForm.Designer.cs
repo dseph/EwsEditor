@@ -103,7 +103,7 @@
             // btnHeaders
             // 
             this.btnHeaders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHeaders.Location = new System.Drawing.Point(871, 18);
+            this.btnHeaders.Location = new System.Drawing.Point(579, 18);
             this.btnHeaders.Margin = new System.Windows.Forms.Padding(4);
             this.btnHeaders.Name = "btnHeaders";
             this.btnHeaders.Size = new System.Drawing.Size(209, 28);
@@ -185,7 +185,7 @@
             this.txtTo.Location = new System.Drawing.Point(77, 166);
             this.txtTo.Margin = new System.Windows.Forms.Padding(4);
             this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(1012, 22);
+            this.txtTo.Size = new System.Drawing.Size(720, 22);
             this.txtTo.TabIndex = 5;
             // 
             // lblCC
@@ -205,7 +205,7 @@
             this.txtCC.Location = new System.Drawing.Point(77, 198);
             this.txtCC.Margin = new System.Windows.Forms.Padding(4);
             this.txtCC.Name = "txtCC";
-            this.txtCC.Size = new System.Drawing.Size(1012, 22);
+            this.txtCC.Size = new System.Drawing.Size(720, 22);
             this.txtCC.TabIndex = 7;
             // 
             // lblBCC
@@ -225,7 +225,7 @@
             this.txtBCC.Location = new System.Drawing.Point(77, 230);
             this.txtBCC.Margin = new System.Windows.Forms.Padding(4);
             this.txtBCC.Name = "txtBCC";
-            this.txtBCC.Size = new System.Drawing.Size(1012, 22);
+            this.txtBCC.Size = new System.Drawing.Size(720, 22);
             this.txtBCC.TabIndex = 8;
             // 
             // lblSubject
@@ -245,7 +245,7 @@
             this.txtSubject.Location = new System.Drawing.Point(77, 262);
             this.txtSubject.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(1012, 22);
+            this.txtSubject.Size = new System.Drawing.Size(720, 22);
             this.txtSubject.TabIndex = 10;
             // 
             // txtBody
@@ -259,7 +259,7 @@
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBody.Size = new System.Drawing.Size(1085, 430);
+            this.txtBody.Size = new System.Drawing.Size(793, 170);
             this.txtBody.TabIndex = 13;
             this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
@@ -308,14 +308,14 @@
             this.txtFrom.Location = new System.Drawing.Point(77, 135);
             this.txtFrom.Margin = new System.Windows.Forms.Padding(4);
             this.txtFrom.Name = "txtFrom";
-            this.txtFrom.Size = new System.Drawing.Size(1012, 22);
+            this.txtFrom.Size = new System.Drawing.Size(720, 22);
             this.txtFrom.TabIndex = 3;
             this.txtFrom.TextChanged += new System.EventHandler(this.txtFrom_TextChanged);
             // 
             // btnAttachments
             // 
             this.btnAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAttachments.Location = new System.Drawing.Point(871, 54);
+            this.btnAttachments.Location = new System.Drawing.Point(579, 54);
             this.btnAttachments.Margin = new System.Windows.Forms.Padding(4);
             this.btnAttachments.Name = "btnAttachments";
             this.btnAttachments.Size = new System.Drawing.Size(209, 28);
@@ -329,7 +329,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1107, 774);
+            this.ClientSize = new System.Drawing.Size(815, 514);
             this.Controls.Add(this.btnAttachments);
             this.Controls.Add(this.txtFrom);
             this.Controls.Add(this.label1);
