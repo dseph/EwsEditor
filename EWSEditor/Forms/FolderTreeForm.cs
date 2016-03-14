@@ -1238,6 +1238,7 @@ namespace EWSEditor.Forms
             // Create a root node for the ExchangeService
             serviceRootNode = FolderTreeView.Nodes.Add(PropertyInterpretation.GetPropertyValue(service));
             serviceRootNode.Tag = service; 
+            
 
             // ExchangeService ToolTip - mstehle 7/29/2009
             // ToolTips are used to give the user a literal definition of
@@ -1255,12 +1256,20 @@ namespace EWSEditor.Forms
             }
             else
             {
-                // Without Impersonation = "ServiceAccount contacting HostName"
+                //// Without Impersonation = "ServiceAccount contacting HostName"
                 serviceRootNode.ToolTipText = string.Format(
-                    System.Globalization.CultureInfo.CurrentCulture, 
+                    System.Globalization.CultureInfo.CurrentCulture,
                     "Service account '{0}' is contacting '{1}'.",
                     service.GetServiceAccountName(),
                     service.Url.Host);
+
+                //serviceRootNode.ToolTipText = string.Format(
+                //    System.Globalization.CultureInfo.CurrentCulture, 
+                //    "Service account '{0}' is contacting '{1}'.",
+                //    oAppSettings.MailboxBeingAccessed,
+                //    service.Url.Host);
+
+                 
             }
 
             // Set the node image, don't show a different image when selected
@@ -1306,6 +1315,8 @@ namespace EWSEditor.Forms
             string nodeToolTip = string.Empty;
 
             GetFolderNodeText(folder, folderId, out nodeText, out nodeToolTip);
+
+            //nodeText  is the name of the root folder- such as the top of information store
 
             return this.AddFolderToTreeView(folderId, folder, parent, nodeText, nodeToolTip);
         }

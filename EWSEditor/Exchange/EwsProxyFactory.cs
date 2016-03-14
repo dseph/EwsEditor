@@ -24,13 +24,15 @@ namespace EWSEditor.Exchange
         public static bool? AllowAutodiscoverRedirect = null;
         public static bool? EnableScpLookup;
         public static bool? PreAuthenticate;
-        public static NetworkCredential ServiceCredential = null;
+        public static ExchangeCredentials ServiceCredential = null;
+        public static NetworkCredential ServiceNetworkCredential = null;
         public static Microsoft.Exchange.WebServices.Data.EmailAddress ServiceEmailAddress = null;
         public static Uri EwsUrl;
         public static bool? OverrideTimeout;
         public static int? Timeout = null;
 
         public static string MailboxBeingAccessed = string.Empty;  // calculated mailbox being accessed.
+        public static string AccountAccessingMailbox = string.Empty; // Who is effectively accessing the mailbox.
 
         public static RequestedAuthType AuthenticationMethod = RequestedAuthType.DefaultAuth;
 
@@ -131,19 +133,13 @@ namespace EWSEditor.Exchange
                 sError += "    See: " + srBusyException.HelpLink + "\r\n";
             }
 
-            //try
-            //{
-            //    service.EnableScpLookup = GlobalSettings.EnableScpLookups;
-            //    service.AutodiscoverUrl(emailAddress.Address, ValidationCallbackHelper.RedirectionUrlValidationCallback);
-            //    EwsUrl = service.Url;
-            //}
-            //catch (AutodiscoverLocalException oException)
-            //{
-            //    ErrorDialog.ShowError(oException.ToString());
-            //}
+ 
  
         }
 
+        // CreateExchangeService()
+        // Creates the initial service object and initializes it based-upon the class public values above.
+        // This class does not create a credential object or call autodiscover.
         public static ExchangeService CreateExchangeService()
         {
             ExchangeService service = null;
@@ -171,10 +167,7 @@ namespace EWSEditor.Exchange
                     service = new ExchangeService(RequestedExchangeVersion.Value, oTimeZone);
                 else
                     service = new ExchangeService(RequestedExchangeVersion.Value);
-
-                
-                //System.Diagnostics.Debug.WriteLine(service.PreferredCulture);
-   
+ 
             }
             else
             {
@@ -224,6 +217,7 @@ namespace EWSEditor.Exchange
                 }
             }
 
+           // Proxy server settings.
            if (SpecifyProxySettings == true)
             {
                 WebProxy oWebProxy  = null;
@@ -281,22 +275,7 @@ namespace EWSEditor.Exchange
 
                 // Set headers which help with affinity when Impersonation is being used against Exchange 2013 and Exchagne Online 15.
                 // http://blogs.msdn.com/b/mstehle/archive/2013/07/17/more-affinity-considerations-for-exchange-online-and-exchange-2013.aspx
-                if (service.RequestedServerVersion.ToString().StartsWith("Exchange2007") == false &&
-                    service.RequestedServerVersion.ToString().StartsWith("Exchange2010") == false)
-                {
-                    //// Should set for 365...:
-
-                    //if (service.HttpHeaders.ContainsKey("X-AnchorMailbox") == false)
-                    //    service.HttpHeaders.Add("X-AnchorMailbox", service.ImpersonatedUserId.Id);
-                    //else
-                    //    service.HttpHeaders["X-AnchorMailbox"] = service.ImpersonatedUserId.Id;
-
-                    //if (service.HttpHeaders.ContainsKey("X-PreferServerAffinity") == false)
-                    //    service.HttpHeaders.Add("X-PreferServerAffinity", "true");
-                    //else
-                    //    service.HttpHeaders["X-PreferServerAffinity"] = "true";
-                }
-
+ 
                 if (SetXAnchorMailbox == true)
                 {
                     service.HttpHeaders.Add("X-AnchorMailbox", XAnchorMailbox);
@@ -311,47 +290,11 @@ namespace EWSEditor.Exchange
                 service.HttpHeaders.Add(AdditionalHeader2, AdditionalHeaderValue2);
             if (EnableAdditionalHeader3 == true)
                 service.HttpHeaders.Add(AdditionalHeader3, AdditionalHeaderValue3);
-
- 
-
-            if (UseoAuth == true)
-            {
-
-                string sAuthority = string.Empty;
-                string sAppId = string.Empty;
-                string sRedirectURL = string.Empty;
-                string sServername = string.Empty;
-
-                sAuthority = oAuthAuthority;
-                sAppId = oAuthClientId;
-                sRedirectURL = oAuthRedirectUrl;
-                sServername = oAuthServerName;
- 
-                
-                // See // https://msdn.microsoft.com/en-us/library/office/dn903761%28v=exchg.150%29.aspx?f=255&MSPPError=-2147217396#bk_getToken
-                // get authentication token
-                string authority = sAuthority;
-                string clientID = sAppId;
-                Uri clientAppUri = new Uri(sRedirectURL);
-                string serverName = sServername;
-
-                AuthenticationContext authenticationContext = new AuthenticationContext(authority, false);
-
-                AuthenticationResult authenticationResult = authenticationContext.AcquireToken(serverName, clientID, clientAppUri);
-        
-
-                // Add authenticaiton token to requests
-                service.Credentials = new OAuthCredentials(authenticationResult.AccessToken);
-
-            }
-
- 
-
+             
  
             return service;
         }
 
- 
 
 
         /// <summary>
@@ -438,13 +381,10 @@ namespace EWSEditor.Exchange
 
             if (ServiceCredential != null)
             {
-                oHttpWebRequest.Credentials = ServiceCredential;
+                oHttpWebRequest.Credentials =  ServiceNetworkCredential ;
             }
 
-             
- 
 
-  
 
             //else
             //{
@@ -546,6 +486,7 @@ namespace EWSEditor.Exchange
         {
 
             oSettings.MailboxBeingAccessed = MailboxBeingAccessed;
+            oSettings.AccountAccessingMailbox = AccountAccessingMailbox;
 
             oSettings.AuthenticationMethod = AuthenticationMethod;  // Default, UserSpecified, oAuth
 
@@ -586,6 +527,7 @@ namespace EWSEditor.Exchange
         {
 
             MailboxBeingAccessed = oSettings.MailboxBeingAccessed;
+            AccountAccessingMailbox = oSettings.AccountAccessingMailbox;
 
             AuthenticationMethod = oSettings.AuthenticationMethod;  // Default, UserSpecified, oAuth
 

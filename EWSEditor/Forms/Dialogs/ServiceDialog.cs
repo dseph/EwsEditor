@@ -99,14 +99,21 @@ namespace EWSEditor.Forms
 
                 EwsProxyFactory.UseDefaultCredentials = this.rdoCredentialsDefaultWindows.Checked;
                 if (this.rdoCredentialsDefaultWindows.Checked)
+                {
                     EwsProxyFactory.AuthenticationMethod = RequestedAuthType.DefaultAuth;
+                }
 
                 EwsProxyFactory.CredentialsUserSpecified = this.rdoCredentialsUserSpecified.Checked;
+
                 if (this.rdoCredentialsUserSpecified.Checked)
+                {
                     EwsProxyFactory.AuthenticationMethod = RequestedAuthType.SpecifiedCredentialsAuth;
+                }
 
                 if (this.rdoCredentialsOAuth.Checked)
+                {
                     EwsProxyFactory.AuthenticationMethod = RequestedAuthType.oAuth;
+                }
 
                 // MailboxBeingAccessed
                 switch (EwsProxyFactory.AuthenticationMethod)
@@ -123,9 +130,10 @@ namespace EWSEditor.Forms
                             EwsProxyFactory.MailboxBeingAccessed = this.txtUserName.Text.Trim();
                         break;
                     case RequestedAuthType.oAuth:
-                        EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();  // Should be this
+                        EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();  // override later in ewsproxyfactory
                         break;
                 }
+
                 if (this.AutodiscoverEmailText.Text.Trim().Length != 0)
                     EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();
                 if (this.ImpersonationCheck.Checked) // Override
@@ -166,12 +174,8 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.ProxyServerPassword = GlobalSettings.ProxyServerPassword;
                 EwsProxyFactory.ProxyServerDomain = GlobalSettings.ProxyServerDomain;
 
-                EwsProxyFactory.ServiceCredential = rdoCredentialsUserSpecified.Checked ?
-                    new NetworkCredential(
-                        this.txtUserName.Text.Trim(),
-                        this.txtPassword.Text.Trim(),  // This will fail on passwords ending with whitespace
-                        this.txtDomain.Text.Trim()) :
-                    null;
+
+
 
  
                 EwsProxyFactory.EwsUrl = this.rdoAutodiscoverEmail.Checked ?
@@ -194,26 +198,71 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.AdditionalHeader3 = GlobalSettings.AdditionalHeader3;
                 EwsProxyFactory.AdditionalHeaderValue3 = GlobalSettings.AdditionalHeaderValue3;
 
+                EwsProxyFactory.AddTimeZoneContext = GlobalSettings.AddTimeZoneContext;
+                EwsProxyFactory.SelectedTimeZoneContextId = GlobalSettings.SelectedTimeZoneContextId;
+
 
                 EwsProxyFactory.ServiceEmailAddress = this.AutodiscoverEmailText.Text.Trim();
                 EwsProxyFactory.UseAutoDiscover = this.rdoAutodiscoverEmail.Checked;
+
+                //EwsProxyFactory.ServiceCredential = rdoCredentialsUserSpecified.Checked ?
+                //   new NetworkCredential(
+                //       this.txtUserName.Text.Trim(),
+                //       this.txtPassword.Text.Trim(),  // This will fail on passwords ending with whitespace
+                //       this.txtDomain.Text.Trim()) :
+                //   null;
+
+                // ----- Set Credentials ----
+                EwsProxyFactory.ServiceCredential = null;
+                EwsProxyFactory.ServiceNetworkCredential = null;
+
+                if (rdoCredentialsDefaultWindows.Checked)
+                {
+                    EwsProxyFactory.ServiceCredential = (NetworkCredential)CredentialCache.DefaultCredentials;
+
+                    EwsProxyFactory.ServiceNetworkCredential = (NetworkCredential)CredentialCache.DefaultCredentials;
+                }
+
+                if (rdoCredentialsUserSpecified.Checked)
+                {
+                    NetworkCredential oNetworkCredential = new NetworkCredential(
+                       this.txtUserName.Text.Trim(),
+                       this.txtPassword.Text.Trim(),  // This will fail on passwords ending with whitespace
+                       this.txtDomain.Text.Trim());
+
+                    EwsProxyFactory.ServiceCredential = oNetworkCredential;
+
+                    EwsProxyFactory.ServiceNetworkCredential = oNetworkCredential;
+                }
+ 
+
+                if (this.rdoCredentialsOAuth.Checked)
+                {
+                    AuthenticationHelper oAH = new AuthenticationHelper();
+
+                    EwsProxyFactory.ServiceCredential = oAH.Do_OAuth(ref EwsProxyFactory.MailboxBeingAccessed, ref EwsProxyFactory.AccountAccessingMailbox,
+                      EwsProxyFactory.oAuthAuthority, EwsProxyFactory.oAuthClientId, EwsProxyFactory.oAuthRedirectUrl, EwsProxyFactory.oAuthServerName);
+                   
+                }
+
+                // ----    Autodiscover    ----
+
                 if (this.rdoAutodiscoverEmail.Checked)
                 {
                     EwsProxyFactory.DoAutodiscover();
                 }
 
-                EwsProxyFactory.AddTimeZoneContext = GlobalSettings.AddTimeZoneContext;
-                EwsProxyFactory.SelectedTimeZoneContextId = GlobalSettings.SelectedTimeZoneContextId;
-
-
-                // New service & app settings
+                // ----    New service & app settings    ----
                  
                 CurrentService = EwsProxyFactory.CreateExchangeService();
 
+
+                // ----    Save settings    ----
                 EWSEditor.Common.EwsEditorAppSettings oAppSettings = new EwsEditorAppSettings();
                 EwsProxyFactory.SetAppSettingsFromProxyFactory(ref oAppSettings);
                 CurrentAppSettings = oAppSettings;
 
+                // ----    Do a basic test to be sure that the mailbox can be reached with an EWS call   ----
                 CurrentService.TestExchangeService();
 
                 CurrentService.OnSerializeCustomSoapHeaders += m_Service_OnSerializeCustomSoapHeaders;
@@ -470,9 +519,9 @@ namespace EWSEditor.Forms
             bool bUserSpecified = this.rdoCredentialsUserSpecified.Checked;
             bool bUseOAuth = this.rdoCredentialsOAuth.Checked; 
 
-            txtUserName.Text = string.Empty;
-            txtPassword.Text = string.Empty;
-            txtDomain.Text = string.Empty;
+            //txtUserName.Text = string.Empty;
+            //txtPassword.Text = string.Empty;
+            //txtDomain.Text = string.Empty;
 
             txtUserName.Enabled = bUserSpecified;
             txtPassword.Enabled = bUserSpecified;

@@ -225,7 +225,8 @@
             }
             else
             {
-                names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
+                names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName()); 
+
             }
              
             if (names.Count == 1)
@@ -980,6 +981,26 @@
             GetMailTipsForm oForm = new GetMailTipsForm();
             oForm.ShowDialog();
             oForm = null;
+        }
+
+        private void mnuSharedCalendars_Click(object sender, EventArgs e)
+        {
+            string sInfo = string.Empty;
+            sInfo = SharedCalendarsHelper.Test(CurrentService, "danba@microsoft.com");
+
+            //sInfo = SharedCalendarsHelper.Test(CurrentService, CurrentAppSettings.MailboxBeingAccessed);
+
+            ShowTextDocument oForm = new ShowTextDocument();
+            oForm.txtEntry.WordWrap = false;
+            oForm.Text = "Shared Calendars";
+            oForm.txtEntry.Text = sInfo;
+            oForm.ShowDialog();
+        }
+
+        private void viewHTMLInBrowserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewInBrowser oForm = new ViewInBrowser();
+            oForm.Show();
         }
     }
 }
