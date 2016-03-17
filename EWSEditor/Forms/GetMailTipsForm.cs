@@ -115,10 +115,12 @@ namespace EWSEditor
             if (bRet == true)
             {
                 txtResponse.Text = sResult;
+                webBrowser1.DocumentText = txtResponse.Text;
             }
             else
             {
                 txtResponse.Text = "";
+                webBrowser1.DocumentText = "";
          
             }
 

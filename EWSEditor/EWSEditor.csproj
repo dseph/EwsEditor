@@ -20,7 +20,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <ApplicationIcon>Resources\EWSEditor2.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <StartupObject>EWSEditor.Program</StartupObject>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile>
@@ -113,7 +113,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>deps\Microsoft.Exchange.WebServices.dll</HintPath>
+      <HintPath>..\..\..\EWSManagedAPI\ews-managed-api\bin\Debug\Microsoft.Exchange.WebServices.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <HintPath>packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.19.208020213\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>

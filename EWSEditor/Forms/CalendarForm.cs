@@ -1240,7 +1240,7 @@ namespace EWSEditor.Forms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Error");
+                    MessageBox.Show(ex.ToString(), "Error");
                 }
             }
             return bRet;

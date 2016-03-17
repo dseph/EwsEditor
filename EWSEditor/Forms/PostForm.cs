@@ -126,7 +126,105 @@ namespace EWSEditor.Common
             //    DoPostByHttpVerb();
             //else
             //    DoRawPost();
+
+     
         }
+
+        string CheckResponseForOddCharacters(string sBody)
+        {
+            StringBuilder oSB = new StringBuilder();
+       
+            bool bResponseHasUnicode = false;
+            bool bResponseHasExtendedAsciiCharacters = false;
+            bool bResponseHasControlCharacters = false;
+            bool bResponseHasOddCharacters = false;
+            string sReponseCheck = string.Empty;
+
+            //if (txtResponse.Text.Any(c => c > 255))
+            //{
+            //    bResponseHasExtendedAsciiCharacters = true;
+               
+            //    bResponseHasOddCharacters = true;
+            //    oSB.AppendLine("Response has unicode characters (over a value of 255).");
+            //}
+            //if (txtResponse.Text.Any(c => c > 255))
+            //{
+            //    bResponseHasUnicode = true;
+            //    bResponseHasOddCharacters = true;
+            //    oSB.AppendLine("Response has unicode characters (over a value of 127).");
+            //}
+
+            //if (txtResponse.Text.Any(c => ((c > 0 && c < 7) || (c > 13 && c < 32))))
+            //{
+            //    bResponseHasControlCharacters = true;
+            //    bResponseHasOddCharacters = true;
+            //    oSB.AppendLine("Response has control characters (characters with a value between 1 and 6).");
+            //}
+
+            //oSB.AppendFormat("\r\nDumping response string...\r\n");
+
+            //oSB.AppendFormat ("Value   Char  Comment\r\n");
+
+            int iVal = 0;
+            string sComment = string.Empty;
+            StringBuilder oCharCheck = new StringBuilder();
+
+            oCharCheck.AppendFormat("\r\nDumping response string...\r\n");
+            oCharCheck.AppendFormat("Value   Char  Comment\r\n");
+            StringBuilder oSanitized = new StringBuilder();
+            foreach (char c in sBody)
+            {
+                sComment = string.Empty;
+                iVal = (int)c;
+                if (iVal > 127 & iVal < 256)
+                {
+                    sComment = "Over 127";
+                    bResponseHasOddCharacters = true;
+                    bResponseHasExtendedAsciiCharacters = true;
+                }
+                if (iVal > 255)
+                { 
+                    sComment = "Over 255";
+                    bResponseHasOddCharacters = true;
+                    bResponseHasUnicode = true;
+                }
+                if ((iVal > 0 && iVal < 7) || (iVal > 13 && iVal < 32))
+                {
+                    sComment = "Control Character";
+                    bResponseHasControlCharacters = true;
+                    bResponseHasOddCharacters = true;
+                }
+
+                if (bResponseHasOddCharacters == false)
+                    oSanitized.Append(c);
+
+                oCharCheck.AppendFormat("[{0}] - {1}  {2} \r\n", (int)c, c, sComment);
+            }
+
+
+            if (bResponseHasOddCharacters == true)
+            {
+                oSB.AppendLine("***");
+                if (bResponseHasControlCharacters == true)
+                    oSB.AppendLine("***  Control Characters found in response. ***");
+                if (bResponseHasUnicode == true)
+                    oSB.AppendLine("***  Unicode characters found in response. ***");
+                if (bResponseHasExtendedAsciiCharacters == true)
+                    oSB.AppendLine("***  Extended ASCII characters found in response. ***");
+                oSB.AppendLine("***");
+                oSB.Append(oCharCheck.ToString());  // Character by character check
+
+                oSB.Append("\r\nThe following is a version of the response without extended ascii/unicode/control characters:\r\n");
+                oSB.Append(oSanitized.ToString());
+
+                MessageBox.Show("The are non-basic ASCII characters found in response. Check the EWS Call Info text box.");
+            }
+
+            return oSB.ToString();
+        }
+
+ 
+
         private void DoRawPost()
         {
 
@@ -210,6 +308,8 @@ namespace EWSEditor.Common
  
             oSB.AppendFormat("Request Headers: \r\n{0}\r\n", sRequestHeaders);
             oSB.AppendFormat("Response Headers: \r\n{0}\r\n", sResponeHeaders);
+
+            oSB.AppendLine(CheckResponseForOddCharacters(sResult));
 
             txtResponseSummary.Text = oSB.ToString();
 
@@ -345,6 +445,8 @@ namespace EWSEditor.Common
 
             oSB.AppendFormat("Request Headers: \r\n{0}\r\n", sRequestHeaders);
             oSB.AppendFormat("Response Headers: \r\n{0}\r\n", sResponeHeaders);
+
+            oSB.AppendLine(CheckResponseForOddCharacters(sResult));
 
             txtResponseSummary.Text = oSB.ToString();
   
@@ -651,6 +753,21 @@ namespace EWSEditor.Common
         }
 
         private void cmboContentType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabControl2_Click(object sender, EventArgs e)
+        {
+            wbResponse.DocumentText = txtResponse.Text;
+        }
+
+        private void tabControl1_Click(object sender, EventArgs e)
+        {
+            wbRequest.DocumentText = txtRequest.Text;
+        }
+
+        private void wbRequest_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
 
         }
