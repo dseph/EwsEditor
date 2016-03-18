@@ -83,6 +83,8 @@
             this.viewHTMLInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.developerToolsTestWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -203,7 +205,9 @@
             this.mnuMailTips,
             this.toolStripMenuItem1,
             this.OptionsMenuItem,
-            this.mnuSharedCalendars});
+            this.mnuSharedCalendars,
+            this.toolStripSeparator2,
+            this.developerToolsTestWindowToolStripMenuItem});
             this.mnuTools.Name = "mnuTools";
             this.mnuTools.Size = new System.Drawing.Size(65, 29);
             this.mnuTools.Text = "Tools";
@@ -508,6 +512,18 @@
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(458, 6);
+            // 
+            // developerToolsTestWindowToolStripMenuItem
+            // 
+            this.developerToolsTestWindowToolStripMenuItem.Name = "developerToolsTestWindowToolStripMenuItem";
+            this.developerToolsTestWindowToolStripMenuItem.Size = new System.Drawing.Size(461, 30);
+            this.developerToolsTestWindowToolStripMenuItem.Text = "Developer Tools Test Window";
+            this.developerToolsTestWindowToolStripMenuItem.Click += new System.EventHandler(this.developerToolsTestWindowToolStripMenuItem_Click);
+            // 
             // BrowserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -585,5 +601,7 @@
         public System.Windows.Forms.ToolStripMenuItem mnuMailTips;
         private System.Windows.Forms.ToolStripMenuItem mnuSharedCalendars;
         private System.Windows.Forms.ToolStripMenuItem viewHTMLInBrowserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem developerToolsTestWindowToolStripMenuItem;
     }
 }

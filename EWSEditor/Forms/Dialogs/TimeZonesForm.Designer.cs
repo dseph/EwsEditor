@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TimeZonesForm));
             this.cmboTimeZoneIds = new System.Windows.Forms.ComboBox();
             this.TimeZoneByIdString = new System.Windows.Forms.Button();
             this.btnListTimezones = new System.Windows.Forms.Button();
@@ -72,6 +73,7 @@
             this.txtConversionResults = new System.Windows.Forms.TextBox();
             this.txtToTimeZone = new System.Windows.Forms.TextBox();
             this.txtFromTimeZone = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabTimeZones.SuspendLayout();
             this.tabClientTimeZones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scMachineTimezones)).BeginInit();
@@ -145,11 +147,11 @@
             this.tabTimeZones.Controls.Add(this.tabClientCurrentTimeZone);
             this.tabTimeZones.Controls.Add(this.tabConvertTime);
             this.tabTimeZones.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            this.tabTimeZones.Location = new System.Drawing.Point(10, 19);
+            this.tabTimeZones.Location = new System.Drawing.Point(2, 66);
             this.tabTimeZones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabTimeZones.Name = "tabTimeZones";
             this.tabTimeZones.SelectedIndex = 0;
-            this.tabTimeZones.Size = new System.Drawing.Size(1461, 912);
+            this.tabTimeZones.Size = new System.Drawing.Size(1485, 902);
             this.tabTimeZones.TabIndex = 38;
             // 
             // tabClientTimeZones
@@ -161,7 +163,7 @@
             this.tabClientTimeZones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabClientTimeZones.Name = "tabClientTimeZones";
             this.tabClientTimeZones.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabClientTimeZones.Size = new System.Drawing.Size(1453, 877);
+            this.tabClientTimeZones.Size = new System.Drawing.Size(1477, 867);
             this.tabClientTimeZones.TabIndex = 0;
             this.tabClientTimeZones.Text = "Client TimeZones";
             this.tabClientTimeZones.UseVisualStyleBackColor = true;
@@ -194,8 +196,8 @@
             // scMachineTimezones.Panel2
             // 
             this.scMachineTimezones.Panel2.Controls.Add(this.txtMachineTimeZones);
-            this.scMachineTimezones.Size = new System.Drawing.Size(1449, 799);
-            this.scMachineTimezones.SplitterDistance = 397;
+            this.scMachineTimezones.Size = new System.Drawing.Size(1473, 807);
+            this.scMachineTimezones.SplitterDistance = 400;
             this.scMachineTimezones.SplitterWidth = 6;
             this.scMachineTimezones.TabIndex = 38;
             // 
@@ -207,7 +209,7 @@
             this.lvMachineTimeZones.Location = new System.Drawing.Point(4, 5);
             this.lvMachineTimeZones.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvMachineTimeZones.Name = "lvMachineTimeZones";
-            this.lvMachineTimeZones.Size = new System.Drawing.Size(1434, 384);
+            this.lvMachineTimeZones.Size = new System.Drawing.Size(1458, 387);
             this.lvMachineTimeZones.TabIndex = 33;
             this.lvMachineTimeZones.UseCompatibleStateImageBehavior = false;
             this.lvMachineTimeZones.SelectedIndexChanged += new System.EventHandler(this.lvMachineTimeZones_SelectedIndexChanged);
@@ -223,7 +225,7 @@
             this.txtMachineTimeZones.Multiline = true;
             this.txtMachineTimeZones.Name = "txtMachineTimeZones";
             this.txtMachineTimeZones.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMachineTimeZones.Size = new System.Drawing.Size(1441, 375);
+            this.txtMachineTimeZones.Size = new System.Drawing.Size(1465, 391);
             this.txtMachineTimeZones.TabIndex = 37;
             this.txtMachineTimeZones.WordWrap = false;
             this.txtMachineTimeZones.TextChanged += new System.EventHandler(this.txtMachineTimeZones_TextChanged);
@@ -632,11 +634,23 @@
             this.txtFromTimeZone.Size = new System.Drawing.Size(1400, 86);
             this.txtFromTimeZone.TabIndex = 3;
             // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(6, 12);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(1466, 46);
+            this.textBox1.TabIndex = 40;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
+            // 
             // TimeZonesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1490, 949);
+            this.ClientSize = new System.Drawing.Size(1490, 969);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tabTimeZones);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "TimeZonesForm";
@@ -658,6 +672,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -707,5 +722,6 @@
         private System.Windows.Forms.Label lblTicksTime;
         private System.Windows.Forms.Label lblConversionError;
         private System.Windows.Forms.Button btnSummaryListAsText;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -179,6 +179,18 @@
     <Compile Include="Forms\AddRemoveAttachments.Designer.cs">
       <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DeveloperItemTestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeveloperItemTestWindow.Designer.cs">
+      <DependentUpon>DeveloperItemTestWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DeveloperToolsTestWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeveloperToolsTestWindow.Designer.cs">
+      <DependentUpon>DeveloperToolsTestWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EmptyFolder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -751,6 +763,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddRemoveAttachments.resx">
       <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeveloperItemTestWindow.resx">
+      <DependentUpon>DeveloperItemTestWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeveloperToolsTestWindow.resx">
+      <DependentUpon>DeveloperToolsTestWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EmptyFolder.resx">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
