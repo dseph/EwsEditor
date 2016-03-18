@@ -59,7 +59,6 @@
             this.chkTranslateF = new System.Windows.Forms.CheckBox();
             this.chkPragmaNocache = new System.Windows.Forms.CheckBox();
             this.chkAllowRedirect = new System.Windows.Forms.CheckBox();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -86,14 +85,11 @@
             this.lblProxyPort = new System.Windows.Forms.Label();
             this.txtProxyServerName = new System.Windows.Forms.TextBox();
             this.lblProxyServer = new System.Windows.Forms.Label();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeoutSeconds)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -104,6 +100,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvOptions)).BeginInit();
             this.grpHttpVerbOptions.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -120,7 +120,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(322, 152);
+            this.groupBox1.Size = new System.Drawing.Size(334, 152);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
@@ -140,7 +140,7 @@
             this.cmboAuthentication.Location = new System.Drawing.Point(88, 17);
             this.cmboAuthentication.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmboAuthentication.Name = "cmboAuthentication";
-            this.cmboAuthentication.Size = new System.Drawing.Size(226, 28);
+            this.cmboAuthentication.Size = new System.Drawing.Size(238, 28);
             this.cmboAuthentication.TabIndex = 1;
             this.cmboAuthentication.Text = "Basic";
             this.cmboAuthentication.SelectedIndexChanged += new System.EventHandler(this.cmboAuthentication_SelectedIndexChanged);
@@ -162,7 +162,7 @@
             this.txtDomain.Location = new System.Drawing.Point(88, 121);
             this.txtDomain.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDomain.Name = "txtDomain";
-            this.txtDomain.Size = new System.Drawing.Size(226, 26);
+            this.txtDomain.Size = new System.Drawing.Size(238, 26);
             this.txtDomain.TabIndex = 7;
             // 
             // txtUser
@@ -172,7 +172,7 @@
             this.txtUser.Location = new System.Drawing.Point(88, 52);
             this.txtUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Size = new System.Drawing.Size(226, 26);
+            this.txtUser.Size = new System.Drawing.Size(238, 26);
             this.txtUser.TabIndex = 3;
             // 
             // txtPassword
@@ -183,7 +183,7 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(226, 26);
+            this.txtPassword.Size = new System.Drawing.Size(238, 26);
             this.txtPassword.TabIndex = 5;
             // 
             // label1
@@ -223,7 +223,7 @@
             this.txtUrl.Location = new System.Drawing.Point(67, 222);
             this.txtUrl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtUrl.Name = "txtUrl";
-            this.txtUrl.Size = new System.Drawing.Size(1376, 26);
+            this.txtUrl.Size = new System.Drawing.Size(1341, 26);
             this.txtUrl.TabIndex = 1;
             this.txtUrl.Text = "https://outlook.office365.com/EWS/Exchange.asmx";
             // 
@@ -239,15 +239,17 @@
             // 
             // txtRequest
             // 
+            this.txtRequest.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtRequest.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtRequest.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtRequest.Location = new System.Drawing.Point(3, 3);
             this.txtRequest.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRequest.MaxLength = 0;
             this.txtRequest.Multiline = true;
             this.txtRequest.Name = "txtRequest";
             this.txtRequest.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtRequest.Size = new System.Drawing.Size(1416, 152);
+            this.txtRequest.Size = new System.Drawing.Size(1387, 186);
             this.txtRequest.TabIndex = 1;
             this.txtRequest.WordWrap = false;
             // 
@@ -260,7 +262,7 @@
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(1414, 90);
+            this.txtResponse.Size = new System.Drawing.Size(1380, 181);
             this.txtResponse.TabIndex = 2;
             this.txtResponse.WordWrap = false;
             this.txtResponse.TextChanged += new System.EventHandler(this.txtResponse_TextChanged);
@@ -268,7 +270,7 @@
             // GoRun
             // 
             this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GoRun.Location = new System.Drawing.Point(1325, 12);
+            this.GoRun.Location = new System.Drawing.Point(1290, 12);
             this.GoRun.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(114, 35);
@@ -355,7 +357,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.btnLoadExample);
             this.panel2.Controls.Add(this.btnSaveExample);
-            this.panel2.Location = new System.Drawing.Point(350, 6);
+            this.panel2.Location = new System.Drawing.Point(380, 6);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(334, 41);
@@ -458,31 +460,6 @@
             this.chkAllowRedirect.Text = "AllowRedirect:";
             this.chkAllowRedirect.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Location = new System.Drawing.Point(6, 320);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.tabControl2);
-            this.splitContainer1.Panel2.Controls.Add(this.txtResponseSummary);
-            this.splitContainer1.Panel2.Controls.Add(this.label10);
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(1437, 487);
-            this.splitContainer1.SplitterDistance = 199;
-            this.splitContainer1.SplitterWidth = 5;
-            this.splitContainer1.TabIndex = 6;
-            // 
             // tabControl1
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -490,10 +467,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Location = new System.Drawing.Point(4, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1430, 191);
+            this.tabControl1.Size = new System.Drawing.Size(1398, 225);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
             // 
@@ -503,7 +480,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1422, 158);
+            this.tabPage1.Size = new System.Drawing.Size(1390, 192);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Request Text";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -514,18 +491,21 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1422, 158);
+            this.tabPage2.Size = new System.Drawing.Size(1397, 198);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Xml View of Request Text (Read Only)";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // wbRequest
             // 
-            this.wbRequest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wbRequest.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.wbRequest.CausesValidation = false;
             this.wbRequest.Location = new System.Drawing.Point(3, 3);
             this.wbRequest.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbRequest.Name = "wbRequest";
-            this.wbRequest.Size = new System.Drawing.Size(1416, 152);
+            this.wbRequest.Size = new System.Drawing.Size(1342, 192);
             this.wbRequest.TabIndex = 48;
             this.wbRequest.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.wbRequest_DocumentCompleted);
             // 
@@ -536,10 +516,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl2.Controls.Add(this.tabPage3);
             this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Location = new System.Drawing.Point(1, 3);
+            this.tabControl2.Location = new System.Drawing.Point(4, 3);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1428, 129);
+            this.tabControl2.Size = new System.Drawing.Size(1394, 220);
             this.tabControl2.TabIndex = 3;
             this.tabControl2.Click += new System.EventHandler(this.tabControl2_Click);
             // 
@@ -549,7 +529,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1420, 96);
+            this.tabPage3.Size = new System.Drawing.Size(1386, 187);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Response Text";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -560,31 +540,36 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1420, 96);
+            this.tabPage4.Size = new System.Drawing.Size(1405, 185);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Resposne XML (Read Only)";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // wbResponse
             // 
-            this.wbResponse.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wbResponse.Location = new System.Drawing.Point(3, 3);
+            this.wbResponse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.wbResponse.CausesValidation = false;
+            this.wbResponse.Location = new System.Drawing.Point(0, 0);
             this.wbResponse.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbResponse.Name = "wbResponse";
-            this.wbResponse.Size = new System.Drawing.Size(1414, 90);
+            this.wbResponse.ScriptErrorsSuppressed = true;
+            this.wbResponse.Size = new System.Drawing.Size(1399, 179);
             this.wbResponse.TabIndex = 49;
+            this.wbResponse.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.wbResponse_DocumentCompleted);
             // 
             // txtResponseSummary
             // 
             this.txtResponseSummary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResponseSummary.Location = new System.Drawing.Point(4, 158);
+            this.txtResponseSummary.Location = new System.Drawing.Point(3, 802);
             this.txtResponseSummary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtResponseSummary.MaxLength = 0;
             this.txtResponseSummary.Multiline = true;
             this.txtResponseSummary.Name = "txtResponseSummary";
             this.txtResponseSummary.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponseSummary.Size = new System.Drawing.Size(1424, 113);
+            this.txtResponseSummary.Size = new System.Drawing.Size(1413, 138);
             this.txtResponseSummary.TabIndex = 1;
             this.txtResponseSummary.WordWrap = false;
             // 
@@ -592,7 +577,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(4, 133);
+            this.label10.Location = new System.Drawing.Point(2, 777);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(112, 20);
@@ -677,7 +662,7 @@
             this.grpHttpVerbOptions.Controls.Add(this.label8);
             this.grpHttpVerbOptions.Controls.Add(this.numericUpDownTimeoutSeconds);
             this.grpHttpVerbOptions.Controls.Add(this.label11);
-            this.grpHttpVerbOptions.Location = new System.Drawing.Point(338, 57);
+            this.grpHttpVerbOptions.Location = new System.Drawing.Point(341, 57);
             this.grpHttpVerbOptions.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpHttpVerbOptions.Name = "grpHttpVerbOptions";
             this.grpHttpVerbOptions.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -702,12 +687,12 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.Location = new System.Drawing.Point(67, 262);
+            this.textBox1.Location = new System.Drawing.Point(10, 262);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(1376, 50);
+            this.textBox1.Size = new System.Drawing.Size(1398, 50);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
@@ -719,11 +704,11 @@
             this.groupBox3.Controls.Add(this.lblProxyPort);
             this.groupBox3.Controls.Add(this.txtProxyServerName);
             this.groupBox3.Controls.Add(this.lblProxyServer);
-            this.groupBox3.Location = new System.Drawing.Point(1172, 64);
+            this.groupBox3.Location = new System.Drawing.Point(1175, 64);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Size = new System.Drawing.Size(269, 148);
+            this.groupBox3.Size = new System.Drawing.Size(225, 148);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Set WebProxy Settings";
@@ -754,48 +739,71 @@
             // 
             // txtProxyServerPort
             // 
-            this.txtProxyServerPort.Location = new System.Drawing.Point(143, 108);
+            this.txtProxyServerPort.Location = new System.Drawing.Point(97, 114);
             this.txtProxyServerPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtProxyServerPort.Name = "txtProxyServerPort";
-            this.txtProxyServerPort.Size = new System.Drawing.Size(116, 26);
+            this.txtProxyServerPort.Size = new System.Drawing.Size(106, 26);
             this.txtProxyServerPort.TabIndex = 5;
             this.txtProxyServerPort.Text = "8888";
             // 
             // lblProxyPort
             // 
-            this.lblProxyPort.Location = new System.Drawing.Point(39, 108);
+            this.lblProxyPort.Location = new System.Drawing.Point(39, 113);
             this.lblProxyPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProxyPort.Name = "lblProxyPort";
-            this.lblProxyPort.Size = new System.Drawing.Size(116, 26);
+            this.lblProxyPort.Size = new System.Drawing.Size(56, 26);
             this.lblProxyPort.TabIndex = 4;
             this.lblProxyPort.Text = "Port:";
             // 
             // txtProxyServerName
             // 
-            this.txtProxyServerName.Location = new System.Drawing.Point(143, 77);
+            this.txtProxyServerName.Location = new System.Drawing.Point(97, 86);
             this.txtProxyServerName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtProxyServerName.Name = "txtProxyServerName";
-            this.txtProxyServerName.Size = new System.Drawing.Size(116, 26);
+            this.txtProxyServerName.Size = new System.Drawing.Size(106, 26);
             this.txtProxyServerName.TabIndex = 3;
             this.txtProxyServerName.Text = "127.0.0.1";
             // 
             // lblProxyServer
             // 
-            this.lblProxyServer.Location = new System.Drawing.Point(39, 82);
+            this.lblProxyServer.Location = new System.Drawing.Point(39, 87);
             this.lblProxyServer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProxyServer.Name = "lblProxyServer";
-            this.lblProxyServer.Size = new System.Drawing.Size(116, 26);
+            this.lblProxyServer.Size = new System.Drawing.Size(70, 26);
             this.lblProxyServer.TabIndex = 2;
             this.lblProxyServer.Text = "Server:";
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(6, 320);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl2);
+            this.splitContainer1.Size = new System.Drawing.Size(1402, 454);
+            this.splitContainer1.SplitterDistance = 227;
+            this.splitContainer1.TabIndex = 48;
+            // 
             // PostForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1449, 812);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1414, 936);
+            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.txtResponseSummary);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.grpHttpVerbOptions);
-            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.GoRun);
@@ -811,11 +819,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeoutSeconds)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -830,6 +833,10 @@
             this.grpHttpVerbOptions.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -867,7 +874,6 @@
         private System.Windows.Forms.CheckBox chkTranslateF;
         private System.Windows.Forms.CheckBox chkPragmaNocache;
         private System.Windows.Forms.CheckBox chkAllowRedirect;
-        private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvOptions;
         private System.Windows.Forms.Button btnDeleteHeader;
@@ -894,5 +900,6 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.WebBrowser wbResponse;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }

@@ -45,6 +45,8 @@ namespace EWSEditor.Forms
         private const string XmlBase64ToHexDump = "Decode Base 64 content and Hex dump";
 
         private const string XmlConvertVerifyXmlChars = "XmlConvert - VerifyXmlChars";
+
+        private const string CheckForNonASCIICharacters = "Check for non-ASCII characters and control codes.";
  
  
         private void EncodeForm_Load(object sender, EventArgs e)
@@ -73,6 +75,8 @@ namespace EWSEditor.Forms
         cmboFrom.Items.Add(XmlTextToHexSpaceDelimited);
         cmboFrom.Items.Add(XmlHexDumpText);
         cmboFrom.Items.Add(XmlBase64ToHexDump);
+
+        cmboFrom.Items.Add(CheckForNonASCIICharacters);
 
         //cmboFrom.Items.Add(XmlConvertVerifyXmlChars);
 
@@ -388,6 +392,20 @@ namespace EWSEditor.Forms
                         MessageBox.Show(ex.ToString(), "Error");
                     }
                     break;
+
+                case CheckForNonASCIICharacters:
+                    try
+                    {
+
+                        ToText = CheckResponseForOddCharacters(FromText);
+
+                    }
+                    catch (Exception exCheckForInvalidCharacters)
+                    {
+                        MessageBox.Show(exCheckForInvalidCharacters.ToString(), "Error");
+                    }
+                    break;
+
                 //case Utf8DecodeToAscii:
                 //    oUtf8Encoding = System.Text.Encoding.UTF8;
                 //    oFromBytes = oUtf8Encoding.GetBytes(FromText);
@@ -410,6 +428,82 @@ namespace EWSEditor.Forms
             return  ToText;
              
 
+        }
+
+
+        string CheckResponseForOddCharacters(string sBody)
+        {
+            StringBuilder oSB = new StringBuilder();
+
+            bool bResponseHasUnicode = false;
+            bool bResponseHasExtendedAsciiCharacters = false;
+            bool bResponseHasControlCharacters = false;
+            bool bResponseHasOddCharacters = false;
+            string sReponseCheck = string.Empty;
+
+
+            int iVal = 0;
+            string sComment = string.Empty;
+            StringBuilder oCharCheck = new StringBuilder();
+
+            oCharCheck.AppendFormat("\r\nDumping characters...\r\n");
+            oCharCheck.AppendFormat("Value   Char  Comment\r\n");
+            StringBuilder oSanitized = new StringBuilder();
+            foreach (char c in sBody)
+            {
+                sComment = string.Empty;
+                iVal = (int)c;
+                if (iVal > 127 & iVal < 256)
+                {
+                    sComment = "Over 127";
+                    bResponseHasOddCharacters = true;
+                    bResponseHasExtendedAsciiCharacters = true;
+                }
+                if (iVal > 255)
+                {
+                    sComment = "Over 255";
+                    bResponseHasOddCharacters = true;
+                    bResponseHasUnicode = true;
+                }
+                if ((iVal > 0 && iVal < 7) || (iVal > 13 && iVal < 32))
+                {
+                    sComment = "Control Character";
+                    bResponseHasControlCharacters = true;
+                    bResponseHasOddCharacters = true;
+                }
+
+                if (bResponseHasOddCharacters == false)
+                    oSanitized.Append(c);
+
+                oCharCheck.AppendFormat("[{0}] - {1}  {2} \r\n", (int)c, c, sComment);
+            }
+
+
+            if (bResponseHasOddCharacters == true)
+            {
+                oSB.AppendLine("***");
+                if (bResponseHasControlCharacters == true)
+                    oSB.AppendLine("***  Control Characters found. ***");
+                if (bResponseHasUnicode == true)
+                    oSB.AppendLine("***  Unicode characters found. ***");
+                if (bResponseHasExtendedAsciiCharacters == true)
+                    oSB.AppendLine("***  Extended ASCII characters found. ***");
+                oSB.AppendLine("***");
+                oSB.Append(oCharCheck.ToString());  // Character by character check
+
+                oSB.Append("\r\nThe following is a version of the source text without extended ascii/unicode/control characters:\r\n");
+                oSB.Append(oSanitized.ToString());
+
+                //MessageBox.Show("The are non-basic ASCII characters found.");
+            }
+            else
+            {
+                oSB.Append("No non-ASCII or control characters found.");
+            }
+
+            oSB.Append(oSanitized.ToString());
+
+            return oSB.ToString();
         }
     }
 }

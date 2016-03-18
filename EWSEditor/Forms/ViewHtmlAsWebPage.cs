@@ -107,10 +107,13 @@ namespace EWSEditor.Forms
             //webBrowser1.DocumentText = sContent;
 
             webBrowser1.Navigate(sFile);
+
+            
         }
 
         private void ViewInBrowser_Load(object sender, EventArgs e)
         {
+
              
         }
     }

@@ -119,9 +119,7 @@ namespace EWSEditor.Forms
                 // create the mail message
                 MailMessage mail = new MailMessage();
 
-                // mail.BodyEncoding = Encoding.UTF8
-                // mail.BodyTransferEncoding = System.Net.Mime.TransferEncoding.SevenBit
-                // mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure
+    
                 
 
                 if (txtFrom.Text.Trim() != "")
@@ -149,10 +147,7 @@ namespace EWSEditor.Forms
                 else 
                     { mail.Priority = MailPriority.Low; }
 
-                //mail.BodyTransferEncoding = System.Net.Mime.TransferEncoding.QuotedPrintable;
-                //mail.SubjectEncoding = Encoding.UTF8;
-                //mail.HeadersEncoding = Encoding.UTF8;
-                //mail.BodyEncoding = Encoding.UTF8;
+   
 
                 // add custom headers
                 foreach (DataGridViewRow row in dataGridView1.Rows)
