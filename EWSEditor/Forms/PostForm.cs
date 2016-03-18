@@ -139,31 +139,7 @@ namespace EWSEditor.Common
             bool bResponseHasControlCharacters = false;
             bool bResponseHasOddCharacters = false;
             string sReponseCheck = string.Empty;
-
-            //if (txtResponse.Text.Any(c => c > 255))
-            //{
-            //    bResponseHasExtendedAsciiCharacters = true;
-               
-            //    bResponseHasOddCharacters = true;
-            //    oSB.AppendLine("Response has unicode characters (over a value of 255).");
-            //}
-            //if (txtResponse.Text.Any(c => c > 255))
-            //{
-            //    bResponseHasUnicode = true;
-            //    bResponseHasOddCharacters = true;
-            //    oSB.AppendLine("Response has unicode characters (over a value of 127).");
-            //}
-
-            //if (txtResponse.Text.Any(c => ((c > 0 && c < 7) || (c > 13 && c < 32))))
-            //{
-            //    bResponseHasControlCharacters = true;
-            //    bResponseHasOddCharacters = true;
-            //    oSB.AppendLine("Response has control characters (characters with a value between 1 and 6).");
-            //}
-
-            //oSB.AppendFormat("\r\nDumping response string...\r\n");
-
-            //oSB.AppendFormat ("Value   Char  Comment\r\n");
+             
 
             int iVal = 0;
             string sComment = string.Empty;
@@ -219,6 +195,8 @@ namespace EWSEditor.Common
 
                 MessageBox.Show("The are non-basic ASCII characters found in response. Check the EWS Call Info text box.");
             }
+
+            oSB.Append(oSanitized.ToString());
 
             return oSB.ToString();
         }
@@ -285,6 +263,43 @@ namespace EWSEditor.Common
 
             sResult = SerialHelper.TryRestoreCrLfAndIndents(sResult);
             txtResponse.Text = sResult;
+      
+            // blank
+           //wbResponse.DocumentText = sResult;
+
+           // blank...
+           // string sFile = CreateTempFile(sResult, "xml");
+            // wbResponse.Navigate(sFile);
+            
+            // same...
+            //byte[] bytes = Encoding.UTF8.GetBytes(sResult);
+            //MemoryStream oMemoryStream = new MemoryStream();
+            //oMemoryStream.Write(bytes, 0, bytes.Length);
+            //oMemoryStream.Position = 0;
+            //wbResponse.DocumentStream = oMemoryStream;
+
+            // Note:  If the browser or browser control sees whats inteh utf16Line line the it will error and not render.
+            // So as a work-around for now the code wills trip that line just for ie control rendering.
+            string utf16Line = "<?xml version=\"1.0\" encoding=\"utf-16\"?>";
+            string utf8Line = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+            string sCopy = sResult.TrimStart();
+
+            if (sCopy.StartsWith(utf16Line))
+            {
+                sCopy = sCopy.Remove(0, utf16Line.Length);
+                sCopy = sCopy.TrimStart();
+            }
+            if (sCopy.StartsWith(utf8Line))
+            {
+                sCopy = sCopy.Remove(0, utf8Line.Length);
+                sCopy = sCopy.TrimStart();
+            }
+
+            string sFile = CreateTempFile(sCopy, "xml");
+            wbResponse.Navigate(sFile);
+            wbResponse.DocumentText = sCopy;
+          
+          
 
             StringBuilder oSB = new StringBuilder();
 
@@ -317,6 +332,35 @@ namespace EWSEditor.Common
             this.Cursor = Cursors.Default;
              
         }
+
+
+        private string CreateTempFile(string sContent)
+        {
+            string sFileNameExtension = string.Empty;
+            return CreateTempFile(sContent, sFileNameExtension);
+        }
+
+        private string CreateTempFile(string sContent, string sFileNameExtension)
+        {
+
+
+            string sFoldePath = Path.GetTempPath();
+            string sFileName = Path.GetRandomFileName();
+            if (sFileNameExtension != string.Empty)
+                sFileName += ("." + sFileNameExtension);
+            string sFile = Path.Combine(sFoldePath, sFileName);
+
+            StreamWriter oSW = new StreamWriter(sFile);
+            oSW.Write(sContent);
+            oSW.Close();
+            oSW = null;
+
+            //File.WriteAllText(sFile, sContent);
+
+            return sFile;
+        }
+
+
         private void DoPostByHttpVerb()
         {
             string sRequestHeaders = string.Empty;
@@ -419,6 +463,47 @@ namespace EWSEditor.Common
  
             sResult = SerialHelper.TryRestoreCrLfAndIndents(sResult);
             txtResponse.Text = sResult;
+
+            // Blank
+            //string sFile = CreateTempFile(sResult, "xml");
+            //wbResponse.Navigate(sFile);
+
+            // blank
+            //wbResponse.DocumentText = sResult;
+
+            // blank...
+            //string sFile = CreateTempFile(sResult, "xml");
+            //wbResponse.Navigate(sFile);
+
+            // same...
+            //byte[] bytes = Encoding.UTF8.GetBytes(sResult);
+            //MemoryStream oMemoryStream = new MemoryStream();
+            //oMemoryStream.Write(bytes, 0, bytes.Length);
+            //oMemoryStream.Position = 0;
+            //wbResponse.DocumentStream = oMemoryStream;
+
+            string utf16Line = "<?xml version=\"1.0\" encoding=\"utf-16\"?>";
+            string utf8Line = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+            string sCopy = sResult.TrimStart();
+
+            if (sCopy.StartsWith(utf16Line))
+            {
+                //sCopy = sCopy.Remove(0, utf16Line.Length);
+ 
+                sCopy = sCopy.Replace(utf16Line, utf8Line + "\r\n<!-- Note: EwsEditor has replaced the \"utf-16\" text in the first line with\"utf-8\" in order for the XML to render in the response web control. -->");
+                //sCopy = sCopy.TrimStart();
+            }
+            //if (sCopy.StartsWith(utf8Line))
+            //{
+            //    sCopy = sCopy.Remove(0, utf8Line.Length);
+            //    sCopy = sCopy.TrimStart();
+            //}
+            wbResponse.DocumentText = sCopy;
+            txtResponse.Text = sCopy;
+            //string sFile = CreateTempFile(sCopy, "xml");
+            //wbResponse.Navigate(sFile);
+            //wbResponse.DocumentText = sCopy;
+          
 
 
             StringBuilder oSB = new StringBuilder();
@@ -759,7 +844,7 @@ namespace EWSEditor.Common
 
         private void tabControl2_Click(object sender, EventArgs e)
         {
-            wbResponse.DocumentText = txtResponse.Text;
+   
         }
 
         private void tabControl1_Click(object sender, EventArgs e)
@@ -769,7 +854,13 @@ namespace EWSEditor.Common
 
         private void wbRequest_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+       
+            
+        }
 
+        private void wbResponse_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+           // wbResponse
         }
     }
 

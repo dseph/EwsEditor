@@ -88,7 +88,7 @@
             // GoRun
             // 
             this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GoRun.Location = new System.Drawing.Point(1044, 328);
+            this.GoRun.Location = new System.Drawing.Point(1011, 328);
             this.GoRun.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(118, 35);
@@ -267,7 +267,7 @@
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResults.Size = new System.Drawing.Size(1150, 91);
+            this.txtResults.Size = new System.Drawing.Size(1117, 91);
             this.txtResults.TabIndex = 28;
             // 
             // lvItems
@@ -283,7 +283,7 @@
             this.lvItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(1150, 103);
+            this.lvItems.Size = new System.Drawing.Size(1117, 103);
             this.lvItems.TabIndex = 30;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -352,7 +352,7 @@
             this.txtValues.Multiline = true;
             this.txtValues.Name = "txtValues";
             this.txtValues.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtValues.Size = new System.Drawing.Size(1150, 101);
+            this.txtValues.Size = new System.Drawing.Size(1117, 101);
             this.txtValues.TabIndex = 32;
             this.txtValues.TextChanged += new System.EventHandler(this.txtValues_TextChanged);
             // 
@@ -390,7 +390,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Size = new System.Drawing.Size(252, 161);
+            this.groupBox3.Size = new System.Drawing.Size(225, 161);
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Set WebProxy Settings";
@@ -424,7 +424,7 @@
             this.txtProxyServerPort.Location = new System.Drawing.Point(97, 123);
             this.txtProxyServerPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtProxyServerPort.Name = "txtProxyServerPort";
-            this.txtProxyServerPort.Size = new System.Drawing.Size(147, 26);
+            this.txtProxyServerPort.Size = new System.Drawing.Size(113, 26);
             this.txtProxyServerPort.TabIndex = 5;
             this.txtProxyServerPort.Text = "8888";
             // 
@@ -442,7 +442,7 @@
             this.txtProxyServerName.Location = new System.Drawing.Point(97, 87);
             this.txtProxyServerName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtProxyServerName.Name = "txtProxyServerName";
-            this.txtProxyServerName.Size = new System.Drawing.Size(147, 26);
+            this.txtProxyServerName.Size = new System.Drawing.Size(113, 26);
             this.txtProxyServerName.TabIndex = 3;
             this.txtProxyServerName.Text = "127.0.0.1";
             // 
@@ -571,7 +571,7 @@
             this.txtHeader1Value.Location = new System.Drawing.Point(966, 221);
             this.txtHeader1Value.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHeader1Value.Name = "txtHeader1Value";
-            this.txtHeader1Value.Size = new System.Drawing.Size(198, 26);
+            this.txtHeader1Value.Size = new System.Drawing.Size(165, 26);
             this.txtHeader1Value.TabIndex = 15;
             // 
             // txtHeader2Value
@@ -581,7 +581,7 @@
             this.txtHeader2Value.Location = new System.Drawing.Point(966, 258);
             this.txtHeader2Value.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHeader2Value.Name = "txtHeader2Value";
-            this.txtHeader2Value.Size = new System.Drawing.Size(198, 26);
+            this.txtHeader2Value.Size = new System.Drawing.Size(165, 26);
             this.txtHeader2Value.TabIndex = 19;
             // 
             // txtHeader3Value
@@ -591,7 +591,7 @@
             this.txtHeader3Value.Location = new System.Drawing.Point(966, 292);
             this.txtHeader3Value.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtHeader3Value.Name = "txtHeader3Value";
-            this.txtHeader3Value.Size = new System.Drawing.Size(198, 26);
+            this.txtHeader3Value.Size = new System.Drawing.Size(165, 26);
             this.txtHeader3Value.TabIndex = 23;
             // 
             // lblHeader1Value
@@ -642,14 +642,15 @@
             this.txtInfo.Location = new System.Drawing.Point(17, 335);
             this.txtInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtInfo.Name = "txtInfo";
-            this.txtInfo.Size = new System.Drawing.Size(1001, 19);
+            this.txtInfo.Size = new System.Drawing.Size(968, 19);
             this.txtInfo.TabIndex = 25;
             // 
             // AutodiscoverViewerForm
             // 
             this.AcceptButton = this.GoRun;
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1175, 743);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1142, 743);
             this.Controls.Add(this.txtInfo);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.lblHeader3Value);
