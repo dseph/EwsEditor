@@ -117,7 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>This windows does not do EWS calls. It uses many of the .NET calls used by the EWS Managed API.  If you have an issue with EWS and timezones then try using this form to see if you reproduce the issue without EWS.</value>
-  </data>
 </root>

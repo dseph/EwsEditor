@@ -1369,6 +1369,34 @@ namespace EWSEditor.Forms
             OpenOWAFromWebClientEditFormQueryString(this.CurrentService, id); 
         }
 
+        private void mnuExportItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void developerItemTestWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                ItemId id = GetSelectedContentId();
+                if (id == null)
+                {
+                    return;
+                }
+
+                DeveloperItemTestWindow oForm = new DeveloperItemTestWindow(this.CurrentService, id);
+                oForm.Show();
+
+                this.RefreshContentAndDetails();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
 
     }
 }

@@ -276,7 +276,7 @@ namespace EWSEditor.Forms
 
         private void ContentsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+             
         }
     }
 }

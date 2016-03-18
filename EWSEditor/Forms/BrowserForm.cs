@@ -959,7 +959,7 @@
             oForm.txtEntry.WordWrap = false;
             oForm.Text = "Server TimeZone";
             oForm.txtEntry.Text = oSB.ToString();
-            oForm.ShowDialog();
+            oForm.Show();
            
              
         }
@@ -979,28 +979,35 @@
         private void mnuMailTips_Click(object sender, EventArgs e)
         {
             GetMailTipsForm oForm = new GetMailTipsForm();
-            oForm.ShowDialog();
+            oForm.Show();
             oForm = null;
         }
 
         private void mnuSharedCalendars_Click(object sender, EventArgs e)
         {
-            string sInfo = string.Empty;
-            sInfo = SharedCalendarsHelper.Test(CurrentService, "danba@microsoft.com");
+            //string sInfo = string.Empty;
+            //sInfo = SharedCalendarsHelper.Test(CurrentService, "x@microsoft.com");
 
-            //sInfo = SharedCalendarsHelper.Test(CurrentService, CurrentAppSettings.MailboxBeingAccessed);
+            ////sInfo = SharedCalendarsHelper.Test(CurrentService, CurrentAppSettings.MailboxBeingAccessed);
 
-            ShowTextDocument oForm = new ShowTextDocument();
-            oForm.txtEntry.WordWrap = false;
-            oForm.Text = "Shared Calendars";
-            oForm.txtEntry.Text = sInfo;
-            oForm.ShowDialog();
+            //ShowTextDocument oForm = new ShowTextDocument();
+            //oForm.txtEntry.WordWrap = false;
+            //oForm.Text = "Shared Calendars";
+            //oForm.txtEntry.Text = sInfo;
+            //oForm.ShowDialog();
         }
 
         private void viewHTMLInBrowserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ViewInBrowser oForm = new ViewInBrowser();
             oForm.Show();
+        }
+
+        private void developerToolsTestWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeveloperToolsTestWindow oForm = new DeveloperToolsTestWindow(CurrentService);
+            oForm.Show();
+            
         }
     }
 }
