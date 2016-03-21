@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,30 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="mnuItemContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>230, 17</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAIAICAQAAAABADoAgAAJgAAABAQEAAAAAQAKAEAAA4DAAAoAAAAIAAAAEAAAAABAAQAAAAAAAAC
-        AAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAgAAAgAAAAICAAIAAAACAAIAAgIAAAMDAwACAgIAAAAD/AAD/
-        AAAA//8A/wAAAP8A/wD//wAA////AAAJmZALsAAAkA3d3d0AAAAJkJmZC7uwAJmd3dDd0AAACQmZmbu4
-        sJmZnd3d3QAAAJmZmZmbiImZmZ3Q3d0AAAAJCQmZiIiImZmZ3Q3QAAAACZmZmYjIiImZmQDQAAAAAACZ
-        mZSIgIiICZkAAAAAAAAARJREvIi4iZkAAAAAAAAAAARES4i4iICQAAAAAAAAAAERRMu7iIjAAAAAAAAA
-        AAAREUq7u7jLsAAAAAAAAAAAEaqqSqu7CwAAAAAAAAAAABGqqqu8y8sAAAAAAAAAAAARqqqqsLsAAAAA
-        AAAAAAAAGqKqqgqwAAAAAAAAAAAAAAIiKqqgAAAAAAAAAAAACgAOISIqoAAAAAAAAAAACqqqDiIiqgAA
-        AAAAAAAAAAqqqu7u4iIAAAAAAAAAAACqqqri7uAgAAAAAAAAICIqqqqqDi7uIAAAAAAAACACIqqqoO7i
-        4gAAAAAAAAIgIiCqmqoO7uAAAAAAAAACAiIiKqqqDu4AAAAAAAAAAgAiIpzKyQAAAAAAAAAABwIgIiLM
-        zAkAAAAAAAAAB3d3IiIhwMycAAAAAAAAAHcAd3ArwMxMyQAAAAAAAAB3d3cLu7xETEkAAAAAAAAHdwd3
-        e7u0REREAAAAAAAAAHBwd3sLtExERAAAAAAAAAAHB3e7u0tEREQAAAAAAAAAB3d7u7u0QERE4Z9gP5CH
-        AR+gBAA/AAAEP6gAAn+AAA3/wBCPB8AAPgPgAX5zgAH/8wAB/wMAC/4HAAJOfwBMRmcAnAYHgHgDC4B5
-        E+CA+bPgAPHxwAX/9ACB//YBA//kQIf/6ACAP+wA8D+kAvP+ABDw/MRA8PwIAPP4gADwPUIA8D6AAP/+
-        ABAoAAAAEAAAACAAAAABAAQAAAAAAIAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAgAAAgAAAAICAAIAA
-        AACAAIAAgIAAAMDAwACAgIAAAAD/AAD/AAAA//8A/wAAAP8A/wD//wAA////AACqDg6wAAAAAADu7rAA
-        AAAAGu67sAAAAAERG7AAAAAAGgAAAAAAAAAQIQAAAAAAABFQAAAAAABEIlAAAAAAAEBVUAAAAAAARFAA
-        AAAAADNEUAAAAAAAALAAAAAAAAMzywAAAAAAAzzJAAAAAA0JnMkAAAAA0AuawAAAAA3dmZrJin8AABBn
-        AACAWwAAgfsAAD/HAABP2wAAH+QAAB69AAAcnAAAfVAAAEXdAADf4AAAx+AAAN+gAADHYQAA/gAAAA==
-</value>
-  </data>
 </root>

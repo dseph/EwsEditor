@@ -1005,7 +1005,7 @@
 
         private void developerToolsTestWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DeveloperToolsTestWindow oForm = new DeveloperToolsTestWindow(CurrentService);
+            DeveloperServiceTestForm oForm = new DeveloperServiceTestForm(CurrentService);
             oForm.Show();
             
         }

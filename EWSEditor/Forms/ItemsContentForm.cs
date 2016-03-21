@@ -1386,7 +1386,7 @@ namespace EWSEditor.Forms
                     return;
                 }
 
-                DeveloperItemTestWindow oForm = new DeveloperItemTestWindow(this.CurrentService, id);
+                DeveloperItemTestForm oForm = new DeveloperItemTestForm(this.CurrentService, id);
                 oForm.Show();
 
                 this.RefreshContentAndDetails();
