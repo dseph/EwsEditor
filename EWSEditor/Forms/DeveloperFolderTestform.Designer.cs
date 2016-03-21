@@ -1,6 +1,6 @@
 ﻿namespace EWSEditor.Forms
 {
-    partial class DeveloperItemTestWindow
+    partial class DeveloperFolderTestform
     {
         /// <summary>
         /// Required designer variable.
@@ -28,41 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnTest = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(1155, 213);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "This windows is to be used by develpers with EWSEditor source in order that they " +
-    "may test their EWS Managed API code  to work on a selected item.";
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(12, 270);
+            this.btnTest.Location = new System.Drawing.Point(12, 218);
+            this.btnTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(194, 58);
-            this.btnTest.TabIndex = 2;
+            this.btnTest.Size = new System.Drawing.Size(172, 46);
+            this.btnTest.TabIndex = 6;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
-            // DeveloperItemTestWindow
+            // textBox1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.textBox1.Location = new System.Drawing.Point(12, 11);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox1.Size = new System.Drawing.Size(1027, 186);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.Text = "This windows is to be used by developers with EWSEditor source in order that they" +
+    " may test their EWS Managed API code to work on the folder object of the current" +
+    "ly selected folder.";
+            // 
+            // DeveloperFolderTestform
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1230, 482);
+            this.ClientSize = new System.Drawing.Size(1155, 427);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.textBox1);
-            this.Name = "DeveloperItemTestWindow";
-            this.Text = "Developer Item Test Window";
-            this.Load += new System.EventHandler(this.DeveloperItemTestWindow_Load);
+            this.Name = "DeveloperFolderTestform";
+            this.Text = "Developer Folder Test Form";
+            this.Load += new System.EventHandler(this.DeveloperFolderTestWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,7 +72,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

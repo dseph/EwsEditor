@@ -178,6 +178,7 @@ namespace EWSEditor.Forms
                 this.eDiscoverySearchToolStripMenuItem.Enabled = isCurrentService;
                 this.mailAppsToolStripMenuItem.Enabled = isCurrentService;
                 this.mnuMailTips.Enabled = isCurrentService;
+                this.developerToolsTestWindowToolStripMenuItem.Enabled = isCurrentService;
 
                  
             }
@@ -1708,6 +1709,13 @@ namespace EWSEditor.Forms
                  EmptyFolder oForm = new EmptyFolder(oFolder);
                  oForm.ShowDialog();
              }
+        }
+
+        private void developerFolderTestFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Folder oFolder = (GetFolderFromNode(FolderTreeView.SelectedNode));
+            DeveloperFolderTestform oForm = new DeveloperFolderTestform(this.CurrentService, oFolder.Id);
+            oForm.Show();
         }
     }
 }

@@ -19,17 +19,17 @@ using Microsoft.Exchange.WebServices.Data;
 
 namespace EWSEditor.Forms
 {
-    public partial class DeveloperItemTestWindow : Form
+    public partial class DeveloperItemTestForm : Form
     {
         ExchangeService _service = null;
         ItemId _itemId = null;
 
-        public DeveloperItemTestWindow()
+        public DeveloperItemTestForm()
         {
             InitializeComponent();
         }
 
-        public DeveloperItemTestWindow(ExchangeService service, ItemId itemId)
+        public DeveloperItemTestForm(ExchangeService service, ItemId itemId)
         {
             InitializeComponent();
             _service = service;
@@ -42,6 +42,8 @@ namespace EWSEditor.Forms
             oSB.Append("This window is to be used by develpers with EWSEditor source in order that they may test their EWS Managed API code  to work on a selected item.  ");
             oSB.Append("  The ExchangeService and ItemId are availible in ths form so that you can use them in your custom test code.");
             oSB.AppendLine("");
+            oSB.AppendLine("");
+            oSB.AppendFormat("Service.Url.AbsolutePath: {0}\r\n", _service.Url.AbsoluteUri.ToString());
             oSB.AppendLine("");
             oSB.AppendLine("ItemId.UniqueId: " + _itemId.UniqueId);
             oSB.AppendLine("");

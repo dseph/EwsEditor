@@ -179,17 +179,23 @@
     <Compile Include="Forms\AddRemoveAttachments.Designer.cs">
       <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DeveloperItemTestWindow.cs">
+    <Compile Include="Forms\DeveloperFolderTestform.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DeveloperItemTestWindow.Designer.cs">
-      <DependentUpon>DeveloperItemTestWindow.cs</DependentUpon>
+    <Compile Include="Forms\DeveloperFolderTestform.Designer.cs">
+      <DependentUpon>DeveloperFolderTestform.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DeveloperToolsTestWindow.cs">
+    <Compile Include="Forms\DeveloperItemTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DeveloperToolsTestWindow.Designer.cs">
-      <DependentUpon>DeveloperToolsTestWindow.cs</DependentUpon>
+    <Compile Include="Forms\DeveloperItemTestForm.Designer.cs">
+      <DependentUpon>DeveloperItemTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DeveloperServiceTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeveloperServiceTestForm.Designer.cs">
+      <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EmptyFolder.cs">
       <SubType>Form</SubType>
@@ -764,11 +770,14 @@
     <EmbeddedResource Include="Forms\AddRemoveAttachments.resx">
       <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DeveloperItemTestWindow.resx">
-      <DependentUpon>DeveloperItemTestWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DeveloperFolderTestform.resx">
+      <DependentUpon>DeveloperFolderTestform.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DeveloperToolsTestWindow.resx">
-      <DependentUpon>DeveloperToolsTestWindow.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DeveloperItemTestForm.resx">
+      <DependentUpon>DeveloperItemTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeveloperServiceTestForm.resx">
+      <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EmptyFolder.resx">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
