@@ -17,6 +17,8 @@ using System.Net;
 using System.Xml;
 using Microsoft.Exchange.WebServices.Data;
 
+// This form is a convient place for a developer to integrate their code on an ExchangeService level in order to do testing.
+// 
 namespace EWSEditor.Forms
 {
     public partial class DeveloperServiceTestForm : Form
