@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Web;
 using System.Xml;
 using EWSEditor.Common;
+using System.Text.RegularExpressions;
 
 namespace EWSEditor.Forms
 {
@@ -32,6 +33,11 @@ namespace EWSEditor.Forms
  
         private const string XmlEncode = "Xml Encode";
         private const string XmlDecode = "Xml Decode";
+
+        private const string Utf8Encode = "Utf8 Encode";
+        private const string Utf8Decode = "Utf8 Decode";
+
+        private const string QuotedPrintableDecode = "Quoted Printable Decode";
 
         private const string XmlBase64ToHex = "Base 64 to Hex";
         private const string XmlBase64ToHexSpaceDelimited = "Base 64 to Hex - Space delimited";
@@ -65,6 +71,11 @@ namespace EWSEditor.Forms
         cmboFrom.Items.Add(XmlEncode);
         cmboFrom.Items.Add(XmlDecode);
 
+        //cmboFrom.Items.Add(Utf8Encode);
+        //cmboFrom.Items.Add(Utf8Decode);
+        //cmboFrom.Items.Add(QuotedPrintableDecode);
+        
+
         cmboFrom.Items.Add(XmlBase64ToHex);
         cmboFrom.Items.Add(XmlBase64ToHexSpaceDelimited);
         cmboFrom.Items.Add(XmlHexToBase64);
@@ -97,6 +108,7 @@ namespace EWSEditor.Forms
             string FromText = txtFrom.Text;
             string ToText = string.Empty;
             byte[] oFromBytes = null;
+            byte[] oToBytes = null;
             
             //byte[] ToBytes;
             System.Text.Encoding oUtf8Encoding = System.Text.Encoding.UTF8;
@@ -169,6 +181,16 @@ namespace EWSEditor.Forms
                 //    {
                 //        oFromBytes = System.Text.Encoding.Default.GetBytes(FromText);
                 //        ToText = System.Text.Encoding.UTF8.GetString(oFromBytes);
+
+                //        ToText += "\r\n";
+                //        Console.WriteLine("Encoded bytes:");
+                //        foreach (Byte b in oFromBytes)
+                //        {
+                //            ToText += string.Format("[{0}]", b);
+
+                //        }
+
+    
                 //    }
                 //    catch (Exception ex)
                 //    {
@@ -179,8 +201,13 @@ namespace EWSEditor.Forms
                 //    try
                 //    {
                 //        oFromBytes = oUtf8Encoding.GetBytes(FromText);
-                //        ToBytes = Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding("iso-8859-1"), oFromBytes);
-                //        ToText = System.Text.Encoding.UTF8.GetString(ToBytes);
+                //        ToText = oUtf8Encoding.GetString(oFromBytes);
+
+                //        //oFromBytes = oUtf8Encoding.GetBytes(FromText);
+                //        //oToBytes = Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding("iso-8859-1"), oFromBytes);
+                //        //ToText = System.Text.Encoding.UTF8.GetString(oToBytes);
+
+  
                 //    }
                 //    catch (Exception ex)
                 //    {
@@ -220,7 +247,29 @@ namespace EWSEditor.Forms
                 //    }
                 //    break;
 
-                     
+                //case QuotedPrintableDecode:
+                //    // http://stackoverflow.com/questions/2226554/c-class-for-decoding-quoted-printable-encoding
+                //    try
+                //    {
+                //        //string sWork = FromText;
+                //        //var occurences = new Regex(@"=[0-9A-Z]{2}", RegexOptions.Multiline);
+                //        //var matches = occurences.Matches(sWork);
+                //        //foreach (Match match in matches)
+                //        //{
+                //        //    char hexChar= (char) Convert.ToInt32(match.Groups[0].Value.Substring(1), 16);
+                //        //    sWork = sWork.Replace(match.Groups[0].Value, hexChar.ToString());
+                //        //}
+                //        //ToText =  sWork.Replace("=\r\n", "");
+ 
+                //        ToText = DecodeQuotedPrintables(FromText, "iso-8859-1");
+                 
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        MessageBox.Show(ex.ToString(), "Error");
+                //    }
+                //    break;
+
 
                 case XmlDecode:
                     try
@@ -429,6 +478,66 @@ namespace EWSEditor.Forms
              
 
         }
+
+        //// DecodeQuotedPrintables
+        //// from: http://stackoverflow.com/questions/2226554/c-class-for-decoding-quoted-printable-encoding
+        //private string DecodeQuotedPrintables(string input, string charSet)
+        //{
+        //    // http://stackoverflow.com/questions/2226554/c-class-for-decoding-quoted-printable-encoding
+
+        //    if (string.IsNullOrEmpty(charSet))
+        //    {
+        //        var charSetOccurences = new Regex(@"=\?.*\?Q\?", RegexOptions.IgnoreCase);
+        //        var charSetMatches = charSetOccurences.Matches(input);
+        //        foreach (Match match in charSetMatches)
+        //        {
+        //            charSet = match.Groups[0].Value.Replace("=?", "").Replace("?Q?", "");
+        //            input = input.Replace(match.Groups[0].Value, "").Replace("?=", "");
+        //        }
+        //    }
+
+        //    Encoding enc = new ASCIIEncoding();
+        //    if (!string.IsNullOrEmpty(charSet))
+        //    {
+        //        try
+        //        {
+        //            enc = Encoding.GetEncoding(charSet);
+        //        }
+        //        catch
+        //        {
+        //            enc = new ASCIIEncoding();
+        //        }
+        //    }
+
+        //    //decode iso-8859-[0-9]
+        //    var occurences = new Regex(@"=[0-9A-Z]{2}", RegexOptions.Multiline);
+        //    var matches = occurences.Matches(input);
+        //    foreach (Match match in matches)
+        //    {
+        //        try
+        //        {
+        //            byte[] b = new byte[] { byte.Parse(match.Groups[0].Value.Substring(1), System.Globalization.NumberStyles.AllowHexSpecifier) };
+        //            char[] hexChar = enc.GetChars(b);
+        //            input = input.Replace(match.Groups[0].Value, hexChar[0].ToString());
+        //        }
+        //        catch
+        //        { ;}
+        //    }
+
+        //    //decode base64String (utf-8?B?)
+        //    occurences = new Regex(@"\?utf-8\?B\?.*\?", RegexOptions.IgnoreCase);
+        //    matches = occurences.Matches(input);
+        //    foreach (Match match in matches)
+        //    {
+        //        byte[] b = Convert.FromBase64String(match.Groups[0].Value.Replace("?utf-8?B?", "").Replace("?UTF-8?B?", "").Replace("?", ""));
+        //        string temp = Encoding.UTF8.GetString(b);
+        //        input = input.Replace(match.Groups[0].Value, temp);
+        //    }
+
+        //    input = input.Replace("=\r\n", "");
+
+        //    return input;
+        //}
 
 
         string CheckResponseForOddCharacters(string sBody)
