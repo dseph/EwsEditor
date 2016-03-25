@@ -53,14 +53,14 @@
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
-            // DeveloperItemTestWindow
+            // DeveloperItemTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 482);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.textBox1);
-            this.Name = "DeveloperItemTestWindow";
+            this.Name = "DeveloperItemTestForm";
             this.Text = "Developer Item Test Window";
             this.Load += new System.EventHandler(this.DeveloperItemTestWindow_Load);
             this.ResumeLayout(false);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,8 @@ using System.Net;
 using System.Xml;
 using Microsoft.Exchange.WebServices.Data;
 
+// This form is a convient place for a developer to integrate their code on a folder level in order to do testing.
+// 
 namespace EWSEditor.Forms
 {
     public partial class DeveloperFolderTestform : Form
@@ -56,5 +59,111 @@ namespace EWSEditor.Forms
 
             textBox1.Text = oSB.ToString();
         }
+
+        // LoadFolder
+        // This will load an Folder by ID.
+        // Test code to load a folder object with many properties - modify as needed for your code.
+        private bool LoadFolder(ExchangeService oService, FolderId oFolderId, out Folder oFolder)
+        {
+            // https://blogs.msdn.microsoft.com/akashb/2013/06/13/generating-a-report-which-folders-have-a-personal-tag-applied-to-it-using-ews-managed-api-from-powershell-exchange-2010/
+            
+            bool bRet = true;
+
+            Folder oReturnFolder = null;
+            oFolder = null;
+
+            List<FolderId> oFolders = new List<FolderId>();
+            oFolders.Add(oFolderId);
+
+            ExtendedPropertyDefinition Prop_IsHidden = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+            
+            // Folder Path
+            ExtendedPropertyDefinition Prop_FolderPath = new ExtendedPropertyDefinition(26293, MapiPropertyType.String);
+
+            // PR_RETENTION_FLAGS 0x301D  
+            ExtendedPropertyDefinition Prop_RetentionFlags = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);
+
+            // PR_RETENTION_PERIOD 0x301A
+            ExtendedPropertyDefinition Prop_Retention_Period = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);
+
+ 
+            PropertySet oPropertySet = new PropertySet(
+                BasePropertySet.IdOnly,
+                FolderSchema.FolderClass,
+                FolderSchema.DisplayName,
+                Prop_IsHidden);
+
+            // Add more properties?
+            oPropertySet.Add(FolderSchema.TotalCount);
+            oPropertySet.Add(FolderSchema.UnreadCount);
+            oPropertySet.Add(FolderSchema.WellKnownFolderName);
+            oPropertySet.Add(FolderSchema.ChildFolderCount);
+
+            oPropertySet.Add(Prop_FolderPath);
+            oPropertySet.Add(Prop_Retention_Period);
+            oPropertySet.Add(Prop_RetentionFlags);
+
+ 
+            ServiceResponseCollection<GetFolderResponse> oGetFolderResponses = oService.BindToFolders(oFolders, oPropertySet);
+
+            foreach (GetFolderResponse oGetItemResponse in oGetFolderResponses)
+            {
+                switch (oGetItemResponse.Result)
+                {
+                    case ServiceResult.Success:
+
+                        oReturnFolder = oGetItemResponse.Folder;
+
+                        MessageBox.Show("ServiceResult.Success");
+
+                        break;
+                    case ServiceResult.Error:
+                        string sError =
+                                "ErrorCode:           " + oGetItemResponse.ErrorCode.ToString() + "\r\n" +
+                                "\r\nErrorMessage:    " + oGetItemResponse.ErrorMessage + "\r\n";
+
+                        MessageBox.Show(sError, "ServiceResult.Error");
+
+                        break;
+                    case ServiceResult.Warning:
+                        string sWarning =
+                               "ErrorCode:           " + oGetItemResponse.ErrorCode.ToString() + "\r\n" +
+                               "\r\nErrorMessage:    " + oGetItemResponse.ErrorMessage + "\r\n";
+
+                        MessageBox.Show(sWarning, "ServiceResult.Warning");
+
+                        break;
+                    //default:
+                    //    // Should never get here.
+                    //    string sSomeError =
+                    //            "ErrorCode:           " + oGetItemResponse.ErrorCode.ToString() + "\r\n" +
+                    //            "\r\nErrorMessage:    " + oGetItemResponse.ErrorMessage + "\r\n";
+
+                    //    MessageBox.Show(sSomeError, "Some sort of error");
+                    //    break;
+                }
+
+            }
+
+            oFolder = oReturnFolder;
+
+            return bRet;
+
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            bool bRet = false;
+            Folder oFolder = null;
+
+            bRet = LoadFolder(_service, _folderId, out oFolder);
+
+            // Load the item for _itemId
+            //bRet = CallMyCustomCode(oFolder);  // Modify to call your code.
+        }
+
+        // ******************************************************************************
+        // Your code below **************************************************************
+        // ******************************************************************************
     }
 }

@@ -86,8 +86,8 @@ namespace EWSEditor.Forms
             // 
             this.splitter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitter.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitter.Location = new System.Drawing.Point(0, 24);
-            this.splitter.Margin = new System.Windows.Forms.Padding(4);
+            this.splitter.Location = new System.Drawing.Point(0, 33);
+            this.splitter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitter.Name = "splitter";
             // 
             // splitter.Panel1
@@ -97,9 +97,9 @@ namespace EWSEditor.Forms
             // splitter.Panel2
             // 
             this.splitter.Panel2.Controls.Add(this.FolderPropertyDetailsGrid);
-            this.splitter.Size = new System.Drawing.Size(1187, 804);
+            this.splitter.Size = new System.Drawing.Size(1335, 1007);
             this.splitter.SplitterDistance = 228;
-            this.splitter.SplitterWidth = 5;
+            this.splitter.SplitterWidth = 6;
             this.splitter.TabIndex = 4;
             // 
             // FolderTreeView
@@ -112,11 +112,11 @@ namespace EWSEditor.Forms
             this.FolderTreeView.ImageList = this.imageList;
             this.FolderTreeView.ItemHeight = 16;
             this.FolderTreeView.Location = new System.Drawing.Point(0, 0);
-            this.FolderTreeView.Margin = new System.Windows.Forms.Padding(4);
+            this.FolderTreeView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FolderTreeView.Name = "FolderTreeView";
             this.FolderTreeView.SelectedImageIndex = 1;
             this.FolderTreeView.ShowNodeToolTips = true;
-            this.FolderTreeView.Size = new System.Drawing.Size(228, 804);
+            this.FolderTreeView.Size = new System.Drawing.Size(228, 1007);
             this.FolderTreeView.TabIndex = 0;
             this.FolderTreeView.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.FolderTreeView_BeforeCollapse);
             this.FolderTreeView.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.FolderTreeView_BeforeExpand);
@@ -142,15 +142,16 @@ namespace EWSEditor.Forms
             // 
             this.FolderPropertyDetailsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FolderPropertyDetailsGrid.Location = new System.Drawing.Point(0, 0);
-            this.FolderPropertyDetailsGrid.Margin = new System.Windows.Forms.Padding(5);
+            this.FolderPropertyDetailsGrid.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.FolderPropertyDetailsGrid.Name = "FolderPropertyDetailsGrid";
-            this.FolderPropertyDetailsGrid.Size = new System.Drawing.Size(954, 804);
+            this.FolderPropertyDetailsGrid.Size = new System.Drawing.Size(1101, 1007);
             this.FolderPropertyDetailsGrid.TabIndex = 0;
             this.FolderPropertyDetailsGrid.PropertyChanged += new EWSEditor.Forms.Controls.PropertyDetialsGrid.PropertyChangedEventHandler(this.FolderPropertyDetailsGrid_PropertyChanged);
             this.FolderPropertyDetailsGrid.Load += new System.EventHandler(this.FolderPropertyDetailsGrid_Load);
             // 
             // cmsFolderMenu
             // 
+            this.cmsFolderMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.cmsFolderMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuOpenContents,
             this.mnuOpenAssocContents,
@@ -176,12 +177,12 @@ namespace EWSEditor.Forms
             this.toolStripSeparator3,
             this.developerFolderTestFormToolStripMenuItem});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
-            this.cmsFolderMenu.Size = new System.Drawing.Size(270, 414);
+            this.cmsFolderMenu.Size = new System.Drawing.Size(389, 583);
             // 
             // mnuOpenContents
             // 
             this.mnuOpenContents.Name = "mnuOpenContents";
-            this.mnuOpenContents.Size = new System.Drawing.Size(269, 22);
+            this.mnuOpenContents.Size = new System.Drawing.Size(388, 30);
             this.mnuOpenContents.Tag = "Folder";
             this.mnuOpenContents.Text = "Open Items...";
             this.mnuOpenContents.Click += new System.EventHandler(this.OpenContentsMenu_Click);
@@ -189,7 +190,7 @@ namespace EWSEditor.Forms
             // mnuOpenAssocContents
             // 
             this.mnuOpenAssocContents.Name = "mnuOpenAssocContents";
-            this.mnuOpenAssocContents.Size = new System.Drawing.Size(269, 22);
+            this.mnuOpenAssocContents.Size = new System.Drawing.Size(388, 30);
             this.mnuOpenAssocContents.Tag = "Folder";
             this.mnuOpenAssocContents.Text = "Open Associated Items...";
             this.mnuOpenAssocContents.Click += new System.EventHandler(this.OpenAssocContentsMenu_Click);
@@ -197,43 +198,43 @@ namespace EWSEditor.Forms
             // mnuOpenSoftDelItems
             // 
             this.mnuOpenSoftDelItems.Name = "mnuOpenSoftDelItems";
-            this.mnuOpenSoftDelItems.Size = new System.Drawing.Size(269, 22);
+            this.mnuOpenSoftDelItems.Size = new System.Drawing.Size(388, 30);
             this.mnuOpenSoftDelItems.Text = "Open Soft Deleted Items...";
             this.mnuOpenSoftDelItems.Click += new System.EventHandler(this.OpenSoftDelItemsMenu_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(266, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(385, 6);
             // 
             // mnuOpenStreamingNotifications
             // 
             this.mnuOpenStreamingNotifications.Name = "mnuOpenStreamingNotifications";
-            this.mnuOpenStreamingNotifications.Size = new System.Drawing.Size(269, 22);
+            this.mnuOpenStreamingNotifications.Size = new System.Drawing.Size(388, 30);
             this.mnuOpenStreamingNotifications.Text = "Open Streaming Notifications Viewer";
             this.mnuOpenStreamingNotifications.Click += new System.EventHandler(this.mnuOpenStreamingNotifications_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(266, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(385, 6);
             // 
             // mnuPermissions
             // 
             this.mnuPermissions.Name = "mnuPermissions";
-            this.mnuPermissions.Size = new System.Drawing.Size(269, 22);
+            this.mnuPermissions.Size = new System.Drawing.Size(388, 30);
             this.mnuPermissions.Text = "Display Permissions...";
             this.mnuPermissions.Click += new System.EventHandler(this.PermissionsMenu_Click);
             // 
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(266, 6);
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(385, 6);
             // 
             // mnuCreateSubFolder
             // 
             this.mnuCreateSubFolder.Name = "mnuCreateSubFolder";
-            this.mnuCreateSubFolder.Size = new System.Drawing.Size(269, 22);
+            this.mnuCreateSubFolder.Size = new System.Drawing.Size(388, 30);
             this.mnuCreateSubFolder.Text = "Create SubFolder...";
             this.mnuCreateSubFolder.Click += new System.EventHandler(this.CreateSubFolderMenu_Click);
             // 
@@ -245,120 +246,120 @@ namespace EWSEditor.Forms
             this.DeleteMoveMenu,
             this.EmptyFolderMenu});
             this.mnuEmptyFolder.Name = "mnuEmptyFolder";
-            this.mnuEmptyFolder.Size = new System.Drawing.Size(269, 22);
+            this.mnuEmptyFolder.Size = new System.Drawing.Size(388, 30);
             this.mnuEmptyFolder.Text = "Delete Folder";
             this.mnuEmptyFolder.Click += new System.EventHandler(this.mnuDeleteFolder_Click);
             // 
             // DeleteHardMenu
             // 
             this.DeleteHardMenu.Name = "DeleteHardMenu";
-            this.DeleteHardMenu.Size = new System.Drawing.Size(193, 22);
+            this.DeleteHardMenu.Size = new System.Drawing.Size(279, 30);
             this.DeleteHardMenu.Text = "Hard Delete";
             this.DeleteHardMenu.Click += new System.EventHandler(this.DeleteFolderMenu_Click);
             // 
             // DeleteSoftMenu
             // 
             this.DeleteSoftMenu.Name = "DeleteSoftMenu";
-            this.DeleteSoftMenu.Size = new System.Drawing.Size(193, 22);
+            this.DeleteSoftMenu.Size = new System.Drawing.Size(279, 30);
             this.DeleteSoftMenu.Text = "Soft Delete";
             this.DeleteSoftMenu.Click += new System.EventHandler(this.DeleteFolderMenu_Click);
             // 
             // DeleteMoveMenu
             // 
             this.DeleteMoveMenu.Name = "DeleteMoveMenu";
-            this.DeleteMoveMenu.Size = new System.Drawing.Size(193, 22);
+            this.DeleteMoveMenu.Size = new System.Drawing.Size(279, 30);
             this.DeleteMoveMenu.Text = "Move to Deleted Items";
             this.DeleteMoveMenu.Click += new System.EventHandler(this.DeleteFolderMenu_Click);
             // 
             // EmptyFolderMenu
             // 
             this.EmptyFolderMenu.Name = "EmptyFolderMenu";
-            this.EmptyFolderMenu.Size = new System.Drawing.Size(193, 22);
+            this.EmptyFolderMenu.Size = new System.Drawing.Size(279, 30);
             this.EmptyFolderMenu.Text = "Empty Folder";
             this.EmptyFolderMenu.Click += new System.EventHandler(this.EmptyFolderHardDeletMenu_Click);
             // 
             // mnuEmptyTheFolder
             // 
             this.mnuEmptyTheFolder.Name = "mnuEmptyTheFolder";
-            this.mnuEmptyTheFolder.Size = new System.Drawing.Size(269, 22);
+            this.mnuEmptyTheFolder.Size = new System.Drawing.Size(388, 30);
             this.mnuEmptyTheFolder.Text = "Empty Folder";
             this.mnuEmptyTheFolder.Click += new System.EventHandler(this.mnuEmptyTheFolder_Click);
             // 
             // mnuCopyFolder
             // 
             this.mnuCopyFolder.Name = "mnuCopyFolder";
-            this.mnuCopyFolder.Size = new System.Drawing.Size(269, 22);
+            this.mnuCopyFolder.Size = new System.Drawing.Size(388, 30);
             this.mnuCopyFolder.Text = "Copy Folder...";
             this.mnuCopyFolder.Click += new System.EventHandler(this.CopyFolderMenu_Click);
             // 
             // mnuMoveFolder
             // 
             this.mnuMoveFolder.Name = "mnuMoveFolder";
-            this.mnuMoveFolder.Size = new System.Drawing.Size(269, 22);
+            this.mnuMoveFolder.Size = new System.Drawing.Size(388, 30);
             this.mnuMoveFolder.Text = "Move Folder...";
             this.mnuMoveFolder.Click += new System.EventHandler(this.MoveFolderMenu_Click);
             // 
             // toolStripMenuItem12
             // 
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(266, 6);
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(385, 6);
             // 
             // mnuDumpMIMEContents
             // 
             this.mnuDumpMIMEContents.Name = "mnuDumpMIMEContents";
-            this.mnuDumpMIMEContents.Size = new System.Drawing.Size(269, 22);
+            this.mnuDumpMIMEContents.Size = new System.Drawing.Size(388, 30);
             this.mnuDumpMIMEContents.Text = "Save Folder Contents as MIME...";
             this.mnuDumpMIMEContents.Click += new System.EventHandler(this.DumpMimeContentsMenu_Click);
             // 
             // mnuDumpXMLContents
             // 
             this.mnuDumpXMLContents.Name = "mnuDumpXMLContents";
-            this.mnuDumpXMLContents.Size = new System.Drawing.Size(269, 22);
+            this.mnuDumpXMLContents.Size = new System.Drawing.Size(388, 30);
             this.mnuDumpXMLContents.Text = "Save Folder Contents as XML...";
             this.mnuDumpXMLContents.Click += new System.EventHandler(this.DumpXmlContentsMenu_Click);
             // 
             // addExtendedPropertyToolStripMenuItem
             // 
             this.addExtendedPropertyToolStripMenuItem.Name = "addExtendedPropertyToolStripMenuItem";
-            this.addExtendedPropertyToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.addExtendedPropertyToolStripMenuItem.Size = new System.Drawing.Size(388, 30);
             this.addExtendedPropertyToolStripMenuItem.Text = "Add Extended Property...";
             this.addExtendedPropertyToolStripMenuItem.Click += new System.EventHandler(this.AddExtendedPropertyToolStripMenuItem_Click);
             // 
             // toolStripMenuItem14
             // 
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-            this.toolStripMenuItem14.Size = new System.Drawing.Size(266, 6);
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(385, 6);
             // 
             // mnuFolderCalendarView
             // 
             this.mnuFolderCalendarView.Name = "mnuFolderCalendarView";
-            this.mnuFolderCalendarView.Size = new System.Drawing.Size(269, 22);
+            this.mnuFolderCalendarView.Size = new System.Drawing.Size(388, 30);
             this.mnuFolderCalendarView.Text = "CalendarView... ";
             this.mnuFolderCalendarView.Click += new System.EventHandler(this.MnuFolderCalendarView_Click);
             // 
             // mnuNewItem
             // 
             this.mnuNewItem.Name = "mnuNewItem";
-            this.mnuNewItem.Size = new System.Drawing.Size(269, 22);
+            this.mnuNewItem.Size = new System.Drawing.Size(388, 30);
             this.mnuNewItem.Text = "New... ";
             this.mnuNewItem.Click += new System.EventHandler(this.MnuNewItem_Click);
             // 
             // SearchItemsMenuItem
             // 
             this.SearchItemsMenuItem.Name = "SearchItemsMenuItem";
-            this.SearchItemsMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.SearchItemsMenuItem.Size = new System.Drawing.Size(388, 30);
             this.SearchItemsMenuItem.Text = "Search...";
             this.SearchItemsMenuItem.Click += new System.EventHandler(this.SearchItemsMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(266, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(385, 6);
             // 
             // developerFolderTestFormToolStripMenuItem
             // 
             this.developerFolderTestFormToolStripMenuItem.Name = "developerFolderTestFormToolStripMenuItem";
-            this.developerFolderTestFormToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
+            this.developerFolderTestFormToolStripMenuItem.Size = new System.Drawing.Size(388, 30);
             this.developerFolderTestFormToolStripMenuItem.Text = "Developer Folder Test  Form";
             this.developerFolderTestFormToolStripMenuItem.Click += new System.EventHandler(this.developerFolderTestFormToolStripMenuItem_Click);
             // 
@@ -386,6 +387,7 @@ namespace EWSEditor.Forms
             // 
             // mnuServiceContext
             // 
+            this.mnuServiceContext.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.mnuServiceContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuEditExchangeService,
             this.toolStripMenuItem10,
@@ -393,47 +395,47 @@ namespace EWSEditor.Forms
             this.toolStripMenuItem6,
             this.mnuContextCloseExchangeService});
             this.mnuServiceContext.Name = "mnuServiceContext";
-            this.mnuServiceContext.Size = new System.Drawing.Size(197, 82);
+            this.mnuServiceContext.Size = new System.Drawing.Size(279, 106);
             // 
             // mnuEditExchangeService
             // 
             this.mnuEditExchangeService.Name = "mnuEditExchangeService";
-            this.mnuEditExchangeService.Size = new System.Drawing.Size(196, 22);
+            this.mnuEditExchangeService.Size = new System.Drawing.Size(278, 30);
             this.mnuEditExchangeService.Text = "Edit Exchange Service...";
             this.mnuEditExchangeService.Click += new System.EventHandler(this.EditExchangeServiceMenu_Click);
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(193, 6);
+            this.toolStripMenuItem10.Size = new System.Drawing.Size(275, 6);
             // 
             // mnuAddRootFolder
             // 
             this.mnuAddRootFolder.Name = "mnuAddRootFolder";
-            this.mnuAddRootFolder.Size = new System.Drawing.Size(196, 22);
+            this.mnuAddRootFolder.Size = new System.Drawing.Size(278, 30);
             this.mnuAddRootFolder.Text = "Add Root Folder...";
             this.mnuAddRootFolder.Click += new System.EventHandler(this.AddRootFolderMenu_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(193, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(275, 6);
             // 
             // mnuContextCloseExchangeService
             // 
             this.mnuContextCloseExchangeService.Name = "mnuContextCloseExchangeService";
-            this.mnuContextCloseExchangeService.Size = new System.Drawing.Size(196, 22);
+            this.mnuContextCloseExchangeService.Size = new System.Drawing.Size(278, 30);
             this.mnuContextCloseExchangeService.Text = "Close ExchangeService";
             this.mnuContextCloseExchangeService.Click += new System.EventHandler(this.CloseExchangeServiceButton_Click);
             // 
             // FolderTreeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 850);
+            this.ClientSize = new System.Drawing.Size(1335, 1062);
             this.Controls.Add(this.splitter);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(9, 7, 9, 7);
+            this.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Name = "FolderTreeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FolderTreeForm_Load);
