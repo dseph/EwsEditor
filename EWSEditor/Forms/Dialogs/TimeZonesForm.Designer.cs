@@ -215,7 +215,7 @@
             this.tabClientTimezoneLookup.Margin = new System.Windows.Forms.Padding(4);
             this.tabClientTimezoneLookup.Name = "tabClientTimezoneLookup";
             this.tabClientTimezoneLookup.Padding = new System.Windows.Forms.Padding(4);
-            this.tabClientTimezoneLookup.Size = new System.Drawing.Size(1018, 616);
+            this.tabClientTimezoneLookup.Size = new System.Drawing.Size(1026, 616);
             this.tabClientTimezoneLookup.TabIndex = 1;
             this.tabClientTimezoneLookup.Text = "Client Timezone Lookup";
             this.tabClientTimezoneLookup.UseVisualStyleBackColor = true;
@@ -230,7 +230,7 @@
             this.txtTimeZoneLookupResults.Multiline = true;
             this.txtTimeZoneLookupResults.Name = "txtTimeZoneLookupResults";
             this.txtTimeZoneLookupResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTimeZoneLookupResults.Size = new System.Drawing.Size(1003, 551);
+            this.txtTimeZoneLookupResults.Size = new System.Drawing.Size(1011, 551);
             this.txtTimeZoneLookupResults.TabIndex = 38;
             this.txtTimeZoneLookupResults.WordWrap = false;
             // 
