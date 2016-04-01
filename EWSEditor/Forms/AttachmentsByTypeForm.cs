@@ -15,7 +15,7 @@ using EWSEditor.Common;
 
 namespace EWSEditor.Forms
 {
-    public partial class AttachmentsForm : Form
+    public partial class AttachmentsByTypeForm : Form
     {
         private ExchangeService _CurrentService = null;
 
@@ -23,14 +23,14 @@ namespace EWSEditor.Forms
         //private ItemId _ItemId = null;     
         private Item _Item = null;
         
-        public AttachmentsForm()
+        public AttachmentsByTypeForm()
         {
             InitializeComponent();
         }
 
  
 
-        public AttachmentsForm(ExchangeService CurrentService, ItemId oItemId)
+        public AttachmentsByTypeForm(ExchangeService CurrentService, ItemId oItemId)
         {
             InitializeComponent();
 

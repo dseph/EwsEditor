@@ -104,7 +104,7 @@ namespace EWSEditor.Common
 
                 //sInfo = _EwsCaller.GetItemInfo(oItemTag.Id);
                 
-                AttachmentsForm oForm = new AttachmentsForm(oExchangeService, oItemTag.Id);
+                AttachmentsByTypeForm oForm = new AttachmentsByTypeForm(oExchangeService, oItemTag.Id);
 
                 oForm.ShowDialog();
                 oForm = null;

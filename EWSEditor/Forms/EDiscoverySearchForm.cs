@@ -321,6 +321,38 @@ namespace EWSEditor.Forms
 
         }
 
+        private void lvItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
+
+        private void DisplayItem()
+        {
+            if (lvItems.SelectedItems.Count > 0)
+            {
+                string sId = lvItems.SelectedItems[3].Text.Trim();
+                ItemId oItemId = new ItemId(sId);
+                
+
+                List<ItemId> item = new List<ItemId>();
+                item.Add(oItemId);
+
+                ItemsContentForm.Show(
+                    "Displaying item",
+                    item,
+                    _CurrentService,
+                    this);
+            }
+        }
+
+        private void lvItems_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvItems_DoubleClick(object sender, EventArgs e)
+        {
+            DisplayItem();
+        }
     }
 }

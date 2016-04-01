@@ -44,12 +44,11 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(1, 129);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox1.Location = new System.Drawing.Point(1, 103);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(1376, 274);
+            this.textBox1.Size = new System.Drawing.Size(1224, 220);
             this.textBox1.TabIndex = 4;
             // 
             // webBrowser1
@@ -57,19 +56,17 @@
             this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(1, 431);
-            this.webBrowser1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(22, 25);
+            this.webBrowser1.Location = new System.Drawing.Point(1, 345);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1366, 418);
+            this.webBrowser1.Size = new System.Drawing.Size(1214, 334);
             this.webBrowser1.TabIndex = 5;
             // 
             // btnCreatePageAndView
             // 
-            this.btnCreatePageAndView.Location = new System.Drawing.Point(659, 13);
-            this.btnCreatePageAndView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCreatePageAndView.Location = new System.Drawing.Point(586, 10);
             this.btnCreatePageAndView.Name = "btnCreatePageAndView";
-            this.btnCreatePageAndView.Size = new System.Drawing.Size(348, 33);
+            this.btnCreatePageAndView.Size = new System.Drawing.Size(309, 26);
             this.btnCreatePageAndView.TabIndex = 3;
             this.btnCreatePageAndView.Text = "Place content HTML page and view.";
             this.btnCreatePageAndView.UseVisualStyleBackColor = true;
@@ -77,10 +74,9 @@
             // 
             // btnViewInExternalIE
             // 
-            this.btnViewInExternalIE.Location = new System.Drawing.Point(444, 12);
-            this.btnViewInExternalIE.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnViewInExternalIE.Location = new System.Drawing.Point(395, 10);
             this.btnViewInExternalIE.Name = "btnViewInExternalIE";
-            this.btnViewInExternalIE.Size = new System.Drawing.Size(183, 33);
+            this.btnViewInExternalIE.Size = new System.Drawing.Size(163, 26);
             this.btnViewInExternalIE.TabIndex = 2;
             this.btnViewInExternalIE.Text = "View In External IE";
             this.btnViewInExternalIE.UseVisualStyleBackColor = true;
@@ -88,10 +84,9 @@
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(297, 13);
-            this.btnView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnView.Location = new System.Drawing.Point(264, 10);
             this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(123, 33);
+            this.btnView.Size = new System.Drawing.Size(109, 26);
             this.btnView.TabIndex = 1;
             this.btnView.Text = "View";
             this.btnView.UseVisualStyleBackColor = true;
@@ -100,18 +95,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-3, 407);
+            this.label1.Location = new System.Drawing.Point(-3, 326);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 20);
+            this.label1.Size = new System.Drawing.Size(90, 17);
             this.label1.TabIndex = 6;
             this.label1.Text = "Web Control:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 105);
+            this.label2.Location = new System.Drawing.Point(7, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 20);
+            this.label2.Size = new System.Drawing.Size(57, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Source:";
             // 
@@ -123,10 +118,9 @@
             "HTML",
             "XML",
             "TXT"});
-            this.cmboFileExtension.Location = new System.Drawing.Point(130, 16);
-            this.cmboFileExtension.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmboFileExtension.Location = new System.Drawing.Point(116, 13);
             this.cmboFileExtension.Name = "cmboFileExtension";
-            this.cmboFileExtension.Size = new System.Drawing.Size(136, 28);
+            this.cmboFileExtension.Size = new System.Drawing.Size(121, 24);
             this.cmboFileExtension.TabIndex = 7;
             this.cmboFileExtension.Text = "HTML";
             // 
@@ -134,18 +128,18 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 20);
+            this.label3.Location = new System.Drawing.Point(6, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(108, 20);
+            this.label3.Size = new System.Drawing.Size(97, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "Content Type:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 60);
+            this.label5.Location = new System.Drawing.Point(11, 48);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(1186, 20);
+            this.label5.Size = new System.Drawing.Size(1063, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "Note:   Change <?xml version=\"1.0\" encoding=\"utf-16\"?> to  <?xml version=\"1.0\" en" +
     "coding=\"utf-8\"?> as there are issues with the web control rendering utf8-16 cont" +
@@ -153,9 +147,10 @@
             // 
             // ViewInBrowser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1380, 863);
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ClientSize = new System.Drawing.Size(1227, 690);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmboFileExtension);
@@ -166,7 +161,6 @@
             this.Controls.Add(this.btnCreatePageAndView);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.textBox1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ViewInBrowser";
             this.Text = "View in Browser";
             this.Load += new System.EventHandler(this.ViewInBrowser_Load);

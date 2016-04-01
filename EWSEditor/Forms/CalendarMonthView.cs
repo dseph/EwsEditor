@@ -219,6 +219,25 @@ namespace EWSEditor.Forms
                 oItemTag = null;
             }
         }
+
+        private void openItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (lvItems.SelectedItems.Count > 0)
+            {
+                ItemTag oItemTag = null;
+                oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
+
+                List<ItemId> item = new List<ItemId>();
+                item.Add(oItemTag.Id);
+
+                ItemsContentForm.Show(
+                    "Displaying recurrence item",
+                    item,
+                    _CurrentService,
+                    this);
+            }
+        }
  
             
     }

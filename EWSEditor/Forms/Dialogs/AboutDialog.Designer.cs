@@ -44,9 +44,10 @@
             // logoPictureBox
             // 
             this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
-            this.logoPictureBox.Location = new System.Drawing.Point(12, 12);
+            this.logoPictureBox.Location = new System.Drawing.Point(16, 15);
+            this.logoPictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.logoPictureBox.Name = "logoPictureBox";
-            this.logoPictureBox.Size = new System.Drawing.Size(74, 66);
+            this.logoPictureBox.Size = new System.Drawing.Size(99, 81);
             this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logoPictureBox.TabIndex = 13;
             this.logoPictureBox.TabStop = false;
@@ -55,36 +56,41 @@
             // 
             this.lblProductName.AutoSize = true;
             this.lblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductName.Location = new System.Drawing.Point(93, 13);
+            this.lblProductName.Location = new System.Drawing.Point(124, 16);
+            this.lblProductName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(114, 13);
+            this.lblProductName.Size = new System.Drawing.Size(141, 17);
             this.lblProductName.TabIndex = 3;
             this.lblProductName.Text = "[PRODUCT NAME]";
             // 
             // lblProductVersion
             // 
             this.lblProductVersion.AutoSize = true;
-            this.lblProductVersion.Location = new System.Drawing.Point(93, 38);
+            this.lblProductVersion.Location = new System.Drawing.Point(124, 47);
+            this.lblProductVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProductVersion.Name = "lblProductVersion";
-            this.lblProductVersion.Size = new System.Drawing.Size(117, 13);
+            this.lblProductVersion.Size = new System.Drawing.Size(149, 17);
             this.lblProductVersion.TabIndex = 4;
             this.lblProductVersion.Text = "[PRODUCT VERSION]";
             // 
             // lblCopyright
             // 
             this.lblCopyright.AutoSize = true;
-            this.lblCopyright.Location = new System.Drawing.Point(93, 65);
+            this.lblCopyright.Location = new System.Drawing.Point(124, 80);
+            this.lblCopyright.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCopyright.Name = "lblCopyright";
-            this.lblCopyright.Size = new System.Drawing.Size(76, 13);
+            this.lblCopyright.Size = new System.Drawing.Size(97, 17);
             this.lblCopyright.TabIndex = 5;
             this.lblCopyright.Text = "[COPYRIGHT]";
             // 
             // grpLine1
             // 
             this.grpLine1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpLine1.Location = new System.Drawing.Point(12, 84);
+            this.grpLine1.Location = new System.Drawing.Point(16, 103);
+            this.grpLine1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpLine1.Name = "grpLine1";
-            this.grpLine1.Size = new System.Drawing.Size(599, 13);
+            this.grpLine1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpLine1.Size = new System.Drawing.Size(799, 16);
             this.grpLine1.TabIndex = 6;
             this.grpLine1.TabStop = false;
             // 
@@ -93,20 +99,22 @@
             this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescription.Location = new System.Drawing.Point(12, 103);
+            this.txtDescription.Location = new System.Drawing.Point(16, 127);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescription.Size = new System.Drawing.Size(599, 296);
+            this.txtDescription.Size = new System.Drawing.Size(797, 363);
             this.txtDescription.TabIndex = 7;
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(536, 12);
+            this.btnOK.Location = new System.Drawing.Point(715, 15);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(100, 28);
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -117,9 +125,10 @@
             this.chkStartup.AutoSize = true;
             this.chkStartup.Checked = true;
             this.chkStartup.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkStartup.Location = new System.Drawing.Point(12, 406);
+            this.chkStartup.Location = new System.Drawing.Point(16, 500);
+            this.chkStartup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkStartup.Name = "chkStartup";
-            this.chkStartup.Size = new System.Drawing.Size(107, 17);
+            this.chkStartup.Size = new System.Drawing.Size(140, 21);
             this.chkStartup.TabIndex = 8;
             this.chkStartup.Text = "Display at startup";
             this.chkStartup.UseVisualStyleBackColor = true;
@@ -128,9 +137,10 @@
             // MoreEwsEditor
             // 
             this.MoreEwsEditor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MoreEwsEditor.Location = new System.Drawing.Point(399, 65);
+            this.MoreEwsEditor.Location = new System.Drawing.Point(532, 80);
+            this.MoreEwsEditor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.MoreEwsEditor.Name = "MoreEwsEditor";
-            this.MoreEwsEditor.Size = new System.Drawing.Size(212, 13);
+            this.MoreEwsEditor.Size = new System.Drawing.Size(283, 16);
             this.MoreEwsEditor.TabIndex = 2;
             this.MoreEwsEditor.TabStop = true;
             this.MoreEwsEditor.Text = "More EWSEditor Info...";
@@ -140,9 +150,10 @@
             // CodeGalleryLink
             // 
             this.CodeGalleryLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CodeGalleryLink.Location = new System.Drawing.Point(381, 38);
+            this.CodeGalleryLink.Location = new System.Drawing.Point(508, 47);
+            this.CodeGalleryLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CodeGalleryLink.Name = "CodeGalleryLink";
-            this.CodeGalleryLink.Size = new System.Drawing.Size(230, 13);
+            this.CodeGalleryLink.Size = new System.Drawing.Size(307, 16);
             this.CodeGalleryLink.TabIndex = 1;
             this.CodeGalleryLink.TabStop = true;
             this.CodeGalleryLink.Text = "EWSEditor Project Website";
@@ -152,9 +163,10 @@
             // AboutDialog
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 426);
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.ClientSize = new System.Drawing.Size(831, 524);
             this.Controls.Add(this.CodeGalleryLink);
             this.Controls.Add(this.MoreEwsEditor);
             this.Controls.Add(this.chkStartup);
@@ -165,8 +177,9 @@
             this.Controls.Add(this.lblProductVersion);
             this.Controls.Add(this.lblProductName);
             this.Controls.Add(this.logoPictureBox);
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "AboutDialog";
-            this.Padding = new System.Windows.Forms.Padding(9);
+            this.Padding = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.ShowIcon = false;
             this.Text = "About EWS Editor";
             this.Load += new System.EventHandler(this.AboutDialog_Load);

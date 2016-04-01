@@ -862,6 +862,21 @@ namespace EWSEditor.Common
         {
            // wbResponse
         }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
     }
 
     
