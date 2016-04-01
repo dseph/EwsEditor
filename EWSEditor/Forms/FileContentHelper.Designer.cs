@@ -53,7 +53,7 @@
             // 
             this.txtLoad.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.txtLoad.Location = new System.Drawing.Point(13, 50);
-            this.txtLoad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLoad.Margin = new System.Windows.Forms.Padding(4);
             this.txtLoad.MaxLength = 0;
             this.txtLoad.Multiline = true;
             this.txtLoad.Name = "txtLoad";
@@ -122,7 +122,7 @@
             // 
             this.txtSave.Font = new System.Drawing.Font("Courier New", 7.8F);
             this.txtSave.Location = new System.Drawing.Point(9, 42);
-            this.txtSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSave.Margin = new System.Windows.Forms.Padding(4);
             this.txtSave.MaxLength = 0;
             this.txtSave.Multiline = true;
             this.txtSave.Name = "txtSave";
@@ -138,7 +138,7 @@
             "BASE64",
             "Hex Bytes"});
             this.cmboSaveType.Location = new System.Drawing.Point(92, 7);
-            this.cmboSaveType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmboSaveType.Margin = new System.Windows.Forms.Padding(4);
             this.cmboSaveType.Name = "cmboSaveType";
             this.cmboSaveType.Size = new System.Drawing.Size(173, 24);
             this.cmboSaveType.TabIndex = 21;
@@ -170,7 +170,7 @@
             "Hex Bytes",
             "Hex Dump"});
             this.cmboLoadType.Location = new System.Drawing.Point(92, 17);
-            this.cmboLoadType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmboLoadType.Margin = new System.Windows.Forms.Padding(4);
             this.cmboLoadType.Name = "cmboLoadType";
             this.cmboLoadType.Size = new System.Drawing.Size(173, 24);
             this.cmboLoadType.TabIndex = 23;
@@ -181,12 +181,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.Location = new System.Drawing.Point(7, 2);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.LightSteelBlue;
             this.splitContainer1.Panel1.Controls.Add(this.btnLoadFile);
             this.splitContainer1.Panel1.Controls.Add(this.txtLoad);
             this.splitContainer1.Panel1.Controls.Add(this.lblLoadType);
@@ -213,7 +214,7 @@
             // btnLoadFile
             // 
             this.btnLoadFile.Location = new System.Drawing.Point(1145, 15);
-            this.btnLoadFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLoadFile.Margin = new System.Windows.Forms.Padding(4);
             this.btnLoadFile.Name = "btnLoadFile";
             this.btnLoadFile.Size = new System.Drawing.Size(55, 31);
             this.btnLoadFile.TabIndex = 26;
@@ -224,7 +225,7 @@
             // btnSaveFileGo
             // 
             this.btnSaveFileGo.Location = new System.Drawing.Point(1145, 4);
-            this.btnSaveFileGo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSaveFileGo.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveFileGo.Name = "btnSaveFileGo";
             this.btnSaveFileGo.Size = new System.Drawing.Size(55, 31);
             this.btnSaveFileGo.TabIndex = 24;
@@ -236,9 +237,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1224, 633);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FileContentHelper";
             this.Text = "File Content Helper";
             this.Load += new System.EventHandler(this.Base64Contenthelper_Load);

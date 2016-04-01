@@ -142,7 +142,7 @@
             // btnGetMailTips
             // 
             this.btnGetMailTips.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetMailTips.Location = new System.Drawing.Point(767, 15);
+            this.btnGetMailTips.Location = new System.Drawing.Point(825, 15);
             this.btnGetMailTips.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnGetMailTips.Name = "btnGetMailTips";
             this.btnGetMailTips.Size = new System.Drawing.Size(190, 39);
@@ -157,12 +157,12 @@
             this.txtResponse.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResponse.Location = new System.Drawing.Point(4, 8);
+            this.txtResponse.Location = new System.Drawing.Point(0, 3);
             this.txtResponse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponse.Size = new System.Drawing.Size(372, 169);
+            this.txtResponse.Size = new System.Drawing.Size(990, 394);
             this.txtResponse.TabIndex = 19;
             this.txtResponse.TextChanged += new System.EventHandler(this.txtResponse_TextChanged);
             // 
@@ -173,10 +173,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 222);
+            this.tabControl1.Location = new System.Drawing.Point(12, 207);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(948, 257);
+            this.tabControl1.Size = new System.Drawing.Size(1006, 435);
             this.tabControl1.TabIndex = 20;
             // 
             // tabPage1
@@ -185,7 +185,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(380, 177);
+            this.tabPage1.Size = new System.Drawing.Size(998, 402);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Text View";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -217,7 +217,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 491);
+            this.ClientSize = new System.Drawing.Size(1030, 654);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnGetMailTips);
             this.Controls.Add(this.cmboMailTipsRequested);

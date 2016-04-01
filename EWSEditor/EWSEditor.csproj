@@ -257,11 +257,11 @@
     <Compile Include="Forms\ContactsForm.designer.cs">
       <DependentUpon>ContactsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AttachmentsForm.cs">
+    <Compile Include="Forms\AttachmentsByTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AttachmentsForm.designer.cs">
-      <DependentUpon>AttachmentsForm.cs</DependentUpon>
+    <Compile Include="Forms\AttachmentsByTypeForm.designer.cs">
+      <DependentUpon>AttachmentsByTypeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CalendarForm.cs">
       <SubType>Form</SubType>
@@ -809,8 +809,8 @@
     <EmbeddedResource Include="Forms\AppointmentsContentForm.resx">
       <DependentUpon>AppointmentsContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AttachmentsForm.resx">
-      <DependentUpon>AttachmentsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AttachmentsByTypeForm.resx">
+      <DependentUpon>AttachmentsByTypeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AutodiscoverViewerForm.resx">
       <DependentUpon>AutodiscoverViewerForm.cs</DependentUpon>

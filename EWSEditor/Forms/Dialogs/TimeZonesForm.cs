@@ -617,6 +617,11 @@ namespace EWSEditor.Forms
 
         }
 
+        private void tabClientTimeZones_Click(object sender, EventArgs e)
+        {
+
+        }
+
  
 
     }

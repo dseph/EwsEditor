@@ -1397,6 +1397,30 @@ namespace EWSEditor.Forms
             }
         }
 
+        private void dispalyAttachmentsByTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                ItemId id = GetSelectedContentId();
+                if (id == null)
+                {
+                    return;
+                }
+
+                AttachmentsByTypeForm oForm = new AttachmentsByTypeForm(this.CurrentService, id);
+                oForm.ShowDialog();
+                oForm = null;
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
 
     }
 }

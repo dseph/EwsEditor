@@ -514,14 +514,14 @@
             this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
-            this.colName.Width = 70;
+            this.colName.Width = 74;
             // 
             // colValue
             // 
             this.colValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.colValue.HeaderText = "Value";
             this.colValue.Name = "colValue";
-            this.colValue.Width = 69;
+            this.colValue.Width = 73;
             // 
             // btnDeleteHeader
             // 
@@ -739,6 +739,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1335, 726);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.btnSendEmail);

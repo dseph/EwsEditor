@@ -123,12 +123,6 @@
   <metadata name="colValue.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="colName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="colValue.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="textBox1.Text" xml:space="preserve">
     <value>Note: This is the URL to the Exchange Web Service for the Mailbox.  Example:  https://mail.contoso.com/EWS/Exchange.asmx.  For Exchange 365 (Outlook.com) the URL is usually going to be "https://outlook.office365.com/EWS/Exchange.asmx" and with "Basic" for the authentication type; the SMTP address and password would be set for credentials (leave Domain blank).</value>
   </data>
