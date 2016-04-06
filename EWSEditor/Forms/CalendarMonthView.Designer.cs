@@ -62,7 +62,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItems.ContextMenuStrip = this.cmsItems;
             this.lvItems.Location = new System.Drawing.Point(8, 230);
-            this.lvItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvItems.Margin = new System.Windows.Forms.Padding(4);
             this.lvItems.Name = "lvItems";
             this.lvItems.Size = new System.Drawing.Size(1225, 459);
             this.lvItems.TabIndex = 1;
@@ -82,7 +82,7 @@
             this.openMasterToolStripMenuItem,
             this.openItemToolStripMenuItem});
             this.cmsItems.Name = "cmsItems";
-            this.cmsItems.Size = new System.Drawing.Size(195, 214);
+            this.cmsItems.Size = new System.Drawing.Size(195, 186);
             this.cmsItems.Opening += new System.ComponentModel.CancelEventHandler(this.cmsItems_Opening);
             // 
             // cmsItemsViewMime
@@ -152,12 +152,12 @@
             // 
             // CalendarMonthView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1251, 705);
             this.Controls.Add(this.lvItems);
             this.Controls.Add(this.mcSelect);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CalendarMonthView";
             this.Text = "CalendarMonthView";
             this.Load += new System.EventHandler(this.CalendarMonthView_Load);

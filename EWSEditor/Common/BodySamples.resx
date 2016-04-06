@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BasicHtmlBody" xml:space="preserve">
+    <value>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Test document&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+This is a html body.
+&lt;/body&gt;
+
+&lt;/html&gt;</value>
+  </data>
+  <data name="ManyFormatsHtmlBody" xml:space="preserve">
+    <value>&lt;html&gt;
+&lt;head&gt;
+
+&lt;title&gt;Test document&lt;/title&gt;
+               &lt;meta name="keywords" content="test, html, form, sample, example" /&gt;
+
+&lt;script&gt;
+function test()
+{
+               
+
+}
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+&lt;!-- This is a comment, so you should not see it rendered. --&gt;
+
+&lt;hr&gt;
+The following is some basic text markup: &lt;br/&gt;
+This is plain text. &lt;br/&gt;
+&lt;b&gt;This is bold text. &lt;/b&gt; &lt;br/&gt;
+&lt;i&gt;This is italic text. &lt;/i&gt;&lt;br/&gt;
+&lt;p&gt;This is a paragraph. &lt;/p&gt;&lt;br/&gt;
+&lt;p&gt;This is &lt;sup&gt; superscript. &lt;/sup&gt;&lt;/p&gt;&lt;br/&gt;
+&lt;p&gt;This is &lt;sub&gt;subscript. &lt;/sub&gt;&lt;/p&gt;&lt;br/&gt;
+&lt;p&gt;This is &lt;del&gt;strikethrough. &lt;/del&gt;&lt;/p&gt;&lt;br/&gt;
+
+&lt;p style=text-indent:50px&gt;This is an indented paragraph. &lt;/p&gt;&lt;br/&gt;
+
+&lt;br/&gt;
+
+&lt;hr&gt;  
+
+
+The following shows headers: &lt;br/&gt;
+
+&lt;h1&gt;Header h1&lt;/h1&gt;
+&lt;h2&gt;Header h2&lt;/h2&gt;
+&lt;h3&gt;Header h3&lt;/h3&gt;
+
+&lt;br/&gt;
+&lt;hr&gt;  
+
+The following shows alignment of text: &lt;br/&gt;
+&lt;h1 style=text-align:center&gt; Center &lt;/h1&gt;
+&lt;h1 style=text-align:right&gt; Right &lt;/h1&gt;
+&lt;h1 style=text-align:left&gt; Left &lt;/h1&gt;
+
+&lt;br/&gt;
+&lt;hr&gt;  
+
+Text in different sizes: &lt;br/&gt;
+&lt;p style=font-size:10px&gt;10px &lt;/p&gt;
+&lt;p style=font-size:20px&gt;20px &lt;/p&gt;
+&lt;p style=font-size:30px&gt;30px &lt;/p&gt;
+&lt;p style=font-size:40px&gt;40px &lt;/p&gt;
+&lt;p style=font-size:50px&gt;50px &lt;/p&gt;
+&lt;br/&gt;
+&lt;hr&gt;  
+
+Now colors: &lt;br/&gt;
+               &lt;p style=background-color:black;color:white; font-size:30px;&gt;Black background and white text &lt;/p&gt;
+               &lt;p style=background-color:red;color:white; font-size:30px;&gt;Red background and white text &lt;/p&gt;
+               &lt;p style=background-color:blue;color:yellow; font-size:30px;&gt;Blue background and yellow text &lt;/p&gt;
+
+&lt;br/&gt;
+&lt;hr&gt;  
+
+Bullet list:
+&lt;UL&gt;
+&lt;LI&gt; Item 1
+&lt;LI&gt; Item 2
+&lt;LI&gt; Item 3
+&lt;/UL&gt;
+
+&lt;br/&gt;
+&lt;hr&gt;  
+
+
+&lt;br/&gt;
+&lt;hr&gt;  
+
+Numbered list:
+&lt;OL&gt;
+&lt;LI&gt; Item 1
+&lt;LI&gt; Item 2
+&lt;LI&gt; Item 3
+&lt;/OL&gt;
+
+&lt;br/&gt;
+&lt;hr&gt;  
+ 
+
+&lt;br/&gt;
+&lt;hr&gt;  
+ 
+ 
+Definition list:
+&lt;H3&gt;A definition list&lt;/H3&gt;
+&lt;DL&gt;
+&lt;DT&gt;Item 1
+&lt;DD&gt;Item 1 is cool.
+&lt;DT&gt; Item 2
+&lt;DD&gt;Item 2 is fun.
+&lt;DT&gt; Item 3
+&lt;DD&gt;Item 3 is crazy.
+&lt;/DL&gt;
+
+&lt;br/&gt;
+&lt;hr&gt;  
+Sample form with checkboxes:
+&lt;form name="somewebform" action="mailto:someone@contoso.com" method="post"&gt;
+
+&lt;p&gt;Please pick one:&lt;/p&gt; 
+Item 1: &lt;input type="checkbox" name="chkItem1" value="item1" /&gt; &lt;br /&gt; 
+Item 2: &lt;input type="checkbox" name="chkItem2" value="item2" /&gt; &lt;br /&gt; 
+Item 3: &lt;input type="checkbox" name="chkItem3" value="item3" checked="yes" /&gt; &lt;br /&gt; 
+Item 4: &lt;input type="checkbox" name="chkItem4" value="item4" checked="yes"/&gt;
+&lt;/form&gt;
+&lt;br/&gt;
+&lt;hr&gt;  
+
+Link to Microsoft: &lt;br/&gt;
+&lt;a href="http://www.microsoft.com.com/"&gt; Microsoft Home&lt;/a&gt;
+
+&lt;br/&gt;
+&lt;hr&gt;  
+EMail link 
+&lt;a href="mailto:somebody@contoso.com?cc=somebodyelse@contoso.com&amp;subject=This is a test&amp;body=This%20is%20body%20text."&gt;Send email&lt;/a&gt;
+
+&lt;br/&gt;
+&lt;HR&gt;
+Now a table:
+&lt;table border="1" cellpadding="12" bgcolor=blue&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;b&gt;column 1&lt;/b&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;b&gt;column 2&lt;/b&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;row 1  : cell 1&lt;/td&gt;
+    &lt;td&gt; row 1 : cell 2&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt; row 2  : cell 1&lt;/td&gt;
+    &lt;td&gt; row 2  : cell 1&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt; 
+
+&lt;br/&gt;
+&lt;HR&gt;
+
+Text Areas: &lt;BR/&gt;
+A Text area of 50 columns by 3 rows – so I handles up to 150 characters.  Word wrap is on.:&lt;BR/&gt;
+&lt;textarea name="atextarea" cols="50" rows="10" wrap=”hard”&gt;&gt;This is a test.&lt;/textarea&gt;&lt;br /&gt;
+&lt;BR/&gt;
+A Text area of 50 columns by 3 rows – so I handles up to 150 characters.  This time word wrap is off.:&lt;BR/&gt;
+&lt;textarea name="atextarea2" cols="50" rows="10" wrap=”off”&gt;This is a test.&lt;/textarea&gt;&lt;br /&gt;
+&lt;BR/&gt;
+A Text area of 50 columns by 3 rows – so I handles up to 150 characters.  This time word wrap is on and the text Is read only:&lt;BR/&gt;
+&lt;textarea name="atextarea2" cols="50" rows="10" wrap=” hard” readonly=”yes”&gt;This is a test.&lt;/textarea&gt;&lt;br /&gt;
+&lt;BR/&gt;
+A Text area of 50 columns by 3 rows – so I handles up to 150 characters.  This time word wrap is on and the text Is disabled:&lt;BR/&gt;
+&lt;textarea name="atextarea2" cols="50" rows="10" wrap=”hard” disabled=”yes”&gt;This is a test.&lt;/textarea&gt;&lt;br /&gt;
+&lt;BR/&gt;
+
+&lt;br/&gt;
+&lt;HR&gt;
+
+
+
+Button to run inline script:
+&lt;input type="button" onclick="alert('Inline script ran!')" value="Click to run script"&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</value>
+  </data>
+</root>
