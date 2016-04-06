@@ -150,6 +150,11 @@
     <Compile Include="Common\AutodiscoverInfo.cs" />
     <Compile Include="Common\EwsEditorServiceInstanceSettings.cs" />
     <Compile Include="Common\ProxyMappedTypes\ProxyMappedTypes.cs" />
+    <Compile Include="Common\BodySamples.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BodySamples.resx</DependentUpon>
+    </Compile>
     <Compile Include="Common\SharedCalendarsHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -240,7 +245,7 @@
       <DependentUpon>PostForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\PropertyGridHelper.cs" />
-    <Compile Include="Forms\RecipientHelper.cs" />
+    <Compile Include="Common\RecipientHelper.cs" />
     <Compile Include="Common\SerialHelper.cs" />
     <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Common\TimeHelper.cs" />
@@ -764,6 +769,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Settings\ServiceSessionSetting.cs" />
+    <EmbeddedResource Include="Common\BodySamples.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BodySamples.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddRemoveHeaders.resx">
       <DependentUpon>AddRemoveHeaders.cs</DependentUpon>
     </EmbeddedResource>

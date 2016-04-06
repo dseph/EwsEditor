@@ -56,7 +56,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvFileAttachments.ContextMenuStrip = this.cmsFileAttachments;
             this.lvFileAttachments.Location = new System.Drawing.Point(16, 36);
-            this.lvFileAttachments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvFileAttachments.Margin = new System.Windows.Forms.Padding(4);
             this.lvFileAttachments.Name = "lvFileAttachments";
             this.lvFileAttachments.Size = new System.Drawing.Size(1272, 147);
             this.lvFileAttachments.TabIndex = 1;
@@ -92,7 +92,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvInlineFileAttachments.ContextMenuStrip = this.cmsInlineFileAttachments;
             this.lvInlineFileAttachments.Location = new System.Drawing.Point(16, 225);
-            this.lvInlineFileAttachments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvInlineFileAttachments.Margin = new System.Windows.Forms.Padding(4);
             this.lvInlineFileAttachments.Name = "lvInlineFileAttachments";
             this.lvInlineFileAttachments.Size = new System.Drawing.Size(1272, 144);
             this.lvInlineFileAttachments.TabIndex = 3;
@@ -149,7 +149,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvEmbededItemsAttachments.ContextMenuStrip = this.cmsEmbededItemsAttachments;
             this.lvEmbededItemsAttachments.Location = new System.Drawing.Point(16, 399);
-            this.lvEmbededItemsAttachments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lvEmbededItemsAttachments.Margin = new System.Windows.Forms.Padding(4);
             this.lvEmbededItemsAttachments.Name = "lvEmbededItemsAttachments";
             this.lvEmbededItemsAttachments.Size = new System.Drawing.Size(1272, 148);
             this.lvEmbededItemsAttachments.TabIndex = 5;
@@ -203,8 +203,8 @@
             // 
             // AttachmentsByTypeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1293, 594);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lvEmbededItemsAttachments);
@@ -212,7 +212,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lvInlineFileAttachments);
             this.Controls.Add(this.lvFileAttachments);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AttachmentsByTypeForm";
             this.Text = "Attachments By Type Form";
             this.Load += new System.EventHandler(this.AttachmentsForm_Load);

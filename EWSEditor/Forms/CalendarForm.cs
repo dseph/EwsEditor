@@ -661,8 +661,14 @@ namespace EWSEditor.Forms
 
                 }
 
-                if (rdoRangeNoEnd.Checked == false && rdoRangeNoEnd.Checked == false && rdoRangeNoEnd.Checked == false)
+                if (rdoRangeNoEnd.Checked == false &&
+                    rdoRangeEndAfterNumberOccurrences.Checked == false &&
+                    rdoRangeEndByDate.Checked == false)
                 {
+
+                    // rdoRangeNoEnd
+                    // rdoRangeEndAfterNumberOccurrences
+                    // rdoRangeEndByDate
                     MessageBox.Show("Need to specify Range Ending", "Entry Error");
                     bNoErrors = false;
                 }
@@ -1750,6 +1756,11 @@ namespace EWSEditor.Forms
         private void chkSetDurationEndTimezone_CheckedChanged(object sender, EventArgs e)
         {
             cmboDurationEndTimezone.Enabled = chkSetDurationEndTimezone.Checked;
+        }
+
+        private void chkRecurrWeeklyTuesday_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

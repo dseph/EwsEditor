@@ -50,6 +50,8 @@
             this.txtAppointmentType = new System.Windows.Forms.TextBox();
             this.lblAppointmentType = new System.Windows.Forms.Label();
             this.grpSchedule = new System.Windows.Forms.GroupBox();
+            this.chkSetDurationEndTimezone = new System.Windows.Forms.CheckBox();
+            this.chkSetDurationStartTimezone = new System.Windows.Forms.CheckBox();
             this.cmboDurationEndTimezone = new System.Windows.Forms.ComboBox();
             this.lblDurationEndTimezone = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -82,27 +84,25 @@
             this.lblGlobalObjectId = new System.Windows.Forms.Label();
             this.txtGlobalObjectId = new System.Windows.Forms.TextBox();
             this.btnAttachments = new System.Windows.Forms.Button();
-            this.chkSetDurationStartTimezone = new System.Windows.Forms.CheckBox();
-            this.chkSetDurationEndTimezone = new System.Windows.Forms.CheckBox();
             this.grpSchedule.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(153, 18);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDelete.Location = new System.Drawing.Point(118, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(112, 35);
+            this.btnDelete.Size = new System.Drawing.Size(100, 28);
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(18, 18);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSave.Location = new System.Drawing.Point(10, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 35);
+            this.btnSave.Size = new System.Drawing.Size(100, 28);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -112,22 +112,22 @@
             // 
             this.chkIsRecurring.AutoSize = true;
             this.chkIsRecurring.Enabled = false;
-            this.chkIsRecurring.Location = new System.Drawing.Point(1074, 162);
-            this.chkIsRecurring.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkIsRecurring.Location = new System.Drawing.Point(857, 138);
+            this.chkIsRecurring.Margin = new System.Windows.Forms.Padding(4);
             this.chkIsRecurring.Name = "chkIsRecurring";
-            this.chkIsRecurring.Size = new System.Drawing.Size(121, 24);
-            this.chkIsRecurring.TabIndex = 15;
+            this.chkIsRecurring.Size = new System.Drawing.Size(106, 21);
+            this.chkIsRecurring.TabIndex = 21;
             this.chkIsRecurring.Text = "Is Recurring";
             this.chkIsRecurring.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 125);
+            this.label8.Location = new System.Drawing.Point(11, 65);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 20);
-            this.label8.TabIndex = 10;
+            this.label8.Size = new System.Drawing.Size(82, 17);
+            this.label8.TabIndex = 9;
             this.label8.Text = "Importance:";
             // 
             // cmboImportance
@@ -138,31 +138,31 @@
             "Tentative",
             "Busy",
             "Out Of Office"});
-            this.cmboImportance.Location = new System.Drawing.Point(128, 112);
-            this.cmboImportance.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmboImportance.Location = new System.Drawing.Point(101, 62);
+            this.cmboImportance.Margin = new System.Windows.Forms.Padding(4);
             this.cmboImportance.Name = "cmboImportance";
-            this.cmboImportance.Size = new System.Drawing.Size(180, 28);
-            this.cmboImportance.TabIndex = 11;
+            this.cmboImportance.Size = new System.Drawing.Size(160, 24);
+            this.cmboImportance.TabIndex = 10;
             this.cmboImportance.Text = "Normal";
             this.cmboImportance.SelectedIndexChanged += new System.EventHandler(this.cmboImportance_SelectedIndexChanged);
             // 
             // chkIsAllDayEvent
             // 
             this.chkIsAllDayEvent.AutoSize = true;
-            this.chkIsAllDayEvent.Location = new System.Drawing.Point(1074, 126);
-            this.chkIsAllDayEvent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkIsAllDayEvent.Location = new System.Drawing.Point(857, 109);
+            this.chkIsAllDayEvent.Margin = new System.Windows.Forms.Padding(4);
             this.chkIsAllDayEvent.Name = "chkIsAllDayEvent";
-            this.chkIsAllDayEvent.Size = new System.Drawing.Size(146, 24);
-            this.chkIsAllDayEvent.TabIndex = 14;
+            this.chkIsAllDayEvent.Size = new System.Drawing.Size(128, 21);
+            this.chkIsAllDayEvent.TabIndex = 20;
             this.chkIsAllDayEvent.Text = "Is All Day Event";
             this.chkIsAllDayEvent.UseVisualStyleBackColor = true;
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(284, 18);
-            this.btnSend.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSend.Location = new System.Drawing.Point(226, 4);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(4);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(112, 35);
+            this.btnSend.Size = new System.Drawing.Size(100, 28);
             this.btnSend.TabIndex = 2;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -170,140 +170,140 @@
             // 
             // txtLocation
             // 
-            this.txtLocation.Location = new System.Drawing.Point(99, 318);
-            this.txtLocation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtLocation.Location = new System.Drawing.Point(87, 205);
+            this.txtLocation.Margin = new System.Windows.Forms.Padding(4);
             this.txtLocation.Name = "txtLocation";
-            this.txtLocation.Size = new System.Drawing.Size(724, 26);
+            this.txtLocation.Size = new System.Drawing.Size(607, 22);
             this.txtLocation.TabIndex = 25;
             this.txtLocation.TextChanged += new System.EventHandler(this.txtLocation_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 323);
+            this.label6.Location = new System.Drawing.Point(11, 209);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 20);
+            this.label6.Size = new System.Drawing.Size(66, 17);
             this.label6.TabIndex = 24;
             this.label6.Text = "Location:";
             // 
             // txtSubject
             // 
-            this.txtSubject.Location = new System.Drawing.Point(99, 278);
-            this.txtSubject.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSubject.Location = new System.Drawing.Point(87, 175);
+            this.txtSubject.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(724, 26);
+            this.txtSubject.Size = new System.Drawing.Size(607, 22);
             this.txtSubject.TabIndex = 23;
             this.txtSubject.TextChanged += new System.EventHandler(this.txtSubject_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 283);
+            this.label5.Location = new System.Drawing.Point(11, 178);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 20);
+            this.label5.Size = new System.Drawing.Size(59, 17);
             this.label5.TabIndex = 22;
             this.label5.Text = "Subject:";
             // 
             // txtOptionalAttendees
             // 
-            this.txtOptionalAttendees.Location = new System.Drawing.Point(182, 198);
-            this.txtOptionalAttendees.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtOptionalAttendees.Location = new System.Drawing.Point(161, 115);
+            this.txtOptionalAttendees.Margin = new System.Windows.Forms.Padding(4);
             this.txtOptionalAttendees.Name = "txtOptionalAttendees";
-            this.txtOptionalAttendees.Size = new System.Drawing.Size(800, 26);
-            this.txtOptionalAttendees.TabIndex = 19;
+            this.txtOptionalAttendees.Size = new System.Drawing.Size(678, 22);
+            this.txtOptionalAttendees.TabIndex = 17;
             this.txtOptionalAttendees.TextChanged += new System.EventHandler(this.txtOptionalAttendees_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 198);
+            this.label4.Location = new System.Drawing.Point(10, 118);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 20);
-            this.label4.TabIndex = 18;
+            this.label4.Size = new System.Drawing.Size(133, 17);
+            this.label4.TabIndex = 16;
             this.label4.Text = "Optional Attendees:";
             // 
             // txtRequiredAttendees
             // 
-            this.txtRequiredAttendees.Location = new System.Drawing.Point(182, 157);
-            this.txtRequiredAttendees.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtRequiredAttendees.Location = new System.Drawing.Point(161, 89);
+            this.txtRequiredAttendees.Margin = new System.Windows.Forms.Padding(4);
             this.txtRequiredAttendees.Name = "txtRequiredAttendees";
-            this.txtRequiredAttendees.Size = new System.Drawing.Size(800, 26);
-            this.txtRequiredAttendees.TabIndex = 17;
+            this.txtRequiredAttendees.Size = new System.Drawing.Size(678, 22);
+            this.txtRequiredAttendees.TabIndex = 15;
             this.txtRequiredAttendees.TextChanged += new System.EventHandler(this.txtRequiredAttendees_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 162);
+            this.label1.Location = new System.Drawing.Point(9, 94);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 20);
-            this.label1.TabIndex = 16;
+            this.label1.Size = new System.Drawing.Size(134, 17);
+            this.label1.TabIndex = 15;
             this.label1.Text = "RequiredAttendees:";
             // 
             // txtBody
             // 
-            this.txtBody.Location = new System.Drawing.Point(72, 358);
-            this.txtBody.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBody.Location = new System.Drawing.Point(87, 234);
+            this.txtBody.Margin = new System.Windows.Forms.Padding(4);
             this.txtBody.MaxLength = 0;
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBody.Size = new System.Drawing.Size(1134, 121);
-            this.txtBody.TabIndex = 29;
+            this.txtBody.Size = new System.Drawing.Size(865, 103);
+            this.txtBody.TabIndex = 27;
             this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
             // lblBody
             // 
             this.lblBody.AutoSize = true;
-            this.lblBody.Location = new System.Drawing.Point(12, 358);
+            this.lblBody.Location = new System.Drawing.Point(10, 233);
             this.lblBody.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBody.Name = "lblBody";
-            this.lblBody.Size = new System.Drawing.Size(49, 20);
-            this.lblBody.TabIndex = 28;
+            this.lblBody.Size = new System.Drawing.Size(44, 17);
+            this.lblBody.TabIndex = 26;
             this.lblBody.Text = "Body:";
             // 
             // txtOrganizer
             // 
             this.txtOrganizer.Enabled = false;
-            this.txtOrganizer.Location = new System.Drawing.Point(186, 72);
-            this.txtOrganizer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtOrganizer.Location = new System.Drawing.Point(101, 35);
+            this.txtOrganizer.Margin = new System.Windows.Forms.Padding(4);
             this.txtOrganizer.Name = "txtOrganizer";
             this.txtOrganizer.ReadOnly = true;
-            this.txtOrganizer.Size = new System.Drawing.Size(319, 26);
-            this.txtOrganizer.TabIndex = 7;
+            this.txtOrganizer.Size = new System.Drawing.Size(284, 22);
+            this.txtOrganizer.TabIndex = 6;
             // 
             // lblOrganizer
             // 
             this.lblOrganizer.AutoSize = true;
-            this.lblOrganizer.Location = new System.Drawing.Point(26, 72);
+            this.lblOrganizer.Location = new System.Drawing.Point(8, 38);
             this.lblOrganizer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrganizer.Name = "lblOrganizer";
-            this.lblOrganizer.Size = new System.Drawing.Size(82, 20);
-            this.lblOrganizer.TabIndex = 6;
+            this.lblOrganizer.Size = new System.Drawing.Size(75, 17);
+            this.lblOrganizer.TabIndex = 5;
             this.lblOrganizer.Text = "Organizer:";
             // 
             // txtAppointmentType
             // 
             this.txtAppointmentType.Enabled = false;
-            this.txtAppointmentType.Location = new System.Drawing.Point(686, 72);
-            this.txtAppointmentType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtAppointmentType.Location = new System.Drawing.Point(533, 35);
+            this.txtAppointmentType.Margin = new System.Windows.Forms.Padding(4);
             this.txtAppointmentType.Name = "txtAppointmentType";
             this.txtAppointmentType.ReadOnly = true;
-            this.txtAppointmentType.Size = new System.Drawing.Size(319, 26);
-            this.txtAppointmentType.TabIndex = 9;
+            this.txtAppointmentType.Size = new System.Drawing.Size(182, 22);
+            this.txtAppointmentType.TabIndex = 8;
             // 
             // lblAppointmentType
             // 
             this.lblAppointmentType.AutoSize = true;
-            this.lblAppointmentType.Location = new System.Drawing.Point(525, 72);
+            this.lblAppointmentType.Location = new System.Drawing.Point(402, 35);
             this.lblAppointmentType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAppointmentType.Name = "lblAppointmentType";
-            this.lblAppointmentType.Size = new System.Drawing.Size(138, 20);
-            this.lblAppointmentType.TabIndex = 8;
+            this.lblAppointmentType.Size = new System.Drawing.Size(123, 17);
+            this.lblAppointmentType.TabIndex = 7;
             this.lblAppointmentType.Text = "AppointmentType:";
             // 
             // grpSchedule
@@ -320,15 +320,37 @@
             this.grpSchedule.Controls.Add(this.dtDurationEndDate);
             this.grpSchedule.Controls.Add(this.dtDurationStartDate);
             this.grpSchedule.Controls.Add(this.dtDurationStartTime);
-            this.grpSchedule.Location = new System.Drawing.Point(18, 491);
-            this.grpSchedule.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpSchedule.Location = new System.Drawing.Point(10, 345);
+            this.grpSchedule.Margin = new System.Windows.Forms.Padding(4);
             this.grpSchedule.Name = "grpSchedule";
-            this.grpSchedule.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.grpSchedule.Size = new System.Drawing.Size(1257, 114);
-            this.grpSchedule.TabIndex = 30;
+            this.grpSchedule.Padding = new System.Windows.Forms.Padding(4);
+            this.grpSchedule.Size = new System.Drawing.Size(969, 81);
+            this.grpSchedule.TabIndex = 28;
             this.grpSchedule.TabStop = false;
             this.grpSchedule.Text = "Scheduled:";
             this.grpSchedule.Enter += new System.EventHandler(this.grpSchedule_Enter);
+            // 
+            // chkSetDurationEndTimezone
+            // 
+            this.chkSetDurationEndTimezone.AutoSize = true;
+            this.chkSetDurationEndTimezone.Location = new System.Drawing.Point(510, 49);
+            this.chkSetDurationEndTimezone.Margin = new System.Windows.Forms.Padding(4);
+            this.chkSetDurationEndTimezone.Name = "chkSetDurationEndTimezone";
+            this.chkSetDurationEndTimezone.Size = new System.Drawing.Size(18, 17);
+            this.chkSetDurationEndTimezone.TabIndex = 113;
+            this.chkSetDurationEndTimezone.UseVisualStyleBackColor = true;
+            this.chkSetDurationEndTimezone.CheckedChanged += new System.EventHandler(this.chkSetDurationEndTimezone_CheckedChanged);
+            // 
+            // chkSetDurationStartTimezone
+            // 
+            this.chkSetDurationStartTimezone.AutoSize = true;
+            this.chkSetDurationStartTimezone.Location = new System.Drawing.Point(510, 21);
+            this.chkSetDurationStartTimezone.Margin = new System.Windows.Forms.Padding(4);
+            this.chkSetDurationStartTimezone.Name = "chkSetDurationStartTimezone";
+            this.chkSetDurationStartTimezone.Size = new System.Drawing.Size(18, 17);
+            this.chkSetDurationStartTimezone.TabIndex = 112;
+            this.chkSetDurationStartTimezone.UseVisualStyleBackColor = true;
+            this.chkSetDurationStartTimezone.CheckedChanged += new System.EventHandler(this.chkSetDurationStartTimezone_CheckedChanged);
             // 
             // cmboDurationEndTimezone
             // 
@@ -338,30 +360,30 @@
             "Tentative",
             "Busy",
             "Out Of Office"});
-            this.cmboDurationEndTimezone.Location = new System.Drawing.Point(732, 58);
-            this.cmboDurationEndTimezone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmboDurationEndTimezone.Location = new System.Drawing.Point(531, 45);
+            this.cmboDurationEndTimezone.Margin = new System.Windows.Forms.Padding(4);
             this.cmboDurationEndTimezone.Name = "cmboDurationEndTimezone";
-            this.cmboDurationEndTimezone.Size = new System.Drawing.Size(486, 28);
+            this.cmboDurationEndTimezone.Size = new System.Drawing.Size(432, 24);
             this.cmboDurationEndTimezone.TabIndex = 9;
             this.cmboDurationEndTimezone.SelectedIndexChanged += new System.EventHandler(this.cmboDurationEndTimezone_SelectedIndexChanged);
             // 
             // lblDurationEndTimezone
             // 
             this.lblDurationEndTimezone.AutoSize = true;
-            this.lblDurationEndTimezone.Location = new System.Drawing.Point(657, 66);
+            this.lblDurationEndTimezone.Location = new System.Drawing.Point(483, 49);
             this.lblDurationEndTimezone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDurationEndTimezone.Name = "lblDurationEndTimezone";
-            this.lblDurationEndTimezone.Size = new System.Drawing.Size(32, 20);
+            this.lblDurationEndTimezone.Size = new System.Drawing.Size(30, 17);
             this.lblDurationEndTimezone.TabIndex = 8;
             this.lblDurationEndTimezone.Text = "TZ:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(657, 32);
+            this.label12.Location = new System.Drawing.Point(483, 22);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 20);
+            this.label12.Size = new System.Drawing.Size(30, 17);
             this.label12.TabIndex = 3;
             this.label12.Text = "TZ:";
             // 
@@ -373,235 +395,235 @@
             "Tentative",
             "Busy",
             "Out Of Office"});
-            this.cmboDurationStartTimezone.Location = new System.Drawing.Point(732, 24);
-            this.cmboDurationStartTimezone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmboDurationStartTimezone.Location = new System.Drawing.Point(531, 18);
+            this.cmboDurationStartTimezone.Margin = new System.Windows.Forms.Padding(4);
             this.cmboDurationStartTimezone.Name = "cmboDurationStartTimezone";
-            this.cmboDurationStartTimezone.Size = new System.Drawing.Size(486, 28);
+            this.cmboDurationStartTimezone.Size = new System.Drawing.Size(432, 24);
             this.cmboDurationStartTimezone.TabIndex = 4;
             this.cmboDurationStartTimezone.SelectedIndexChanged += new System.EventHandler(this.cmboDurationStartTimezone_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 66);
+            this.label3.Location = new System.Drawing.Point(8, 48);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 20);
+            this.label3.Size = new System.Drawing.Size(95, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Duration End:";
             // 
             // dtDurationEndTime
             // 
             this.dtDurationEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtDurationEndTime.Location = new System.Drawing.Point(477, 66);
-            this.dtDurationEndTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtDurationEndTime.Location = new System.Drawing.Point(366, 48);
+            this.dtDurationEndTime.Margin = new System.Windows.Forms.Padding(4);
             this.dtDurationEndTime.Name = "dtDurationEndTime";
             this.dtDurationEndTime.ShowUpDown = true;
-            this.dtDurationEndTime.Size = new System.Drawing.Size(168, 26);
+            this.dtDurationEndTime.Size = new System.Drawing.Size(105, 22);
             this.dtDurationEndTime.TabIndex = 7;
             this.dtDurationEndTime.ValueChanged += new System.EventHandler(this.dtDurationEndTime_ValueChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 26);
+            this.label2.Location = new System.Drawing.Point(8, 19);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 20);
+            this.label2.Size = new System.Drawing.Size(100, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Duration Start:";
             // 
             // dtDurationEndDate
             // 
-            this.dtDurationEndDate.Location = new System.Drawing.Point(142, 66);
-            this.dtDurationEndDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtDurationEndDate.Location = new System.Drawing.Point(109, 48);
+            this.dtDurationEndDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtDurationEndDate.Name = "dtDurationEndDate";
-            this.dtDurationEndDate.Size = new System.Drawing.Size(298, 26);
+            this.dtDurationEndDate.Size = new System.Drawing.Size(250, 22);
             this.dtDurationEndDate.TabIndex = 6;
             this.dtDurationEndDate.ValueChanged += new System.EventHandler(this.dtDurationEndDate_ValueChanged);
             // 
             // dtDurationStartDate
             // 
-            this.dtDurationStartDate.Location = new System.Drawing.Point(142, 26);
-            this.dtDurationStartDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtDurationStartDate.Location = new System.Drawing.Point(109, 16);
+            this.dtDurationStartDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtDurationStartDate.Name = "dtDurationStartDate";
-            this.dtDurationStartDate.Size = new System.Drawing.Size(298, 26);
+            this.dtDurationStartDate.Size = new System.Drawing.Size(250, 22);
             this.dtDurationStartDate.TabIndex = 1;
             this.dtDurationStartDate.ValueChanged += new System.EventHandler(this.dtDurationStartDate_ValueChanged);
             // 
             // dtDurationStartTime
             // 
             this.dtDurationStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtDurationStartTime.Location = new System.Drawing.Point(477, 28);
-            this.dtDurationStartTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtDurationStartTime.Location = new System.Drawing.Point(366, 17);
+            this.dtDurationStartTime.Margin = new System.Windows.Forms.Padding(4);
             this.dtDurationStartTime.Name = "dtDurationStartTime";
             this.dtDurationStartTime.ShowUpDown = true;
-            this.dtDurationStartTime.Size = new System.Drawing.Size(168, 26);
+            this.dtDurationStartTime.Size = new System.Drawing.Size(105, 22);
             this.dtDurationStartTime.TabIndex = 2;
             this.dtDurationStartTime.ValueChanged += new System.EventHandler(this.dtDurationStartTime_ValueChanged);
             // 
             // txtResourceAttendees
             // 
-            this.txtResourceAttendees.Location = new System.Drawing.Point(184, 238);
-            this.txtResourceAttendees.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtResourceAttendees.Location = new System.Drawing.Point(161, 145);
+            this.txtResourceAttendees.Margin = new System.Windows.Forms.Padding(4);
             this.txtResourceAttendees.Name = "txtResourceAttendees";
-            this.txtResourceAttendees.Size = new System.Drawing.Size(800, 26);
-            this.txtResourceAttendees.TabIndex = 21;
+            this.txtResourceAttendees.Size = new System.Drawing.Size(678, 22);
+            this.txtResourceAttendees.TabIndex = 19;
             this.txtResourceAttendees.TextChanged += new System.EventHandler(this.txtResourceAttendees_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(26, 238);
+            this.label7.Location = new System.Drawing.Point(11, 148);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(160, 20);
-            this.label7.TabIndex = 20;
+            this.label7.Size = new System.Drawing.Size(141, 17);
+            this.label7.TabIndex = 18;
             this.label7.Text = "Resource Attendees:";
             // 
             // txtICalDateTimeStamp
             // 
-            this.txtICalDateTimeStamp.Location = new System.Drawing.Point(181, 705);
-            this.txtICalDateTimeStamp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtICalDateTimeStamp.Location = new System.Drawing.Point(157, 497);
+            this.txtICalDateTimeStamp.Margin = new System.Windows.Forms.Padding(4);
             this.txtICalDateTimeStamp.Name = "txtICalDateTimeStamp";
             this.txtICalDateTimeStamp.ReadOnly = true;
-            this.txtICalDateTimeStamp.Size = new System.Drawing.Size(364, 26);
-            this.txtICalDateTimeStamp.TabIndex = 40;
+            this.txtICalDateTimeStamp.Size = new System.Drawing.Size(324, 22);
+            this.txtICalDateTimeStamp.TabIndex = 34;
             // 
             // lblICalDateTimeStamp
             // 
             this.lblICalDateTimeStamp.AutoSize = true;
-            this.lblICalDateTimeStamp.Location = new System.Drawing.Point(17, 710);
+            this.lblICalDateTimeStamp.Location = new System.Drawing.Point(11, 501);
             this.lblICalDateTimeStamp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblICalDateTimeStamp.Name = "lblICalDateTimeStamp";
-            this.lblICalDateTimeStamp.Size = new System.Drawing.Size(157, 20);
-            this.lblICalDateTimeStamp.TabIndex = 39;
+            this.lblICalDateTimeStamp.Size = new System.Drawing.Size(136, 17);
+            this.lblICalDateTimeStamp.TabIndex = 33;
             this.lblICalDateTimeStamp.Text = "ICalDateTimeStamp:";
             // 
             // txtICalRecurrenceId
             // 
-            this.txtICalRecurrenceId.Location = new System.Drawing.Point(179, 665);
-            this.txtICalRecurrenceId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtICalRecurrenceId.Location = new System.Drawing.Point(155, 465);
+            this.txtICalRecurrenceId.Margin = new System.Windows.Forms.Padding(4);
             this.txtICalRecurrenceId.Name = "txtICalRecurrenceId";
             this.txtICalRecurrenceId.ReadOnly = true;
-            this.txtICalRecurrenceId.Size = new System.Drawing.Size(364, 26);
-            this.txtICalRecurrenceId.TabIndex = 36;
+            this.txtICalRecurrenceId.Size = new System.Drawing.Size(324, 22);
+            this.txtICalRecurrenceId.TabIndex = 32;
             // 
             // lblICalRecurrenceId
             // 
             this.lblICalRecurrenceId.AutoSize = true;
-            this.lblICalRecurrenceId.Location = new System.Drawing.Point(17, 670);
+            this.lblICalRecurrenceId.Location = new System.Drawing.Point(11, 469);
             this.lblICalRecurrenceId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblICalRecurrenceId.Name = "lblICalRecurrenceId";
-            this.lblICalRecurrenceId.Size = new System.Drawing.Size(138, 20);
-            this.lblICalRecurrenceId.TabIndex = 35;
+            this.lblICalRecurrenceId.Size = new System.Drawing.Size(120, 17);
+            this.lblICalRecurrenceId.TabIndex = 31;
             this.lblICalRecurrenceId.Text = "ICalRecurrenceId:";
             // 
             // txtICalUid
             // 
-            this.txtICalUid.Location = new System.Drawing.Point(179, 624);
-            this.txtICalUid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtICalUid.Location = new System.Drawing.Point(155, 432);
+            this.txtICalUid.Margin = new System.Windows.Forms.Padding(4);
             this.txtICalUid.Name = "txtICalUid";
             this.txtICalUid.ReadOnly = true;
-            this.txtICalUid.Size = new System.Drawing.Size(364, 26);
-            this.txtICalUid.TabIndex = 32;
+            this.txtICalUid.Size = new System.Drawing.Size(324, 22);
+            this.txtICalUid.TabIndex = 30;
             // 
             // lblICalUid
             // 
             this.lblICalUid.AutoSize = true;
-            this.lblICalUid.Location = new System.Drawing.Point(18, 633);
+            this.lblICalUid.Location = new System.Drawing.Point(12, 439);
             this.lblICalUid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblICalUid.Name = "lblICalUid";
-            this.lblICalUid.Size = new System.Drawing.Size(65, 20);
-            this.lblICalUid.TabIndex = 31;
+            this.lblICalUid.Size = new System.Drawing.Size(56, 17);
+            this.lblICalUid.TabIndex = 29;
             this.lblICalUid.Text = "ICalUid:";
             // 
             // txtConversationId
             // 
-            this.txtConversationId.Location = new System.Drawing.Point(738, 710);
-            this.txtConversationId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtConversationId.Location = new System.Drawing.Point(639, 494);
+            this.txtConversationId.Margin = new System.Windows.Forms.Padding(4);
             this.txtConversationId.Name = "txtConversationId";
             this.txtConversationId.ReadOnly = true;
-            this.txtConversationId.Size = new System.Drawing.Size(364, 26);
-            this.txtConversationId.TabIndex = 42;
+            this.txtConversationId.Size = new System.Drawing.Size(324, 22);
+            this.txtConversationId.TabIndex = 40;
             this.txtConversationId.Visible = false;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(573, 714);
+            this.label9.Location = new System.Drawing.Point(495, 497);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(120, 20);
-            this.label9.TabIndex = 41;
+            this.label9.Size = new System.Drawing.Size(106, 17);
+            this.label9.TabIndex = 39;
             this.label9.Text = "ConversationId:";
             this.label9.Visible = false;
             // 
             // txtChangeKey
             // 
-            this.txtChangeKey.Location = new System.Drawing.Point(735, 670);
-            this.txtChangeKey.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtChangeKey.Location = new System.Drawing.Point(639, 462);
+            this.txtChangeKey.Margin = new System.Windows.Forms.Padding(4);
             this.txtChangeKey.Name = "txtChangeKey";
             this.txtChangeKey.ReadOnly = true;
-            this.txtChangeKey.Size = new System.Drawing.Size(364, 26);
+            this.txtChangeKey.Size = new System.Drawing.Size(324, 22);
             this.txtChangeKey.TabIndex = 38;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(573, 674);
+            this.label11.Location = new System.Drawing.Point(495, 465);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 20);
+            this.label11.Size = new System.Drawing.Size(85, 17);
             this.label11.TabIndex = 37;
             this.label11.Text = "ChangeKey:";
             // 
             // txtItemId
             // 
-            this.txtItemId.Location = new System.Drawing.Point(735, 628);
-            this.txtItemId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtItemId.Location = new System.Drawing.Point(639, 431);
+            this.txtItemId.Margin = new System.Windows.Forms.Padding(4);
             this.txtItemId.Name = "txtItemId";
             this.txtItemId.ReadOnly = true;
-            this.txtItemId.Size = new System.Drawing.Size(364, 26);
-            this.txtItemId.TabIndex = 34;
+            this.txtItemId.Size = new System.Drawing.Size(324, 22);
+            this.txtItemId.TabIndex = 36;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(575, 638);
+            this.label14.Location = new System.Drawing.Point(497, 436);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(59, 20);
-            this.label14.TabIndex = 33;
+            this.label14.Size = new System.Drawing.Size(49, 17);
+            this.label14.TabIndex = 35;
             this.label14.Text = "ItemId:";
             // 
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(334, 114);
+            this.label34.Location = new System.Drawing.Point(269, 65);
             this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(128, 20);
-            this.label34.TabIndex = 12;
+            this.label34.Size = new System.Drawing.Size(112, 17);
+            this.label34.TabIndex = 11;
             this.label34.Text = "FreeBusyStatus:";
             // 
             // cmboLegacyFreeBusyStatus
             // 
             this.cmboLegacyFreeBusyStatus.FormattingEnabled = true;
-            this.cmboLegacyFreeBusyStatus.Location = new System.Drawing.Point(470, 106);
-            this.cmboLegacyFreeBusyStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmboLegacyFreeBusyStatus.Location = new System.Drawing.Point(389, 62);
+            this.cmboLegacyFreeBusyStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmboLegacyFreeBusyStatus.Name = "cmboLegacyFreeBusyStatus";
-            this.cmboLegacyFreeBusyStatus.Size = new System.Drawing.Size(145, 28);
-            this.cmboLegacyFreeBusyStatus.TabIndex = 13;
+            this.cmboLegacyFreeBusyStatus.Size = new System.Drawing.Size(129, 24);
+            this.cmboLegacyFreeBusyStatus.TabIndex = 12;
             this.cmboLegacyFreeBusyStatus.Text = "OOF";
             // 
             // btnAttendeeStatus
             // 
-            this.btnAttendeeStatus.Location = new System.Drawing.Point(1076, 18);
-            this.btnAttendeeStatus.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAttendeeStatus.Location = new System.Drawing.Point(857, 13);
+            this.btnAttendeeStatus.Margin = new System.Windows.Forms.Padding(4);
             this.btnAttendeeStatus.Name = "btnAttendeeStatus";
-            this.btnAttendeeStatus.Size = new System.Drawing.Size(141, 35);
-            this.btnAttendeeStatus.TabIndex = 5;
+            this.btnAttendeeStatus.Size = new System.Drawing.Size(125, 28);
+            this.btnAttendeeStatus.TabIndex = 3;
             this.btnAttendeeStatus.Text = "Attendee Status";
             this.btnAttendeeStatus.UseVisualStyleBackColor = true;
             this.btnAttendeeStatus.Click += new System.EventHandler(this.btnAttendeeStatus_Click);
@@ -609,82 +631,60 @@
             // cmboCategories
             // 
             this.cmboCategories.FormattingEnabled = true;
-            this.cmboCategories.Location = new System.Drawing.Point(1014, 311);
-            this.cmboCategories.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmboCategories.Location = new System.Drawing.Point(623, 60);
+            this.cmboCategories.Margin = new System.Windows.Forms.Padding(4);
             this.cmboCategories.Name = "cmboCategories";
-            this.cmboCategories.Size = new System.Drawing.Size(180, 28);
-            this.cmboCategories.TabIndex = 27;
+            this.cmboCategories.Size = new System.Drawing.Size(160, 24);
+            this.cmboCategories.TabIndex = 14;
             this.cmboCategories.Text = "Normal";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(915, 315);
+            this.label10.Location = new System.Drawing.Point(535, 65);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(90, 20);
-            this.label10.TabIndex = 26;
+            this.label10.Size = new System.Drawing.Size(80, 17);
+            this.label10.TabIndex = 13;
             this.label10.Text = "Categories:";
             // 
             // lblGlobalObjectId
             // 
             this.lblGlobalObjectId.AutoSize = true;
-            this.lblGlobalObjectId.Location = new System.Drawing.Point(525, 26);
+            this.lblGlobalObjectId.Location = new System.Drawing.Point(496, 527);
             this.lblGlobalObjectId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGlobalObjectId.Name = "lblGlobalObjectId";
-            this.lblGlobalObjectId.Size = new System.Drawing.Size(127, 20);
-            this.lblGlobalObjectId.TabIndex = 3;
+            this.lblGlobalObjectId.Size = new System.Drawing.Size(113, 17);
+            this.lblGlobalObjectId.TabIndex = 41;
             this.lblGlobalObjectId.Text = "Global Object Id:";
             // 
             // txtGlobalObjectId
             // 
             this.txtGlobalObjectId.Enabled = false;
-            this.txtGlobalObjectId.Location = new System.Drawing.Point(680, 22);
-            this.txtGlobalObjectId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtGlobalObjectId.Location = new System.Drawing.Point(639, 524);
+            this.txtGlobalObjectId.Margin = new System.Windows.Forms.Padding(4);
             this.txtGlobalObjectId.Name = "txtGlobalObjectId";
             this.txtGlobalObjectId.ReadOnly = true;
-            this.txtGlobalObjectId.Size = new System.Drawing.Size(319, 26);
-            this.txtGlobalObjectId.TabIndex = 4;
+            this.txtGlobalObjectId.Size = new System.Drawing.Size(324, 22);
+            this.txtGlobalObjectId.TabIndex = 42;
             // 
             // btnAttachments
             // 
-            this.btnAttachments.Location = new System.Drawing.Point(1078, 63);
-            this.btnAttachments.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAttachments.Location = new System.Drawing.Point(857, 54);
+            this.btnAttachments.Margin = new System.Windows.Forms.Padding(4);
             this.btnAttachments.Name = "btnAttachments";
-            this.btnAttachments.Size = new System.Drawing.Size(141, 35);
-            this.btnAttachments.TabIndex = 111;
+            this.btnAttachments.Size = new System.Drawing.Size(125, 28);
+            this.btnAttachments.TabIndex = 4;
             this.btnAttachments.Tag = "";
             this.btnAttachments.Text = "Attachments";
             this.btnAttachments.UseVisualStyleBackColor = true;
             this.btnAttachments.Click += new System.EventHandler(this.btnAttachments_Click);
             // 
-            // chkSetDurationStartTimezone
-            // 
-            this.chkSetDurationStartTimezone.AutoSize = true;
-            this.chkSetDurationStartTimezone.Location = new System.Drawing.Point(697, 31);
-            this.chkSetDurationStartTimezone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.chkSetDurationStartTimezone.Name = "chkSetDurationStartTimezone";
-            this.chkSetDurationStartTimezone.Size = new System.Drawing.Size(22, 21);
-            this.chkSetDurationStartTimezone.TabIndex = 112;
-            this.chkSetDurationStartTimezone.UseVisualStyleBackColor = true;
-            this.chkSetDurationStartTimezone.CheckedChanged += new System.EventHandler(this.chkSetDurationStartTimezone_CheckedChanged);
-            // 
-            // chkSetDurationEndTimezone
-            // 
-            this.chkSetDurationEndTimezone.AutoSize = true;
-            this.chkSetDurationEndTimezone.Location = new System.Drawing.Point(697, 66);
-            this.chkSetDurationEndTimezone.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.chkSetDurationEndTimezone.Name = "chkSetDurationEndTimezone";
-            this.chkSetDurationEndTimezone.Size = new System.Drawing.Size(22, 21);
-            this.chkSetDurationEndTimezone.TabIndex = 113;
-            this.chkSetDurationEndTimezone.UseVisualStyleBackColor = true;
-            this.chkSetDurationEndTimezone.CheckedChanged += new System.EventHandler(this.chkSetDurationEndTimezone_CheckedChanged);
-            // 
             // CalendarInstanceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1317, 746);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(990, 554);
             this.Controls.Add(this.btnAttachments);
             this.Controls.Add(this.txtGlobalObjectId);
             this.Controls.Add(this.lblGlobalObjectId);
@@ -729,7 +729,7 @@
             this.Controls.Add(this.lblOrganizer);
             this.Controls.Add(this.txtAppointmentType);
             this.Controls.Add(this.lblAppointmentType);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CalendarInstanceForm";
             this.Text = "CalendarInstanceForm";
             this.Load += new System.EventHandler(this.CalendarInstanceForm_Load);
