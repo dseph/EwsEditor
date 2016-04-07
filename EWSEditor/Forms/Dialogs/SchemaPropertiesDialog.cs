@@ -177,5 +177,25 @@ namespace EWSEditor.Forms
                 }
             }
         }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            List<SchemaPropertyListItem> removeItems = new List<SchemaPropertyListItem>();
+
+            // Restore selected items to the tree view
+            foreach (object item in this.lstProps.SelectedItems)
+            {
+                SchemaPropertyListItem listItem = (SchemaPropertyListItem)item;
+                RestoreNode(listItem.Name);
+
+                removeItems.Add(listItem);
+            }
+
+            // Remove items from the list box
+            foreach (SchemaPropertyListItem listItem in removeItems)
+            {
+                this.lstProps.Items.Remove(listItem);
+            }
+        }
     }
 }

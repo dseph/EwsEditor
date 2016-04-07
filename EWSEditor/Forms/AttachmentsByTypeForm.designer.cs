@@ -55,10 +55,10 @@
             this.lvFileAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvFileAttachments.ContextMenuStrip = this.cmsFileAttachments;
-            this.lvFileAttachments.Location = new System.Drawing.Point(16, 36);
+            this.lvFileAttachments.Location = new System.Drawing.Point(13, 30);
             this.lvFileAttachments.Margin = new System.Windows.Forms.Padding(4);
             this.lvFileAttachments.Name = "lvFileAttachments";
-            this.lvFileAttachments.Size = new System.Drawing.Size(1272, 147);
+            this.lvFileAttachments.Size = new System.Drawing.Size(1120, 147);
             this.lvFileAttachments.TabIndex = 1;
             this.lvFileAttachments.UseCompatibleStateImageBehavior = false;
             this.lvFileAttachments.SelectedIndexChanged += new System.EventHandler(this.lvFileAttachments_SelectedIndexChanged);
@@ -91,10 +91,10 @@
             this.lvInlineFileAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvInlineFileAttachments.ContextMenuStrip = this.cmsInlineFileAttachments;
-            this.lvInlineFileAttachments.Location = new System.Drawing.Point(16, 225);
+            this.lvInlineFileAttachments.Location = new System.Drawing.Point(13, 202);
             this.lvInlineFileAttachments.Margin = new System.Windows.Forms.Padding(4);
             this.lvInlineFileAttachments.Name = "lvInlineFileAttachments";
-            this.lvInlineFileAttachments.Size = new System.Drawing.Size(1272, 144);
+            this.lvInlineFileAttachments.Size = new System.Drawing.Size(1120, 144);
             this.lvInlineFileAttachments.TabIndex = 3;
             this.lvInlineFileAttachments.UseCompatibleStateImageBehavior = false;
             this.lvInlineFileAttachments.SelectedIndexChanged += new System.EventHandler(this.lvInlineFileAttachments_SelectedIndexChanged);
@@ -126,7 +126,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 16);
+            this.label1.Location = new System.Drawing.Point(13, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 17);
@@ -136,7 +136,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 206);
+            this.label2.Location = new System.Drawing.Point(13, 181);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 17);
@@ -148,10 +148,10 @@
             this.lvEmbededItemsAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvEmbededItemsAttachments.ContextMenuStrip = this.cmsEmbededItemsAttachments;
-            this.lvEmbededItemsAttachments.Location = new System.Drawing.Point(16, 399);
+            this.lvEmbededItemsAttachments.Location = new System.Drawing.Point(13, 371);
             this.lvEmbededItemsAttachments.Margin = new System.Windows.Forms.Padding(4);
             this.lvEmbededItemsAttachments.Name = "lvEmbededItemsAttachments";
-            this.lvEmbededItemsAttachments.Size = new System.Drawing.Size(1272, 148);
+            this.lvEmbededItemsAttachments.Size = new System.Drawing.Size(1123, 148);
             this.lvEmbededItemsAttachments.TabIndex = 5;
             this.lvEmbededItemsAttachments.UseCompatibleStateImageBehavior = false;
             this.lvEmbededItemsAttachments.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -194,7 +194,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 379);
+            this.label3.Location = new System.Drawing.Point(10, 350);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(102, 17);
@@ -205,7 +205,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1293, 594);
+            this.ClientSize = new System.Drawing.Size(1141, 529);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lvEmbededItemsAttachments);
             this.Controls.Add(this.label2);

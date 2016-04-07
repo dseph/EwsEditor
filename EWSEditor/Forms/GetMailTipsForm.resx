@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>What is returned from a MailTips call is largely dependent upon the administrator configured organization relationships between Exchange servers.  Please read the following:  https://technet.microsoft.com/en-us/library/jj670165(v=exchg.150).aspx. If you cannot get the needed configuration setup to provide the results you want, then you should consider using Exchange Impersonation or direct access on the mailbox using EWS to extract the data you are seeking.  See https://msdn.microsoft.com/en-us/library/office/aa563465(v=exchg.150).aspx and https://msdn.microsoft.com/en-us/library/office/aa564001(v=exchg.150).aspx.</value>
+  </data>
 </root>

@@ -48,8 +48,8 @@
             // 
             this.mcSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mcSelect.CalendarDimensions = new System.Drawing.Size(5, 1);
-            this.mcSelect.Location = new System.Drawing.Point(8, 22);
+            this.mcSelect.CalendarDimensions = new System.Drawing.Size(4, 1);
+            this.mcSelect.Location = new System.Drawing.Point(8, 8);
             this.mcSelect.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
             this.mcSelect.Name = "mcSelect";
             this.mcSelect.TabIndex = 0;
@@ -64,7 +64,7 @@
             this.lvItems.Location = new System.Drawing.Point(8, 230);
             this.lvItems.Margin = new System.Windows.Forms.Padding(4);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(1225, 459);
+            this.lvItems.Size = new System.Drawing.Size(1059, 310);
             this.lvItems.TabIndex = 1;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
@@ -154,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1251, 705);
+            this.ClientSize = new System.Drawing.Size(1072, 553);
             this.Controls.Add(this.lvItems);
             this.Controls.Add(this.mcSelect);
             this.Margin = new System.Windows.Forms.Padding(4);

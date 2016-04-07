@@ -44,9 +44,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 14);
+            this.label1.Location = new System.Drawing.Point(16, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 13);
+            this.label1.Size = new System.Drawing.Size(220, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Distribution List address or name:";
             // 
@@ -54,17 +55,19 @@
             // 
             this.txtListSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtListSmtp.Location = new System.Drawing.Point(180, 11);
+            this.txtListSmtp.Location = new System.Drawing.Point(240, 14);
+            this.txtListSmtp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtListSmtp.Name = "txtListSmtp";
-            this.txtListSmtp.Size = new System.Drawing.Size(590, 20);
+            this.txtListSmtp.Size = new System.Drawing.Size(649, 22);
             this.txtListSmtp.TabIndex = 1;
             // 
             // btnExpand
             // 
             this.btnExpand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExpand.Location = new System.Drawing.Point(776, 9);
+            this.btnExpand.Location = new System.Drawing.Point(899, 11);
+            this.btnExpand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExpand.Name = "btnExpand";
-            this.btnExpand.Size = new System.Drawing.Size(126, 23);
+            this.btnExpand.Size = new System.Drawing.Size(168, 28);
             this.btnExpand.TabIndex = 2;
             this.btnExpand.Text = "Expand";
             this.btnExpand.UseVisualStyleBackColor = true;
@@ -74,9 +77,10 @@
             // 
             this.tvDistributionLists.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tvDistributionLists.Location = new System.Drawing.Point(12, 38);
+            this.tvDistributionLists.Location = new System.Drawing.Point(16, 47);
+            this.tvDistributionLists.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tvDistributionLists.Name = "tvDistributionLists";
-            this.tvDistributionLists.Size = new System.Drawing.Size(890, 185);
+            this.tvDistributionLists.Size = new System.Drawing.Size(1049, 227);
             this.tvDistributionLists.TabIndex = 3;
             this.tvDistributionLists.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvDistributionLists_BeforeExpand);
             this.tvDistributionLists.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvDistributionLists_AfterSelect);
@@ -93,11 +97,12 @@
             this.colRoutingType,
             this.colId});
             this.lvItems.FullRowSelect = true;
-            this.lvItems.Location = new System.Drawing.Point(12, 229);
+            this.lvItems.Location = new System.Drawing.Point(16, 282);
+            this.lvItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
             this.lvItems.ShowItemToolTips = true;
-            this.lvItems.Size = new System.Drawing.Size(890, 190);
+            this.lvItems.Size = new System.Drawing.Size(1049, 180);
             this.lvItems.TabIndex = 4;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -130,14 +135,15 @@
             // 
             // DistributionListExpansionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 432);
+            this.ClientSize = new System.Drawing.Size(1083, 479);
             this.Controls.Add(this.lvItems);
             this.Controls.Add(this.tvDistributionLists);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtListSmtp);
             this.Controls.Add(this.btnExpand);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DistributionListExpansionForm";
             this.Text = "Distribution List Expansion";
             this.Load += new System.EventHandler(this.DistributionListForm_Load);

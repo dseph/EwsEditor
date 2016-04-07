@@ -51,9 +51,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 15);
+            this.label1.Location = new System.Drawing.Point(13, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.Size = new System.Drawing.Size(93, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Search Type:";
             // 
@@ -63,96 +64,118 @@
             this.cmboSearchType.Items.AddRange(new object[] {
             "Direct",
             "More Available"});
-            this.cmboSearchType.Location = new System.Drawing.Point(112, 12);
+            this.cmboSearchType.Location = new System.Drawing.Point(135, 17);
+            this.cmboSearchType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmboSearchType.Name = "cmboSearchType";
-            this.cmboSearchType.Size = new System.Drawing.Size(121, 21);
-            this.cmboSearchType.TabIndex = 1;
+            this.cmboSearchType.Size = new System.Drawing.Size(160, 24);
+            this.cmboSearchType.TabIndex = 2;
             this.cmboSearchType.Text = "More Available";
             // 
             // txtAQS
             // 
+            this.txtAQS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAQS.Enabled = false;
-            this.txtAQS.Location = new System.Drawing.Point(38, 71);
+            this.txtAQS.Location = new System.Drawing.Point(44, 87);
+            this.txtAQS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAQS.Multiline = true;
             this.txtAQS.Name = "txtAQS";
-            this.txtAQS.Size = new System.Drawing.Size(559, 20);
-            this.txtAQS.TabIndex = 5;
+            this.txtAQS.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtAQS.Size = new System.Drawing.Size(770, 119);
+            this.txtAQS.TabIndex = 6;
             // 
             // txtBody
             // 
+            this.txtBody.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBody.Enabled = false;
-            this.txtBody.Location = new System.Drawing.Point(124, 212);
+            this.txtBody.Location = new System.Drawing.Point(133, 335);
+            this.txtBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBody.Name = "txtBody";
-            this.txtBody.Size = new System.Drawing.Size(310, 20);
-            this.txtBody.TabIndex = 14;
+            this.txtBody.Size = new System.Drawing.Size(681, 22);
+            this.txtBody.TabIndex = 15;
             // 
             // chkBody
             // 
             this.chkBody.AutoSize = true;
             this.chkBody.Enabled = false;
-            this.chkBody.Location = new System.Drawing.Point(38, 215);
+            this.chkBody.Location = new System.Drawing.Point(42, 335);
+            this.chkBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkBody.Name = "chkBody";
-            this.chkBody.Size = new System.Drawing.Size(50, 17);
-            this.chkBody.TabIndex = 13;
+            this.chkBody.Size = new System.Drawing.Size(62, 21);
+            this.chkBody.TabIndex = 14;
             this.chkBody.Text = "Body";
             this.chkBody.UseVisualStyleBackColor = true;
             this.chkBody.CheckedChanged += new System.EventHandler(this.chkBody_CheckedChanged);
             // 
             // txtCC
             // 
+            this.txtCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCC.Enabled = false;
-            this.txtCC.Location = new System.Drawing.Point(124, 186);
+            this.txtCC.Location = new System.Drawing.Point(133, 303);
+            this.txtCC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCC.Name = "txtCC";
-            this.txtCC.Size = new System.Drawing.Size(310, 20);
-            this.txtCC.TabIndex = 12;
+            this.txtCC.Size = new System.Drawing.Size(681, 22);
+            this.txtCC.TabIndex = 13;
             // 
             // chkCC
             // 
             this.chkCC.AutoSize = true;
             this.chkCC.Enabled = false;
-            this.chkCC.Location = new System.Drawing.Point(38, 189);
+            this.chkCC.Location = new System.Drawing.Point(42, 303);
+            this.chkCC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkCC.Name = "chkCC";
-            this.chkCC.Size = new System.Drawing.Size(40, 17);
-            this.chkCC.TabIndex = 11;
+            this.chkCC.Size = new System.Drawing.Size(48, 21);
+            this.chkCC.TabIndex = 12;
             this.chkCC.Text = "CC";
             this.chkCC.UseVisualStyleBackColor = true;
             this.chkCC.CheckedChanged += new System.EventHandler(this.chkCC_CheckedChanged);
             // 
             // txtTo
             // 
+            this.txtTo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTo.Enabled = false;
-            this.txtTo.Location = new System.Drawing.Point(124, 160);
+            this.txtTo.Location = new System.Drawing.Point(133, 271);
+            this.txtTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(310, 20);
-            this.txtTo.TabIndex = 10;
+            this.txtTo.Size = new System.Drawing.Size(681, 22);
+            this.txtTo.TabIndex = 11;
             // 
             // chkTo
             // 
             this.chkTo.AutoSize = true;
             this.chkTo.Enabled = false;
-            this.chkTo.Location = new System.Drawing.Point(38, 163);
+            this.chkTo.Location = new System.Drawing.Point(42, 271);
+            this.chkTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkTo.Name = "chkTo";
-            this.chkTo.Size = new System.Drawing.Size(39, 17);
-            this.chkTo.TabIndex = 9;
+            this.chkTo.Size = new System.Drawing.Size(47, 21);
+            this.chkTo.TabIndex = 10;
             this.chkTo.Text = "To";
             this.chkTo.UseVisualStyleBackColor = true;
             this.chkTo.CheckedChanged += new System.EventHandler(this.chkTo_CheckedChanged);
             // 
             // txtSubject
             // 
+            this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubject.Enabled = false;
-            this.txtSubject.Location = new System.Drawing.Point(124, 134);
+            this.txtSubject.Location = new System.Drawing.Point(133, 239);
+            this.txtSubject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(310, 20);
-            this.txtSubject.TabIndex = 8;
+            this.txtSubject.Size = new System.Drawing.Size(681, 22);
+            this.txtSubject.TabIndex = 9;
             // 
             // chkSubject
             // 
             this.chkSubject.AutoSize = true;
             this.chkSubject.Enabled = false;
-            this.chkSubject.Location = new System.Drawing.Point(38, 137);
+            this.chkSubject.Location = new System.Drawing.Point(42, 239);
+            this.chkSubject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkSubject.Name = "chkSubject";
-            this.chkSubject.Size = new System.Drawing.Size(62, 17);
-            this.chkSubject.TabIndex = 7;
+            this.chkSubject.Size = new System.Drawing.Size(77, 21);
+            this.chkSubject.TabIndex = 8;
             this.chkSubject.Text = "Subject";
             this.chkSubject.UseVisualStyleBackColor = true;
             this.chkSubject.CheckedChanged += new System.EventHandler(this.chkSubject_CheckedChanged);
@@ -162,17 +185,19 @@
             this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvItems.Location = new System.Drawing.Point(2, 248);
+            this.lvItems.Location = new System.Drawing.Point(44, 401);
+            this.lvItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(958, 325);
-            this.lvItems.TabIndex = 15;
+            this.lvItems.Size = new System.Drawing.Size(772, 190);
+            this.lvItems.TabIndex = 0;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(825, 15);
+            this.btnSearch.Location = new System.Drawing.Point(13, 365);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(123, 23);
+            this.btnSearch.Size = new System.Drawing.Size(164, 28);
             this.btnSearch.TabIndex = 16;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -182,10 +207,11 @@
             // 
             this.rdoAqsSearch.AutoSize = true;
             this.rdoAqsSearch.Checked = true;
-            this.rdoAqsSearch.Location = new System.Drawing.Point(22, 48);
+            this.rdoAqsSearch.Location = new System.Drawing.Point(16, 58);
+            this.rdoAqsSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoAqsSearch.Name = "rdoAqsSearch";
-            this.rdoAqsSearch.Size = new System.Drawing.Size(84, 17);
-            this.rdoAqsSearch.TabIndex = 4;
+            this.rdoAqsSearch.Size = new System.Drawing.Size(107, 21);
+            this.rdoAqsSearch.TabIndex = 5;
             this.rdoAqsSearch.TabStop = true;
             this.rdoAqsSearch.Text = "AQS Search";
             this.rdoAqsSearch.UseVisualStyleBackColor = true;
@@ -194,10 +220,11 @@
             // rdoFindItemSearch
             // 
             this.rdoFindItemSearch.AutoSize = true;
-            this.rdoFindItemSearch.Location = new System.Drawing.Point(20, 104);
+            this.rdoFindItemSearch.Location = new System.Drawing.Point(14, 214);
+            this.rdoFindItemSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoFindItemSearch.Name = "rdoFindItemSearch";
-            this.rdoFindItemSearch.Size = new System.Drawing.Size(105, 17);
-            this.rdoFindItemSearch.TabIndex = 6;
+            this.rdoFindItemSearch.Size = new System.Drawing.Size(135, 21);
+            this.rdoFindItemSearch.TabIndex = 7;
             this.rdoFindItemSearch.Text = "Find Item Search";
             this.rdoFindItemSearch.UseVisualStyleBackColor = true;
             this.rdoFindItemSearch.CheckedChanged += new System.EventHandler(this.rdoFindItemSearch_CheckedChanged);
@@ -205,23 +232,25 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(294, 15);
+            this.label2.Location = new System.Drawing.Point(323, 18);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 2;
+            this.label2.Size = new System.Drawing.Size(76, 17);
+            this.label2.TabIndex = 3;
             this.label2.Text = "Page Size:";
             // 
             // numPageSize
             // 
-            this.numPageSize.Location = new System.Drawing.Point(358, 12);
+            this.numPageSize.Location = new System.Drawing.Point(408, 15);
+            this.numPageSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numPageSize.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.numPageSize.Name = "numPageSize";
-            this.numPageSize.Size = new System.Drawing.Size(120, 20);
-            this.numPageSize.TabIndex = 3;
+            this.numPageSize.Size = new System.Drawing.Size(160, 22);
+            this.numPageSize.TabIndex = 4;
             this.numPageSize.Value = new decimal(new int[] {
             250,
             0,
@@ -230,9 +259,9 @@
             // 
             // SearchForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 574);
+            this.ClientSize = new System.Drawing.Size(827, 621);
             this.Controls.Add(this.numPageSize);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rdoFindItemSearch);
@@ -250,6 +279,7 @@
             this.Controls.Add(this.chkTo);
             this.Controls.Add(this.txtSubject);
             this.Controls.Add(this.chkSubject);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SearchForm";
             this.Text = "Search Form";
             this.Load += new System.EventHandler(this.SearchForm_Load);

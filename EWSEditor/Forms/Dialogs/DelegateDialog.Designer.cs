@@ -52,9 +52,10 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(222, 432);
+            this.btnOK.Location = new System.Drawing.Point(293, 532);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(100, 28);
             this.btnOK.TabIndex = 4;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -64,9 +65,10 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(303, 432);
+            this.btnCancel.Location = new System.Drawing.Point(401, 532);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(100, 28);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -80,18 +82,21 @@
             this.grpDelInfo.Controls.Add(this.lstDelegates);
             this.grpDelInfo.Controls.Add(this.panel1);
             this.grpDelInfo.Controls.Add(this.lblDescription);
-            this.grpDelInfo.Location = new System.Drawing.Point(12, 91);
+            this.grpDelInfo.Location = new System.Drawing.Point(16, 112);
+            this.grpDelInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpDelInfo.Name = "grpDelInfo";
-            this.grpDelInfo.Size = new System.Drawing.Size(367, 314);
+            this.grpDelInfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpDelInfo.Size = new System.Drawing.Size(489, 386);
             this.grpDelInfo.TabIndex = 14;
             this.grpDelInfo.TabStop = false;
             this.grpDelInfo.Text = "Delegate Information for {0}";
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(272, 88);
+            this.btnUpdate.Location = new System.Drawing.Point(363, 108);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(79, 23);
+            this.btnUpdate.Size = new System.Drawing.Size(105, 28);
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Update...";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -99,9 +104,10 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(271, 59);
+            this.btnRemove.Location = new System.Drawing.Point(361, 73);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(80, 23);
+            this.btnRemove.Size = new System.Drawing.Size(107, 28);
             this.btnRemove.TabIndex = 1;
             this.btnRemove.Text = "Remove...";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -109,9 +115,10 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(272, 30);
+            this.btnAdd.Location = new System.Drawing.Point(363, 37);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(79, 23);
+            this.btnAdd.Size = new System.Drawing.Size(105, 28);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add...";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -120,9 +127,11 @@
             // lstDelegates
             // 
             this.lstDelegates.FormattingEnabled = true;
-            this.lstDelegates.Location = new System.Drawing.Point(19, 30);
+            this.lstDelegates.ItemHeight = 16;
+            this.lstDelegates.Location = new System.Drawing.Point(25, 37);
+            this.lstDelegates.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstDelegates.Name = "lstDelegates";
-            this.lstDelegates.Size = new System.Drawing.Size(246, 121);
+            this.lstDelegates.Size = new System.Drawing.Size(327, 148);
             this.lstDelegates.TabIndex = 3;
             // 
             // panel1
@@ -130,17 +139,19 @@
             this.panel1.Controls.Add(this.rdoDelegateAndMe);
             this.panel1.Controls.Add(this.rdoDelegateOnly);
             this.panel1.Controls.Add(this.rdoDelegateAndCopy);
-            this.panel1.Location = new System.Drawing.Point(30, 199);
+            this.panel1.Location = new System.Drawing.Point(40, 245);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(307, 90);
+            this.panel1.Size = new System.Drawing.Size(409, 111);
             this.panel1.TabIndex = 13;
             // 
             // rdoDelegateAndMe
             // 
             this.rdoDelegateAndMe.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.rdoDelegateAndMe.Location = new System.Drawing.Point(3, 62);
+            this.rdoDelegateAndMe.Location = new System.Drawing.Point(4, 76);
+            this.rdoDelegateAndMe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoDelegateAndMe.Name = "rdoDelegateAndMe";
-            this.rdoDelegateAndMe.Size = new System.Drawing.Size(300, 24);
+            this.rdoDelegateAndMe.Size = new System.Drawing.Size(400, 30);
             this.rdoDelegateAndMe.TabIndex = 2;
             this.rdoDelegateAndMe.TabStop = true;
             this.rdoDelegateAndMe.Text = "My delegates and me";
@@ -150,9 +161,10 @@
             // rdoDelegateOnly
             // 
             this.rdoDelegateOnly.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.rdoDelegateOnly.Location = new System.Drawing.Point(4, 38);
+            this.rdoDelegateOnly.Location = new System.Drawing.Point(5, 47);
+            this.rdoDelegateOnly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoDelegateOnly.Name = "rdoDelegateOnly";
-            this.rdoDelegateOnly.Size = new System.Drawing.Size(300, 24);
+            this.rdoDelegateOnly.Size = new System.Drawing.Size(400, 30);
             this.rdoDelegateOnly.TabIndex = 1;
             this.rdoDelegateOnly.TabStop = true;
             this.rdoDelegateOnly.Text = "My delegates only";
@@ -162,9 +174,10 @@
             // rdoDelegateAndCopy
             // 
             this.rdoDelegateAndCopy.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.rdoDelegateAndCopy.Location = new System.Drawing.Point(4, 4);
+            this.rdoDelegateAndCopy.Location = new System.Drawing.Point(5, 5);
+            this.rdoDelegateAndCopy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoDelegateAndCopy.Name = "rdoDelegateAndCopy";
-            this.rdoDelegateAndCopy.Size = new System.Drawing.Size(300, 34);
+            this.rdoDelegateAndCopy.Size = new System.Drawing.Size(400, 42);
             this.rdoDelegateAndCopy.TabIndex = 0;
             this.rdoDelegateAndCopy.TabStop = true;
             this.rdoDelegateAndCopy.Text = "My delegates only, but send a copy of meeting requests and responses to me (recom" +
@@ -174,25 +187,28 @@
             // 
             // lblDescription
             // 
-            this.lblDescription.Location = new System.Drawing.Point(16, 162);
+            this.lblDescription.Location = new System.Drawing.Point(21, 199);
+            this.lblDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(321, 33);
+            this.lblDescription.Size = new System.Drawing.Size(428, 41);
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "Deliver meeting requests addresed to me and responses to meeting requests where I" +
     " am the organizer to:";
             // 
             // txtPrincipal
             // 
-            this.txtPrincipal.Location = new System.Drawing.Point(31, 38);
+            this.txtPrincipal.Location = new System.Drawing.Point(41, 47);
+            this.txtPrincipal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPrincipal.Name = "txtPrincipal";
-            this.txtPrincipal.Size = new System.Drawing.Size(302, 20);
+            this.txtPrincipal.Size = new System.Drawing.Size(401, 22);
             this.txtPrincipal.TabIndex = 1;
             // 
             // btnResolvePrin
             // 
-            this.btnResolvePrin.Location = new System.Drawing.Point(339, 36);
+            this.btnResolvePrin.Location = new System.Drawing.Point(452, 44);
+            this.btnResolvePrin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnResolvePrin.Name = "btnResolvePrin";
-            this.btnResolvePrin.Size = new System.Drawing.Size(24, 23);
+            this.btnResolvePrin.Size = new System.Drawing.Size(32, 28);
             this.btnResolvePrin.TabIndex = 2;
             this.btnResolvePrin.Text = "...";
             this.btnResolvePrin.UseVisualStyleBackColor = true;
@@ -200,9 +216,10 @@
             // 
             // btnGetDelegates
             // 
-            this.btnGetDelegates.Location = new System.Drawing.Point(262, 65);
+            this.btnGetDelegates.Location = new System.Drawing.Point(349, 80);
+            this.btnGetDelegates.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGetDelegates.Name = "btnGetDelegates";
-            this.btnGetDelegates.Size = new System.Drawing.Size(101, 23);
+            this.btnGetDelegates.Size = new System.Drawing.Size(135, 28);
             this.btnGetDelegates.TabIndex = 3;
             this.btnGetDelegates.Text = "Get Delegates";
             this.btnGetDelegates.UseVisualStyleBackColor = true;
@@ -211,19 +228,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(17, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(364, 13);
+            this.label1.Size = new System.Drawing.Size(489, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Enter the SMTP address of the principal mailbox to retrieve delegates from...";
             // 
             // DelegateDialog
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(391, 467);
+            this.ClientSize = new System.Drawing.Size(518, 575);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
@@ -231,6 +249,7 @@
             this.Controls.Add(this.btnResolvePrin);
             this.Controls.Add(this.txtPrincipal);
             this.Controls.Add(this.grpDelInfo);
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "DelegateDialog";
             this.Text = "Delegate Information";
             this.Load += new System.EventHandler(this.DelegateDialog_Load);
