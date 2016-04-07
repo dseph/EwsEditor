@@ -305,5 +305,15 @@ namespace EWSEditor.Forms
                 this.propertyDisplayTable.Rows.Add(row);
             }
         }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

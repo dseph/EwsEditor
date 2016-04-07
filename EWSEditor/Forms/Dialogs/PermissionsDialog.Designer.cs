@@ -71,9 +71,11 @@
             this.grpPermissions.Controls.Add(this.grpRead);
             this.grpPermissions.Controls.Add(this.TempPermissionLevelCombo);
             this.grpPermissions.Controls.Add(this.lblLevel);
-            this.grpPermissions.Location = new System.Drawing.Point(13, 187);
+            this.grpPermissions.Location = new System.Drawing.Point(8, 229);
+            this.grpPermissions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpPermissions.Name = "grpPermissions";
-            this.grpPermissions.Size = new System.Drawing.Size(321, 269);
+            this.grpPermissions.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpPermissions.Size = new System.Drawing.Size(436, 331);
             this.grpPermissions.TabIndex = 1;
             this.grpPermissions.TabStop = false;
             this.grpPermissions.Text = "Permissions";
@@ -83,9 +85,11 @@
             this.grpOther.Controls.Add(this.chkVisible);
             this.grpOther.Controls.Add(this.chkContact);
             this.grpOther.Controls.Add(this.chkOwner);
-            this.grpOther.Location = new System.Drawing.Point(165, 167);
+            this.grpOther.Location = new System.Drawing.Point(220, 206);
+            this.grpOther.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpOther.Name = "grpOther";
-            this.grpOther.Size = new System.Drawing.Size(150, 93);
+            this.grpOther.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpOther.Size = new System.Drawing.Size(200, 114);
             this.grpOther.TabIndex = 5;
             this.grpOther.TabStop = false;
             this.grpOther.Text = "Other";
@@ -93,9 +97,10 @@
             // chkVisible
             // 
             this.chkVisible.AutoSize = true;
-            this.chkVisible.Location = new System.Drawing.Point(6, 66);
+            this.chkVisible.Location = new System.Drawing.Point(8, 81);
+            this.chkVisible.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkVisible.Name = "chkVisible";
-            this.chkVisible.Size = new System.Drawing.Size(87, 17);
+            this.chkVisible.Size = new System.Drawing.Size(113, 21);
             this.chkVisible.TabIndex = 2;
             this.chkVisible.Text = "Folder visible";
             this.chkVisible.UseVisualStyleBackColor = true;
@@ -104,9 +109,10 @@
             // chkContact
             // 
             this.chkContact.AutoSize = true;
-            this.chkContact.Location = new System.Drawing.Point(6, 43);
+            this.chkContact.Location = new System.Drawing.Point(8, 53);
+            this.chkContact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkContact.Name = "chkContact";
-            this.chkContact.Size = new System.Drawing.Size(94, 17);
+            this.chkContact.Size = new System.Drawing.Size(120, 21);
             this.chkContact.TabIndex = 1;
             this.chkContact.Text = "Folder contact";
             this.chkContact.UseVisualStyleBackColor = true;
@@ -115,9 +121,10 @@
             // chkOwner
             // 
             this.chkOwner.AutoSize = true;
-            this.chkOwner.Location = new System.Drawing.Point(7, 20);
+            this.chkOwner.Location = new System.Drawing.Point(9, 25);
+            this.chkOwner.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkOwner.Name = "chkOwner";
-            this.chkOwner.Size = new System.Drawing.Size(89, 17);
+            this.chkOwner.Size = new System.Drawing.Size(115, 21);
             this.chkOwner.TabIndex = 0;
             this.chkOwner.Text = "Folder Owner";
             this.chkOwner.UseVisualStyleBackColor = true;
@@ -128,9 +135,11 @@
             this.grpDelete.Controls.Add(this.rdoDeleteAll);
             this.grpDelete.Controls.Add(this.rdoDeleteOwn);
             this.grpDelete.Controls.Add(this.rdoDeleteNone);
-            this.grpDelete.Location = new System.Drawing.Point(10, 167);
+            this.grpDelete.Location = new System.Drawing.Point(13, 206);
+            this.grpDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpDelete.Name = "grpDelete";
-            this.grpDelete.Size = new System.Drawing.Size(149, 92);
+            this.grpDelete.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpDelete.Size = new System.Drawing.Size(199, 113);
             this.grpDelete.TabIndex = 4;
             this.grpDelete.TabStop = false;
             this.grpDelete.Text = "Delete Items";
@@ -138,9 +147,10 @@
             // rdoDeleteAll
             // 
             this.rdoDeleteAll.AutoSize = true;
-            this.rdoDeleteAll.Location = new System.Drawing.Point(7, 65);
+            this.rdoDeleteAll.Location = new System.Drawing.Point(9, 80);
+            this.rdoDeleteAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoDeleteAll.Name = "rdoDeleteAll";
-            this.rdoDeleteAll.Size = new System.Drawing.Size(36, 17);
+            this.rdoDeleteAll.Size = new System.Drawing.Size(44, 21);
             this.rdoDeleteAll.TabIndex = 3;
             this.rdoDeleteAll.TabStop = true;
             this.rdoDeleteAll.Text = "All";
@@ -150,9 +160,10 @@
             // rdoDeleteOwn
             // 
             this.rdoDeleteOwn.AutoSize = true;
-            this.rdoDeleteOwn.Location = new System.Drawing.Point(7, 42);
+            this.rdoDeleteOwn.Location = new System.Drawing.Point(9, 52);
+            this.rdoDeleteOwn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoDeleteOwn.Name = "rdoDeleteOwn";
-            this.rdoDeleteOwn.Size = new System.Drawing.Size(47, 17);
+            this.rdoDeleteOwn.Size = new System.Drawing.Size(57, 21);
             this.rdoDeleteOwn.TabIndex = 2;
             this.rdoDeleteOwn.TabStop = true;
             this.rdoDeleteOwn.Text = "Own";
@@ -162,9 +173,10 @@
             // rdoDeleteNone
             // 
             this.rdoDeleteNone.AutoSize = true;
-            this.rdoDeleteNone.Location = new System.Drawing.Point(7, 19);
+            this.rdoDeleteNone.Location = new System.Drawing.Point(9, 23);
+            this.rdoDeleteNone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoDeleteNone.Name = "rdoDeleteNone";
-            this.rdoDeleteNone.Size = new System.Drawing.Size(51, 17);
+            this.rdoDeleteNone.Size = new System.Drawing.Size(63, 21);
             this.rdoDeleteNone.TabIndex = 1;
             this.rdoDeleteNone.TabStop = true;
             this.rdoDeleteNone.Text = "None";
@@ -177,9 +189,11 @@
             this.grpWrite.Controls.Add(this.chkEditOwn);
             this.grpWrite.Controls.Add(this.chkCreateSubFolders);
             this.grpWrite.Controls.Add(this.chkCreateItems);
-            this.grpWrite.Location = new System.Drawing.Point(165, 47);
+            this.grpWrite.Location = new System.Drawing.Point(220, 58);
+            this.grpWrite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpWrite.Name = "grpWrite";
-            this.grpWrite.Size = new System.Drawing.Size(150, 114);
+            this.grpWrite.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpWrite.Size = new System.Drawing.Size(200, 140);
             this.grpWrite.TabIndex = 3;
             this.grpWrite.TabStop = false;
             this.grpWrite.Text = "Write";
@@ -187,9 +201,10 @@
             // chkEditAll
             // 
             this.chkEditAll.AutoSize = true;
-            this.chkEditAll.Location = new System.Drawing.Point(6, 88);
+            this.chkEditAll.Location = new System.Drawing.Point(8, 108);
+            this.chkEditAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkEditAll.Name = "chkEditAll";
-            this.chkEditAll.Size = new System.Drawing.Size(57, 17);
+            this.chkEditAll.Size = new System.Drawing.Size(72, 21);
             this.chkEditAll.TabIndex = 4;
             this.chkEditAll.Text = "Edit all";
             this.chkEditAll.UseVisualStyleBackColor = true;
@@ -198,9 +213,10 @@
             // chkEditOwn
             // 
             this.chkEditOwn.AutoSize = true;
-            this.chkEditOwn.Location = new System.Drawing.Point(6, 65);
+            this.chkEditOwn.Location = new System.Drawing.Point(8, 80);
+            this.chkEditOwn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkEditOwn.Name = "chkEditOwn";
-            this.chkEditOwn.Size = new System.Drawing.Size(67, 17);
+            this.chkEditOwn.Size = new System.Drawing.Size(83, 21);
             this.chkEditOwn.TabIndex = 3;
             this.chkEditOwn.Text = "Edit own";
             this.chkEditOwn.UseVisualStyleBackColor = true;
@@ -209,9 +225,10 @@
             // chkCreateSubFolders
             // 
             this.chkCreateSubFolders.AutoSize = true;
-            this.chkCreateSubFolders.Location = new System.Drawing.Point(6, 42);
+            this.chkCreateSubFolders.Location = new System.Drawing.Point(8, 52);
+            this.chkCreateSubFolders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkCreateSubFolders.Name = "chkCreateSubFolders";
-            this.chkCreateSubFolders.Size = new System.Drawing.Size(108, 17);
+            this.chkCreateSubFolders.Size = new System.Drawing.Size(142, 21);
             this.chkCreateSubFolders.TabIndex = 2;
             this.chkCreateSubFolders.Text = "Create subfolders";
             this.chkCreateSubFolders.UseVisualStyleBackColor = true;
@@ -220,9 +237,10 @@
             // chkCreateItems
             // 
             this.chkCreateItems.AutoSize = true;
-            this.chkCreateItems.Location = new System.Drawing.Point(6, 19);
+            this.chkCreateItems.Location = new System.Drawing.Point(8, 23);
+            this.chkCreateItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkCreateItems.Name = "chkCreateItems";
-            this.chkCreateItems.Size = new System.Drawing.Size(85, 17);
+            this.chkCreateItems.Size = new System.Drawing.Size(109, 21);
             this.chkCreateItems.TabIndex = 1;
             this.chkCreateItems.Text = "Create Items";
             this.chkCreateItems.UseVisualStyleBackColor = true;
@@ -233,9 +251,11 @@
             this.grpRead.Controls.Add(this.rdoTimeSubjectLocation);
             this.grpRead.Controls.Add(this.rdoReadFull);
             this.grpRead.Controls.Add(this.rdoReadNone);
-            this.grpRead.Location = new System.Drawing.Point(10, 47);
+            this.grpRead.Location = new System.Drawing.Point(13, 58);
+            this.grpRead.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpRead.Name = "grpRead";
-            this.grpRead.Size = new System.Drawing.Size(149, 114);
+            this.grpRead.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpRead.Size = new System.Drawing.Size(199, 140);
             this.grpRead.TabIndex = 2;
             this.grpRead.TabStop = false;
             this.grpRead.Text = "Read";
@@ -243,9 +263,10 @@
             // rdoTimeOnly
             // 
             this.rdoTimeOnly.AutoSize = true;
-            this.rdoTimeOnly.Location = new System.Drawing.Point(7, 87);
+            this.rdoTimeOnly.Location = new System.Drawing.Point(9, 107);
+            this.rdoTimeOnly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoTimeOnly.Name = "rdoTimeOnly";
-            this.rdoTimeOnly.Size = new System.Drawing.Size(72, 17);
+            this.rdoTimeOnly.Size = new System.Drawing.Size(93, 21);
             this.rdoTimeOnly.TabIndex = 3;
             this.rdoTimeOnly.TabStop = true;
             this.rdoTimeOnly.Text = "Time Only";
@@ -255,9 +276,10 @@
             // rdoTimeSubjectLocation
             // 
             this.rdoTimeSubjectLocation.AutoSize = true;
-            this.rdoTimeSubjectLocation.Location = new System.Drawing.Point(7, 64);
+            this.rdoTimeSubjectLocation.Location = new System.Drawing.Point(9, 79);
+            this.rdoTimeSubjectLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoTimeSubjectLocation.Name = "rdoTimeSubjectLocation";
-            this.rdoTimeSubjectLocation.Size = new System.Drawing.Size(137, 17);
+            this.rdoTimeSubjectLocation.Size = new System.Drawing.Size(177, 21);
             this.rdoTimeSubjectLocation.TabIndex = 2;
             this.rdoTimeSubjectLocation.TabStop = true;
             this.rdoTimeSubjectLocation.Text = "Time, Subject, Location";
@@ -267,9 +289,10 @@
             // rdoReadFull
             // 
             this.rdoReadFull.AutoSize = true;
-            this.rdoReadFull.Location = new System.Drawing.Point(7, 41);
+            this.rdoReadFull.Location = new System.Drawing.Point(9, 50);
+            this.rdoReadFull.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoReadFull.Name = "rdoReadFull";
-            this.rdoReadFull.Size = new System.Drawing.Size(76, 17);
+            this.rdoReadFull.Size = new System.Drawing.Size(98, 21);
             this.rdoReadFull.TabIndex = 1;
             this.rdoReadFull.TabStop = true;
             this.rdoReadFull.Text = "Full Details";
@@ -279,9 +302,10 @@
             // rdoReadNone
             // 
             this.rdoReadNone.AutoSize = true;
-            this.rdoReadNone.Location = new System.Drawing.Point(7, 19);
+            this.rdoReadNone.Location = new System.Drawing.Point(9, 23);
+            this.rdoReadNone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoReadNone.Name = "rdoReadNone";
-            this.rdoReadNone.Size = new System.Drawing.Size(51, 17);
+            this.rdoReadNone.Size = new System.Drawing.Size(63, 21);
             this.rdoReadNone.TabIndex = 0;
             this.rdoReadNone.TabStop = true;
             this.rdoReadNone.Text = "None";
@@ -292,17 +316,19 @@
             // 
             this.TempPermissionLevelCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempPermissionLevelCombo.FormattingEnabled = true;
-            this.TempPermissionLevelCombo.Location = new System.Drawing.Point(109, 20);
+            this.TempPermissionLevelCombo.Location = new System.Drawing.Point(145, 25);
+            this.TempPermissionLevelCombo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TempPermissionLevelCombo.Name = "TempPermissionLevelCombo";
-            this.TempPermissionLevelCombo.Size = new System.Drawing.Size(206, 21);
+            this.TempPermissionLevelCombo.Size = new System.Drawing.Size(273, 24);
             this.TempPermissionLevelCombo.TabIndex = 1;
             this.TempPermissionLevelCombo.SelectedIndexChanged += new System.EventHandler(this.cboPermissionLevel_SelectedIndexChanged);
             // 
             // lblLevel
             // 
-            this.lblLevel.Location = new System.Drawing.Point(7, 20);
+            this.lblLevel.Location = new System.Drawing.Point(9, 25);
+            this.lblLevel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLevel.Name = "lblLevel";
-            this.lblLevel.Size = new System.Drawing.Size(96, 23);
+            this.lblLevel.Size = new System.Drawing.Size(128, 28);
             this.lblLevel.TabIndex = 0;
             this.lblLevel.Text = "Permission Level:";
             this.lblLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -311,9 +337,10 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(259, 479);
+            this.btnCancel.Location = new System.Drawing.Point(341, 568);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(100, 28);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -322,9 +349,10 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(178, 478);
+            this.btnOK.Location = new System.Drawing.Point(223, 568);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(100, 28);
             this.btnOK.TabIndex = 3;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -332,9 +360,10 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(252, 154);
+            this.btnRemove.Location = new System.Drawing.Point(336, 190);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(75, 23);
+            this.btnRemove.Size = new System.Drawing.Size(100, 28);
             this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -342,9 +371,10 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(171, 154);
+            this.btnAdd.Location = new System.Drawing.Point(228, 190);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(100, 28);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Add...";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -358,10 +388,11 @@
             this.lstUsers.FullRowSelect = true;
             this.lstUsers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lstUsers.HideSelection = false;
-            this.lstUsers.Location = new System.Drawing.Point(13, 13);
+            this.lstUsers.Location = new System.Drawing.Point(8, 16);
+            this.lstUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstUsers.MultiSelect = false;
             this.lstUsers.Name = "lstUsers";
-            this.lstUsers.Size = new System.Drawing.Size(321, 135);
+            this.lstUsers.Size = new System.Drawing.Size(436, 165);
             this.lstUsers.TabIndex = 6;
             this.lstUsers.UseCompatibleStateImageBehavior = false;
             this.lstUsers.View = System.Windows.Forms.View.Details;
@@ -379,16 +410,17 @@
             // PermissionsDialog
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(351, 514);
+            this.ClientSize = new System.Drawing.Size(454, 609);
             this.Controls.Add(this.lstUsers);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.grpPermissions);
+            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.Name = "PermissionsDialog";
             this.Text = "Permissions";
             this.Load += new System.EventHandler(this.PermissionsDialog_Load);

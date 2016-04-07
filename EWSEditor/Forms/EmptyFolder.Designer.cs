@@ -41,9 +41,10 @@
             // rdoHardDelete
             // 
             this.rdoHardDelete.AutoSize = true;
-            this.rdoHardDelete.Location = new System.Drawing.Point(33, 26);
+            this.rdoHardDelete.Location = new System.Drawing.Point(24, 12);
+            this.rdoHardDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoHardDelete.Name = "rdoHardDelete";
-            this.rdoHardDelete.Size = new System.Drawing.Size(80, 17);
+            this.rdoHardDelete.Size = new System.Drawing.Size(103, 21);
             this.rdoHardDelete.TabIndex = 0;
             this.rdoHardDelete.TabStop = true;
             this.rdoHardDelete.Text = "Hard delete";
@@ -52,9 +53,10 @@
             // rdoHardDeleteAndIncludeSubfolders
             // 
             this.rdoHardDeleteAndIncludeSubfolders.AutoSize = true;
-            this.rdoHardDeleteAndIncludeSubfolders.Location = new System.Drawing.Point(33, 49);
+            this.rdoHardDeleteAndIncludeSubfolders.Location = new System.Drawing.Point(24, 40);
+            this.rdoHardDeleteAndIncludeSubfolders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoHardDeleteAndIncludeSubfolders.Name = "rdoHardDeleteAndIncludeSubfolders";
-            this.rdoHardDeleteAndIncludeSubfolders.Size = new System.Drawing.Size(189, 17);
+            this.rdoHardDeleteAndIncludeSubfolders.Size = new System.Drawing.Size(250, 21);
             this.rdoHardDeleteAndIncludeSubfolders.TabIndex = 1;
             this.rdoHardDeleteAndIncludeSubfolders.TabStop = true;
             this.rdoHardDeleteAndIncludeSubfolders.Text = "Hard delete and include subfolders";
@@ -63,9 +65,10 @@
             // rdoSoftDelete
             // 
             this.rdoSoftDelete.AutoSize = true;
-            this.rdoSoftDelete.Location = new System.Drawing.Point(33, 72);
+            this.rdoSoftDelete.Location = new System.Drawing.Point(24, 69);
+            this.rdoSoftDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoSoftDelete.Name = "rdoSoftDelete";
-            this.rdoSoftDelete.Size = new System.Drawing.Size(76, 17);
+            this.rdoSoftDelete.Size = new System.Drawing.Size(97, 21);
             this.rdoSoftDelete.TabIndex = 2;
             this.rdoSoftDelete.TabStop = true;
             this.rdoSoftDelete.Text = "Soft delete";
@@ -74,9 +77,10 @@
             // rdoSoftDeleteAndIncludeSubfolders
             // 
             this.rdoSoftDeleteAndIncludeSubfolders.AutoSize = true;
-            this.rdoSoftDeleteAndIncludeSubfolders.Location = new System.Drawing.Point(33, 95);
+            this.rdoSoftDeleteAndIncludeSubfolders.Location = new System.Drawing.Point(24, 97);
+            this.rdoSoftDeleteAndIncludeSubfolders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoSoftDeleteAndIncludeSubfolders.Name = "rdoSoftDeleteAndIncludeSubfolders";
-            this.rdoSoftDeleteAndIncludeSubfolders.Size = new System.Drawing.Size(185, 17);
+            this.rdoSoftDeleteAndIncludeSubfolders.Size = new System.Drawing.Size(244, 21);
             this.rdoSoftDeleteAndIncludeSubfolders.TabIndex = 3;
             this.rdoSoftDeleteAndIncludeSubfolders.TabStop = true;
             this.rdoSoftDeleteAndIncludeSubfolders.Text = "Soft delete and include subfolders";
@@ -84,9 +88,10 @@
             // 
             // cmdCancel
             // 
-            this.cmdCancel.Location = new System.Drawing.Point(144, 180);
+            this.cmdCancel.Location = new System.Drawing.Point(179, 203);
+            this.cmdCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdCancel.Name = "cmdCancel";
-            this.cmdCancel.Size = new System.Drawing.Size(75, 23);
+            this.cmdCancel.Size = new System.Drawing.Size(100, 28);
             this.cmdCancel.TabIndex = 4;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
@@ -94,9 +99,10 @@
             // 
             // cmdOK
             // 
-            this.cmdOK.Location = new System.Drawing.Point(225, 180);
+            this.cmdOK.Location = new System.Drawing.Point(287, 203);
+            this.cmdOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmdOK.Name = "cmdOK";
-            this.cmdOK.Size = new System.Drawing.Size(75, 23);
+            this.cmdOK.Size = new System.Drawing.Size(100, 28);
             this.cmdOK.TabIndex = 5;
             this.cmdOK.Text = "OK";
             this.cmdOK.UseVisualStyleBackColor = true;
@@ -105,9 +111,10 @@
             // rdoMovetodeleteditmesfolderAndIncludeSubfolders
             // 
             this.rdoMovetodeleteditmesfolderAndIncludeSubfolders.AutoSize = true;
-            this.rdoMovetodeleteditmesfolderAndIncludeSubfolders.Location = new System.Drawing.Point(33, 142);
+            this.rdoMovetodeleteditmesfolderAndIncludeSubfolders.Location = new System.Drawing.Point(24, 155);
+            this.rdoMovetodeleteditmesfolderAndIncludeSubfolders.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoMovetodeleteditmesfolderAndIncludeSubfolders.Name = "rdoMovetodeleteditmesfolderAndIncludeSubfolders";
-            this.rdoMovetodeleteditmesfolderAndIncludeSubfolders.Size = new System.Drawing.Size(267, 17);
+            this.rdoMovetodeleteditmesfolderAndIncludeSubfolders.Size = new System.Drawing.Size(354, 21);
             this.rdoMovetodeleteditmesfolderAndIncludeSubfolders.TabIndex = 7;
             this.rdoMovetodeleteditmesfolderAndIncludeSubfolders.TabStop = true;
             this.rdoMovetodeleteditmesfolderAndIncludeSubfolders.Text = "Move to deleted items folder and include subfolders";
@@ -116,9 +123,10 @@
             // rdoMovetodeleteditmesfolder
             // 
             this.rdoMovetodeleteditmesfolder.AutoSize = true;
-            this.rdoMovetodeleteditmesfolder.Location = new System.Drawing.Point(33, 119);
+            this.rdoMovetodeleteditmesfolder.Location = new System.Drawing.Point(24, 126);
+            this.rdoMovetodeleteditmesfolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rdoMovetodeleteditmesfolder.Name = "rdoMovetodeleteditmesfolder";
-            this.rdoMovetodeleteditmesfolder.Size = new System.Drawing.Size(158, 17);
+            this.rdoMovetodeleteditmesfolder.Size = new System.Drawing.Size(207, 21);
             this.rdoMovetodeleteditmesfolder.TabIndex = 6;
             this.rdoMovetodeleteditmesfolder.TabStop = true;
             this.rdoMovetodeleteditmesfolder.Text = "Move to deleted items folder";
@@ -126,9 +134,9 @@
             // 
             // EmptyFolder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 216);
+            this.ClientSize = new System.Drawing.Size(395, 244);
             this.Controls.Add(this.rdoMovetodeleteditmesfolderAndIncludeSubfolders);
             this.Controls.Add(this.rdoMovetodeleteditmesfolder);
             this.Controls.Add(this.cmdOK);
@@ -137,6 +145,7 @@
             this.Controls.Add(this.rdoSoftDelete);
             this.Controls.Add(this.rdoHardDeleteAndIncludeSubfolders);
             this.Controls.Add(this.rdoHardDelete);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EmptyFolder";
             this.Text = "EmptyFolder";
             this.Load += new System.EventHandler(this.EmptyFolder_Load);

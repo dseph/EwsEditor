@@ -149,7 +149,7 @@ namespace EWSEditor.Forms
 
         private void btnOK_Click(object sender, EventArgs e)
         {
- 
+            this.Close();
         }
 
         private void ResolveNameDialog_Load(object sender, EventArgs e)
@@ -204,6 +204,11 @@ namespace EWSEditor.Forms
             //);
 
  
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

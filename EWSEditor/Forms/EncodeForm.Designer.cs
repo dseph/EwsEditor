@@ -43,10 +43,10 @@
             // 
             this.cmboFrom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmboFrom.FormattingEnabled = true;
-            this.cmboFrom.Location = new System.Drawing.Point(3, 19);
-            this.cmboFrom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmboFrom.Location = new System.Drawing.Point(3, 15);
+            this.cmboFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmboFrom.Name = "cmboFrom";
-            this.cmboFrom.Size = new System.Drawing.Size(860, 28);
+            this.cmboFrom.Size = new System.Drawing.Size(796, 24);
             this.cmboFrom.TabIndex = 0;
             // 
             // txtFrom
@@ -56,20 +56,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFrom.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFrom.Location = new System.Drawing.Point(0, 0);
-            this.txtFrom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtFrom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFrom.MaxLength = 0;
             this.txtFrom.Multiline = true;
             this.txtFrom.Name = "txtFrom";
             this.txtFrom.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtFrom.Size = new System.Drawing.Size(973, 268);
+            this.txtFrom.Size = new System.Drawing.Size(867, 240);
             this.txtFrom.TabIndex = 1;
             // 
             // btnGo
             // 
-            this.btnGo.Location = new System.Drawing.Point(871, 13);
-            this.btnGo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnGo.Location = new System.Drawing.Point(807, 11);
+            this.btnGo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGo.Name = "btnGo";
-            this.btnGo.Size = new System.Drawing.Size(62, 39);
+            this.btnGo.Size = new System.Drawing.Size(55, 31);
             this.btnGo.TabIndex = 2;
             this.btnGo.Text = "Go";
             this.btnGo.UseVisualStyleBackColor = true;
@@ -82,13 +82,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTo.BackColor = System.Drawing.Color.LemonChiffon;
             this.txtTo.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTo.Location = new System.Drawing.Point(4, 5);
-            this.txtTo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTo.Location = new System.Drawing.Point(4, 4);
+            this.txtTo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTo.MaxLength = 0;
             this.txtTo.Multiline = true;
             this.txtTo.Name = "txtTo";
             this.txtTo.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTo.Size = new System.Drawing.Size(969, 288);
+            this.txtTo.Size = new System.Drawing.Size(864, 259);
             this.txtTo.TabIndex = 3;
             // 
             // splitContainer1
@@ -97,7 +97,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 55);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 44);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -108,20 +109,21 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.txtTo);
-            this.splitContainer1.Size = new System.Drawing.Size(979, 579);
-            this.splitContainer1.SplitterDistance = 275;
+            this.splitContainer1.Size = new System.Drawing.Size(872, 516);
+            this.splitContainer1.SplitterDistance = 245;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 4;
             // 
             // EncodeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(984, 631);
+            this.ClientSize = new System.Drawing.Size(877, 558);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.btnGo);
             this.Controls.Add(this.cmboFrom);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EncodeForm";
             this.Text = "Encoding Helper";
             this.Load += new System.EventHandler(this.EncodeForm_Load);

@@ -48,7 +48,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(1053, 220);
+            this.textBox1.Size = new System.Drawing.Size(1049, 220);
             this.textBox1.TabIndex = 4;
             // 
             // webBrowser1
@@ -59,7 +59,7 @@
             this.webBrowser1.Location = new System.Drawing.Point(23, 356);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(1053, 136);
+            this.webBrowser1.Size = new System.Drawing.Size(1049, 165);
             this.webBrowser1.TabIndex = 5;
             // 
             // btnCreatePageAndView
@@ -148,7 +148,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1088, 504);
+            this.ClientSize = new System.Drawing.Size(1084, 533);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmboFileExtension);

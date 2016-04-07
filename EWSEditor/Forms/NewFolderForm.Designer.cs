@@ -40,25 +40,30 @@
             // 
             // lblStart
             // 
-            this.lblStart.Location = new System.Drawing.Point(3, 9);
+            this.lblStart.Location = new System.Drawing.Point(4, 11);
+            this.lblStart.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStart.Name = "lblStart";
-            this.lblStart.Size = new System.Drawing.Size(79, 23);
+            this.lblStart.Size = new System.Drawing.Size(105, 28);
             this.lblStart.TabIndex = 0;
             this.lblStart.Text = "Folder Name:";
             // 
             // txtFolderName
             // 
-            this.txtFolderName.Location = new System.Drawing.Point(88, 9);
+            this.txtFolderName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFolderName.Location = new System.Drawing.Point(117, 11);
+            this.txtFolderName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtFolderName.Name = "txtFolderName";
-            this.txtFolderName.Size = new System.Drawing.Size(699, 20);
+            this.txtFolderName.Size = new System.Drawing.Size(868, 22);
             this.txtFolderName.TabIndex = 1;
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(631, 259);
+            this.btnOK.Location = new System.Drawing.Point(772, 323);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(100, 28);
             this.btnOK.TabIndex = 3;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -67,9 +72,10 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(712, 259);
+            this.btnCancel.Location = new System.Drawing.Point(880, 323);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(100, 28);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -77,9 +83,10 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(3, 44);
+            this.label1.Location = new System.Drawing.Point(4, 54);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 23);
+            this.label1.Size = new System.Drawing.Size(105, 28);
             this.label1.TabIndex = 2;
             this.label1.Text = "Folder Class:";
             // 
@@ -93,11 +100,12 @@
             this.colDescription});
             this.lvItems.FullRowSelect = true;
             this.lvItems.HideSelection = false;
-            this.lvItems.Location = new System.Drawing.Point(6, 70);
+            this.lvItems.Location = new System.Drawing.Point(8, 86);
+            this.lvItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
             this.lvItems.ShowItemToolTips = true;
-            this.lvItems.Size = new System.Drawing.Size(784, 172);
+            this.lvItems.Size = new System.Drawing.Size(975, 215);
             this.lvItems.TabIndex = 5;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -114,15 +122,16 @@
             // 
             // NewFolderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 294);
+            this.ClientSize = new System.Drawing.Size(996, 366);
             this.Controls.Add(this.lvItems);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.lblStart);
             this.Controls.Add(this.txtFolderName);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "NewFolderForm";
             this.Text = "NewFolderForm";
             this.Load += new System.EventHandler(this.NewFolderForm_Load);

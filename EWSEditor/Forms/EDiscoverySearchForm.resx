@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="txtInfo.Text" xml:space="preserve">
+    <value>Note: Specific RBAC Audit permissions needs to be set to use eDiscovery.  See the following articles - http://technet.microsoft.com/en-us/library/dd298021(v=exchg.150).aspx#roles and http://gsexdev.blogspot.com/2014/01/paging-ediscovery-results-with-ews.html.</value>
+  </data>
 </root>
