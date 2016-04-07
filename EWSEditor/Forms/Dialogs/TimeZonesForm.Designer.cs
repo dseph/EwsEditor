@@ -36,9 +36,9 @@
             this.dtStartTime = new System.Windows.Forms.DateTimePicker();
             this.tabTimeZones = new System.Windows.Forms.TabControl();
             this.tabClientTimeZones = new System.Windows.Forms.TabPage();
-            this.btnSummaryListAsText = new System.Windows.Forms.Button();
-            this.lvMachineTimeZones = new System.Windows.Forms.ListView();
             this.txtMachineTimeZones = new System.Windows.Forms.TextBox();
+            this.lvMachineTimeZones = new System.Windows.Forms.ListView();
+            this.btnSummaryListAsText = new System.Windows.Forms.Button();
             this.tabClientTimezoneLookup = new System.Windows.Forms.TabPage();
             this.txtTimeZoneLookupResults = new System.Windows.Forms.TextBox();
             this.tabClientCurrentTimeZone = new System.Windows.Forms.TabPage();
@@ -118,14 +118,14 @@
             this.dtStartDate.Location = new System.Drawing.Point(717, 16);
             this.dtStartDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtStartDate.Name = "dtStartDate";
-            this.dtStartDate.Size = new System.Drawing.Size(265, 26);
+            this.dtStartDate.Size = new System.Drawing.Size(251, 26);
             this.dtStartDate.TabIndex = 35;
             this.dtStartDate.ValueChanged += new System.EventHandler(this.dtStartDate_ValueChanged);
             // 
             // dtStartTime
             // 
             this.dtStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtStartTime.Location = new System.Drawing.Point(992, 16);
+            this.dtStartTime.Location = new System.Drawing.Point(976, 16);
             this.dtStartTime.Margin = new System.Windows.Forms.Padding(4);
             this.dtStartTime.Name = "dtStartTime";
             this.dtStartTime.Size = new System.Drawing.Size(179, 26);
@@ -146,7 +146,7 @@
             this.tabTimeZones.Margin = new System.Windows.Forms.Padding(4);
             this.tabTimeZones.Name = "tabTimeZones";
             this.tabTimeZones.SelectedIndex = 0;
-            this.tabTimeZones.Size = new System.Drawing.Size(1034, 648);
+            this.tabTimeZones.Size = new System.Drawing.Size(1175, 648);
             this.tabTimeZones.TabIndex = 38;
             // 
             // tabClientTimeZones
@@ -165,29 +165,6 @@
             this.tabClientTimeZones.UseVisualStyleBackColor = true;
             this.tabClientTimeZones.Click += new System.EventHandler(this.tabClientTimeZones_Click);
             // 
-            // btnSummaryListAsText
-            // 
-            this.btnSummaryListAsText.Location = new System.Drawing.Point(220, 4);
-            this.btnSummaryListAsText.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSummaryListAsText.Name = "btnSummaryListAsText";
-            this.btnSummaryListAsText.Size = new System.Drawing.Size(208, 33);
-            this.btnSummaryListAsText.TabIndex = 33;
-            this.btnSummaryListAsText.Text = "Timezone list as text";
-            this.btnSummaryListAsText.UseVisualStyleBackColor = true;
-            this.btnSummaryListAsText.Click += new System.EventHandler(this.btnSummaryListAsText_Click);
-            // 
-            // lvMachineTimeZones
-            // 
-            this.lvMachineTimeZones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvMachineTimeZones.Location = new System.Drawing.Point(7, 45);
-            this.lvMachineTimeZones.Margin = new System.Windows.Forms.Padding(4);
-            this.lvMachineTimeZones.Name = "lvMachineTimeZones";
-            this.lvMachineTimeZones.Size = new System.Drawing.Size(1004, 293);
-            this.lvMachineTimeZones.TabIndex = 33;
-            this.lvMachineTimeZones.UseCompatibleStateImageBehavior = false;
-            this.lvMachineTimeZones.SelectedIndexChanged += new System.EventHandler(this.lvMachineTimeZones_SelectedIndexChanged);
-            // 
             // txtMachineTimeZones
             // 
             this.txtMachineTimeZones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -204,6 +181,29 @@
             this.txtMachineTimeZones.WordWrap = false;
             this.txtMachineTimeZones.TextChanged += new System.EventHandler(this.txtMachineTimeZones_TextChanged);
             // 
+            // lvMachineTimeZones
+            // 
+            this.lvMachineTimeZones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvMachineTimeZones.Location = new System.Drawing.Point(7, 45);
+            this.lvMachineTimeZones.Margin = new System.Windows.Forms.Padding(4);
+            this.lvMachineTimeZones.Name = "lvMachineTimeZones";
+            this.lvMachineTimeZones.Size = new System.Drawing.Size(1004, 293);
+            this.lvMachineTimeZones.TabIndex = 33;
+            this.lvMachineTimeZones.UseCompatibleStateImageBehavior = false;
+            this.lvMachineTimeZones.SelectedIndexChanged += new System.EventHandler(this.lvMachineTimeZones_SelectedIndexChanged);
+            // 
+            // btnSummaryListAsText
+            // 
+            this.btnSummaryListAsText.Location = new System.Drawing.Point(220, 4);
+            this.btnSummaryListAsText.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSummaryListAsText.Name = "btnSummaryListAsText";
+            this.btnSummaryListAsText.Size = new System.Drawing.Size(208, 33);
+            this.btnSummaryListAsText.TabIndex = 33;
+            this.btnSummaryListAsText.Text = "Timezone list as text";
+            this.btnSummaryListAsText.UseVisualStyleBackColor = true;
+            this.btnSummaryListAsText.Click += new System.EventHandler(this.btnSummaryListAsText_Click);
+            // 
             // tabClientTimezoneLookup
             // 
             this.tabClientTimezoneLookup.Controls.Add(this.txtTimeZoneLookupResults);
@@ -215,7 +215,7 @@
             this.tabClientTimezoneLookup.Margin = new System.Windows.Forms.Padding(4);
             this.tabClientTimezoneLookup.Name = "tabClientTimezoneLookup";
             this.tabClientTimezoneLookup.Padding = new System.Windows.Forms.Padding(4);
-            this.tabClientTimezoneLookup.Size = new System.Drawing.Size(1026, 616);
+            this.tabClientTimezoneLookup.Size = new System.Drawing.Size(1167, 616);
             this.tabClientTimezoneLookup.TabIndex = 1;
             this.tabClientTimezoneLookup.Text = "Client Timezone Lookup";
             this.tabClientTimezoneLookup.UseVisualStyleBackColor = true;
@@ -225,12 +225,12 @@
             this.txtTimeZoneLookupResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTimeZoneLookupResults.Location = new System.Drawing.Point(7, 61);
+            this.txtTimeZoneLookupResults.Location = new System.Drawing.Point(7, 52);
             this.txtTimeZoneLookupResults.Margin = new System.Windows.Forms.Padding(4);
             this.txtTimeZoneLookupResults.Multiline = true;
             this.txtTimeZoneLookupResults.Name = "txtTimeZoneLookupResults";
             this.txtTimeZoneLookupResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTimeZoneLookupResults.Size = new System.Drawing.Size(1011, 551);
+            this.txtTimeZoneLookupResults.Size = new System.Drawing.Size(1152, 560);
             this.txtTimeZoneLookupResults.TabIndex = 38;
             this.txtTimeZoneLookupResults.WordWrap = false;
             // 
@@ -241,7 +241,7 @@
             this.tabClientCurrentTimeZone.Location = new System.Drawing.Point(4, 28);
             this.tabClientCurrentTimeZone.Margin = new System.Windows.Forms.Padding(4);
             this.tabClientCurrentTimeZone.Name = "tabClientCurrentTimeZone";
-            this.tabClientCurrentTimeZone.Size = new System.Drawing.Size(1018, 616);
+            this.tabClientCurrentTimeZone.Size = new System.Drawing.Size(1026, 616);
             this.tabClientCurrentTimeZone.TabIndex = 3;
             this.tabClientCurrentTimeZone.Text = "Client Current TimeZone";
             this.tabClientCurrentTimeZone.UseVisualStyleBackColor = true;
@@ -288,7 +288,7 @@
             this.tabConvertTime.Margin = new System.Windows.Forms.Padding(4);
             this.tabConvertTime.Name = "tabConvertTime";
             this.tabConvertTime.Padding = new System.Windows.Forms.Padding(4);
-            this.tabConvertTime.Size = new System.Drawing.Size(1018, 617);
+            this.tabConvertTime.Size = new System.Drawing.Size(1026, 616);
             this.tabConvertTime.TabIndex = 4;
             this.tabConvertTime.Text = "Convert Time";
             this.tabConvertTime.UseVisualStyleBackColor = true;
@@ -564,9 +564,9 @@
             this.lblConversionResult.Location = new System.Drawing.Point(4, 478);
             this.lblConversionResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblConversionResult.Name = "lblConversionResult";
-            this.lblConversionResult.Size = new System.Drawing.Size(53, 19);
+            this.lblConversionResult.Size = new System.Drawing.Size(58, 19);
             this.lblConversionResult.TabIndex = 6;
-            this.lblConversionResult.Text = "Result";
+            this.lblConversionResult.Text = "Result:";
             // 
             // txtConversionResults
             // 
@@ -616,7 +616,7 @@
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1021, 38);
+            this.textBox1.Size = new System.Drawing.Size(1162, 38);
             this.textBox1.TabIndex = 40;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
@@ -625,7 +625,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(1041, 702);
+            this.ClientSize = new System.Drawing.Size(1182, 702);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tabTimeZones);
             this.Margin = new System.Windows.Forms.Padding(4);
