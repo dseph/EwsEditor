@@ -117,4 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>SCP Autodiscover is for in-network Autodiscover.  SCP autodisocver is done first by default and if it fails then POX Autdiscover (external) is done.  Skipping SCP saves unneccesary processing when going against externernal servers (saves time). </value>
+  </data>
 </root>

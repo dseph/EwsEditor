@@ -332,5 +332,45 @@ namespace EWSEditor.Forms
 
         }
 
+        private void DumpFolderLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FindItemText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FindFolderText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CalendarViewText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DumpFolderText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FindItemLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FindFolderLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CalendarViewLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
