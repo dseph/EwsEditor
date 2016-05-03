@@ -20,7 +20,7 @@ namespace EWSEditor.Forms
     public partial class AddRemoveAttachments : Form
     {
         Item _Item = null;
-        bool _IsExistingEmail = false;
+        bool _AllowAddDeleteAttachments = false;
         public bool IsDirty = true;
 
         public AddRemoveAttachments()
@@ -28,10 +28,10 @@ namespace EWSEditor.Forms
             InitializeComponent();
         }
 
-        public AddRemoveAttachments(ref Item oItem, bool IsExistingEmail)
+        public AddRemoveAttachments(ref Item oItem, bool AllowAddDeleteAttachments)
         {
             _Item = oItem;
-            _IsExistingEmail = IsExistingEmail;
+            _AllowAddDeleteAttachments = AllowAddDeleteAttachments;
 
             IsDirty = false;
             InitializeComponent();
@@ -124,8 +124,8 @@ namespace EWSEditor.Forms
 
         private void AddRemoveAttachments_Load(object sender, EventArgs e)
         {
-            btnInsertFileAttachment.Enabled = !(_IsExistingEmail);
-            btnDeleteFileAttachment.Enabled = !(_IsExistingEmail);
+ //           btnInsertFileAttachment.Enabled = _AllowAddDeleteAttachments;
+//            btnDeleteFileAttachment.Enabled = _AllowAddDeleteAttachments;
 
             AppointmentHelper.LoadFileAttachmentsLv(_Item, ref lvFileAttachments);
 

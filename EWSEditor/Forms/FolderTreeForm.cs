@@ -27,9 +27,64 @@ namespace EWSEditor.Forms
         private Timer deferredTreeViewActionTimer = null;
         private TreeViewAction? deferredTreeViewAction = null;
 
+        private static ExtendedPropertyDefinition Prop_IsHidden = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+        private static ExtendedPropertyDefinition Prop_FolderPath = new ExtendedPropertyDefinition(26293, MapiPropertyType.String);            // Folder Path
+        private static ExtendedPropertyDefinition Prop_RetentionFlags = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);      // PR_RETENTION_FLAGS 0x301D   
+        private static ExtendedPropertyDefinition Prop_Retention_Period = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);    // PR_RETENTION_PERIOD 0x301A
+        private static ExtendedPropertyDefinition Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT = new ExtendedPropertyDefinition(0x66B1, MapiPropertyType.Long);    // PR_ATTACH_ON_NORMAL_MSG_COUNT 0x66B1
+
+        private static ExtendedPropertyDefinition Prop_PidTagMessageSizeExtended = new ExtendedPropertyDefinition(0xe08, MapiPropertyType.Long);
+        private static ExtendedPropertyDefinition Prop_PidTagDeletedOn = new ExtendedPropertyDefinition(0x668F, MapiPropertyType.SystemTime);
+        private static ExtendedPropertyDefinition Prop_PidTagFolderFlag = new ExtendedPropertyDefinition(0x66A8, MapiPropertyType.Integer);
+        private static ExtendedPropertyDefinition Prop_PidTagLocalCommitTime = new ExtendedPropertyDefinition(0x6709, MapiPropertyType.SystemTime);
+        private static ExtendedPropertyDefinition Prop_PidTagLocalCommitTimeMax = new ExtendedPropertyDefinition(0x670A, MapiPropertyType.SystemTime);
+        private static ExtendedPropertyDefinition Prop_PidTagDeletedCountTotal = new ExtendedPropertyDefinition(0x0003, MapiPropertyType.Integer);
+
+        private static ExtendedPropertyDefinition Prop_PidTagArchiveTag = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition Prop_PidTagPolicyTag = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Integer);
+        private static ExtendedPropertyDefinition Prop_PidTagRetentionPeriod = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);
+ 
+
         private PropertySet folderNodePropertySet = new PropertySet(
             BasePropertySet.IdOnly,
-            new PropertyDefinitionBase[] { FolderSchema.DisplayName, FolderSchema.ChildFolderCount });
+            new PropertyDefinitionBase[] { 
+                FolderSchema.DisplayName, 
+                FolderSchema.ChildFolderCount,
+ 
+                FolderSchema.FolderClass, 
+                FolderSchema.ManagedFolderInformation,  
+   
+                FolderSchema.TotalCount,  
+                FolderSchema.UnreadCount,  
+                FolderSchema.EffectiveRights,
+ 
+                Prop_IsHidden,
+                Prop_FolderPath
+
+                //Prop_Retention_Period,
+                //Prop_RetentionFlags,
+                //Prop_PidTagMessageSizeExtended,
+                //Prop_PidTagDeletedOn,
+                //Prop_PidTagFolderFlag,
+                //Prop_PidTagLocalCommitTime,
+                //Prop_PidTagLocalCommitTimeMax,
+                //Prop_PidTagDeletedCountTotal,
+                //Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT,
+                //Prop_PidTagArchiveTag,
+                //Prop_PidTagPolicyTag,
+                //Prop_PidTagRetentionPeriod
+  
+                // FolderSchema.WellKnownFolderName 
+                // FolderSchema.PolicyTag,  
+                // FolderSchema.ArchiveTag, 
+
+ 
+
+            });
+
+         //                   FolderSchema.ArchiveTag, 
+   
+ 
 
         // MenuItems to add to the File menu
         private System.Windows.Forms.ToolStripMenuItem newExchangeServiceMenu = new ToolStripMenuItem();

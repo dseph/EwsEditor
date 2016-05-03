@@ -10,6 +10,17 @@ namespace EWSEditor.Common
     class StringHelper
     {
         //****************************************************************
+        // DeNullString - convert a null string to ""
+        //****************************************************************
+        public static string DeNullString(string s)
+        {
+            if (s == null)
+                return "";
+            else
+                return s;
+        }
+
+        //****************************************************************
         // DumpString() Will dump out the string in a Hex Dump.
         //****************************************************************
         public static string DumpString(string sString)

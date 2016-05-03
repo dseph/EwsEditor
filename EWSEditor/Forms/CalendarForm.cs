@@ -1730,16 +1730,23 @@ namespace EWSEditor.Forms
 
         private void btnAttachments_Click(object sender, EventArgs e)
         {
-            if (_isDirty == true)
-            {
-                //DialogResult oDlg = MessageBox.Show("Save?", "Item needs to be saved before working with attachments.", MessageBoxButtons.OKCancel);
-                //if (oDlg == System.Windows.Forms.DialogResult.OK)
-                //{ 
-                    Item oItem = (Item)_Appointment;
-                    AddRemoveAttachments oAddRemoveAttachments = new AddRemoveAttachments(ref oItem, _IsExistingAppointment);
-                    oAddRemoveAttachments.ShowDialog();
-                //}
-            }
+            //if (_isDirty == true)
+            //{
+            //    //DialogResult oDlg = MessageBox.Show("Save?", "Item needs to be saved before working with attachments.", MessageBoxButtons.OKCancel);
+            //    //if (oDlg == System.Windows.Forms.DialogResult.OK)
+            //    //{ 
+            //        Item oItem = (Item)_Appointment;
+            //        AddRemoveAttachments oAddRemoveAttachments = new AddRemoveAttachments(ref oItem, _IsExistingAppointment);
+            //        oAddRemoveAttachments.ShowDialog();
+
+            //    //}
+            //}
+
+            Item oItem = (Item)_Appointment;
+            AddRemoveAttachments oAddRemoveAttachments = new AddRemoveAttachments(ref oItem, true);
+            oAddRemoveAttachments.ShowDialog();
+            if (oAddRemoveAttachments.IsDirty == true)
+                _isDirty = true;
  
         }
 

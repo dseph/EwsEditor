@@ -34,18 +34,21 @@
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(12, 12);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(1155, 213);
+            this.textBox1.Size = new System.Drawing.Size(892, 342);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "This windows is to be used by develpers with EWSEditor source in order that they " +
     "may test their EWS Managed API code  to work on a selected item.";
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(12, 270);
+            this.btnTest.Location = new System.Drawing.Point(12, 388);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(194, 58);
             this.btnTest.TabIndex = 2;
@@ -57,7 +60,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1230, 482);
+            this.ClientSize = new System.Drawing.Size(932, 482);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.textBox1);
             this.Name = "DeveloperItemTestForm";

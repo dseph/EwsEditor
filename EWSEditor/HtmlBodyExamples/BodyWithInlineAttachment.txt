@@ -1,0 +1,15 @@
+﻿<html>
+  <head>
+    <title>Message Body with inline attachment</title>
+  </head>
+  <body>
+    This is the HTML body. <BR>
+    <BR>
+    <img width=100 height=100 id="1" src="cid:Field2MeterQarterGP.png"> <BR>
+    <BR>
+    The cid must match the name of an attachment added to the messaging item (such as email).<BR>
+    <BR>
+    See: <a href="https://msdn.microsoft.com/en-us/library/office/hh532564(v=exchg.80).aspx"> https://msdn.microsoft.com/en-us/library/office/hh532564(v=exchg.80).aspx </a>  
+    <BR>
+  </body>
+</html>

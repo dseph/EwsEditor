@@ -3,6 +3,16 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using EWSEditor.Logging;
 using Microsoft.Exchange.WebServices.Data;
+using EWSEditor.Common;
+
+// Note:  Its not possible to Copy or Move an attachment directly. Move, Copy are only valid operations 
+// for real store Items. An ItemAttachment is still an attachment so the only valid operations that 
+// you can perform are those assoicated with attachments. The only real workaround with EWS is if the 
+// ItemAttachment is an email Message is you could grab the MimeContent of the ItemAttachment and then 
+// upload that to other folder (you would loose some fidelity here) or create a new item and copy the 
+// Item properties property by property. Otherwise this is something you should use MAPI to do, even 
+// then you will need to save the Item Attachment as a MSG file and then upload it to the folder you want. 
+// See: http://stackoverflow.com/questions/23420225/how-to-move-itemattachments-to-a-folder-using-ews-managed-api-2
 
 namespace EWSEditor.Forms
 {
@@ -18,6 +28,7 @@ namespace EWSEditor.Forms
 
         private AttachmentCollection currentAttachments = null;
         private Item currentParentItem = null;
+        private ExchangeService currentService = null;
 
         private AttachmentsContentForm()
         {
@@ -40,6 +51,8 @@ namespace EWSEditor.Forms
             form.CurrentService = service;
             form.currentAttachments = parentItem.Attachments;
             form.currentParentItem = parentItem;
+
+ 
             form.PropertyDetailsGrid.CurrentService = service;
             form.Text = string.Format(System.Globalization.CultureInfo.CurrentCulture, "Attachments for item, '{0}'", parentItem.Subject);
             form.CallingForm = parentForm;
@@ -145,7 +158,15 @@ namespace EWSEditor.Forms
             }
 
             // Get the file name we'll save to and bail out if we don't succeed
-            string fileName = this.GetTargetFileName();
+            // Create a file path to save the item properties to
+            string fileName = null;
+            //fileName = string.Format(
+            //System.Globalization.CultureInfo.CurrentCulture,
+            //    "{0}\\{1}.xml",
+            //    destinationFolderPath,
+            //    FileHelper.SanitizeFileName(item.Subject));
+
+            fileName = this.GetTargetFileName(fileName);
             if (fileName == string.Empty)
             {
                 return;
@@ -203,22 +224,18 @@ namespace EWSEditor.Forms
         {
             // Don't do anything if a content row is not selected
             if (this.ContentsGrid.SelectedRows.Count == 0)
-            {
                 return;
-            }
 
             Attachment attach = this.ContentsGrid.SelectedRows[0].Cells[ColNameAttachmentObj].Value as Attachment;
 
             // If we can't get the attachment object bail out
             if (attach == null)
-            {
                 return;
-            }
 
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-
+                
                 this.currentParentItem.Attachments.Remove(attach);
                 this.currentParentItem.Update(ConflictResolutionMode.AlwaysOverwrite);
             }
@@ -302,6 +319,60 @@ namespace EWSEditor.Forms
             }
 
             return saveDiag.FileName;
+        }
+
+        private string GetTargetFileName(string sStartingFolder)
+        {
+            SaveFileDialog saveDiag = new SaveFileDialog();
+            saveDiag.CheckPathExists = true;
+            saveDiag.OverwritePrompt = true;
+            saveDiag.RestoreDirectory = true;
+            saveDiag.Title = "Save the attachment to a file...";
+            saveDiag.ValidateNames = true;
+            saveDiag.FileName = sStartingFolder;
+            DialogResult res = saveDiag.ShowDialog();
+
+            if (res != DialogResult.OK)
+            {
+                return string.Empty;
+            }
+
+            return saveDiag.FileName;
+        }
+
+
+        private void mnucopyAttach_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void mnuDeveloperAttachmentTestForm_Click(object sender, EventArgs e)
+        {
+            // Don't do anything if a content row is not selected
+            if (this.ContentsGrid.SelectedRows.Count == 0)
+                return;
+
+            Attachment attach = this.ContentsGrid.SelectedRows[0].Cells[ColNameAttachmentObj].Value as Attachment;
+
+            // If we can't get the attachment object bail out
+            if (attach == null)
+                return;
+
+            PropertyDetailsGrid.Tag = "";
+             
+
+            DeveloperAttachmentTestForm oForm = null;
+            oForm = new DeveloperAttachmentTestForm(this.CurrentService, this.currentParentItem.Id, attach);
+ 
+            
+            oForm.Show();
+
+            this.RefreshContentAndDetails();
+        }
+
+        private void AttachmentsContentForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -105,6 +105,7 @@
             this.tabOther = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAttachments = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbContactPhoto)).BeginInit();
             this.tabAddresses.SuspendLayout();
             this.tabBusiness.SuspendLayout();
@@ -127,18 +128,20 @@
             // txtGivenName
             // 
             this.txtGivenName.Location = new System.Drawing.Point(108, 69);
-            this.txtGivenName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtGivenName.Margin = new System.Windows.Forms.Padding(4);
             this.txtGivenName.Name = "txtGivenName";
             this.txtGivenName.Size = new System.Drawing.Size(437, 22);
             this.txtGivenName.TabIndex = 1;
+            this.txtGivenName.TextChanged += new System.EventHandler(this.txtGivenName_TextChanged);
             // 
             // txtCompanyName
             // 
             this.txtCompanyName.Location = new System.Drawing.Point(108, 172);
-            this.txtCompanyName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCompanyName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(437, 22);
             this.txtCompanyName.TabIndex = 7;
+            this.txtCompanyName.TextChanged += new System.EventHandler(this.txtCompanyName_TextChanged);
             // 
             // lblCompany
             // 
@@ -153,10 +156,11 @@
             // txtJobTitle
             // 
             this.txtJobTitle.Location = new System.Drawing.Point(108, 204);
-            this.txtJobTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtJobTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtJobTitle.Name = "txtJobTitle";
             this.txtJobTitle.Size = new System.Drawing.Size(437, 22);
             this.txtJobTitle.TabIndex = 9;
+            this.txtJobTitle.TextChanged += new System.EventHandler(this.txtJobTitle_TextChanged);
             // 
             // lblJobTitle
             // 
@@ -171,10 +175,11 @@
             // txtMiddleName
             // 
             this.txtMiddleName.Location = new System.Drawing.Point(108, 101);
-            this.txtMiddleName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMiddleName.Margin = new System.Windows.Forms.Padding(4);
             this.txtMiddleName.Name = "txtMiddleName";
             this.txtMiddleName.Size = new System.Drawing.Size(437, 22);
             this.txtMiddleName.TabIndex = 3;
+            this.txtMiddleName.TextChanged += new System.EventHandler(this.txtMiddleName_TextChanged);
             // 
             // lblMiddleName
             // 
@@ -189,10 +194,11 @@
             // txtSurname
             // 
             this.txtSurname.Location = new System.Drawing.Point(108, 133);
-            this.txtSurname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSurname.Margin = new System.Windows.Forms.Padding(4);
             this.txtSurname.Name = "txtSurname";
             this.txtSurname.Size = new System.Drawing.Size(437, 22);
             this.txtSurname.TabIndex = 5;
+            this.txtSurname.TextChanged += new System.EventHandler(this.txtSurname_TextChanged);
             // 
             // lblSurname
             // 
@@ -207,7 +213,7 @@
             // btnSave
             // 
             this.btnSave.Location = new System.Drawing.Point(8, 16);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 28);
             this.btnSave.TabIndex = 0;
@@ -218,10 +224,11 @@
             // txtHA_State
             // 
             this.txtHA_State.Location = new System.Drawing.Point(88, 127);
-            this.txtHA_State.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtHA_State.Margin = new System.Windows.Forms.Padding(4);
             this.txtHA_State.Name = "txtHA_State";
             this.txtHA_State.Size = new System.Drawing.Size(417, 22);
             this.txtHA_State.TabIndex = 37;
+            this.txtHA_State.TextChanged += new System.EventHandler(this.txtHA_State_TextChanged);
             // 
             // label6
             // 
@@ -236,10 +243,11 @@
             // txtHA_City
             // 
             this.txtHA_City.Location = new System.Drawing.Point(88, 95);
-            this.txtHA_City.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtHA_City.Margin = new System.Windows.Forms.Padding(4);
             this.txtHA_City.Name = "txtHA_City";
             this.txtHA_City.Size = new System.Drawing.Size(417, 22);
             this.txtHA_City.TabIndex = 35;
+            this.txtHA_City.TextChanged += new System.EventHandler(this.txtHA_City_TextChanged);
             // 
             // label7
             // 
@@ -254,10 +262,11 @@
             // txtHA_CountryOrRegion
             // 
             this.txtHA_CountryOrRegion.Location = new System.Drawing.Point(88, 191);
-            this.txtHA_CountryOrRegion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtHA_CountryOrRegion.Margin = new System.Windows.Forms.Padding(4);
             this.txtHA_CountryOrRegion.Name = "txtHA_CountryOrRegion";
             this.txtHA_CountryOrRegion.Size = new System.Drawing.Size(417, 22);
             this.txtHA_CountryOrRegion.TabIndex = 33;
+            this.txtHA_CountryOrRegion.TextChanged += new System.EventHandler(this.txtHA_CountryOrRegion_TextChanged);
             // 
             // label8
             // 
@@ -272,10 +281,11 @@
             // txtHA_PostalCode
             // 
             this.txtHA_PostalCode.Location = new System.Drawing.Point(88, 159);
-            this.txtHA_PostalCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtHA_PostalCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtHA_PostalCode.Name = "txtHA_PostalCode";
             this.txtHA_PostalCode.Size = new System.Drawing.Size(417, 22);
             this.txtHA_PostalCode.TabIndex = 31;
+            this.txtHA_PostalCode.TextChanged += new System.EventHandler(this.txtHA_PostalCode_TextChanged);
             // 
             // label9
             // 
@@ -290,12 +300,13 @@
             // txtHA_Street
             // 
             this.txtHA_Street.Location = new System.Drawing.Point(88, 17);
-            this.txtHA_Street.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtHA_Street.Margin = new System.Windows.Forms.Padding(4);
             this.txtHA_Street.Multiline = true;
             this.txtHA_Street.Name = "txtHA_Street";
             this.txtHA_Street.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtHA_Street.Size = new System.Drawing.Size(417, 69);
             this.txtHA_Street.TabIndex = 29;
+            this.txtHA_Street.TextChanged += new System.EventHandler(this.txtHA_Street_TextChanged);
             // 
             // label10
             // 
@@ -310,10 +321,11 @@
             // txtBA_State
             // 
             this.txtBA_State.Location = new System.Drawing.Point(88, 127);
-            this.txtBA_State.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBA_State.Margin = new System.Windows.Forms.Padding(4);
             this.txtBA_State.Name = "txtBA_State";
             this.txtBA_State.Size = new System.Drawing.Size(417, 22);
             this.txtBA_State.TabIndex = 5;
+            this.txtBA_State.TextChanged += new System.EventHandler(this.txtBA_State_TextChanged);
             // 
             // label1
             // 
@@ -328,7 +340,7 @@
             // txtBA_City
             // 
             this.txtBA_City.Location = new System.Drawing.Point(88, 95);
-            this.txtBA_City.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBA_City.Margin = new System.Windows.Forms.Padding(4);
             this.txtBA_City.Name = "txtBA_City";
             this.txtBA_City.Size = new System.Drawing.Size(417, 22);
             this.txtBA_City.TabIndex = 2;
@@ -347,10 +359,11 @@
             // txtBA_CountryOrRegion
             // 
             this.txtBA_CountryOrRegion.Location = new System.Drawing.Point(88, 191);
-            this.txtBA_CountryOrRegion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBA_CountryOrRegion.Margin = new System.Windows.Forms.Padding(4);
             this.txtBA_CountryOrRegion.Name = "txtBA_CountryOrRegion";
             this.txtBA_CountryOrRegion.Size = new System.Drawing.Size(417, 22);
             this.txtBA_CountryOrRegion.TabIndex = 7;
+            this.txtBA_CountryOrRegion.TextChanged += new System.EventHandler(this.txtBA_CountryOrRegion_TextChanged);
             // 
             // label3
             // 
@@ -365,10 +378,11 @@
             // txtBA_PostalCode
             // 
             this.txtBA_PostalCode.Location = new System.Drawing.Point(88, 159);
-            this.txtBA_PostalCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBA_PostalCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBA_PostalCode.Name = "txtBA_PostalCode";
             this.txtBA_PostalCode.Size = new System.Drawing.Size(417, 22);
             this.txtBA_PostalCode.TabIndex = 5;
+            this.txtBA_PostalCode.TextChanged += new System.EventHandler(this.txtBA_PostalCode_TextChanged);
             // 
             // label4
             // 
@@ -383,12 +397,13 @@
             // txtBA_Street
             // 
             this.txtBA_Street.Location = new System.Drawing.Point(88, 17);
-            this.txtBA_Street.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBA_Street.Margin = new System.Windows.Forms.Padding(4);
             this.txtBA_Street.Multiline = true;
             this.txtBA_Street.Name = "txtBA_Street";
             this.txtBA_Street.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtBA_Street.Size = new System.Drawing.Size(417, 69);
             this.txtBA_Street.TabIndex = 1;
+            this.txtBA_Street.TextChanged += new System.EventHandler(this.txtBA_Street_TextChanged);
             // 
             // label5
             // 
@@ -403,20 +418,22 @@
             // txtOA_CountryOrRegion
             // 
             this.txtOA_CountryOrRegion.Location = new System.Drawing.Point(88, 191);
-            this.txtOA_CountryOrRegion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtOA_CountryOrRegion.Margin = new System.Windows.Forms.Padding(4);
             this.txtOA_CountryOrRegion.Name = "txtOA_CountryOrRegion";
             this.txtOA_CountryOrRegion.Size = new System.Drawing.Size(417, 22);
             this.txtOA_CountryOrRegion.TabIndex = 33;
+            this.txtOA_CountryOrRegion.TextChanged += new System.EventHandler(this.txtOA_CountryOrRegion_TextChanged);
             // 
             // txtOA_Street
             // 
             this.txtOA_Street.Location = new System.Drawing.Point(88, 17);
-            this.txtOA_Street.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtOA_Street.Margin = new System.Windows.Forms.Padding(4);
             this.txtOA_Street.Multiline = true;
             this.txtOA_Street.Name = "txtOA_Street";
             this.txtOA_Street.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtOA_Street.Size = new System.Drawing.Size(417, 69);
             this.txtOA_Street.TabIndex = 29;
+            this.txtOA_Street.TextChanged += new System.EventHandler(this.txtOA_Street_TextChanged);
             // 
             // label11
             // 
@@ -441,10 +458,11 @@
             // txtOA_State
             // 
             this.txtOA_State.Location = new System.Drawing.Point(88, 127);
-            this.txtOA_State.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtOA_State.Margin = new System.Windows.Forms.Padding(4);
             this.txtOA_State.Name = "txtOA_State";
             this.txtOA_State.Size = new System.Drawing.Size(417, 22);
             this.txtOA_State.TabIndex = 37;
+            this.txtOA_State.TextChanged += new System.EventHandler(this.txtOA_State_TextChanged);
             // 
             // label13
             // 
@@ -459,10 +477,11 @@
             // txtOA_PostalCode
             // 
             this.txtOA_PostalCode.Location = new System.Drawing.Point(88, 159);
-            this.txtOA_PostalCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtOA_PostalCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtOA_PostalCode.Name = "txtOA_PostalCode";
             this.txtOA_PostalCode.Size = new System.Drawing.Size(417, 22);
             this.txtOA_PostalCode.TabIndex = 31;
+            this.txtOA_PostalCode.TextChanged += new System.EventHandler(this.txtOA_PostalCode_TextChanged);
             // 
             // label14
             // 
@@ -487,16 +506,17 @@
             // txtOA_City
             // 
             this.txtOA_City.Location = new System.Drawing.Point(88, 95);
-            this.txtOA_City.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtOA_City.Margin = new System.Windows.Forms.Padding(4);
             this.txtOA_City.Name = "txtOA_City";
             this.txtOA_City.Size = new System.Drawing.Size(417, 22);
             this.txtOA_City.TabIndex = 35;
+            this.txtOA_City.TextChanged += new System.EventHandler(this.txtOA_City_TextChanged);
             // 
             // pbContactPhoto
             // 
             this.pbContactPhoto.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pbContactPhoto.Location = new System.Drawing.Point(577, 96);
-            this.pbContactPhoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbContactPhoto.Margin = new System.Windows.Forms.Padding(4);
             this.pbContactPhoto.Name = "pbContactPhoto";
             this.pbContactPhoto.Size = new System.Drawing.Size(172, 159);
             this.pbContactPhoto.TabIndex = 43;
@@ -506,7 +526,7 @@
             // txtNotes
             // 
             this.txtNotes.Location = new System.Drawing.Point(577, 286);
-            this.txtNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
             this.txtNotes.ReadOnly = true;
@@ -528,7 +548,7 @@
             // txtAttachments
             // 
             this.txtAttachments.Location = new System.Drawing.Point(16, 527);
-            this.txtAttachments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAttachments.Margin = new System.Windows.Forms.Padding(4);
             this.txtAttachments.Multiline = true;
             this.txtAttachments.Name = "txtAttachments";
             this.txtAttachments.ReadOnly = true;
@@ -569,7 +589,7 @@
             // txtEmailAddress1_Address
             // 
             this.txtEmailAddress1_Address.Location = new System.Drawing.Point(27, 48);
-            this.txtEmailAddress1_Address.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress1_Address.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress1_Address.Name = "txtEmailAddress1_Address";
             this.txtEmailAddress1_Address.Size = new System.Drawing.Size(220, 22);
             this.txtEmailAddress1_Address.TabIndex = 6;
@@ -577,7 +597,7 @@
             // txtEmailAddress1_Name
             // 
             this.txtEmailAddress1_Name.Location = new System.Drawing.Point(255, 48);
-            this.txtEmailAddress1_Name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress1_Name.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress1_Name.Name = "txtEmailAddress1_Name";
             this.txtEmailAddress1_Name.Size = new System.Drawing.Size(220, 22);
             this.txtEmailAddress1_Name.TabIndex = 7;
@@ -585,7 +605,7 @@
             // txtEmailAddress1_MailboxType
             // 
             this.txtEmailAddress1_MailboxType.Location = new System.Drawing.Point(487, 39);
-            this.txtEmailAddress1_MailboxType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress1_MailboxType.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress1_MailboxType.Name = "txtEmailAddress1_MailboxType";
             this.txtEmailAddress1_MailboxType.Size = new System.Drawing.Size(132, 22);
             this.txtEmailAddress1_MailboxType.TabIndex = 8;
@@ -593,7 +613,7 @@
             // txtEmailAddress1_RoutingType
             // 
             this.txtEmailAddress1_RoutingType.Location = new System.Drawing.Point(639, 37);
-            this.txtEmailAddress1_RoutingType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress1_RoutingType.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress1_RoutingType.Name = "txtEmailAddress1_RoutingType";
             this.txtEmailAddress1_RoutingType.Size = new System.Drawing.Size(120, 22);
             this.txtEmailAddress1_RoutingType.TabIndex = 9;
@@ -651,7 +671,7 @@
             // txtEmailAddress1_Id_UniqueId
             // 
             this.txtEmailAddress1_Id_UniqueId.Location = new System.Drawing.Point(768, 37);
-            this.txtEmailAddress1_Id_UniqueId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress1_Id_UniqueId.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress1_Id_UniqueId.Name = "txtEmailAddress1_Id_UniqueId";
             this.txtEmailAddress1_Id_UniqueId.Size = new System.Drawing.Size(124, 22);
             this.txtEmailAddress1_Id_UniqueId.TabIndex = 10;
@@ -659,7 +679,7 @@
             // txtEmailAddress1_Id_ChangeKey
             // 
             this.txtEmailAddress1_Id_ChangeKey.Location = new System.Drawing.Point(901, 34);
-            this.txtEmailAddress1_Id_ChangeKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress1_Id_ChangeKey.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress1_Id_ChangeKey.Name = "txtEmailAddress1_Id_ChangeKey";
             this.txtEmailAddress1_Id_ChangeKey.Size = new System.Drawing.Size(143, 22);
             this.txtEmailAddress1_Id_ChangeKey.TabIndex = 11;
@@ -667,7 +687,7 @@
             // txtEmailAddress2_Id_ChangeKey
             // 
             this.txtEmailAddress2_Id_ChangeKey.Location = new System.Drawing.Point(901, 66);
-            this.txtEmailAddress2_Id_ChangeKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress2_Id_ChangeKey.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress2_Id_ChangeKey.Name = "txtEmailAddress2_Id_ChangeKey";
             this.txtEmailAddress2_Id_ChangeKey.Size = new System.Drawing.Size(143, 22);
             this.txtEmailAddress2_Id_ChangeKey.TabIndex = 17;
@@ -675,7 +695,7 @@
             // txtEmailAddress2_Id_UniqueId
             // 
             this.txtEmailAddress2_Id_UniqueId.Location = new System.Drawing.Point(768, 69);
-            this.txtEmailAddress2_Id_UniqueId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress2_Id_UniqueId.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress2_Id_UniqueId.Name = "txtEmailAddress2_Id_UniqueId";
             this.txtEmailAddress2_Id_UniqueId.Size = new System.Drawing.Size(124, 22);
             this.txtEmailAddress2_Id_UniqueId.TabIndex = 16;
@@ -683,7 +703,7 @@
             // txtEmailAddress2_RoutingType
             // 
             this.txtEmailAddress2_RoutingType.Location = new System.Drawing.Point(639, 70);
-            this.txtEmailAddress2_RoutingType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress2_RoutingType.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress2_RoutingType.Name = "txtEmailAddress2_RoutingType";
             this.txtEmailAddress2_RoutingType.Size = new System.Drawing.Size(120, 22);
             this.txtEmailAddress2_RoutingType.TabIndex = 15;
@@ -691,7 +711,7 @@
             // txtEmailAddress2_MailboxType
             // 
             this.txtEmailAddress2_MailboxType.Location = new System.Drawing.Point(487, 73);
-            this.txtEmailAddress2_MailboxType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress2_MailboxType.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress2_MailboxType.Name = "txtEmailAddress2_MailboxType";
             this.txtEmailAddress2_MailboxType.Size = new System.Drawing.Size(132, 22);
             this.txtEmailAddress2_MailboxType.TabIndex = 14;
@@ -699,7 +719,7 @@
             // txtEmailAddress2_Name
             // 
             this.txtEmailAddress2_Name.Location = new System.Drawing.Point(255, 81);
-            this.txtEmailAddress2_Name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress2_Name.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress2_Name.Name = "txtEmailAddress2_Name";
             this.txtEmailAddress2_Name.Size = new System.Drawing.Size(220, 22);
             this.txtEmailAddress2_Name.TabIndex = 13;
@@ -707,7 +727,7 @@
             // txtEmailAddress2_Address
             // 
             this.txtEmailAddress2_Address.Location = new System.Drawing.Point(27, 80);
-            this.txtEmailAddress2_Address.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress2_Address.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress2_Address.Name = "txtEmailAddress2_Address";
             this.txtEmailAddress2_Address.Size = new System.Drawing.Size(220, 22);
             this.txtEmailAddress2_Address.TabIndex = 12;
@@ -715,7 +735,7 @@
             // txtEmailAddress3_Id_ChangeKey
             // 
             this.txtEmailAddress3_Id_ChangeKey.Location = new System.Drawing.Point(901, 98);
-            this.txtEmailAddress3_Id_ChangeKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress3_Id_ChangeKey.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress3_Id_ChangeKey.Name = "txtEmailAddress3_Id_ChangeKey";
             this.txtEmailAddress3_Id_ChangeKey.Size = new System.Drawing.Size(143, 22);
             this.txtEmailAddress3_Id_ChangeKey.TabIndex = 23;
@@ -723,7 +743,7 @@
             // txtEmailAddress3_Id_UniqueId
             // 
             this.txtEmailAddress3_Id_UniqueId.Location = new System.Drawing.Point(768, 101);
-            this.txtEmailAddress3_Id_UniqueId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress3_Id_UniqueId.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress3_Id_UniqueId.Name = "txtEmailAddress3_Id_UniqueId";
             this.txtEmailAddress3_Id_UniqueId.Size = new System.Drawing.Size(124, 22);
             this.txtEmailAddress3_Id_UniqueId.TabIndex = 22;
@@ -731,7 +751,7 @@
             // txtEmailAddress3_RoutingType
             // 
             this.txtEmailAddress3_RoutingType.Location = new System.Drawing.Point(639, 102);
-            this.txtEmailAddress3_RoutingType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress3_RoutingType.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress3_RoutingType.Name = "txtEmailAddress3_RoutingType";
             this.txtEmailAddress3_RoutingType.Size = new System.Drawing.Size(120, 22);
             this.txtEmailAddress3_RoutingType.TabIndex = 21;
@@ -739,7 +759,7 @@
             // txtEmailAddress3_MailboxType
             // 
             this.txtEmailAddress3_MailboxType.Location = new System.Drawing.Point(487, 105);
-            this.txtEmailAddress3_MailboxType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress3_MailboxType.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress3_MailboxType.Name = "txtEmailAddress3_MailboxType";
             this.txtEmailAddress3_MailboxType.Size = new System.Drawing.Size(132, 22);
             this.txtEmailAddress3_MailboxType.TabIndex = 20;
@@ -747,7 +767,7 @@
             // txtEmailAddress3_Name
             // 
             this.txtEmailAddress3_Name.Location = new System.Drawing.Point(255, 113);
-            this.txtEmailAddress3_Name.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress3_Name.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress3_Name.Name = "txtEmailAddress3_Name";
             this.txtEmailAddress3_Name.Size = new System.Drawing.Size(220, 22);
             this.txtEmailAddress3_Name.TabIndex = 19;
@@ -756,7 +776,7 @@
             // txtEmailAddress3_Address
             // 
             this.txtEmailAddress3_Address.Location = new System.Drawing.Point(27, 112);
-            this.txtEmailAddress3_Address.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmailAddress3_Address.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailAddress3_Address.Name = "txtEmailAddress3_Address";
             this.txtEmailAddress3_Address.Size = new System.Drawing.Size(220, 22);
             this.txtEmailAddress3_Address.TabIndex = 18;
@@ -767,7 +787,7 @@
             this.tabAddresses.Controls.Add(this.tabHome);
             this.tabAddresses.Controls.Add(this.tabOther);
             this.tabAddresses.Location = new System.Drawing.Point(7, 234);
-            this.tabAddresses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabAddresses.Margin = new System.Windows.Forms.Padding(4);
             this.tabAddresses.Name = "tabAddresses";
             this.tabAddresses.SelectedIndex = 0;
             this.tabAddresses.Size = new System.Drawing.Size(538, 267);
@@ -786,9 +806,9 @@
             this.tabBusiness.Controls.Add(this.txtBA_PostalCode);
             this.tabBusiness.Controls.Add(this.label3);
             this.tabBusiness.Location = new System.Drawing.Point(4, 25);
-            this.tabBusiness.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabBusiness.Margin = new System.Windows.Forms.Padding(4);
             this.tabBusiness.Name = "tabBusiness";
-            this.tabBusiness.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabBusiness.Padding = new System.Windows.Forms.Padding(4);
             this.tabBusiness.Size = new System.Drawing.Size(530, 238);
             this.tabBusiness.TabIndex = 0;
             this.tabBusiness.Text = "Businees";
@@ -807,10 +827,10 @@
             this.tabHome.Controls.Add(this.txtHA_PostalCode);
             this.tabHome.Controls.Add(this.label7);
             this.tabHome.Location = new System.Drawing.Point(4, 25);
-            this.tabHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabHome.Margin = new System.Windows.Forms.Padding(4);
             this.tabHome.Name = "tabHome";
-            this.tabHome.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabHome.Size = new System.Drawing.Size(549, 239);
+            this.tabHome.Padding = new System.Windows.Forms.Padding(4);
+            this.tabHome.Size = new System.Drawing.Size(530, 238);
             this.tabHome.TabIndex = 1;
             this.tabHome.Text = "Home";
             this.tabHome.UseVisualStyleBackColor = true;
@@ -828,9 +848,9 @@
             this.tabOther.Controls.Add(this.txtOA_PostalCode);
             this.tabOther.Controls.Add(this.label13);
             this.tabOther.Location = new System.Drawing.Point(4, 25);
-            this.tabOther.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabOther.Margin = new System.Windows.Forms.Padding(4);
             this.tabOther.Name = "tabOther";
-            this.tabOther.Size = new System.Drawing.Size(549, 239);
+            this.tabOther.Size = new System.Drawing.Size(530, 238);
             this.tabOther.TabIndex = 2;
             this.tabOther.Text = "Other";
             this.tabOther.UseVisualStyleBackColor = true;
@@ -862,9 +882,9 @@
             this.groupBox1.Controls.Add(this.txtEmailAddress2_MailboxType);
             this.groupBox1.Controls.Add(this.txtEmailAddress2_RoutingType);
             this.groupBox1.Location = new System.Drawing.Point(16, 642);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1089, 145);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
@@ -874,18 +894,32 @@
             // 
             this.groupBox3.Controls.Add(this.btnSave);
             this.groupBox3.Location = new System.Drawing.Point(5, 8);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(132, 53);
             this.groupBox3.TabIndex = 78;
             this.groupBox3.TabStop = false;
+            // 
+            // btnAttachments
+            // 
+            this.btnAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAttachments.Location = new System.Drawing.Point(880, 13);
+            this.btnAttachments.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAttachments.Name = "btnAttachments";
+            this.btnAttachments.Size = new System.Drawing.Size(209, 28);
+            this.btnAttachments.TabIndex = 79;
+            this.btnAttachments.Tag = "";
+            this.btnAttachments.Text = "Attachments";
+            this.btnAttachments.UseVisualStyleBackColor = true;
+            this.btnAttachments.Click += new System.EventHandler(this.btnAttachments_Click);
             // 
             // ContactsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1116, 806);
+            this.Controls.Add(this.btnAttachments);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tabAddresses);
@@ -905,7 +939,7 @@
             this.Controls.Add(this.lblCompany);
             this.Controls.Add(this.txtGivenName);
             this.Controls.Add(this.lblGivenName);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ContactsForm";
             this.Text = "ContactsForm";
             this.Load += new System.EventHandler(this.ContactsForm_Load);
@@ -1004,5 +1038,6 @@
         private System.Windows.Forms.TabPage tabOther;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnAttachments;
     }
 }

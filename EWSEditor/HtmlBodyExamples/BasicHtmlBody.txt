@@ -1,0 +1,10 @@
+﻿<html>
+<head>
+<title>Test document</title>
+</head>
+
+<body>
+This is an html body.
+</body>
+
+</html>

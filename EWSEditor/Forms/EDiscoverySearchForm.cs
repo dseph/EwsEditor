@@ -330,7 +330,8 @@ namespace EWSEditor.Forms
         {
             if (lvItems.SelectedItems.Count > 0)
             {
-                string sId = lvItems.SelectedItems[3].Text.Trim();
+                //string sId = lvItems.SelectedItems[3].Text.Trim();
+                string sId =  lvItems.SelectedItems[0].SubItems[3].Text;
                 ItemId oItemId = new ItemId(sId);
                 
 

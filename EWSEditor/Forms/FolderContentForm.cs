@@ -537,9 +537,29 @@ namespace EWSEditor.Forms
                 bItemCreated = true;
                 item = null;
             }
+
+            // Tasks are not standarding messaging items and there is no MIME for them. EWS can generate a MIME type 
+            // string for a Task but not create an item using MIME. Tasks are Outlook items.
+          
             if (bSupportedFolderType == false)
             {
-                MessageBox.Show("MIME loading for this folder type not implemented.");
+                if (this.currentFolder.FolderClass.StartsWith("IPF.Note"))  // Task specific error...
+                {
+                    string s = 
+                        "Tasks are not standarding messaging items and there is no MIME for them. " +
+                        "EWS can generate a MIME type string for a Task but not create an item using MIME. " +
+                        "Tasks are Outlook items.";
+
+                    MessageBox.Show(s, "MIME loading for Tasks type items not implemented.");
+                }
+                else 
+                {
+                    string s2 =
+                        "MIME loading for this folder type not implemented. " +
+                        "Note that not all items have a MIME type. " +
+                        "Some items such as Tasks are Outlook items and not standard messaging items which have a MIME form.";
+                    MessageBox.Show(s2, "MIME loading for this folder type not implemented.");
+                }
             }
  
             this.Cursor = Cursors.Default;

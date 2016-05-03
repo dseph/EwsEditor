@@ -1,6 +1,6 @@
 ﻿namespace EWSEditor.Forms
 {
-    partial class DeveloperFolderTestform
+    partial class DeveloperAttachmentTestForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,11 +34,11 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(14, 415);
+            this.btnTest.Location = new System.Drawing.Point(28, 452);
             this.btnTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(194, 58);
-            this.btnTest.TabIndex = 6;
+            this.btnTest.TabIndex = 8;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
@@ -48,28 +48,27 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(14, 11);
+            this.textBox1.Location = new System.Drawing.Point(28, 25);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(958, 329);
-            this.textBox1.TabIndex = 5;
+            this.textBox1.Size = new System.Drawing.Size(993, 404);
+            this.textBox1.TabIndex = 7;
             this.textBox1.Text = "This windows is to be used by developers with EWSEditor source in order that they" +
     " may test their EWS Managed API code to work on the folder object of the current" +
-    "ly selected folder.";
+    "ly selected attachment.";
             // 
-            // DeveloperFolderTestform
+            // DeveloperAttachmentTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 534);
+            this.ClientSize = new System.Drawing.Size(1047, 550);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.textBox1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "DeveloperFolderTestform";
-            this.Text = "Developer Folder Test Form";
-            this.Load += new System.EventHandler(this.DeveloperFolderTestWindow_Load);
+            this.Name = "DeveloperAttachmentTestForm";
+            this.Text = "Developer Attachment Test Form";
+            this.Load += new System.EventHandler(this.DeveloperAttachmentTestForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
