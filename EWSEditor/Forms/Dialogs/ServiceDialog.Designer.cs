@@ -548,7 +548,7 @@ namespace EWSEditor.Forms
             // btnDefaultSmtp
             // 
             this.btnDefaultSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDefaultSmtp.Location = new System.Drawing.Point(612, 26);
+            this.btnDefaultSmtp.Location = new System.Drawing.Point(613, 23);
             this.btnDefaultSmtp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDefaultSmtp.Name = "btnDefaultSmtp";
             this.btnDefaultSmtp.Size = new System.Drawing.Size(106, 35);
