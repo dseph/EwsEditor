@@ -25,6 +25,7 @@ namespace EWSEditor.Forms
         private bool _ContactWasSaved = false;
         //private ItemId _ItemId = null;
         private FolderId _FolderId = null;
+        private bool _isDirty = false;
 
         public ContactsForm()
         {
@@ -131,7 +132,7 @@ namespace EWSEditor.Forms
 
         private void ContactsForm_Load(object sender, EventArgs e)
         {
-
+             
         }
 
 
@@ -568,12 +569,12 @@ namespace EWSEditor.Forms
 
         private void txtBA_City_TextChanged(object sender, EventArgs e)
         {
-
+            _isDirty = true;
         }
 
         private void cmboPhoneNumbers_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            _isDirty = true;
         }
 
         private void pbContactPhoto_Click(object sender, EventArgs e)
@@ -589,6 +590,110 @@ namespace EWSEditor.Forms
         private void txtNotes_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAttachments_Click(object sender, EventArgs e)
+        {
+            Item oItem = (Item)_Contact;
+            AddRemoveAttachments oAddRemoveAttachments = new AddRemoveAttachments(ref oItem, true ); //_IsExistingContact);
+            oAddRemoveAttachments.ShowDialog();
+            if (oAddRemoveAttachments.IsDirty == true)
+                _isDirty = true;
+        }
+
+        private void txtGivenName_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtMiddleName_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtSurname_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtCompanyName_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtJobTitle_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtBA_Street_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtBA_State_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtBA_PostalCode_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtBA_CountryOrRegion_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtHA_Street_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtHA_City_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtHA_State_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtHA_PostalCode_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtHA_CountryOrRegion_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtOA_Street_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtOA_City_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtOA_State_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtOA_CountryOrRegion_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
+        }
+
+        private void txtOA_PostalCode_TextChanged(object sender, EventArgs e)
+        {
+            _isDirty = true;
         }
 
     }

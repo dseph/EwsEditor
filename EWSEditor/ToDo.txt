@@ -1,14 +1,26 @@
-﻿Plannded for future releases:
+﻿These are the notes of the developer working on EWSEditor.
 
-	1 - Add inline attachment ability.  x
-	2 - Add display of headers and abilty to add additional ones in the the windows which send email and meeting requests.
+post 1.4 updates as of 5/3/2016:
+Enhanced the Tasks window.
+New Developer Attachments Test Form.
+Now can work with attachments in contacts, tasks, calendar items, email.
+Dont need to save prior to adding attachments.
+Properties View definition window was missing OK and Cancel buttons - added them back.
+Search window changes:  Frame number now properly appears in results.  Added a note on the
+window explaining that Exchange Online may limit results to 250 by default policy. Now can
+display the main properties window for an item by double clicking on it. Fixed a rendering issue.
+
+
+Plannded for future releases:
+
+	1 - Add display of headers and abilty to add additional ones in the the windows which send email and meeting requests.
 	    http://msdn.microsoft.com/en-us/library/office/dn596091(v=exchg.150).aspx 
 		Now displays transport headers without erroring.
 		Headers can be added as x-headers by using cutom properties.
-	3 - Change saving of sessions for main login to use a class, then add ability for user to load and save 
+	2 - Change saving of sessions for main login to use a class, then add ability for user to load and save 
 	    settings by serializing the class and writting/reading to file.  See writeup below.
 
-Wish List
+Wish List 
 
  
     Add processing for working with custom search folders.

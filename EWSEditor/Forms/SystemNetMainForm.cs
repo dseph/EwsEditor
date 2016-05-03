@@ -169,7 +169,8 @@ namespace EWSEditor.Forms
                     {
                          
                         mail.Attachments.Add(new Attachment(chkListAttachments.Items[i].ToString()));
-                         
+                        //Attachment attach = new Attachment(str, attachmentName, MediaTypeNames.Application.Octet);
+                  
                     }
                 }
 

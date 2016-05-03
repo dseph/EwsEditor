@@ -46,6 +46,8 @@ namespace EWSEditor.Forms
 
             // http://msdn.microsoft.com/en-us/library/exchange/dd633693(v=exchg.80).aspx 
 
+            cmboSearchType.Text = "More Available";
+
             SetCheckboxes();
            
         }
@@ -165,19 +167,133 @@ namespace EWSEditor.Forms
             if (oFolderId != null)
             {
  
- 
                 FindItemsResults<Item> oFindItemsResults = null;
 
+                if (this.cmboSearchType.Text == "Direct")
+                {
+                    List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
+                    ItemView oItemView = new ItemView(iPageSize);
+                    oItemView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
+                                        ItemSchema.Subject,
+                                        ItemSchema.DisplayTo,
+                                        ItemSchema.Subject,
+                                        ItemSchema.DisplayCc,
+                                        ItemSchema.DateTimeReceived,
+                                        ItemSchema.HasAttachments,
+                                        ItemSchema.ItemClass
+                                        );
+
+                    // Examples of requesting extended properties:
+                    //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x1000, MapiPropertyType.String)); // PR_BODY
+                    //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x1035, MapiPropertyType.String)); // CdoPR_INTERNET_MESSAGE_ID 
+                    //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x0C1A, MapiPropertyType.String)); // CdoPR_SENDER_NAME
+
+                    oItemView.OrderBy.Add(ItemSchema.DateTimeReceived, SortDirection.Descending);
+                    oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
  
-                    if (this.cmboSearchType.Text == "Direct")
+                    if (this.rdoAqsSearch.Checked == true)
                     {
+                        oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
+
+                    }
+                    else
+                    {
+                        if (this.chkSubject.Checked == true)
+                            if (this.txtSubject.Text.Length != 0)
+                                searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Subject, this.txtSubject.Text));
+                        if (this.chkTo.Checked == true)
+                            if (this.txtTo.Text.Length != 0)
+                                searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.DisplayTo, this.txtTo.Text));
+                        if (this.chkCC.Checked == true)
+                            if (this.txtCC.Text.Length != 0)
+                                searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.DisplayCc, this.txtCC.Text));
+                        if (this.chkBody.Checked == true)
+                            if (this.txtBody.Text.Length != 0)
+                                searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Body, this.txtBody.Text));
+
+
+                        SearchFilter searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
+
+                        oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
+
+                    }
+
+                    lvItems.Clear();
+                    lvItems.View = View.Details;
+                    lvItems.GridLines = true;
+                    //lvItems.Dock = DockStyle.Fill;
+
+                    lvItems.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("Subject", 170, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("Class", 150, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("Attatch", 50, HorizontalAlignment.Left);
+                    //lvItems.Columns.Add("Id", 50, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
+ 
+
+                    ListViewItem oListItem = null;
+                    iCount = 0;
+                    foreach (Item oItem in oFindItemsResults.Items)
+                    {
+                        iCount++;
+                        //if (oItem is EmailMessage || oItem is MeetingRequest || oItem is Contact)
+                        //{
+                            oListItem = new ListViewItem(iCount.ToString(), 0);
+                                
+                            oListItem.SubItems.Add(oItem.Subject);
+                            oListItem.SubItems.Add(oItem.ItemClass);
+                            oListItem.SubItems.Add(oItem.DisplayTo);
+                            oListItem.SubItems.Add(oItem.HasAttachments.ToString());
+                            oListItem.SubItems.Add(oItem.Id.UniqueId);
+                            oListItem.SubItems.Add(oItem.Id.ChangeKey);
+
+                            oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass);
+                            lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
+                            oListItem = null;
+                        //}
+
+                    }
+
+                    oListItem = null;
+                }
+
+
+                if (this.cmboSearchType.Text == "More Available")
+                {
+
+                    // http://msdn.microsoft.com/en-us/library/exchange/dd633698(v=exchg.80).aspx
+
+                    int offset = 0;
+                         
+                    bool MoreItems = true;
+                    ListViewItem oListItem = null;
+
+                    lvItems.Clear();
+                    lvItems.View = View.Details;
+                    lvItems.GridLines = true;
+                    lvItems.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("Subject", 170, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("Class", 150, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("Attatch", 50, HorizontalAlignment.Left);
+                    //lvItems.Columns.Add("Id", 50, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
+ 
+
+                    int iCountMore = 0;
+
+                    while (MoreItems)
+                    {
+                        iCountMore++;
 
                         List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
-                        ItemView oItemView = new ItemView(iPageSize);
+                        ItemView oItemView = new ItemView(iPageSize, offset, OffsetBasePoint.Beginning);
                         oItemView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
                                             ItemSchema.Subject,
                                             ItemSchema.DisplayTo,
-                                            ItemSchema.Subject,
                                             ItemSchema.DisplayCc,
                                             ItemSchema.DateTimeReceived,
                                             ItemSchema.HasAttachments,
@@ -189,9 +305,9 @@ namespace EWSEditor.Forms
                         //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x1035, MapiPropertyType.String)); // CdoPR_INTERNET_MESSAGE_ID 
                         //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x0C1A, MapiPropertyType.String)); // CdoPR_SENDER_NAME
 
-                        oItemView.OrderBy.Add(ItemSchema.DateTimeReceived, SortDirection.Descending);
+                        oItemView.OrderBy.Add(ContactSchema.DisplayName, SortDirection.Ascending);
                         oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
- 
+
                         if (this.rdoAqsSearch.Checked == true)
                         {
                             oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
@@ -212,169 +328,54 @@ namespace EWSEditor.Forms
                                 if (this.txtBody.Text.Length != 0)
                                     searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Body, this.txtBody.Text));
 
-
                             SearchFilter searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
 
                             oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
 
                         }
 
-                        lvItems.Clear();
-                        lvItems.View = View.Details;
-                        lvItems.GridLines = true;
-                        //lvItems.Dock = DockStyle.Fill;
-
-                        lvItems.Columns.Add("Count", 100, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("Subject", 150, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("Class", 150, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("Attatch", 50, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("Id", 50, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
  
-
-                        ListViewItem oListItem = null;
                         iCount = 0;
                         foreach (Item oItem in oFindItemsResults.Items)
                         {
                             iCount++;
+                             
                             //if (oItem is EmailMessage || oItem is MeetingRequest || oItem is Contact)
                             //{
-                                oListItem = new ListViewItem(iCount.ToString(), 0);
-                                
+
+                                oListItem = new ListViewItem(iCountMore.ToString() + ":" +iCount.ToString(), 0);
+
                                 oListItem.SubItems.Add(oItem.Subject);
                                 oListItem.SubItems.Add(oItem.ItemClass);
                                 oListItem.SubItems.Add(oItem.DisplayTo);
                                 oListItem.SubItems.Add(oItem.HasAttachments.ToString());
                                 oListItem.SubItems.Add(oItem.Id.UniqueId);
                                 oListItem.SubItems.Add(oItem.Id.ChangeKey);
+ 
 
                                 oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass);
                                 lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
                                 oListItem = null;
                             //}
-
                         }
 
-                        oListItem = null;
-                    }
-
-
-                    if (this.cmboSearchType.Text == "More Available")
-                    {
-
-                        // http://msdn.microsoft.com/en-us/library/exchange/dd633698(v=exchg.80).aspx
-
-                        int offset = 0;
-                         
-                        bool MoreItems = true;
-                        ListViewItem oListItem = null;
-
-                        lvItems.Clear();
-                        lvItems.View = View.Details;
-                        lvItems.GridLines = true;
-                        lvItems.Columns.Add("Count", 100, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("Subject", 150, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("Class", 150, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("Attatch", 50, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("Id", 50, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
-                        lvItems.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
- 
-
-                        int iCountMore = 0;
-
-                        while (MoreItems)
+                        // Set the flag to discontinue paging.
+                        if (!oFindItemsResults.MoreAvailable)
                         {
-                            List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
-                            ItemView oItemView = new ItemView(iPageSize, offset, OffsetBasePoint.Beginning);
-                            oItemView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
-                                                ItemSchema.Subject,
-                                                ItemSchema.DisplayTo,
-                                                ItemSchema.DisplayCc,
-                                                ItemSchema.DateTimeReceived,
-                                                ItemSchema.HasAttachments,
-                                                ItemSchema.ItemClass
-                                                );
-
-                            // Examples of requesting extended properties:
-                            //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x1000, MapiPropertyType.String)); // PR_BODY
-                            //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x1035, MapiPropertyType.String)); // CdoPR_INTERNET_MESSAGE_ID 
-                            //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x0C1A, MapiPropertyType.String)); // CdoPR_SENDER_NAME
-
-                            oItemView.OrderBy.Add(ContactSchema.DisplayName, SortDirection.Ascending);
-                            oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
-
-                            if (this.rdoAqsSearch.Checked == true)
-                            {
-                                oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
-
-                            }
-                            else
-                            {
-                                if (this.chkSubject.Checked == true)
-                                    if (this.txtSubject.Text.Length != 0)
-                                        searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Subject, this.txtSubject.Text));
-                                if (this.chkTo.Checked == true)
-                                    if (this.txtTo.Text.Length != 0)
-                                        searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.DisplayTo, this.txtTo.Text));
-                                if (this.chkCC.Checked == true)
-                                    if (this.txtCC.Text.Length != 0)
-                                        searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.DisplayCc, this.txtCC.Text));
-                                if (this.chkBody.Checked == true)
-                                    if (this.txtBody.Text.Length != 0)
-                                        searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Body, this.txtBody.Text));
-
-                                SearchFilter searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
-
-                                oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
-
-                            }
-
- 
-                            iCount = 0;
-                            foreach (Item oItem in oFindItemsResults.Items)
-                            {
-                                iCount++;
-                                iCountMore++;
-                                //if (oItem is EmailMessage || oItem is MeetingRequest || oItem is Contact)
-                                //{
-
-                                    oListItem = new ListViewItem(iCountMore.ToString() + ":" +iCount.ToString(), 0);
-
-                                    oListItem.SubItems.Add(oItem.Subject);
-                                    oListItem.SubItems.Add(oItem.ItemClass);
-                                    oListItem.SubItems.Add(oItem.DisplayTo);
-                                    oListItem.SubItems.Add(oItem.HasAttachments.ToString());
-                                    oListItem.SubItems.Add(oItem.Id.UniqueId);
-                                    oListItem.SubItems.Add(oItem.Id.ChangeKey);
- 
-
-                                    oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass);
-                                    lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
-                                    oListItem = null;
-                                //}
-                            }
-
-                            // Set the flag to discontinue paging.
-                            if (!oFindItemsResults.MoreAvailable)
-                            {
-                                MoreItems = false;
-                            }
-
-                            // Update the offset if there are more items to page.
-                            if (MoreItems)
-                            {
-                                offset += iPageSize;
-                            }
-
+                            MoreItems = false;
                         }
 
+                        // Update the offset if there are more items to page.
+                        if (MoreItems)
+                        {
+                            offset += iPageSize;
+                        }
 
                     }
+
+
                 }
+            }
  
  
 
@@ -384,7 +385,9 @@ namespace EWSEditor.Forms
         {
             int iPageSize = 100;
             iPageSize = (int)this.numPageSize.Value;
+            this.Cursor = Cursors.WaitCursor;
             ProcessSearch(_CurrentFolderId, iPageSize);
+            this.Cursor = Cursors.Default;
         }
 
         private void rdoAqsSearch_CheckedChanged(object sender, EventArgs e)
@@ -411,6 +414,36 @@ namespace EWSEditor.Forms
 
         private void btnListSearchableMailboxes_Click(object sender, EventArgs e)
         {
+        }
+
+        private void lvItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvItems_DoubleClick(object sender, EventArgs e)
+        {
+            DisplayItem();
+        }
+
+        private void DisplayItem()
+        {
+            if (lvItems.SelectedItems.Count > 0)
+            {
+     
+                string sId = lvItems.SelectedItems[0].SubItems[5].Text;
+                ItemId oItemId = new ItemId(sId);
+
+
+                List<ItemId> item = new List<ItemId>();
+                item.Add(oItemId);
+
+                ItemsContentForm.Show(
+                    "Displaying item",
+                    item,
+                    _CurrentService,
+                    this);
+            }
         }
     }
 }

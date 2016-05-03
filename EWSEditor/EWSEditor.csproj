@@ -148,6 +148,7 @@
   <ItemGroup>
     <Compile Include="Common\AuthenticationHelper.cs" />
     <Compile Include="Common\AutodiscoverInfo.cs" />
+    <Compile Include="Common\CalCheck.cs" />
     <Compile Include="Common\EwsEditorServiceInstanceSettings.cs" />
     <Compile Include="Common\ProxyMappedTypes\ProxyMappedTypes.cs" />
     <Compile Include="Common\BodySamples.Designer.cs">
@@ -184,6 +185,18 @@
     <Compile Include="Forms\AddRemoveAttachments.Designer.cs">
       <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CalendarCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CalendarCheck.Designer.cs">
+      <DependentUpon>CalendarCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DeveloperAttachmentTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeveloperAttachmentTestForm.Designer.cs">
+      <DependentUpon>DeveloperAttachmentTestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DeveloperFolderTestform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +226,12 @@
     </Compile>
     <Compile Include="Forms\FileContentHelper.Designer.cs">
       <DependentUpon>FileContentHelper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ListActiveSyncDevices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ListActiveSyncDevices.Designer.cs">
+      <DependentUpon>ListActiveSyncDevices.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MailApps.cs">
       <SubType>Form</SubType>
@@ -779,6 +798,12 @@
     <EmbeddedResource Include="Forms\AddRemoveAttachments.resx">
       <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CalendarCheck.resx">
+      <DependentUpon>CalendarCheck.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeveloperAttachmentTestForm.resx">
+      <DependentUpon>DeveloperAttachmentTestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DeveloperFolderTestform.resx">
       <DependentUpon>DeveloperFolderTestform.cs</DependentUpon>
     </EmbeddedResource>
@@ -793,6 +818,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FileContentHelper.resx">
       <DependentUpon>FileContentHelper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ListActiveSyncDevices.resx">
+      <DependentUpon>ListActiveSyncDevices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MailApps.resx">
       <DependentUpon>MailApps.cs</DependentUpon>
@@ -1312,6 +1340,10 @@
     <Content Include="EwsPostExamples\UploadItems.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="HtmlBodyExamples\BasicHtmlBody.txt" />
+    <Content Include="HtmlBodyExamples\BodyWithInlineAttachment.txt" />
+    <Content Include="HtmlBodyExamples\ManyFormatsHtmlBody.txt" />
+    <Content Include="HtmlBodyExamples\Field2MeterQarterGP.png" />
     <Content Include="ToDo.txt" />
     <None Include="Resources\action_add_16xLG.bmp" />
     <Content Include="Resources\action_add_16xLG.png" />
@@ -1324,6 +1356,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Dialogs\SmartEditors\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />

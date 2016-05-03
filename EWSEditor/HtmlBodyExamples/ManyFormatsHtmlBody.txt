@@ -1,0 +1,176 @@
+﻿<html>
+<head>
+
+<title>Test document</title>
+               <meta name="keywords" content="test, html, form, sample, example" />
+
+<script>
+function test()
+{
+               
+
+}
+</script>
+</head>
+
+<body>
+
+<!-- This is a comment, so you should not see it rendered. -->
+
+<hr>
+The following is some basic text markup: <br/>
+This is plain text. <br/>
+<b>This is bold text. </b> <br/>
+<i>This is italic text. </i><br/>
+<p>This is a paragraph. </p><br/>
+<p>This is <sup> superscript. </sup></p><br/>
+<p>This is <sub>subscript. </sub></p><br/>
+<p>This is <del>strikethrough. </del></p><br/>
+
+<p style=text-indent:50px>This is an indented paragraph. </p><br/>
+
+<br/>
+
+<hr>  
+
+
+The following shows headers: <br/>
+
+<h1>Header h1</h1>
+<h2>Header h2</h2>
+<h3>Header h3</h3>
+
+<br/>
+<hr>  
+
+The following shows alignment of text: <br/>
+<h1 style=text-align:center> Center </h1>
+<h1 style=text-align:right> Right </h1>
+<h1 style=text-align:left> Left </h1>
+
+<br/>
+<hr>  
+
+Text in different sizes: <br/>
+<p style=font-size:10px>10px </p>
+<p style=font-size:20px>20px </p>
+<p style=font-size:30px>30px </p>
+<p style=font-size:40px>40px </p>
+<p style=font-size:50px>50px </p>
+<br/>
+<hr>  
+
+Now colors: <br/>
+               <p style=background-color:black;color:white; font-size:30px;>Black background and white text </p>
+               <p style=background-color:red;color:white; font-size:30px;>Red background and white text </p>
+               <p style=background-color:blue;color:yellow; font-size:30px;>Blue background and yellow text </p>
+
+<br/>
+<hr>  
+
+Bullet list:
+<UL>
+<LI> Item 1
+<LI> Item 2
+<LI> Item 3
+</UL>
+
+<br/>
+<hr>  
+
+Numbered list:
+<OL>
+<LI> Item 1
+<LI> Item 2
+<LI> Item 3
+</OL>
+
+<br/>
+<hr>  
+ 
+
+<br/>
+<hr>  
+ 
+ 
+Definition list:
+<H3>A definition list</H3>
+<DL>
+<DT>Item 1
+<DD>Item 1 is cool.
+<DT> Item 2
+<DD>Item 2 is fun.
+<DT> Item 3
+<DD>Item 3 is crazy.
+</DL>
+
+<br/>
+<hr>  
+Sample form with checkboxes:
+<form name="somewebform" action="mailto:someone@contoso.com" method="post">
+
+<p>Please pick one:</p> 
+Item 1: <input type="checkbox" name="chkItem1" value="item1" /> <br /> 
+Item 2: <input type="checkbox" name="chkItem2" value="item2" /> <br /> 
+Item 3: <input type="checkbox" name="chkItem3" value="item3" checked="yes" /> <br /> 
+Item 4: <input type="checkbox" name="chkItem4" value="item4" checked="yes"/>
+</form>
+
+<br/>
+<hr>  
+
+Link to Microsoft: <br/>
+<a href="http://www.microsoft.com.com/"> Microsoft Home</a>
+
+<br/>
+<hr>  
+
+EMail link 
+<a href="mailto:somebody@contoso.com?cc=somebodyelse@contoso.com&subject=This is a test&body=This%20is%20body%20text.">Send email</a>
+
+<br/>
+<HR>
+Now a table:
+<table border="1" cellpadding="12" bgcolor=blue>
+  <tr>
+    <td><b>column 1</b></td>
+    <td><b>column 2</b></td>
+  </tr>
+  <tr>
+    <td>row 1  : cell 1</td>
+    <td> row 1 : cell 2</td>
+  </tr>
+  <tr>
+    <td> row 2  : cell 1</td>
+    <td> row 2  : cell 1</td>
+  </tr>
+</table> 
+
+<br/>
+<HR>
+
+Text Areas: <BR/>
+A Text area of 50 columns by 3 rows – so I handles up to 150 characters.  Word wrap is on.:<BR/>
+<textarea name="atextarea" cols="50" rows="10" wrap=”hard”>>This is a test.</textarea><br />
+<BR/>
+A Text area of 50 columns by 3 rows – so I handles up to 150 characters.  This time word wrap is off.:<BR/>
+<textarea name="atextarea2" cols="50" rows="10" wrap=”off”>This is a test.</textarea><br />
+<BR/>
+A Text area of 50 columns by 3 rows – so I handles up to 150 characters.  This time word wrap is on and the text Is read only:<BR/>
+<textarea name="atextarea3" cols="50" rows="10" wrap=” hard” readonly=”yes”>This is a test.</textarea><br />
+<BR/>
+A Text area of 50 columns by 3 rows – so I handles up to 150 characters.  This time word wrap is on and the text Is disabled:<BR/>
+<textarea name="atextarea4" cols="50" rows="10" wrap=”hard” disabled=”yes”>This is a test.</textarea><br />
+<BR/>
+
+<HR>
+
+
+
+Button to run inline script:
+<input type="button" onclick="alert('Inline script ran!')" value="Click to run script">
+
+
+</body>
+
+</html>

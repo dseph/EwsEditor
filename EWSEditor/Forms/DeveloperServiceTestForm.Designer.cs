@@ -34,10 +34,10 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(12, 173);
+            this.btnTest.Location = new System.Drawing.Point(12, 374);
             this.btnTest.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(172, 46);
+            this.btnTest.Size = new System.Drawing.Size(194, 58);
             this.btnTest.TabIndex = 4;
             this.btnTest.Text = "Test";
             this.btnTest.UseVisualStyleBackColor = true;
@@ -45,26 +45,29 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(11, 10);
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(12, 12);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(1027, 122);
+            this.textBox1.Size = new System.Drawing.Size(894, 321);
             this.textBox1.TabIndex = 3;
             this.textBox1.Text = "This windows is to be used by developers with EWSEditor source in order that they" +
     " may test their EWS Managed API code to work on the initialized ExchangeService " +
     "object.";
             // 
-            // DevelopeServiceTestWindow
+            // DeveloperServiceTestForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1212, 380);
+            this.ClientSize = new System.Drawing.Size(930, 475);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.textBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "DevelopeServiceTestWindow";
+            this.Name = "DeveloperServiceTestForm";
             this.Text = "Developer Service Test Window";
             this.Load += new System.EventHandler(this.DeveloperToolsTestWindow_Load);
             this.ResumeLayout(false);
