@@ -11,6 +11,7 @@ using EWSEditor.Forms;
 using EWSEditor.Forms.Controls;
 using EWSEditor.Logging;
 using EWSEditor.Common;
+using EWSEditor.Forms.Dialogs;
 
 // TODO: Determine if its recurring.
 // TODO: If recurring, ask if they want to open occurance or series.
@@ -573,11 +574,11 @@ namespace EWSEditor.Forms
                 bNoErrors = false;
             }
 
-            if (this.txtLocation.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Location Needs to be set", "Entry Error");
-                bNoErrors = false;
-            }
+            //if (this.txtLocation.Text.Trim().Length == 0)
+            //{
+            //    MessageBox.Show("Location Needs to be set", "Entry Error");
+            //    bNoErrors = false;
+            //}
 
             if (this.txtBody.Text.Trim().Length == 0)
             {
@@ -1213,7 +1214,7 @@ namespace EWSEditor.Forms
                             }
                             else
                             {
-                                //_Appointment.Save();
+                               //_Appointment.Save();
                                 _Appointment.Update(ConflictResolutionMode.AutoResolve);
                                 _WasSaved = true;
                                 bRet = true;
@@ -1768,6 +1769,16 @@ namespace EWSEditor.Forms
         private void chkRecurrWeeklyTuesday_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEditInLargerWindow_Click(object sender, EventArgs e)
+        {
+            EditContents oDialog = new EditContents(txtBody.Text);
+
+            oDialog.ShowDialog();
+            if (oDialog.UserChoseOK == true)
+                txtBody.Text = oDialog.NewBody;
+            oDialog = null;
         }
     }
 }

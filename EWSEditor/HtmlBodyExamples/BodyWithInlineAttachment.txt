@@ -3,13 +3,21 @@
     <title>Message Body with inline attachment</title>
   </head>
   <body>
-    This is the HTML body. <BR>
-    <BR>
-    <img width=100 height=100 id="1" src="cid:Field2MeterQarterGP.png"> <BR>
-    <BR>
-    The cid must match the name of an attachment added to the messaging item (such as email).<BR>
-    <BR>
+    This is the HTML body. <br/>
+    <br/>
+    <img width=100 height=100 id="1" src="cid:Field2MeterQarterGP.png"> <br/>
+    <br/>
+    The cid must match the name of an attachment added to the messaging item (such as email).<br/>
+    <br/>
     See: <a href="https://msdn.microsoft.com/en-us/library/office/hh532564(v=exchg.80).aspx"> https://msdn.microsoft.com/en-us/library/office/hh532564(v=exchg.80).aspx </a>  
-    <BR>
+    <br/>
+	<br/>
+	This is plain text. <br/>
+	<b>This is bold text. </b> <br/>
+	<i>This is italic text. </i><br/>
+	<p>This is a paragraph. </p><br/>
+	<p>This is <sup> superscript. </sup></p><br/>
+	<p>This is <sub>subscript. </sub></p><br/>
+	<p>This is <del>strikethrough. </del></p><br/>
   </body>
 </html>

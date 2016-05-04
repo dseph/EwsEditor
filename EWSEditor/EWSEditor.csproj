@@ -215,6 +215,12 @@
     <Compile Include="Forms\DeveloperServiceTestForm.Designer.cs">
       <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dialogs\EditContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\EditContent.Designer.cs">
+      <DependentUpon>EditContent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EmptyFolder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -813,6 +819,9 @@
     <EmbeddedResource Include="Forms\DeveloperServiceTestForm.resx">
       <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\EditContent.resx">
+      <DependentUpon>EditContent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\EmptyFolder.resx">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
     </EmbeddedResource>
@@ -1368,7 +1377,9 @@
   <PropertyGroup>
     <PostBuildEvent>md "$(TargetDir)EwsPostExamples"
 md "$(TargetDir)Testing"
+md "$(TargetDir)HtmlBodyExamples
 Copy /Y "$(ProjectDir)EwsPostExamples\*.*" "$(TargetDir)EwsPostExamples\*.*"
+Copy /Y "$(ProjectDir)HtmlBodyExamples\*.*" "$(TargetDir)HtmlBodyExamples\*.*"
 Copy /Y "$(ProjectDir)deps\Microsoft.Exchange.WebServices.dll" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

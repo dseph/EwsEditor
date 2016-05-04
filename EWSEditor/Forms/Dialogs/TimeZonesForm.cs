@@ -550,7 +550,7 @@ namespace EWSEditor.Forms
             ShowTextDocument oForm = new ShowTextDocument();
             oForm.txtEntry.Text = GetTimezoneList();
             oForm.Text = "Timezone list as text";
-            oForm.Show();
+            oForm.Show(); 
         }
 
         private string GetTimezoneList()
