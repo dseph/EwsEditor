@@ -61,9 +61,33 @@ Text in different sizes: <br/>
 <hr>  
 
 Now colors: <br/>
-               <p style=background-color:black;color:white; font-size:30px;>Black background and white text </p>
-               <p style=background-color:red;color:white; font-size:30px;>Red background and white text </p>
-               <p style=background-color:blue;color:yellow; font-size:30px;>Blue background and yellow text </p>
+<p style=background-color:black;color:white; font-size:30px;>Black background and white text </p>
+<p style=background-color:red;color:white; font-size:30px;>Red background and white text </p>
+<p style=background-color:blue;color:yellow; font-size:30px;>Blue background and yellow text </p>
+<BR/>
+<p class="MsoNormal">
+<span style="font-size:16.0pt;color:red">RED</span>
+<span style="font-size:16.0pt">
+  <span style="mso-spacerun:yes">&nbsp;&nbsp;</span>
+  <span style="color:#5B9BD5">BLUE</span>
+  <span style="mso-spacerun:yes">&nbsp;&nbsp; </span>
+  <span class="GramE">
+    <span style="color:#70AD47">GREEN<span style="mso-spacerun:yes">&nbsp;</span>
+  </span>
+  <span style="color:yellow">YELLOW</span>
+  </span>
+  <span style="color:black">
+    <span style="mso-spacerun:yes">&nbsp;</span>
+  </span>
+  <span style="color:#ED7D31">ORANGE</span>
+  <span style="color:black">
+    <span style="mso-spacerun:yes">&nbsp;</span>
+    <span style="background:yellow;mso-highlight:yellow">BLACK WITH YELLOW BACKGROUND</span>
+  </span>
+  <o:p></o:p> 
+</span>
+</p>
+
 
 <br/>
 <hr>  

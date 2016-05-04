@@ -10,7 +10,7 @@ using Microsoft.Exchange.WebServices.Data;
 using EWSEditor.Forms.Controls;
 using EWSEditor.Logging;
 using EWSEditor.Common;
-
+using EWSEditor.Forms.Dialogs;
 
 namespace EWSEditor.Forms
 {
@@ -680,6 +680,16 @@ namespace EWSEditor.Forms
         private void chkSetDurationEndTimezone_CheckedChanged(object sender, EventArgs e)
         {
             cmboDurationEndTimezone.Enabled = chkSetDurationEndTimezone.Checked;
+        }
+
+        private void btnEditInLargerWindow_Click(object sender, EventArgs e)
+        {
+            EditContents oDialog = new EditContents(txtBody.Text);
+
+            oDialog.ShowDialog();
+            if (oDialog.UserChoseOK == true)
+                txtBody.Text = oDialog.NewBody;
+            oDialog = null;
         }
 
     }

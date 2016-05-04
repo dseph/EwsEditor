@@ -13,7 +13,8 @@ using EWSEditor.Exchange;
 using EWSEditor.Logging;
 using EWSEditor.Resources;
 using EWSEditor.Settings;
- 
+using EWSEditor.Forms.Dialogs;
+
 namespace EWSEditor.Forms
 {
     public partial class TaskForm : Form
@@ -304,6 +305,16 @@ namespace EWSEditor.Forms
         private void txtBody_TextChanged(object sender, EventArgs e)
         {
             _isDirty = true;
+        }
+
+        private void btnEditInLargerWindow_Click(object sender, EventArgs e)
+        {
+            EditContents oDialog = new EditContents(txtBody.Text);
+
+            oDialog.ShowDialog();
+            if (oDialog.UserChoseOK == true)
+                txtBody.Text = oDialog.NewBody;
+            oDialog = null;
         }   
     }
 }

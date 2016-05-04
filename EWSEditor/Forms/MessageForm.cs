@@ -10,6 +10,7 @@ using Microsoft.Exchange.WebServices.Data;
 using EWSEditor.Forms.Controls;
 using EWSEditor.Logging;
 using EWSEditor.Common;
+using EWSEditor.Forms.Dialogs;
 
 namespace EWSEditor.Forms
 {
@@ -494,7 +495,7 @@ namespace EWSEditor.Forms
 
         private void MessageForm_Load(object sender, EventArgs e)
         {
-
+             
         }
 
         private void btnForward_Click(object sender, EventArgs e)
@@ -686,6 +687,17 @@ namespace EWSEditor.Forms
             //oAddRemoveHeaders.ShowDialog();
             //if (oAddRemoveHeadersIsDirty == true)
             //    _isDirty = true;
+        }
+
+        private void btnEditInLargerWindow_Click(object sender, EventArgs e)
+        {
+            
+            EditContents oDialog = new EditContents(txtBody.Text);
+          
+            oDialog.ShowDialog();
+            if (oDialog.UserChoseOK == true)
+                txtBody.Text = oDialog.NewBody;
+            oDialog = null;
         }
         
 
