@@ -34,10 +34,10 @@ namespace EWSEditor.Forms
         private const string XmlEncode = "Xml Encode";
         private const string XmlDecode = "Xml Decode";
 
-        private const string Utf8Encode = "Utf8 Encode";
-        private const string Utf8Decode = "Utf8 Decode";
+        //private const string Utf8Encode = "Utf8 Encode";
+        //private const string Utf8Decode = "Utf8 Decode";
 
-        private const string QuotedPrintableDecode = "Quoted Printable Decode";
+        //private const string QuotedPrintableDecode = "Quoted Printable Decode";
 
         private const string XmlBase64ToHex = "Base 64 to Hex";
         private const string XmlBase64ToHexSpaceDelimited = "Base 64 to Hex - Space delimited";
@@ -52,7 +52,11 @@ namespace EWSEditor.Forms
 
         private const string XmlConvertVerifyXmlChars = "XmlConvert - VerifyXmlChars";
 
-        private const string CheckForNonASCIICharacters = "Check for non-ASCII characters and control codes.";
+        private const string StringStatistics = "Information about text";
+        private const string CheckForNonASCIICharacters = "Check for non-ASCII characters and control codes (Except CR, LF and TAB)";
+        private const string sRemoveControlCodes = "Remove control codes (Except CR, LF and TAB)";
+        private const string sRemoveNonAsciiAndControlCharacters = "Remove non-ASCII and control codes (Except CR, LF and TAB)";
+        private const string sRemoveNonExtendedAsciiAndControlCharacters = "Remove non-Extended ASCII and control codes (Except CR, LF and TAB)";
  
  
         private void EncodeForm_Load(object sender, EventArgs e)
@@ -87,7 +91,11 @@ namespace EWSEditor.Forms
         cmboFrom.Items.Add(XmlHexDumpText);
         cmboFrom.Items.Add(XmlBase64ToHexDump);
 
+        cmboFrom.Items.Add(StringStatistics);
         cmboFrom.Items.Add(CheckForNonASCIICharacters);
+        cmboFrom.Items.Add(sRemoveControlCodes);
+        cmboFrom.Items.Add(sRemoveNonAsciiAndControlCharacters);
+        cmboFrom.Items.Add(sRemoveNonExtendedAsciiAndControlCharacters);
 
         //cmboFrom.Items.Add(XmlConvertVerifyXmlChars);
 
@@ -442,16 +450,68 @@ namespace EWSEditor.Forms
                     }
                     break;
 
+                case StringStatistics:
+
+                    try
+                    {
+                        ToText = StringHelper.GetStringStats(FromText);
+
+                    }
+                    catch (XmlException XmlExx)
+                    {
+                        MessageBox.Show(XmlExx.ToString(), "Error");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
+
+
                 case CheckForNonASCIICharacters:
                     try
                     {
 
-                        ToText = CheckResponseForOddCharacters(FromText);
+                        ToText = StringHelper.CheckResponseForOddCharacters(FromText);
 
                     }
                     catch (Exception exCheckForInvalidCharacters)
                     {
                         MessageBox.Show(exCheckForInvalidCharacters.ToString(), "Error");
+                    }
+                    break;
+
+                case sRemoveControlCodes:
+                    try
+                    {
+                        ToText = StringHelper.RemoveControlCodes(FromText);
+                    }
+                    catch (Exception exRemoveControlCodes)
+                    {
+                        MessageBox.Show(exRemoveControlCodes.ToString(), "Error");
+                    }
+                    break;
+
+   
+                case sRemoveNonAsciiAndControlCharacters:
+                    try
+                    {
+                        ToText = StringHelper.RemoveNonAsciiAndControlCharacters(FromText);
+                    }
+                    catch (Exception exRemoveNonAsciiAndControlCharacters)
+                    {
+                        MessageBox.Show(exRemoveNonAsciiAndControlCharacters.ToString(), "Error");
+                    }
+                    break;
+
+                case sRemoveNonExtendedAsciiAndControlCharacters:
+                    try
+                    {
+                        ToText = StringHelper.RemoveNonExtendedAsciiAndControlCharacters(FromText);
+                    }
+                    catch (Exception exRemoveNonExtendedAsciiAndControlCharacters)
+                    {
+                        MessageBox.Show(exRemoveNonExtendedAsciiAndControlCharacters.ToString(), "Error");
                     }
                     break;
 
@@ -539,80 +599,203 @@ namespace EWSEditor.Forms
         //    return input;
         //}
 
+        //string RemoveControlCodes(string sBody)
+        //{
+        //    string sReturn = string.Empty;
 
-        string CheckResponseForOddCharacters(string sBody)
-        {
-            StringBuilder oSB = new StringBuilder();
+        //    StringBuilder oSanitized = new StringBuilder();
+        //    bool bGoodCharacter = true;
+        //    int iVal = 0;
 
-            bool bResponseHasUnicode = false;
-            bool bResponseHasExtendedAsciiCharacters = false;
-            bool bResponseHasControlCharacters = false;
-            bool bResponseHasOddCharacters = false;
-            string sReponseCheck = string.Empty;
+        //    foreach (char c in sBody)
+        //    {
+        //        bGoodCharacter = true;
+        //        iVal = (int)c;
 
+        //        //// Extended ascii check
+        //        //if (iVal > 127 & iVal < 256)
+        //        //{
+        //        //    bGoodCharacter = false;
+        //        //}
 
-            int iVal = 0;
-            string sComment = string.Empty;
-            StringBuilder oCharCheck = new StringBuilder();
+        //        //// Non-ASCII and non-Extended ASCII check
+        //        //if (iVal > 255)
+        //        //{
+        //        //    bGoodCharacter = false;
+        //        //}
 
-            oCharCheck.AppendFormat("\r\nDumping characters...\r\n");
-            oCharCheck.AppendFormat("Value   Char  Comment\r\n");
-            StringBuilder oSanitized = new StringBuilder();
-            foreach (char c in sBody)
-            {
-                sComment = string.Empty;
-                iVal = (int)c;
-                if (iVal > 127 & iVal < 256)
-                {
-                    sComment = "Over 127";
-                    bResponseHasOddCharacters = true;
-                    bResponseHasExtendedAsciiCharacters = true;
-                }
-                if (iVal > 255)
-                {
-                    sComment = "Over 255";
-                    bResponseHasOddCharacters = true;
-                    bResponseHasUnicode = true;
-                }
-                if ((iVal > 0 && iVal < 7) || (iVal > 13 && iVal < 32))
-                {
-                    sComment = "Control Character";
-                    bResponseHasControlCharacters = true;
-                    bResponseHasOddCharacters = true;
-                }
+        //        // Control character check
+        //        if ((iVal > 0 && iVal < 7) || (iVal > 13 && iVal < 32))
+        //        {
+        //            bGoodCharacter = false;
+        //        }
 
-                if (bResponseHasOddCharacters == false)
-                    oSanitized.Append(c);
+        //        if (bGoodCharacter == true)
+        //            oSanitized.Append(c);
+        //    }
 
-                oCharCheck.AppendFormat("[{0}] - {1}  {2} \r\n", (int)c, c, sComment);
-            }
+        //    sReturn = oSanitized.ToString();
+
+        //    return sReturn;
+        //}
 
 
-            if (bResponseHasOddCharacters == true)
-            {
-                oSB.AppendLine("***");
-                if (bResponseHasControlCharacters == true)
-                    oSB.AppendLine("***  Control Characters found. ***");
-                if (bResponseHasUnicode == true)
-                    oSB.AppendLine("***  Unicode characters found. ***");
-                if (bResponseHasExtendedAsciiCharacters == true)
-                    oSB.AppendLine("***  Extended ASCII characters found. ***");
-                oSB.AppendLine("***");
-                oSB.Append(oCharCheck.ToString());  // Character by character check
+        //string RemoveNonAsciiAndControlCharacters(string sBody)
+        //{
+        //    string sReturn = string.Empty;
 
-                oSB.Append("\r\nThe following is a version of the source text without extended ascii/unicode/control characters:\r\n");
-                oSB.Append(oSanitized.ToString());
+        //    StringBuilder oSanitized = new StringBuilder();
+        //    bool bGoodCharacter = true;
+        //    int iVal = 0;
 
-                //MessageBox.Show("The are non-basic ASCII characters found.");
-            }
-            else
-            {
-                oSB.Append("No non-ASCII or control characters found.");
-            }
+        //    foreach (char c in sBody)
+        //    {
+        //        bGoodCharacter = true;
+        //        iVal = (int)c;
 
-            oSB.Append(oSanitized.ToString());
+        //        // Extended ascii check
+        //        if (iVal > 127 & iVal < 256)
+        //        {
+        //            bGoodCharacter = false;
+        //        }
 
-            return oSB.ToString();
-        }
+        //        // Non-ASCII and non-Extended ASCII check
+        //        if (iVal > 255)
+        //        {
+        //            bGoodCharacter = false;
+        //        }
+
+        //        // Control character check
+        //        if ((iVal > 0 && iVal < 7) || (iVal > 13 && iVal < 32))
+        //        {
+        //            bGoodCharacter = false;
+        //        }
+
+        //        if (bGoodCharacter == true)
+        //            oSanitized.Append(c);
+        //    }
+
+        //    sReturn = oSanitized.ToString();
+
+        //    return sReturn;
+        //}
+
+ 
+        //string RemoveNonExtendedAsciiAndControlCharacters(string sBody)
+        //{
+        //    string sReturn = string.Empty;
+
+        //    StringBuilder oSanitized = new StringBuilder();
+        //    bool bGoodCharacter = true;
+        //    int iVal = 0;
+
+        //    foreach (char c in sBody)
+        //    {
+        //        bGoodCharacter = true;
+        //        iVal = (int)c;
+
+        //        //// Extended ascii check
+        //        //if (iVal > 127 & iVal < 256)
+        //        //{
+        //        //    bGoodCharacter = false;
+        //        //}
+
+        //        // Non-ASCII and non-Extended ASCII check
+        //        if (iVal > 255)
+        //        {
+        //            bGoodCharacter = false;
+        //        }
+
+        //        // Control character check
+        //        if ((iVal > 0 && iVal < 7) || (iVal > 13 && iVal < 32))
+        //        {
+        //            bGoodCharacter = false;
+        //        }
+
+        //        if (bGoodCharacter == true)
+        //            oSanitized.Append(c);
+        //    }
+
+        //    sReturn = oSanitized.ToString();
+
+        //    return sReturn;
+        //}
+
+
+        //string CheckResponseForOddCharacters(string sBody)
+        //{
+        //    StringBuilder oSB = new StringBuilder();
+
+        //    bool bResponseHasUnicode = false;
+        //    bool bResponseHasExtendedAsciiCharacters = false;
+        //    bool bResponseHasControlCharacters = false;
+        //    bool bResponseHasOddCharacters = false;
+        //    string sReponseCheck = string.Empty;
+
+
+        //    int iVal = 0;
+        //    string sComment = string.Empty;
+        //    StringBuilder oCharCheck = new StringBuilder();
+
+        //    oCharCheck.AppendFormat("\r\nDumping characters...\r\n");
+        //    oCharCheck.AppendFormat("Value   Char  Comment\r\n");
+        //    StringBuilder oSanitized = new StringBuilder();
+        //    foreach (char c in sBody)
+        //    {
+        //        sComment = string.Empty;
+        //        iVal = (int)c;
+        //        if (iVal > 127 & iVal < 256)
+        //        {
+        //            sComment = "Over 127";
+        //            bResponseHasOddCharacters = true;
+        //            bResponseHasExtendedAsciiCharacters = true;
+        //        }
+        //        if (iVal > 255)
+        //        {
+        //            sComment = "Over 255";
+        //            bResponseHasOddCharacters = true;
+        //            bResponseHasUnicode = true;
+        //        }
+        //        if ((iVal > 0 && iVal < 7) || (iVal > 13 && iVal < 32))
+        //        {
+        //            sComment = "Control Character";
+        //            bResponseHasControlCharacters = true;
+        //            bResponseHasOddCharacters = true;
+        //        }
+
+        //        if (bResponseHasOddCharacters == false)
+        //            oSanitized.Append(c);
+
+        //        oCharCheck.AppendFormat("[{0}] - {1}  {2} \r\n", (int)c, c, sComment);
+        //    }
+
+
+        //    if (bResponseHasOddCharacters == true)
+        //    {
+        //        oSB.AppendLine("***");
+        //        if (bResponseHasControlCharacters == true)
+        //            oSB.AppendLine("***  Control Characters found. ***");
+        //        if (bResponseHasUnicode == true)
+        //            oSB.AppendLine("***  Unicode characters found. ***");
+        //        if (bResponseHasExtendedAsciiCharacters == true)
+        //            oSB.AppendLine("***  Extended ASCII characters found. ***");
+        //        oSB.AppendLine("***");
+        //        oSB.Append(oCharCheck.ToString());  // Character by character check
+
+        //        oSB.Append("\r\nThe following is a version of the source text without extended ascii/unicode/control characters:\r\n");
+        //        oSB.Append(oSanitized.ToString());
+
+        //        //MessageBox.Show("The are non-basic ASCII characters found.");
+        //    }
+        //    else
+        //    {
+        //        oSB.AppendLine("No non-ASCII or control characters found.");
+        //        oSB.AppendLine("");
+        //    }
+
+        //    oSB.Append(oSanitized.ToString());
+
+        //    return oSB.ToString();
+        //}
     }
 }

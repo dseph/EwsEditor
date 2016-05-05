@@ -32,13 +32,13 @@
             this.tabContent = new System.Windows.Forms.TabPage();
             this.txtBody = new System.Windows.Forms.TextBox();
             this.tabIERendering = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.wbContents = new System.Windows.Forms.WebBrowser();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnLoadExample = new System.Windows.Forms.Button();
             this.btnSaveExample = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabContent.SuspendLayout();
             this.tabIERendering.SuspendLayout();
@@ -95,6 +95,19 @@
             this.tabIERendering.Text = "IE Rendering";
             this.tabIERendering.UseVisualStyleBackColor = true;
             this.tabIERendering.Click += new System.EventHandler(this.tabIERendering_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Location = new System.Drawing.Point(3, 452);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1062, 22);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Note: Inline attachments will not be rendered.  Inline attachments are referenced" +
+    " via a CID  in HTML which matches the Content ID on an attachment.";
             // 
             // wbContents
             // 
@@ -166,19 +179,6 @@
             this.btnSaveExample.UseVisualStyleBackColor = true;
             this.btnSaveExample.Click += new System.EventHandler(this.btnSaveExample_Click);
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(3, 452);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1062, 22);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Note: Inline attachments will not be rendered.  Inline attachments are referenced" +
-    " via a CID  in HTML which matches the Content ID on an attachment.";
-            // 
             // EditContents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -191,7 +191,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tabControl1);
             this.Name = "EditContents";
-            this.Text = "EditContent";
+            this.Text = "Edit Content";
             this.Load += new System.EventHandler(this.EditContent_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabContent.ResumeLayout(false);
