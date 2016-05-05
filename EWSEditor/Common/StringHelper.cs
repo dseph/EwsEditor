@@ -9,6 +9,96 @@ namespace EWSEditor.Common
 {
     class StringHelper
     {
+
+        //*************************************************************************************
+        //GetStringStats() Provides information on the characters which are in a string.
+        //*************************************************************************************
+        public static string GetStringStats(string sString)
+        {
+            string sResults = string.Empty;
+            char[] CharArr = sString.ToCharArray();
+
+            //int iCharCode = 0;
+            int iTotalLines = 0;
+            int iTotalCharacters = 0;
+            int iCurrentLine = 0;
+            int iCurrentLineLength = 0;
+            int iLongestLine = 0;
+            int iLongestLineChars = 0;
+            int iStandardEnglish = 0;
+            int iNull = 0;
+            int iTab = 0;
+            int iCr = 0;
+            int iLF = 0;
+            int iLowerCaseAlpha = 0;
+            int iUpperCaseAlpha = 0;
+            int iNumeric = 0;
+            int iAbove255 = 0;
+            int iAbove127 = 0;
+            int iControlCharacters = 0;
+            char xChar = ' ';
+            long ixChar = 0;
+            iTotalCharacters = sString.Length;
+            for (int iCount = 0; iCount < sString.Length; iCount++)
+            {
+                xChar = CharArr[iCount];
+                iCurrentLineLength++;
+                if (xChar == '\n' || xChar == '\r')
+                {
+                    if (xChar == '\n')
+                    {
+                        iCurrentLine++;
+                        iTotalLines++;
+                    }
+                    iCurrentLineLength = 0;
+                }
+                if (iCurrentLineLength > iLongestLineChars)
+                {
+                    iLongestLineChars = iCurrentLineLength;
+                    iLongestLine = iCurrentLine;
+                }
+                ixChar = (int)xChar;
+                if (xChar >= 'a' && xChar <= 'z') iLowerCaseAlpha++;
+                if (xChar >= 'A' && xChar <= 'Z') iUpperCaseAlpha++;
+                if (xChar >= '0' && xChar <= '9') iNumeric++;
+                if (ixChar > 255) iAbove255++;
+                if (ixChar > 127) iAbove127++;
+                //if (ixChar <= 31) iControlCharacters++;
+                 
+                // Control Characters except CR(13) LF (10) and TAB (9)
+                if ((ixChar >= 0 && ixChar <= 31) && (ixChar != 10 && ixChar != 13 && ixChar != 9)) iControlCharacters++;
+                if (ixChar > 31 & ixChar < 127 || xChar == '\r' || xChar == '\n' || xChar == '\t')
+                {
+                    iStandardEnglish++;
+                }
+                if (xChar == '\0') iNull++;
+                if (xChar == '\t') iTab++;
+                if (xChar == '\r') iCr++;
+                if (xChar == '\n') iLF++;
+            }
+            iLongestLine++;
+            sResults += " Total Lines: " + iTotalLines.ToString() + " ";
+            sResults += "Total Characters: " + iTotalCharacters.ToString() + " ";
+            sResults += "Longest Line is " + iLongestLine.ToString() + " having " + iLongestLineChars.ToString() + " characters\r\n";
+            sResults += "\r\n";
+            sResults += " Characters:\r\n";
+            sResults += string.Format(" {0} In Normal English Range - letters, numbers, symbols and Cr/Lf/Tab (31-126 dec range+ 13/10/9 dec) \r\n", iStandardEnglish.ToString().PadLeft(6, ' '));
+            sResults += string.Format(" {0} Tab(09 hex)\r\n", iTab.ToString().PadLeft(6, ' '));
+            sResults += string.Format(" {0} Cr (0D hex)\r\n", iCr.ToString().PadLeft(6, ' '));
+            sResults += string.Format(" {0} Lf (0A hex)\r\n", iLF.ToString().PadLeft(6, ' '));
+            sResults += string.Format(" {0} Control Characters (Range 0-31 dec/0-1F Hex  except for CR, LF and TAB)\r\n", iControlCharacters.ToString().PadLeft(6, ' '));
+            sResults += string.Format(" {0} Above 127 dec range\r\n", iAbove255.ToString().PadLeft(6, ' '));
+            sResults += string.Format(" {0} Above 255 dec range\r\n", iAbove127.ToString().PadLeft(6, ' '));
+            sResults += string.Format(" {0} Null (00 hex)\r\n", iNull.ToString().PadLeft(6, ' '));
+
+            sResults += string.Format(" {0} Lower Case\r\n", iLowerCaseAlpha.ToString().PadLeft(6, ' '));
+            sResults += string.Format(" {0} Upper Case\r\n", iUpperCaseAlpha.ToString().PadLeft(6, ' '));
+            sResults += string.Format(" {0} Numeric\r\n", iNumeric.ToString().PadLeft(6, ' '));
+            sResults += "\r\n";
+
+            return sResults;
+        }
+
         //****************************************************************
         // DeNullString - convert a null string to ""
         //****************************************************************
@@ -487,6 +577,212 @@ namespace EWSEditor.Common
 
             sError = sConversionErrors;
             return bRet;
+        }
+
+
+
+        public static string RemoveControlCodes(string sBody)
+        {
+            string sReturn = string.Empty;
+
+            StringBuilder oSanitized = new StringBuilder();
+            bool bGoodCharacter = true;
+            int iVal = 0;
+
+            foreach (char c in sBody)
+            {
+                bGoodCharacter = true;
+                iVal = (int)c;
+
+                //// Extended ascii check
+                //if (iVal > 127 & iVal < 256)
+                //{
+                //    bGoodCharacter = false;
+                //}
+
+                //// Non-ASCII and non-Extended ASCII check
+                //if (iVal > 255)
+                //{
+                //    bGoodCharacter = false;
+                //}
+
+                // Control character check:
+                // Control Characters except CR(13) LF (10) and TAB (9)
+                if ((iVal >= 0 && iVal <= 31) && (iVal != 10 && iVal != 13 && iVal != 9))
+                {
+                    bGoodCharacter = false;
+                }
+
+                if (bGoodCharacter == true)
+                    oSanitized.Append(c);
+            }
+
+            sReturn = oSanitized.ToString();
+
+            return sReturn;
+        }
+
+
+        public static string RemoveNonAsciiAndControlCharacters(string sBody)
+        {
+            string sReturn = string.Empty;
+
+            StringBuilder oSanitized = new StringBuilder();
+            bool bGoodCharacter = true;
+            int iVal = 0;
+
+            foreach (char c in sBody)
+            {
+                bGoodCharacter = true;
+                iVal = (int)c;
+
+                // Extended ascii check
+                if (iVal > 127 & iVal < 256)
+                {
+                    bGoodCharacter = false;
+                }
+
+                // Non-ASCII and non-Extended ASCII check
+                if (iVal > 255)
+                {
+                    bGoodCharacter = false;
+                }
+
+                // Control character check:
+                // Control Characters except CR(13) LF (10) and TAB (9)
+                if ((iVal >= 0 && iVal <= 31) && (iVal != 10 && iVal != 13 && iVal != 9))
+                {
+                    bGoodCharacter = false;
+                }
+
+                if (bGoodCharacter == true)
+                    oSanitized.Append(c);
+            }
+
+            sReturn = oSanitized.ToString();
+
+            return sReturn;
+        }
+
+
+        public static string RemoveNonExtendedAsciiAndControlCharacters(string sBody)
+        {
+            string sReturn = string.Empty;
+
+            StringBuilder oSanitized = new StringBuilder();
+            bool bGoodCharacter = true;
+            int iVal = 0;
+
+            foreach (char c in sBody)
+            {
+                bGoodCharacter = true;
+                iVal = (int)c;
+
+                //// Extended ascii check
+                //if (iVal > 127 & iVal < 256)
+                //{
+                //    bGoodCharacter = false;
+                //}
+
+                // Non-ASCII and non-Extended ASCII check
+                if (iVal > 255)
+                {
+                    bGoodCharacter = false;
+                }
+
+                // Control character check:
+                // Control Characters except CR(13) LF (10) and TAB (9)
+                if ((iVal >= 0 && iVal <= 31) && (iVal != 10 && iVal != 13 && iVal != 9))
+                {
+                    bGoodCharacter = false;
+                }
+
+                if (bGoodCharacter == true)
+                    oSanitized.Append(c);
+            }
+
+            sReturn = oSanitized.ToString();
+
+            return sReturn;
+        }
+
+
+        public static string CheckResponseForOddCharacters(string sBody)
+        {
+            StringBuilder oSB = new StringBuilder();
+
+            bool bResponseHasUnicode = false;
+            bool bResponseHasExtendedAsciiCharacters = false;
+            bool bResponseHasControlCharacters = false;
+            bool bResponseHasOddCharacters = false;
+            string sReponseCheck = string.Empty;
+
+
+            int iVal = 0;
+            string sComment = string.Empty;
+            StringBuilder oCharCheck = new StringBuilder();
+
+            oCharCheck.AppendFormat("\r\nDumping characters...\r\n");
+            oCharCheck.AppendFormat("Value   Char  Comment\r\n");
+            StringBuilder oSanitized = new StringBuilder();
+            foreach (char c in sBody)
+            {
+                sComment = string.Empty;
+                iVal = (int)c;
+                if (iVal > 127 & iVal < 256)
+                {
+                    sComment = "Over 127";
+                    bResponseHasOddCharacters = true;
+                    bResponseHasExtendedAsciiCharacters = true;
+                }
+                if (iVal > 255)
+                {
+                    sComment = "Over 255";
+                    bResponseHasOddCharacters = true;
+                    bResponseHasUnicode = true;
+                }
+                // Control character check:
+                // Control Characters except CR(13) LF (10) and TAB (9)
+                if ((iVal >= 0 && iVal <= 31) && (iVal != 10 && iVal != 13 && iVal != 9))
+                {
+                    sComment = "Control Character";
+                    bResponseHasControlCharacters = true;
+                    bResponseHasOddCharacters = true;
+                }
+
+                if (bResponseHasOddCharacters == false)
+                    oSanitized.Append(c);
+
+                oCharCheck.AppendFormat("[{0}] - {1}  {2} \r\n", (int)c, c, sComment);
+            }
+
+
+            if (bResponseHasOddCharacters == true)
+            {
+                oSB.AppendLine("***");
+                if (bResponseHasControlCharacters == true)
+                    oSB.AppendLine("***  Control Characters found. ***");
+                if (bResponseHasUnicode == true)
+                    oSB.AppendLine("***  Unicode characters found. ***");
+                if (bResponseHasExtendedAsciiCharacters == true)
+                    oSB.AppendLine("***  Extended ASCII characters found. ***");
+                oSB.AppendLine("***");
+                oSB.Append(oCharCheck.ToString());  // Character by character check
+
+                oSB.Append("\r\nThe following is a version of the source text without extended ascii/unicode/control characters:\r\n");
+                oSB.Append(oSanitized.ToString());
+
+                //MessageBox.Show("The are non-basic ASCII characters found.");
+            }
+            else
+            {
+                oSB.AppendLine("No non-ASCII or control characters found.");
+                oSB.AppendLine("");
+            }
+
+            oSB.Append(oSanitized.ToString());
+
+            return oSB.ToString();
         }
  
 
