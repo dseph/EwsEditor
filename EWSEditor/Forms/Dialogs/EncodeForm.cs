@@ -33,6 +33,7 @@ namespace EWSEditor.Forms
  
         private const string XmlEncode = "Xml Encode";
         private const string XmlDecode = "Xml Decode";
+        private const string XmlBeautify = "Beautify XML";
 
         //private const string Utf8Encode = "Utf8 Encode";
         //private const string Utf8Decode = "Utf8 Decode";
@@ -74,6 +75,9 @@ namespace EWSEditor.Forms
  
         cmboFrom.Items.Add(XmlEncode);
         cmboFrom.Items.Add(XmlDecode);
+        cmboFrom.Items.Add(XmlBeautify);
+
+             
 
         //cmboFrom.Items.Add(Utf8Encode);
         //cmboFrom.Items.Add(Utf8Decode);
@@ -116,7 +120,7 @@ namespace EWSEditor.Forms
             string FromText = txtFrom.Text;
             string ToText = string.Empty;
             byte[] oFromBytes = null;
-            byte[] oToBytes = null;
+            //byte[] oToBytes = null;
             
             //byte[] ToBytes;
             System.Text.Encoding oUtf8Encoding = System.Text.Encoding.UTF8;
@@ -134,7 +138,8 @@ namespace EWSEditor.Forms
                     break;
                 case UrlEncodeUnicode:
                      
-                    ToText = System.Web.HttpUtility.UrlEncodeUnicode(FromText);
+                    ToText = System.Web.HttpUtility.UrlEncode(FromText);
+                    //ToText = System.Web.HttpUtility.UrlEncodeUnicode(FromText);
                     break;
                 
 
@@ -292,6 +297,49 @@ namespace EWSEditor.Forms
                         oXmlDocument = null;
 
  
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
+
+                case XmlBeautify:
+                    try
+                    {
+ 
+                        ToText = "";
+
+                        XmlDocument oXmlDocument = new XmlDocument();
+                        oXmlDocument.InnerXml = FromText;
+ 
+                        try
+                        {
+                            StringBuilder sb = new StringBuilder();
+                            XmlWriterSettings settings = new XmlWriterSettings
+                            {
+                                Indent = true,
+                                IndentChars = "  ",
+                                NewLineChars = "\r\n",
+                                NewLineHandling = NewLineHandling.Replace,
+                                CheckCharacters = false
+                            };
+                            using (XmlWriter writer = XmlWriter.Create(sb, settings))
+                            {
+                                oXmlDocument.Save(writer);
+                                ToText = sb.ToString();
+                                oXmlDocument = null;
+                                settings = null;
+                            }
+                        }
+                        catch (System.Xml.XmlException XmlEx)
+                        {
+                            MessageBox.Show(XmlEx.ToString(), "Error");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString(), "Error");
+                        }
                     }
                     catch (Exception ex)
                     {

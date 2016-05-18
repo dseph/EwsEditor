@@ -9,8 +9,7 @@ using System.Globalization;
 using System.Windows.Forms;
 using EWSEditor.Common;
 using Microsoft.Exchange.WebServices.Data;
-using System.Globalization;
- 
+  
 
 namespace EWSEditor.Forms 
 {

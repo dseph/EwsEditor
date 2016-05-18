@@ -47,7 +47,7 @@ namespace EWSEditor.Common
                 {
                     try
                     {
-                        object GroupName = null;
+                        //object GroupName = null;
                         object WlinkAddressBookEID = null;
                         if (itItem.TryGetProperty(PidTagWlinkAddressBookEID, out WlinkAddressBookEID))
                         {

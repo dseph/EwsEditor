@@ -150,6 +150,19 @@ namespace EWSEditor.Forms
 
         #endregion
 
+        public new EWSEditor.Common.EwsSession CurrentEwsSessionSettings
+        {
+            get
+            {
+                return base.CurrentEwsSessionSettings;
+            }
+
+            set
+            {
+                base.CurrentEwsSessionSettings = value;
+            }
+        }
+
         public new EWSEditor.Common.EwsEditorAppSettings CurrentAppSettings
         {
             get
@@ -1293,7 +1306,13 @@ namespace EWSEditor.Forms
 
             // Create a root node for the ExchangeService
             serviceRootNode = FolderTreeView.Nodes.Add(PropertyInterpretation.GetPropertyValue(service));
-            serviceRootNode.Tag = service; 
+          serviceRootNode.Tag = service; 
+
+            MessageBox.Show("todo");
+            EWSEditor.Common.EwsSession oSession = new EwsSession();
+            oSession.SessionService = service;
+            oSession.SessionEwsEditorAppSettings = oAppSettings;
+            serviceRootNode.Tag = oSession;
             
 
             // ExchangeService ToolTip - mstehle 7/29/2009
@@ -1344,10 +1363,11 @@ namespace EWSEditor.Forms
 
                 if (res == DialogResult.Yes)
                 {
+                    FolderId oNewFodler = new FolderId(WellKnownFolderName.Root);
                     this.AddRootFolderToTreeView(
                         service,
                         oAppSettings,
-                        new FolderId(WellKnownFolderName.Root),
+                        oNewFodler,
                         serviceRootNode);
                 }
             }
@@ -1411,7 +1431,14 @@ namespace EWSEditor.Forms
             // RootFolderNodeTag - 10/26/2009 mstehle
             // Only add the RootFolderNodeTag to root folders underneath an
             // ExchangeService node.
-            if (parentNode.Tag is ExchangeService)
+
+            //EWSEditor.Common.EwsSession oSession = new EwsSession();
+            //oSession.SessionService = service;
+            //oSession.SessionEwsEditorAppSettings = oAppSettings;
+            //serviceRootNode.Tag = oSession;
+
+            //             if (parentNode.Tag is ExchangeService)
+            if (parentNode.Tag is EwsSession)
             {
                 RootFolderNodeTag tag = new RootFolderNodeTag();
                 tag.FolderObject = folder;
@@ -1530,11 +1557,19 @@ namespace EWSEditor.Forms
                 // Reload the property grid
                 this.FolderPropertyDetailsGrid.LoadObject(folder);
             }
-            else if (FolderTreeView.SelectedNode.Tag is ExchangeService)
+            else if (FolderTreeView.SelectedNode.Tag is EWSEditor.Common.EwsSession)
             {
-                this.CurrentService = FolderTreeView.SelectedNode.Tag as ExchangeService;
+                EwsSession oSession = (EwsSession) FolderTreeView.SelectedNode.Tag;    
+                this.CurrentAppSettings = oSession.SessionEwsEditorAppSettings;
+                this.CurrentService = oSession.SessionService;;
                 this.FolderPropertyDetailsGrid.LoadObject(this.CurrentService);
             }
+
+            //else if (FolderTreeView.SelectedNode.Tag is ExchangeService)
+            //{
+            //    this.CurrentService = FolderTreeView.SelectedNode.Tag as ExchangeService;
+            //    this.FolderPropertyDetailsGrid.LoadObject(this.CurrentService);
+            //}
         }
 
         #endregion
@@ -1675,7 +1710,7 @@ namespace EWSEditor.Forms
         {
             internal Folder FolderObject;
             internal FolderId OriginalFolderId;
-            internal EWSEditor.Common.EwsEditorAppSettings oAppSettings;
+           // internal EWSEditor.Common.EwsEditorAppSettings oAppSettings;
         }
 
         private void mnuOpenStreamingNotifications_Click(object sender, EventArgs e)

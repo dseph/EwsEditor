@@ -20,8 +20,8 @@ namespace EWSEditor.Forms
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            bool bRet = false;
-            string sResultsSummary = "";
+            //bool bRet = false;
+            //string sResultsSummary = "";
             CalCheck oCalCheck = new CalCheck();
 
             // Collection of a custom class for  results?

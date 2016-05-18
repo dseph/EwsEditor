@@ -56,6 +56,11 @@ namespace EWSEditor.Common
         SpecifiedCredentialsAuth,
         oAuth
     }
+ 
      
-   
+    public class EwsSession
+    {
+        public ExchangeService SessionService = null;
+        public EwsEditorAppSettings SessionEwsEditorAppSettings = null;
+    }
 }

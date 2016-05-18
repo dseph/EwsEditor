@@ -39,6 +39,8 @@ namespace EWSEditor.Forms
         public MessageForm()
         {
             InitializeComponent();
+            _isDirty = false;
+
         }
 
  
@@ -83,6 +85,13 @@ namespace EWSEditor.Forms
             }
  
             SetFormFromMessage(_EmailMessage, _CanEdit, _CanSend, _CanReply);
+
+            _isDirty = false;
+
+            if (_isDirty == true)
+            {
+                // Do nothing
+            }
         }
 
         // New Message
@@ -105,6 +114,8 @@ namespace EWSEditor.Forms
             }
  
             SetFormFromMessage(_EmailMessage, _CanEdit, _CanSend, _CanReply);
+
+            _isDirty = false;
         }
         public MessageForm(ExchangeService CurrentService, ref EmailMessage oEmailMessage)
         {
@@ -124,11 +135,10 @@ namespace EWSEditor.Forms
                 _CanReply = false;
             }
 
-            
-  
-
-
+ 
             SetFormFromMessage(oEmailMessage, _CanEdit, _CanSend, _CanReply);
+
+            _isDirty = false;
         }
 
         private EmailMessage LoadEmailMessageForEdit(ExchangeService CurrentService, ItemId oItemId)
@@ -141,7 +151,6 @@ namespace EWSEditor.Forms
             EmailMessage oEmailMessage = EmailMessage.Bind(CurrentService, oItemId);
              
  
-           
             return oEmailMessage;
         }
 
@@ -474,7 +483,7 @@ namespace EWSEditor.Forms
  
                 if (SetMessageFromForm(ref _EmailMessage))
                 {
-
+                    
                     if (_IsExistingEmail == false)
                     {
                         _EmailMessage.Save(WellKnownFolderName.Drafts);

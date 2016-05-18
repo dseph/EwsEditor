@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CloseButton = new System.Windows.Forms.Button();
             this.StartTimeWindowLabel = new System.Windows.Forms.Label();
             this.EndWindowDate = new System.Windows.Forms.DateTimePicker();
             this.StartWindowDate = new System.Windows.Forms.DateTimePicker();
@@ -44,7 +43,6 @@
             this.EndDetailDate = new System.Windows.Forms.DateTimePicker();
             this.EndDetailLabel = new System.Windows.Forms.Label();
             this.StartDetailDate = new System.Windows.Forms.DateTimePicker();
-            this.AttendeeAvailabilityGroup = new System.Windows.Forms.GroupBox();
             this.SuggestionsList = new System.Windows.Forms.ListView();
             this.DateColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DateQualityColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -82,7 +80,6 @@
             this.lblRequestFBView = new System.Windows.Forms.Label();
             this.MergeFBIntervalText = new System.Windows.Forms.TextBox();
             this.lblMergeFBInterval = new System.Windows.Forms.Label();
-            this.TempAvailDataCombo = new EWSEditor.Forms.Controls.EnumComboBox<Microsoft.Exchange.WebServices.Data.AvailabilityData>();
             this.label1 = new System.Windows.Forms.Label();
             this.GetAvailabilityButton = new System.Windows.Forms.Button();
             this.AvailabilityDataGroup = new System.Windows.Forms.GroupBox();
@@ -94,31 +91,21 @@
             this.SmtpColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.TypeColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ExcludeConflictsColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label2 = new System.Windows.Forms.Label();
+            this.TempAvailDataCombo = new System.Windows.Forms.ComboBox();
             this.TimeWindowGroup.SuspendLayout();
             this.DetailWindowGroup.SuspendLayout();
-            this.AttendeeAvailabilityGroup.SuspendLayout();
             this.SuggestionsGroup.SuspendLayout();
             this.AvailabilityDataGroup.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // CloseButton
-            // 
-            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Ignore;
-            this.CloseButton.Location = new System.Drawing.Point(834, 720);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(75, 23);
-            this.CloseButton.TabIndex = 28;
-            this.CloseButton.Text = "Close";
-            this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
-            // 
             // StartTimeWindowLabel
             // 
-            this.StartTimeWindowLabel.Location = new System.Drawing.Point(9, 19);
+            this.StartTimeWindowLabel.Location = new System.Drawing.Point(34, 22);
+            this.StartTimeWindowLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.StartTimeWindowLabel.Name = "StartTimeWindowLabel";
-            this.StartTimeWindowLabel.Size = new System.Drawing.Size(58, 16);
+            this.StartTimeWindowLabel.Size = new System.Drawing.Size(77, 20);
             this.StartTimeWindowLabel.TabIndex = 0;
             this.StartTimeWindowLabel.Text = "Start Time:";
             // 
@@ -126,25 +113,28 @@
             // 
             this.EndWindowDate.CustomFormat = "MMM dd, yyyy - hh:mm tt";
             this.EndWindowDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.EndWindowDate.Location = new System.Drawing.Point(355, 16);
+            this.EndWindowDate.Location = new System.Drawing.Point(433, 17);
+            this.EndWindowDate.Margin = new System.Windows.Forms.Padding(0);
             this.EndWindowDate.Name = "EndWindowDate";
-            this.EndWindowDate.Size = new System.Drawing.Size(162, 20);
+            this.EndWindowDate.Size = new System.Drawing.Size(215, 22);
             this.EndWindowDate.TabIndex = 3;
             // 
             // StartWindowDate
             // 
             this.StartWindowDate.CustomFormat = "MMM dd, yyyy - hh:mm tt";
             this.StartWindowDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.StartWindowDate.Location = new System.Drawing.Point(89, 17);
+            this.StartWindowDate.Location = new System.Drawing.Point(120, 20);
+            this.StartWindowDate.Margin = new System.Windows.Forms.Padding(4);
             this.StartWindowDate.Name = "StartWindowDate";
-            this.StartWindowDate.Size = new System.Drawing.Size(162, 20);
+            this.StartWindowDate.Size = new System.Drawing.Size(220, 22);
             this.StartWindowDate.TabIndex = 1;
             // 
             // EndTimeWindowLabel
             // 
-            this.EndTimeWindowLabel.Location = new System.Drawing.Point(257, 18);
+            this.EndTimeWindowLabel.Location = new System.Drawing.Point(348, 22);
+            this.EndTimeWindowLabel.Margin = new System.Windows.Forms.Padding(0);
             this.EndTimeWindowLabel.Name = "EndTimeWindowLabel";
-            this.EndTimeWindowLabel.Size = new System.Drawing.Size(58, 16);
+            this.EndTimeWindowLabel.Size = new System.Drawing.Size(77, 20);
             this.EndTimeWindowLabel.TabIndex = 2;
             this.EndTimeWindowLabel.Text = "End Time:";
             // 
@@ -159,9 +149,11 @@
             this.TimeWindowGroup.Controls.Add(this.CurrentMeetingDate);
             this.TimeWindowGroup.Controls.Add(this.EndTimeWindowLabel);
             this.TimeWindowGroup.Controls.Add(this.StartWindowDate);
-            this.TimeWindowGroup.Location = new System.Drawing.Point(313, 12);
+            this.TimeWindowGroup.Location = new System.Drawing.Point(418, 2);
+            this.TimeWindowGroup.Margin = new System.Windows.Forms.Padding(0);
             this.TimeWindowGroup.Name = "TimeWindowGroup";
-            this.TimeWindowGroup.Size = new System.Drawing.Size(600, 107);
+            this.TimeWindowGroup.Padding = new System.Windows.Forms.Padding(0);
+            this.TimeWindowGroup.Size = new System.Drawing.Size(771, 95);
             this.TimeWindowGroup.TabIndex = 0;
             this.TimeWindowGroup.TabStop = false;
             this.TimeWindowGroup.Text = "Availability Time Window and Current Meeting Info";
@@ -169,33 +161,37 @@
             // CurrentMeetingLabel
             // 
             this.CurrentMeetingLabel.Enabled = false;
-            this.CurrentMeetingLabel.Location = new System.Drawing.Point(9, 72);
+            this.CurrentMeetingLabel.Location = new System.Drawing.Point(30, 68);
+            this.CurrentMeetingLabel.Margin = new System.Windows.Forms.Padding(0);
             this.CurrentMeetingLabel.Name = "CurrentMeetingLabel";
-            this.CurrentMeetingLabel.Size = new System.Drawing.Size(61, 16);
+            this.CurrentMeetingLabel.Size = new System.Drawing.Size(82, 20);
             this.CurrentMeetingLabel.TabIndex = 5;
             this.CurrentMeetingLabel.Text = "Meet Time:";
             // 
             // MeetingDurationText
             // 
-            this.MeetingDurationText.Location = new System.Drawing.Point(355, 70);
+            this.MeetingDurationText.Location = new System.Drawing.Point(468, 62);
+            this.MeetingDurationText.Margin = new System.Windows.Forms.Padding(0);
             this.MeetingDurationText.Name = "MeetingDurationText";
-            this.MeetingDurationText.Size = new System.Drawing.Size(42, 20);
+            this.MeetingDurationText.Size = new System.Drawing.Size(55, 22);
             this.MeetingDurationText.TabIndex = 8;
             // 
             // CurrentMeetingCheck
             // 
-            this.CurrentMeetingCheck.Location = new System.Drawing.Point(6, 47);
+            this.CurrentMeetingCheck.Location = new System.Drawing.Point(8, 43);
+            this.CurrentMeetingCheck.Margin = new System.Windows.Forms.Padding(0);
             this.CurrentMeetingCheck.Name = "CurrentMeetingCheck";
-            this.CurrentMeetingCheck.Size = new System.Drawing.Size(168, 17);
+            this.CurrentMeetingCheck.Size = new System.Drawing.Size(224, 21);
             this.CurrentMeetingCheck.TabIndex = 4;
             this.CurrentMeetingCheck.Text = "Specify a current meeting time";
             this.CurrentMeetingCheck.UseVisualStyleBackColor = true;
             // 
             // lblMeetingDuration
             // 
-            this.lblMeetingDuration.Location = new System.Drawing.Point(257, 71);
+            this.lblMeetingDuration.Location = new System.Drawing.Point(348, 65);
+            this.lblMeetingDuration.Margin = new System.Windows.Forms.Padding(0);
             this.lblMeetingDuration.Name = "lblMeetingDuration";
-            this.lblMeetingDuration.Size = new System.Drawing.Size(94, 19);
+            this.lblMeetingDuration.Size = new System.Drawing.Size(125, 23);
             this.lblMeetingDuration.TabIndex = 7;
             this.lblMeetingDuration.Text = "Meeting Duration:";
             // 
@@ -204,9 +200,10 @@
             this.CurrentMeetingDate.CustomFormat = "MMM dd, yyyy - hh:mm tt";
             this.CurrentMeetingDate.Enabled = false;
             this.CurrentMeetingDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.CurrentMeetingDate.Location = new System.Drawing.Point(89, 70);
+            this.CurrentMeetingDate.Location = new System.Drawing.Point(120, 66);
+            this.CurrentMeetingDate.Margin = new System.Windows.Forms.Padding(0);
             this.CurrentMeetingDate.Name = "CurrentMeetingDate";
-            this.CurrentMeetingDate.Size = new System.Drawing.Size(162, 20);
+            this.CurrentMeetingDate.Size = new System.Drawing.Size(220, 22);
             this.CurrentMeetingDate.TabIndex = 6;
             // 
             // DetailWindowGroup
@@ -215,18 +212,21 @@
             this.DetailWindowGroup.Controls.Add(this.EndDetailDate);
             this.DetailWindowGroup.Controls.Add(this.EndDetailLabel);
             this.DetailWindowGroup.Controls.Add(this.StartDetailDate);
-            this.DetailWindowGroup.Location = new System.Drawing.Point(6, 19);
+            this.DetailWindowGroup.Location = new System.Drawing.Point(8, 18);
+            this.DetailWindowGroup.Margin = new System.Windows.Forms.Padding(4);
             this.DetailWindowGroup.Name = "DetailWindowGroup";
-            this.DetailWindowGroup.Size = new System.Drawing.Size(258, 80);
+            this.DetailWindowGroup.Padding = new System.Windows.Forms.Padding(4);
+            this.DetailWindowGroup.Size = new System.Drawing.Size(344, 78);
             this.DetailWindowGroup.TabIndex = 0;
             this.DetailWindowGroup.TabStop = false;
             this.DetailWindowGroup.Text = "Detailed Suggestions Time Window";
             // 
             // StartDetailLabel
             // 
-            this.StartDetailLabel.Location = new System.Drawing.Point(16, 26);
+            this.StartDetailLabel.Location = new System.Drawing.Point(21, 28);
+            this.StartDetailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.StartDetailLabel.Name = "StartDetailLabel";
-            this.StartDetailLabel.Size = new System.Drawing.Size(58, 16);
+            this.StartDetailLabel.Size = new System.Drawing.Size(77, 20);
             this.StartDetailLabel.TabIndex = 0;
             this.StartDetailLabel.Text = "Start Time:";
             // 
@@ -234,16 +234,18 @@
             // 
             this.EndDetailDate.CustomFormat = "MMM dd, yyyy - hh:mm tt";
             this.EndDetailDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.EndDetailDate.Location = new System.Drawing.Point(86, 48);
+            this.EndDetailDate.Location = new System.Drawing.Point(115, 52);
+            this.EndDetailDate.Margin = new System.Windows.Forms.Padding(4);
             this.EndDetailDate.Name = "EndDetailDate";
-            this.EndDetailDate.Size = new System.Drawing.Size(162, 20);
+            this.EndDetailDate.Size = new System.Drawing.Size(215, 22);
             this.EndDetailDate.TabIndex = 3;
             // 
             // EndDetailLabel
             // 
-            this.EndDetailLabel.Location = new System.Drawing.Point(16, 52);
+            this.EndDetailLabel.Location = new System.Drawing.Point(24, 53);
+            this.EndDetailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.EndDetailLabel.Name = "EndDetailLabel";
-            this.EndDetailLabel.Size = new System.Drawing.Size(58, 16);
+            this.EndDetailLabel.Size = new System.Drawing.Size(77, 20);
             this.EndDetailLabel.TabIndex = 2;
             this.EndDetailLabel.Text = "End Time:";
             // 
@@ -251,25 +253,16 @@
             // 
             this.StartDetailDate.CustomFormat = "MMM dd, yyyy - hh:mm tt";
             this.StartDetailDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.StartDetailDate.Location = new System.Drawing.Point(86, 22);
+            this.StartDetailDate.Location = new System.Drawing.Point(115, 23);
+            this.StartDetailDate.Margin = new System.Windows.Forms.Padding(4);
             this.StartDetailDate.Name = "StartDetailDate";
-            this.StartDetailDate.Size = new System.Drawing.Size(162, 20);
+            this.StartDetailDate.Size = new System.Drawing.Size(215, 22);
             this.StartDetailDate.TabIndex = 1;
-            // 
-            // AttendeeAvailabilityGroup
-            // 
-            this.AttendeeAvailabilityGroup.Controls.Add(this.SuggestionsList);
-            this.AttendeeAvailabilityGroup.Controls.Add(this.AttendeeAvailabilityList);
-            this.AttendeeAvailabilityGroup.Controls.Add(this.CalEventsList);
-            this.AttendeeAvailabilityGroup.Location = new System.Drawing.Point(5, 352);
-            this.AttendeeAvailabilityGroup.Name = "AttendeeAvailabilityGroup";
-            this.AttendeeAvailabilityGroup.Size = new System.Drawing.Size(908, 359);
-            this.AttendeeAvailabilityGroup.TabIndex = 49;
-            this.AttendeeAvailabilityGroup.TabStop = false;
-            this.AttendeeAvailabilityGroup.Text = "Attendees and Availability";
             // 
             // SuggestionsList
             // 
+            this.SuggestionsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SuggestionsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.DateColumn,
             this.DateQualityColumn,
@@ -277,9 +270,10 @@
             this.TimeQualityColumn,
             this.ConflictsColumn,
             this.IsWorkTimeColumn});
-            this.SuggestionsList.Location = new System.Drawing.Point(13, 203);
+            this.SuggestionsList.Location = new System.Drawing.Point(7, 565);
+            this.SuggestionsList.Margin = new System.Windows.Forms.Padding(4);
             this.SuggestionsList.Name = "SuggestionsList";
-            this.SuggestionsList.Size = new System.Drawing.Size(884, 140);
+            this.SuggestionsList.Size = new System.Drawing.Size(1177, 137);
             this.SuggestionsList.TabIndex = 2;
             this.SuggestionsList.UseCompatibleStateImageBehavior = false;
             this.SuggestionsList.View = System.Windows.Forms.View.Details;
@@ -316,15 +310,18 @@
             // 
             // AttendeeAvailabilityList
             // 
+            this.AttendeeAvailabilityList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.AttendeeAvailabilityList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ViewTypeColumn,
             this.WorkingHoursColumn,
             this.MergedFreeBusyStatusColumn});
             this.AttendeeAvailabilityList.FullRowSelect = true;
-            this.AttendeeAvailabilityList.Location = new System.Drawing.Point(13, 19);
+            this.AttendeeAvailabilityList.Location = new System.Drawing.Point(6, 339);
+            this.AttendeeAvailabilityList.Margin = new System.Windows.Forms.Padding(4);
             this.AttendeeAvailabilityList.MultiSelect = false;
             this.AttendeeAvailabilityList.Name = "AttendeeAvailabilityList";
-            this.AttendeeAvailabilityList.Size = new System.Drawing.Size(884, 72);
+            this.AttendeeAvailabilityList.Size = new System.Drawing.Size(1177, 88);
             this.AttendeeAvailabilityList.TabIndex = 0;
             this.AttendeeAvailabilityList.UseCompatibleStateImageBehavior = false;
             this.AttendeeAvailabilityList.View = System.Windows.Forms.View.Details;
@@ -346,6 +343,8 @@
             // 
             // CalEventsList
             // 
+            this.CalEventsList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CalEventsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.FreeBusyStatusColumn,
             this.StartTimeColumn,
@@ -359,10 +358,11 @@
             this.IsReminderSetColumn,
             this.StoreIdColumn});
             this.CalEventsList.FullRowSelect = true;
-            this.CalEventsList.Location = new System.Drawing.Point(13, 97);
+            this.CalEventsList.Location = new System.Drawing.Point(7, 435);
+            this.CalEventsList.Margin = new System.Windows.Forms.Padding(4);
             this.CalEventsList.MultiSelect = false;
             this.CalEventsList.Name = "CalEventsList";
-            this.CalEventsList.Size = new System.Drawing.Size(884, 100);
+            this.CalEventsList.Size = new System.Drawing.Size(1177, 122);
             this.CalEventsList.TabIndex = 1;
             this.CalEventsList.UseCompatibleStateImageBehavior = false;
             this.CalEventsList.View = System.Windows.Forms.View.Details;
@@ -423,11 +423,12 @@
             // AddAttendeeButton
             // 
             this.AddAttendeeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddAttendeeButton.Location = new System.Drawing.Point(117, 296);
+            this.AddAttendeeButton.Location = new System.Drawing.Point(7, 274);
+            this.AddAttendeeButton.Margin = new System.Windows.Forms.Padding(4);
             this.AddAttendeeButton.Name = "AddAttendeeButton";
-            this.AddAttendeeButton.Size = new System.Drawing.Size(90, 23);
+            this.AddAttendeeButton.Size = new System.Drawing.Size(105, 28);
             this.AddAttendeeButton.TabIndex = 0;
-            this.AddAttendeeButton.Text = "Add Attendee...";
+            this.AddAttendeeButton.Text = "Add Attendee";
             this.AddAttendeeButton.UseVisualStyleBackColor = true;
             this.AddAttendeeButton.Click += new System.EventHandler(this.AddAttendeeButton_Click);
             // 
@@ -443,72 +444,82 @@
             this.SuggestionsGroup.Controls.Add(this.lblMaxNonWorkSuggest);
             this.SuggestionsGroup.Controls.Add(this.lblMaxSuggestPerDay);
             this.SuggestionsGroup.Controls.Add(this.lblMinSuggestQual);
-            this.SuggestionsGroup.Location = new System.Drawing.Point(638, 125);
+            this.SuggestionsGroup.Location = new System.Drawing.Point(826, 102);
+            this.SuggestionsGroup.Margin = new System.Windows.Forms.Padding(4);
             this.SuggestionsGroup.Name = "SuggestionsGroup";
-            this.SuggestionsGroup.Size = new System.Drawing.Size(275, 221);
+            this.SuggestionsGroup.Padding = new System.Windows.Forms.Padding(4);
+            this.SuggestionsGroup.Size = new System.Drawing.Size(363, 210);
             this.SuggestionsGroup.TabIndex = 2;
             this.SuggestionsGroup.TabStop = false;
             this.SuggestionsGroup.Text = "Suggestion Options";
             // 
             // GoodSuggestThresholdText
             // 
-            this.GoodSuggestThresholdText.Location = new System.Drawing.Point(190, 150);
+            this.GoodSuggestThresholdText.Location = new System.Drawing.Point(253, 153);
+            this.GoodSuggestThresholdText.Margin = new System.Windows.Forms.Padding(0);
             this.GoodSuggestThresholdText.Name = "GoodSuggestThresholdText";
-            this.GoodSuggestThresholdText.Size = new System.Drawing.Size(42, 20);
+            this.GoodSuggestThresholdText.Size = new System.Drawing.Size(55, 22);
             this.GoodSuggestThresholdText.TabIndex = 108;
             // 
             // lblGoodSuggestThreshold
             // 
-            this.lblGoodSuggestThreshold.Location = new System.Drawing.Point(6, 150);
+            this.lblGoodSuggestThreshold.Location = new System.Drawing.Point(8, 150);
+            this.lblGoodSuggestThreshold.Margin = new System.Windows.Forms.Padding(0);
             this.lblGoodSuggestThreshold.Name = "lblGoodSuggestThreshold";
-            this.lblGoodSuggestThreshold.Size = new System.Drawing.Size(171, 20);
+            this.lblGoodSuggestThreshold.Size = new System.Drawing.Size(228, 25);
             this.lblGoodSuggestThreshold.TabIndex = 3;
             this.lblGoodSuggestThreshold.Text = "Good Suggestion Thresold (%):";
             // 
             // MaxNonWorkSuggestText
             // 
-            this.MaxNonWorkSuggestText.Location = new System.Drawing.Point(190, 101);
+            this.MaxNonWorkSuggestText.Location = new System.Drawing.Point(253, 97);
+            this.MaxNonWorkSuggestText.Margin = new System.Windows.Forms.Padding(0);
             this.MaxNonWorkSuggestText.Name = "MaxNonWorkSuggestText";
-            this.MaxNonWorkSuggestText.Size = new System.Drawing.Size(42, 20);
+            this.MaxNonWorkSuggestText.Size = new System.Drawing.Size(55, 22);
             this.MaxNonWorkSuggestText.TabIndex = 104;
             // 
             // TempMinSuggestQualCombo
             // 
             this.TempMinSuggestQualCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempMinSuggestQualCombo.FormattingEnabled = true;
-            this.TempMinSuggestQualCombo.Location = new System.Drawing.Point(148, 180);
+            this.TempMinSuggestQualCombo.Location = new System.Drawing.Point(199, 179);
+            this.TempMinSuggestQualCombo.Margin = new System.Windows.Forms.Padding(4);
             this.TempMinSuggestQualCombo.Name = "TempMinSuggestQualCombo";
-            this.TempMinSuggestQualCombo.Size = new System.Drawing.Size(116, 21);
+            this.TempMinSuggestQualCombo.Size = new System.Drawing.Size(151, 24);
             this.TempMinSuggestQualCombo.TabIndex = 106;
             // 
             // MaxSuggestPerDayText
             // 
-            this.MaxSuggestPerDayText.Location = new System.Drawing.Point(190, 124);
+            this.MaxSuggestPerDayText.Location = new System.Drawing.Point(253, 123);
+            this.MaxSuggestPerDayText.Margin = new System.Windows.Forms.Padding(0);
             this.MaxSuggestPerDayText.Name = "MaxSuggestPerDayText";
-            this.MaxSuggestPerDayText.Size = new System.Drawing.Size(42, 20);
+            this.MaxSuggestPerDayText.Size = new System.Drawing.Size(55, 22);
             this.MaxSuggestPerDayText.TabIndex = 105;
             // 
             // lblMaxNonWorkSuggest
             // 
-            this.lblMaxNonWorkSuggest.Location = new System.Drawing.Point(6, 102);
+            this.lblMaxNonWorkSuggest.Location = new System.Drawing.Point(8, 96);
+            this.lblMaxNonWorkSuggest.Margin = new System.Windows.Forms.Padding(0);
             this.lblMaxNonWorkSuggest.Name = "lblMaxNonWorkSuggest";
-            this.lblMaxNonWorkSuggest.Size = new System.Drawing.Size(185, 19);
+            this.lblMaxNonWorkSuggest.Size = new System.Drawing.Size(247, 23);
             this.lblMaxNonWorkSuggest.TabIndex = 1;
             this.lblMaxNonWorkSuggest.Text = "Max Non-work Hours Suggestions:";
             // 
             // lblMaxSuggestPerDay
             // 
-            this.lblMaxSuggestPerDay.Location = new System.Drawing.Point(6, 127);
+            this.lblMaxSuggestPerDay.Location = new System.Drawing.Point(8, 126);
+            this.lblMaxSuggestPerDay.Margin = new System.Windows.Forms.Padding(0);
             this.lblMaxSuggestPerDay.Name = "lblMaxSuggestPerDay";
-            this.lblMaxSuggestPerDay.Size = new System.Drawing.Size(171, 19);
+            this.lblMaxSuggestPerDay.Size = new System.Drawing.Size(228, 23);
             this.lblMaxSuggestPerDay.TabIndex = 2;
             this.lblMaxSuggestPerDay.Text = "Max Suggestions Per Day:";
             // 
             // lblMinSuggestQual
             // 
-            this.lblMinSuggestQual.Location = new System.Drawing.Point(6, 183);
+            this.lblMinSuggestQual.Location = new System.Drawing.Point(8, 180);
+            this.lblMinSuggestQual.Margin = new System.Windows.Forms.Padding(0);
             this.lblMinSuggestQual.Name = "lblMinSuggestQual";
-            this.lblMinSuggestQual.Size = new System.Drawing.Size(124, 19);
+            this.lblMinSuggestQual.Size = new System.Drawing.Size(165, 23);
             this.lblMinSuggestQual.TabIndex = 4;
             this.lblMinSuggestQual.Text = "Min. Suggestion Quality:";
             // 
@@ -516,59 +527,54 @@
             // 
             this.TempRequestFBViewCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempRequestFBViewCombo.FormattingEnabled = true;
-            this.TempRequestFBViewCombo.Location = new System.Drawing.Point(151, 41);
+            this.TempRequestFBViewCombo.Location = new System.Drawing.Point(201, 50);
+            this.TempRequestFBViewCombo.Margin = new System.Windows.Forms.Padding(4);
             this.TempRequestFBViewCombo.Name = "TempRequestFBViewCombo";
-            this.TempRequestFBViewCombo.Size = new System.Drawing.Size(156, 21);
-            this.TempRequestFBViewCombo.TabIndex = 3;
+            this.TempRequestFBViewCombo.Size = new System.Drawing.Size(194, 24);
+            this.TempRequestFBViewCombo.TabIndex = 8;
             // 
             // lblRequestFBView
             // 
-            this.lblRequestFBView.Location = new System.Drawing.Point(6, 43);
+            this.lblRequestFBView.Location = new System.Drawing.Point(5, 51);
+            this.lblRequestFBView.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRequestFBView.Name = "lblRequestFBView";
-            this.lblRequestFBView.Size = new System.Drawing.Size(141, 19);
-            this.lblRequestFBView.TabIndex = 2;
+            this.lblRequestFBView.Size = new System.Drawing.Size(188, 23);
+            this.lblRequestFBView.TabIndex = 5;
             this.lblRequestFBView.Text = "Requested Free/Busy View:";
             // 
             // MergeFBIntervalText
             // 
-            this.MergeFBIntervalText.Location = new System.Drawing.Point(151, 71);
+            this.MergeFBIntervalText.Location = new System.Drawing.Point(201, 87);
+            this.MergeFBIntervalText.Margin = new System.Windows.Forms.Padding(4);
             this.MergeFBIntervalText.Name = "MergeFBIntervalText";
-            this.MergeFBIntervalText.Size = new System.Drawing.Size(42, 20);
-            this.MergeFBIntervalText.TabIndex = 5;
+            this.MergeFBIntervalText.Size = new System.Drawing.Size(55, 22);
+            this.MergeFBIntervalText.TabIndex = 15;
             // 
             // lblMergeFBInterval
             // 
-            this.lblMergeFBInterval.Location = new System.Drawing.Point(6, 72);
+            this.lblMergeFBInterval.Location = new System.Drawing.Point(5, 87);
+            this.lblMergeFBInterval.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMergeFBInterval.Name = "lblMergeFBInterval";
-            this.lblMergeFBInterval.Size = new System.Drawing.Size(138, 19);
-            this.lblMergeFBInterval.TabIndex = 4;
+            this.lblMergeFBInterval.Size = new System.Drawing.Size(184, 23);
+            this.lblMergeFBInterval.TabIndex = 12;
             this.lblMergeFBInterval.Text = "Merged Free/Busy Interval:";
-            // 
-            // TempAvailDataCombo
-            // 
-            this.TempAvailDataCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TempAvailDataCombo.FormattingEnabled = true;
-           // this.TempAvailDataCombo.HasEmptyItem = false;
-            this.TempAvailDataCombo.Location = new System.Drawing.Point(151, 14);
-            this.TempAvailDataCombo.Name = "TempAvailDataCombo";
-            this.TempAvailDataCombo.SelectedItem = null;
-            this.TempAvailDataCombo.Size = new System.Drawing.Size(156, 21);
-            this.TempAvailDataCombo.TabIndex = 200;
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(6, 19);
+            this.label1.Location = new System.Drawing.Point(4, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 19);
+            this.label1.Size = new System.Drawing.Size(188, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Requested Availability Data:";
             // 
             // GetAvailabilityButton
             // 
             this.GetAvailabilityButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GetAvailabilityButton.Location = new System.Drawing.Point(708, 720);
+            this.GetAvailabilityButton.Location = new System.Drawing.Point(259, 274);
+            this.GetAvailabilityButton.Margin = new System.Windows.Forms.Padding(4);
             this.GetAvailabilityButton.Name = "GetAvailabilityButton";
-            this.GetAvailabilityButton.Size = new System.Drawing.Size(120, 23);
+            this.GetAvailabilityButton.Size = new System.Drawing.Size(140, 28);
             this.GetAvailabilityButton.TabIndex = 86;
             this.GetAvailabilityButton.Text = "Get User Availability";
             this.GetAvailabilityButton.UseVisualStyleBackColor = true;
@@ -584,36 +590,42 @@
             this.AvailabilityDataGroup.Controls.Add(this.TempRequestFBViewCombo);
             this.AvailabilityDataGroup.Controls.Add(this.lblMergeFBInterval);
             this.AvailabilityDataGroup.Controls.Add(this.MergeFBIntervalText);
-            this.AvailabilityDataGroup.Location = new System.Drawing.Point(313, 125);
+            this.AvailabilityDataGroup.Location = new System.Drawing.Point(418, 102);
+            this.AvailabilityDataGroup.Margin = new System.Windows.Forms.Padding(4);
             this.AvailabilityDataGroup.Name = "AvailabilityDataGroup";
-            this.AvailabilityDataGroup.Size = new System.Drawing.Size(319, 221);
+            this.AvailabilityDataGroup.Padding = new System.Windows.Forms.Padding(4);
+            this.AvailabilityDataGroup.Size = new System.Drawing.Size(400, 210);
             this.AvailabilityDataGroup.TabIndex = 1;
             this.AvailabilityDataGroup.TabStop = false;
             this.AvailabilityDataGroup.Text = "Availability Data Options";
+            this.AvailabilityDataGroup.Enter += new System.EventHandler(this.AvailabilityDataGroup_Enter);
             // 
             // GlobalObjectIdText
             // 
-            this.GlobalObjectIdText.Location = new System.Drawing.Point(151, 99);
+            this.GlobalObjectIdText.Location = new System.Drawing.Point(201, 122);
+            this.GlobalObjectIdText.Margin = new System.Windows.Forms.Padding(4);
             this.GlobalObjectIdText.Name = "GlobalObjectIdText";
-            this.GlobalObjectIdText.Size = new System.Drawing.Size(156, 20);
-            this.GlobalObjectIdText.TabIndex = 7;
+            this.GlobalObjectIdText.Size = new System.Drawing.Size(194, 22);
+            this.GlobalObjectIdText.TabIndex = 20;
             // 
             // GlobalObjectIdLabel
             // 
-            this.GlobalObjectIdLabel.Location = new System.Drawing.Point(6, 102);
+            this.GlobalObjectIdLabel.Location = new System.Drawing.Point(5, 121);
+            this.GlobalObjectIdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.GlobalObjectIdLabel.Name = "GlobalObjectIdLabel";
-            this.GlobalObjectIdLabel.Size = new System.Drawing.Size(138, 19);
-            this.GlobalObjectIdLabel.TabIndex = 6;
+            this.GlobalObjectIdLabel.Size = new System.Drawing.Size(184, 23);
+            this.GlobalObjectIdLabel.TabIndex = 18;
             this.GlobalObjectIdLabel.Text = "Global Object ID:";
             // 
             // RemoveAttendeeButton
             // 
             this.RemoveAttendeeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveAttendeeButton.Location = new System.Drawing.Point(211, 296);
+            this.RemoveAttendeeButton.Location = new System.Drawing.Point(120, 274);
+            this.RemoveAttendeeButton.Margin = new System.Windows.Forms.Padding(4);
             this.RemoveAttendeeButton.Name = "RemoveAttendeeButton";
-            this.RemoveAttendeeButton.Size = new System.Drawing.Size(88, 23);
+            this.RemoveAttendeeButton.Size = new System.Drawing.Size(131, 28);
             this.RemoveAttendeeButton.TabIndex = 1;
-            this.RemoveAttendeeButton.Text = "Remove";
+            this.RemoveAttendeeButton.Text = "Remove Attendee";
             this.RemoveAttendeeButton.UseVisualStyleBackColor = true;
             this.RemoveAttendeeButton.Click += new System.EventHandler(this.RemoveAttendeeButton_Click);
             // 
@@ -622,9 +634,12 @@
             this.groupBox2.Controls.Add(this.RemoveAttendeeButton);
             this.groupBox2.Controls.Add(this.AttendeeList);
             this.groupBox2.Controls.Add(this.AddAttendeeButton);
-            this.groupBox2.Location = new System.Drawing.Point(5, 12);
+            this.groupBox2.Controls.Add(this.GetAvailabilityButton);
+            this.groupBox2.Location = new System.Drawing.Point(7, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(302, 334);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(403, 310);
             this.groupBox2.TabIndex = 115;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Attendees";
@@ -638,10 +653,11 @@
             this.AttendeeList.Dock = System.Windows.Forms.DockStyle.Top;
             this.AttendeeList.FullRowSelect = true;
             this.AttendeeList.HideSelection = false;
-            this.AttendeeList.Location = new System.Drawing.Point(3, 16);
+            this.AttendeeList.Location = new System.Drawing.Point(4, 19);
+            this.AttendeeList.Margin = new System.Windows.Forms.Padding(4);
             this.AttendeeList.MultiSelect = false;
             this.AttendeeList.Name = "AttendeeList";
-            this.AttendeeList.Size = new System.Drawing.Size(296, 274);
+            this.AttendeeList.Size = new System.Drawing.Size(395, 247);
             this.AttendeeList.TabIndex = 2;
             this.AttendeeList.UseCompatibleStateImageBehavior = false;
             this.AttendeeList.View = System.Windows.Forms.View.Details;
@@ -662,20 +678,40 @@
             this.ExcludeConflictsColumn.Text = "Exclude Conflicts";
             this.ExcludeConflictsColumn.Width = 94;
             // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(8, 312);
+            this.label2.Margin = new System.Windows.Forms.Padding(0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(184, 23);
+            this.label2.TabIndex = 201;
+            this.label2.Text = "Attendees and Availability";
+            // 
+            // TempAvailDataCombo
+            // 
+            this.TempAvailDataCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TempAvailDataCombo.FormattingEnabled = true;
+            this.TempAvailDataCombo.Location = new System.Drawing.Point(201, 18);
+            this.TempAvailDataCombo.Margin = new System.Windows.Forms.Padding(4);
+            this.TempAvailDataCombo.Name = "TempAvailDataCombo";
+            this.TempAvailDataCombo.Size = new System.Drawing.Size(194, 24);
+            this.TempAvailDataCombo.TabIndex = 3;
+            // 
             // AvailabilityForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.CloseButton;
-            this.ClientSize = new System.Drawing.Size(920, 755);
+            this.ClientSize = new System.Drawing.Size(1196, 708);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.SuggestionsList);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.AttendeeAvailabilityGroup);
+            this.Controls.Add(this.CalEventsList);
+            this.Controls.Add(this.AttendeeAvailabilityList);
             this.Controls.Add(this.AvailabilityDataGroup);
-            this.Controls.Add(this.GetAvailabilityButton);
             this.Controls.Add(this.TimeWindowGroup);
             this.Controls.Add(this.SuggestionsGroup);
-            this.Controls.Add(this.CloseButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.MaximizeBox = false;
             this.Name = "AvailabilityForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -684,7 +720,6 @@
             this.TimeWindowGroup.ResumeLayout(false);
             this.TimeWindowGroup.PerformLayout();
             this.DetailWindowGroup.ResumeLayout(false);
-            this.AttendeeAvailabilityGroup.ResumeLayout(false);
             this.SuggestionsGroup.ResumeLayout(false);
             this.SuggestionsGroup.PerformLayout();
             this.AvailabilityDataGroup.ResumeLayout(false);
@@ -696,7 +731,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Label StartTimeWindowLabel;
         private System.Windows.Forms.DateTimePicker EndWindowDate;
         private System.Windows.Forms.DateTimePicker StartWindowDate;
@@ -707,10 +741,11 @@
         private System.Windows.Forms.DateTimePicker EndDetailDate;
         private System.Windows.Forms.Label EndDetailLabel;
         private System.Windows.Forms.DateTimePicker StartDetailDate;
-        private System.Windows.Forms.GroupBox AttendeeAvailabilityGroup;
         private System.Windows.Forms.GroupBox SuggestionsGroup;
         private System.Windows.Forms.Button AddAttendeeButton;
         private System.Windows.Forms.ComboBox TempRequestFBViewCombo;
+         
+ 
         private System.Windows.Forms.Label lblRequestFBView;
         private System.Windows.Forms.Label lblMinSuggestQual;
         private System.Windows.Forms.TextBox MergeFBIntervalText;
@@ -721,7 +756,6 @@
         private System.Windows.Forms.Label lblMeetingDuration;
         private System.Windows.Forms.Label lblMaxSuggestPerDay;
         private System.Windows.Forms.Label lblMaxNonWorkSuggest;
-        private System.Windows.Forms.ComboBox TempAvailDataCombo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox GoodSuggestThresholdText;
         private System.Windows.Forms.Label lblGoodSuggestThreshold;
@@ -762,5 +796,7 @@
         private System.Windows.Forms.ColumnHeader TimeQualityColumn;
         private System.Windows.Forms.ColumnHeader ConflictsColumn;
         private System.Windows.Forms.ColumnHeader IsWorkTimeColumn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox TempAvailDataCombo;
     }
 }

@@ -74,7 +74,7 @@ namespace EWSEditor.Forms
             this.GoodSuggestThresholdText.Text = "25";
 
             // Initialize ListView grouping header
-            this.AttendeeAvailabilityGroup.Text = InitialAttendAvailGroupHeader;
+            //this.AttendeeAvailabilityGroup.Text = InitialAttendAvailGroupHeader;
 
             this.ClearAvailabilityResults();
         }
@@ -216,7 +216,7 @@ namespace EWSEditor.Forms
                 }
                 else
                 {
-                    this.AttendeeAvailabilityGroup.Text = "Select an attendee in the list to display availability results.";
+                    //this.AttendeeAvailabilityGroup.Text = "Select an attendee in the list to display availability results.";
                 }
             }
             finally
@@ -356,7 +356,7 @@ namespace EWSEditor.Forms
             if (availability != null && availability.Result == ServiceResult.Success)
             {
                 // Change the label text to indicate the selected attendee
-                this.AttendeeAvailabilityGroup.Text = string.Format(SelectedAttendeeLabelText, attendeeData.Info.SmtpAddress);
+                //this.AttendeeAvailabilityGroup.Text = string.Format(SelectedAttendeeLabelText, attendeeData.Info.SmtpAddress);
 
                 ListViewItem availRow = this.AttendeeAvailabilityList.Items.Add(PropertyInterpretation.GetPropertyValue(availability.ViewType));
                 availRow.SubItems.Add(PropertyInterpretation.GetPropertyValue(availability.WorkingHours));
@@ -426,7 +426,7 @@ namespace EWSEditor.Forms
             this.SuggestionsList.Enabled = false;
 
             // Indicate that there are availability results yet
-            this.AttendeeAvailabilityGroup.Text = String.Concat("Click the '", this.GetAvailabilityButton.Text, "' button to get availablity results.");
+            //this.AttendeeAvailabilityGroup.Text = String.Concat("Click the '", this.GetAvailabilityButton.Text, "' button to get availablity results.");
         }
 
         private struct AttendeeDataContainer
@@ -439,6 +439,11 @@ namespace EWSEditor.Forms
                 this.Info = info;
                 this.Availability = null;
             }
+        }
+
+        private void AvailabilityDataGroup_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
