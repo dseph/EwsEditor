@@ -149,7 +149,7 @@ namespace EWSEditor.Forms
         #region Event Methods
 
         private void ExtendedPropertyDialog_Load(object sender, EventArgs e)
-        {
+        { 
             this.propertyTypeCombo.TransformComboBox(this.TempPropertyTypeCombo);
             this.propertyTypeCombo.HasEmptyItem = true; 
 
