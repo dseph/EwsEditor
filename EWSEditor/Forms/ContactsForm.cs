@@ -43,6 +43,13 @@ namespace EWSEditor.Forms
             ClearForm();
             if (_ContactWasSaved == false)
                 _ContactWasSaved = false;
+
+            _isDirty = false;
+
+            if (_isDirty == true)
+            {
+                // Do nothing
+            }
         }
 
         // Existing Contact.
@@ -56,6 +63,8 @@ namespace EWSEditor.Forms
             SetFormFromContact(_Contact);
             if (_ContactWasSaved == false)
                 _ContactWasSaved = false;
+
+            _isDirty = false;
         }
 
 
@@ -68,6 +77,8 @@ namespace EWSEditor.Forms
             SetFormFromContact(oContact);
             if (_ContactWasSaved == false)
                 _ContactWasSaved = false;
+
+            _isDirty = false;
         }
 
         private Contact LoadContactForEdit(ExchangeService CurrentService, ItemId oItemId)
@@ -363,6 +374,8 @@ namespace EWSEditor.Forms
 
                 oFileAttachment = null;
                 this.txtAttachments.Text = sInfo;
+
+                _isDirty = false;
             }
 
             PhysicalAddressEntry oPhysicalAddress = null;

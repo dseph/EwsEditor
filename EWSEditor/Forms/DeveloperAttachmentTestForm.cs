@@ -17,7 +17,7 @@ using System.Net;
 using System.Xml;
 using Microsoft.Exchange.WebServices.Data;
 using System.Collections;
-using EWSEditor.Common;
+ 
 
 namespace EWSEditor.Forms
 {

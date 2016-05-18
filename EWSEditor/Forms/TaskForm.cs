@@ -44,6 +44,11 @@ namespace EWSEditor.Forms
             ClearForm();
             if (_TaskWasSaved == false)
                 _TaskWasSaved = false;
+
+            if (_isDirty == true)
+            {
+                // Do nothing
+            }
  
         }
 

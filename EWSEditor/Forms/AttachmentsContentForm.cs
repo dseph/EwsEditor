@@ -28,7 +28,7 @@ namespace EWSEditor.Forms
 
         private AttachmentCollection currentAttachments = null;
         private Item currentParentItem = null;
-        private ExchangeService currentService = null;
+        //private ExchangeService currentService = null;
 
         private AttachmentsContentForm()
         {

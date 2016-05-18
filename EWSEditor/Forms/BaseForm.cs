@@ -56,6 +56,20 @@ namespace EWSEditor.Forms
             }
         }
 
+        EWSEditor.Common.EwsSession _CurrentEwsSessionSettings = null;
+        public EWSEditor.Common.EwsSession CurrentEwsSessionSettings
+        {
+            get
+            {
+                return _CurrentEwsSessionSettings;
+            }
+
+            set
+            {
+                _CurrentEwsSessionSettings = value;
+            }
+        }
+
         public BaseForm()
         {
             InitializeComponent();
