@@ -468,5 +468,10 @@ namespace EWSEditor.Forms
             txtHeader3Name.Enabled = chkOptHeader3.Checked;
             txtHeader3Value.Enabled = chkOptHeader3.Checked;
         }
+
+        private void TempExchangeVersionCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

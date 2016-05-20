@@ -191,7 +191,6 @@ namespace EWSEditor.Forms
                             smtp.Credentials = new NetworkCredential(sUser, sPassword);
                         else
                             smtp.Credentials = new NetworkCredential(sUser, sPassword, sDomain);
-
                     }
                     smtp.EnableSsl = chkEnableSSL.Checked;
                     smtp.Port = Int32.Parse(cboPort.Text.Trim());
