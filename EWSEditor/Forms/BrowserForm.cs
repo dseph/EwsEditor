@@ -15,7 +15,7 @@
     using EWSEditor.Common;
     using EWSEditor.Common.Extensions;
     using EWSEditor.Resources;
-
+    using EWSEditor.Forms.Dialogs;
     using System.Net;
 
     using Microsoft.Exchange.WebServices.Data;
@@ -1008,6 +1008,45 @@
             DeveloperServiceTestForm oForm = new DeveloperServiceTestForm(CurrentService);
             oForm.Show();
             
+        }
+
+        private void mnuDomainSettings_Click(object sender, EventArgs e)
+        {
+            DomainSettingsForm oForm = new DomainSettingsForm();
+            oForm.Show();
+        }
+
+        private void mnuToolsDiscoveryAutodiscoverViewer_Click(object sender, EventArgs e)
+        {
+            AutodiscoverViewerForm.Show();
+        }
+
+        private void mnuToolsDiscoveryDomainSettings_Click(object sender, EventArgs e)
+        {
+            DomainSettingsForm oForm = new DomainSettingsForm();
+            oForm.Show();
+        }
+
+        private void mnuToolsDiscoveryScpLookups_Click(object sender, EventArgs e)
+        {
+            
+            ScpLookupForm oForm = new ScpLookupForm();
+            oForm.Show();
+        }
+
+        private void mnuToolsNotificationsPullNotificationsViewer_Click(object sender, EventArgs e)
+        {
+            PullNotificationForm.Show(this.CurrentService);
+        }
+
+        private void mnuToolsNotificationsStreamingNotificationsViewer_Click(object sender, EventArgs e)
+        {
+            StreamingNotificationForm.Show();
+        }
+
+        private void mnuToolsNotificationsItemSynchronizationViewer_Click(object sender, EventArgs e)
+        {
+            SyncFolderItemsForm.Show(this.CurrentService);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace EWSEditor.Forms
         /// <param name="service">EwsProxyFactory for creating new services to use when making calls.</param>
         public new static void Show()
         {
-            Show(DisplayStrings.TITLE_NOTIFICATIONS, null
+            Show("Streaming Notifications", null
                 );
         }
 

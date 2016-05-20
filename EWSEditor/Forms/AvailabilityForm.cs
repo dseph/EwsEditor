@@ -82,7 +82,7 @@ namespace EWSEditor.Forms
         private void CurrentMeetingTimeCheck_CheckedChanged(object sender, EventArgs e)
         {
             this.CurrentMeetingDate.Enabled = this.CurrentMeetingCheck.Checked;
-            this.CurrentMeetingLabel.Enabled = this.CurrentMeetingCheck.Checked;
+            //this.CurrentMeetingLabel.Enabled = this.CurrentMeetingCheck.Checked;
         }
 
         private void AttendeeList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)

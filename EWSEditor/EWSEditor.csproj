@@ -215,6 +215,12 @@
     <Compile Include="Forms\DeveloperServiceTestForm.Designer.cs">
       <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Discovery\DomainSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Discovery\DomainSettingsForm.Designer.cs">
+      <DependentUpon>DomainSettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dialogs\EditContent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,6 +371,12 @@
     <Compile Include="Forms\RoomsForm.Designer.cs">
       <DependentUpon>RoomsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Discovery\ScpLookupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Discovery\ScpLookupForm.Designer.cs">
+      <DependentUpon>ScpLookupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SearchCalendar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -401,7 +413,7 @@
     <Compile Include="Forms\ShowTextDocument.designer.cs">
       <DependentUpon>ShowTextDocument.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\StreamingNotificationForm.Designer.cs">
+    <Compile Include="Forms\Synchronization\StreamingNotificationForm.Designer.cs">
       <DependentUpon>StreamingNotificationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SystemNetMainForm.cs">
@@ -474,10 +486,10 @@
     <Compile Include="Forms\AppointmentsContentForm.Designer.cs">
       <DependentUpon>AppointmentsContentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AutodiscoverViewerForm.cs">
+    <Compile Include="Forms\Discovery\AutodiscoverViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AutodiscoverViewerForm.Designer.cs">
+    <Compile Include="Forms\Discovery\AutodiscoverViewerForm.Designer.cs">
       <DependentUpon>AutodiscoverViewerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BaseForm.cs">
@@ -594,16 +606,16 @@
     <Compile Include="Forms\BrowserForm.Designer.cs">
       <DependentUpon>BrowserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PullNotificationForm.cs">
+    <Compile Include="Forms\Synchronization\PullNotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PullNotificationForm.Designer.cs">
+    <Compile Include="Forms\Synchronization\PullNotificationForm.Designer.cs">
       <DependentUpon>PullNotificationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SyncFolderItemsForm.cs">
+    <Compile Include="Forms\Synchronization\SyncFolderItemsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SyncFolderItemsForm.Designer.cs">
+    <Compile Include="Forms\Synchronization\SyncFolderItemsForm.Designer.cs">
       <DependentUpon>SyncFolderItemsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PropertyInformation\BinaryParser.cs" />
@@ -790,7 +802,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>UserSettings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Forms\StreamingNotificationForm.cs">
+    <Compile Include="Forms\Synchronization\StreamingNotificationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Settings\ServiceSessionSetting.cs" />
@@ -818,6 +830,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DeveloperServiceTestForm.resx">
       <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Discovery\DomainSettingsForm.resx">
+      <DependentUpon>DomainSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\EditContent.resx">
       <DependentUpon>EditContent.cs</DependentUpon>
@@ -858,7 +873,7 @@
     <EmbeddedResource Include="Forms\AttachmentsByTypeForm.resx">
       <DependentUpon>AttachmentsByTypeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AutodiscoverViewerForm.resx">
+    <EmbeddedResource Include="Forms\Discovery\AutodiscoverViewerForm.resx">
       <DependentUpon>AutodiscoverViewerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BaseForm.resx">
@@ -972,11 +987,14 @@
     <EmbeddedResource Include="Forms\PlayItemOnPhoneForm.resx">
       <DependentUpon>PlayItemOnPhoneForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PullNotificationForm.resx">
+    <EmbeddedResource Include="Forms\Synchronization\PullNotificationForm.resx">
       <DependentUpon>PullNotificationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RoomsForm.resx">
       <DependentUpon>RoomsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Discovery\ScpLookupForm.resx">
+      <DependentUpon>ScpLookupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SearchCalendar.resx">
       <DependentUpon>SearchCalendar.cs</DependentUpon>
@@ -996,10 +1014,10 @@
     <EmbeddedResource Include="Forms\ShowTextDocument.resx">
       <DependentUpon>ShowTextDocument.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\StreamingNotificationForm.resx">
+    <EmbeddedResource Include="Forms\Synchronization\StreamingNotificationForm.resx">
       <DependentUpon>StreamingNotificationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SyncFolderItemsForm.resx">
+    <EmbeddedResource Include="Forms\Synchronization\SyncFolderItemsForm.resx">
       <DependentUpon>SyncFolderItemsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FolderTreeForm.resx">
@@ -1365,6 +1383,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Dialogs\SmartEditors\" />
+    <Folder Include="Forms\Searches\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>

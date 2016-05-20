@@ -28,7 +28,7 @@ namespace EWSEditor.Forms
         /// <param name="service">ExchangeService to use when making calls.</param>
         public static void Show(ExchangeService service)
         {
-            Show(DisplayStrings.TITLE_NOTIFICATIONS,
+            Show("Pull Notifications",
                 null,
                 service);
         }

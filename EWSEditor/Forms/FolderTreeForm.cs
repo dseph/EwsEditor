@@ -223,9 +223,20 @@ namespace EWSEditor.Forms
 
                 // Tools Menu
                  
-                this.mnuSynchronization.Enabled = isCurrentService;
-                this.mnuNotification.Enabled = isCurrentService;
-                this.mnuStreamingNotification.Enabled = isCurrentService && CurrentService.RequestedServerVersion.CompareTo(ExchangeVersion.Exchange2010_SP1) >=0;  // Only enable streaming notifications for 2k10 SP1+
+                this.mnuToolsNotificationsPullNotificationsViewer.Enabled = isCurrentService;
+                this.mnuToolsNotificationsStreamingNotificationsViewer.Enabled = isCurrentService;
+                this.mnuToolsNotificationsItemSynchronizationViewer.Enabled = isCurrentService && CurrentService.RequestedServerVersion.CompareTo(ExchangeVersion.Exchange2010_SP1) >= 0;  // Only enable streaming notifications for 2k10 SP1+
+
+                //this.mnuNotification.Enabled = isCurrentService; // pull
+                //this.mnuToolsNotificationsPullNotificationsViewer.Enabled = isCurrentService;
+                //this.mnuStreamingNotification.Enabled = isCurrentService && CurrentService.RequestedServerVersion.CompareTo(ExchangeVersion.Exchange2010_SP1) >= 0;  // Only enable streaming notifications for 2k10 SP1+
+       
+                this.mnuToolsNotifications.Enabled = isCurrentService;
+                this.mnuToolsNotificationsPullNotificationsViewer.Enabled = isCurrentService;
+                this.mnuToolsNotificationsStreamingNotificationsViewer.Enabled = isCurrentService && CurrentService.RequestedServerVersion.CompareTo(ExchangeVersion.Exchange2010_SP1) >= 0;  // Only enable streaming notifications for 2k10 SP1+
+                this.mnuToolsNotificationsItemSynchronizationViewer.Enabled = isCurrentService;
+
+
                 this.mnuDisplayDelegates.Enabled = isCurrentService;
                 this.UserAvailabilityMenuItem.Enabled = isCurrentService;
                 this.UserOofSettingsMenuItem.Enabled = isCurrentService;

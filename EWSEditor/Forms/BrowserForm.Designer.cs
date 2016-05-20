@@ -42,17 +42,19 @@
             this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
             this.DebugLogVeiwerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuAutoDiscoverView = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsDiscovery = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsDiscoveryAutodiscoverViewer = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsDiscoveryDomainSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsDiscoveryScpLookups = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEwsPost = new System.Windows.Forms.ToolStripMenuItem();
             this.TimeZonemenuitem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsSplit1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuResolveName = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuResolveExProp = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuToolsSplit2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuNotification = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuStreamingNotification = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuSynchronization = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsNotifications = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsNotificationsPullNotificationsViewer = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsNotificationsStreamingNotificationsViewer = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsNotificationsItemSynchronizationViewer = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsSplit3 = new System.Windows.Forms.ToolStripSeparator();
             this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDisplayDelegates = new System.Windows.Forms.ToolStripMenuItem();
@@ -177,17 +179,13 @@
             this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DebugLogVeiwerMenuItem,
             this.OptionsMenuItem,
-            this.toolStripMenuItem2,
-            this.mnuAutoDiscoverView,
+            this.mnuToolsDiscovery,
             this.mnuEwsPost,
             this.TimeZonemenuitem,
             this.mnuToolsSplit1,
             this.mnuResolveName,
             this.mnuResolveExProp,
-            this.mnuToolsSplit2,
-            this.mnuNotification,
-            this.mnuStreamingNotification,
-            this.mnuSynchronization,
+            this.mnuToolsNotifications,
             this.mnuToolsSplit3,
             this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem,
             this.mnuDisplayDelegates,
@@ -222,17 +220,36 @@
             this.OptionsMenuItem.Text = "Options...";
             this.OptionsMenuItem.Click += new System.EventHandler(this.OptionsMenuItem_Click);
             // 
-            // toolStripMenuItem2
+            // mnuToolsDiscovery
             // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(382, 6);
+            this.mnuToolsDiscovery.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuToolsDiscoveryAutodiscoverViewer,
+            this.mnuToolsDiscoveryDomainSettings,
+            this.mnuToolsDiscoveryScpLookups});
+            this.mnuToolsDiscovery.Name = "mnuToolsDiscovery";
+            this.mnuToolsDiscovery.Size = new System.Drawing.Size(385, 26);
+            this.mnuToolsDiscovery.Text = "Discovery";
             // 
-            // mnuAutoDiscoverView
+            // mnuToolsDiscoveryAutodiscoverViewer
             // 
-            this.mnuAutoDiscoverView.Name = "mnuAutoDiscoverView";
-            this.mnuAutoDiscoverView.Size = new System.Drawing.Size(385, 26);
-            this.mnuAutoDiscoverView.Text = "Autodiscover Viewer...";
-            this.mnuAutoDiscoverView.Click += new System.EventHandler(this.MnuAutoDiscoverView_Click);
+            this.mnuToolsDiscoveryAutodiscoverViewer.Name = "mnuToolsDiscoveryAutodiscoverViewer";
+            this.mnuToolsDiscoveryAutodiscoverViewer.Size = new System.Drawing.Size(229, 26);
+            this.mnuToolsDiscoveryAutodiscoverViewer.Text = "Autodiscover Viewer...";
+            this.mnuToolsDiscoveryAutodiscoverViewer.Click += new System.EventHandler(this.mnuToolsDiscoveryAutodiscoverViewer_Click);
+            // 
+            // mnuToolsDiscoveryDomainSettings
+            // 
+            this.mnuToolsDiscoveryDomainSettings.Name = "mnuToolsDiscoveryDomainSettings";
+            this.mnuToolsDiscoveryDomainSettings.Size = new System.Drawing.Size(229, 26);
+            this.mnuToolsDiscoveryDomainSettings.Text = "Domain Settings...";
+            this.mnuToolsDiscoveryDomainSettings.Click += new System.EventHandler(this.mnuToolsDiscoveryDomainSettings_Click);
+            // 
+            // mnuToolsDiscoveryScpLookups
+            // 
+            this.mnuToolsDiscoveryScpLookups.Name = "mnuToolsDiscoveryScpLookups";
+            this.mnuToolsDiscoveryScpLookups.Size = new System.Drawing.Size(229, 26);
+            this.mnuToolsDiscoveryScpLookups.Text = "SCP Lookups...";
+            this.mnuToolsDiscoveryScpLookups.Click += new System.EventHandler(this.mnuToolsDiscoveryScpLookups_Click);
             // 
             // mnuEwsPost
             // 
@@ -267,31 +284,36 @@
             this.mnuResolveExProp.Text = "Extended Property Resolver...";
             this.mnuResolveExProp.Click += new System.EventHandler(this.MnuResolveExProp_Click);
             // 
-            // mnuToolsSplit2
+            // mnuToolsNotifications
             // 
-            this.mnuToolsSplit2.Name = "mnuToolsSplit2";
-            this.mnuToolsSplit2.Size = new System.Drawing.Size(382, 6);
+            this.mnuToolsNotifications.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuToolsNotificationsPullNotificationsViewer,
+            this.mnuToolsNotificationsStreamingNotificationsViewer,
+            this.mnuToolsNotificationsItemSynchronizationViewer});
+            this.mnuToolsNotifications.Name = "mnuToolsNotifications";
+            this.mnuToolsNotifications.Size = new System.Drawing.Size(385, 26);
+            this.mnuToolsNotifications.Text = "Notifications";
             // 
-            // mnuNotification
+            // mnuToolsNotificationsPullNotificationsViewer
             // 
-            this.mnuNotification.Name = "mnuNotification";
-            this.mnuNotification.Size = new System.Drawing.Size(385, 26);
-            this.mnuNotification.Text = "Pull Notifications Viewer...";
-            this.mnuNotification.Click += new System.EventHandler(this.MnuNotification_Click);
+            this.mnuToolsNotificationsPullNotificationsViewer.Name = "mnuToolsNotificationsPullNotificationsViewer";
+            this.mnuToolsNotificationsPullNotificationsViewer.Size = new System.Drawing.Size(299, 26);
+            this.mnuToolsNotificationsPullNotificationsViewer.Text = "Pull Notifications Viewer...";
+            this.mnuToolsNotificationsPullNotificationsViewer.Click += new System.EventHandler(this.mnuToolsNotificationsPullNotificationsViewer_Click);
             // 
-            // mnuStreamingNotification
+            // mnuToolsNotificationsStreamingNotificationsViewer
             // 
-            this.mnuStreamingNotification.Name = "mnuStreamingNotification";
-            this.mnuStreamingNotification.Size = new System.Drawing.Size(385, 26);
-            this.mnuStreamingNotification.Text = "Streaming Notifications Viewer...";
-            this.mnuStreamingNotification.Click += new System.EventHandler(this.MnuStreamingNotification_Click);
+            this.mnuToolsNotificationsStreamingNotificationsViewer.Name = "mnuToolsNotificationsStreamingNotificationsViewer";
+            this.mnuToolsNotificationsStreamingNotificationsViewer.Size = new System.Drawing.Size(299, 26);
+            this.mnuToolsNotificationsStreamingNotificationsViewer.Text = "Streaming Notifications Viewer...";
+            this.mnuToolsNotificationsStreamingNotificationsViewer.Click += new System.EventHandler(this.mnuToolsNotificationsStreamingNotificationsViewer_Click);
             // 
-            // mnuSynchronization
+            // mnuToolsNotificationsItemSynchronizationViewer
             // 
-            this.mnuSynchronization.Name = "mnuSynchronization";
-            this.mnuSynchronization.Size = new System.Drawing.Size(385, 26);
-            this.mnuSynchronization.Text = "Item Synchronization Viewer..";
-            this.mnuSynchronization.Click += new System.EventHandler(this.MnuSynchronization_Click);
+            this.mnuToolsNotificationsItemSynchronizationViewer.Name = "mnuToolsNotificationsItemSynchronizationViewer";
+            this.mnuToolsNotificationsItemSynchronizationViewer.Size = new System.Drawing.Size(299, 26);
+            this.mnuToolsNotificationsItemSynchronizationViewer.Text = "Item Synchronization Viewer...";
+            this.mnuToolsNotificationsItemSynchronizationViewer.Click += new System.EventHandler(this.mnuToolsNotificationsItemSynchronizationViewer_Click);
             // 
             // mnuToolsSplit3
             // 
@@ -543,9 +565,6 @@
         public System.Windows.Forms.ToolStripSeparator mnuToolsSplit1;
         public System.Windows.Forms.ToolStripMenuItem mnuResolveName;
         public System.Windows.Forms.ToolStripMenuItem mnuResolveExProp;
-        public System.Windows.Forms.ToolStripSeparator mnuToolsSplit2;
-        public System.Windows.Forms.ToolStripMenuItem mnuNotification;
-        public System.Windows.Forms.ToolStripMenuItem mnuSynchronization;
         public System.Windows.Forms.ToolStripSeparator mnuToolsSplit3;
         public System.Windows.Forms.ToolStripMenuItem mnuDisplayDelegates;
         public System.Windows.Forms.ToolStripMenuItem mnuOther;
@@ -556,7 +575,6 @@
         public System.Windows.Forms.ToolStripMenuItem mnuHelp;
         public System.Windows.Forms.ToolStripMenuItem mnuAbout;
         public System.Windows.Forms.ToolStripMenuItem mnuTools;
-        public System.Windows.Forms.ToolStripMenuItem mnuAutoDiscoverView;
         public System.Windows.Forms.ToolStripMenuItem mnuEwsPost;
         public System.Windows.Forms.ToolStripMenuItem UserOofSettingsMenuItem;
         public System.Windows.Forms.ToolStripMenuItem UserAvailabilityMenuItem;
@@ -564,8 +582,6 @@
         public System.Windows.Forms.ToolStripSeparator mnuToolsSplit4;
         public System.Windows.Forms.ToolStripMenuItem OptionsMenuItem;
         public System.Windows.Forms.ToolStripMenuItem DebugLogVeiwerMenuItem;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        public System.Windows.Forms.ToolStripMenuItem mnuStreamingNotification;
         public System.Windows.Forms.ToolStripMenuItem TimeZonemenuitem;
         public System.Windows.Forms.ToolStripMenuItem MeetingRoomsMenuItem;
         public System.Windows.Forms.ToolStripMenuItem DistributionListMenuItem;
@@ -584,5 +600,13 @@
         public System.Windows.Forms.ToolStripMenuItem mnuMailTips;
         public System.Windows.Forms.ToolStripMenuItem viewHTMLInBrowserToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem developerToolsTestWindowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsDiscovery;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsDiscoveryAutodiscoverViewer;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsDiscoveryDomainSettings;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsDiscoveryScpLookups;
+        public System.Windows.Forms.ToolStripMenuItem mnuToolsNotifications;
+        public System.Windows.Forms.ToolStripMenuItem mnuToolsNotificationsPullNotificationsViewer;
+        public System.Windows.Forms.ToolStripMenuItem mnuToolsNotificationsStreamingNotificationsViewer;
+        public System.Windows.Forms.ToolStripMenuItem mnuToolsNotificationsItemSynchronizationViewer;
     }
 }

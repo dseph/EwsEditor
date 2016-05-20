@@ -18,7 +18,8 @@ namespace EWSEditor.Common
 {
     class AutodiscoverInfo
     {
-        public string  GetDomainSettings()
+        public string GetDomainSettings( )
+        //public string  GetDomainSettings(string sServerDomain, string sUser, string sPassword, string sDomain, ExchangeVersion oExchangeVersion)
         {
             // https://msdn.microsoft.com/en-us/library/office/jj900161(v=exchg.150).aspx
 
