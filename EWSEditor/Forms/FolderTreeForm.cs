@@ -474,13 +474,13 @@ namespace EWSEditor.Forms
             int exit = this.mnuFile.DropDownItems.IndexOfKey(this.mnuExit.Name);
             this.mnuFile.DropDownItems.Insert(exit, this.fileSplitMenu2);
             
-            // Saving and loading profiles are not supported directly off the menu.
+            // Saving and loading profiles are no longer supported directly off the menu.
             // The work to get it to funciton properly will take too much work and complex.
             // Saving and loading my be added to the main New Service window in the future, however
             // that will also require a lot of work since many login and config settings are tied 
             // to the Options window.
             //this.mnuFile.DropDownItems.Insert(exit, this.saveProfileMenu);
-            //this.mnuFile.DropDownItems.Insert(exit, this.fileSplitMenu1);
+            //this.mnuFile.DropDownItems.Insert(exit, this.fileSplitMenu1);  
             //this.mnuFile.DropDownItems.Insert(exit, this.openProfileMenu);
             this.mnuFile.DropDownItems.Insert(exit, this.closeExchangeServiceMenu);
             this.mnuFile.DropDownItems.Insert(exit, this.openDefaultExchangeServiceMenu);
