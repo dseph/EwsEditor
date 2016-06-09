@@ -163,10 +163,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddRemoveHeaders.cs">
+    <Compile Include="Forms\Dialogs\AddRemoveHeaders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddRemoveHeaders.Designer.cs">
+    <Compile Include="Forms\Dialogs\AddRemoveHeaders.Designer.cs">
       <DependentUpon>AddRemoveHeaders.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\ActiveDirectoryHelper.cs" />
@@ -179,40 +179,40 @@
     <Compile Include="Common\ListViewColumnSorter.cs" />
     <Compile Include="Common\ListViewItemHelper.cs" />
     <Compile Include="Common\UserAgentHelper.cs" />
-    <Compile Include="Forms\AddRemoveAttachments.cs">
+    <Compile Include="Forms\Attachments\AddRemoveAttachments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddRemoveAttachments.Designer.cs">
+    <Compile Include="Forms\Attachments\AddRemoveAttachments.Designer.cs">
       <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CalendarCheck.cs">
+    <Compile Include="Forms\Calendar\CalendarCheck.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CalendarCheck.Designer.cs">
+    <Compile Include="Forms\Calendar\CalendarCheck.Designer.cs">
       <DependentUpon>CalendarCheck.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DeveloperAttachmentTestForm.cs">
+    <Compile Include="Forms\DeveloperTest\DeveloperAttachmentTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DeveloperAttachmentTestForm.Designer.cs">
+    <Compile Include="Forms\DeveloperTest\DeveloperAttachmentTestForm.Designer.cs">
       <DependentUpon>DeveloperAttachmentTestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DeveloperFolderTestform.cs">
+    <Compile Include="Forms\DeveloperTest\DeveloperFolderTestform.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DeveloperFolderTestform.Designer.cs">
+    <Compile Include="Forms\DeveloperTest\DeveloperFolderTestform.Designer.cs">
       <DependentUpon>DeveloperFolderTestform.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DeveloperItemTestForm.cs">
+    <Compile Include="Forms\DeveloperTest\DeveloperItemTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DeveloperItemTestForm.Designer.cs">
+    <Compile Include="Forms\DeveloperTest\DeveloperItemTestForm.Designer.cs">
       <DependentUpon>DeveloperItemTestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DeveloperServiceTestForm.cs">
+    <Compile Include="Forms\DeveloperTest\DeveloperServiceTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DeveloperServiceTestForm.Designer.cs">
+    <Compile Include="Forms\DeveloperTest\DeveloperServiceTestForm.Designer.cs">
       <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Discovery\DomainSettingsForm.cs">
@@ -233,10 +233,10 @@
     <Compile Include="Forms\EmptyFolder.Designer.cs">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FileContentHelper.cs">
+    <Compile Include="Forms\ToolsForms\FileContentHelper.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FileContentHelper.Designer.cs">
+    <Compile Include="Forms\ToolsForms\FileContentHelper.Designer.cs">
       <DependentUpon>FileContentHelper.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ListActiveSyncDevices.cs">
@@ -245,16 +245,16 @@
     <Compile Include="Forms\ListActiveSyncDevices.Designer.cs">
       <DependentUpon>ListActiveSyncDevices.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MailApps.cs">
+    <Compile Include="Forms\ServiceLevelForms\MailApps.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MailApps.Designer.cs">
+    <Compile Include="Forms\ServiceLevelForms\MailApps.Designer.cs">
       <DependentUpon>MailApps.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EDiscoverySearchForm.cs">
+    <Compile Include="Forms\Searches\EDiscoverySearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EDiscoverySearchForm.Designer.cs">
+    <Compile Include="Forms\Searches\EDiscoverySearchForm.Designer.cs">
       <DependentUpon>EDiscoverySearchForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\EncodeForm.cs">
@@ -263,16 +263,16 @@
     <Compile Include="Forms\Dialogs\EncodeForm.designer.cs">
       <DependentUpon>EncodeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MailHeadersForm.cs">
+    <Compile Include="Forms\Mail\MailHeadersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MailHeadersForm.Designer.cs">
+    <Compile Include="Forms\Mail\MailHeadersForm.Designer.cs">
       <DependentUpon>MailHeadersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PostForm.cs">
+    <Compile Include="Forms\ToolsForms\PostForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PostForm.Designer.cs">
+    <Compile Include="Forms\ToolsForms\PostForm.Designer.cs">
       <DependentUpon>PostForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\PropertyGridHelper.cs" />
@@ -281,40 +281,40 @@
     <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Common\TimeHelper.cs" />
     <Compile Include="Common\UserIoHelper.cs" />
-    <Compile Include="Forms\CheckFolderItemsForPropertyLoadingIssues.cs">
+    <Compile Include="Forms\Searches\CheckFolderItemsForPropertyLoadingIssues.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CheckFolderItemsForPropertyLoadingIssues.Designer.cs">
+    <Compile Include="Forms\Searches\CheckFolderItemsForPropertyLoadingIssues.Designer.cs">
       <DependentUpon>CheckFolderItemsForPropertyLoadingIssues.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ContactsForm.cs">
+    <Compile Include="Forms\Contacts\ContactsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ContactsForm.designer.cs">
+    <Compile Include="Forms\Contacts\ContactsForm.designer.cs">
       <DependentUpon>ContactsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AttachmentsByTypeForm.cs">
+    <Compile Include="Forms\Attachments\AttachmentsByTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AttachmentsByTypeForm.designer.cs">
+    <Compile Include="Forms\Attachments\AttachmentsByTypeForm.designer.cs">
       <DependentUpon>AttachmentsByTypeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CalendarForm.cs">
+    <Compile Include="Forms\Calendar\CalendarForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CalendarForm.designer.cs">
+    <Compile Include="Forms\Calendar\CalendarForm.designer.cs">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CalendarInstanceForm.cs">
+    <Compile Include="Forms\Calendar\CalendarInstanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CalendarInstanceForm.designer.cs">
+    <Compile Include="Forms\Calendar\CalendarInstanceForm.designer.cs">
       <DependentUpon>CalendarInstanceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CalendarMonthView.cs">
+    <Compile Include="Forms\Calendar\CalendarMonthView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CalendarMonthView.designer.cs">
+    <Compile Include="Forms\Calendar\CalendarMonthView.designer.cs">
       <DependentUpon>CalendarMonthView.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\ConversationIdDialog.cs">
@@ -323,10 +323,10 @@
     <Compile Include="Forms\Dialogs\ConversationIdDialog.Designer.cs">
       <DependentUpon>ConversationIdDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\DistributionListForm.cs">
+    <Compile Include="Forms\ToolsForms\DistributionListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DistributionListForm.Designer.cs">
+    <Compile Include="Forms\ToolsForms\DistributionListForm.Designer.cs">
       <DependentUpon>DistributionListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\GlobalOptionsDialog.cs">
@@ -335,22 +335,22 @@
     <Compile Include="Forms\Dialogs\GlobalOptionsDialog.Designer.cs">
       <DependentUpon>GlobalOptionsDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dialogs\TimeZonesForm.cs">
+    <Compile Include="Forms\ToolsForms\TimeZonesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dialogs\TimeZonesForm.designer.cs">
+    <Compile Include="Forms\ToolsForms\TimeZonesForm.designer.cs">
       <DependentUpon>TimeZonesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\InboxRulesForm.cs">
+    <Compile Include="Forms\ServiceLevelForms\InboxRulesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\InboxRulesForm.Designer.cs">
+    <Compile Include="Forms\ServiceLevelForms\InboxRulesForm.Designer.cs">
       <DependentUpon>InboxRulesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MessageForm.cs">
+    <Compile Include="Forms\Mail\MessageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MessageForm.designer.cs">
+    <Compile Include="Forms\Mail\MessageForm.designer.cs">
       <DependentUpon>MessageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NewFolderForm.cs">
@@ -365,10 +365,10 @@
     <Compile Include="Forms\PlayItemOnPhoneForm.Designer.cs">
       <DependentUpon>PlayItemOnPhoneForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RoomsForm.cs">
+    <Compile Include="Forms\ServiceLevelForms\RoomsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RoomsForm.Designer.cs">
+    <Compile Include="Forms\ServiceLevelForms\RoomsForm.Designer.cs">
       <DependentUpon>RoomsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Discovery\ScpLookupForm.cs">
@@ -377,85 +377,85 @@
     <Compile Include="Forms\Discovery\ScpLookupForm.Designer.cs">
       <DependentUpon>ScpLookupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SearchCalendar.cs">
+    <Compile Include="Forms\Searches\SearchCalendar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SearchCalendar.Designer.cs">
+    <Compile Include="Forms\Searches\SearchCalendar.Designer.cs">
       <DependentUpon>SearchCalendar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AttachmentSelect.cs">
+    <Compile Include="Forms\Attachments\AttachmentSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AttachmentSelect.Designer.cs">
+    <Compile Include="Forms\Attachments\AttachmentSelect.Designer.cs">
       <DependentUpon>AttachmentSelect.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SearchForm.cs">
+    <Compile Include="Forms\Searches\SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SearchForm.Designer.cs">
+    <Compile Include="Forms\Searches\SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SelectSendMeetingUpdateNotificationOptions.cs">
+    <Compile Include="Forms\Calendar\SelectSendMeetingUpdateNotificationOptions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SelectSendMeetingUpdateNotificationOptions.designer.cs">
+    <Compile Include="Forms\Calendar\SelectSendMeetingUpdateNotificationOptions.designer.cs">
       <DependentUpon>SelectSendMeetingUpdateNotificationOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SelectSendNewMeetingNotificationOptions.cs">
+    <Compile Include="Forms\Calendar\SelectSendNewMeetingNotificationOptions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SelectSendNewMeetingNotificationOptions.designer.cs">
+    <Compile Include="Forms\Calendar\SelectSendNewMeetingNotificationOptions.designer.cs">
       <DependentUpon>SelectSendNewMeetingNotificationOptions.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ShowTextDocument.cs">
+    <Compile Include="Forms\Dialogs\ShowTextDocument.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ShowTextDocument.designer.cs">
+    <Compile Include="Forms\Dialogs\ShowTextDocument.designer.cs">
       <DependentUpon>ShowTextDocument.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Synchronization\StreamingNotificationForm.Designer.cs">
       <DependentUpon>StreamingNotificationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SystemNetMainForm.cs">
+    <Compile Include="Forms\ToolsForms\SystemNetMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SystemNetMainForm.Designer.cs">
+    <Compile Include="Forms\ToolsForms\SystemNetMainForm.Designer.cs">
       <DependentUpon>SystemNetMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TaskForm.cs">
+    <Compile Include="Forms\Tasks\TaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TaskForm.Designer.cs">
+    <Compile Include="Forms\Tasks\TaskForm.Designer.cs">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UploadItemForm.cs">
+    <Compile Include="Forms\Dialogs\UploadItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UploadItemForm.Designer.cs">
+    <Compile Include="Forms\Dialogs\UploadItemForm.Designer.cs">
       <DependentUpon>UploadItemForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MimeEntry.cs">
+    <Compile Include="Forms\Dialogs\MimeEntry.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MimeEntry.Designer.cs">
+    <Compile Include="Forms\Dialogs\MimeEntry.Designer.cs">
       <DependentUpon>MimeEntry.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UserConfigForm.cs">
+    <Compile Include="Forms\ServiceLevelForms\UserConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UserConfigForm.Designer.cs">
+    <Compile Include="Forms\ServiceLevelForms\UserConfigForm.Designer.cs">
       <DependentUpon>UserConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GetMailTipsForm.cs">
+    <Compile Include="Forms\ServiceLevelForms\GetMailTipsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GetMailTipsForm.Designer.cs">
+    <Compile Include="Forms\ServiceLevelForms\GetMailTipsForm.Designer.cs">
       <DependentUpon>GetMailTipsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ViewHtmlAsWebPage.cs">
+    <Compile Include="Forms\ToolsForms\ViewHtmlAsWebPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViewHtmlAsWebPage.Designer.cs">
+    <Compile Include="Forms\ToolsForms\ViewHtmlAsWebPage.Designer.cs">
       <DependentUpon>ViewHtmlAsWebPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -498,10 +498,10 @@
     <Compile Include="Forms\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AttachmentsContentForm.cs">
+    <Compile Include="Forms\Attachments\AttachmentsContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AttachmentsContentForm.Designer.cs">
+    <Compile Include="Forms\Attachments\AttachmentsContentForm.Designer.cs">
       <DependentUpon>AttachmentsContentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BaseContentForm.cs">
@@ -510,10 +510,10 @@
     <Compile Include="Forms\BaseContentForm.Designer.cs">
       <DependentUpon>BaseContentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AvailabilityForm.cs">
+    <Compile Include="Forms\ServiceLevelForms\AvailabilityForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AvailabilityForm.designer.cs">
+    <Compile Include="Forms\ServiceLevelForms\AvailabilityForm.designer.cs">
       <DependentUpon>AvailabilityForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Controls\EnumComboBox.cs">
@@ -522,10 +522,10 @@
     <Compile Include="Forms\Controls\EnumComboBox.Designer.cs">
       <DependentUpon>EnumComboBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ConvertIdForm.cs">
+    <Compile Include="Forms\ServiceLevelForms\ConvertIdForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ConvertIdForm.Designer.cs">
+    <Compile Include="Forms\ServiceLevelForms\ConvertIdForm.Designer.cs">
       <DependentUpon>ConvertIdForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DebugLogViewerForm.cs">
@@ -534,10 +534,10 @@
     <Compile Include="Forms\DebugLogViewerForm.Designer.cs">
       <DependentUpon>DebugLogViewerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dialogs\AttendeeInfoDialog.cs">
+    <Compile Include="Forms\Calendar\AttendeeInfoDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dialogs\AttendeeInfoDialog.Designer.cs">
+    <Compile Include="Forms\Calendar\AttendeeInfoDialog.Designer.cs">
       <DependentUpon>AttendeeInfoDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\ManagedApiDialog.cs">
@@ -546,10 +546,10 @@
     <Compile Include="Forms\Dialogs\ManagedApiDialog.Designer.cs">
       <DependentUpon>ManagedApiDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Dialogs\OofForm.cs">
+    <Compile Include="Forms\ServiceLevelForms\OofForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Dialogs\OofForm.designer.cs">
+    <Compile Include="Forms\ServiceLevelForms\OofForm.designer.cs">
       <DependentUpon>OofForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FolderContentForm.cs">
@@ -810,25 +810,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BodySamples.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddRemoveHeaders.resx">
+    <EmbeddedResource Include="Forms\Dialogs\AddRemoveHeaders.resx">
       <DependentUpon>AddRemoveHeaders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddRemoveAttachments.resx">
+    <EmbeddedResource Include="Forms\Attachments\AddRemoveAttachments.resx">
       <DependentUpon>AddRemoveAttachments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CalendarCheck.resx">
+    <EmbeddedResource Include="Forms\Calendar\CalendarCheck.resx">
       <DependentUpon>CalendarCheck.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DeveloperAttachmentTestForm.resx">
+    <EmbeddedResource Include="Forms\DeveloperTest\DeveloperAttachmentTestForm.resx">
       <DependentUpon>DeveloperAttachmentTestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DeveloperFolderTestform.resx">
+    <EmbeddedResource Include="Forms\DeveloperTest\DeveloperFolderTestform.resx">
       <DependentUpon>DeveloperFolderTestform.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DeveloperItemTestForm.resx">
+    <EmbeddedResource Include="Forms\DeveloperTest\DeveloperItemTestForm.resx">
       <DependentUpon>DeveloperItemTestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DeveloperServiceTestForm.resx">
+    <EmbeddedResource Include="Forms\DeveloperTest\DeveloperServiceTestForm.resx">
       <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Discovery\DomainSettingsForm.resx">
@@ -840,37 +840,37 @@
     <EmbeddedResource Include="Forms\EmptyFolder.resx">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FileContentHelper.resx">
+    <EmbeddedResource Include="Forms\ToolsForms\FileContentHelper.resx">
       <DependentUpon>FileContentHelper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ListActiveSyncDevices.resx">
       <DependentUpon>ListActiveSyncDevices.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MailApps.resx">
+    <EmbeddedResource Include="Forms\ServiceLevelForms\MailApps.resx">
       <DependentUpon>MailApps.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EDiscoverySearchForm.resx">
+    <EmbeddedResource Include="Forms\Searches\EDiscoverySearchForm.resx">
       <DependentUpon>EDiscoverySearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\EncodeForm.resx">
       <DependentUpon>EncodeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MailHeadersForm.resx">
+    <EmbeddedResource Include="Forms\Mail\MailHeadersForm.resx">
       <DependentUpon>MailHeadersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PostForm.resx">
+    <EmbeddedResource Include="Forms\ToolsForms\PostForm.resx">
       <DependentUpon>PostForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CheckFolderItemsForPropertyLoadingIssues.resx">
+    <EmbeddedResource Include="Forms\Searches\CheckFolderItemsForPropertyLoadingIssues.resx">
       <DependentUpon>CheckFolderItemsForPropertyLoadingIssues.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ContactsForm.resx">
+    <EmbeddedResource Include="Forms\Contacts\ContactsForm.resx">
       <DependentUpon>ContactsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AppointmentsContentForm.resx">
       <DependentUpon>AppointmentsContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AttachmentsByTypeForm.resx">
+    <EmbeddedResource Include="Forms\Attachments\AttachmentsByTypeForm.resx">
       <DependentUpon>AttachmentsByTypeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Discovery\AutodiscoverViewerForm.resx">
@@ -879,28 +879,28 @@
     <EmbeddedResource Include="Forms\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AttachmentsContentForm.resx">
+    <EmbeddedResource Include="Forms\Attachments\AttachmentsContentForm.resx">
       <DependentUpon>AttachmentsContentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BaseContentForm.resx">
       <DependentUpon>BaseContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AvailabilityForm.resx">
+    <EmbeddedResource Include="Forms\ServiceLevelForms\AvailabilityForm.resx">
       <DependentUpon>AvailabilityForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CalendarForm.resx">
+    <EmbeddedResource Include="Forms\Calendar\CalendarForm.resx">
       <DependentUpon>CalendarForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CalendarInstanceForm.resx">
+    <EmbeddedResource Include="Forms\Calendar\CalendarInstanceForm.resx">
       <DependentUpon>CalendarInstanceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CalendarMonthView.resx">
+    <EmbeddedResource Include="Forms\Calendar\CalendarMonthView.resx">
       <DependentUpon>CalendarMonthView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Controls\EnumComboBox.resx">
       <DependentUpon>EnumComboBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ConvertIdForm.resx">
+    <EmbeddedResource Include="Forms\ServiceLevelForms\ConvertIdForm.resx">
       <DependentUpon>ConvertIdForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CountedForm.resx">
@@ -909,32 +909,32 @@
     <EmbeddedResource Include="Forms\DebugLogViewerForm.resx">
       <DependentUpon>DebugLogViewerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\AttendeeInfoDialog.resx">
+    <EmbeddedResource Include="Forms\Calendar\AttendeeInfoDialog.resx">
       <DependentUpon>AttendeeInfoDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\ConversationIdDialog.resx">
       <DependentUpon>ConversationIdDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\DistributionListForm.resx">
+    <EmbeddedResource Include="Forms\ToolsForms\DistributionListForm.resx">
       <DependentUpon>DistributionListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\ManagedApiDialog.resx">
       <DependentUpon>ManagedApiDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\OofForm.resx">
+    <EmbeddedResource Include="Forms\ServiceLevelForms\OofForm.resx">
       <DependentUpon>OofForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\GlobalOptionsDialog.resx">
       <DependentUpon>GlobalOptionsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Dialogs\TimeZonesForm.resx">
+    <EmbeddedResource Include="Forms\ToolsForms\TimeZonesForm.resx">
       <DependentUpon>TimeZonesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FolderContentForm.resx">
       <DependentUpon>FolderContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\InboxRulesForm.resx">
+    <EmbeddedResource Include="Forms\ServiceLevelForms\InboxRulesForm.resx">
       <DependentUpon>InboxRulesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ItemsContentForm.resx">
@@ -978,7 +978,7 @@
     <EmbeddedResource Include="Forms\Dialogs\UserIdDialog.resx">
       <DependentUpon>UserIdDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MessageForm.resx">
+    <EmbeddedResource Include="Forms\Mail\MessageForm.resx">
       <DependentUpon>MessageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewFolderForm.resx">
@@ -990,28 +990,28 @@
     <EmbeddedResource Include="Forms\Synchronization\PullNotificationForm.resx">
       <DependentUpon>PullNotificationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RoomsForm.resx">
+    <EmbeddedResource Include="Forms\ServiceLevelForms\RoomsForm.resx">
       <DependentUpon>RoomsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Discovery\ScpLookupForm.resx">
       <DependentUpon>ScpLookupForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SearchCalendar.resx">
+    <EmbeddedResource Include="Forms\Searches\SearchCalendar.resx">
       <DependentUpon>SearchCalendar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AttachmentSelect.resx">
+    <EmbeddedResource Include="Forms\Attachments\AttachmentSelect.resx">
       <DependentUpon>AttachmentSelect.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SearchForm.resx">
+    <EmbeddedResource Include="Forms\Searches\SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectSendMeetingUpdateNotificationOptions.resx">
+    <EmbeddedResource Include="Forms\Calendar\SelectSendMeetingUpdateNotificationOptions.resx">
       <DependentUpon>SelectSendMeetingUpdateNotificationOptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectSendNewMeetingNotificationOptions.resx">
+    <EmbeddedResource Include="Forms\Calendar\SelectSendNewMeetingNotificationOptions.resx">
       <DependentUpon>SelectSendNewMeetingNotificationOptions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ShowTextDocument.resx">
+    <EmbeddedResource Include="Forms\Dialogs\ShowTextDocument.resx">
       <DependentUpon>ShowTextDocument.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Synchronization\StreamingNotificationForm.resx">
@@ -1080,25 +1080,25 @@
       <SubType>Designer</SubType>
       <DependentUpon>HiddenMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SystemNetMainForm.resx">
+    <EmbeddedResource Include="Forms\ToolsForms\SystemNetMainForm.resx">
       <DependentUpon>SystemNetMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TaskForm.resx">
+    <EmbeddedResource Include="Forms\Tasks\TaskForm.resx">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UploadItemForm.resx">
+    <EmbeddedResource Include="Forms\Dialogs\UploadItemForm.resx">
       <DependentUpon>UploadItemForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MimeEntry.resx">
+    <EmbeddedResource Include="Forms\Dialogs\MimeEntry.resx">
       <DependentUpon>MimeEntry.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UserConfigForm.resx">
+    <EmbeddedResource Include="Forms\ServiceLevelForms\UserConfigForm.resx">
       <DependentUpon>UserConfigForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GetMailTipsForm.resx">
+    <EmbeddedResource Include="Forms\ServiceLevelForms\GetMailTipsForm.resx">
       <DependentUpon>GetMailTipsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ViewHtmlAsWebPage.resx">
+    <EmbeddedResource Include="Forms\ToolsForms\ViewHtmlAsWebPage.resx">
       <DependentUpon>ViewHtmlAsWebPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -1383,7 +1383,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Dialogs\SmartEditors\" />
-    <Folder Include="Forms\Searches\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>

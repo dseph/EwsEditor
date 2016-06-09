@@ -453,9 +453,9 @@ namespace EWSEditor.Forms
         /// <param name="e">The parameter is not used.</param>
         private void MnuCreateFromMimeEntry_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Title = "Choose a MIME file to import...";
-            ofd.Multiselect = false;
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.Title = "Choose a MIME file to import...";
+            //ofd.Multiselect = false;
             this.Cursor = Cursors.WaitCursor;
  
             bool bItemCreated = false;
@@ -468,75 +468,94 @@ namespace EWSEditor.Forms
              
             bool bSupportedFolderType = false;
 
-            if (this.currentFolder.FolderClass.StartsWith("IPF.Appointment"))
+            string sFolderClass = this.currentFolder.FolderClass;
+
+            if (sFolderClass.StartsWith("IPF.Appointment") ||
+                sFolderClass.StartsWith("IPF.Contact") ||
+                sFolderClass.StartsWith("IPF.Note")  
+                )
             {
                 bSupportedFolderType = true;
-                Appointment item = new Appointment(this.CurrentService);
-                item.MimeContent = new MimeContent();
-
-                MimeEntry oMimeEntry = new MimeEntry();
+                MimeEntry oMimeEntry = new MimeEntry(this.CurrentService, this.currentFolder);
                 oMimeEntry.ShowDialog();
-                string sContent = string.Empty;
+
+                if (oMimeEntry.ItemCreated == true)
+                    this.RefreshContentAndDetails();
+            }
+
+            //if (this.currentFolder.FolderClass.StartsWith("IPF.Appointment"))
+            //{
+            //    bSupportedFolderType = true;
+            //    Appointment item = new Appointment(this.CurrentService);
+            //    item.MimeContent = new MimeContent();
+
+            //    MimeEntry oMimeEntry = new MimeEntry();
+            //    oMimeEntry.ShowDialog();
+            //    string sContent = string.Empty;
                  
-                if (oMimeEntry.ChoseOK == true)
-                {
-                    if (oMimeEntry.chkIsBase64Encoded.Checked == true)
-                        item.MimeContent.Content = Convert.FromBase64String(oMimeEntry.txtEntry.Text.Trim());
-                    else
-                        item.MimeContent.Content = System.Text.Encoding.UTF8.GetBytes(oMimeEntry.txtEntry.Text);
-                }
+            //    if (oMimeEntry.ChoseOK == true)
+            //    {
+            //        if (oMimeEntry.chkIsBase64Encoded.Checked == true)
+            //            item.MimeContent.Content = Convert.FromBase64String(oMimeEntry.txtEntry.Text.Trim());
+            //        else
+            //            item.MimeContent.Content = System.Text.Encoding.UTF8.GetBytes(oMimeEntry.txtEntry.Text);
 
-               
- 
-                item.Save(this.currentFolder.Id);
-                this.RefreshContentAndDetails();
-                bItemCreated = true;
-                item = null;
+            //        item.Save(this.currentFolder.Id);
+            //        this.RefreshContentAndDetails();
+            //    }
+
+            //    bItemCreated = true;
+            //    item = null;
                  
-            }
-            if (this.currentFolder.FolderClass.StartsWith("IPF.Contact"))
-            {
-                bSupportedFolderType = true;
-                Contact item = new Contact(this.CurrentService);
-                item.MimeContent = new MimeContent();
+            //}
+            //if (this.currentFolder.FolderClass.StartsWith("IPF.Contact"))
+            //{
+            //    bSupportedFolderType = true;
+            //    Contact item = new Contact(this.CurrentService);
+            //    item.MimeContent = new MimeContent();
 
-                MimeEntry oMimeEntry = new MimeEntry();
-                oMimeEntry.ShowDialog();
-                if (oMimeEntry.ChoseOK == true)
-                {
-                    if (oMimeEntry.chkIsBase64Encoded.Checked == true)
-                        item.MimeContent.Content = Convert.FromBase64String(oMimeEntry.txtEntry.Text.Trim());
-                    else
-                        item.MimeContent.Content = System.Text.Encoding.UTF8.GetBytes(oMimeEntry.txtEntry.Text);
-                }
+            //    MimeEntry oMimeEntry = new MimeEntry();
+            //    oMimeEntry.ShowDialog();
+            //    if (oMimeEntry.ChoseOK == true)
+            //    {
+            //        if (oMimeEntry.chkIsBase64Encoded.Checked == true)
+            //            item.MimeContent.Content = Convert.FromBase64String(oMimeEntry.txtEntry.Text.Trim());
+            //        else
+            //            item.MimeContent.Content = System.Text.Encoding.UTF8.GetBytes(oMimeEntry.txtEntry.Text);
 
-                item.Save(this.currentFolder.Id);
-                this.RefreshContentAndDetails();
-                bItemCreated = true;
-                item = null;
-            }
-            if (this.currentFolder.FolderClass.StartsWith("IPF.Note"))
-            {
-                bSupportedFolderType = true;
-                EmailMessage item = new EmailMessage(this.CurrentService);
-                item.MimeContent = new MimeContent();
+            //        item.Save(this.currentFolder.Id);
+            //        this.RefreshContentAndDetails();
 
-                MimeEntry oMimeEntry = new MimeEntry();
+            //    }
 
-                oMimeEntry.ShowDialog();
-                if (oMimeEntry.ChoseOK == true)
-                {
-                    if (oMimeEntry.chkIsBase64Encoded.Checked == true)
-                        item.MimeContent.Content = Convert.FromBase64String(oMimeEntry.txtEntry.Text.Trim());
-                    else
-                        item.MimeContent.Content = System.Text.Encoding.UTF8.GetBytes(oMimeEntry.txtEntry.Text);
-                }
- 
-                item.Save(this.currentFolder.Id);
-                this.RefreshContentAndDetails();
-                bItemCreated = true;
-                item = null;
-            }
+            //    bItemCreated = true;
+            //    item = null;
+            //}
+            //if (this.currentFolder.FolderClass.StartsWith("IPF.Note"))
+            //{
+            //    bSupportedFolderType = true;
+            //    EmailMessage item = new EmailMessage(this.CurrentService);
+            //    item.MimeContent = new MimeContent();
+
+            //    MimeEntry oMimeEntry = new MimeEntry();
+
+            //    oMimeEntry.ShowDialog();
+            //    if (oMimeEntry.ChoseOK == true)
+            //    {
+            //        if (oMimeEntry.chkIsBase64Encoded.Checked == true)
+            //            item.MimeContent.Content = Convert.FromBase64String(oMimeEntry.txtEntry.Text.Trim());
+            //        else
+            //            item.MimeContent.Content = System.Text.Encoding.UTF8.GetBytes(oMimeEntry.txtEntry.Text);
+
+            //        item.Save(this.currentFolder.Id);
+            //        this.RefreshContentAndDetails();
+
+            //    }
+
+            //    bItemCreated = true;
+            //    item = null;
+
+            //}
 
             // Tasks are not standarding messaging items and there is no MIME for them. EWS can generate a MIME type 
             // string for a Task but not create an item using MIME. Tasks are Outlook items.
