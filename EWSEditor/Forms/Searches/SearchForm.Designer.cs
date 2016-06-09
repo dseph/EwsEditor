@@ -47,6 +47,8 @@
             this.numPageSize = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtClass = new System.Windows.Forms.TextBox();
+            this.chkClass = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,19 +73,19 @@
             this.cmboSearchType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmboSearchType.Name = "cmboSearchType";
             this.cmboSearchType.Size = new System.Drawing.Size(180, 28);
-            this.cmboSearchType.TabIndex = 2;
+            this.cmboSearchType.TabIndex = 1;
             // 
             // txtAQS
             // 
             this.txtAQS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAQS.Enabled = false;
-            this.txtAQS.Location = new System.Drawing.Point(47, 115);
+            this.txtAQS.Location = new System.Drawing.Point(43, 113);
             this.txtAQS.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtAQS.Multiline = true;
             this.txtAQS.Name = "txtAQS";
             this.txtAQS.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtAQS.Size = new System.Drawing.Size(860, 92);
+            this.txtAQS.Size = new System.Drawing.Size(874, 92);
             this.txtAQS.TabIndex = 6;
             // 
             // txtBody
@@ -94,7 +96,7 @@
             this.txtBody.Location = new System.Drawing.Point(147, 354);
             this.txtBody.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBody.Name = "txtBody";
-            this.txtBody.Size = new System.Drawing.Size(760, 26);
+            this.txtBody.Size = new System.Drawing.Size(774, 26);
             this.txtBody.TabIndex = 15;
             // 
             // chkBody
@@ -118,7 +120,7 @@
             this.txtCC.Location = new System.Drawing.Point(147, 318);
             this.txtCC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCC.Name = "txtCC";
-            this.txtCC.Size = new System.Drawing.Size(760, 26);
+            this.txtCC.Size = new System.Drawing.Size(774, 26);
             this.txtCC.TabIndex = 13;
             // 
             // chkCC
@@ -142,7 +144,7 @@
             this.txtTo.Location = new System.Drawing.Point(147, 282);
             this.txtTo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(760, 26);
+            this.txtTo.Size = new System.Drawing.Size(774, 26);
             this.txtTo.TabIndex = 11;
             // 
             // chkTo
@@ -166,7 +168,7 @@
             this.txtSubject.Location = new System.Drawing.Point(148, 246);
             this.txtSubject.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(760, 26);
+            this.txtSubject.Size = new System.Drawing.Size(774, 26);
             this.txtSubject.TabIndex = 9;
             // 
             // chkSubject
@@ -188,22 +190,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItems.FullRowSelect = true;
-            this.lvItems.Location = new System.Drawing.Point(45, 435);
+            this.lvItems.Location = new System.Drawing.Point(45, 477);
             this.lvItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(862, 136);
-            this.lvItems.TabIndex = 0;
+            this.lvItems.Size = new System.Drawing.Size(876, 130);
+            this.lvItems.TabIndex = 19;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
             this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_DoubleClick);
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(13, 390);
+            this.btnSearch.Location = new System.Drawing.Point(13, 432);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(184, 35);
-            this.btnSearch.TabIndex = 16;
+            this.btnSearch.TabIndex = 18;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -241,7 +243,7 @@
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 20);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Page Size:";
             // 
             // numPageSize
@@ -255,7 +257,7 @@
             0});
             this.numPageSize.Name = "numPageSize";
             this.numPageSize.Size = new System.Drawing.Size(180, 26);
-            this.numPageSize.TabIndex = 4;
+            this.numPageSize.TabIndex = 3;
             this.numPageSize.Value = new decimal(new int[] {
             250,
             0,
@@ -269,7 +271,7 @@
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(628, 20);
-            this.label3.TabIndex = 17;
+            this.label3.TabIndex = 4;
             this.label3.Text = "Note:  Exchange Online may limit AQS results to 250 items due to default policy s" +
     "ettings.";
             // 
@@ -277,18 +279,43 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(43, 574);
+            this.label4.Location = new System.Drawing.Point(43, 610);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(425, 20);
-            this.label4.TabIndex = 18;
+            this.label4.TabIndex = 20;
             this.label4.Text = "Note:  Double click a result for more properties and options.";
+            // 
+            // txtClass
+            // 
+            this.txtClass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtClass.Enabled = false;
+            this.txtClass.Location = new System.Drawing.Point(147, 388);
+            this.txtClass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtClass.Name = "txtClass";
+            this.txtClass.Size = new System.Drawing.Size(774, 26);
+            this.txtClass.TabIndex = 17;
+            // 
+            // chkClass
+            // 
+            this.chkClass.AutoSize = true;
+            this.chkClass.Enabled = false;
+            this.chkClass.Location = new System.Drawing.Point(43, 390);
+            this.chkClass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkClass.Name = "chkClass";
+            this.chkClass.Size = new System.Drawing.Size(74, 24);
+            this.chkClass.TabIndex = 16;
+            this.chkClass.Text = "Class";
+            this.chkClass.UseVisualStyleBackColor = true;
             // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(924, 596);
+            this.ClientSize = new System.Drawing.Size(938, 632);
+            this.Controls.Add(this.txtClass);
+            this.Controls.Add(this.chkClass);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numPageSize);
@@ -339,5 +366,7 @@
         private System.Windows.Forms.NumericUpDown numPageSize;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TextBox txtClass;
+        public System.Windows.Forms.CheckBox chkClass;
     }
 }
