@@ -651,7 +651,7 @@ namespace EWSEditor.Common
         public static string GetAdjustmentRules(TimeZoneInfo oTimeZoneInfo)
         {
             StringBuilder oSB = new StringBuilder();
-
+          
             oSB.AppendLine("    AdjustmentRules:");
             TimeZoneInfo.AdjustmentRule[] adjustmentRules = oTimeZoneInfo.GetAdjustmentRules();
             DateTimeFormatInfo dateInfo = CultureInfo.CurrentCulture.DateTimeFormat;

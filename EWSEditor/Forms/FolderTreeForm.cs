@@ -319,6 +319,53 @@ namespace EWSEditor.Forms
             }
         }
 
+        private static EwsEditorAppSettings GetOptionsFromNode(TreeNode node)
+        {
+
+             
+            //oSession.SessionService = service;
+            //oSession.SessionEwsEditorAppSettings = oAppSettings;
+            //serviceRootNode.Tag = oSession;
+
+            if ((node != null) && (node.Tag is RootFolderNodeTag))
+            {
+                //EWSEditor.Common.EwsSession oSession = (EWSEditor.Common.EwsSession)node.Tag;
+                return  ((RootFolderNodeTag)node.Tag).oAppSettings;
+     
+                //return null; //((RootFolderNodeTag)node.Tag).FolderObject;
+ 
+            }
+            else if ((node != null) && (node.Tag is Folder))
+            {
+                TreeNode oTreeNode;
+                oTreeNode = node; 
+                // Search parents (ancestors) to find the root folde.
+                bool bFound = false;
+                while (bFound == true)
+                {
+                    oTreeNode = oTreeNode.Parent;
+
+                    if (oTreeNode.Tag is RootFolderNodeTag)
+                    {
+                        return  ((RootFolderNodeTag)oTreeNode.Tag).oAppSettings;
+
+                        //this.CurrentAppSettings = GetOptionsFromNode(this.FolderTreeView.SelectedNode);
+                        bFound = true;
+                    }
+
+                }
+
+                //EWSEditor.Common.EwsSession oSession = (EWSEditor.Common.EwsSession)node.Tag;
+               // return oSession.SessionEwsEditorAppSettings;
+            }
+            else
+            {
+                return null;
+            }
+
+            return null;
+        }
+
         private static void GetFolderNodeText(Folder folder, FolderId origFolderId, out string nodeText, out string nodeToolTip)
         {
             // Initialize output
@@ -426,9 +473,15 @@ namespace EWSEditor.Forms
 
             int exit = this.mnuFile.DropDownItems.IndexOfKey(this.mnuExit.Name);
             this.mnuFile.DropDownItems.Insert(exit, this.fileSplitMenu2);
-            this.mnuFile.DropDownItems.Insert(exit, this.saveProfileMenu);
-            this.mnuFile.DropDownItems.Insert(exit, this.openProfileMenu);
-            this.mnuFile.DropDownItems.Insert(exit, this.fileSplitMenu1);
+            
+            // Saving and loading profiles are not supported directly off the menu.
+            // The work to get it to funciton properly will take too much work and complex.
+            // Saving and loading my be added to the main New Service window in the future, however
+            // that will also require a lot of work since many login and config settings are tied 
+            // to the Options window.
+            //this.mnuFile.DropDownItems.Insert(exit, this.saveProfileMenu);
+            //this.mnuFile.DropDownItems.Insert(exit, this.fileSplitMenu1);
+            //this.mnuFile.DropDownItems.Insert(exit, this.openProfileMenu);
             this.mnuFile.DropDownItems.Insert(exit, this.closeExchangeServiceMenu);
             this.mnuFile.DropDownItems.Insert(exit, this.openDefaultExchangeServiceMenu);
             this.mnuFile.DropDownItems.Insert(exit, this.newExchangeServiceMenu);
@@ -549,11 +602,40 @@ namespace EWSEditor.Forms
 
                 ServiceProfile profile = new ServiceProfile();
                 TreeNode serviceNode = FolderTreeView.TopNode;
-                while (serviceNode != null)
+                FolderId originalFolderId = null; 
+                while (serviceNode != null) 
                 {
+                    // all at this level should be RootFolderNodeTag.
+                    if (FolderTreeView.SelectedNode.Tag is RootFolderNodeTag)
+                    {
+                          
+                        originalFolderId = ((RootFolderNodeTag)serviceNode.Tag).OriginalFolderId;
 
-                    ExchangeService service = (ExchangeService)serviceNode.Tag;  // Todo: - extact both ExchangeService and EwsEditorAppSettings from tag
-                    EWSEditor.Common.EwsEditorAppSettings oAppSettings = null; 
+                        
+                        int a = 0;
+                    }
+
+                    ExchangeService service = null;
+
+                    EWSEditor.Common.EwsSession oSession = null;
+                    oSession = (EWSEditor.Common.EwsSession)serviceNode.Tag;
+                    service = oSession.SessionService;
+                    //service = (ExchangeService)serviceNode.Tag;  // Todo: - extact both ExchangeService and EwsEditorAppSettings from tag
+                    //ExchangeService service = (ExchangeService)serviceNode.Tag;  // Todo: - extact both ExchangeService and EwsEditorAppSettings from tag
+
+                   // EWSEditor.Common.EwsSession oSession = null
+                   // EWSEditor.Common.EwsSession oSession = (EWSEditor.Common.EwsSession)serviceNode.Tag;
+                    //ExchangeService service = oSession.SessionService;
+                   // EWSEditor.Common.EwsEditorAppSettings oAppSettings = oSession.SessionEwsEditorAppSettings;
+
+ 
+                    //ExchangeService service = (ExchangeService)serviceNode.Tag;  // Todo: - extact both ExchangeService and EwsEditorAppSettings from tag
+                    //EWSEditor.Common.EwsSession oSession = null;
+                    EwsEditorAppSettings  oAppSettings  = GetOptionsFromNode(this.FolderTreeView.SelectedNode); 
+ 
+                    //oSession = (EWSEditor.Common.EwsSession)serviceNode.Tag;
+                    //ExchangeService service = oSession.SessionService;
+                    //EWSEditor.Common.EwsEditorAppSettings oAppSettings = oSession.SessionEwsEditorAppSettings;
 
                     // Each Service in a ServiceProfile can have multiple root folders
                     List<FolderId> rootFolderIds = new List<FolderId>();
@@ -1317,9 +1399,9 @@ namespace EWSEditor.Forms
 
             // Create a root node for the ExchangeService
             serviceRootNode = FolderTreeView.Nodes.Add(PropertyInterpretation.GetPropertyValue(service));
-          serviceRootNode.Tag = service; 
+            //serviceRootNode.Tag = service; 
 
-            MessageBox.Show("todo");
+            //MessageBox.Show("todo");
             EWSEditor.Common.EwsSession oSession = new EwsSession();
             oSession.SessionService = service;
             oSession.SessionEwsEditorAppSettings = oAppSettings;
@@ -1451,15 +1533,19 @@ namespace EWSEditor.Forms
             //             if (parentNode.Tag is ExchangeService)
             if (parentNode.Tag is EwsSession)
             {
+                EWSEditor.Common.EwsSession oSession = (EWSEditor.Common.EwsSession)parentNode.Tag;
+
                 RootFolderNodeTag tag = new RootFolderNodeTag();
                 tag.FolderObject = folder;
                 if (origId != null)
                 {
                     tag.OriginalFolderId = origId;
+                    tag.oAppSettings = oSession.SessionEwsEditorAppSettings;
                 }
                 else
                 {
                     tag.OriginalFolderId = folder.Id;
+                    tag.oAppSettings = oSession.SessionEwsEditorAppSettings;
                 }
 
                 newNode.Tag = tag;
@@ -1533,12 +1619,21 @@ namespace EWSEditor.Forms
                 if (FolderTreeView.SelectedNode.Tag is RootFolderNodeTag)
                 {
                     originalFolderId = ((RootFolderNodeTag)FolderTreeView.SelectedNode.Tag).OriginalFolderId;
+
+                    this.CurrentAppSettings = GetOptionsFromNode(this.FolderTreeView.SelectedNode); 
                 }
+                else
+                {
+                    this.CurrentAppSettings = GetOptionsFromNode(this.FolderTreeView.SelectedNode); 
+                }
+
+                 
 
                 // Ensure that the form is setup properly
                 this.mnuViewConfigPropertySet.Enabled = true;
                 this.CurrentService = folder.Service;
-
+                //TreeNode x = FolderTreeView.SelectedNode;
+ 
                 //this.CurrentAppSettings = folder.  // TODO Load settings
 
                 // Reload folder with the current property set
@@ -1720,8 +1815,8 @@ namespace EWSEditor.Forms
         private struct RootFolderNodeTag
         {
             internal Folder FolderObject;
-            internal FolderId OriginalFolderId;
-           // internal EWSEditor.Common.EwsEditorAppSettings oAppSettings;
+            internal FolderId OriginalFolderId;  
+            internal EWSEditor.Common.EwsEditorAppSettings oAppSettings;   
         }
 
         private void mnuOpenStreamingNotifications_Click(object sender, EventArgs e)

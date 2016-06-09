@@ -503,6 +503,21 @@ namespace EWSEditor.Forms
         private void chkSetXAnchorMailbox_CheckedChanged(object sender, EventArgs e)
         {
             txtXAnchorMailbox.Enabled = chkSetXAnchorMailbox.Checked;
+
+            // Default
+            if (chkSetXAnchorMailbox.Checked == true && txtXAnchorMailbox.Text.Trim().Length == 0)
+            {
+                if (rdoAutodiscoverEmail.Checked == true && AutodiscoverEmailText.Text.Contains("@"))
+                {
+                    txtXAnchorMailbox.Text = AutodiscoverEmailText.Text;
+                }
+                else
+                {
+                    if (txtUserName.Text.Contains("@"))
+                        txtXAnchorMailbox.Text = txtUserName.Text;
+                }
+ 
+            }
         }
 
         private void rdoCredentialsUserSpecified_CheckedChanged(object sender, EventArgs e)
@@ -578,6 +593,11 @@ namespace EWSEditor.Forms
         private void ImpersonatedIdTextBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDefaultUserNameSmtp_Click(object sender, EventArgs e)
+        {
+            this.txtUserName.Text = UserPrincipal.Current.EmailAddress;
         }
  
     }
