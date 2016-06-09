@@ -77,6 +77,7 @@ namespace EWSEditor.Forms
                 this.chkTo.Enabled = false;
                 this.chkCC.Enabled = false;
                 this.chkBody.Enabled = false;
+                this.txtClass.Enabled = false;
 
             }
             if (this.rdoFindItemSearch.Checked == true)
@@ -90,6 +91,7 @@ namespace EWSEditor.Forms
                 this.txtTo.Enabled = true;
                 this.txtCC.Enabled = true;
                 this.txtBody.Enabled = true;
+                this.txtClass.Enabled = true;
 
             }
 
@@ -98,6 +100,7 @@ namespace EWSEditor.Forms
             this.txtTo.Enabled  = chkTo.Checked;
             this.txtCC.Enabled  = chkCC.Checked;
             this.txtBody.Enabled = chkBody.Checked;
+            this.txtClass.Enabled = chkClass.Checked;
  
  
         }
@@ -127,6 +130,12 @@ namespace EWSEditor.Forms
                 if (this.txtBody.Text.Trim().Length == 0)
                 {
                     MessageBox.Show("Body line text cannot be blank");
+                }
+
+            if (this.chkClass.Checked == true)
+                if (this.txtClass.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("Class line text cannot be blank");
                 }
 
             if (this.rdoAqsSearch.Checked == true)
@@ -198,6 +207,9 @@ namespace EWSEditor.Forms
                     }
                     else
                     {
+                        if (this.chkClass.Checked == true)
+                            if (this.txtClass.Text.Length != 0)
+                                searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.ItemClass, this.txtClass.Text));
                         if (this.chkSubject.Checked == true)
                             if (this.txtSubject.Text.Length != 0)
                                 searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Subject, this.txtSubject.Text));
@@ -267,6 +279,7 @@ namespace EWSEditor.Forms
 
                     int offset = 0;
                          
+ 
                     bool MoreItems = true;
                     ListViewItem oListItem = null;
 
@@ -281,7 +294,6 @@ namespace EWSEditor.Forms
                     //lvItems.Columns.Add("Id", 50, HorizontalAlignment.Left);
                     lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
                     lvItems.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
- 
 
                     int iCountMore = 0;
 
@@ -315,6 +327,9 @@ namespace EWSEditor.Forms
                         }
                         else
                         {
+                            if (this.chkClass.Checked == true)
+                                if (this.txtClass.Text.Length != 0)
+                                    searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.ItemClass, this.txtClass.Text));
                             if (this.chkSubject.Checked == true)
                                 if (this.txtSubject.Text.Length != 0)
                                     searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Subject, this.txtSubject.Text));

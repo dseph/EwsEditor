@@ -233,6 +233,12 @@
     <Compile Include="Forms\EmptyFolder.Designer.cs">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Searches\FindCertainFolders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Searches\FindCertainFolders.Designer.cs">
+      <DependentUpon>FindCertainFolders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ToolsForms\FileContentHelper.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -839,6 +845,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EmptyFolder.resx">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Searches\FindCertainFolders.resx">
+      <DependentUpon>FindCertainFolders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolsForms\FileContentHelper.resx">
       <DependentUpon>FileContentHelper.cs</DependentUpon>
