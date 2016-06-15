@@ -36,20 +36,16 @@
             this.txtMailboxSearchString = new System.Windows.Forms.TextBox();
             this.btnMailboxSearch = new System.Windows.Forms.Button();
             this.lvMailboxes = new System.Windows.Forms.ListView();
-            this.label3 = new System.Windows.Forms.Label();
             this.numPageSize = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmboSearchLocation = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSearchResultType = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.txtInfo = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,10 +54,10 @@
             this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvItems.Location = new System.Drawing.Point(44, 719);
+            this.lvItems.Location = new System.Drawing.Point(26, 607);
             this.lvItems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(946, 146);
+            this.lvItems.Size = new System.Drawing.Size(964, 110);
             this.lvItems.TabIndex = 19;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
@@ -72,7 +68,7 @@
             // 
             this.txtSearchForMailboxes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearchForMailboxes.Location = new System.Drawing.Point(44, 151);
+            this.txtSearchForMailboxes.Location = new System.Drawing.Point(37, 119);
             this.txtSearchForMailboxes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSearchForMailboxes.MaxLength = 0;
             this.txtSearchForMailboxes.Multiline = true;
@@ -94,7 +90,7 @@
             // 
             // btnListSearchableMailboxes
             // 
-            this.btnListSearchableMailboxes.Location = new System.Drawing.Point(15, 238);
+            this.btnListSearchableMailboxes.Location = new System.Drawing.Point(7, 204);
             this.btnListSearchableMailboxes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnListSearchableMailboxes.Name = "btnListSearchableMailboxes";
             this.btnListSearchableMailboxes.Size = new System.Drawing.Size(219, 35);
@@ -107,17 +103,17 @@
             // 
             this.txtMailboxSearchString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMailboxSearchString.Location = new System.Drawing.Point(44, 539);
+            this.txtMailboxSearchString.Location = new System.Drawing.Point(27, 457);
             this.txtMailboxSearchString.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtMailboxSearchString.MaxLength = 0;
             this.txtMailboxSearchString.Multiline = true;
             this.txtMailboxSearchString.Name = "txtMailboxSearchString";
-            this.txtMailboxSearchString.Size = new System.Drawing.Size(953, 98);
+            this.txtMailboxSearchString.Size = new System.Drawing.Size(963, 98);
             this.txtMailboxSearchString.TabIndex = 16;
             // 
             // btnMailboxSearch
             // 
-            this.btnMailboxSearch.Location = new System.Drawing.Point(15, 648);
+            this.btnMailboxSearch.Location = new System.Drawing.Point(9, 562);
             this.btnMailboxSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMailboxSearch.Name = "btnMailboxSearch";
             this.btnMailboxSearch.Size = new System.Drawing.Size(184, 35);
@@ -130,27 +126,17 @@
             // 
             this.lvMailboxes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvMailboxes.Location = new System.Drawing.Point(46, 304);
+            this.lvMailboxes.Location = new System.Drawing.Point(27, 249);
             this.lvMailboxes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lvMailboxes.Name = "lvMailboxes";
-            this.lvMailboxes.Size = new System.Drawing.Size(950, 128);
+            this.lvMailboxes.Size = new System.Drawing.Size(963, 128);
             this.lvMailboxes.TabIndex = 7;
             this.lvMailboxes.UseCompatibleStateImageBehavior = false;
             this.lvMailboxes.SelectedIndexChanged += new System.EventHandler(this.lvMailboxes_SelectedIndexChanged);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 512);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 20);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Search string:";
-            // 
             // numPageSize
             // 
-            this.numPageSize.Location = new System.Drawing.Point(498, 474);
+            this.numPageSize.Location = new System.Drawing.Point(492, 419);
             this.numPageSize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numPageSize.Maximum = new decimal(new int[] {
             1000,
@@ -169,7 +155,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(404, 478);
+            this.label2.Location = new System.Drawing.Point(398, 423);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 20);
@@ -179,7 +165,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 475);
+            this.label1.Location = new System.Drawing.Point(37, 420);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 20);
@@ -194,7 +180,7 @@
             "PrimaryOnly",
             "ArchiveOnly",
             "All"});
-            this.cmboSearchLocation.Location = new System.Drawing.Point(183, 474);
+            this.cmboSearchLocation.Location = new System.Drawing.Point(177, 419);
             this.cmboSearchLocation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmboSearchLocation.Name = "cmboSearchLocation";
             this.cmboSearchLocation.Size = new System.Drawing.Size(196, 28);
@@ -203,7 +189,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(645, 478);
+            this.label5.Location = new System.Drawing.Point(639, 423);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(144, 20);
@@ -218,27 +204,17 @@
             this.txtSearchResultType.Items.AddRange(new object[] {
             "PreviewOnly",
             "StatisticsOnly"});
-            this.txtSearchResultType.Location = new System.Drawing.Point(799, 474);
+            this.txtSearchResultType.Location = new System.Drawing.Point(793, 419);
             this.txtSearchResultType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSearchResultType.Name = "txtSearchResultType";
             this.txtSearchResultType.Size = new System.Drawing.Size(187, 28);
             this.txtSearchResultType.TabIndex = 14;
             this.txtSearchResultType.Visible = false;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 278);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(133, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Mailboxes Found:";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 439);
+            this.label4.Location = new System.Drawing.Point(5, 384);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(684, 20);
@@ -246,37 +222,17 @@
             this.label4.Text = "Note: Select a mailbox above.  Next enter criteria to search on below then click " +
     "\"Mailbox Search\".";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 694);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 20);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Results:";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(11, 64);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(671, 20);
+            this.label8.Size = new System.Drawing.Size(716, 20);
             this.label8.TabIndex = 1;
-            this.label8.Text = "Note: Enter search criteria to find searchable mailboxes then click \"List Searcha" +
-    "ble Mailboxes\".";
+            this.label8.Text = "Note: Enter search criteria below to find searchable mailboxes then click \"List S" +
+    "earchable Mailboxes\".";
             this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(11, 125);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 20);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Search string:";
             // 
             // txtInfo
             // 
@@ -293,29 +249,26 @@
             this.txtInfo.TabIndex = 0;
             this.txtInfo.Text = resources.GetString("txtInfo.Text");
             // 
-            // label10
+            // label7
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(40, 878);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(425, 20);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "Note:  Double click a result for more properties and options.";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(240, 569);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(638, 20);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Note:  List below will contain results.  Double click a result for more propertie" +
+    "s and options.";
             // 
             // EDiscoverySearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1003, 907);
-            this.Controls.Add(this.label10);
+            this.ClientSize = new System.Drawing.Size(1003, 731);
             this.Controls.Add(this.txtInfo);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtSearchResultType);
             this.Controls.Add(this.label1);
@@ -327,7 +280,6 @@
             this.Controls.Add(this.chkExpandGroupMemberships);
             this.Controls.Add(this.btnListSearchableMailboxes);
             this.Controls.Add(this.txtMailboxSearchString);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnMailboxSearch);
             this.Controls.Add(this.lvItems);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -349,19 +301,15 @@
         public System.Windows.Forms.TextBox txtMailboxSearchString;
         private System.Windows.Forms.Button btnMailboxSearch;
         private System.Windows.Forms.ListView lvMailboxes;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numPageSize;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.ComboBox cmboSearchLocation;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.ComboBox txtSearchResultType;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         public System.Windows.Forms.TextBox txtInfo;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label7;
     }
 }

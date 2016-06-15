@@ -78,6 +78,7 @@ namespace EWSEditor.Forms
                 this.chkCC.Enabled = false;
                 this.chkBody.Enabled = false;
                 this.txtClass.Enabled = false;
+                this.chkClass.Enabled = false;
 
             }
             if (this.rdoFindItemSearch.Checked == true)
@@ -86,6 +87,7 @@ namespace EWSEditor.Forms
                 this.chkTo.Enabled = true;
                 this.chkCC.Enabled = true;
                 this.chkBody.Enabled = true;
+                this.chkClass.Enabled = true;
 
                 this.txtSubject.Enabled = true;
                 this.txtTo.Enabled = true;

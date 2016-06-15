@@ -93,12 +93,17 @@ namespace EWSEditor.Forms.Searches
             int folderViewSize = 250;
             int iCountMore = 0;
             ListViewItem oListItem = null;
+            Object oPath = null;
+            string sPath = string.Empty;
+            bool bIsHidden = false;
 
             //if (oService.HttpHeaders.("X-AnchorMailbox"))
             oService.HttpHeaders.Remove("X-AnchorMailbox");
             oService.HttpHeaders.Add("X-AnchorMailbox", sMailbox);
             oService.ImpersonatedUserId = new ImpersonatedUserId(ConnectingIdType.SmtpAddress, sMailbox);
 
+            ExtendedPropertyDefinition PR_Folder_Path = new ExtendedPropertyDefinition(26293, MapiPropertyType.String);
+            
             ExtendedPropertyDefinition isHiddenProp = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
  
             StringBuilder oSB = new StringBuilder();
@@ -118,7 +123,8 @@ namespace EWSEditor.Forms.Searches
                             FolderSchema.FolderClass, 
                             FolderSchema.TotalCount, 
                             isHiddenProp,
-                            FolderSchema.Id
+                            FolderSchema.Id,
+                            PR_Folder_Path
                             );
                 List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
                 view.Traversal = FolderTraversal.Deep;
@@ -137,6 +143,13 @@ namespace EWSEditor.Forms.Searches
                
                 foreach (Folder oFolder in oFindFoldersResults.Folders)
                 {
+                     
+                    oFolder.TryGetProperty(PR_Folder_Path, out oPath);
+                    // https://social.technet.microsoft.com/Forums/exchange/en-US/e5d07492-f8a3-4db5-b137-46e920ab3dde/exchange-ews-managed-getting-full-path-for-a-folder?forum=exchangesvrdevelopment
+                    sPath = Encoding.Unicode.GetString(HexStringToByteArray(BitConverter.ToString(UnicodeEncoding.Unicode.GetBytes((String)oPath)).Replace("FE-FF", "5C-00").Replace("-", "")));
+
+                    oFolder.TryGetProperty(isHiddenProp, out bIsHidden);
+
                     if (this.rdoSaveToCsvFile.Checked == true)
                     {
                         if (this.txtCsvFilePath.Text.Trim().Length !=0)
@@ -145,7 +158,9 @@ namespace EWSEditor.Forms.Searches
                             oSB.AppendFormat("{0},", oFolder.FolderClass);
                             oSB.AppendFormat("{0},", oFolder.DisplayName);
                             oSB.AppendFormat("{0},", oFolder.TotalCount.ToString());
-                            oSB.AppendFormat("{0}", oFolder.Id.UniqueId);
+                            oSB.AppendFormat("{0},", bIsHidden.ToString());
+                            oSB.AppendFormat("{0},", oFolder.Id.UniqueId); 
+                            oSB.AppendFormat("{0}", sPath);
 
                             System.IO.File.AppendText(oSB.ToString());
                         }
@@ -156,7 +171,9 @@ namespace EWSEditor.Forms.Searches
                         oListItem.SubItems.Add(oFolder.FolderClass);
                         oListItem.SubItems.Add(oFolder.DisplayName);
                         oListItem.SubItems.Add(oFolder.TotalCount.ToString());
+                        oListItem.SubItems.Add(bIsHidden.ToString());
                         oListItem.SubItems.Add(oFolder.Id.UniqueId);
+                        oListItem.SubItems.Add(sPath);
                         oListItem.Tag = new  FolderTag(oFolder.Id, oFolder.FolderClass);
                         lvFolders.Items.AddRange(new ListViewItem[] { oListItem }); ;
                         oListItem = null;
@@ -178,6 +195,15 @@ namespace EWSEditor.Forms.Searches
  
 
         }
+        static Byte[] HexStringToByteArray(String HexString)
+        {
+            Byte[] ByteArray = new Byte[HexString.Length / 2];
+            for (int i = 0; i < HexString.Length; i += 2)
+            {
+                ByteArray[i / 2] = Convert.ToByte(HexString.Substring(i, 2), 16);
+            }
+            return ByteArray;
+        }
 
         private void PrepareFolderLV() 
         {
@@ -189,8 +215,10 @@ namespace EWSEditor.Forms.Searches
             lvFolders.Columns.Add("Mailbox", 170, HorizontalAlignment.Left);
             lvFolders.Columns.Add("Folder Class", 170, HorizontalAlignment.Left);
             lvFolders.Columns.Add("Folder Name", 170, HorizontalAlignment.Left);
+            lvFolders.Columns.Add("IsHidden", 170, HorizontalAlignment.Left);
             lvFolders.Columns.Add("Item Count", 170, HorizontalAlignment.Left);
-            lvFolders.Columns.Add("Unique Id", 300, HorizontalAlignment.Left);
+            lvFolders.Columns.Add("Unique Id", 250, HorizontalAlignment.Left);
+            lvFolders.Columns.Add("FolderPath", 250, HorizontalAlignment.Left);
         } 
 
     }

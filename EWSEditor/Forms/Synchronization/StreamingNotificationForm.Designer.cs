@@ -104,11 +104,11 @@
             this.grpSynchronize.Controls.Add(this.btnUnsubscribe);
             this.grpSynchronize.Controls.Add(this.txtFolderId);
             this.grpSynchronize.Controls.Add(this.label2);
-            this.grpSynchronize.Location = new System.Drawing.Point(16, 15);
-            this.grpSynchronize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpSynchronize.Location = new System.Drawing.Point(6, 8);
+            this.grpSynchronize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.grpSynchronize.Name = "grpSynchronize";
-            this.grpSynchronize.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpSynchronize.Size = new System.Drawing.Size(1329, 156);
+            this.grpSynchronize.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.grpSynchronize.Size = new System.Drawing.Size(1228, 205);
             this.grpSynchronize.TabIndex = 0;
             this.grpSynchronize.TabStop = false;
             this.grpSynchronize.Text = "Notification Settings...";
@@ -119,10 +119,10 @@
             this.chkAllFoldes.AutoSize = true;
             this.chkAllFoldes.Checked = true;
             this.chkAllFoldes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAllFoldes.Location = new System.Drawing.Point(12, 23);
-            this.chkAllFoldes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkAllFoldes.Location = new System.Drawing.Point(14, 29);
+            this.chkAllFoldes.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkAllFoldes.Name = "chkAllFoldes";
-            this.chkAllFoldes.Size = new System.Drawing.Size(179, 21);
+            this.chkAllFoldes.Size = new System.Drawing.Size(202, 24);
             this.chkAllFoldes.TabIndex = 0;
             this.chkAllFoldes.Text = "Subscribe to All Folders";
             this.chkAllFoldes.UseVisualStyleBackColor = true;
@@ -130,31 +130,28 @@
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(439, 122);
+            this.label5.Location = new System.Drawing.Point(490, 156);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 17);
+            this.label5.Size = new System.Drawing.Size(100, 20);
             this.label5.TabIndex = 15;
             this.label5.Text = "Subs/Thread";
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(224, 122);
+            this.label4.Location = new System.Drawing.Point(248, 156);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 17);
+            this.label4.Size = new System.Drawing.Size(145, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "Number of Threads";
             // 
             // numSubs
             // 
-            this.numSubs.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numSubs.Location = new System.Drawing.Point(540, 119);
-            this.numSubs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numSubs.Location = new System.Drawing.Point(604, 153);
+            this.numSubs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numSubs.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -166,7 +163,7 @@
             0,
             0});
             this.numSubs.Name = "numSubs";
-            this.numSubs.Size = new System.Drawing.Size(67, 22);
+            this.numSubs.Size = new System.Drawing.Size(75, 26);
             this.numSubs.TabIndex = 16;
             this.numSubs.Value = new decimal(new int[] {
             1,
@@ -176,9 +173,8 @@
             // 
             // numThreads
             // 
-            this.numThreads.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.numThreads.Location = new System.Drawing.Point(363, 119);
-            this.numThreads.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numThreads.Location = new System.Drawing.Point(404, 153);
+            this.numThreads.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numThreads.Maximum = new decimal(new int[] {
             999,
             0,
@@ -190,7 +186,7 @@
             0,
             0});
             this.numThreads.Name = "numThreads";
-            this.numThreads.Size = new System.Drawing.Size(67, 22);
+            this.numThreads.Size = new System.Drawing.Size(75, 26);
             this.numThreads.TabIndex = 14;
             this.numThreads.Value = new decimal(new int[] {
             1,
@@ -200,20 +196,18 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(623, 122);
+            this.label3.Location = new System.Drawing.Point(697, 156);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 17);
+            this.label3.Size = new System.Drawing.Size(150, 20);
             this.label3.TabIndex = 17;
             this.label3.Text = "Connection Lifetime";
             // 
             // SubscriptionLifetime
             // 
-            this.SubscriptionLifetime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SubscriptionLifetime.Location = new System.Drawing.Point(760, 119);
-            this.SubscriptionLifetime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SubscriptionLifetime.Location = new System.Drawing.Point(851, 153);
+            this.SubscriptionLifetime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SubscriptionLifetime.Maximum = new decimal(new int[] {
             99,
             0,
@@ -225,7 +219,7 @@
             0,
             0});
             this.SubscriptionLifetime.Name = "SubscriptionLifetime";
-            this.SubscriptionLifetime.Size = new System.Drawing.Size(67, 22);
+            this.SubscriptionLifetime.Size = new System.Drawing.Size(75, 26);
             this.SubscriptionLifetime.TabIndex = 18;
             this.SubscriptionLifetime.Value = new decimal(new int[] {
             30,
@@ -236,10 +230,10 @@
             // btnGetFolderId
             // 
             this.btnGetFolderId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetFolderId.Location = new System.Drawing.Point(1276, 48);
-            this.btnGetFolderId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGetFolderId.Location = new System.Drawing.Point(1133, 60);
+            this.btnGetFolderId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGetFolderId.Name = "btnGetFolderId";
-            this.btnGetFolderId.Size = new System.Drawing.Size(33, 28);
+            this.btnGetFolderId.Size = new System.Drawing.Size(37, 35);
             this.btnGetFolderId.TabIndex = 3;
             this.btnGetFolderId.Text = "...";
             this.btnGetFolderId.UseVisualStyleBackColor = true;
@@ -247,10 +241,10 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(8, 92);
+            this.label1.Location = new System.Drawing.Point(8, 114);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 28);
+            this.label1.Size = new System.Drawing.Size(118, 35);
             this.label1.TabIndex = 4;
             this.label1.Text = "Events Types:";
             // 
@@ -259,10 +253,10 @@
             this.chkSerialize.AutoSize = true;
             this.chkSerialize.Checked = true;
             this.chkSerialize.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkSerialize.Location = new System.Drawing.Point(17, 123);
-            this.chkSerialize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkSerialize.Location = new System.Drawing.Point(19, 158);
+            this.chkSerialize.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkSerialize.Name = "chkSerialize";
-            this.chkSerialize.Size = new System.Drawing.Size(166, 21);
+            this.chkSerialize.Size = new System.Drawing.Size(188, 24);
             this.chkSerialize.TabIndex = 12;
             this.chkSerialize.Text = "Serialize Connections";
             this.chkSerialize.UseVisualStyleBackColor = true;
@@ -272,10 +266,10 @@
             this.chkFreeBusyChangedEvent.AutoSize = true;
             this.chkFreeBusyChangedEvent.Checked = true;
             this.chkFreeBusyChangedEvent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkFreeBusyChangedEvent.Location = new System.Drawing.Point(917, 92);
-            this.chkFreeBusyChangedEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkFreeBusyChangedEvent.Location = new System.Drawing.Point(1010, 114);
+            this.chkFreeBusyChangedEvent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkFreeBusyChangedEvent.Name = "chkFreeBusyChangedEvent";
-            this.chkFreeBusyChangedEvent.Size = new System.Drawing.Size(183, 21);
+            this.chkFreeBusyChangedEvent.Size = new System.Drawing.Size(209, 24);
             this.chkFreeBusyChangedEvent.TabIndex = 11;
             this.chkFreeBusyChangedEvent.Text = "FreeBusyChangedEvent";
             this.chkFreeBusyChangedEvent.UseVisualStyleBackColor = true;
@@ -285,10 +279,10 @@
             this.chkNewMailEvent.AutoSize = true;
             this.chkNewMailEvent.Checked = true;
             this.chkNewMailEvent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkNewMailEvent.Location = new System.Drawing.Point(783, 91);
-            this.chkNewMailEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkNewMailEvent.Location = new System.Drawing.Point(859, 113);
+            this.chkNewMailEvent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkNewMailEvent.Name = "chkNewMailEvent";
-            this.chkNewMailEvent.Size = new System.Drawing.Size(118, 21);
+            this.chkNewMailEvent.Size = new System.Drawing.Size(135, 24);
             this.chkNewMailEvent.TabIndex = 10;
             this.chkNewMailEvent.Text = "NewMailEvent";
             this.chkNewMailEvent.UseVisualStyleBackColor = true;
@@ -298,10 +292,10 @@
             this.chkMovedEvent.AutoSize = true;
             this.chkMovedEvent.Checked = true;
             this.chkMovedEvent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMovedEvent.Location = new System.Drawing.Point(396, 92);
-            this.chkMovedEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkMovedEvent.Location = new System.Drawing.Point(424, 114);
+            this.chkMovedEvent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkMovedEvent.Name = "chkMovedEvent";
-            this.chkMovedEvent.Size = new System.Drawing.Size(108, 21);
+            this.chkMovedEvent.Size = new System.Drawing.Size(123, 24);
             this.chkMovedEvent.TabIndex = 7;
             this.chkMovedEvent.Text = "MovedEvent";
             this.chkMovedEvent.UseVisualStyleBackColor = true;
@@ -311,10 +305,10 @@
             this.chkModifiedEvent.AutoSize = true;
             this.chkModifiedEvent.Checked = true;
             this.chkModifiedEvent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkModifiedEvent.Location = new System.Drawing.Point(649, 91);
-            this.chkModifiedEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkModifiedEvent.Location = new System.Drawing.Point(708, 113);
+            this.chkModifiedEvent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkModifiedEvent.Name = "chkModifiedEvent";
-            this.chkModifiedEvent.Size = new System.Drawing.Size(119, 21);
+            this.chkModifiedEvent.Size = new System.Drawing.Size(136, 24);
             this.chkModifiedEvent.TabIndex = 9;
             this.chkModifiedEvent.Text = "ModifiedEvent";
             this.chkModifiedEvent.UseVisualStyleBackColor = true;
@@ -324,10 +318,10 @@
             this.chkDeletedEvent.AutoSize = true;
             this.chkDeletedEvent.Checked = true;
             this.chkDeletedEvent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDeletedEvent.Location = new System.Drawing.Point(267, 92);
-            this.chkDeletedEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkDeletedEvent.Location = new System.Drawing.Point(278, 114);
+            this.chkDeletedEvent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkDeletedEvent.Name = "chkDeletedEvent";
-            this.chkDeletedEvent.Size = new System.Drawing.Size(115, 21);
+            this.chkDeletedEvent.Size = new System.Drawing.Size(132, 24);
             this.chkDeletedEvent.TabIndex = 6;
             this.chkDeletedEvent.Text = "DeletedEvent";
             this.chkDeletedEvent.UseVisualStyleBackColor = true;
@@ -337,10 +331,10 @@
             this.chkCreatedEvent.AutoSize = true;
             this.chkCreatedEvent.Checked = true;
             this.chkCreatedEvent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCreatedEvent.Location = new System.Drawing.Point(520, 91);
-            this.chkCreatedEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkCreatedEvent.Location = new System.Drawing.Point(563, 113);
+            this.chkCreatedEvent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkCreatedEvent.Name = "chkCreatedEvent";
-            this.chkCreatedEvent.Size = new System.Drawing.Size(116, 21);
+            this.chkCreatedEvent.Size = new System.Drawing.Size(133, 24);
             this.chkCreatedEvent.TabIndex = 8;
             this.chkCreatedEvent.Text = "CreatedEvent";
             this.chkCreatedEvent.UseVisualStyleBackColor = true;
@@ -350,10 +344,10 @@
             this.chkCopiedEvent.AutoSize = true;
             this.chkCopiedEvent.Checked = true;
             this.chkCopiedEvent.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkCopiedEvent.Location = new System.Drawing.Point(139, 92);
-            this.chkCopiedEvent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkCopiedEvent.Location = new System.Drawing.Point(134, 114);
+            this.chkCopiedEvent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkCopiedEvent.Name = "chkCopiedEvent";
-            this.chkCopiedEvent.Size = new System.Drawing.Size(110, 21);
+            this.chkCopiedEvent.Size = new System.Drawing.Size(126, 24);
             this.chkCopiedEvent.TabIndex = 5;
             this.chkCopiedEvent.Text = "CopiedEvent";
             this.chkCopiedEvent.UseVisualStyleBackColor = true;
@@ -361,10 +355,10 @@
             // btnSubscribe
             // 
             this.btnSubscribe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSubscribe.Location = new System.Drawing.Point(1107, 121);
-            this.btnSubscribe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSubscribe.Location = new System.Drawing.Point(986, 152);
+            this.btnSubscribe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSubscribe.Name = "btnSubscribe";
-            this.btnSubscribe.Size = new System.Drawing.Size(100, 28);
+            this.btnSubscribe.Size = new System.Drawing.Size(112, 35);
             this.btnSubscribe.TabIndex = 19;
             this.btnSubscribe.Text = "Subscribe";
             this.btnSubscribe.UseVisualStyleBackColor = true;
@@ -374,10 +368,10 @@
             // 
             this.btnUnsubscribe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUnsubscribe.Enabled = false;
-            this.btnUnsubscribe.Location = new System.Drawing.Point(1215, 121);
-            this.btnUnsubscribe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUnsubscribe.Location = new System.Drawing.Point(1108, 152);
+            this.btnUnsubscribe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnUnsubscribe.Name = "btnUnsubscribe";
-            this.btnUnsubscribe.Size = new System.Drawing.Size(100, 28);
+            this.btnUnsubscribe.Size = new System.Drawing.Size(112, 35);
             this.btnUnsubscribe.TabIndex = 20;
             this.btnUnsubscribe.Text = "Unsubscribe";
             this.btnUnsubscribe.UseVisualStyleBackColor = true;
@@ -387,28 +381,28 @@
             // 
             this.txtFolderId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFolderId.Location = new System.Drawing.Point(135, 52);
-            this.txtFolderId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFolderId.Location = new System.Drawing.Point(134, 64);
+            this.txtFolderId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFolderId.Name = "txtFolderId";
             this.txtFolderId.ReadOnly = true;
-            this.txtFolderId.Size = new System.Drawing.Size(1132, 22);
+            this.txtFolderId.Size = new System.Drawing.Size(977, 26);
             this.txtFolderId.TabIndex = 2;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(8, 55);
+            this.label2.Location = new System.Drawing.Point(9, 69);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 28);
+            this.label2.Size = new System.Drawing.Size(104, 35);
             this.label2.TabIndex = 1;
             this.label2.Text = "Folder Id:";
             // 
             // lblEventsHeader
             // 
-            this.lblEventsHeader.Location = new System.Drawing.Point(24, 174);
+            this.lblEventsHeader.Location = new System.Drawing.Point(27, 218);
             this.lblEventsHeader.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEventsHeader.Name = "lblEventsHeader";
-            this.lblEventsHeader.Size = new System.Drawing.Size(955, 28);
+            this.lblEventsHeader.Size = new System.Drawing.Size(905, 35);
             this.lblEventsHeader.TabIndex = 15;
             this.lblEventsHeader.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
@@ -430,12 +424,12 @@
             this.colOldFolderId,
             this.colUnreadCount});
             this.lstEvents.FullRowSelect = true;
-            this.lstEvents.Location = new System.Drawing.Point(16, 206);
-            this.lstEvents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstEvents.Location = new System.Drawing.Point(6, 258);
+            this.lstEvents.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lstEvents.MultiSelect = false;
             this.lstEvents.Name = "lstEvents";
             this.lstEvents.ShowItemToolTips = true;
-            this.lstEvents.Size = new System.Drawing.Size(1328, 500);
+            this.lstEvents.Size = new System.Drawing.Size(1228, 251);
             this.lstEvents.TabIndex = 1;
             this.lstEvents.UseCompatibleStateImageBehavior = false;
             this.lstEvents.View = System.Windows.Forms.View.Details;
@@ -499,10 +493,10 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(1245, 714);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Location = new System.Drawing.Point(1106, 519);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 28);
+            this.btnClose.Size = new System.Drawing.Size(112, 35);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -511,20 +505,20 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(199, 182);
+            this.label6.Location = new System.Drawing.Point(224, 228);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 17);
+            this.label6.Size = new System.Drawing.Size(106, 20);
             this.label6.TabIndex = 17;
             this.label6.Text = "Connections: ";
             // 
             // ConnectionCount
             // 
             this.ConnectionCount.AutoSize = true;
-            this.ConnectionCount.Location = new System.Drawing.Point(309, 182);
+            this.ConnectionCount.Location = new System.Drawing.Point(348, 228);
             this.ConnectionCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ConnectionCount.Name = "ConnectionCount";
-            this.ConnectionCount.Size = new System.Drawing.Size(16, 17);
+            this.ConnectionCount.Size = new System.Drawing.Size(18, 20);
             this.ConnectionCount.TabIndex = 18;
             this.ConnectionCount.Text = "0";
             // 
@@ -532,10 +526,10 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1227, 182);
+            this.label7.Location = new System.Drawing.Point(1090, 228);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 17);
+            this.label7.Size = new System.Drawing.Size(62, 20);
             this.label7.TabIndex = 17;
             this.label7.Text = "Events:";
             // 
@@ -543,20 +537,20 @@
             // 
             this.EventCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EventCount.AutoSize = true;
-            this.EventCount.Location = new System.Drawing.Point(1324, 182);
+            this.EventCount.Location = new System.Drawing.Point(1200, 228);
             this.EventCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.EventCount.Name = "EventCount";
-            this.EventCount.Size = new System.Drawing.Size(16, 17);
+            this.EventCount.Size = new System.Drawing.Size(18, 20);
             this.EventCount.TabIndex = 18;
             this.EventCount.Text = "0";
             // 
             // btnClearEvents
             // 
             this.btnClearEvents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnClearEvents.Location = new System.Drawing.Point(16, 714);
-            this.btnClearEvents.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClearEvents.Location = new System.Drawing.Point(7, 519);
+            this.btnClearEvents.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnClearEvents.Name = "btnClearEvents";
-            this.btnClearEvents.Size = new System.Drawing.Size(100, 28);
+            this.btnClearEvents.Size = new System.Drawing.Size(112, 35);
             this.btnClearEvents.TabIndex = 2;
             this.btnClearEvents.Text = "Clear Events";
             this.btnClearEvents.UseVisualStyleBackColor = true;
@@ -565,30 +559,30 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(437, 182);
+            this.label8.Location = new System.Drawing.Point(492, 228);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(97, 17);
+            this.label8.Size = new System.Drawing.Size(109, 20);
             this.label8.TabIndex = 17;
             this.label8.Text = "Subscriptions:";
             // 
             // SubscriptionCount
             // 
             this.SubscriptionCount.AutoSize = true;
-            this.SubscriptionCount.Location = new System.Drawing.Point(552, 182);
+            this.SubscriptionCount.Location = new System.Drawing.Point(621, 228);
             this.SubscriptionCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SubscriptionCount.Name = "SubscriptionCount";
-            this.SubscriptionCount.Size = new System.Drawing.Size(16, 17);
+            this.SubscriptionCount.Size = new System.Drawing.Size(18, 20);
             this.SubscriptionCount.TabIndex = 18;
             this.SubscriptionCount.Text = "0";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 182);
+            this.label9.Location = new System.Drawing.Point(27, 228);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 17);
+            this.label9.Size = new System.Drawing.Size(71, 20);
             this.label9.TabIndex = 17;
             this.label9.Text = "Threads:";
             this.label9.DoubleClick += new System.EventHandler(this.ThreadCountLabel_DoubleClick);
@@ -596,18 +590,18 @@
             // ThreadCount
             // 
             this.ThreadCount.AutoSize = true;
-            this.ThreadCount.Location = new System.Drawing.Point(112, 182);
+            this.ThreadCount.Location = new System.Drawing.Point(126, 228);
             this.ThreadCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ThreadCount.Name = "ThreadCount";
-            this.ThreadCount.Size = new System.Drawing.Size(16, 17);
+            this.ThreadCount.Size = new System.Drawing.Size(18, 20);
             this.ThreadCount.TabIndex = 18;
             this.ThreadCount.Text = "0";
             // 
             // StreamingNotificationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1364, 752);
+            this.ClientSize = new System.Drawing.Size(1239, 567);
             this.Controls.Add(this.btnClearEvents);
             this.Controls.Add(this.SubscriptionCount);
             this.Controls.Add(this.EventCount);
@@ -621,7 +615,7 @@
             this.Controls.Add(this.lblEventsHeader);
             this.Controls.Add(this.lstEvents);
             this.Controls.Add(this.grpSynchronize);
-            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.Name = "StreamingNotificationForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
