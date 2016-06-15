@@ -139,7 +139,7 @@ namespace EWSEditor.Common
             bool bResponseHasControlCharacters = false;
             bool bResponseHasOddCharacters = false;
             string sReponseCheck = string.Empty;
-             
+            bool bThisCharacterIsOK = false;
 
             int iVal = 0;
             string sComment = string.Empty;
@@ -150,29 +150,37 @@ namespace EWSEditor.Common
             StringBuilder oSanitized = new StringBuilder();
             foreach (char c in sBody)
             {
+                bThisCharacterIsOK = true;
+
                 sComment = string.Empty;
                 iVal = (int)c;
                 if (iVal > 127 & iVal < 256)
                 {
-                    sComment = "Over 127";
+                    sComment = "Over 127   ***  ***  ***";
                     bResponseHasOddCharacters = true;
                     bResponseHasExtendedAsciiCharacters = true;
+                    bThisCharacterIsOK = true;
                 }
                 if (iVal > 255)
                 { 
-                    sComment = "Over 255";
+                    sComment = "Over 255   ***  ***  ***";
                     bResponseHasOddCharacters = true;
                     bResponseHasUnicode = true;
+                    bThisCharacterIsOK = true;
                 }
                 if ((iVal > 0 && iVal < 7) || (iVal > 13 && iVal < 32))
                 {
-                    sComment = "Control Character";
+                    sComment = "Control Character   ***  ***  ***";
                     bResponseHasControlCharacters = true;
                     bResponseHasOddCharacters = true;
+                    bThisCharacterIsOK = true;
                 }
 
-                if (bResponseHasOddCharacters == false)
+                if (bThisCharacterIsOK == true)
+                {
                     oSanitized.Append(c);
+                     
+                }
 
                 oCharCheck.AppendFormat("[{0}] - {1}  {2} \r\n", (int)c, c, sComment);
             }
@@ -190,13 +198,14 @@ namespace EWSEditor.Common
                 oSB.AppendLine("***");
                 oSB.Append(oCharCheck.ToString());  // Character by character check
 
-                oSB.Append("\r\nThe following is a version of the response without extended ascii/unicode/control characters:\r\n");
+                oSB.Append("\r\nThe following is a version of the response without extended ascii/unicode/control characters:\r\n\r\n");
                 oSB.Append(oSanitized.ToString());
+                oSB.Append("\r\n\r\n");
 
                 MessageBox.Show("The are non-basic ASCII characters found in response. Check the EWS Call Info text box.");
             }
-
-            oSB.Append(oSanitized.ToString());
+            else
+                oSB.Append(oSanitized.ToString());
 
             return oSB.ToString();
         }

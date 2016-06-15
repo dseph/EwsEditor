@@ -65,10 +65,10 @@
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Ignore;
-            this.CloseButton.Location = new System.Drawing.Point(645, 656);
-            this.CloseButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CloseButton.Location = new System.Drawing.Point(726, 820);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(100, 28);
+            this.CloseButton.Size = new System.Drawing.Size(112, 35);
             this.CloseButton.TabIndex = 8;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = true;
@@ -77,10 +77,10 @@
             // GetOofButton
             // 
             this.GetOofButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GetOofButton.Location = new System.Drawing.Point(647, 37);
-            this.GetOofButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GetOofButton.Location = new System.Drawing.Point(728, 46);
+            this.GetOofButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.GetOofButton.Name = "GetOofButton";
-            this.GetOofButton.Size = new System.Drawing.Size(100, 31);
+            this.GetOofButton.Size = new System.Drawing.Size(112, 39);
             this.GetOofButton.TabIndex = 3;
             this.GetOofButton.Text = "Get OOF";
             this.GetOofButton.UseVisualStyleBackColor = true;
@@ -89,10 +89,10 @@
             // SetOofButton
             // 
             this.SetOofButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SetOofButton.Location = new System.Drawing.Point(537, 656);
-            this.SetOofButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SetOofButton.Location = new System.Drawing.Point(604, 820);
+            this.SetOofButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SetOofButton.Name = "SetOofButton";
-            this.SetOofButton.Size = new System.Drawing.Size(100, 28);
+            this.SetOofButton.Size = new System.Drawing.Size(112, 35);
             this.SetOofButton.TabIndex = 30;
             this.SetOofButton.Text = "Set OOF";
             this.SetOofButton.UseVisualStyleBackColor = true;
@@ -101,20 +101,20 @@
             // TargetMailboxLabel
             // 
             this.TargetMailboxLabel.AutoSize = true;
-            this.TargetMailboxLabel.Location = new System.Drawing.Point(10, 11);
+            this.TargetMailboxLabel.Location = new System.Drawing.Point(11, 14);
             this.TargetMailboxLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TargetMailboxLabel.Name = "TargetMailboxLabel";
-            this.TargetMailboxLabel.Size = new System.Drawing.Size(453, 17);
+            this.TargetMailboxLabel.Size = new System.Drawing.Size(505, 20);
             this.TargetMailboxLabel.TabIndex = 0;
             this.TargetMailboxLabel.Text = "Enter the SMTP address of the mailbox to retrieve OOF settings from...";
             // 
             // ResolveTargetButton
             // 
             this.ResolveTargetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ResolveTargetButton.Location = new System.Drawing.Point(605, 40);
-            this.ResolveTargetButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ResolveTargetButton.Location = new System.Drawing.Point(681, 50);
+            this.ResolveTargetButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ResolveTargetButton.Name = "ResolveTargetButton";
-            this.ResolveTargetButton.Size = new System.Drawing.Size(32, 25);
+            this.ResolveTargetButton.Size = new System.Drawing.Size(36, 31);
             this.ResolveTargetButton.TabIndex = 2;
             this.ResolveTargetButton.Text = "...";
             this.ResolveTargetButton.UseVisualStyleBackColor = true;
@@ -124,10 +124,10 @@
             // 
             this.TargetMailboxText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TargetMailboxText.Location = new System.Drawing.Point(13, 41);
-            this.TargetMailboxText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TargetMailboxText.Location = new System.Drawing.Point(15, 51);
+            this.TargetMailboxText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TargetMailboxText.Name = "TargetMailboxText";
-            this.TargetMailboxText.Size = new System.Drawing.Size(578, 22);
+            this.TargetMailboxText.Size = new System.Drawing.Size(650, 26);
             this.TargetMailboxText.TabIndex = 1;
             // 
             // OofSettingsGroup
@@ -138,11 +138,11 @@
             this.OofSettingsGroup.Controls.Add(this.OofEnabledOption);
             this.OofSettingsGroup.Controls.Add(this.OofDisabledOption);
             this.OofSettingsGroup.Controls.Add(this.OofSettingsPanel);
-            this.OofSettingsGroup.Location = new System.Drawing.Point(4, 73);
-            this.OofSettingsGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OofSettingsGroup.Location = new System.Drawing.Point(4, 91);
+            this.OofSettingsGroup.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.OofSettingsGroup.Name = "OofSettingsGroup";
-            this.OofSettingsGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.OofSettingsGroup.Size = new System.Drawing.Size(743, 573);
+            this.OofSettingsGroup.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.OofSettingsGroup.Size = new System.Drawing.Size(836, 716);
             this.OofSettingsGroup.TabIndex = 4;
             this.OofSettingsGroup.TabStop = false;
             this.OofSettingsGroup.Text = "OOF Settings";
@@ -151,10 +151,10 @@
             // OofEnabledOption
             // 
             this.OofEnabledOption.AutoSize = true;
-            this.OofEnabledOption.Location = new System.Drawing.Point(19, 53);
-            this.OofEnabledOption.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OofEnabledOption.Location = new System.Drawing.Point(21, 66);
+            this.OofEnabledOption.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.OofEnabledOption.Name = "OofEnabledOption";
-            this.OofEnabledOption.Size = new System.Drawing.Size(173, 21);
+            this.OofEnabledOption.Size = new System.Drawing.Size(196, 24);
             this.OofEnabledOption.TabIndex = 1;
             this.OofEnabledOption.Text = "Send automatic replies";
             this.OofEnabledOption.UseVisualStyleBackColor = true;
@@ -164,10 +164,10 @@
             // 
             this.OofDisabledOption.AutoSize = true;
             this.OofDisabledOption.Checked = true;
-            this.OofDisabledOption.Location = new System.Drawing.Point(19, 25);
-            this.OofDisabledOption.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OofDisabledOption.Location = new System.Drawing.Point(21, 31);
+            this.OofDisabledOption.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.OofDisabledOption.Name = "OofDisabledOption";
-            this.OofDisabledOption.Size = new System.Drawing.Size(217, 21);
+            this.OofDisabledOption.Size = new System.Drawing.Size(245, 24);
             this.OofDisabledOption.TabIndex = 0;
             this.OofDisabledOption.TabStop = true;
             this.OofDisabledOption.Text = "Do not send automatic replies";
@@ -185,19 +185,19 @@
             this.OofSettingsPanel.Controls.Add(this.ScheduleStartTimeLabel);
             this.OofSettingsPanel.Controls.Add(this.ScheduledStartTime);
             this.OofSettingsPanel.Controls.Add(this.ScheduledEndTime);
-            this.OofSettingsPanel.Location = new System.Drawing.Point(8, 81);
-            this.OofSettingsPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OofSettingsPanel.Location = new System.Drawing.Point(9, 101);
+            this.OofSettingsPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.OofSettingsPanel.Name = "OofSettingsPanel";
-            this.OofSettingsPanel.Size = new System.Drawing.Size(733, 485);
+            this.OofSettingsPanel.Size = new System.Drawing.Size(825, 606);
             this.OofSettingsPanel.TabIndex = 2;
             // 
             // OofScheduledCheck
             // 
             this.OofScheduledCheck.AutoSize = true;
-            this.OofScheduledCheck.Location = new System.Drawing.Point(8, 4);
-            this.OofScheduledCheck.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OofScheduledCheck.Location = new System.Drawing.Point(9, 5);
+            this.OofScheduledCheck.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.OofScheduledCheck.Name = "OofScheduledCheck";
-            this.OofScheduledCheck.Size = new System.Drawing.Size(239, 21);
+            this.OofScheduledCheck.Size = new System.Drawing.Size(265, 24);
             this.OofScheduledCheck.TabIndex = 0;
             this.OofScheduledCheck.Text = "Only send during this time range:";
             this.OofScheduledCheck.UseVisualStyleBackColor = true;
@@ -210,11 +210,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ReplyMessageTabs.Controls.Add(this.InternalReplyTab);
             this.ReplyMessageTabs.Controls.Add(this.ExternalReplyTab);
-            this.ReplyMessageTabs.Location = new System.Drawing.Point(4, 89);
-            this.ReplyMessageTabs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ReplyMessageTabs.Location = new System.Drawing.Point(4, 111);
+            this.ReplyMessageTabs.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ReplyMessageTabs.Name = "ReplyMessageTabs";
             this.ReplyMessageTabs.SelectedIndex = 0;
-            this.ReplyMessageTabs.Size = new System.Drawing.Size(725, 391);
+            this.ReplyMessageTabs.Size = new System.Drawing.Size(816, 489);
             this.ReplyMessageTabs.TabIndex = 5;
             // 
             // InternalReplyTab
@@ -222,11 +222,11 @@
             this.InternalReplyTab.Controls.Add(this.InternalReplyText);
             this.InternalReplyTab.Controls.Add(this.InternalReplyCulture);
             this.InternalReplyTab.Controls.Add(this.InternalReplyCultureLabel);
-            this.InternalReplyTab.Location = new System.Drawing.Point(4, 25);
-            this.InternalReplyTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InternalReplyTab.Location = new System.Drawing.Point(4, 29);
+            this.InternalReplyTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.InternalReplyTab.Name = "InternalReplyTab";
-            this.InternalReplyTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.InternalReplyTab.Size = new System.Drawing.Size(717, 362);
+            this.InternalReplyTab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.InternalReplyTab.Size = new System.Drawing.Size(808, 456);
             this.InternalReplyTab.TabIndex = 0;
             this.InternalReplyTab.Text = "Internal Reply";
             this.InternalReplyTab.UseVisualStyleBackColor = true;
@@ -237,29 +237,29 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.InternalReplyText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InternalReplyText.Location = new System.Drawing.Point(9, 43);
-            this.InternalReplyText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InternalReplyText.Location = new System.Drawing.Point(10, 54);
+            this.InternalReplyText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.InternalReplyText.Multiline = true;
             this.InternalReplyText.Name = "InternalReplyText";
             this.InternalReplyText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.InternalReplyText.Size = new System.Drawing.Size(704, 308);
+            this.InternalReplyText.Size = new System.Drawing.Size(792, 384);
             this.InternalReplyText.TabIndex = 2;
             // 
             // InternalReplyCulture
             // 
-            this.InternalReplyCulture.Location = new System.Drawing.Point(73, 11);
-            this.InternalReplyCulture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InternalReplyCulture.Location = new System.Drawing.Point(82, 14);
+            this.InternalReplyCulture.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.InternalReplyCulture.Name = "InternalReplyCulture";
-            this.InternalReplyCulture.Size = new System.Drawing.Size(139, 22);
+            this.InternalReplyCulture.Size = new System.Drawing.Size(156, 26);
             this.InternalReplyCulture.TabIndex = 1;
             // 
             // InternalReplyCultureLabel
             // 
             this.InternalReplyCultureLabel.AutoSize = true;
-            this.InternalReplyCultureLabel.Location = new System.Drawing.Point(8, 15);
+            this.InternalReplyCultureLabel.Location = new System.Drawing.Point(9, 19);
             this.InternalReplyCultureLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.InternalReplyCultureLabel.Name = "InternalReplyCultureLabel";
-            this.InternalReplyCultureLabel.Size = new System.Drawing.Size(57, 17);
+            this.InternalReplyCultureLabel.Size = new System.Drawing.Size(64, 20);
             this.InternalReplyCultureLabel.TabIndex = 0;
             this.InternalReplyCultureLabel.Text = "Culture:";
             // 
@@ -270,11 +270,11 @@
             this.ExternalReplyTab.Controls.Add(this.ExternalAudienceLabel);
             this.ExternalReplyTab.Controls.Add(this.ExternalReplyCulture);
             this.ExternalReplyTab.Controls.Add(this.ExternalReplyCultureLabel);
-            this.ExternalReplyTab.Location = new System.Drawing.Point(4, 25);
-            this.ExternalReplyTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ExternalReplyTab.Location = new System.Drawing.Point(4, 29);
+            this.ExternalReplyTab.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ExternalReplyTab.Name = "ExternalReplyTab";
-            this.ExternalReplyTab.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ExternalReplyTab.Size = new System.Drawing.Size(691, 389);
+            this.ExternalReplyTab.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ExternalReplyTab.Size = new System.Drawing.Size(808, 456);
             this.ExternalReplyTab.TabIndex = 1;
             this.ExternalReplyTab.Text = "External Reply";
             this.ExternalReplyTab.UseVisualStyleBackColor = true;
@@ -285,50 +285,50 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ExternalReplyText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExternalReplyText.Location = new System.Drawing.Point(9, 43);
-            this.ExternalReplyText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ExternalReplyText.Location = new System.Drawing.Point(10, 54);
+            this.ExternalReplyText.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ExternalReplyText.Multiline = true;
             this.ExternalReplyText.Name = "ExternalReplyText";
             this.ExternalReplyText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ExternalReplyText.Size = new System.Drawing.Size(669, 294);
+            this.ExternalReplyText.Size = new System.Drawing.Size(790, 392);
             this.ExternalReplyText.TabIndex = 52;
             // 
             // TempExternalAudienceCombo
             // 
             this.TempExternalAudienceCombo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TempExternalAudienceCombo.FormattingEnabled = true;
-            this.TempExternalAudienceCombo.Location = new System.Drawing.Point(448, 7);
-            this.TempExternalAudienceCombo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TempExternalAudienceCombo.Location = new System.Drawing.Point(504, 9);
+            this.TempExternalAudienceCombo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TempExternalAudienceCombo.Name = "TempExternalAudienceCombo";
-            this.TempExternalAudienceCombo.Size = new System.Drawing.Size(211, 24);
+            this.TempExternalAudienceCombo.Size = new System.Drawing.Size(237, 28);
             this.TempExternalAudienceCombo.TabIndex = 51;
             // 
             // ExternalAudienceLabel
             // 
             this.ExternalAudienceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ExternalAudienceLabel.AutoSize = true;
-            this.ExternalAudienceLabel.Location = new System.Drawing.Point(308, 11);
+            this.ExternalAudienceLabel.Location = new System.Drawing.Point(346, 14);
             this.ExternalAudienceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ExternalAudienceLabel.Name = "ExternalAudienceLabel";
-            this.ExternalAudienceLabel.Size = new System.Drawing.Size(126, 17);
+            this.ExternalAudienceLabel.Size = new System.Drawing.Size(142, 20);
             this.ExternalAudienceLabel.TabIndex = 50;
             this.ExternalAudienceLabel.Text = "External Audience:";
             // 
             // ExternalReplyCulture
             // 
-            this.ExternalReplyCulture.Location = new System.Drawing.Point(73, 11);
-            this.ExternalReplyCulture.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ExternalReplyCulture.Location = new System.Drawing.Point(82, 14);
+            this.ExternalReplyCulture.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ExternalReplyCulture.Name = "ExternalReplyCulture";
-            this.ExternalReplyCulture.Size = new System.Drawing.Size(139, 22);
+            this.ExternalReplyCulture.Size = new System.Drawing.Size(156, 26);
             this.ExternalReplyCulture.TabIndex = 28;
             // 
             // ExternalReplyCultureLabel
             // 
             this.ExternalReplyCultureLabel.AutoSize = true;
-            this.ExternalReplyCultureLabel.Location = new System.Drawing.Point(8, 15);
+            this.ExternalReplyCultureLabel.Location = new System.Drawing.Point(9, 19);
             this.ExternalReplyCultureLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ExternalReplyCultureLabel.Name = "ExternalReplyCultureLabel";
-            this.ExternalReplyCultureLabel.Size = new System.Drawing.Size(57, 17);
+            this.ExternalReplyCultureLabel.Size = new System.Drawing.Size(64, 20);
             this.ExternalReplyCultureLabel.TabIndex = 29;
             this.ExternalReplyCultureLabel.Text = "Culture:";
             // 
@@ -336,10 +336,10 @@
             // 
             this.ScheduleEndTimeLabel.AutoSize = true;
             this.ScheduleEndTimeLabel.Enabled = false;
-            this.ScheduleEndTimeLabel.Location = new System.Drawing.Point(36, 59);
+            this.ScheduleEndTimeLabel.Location = new System.Drawing.Point(40, 74);
             this.ScheduleEndTimeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ScheduleEndTimeLabel.Name = "ScheduleEndTimeLabel";
-            this.ScheduleEndTimeLabel.Size = new System.Drawing.Size(72, 17);
+            this.ScheduleEndTimeLabel.Size = new System.Drawing.Size(80, 20);
             this.ScheduleEndTimeLabel.TabIndex = 3;
             this.ScheduleEndTimeLabel.Text = "End Time:";
             // 
@@ -347,10 +347,10 @@
             // 
             this.ScheduleStartTimeLabel.AutoSize = true;
             this.ScheduleStartTimeLabel.Enabled = false;
-            this.ScheduleStartTimeLabel.Location = new System.Drawing.Point(36, 29);
+            this.ScheduleStartTimeLabel.Location = new System.Drawing.Point(40, 36);
             this.ScheduleStartTimeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ScheduleStartTimeLabel.Name = "ScheduleStartTimeLabel";
-            this.ScheduleStartTimeLabel.Size = new System.Drawing.Size(77, 17);
+            this.ScheduleStartTimeLabel.Size = new System.Drawing.Size(86, 20);
             this.ScheduleStartTimeLabel.TabIndex = 1;
             this.ScheduleStartTimeLabel.Text = "Start Time:";
             // 
@@ -359,10 +359,10 @@
             this.ScheduledStartTime.CustomFormat = "MMM dd, yyyy - hh:mm tt";
             this.ScheduledStartTime.Enabled = false;
             this.ScheduledStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ScheduledStartTime.Location = new System.Drawing.Point(121, 29);
-            this.ScheduledStartTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ScheduledStartTime.Location = new System.Drawing.Point(136, 36);
+            this.ScheduledStartTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ScheduledStartTime.Name = "ScheduledStartTime";
-            this.ScheduledStartTime.Size = new System.Drawing.Size(211, 22);
+            this.ScheduledStartTime.Size = new System.Drawing.Size(237, 26);
             this.ScheduledStartTime.TabIndex = 2;
             // 
             // ScheduledEndTime
@@ -370,18 +370,18 @@
             this.ScheduledEndTime.CustomFormat = "MMM dd, yyyy - hh:mm tt";
             this.ScheduledEndTime.Enabled = false;
             this.ScheduledEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ScheduledEndTime.Location = new System.Drawing.Point(121, 59);
-            this.ScheduledEndTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ScheduledEndTime.Location = new System.Drawing.Point(136, 74);
+            this.ScheduledEndTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ScheduledEndTime.Name = "ScheduledEndTime";
-            this.ScheduledEndTime.Size = new System.Drawing.Size(211, 22);
+            this.ScheduledEndTime.Size = new System.Drawing.Size(237, 26);
             this.ScheduledEndTime.TabIndex = 4;
             // 
             // OofForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CloseButton;
-            this.ClientSize = new System.Drawing.Size(760, 697);
+            this.ClientSize = new System.Drawing.Size(855, 871);
             this.Controls.Add(this.OofSettingsGroup);
             this.Controls.Add(this.TargetMailboxLabel);
             this.Controls.Add(this.ResolveTargetButton);
@@ -389,7 +389,7 @@
             this.Controls.Add(this.SetOofButton);
             this.Controls.Add(this.GetOofButton);
             this.Controls.Add(this.CloseButton);
-            this.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.Name = "OofForm";
             this.Text = "User OOF Settings";
             this.Load += new System.EventHandler(this.OofForm_Load);
