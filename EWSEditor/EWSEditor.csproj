@@ -146,7 +146,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\AuthenticationHelper.cs" />
+    <Compile Include="Common\EwsHelpers\AuthenticationHelper.cs" />
     <Compile Include="Common\AutodiscoverInfo.cs" />
     <Compile Include="Common\CalCheck.cs" />
     <Compile Include="Common\EwsEditorServiceInstanceSettings.cs" />
@@ -156,7 +156,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BodySamples.resx</DependentUpon>
     </Compile>
-    <Compile Include="Common\SharedCalendarsHelper.cs" />
+    <Compile Include="Common\EwsHelpers\SharedCalendarsHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,16 +169,16 @@
     <Compile Include="Forms\Dialogs\AddRemoveHeaders.Designer.cs">
       <DependentUpon>AddRemoveHeaders.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\ActiveDirectoryHelper.cs" />
-    <Compile Include="Common\AppointmentHelper.cs" />
-    <Compile Include="Common\ComboBoxHelper.cs" />
-    <Compile Include="Common\FolderTag.cs" />
-    <Compile Include="Common\HttpHelpler.cs" />
-    <Compile Include="Common\ItemHelper.cs" />
-    <Compile Include="Common\ItemTag.cs" />
-    <Compile Include="Common\ListViewColumnSorter.cs" />
-    <Compile Include="Common\ListViewItemHelper.cs" />
-    <Compile Include="Common\UserAgentHelper.cs" />
+    <Compile Include="Common\EwsHelpers\ActiveDirectoryHelper.cs" />
+    <Compile Include="Common\EwsHelpers\AppointmentHelper.cs" />
+    <Compile Include="Common\UIHelpers\ComboBoxHelper.cs" />
+    <Compile Include="Common\UIHelpers\FolderTag.cs" />
+    <Compile Include="Common\UtilityHelpers\HttpHelpler.cs" />
+    <Compile Include="Common\UIHelpers\ItemHelper.cs" />
+    <Compile Include="Common\UIHelpers\ItemTag.cs" />
+    <Compile Include="Common\UIHelpers\ListViewColumnSorter.cs" />
+    <Compile Include="Common\UIHelpers\ListViewItemHelper.cs" />
+    <Compile Include="Common\UIHelpers\UserAgentHelper.cs" />
     <Compile Include="Forms\Attachments\AddRemoveAttachments.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,12 +281,12 @@
     <Compile Include="Forms\ToolsForms\PostForm.Designer.cs">
       <DependentUpon>PostForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\PropertyGridHelper.cs" />
-    <Compile Include="Common\RecipientHelper.cs" />
-    <Compile Include="Common\SerialHelper.cs" />
-    <Compile Include="Common\StringHelper.cs" />
-    <Compile Include="Common\TimeHelper.cs" />
-    <Compile Include="Common\UserIoHelper.cs" />
+    <Compile Include="Common\UtilityHelpers\PropertyGridHelper.cs" />
+    <Compile Include="Common\EwsHelpers\RecipientHelper.cs" />
+    <Compile Include="Common\UtilityHelpers\SerialHelper.cs" />
+    <Compile Include="Common\UtilityHelpers\StringHelper.cs" />
+    <Compile Include="Common\UtilityHelpers\TimeHelper.cs" />
+    <Compile Include="Common\UtilityHelpers\UserIoHelper.cs" />
     <Compile Include="Forms\Searches\CheckFolderItemsForPropertyLoadingIssues.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -475,17 +475,17 @@
       <DependentUpon>TemplateEwsRequests.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings\EnvironmentInfo.cs" />
-    <Compile Include="Common\ConversionHelper.cs" />
+    <Compile Include="Common\UtilityHelpers\ConversionHelper.cs" />
     <Compile Include="Common\EwsApiTraceParser.cs" />
-    <Compile Include="Common\ExceptionHelper.cs" />
+    <Compile Include="Common\EwsHelpers\ExceptionHelper.cs" />
     <Compile Include="Logging\DebugLog.cs" />
     <Compile Include="Logging\EwsTraceListener.cs" />
-    <Compile Include="Common\ValidationCallbackHelper.cs" />
-    <Compile Include="Common\ResponseCodeHelper.cs" />
+    <Compile Include="Common\EwsHelpers\ValidationCallbackHelper.cs" />
+    <Compile Include="Common\EwsHelpers\ResponseCodeHelper.cs" />
     <Compile Include="Common\Extensions\ExchangeServiceExtensions.cs" />
-    <Compile Include="Exchange\CertificateValidationHelper.cs" />
-    <Compile Include="Exchange\EwsProxyFactory.cs" />
-    <Compile Include="Exchange\ExportUploadHelper.cs" />
+    <Compile Include="Common\EwsHelpers\CertificateValidationHelper.cs" />
+    <Compile Include="Common\EwsProxyFactory.cs" />
+    <Compile Include="Common\EwsHelpers\ExportUploadHelper.cs" />
     <Compile Include="Forms\AppointmentsContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -731,7 +731,7 @@
     <Compile Include="Forms\Dialogs\ServiceDialog.Designer.cs">
       <DependentUpon>ServiceDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\ComparisonHelper.cs" />
+    <Compile Include="Common\EwsHelpers\ComparisonHelper.cs" />
     <Compile Include="PropertyInformation\TypeValues\ByteArrayTypeValue.cs" />
     <Compile Include="PropertyInformation\TypeValues\EmailAddressCollectionTypeValue.cs" />
     <Compile Include="PropertyInformation\TypeValues\EmailAddressTypeValue.cs" />
@@ -766,8 +766,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GridDataTables.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Exchange\DumpHelper.cs" />
-    <Compile Include="Common\FileHelper.cs" />
+    <Compile Include="Common\UtilityHelpers\DumpHelper.cs" />
+    <Compile Include="Common\UtilityHelpers\FileHelper.cs" />
     <Compile Include="Forms\DialogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1391,6 +1391,8 @@
     <Content Include="Resources\StatusAnnotations_Critical_16xLG.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Common\x\" />
+    <Folder Include="Exchange\" />
     <Folder Include="Forms\Dialogs\SmartEditors\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>

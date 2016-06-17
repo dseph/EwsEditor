@@ -125,7 +125,7 @@ namespace EWSEditor.Forms
         /// Call Unsubscribe() and reset the form.
         /// </summary>
         private void btnUnsubscribe_Click(object sender, EventArgs e)
-        {
+        {  
             this.CurrentSubscription.Unsubscribe();
             this.CurrentSubscription = null;
 
