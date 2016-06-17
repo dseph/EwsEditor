@@ -52,6 +52,8 @@ namespace EWSEditor.Forms
         public void LoadUserConfigIntoTreeView(ExchangeService service, ref TreeView oTreeView)
         {
 
+            this.Cursor = Cursors.WaitCursor;
+
             oTreeView.Nodes.Clear();
              _ParentNode = oTreeView.Nodes.Add("User Config Settings");
              _ParentNode.Tag = null;
@@ -59,9 +61,21 @@ namespace EWSEditor.Forms
 
             //TreeNode oNode = null;
 
-             TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "OWA.UserOptions", "OWA.UserOptions", ref sError);
-             TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar CategoryList", "CategoryList", ref sError);
-//             TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar BookInPolicy", "BookInPolicy", ref sError);
+             TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "OWA.UserOptions (WellKnownFolderName.Root)", "OWA.UserOptions", ref sError);
+             TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "OWA.OtherMailbox (WellKnownFolderName.Root)", "OWA.OtherMailbox", ref sError);
+             TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "OWA.AutocompleteCache (WellKnownFolderName.Root)", "OWA.AutocompleteCache", ref sError);
+             TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "OWA.SendFromCache (WellKnownFolderName.Root)", "OWA.SendFromCache", ref sError);
+             TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - OWA.ViewStateConfiguration (WellKnownFolderName.Root)", "OWA.ViewStateConfiguration", ref sError);
+
+             TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "TargetFolderMRU (WellKnownFolderName.Root)", " ", ref sError);
+
+             TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "Calendar (WellKnownFolderName.Calendar)", "Calendar", ref sError);
+             TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "CategoryList (WellKnownFolderName.Calendar)", "CategoryList", ref sError);
+             TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "BookInPolicy (WellKnownFolderName.Calendar)", "BookInPolicy", ref sError);
+             TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "RequestInPolicy (WellKnownFolderName.Calendar)", "RequestInPolicy ", ref sError);
+             TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "RequestOutofPolicy (WellKnownFolderName.Calendar)", "RequestOutofPolicy ", ref sError);
+             TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WorkHours (WellKnownFolderName.Calendar)", "WorkHours", ref sError);
+
 
             //try
             //{
@@ -93,7 +107,8 @@ namespace EWSEditor.Forms
             ////LoadUserConfigIntoTreeViewNodeCategoryList(service, ref oNode, CalendarFolderBookInPolicy.Id, "BookInPolicy");
 
             _ParentNode.ExpandAll();
- 
+
+            this.Cursor = Cursors.Default;
         }
 
         public TreeNode TryLoadSettings(
@@ -154,8 +169,11 @@ namespace EWSEditor.Forms
                 bFound = true;
             }
 
-            if (bFound == false)
-                oNode.ForeColor = Color.Gray;
+            //if (bFound == false)
+            //    oNode.ForeColor = Color.Gray;
+
+            //if (oNode.Nodes.Count == 0)
+            //    oNode.ForeColor = Color.Gray;
 
         }
 
@@ -222,7 +240,45 @@ namespace EWSEditor.Forms
                 }
             }
         }
-       
 
+        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - OWA.UserOptions", "OWA.UserOptions", ref sError);
+        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - OWA.OtherMailbox", "OWA.OtherMailbox", ref sError);
+        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - OWA.AutocompleteCache", "OWA.AutocompleteCache", ref sError);
+        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - OWA.SendFromCache", "OWA.SendFromCache", ref sError);
+        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - OWA.ViewStateConfiguration", "OWA.ViewStateConfiguration", ref sError);
+
+        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - TargetFolderMRU", " ", ref sError);
+
+        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - Calendar", "Calendar", ref sError);
+        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - CategoryList", "CategoryList", ref sError);
+        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - BookInPolicy", "BookInPolicy", ref sError);
+        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - RequestInPolicy ", "RequestInPolicy ", ref sError);
+        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - RequestOutofPolicy ", "RequestOutofPolicy ", ref sError);
+        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - WorkHours", "WorkHours", ref sError);
+
+       
+        //http://stackoverflow.com/questions/20473013/available-userconfigurationname-names-for-getuserconfiguration-for-distinguished
+
+        //    DistinguishedFolderId   Calendar:
+        //        IPM.Configuration.Calendar, 
+        //        IPM.Configuration.CategoryList 
+        //      IPM.Configuration.WorkHours  
+
+        //      DistinguishedFolderId "root"
+        //        IPM.Configuration.TargetFolderMRU 
+        //        IPM.Configuration.OWA.ViewStateConfiguration  
+        //        IPM.Configuration.OWA.UserOptions  
+  
+        //http://gsexdev.blogspot.com/2014/02/adding-additionalshared-mailbox-to-owa.html 
+
+        //    OWA.OtherMailbox 
+
+        //https://blogs.msdn.microsoft.com/deva/2014/08/21/mapi-how-to-programmatically-get-autocomplete-cacheentries-for-owa-2013/
+        //    OWA.AutocompleteCache 
+
+        //https://social.technet.microsoft.com/Forums/exchange/en-US/1f18ea4a-5a9d-46c9-a0c8-5ce19143e106/exchange-2010-owa-purge-send-as-list?forum=exchangesvrclientslegacy
+        //    OWA.SendFromCache  ... dont know...
+
+        // http://www.msexchange.org/articles-tutorials/exchange-server-2007/management-administration/managing-resource-mailboxes-exchange-server-2007-part2-.html
     }
 }
