@@ -44,6 +44,7 @@
             this.mnuSoftDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMoveToDeleted = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPlayOnPhone = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuMarkAsJunk = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuExportItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExportMIMEContent = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +67,7 @@
             // PropertyDetailsGrid
             // 
             this.PropertyDetailsGrid.Margin = new System.Windows.Forms.Padding(7, 10, 7, 10);
-            this.PropertyDetailsGrid.Size = new System.Drawing.Size(976, 334);
+            this.PropertyDetailsGrid.Size = new System.Drawing.Size(976, 335);
             this.PropertyDetailsGrid.Load += new System.EventHandler(this.PropertyDetailsGrid_Load);
             // 
             // mnuItemContext
@@ -83,6 +84,7 @@
             this.mnuCopyItem,
             this.mnuDelete,
             this.mnuPlayOnPhone,
+            this.mnuMarkAsJunk,
             this.toolStripSeparator2,
             this.mnuExportItem,
             this.mnuItemSplit3,
@@ -93,7 +95,7 @@
             this.toolStripSeparator3,
             this.developerItemTestWindowToolStripMenuItem});
             this.mnuItemContext.Name = "mnuItemContext";
-            this.mnuItemContext.Size = new System.Drawing.Size(526, 487);
+            this.mnuItemContext.Size = new System.Drawing.Size(526, 484);
             this.mnuItemContext.Opening += new System.ComponentModel.CancelEventHandler(this.mnuItemContext_Opening);
             this.mnuItemContext.Click += new System.EventHandler(this.mnuItemContext_Click);
             // 
@@ -190,6 +192,13 @@
             this.mnuPlayOnPhone.Size = new System.Drawing.Size(525, 30);
             this.mnuPlayOnPhone.Text = "Play on phone...";
             this.mnuPlayOnPhone.Click += new System.EventHandler(this.mnuPlayOnPhone_Click);
+            // 
+            // mnuMarkAsJunk
+            // 
+            this.mnuMarkAsJunk.Name = "mnuMarkAsJunk";
+            this.mnuMarkAsJunk.Size = new System.Drawing.Size(525, 30);
+            this.mnuMarkAsJunk.Text = "Mark As Junk...";
+            this.mnuMarkAsJunk.Click += new System.EventHandler(this.mnuMarkAsJunk_Click);
             // 
             // toolStripSeparator2
             // 
@@ -309,7 +318,7 @@
             this.ClientSize = new System.Drawing.Size(976, 705);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(0, 0);
-            this.Margin = new System.Windows.Forms.Padding(18, 18, 18, 18);
+            this.Margin = new System.Windows.Forms.Padding(18);
             this.Name = "ItemsContentForm";
             this.mnuItemContext.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -349,5 +358,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem developerItemTestWindowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dispalyAttachmentsByTypeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuMarkAsJunk;
     }
 }
