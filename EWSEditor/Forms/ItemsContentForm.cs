@@ -1426,6 +1426,30 @@ namespace EWSEditor.Forms
 
         }
 
+        private void mnuMarkAsJunk_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                ItemId id = GetSelectedContentId();
+                if (id == null)
+                {
+                    return;
+                }
+
+                MarkAsJunkForm oForm = new MarkAsJunkForm(this.CurrentService, id);
+                oForm.ShowDialog();
+
+                // Refresh the view
+                this.RefreshContentAndDetails();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
 
     }
 }

@@ -233,6 +233,12 @@
     <Compile Include="Forms\EmptyFolder.Designer.cs">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MarkAsJunkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MarkAsJunkForm.Designer.cs">
+      <DependentUpon>MarkAsJunkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Searches\FindCertainFolders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -846,6 +852,9 @@
     <EmbeddedResource Include="Forms\EmptyFolder.resx">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MarkAsJunkForm.resx">
+      <DependentUpon>MarkAsJunkForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Searches\FindCertainFolders.resx">
       <DependentUpon>FindCertainFolders.cs</DependentUpon>
     </EmbeddedResource>
@@ -1394,6 +1403,7 @@
     <Folder Include="Common\x\" />
     <Folder Include="Exchange\" />
     <Folder Include="Forms\Dialogs\SmartEditors\" />
+    <Folder Include="Forms\NewFolder1\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
