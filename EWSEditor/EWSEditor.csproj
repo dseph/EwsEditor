@@ -157,6 +157,8 @@
       <DependentUpon>BodySamples.resx</DependentUpon>
     </Compile>
     <Compile Include="Common\EwsHelpers\SharedCalendarsHelper.cs" />
+    <Compile Include="Common\UIHelpers\ListViewItemComparer.cs" />
+    <Compile Include="Common\UIHelpers\TextEdit.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +216,12 @@
     </Compile>
     <Compile Include="Forms\DeveloperTest\DeveloperServiceTestForm.Designer.cs">
       <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dialogs\EnterTextForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\EnterTextForm.Designer.cs">
+      <DependentUpon>EnterTextForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Discovery\DomainSettingsForm.cs">
       <SubType>Form</SubType>
@@ -469,6 +477,12 @@
     </Compile>
     <Compile Include="Forms\ToolsForms\ViewHtmlAsWebPage.Designer.cs">
       <DependentUpon>ViewHtmlAsWebPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MimeParserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MimeParserForm.Designer.cs">
+      <DependentUpon>MimeParserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -843,6 +857,9 @@
     <EmbeddedResource Include="Forms\DeveloperTest\DeveloperServiceTestForm.resx">
       <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\EnterTextForm.resx">
+      <DependentUpon>EnterTextForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Discovery\DomainSettingsForm.resx">
       <DependentUpon>DomainSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1118,6 +1135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolsForms\ViewHtmlAsWebPage.resx">
       <DependentUpon>ViewHtmlAsWebPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MimeParserForm.resx">
+      <DependentUpon>MimeParserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -1411,6 +1431,26 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{B691E011-1797-432E-907A-4D8C69339129}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="CDO">
+      <Guid>{CD000000-8B95-11D1-82DB-00C04FB1625D}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

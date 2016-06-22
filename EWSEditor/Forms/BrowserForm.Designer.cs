@@ -85,6 +85,7 @@
             this.viewHTMLInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuMimeParser = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -94,10 +95,10 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblExchangeService});
-            this.statusStrip.Location = new System.Drawing.Point(0, 597);
+            this.statusStrip.Location = new System.Drawing.Point(0, 406);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 21, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1058, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1000, 22);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 3;
             // 
@@ -118,7 +119,7 @@
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
             this.mnuMain.Padding = new System.Windows.Forms.Padding(9, 2, 0, 2);
-            this.mnuMain.Size = new System.Drawing.Size(1058, 33);
+            this.mnuMain.Size = new System.Drawing.Size(1000, 33);
             this.mnuMain.TabIndex = 4;
             this.mnuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnuMain_ItemClicked);
             // 
@@ -436,7 +437,8 @@
             this.mnuSnmClient,
             this.mnuEncodingHelper,
             this.mnuFileContentHelper,
-            this.viewHTMLInBrowserToolStripMenuItem});
+            this.viewHTMLInBrowserToolStripMenuItem,
+            this.mnuMimeParser});
             this.mnuOther.Name = "mnuOther";
             this.mnuOther.Size = new System.Drawing.Size(69, 29);
             this.mnuOther.Text = "Other";
@@ -529,11 +531,18 @@
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
+            // mnuMimeParser
+            // 
+            this.mnuMimeParser.Name = "mnuMimeParser";
+            this.mnuMimeParser.Size = new System.Drawing.Size(383, 30);
+            this.mnuMimeParser.Text = "MIME Parser";
+            this.mnuMimeParser.Click += new System.EventHandler(this.mnuMimeParser_Click);
+            // 
             // BrowserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1058, 619);
+            this.ClientSize = new System.Drawing.Size(1000, 428);
             this.Controls.Add(this.mnuMain);
             this.Controls.Add(this.statusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -608,5 +617,6 @@
         public System.Windows.Forms.ToolStripMenuItem mnuToolsNotificationsPullNotificationsViewer;
         public System.Windows.Forms.ToolStripMenuItem mnuToolsNotificationsStreamingNotificationsViewer;
         public System.Windows.Forms.ToolStripMenuItem mnuToolsNotificationsItemSynchronizationViewer;
+        private System.Windows.Forms.ToolStripMenuItem mnuMimeParser;
     }
 }

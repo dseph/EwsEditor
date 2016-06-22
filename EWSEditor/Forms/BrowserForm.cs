@@ -1048,5 +1048,11 @@
         {
             SyncFolderItemsForm.Show(this.CurrentService);
         }
+
+        private void mnuMimeParser_Click(object sender, EventArgs e)
+        {
+            MimeParserForm oForm = new MimeParserForm();
+            oForm.Show();
+        }
     }
 }

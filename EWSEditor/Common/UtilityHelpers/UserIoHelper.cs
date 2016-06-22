@@ -102,5 +102,78 @@ namespace EWSEditor.Common
             return bRet;
         }
 
+
+        public static string GetFileAsString(string sFile)
+        {
+            //Dim myStream As Stream
+            StreamReader sr = default(StreamReader);
+            string sLoadedCode = null;
+            sr = new StreamReader(sFile);
+
+            sLoadedCode = sr.ReadToEnd();
+            sr.Close();
+
+            return sLoadedCode;
+        }
+
+        public static string GetFileAsString(string sFile, System.Text.Encoding TypeOfFileEncoding)
+        {
+
+            StreamReader sr = default(StreamReader);
+            string sLoadedCode = null;
+
+
+            sr = new StreamReader(sFile, TypeOfFileEncoding);
+
+            sLoadedCode = sr.ReadToEnd();
+            sr.Close();
+
+            return sLoadedCode;
+        }
+
+        public static void SaveStringAsFile(string sString, string sFile)
+        {
+            StreamWriter sr = default(StreamWriter);
+            sr = new StreamWriter(sFile);
+            sr.Write(sString);
+            sr.Flush();
+            sr.Close();
+            sr = null;
+
+        }
+
+        public static void SaveStringAsFile(string sString, string sFile, bool bAppend)
+        {
+            StreamWriter sr = default(StreamWriter);
+            sr = new StreamWriter(sFile, bAppend);
+            sr.Write(sString);
+            sr.Flush();
+            sr.Close();
+            sr = null;
+
+        }
+
+        public static void SaveStringAsFile(string sString, string sFile, bool bAppend, System.Text.Encoding TypeOfFileEncoding)
+        {
+            StreamWriter sr = default(StreamWriter);
+            sr = new StreamWriter(sFile, bAppend, TypeOfFileEncoding);
+            sr.Write(sString);
+            sr.Flush();
+            sr.Close();
+            sr = null;
+        }
+
+        public static void SaveStringAsFile(string sString, string sFile, System.Text.Encoding TypeOfFileEncoding)
+        {
+            StreamWriter sr = default(StreamWriter);
+            sr = new StreamWriter(sFile, false, TypeOfFileEncoding);
+            sr.Write(sString);
+            sr.Flush();
+            sr.Close();
+            sr = null;
+
+        }
+
+
     }
 }
