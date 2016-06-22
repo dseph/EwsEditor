@@ -54,7 +54,7 @@
             this.tabControl1.Location = new System.Drawing.Point(6, 76);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1273, 510);
+            this.tabControl1.Size = new System.Drawing.Size(1270, 510);
             this.tabControl1.TabIndex = 3;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
@@ -65,7 +65,7 @@
             this.tabContent.Location = new System.Drawing.Point(4, 29);
             this.tabContent.Name = "tabContent";
             this.tabContent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabContent.Size = new System.Drawing.Size(1265, 477);
+            this.tabContent.Size = new System.Drawing.Size(1262, 477);
             this.tabContent.TabIndex = 0;
             this.tabContent.Text = "Content";
             this.tabContent.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBody.Size = new System.Drawing.Size(1252, 465);
+            this.txtBody.Size = new System.Drawing.Size(1249, 465);
             this.txtBody.TabIndex = 0;
             // 
             // tabIERendering
@@ -137,7 +137,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(1172, 592);
+            this.btnCancel.Location = new System.Drawing.Point(1169, 592);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(93, 35);
             this.btnCancel.TabIndex = 5;
@@ -149,7 +149,7 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnOK.Location = new System.Drawing.Point(1064, 592);
+            this.btnOK.Location = new System.Drawing.Point(1061, 592);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(93, 35);
             this.btnOK.TabIndex = 4;
@@ -183,7 +183,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1283, 639);
+            this.ClientSize = new System.Drawing.Size(1280, 639);
             this.Controls.Add(this.btnLoadExample);
             this.Controls.Add(this.btnSaveExample);
             this.Controls.Add(this.btnOK);
