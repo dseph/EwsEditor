@@ -142,7 +142,7 @@ namespace EWSEditor.Forms
             // 
             this.FolderPropertyDetailsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FolderPropertyDetailsGrid.Location = new System.Drawing.Point(0, 0);
-            this.FolderPropertyDetailsGrid.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.FolderPropertyDetailsGrid.Margin = new System.Windows.Forms.Padding(6);
             this.FolderPropertyDetailsGrid.Name = "FolderPropertyDetailsGrid";
             this.FolderPropertyDetailsGrid.Size = new System.Drawing.Size(821, 668);
             this.FolderPropertyDetailsGrid.TabIndex = 0;

@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
+using Microsoft.Exchange.WebServices.Data;
+
 using EWSEditor.Common.UIHelpers;
- 
 using EWSEditor.Forms;
 using EWSEditor.Forms.Controls;
 using EWSEditor.Logging;
@@ -25,7 +27,8 @@ namespace EWSEditor
     {
         CDO.Message objCDOMsg;
         bool bLoaded = false;
-
+        //private ExchangeService _ExchangeService = null;
+        //private ItemId _ItemId = null;
         string m_MessageMime = "";
 
 
@@ -34,10 +37,58 @@ namespace EWSEditor
             InitializeComponent();
         }
 
+        public MimeParserForm(ExchangeService oExchangeService, ItemId oItemId)
+        {
+            InitializeComponent();
+
+            //_ExchangeService = oExchangeService;
+            //_ItemId = oItemId;
+            string sMIME = string.Empty;
+
+            DumpHelper.GetItemMime(
+                    oItemId,
+                    oExchangeService,
+                    ref sMIME);
+
+            bool bRet = LoadMessage("string", sMIME);
+            if (bRet == true)
+                StatusBar1.Text = "Loaded";
+            else
+                StatusBar1.Text = "Not Loaded";
+
+            DisableLoadSelection();
+        }
+
+        public MimeParserForm(string sMIME)
+        {
+            InitializeComponent();
+ 
+            bool bRet = LoadMessage("string", sMIME);
+            if (bRet == true)
+                StatusBar1.Text = "Loaded";
+            else
+                StatusBar1.Text = "Not Loaded";
+
+            DisableLoadSelection();
+        }
+
+        private void DisableLoadSelection()
+        {
+            btnLoadTextEntry.Enabled = false;
+            lblFileName.Enabled = false;
+            txtFileName.Enabled = false;
+            cmdBrowse.Enabled = false;
+            cmdLoad.Enabled = false;
+        }
+ 
+
         private void MimeParser_Load(object sender, EventArgs e)
         {
 
         }
+
+
+       
 
         public string MessageMime
         {
@@ -125,7 +176,9 @@ namespace EWSEditor
 				objMsgStream.LoadFromFile(sFileName);
 				objCDOMsg.BodyPart.DataSource.OpenObject(objMsgStream, "IStream");
 				m_MessageMime = sFileText;
-			} else {
+			} 
+            else 
+            {
 				sFileName = Path.GetTempFileName();
 				txtMime.Text = sMessage;
 
@@ -145,11 +198,15 @@ namespace EWSEditor
 			}
 
 			LoadMessageFields();
-			LoadAttachemntsFields();
+			//LoadAttachemntsFields();
 			ExtractBodyPart(objCDOMsg.BodyPart);
-			// Messag Body
 
-		} catch (Exception ex) {
+             
+            //Marshal.ReleaseComObject(objMsgStream);
+         
+
+		} 
+        catch (Exception ex) {
 			bLoaded = false;
 			 MessageBox.Show("Error Loading File: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 		}
@@ -163,7 +220,7 @@ namespace EWSEditor
 
  
 
-			int iBodyPartCount = 1;
+			int iBodyPartCount1 = 1;
 			int iBodyPartCount2 = 1;
 			int iBodyPartCount3 = 1;
 			int iBodyPartCount4 = 1;
@@ -171,7 +228,7 @@ namespace EWSEditor
 			int iBodyPartCount6 = 1;
 			int iBodyPartCount7 = 1;
 
-			System.Windows.Forms.TreeNode aNode = null;
+			System.Windows.Forms.TreeNode aNode1 = null;
 			System.Windows.Forms.TreeNode aNode2 = null;
 			System.Windows.Forms.TreeNode aNode3 = null;
 			System.Windows.Forms.TreeNode aNode4 = null;
@@ -179,16 +236,16 @@ namespace EWSEditor
 			System.Windows.Forms.TreeNode aNode6 = null;
 			System.Windows.Forms.TreeNode aNode7 = null;
 
-			iBodyPartCount = 1;
+			iBodyPartCount1 = 1;
 			// Note: I'm using this big loop because i want to be able to see things better
 			// as this code loops through each body part.  Using a recursive call to a method
 			// just makes the debugging process more difficult.
-			foreach (CDO.IBodyPart objBodypart in objCDOMsg.BodyPart.BodyParts) {
-				AddNode(objBodypart, ref pNode, ref aNode, iBodyPartCount);
+			foreach (CDO.IBodyPart objBodypart1 in objCDOMsg.BodyPart.BodyParts) {
+				AddNode(objBodypart1, ref pNode, ref aNode1, iBodyPartCount1);
 
 				iBodyPartCount2 = 1;
-				foreach (CDO.IBodyPart objBodypart2 in objBodypart.BodyParts) {
-					AddNode(objBodypart2, ref aNode, ref aNode2, iBodyPartCount2);
+				foreach (CDO.IBodyPart objBodypart2 in objBodypart1.BodyParts) {
+					AddNode(objBodypart2, ref aNode1, ref aNode2, iBodyPartCount2);
 					iBodyPartCount3 = 1;
 					foreach (CDO.IBodyPart objBodypart3 in objBodypart2.BodyParts) {
 						AddNode(objBodypart3, ref aNode2, ref aNode3, iBodyPartCount3);
@@ -206,18 +263,25 @@ namespace EWSEditor
                                     {
 										AddNode(objBodypart7, ref aNode6, ref aNode7, iBodyPartCount7);
 										iBodyPartCount7 += 1;
+                                        //Marshal.ReleaseComObject(objBodypart7);
 									}
 									iBodyPartCount6 += 1;
+                                   // Marshal.ReleaseComObject(objBodypart6);
 								}
 								iBodyPartCount5 += 1;
+                                //Marshal.ReleaseComObject(objBodypart5);
 							}
 							iBodyPartCount4 += 1;
+                            //Marshal.ReleaseComObject(objBodypart4);
 						}
 						iBodyPartCount3 += 1;
+                       // Marshal.ReleaseComObject(objBodypart3);
 					}
 					iBodyPartCount2 += 1;
+                    //Marshal.ReleaseComObject(objBodypart2);
 				}
-				iBodyPartCount += 1;
+				iBodyPartCount1 += 1;
+                //Marshal.ReleaseComObject(objBodypart1);
 			}
 			pNode.ExpandAll();
 
@@ -282,62 +346,116 @@ namespace EWSEditor
 
 			ListView1.Items.AddRange(new ListViewItem[] { aListItem });
 			aListItem = null;
+            //Marshal.ReleaseComObject(objField);
 		}
 	}
 
         //LoadMessageEnvelopeFields()
         //lvAttachments
-        private void LoadAttachemntsFields()
-	{
+    //    private void LoadAttachemntsFields()
+    //{
 		 
-		ListViewItem aListItem = default(ListViewItem);
-		lvAttachments.Items.Clear();
-		lvAttachments.View = View.Details;
-		// Set the view to show details.
-		lvAttachments.GridLines = true;
-		// Display grid lines.
-		//Dim sValue As String
+    //    ListViewItem aListItem = default(ListViewItem);
+    //    lvAttachments.Items.Clear();
+    //    lvAttachments.View = View.Details;
+    //    // Set the view to show details.
+    //    lvAttachments.GridLines = true;
+    //    // Display grid lines.
+    //    //Dim sValue As String
 
 
-        foreach (CDO.IBodyPart iBP in objCDOMsg.Attachments)
-        {
-			aListItem = new ListViewItem(iBP.FileName);
+    //    foreach (CDO.IBodyPart iBP in objCDOMsg.Attachments)
+    //    {
+    //        aListItem = new ListViewItem(iBP.FileName);
 
-			if (iBP.ContentMediaType != null) {
-				aListItem.SubItems.Add(iBP.ContentMediaType);
-			} else {
-				aListItem.SubItems.Add("");
-			}
-			if (iBP.ContentTransferEncoding != null) {
-				aListItem.SubItems.Add(iBP.ContentTransferEncoding);
-			} else {
-				aListItem.SubItems.Add("");
-			}
-			if (iBP.Charset != null) {
-				aListItem.SubItems.Add(iBP.Charset);
-			} else {
-				aListItem.SubItems.Add("");
-			}
-			if (iBP.ContentClass != null) {
-				aListItem.SubItems.Add(iBP.ContentClass);
-			} else {
-				aListItem.SubItems.Add("");
-			}
-			if (iBP.ContentClass != null) {
-				aListItem.SubItems.Add(iBP.ContentClassName);
-			} else {
-				aListItem.SubItems.Add("");
-			}
+    //        if (iBP.ContentMediaType != null) {
+    //            aListItem.SubItems.Add(iBP.ContentMediaType);
+    //        } else {
+    //            aListItem.SubItems.Add("");
+    //        }
+    //        if (iBP.ContentTransferEncoding != null) {
+    //            aListItem.SubItems.Add(iBP.ContentTransferEncoding);
+    //        } else {
+    //            aListItem.SubItems.Add("");
+    //        }
+    //        if (iBP.Charset != null) {
+    //            aListItem.SubItems.Add(iBP.Charset);
+    //        } else {
+    //            aListItem.SubItems.Add("");
+    //        }
+    //        if (iBP.ContentClass != null) {
+    //            aListItem.SubItems.Add(iBP.ContentClass);
+    //        } else {
+    //            aListItem.SubItems.Add("");
+    //        }
+    //        if (iBP.ContentClass != null) {
+    //            aListItem.SubItems.Add(iBP.ContentClassName);
+    //        } else {
+    //            aListItem.SubItems.Add("");
+    //        }
 
 
-			lvAttachments.Items.AddRange(new ListViewItem[] { aListItem });
-			aListItem = null;
-		}
-	}
-        private void ExtractBodyPart(CDO.IBodyPart iBP)
+    //        lvAttachments.Items.AddRange(new ListViewItem[] { aListItem });
+    //        aListItem = null;
+
+             
+    //       // Marshal.ReleaseComObject(iBP);
+    //    }
+    //}
+    private void ExtractBodyPart(CDO.IBodyPart iBP)
 	{
 		string sText = null;
 		ADODB.Stream aStream = default(ADODB.Stream);
+
+        string sWebView = string.Empty;
+
+        try
+        {
+
+            if (iBP.FileName.Trim().Length != 0)
+            {
+                //aStream = iBP.GetEncodedContentStream();
+
+                string sFoldePath = Path.GetTempPath();
+                string sFileName = iBP.FileName;
+                string sFile = Path.Combine(sFoldePath, sFileName);
+
+                iBP.SaveToFile(sFile);
+                this.wbView.Navigate(sFile);
+            }
+            else
+            {
+                string sExtension = string.Empty;
+                if (iBP.ContentMediaType == "text/html")
+                    sExtension = "html";
+                if (iBP.ContentMediaType == "text/plain")
+                    sExtension = "txt";
+                if (iBP.ContentMediaType == "text/xml")
+                    sExtension = "xml";
+
+                if (sExtension != string.Empty)
+                {
+                    aStream = iBP.GetDecodedContentStream();
+
+                    string sFoldePath = Path.GetTempPath();
+                    string sFileName = Path.GetRandomFileName();
+                    if (sExtension != string.Empty)
+                        sFileName += ("." + sExtension);
+                    string sFile = Path.Combine(sFoldePath, sFileName);
+
+                    aStream.SaveToFile(sFile);
+                    //SaveBodyPart(aStream, sFile);
+                    this.wbView.Navigate(sFile);
+                }
+                else
+                    this.wbView.DocumentText = "";
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message.ToString(), "Error bulding view for Browser view.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
 
 		// Get Encoded Stream
 		try {
@@ -346,7 +464,9 @@ namespace EWSEditor
 			aStream.Close();
 			txtEncoded.Text = sText;
 			txtStream.BackColor = Color.White;
-		} catch (Exception ex) {
+           // Marshal.ReleaseComObject(aStream);
+		} 
+            catch (Exception ex) {
 			txtEncoded.Text = "";
 			txtStream.BackColor = Color.Gray;
 		}
@@ -358,7 +478,9 @@ namespace EWSEditor
 			aStream.Close();
 			txtDecoded.Text = sText;
 			txtStream.BackColor = Color.White;
-		} catch (Exception ex) {
+           // Marshal.ReleaseComObject(aStream);
+		} 
+        catch (Exception ex) {
 			txtDecoded.Text = "";
 			txtStream.BackColor = Color.Gray;
 		}
@@ -370,7 +492,9 @@ namespace EWSEditor
 			aStream.Close();
 			txtStream.Text = sText;
 			txtStream.BackColor = Color.White;
-		} catch (Exception ex) {
+            //Marshal.ReleaseComObject(aStream);
+		} 
+        catch (Exception ex) {
 			txtStream.Text = "";
 			txtStream.BackColor =Color.Gray;
 		}
@@ -399,6 +523,8 @@ namespace EWSEditor
 			}
 			ListView1.Items.AddRange(new ListViewItem[] { aListItem });
 			aListItem = null;
+
+            //Marshal.ReleaseComObject(objField);
 		}
 
 		// ---- Body Part Properties --------------------------------
@@ -549,8 +675,8 @@ namespace EWSEditor
 
         private void lvAttachments_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            this.lvAttachments.ListViewItemSorter = new EWSEditor.Common.UIHelpers.ListViewItemComparer(e.Column);
-            lvAttachments.Sort();
+            //this.lvAttachments.ListViewItemSorter = new EWSEditor.Common.UIHelpers.ListViewItemComparer(e.Column);
+            //lvAttachments.Sort();
         }
 
         private void ListView2_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -620,6 +746,58 @@ namespace EWSEditor
 
         private void mnuSaveBodyPartToFile_Click(object sender, EventArgs e)
         {
+            //if ((TreeView1.SelectedNode != null))
+            //{
+            //    CDO.IBodyPart aBP = default(CDO.IBodyPart);
+            //    aBP = (CDO.IBodyPart)TreeView1.SelectedNode.Tag;
+
+            //    //Dim aStream As ADODB.Stream
+            //    string sFilename = null;
+            //    string sUseFilename = "";
+            //    string sDatapath = "c:\\";
+
+            //    SaveFileDialog saveFileDialog1 = default(SaveFileDialog);
+            //    saveFileDialog1 = new SaveFileDialog();
+            //    saveFileDialog1.InitialDirectory = sDatapath;
+            //    saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+
+
+            //    saveFileDialog1.FilterIndex = 2;
+            //    saveFileDialog1.RestoreDirectory = false;
+
+            //    sFilename = aBP.FileName;
+            //    if (string.IsNullOrEmpty(sFilename))
+            //    {
+            //        sFilename = "BodyPart (" + TreeView1.SelectedNode.Text + ").txt";
+            //    }
+            //    else
+            //    {
+            //        sFilename = "BodyPart - " + sFilename;
+            //    }
+
+            //    saveFileDialog1.FileName = sFilename;
+            //    if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //    {
+            //        sUseFilename = saveFileDialog1.FileName;
+            //        saveFileDialog1 = null;
+            //        try
+            //        {
+            //            Cursor = Cursors.WaitCursor;
+            //            aBP.SaveToFile(sUseFilename);
+            //            Cursor = Cursors.Default;
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            MessageBox.Show("Error Saving Bodypart " + ex.ToString());
+            //        }
+            //    }
+            //    //Marshal.ReleaseComObject(aBP);
+            //}
+            //Cursor = Cursors.Default;
+        }
+
+        private void mnuSaveEncodedBodyPartToFile_Click(object sender, EventArgs e)
+        {
             if ((TreeView1.SelectedNode != null))
             {
                 CDO.IBodyPart aBP = default(CDO.IBodyPart);
@@ -665,62 +843,202 @@ namespace EWSEditor
                         MessageBox.Show("Error Saving Bodypart " + ex.ToString());
                     }
                 }
+                //Marshal.ReleaseComObject(aBP);
             }
             Cursor = Cursors.Default;
         }
 
-        private void mnuSaveEncodedBodyPartToFile_Click(object sender, EventArgs e)
+        private void mnuSaveDecodedBodyPartToFile_Click(object sender, EventArgs e)
         {
-            //    if ((TreeView1.SelectedNode != null))
-            //    {
-            //        CDO.IBodyPart aBP = default(CDO.IBodyPart);
-            //        aBP = (CDO.IBodyPart)TreeView1.SelectedNode.Tag;
-
-            //        //Dim aStream As ADODB.Stream
-            //        string sFilename = null;
-            //        string sUseFilename = "";
-            //        string sDatapath = "c:\\";
-
-            //        SaveFileDialog saveFileDialog1 = default(SaveFileDialog);
-            //        saveFileDialog1 = new SaveFileDialog();
-            //        saveFileDialog1.InitialDirectory = sDatapath;
-            //        saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-
-
-            //        saveFileDialog1.FilterIndex = 2;
-            //        saveFileDialog1.RestoreDirectory = false;
-
-            //        sFilename = aBP.FileName;
-            //        if (string.IsNullOrEmpty(sFilename))
-            //        {
-            //            sFilename = "BodyPart (" + TreeView1.SelectedNode.Text + ").txt";
-            //        }
-            //        else
-            //        {
-            //            sFilename = "BodyPart - " + sFilename;
-            //        }
-
-            //        saveFileDialog1.FileName = sFilename;
-            //        if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //        {
-            //            sUseFilename = saveFileDialog1.FileName;
-            //            saveFileDialog1 = null;
-            //            try
-            //            {
-            //                Cursor = Cursors.WaitCursor;
-            //                aBP.SaveToFile(sUseFilename);
-            //                Cursor = Cursors.Default;
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                MessageBox.Show("Error Saving Bodypart " + ex.ToString);
-            //            }
-            //        }
-            //    }
-            //    Cursor = Cursors.Default;
+          
         }
 
-        private void mnuSaveDecodedBodyPartToFile_Click(object sender, EventArgs e)
+        private void mnuSaveBodyPartStreamToFile_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void TreeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
+        {
+            try
+            {
+
+
+                if (bLoaded == true)
+                {
+                    Cursor = Cursors.WaitCursor;
+
+
+                    if ((e.Node.Tag != null))
+                    {
+                        CDO.IBodyPart aBP = null;
+                        if (e.Node.Tag != null)
+                            aBP = (CDO.IBodyPart)e.Node.Tag;
+                        if (aBP == null)
+                        {
+                            ExtractBodyPart(objCDOMsg.BodyPart);
+                            // Messag Body
+                        }
+                        else
+                        {
+                            ExtractBodyPart(aBP);
+                            // Body Part
+
+                        }
+                       // Marshal.ReleaseComObject(aBP);
+                    }
+                    else
+                    {
+                        StatusBar1.Panels[0].Text = " ";
+                    }
+                    Cursor = Cursors.Default;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+        }
+
+        private void btnLoadTextEntry_Click(object sender, EventArgs e)
+        {
+            string sEntry = "";
+            EWSEditor.Forms.Dialogs.EnterTextForm oForm = new EnterTextForm(sEntry);
+            oForm.ShowDialog();
+            if (oForm.ChoseOK == true)
+            {
+                bool bRet = false;
+                StatusBar1.Text = "Not Loaded";
+                bRet = LoadMessage("string", oForm.UserTextEntry);
+                if (bRet == true)
+                    StatusBar1.Text = "Loaded";
+                else
+                    StatusBar1.Text = "Not Loaded";
+            }
+
+        }
+
+        private void txtMime_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ListView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvAttachments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveBodypartToFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((TreeView1.SelectedNode != null))
+            {
+                CDO.IBodyPart aBP = default(CDO.IBodyPart);
+                aBP = (CDO.IBodyPart)TreeView1.SelectedNode.Tag;
+
+                //Dim aStream As ADODB.Stream
+                string sFilename = null;
+                string sUseFilename = "";
+                string sDatapath = "c:\\";
+
+                SaveFileDialog saveFileDialog1 = default(SaveFileDialog);
+                saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.InitialDirectory = sDatapath;
+                saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+
+
+                saveFileDialog1.FilterIndex = 2;
+                saveFileDialog1.RestoreDirectory = false;
+
+                sFilename = aBP.FileName;
+                if (string.IsNullOrEmpty(sFilename))
+                {
+                    sFilename = "BodyPart (" + TreeView1.SelectedNode.Text + ").txt";
+                }
+                else
+                {
+                    sFilename = "BodyPart - " + sFilename;
+                }
+
+                saveFileDialog1.FileName = sFilename;
+                if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    sUseFilename = saveFileDialog1.FileName;
+                    saveFileDialog1 = null;
+                    try
+                    {
+                        Cursor = Cursors.WaitCursor;
+                        aBP.SaveToFile(sUseFilename);
+                        Cursor = Cursors.Default;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error Saving Bodypart " + ex.ToString());
+                    }
+                }
+                //Marshal.ReleaseComObject(aBP);
+            }
+            Cursor = Cursors.Default;
+        }
+
+        private void saveEncodedBodypartStreamToFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if ((TreeView1.SelectedNode != null))
+            {
+                CDO.IBodyPart aBP = default(CDO.IBodyPart);
+                aBP = (CDO.IBodyPart)TreeView1.SelectedNode.Tag;
+
+                //Dim aStream As ADODB.Stream
+                string sFilename = null;
+                string sUseFilename = "";
+                string sDatapath = "c:\\";
+
+                SaveFileDialog saveFileDialog1 = default(SaveFileDialog);
+                saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.InitialDirectory = sDatapath;
+                saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+
+
+                saveFileDialog1.FilterIndex = 2;
+                saveFileDialog1.RestoreDirectory = false;
+
+                sFilename = aBP.FileName;
+                if (string.IsNullOrEmpty(sFilename))
+                {
+                    sFilename = "BodyPart (" + TreeView1.SelectedNode.Text + ").txt";
+                }
+                else
+                {
+                    sFilename = "BodyPart - " + sFilename;
+                }
+
+                saveFileDialog1.FileName = sFilename;
+                if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    sUseFilename = saveFileDialog1.FileName;
+                    saveFileDialog1 = null;
+                    try
+                    {
+                        Cursor = Cursors.WaitCursor;
+                        aBP.SaveToFile(sUseFilename);
+                        Cursor = Cursors.Default;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error Saving Bodypart " + ex.ToString());
+                    }
+                }
+                //Marshal.ReleaseComObject(aBP);
+            }
+            Cursor = Cursors.Default;
+        }
+
+        private void saveDecodedBodypartStreamToFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if ((TreeView1.SelectedNode != null))
             {
@@ -754,11 +1072,15 @@ namespace EWSEditor
                     }
                     SaveBodyPart(aStream, sFilename);
                 }
+
+                //Marshal.ReleaseComObject(aBP);
+                //Marshal.ReleaseComObject(aStream);
+
                 Cursor = Cursors.Default;
             }
         }
 
-        private void mnuSaveBodyPartStreamToFile_Click(object sender, EventArgs e)
+        private void saveBodypartStreamToFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if ((TreeView1.SelectedNode != null))
             {
@@ -794,65 +1116,12 @@ namespace EWSEditor
                     SaveBodyPart(aStream, sFilename);
                     Cursor = Cursors.Default;
                 }
+
+                //Marshal.ReleaseComObject(aBP);
+                //Marshal.ReleaseComObject(aStream);
+
                 Cursor = Cursors.Default;
             }
-        }
-
-        private void TreeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
-        {
-            if (bLoaded == true)
-            {
-                Cursor = Cursors.WaitCursor;
-
-                if ((e.Node.Tag != null))
-                {
-                    CDO.IBodyPart aBP = default(CDO.IBodyPart);
-                    aBP = (CDO.IBodyPart)e.Node.Tag;
-                    if (aBP == null)
-                    {
-                        ExtractBodyPart(objCDOMsg.BodyPart);
-                        // Messag Body
-                    }
-                    else
-                    {
-                        ExtractBodyPart(aBP);
-                        // Body Part
-                    }
-                }
-                else
-                {
-                    StatusBar1.Panels[0].Text = " ";
-                }
-                Cursor = Cursors.Default;
-            }
-        }
-
-        private void btnLoadTextEntry_Click(object sender, EventArgs e)
-        {
-            string sEntry = "";
-            EWSEditor.Forms.Dialogs.EnterTextForm oForm = new EnterTextForm(sEntry);
-            oForm.ShowDialog();
-            if (oForm.ChoseOK == true)
-            {
-                bool bRet = false;
-                StatusBar1.Text = "Not Loaded";
-                bRet = LoadMessage("string", oForm.UserTextEntry);
-                if (bRet == true)
-                    StatusBar1.Text = "Loaded";
-                else
-                    StatusBar1.Text = "Not Loaded";
-            }
-
-        }
-
-        private void txtMime_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ListView2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         //private void mnuSaveBodyPartToFile_Click(System.Object sender, System.EventArgs e)

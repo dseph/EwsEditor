@@ -318,17 +318,17 @@
             // ViewTypeColumn
             // 
             this.ViewTypeColumn.Text = "ViewType";
-            this.ViewTypeColumn.Width = 90;
+            this.ViewTypeColumn.Width = 120;
             // 
             // WorkingHoursColumn
             // 
             this.WorkingHoursColumn.Text = "WorkingHours";
-            this.WorkingHoursColumn.Width = 90;
+            this.WorkingHoursColumn.Width = 500;
             // 
             // MergedFreeBusyStatusColumn
             // 
             this.MergedFreeBusyStatusColumn.Text = "MergedFreeBusyStatus";
-            this.MergedFreeBusyStatusColumn.Width = 137;
+            this.MergedFreeBusyStatusColumn.Width = 200;
             // 
             // CalEventsList
             // 

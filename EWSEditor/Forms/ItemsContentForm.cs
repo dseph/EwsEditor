@@ -678,20 +678,10 @@ namespace EWSEditor.Forms
             try
             {
                 string sVersion = this.CurrentService.RequestedServerVersion.ToString();
-                // Note - I tested ExportItemPost and it worked to export and load in EwsEditor 1.7 - so, its working properly
+           
                 ExportUploadHelper.ExportItemPost(sVersion, id.UniqueId, dialog.FileName);
                
-       
-                //byte[] data = null;
-
-                //ExportUploadHelper.ExportItem(
-                //    this.CurrentService,
-                //    id,
-                //    out data);
-
-                //System.IO.File.WriteAllBytes(
-                //    dialog.FileName,
-                //    data);
+        
             }
             finally
             {
@@ -794,12 +784,6 @@ namespace EWSEditor.Forms
                     return;
                 }
  
-                
-                //DumpHelper.DumpMIMEToString(
-                //    new List<ItemId> { id },
-                //    this.CurrentService,
-                //    ref MimeOfItem);
-              
                 DumpHelper.GetItemMime(
                     id,
                     this.CurrentService,
@@ -1443,6 +1427,33 @@ namespace EWSEditor.Forms
 
                 // Refresh the view
                 this.RefreshContentAndDetails();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void mnuParseAndViewMIMEContent_Click(object sender, EventArgs e)
+        {
+            string MimeOfItem = string.Empty;
+            try
+            {
+                ItemId id = GetSelectedContentId();
+                if (id == null)
+                {
+                    return;
+                }
+
+                DumpHelper.GetItemMime(
+                    id,
+                    this.CurrentService,
+                    ref MimeOfItem);
+
+                MimeParserForm oForm = new MimeParserForm( MimeOfItem);
+ 
+                oForm.ShowDialog();
+
             }
             finally
             {

@@ -66,9 +66,10 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(251, 17);
+            this.label2.Size = new System.Drawing.Size(565, 17);
             this.label2.TabIndex = 3;
-            this.label2.Text = "This form seraches for SCP endpoints.";
+            this.label2.Text = "This form seraches for SCP endpoints.  This can only be used with in-network Exch" +
+    "ange.";
             // 
             // txtResults
             // 
@@ -79,7 +80,7 @@
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResults.Size = new System.Drawing.Size(763, 259);
+            this.txtResults.Size = new System.Drawing.Size(763, 261);
             this.txtResults.TabIndex = 4;
             // 
             // ScpLookupForm

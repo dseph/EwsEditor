@@ -504,17 +504,26 @@ namespace EWSEditor.Forms
         {
             txtXAnchorMailbox.Enabled = chkSetXAnchorMailbox.Checked;
 
-            // Default
+            // Default ImpersonatedIdTextBox ImpersonationCheck
             if (chkSetXAnchorMailbox.Checked == true && txtXAnchorMailbox.Text.Trim().Length == 0)
             {
-                if (rdoAutodiscoverEmail.Checked == true && AutodiscoverEmailText.Text.Contains("@"))
+                if (ImpersonationCheck.Checked == true)
                 {
-                    txtXAnchorMailbox.Text = AutodiscoverEmailText.Text;
+                    if (ImpersonatedIdTextBox.Text.Contains("@"))
+                        txtXAnchorMailbox.Text = ImpersonatedIdTextBox.Text;
                 }
                 else
                 {
-                    if (txtUserName.Text.Contains("@"))
-                        txtXAnchorMailbox.Text = txtUserName.Text;
+
+                    if (rdoAutodiscoverEmail.Checked == true && AutodiscoverEmailText.Text.Contains("@"))
+                    {
+                        txtXAnchorMailbox.Text = AutodiscoverEmailText.Text;
+                    }
+                    else
+                    {
+                        if (txtUserName.Text.Contains("@"))
+                            txtXAnchorMailbox.Text = txtUserName.Text;
+                    }
                 }
  
             }

@@ -43,6 +43,7 @@
             this.TargetMailDomain = new System.Windows.Forms.TextBox();
             this.GoRun = new System.Windows.Forms.Button();
             this.txtResults = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             // 
             this.TempExchangeVersionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempExchangeVersionCombo.FormattingEnabled = true;
-            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(120, 152);
+            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(120, 182);
             this.TempExchangeVersionCombo.Margin = new System.Windows.Forms.Padding(4);
             this.TempExchangeVersionCombo.Name = "TempExchangeVersionCombo";
             this.TempExchangeVersionCombo.Size = new System.Drawing.Size(293, 24);
@@ -59,7 +60,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 155);
+            this.label7.Location = new System.Drawing.Point(8, 185);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(98, 17);
@@ -76,7 +77,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(11, 7);
+            this.groupBox1.Location = new System.Drawing.Point(11, 37);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -167,7 +168,7 @@
             // TargetMailboxLabel
             // 
             this.TargetMailboxLabel.AutoSize = true;
-            this.TargetMailboxLabel.Location = new System.Drawing.Point(8, 131);
+            this.TargetMailboxLabel.Location = new System.Drawing.Point(8, 161);
             this.TargetMailboxLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TargetMailboxLabel.Name = "TargetMailboxLabel";
             this.TargetMailboxLabel.Size = new System.Drawing.Size(89, 17);
@@ -176,7 +177,7 @@
             // 
             // TargetMailDomain
             // 
-            this.TargetMailDomain.Location = new System.Drawing.Point(120, 125);
+            this.TargetMailDomain.Location = new System.Drawing.Point(120, 155);
             this.TargetMailDomain.Margin = new System.Windows.Forms.Padding(4);
             this.TargetMailDomain.Name = "TargetMailDomain";
             this.TargetMailDomain.Size = new System.Drawing.Size(293, 22);
@@ -185,7 +186,7 @@
             // GoRun
             // 
             this.GoRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.GoRun.Location = new System.Drawing.Point(620, 148);
+            this.GoRun.Location = new System.Drawing.Point(620, 178);
             this.GoRun.Margin = new System.Windows.Forms.Padding(4);
             this.GoRun.Name = "GoRun";
             this.GoRun.Size = new System.Drawing.Size(105, 28);
@@ -199,21 +200,32 @@
             this.txtResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResults.Location = new System.Drawing.Point(11, 184);
+            this.txtResults.Location = new System.Drawing.Point(11, 214);
             this.txtResults.Margin = new System.Windows.Forms.Padding(4);
             this.txtResults.MaxLength = 0;
             this.txtResults.Multiline = true;
             this.txtResults.Name = "txtResults";
             this.txtResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResults.Size = new System.Drawing.Size(714, 174);
+            this.txtResults.Size = new System.Drawing.Size(714, 184);
             this.txtResults.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 9);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(440, 17);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "This windows shows Domain settings. Note that it uses Autodiscover.";
             // 
             // DomainSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(738, 367);
+            this.ClientSize = new System.Drawing.Size(738, 407);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtResults);
             this.Controls.Add(this.GoRun);
             this.Controls.Add(this.TempExchangeVersionCombo);
@@ -248,6 +260,7 @@
         private System.Windows.Forms.TextBox TargetMailDomain;
         private System.Windows.Forms.Button GoRun;
         private System.Windows.Forms.TextBox txtResults;
+        private System.Windows.Forms.Label label4;
 
     }
 }
