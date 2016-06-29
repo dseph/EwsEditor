@@ -462,5 +462,10 @@ namespace EWSEditor.Forms
                     this);
             }
         }
+
+        private void chkClass_CheckedChanged(object sender, EventArgs e)
+        {
+            this.txtClass.Enabled = this.chkClass.Enabled;
+        }
     }
 }
