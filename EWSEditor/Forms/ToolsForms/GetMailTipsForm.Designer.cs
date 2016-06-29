@@ -63,7 +63,7 @@
             // 
             this.txtSendAsMailbox.AcceptsReturn = true;
             this.txtSendAsMailbox.Location = new System.Drawing.Point(191, 144);
-            this.txtSendAsMailbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSendAsMailbox.Margin = new System.Windows.Forms.Padding(4);
             this.txtSendAsMailbox.Name = "txtSendAsMailbox";
             this.txtSendAsMailbox.Size = new System.Drawing.Size(290, 22);
             this.txtSendAsMailbox.TabIndex = 2;
@@ -82,7 +82,7 @@
             // 
             this.txtMailboxEmailAddressxtBox1.AcceptsReturn = true;
             this.txtMailboxEmailAddressxtBox1.Location = new System.Drawing.Point(191, 174);
-            this.txtMailboxEmailAddressxtBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMailboxEmailAddressxtBox1.Margin = new System.Windows.Forms.Padding(4);
             this.txtMailboxEmailAddressxtBox1.Name = "txtMailboxEmailAddressxtBox1";
             this.txtMailboxEmailAddressxtBox1.Size = new System.Drawing.Size(290, 22);
             this.txtMailboxEmailAddressxtBox1.TabIndex = 4;
@@ -115,7 +115,7 @@
             "SMTP",
             "EX"});
             this.cmboMailboxRoutingType.Location = new System.Drawing.Point(191, 204);
-            this.cmboMailboxRoutingType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmboMailboxRoutingType.Margin = new System.Windows.Forms.Padding(4);
             this.cmboMailboxRoutingType.Name = "cmboMailboxRoutingType";
             this.cmboMailboxRoutingType.Size = new System.Drawing.Size(195, 24);
             this.cmboMailboxRoutingType.TabIndex = 6;
@@ -136,7 +136,7 @@
             "ModerationStatus",
             "InvalidRecipient"});
             this.cmboMailTipsRequested.Location = new System.Drawing.Point(191, 238);
-            this.cmboMailTipsRequested.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmboMailTipsRequested.Margin = new System.Windows.Forms.Padding(4);
             this.cmboMailTipsRequested.Name = "cmboMailTipsRequested";
             this.cmboMailTipsRequested.Size = new System.Drawing.Size(195, 24);
             this.cmboMailTipsRequested.TabIndex = 8;
@@ -144,7 +144,6 @@
             // 
             // btnGetMailTips
             // 
-            this.btnGetMailTips.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGetMailTips.Location = new System.Drawing.Point(12, 276);
             this.btnGetMailTips.Name = "btnGetMailTips";
             this.btnGetMailTips.Size = new System.Drawing.Size(169, 31);
@@ -160,7 +159,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResponse.Location = new System.Drawing.Point(0, 2);
-            this.txtResponse.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtResponse.Margin = new System.Windows.Forms.Padding(4);
             this.txtResponse.Multiline = true;
             this.txtResponse.Name = "txtResponse";
             this.txtResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
@@ -201,20 +200,18 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage2.Size = new System.Drawing.Size(886, 319);
+            this.tabPage2.Size = new System.Drawing.Size(685, 173);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "XML View";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.webBrowser1.Location = new System.Drawing.Point(5, 6);
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(3, 2);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(825, 168);
+            this.webBrowser1.Size = new System.Drawing.Size(679, 169);
             this.webBrowser1.TabIndex = 21;
             // 
             // textBox1

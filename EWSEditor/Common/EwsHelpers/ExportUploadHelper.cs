@@ -7,6 +7,7 @@ using EWSEditor.Resources;
 using System.Text;
 using System.IO;
 using System.Xml;
+using System.Windows.Forms;
 using EWSEditor.Common;
 using EWSEditor.Forms;
 using EWSEditor.Forms.Controls;
@@ -137,31 +138,55 @@ namespace EWSEditor.Exchange
                     XmlDocument oDoc = new XmlDocument();
                     XmlNamespaceManager namespaces = new XmlNamespaceManager(oDoc.NameTable);
                     namespaces.AddNamespace("m", "http://schemas.microsoft.com/exchange/services/2006/messages");
-                    oDoc.LoadXml(sResponseText);
-                    XmlNode oData = oDoc.SelectSingleNode("//m:Data", namespaces);
- 
-                     // Write base 64 encoded text Data XML string into a binary base 64 text/XML file
-                    BinaryWriter oBinaryWriter = new BinaryWriter(File.Open(sFile, FileMode.Create));
-                    StringReader oStringReader = new StringReader(oData.OuterXml);
-                    XmlTextReader oXmlTextReader = new XmlTextReader(oStringReader);
-                    oXmlTextReader.MoveToContent();
-                    byte[] buffer = new byte[BUFFER_SIZE];
-                    do
+
+                    try
                     {
-                        iReadBytes = oXmlTextReader.ReadBase64(buffer, 0, BUFFER_SIZE);
-                        oBinaryWriter.Write(buffer, 0, iReadBytes);
+                        oDoc.LoadXml(sResponseText);
+                        //try
+                        //{
+
+                        XmlNode oData = oDoc.SelectSingleNode("//m:Data", namespaces);
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    MessageBox.Show(ex.Message.ToString() + "\r\n\r\n" + "Response: \r\n" + sResponseText, "Error");
+                        //}
+
+                        // Write base 64 encoded text Data XML string into a binary base 64 text/XML file
+                        BinaryWriter oBinaryWriter = new BinaryWriter(File.Open(sFile, FileMode.Create));
+                        StringReader oStringReader = new StringReader(oData.OuterXml);
+                        XmlTextReader oXmlTextReader = new XmlTextReader(oStringReader);
+                        oXmlTextReader.MoveToContent();
+                        byte[] buffer = new byte[BUFFER_SIZE];
+                        do
+                        {
+                            iReadBytes = oXmlTextReader.ReadBase64(buffer, 0, BUFFER_SIZE);
+                            oBinaryWriter.Write(buffer, 0, iReadBytes);
+                        }
+                        while (iReadBytes >= BUFFER_SIZE);
+
+                        oXmlTextReader.Close();
+
+                        oBinaryWriter.Flush();
+                        oBinaryWriter.Close();
+
+                        bSuccess = true;
                     }
-                    while (iReadBytes >= BUFFER_SIZE);
+                    catch (Exception ex)
+                    {
 
-                    oXmlTextReader.Close();
+                        MessageBox.Show(ex.Message.ToString() + "\r\n\r\n" + "Response: \r\n" + sResponseText, "Error");
 
-                    oBinaryWriter.Flush();
-                    oBinaryWriter.Close();
-
-                    bSuccess = true;
+                    }
                 }
                 
  
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString(), "Error");
+
             }
             finally 
             {

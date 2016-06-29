@@ -61,6 +61,7 @@
             this.mnuEditItemInOWA = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.developerItemTestWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuParseAndViewMIMEContent = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuItemContext.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -95,7 +96,7 @@
             this.toolStripSeparator3,
             this.developerItemTestWindowToolStripMenuItem});
             this.mnuItemContext.Name = "mnuItemContext";
-            this.mnuItemContext.Size = new System.Drawing.Size(526, 484);
+            this.mnuItemContext.Size = new System.Drawing.Size(526, 517);
             this.mnuItemContext.Opening += new System.ComponentModel.CancelEventHandler(this.mnuItemContext_Opening);
             this.mnuItemContext.Click += new System.EventHandler(this.mnuItemContext_Click);
             // 
@@ -211,7 +212,8 @@
             this.mnuExportMIMEContent,
             this.mnuExportXml,
             this.exportToStreamToolStripMenuItem,
-            this.mnuViewMIMEContent});
+            this.mnuViewMIMEContent,
+            this.mnuParseAndViewMIMEContent});
             this.mnuExportItem.Name = "mnuExportItem";
             this.mnuExportItem.Size = new System.Drawing.Size(525, 30);
             this.mnuExportItem.Text = "Export Item";
@@ -312,6 +314,13 @@
             this.developerItemTestWindowToolStripMenuItem.Text = "Developer Item Test Window...";
             this.developerItemTestWindowToolStripMenuItem.Click += new System.EventHandler(this.developerItemTestWindowToolStripMenuItem_Click);
             // 
+            // mnuParseAndViewMIMEContent
+            // 
+            this.mnuParseAndViewMIMEContent.Name = "mnuParseAndViewMIMEContent";
+            this.mnuParseAndViewMIMEContent.Size = new System.Drawing.Size(279, 30);
+            this.mnuParseAndViewMIMEContent.Text = "Parse and View MIME...";
+            this.mnuParseAndViewMIMEContent.Click += new System.EventHandler(this.mnuParseAndViewMIMEContent_Click);
+            // 
             // ItemsContentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -359,5 +368,6 @@
         private System.Windows.Forms.ToolStripMenuItem developerItemTestWindowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dispalyAttachmentsByTypeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuMarkAsJunk;
+        private System.Windows.Forms.ToolStripMenuItem mnuParseAndViewMIMEContent;
     }
 }

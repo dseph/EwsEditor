@@ -52,7 +52,8 @@ namespace EWSEditor.Forms
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-      
+
+            MessageBox.Show("Service URL: " + _service.Url);
 
         }
          

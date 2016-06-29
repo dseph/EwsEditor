@@ -32,9 +32,10 @@
             // 
             // CountedForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 555);
+            this.ClientSize = new System.Drawing.Size(921, 462);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "CountedForm";
             this.Text = "CountedForm";
             this.Load += new System.EventHandler(this.CountedForm_Load_1);
