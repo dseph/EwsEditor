@@ -27,23 +27,26 @@ namespace EWSEditor.Forms
         private Timer deferredTreeViewActionTimer = null;
         private TreeViewAction? deferredTreeViewAction = null;
 
+        // https://blogs.msdn.microsoft.com/akashb/2011/08/10/stamping-retention-policy-tag-using-ews-managed-api-1-1-from-powershellexchange-2010/
+
         private static ExtendedPropertyDefinition Prop_IsHidden = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
-        private static ExtendedPropertyDefinition Prop_FolderPath = new ExtendedPropertyDefinition(26293, MapiPropertyType.String);            // Folder Path
-        private static ExtendedPropertyDefinition Prop_RetentionFlags = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);      // PR_RETENTION_FLAGS 0x301D   
-        private static ExtendedPropertyDefinition Prop_Retention_Period = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);    // PR_RETENTION_PERIOD 0x301A
-        private static ExtendedPropertyDefinition Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT = new ExtendedPropertyDefinition(0x66B1, MapiPropertyType.Long);    // PR_ATTACH_ON_NORMAL_MSG_COUNT 0x66B1
+        private static ExtendedPropertyDefinition Prop_FolderPath = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);                 // Folder Path - PR_Folder_Path
+        // private static ExtendedPropertyDefinition Prop_RetentionFlags = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);        //  Item - PidTagRetentionFlags - PR_RETENTION_FLAGS 0x301D   
+        // private static ExtendedPropertyDefinition Prop_Retention_Period = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);      //  Item - PidTagRetentionPeriod - PR_RETENTION_PERIOD 0x301A
+        // private static ExtendedPropertyDefinition Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT = new ExtendedPropertyDefinition(0x66B1, MapiPropertyType.Long);    // PR_ATTACH_ON_NORMAL_MSG_COUNT 0x66B1
 
-        private static ExtendedPropertyDefinition Prop_PidTagMessageSizeExtended = new ExtendedPropertyDefinition(0xe08, MapiPropertyType.Long);
-        private static ExtendedPropertyDefinition Prop_PidTagDeletedOn = new ExtendedPropertyDefinition(0x668F, MapiPropertyType.SystemTime);
-        private static ExtendedPropertyDefinition Prop_PidTagFolderFlag = new ExtendedPropertyDefinition(0x66A8, MapiPropertyType.Integer);
-        private static ExtendedPropertyDefinition Prop_PidTagLocalCommitTime = new ExtendedPropertyDefinition(0x6709, MapiPropertyType.SystemTime);
-        private static ExtendedPropertyDefinition Prop_PidTagLocalCommitTimeMax = new ExtendedPropertyDefinition(0x670A, MapiPropertyType.SystemTime);
-        private static ExtendedPropertyDefinition Prop_PidTagDeletedCountTotal = new ExtendedPropertyDefinition(0x0003, MapiPropertyType.Integer);
+        // private static ExtendedPropertyDefinition Prop_PidTagMessageSizeExtended = new ExtendedPropertyDefinition(0xe08, MapiPropertyType.Long);        // Message - PidTagMessageSizeExtended - PR_MESSAGE_SIZE_EXTENDED
+        private static ExtendedPropertyDefinition Prop_PidTagDeletedOn = new ExtendedPropertyDefinition(0x668F, MapiPropertyType.SystemTime);           // Folder/Item - PidTagDeletedOn - PR_DELETED_ON
+        private static ExtendedPropertyDefinition Prop_PidTagFolderFlags = new ExtendedPropertyDefinition(0x66A8, MapiPropertyType.Integer);            // Folder - PidTagFolderFlags - PR_FOLDER_FLAGS
+        private static ExtendedPropertyDefinition Prop_PidTagLocalCommitTime = new ExtendedPropertyDefinition(0x6709, MapiPropertyType.SystemTime);     // Folder/item - PidTagLocalCommitTime - PR_LOCAL_COMMIT_TIME
+        private static ExtendedPropertyDefinition Prop_PidTagLocalCommitTimeMax = new ExtendedPropertyDefinition(0x670A, MapiPropertyType.SystemTime);  // Folder/item - PidTagLocalCommitTimeMax - PR_LOCAL_COMMIT_TIME_MAX
+        private static ExtendedPropertyDefinition Prop_PidTagDeletedCountTotal = new ExtendedPropertyDefinition(0x0003, MapiPropertyType.Integer);      // Folder - PidTagDeletedCountTotal - PR_DELETED_COUNT_TOTAL
 
-        private static ExtendedPropertyDefinition Prop_PidTagArchiveTag = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
-        private static ExtendedPropertyDefinition Prop_PidTagPolicyTag = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Integer);
-        private static ExtendedPropertyDefinition Prop_PidTagRetentionPeriod = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);
- 
+        // private static ExtendedPropertyDefinition Prop_PidTagArchiveTag = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);              // Guid of Archive tag - PR_ARCHIVE_TAG - PidTagArchiveTag 
+        // private static ExtendedPropertyDefinition Prop_PidTagPolicyTag = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Integer);              // Item - PidTagPolicyTag - PR_POLICY_TAG
+        // private static ExtendedPropertyDefinition Prop_PidTagRetentionPeriod = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);        // Message - PidTagRetentionPeriod - PR_RETENTION_PERIOD 
+        // ?? https://blogs.msdn.microsoft.com/akashb/2011/08/10/stamping-retention-policy-tag-using-ews-managed-api-1-1-from-powershellexchange-2010/
+
 
         private PropertySet folderNodePropertySet = new PropertySet(
             BasePropertySet.IdOnly,
