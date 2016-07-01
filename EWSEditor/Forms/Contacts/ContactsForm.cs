@@ -130,11 +130,18 @@ namespace EWSEditor.Forms
                 ContactSchema.AssistantName,
                 ContactSchema.AssistantPhone,
                 ContactSchema.Categories,
-                ContactSchema.Attachments
+                ContactSchema.Attachments,
+                ContactSchema.PostalAddressIndex 
+                 
   
                 );
 
- 
+            //// https://msdn.microsoft.com/en-us/library/microsoft.exchange.webservices.data.contact.postaladdressindex(v=exchg.80).aspx
+            //// ContactSchema.PostalAddressIndexSpecified 
+            //mExtendedPropertyPostalAddressId = new ExtendedPropertyDefinition(myGuidPostalAddressId, myPropertyIdPostalAddressId, MapiPropertyType.Integer);
+            
+            //oPropertySet.Add();
+
             Contact oContact = Contact.Bind(CurrentService, oItemId, oPropertySet);
              
  
@@ -143,7 +150,11 @@ namespace EWSEditor.Forms
 
         private void ContactsForm_Load(object sender, EventArgs e)
         {
-             
+            this.cmboPostalAddressIndex.Items.Add("Not Set");
+            this.cmboPostalAddressIndex.Items.Add("None");
+            this.cmboPostalAddressIndex.Items.Add("Other");
+            this.cmboPostalAddressIndex.Items.Add("Home");
+            this.cmboPostalAddressIndex.Items.Add("Business"); 
         }
 
 
@@ -253,8 +264,23 @@ namespace EWSEditor.Forms
                 
             }
 
-
-
+            switch (cmboPostalAddressIndex.Text)
+            {
+                case "None":
+                    oContact.PostalAddressIndex = (PhysicalAddressIndex)PhysicalAddressIndex.None;
+                    break;
+                case "Other":
+                    oContact.PostalAddressIndex = (PhysicalAddressIndex)PhysicalAddressIndex.Other;
+                    break;
+                case "Home":
+                    oContact.PostalAddressIndex = (PhysicalAddressIndex)PhysicalAddressIndex.Home;
+                    break;
+                case "Business":
+                    oContact.PostalAddressIndex = (PhysicalAddressIndex)PhysicalAddressIndex.Business;
+                    break;
+            }
+             
+ 
             bRet = true;
  
 
@@ -291,6 +317,8 @@ namespace EWSEditor.Forms
             txtOA_CountryOrRegion.Text = string.Empty;
 
             pbContactPhoto.Image = null;
+
+            this.cmboPostalAddressIndex.Text = "None";
             
         }
 
@@ -516,29 +544,73 @@ namespace EWSEditor.Forms
                 txtEmailAddress3_Id_ChangeKey.Enabled = false;
             }
 
-            //foreach (EmailAddressDictionary oEmailAddressDictionary in oContact.EmailAddresses)
+            string sValue = "Not Set";
+            //sValue = oContact.PostalAddressIndex.ToString();
+            bool bHasValue = false;
+            try
+            {
+                // [Microsoft.Exchange.WebServices.Data.ServiceObjectPropertyException] = {"This property was requested, but it wasn't returned by the server."}
+               // Message = "This property was requested, but it wasn't returned by the server."
+                sValue = oContact.PostalAddressIndex.ToString();
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+                //MessageBox.Show(ex.ToString());
+            }
+             
+            //PostalAddressIndex.ToString((PostalAddressIndexType)PostalAddressIndex.)
+            if (sValue != "Not Set")
+            {
+                switch (sValue)
+                {
+                    case "None":
+                        this.cmboPostalAddressIndex.Text = "None";
+                        break;
+                    case "Other":
+                        this.cmboPostalAddressIndex.Text = "Other";
+                        break;
+                    case "Home":
+                        this.cmboPostalAddressIndex.Text = "Home";
+                        break;
+                    case "Business":
+                        this.cmboPostalAddressIndex.Text = "Business";
+                        break;
+                }
+            }
+            else
+            {
+                this.cmboPostalAddressIndex.Text = "Not Set";
+            }
+
+            ////x = (int)oContact.PostalAddressIndex.Value;
+            ////if (oContact.PostalAddressIndex != null)
+            //if (sValue != null)
             //{
-            //    EmailAddressDictionary oEmailAddressDictionary in oContact.EmailAddresses)
-            //    //txtTo.Text += oAddress.Address + "; ";
+            //    switch (oContact.PostalAddressIndex.Value)
+            //    {
+            //        case PhysicalAddressIndex.None:
+            //            this.cmboPostalAddressIndex.Text = "None";
+            //            break;
+            //        case PhysicalAddressIndex.Other:
+            //            this.cmboPostalAddressIndex.Text = "Other";
+            //            break;
+            //        case PhysicalAddressIndex.Home:
+            //            this.cmboPostalAddressIndex.Text = "Home";
+            //            break;
+            //        case PhysicalAddressIndex.Business:
+            //            this.cmboPostalAddressIndex.Text = "Business";
+            //            break;
+            //    }
             //}
-            ////message.Attachments.AddFileAttachment("<path to file>");
-            //foreach (EmailAddress oAddress in oEmailMessage.ToRecipients)
+            //else
             //{
-            //    txtTo.Text += oAddress.Address + "; ";
-            //}
-            //foreach (EmailAddress oAddress in oEmailMessage.BccRecipients)
-            //{
-            //    txtBCC.Text += oAddress.Address + "; ";
-            //}
-            //foreach (EmailAddress oAddress in oEmailMessage.CcRecipients)
-            //{
-            //    txtCC.Text += oAddress.Address + "; ";
+            //    this.cmboPostalAddressIndex.Text = "Not Set";
             //}
 
-            //txtSubject.Text = oEmailMessage.Subject;
-            //txtBody.Text = oEmailMessage.Body.Text;
-            //chkDeliveryReceipt.Checked = oEmailMessage.IsReadReceiptRequested;
-            //chkReadReceipt.Checked = oEmailMessage.IsDeliveryReceiptRequested;
+ 
+ 
+          
             bRet = true;
             return bRet;
         }
