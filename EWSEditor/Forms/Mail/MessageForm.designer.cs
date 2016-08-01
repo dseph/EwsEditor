@@ -59,10 +59,10 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(9, 20);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSave.Location = new System.Drawing.Point(11, 24);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(89, 35);
+            this.btnSave.Size = new System.Drawing.Size(109, 42);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -70,10 +70,10 @@
             // 
             // btnForward
             // 
-            this.btnForward.Location = new System.Drawing.Point(237, 20);
-            this.btnForward.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnForward.Location = new System.Drawing.Point(290, 24);
+            this.btnForward.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnForward.Name = "btnForward";
-            this.btnForward.Size = new System.Drawing.Size(87, 35);
+            this.btnForward.Size = new System.Drawing.Size(106, 42);
             this.btnForward.TabIndex = 2;
             this.btnForward.Text = "Forward";
             this.btnForward.UseVisualStyleBackColor = true;
@@ -81,10 +81,10 @@
             // 
             // btnReply
             // 
-            this.btnReply.Location = new System.Drawing.Point(333, 20);
-            this.btnReply.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnReply.Location = new System.Drawing.Point(407, 24);
+            this.btnReply.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnReply.Name = "btnReply";
-            this.btnReply.Size = new System.Drawing.Size(87, 35);
+            this.btnReply.Size = new System.Drawing.Size(106, 42);
             this.btnReply.TabIndex = 3;
             this.btnReply.Text = "Reply";
             this.btnReply.UseVisualStyleBackColor = true;
@@ -92,10 +92,10 @@
             // 
             // btnReplyAll
             // 
-            this.btnReplyAll.Location = new System.Drawing.Point(429, 20);
-            this.btnReplyAll.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnReplyAll.Location = new System.Drawing.Point(524, 24);
+            this.btnReplyAll.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnReplyAll.Name = "btnReplyAll";
-            this.btnReplyAll.Size = new System.Drawing.Size(87, 35);
+            this.btnReplyAll.Size = new System.Drawing.Size(106, 42);
             this.btnReplyAll.TabIndex = 4;
             this.btnReplyAll.Text = "Reply All";
             this.btnReplyAll.UseVisualStyleBackColor = true;
@@ -104,10 +104,10 @@
             // btnHeaders
             // 
             this.btnHeaders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHeaders.Location = new System.Drawing.Point(612, 18);
-            this.btnHeaders.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnHeaders.Location = new System.Drawing.Point(748, 21);
+            this.btnHeaders.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnHeaders.Name = "btnHeaders";
-            this.btnHeaders.Size = new System.Drawing.Size(235, 35);
+            this.btnHeaders.Size = new System.Drawing.Size(287, 42);
             this.btnHeaders.TabIndex = 0;
             this.btnHeaders.Text = "Internet Message Headers";
             this.btnHeaders.UseVisualStyleBackColor = true;
@@ -115,10 +115,10 @@
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(107, 20);
-            this.btnSend.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSend.Location = new System.Drawing.Point(131, 24);
+            this.btnSend.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(96, 35);
+            this.btnSend.Size = new System.Drawing.Size(117, 42);
             this.btnSend.TabIndex = 1;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -127,10 +127,10 @@
             // chkReadReceipt
             // 
             this.chkReadReceipt.AutoSize = true;
-            this.chkReadReceipt.Location = new System.Drawing.Point(201, 28);
-            this.chkReadReceipt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkReadReceipt.Location = new System.Drawing.Point(246, 33);
+            this.chkReadReceipt.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.chkReadReceipt.Name = "chkReadReceipt";
-            this.chkReadReceipt.Size = new System.Drawing.Size(133, 24);
+            this.chkReadReceipt.Size = new System.Drawing.Size(154, 29);
             this.chkReadReceipt.TabIndex = 1;
             this.chkReadReceipt.Text = "Read Receipt";
             this.chkReadReceipt.UseVisualStyleBackColor = true;
@@ -138,10 +138,10 @@
             // chkDeliveryReceipt
             // 
             this.chkDeliveryReceipt.AutoSize = true;
-            this.chkDeliveryReceipt.Location = new System.Drawing.Point(36, 28);
-            this.chkDeliveryReceipt.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkDeliveryReceipt.Location = new System.Drawing.Point(44, 33);
+            this.chkDeliveryReceipt.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.chkDeliveryReceipt.Name = "chkDeliveryReceipt";
-            this.chkDeliveryReceipt.Size = new System.Drawing.Size(149, 24);
+            this.chkDeliveryReceipt.Size = new System.Drawing.Size(178, 29);
             this.chkDeliveryReceipt.TabIndex = 0;
             this.chkDeliveryReceipt.Text = "Delivery Receipt";
             this.chkDeliveryReceipt.UseVisualStyleBackColor = true;
@@ -150,10 +150,10 @@
             // lblMessageType
             // 
             this.lblMessageType.AutoSize = true;
-            this.lblMessageType.Location = new System.Drawing.Point(17, 379);
-            this.lblMessageType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMessageType.Location = new System.Drawing.Point(21, 454);
+            this.lblMessageType.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblMessageType.Name = "lblMessageType";
-            this.lblMessageType.Size = new System.Drawing.Size(87, 20);
+            this.lblMessageType.Size = new System.Drawing.Size(113, 25);
             this.lblMessageType.TabIndex = 11;
             this.lblMessageType.Text = "Body Type:";
             // 
@@ -163,19 +163,19 @@
             this.cmboBodyType.Items.AddRange(new object[] {
             "Text",
             "HTML"});
-            this.cmboBodyType.Location = new System.Drawing.Point(116, 369);
-            this.cmboBodyType.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmboBodyType.Location = new System.Drawing.Point(142, 442);
+            this.cmboBodyType.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.cmboBodyType.Name = "cmboBodyType";
-            this.cmboBodyType.Size = new System.Drawing.Size(163, 28);
+            this.cmboBodyType.Size = new System.Drawing.Size(198, 32);
             this.cmboBodyType.TabIndex = 12;
             // 
             // lblTo
             // 
             this.lblTo.AutoSize = true;
-            this.lblTo.Location = new System.Drawing.Point(17, 219);
-            this.lblTo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTo.Location = new System.Drawing.Point(21, 262);
+            this.lblTo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(31, 20);
+            this.lblTo.Size = new System.Drawing.Size(42, 25);
             this.lblTo.TabIndex = 4;
             this.lblTo.Text = "To:";
             // 
@@ -183,19 +183,19 @@
             // 
             this.txtTo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTo.Location = new System.Drawing.Point(87, 208);
-            this.txtTo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTo.Location = new System.Drawing.Point(106, 249);
+            this.txtTo.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(754, 26);
+            this.txtTo.Size = new System.Drawing.Size(921, 29);
             this.txtTo.TabIndex = 5;
             // 
             // lblCC
             // 
             this.lblCC.AutoSize = true;
-            this.lblCC.Location = new System.Drawing.Point(17, 259);
-            this.lblCC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCC.Location = new System.Drawing.Point(21, 310);
+            this.lblCC.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCC.Name = "lblCC";
-            this.lblCC.Size = new System.Drawing.Size(35, 20);
+            this.lblCC.Size = new System.Drawing.Size(48, 25);
             this.lblCC.TabIndex = 6;
             this.lblCC.Text = "CC:";
             // 
@@ -203,19 +203,19 @@
             // 
             this.txtCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCC.Location = new System.Drawing.Point(87, 248);
-            this.txtCC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCC.Location = new System.Drawing.Point(106, 297);
+            this.txtCC.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtCC.Name = "txtCC";
-            this.txtCC.Size = new System.Drawing.Size(754, 26);
+            this.txtCC.Size = new System.Drawing.Size(921, 29);
             this.txtCC.TabIndex = 7;
             // 
             // lblBCC
             // 
             this.lblBCC.AutoSize = true;
-            this.lblBCC.Location = new System.Drawing.Point(17, 299);
-            this.lblBCC.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBCC.Location = new System.Drawing.Point(21, 358);
+            this.lblBCC.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblBCC.Name = "lblBCC";
-            this.lblBCC.Size = new System.Drawing.Size(46, 20);
+            this.lblBCC.Size = new System.Drawing.Size(61, 25);
             this.lblBCC.TabIndex = 8;
             this.lblBCC.Text = "BCC:";
             // 
@@ -223,19 +223,19 @@
             // 
             this.txtBCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBCC.Location = new System.Drawing.Point(87, 288);
-            this.txtBCC.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBCC.Location = new System.Drawing.Point(106, 345);
+            this.txtBCC.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtBCC.Name = "txtBCC";
-            this.txtBCC.Size = new System.Drawing.Size(754, 26);
+            this.txtBCC.Size = new System.Drawing.Size(921, 29);
             this.txtBCC.TabIndex = 8;
             // 
             // lblSubject
             // 
             this.lblSubject.AutoSize = true;
-            this.lblSubject.Location = new System.Drawing.Point(17, 339);
-            this.lblSubject.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSubject.Location = new System.Drawing.Point(21, 406);
+            this.lblSubject.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblSubject.Name = "lblSubject";
-            this.lblSubject.Size = new System.Drawing.Size(67, 20);
+            this.lblSubject.Size = new System.Drawing.Size(84, 25);
             this.lblSubject.TabIndex = 9;
             this.lblSubject.Text = "Subject:";
             // 
@@ -243,10 +243,10 @@
             // 
             this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSubject.Location = new System.Drawing.Point(87, 328);
-            this.txtSubject.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtSubject.Location = new System.Drawing.Point(106, 393);
+            this.txtSubject.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(754, 26);
+            this.txtSubject.Size = new System.Drawing.Size(921, 29);
             this.txtSubject.TabIndex = 10;
             // 
             // txtBody
@@ -254,13 +254,13 @@
             this.txtBody.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBody.Location = new System.Drawing.Point(18, 411);
-            this.txtBody.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtBody.Location = new System.Drawing.Point(22, 494);
+            this.txtBody.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtBody.MaxLength = 0;
             this.txtBody.Multiline = true;
             this.txtBody.Name = "txtBody";
             this.txtBody.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtBody.Size = new System.Drawing.Size(823, 199);
+            this.txtBody.Size = new System.Drawing.Size(1005, 238);
             this.txtBody.TabIndex = 14;
             this.txtBody.TextChanged += new System.EventHandler(this.txtBody_TextChanged);
             // 
@@ -271,11 +271,11 @@
             this.groupBox1.Controls.Add(this.btnReplyAll);
             this.groupBox1.Controls.Add(this.btnReply);
             this.groupBox1.Controls.Add(this.btnForward);
-            this.groupBox1.Location = new System.Drawing.Point(22, 2);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(28, 3);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(523, 65);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Size = new System.Drawing.Size(639, 78);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -283,21 +283,21 @@
             // 
             this.groupBox2.Controls.Add(this.chkDeliveryReceipt);
             this.groupBox2.Controls.Add(this.chkReadReceipt);
-            this.groupBox2.Location = new System.Drawing.Point(22, 78);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox2.Location = new System.Drawing.Point(28, 93);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(360, 62);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Size = new System.Drawing.Size(440, 75);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 174);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(22, 208);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.Size = new System.Drawing.Size(63, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "From:";
             // 
@@ -306,20 +306,20 @@
             this.txtFrom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFrom.Enabled = false;
-            this.txtFrom.Location = new System.Drawing.Point(87, 169);
-            this.txtFrom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtFrom.Location = new System.Drawing.Point(106, 202);
+            this.txtFrom.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.txtFrom.Name = "txtFrom";
-            this.txtFrom.Size = new System.Drawing.Size(754, 26);
+            this.txtFrom.Size = new System.Drawing.Size(921, 29);
             this.txtFrom.TabIndex = 3;
             this.txtFrom.TextChanged += new System.EventHandler(this.txtFrom_TextChanged);
             // 
             // btnAttachments
             // 
             this.btnAttachments.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAttachments.Location = new System.Drawing.Point(612, 62);
-            this.btnAttachments.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAttachments.Location = new System.Drawing.Point(748, 75);
+            this.btnAttachments.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnAttachments.Name = "btnAttachments";
-            this.btnAttachments.Size = new System.Drawing.Size(235, 35);
+            this.btnAttachments.Size = new System.Drawing.Size(287, 42);
             this.btnAttachments.TabIndex = 1;
             this.btnAttachments.Tag = "";
             this.btnAttachments.Text = "Attachments";
@@ -329,10 +329,10 @@
             // btnEditInLargerWindow
             // 
             this.btnEditInLargerWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditInLargerWindow.Location = new System.Drawing.Point(670, 366);
-            this.btnEditInLargerWindow.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnEditInLargerWindow.Location = new System.Drawing.Point(820, 440);
+            this.btnEditInLargerWindow.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.btnEditInLargerWindow.Name = "btnEditInLargerWindow";
-            this.btnEditInLargerWindow.Size = new System.Drawing.Size(171, 35);
+            this.btnEditInLargerWindow.Size = new System.Drawing.Size(209, 42);
             this.btnEditInLargerWindow.TabIndex = 13;
             this.btnEditInLargerWindow.Text = "Edit in larger window";
             this.btnEditInLargerWindow.UseVisualStyleBackColor = true;
@@ -340,9 +340,9 @@
             // 
             // MessageForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 624);
+            this.ClientSize = new System.Drawing.Size(1053, 748);
             this.Controls.Add(this.btnEditInLargerWindow);
             this.Controls.Add(this.btnAttachments);
             this.Controls.Add(this.txtFrom);
@@ -361,7 +361,7 @@
             this.Controls.Add(this.lblCC);
             this.Controls.Add(this.txtTo);
             this.Controls.Add(this.lblTo);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "MessageForm";
             this.Text = "MessageForm";
             this.Load += new System.EventHandler(this.MessageForm_Load);

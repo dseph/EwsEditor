@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Exchange.WebServices.Data;
+ 
 using EWSEditor.Forms.Controls;
 using EWSEditor.Logging;
 using EWSEditor.Common;
@@ -14,6 +15,9 @@ using EWSEditor.Forms.Dialogs;
 
 namespace EWSEditor.Forms
 {
+ 
+ 
+
     public partial class MessageForm : Form
     {
         private bool _IsExistingEmail = false;
@@ -26,7 +30,11 @@ namespace EWSEditor.Forms
         private EmailMessage _EmailMessage = null;
         //private EditMessageType _EditMessageType;
         private EmailMessage _ResponseMessage = null;
- 
+
+        // 2.2.1.11 PidTagInternetMailOverrideFormat Property   
+        // https://msdn.microsoft.com/en-us/library/ee237479(v=exchg.80).aspx
+        private ExtendedPropertyDefinition PidTagInternetMailOverrideFormat = new ExtendedPropertyDefinition(0x5902, MapiPropertyType.Integer);
+        // 0x59020003   PtypInteger32 
  
         public enum EditMessageType
         {
@@ -134,7 +142,7 @@ namespace EWSEditor.Forms
                 _CanSend = true;
                 _CanReply = false;
             }
-
+            
  
             SetFormFromMessage(oEmailMessage, _CanEdit, _CanSend, _CanReply);
 
@@ -149,7 +157,7 @@ namespace EWSEditor.Forms
             //oPropertySet.Add(ItemSchema.ExtendedProperties);
             oPropertySet.Add(EmailMessageSchema.ExtendedProperties);
             EmailMessage oEmailMessage = EmailMessage.Bind(CurrentService, oItemId);
-             
+            
  
             return oEmailMessage;
         }
@@ -170,6 +178,13 @@ namespace EWSEditor.Forms
         {
             bool bRet = false;
              
+            // Test - Start:
+            // See: https://msdn.microsoft.com/en-us/library/office/ff960595.aspx 
+            // 2.2.1.11 PidTagInternetMailOverrideFormat Property
+            // https://msdn.microsoft.com/en-us/library/ee237479(v=exchg.80).aspx
+            //_EmailMessage.SetExtendedProperty(PidTagInternetMailOverrideFormat, 0x1);
+            // Test - End
+
             //if (_ResponseMessage == null)
            // {
                bRet = SetMessageFromForm(ref _EmailMessage);
@@ -504,7 +519,7 @@ namespace EWSEditor.Forms
 
         private void MessageForm_Load(object sender, EventArgs e)
         {
-             
+ 
         }
 
         private void btnForward_Click(object sender, EventArgs e)

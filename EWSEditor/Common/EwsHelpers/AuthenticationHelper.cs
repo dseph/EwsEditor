@@ -11,7 +11,7 @@ using System.Xml;
 using System.Net;
 using Microsoft.Exchange.WebServices.Autodiscover;
 using System.Configuration;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;  // Needed for oAuth
 
 namespace EWSEditor.Common
 {
