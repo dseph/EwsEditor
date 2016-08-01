@@ -158,11 +158,15 @@ namespace EWSEditor.Forms
             //bRet = CallMyCustomCode(oItem);  // Modify to call your code.
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+ 
+        }
+
         // ******************************************************************************
         // Your code below **************************************************************
         // ******************************************************************************
-          
-
+  
 
     }
 }
