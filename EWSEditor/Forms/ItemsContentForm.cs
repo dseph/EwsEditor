@@ -346,7 +346,7 @@ namespace EWSEditor.Forms
         private void MnuAddItemAttach_Click(object sender, EventArgs e)
         {
             ItemId itemId = null;
-            DialogResult res = ItemIdDialog.ShowDialog(out itemId);
+            DialogResult res = ItemIdDialog.ShowDialog(out itemId, this.CurrentService);
 
             if (res == DialogResult.OK && itemId != null)
             {
