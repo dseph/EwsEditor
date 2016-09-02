@@ -416,7 +416,7 @@
         private void MnuOpenItemById_Click(object sender, EventArgs e)
         {
             ItemId itemId = null;
-            if (ItemIdDialog.ShowDialog(out itemId) == DialogResult.OK)
+            if (ItemIdDialog.ShowDialog(out itemId, this.CurrentService) == DialogResult.OK)
             {
                 List<ItemId> item = new List<ItemId>();
                 item.Add(itemId);
