@@ -1146,57 +1146,12 @@ namespace EWSEditor.Forms
             sWebClientReadFormQueryString = oWorkItem.WebClientReadFormQueryString;
             oWorkItem = null;
            
-
-
-            //if (sClass.Length != 0)
-            //{
-
-            //    switch (sClass)
-            //    { 
-            //        case "IPM.Note":
-            //            EmailMessage oWorkEmailMessageItem = EmailMessage.Bind(service, oItemId);
-            //            oWorkEmailMessageItem.Load(new PropertySet(BasePropertySet.IdOnly, EmailMessageSchema.WebClientReadFormQueryString));
-            //            sWebClientReadFormQueryString = oWorkEmailMessageItem.WebClientReadFormQueryString;
-            //            oWorkEmailMessageItem = null; 
-            //            break;
-            //        case "IPM.Contact":  
-            //            Contact oWorkContactItem = Contact.Bind(service, oItemId);
-            //            oWorkContactItem.Load(new PropertySet(BasePropertySet.IdOnly, ContactSchema.WebClientReadFormQueryString));
-            //            sWebClientReadFormQueryString = oWorkContactItem.WebClientReadFormQueryString;
-            //            oWorkContactItem = null; 
-            //            break;
-            //        case "IPM.Appointment":
-            //            Appointment oWorkAppointmentItem = Appointment.Bind(service, oItemId);
-            //            oWorkAppointmentItem.Load(new PropertySet(BasePropertySet.IdOnly, AppointmentSchema.WebClientReadFormQueryString));
-            //            sWebClientReadFormQueryString = oWorkAppointmentItem.WebClientReadFormQueryString;
-            //            oWorkAppointmentItem = null; 
-            //            break;
-            //        case "IPM.Task":
-            //            Task oWorkTaskItem = Task.Bind(service, oItemId);
-            //            oWorkTaskItem.Load(new PropertySet(BasePropertySet.IdOnly, TaskSchema.WebClientReadFormQueryString));
-            //            sWebClientReadFormQueryString = oWorkTaskItem.WebClientReadFormQueryString;
-            //            oWorkTaskItem = null; 
-            //            break;
-            //        default:
-            //            Item oWorkItem = Item.Bind(service, oItemId);
-            //            oWorkItem.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientReadFormQueryString));
-            //            sWebClientReadFormQueryString = oWorkItem.WebClientReadFormQueryString;
-            //            oWorkItem = null; 
-            //            break;
-            //    }
-            //}
- 
- 
+             
             
             try
             {
  
-
-                //Item msg = Appointment.Bind(service, oItemId);
-                //msg.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientReadFormQueryString));
-                
-
-                // Versions of Exchange starting with major version 15 and ending with Exchange Server 2013 build 15.0.775.09
+                 // Versions of Exchange starting with major version 15 and ending with Exchange Server 2013 build 15.0.775.09
                 // returned a different query string fragment. This optional check is not required for applications that
                 // target Exchange Online.
                 if ((serverInfo.MajorVersion == 15) && (serverInfo.MajorBuildNumber < 775) && (serverInfo.MinorBuildNumber < 09))
@@ -1231,8 +1186,7 @@ namespace EWSEditor.Forms
             catch (System.ComponentModel.Win32Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERRROR: Internet Explorer cannot be found.");
-                //Console.WriteLine(ex.Message);
-                //Console.WriteLine("ERRROR: Internet Explorer cannot be found.");
+ 
             }
         }
 
@@ -1249,8 +1203,8 @@ namespace EWSEditor.Forms
             //      element is not applicable to versions of Exchange starting with Exchange Server 2013, including Exchange Online.
 
             ExchangeServerInfo serverInfo = service.ServerInfo;
-            if (serverInfo.MajorVersion == 15)
-            {
+            if (serverInfo.MajorVersion >= 15)
+            {   // https://msdn.microsoft.com/en-us/library/office/dd899477(v=exchg.150).aspx
                 MessageBox.Show("The WebClientEditFormQueryString element is not applicable to versions of Exchange starting with Exchange Server 2013, including Exchange Online.", "Not valid for Exchange version.");
                 return;
             }
@@ -1279,43 +1233,7 @@ namespace EWSEditor.Forms
                 oWorkItem = null;
               
 
-                //if (sClass.Length != 0)
-                //{
-
-                //    switch (sClass)
-                //    {
-                //        case "IPM.Note":
-                //            EmailMessage oWorkEmailMessageItem = EmailMessage.Bind(service, oItemId);
-                //            oWorkEmailMessageItem.Load(new PropertySet(BasePropertySet.IdOnly, EmailMessageSchema.WebClientEditFormQueryString));
-                //            sWebClientEditFormQueryString = oWorkEmailMessageItem.WebClientEditFormQueryString;
-                //            oWorkEmailMessageItem = null;
-                //            break;
-                //        case "IPM.Contact":
-                //            Contact oWorkContactItem = Contact.Bind(service, oItemId);
-                //            oWorkContactItem.Load(new PropertySet(BasePropertySet.IdOnly, ContactSchema.WebClientEditFormQueryString));
-                //            sWebClientEditFormQueryString = oWorkContactItem.WebClientEditFormQueryString;
-                //            oWorkContactItem = null;
-                //            break;
-                //        case "IPM.Appointment":
-                //            Appointment oWorkAppointmentItem = Appointment.Bind(service, oItemId);
-                //            oWorkAppointmentItem.Load(new PropertySet(BasePropertySet.IdOnly, AppointmentSchema.WebClientEditFormQueryString));
-                //            sWebClientEditFormQueryString = oWorkAppointmentItem.WebClientEditFormQueryString;
-                //            oWorkAppointmentItem = null;
-                //            break;
-                //        case "IPM.Task":
-                //            Task oWorkTaskItem = Task.Bind(service, oItemId);
-                //            oWorkTaskItem.Load(new PropertySet(BasePropertySet.IdOnly, TaskSchema.WebClientEditFormQueryString));
-                //            sWebClientEditFormQueryString = oWorkTaskItem.WebClientEditFormQueryString;
-                //            oWorkTaskItem = null;
-                //            break;
-                //        default:
-                //            Item oWorkItem = Item.Bind(service, oItemId);
-                //            oWorkItem.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientEditFormQueryString));
-                //            sWebClientEditFormQueryString = oWorkItem.WebClientEditFormQueryString;
-                //            oWorkItem = null;
-                //            break;
-                //    }
-                //}
+                 
 
 
  
@@ -1337,8 +1255,7 @@ namespace EWSEditor.Forms
             catch (System.ComponentModel.Win32Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERRROR: Internet Explorer cannot be found.");
-                //Console.WriteLine(ex.Message);
-                //Console.WriteLine("ERRROR: Internet Explorer cannot be found.");
+ 
             }
         }
 

@@ -29,10 +29,12 @@ namespace EWSEditor.Forms
 
         // https://blogs.msdn.microsoft.com/akashb/2011/08/10/stamping-retention-policy-tag-using-ews-managed-api-1-1-from-powershellexchange-2010/
 
-        private static ExtendedPropertyDefinition Prop_IsHidden = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+        //private static ExtendedPropertyDefinition Prop_IsHidden = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+
+        private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
         private static ExtendedPropertyDefinition Prop_FolderPath = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);                 // Folder Path - PR_Folder_Path
-        // private static ExtendedPropertyDefinition Prop_RetentionFlags = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);        //  Item - PidTagRetentionFlags - PR_RETENTION_FLAGS 0x301D   
-        // private static ExtendedPropertyDefinition Prop_Retention_Period = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);      //  Item - PidTagRetentionPeriod - PR_RETENTION_PERIOD 0x301A
+        // private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);        //  Item - PidTagRetentionFlags - PR_RETENTION_FLAGS 0x301D   
+        // private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);      //  Item - PidTagRetentionPeriod - PR_RETENTION_PERIOD 0x301A
         // private static ExtendedPropertyDefinition Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT = new ExtendedPropertyDefinition(0x66B1, MapiPropertyType.Long);    // PR_ATTACH_ON_NORMAL_MSG_COUNT 0x66B1
 
         // private static ExtendedPropertyDefinition Prop_PidTagMessageSizeExtended = new ExtendedPropertyDefinition(0xe08, MapiPropertyType.Long);        // Message - PidTagMessageSizeExtended - PR_MESSAGE_SIZE_EXTENDED
@@ -47,22 +49,54 @@ namespace EWSEditor.Forms
         // private static ExtendedPropertyDefinition Prop_PidTagRetentionPeriod = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);        // Message - PidTagRetentionPeriod - PR_RETENTION_PERIOD 
         // ?? https://blogs.msdn.microsoft.com/akashb/2011/08/10/stamping-retention-policy-tag-using-ews-managed-api-1-1-from-powershellexchange-2010/
 
+        //  PR_COMMENT_W, PidTagComment http://schemas.microsoft.com/mapi/proptag/0x3004001E
+        // PR_CREATION_TIME, PidTagCreationTime, ptagCreationTime http://schemas.microsoft.com/mapi/proptag/0x30070040
+        // PR_HAS_RULES, PidTagHasRules, ptagHasRules   http://schemas.microsoft.com/mapi/proptag/0x663A000B
+        // PR_LAST_MODIFICATION_TIME, PidTagLastModificationTime, ptagLastModificationTime  0x30080040
+
+        private static ExtendedPropertyDefinition Prop_PR_COMMENT_W = new ExtendedPropertyDefinition(0x3004, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition Prop_PR_CREATION_TIME = new ExtendedPropertyDefinition(0x300, MapiPropertyType.SystemTime);
+        private static ExtendedPropertyDefinition Prop_PR_HAS_RULES = new ExtendedPropertyDefinition(0x663A, MapiPropertyType.Boolean);
+        private static ExtendedPropertyDefinition Prop_PR_LAST_MODIFICATION_TIME = new ExtendedPropertyDefinition(0x3008, MapiPropertyType.SystemTime);
+
+        // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
+        private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);
+        // PR_RETENTION_FLAGS 0x301D (12317)  PtypInteger32
+        private static ExtendedPropertyDefinition Prop_Retention_Flags = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);
+        // PR_RETENTION_PERIOD 0x301A (12314)  PtypInteger32, 0x0003
+        private static ExtendedPropertyDefinition Prop_Retention_Period = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);
+        // PR_FOLDER_TYPE 0x3601 (13825)
+        private static ExtendedPropertyDefinition Prop_PR_FOLDER_TYPE = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);
+
 
         private PropertySet folderNodePropertySet = new PropertySet(
-            BasePropertySet.IdOnly,
+            BasePropertySet.FirstClassProperties,
             new PropertyDefinitionBase[] { 
                 FolderSchema.DisplayName, 
                 FolderSchema.ChildFolderCount,
  
                 FolderSchema.FolderClass, 
                 FolderSchema.ManagedFolderInformation,  
-   
+    
                 FolderSchema.TotalCount,  
                 FolderSchema.UnreadCount,  
                 FolderSchema.EffectiveRights,
  
-                Prop_IsHidden,
-                Prop_FolderPath
+                Prop_PR_IS_HIDDEN,
+                Prop_FolderPath,
+                Prop_PR_CREATION_TIME,
+                Prop_PR_LAST_MODIFICATION_TIME,
+                Prop_PR_POLICY_TAG,
+
+                Prop_PR_COMMENT_W,
+                Prop_PR_HAS_RULES,
+
+                Prop_PR_FOLDER_TYPE,
+                Prop_Retention_Period,
+                Prop_Retention_Flags
+ 
+ 
+
 
                 //Prop_Retention_Period,
                 //Prop_RetentionFlags,
@@ -1638,9 +1672,12 @@ namespace EWSEditor.Forms
                 //TreeNode x = FolderTreeView.SelectedNode;
  
                 //this.CurrentAppSettings = folder.  // TODO Load settings
-
+ 
                 // Reload folder with the current property set
-                EWSEditor.Forms.FormsUtil.PerformRetryableLoad(folder as ServiceObject, this.CurrentDetailPropertySet);
+                //EWSEditor.Forms.FormsUtil.PerformRetryableLoad(folder as ServiceObject, this.CurrentDetailPropertySet);
+
+                // The wrong propertyset was being used - changed from item to folder.
+                EWSEditor.Forms.FormsUtil.PerformRetryableLoad(folder as ServiceObject, this.folderNodePropertySet);
             
                 // If this folder didn't have subfolders before, put a placeholder folder there to be
                 // expanded later
@@ -1915,6 +1952,13 @@ namespace EWSEditor.Forms
             Folder oFolder = (GetFolderFromNode(FolderTreeView.SelectedNode));
             DeveloperFolderTestform oForm = new DeveloperFolderTestform(this.CurrentService, oFolder.Id);
             oForm.Show();
+        }
+
+        private void SearchFoldersMenuItem_Click(object sender, EventArgs e)
+        {
+            Folder oFolder = (GetFolderFromNode(FolderTreeView.SelectedNode));
+            SearchFolders oForm = new SearchFolders(this.CurrentService, oFolder.Id, this.CurrentDetailPropertySet);
+            oForm.ShowDialog();
         }
     }
 }

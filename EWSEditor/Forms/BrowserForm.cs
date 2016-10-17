@@ -534,10 +534,7 @@
             }
         }
 
-        private void mnuMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
+   
 
         private void mnuFile_Click(object sender, EventArgs e)
         {

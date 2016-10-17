@@ -1,0 +1,27 @@
+﻿
+Under consideration:
+
+	Merge the EWS Steaming sample from codeplex into EWSEditor.
+
+	Cross mailbox searches using an impersonation account.  This is not e-discovery.
+
+	Merge in code from EWSRelntless from codeplex.
+
+	A window to pull calendar information across a specified timespan from a list of mailboxes at a set interval. 
+	A specified amount of data could be pulled.
+	This is calendar access. 
+	Impersonation and delegate access would need to supported.  This would be a type of load testing.
+
+	A window to pull calendar information across a specified timespan from a list of mailboxes at a set interval. 
+	A specified amount of data could be pulled.
+	This is getuserailabilty. 
+	his would be a type of load testing.  
+
+	Round robin queue of service accounts for accessing mailboxes.  Basic calendar/inbox access could be done. 
+	This type of queue can be used with an account doing delegate acces against many mailboxes in order to 
+	spread the load and avoid back-off throttling.
+
+	Add the EWS Push Notifcation sample to EWSEditor.
+
+	Add a window which shows a page that has links to related tools and provides information on them.
+

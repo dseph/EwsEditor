@@ -17,6 +17,7 @@ using System.Net;
 using System.Xml;
 using Microsoft.Exchange.WebServices.Data;
 using System.Collections;
+using EWSEditor.Forms;
 
 // This form is a convient place for a developer to integrate their code on a item level in order to do testing.
 // 
@@ -64,7 +65,20 @@ namespace EWSEditor.Forms
             bool bRet = true;
 
             ExtendedPropertyDefinition Prop_IsHidden = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
- 
+
+            // PR_ARCHIVE_TAG  0x3018  
+            ExtendedPropertyDefinition Prop_PidTagPolicyTag = new ExtendedPropertyDefinition(0x66B1, MapiPropertyType.Long);
+
+            // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
+            ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);
+
+            // PR_RETENTION_FLAGS 0x301D (12317)  PtypInteger32
+            ExtendedPropertyDefinition Prop_Retention_Flags = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);
+
+            // PR_RETENTION_PERIOD 0x301A (12314)  PtypInteger32, 0x0003
+            ExtendedPropertyDefinition Prop_Retention_Period = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);
+
+
             Item oReturnItem = null;
             oItem = null;
 
@@ -87,9 +101,19 @@ namespace EWSEditor.Forms
             oPropertySet.Add(EmailMessageSchema.StoreEntryId);
             oPropertySet.Add(EmailMessageSchema.Size);
 
+            oPropertySet.Add(Prop_Retention_Period);
+            oPropertySet.Add(Prop_PR_POLICY_TAG);
+            oPropertySet.Add(Prop_Retention_Flags);
+
+            int iVal = 0;
+            long lVal = 0;
+            object oVal = null;
+            bool boolVal = false;
+
             ServiceResponseCollection<GetItemResponse> oGetItemResponses = oService.BindToItems(oItems, oPropertySet);
 
-     
+            StringBuilder oSB = new StringBuilder();
+
             foreach (GetItemResponse oGetItemResponse in oGetItemResponses)
             {
                 switch (oGetItemResponse.Result)
@@ -100,7 +124,42 @@ namespace EWSEditor.Forms
 
                         // EmailMessage oEmailMessage = (EmailMessage)oReturnItem; // recasting example
 
-                        MessageBox.Show("ServiceResult.Success");
+            //                            oPropertySet.Add(Prop_IsHidden);
+            //oPropertySet.Add(EmailMessageSchema.DateTimeCreated);
+            //oPropertySet.Add(EmailMessageSchema.DateTimeReceived);
+            //oPropertySet.Add(EmailMessageSchema.DateTimeSent);
+            ////oPropertySet.Add(EmailMessageSchema.RetentionDate);
+            //oPropertySet.Add(EmailMessageSchema.ToRecipients);
+            //oPropertySet.Add(EmailMessageSchema.MimeContent);
+            //oPropertySet.Add(EmailMessageSchema.StoreEntryId);
+            //oPropertySet.Add(EmailMessageSchema.Size);
+
+                         
+
+                        if (oReturnItem.TryGetProperty(Prop_IsHidden, out boolVal))
+                            oSB.AppendFormat("PR_IS_HIDDEN: {0}\r\n", boolVal);
+                        else
+                            oSB.AppendLine("PR_IS_HIDDEN: Not found.");
+
+                        oSB.AppendFormat("DateTimeCreated: {0}\r\n", oReturnItem.DateTimeCreated.ToString());
+                        oSB.AppendFormat("Size: {0}\r\n", oReturnItem.Size.ToString());
+
+ 
+
+                        if (oReturnItem.TryGetProperty(Prop_PR_POLICY_TAG, out oVal))
+                            oSB.AppendFormat("PR_POLICY_TAG: {0}\r\n", oVal);
+                        else
+                            oSB.AppendLine("PR_RETENTION_TAG: Not found.");
+
+                        if (oReturnItem.TryGetProperty(Prop_Retention_Flags, out iVal))
+                            oSB.AppendFormat("PR_RETENTION_FLAGS: {0}\r\n", iVal);
+                        else
+                            oSB.AppendLine("PR_RETENTION_FLAGS: Not found.");
+
+                        if (oReturnItem.TryGetProperty(Prop_Retention_Period, out iVal))
+                            oSB.AppendFormat("PR_RETENTION_PERIOD:  {0}\r\n", iVal);
+                        else
+                            oSB.AppendLine("PR_RETENTION_PERIOD: Not found.");
 
                         //// The following is for geting the MIME string
                         //if (oGetItemResponse.Item.MimeContent == null)
@@ -109,6 +168,8 @@ namespace EWSEditor.Forms
                         //}
                         //UTF8Encoding oUTF8Encoding = new UTF8Encoding();
                         //string sMIME = oUTF8Encoding.GetString(oGetItemResponse.Item.MimeContent.Content);
+
+                        MessageBox.Show(oSB.ToString(), "ServiceResult.Success");
                          
                         break;
                     case ServiceResult.Error:
@@ -158,14 +219,27 @@ namespace EWSEditor.Forms
             //bRet = CallMyCustomCode(oItem);  // Modify to call your code.
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
- 
-        }
-
         // ******************************************************************************
         // Your code below **************************************************************
         // ******************************************************************************
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+    
+ 
+        }
+ 
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+          
+ 
+        }
   
 
     }

@@ -33,7 +33,8 @@ namespace EWSEditor.Forms
 
         private void RoomsForm_Load(object sender, EventArgs e)
         {
- 
+            lblTotalLists.Text = string.Empty;
+            lblTotalRooms.Text = string.Empty;
  
 
         }
@@ -41,8 +42,11 @@ namespace EWSEditor.Forms
  
         private void btnRoomLists_Click(object sender, EventArgs e)
         {
-         
- 
+            int iCount = 0;
+            lblTotalLists.Text = string.Empty;
+            lblWarning.Visible = false;
+            lblTotalRooms.Text = string.Empty;
+
             lvRoomLists.Clear();
             lvRoomLists.View = View.Details;
             lvRoomLists.GridLines = true;
@@ -64,19 +68,33 @@ namespace EWSEditor.Forms
 
                     lvRoomLists.Items.AddRange(new ListViewItem[] { oListItem });
                     oListItem = null;
-             
+
+                    iCount++;
                 }
+
+                lblTotalLists.Text = "Total Room Lists: " + iCount.ToString();
             }
-                        catch (Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error", ex.Message);
 
             }
 
+             
+
         }
 
         private void btnGetRooms_Click(object sender, EventArgs e)
         {
+            GetAllRooms(txtListSmtp.Text.Trim());
+        }
+
+        private void GetAllRooms(string sEmailAddress) 
+        { 
+            int iCount = 0;
+            lblWarning.Visible = false;
+            lblTotalRooms.Text = string.Empty;
+
             lvRooms.Clear();
             lvRooms.View = View.Details;
             lvRooms.GridLines = true;
@@ -87,7 +105,7 @@ namespace EWSEditor.Forms
             ListViewItem oListItem = null;
             try
             {
-                string sEmailAddress = txtListSmtp.Text.Trim();
+                
                 if (txtListSmtp.Text.Trim().Length != 0)
                 {
                     EmailAddress oEmailAddress = new EmailAddress(sEmailAddress);
@@ -101,6 +119,15 @@ namespace EWSEditor.Forms
 
                         lvRooms.Items.AddRange(new ListViewItem[] { oListItem });
                         oListItem = null;
+
+                        iCount++;
+                    }
+
+                    lblTotalRooms.Text = "Total Rooms: " + iCount.ToString();
+
+                    if (iCount == 100)
+                    {
+                        lblWarning.Visible = false;
                     }
                 }
             }
@@ -109,14 +136,22 @@ namespace EWSEditor.Forms
                 MessageBox.Show(ex.Message, "Error");
 
             }
+
+             
         }
 
         private void lvRooms_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+ 
         }
 
         private void lvRoomLists_Click(object sender, EventArgs e)
+        {
+
+ 
+        }
+
+        private void lvRoomLists_SelectedIndexChanged(object sender, EventArgs e)
         {
             string sSMTP = string.Empty;
 
@@ -124,14 +159,13 @@ namespace EWSEditor.Forms
             {
                 sSMTP = lvRoomLists.SelectedItems[0].Text;
                 if (sSMTP.Length != 0)
+                {
                     txtListSmtp.Text = sSMTP;
+
+                    if (chkAutoPopulate.Checked == true)
+                        GetAllRooms(sSMTP);
+                }
             }
-
-        }
-
-        private void lvRoomLists_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
  
