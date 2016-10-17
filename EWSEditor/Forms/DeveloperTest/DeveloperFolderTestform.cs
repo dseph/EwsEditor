@@ -78,15 +78,43 @@ namespace EWSEditor.Forms
             ExtendedPropertyDefinition Prop_IsHidden = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
             
             // Folder Path
-            ExtendedPropertyDefinition Prop_FolderPath = new ExtendedPropertyDefinition(26293, MapiPropertyType.String);
+            ExtendedPropertyDefinition Prop_PR_FOLDER_PATH = new ExtendedPropertyDefinition(26293, MapiPropertyType.String);
 
-            // PR_RETENTION_FLAGS 0x301D  
-            ExtendedPropertyDefinition Prop_RetentionFlags = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);
+            // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
+            ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);
 
-            // PR_RETENTION_PERIOD 0x301A
+            // PR_RETENTION_TAG 0x3019  (12313)
+            //ExtendedPropertyDefinition Prop_Retention_Tag = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Integer);
+
+            // PR_RETENTION_FLAGS 0x301D (12317)  PtypInteger32
+            ExtendedPropertyDefinition Prop_Retention_Flags = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);
+
+            // PR_RETENTION_PERIOD 0x301A (12314)  PtypInteger32, 0x0003
             ExtendedPropertyDefinition Prop_Retention_Period = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);
 
- 
+            // http://gsexdev.blogspot.com/2011/04/using-ews-to-calculate-age-of-items-and.html#!/2011/04/using-ews-to-calculate-age-of-items-and.html
+
+            // PR_FOLDER_TYPE 0x3601 (13825)
+            ExtendedPropertyDefinition Prop_PR_FOLDER_TYPE = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);
+
+            // PR_MESSAGE_SIZE_EXTENDED 0x0E08 (3592)    PT_I8   https://msdn.microsoft.com/en-us/library/office/cc839933.aspx
+            ExtendedPropertyDefinition Prop_PR_MESSAGE_SIZE_EXTENDED = new ExtendedPropertyDefinition(0x0E08, MapiPropertyType.Long);
+
+            // PR_DELETED_MESSAGE_SIZE_EXTENDED  0x669B (26267)  PtypInteger64, 0x0014
+            ExtendedPropertyDefinition Prop_PR_DELETED_MESSAGE_SIZE_EXTENDED = new ExtendedPropertyDefinition(0x669B, MapiPropertyType.Long);
+
+            // PR_ATTACH_ON_NORMAL_MSG_COUNT  0x66B1  
+            ExtendedPropertyDefinition Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT = new ExtendedPropertyDefinition(0x66B1, MapiPropertyType.Long);
+
+            // PR_ARCHIVE_TAG  0x3018  
+            ExtendedPropertyDefinition Prop_PidTagPolicyTag = new ExtendedPropertyDefinition(0x66B1, MapiPropertyType.Long);
+
+            // private static ExtendedPropertyDefinition Prop_PidTagArchiveTag = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);              // Guid of Archive tag - PR_ARCHIVE_TAG - PidTagArchiveTag 
+            // private static ExtendedPropertyDefinition Prop_PidTagPolicyTag = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Integer);              // Item - PidTagPolicyTag - PR_POLICY_TAG
+            // private static ExtendedPropertyDefinition Prop_PidTagRetentionPeriod = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);        // Message - PidTagRetentionPeriod - PR_RETENTION_PERIOD 
+  
+      
+
             PropertySet oPropertySet = new PropertySet(
                 BasePropertySet.IdOnly,
                 FolderSchema.FolderClass,
@@ -99,11 +127,28 @@ namespace EWSEditor.Forms
             oPropertySet.Add(FolderSchema.WellKnownFolderName);
             oPropertySet.Add(FolderSchema.ChildFolderCount);
 
-            oPropertySet.Add(Prop_FolderPath);
+           // oPropertySet.Add(Prop_FolderPath);
+            //oPropertySet.Add(Prop_Retention_Tag);
             oPropertySet.Add(Prop_Retention_Period);
-            oPropertySet.Add(Prop_RetentionFlags);
+            oPropertySet.Add(Prop_PR_POLICY_TAG);
+            oPropertySet.Add(Prop_Retention_Flags);
+            oPropertySet.Add(Prop_PR_FOLDER_TYPE);
+            oPropertySet.Add(Prop_PR_FOLDER_PATH);
+            oPropertySet.Add(Prop_PR_MESSAGE_SIZE_EXTENDED);
+            oPropertySet.Add(Prop_PR_DELETED_MESSAGE_SIZE_EXTENDED);
+            oPropertySet.Add(Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT);
 
+            // https://blogs.msdn.microsoft.com/akashb/2011/08/10/stamping-retention-policy-tag-using-ews-managed-api-1-1-from-powershellexchange-2010/
  
+   
+
+            StringBuilder oSB = new StringBuilder();
+            int iVal = 0;
+            long lVal = 0;
+            string sVal = string.Empty;
+            object oVal  = null;
+             
+
             ServiceResponseCollection<GetFolderResponse> oGetFolderResponses = oService.BindToFolders(oFolders, oPropertySet);
 
             foreach (GetFolderResponse oGetItemResponse in oGetFolderResponses)
@@ -114,13 +159,118 @@ namespace EWSEditor.Forms
 
                         oReturnFolder = oGetItemResponse.Folder;
 
-                        MessageBox.Show("ServiceResult.Success");
+                         
+
+                        oSB.AppendFormat("DisplayName: {0}\r\n", oReturnFolder.DisplayName);
+
+                        if (oReturnFolder.TryGetProperty(Prop_PR_FOLDER_TYPE, out iVal))
+                            oSB.AppendFormat("PR_FOLDER_TYPE:  {0}\r\n", iVal);
+                        else
+                            oSB.AppendLine("PR_FOLDER_TYPE: Not found.");
+
+                        Object fpPath = null;
+                        if (oReturnFolder.TryGetProperty(Prop_PR_FOLDER_PATH, out fpPath))
+                        {
+
+                            String fpPathString =
+                                Encoding.Unicode.GetString(HexStringToByteArray(
+                                BitConverter.ToString(UnicodeEncoding.Unicode.GetBytes((String)fpPath)).Replace("FE-FF", "5C-00").Replace("-", "")));
+
+                            oSB.AppendFormat("Prop_PR_FOLDER_PATH:  {0}\r\n", fpPathString);
+                        }
+                        else
+                        {
+                            oSB.AppendLine("Prop_PR_FOLDER_PATH: Not found.");
+                        }
+ 
+                        if (oReturnFolder.TryGetProperty(Prop_PR_MESSAGE_SIZE_EXTENDED, out lVal))
+                            oSB.AppendFormat("PR_MESSAGE_SIZE_EXTENDED:  {0}\r\n", lVal);
+                        else
+                            oSB.AppendLine("PR_MESSAGE_SIZE_EXTENDED: Not found.");
+
+                        if (oReturnFolder.TryGetProperty(Prop_PR_DELETED_MESSAGE_SIZE_EXTENDED, out lVal))
+                            oSB.AppendFormat("PR_DELETED_MESSAGE_SIZE_EXTENDED:  {0}\r\n", lVal);
+                        else
+                            oSB.AppendLine("PR_DELETED_MESSAGE_SIZE_EXTENDED: Not found.");
+
+
+                        if (oReturnFolder.TryGetProperty(Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT, out lVal))
+                            oSB.AppendFormat("PR_ATTACH_ON_NORMAL_MSG_COUNT:  {0}\r\n", lVal);
+                        else
+                            oSB.AppendLine("PR_ATTACH_ON_NORMAL_MSG_COUNT: Not found.");
+
+                        //if (oReturnFolder.TryGetProperty(Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT, out lVal))
+                        //     oSB.AppendFormat("Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT:  {0}\r\n", lVal);
+                        //else
+                        //     oSB.AppendLine("Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT: Not found.");
+
+                        //
+                        if (oReturnFolder.TryGetProperty(Prop_PR_POLICY_TAG, out oVal))
+                            oSB.AppendFormat("PR_POLICY_TAG: {0}\r\n", oVal);
+                        else
+                            oSB.AppendLine("PR_RETENTION_TAG: Not found.");
+
+                        if (oReturnFolder.TryGetProperty(Prop_Retention_Flags, out iVal))
+                            oSB.AppendFormat("PR_RETENTION_FLAGS: {0}\r\n", iVal);
+                        else
+                            oSB.AppendLine("PR_RETENTION_FLAGS: Not found.");
+
+                        if (oReturnFolder.TryGetProperty(Prop_Retention_Period, out iVal))
+                            oSB.AppendFormat("PR_RETENTION_PERIOD:  {0}\r\n", iVal);
+                        else
+                            oSB.AppendLine("PR_RETENTION_PERIOD: Not found.");
+
+                             
+
+
+                        MessageBox.Show(oSB.ToString(), "ServiceResult.Success");
 
                         break;
                     case ServiceResult.Error:
                         string sError =
                                 "ErrorCode:           " + oGetItemResponse.ErrorCode.ToString() + "\r\n" +
                                 "\r\nErrorMessage:    " + oGetItemResponse.ErrorMessage + "\r\n";
+                   
+                        if (oGetItemResponse.ErrorProperties.Count >0)
+                        {
+                            sError += "\r\nErrorProperties: ";
+                            foreach (ExtendedPropertyDefinition x in oGetItemResponse.ErrorProperties)
+                            {
+                                if (x.Name != null)
+                                    sError += "\r\n    Name: " + x.Name;
+
+                                if (x.Tag != null)
+                                {
+                                    //sError += "\r\n    Tag: " + x.Tag;
+                                    iVal = (int)x.Tag;
+                                    if (iVal == 12313)
+                                        sError += string.Format("\r\n    PR_RETENTION_TAG Hex: {00:X} Int: {1} ", iVal, iVal);
+                                    if (iVal == 12317)
+                                        sError += string.Format("\r\n    PR_RETENTION_FLAGS Hex: {00:X} Int: {1} ", iVal, iVal);
+                                    if (iVal == 12314)
+                                        sError += string.Format("\r\n    PR_RETENTION_PERIOD Hex: {00:X} Int: {1} ", iVal, iVal);
+                                    if (iVal == 13825)
+                                        sError += string.Format("\r\n    PR_FOLDER_TYPE Hex: {00:X} Int: {1} ", iVal, iVal);
+                                    if (iVal == 26293)
+                                        sError += string.Format("\r\n    Prop_PR_FOLDER_PATH Hex: {00:X} Int: {1} ", iVal, iVal);
+                                    if (iVal == 3592)
+                                        sError += string.Format("\r\n    PR_MESSAGE_SIZE_EXTENDED Hex: {00:X} Int: {1} ", iVal, iVal);
+                                    if (iVal == 26267)
+                                        sError += string.Format("\r\n    PR_DELETED_MESSAGE_SIZE_EXTENDED Hex: {00:X} Int: {1} ", iVal, iVal);
+                                }
+
+                                if (x.Type != null)
+                                    sError += "\r\n    Type: " + x.Type; 
+
+                                //  sHex = string.Format("{00:X}", iValue).PadLeft(2, '0');
+                            }
+
+                            //for (int i= 0; i < oGetItemResponse.ErrorProperties.Count; i++)
+                            //{
+ 
+                            //}
+
+                        }
 
                         MessageBox.Show(sError, "ServiceResult.Error");
 
@@ -151,12 +301,27 @@ namespace EWSEditor.Forms
 
         }
 
+        static Byte[] HexStringToByteArray(String HexString)
+        {
+            // http://gsexdev.blogspot.com/2011/03/using-prfolderpath-property-in-exchange.html#!/2011/03/using-prfolderpath-property-in-exchange.html
+
+            Byte[] ByteArray = new Byte[HexString.Length / 2];
+            for (int i = 0; i < HexString.Length; i += 2)
+            {
+                ByteArray[i / 2] = Convert.ToByte(HexString.Substring(i, 2), 16);
+            }
+            return ByteArray;
+        }
+
         private void btnTest_Click(object sender, EventArgs e)
         {
             bool bRet = false;
             Folder oFolder = null;
 
             bRet = LoadFolder(_service, _folderId, out oFolder);
+
+            //CalendarBreakdownView oForm = new CalendarBreakdownView(_service, oFolder.Id);
+            //oForm.Show();
 
             // Load the item for _itemId
             //bRet = CallMyCustomCode(oFolder);  // Modify to call your code.

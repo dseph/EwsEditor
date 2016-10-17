@@ -49,6 +49,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtClass = new System.Windows.Forms.TextBox();
             this.chkClass = new System.Windows.Forms.CheckBox();
+            this.cmboSearchDepth = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmboSubjectConditional = new System.Windows.Forms.ComboBox();
+            this.cmboToConditional = new System.Windows.Forms.ComboBox();
+            this.cmboCCConditional = new System.Windows.Forms.ComboBox();
+            this.cmboBodyConditional = new System.Windows.Forms.ComboBox();
+            this.cmboClassConditional = new System.Windows.Forms.ComboBox();
+            this.cmboLogicalOperation = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,29 +94,29 @@
             this.txtAQS.Multiline = true;
             this.txtAQS.Name = "txtAQS";
             this.txtAQS.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtAQS.Size = new System.Drawing.Size(729, 77);
-            this.txtAQS.TabIndex = 6;
+            this.txtAQS.Size = new System.Drawing.Size(735, 77);
+            this.txtAQS.TabIndex = 8;
             // 
             // txtBody
             // 
             this.txtBody.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBody.Enabled = false;
-            this.txtBody.Location = new System.Drawing.Point(122, 295);
+            this.txtBody.Location = new System.Drawing.Point(122, 301);
             this.txtBody.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBody.Name = "txtBody";
-            this.txtBody.Size = new System.Drawing.Size(646, 22);
-            this.txtBody.TabIndex = 15;
+            this.txtBody.Size = new System.Drawing.Size(450, 22);
+            this.txtBody.TabIndex = 20;
             // 
             // chkBody
             // 
             this.chkBody.AutoSize = true;
             this.chkBody.Enabled = false;
-            this.chkBody.Location = new System.Drawing.Point(37, 297);
+            this.chkBody.Location = new System.Drawing.Point(36, 302);
             this.chkBody.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkBody.Name = "chkBody";
             this.chkBody.Size = new System.Drawing.Size(62, 21);
-            this.chkBody.TabIndex = 14;
+            this.chkBody.TabIndex = 19;
             this.chkBody.Text = "Body";
             this.chkBody.UseVisualStyleBackColor = true;
             this.chkBody.CheckedChanged += new System.EventHandler(this.chkBody_CheckedChanged);
@@ -116,21 +126,21 @@
             this.txtCC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCC.Enabled = false;
-            this.txtCC.Location = new System.Drawing.Point(122, 265);
+            this.txtCC.Location = new System.Drawing.Point(122, 269);
             this.txtCC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCC.Name = "txtCC";
-            this.txtCC.Size = new System.Drawing.Size(646, 22);
-            this.txtCC.TabIndex = 13;
+            this.txtCC.Size = new System.Drawing.Size(450, 22);
+            this.txtCC.TabIndex = 17;
             // 
             // chkCC
             // 
             this.chkCC.AutoSize = true;
             this.chkCC.Enabled = false;
-            this.chkCC.Location = new System.Drawing.Point(37, 265);
+            this.chkCC.Location = new System.Drawing.Point(37, 270);
             this.chkCC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkCC.Name = "chkCC";
             this.chkCC.Size = new System.Drawing.Size(48, 21);
-            this.chkCC.TabIndex = 12;
+            this.chkCC.TabIndex = 16;
             this.chkCC.Text = "CC";
             this.chkCC.UseVisualStyleBackColor = true;
             this.chkCC.CheckedChanged += new System.EventHandler(this.chkCC_CheckedChanged);
@@ -140,21 +150,21 @@
             this.txtTo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTo.Enabled = false;
-            this.txtTo.Location = new System.Drawing.Point(122, 235);
+            this.txtTo.Location = new System.Drawing.Point(122, 237);
             this.txtTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(646, 22);
-            this.txtTo.TabIndex = 11;
+            this.txtTo.Size = new System.Drawing.Size(450, 22);
+            this.txtTo.TabIndex = 14;
             // 
             // chkTo
             // 
             this.chkTo.AutoSize = true;
             this.chkTo.Enabled = false;
-            this.chkTo.Location = new System.Drawing.Point(37, 233);
+            this.chkTo.Location = new System.Drawing.Point(37, 238);
             this.chkTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkTo.Name = "chkTo";
             this.chkTo.Size = new System.Drawing.Size(47, 21);
-            this.chkTo.TabIndex = 10;
+            this.chkTo.TabIndex = 13;
             this.chkTo.Text = "To";
             this.chkTo.UseVisualStyleBackColor = true;
             this.chkTo.CheckedChanged += new System.EventHandler(this.chkTo_CheckedChanged);
@@ -164,11 +174,11 @@
             this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubject.Enabled = false;
-            this.txtSubject.Location = new System.Drawing.Point(123, 205);
+            this.txtSubject.Location = new System.Drawing.Point(122, 207);
             this.txtSubject.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(646, 22);
-            this.txtSubject.TabIndex = 9;
+            this.txtSubject.Size = new System.Drawing.Size(450, 22);
+            this.txtSubject.TabIndex = 11;
             // 
             // chkSubject
             // 
@@ -178,7 +188,7 @@
             this.chkSubject.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkSubject.Name = "chkSubject";
             this.chkSubject.Size = new System.Drawing.Size(77, 21);
-            this.chkSubject.TabIndex = 8;
+            this.chkSubject.TabIndex = 10;
             this.chkSubject.Text = "Subject";
             this.chkSubject.UseVisualStyleBackColor = true;
             this.chkSubject.CheckedChanged += new System.EventHandler(this.chkSubject_CheckedChanged);
@@ -189,22 +199,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItems.FullRowSelect = true;
-            this.lvItems.Location = new System.Drawing.Point(37, 397);
+            this.lvItems.Location = new System.Drawing.Point(37, 439);
             this.lvItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(731, 109);
-            this.lvItems.TabIndex = 19;
+            this.lvItems.Size = new System.Drawing.Size(737, 85);
+            this.lvItems.TabIndex = 26;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
             this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_DoubleClick);
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(11, 360);
+            this.btnSearch.Location = new System.Drawing.Point(11, 402);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(153, 29);
-            this.btnSearch.TabIndex = 18;
+            this.btnSearch.TabIndex = 25;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -217,7 +227,7 @@
             this.rdoAqsSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdoAqsSearch.Name = "rdoAqsSearch";
             this.rdoAqsSearch.Size = new System.Drawing.Size(107, 21);
-            this.rdoAqsSearch.TabIndex = 5;
+            this.rdoAqsSearch.TabIndex = 7;
             this.rdoAqsSearch.TabStop = true;
             this.rdoAqsSearch.Text = "AQS Search";
             this.rdoAqsSearch.UseVisualStyleBackColor = true;
@@ -230,7 +240,7 @@
             this.rdoFindItemSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdoFindItemSearch.Name = "rdoFindItemSearch";
             this.rdoFindItemSearch.Size = new System.Drawing.Size(135, 21);
-            this.rdoFindItemSearch.TabIndex = 7;
+            this.rdoFindItemSearch.TabIndex = 9;
             this.rdoFindItemSearch.Text = "Find Item Search";
             this.rdoFindItemSearch.UseVisualStyleBackColor = true;
             this.rdoFindItemSearch.CheckedChanged += new System.EventHandler(this.rdoFindItemSearch_CheckedChanged);
@@ -268,7 +278,7 @@
             this.label3.Location = new System.Drawing.Point(11, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(563, 17);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 6;
             this.label3.Text = "Note:  Exchange Online may limit AQS results to 250 items due to default policy s" +
     "ettings.";
             // 
@@ -276,10 +286,10 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 508);
+            this.label4.Location = new System.Drawing.Point(36, 526);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(384, 17);
-            this.label4.TabIndex = 20;
+            this.label4.TabIndex = 27;
             this.label4.Text = "Note:  Double click a result for more properties and options.";
             // 
             // txtClass
@@ -287,30 +297,189 @@
             this.txtClass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtClass.Enabled = false;
-            this.txtClass.Location = new System.Drawing.Point(122, 323);
+            this.txtClass.Location = new System.Drawing.Point(124, 333);
             this.txtClass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtClass.Name = "txtClass";
-            this.txtClass.Size = new System.Drawing.Size(646, 22);
-            this.txtClass.TabIndex = 17;
+            this.txtClass.Size = new System.Drawing.Size(450, 22);
+            this.txtClass.TabIndex = 23;
             // 
             // chkClass
             // 
             this.chkClass.AutoSize = true;
             this.chkClass.Enabled = false;
-            this.chkClass.Location = new System.Drawing.Point(36, 325);
+            this.chkClass.Location = new System.Drawing.Point(36, 334);
             this.chkClass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkClass.Name = "chkClass";
             this.chkClass.Size = new System.Drawing.Size(64, 21);
-            this.chkClass.TabIndex = 16;
+            this.chkClass.TabIndex = 22;
             this.chkClass.Text = "Class";
             this.chkClass.UseVisualStyleBackColor = true;
             this.chkClass.CheckedChanged += new System.EventHandler(this.chkClass_CheckedChanged);
+            // 
+            // cmboSearchDepth
+            // 
+            this.cmboSearchDepth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboSearchDepth.FormattingEnabled = true;
+            this.cmboSearchDepth.Items.AddRange(new object[] {
+            "Shallow",
+            "ItemTraversal",
+            "SoftDeleted"});
+            this.cmboSearchDepth.Location = new System.Drawing.Point(639, 12);
+            this.cmboSearchDepth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmboSearchDepth.Name = "cmboSearchDepth";
+            this.cmboSearchDepth.Size = new System.Drawing.Size(126, 24);
+            this.cmboSearchDepth.TabIndex = 5;
+            this.cmboSearchDepth.SelectedIndexChanged += new System.EventHandler(this.cmboSearchDepth_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(583, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(50, 17);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Depth:";
+            // 
+            // cmboSubjectConditional
+            // 
+            this.cmboSubjectConditional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmboSubjectConditional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboSubjectConditional.FormattingEnabled = true;
+            this.cmboSubjectConditional.Items.AddRange(new object[] {
+            "ContainsSubstring",
+            "IsEqualTo",
+            "IsNotEqualTo",
+            "IsGreaterThan",
+            "IsLessThan",
+            "IsGreaterThanOrEqualTo",
+            "IsNotEqualTo"});
+            this.cmboSubjectConditional.Location = new System.Drawing.Point(589, 205);
+            this.cmboSubjectConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmboSubjectConditional.Name = "cmboSubjectConditional";
+            this.cmboSubjectConditional.Size = new System.Drawing.Size(185, 24);
+            this.cmboSubjectConditional.TabIndex = 12;
+            // 
+            // cmboToConditional
+            // 
+            this.cmboToConditional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmboToConditional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboToConditional.FormattingEnabled = true;
+            this.cmboToConditional.Items.AddRange(new object[] {
+            "ContainsSubstring",
+            "IsEqualTo",
+            "IsNotEqualTo",
+            "IsGreaterThan",
+            "IsLessThan",
+            "IsGreaterThanOrEqualTo",
+            "IsNotEqualTo"});
+            this.cmboToConditional.Location = new System.Drawing.Point(589, 235);
+            this.cmboToConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmboToConditional.Name = "cmboToConditional";
+            this.cmboToConditional.Size = new System.Drawing.Size(185, 24);
+            this.cmboToConditional.TabIndex = 15;
+            // 
+            // cmboCCConditional
+            // 
+            this.cmboCCConditional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmboCCConditional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboCCConditional.FormattingEnabled = true;
+            this.cmboCCConditional.Items.AddRange(new object[] {
+            "ContainsSubstring",
+            "IsEqualTo",
+            "IsNotEqualTo",
+            "IsGreaterThan",
+            "IsLessThan",
+            "IsGreaterThanOrEqualTo",
+            "IsNotEqualTo"});
+            this.cmboCCConditional.Location = new System.Drawing.Point(589, 267);
+            this.cmboCCConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmboCCConditional.Name = "cmboCCConditional";
+            this.cmboCCConditional.Size = new System.Drawing.Size(185, 24);
+            this.cmboCCConditional.TabIndex = 18;
+            // 
+            // cmboBodyConditional
+            // 
+            this.cmboBodyConditional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmboBodyConditional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboBodyConditional.FormattingEnabled = true;
+            this.cmboBodyConditional.Items.AddRange(new object[] {
+            "ContainsSubstring",
+            "IsEqualTo",
+            "IsNotEqualTo",
+            "IsGreaterThan",
+            "IsLessThan",
+            "IsGreaterThanOrEqualTo",
+            "IsNotEqualTo"});
+            this.cmboBodyConditional.Location = new System.Drawing.Point(589, 299);
+            this.cmboBodyConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmboBodyConditional.Name = "cmboBodyConditional";
+            this.cmboBodyConditional.Size = new System.Drawing.Size(185, 24);
+            this.cmboBodyConditional.TabIndex = 21;
+            // 
+            // cmboClassConditional
+            // 
+            this.cmboClassConditional.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmboClassConditional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboClassConditional.FormattingEnabled = true;
+            this.cmboClassConditional.Items.AddRange(new object[] {
+            "ContainsSubstring",
+            "IsEqualTo",
+            "IsNotEqualTo",
+            "IsGreaterThan",
+            "IsLessThan",
+            "IsGreaterThanOrEqualTo",
+            "IsNotEqualTo"});
+            this.cmboClassConditional.Location = new System.Drawing.Point(589, 331);
+            this.cmboClassConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmboClassConditional.Name = "cmboClassConditional";
+            this.cmboClassConditional.Size = new System.Drawing.Size(185, 24);
+            this.cmboClassConditional.TabIndex = 24;
+            // 
+            // cmboLogicalOperation
+            // 
+            this.cmboLogicalOperation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmboLogicalOperation.FormattingEnabled = true;
+            this.cmboLogicalOperation.Items.AddRange(new object[] {
+            "And",
+            "Or"});
+            this.cmboLogicalOperation.Location = new System.Drawing.Point(163, 367);
+            this.cmboLogicalOperation.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmboLogicalOperation.Name = "cmboLogicalOperation";
+            this.cmboLogicalOperation.Size = new System.Drawing.Size(126, 24);
+            this.cmboLogicalOperation.TabIndex = 29;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(33, 370);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(124, 17);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Logical Operation:";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(788, 24);
+            this.menuStrip1.TabIndex = 30;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(782, 527);
+            this.ClientSize = new System.Drawing.Size(788, 545);
+            this.Controls.Add(this.cmboLogicalOperation);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.cmboClassConditional);
+            this.Controls.Add(this.cmboBodyConditional);
+            this.Controls.Add(this.cmboCCConditional);
+            this.Controls.Add(this.cmboToConditional);
+            this.Controls.Add(this.cmboSubjectConditional);
+            this.Controls.Add(this.cmboSearchDepth);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtClass);
             this.Controls.Add(this.chkClass);
             this.Controls.Add(this.label4);
@@ -332,9 +501,11 @@
             this.Controls.Add(this.chkTo);
             this.Controls.Add(this.txtSubject);
             this.Controls.Add(this.chkSubject);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SearchForm";
-            this.Text = "Search Form";
+            this.Text = "Search Items Form";
             this.Load += new System.EventHandler(this.SearchForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).EndInit();
             this.ResumeLayout(false);
@@ -365,5 +536,15 @@
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox txtClass;
         public System.Windows.Forms.CheckBox chkClass;
+        public System.Windows.Forms.ComboBox cmboSearchDepth;
+        private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.ComboBox cmboSubjectConditional;
+        public System.Windows.Forms.ComboBox cmboToConditional;
+        public System.Windows.Forms.ComboBox cmboCCConditional;
+        public System.Windows.Forms.ComboBox cmboBodyConditional;
+        public System.Windows.Forms.ComboBox cmboClassConditional;
+        public System.Windows.Forms.ComboBox cmboLogicalOperation;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

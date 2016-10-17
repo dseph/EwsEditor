@@ -171,12 +171,16 @@ namespace EWSEditor.Exchange
             }
             else
             {
-                if (oTimeZone != null)
-                    service = new ExchangeService(oTimeZone);
-                else
-                    service = new ExchangeService( );
+                //if (oTimeZone != null)
+                //    service = new ExchangeService(oTimeZone);
+                //else
+                //    service = new ExchangeService();
 
-                 
+                if (oTimeZone != null)
+                    service = new ExchangeService(ExchangeVersion.Exchange2010_SP2, oTimeZone);
+                else
+                    service = new ExchangeService(ExchangeVersion.Exchange2010_SP2);
+
             }
 
              

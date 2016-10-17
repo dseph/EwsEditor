@@ -154,6 +154,12 @@
     <Compile Include="Common\EwsHelpers\SharedCalendarsHelper.cs" />
     <Compile Include="Common\UIHelpers\ListViewItemComparer.cs" />
     <Compile Include="Common\UIHelpers\TextEdit.cs" />
+    <Compile Include="Forms\Calendar\CalendarBreakdownView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Calendar\CalendarBreakdownView.Designer.cs">
+      <DependentUpon>CalendarBreakdownView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dialogs\AddRemoveHeaders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,12 @@
     </Compile>
     <Compile Include="Forms\Searches\FindCertainFolders.Designer.cs">
       <DependentUpon>FindCertainFolders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Searches\SearchFolders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Searches\SearchFolders.Designer.cs">
+      <DependentUpon>SearchFolders.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ToolsForms\FileContentHelper.cs">
       <SubType>Form</SubType>
@@ -821,6 +833,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Settings\ServiceSessionSetting.cs" />
+    <EmbeddedResource Include="Forms\Calendar\CalendarBreakdownView.resx">
+      <DependentUpon>CalendarBreakdownView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\AddRemoveHeaders.resx">
       <DependentUpon>AddRemoveHeaders.cs</DependentUpon>
     </EmbeddedResource>
@@ -859,6 +874,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Searches\FindCertainFolders.resx">
       <DependentUpon>FindCertainFolders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Searches\SearchFolders.resx">
+      <DependentUpon>SearchFolders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolsForms\FileContentHelper.resx">
       <DependentUpon>FileContentHelper.cs</DependentUpon>
@@ -1267,8 +1285,11 @@
     <Content Include="EwsPostExamples\CreateItem - accept meeting request.xml" />
     <Content Include="EwsPostExamples\CreateItem - task.xml" />
     <Content Include="EwsPostExamples\CreateManagedFolder.xml" />
+    <Content Include="EwsPostExamples\CreateOrUpdateFocusedOtherOverride -  Edit or Create a Focused Inbox override rule and set it to Other.xml" />
+    <Content Include="EwsPostExamples\CreateOrUpdateFocusedOtherOverride - Edit or Create a Focused Inbox Override Rule and set it to Focused.xml" />
     <Content Include="EwsPostExamples\CreateUserConfiguration.xml" />
     <Content Include="EwsPostExamples\DeleteAttachment.xml" />
+    <Content Include="EwsPostExamples\DeleteFocusedOtherOverride  - Delete a Focused Inbox Override Rule.xml" />
     <Content Include="EwsPostExamples\DeleteFolder.xml" />
     <Content Include="EwsPostExamples\DeleteItem.xml" />
     <Content Include="EwsPostExamples\DeleteUserConfiguration.xml" />
@@ -1306,7 +1327,10 @@
     <Content Include="EwsPostExamples\GetDelegate.xml" />
     <Content Include="EwsPostExamples\GetDiscoverySearchConfiguration.xml" />
     <Content Include="EwsPostExamples\GetEvents.xml" />
-    <Content Include="EwsPostExamples\GetFolder.xml" />
+    <Content Include="EwsPostExamples\GetFocusedOtherOverrides - List Focused Inbox Override Rules .xml" />
+    <Content Include="EwsPostExamples\GetFolder.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\GetFolder - MsgRootFolder.xml" />
     <Content Include="EwsPostExamples\GetHoldOnMailboxes.xml" />
     <Content Include="EwsPostExamples\GetImItemList.xml" />
@@ -1320,7 +1344,9 @@
     </Content>
     <Content Include="EwsPostExamples\GetItem - email message.xml" />
     <Content Include="EwsPostExamples\GetItem - task.xml" />
-    <Content Include="EwsPostExamples\GetItem.xml" />
+    <Content Include="EwsPostExamples\GetItem.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\GetMailTips.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -1396,6 +1422,7 @@
     <Content Include="HtmlBodyExamples\Field2MeterQarterGP.png" />
     <Content Include="docs\ToDo.txt" />
     <None Include="Resources\action_add_16xLG.bmp" />
+    <Content Include="Notes.txt" />
     <Content Include="Resources\action_add_16xLG.png" />
     <Content Include="Resources\Error_red_16x16_exp.png" />
     <Content Include="Resources\EWSEditor2.ico" />

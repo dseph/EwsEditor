@@ -121,7 +121,7 @@
             this.mnuMain.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.mnuMain.Size = new System.Drawing.Size(901, 28);
             this.mnuMain.TabIndex = 4;
-            this.mnuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnuMain_ItemClicked);
+            //this.mnuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnuMain_ItemClicked);
             // 
             // mnuFile
             // 

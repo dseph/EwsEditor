@@ -48,6 +48,18 @@ namespace EWSEditor.Forms
 
             cmboSearchType.Text = "More Available";
 
+            cmboSearchDepth.Text = "Shallow";
+            
+            cmboLogicalOperation.Text = "And";
+
+            cmboSubjectConditional.Text = "ContainsSubstring";
+            cmboToConditional.Text = "ContainsSubstring";
+            cmboCCConditional.Text = "ContainsSubstring";
+            cmboBodyConditional.Text = "ContainsSubstring";
+            cmboClassConditional.Text = "ContainsSubstring";
+             
+        
+
             SetCheckboxes();
            
         }
@@ -80,6 +92,13 @@ namespace EWSEditor.Forms
                 this.txtClass.Enabled = false;
                 this.chkClass.Enabled = false;
 
+                cmboSubjectConditional.Enabled = false;
+                cmboToConditional.Enabled = false;
+                cmboCCConditional.Enabled = false;
+                cmboBodyConditional.Enabled = false;
+                cmboClassConditional.Enabled = false;
+
+
             }
             if (this.rdoFindItemSearch.Checked == true)
             {
@@ -95,6 +114,12 @@ namespace EWSEditor.Forms
                 this.txtBody.Enabled = true;
                 this.txtClass.Enabled = true;
 
+                cmboSubjectConditional.Enabled = true;
+                cmboToConditional.Enabled = chkTo.Checked;
+                cmboCCConditional.Enabled = true;
+                cmboBodyConditional.Enabled = true;
+                cmboClassConditional.Enabled = true;
+
             }
 
             this.txtAQS.Enabled = rdoAqsSearch.Checked;
@@ -103,8 +128,12 @@ namespace EWSEditor.Forms
             this.txtCC.Enabled  = chkCC.Checked;
             this.txtBody.Enabled = chkBody.Checked;
             this.txtClass.Enabled = chkClass.Checked;
- 
- 
+
+            cmboSubjectConditional.Enabled = chkSubject.Checked;
+            cmboToConditional.Enabled = chkTo.Checked;
+            cmboCCConditional.Enabled = chkCC.Checked;
+            cmboBodyConditional.Enabled = chkBody.Checked;
+            cmboClassConditional.Enabled = chkClass.Checked;
         }
 
         private bool CheckFields()
@@ -153,22 +182,25 @@ namespace EWSEditor.Forms
         private void chkAQS_CheckedChanged(object sender, EventArgs e)
         {
             SetCheckboxes();
-            txtAQS.Enabled = this.rdoAqsSearch.Enabled;
+            txtAQS.Enabled = this.rdoAqsSearch.Checked;
         }
 
         private void chkSubject_CheckedChanged(object sender, EventArgs e)
         {
-            txtSubject.Enabled = chkSubject.Enabled;
+            txtSubject.Enabled = chkSubject.Checked;
+            cmboSubjectConditional.Enabled = chkSubject.Checked;
         }
 
         private void chkTo_CheckedChanged(object sender, EventArgs e)
         {
-            txtTo.Enabled = chkTo.Enabled;
+            txtTo.Enabled = chkTo.Checked;
+            cmboToConditional.Enabled = chkTo.Checked;
         }
 
         private void chkCC_CheckedChanged(object sender, EventArgs e)
         {
-            txtCC.Enabled = chkCC.Enabled;
+            txtCC.Enabled = chkCC.Checked;
+            cmboCCConditional.Enabled = chkCC.Enabled;
         }
 
         private void ProcessSearch(FolderId oFolderId, int iPageSize)
@@ -200,7 +232,11 @@ namespace EWSEditor.Forms
                     //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x0C1A, MapiPropertyType.String)); // CdoPR_SENDER_NAME
 
                     oItemView.OrderBy.Add(ItemSchema.DateTimeReceived, SortDirection.Descending);
-                    oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
+
+                    //oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
+
+                    SetSearchDepth(ref oItemView);
+ 
  
                     if (this.rdoAqsSearch.Checked == true)
                     {
@@ -211,24 +247,44 @@ namespace EWSEditor.Forms
                     {
                         if (this.chkClass.Checked == true)
                             if (this.txtClass.Text.Length != 0)
-                                searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.ItemClass, this.txtClass.Text));
+                                AddCondition(ref searchFilterCollection, ItemSchema.ItemClass, this.txtClass.Text, cmboClassConditional.Text);
+                                //searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.ItemClass, this.txtClass.Text));
                         if (this.chkSubject.Checked == true)
                             if (this.txtSubject.Text.Length != 0)
-                                searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Subject, this.txtSubject.Text));
+                                AddCondition(ref searchFilterCollection, ItemSchema.Subject, this.txtSubject.Text, cmboSubjectConditional.Text); 
+                                // searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Subject, this.txtSubject.Text));
                         if (this.chkTo.Checked == true)
                             if (this.txtTo.Text.Length != 0)
-                                searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.DisplayTo, this.txtTo.Text));
+                                AddCondition(ref searchFilterCollection, ItemSchema.DisplayTo, this.txtTo.Text, cmboToConditional.Text); 
+                                //searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.DisplayTo, this.txtTo.Text));
                         if (this.chkCC.Checked == true)
                             if (this.txtCC.Text.Length != 0)
-                                searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.DisplayCc, this.txtCC.Text));
+                                AddCondition(ref searchFilterCollection, ItemSchema.DisplayCc, this.txtCC.Text, cmboCCConditional.Text); 
+                                //searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.DisplayCc, this.txtCC.Text));
                         if (this.chkBody.Checked == true)
                             if (this.txtBody.Text.Length != 0)
-                                searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Body, this.txtBody.Text));
+                                AddCondition(ref searchFilterCollection, ItemSchema.Body, this.txtBody.Text, cmboBodyConditional.Text);
+                                //searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Body, this.txtBody.Text));
 
 
-                        SearchFilter searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
+                        SearchFilter searchFilter = null;
+                        if (searchFilterCollection.Count == 0)
+                        {
+                            oFindItemsResults = _CurrentService.FindItems(oFolderId, oItemView);
+                        }
+                        else
+                        {
+                            if (cmboLogicalOperation.Text == "And")
+                                searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.And, searchFilterCollection.ToArray());
+                            if (cmboLogicalOperation.Text == "Or")
+                                searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
+ 
+                            oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
+                        }
 
-                        oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
+                        //SearchFilter searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
+
+                        //oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
 
                     }
 
@@ -303,8 +359,11 @@ namespace EWSEditor.Forms
                     {
                         iCountMore++;
 
-                        List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
+                         
                         ItemView oItemView = new ItemView(iPageSize, offset, OffsetBasePoint.Beginning);
+
+                        List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
+
                         oItemView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
                                             ItemSchema.Subject,
                                             ItemSchema.DisplayTo,
@@ -320,7 +379,9 @@ namespace EWSEditor.Forms
                         //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x0C1A, MapiPropertyType.String)); // CdoPR_SENDER_NAME
 
                         oItemView.OrderBy.Add(ContactSchema.DisplayName, SortDirection.Ascending);
-                        oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
+                        //oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
+
+                        SetSearchDepth(ref oItemView);
 
                         if (this.rdoAqsSearch.Checked == true)
                         {
@@ -330,25 +391,32 @@ namespace EWSEditor.Forms
                         else
                         {
                             if (this.chkClass.Checked == true)
-                                if (this.txtClass.Text.Length != 0)
-                                    searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.ItemClass, this.txtClass.Text));
+                                 AddCondition(ref searchFilterCollection, ItemSchema.ItemClass, this.txtClass.Text, cmboClassConditional.Text);
                             if (this.chkSubject.Checked == true)
-                                if (this.txtSubject.Text.Length != 0)
-                                    searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Subject, this.txtSubject.Text));
+                                AddCondition(ref searchFilterCollection, ItemSchema.Subject, this.txtSubject.Text, cmboSubjectConditional.Text);
                             if (this.chkTo.Checked == true)
-                                if (this.txtTo.Text.Length != 0)
-                                    searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.DisplayTo, this.txtTo.Text));
+                                AddCondition(ref searchFilterCollection, ItemSchema.DisplayTo, this.txtTo.Text, cmboToConditional.Text);
                             if (this.chkCC.Checked == true)
-                                if (this.txtCC.Text.Length != 0)
-                                    searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.DisplayCc, this.txtCC.Text));
+                                AddCondition(ref searchFilterCollection, ItemSchema.DisplayCc, this.txtCC.Text, cmboCCConditional.Text);
                             if (this.chkBody.Checked == true)
-                                if (this.txtBody.Text.Length != 0)
-                                    searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Body, this.txtBody.Text));
+                                AddCondition(ref searchFilterCollection, ItemSchema.Body, this.txtBody.Text, cmboBodyConditional.Text);
 
-                            SearchFilter searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
+                            SearchFilter searchFilter = null;
+                            if (searchFilterCollection.Count == 0)
+                            {
+                                oFindItemsResults = _CurrentService.FindItems(oFolderId, oItemView);
+                            }
+                            else
+                            {
 
-                            oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
+                                if (cmboLogicalOperation.Text == "And")
+                                    searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.And, searchFilterCollection.ToArray());
+                                if (cmboLogicalOperation.Text == "Or")
+                                    searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
 
+                                //searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
+                                oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
+                            }
                         }
 
  
@@ -397,6 +465,8 @@ namespace EWSEditor.Forms
  
 
         }
+
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -466,6 +536,56 @@ namespace EWSEditor.Forms
         private void chkClass_CheckedChanged(object sender, EventArgs e)
         {
             this.txtClass.Enabled = this.chkClass.Enabled;
+        }
+
+        private void cmboSearchDepth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SetSearchDepth(ref ItemView oItemView)
+        {
+            switch (cmboSearchDepth.Text)
+            {
+                case "Shallow":
+                    oItemView.Traversal = ItemTraversal.Shallow; // Shallow, Associated, SoftDeleted
+                    break;
+                case "Associated":
+                    oItemView.Traversal = ItemTraversal.Associated; // Shallow, Associated, SoftDeleted
+                    break;
+                case "SoftDeleted":
+                    oItemView.Traversal = ItemTraversal.SoftDeleted; // Shallow, Associated, SoftDeleted
+                    break;
+            }
+        }
+
+        private void AddCondition(ref List<SearchFilter> searchFilterCollection, PropertyDefinitionBase oProp, string sValue, string sConditional)
+        {
+            switch (sConditional)
+            {
+                case "ContainsSubstring":
+                    searchFilterCollection.Add(new SearchFilter.ContainsSubstring(oProp, sValue));
+                    break;
+                case "IsEqualTo":
+                    searchFilterCollection.Add(new SearchFilter.IsEqualTo(oProp, sValue));
+                    break;
+                case "IsGreaterThan":
+                    searchFilterCollection.Add(new SearchFilter.IsGreaterThan(oProp, sValue));
+                    break;
+                case "IsGreaterThanOrEqualTo":
+                    searchFilterCollection.Add(new SearchFilter.IsGreaterThanOrEqualTo(oProp, sValue));
+                    break;
+                case "IsLessThan":
+                    searchFilterCollection.Add(new SearchFilter.IsLessThan(oProp, sValue));
+                    break;
+                case "IsLessThanOrEqualTo":
+                    searchFilterCollection.Add(new SearchFilter.IsLessThanOrEqualTo(oProp, sValue));
+                    break;
+                case "IsNotEqualTo":
+                    searchFilterCollection.Add(new SearchFilter.IsNotEqualTo(oProp, sValue));
+                    break;
+
+            }
         }
     }
 }
