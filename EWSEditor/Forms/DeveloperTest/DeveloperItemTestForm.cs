@@ -98,7 +98,7 @@ namespace EWSEditor.Forms
             //oPropertySet.Add(EmailMessageSchema.RetentionDate);
             oPropertySet.Add(EmailMessageSchema.ToRecipients);
             oPropertySet.Add(EmailMessageSchema.MimeContent);
-            oPropertySet.Add(EmailMessageSchema.StoreEntryId);
+            //oPropertySet.Add(EmailMessageSchema.StoreEntryId);
             oPropertySet.Add(EmailMessageSchema.Size);
 
             oPropertySet.Add(Prop_Retention_Period);
@@ -121,45 +121,33 @@ namespace EWSEditor.Forms
                     case ServiceResult.Success:
 
                         oReturnItem = oGetItemResponse.Item;
+ 
 
-                        // EmailMessage oEmailMessage = (EmailMessage)oReturnItem; // recasting example
+                        oSB.AppendFormat("Subject: {0}\r\n", oReturnItem.Subject);
+                        oSB.AppendFormat("Class: {0}\r\n", oReturnItem.ItemClass);
+                        oSB.AppendFormat("DateTimeCreated: {0}\r\n", oReturnItem.DateTimeCreated.ToString());
+                        oSB.AppendFormat("Size: {0}\r\n", oReturnItem.Size.ToString());
 
-            //                            oPropertySet.Add(Prop_IsHidden);
-            //oPropertySet.Add(EmailMessageSchema.DateTimeCreated);
-            //oPropertySet.Add(EmailMessageSchema.DateTimeReceived);
-            //oPropertySet.Add(EmailMessageSchema.DateTimeSent);
-            ////oPropertySet.Add(EmailMessageSchema.RetentionDate);
-            //oPropertySet.Add(EmailMessageSchema.ToRecipients);
-            //oPropertySet.Add(EmailMessageSchema.MimeContent);
-            //oPropertySet.Add(EmailMessageSchema.StoreEntryId);
-            //oPropertySet.Add(EmailMessageSchema.Size);
-
-                         
-
+ 
                         if (oReturnItem.TryGetProperty(Prop_IsHidden, out boolVal))
                             oSB.AppendFormat("PR_IS_HIDDEN: {0}\r\n", boolVal);
                         else
                             oSB.AppendLine("PR_IS_HIDDEN: Not found.");
 
-                        oSB.AppendFormat("DateTimeCreated: {0}\r\n", oReturnItem.DateTimeCreated.ToString());
-                        oSB.AppendFormat("Size: {0}\r\n", oReturnItem.Size.ToString());
-
- 
-
                         if (oReturnItem.TryGetProperty(Prop_PR_POLICY_TAG, out oVal))
                             oSB.AppendFormat("PR_POLICY_TAG: {0}\r\n", oVal);
-                        else
-                            oSB.AppendLine("PR_RETENTION_TAG: Not found.");
+                        //else
+                        //    oSB.AppendLine("PR_RETENTION_TAG: Not found.");
 
                         if (oReturnItem.TryGetProperty(Prop_Retention_Flags, out iVal))
                             oSB.AppendFormat("PR_RETENTION_FLAGS: {0}\r\n", iVal);
-                        else
-                            oSB.AppendLine("PR_RETENTION_FLAGS: Not found.");
+                        //else
+                        //    oSB.AppendLine("PR_RETENTION_FLAGS: Not found.");
 
                         if (oReturnItem.TryGetProperty(Prop_Retention_Period, out iVal))
                             oSB.AppendFormat("PR_RETENTION_PERIOD:  {0}\r\n", iVal);
-                        else
-                            oSB.AppendLine("PR_RETENTION_PERIOD: Not found.");
+                        //else
+                        //    oSB.AppendLine("PR_RETENTION_PERIOD: Not found.");
 
                         //// The following is for geting the MIME string
                         //if (oGetItemResponse.Item.MimeContent == null)
