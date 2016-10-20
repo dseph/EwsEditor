@@ -35,6 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.lvItems = new System.Windows.Forms.ListView();
+            this.mnuFolderStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuFolderStripFolderProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.cmboSearchType = new System.Windows.Forms.ComboBox();
             this.txtDisplayName = new System.Windows.Forms.TextBox();
@@ -45,8 +47,6 @@
             this.cmboDisplayNameConditional = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmboLogicalOperation = new System.Windows.Forms.ComboBox();
-            this.mnuFolderStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuFolderStripFolderProperties = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).BeginInit();
             this.mnuFolderStrip.SuspendLayout();
             this.SuspendLayout();
@@ -118,6 +118,7 @@
             this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvItems.ContextMenuStrip = this.mnuFolderStrip;
             this.lvItems.FullRowSelect = true;
             this.lvItems.Location = new System.Drawing.Point(19, 190);
             this.lvItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -125,7 +126,22 @@
             this.lvItems.Size = new System.Drawing.Size(741, 179);
             this.lvItems.TabIndex = 17;
             this.lvItems.UseCompatibleStateImageBehavior = false;
-            this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
+            this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_DoubleClick);
+            // 
+            // mnuFolderStrip
+            // 
+            this.mnuFolderStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.mnuFolderStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFolderStripFolderProperties});
+            this.mnuFolderStrip.Name = "mnuFolderStrip";
+            this.mnuFolderStrip.Size = new System.Drawing.Size(195, 28);
+            // 
+            // mnuFolderStripFolderProperties
+            // 
+            this.mnuFolderStripFolderProperties.Name = "mnuFolderStripFolderProperties";
+            this.mnuFolderStripFolderProperties.Size = new System.Drawing.Size(194, 24);
+            this.mnuFolderStripFolderProperties.Text = "Folder Poperties...";
+            this.mnuFolderStripFolderProperties.Click += new System.EventHandler(this.mnuFolderStripFolderProperties_Click);
             // 
             // label1
             // 
@@ -189,8 +205,7 @@
             this.cmboSearchDepth.FormattingEnabled = true;
             this.cmboSearchDepth.Items.AddRange(new object[] {
             "Shallow",
-            "Deep",
-            "SoftDeleted"});
+            "Deep"});
             this.cmboSearchDepth.Location = new System.Drawing.Point(608, 6);
             this.cmboSearchDepth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboSearchDepth.Name = "cmboSearchDepth";
@@ -257,21 +272,6 @@
             this.cmboLogicalOperation.Name = "cmboLogicalOperation";
             this.cmboLogicalOperation.Size = new System.Drawing.Size(126, 24);
             this.cmboLogicalOperation.TabIndex = 19;
-            // 
-            // mnuFolderStrip
-            // 
-            this.mnuFolderStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.mnuFolderStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFolderStripFolderProperties});
-            this.mnuFolderStrip.Name = "mnuFolderStrip";
-            this.mnuFolderStrip.Size = new System.Drawing.Size(201, 30);
-            // 
-            // mnuFolderStripFolderProperties
-            // 
-            this.mnuFolderStripFolderProperties.Name = "mnuFolderStripFolderProperties";
-            this.mnuFolderStripFolderProperties.Size = new System.Drawing.Size(200, 26);
-            this.mnuFolderStripFolderProperties.Text = "Folder Poperties...";
-            this.mnuFolderStripFolderProperties.Click += new System.EventHandler(this.mnuFolderStripFolderProperties_Click);
             // 
             // SearchFolders
             // 
