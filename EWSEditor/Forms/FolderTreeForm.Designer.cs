@@ -58,6 +58,7 @@ namespace EWSEditor.Forms
             this.addExtendedPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuFolderCalendarView = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFolderCalendarItemsBreakdown = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuNewItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchFoldersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -173,13 +174,14 @@ namespace EWSEditor.Forms
             this.addExtendedPropertyToolStripMenuItem,
             this.toolStripMenuItem14,
             this.mnuFolderCalendarView,
+            this.mnuFolderCalendarItemsBreakdown,
             this.mnuNewItem,
             this.SearchFoldersMenuItem,
             this.SearchItemsMenuItem,
             this.toolStripSeparator3,
             this.developerFolderTestFormToolStripMenuItem});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
-            this.cmsFolderMenu.Size = new System.Drawing.Size(331, 508);
+            this.cmsFolderMenu.Size = new System.Drawing.Size(331, 534);
             // 
             // mnuOpenContents
             // 
@@ -338,6 +340,14 @@ namespace EWSEditor.Forms
             this.mnuFolderCalendarView.Size = new System.Drawing.Size(330, 26);
             this.mnuFolderCalendarView.Text = "CalendarView... ";
             this.mnuFolderCalendarView.Click += new System.EventHandler(this.MnuFolderCalendarView_Click);
+            // 
+            // mnuFolderCalendarItemsBreakdown
+            // 
+            this.mnuFolderCalendarItemsBreakdown.Name = "mnuFolderCalendarItemsBreakdown";
+            this.mnuFolderCalendarItemsBreakdown.Size = new System.Drawing.Size(330, 26);
+            this.mnuFolderCalendarItemsBreakdown.Text = "Calendar Items Breakdown...";
+            this.mnuFolderCalendarItemsBreakdown.Visible = false;
+            this.mnuFolderCalendarItemsBreakdown.Click += new System.EventHandler(this.mnuFolderCalendarItemsBreakdown_Click);
             // 
             // mnuNewItem
             // 
@@ -509,7 +519,8 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.ToolStripMenuItem mnuEmptyTheFolder;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem developerFolderTestFormToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem SearchFoldersMenuItem; 
+        private System.Windows.Forms.ToolStripMenuItem SearchFoldersMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuFolderCalendarItemsBreakdown; 
      
     }
 }
