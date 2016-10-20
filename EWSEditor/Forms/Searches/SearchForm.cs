@@ -114,11 +114,11 @@ namespace EWSEditor.Forms
                 this.txtBody.Enabled = true;
                 this.txtClass.Enabled = true;
 
-                cmboSubjectConditional.Enabled = true;
+                cmboSubjectConditional.Enabled = chkSubject.Checked;
                 cmboToConditional.Enabled = chkTo.Checked;
-                cmboCCConditional.Enabled = true;
-                cmboBodyConditional.Enabled = true;
-                cmboClassConditional.Enabled = true;
+                cmboCCConditional.Enabled = chkCC.Checked;
+                cmboBodyConditional.Enabled = chkBody.Checked;
+                cmboClassConditional.Enabled = chkClass.Checked;
 
             }
 
@@ -129,11 +129,11 @@ namespace EWSEditor.Forms
             this.txtBody.Enabled = chkBody.Checked;
             this.txtClass.Enabled = chkClass.Checked;
 
-            cmboSubjectConditional.Enabled = chkSubject.Checked;
-            cmboToConditional.Enabled = chkTo.Checked;
-            cmboCCConditional.Enabled = chkCC.Checked;
-            cmboBodyConditional.Enabled = chkBody.Checked;
-            cmboClassConditional.Enabled = chkClass.Checked;
+            //cmboSubjectConditional.Enabled = chkSubject.Checked;
+            //cmboToConditional.Enabled = chkTo.Checked;
+            //cmboCCConditional.Enabled = chkCC.Checked;
+            //cmboBodyConditional.Enabled = chkBody.Checked;
+            //cmboClassConditional.Enabled = chkClass.Checked;
         }
 
         private bool CheckFields()
@@ -200,12 +200,13 @@ namespace EWSEditor.Forms
         private void chkCC_CheckedChanged(object sender, EventArgs e)
         {
             txtCC.Enabled = chkCC.Checked;
-            cmboCCConditional.Enabled = chkCC.Enabled;
+            cmboCCConditional.Enabled = chkCC.Checked;
         }
 
-        private void ProcessSearch(FolderId oFolderId, int iPageSize)
+        private bool ProcessSearch(FolderId oFolderId, int iPageSize)
         {
             int iCount = 0;
+            bool bRet = false;
 
             if (oFolderId != null)
             {
@@ -240,8 +241,16 @@ namespace EWSEditor.Forms
  
                     if (this.rdoAqsSearch.Checked == true)
                     {
-                        oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
-
+                        try
+                        { 
+                            oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
+                        }   
+                        catch (Exception ex)
+                        {
+                            this.Cursor = Cursors.Default;
+                            throw ex;
+                          
+                        }
                     }
                     else
                     {
@@ -270,7 +279,16 @@ namespace EWSEditor.Forms
                         SearchFilter searchFilter = null;
                         if (searchFilterCollection.Count == 0)
                         {
-                            oFindItemsResults = _CurrentService.FindItems(oFolderId, oItemView);
+                            try
+                            {
+                                oFindItemsResults = _CurrentService.FindItems(oFolderId, oItemView);
+                            }
+                            catch (Exception ex)
+                            {
+                                this.Cursor = Cursors.Default;
+                                throw ex;
+                                
+                            }
                         }
                         else
                         {
@@ -322,11 +340,12 @@ namespace EWSEditor.Forms
                             oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass);
                             lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
                             oListItem = null;
-                        //}
-
+                        //}  
+                         
                     }
 
                     oListItem = null;
+                    bRet = true;
                 }
 
 
@@ -385,8 +404,15 @@ namespace EWSEditor.Forms
 
                         if (this.rdoAqsSearch.Checked == true)
                         {
-                            oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
-
+                            try
+                            { 
+                                oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
+                            }
+                            catch(Exception ex)
+                            {
+                                this.Cursor = Cursors.Default;
+                                throw ex;
+                            }
                         }
                         else
                         {
@@ -404,7 +430,15 @@ namespace EWSEditor.Forms
                             SearchFilter searchFilter = null;
                             if (searchFilterCollection.Count == 0)
                             {
-                                oFindItemsResults = _CurrentService.FindItems(oFolderId, oItemView);
+                                try
+                                {
+                                    oFindItemsResults = _CurrentService.FindItems(oFolderId, oItemView);
+                                }
+                                catch(Exception ex)
+                                {
+                                    this.Cursor = Cursors.Default;
+                                    throw ex;
+                                }
                             }
                             else
                             {
@@ -414,8 +448,15 @@ namespace EWSEditor.Forms
                                 if (cmboLogicalOperation.Text == "Or")
                                     searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
 
-                                //searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
-                                oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
+                                try
+                                { 
+                                 oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
+                                }
+                                catch(Exception ex)
+                                {
+                                    this.Cursor = Cursors.Default;
+                                    throw ex;
+                                }
                             }
                         }
 
@@ -458,11 +499,11 @@ namespace EWSEditor.Forms
 
                     }
 
-
+                    bRet = true;
                 }
             }
- 
- 
+            this.Cursor = Cursors.Default;
+            return bRet;
 
         }
 
@@ -489,7 +530,9 @@ namespace EWSEditor.Forms
 
         private void chkBody_CheckedChanged(object sender, EventArgs e)
         {
-            this.txtBody.Enabled = this.chkBody.Enabled;
+            this.txtBody.Enabled = this.chkBody.Checked;
+            cmboBodyConditional.Enabled = this.chkBody.Checked;
+      
         }
 
         private void btnMailboxSearch_Click(object sender, EventArgs e)
@@ -535,7 +578,9 @@ namespace EWSEditor.Forms
 
         private void chkClass_CheckedChanged(object sender, EventArgs e)
         {
-            this.txtClass.Enabled = this.chkClass.Enabled;
+            this.txtClass.Enabled = this.chkClass.Checked;
+            cmboClassConditional.Enabled = this.chkClass.Checked;
+ 
         }
 
         private void cmboSearchDepth_SelectedIndexChanged(object sender, EventArgs e)

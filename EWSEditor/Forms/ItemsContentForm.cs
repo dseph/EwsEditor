@@ -1203,7 +1203,7 @@ namespace EWSEditor.Forms
             //      element is not applicable to versions of Exchange starting with Exchange Server 2013, including Exchange Online.
 
             ExchangeServerInfo serverInfo = service.ServerInfo;
-            if (serverInfo.MajorVersion >= 15)
+            if (serverInfo.MajorVersion == 15)
             {   // https://msdn.microsoft.com/en-us/library/office/dd899477(v=exchg.150).aspx
                 MessageBox.Show("The WebClientEditFormQueryString element is not applicable to versions of Exchange starting with Exchange Server 2013, including Exchange Online.", "Not valid for Exchange version.");
                 return;

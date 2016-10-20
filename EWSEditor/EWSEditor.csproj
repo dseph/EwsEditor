@@ -150,6 +150,7 @@
     <Compile Include="Common\AutodiscoverInfo.cs" />
     <Compile Include="Common\CalCheck.cs" />
     <Compile Include="Common\EwsEditorServiceInstanceSettings.cs" />
+    <Compile Include="Common\EwsHelpers\EwsFolderHelper.cs" />
     <Compile Include="Common\ProxyMappedTypes\ProxyMappedTypes.cs" />
     <Compile Include="Common\EwsHelpers\SharedCalendarsHelper.cs" />
     <Compile Include="Common\UIHelpers\ListViewItemComparer.cs" />

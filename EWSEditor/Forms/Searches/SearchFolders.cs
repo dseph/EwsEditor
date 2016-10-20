@@ -27,6 +27,10 @@ namespace EWSEditor.Forms
         private FolderId _CurrentFolderId = null;
         private PropertySet _CurrentDetailPropertySet;
 
+        private static ExtendedPropertyDefinition Prop_PR_FOLDER_PATH = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
+        private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+
+
         public SearchFolders()
         {
             InitializeComponent();
@@ -142,22 +146,18 @@ namespace EWSEditor.Forms
             ProcessSearch(_CurrentFolderId, iPageSize);
             this.Cursor = Cursors.Default;
         }
-
-        private void lvItems_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DispalyFolder();
-        }
-
-        private void DisplayItem()
+ 
+        private void DisplayFolderInfo()
         {
             if (lvItems.SelectedItems.Count > 0)
             {
    
 
                 StringBuilder oSB = new StringBuilder();
-                oSB.AppendFormat("DisplayName: {0}", lvItems.SelectedItems[0].SubItems[1].Text);
-                oSB.AppendFormat("FolderClass: {0}", lvItems.SelectedItems[0].SubItems[2].Text);
-                oSB.AppendFormat("UniqueId: {0}", lvItems.SelectedItems[0].SubItems[5].Text);
+                oSB.AppendFormat("DisplayName: {0}\r\n", lvItems.SelectedItems[0].SubItems[1].Text);
+                oSB.AppendFormat("FolderClass: {0}\r\n", lvItems.SelectedItems[0].SubItems[2].Text);
+                oSB.AppendFormat("Folder Path: {0}\r\n", lvItems.SelectedItems[0].SubItems[6].Text);
+                oSB.AppendFormat("UniqueId:    {0}\r\n", lvItems.SelectedItems[0].SubItems[7].Text);
 
 
                 ShowTextDocument oForm = new ShowTextDocument();
@@ -171,17 +171,17 @@ namespace EWSEditor.Forms
 
         private void DispalyFolder()
         {
-            FolderId oFolderId = new FolderId(lvItems.SelectedItems[0].SubItems[5].Text);
-            //oFolder.Id.UniqueId = lvItems.SelectedItems[0].SubItems[5].Text;
-            DisplayFolder(oFolderId);
+            if (lvItems.SelectedItems.Count > 0)
+            {
+                FolderId oFolderId = new FolderId(lvItems.SelectedItems[0].SubItems[5].Text);
+                //oFolder.Id.UniqueId = lvItems.SelectedItems[0].SubItems[5].Text;
+                DisplayFolder(oFolderId);
+            }
         }
 
         private void DisplayFolder(FolderId folderId)
         {
 
-            //FolderId oFolder = null;
-            if (FolderIdDialog.ShowDialog(ref folderId) == DialogResult.OK && folderId != null)
-            {
                 Folder oFolder = Folder.Bind(
                     _CurrentService,
                     folderId,
@@ -193,7 +193,7 @@ namespace EWSEditor.Forms
                     ItemTraversal.Shallow,
                     _CurrentService,
                     this);
-            }
+  
            
         }
 
@@ -223,7 +223,9 @@ namespace EWSEditor.Forms
                             FolderSchema.DisplayName,
                             FolderSchema.FolderClass,
                             FolderSchema.TotalCount,
-                            FolderSchema.UnreadCount
+                            FolderSchema.UnreadCount,
+                            Prop_PR_FOLDER_PATH,
+                            Prop_PR_IS_HIDDEN
                             );
 
 
@@ -297,9 +299,28 @@ namespace EWSEditor.Forms
                         oListItem.SubItems.Add(oFolder.FolderClass);
                         oListItem.SubItems.Add(oFolder.TotalCount.ToString());
                         oListItem.SubItems.Add(oFolder.UnreadCount.ToString());
+
+                        Object oHidden = null;
+                        bool bHidden = false;
+                        if (oFolder.TryGetProperty(Prop_PR_IS_HIDDEN, out oHidden))
+                        {
+                            bHidden = (bool)oHidden;
+                            oListItem.SubItems.Add(bHidden.ToString());
+                        }
+                        else
+                        {
+                            oListItem.SubItems.Add("");
+                        }
+
+  
+                        string sPath = string.Empty;
+                        EwsFolderHelper.GetFolderPath(oFolder, ref sPath);
+                        oListItem.SubItems.Add(sPath);
+
                         oListItem.SubItems.Add(oFolder.Id.UniqueId);
 
 
+ 
                         oListItem.Tag = new FolderTag(oFolder.Id, oFolder.FolderClass);
                         lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
                         oListItem = null;
@@ -315,22 +336,14 @@ namespace EWSEditor.Forms
 
                 if (this.cmboSearchType.Text == "More Available")
                 {
-
-                     
-
+ 
                     // http://msdn.microsoft.com/en-us/library/exchange/dd633698(v=exchg.80).aspx
 
                     int offset = 0;
                                         
                     List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
-                    FolderView oFolderView = new FolderView(iPageSize, offset, OffsetBasePoint.Beginning);
 
-                    oFolderView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
-                            FolderSchema.DisplayName,
-                            FolderSchema.FolderClass,
-                            FolderSchema.TotalCount,
-                            FolderSchema.UnreadCount
-                            );
+                    FolderView oFolderView = null;
 
 
                     bool MoreItems = true;
@@ -343,6 +356,17 @@ namespace EWSEditor.Forms
                     while (MoreItems)
                     {
                         iCountMore++;
+
+                        oFolderView = new FolderView(iPageSize, offset, OffsetBasePoint.Beginning);
+
+                        oFolderView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
+                                FolderSchema.DisplayName,
+                                FolderSchema.FolderClass,
+                                FolderSchema.TotalCount,
+                                FolderSchema.UnreadCount,
+                                Prop_PR_FOLDER_PATH,
+                                Prop_PR_IS_HIDDEN
+                                );
 
                         SetSearchDepth(ref oFolderView);
 
@@ -357,10 +381,7 @@ namespace EWSEditor.Forms
                         //Array arrCollection = searchFilterCollection.ToArray();
                         if (searchFilterCollection.Count == 0)
                         {
-                            //searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
-                            //oFindFoldersResults = _CurrentService.FindFolders(oFolderId, searchFilter, oFolderView);
-                            //oFindFoldersResults = _CurrentService.FindFolders(oFolderId, oFolderView);
-
+ 
                             try
                             {
                                 oFindFoldersResults = _CurrentService.FindFolders(oFolderId, oFolderView);
@@ -377,9 +398,7 @@ namespace EWSEditor.Forms
                                 searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.And, searchFilterCollection.ToArray());
                             if (cmboLogicalOperation.Text == "Or")
                                 searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
-
-                                // searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.And, searchFilterCollection.ToArray());
-
+ 
                             try
                             {
                                 oFindFoldersResults = _CurrentService.FindFolders(oFolderId, searchFilter, oFolderView);
@@ -402,22 +421,37 @@ namespace EWSEditor.Forms
                         {
                             iCount++;
 
-                            //if (oItem is EmailMessage || oItem is MeetingRequest || oItem is Contact)
-                            //{
-
+  
                             oListItem = new ListViewItem(iCountMore.ToString() + ":" + iCount.ToString(), 0);
 
                             oListItem.SubItems.Add(oFolder.DisplayName);
                             oListItem.SubItems.Add(oFolder.FolderClass);
                             oListItem.SubItems.Add(oFolder.TotalCount.ToString());
                             oListItem.SubItems.Add(oFolder.UnreadCount.ToString());
+
+                            Object oHidden = null;
+                            bool bHidden = false;
+                            if (oFolder.TryGetProperty(Prop_PR_IS_HIDDEN, out oHidden))
+                            {
+                                bHidden = (bool)oHidden;
+                                oListItem.SubItems.Add(bHidden.ToString());
+                            }
+                            else
+                            {
+                                oListItem.SubItems.Add("");
+                            }
+
+                            string sPath = string.Empty;
+                            EwsFolderHelper.GetFolderPath(oFolder, ref sPath);
+                            oListItem.SubItems.Add(sPath);
+
                             oListItem.SubItems.Add(oFolder.Id.UniqueId);
 
-
+ 
                             oListItem.Tag = new FolderTag(oFolder.Id, oFolder.FolderClass);
                             lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
                             oListItem = null;
-                            //}
+                        
 
                             iLines++;
                         }
@@ -463,16 +497,18 @@ namespace EWSEditor.Forms
             lvItems.Clear();
             lvItems.View = View.Details;
             lvItems.GridLines = true;
-            //lvItems.Dock = DockStyle.Fill;
+          
 
             if (sSearchType == "Direct")
                 lvItems.Columns.Add("Count", 100, HorizontalAlignment.Left);
             else
                 lvItems.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
             lvItems.Columns.Add("DisplayName", 170, HorizontalAlignment.Left);
-            lvItems.Columns.Add("FolderClass", 170, HorizontalAlignment.Left);
-            lvItems.Columns.Add("TotalCount", 150, HorizontalAlignment.Left);
-            lvItems.Columns.Add("UnreadCount", 150, HorizontalAlignment.Left);
+            lvItems.Columns.Add("FolderClass", 80, HorizontalAlignment.Left);
+            lvItems.Columns.Add("TotalCount", 80, HorizontalAlignment.Left);
+            lvItems.Columns.Add("UnreadCount", 80, HorizontalAlignment.Left);
+            lvItems.Columns.Add("Read Only", 80, HorizontalAlignment.Left);
+            lvItems.Columns.Add("Folder Path", 250, HorizontalAlignment.Left);
             lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
 
         }
@@ -512,7 +548,18 @@ namespace EWSEditor.Forms
 
         private void mnuFolderStripFolderProperties_Click(object sender, EventArgs e)
         {
-            DisplayItem();
+            DisplayFolderInfo();
+        }
+
+        private void lvItems_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvItems.SelectedItems.Count > 0)
+            {
+
+                FolderId oFolderId = new FolderId(lvItems.SelectedItems[0].SubItems[7].Text);
+
+                DisplayFolder(oFolderId);
+            }
         }
 
  
