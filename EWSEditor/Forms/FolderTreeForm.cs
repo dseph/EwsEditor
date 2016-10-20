@@ -15,6 +15,31 @@ namespace EWSEditor.Forms
 {
     public partial class FolderTreeForm : BrowserForm
     {
+        // https://blogs.technet.microsoft.com/surama/2011/10/19/search-and-replace-retention-tag-on-microsoft-exchange-2010-mrm/
+         // https://msdn.microsoft.com/en-us/library/exchangewebservices.mapipropertytypetype(v=exchg.80).aspx
+        // https://msdn.microsoft.com/en-us/library/office/cc842328.aspx   // MAPI Property Type Overview
+        // http://www.imibo.com/lazymapi/mapiproptypeslist.aspx
+        
+        // TODO: remove.
+        // just some notes...  
+        //   P Type             MAPI Type   MAPI Type Name      EWS Type    .NET type  
+        //   PtypInteger32      0x0003  
+
+        //   PtypBinary         0x0102      PT_BINARY 
+        //   PtypBoolean        000B        PT_BOOLEAN          Boolean
+        //   PtypCurrency       0006        PT_CURRENCY         
+        //   PtypFloating32     0004        PT_FLOAT                        FLOAT
+        //   PtypFloating64     0005        PT_DOUBLE    
+        //   PtypFloatingTime   0007        PT_APPTIME                      DATE
+        //   PtypGuid           0048        PT_CLSID                        GUID 
+        //   PtypInteger16      0002        PT_SHORT                        INT16
+        //   PtypInteger32      0014        PT_LONG             Int 
+        //   PtypString         001F        PT_UNICODE          String      String
+        //   PtypString8        001E        PT_STRING8          
+        //   PtypTime           0040        PT_SYSTIME                      FILETIME 
+
+        
+
         private const int ExchangeServiceImageIndex = 0;
         private const int FolderImageIndex = 1;
         private const int CalendarFolderImageIndex = 2;
@@ -31,11 +56,17 @@ namespace EWSEditor.Forms
 
         //private static ExtendedPropertyDefinition Prop_IsHidden = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
 
-        private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
-        private static ExtendedPropertyDefinition Prop_FolderPath = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);                 // Folder Path - PR_Folder_Path
+         //  PR_COMMENT_W, PidTagComment http://schemas.microsoft.com/mapi/proptag/0x3004001E
+        // PR_CREATION_TIME, PidTagCreationTime, ptagCreationTime http://schemas.microsoft.com/mapi/proptag/0x30070040
+        // PR_HAS_RULES, PidTagHasRules, ptagHasRules   http://schemas.microsoft.com/mapi/proptag/0x663A000B
+        // PR_LAST_MODIFICATION_TIME, PidTagLastModificationTime, ptagLastModificationTime  0x30080040
         // private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);        //  Item - PidTagRetentionFlags - PR_RETENTION_FLAGS 0x301D   
         // private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);      //  Item - PidTagRetentionPeriod - PR_RETENTION_PERIOD 0x301A
         // private static ExtendedPropertyDefinition Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT = new ExtendedPropertyDefinition(0x66B1, MapiPropertyType.Long);    // PR_ATTACH_ON_NORMAL_MSG_COUNT 0x66B1
+        // private static ExtendedPropertyDefinition Prop_PidTagArchiveTag = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);              // Guid of Archive tag - PR_ARCHIVE_TAG - PidTagArchiveTag 
+        // private static ExtendedPropertyDefinition Prop_PidTagPolicyTag = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Integer);              // Item - PidTagPolicyTag - PR_POLICY_TAG
+        // private static ExtendedPropertyDefinition Prop_PidTagRetentionPeriod = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);        // Message - PidTagRetentionPeriod - PR_RETENTION_PERIOD 
+        // ?? https://blogs.msdn.microsoft.com/akashb/2011/08/10/stamping-retention-policy-tag-using-ews-managed-api-1-1-from-powershellexchange-2010/
 
         // private static ExtendedPropertyDefinition Prop_PidTagMessageSizeExtended = new ExtendedPropertyDefinition(0xe08, MapiPropertyType.Long);        // Message - PidTagMessageSizeExtended - PR_MESSAGE_SIZE_EXTENDED
         private static ExtendedPropertyDefinition Prop_PidTagDeletedOn = new ExtendedPropertyDefinition(0x668F, MapiPropertyType.SystemTime);           // Folder/Item - PidTagDeletedOn - PR_DELETED_ON
@@ -44,29 +75,36 @@ namespace EWSEditor.Forms
         private static ExtendedPropertyDefinition Prop_PidTagLocalCommitTimeMax = new ExtendedPropertyDefinition(0x670A, MapiPropertyType.SystemTime);  // Folder/item - PidTagLocalCommitTimeMax - PR_LOCAL_COMMIT_TIME_MAX
         private static ExtendedPropertyDefinition Prop_PidTagDeletedCountTotal = new ExtendedPropertyDefinition(0x0003, MapiPropertyType.Integer);      // Folder - PidTagDeletedCountTotal - PR_DELETED_COUNT_TOTAL
 
-        // private static ExtendedPropertyDefinition Prop_PidTagArchiveTag = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);              // Guid of Archive tag - PR_ARCHIVE_TAG - PidTagArchiveTag 
-        // private static ExtendedPropertyDefinition Prop_PidTagPolicyTag = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Integer);              // Item - PidTagPolicyTag - PR_POLICY_TAG
-        // private static ExtendedPropertyDefinition Prop_PidTagRetentionPeriod = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);        // Message - PidTagRetentionPeriod - PR_RETENTION_PERIOD 
-        // ?? https://blogs.msdn.microsoft.com/akashb/2011/08/10/stamping-retention-policy-tag-using-ews-managed-api-1-1-from-powershellexchange-2010/
-
-        //  PR_COMMENT_W, PidTagComment http://schemas.microsoft.com/mapi/proptag/0x3004001E
-        // PR_CREATION_TIME, PidTagCreationTime, ptagCreationTime http://schemas.microsoft.com/mapi/proptag/0x30070040
-        // PR_HAS_RULES, PidTagHasRules, ptagHasRules   http://schemas.microsoft.com/mapi/proptag/0x663A000B
-        // PR_LAST_MODIFICATION_TIME, PidTagLastModificationTime, ptagLastModificationTime  0x30080040
-
-        private static ExtendedPropertyDefinition Prop_PR_COMMENT_W = new ExtendedPropertyDefinition(0x3004, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+        private static ExtendedPropertyDefinition Prop_PR_ATTR_HIDDEN = new ExtendedPropertyDefinition(0x10F4, MapiPropertyType.Boolean);
+        private static ExtendedPropertyDefinition Prop_PR_ATTR_READONLY = new ExtendedPropertyDefinition(0x10F6, MapiPropertyType.Boolean);
+        private static ExtendedPropertyDefinition Prop_PR_ATTR_SYSTEM = new ExtendedPropertyDefinition(0x10F5, MapiPropertyType.Boolean);
+        private static ExtendedPropertyDefinition Prop_PR_FOLDER_CHILD_COUNT = new ExtendedPropertyDefinition(0x6638, MapiPropertyType.Long);
+        private static ExtendedPropertyDefinition Prop_PR_CONTENT_COUNT = new ExtendedPropertyDefinition(0x3602, MapiPropertyType.Integer);
+        private static ExtendedPropertyDefinition Prop_PR_CONTENT_UNREAD = new ExtendedPropertyDefinition(0x3603, MapiPropertyType.Integer);       //  PT_LONG  PidTagContentUnreadCount
+        private static ExtendedPropertyDefinition Prop_PR_CONTAINER_CLASS = new ExtendedPropertyDefinition(0x3610, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition Prop_PR_COMMENT = new ExtendedPropertyDefinition(0x3004, MapiPropertyType.String);
         private static ExtendedPropertyDefinition Prop_PR_CREATION_TIME = new ExtendedPropertyDefinition(0x300, MapiPropertyType.SystemTime);
-        private static ExtendedPropertyDefinition Prop_PR_HAS_RULES = new ExtendedPropertyDefinition(0x663A, MapiPropertyType.Boolean);
         private static ExtendedPropertyDefinition Prop_PR_LAST_MODIFICATION_TIME = new ExtendedPropertyDefinition(0x3008, MapiPropertyType.SystemTime);
+        private static ExtendedPropertyDefinition Prop_PR_HAS_RULES = new ExtendedPropertyDefinition(0x663A, MapiPropertyType.Boolean);
 
-        // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
-        private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);
-        // PR_RETENTION_FLAGS 0x301D (12317)  PtypInteger32
-        private static ExtendedPropertyDefinition Prop_Retention_Flags = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);
-        // PR_RETENTION_PERIOD 0x301A (12314)  PtypInteger32, 0x0003
-        private static ExtendedPropertyDefinition Prop_Retention_Period = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);
-        // PR_FOLDER_TYPE 0x3601 (13825)
-        private static ExtendedPropertyDefinition Prop_PR_FOLDER_TYPE = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);
+        private static ExtendedPropertyDefinition PR_MESSAGE_SIZE_EXTENDED = new ExtendedPropertyDefinition(0x0E08, MapiPropertyType.Long);
+        private static ExtendedPropertyDefinition PR_DELETED_MESSAGE_SIZE_EXTENDED = new ExtendedPropertyDefinition(0x669B, MapiPropertyType.Long);
+        private static ExtendedPropertyDefinition PR_DELETED_MSG_COUNT = new ExtendedPropertyDefinition(0x6640, MapiPropertyType.Integer);
+ 
+      
+        private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
+   
+        private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
+        private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
+        private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C    
+
+        // PR_START_DATE_ETC
+        private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.String); // PR_START_DATE_ETC  GUID 0x30190102
+
+
+        private static ExtendedPropertyDefinition Prop_FolderPath = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
+          private static ExtendedPropertyDefinition Prop_PR_FOLDER_TYPE = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);  // PR_FOLDER_TYPE 0x3601 (13825)
 
 
         private PropertySet folderNodePropertySet = new PropertySet(
@@ -85,17 +123,29 @@ namespace EWSEditor.Forms
                 Prop_PR_IS_HIDDEN,
                 Prop_FolderPath,
                 Prop_PR_CREATION_TIME,
+                Prop_PR_COMMENT,
                 Prop_PR_LAST_MODIFICATION_TIME,
                 Prop_PR_POLICY_TAG,
-
-                Prop_PR_COMMENT_W,
                 Prop_PR_HAS_RULES,
-
                 Prop_PR_FOLDER_TYPE,
-                Prop_Retention_Period,
-                Prop_Retention_Flags
- 
- 
+
+                Prop_PR_RETENTION_DATE,
+                Prop_PR_RETENTION_PERIOD,
+                Prop_PR_RETENTION_FLAGS,
+                
+                Prop_PR_ATTR_HIDDEN,
+                Prop_PR_ATTR_READONLY,
+                Prop_PR_ATTR_SYSTEM,
+                Prop_PR_FOLDER_CHILD_COUNT,
+             
+                Prop_PR_CONTENT_UNREAD,
+                Prop_PR_CONTENT_COUNT,
+     
+                Prop_PR_CONTAINER_CLASS 
+        
+            // Invalid?
+                       // Prop_PR_CONTENT_UNREAD,
+                        //  Prop_PR_CONTENT_COUNT,
 
 
                 //Prop_Retention_Period,
@@ -120,7 +170,7 @@ namespace EWSEditor.Forms
             });
 
          //                   FolderSchema.ArchiveTag, 
-   
+      
  
 
         // MenuItems to add to the File menu
