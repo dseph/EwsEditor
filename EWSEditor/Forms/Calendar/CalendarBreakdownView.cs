@@ -96,7 +96,7 @@ namespace EWSEditor.Forms // .Calendar
 
         }
 
-        public void PopulateTreeBase(ExchangeService service, FolderId oFolder) 
+        public bool PopulateTreeBase(ExchangeService service, FolderId oFolder) 
         {
             Collection<Appointment> foundAppointments = new Collection<Appointment>();
 
@@ -127,9 +127,7 @@ namespace EWSEditor.Forms // .Calendar
                 foreach (Item item in findResults.Items)
                 {
                     Appointment appt = item as Appointment;
-
  
-
                     if (appt.AppointmentType == AppointmentType.Single)
                     {
                         oParentNode = tvItems.Nodes.Add("Single: " + appt.Subject + " (" + appt.Start.ToString());
@@ -138,55 +136,69 @@ namespace EWSEditor.Forms // .Calendar
 
                     if (appt.AppointmentType == AppointmentType.RecurringMaster)
                     {
-                        Appointment recurrMaster = Appointment.Bind(service, item.Id, BasicCalProps);
-                        recurrMaster.Load(RecurrCalProps);
 
-                        //try  // debug test
-                        //{
-                        //    if (recurrMaster.Recurrence == null)
-                        //        MessageBox.Show("Null Recurrence: " + recurrMaster.Subject);
-                        //}
-                        //catch (Exception ex)
-                        //{
-                        //    MessageBox.Show("Error: " + ex.ToString());
-                        //}
+                        try
+                        {
+ 
+                            Appointment recurrMaster = Appointment.Bind(service, item.Id, BasicCalProps);
+                            recurrMaster.Load(RecurrCalProps);
 
-                        //if (appt.Recurrence!= null)
-                        //{
+                            //try  // debug test
+                            //{
+                            //    if (recurrMaster.Recurrence == null)
+                            //        MessageBox.Show("Null Recurrence: " + recurrMaster.Subject);
+                            //}
+                            //catch (Exception ex)
+                            //{
+                            //    MessageBox.Show("Error: " + ex.ToString());
+                            //}
+
+                            //if (appt.Recurrence!= null)
+                            //{
                             string sStart = recurrMaster.FirstOccurrence.ToString();
                             string sEnd = recurrMaster.LastOccurrence.ToString();
 
-                            string sInfo = string.Empty ; //= "Recurring Master: " + recurrMaster.Subject + "(" + recurrMaster.Recurrence.StartDate.ToString() + " - ";
+                            string sInfo = string.Empty; //= "Recurring Master: " + recurrMaster.Subject + "(" + recurrMaster.Recurrence.StartDate.ToString() + " - ";
                             sInfo = "Recurring Master: " + recurrMaster.Subject + "(" + sStart + " - " + sEnd + ")";
-                           
+
                             if (recurrMaster.Recurrence.NumberOfOccurrences == null && recurrMaster.Recurrence.EndDate == null)
                                 sInfo += "  Warning - This pattern has no end.";
 
- 
+
 
                             //if (recurrMaster.Recurrence.NumberOfOccurrences != null)
                             //    sInfo += "  This has a fixed number of " + recurrMaster.Recurrence.NumberOfOccurrences.ToString() + " instances.";
 
                             oParentNode = tvItems.Nodes.Add(sInfo);
-                        //}
-                        //else
-                        //    oParentNode = tvItems.Nodes.Add("Recurring Master: " + recurrMaster.Subject + " - NOTE: This has no recurrence pattern.");
+                            //}
+                            //else
+                            //    oParentNode = tvItems.Nodes.Add("Recurring Master: " + recurrMaster.Subject + " - NOTE: This has no recurrence pattern.");
 
-                        oParentNode.Tag = recurrMaster.Id.UniqueId;
-                        oNode = oParentNode.Nodes.Add("Occurences");
-                        oNode.Tag = recurrMaster.Id.UniqueId;
-                        oNode = oParentNode.Nodes.Add("Exceptions");
-                        oNode.Tag = recurrMaster.Id.UniqueId;
+                            oParentNode.Tag = recurrMaster.Id.UniqueId;
+                            oNode = oParentNode.Nodes.Add("Occurences");
+                            oNode.Tag = recurrMaster.Id.UniqueId;
+                            oNode = oParentNode.Nodes.Add("Exceptions");
+                            oNode.Tag = recurrMaster.Id.UniqueId;
 
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.ToString());
+                            return false;
+                        }
 
                     }
+         
+ 
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.ToString());
+ 
             }
 
+            return true;
      
         }
 
@@ -225,7 +237,7 @@ namespace EWSEditor.Forms // .Calendar
 
         private void ResetListView() 
         {
-            lvItems.Items.Clear();
+            lvItems.Clear();
             lvItems.View = View.Details;
             lvItems.GridLines = true;
             lvItems.Dock = DockStyle.Fill;
@@ -237,74 +249,111 @@ namespace EWSEditor.Forms // .Calendar
             lvItems.Columns.Add("Start", 150, HorizontalAlignment.Left);
             lvItems.Columns.Add("End", 150, HorizontalAlignment.Left);
             //oListView.Columns.Add("ICalUid", 50, HorizontalAlignment.Left);
-            lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
+            //lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
         }
 
 
-        private void PopulateLV(ExchangeService service, ItemId oItemId, AppointmentType oType)
+        private bool PopulateLV(ExchangeService service, ItemId oItemId, AppointmentType oType)
         {
 
             ResetListView();
 
-            Appointment calendarItem = Appointment.Bind(service, oItemId, new PropertySet(AppointmentSchema.AppointmentType));  
+            bool bRet = true;
+
+            Appointment calendarItem = Appointment.Bind(service, oItemId, new PropertySet(BasicCalProps)); //new PropertySet(AppointmentSchema.AppointmentType));  
             Appointment recurrMaster = null;
  
-
  
-
             ListViewItem oListItem = null;
 
             if (oType == AppointmentType.Single )
             {
-                //recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
-                oListItem = new ListViewItem(recurrMaster.Id.UniqueId, 0);
-                oListItem.SubItems.Add(recurrMaster.ItemClass);
-                oListItem.SubItems.Add(recurrMaster.AppointmentType.ToString());
-                oListItem.SubItems.Add(recurrMaster.Subject);
-                oListItem.SubItems.Add(recurrMaster.Start.ToString());
-                oListItem.SubItems.Add(recurrMaster.End.ToString());
- 
-                oListItem.Tag = oItemId;        
-                lvItems.Items.AddRange(new ListViewItem[] { oListItem });
-                oListItem = null;
+                try
+                {
+                    //recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                    oListItem = new ListViewItem(calendarItem.Id.UniqueId, 0);
+                    oListItem.SubItems.Add(calendarItem.ItemClass);
+                    oListItem.SubItems.Add(calendarItem.AppointmentType.ToString());
+                    oListItem.SubItems.Add(calendarItem.Subject);
+                    oListItem.SubItems.Add(calendarItem.Start.ToString());
+                    oListItem.SubItems.Add(calendarItem.End.ToString());
+
+                    oListItem.Tag = oItemId;
+                    lvItems.Items.AddRange(new ListViewItem[] { oListItem });
+                    oListItem = null;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Item: " + calendarItem.Id.UniqueId + ex.ToString() + "\r\n\r\n", "Error adding item to listview.");
+                    bRet = false;
+                }
             }
 
             if (oType == AppointmentType.RecurringMaster)
             {
-                recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
-                recurrMaster.Load(RecurrCalProps);
+                try
+                { 
+                    recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                    recurrMaster.Load(RecurrCalProps);
 
-                //recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
-                oListItem = new ListViewItem(recurrMaster.Id.UniqueId, 0);
-                oListItem.SubItems.Add(recurrMaster.ItemClass);
-                oListItem.SubItems.Add(recurrMaster.AppointmentType.ToString());
-                oListItem.SubItems.Add(recurrMaster.Subject);
-                oListItem.SubItems.Add(recurrMaster.Start.ToString());
-                oListItem.SubItems.Add(recurrMaster.End.ToString());
+                    //recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                    oListItem = new ListViewItem(recurrMaster.Id.UniqueId, 0);
+                    oListItem.SubItems.Add(recurrMaster.ItemClass);
+                    oListItem.SubItems.Add(recurrMaster.AppointmentType.ToString());
+                    oListItem.SubItems.Add(recurrMaster.Subject);
+                    oListItem.SubItems.Add(recurrMaster.Start.ToString());
+                    oListItem.SubItems.Add(recurrMaster.End.ToString());
 
-                oListItem.Tag = oItemId;
-                lvItems.Items.AddRange(new ListViewItem[] { oListItem });
-                oListItem = null;
+                    oListItem.Tag = oItemId;
+                    lvItems.Items.AddRange(new ListViewItem[] { oListItem });
+                    oListItem = null;
+
+                }          
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Item: " + calendarItem.Id.UniqueId + ex.ToString() + "\r\n\r\n", "Error adding item to listview.");
+                    bRet = false;
+                }
             }
 
             // http://stackoverflow.com/questions/24143970/ews-getting-all-occurences-from-a-master-recurrence-appointment
             if (oType == AppointmentType.Occurrence)
             {
                 //recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                recurrMaster.Load(RecurrCalProps);
 
-                PopulateLVRelatedOccurrences(service, recurrMaster);
+                try
+                { 
+                    PopulateLVRelatedOccurrences(service, recurrMaster);
+                }          
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Item: " + calendarItem.Id.UniqueId + ex.ToString() + "\r\n\r\n", "Error adding item to listview.");
+                    bRet = false;
+                }
  
             }
 
             if (oType == AppointmentType.Exception)
             {
                 //recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                recurrMaster.Load(RecurrCalProps);
 
-
-                PopulateLVRelatedExceptions(service, recurrMaster);
-
+                try
+                {
+                    PopulateLVRelatedExceptions(service, recurrMaster);
+                }          
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Item: " + calendarItem.Id.UniqueId + ex.ToString() + "\r\n\r\n", "Error adding item to listview.");
+                    bRet = false;
+                }
                 
             }
+
+            return bRet;
  
         }
 
