@@ -905,12 +905,14 @@ namespace EWSEditor.Forms
                     if (oFolder.FolderClass == "IPF.Appointment")
                     {
                         mnuFolderCalendarView.Visible = true;
+                        //mnuFolderCalendarItemsBreakdown.Visible = true;
                         toolStripMenuItem14.Visible = true;
                         bShowStrip = true;
                     }
                     else
                     {
                         mnuFolderCalendarView.Visible = false;
+                        //mnuFolderCalendarItemsBreakdown.Visible = false;
                         toolStripMenuItem14.Visible = false;
                     }
                     
@@ -2008,7 +2010,14 @@ namespace EWSEditor.Forms
         {
             Folder oFolder = (GetFolderFromNode(FolderTreeView.SelectedNode));
             SearchFolders oForm = new SearchFolders(this.CurrentService, oFolder.Id, this.CurrentDetailPropertySet);
-            oForm.ShowDialog();
+            oForm.Show();
+        }
+
+        private void mnuFolderCalendarItemsBreakdown_Click(object sender, EventArgs e)
+        {
+            Folder oFolder = (GetFolderFromNode(FolderTreeView.SelectedNode));
+            CalendarBreakdownView oForm = new CalendarBreakdownView(this.CurrentService, oFolder.Id);
+            oForm.Show();
         }
     }
 }
