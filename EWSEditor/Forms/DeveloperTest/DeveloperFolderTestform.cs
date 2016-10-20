@@ -46,14 +46,15 @@ namespace EWSEditor.Forms
             oSB.Append("  The ExchangeService and FolderId are availible in ths form so that you can use them in your custom test code.");
             oSB.AppendLine("");
             oSB.AppendLine("");
+ 
             oSB.AppendFormat("Service.Url.AbsolutePath: {0}\r\n", _service.Url.AbsoluteUri.ToString());
             oSB.AppendLine("");
             oSB.AppendLine("FolderId.UniqueId: " + _folderId.UniqueId);
             oSB.AppendLine("");
             oSB.AppendLine("FolderId.ChangeKey: " + _folderId.ChangeKey);
             oSB.AppendLine("");
-            oSB.AppendLine("FolderId.FolderName: " + _folderId.FolderName);
-            oSB.AppendLine("");
+            //oSB.AppendLine("FolderId.FolderName: " + _folderId.FolderName);
+            //oSB.AppendLine("");
             //oSB.AppendLine("FolderId.ChangeKey: " + _folderId.Mailbox.Address);
 
 
@@ -124,7 +125,7 @@ namespace EWSEditor.Forms
             // Add more properties?
             oPropertySet.Add(FolderSchema.TotalCount);
             oPropertySet.Add(FolderSchema.UnreadCount);
-            oPropertySet.Add(FolderSchema.WellKnownFolderName);
+            //oPropertySet.Add(FolderSchema.WellKnownFolderName);
             oPropertySet.Add(FolderSchema.ChildFolderCount);
 
            // oPropertySet.Add(Prop_FolderPath);
@@ -159,29 +160,23 @@ namespace EWSEditor.Forms
 
                         oReturnFolder = oGetItemResponse.Folder;
 
-                         
+
 
                         oSB.AppendFormat("DisplayName: {0}\r\n", oReturnFolder.DisplayName);
+                        oSB.AppendFormat("FolderClass: {0}\r\n", oReturnFolder.FolderClass);
 
                         if (oReturnFolder.TryGetProperty(Prop_PR_FOLDER_TYPE, out iVal))
                             oSB.AppendFormat("PR_FOLDER_TYPE:  {0}\r\n", iVal);
                         else
                             oSB.AppendLine("PR_FOLDER_TYPE: Not found.");
 
-                        Object fpPath = null;
-                        if (oReturnFolder.TryGetProperty(Prop_PR_FOLDER_PATH, out fpPath))
-                        {
-
-                            String fpPathString =
-                                Encoding.Unicode.GetString(HexStringToByteArray(
-                                BitConverter.ToString(UnicodeEncoding.Unicode.GetBytes((String)fpPath)).Replace("FE-FF", "5C-00").Replace("-", "")));
-
-                            oSB.AppendFormat("Prop_PR_FOLDER_PATH:  {0}\r\n", fpPathString);
-                        }
+                        string sPath = string.Empty;
+                        if (EwsFolderHelper.GetFolderPath(oReturnFolder, ref sPath))
+                            oSB.AppendFormat("Prop_PR_FOLDER_PATH:  {0}\r\n", sPath);
                         else
-                        {
                             oSB.AppendLine("Prop_PR_FOLDER_PATH: Not found.");
-                        }
+
+ 
  
                         if (oReturnFolder.TryGetProperty(Prop_PR_MESSAGE_SIZE_EXTENDED, out lVal))
                             oSB.AppendFormat("PR_MESSAGE_SIZE_EXTENDED:  {0}\r\n", lVal);
@@ -190,8 +185,8 @@ namespace EWSEditor.Forms
 
                         if (oReturnFolder.TryGetProperty(Prop_PR_DELETED_MESSAGE_SIZE_EXTENDED, out lVal))
                             oSB.AppendFormat("PR_DELETED_MESSAGE_SIZE_EXTENDED:  {0}\r\n", lVal);
-                        else
-                            oSB.AppendLine("PR_DELETED_MESSAGE_SIZE_EXTENDED: Not found.");
+                        //else
+                        //    oSB.AppendLine("PR_DELETED_MESSAGE_SIZE_EXTENDED: Not found.");
 
 
                         if (oReturnFolder.TryGetProperty(Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT, out lVal))
@@ -199,28 +194,21 @@ namespace EWSEditor.Forms
                         else
                             oSB.AppendLine("PR_ATTACH_ON_NORMAL_MSG_COUNT: Not found.");
 
-                        //if (oReturnFolder.TryGetProperty(Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT, out lVal))
-                        //     oSB.AppendFormat("Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT:  {0}\r\n", lVal);
-                        //else
-                        //     oSB.AppendLine("Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT: Not found.");
-
-                        //
+ 
                         if (oReturnFolder.TryGetProperty(Prop_PR_POLICY_TAG, out oVal))
                             oSB.AppendFormat("PR_POLICY_TAG: {0}\r\n", oVal);
-                        else
-                            oSB.AppendLine("PR_RETENTION_TAG: Not found.");
+                        //else
+                        //    oSB.AppendLine("PR_RETENTION_TAG: Not found.");
 
                         if (oReturnFolder.TryGetProperty(Prop_Retention_Flags, out iVal))
                             oSB.AppendFormat("PR_RETENTION_FLAGS: {0}\r\n", iVal);
-                        else
-                            oSB.AppendLine("PR_RETENTION_FLAGS: Not found.");
+                        //else
+                        //    oSB.AppendLine("PR_RETENTION_FLAGS: Not found.");
 
                         if (oReturnFolder.TryGetProperty(Prop_Retention_Period, out iVal))
                             oSB.AppendFormat("PR_RETENTION_PERIOD:  {0}\r\n", iVal);
-                        else
-                            oSB.AppendLine("PR_RETENTION_PERIOD: Not found.");
-
-                             
+                        //else
+                        //    oSB.AppendLine("PR_RETENTION_PERIOD: Not found.");
 
 
                         MessageBox.Show(oSB.ToString(), "ServiceResult.Success");
