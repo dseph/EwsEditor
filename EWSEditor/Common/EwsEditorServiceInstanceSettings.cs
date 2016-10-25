@@ -15,6 +15,8 @@ namespace EWSEditor.Common
         public string MailboxBeingAccessed = string.Empty;  // calc
         public string AccountAccessingMailbox = string.Empty; // calc
 
+        public string UrlHost = string.Empty;
+
         public RequestedAuthType AuthenticationMethod = RequestedAuthType.DefaultAuth;  // Default, UserSpecified, oAuth
 
         public bool UseAutoDiscover = false;  
