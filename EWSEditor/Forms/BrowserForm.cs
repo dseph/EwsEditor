@@ -89,7 +89,8 @@
             set
             {
                 base.CurrentService = value;
-                this.SetServiceLabel(value);
+                //this.SetServiceLabel(value);
+
             }
         }
 
@@ -118,6 +119,46 @@
             {
                 this.lblExchangeService.Text = string.Empty;
             }
+        }
+
+        public void SetServiceLabel(EwsEditorAppSettings oAppSettings)
+        {
+
+            string sInfo = string.Empty;
+
+            if (oAppSettings != null)
+            {
+
+                
+                if (oAppSettings != null)
+                {
+                    if (oAppSettings.UserImpersonationSelected == true)
+                    {
+                        // With Impersonation = "ServiceAccount contacting HostName as ActAsAccount"
+                        sInfo = string.Format(
+                            System.Globalization.CultureInfo.CurrentCulture,
+                            "Service account '{0}' is contacting mailbox '{1}' via {2} as account '{3}'.",
+                            oAppSettings.AccountAccessingMailbox,
+                            oAppSettings.MailboxBeingAccessed,
+                            oAppSettings.UrlHost,
+                            oAppSettings.ImpersonatedId);
+                    }
+                    else
+                    {
+                        sInfo = string.Format(
+                            System.Globalization.CultureInfo.CurrentCulture,
+                            "Service account '{0}' is contacting mailbox '{1}' via {2}.",
+                            oAppSettings.AccountAccessingMailbox,
+                            oAppSettings.MailboxBeingAccessed,
+                            oAppSettings.UrlHost);
+                    }
+
+                    this.lblExchangeService.Text = sInfo;
+                }
+            }
+
+            this.lblExchangeService.Text = sInfo;
+              
         }
 
         /// <summary>
@@ -234,6 +275,7 @@
             else
             {
                 names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
+                //this.CurrentAppSettings.MailboxBeingAccessed;
             }
              
             if (names.Count == 1)

@@ -243,6 +243,8 @@ namespace EWSEditor.Forms
                     EwsProxyFactory.ServiceCredential = oAH.Do_OAuth(ref EwsProxyFactory.MailboxBeingAccessed, ref EwsProxyFactory.AccountAccessingMailbox,
                       EwsProxyFactory.oAuthAuthority, EwsProxyFactory.oAuthClientId, EwsProxyFactory.oAuthRedirectUrl, EwsProxyFactory.oAuthServerName);
                    
+                    //EwsProxyFactory.AccountAccessingMailbox
+                    //EwsProxyFactory.MailboxBeingAccessed = EwsProxyFactory.AccountAccessingMailbox;
                 }
 
                 // ----    Autodiscover    ----
@@ -261,6 +263,11 @@ namespace EWSEditor.Forms
                 EWSEditor.Common.EwsEditorAppSettings oAppSettings = new EwsEditorAppSettings();
                 EwsProxyFactory.SetAppSettingsFromProxyFactory(ref oAppSettings);
                 CurrentAppSettings = oAppSettings;
+                
+                //CurrentAppSettings.MailboxBeingAccessed = EwsProxyFactory.AccountAccessingMailbox;
+                // CurrentAppSettings
+
+                // EwsProxyFactory.AccountAccessingMailbox
 
                 // ----    Do a basic test to be sure that the mailbox can be reached with an EWS call   ----
                 CurrentService.TestExchangeService();

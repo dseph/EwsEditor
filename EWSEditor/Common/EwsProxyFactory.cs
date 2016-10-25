@@ -486,11 +486,16 @@ namespace EWSEditor.Exchange
 
         }
 
-        public static void SetProxyFactoryFromAppSettings(ref EWSEditor.Common.EwsEditorAppSettings oSettings)
+        public static void  SetAppSettingsFromProxyFactory (ref EWSEditor.Common.EwsEditorAppSettings oSettings)
         {
 
             oSettings.MailboxBeingAccessed = MailboxBeingAccessed;
             oSettings.AccountAccessingMailbox = AccountAccessingMailbox;
+
+            if (EwsUrl != null)
+                oSettings.UrlHost = EwsUrl.Host;
+            else
+                oSettings.UrlHost = "";
 
             oSettings.AuthenticationMethod = AuthenticationMethod;  // Default, UserSpecified, oAuth
 
@@ -527,45 +532,47 @@ namespace EWSEditor.Exchange
 
         }
 
-        public static void SetAppSettingsFromProxyFactory(ref EWSEditor.Common.EwsEditorAppSettings oSettings)
-        {
+        //public static void SetProxyFactoryFromAppSettings(ref EWSEditor.Common.EwsEditorAppSettings oSettings)
+        //{
 
-            MailboxBeingAccessed = oSettings.MailboxBeingAccessed;
-            AccountAccessingMailbox = oSettings.AccountAccessingMailbox;
 
-            AuthenticationMethod = oSettings.AuthenticationMethod;  // Default, UserSpecified, oAuth
 
-            UseAutoDiscover = (bool)oSettings.UseAutoDiscover;
-            RequestedAutodiscoverEmail = oSettings.RequestedAutodiscoverEmail;
-            RequestedExchangeServiceURL = oSettings.RequestedExchangeServiceURL;
+        //    MailboxBeingAccessed = oSettings.MailboxBeingAccessed;
+        //    AccountAccessingMailbox = oSettings.AccountAccessingMailbox;
 
-            RequestedExchangeVersion = oSettings.RequestedExchangeVersion;
+        //    AuthenticationMethod = oSettings.AuthenticationMethod;  // Default, UserSpecified, oAuth
 
-            UserName = oSettings.UserName;
-            Password = oSettings.Password;
-            Domain = oSettings.Domain;
+        //    UseAutoDiscover = (bool)oSettings.UseAutoDiscover;
+        //    RequestedAutodiscoverEmail = oSettings.RequestedAutodiscoverEmail;
+        //    RequestedExchangeServiceURL = oSettings.RequestedExchangeServiceURL;
 
-            UserImpersonationSelected = (bool)oSettings.UserImpersonationSelected;
-            UserToImpersonate = oSettings.UserToImpersonate;
-            ImpersonationType = oSettings.ImpersonationType;
-            ImpersonatedId = oSettings.ImpersonatedId;
+        //    RequestedExchangeVersion = oSettings.RequestedExchangeVersion;
 
-            UseoAuth = oSettings.UseoAuth;
-            oAuthRedirectUrl = oSettings.oAuthRedirectUrl;
-            oAuthClientId = oSettings.oAuthClientId;
-            oAuthServerName = oSettings.oAuthServerName;
-            oAuthAuthority = oSettings.oAuthAuthority;
+        //    UserName = oSettings.UserName;
+        //    Password = oSettings.Password;
+        //    Domain = oSettings.Domain;
 
-            EnableAdditionalHeader1 =  oSettings.EnableAdditionalHeader1;
-            AdditionalHeader1 = oSettings.AdditionalHeader1;
-            AdditionalHeaderValue1 = oSettings.AdditionalHeaderValue1;
-            EnableAdditionalHeader2 = oSettings.EnableAdditionalHeader2;
-            AdditionalHeader2 = oSettings.AdditionalHeader2;
-            AdditionalHeaderValue2 = oSettings.AdditionalHeaderValue2;
-            EnableAdditionalHeader3 = oSettings.EnableAdditionalHeader3;
-            AdditionalHeader3 = oSettings.AdditionalHeader3;
-            AdditionalHeaderValue3 =  oSettings.AdditionalHeaderValue3;
+        //    UserImpersonationSelected = (bool)oSettings.UserImpersonationSelected;
+        //    UserToImpersonate = oSettings.UserToImpersonate;
+        //    ImpersonationType = oSettings.ImpersonationType;
+        //    ImpersonatedId = oSettings.ImpersonatedId;
 
-        }
+        //    UseoAuth = oSettings.UseoAuth;
+        //    oAuthRedirectUrl = oSettings.oAuthRedirectUrl;
+        //    oAuthClientId = oSettings.oAuthClientId;
+        //    oAuthServerName = oSettings.oAuthServerName;
+        //    oAuthAuthority = oSettings.oAuthAuthority;
+
+        //    EnableAdditionalHeader1 = oSettings.EnableAdditionalHeader1;
+        //    AdditionalHeader1 = oSettings.AdditionalHeader1;
+        //    AdditionalHeaderValue1 = oSettings.AdditionalHeaderValue1;
+        //    EnableAdditionalHeader2 = oSettings.EnableAdditionalHeader2;
+        //    AdditionalHeader2 = oSettings.AdditionalHeader2;
+        //    AdditionalHeaderValue2 = oSettings.AdditionalHeaderValue2;
+        //    EnableAdditionalHeader3 = oSettings.EnableAdditionalHeader3;
+        //    AdditionalHeader3 = oSettings.AdditionalHeader3;
+        //    AdditionalHeaderValue3 = oSettings.AdditionalHeaderValue3;
+
+        //}
     }
 }

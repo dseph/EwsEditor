@@ -422,32 +422,38 @@ namespace EWSEditor.Forms
                 //return null; //((RootFolderNodeTag)node.Tag).FolderObject;
  
             }
-            else if ((node != null) && (node.Tag is Folder))
+            else 
             {
-                TreeNode oTreeNode;
-                oTreeNode = node; 
-                // Search parents (ancestors) to find the root folde.
-                bool bFound = false;
-                while (bFound == true)
+                if ((node != null))
                 {
-                    oTreeNode = oTreeNode.Parent;
-
-                    if (oTreeNode.Tag is RootFolderNodeTag)
+                    if (node.Tag is Folder)
                     {
-                        return  ((RootFolderNodeTag)oTreeNode.Tag).oAppSettings;
+                        TreeNode oTreeNode;
+                        oTreeNode = node; 
+                        // Search parents (ancestors) to find the root folde.
+                        bool bFound = false;
+                        while (bFound == false)
+                        {
+                            oTreeNode = oTreeNode.Parent;
 
-                        //this.CurrentAppSettings = GetOptionsFromNode(this.FolderTreeView.SelectedNode);
-                        bFound = true;
+                            if (oTreeNode.Tag is RootFolderNodeTag)
+                            {
+                                return  ((RootFolderNodeTag)oTreeNode.Tag).oAppSettings;
+
+                                //this.CurrentAppSettings = GetOptionsFromNode(this.FolderTreeView.SelectedNode);
+                                bFound = true;
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        return null;
                     }
 
+                    //EWSEditor.Common.EwsSession oSession = (EWSEditor.Common.EwsSession)node.Tag;
+                    // return oSession.SessionEwsEditorAppSettings;
                 }
-
-                //EWSEditor.Common.EwsSession oSession = (EWSEditor.Common.EwsSession)node.Tag;
-               // return oSession.SessionEwsEditorAppSettings;
-            }
-            else
-            {
-                return null;
             }
 
             return null;
@@ -1485,9 +1491,24 @@ namespace EWSEditor.Forms
         private TreeNode AddServiceToTreeView(ExchangeService service, EWSEditor.Common.EwsEditorAppSettings oAppSettings, bool offerRootFolder)
         {
             TreeNode serviceRootNode = null;
-
+             
             // Create a root node for the ExchangeService
-            serviceRootNode = FolderTreeView.Nodes.Add(PropertyInterpretation.GetPropertyValue(service));
+            //serviceRootNode = FolderTreeView.Nodes.Add(PropertyInterpretation.GetPropertyValue(service));
+
+            string sText = string.Empty;
+            if (service.ImpersonatedUserId != null)
+            {
+                sText = string.Format(System.Globalization.CultureInfo.CurrentCulture, "{0} AS {1}",
+                    oAppSettings.MailboxBeingAccessed,
+                    oAppSettings.ImpersonatedId);
+            }
+            else
+            {
+                sText = string.Format(oAppSettings.MailboxBeingAccessed);
+            }
+            serviceRootNode = FolderTreeView.Nodes.Add(sText);
+
+
             //serviceRootNode.Tag = service; 
 
             //MessageBox.Show("todo");
@@ -1506,27 +1527,23 @@ namespace EWSEditor.Forms
                 // With Impersonation = "ServiceAccount contacting HostName as ActAsAccount"
                 serviceRootNode.ToolTipText = string.Format(
                     System.Globalization.CultureInfo.CurrentCulture, 
-                    "Service account '{0}' is contacting '{1}' as account '{2}'.",
-                    service.GetServiceAccountName(),
+                    "Service account '{0}' is contacting mailbox '{1}' via {2} as account '{3}'.",
+                    oAppSettings.AccountAccessingMailbox,
+                    oAppSettings.MailboxBeingAccessed,
                     service.Url.Host,
                     service.ImpersonatedUserId.Id);
             }
             else
             {
-                //// Without Impersonation = "ServiceAccount contacting HostName"
+ 
+
                 serviceRootNode.ToolTipText = string.Format(
                     System.Globalization.CultureInfo.CurrentCulture,
-                    "Service account '{0}' is contacting '{1}'.",
-                    service.GetServiceAccountName(),
+                    "Service account '{0}' is contacting mailbox '{1}' via {2}.",
+                    oAppSettings.AccountAccessingMailbox,
+                    oAppSettings.MailboxBeingAccessed,
                     service.Url.Host);
-
-                //serviceRootNode.ToolTipText = string.Format(
-                //    System.Globalization.CultureInfo.CurrentCulture, 
-                //    "Service account '{0}' is contacting '{1}'.",
-                //    oAppSettings.MailboxBeingAccessed,
-                //    service.Url.Host);
-
-                 
+                
             }
 
             // Set the node image, don't show a different image when selected
@@ -1713,7 +1730,13 @@ namespace EWSEditor.Forms
                 }
                 else
                 {
+                    //originalFolderId = ((RootFolderNodeTag)FolderTreeView.SelectedNode.Tag).OriginalFolderId;
+                    //Folder xFolder = Folder.Bind(CurrentService, originalFolderId);
+
                     this.CurrentAppSettings = GetOptionsFromNode(this.FolderTreeView.SelectedNode); 
+                 
+                    //this.CurrentAppSettings = GetOptionsFromNode(this.FolderTreeView.SelectedNode); 
+
                 }
 
                  
@@ -1721,6 +1744,8 @@ namespace EWSEditor.Forms
                 // Ensure that the form is setup properly
                 this.mnuViewConfigPropertySet.Enabled = true;
                 this.CurrentService = folder.Service;
+
+                SetServiceLabel(this.CurrentAppSettings);
                 //TreeNode x = FolderTreeView.SelectedNode;
  
                 //this.CurrentAppSettings = folder.  // TODO Load settings
@@ -1760,7 +1785,9 @@ namespace EWSEditor.Forms
                 EwsSession oSession = (EwsSession) FolderTreeView.SelectedNode.Tag;    
                 this.CurrentAppSettings = oSession.SessionEwsEditorAppSettings;
                 this.CurrentService = oSession.SessionService;;
+                 
                 this.FolderPropertyDetailsGrid.LoadObject(this.CurrentService);
+                SetServiceLabel(this.CurrentAppSettings);
             }
 
             //else if (FolderTreeView.SelectedNode.Tag is ExchangeService)
