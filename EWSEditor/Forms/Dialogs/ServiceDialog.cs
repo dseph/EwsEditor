@@ -257,7 +257,7 @@ namespace EWSEditor.Forms
                 // ----    New service & app settings    ----
                  
                 CurrentService = EwsProxyFactory.CreateExchangeService();
-
+                
 
                 // ----    Save settings    ----
                 EWSEditor.Common.EwsEditorAppSettings oAppSettings = new EwsEditorAppSettings();

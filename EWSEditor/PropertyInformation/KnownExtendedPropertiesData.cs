@@ -1948,6 +1948,7 @@ namespace EWSEditor.PropertyInformation
         //public readonly ExtendedPropertyDefinition PidTagFolderAssociatedContents = new ExtendedPropertyDefinition(0x3610, MapiPropertyType.Object);
         public readonly ExtendedPropertyDefinition PidTagFolderId = new ExtendedPropertyDefinition(0x6748, MapiPropertyType.Integer);
         public readonly ExtendedPropertyDefinition PidTagFolderType = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);
+        //public readonly ExtendedPropertyDefinition PidTagFolderPath? = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);
         public readonly ExtendedPropertyDefinition PidTagFollowupIcon = new ExtendedPropertyDefinition(0x1095, MapiPropertyType.Integer);
         public readonly ExtendedPropertyDefinition PidTagFreeBusyCountMonths = new ExtendedPropertyDefinition(0x6869, MapiPropertyType.Integer);
         public readonly ExtendedPropertyDefinition PidTagFreeBusyEntryIds = new ExtendedPropertyDefinition(0x36E4, MapiPropertyType.BinaryArray);

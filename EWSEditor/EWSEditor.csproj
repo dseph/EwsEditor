@@ -255,6 +255,12 @@
     <Compile Include="Forms\Searches\SearchFolders.Designer.cs">
       <DependentUpon>SearchFolders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Searches\SearchCalendarsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Searches\SearchCalendarsForm.Designer.cs">
+      <DependentUpon>SearchCalendarsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ToolsForms\FileContentHelper.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -879,6 +885,9 @@
     <EmbeddedResource Include="Forms\Searches\SearchFolders.resx">
       <DependentUpon>SearchFolders.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Searches\SearchCalendarsForm.resx">
+      <DependentUpon>SearchCalendarsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolsForms\FileContentHelper.resx">
       <DependentUpon>FileContentHelper.cs</DependentUpon>
     </EmbeddedResource>
@@ -1436,6 +1445,7 @@
     <Folder Include="Exchange\" />
     <Folder Include="Forms\Dialogs\SmartEditors\" />
     <Folder Include="Forms\ServiceLevelForms\" />
+    <Folder Include="NewFolder1\" />
     <Folder Include="Retired\" />
   </ItemGroup>
   <ItemGroup>

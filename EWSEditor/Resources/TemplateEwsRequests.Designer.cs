@@ -82,6 +82,23 @@ namespace EWSEditor.Resources {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        ///      xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+        ///      xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;
+        ///      xmlns:t=&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot;
+        ///      xmlns:m=&quot;http://schemas.microsoft.com/exchange/services/2006/messages&quot;&gt;
+        ///  &lt;soap:Header&gt;
+        ///      &lt;t:RequestServerVersion Version=&quot;##RequestServerVersion##&quot;/&gt;
+        ///      &lt;ExchangeImpersonation xmlns=&quot;http://schem [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ExportItems_ImpersonateBySmtp {
+            get {
+                return ResourceManager.GetString("ExportItems_ImpersonateBySmtp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
         ///        xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
         ///        xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;
         ///        xmlns:t=&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot;&gt;
@@ -139,6 +156,24 @@ namespace EWSEditor.Resources {
         ///       xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
         ///&lt;soap:Header&gt;
         ///    &lt;RequestServerVersion Version=&quot;##RequestServerVersion##&quot; xmlns=&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot; /&gt;
+        ///    &lt;ExchangeImpersonation xmlns=&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot;&gt;
+        ///      &lt;ConnectingSID&gt;
+        ///         [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string UploadItems_CreateNew_ImpersonateBySmtp {
+            get {
+                return ResourceManager.GetString("UploadItems_CreateNew_ImpersonateBySmtp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;soap:Envelope 
+        ///        xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; 
+        ///        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+        ///       xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+        ///&lt;soap:Header&gt;
+        ///    &lt;RequestServerVersion Version=&quot;##RequestServerVersion##&quot; xmlns=&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot; /&gt;
         ///&lt;/soap:Header&gt;
         ///&lt;soap:Body&gt;
         ///    &lt;UploadItems xmlns=&quot;http://schemas.microsoft.com/exchange/services/2006/messages&quot;&gt;
@@ -147,6 +182,24 @@ namespace EWSEditor.Resources {
         internal static string UploadItems_Update {
             get {
                 return ResourceManager.GetString("UploadItems_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///&lt;soap:Envelope 
+        ///        xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; 
+        ///        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+        ///       xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+        ///&lt;soap:Header&gt;
+        ///    &lt;RequestServerVersion Version=&quot;##RequestServerVersion##&quot; xmlns=&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot; /&gt;
+        ///      &lt;ExchangeImpersonation xmlns=&quot;http://schemas.microsoft.com/exchange/services/2006/types&quot;&gt;
+        ///        &lt;ConnectingSID&gt;
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string UploadItems_Update_ImpersonateBySmtp {
+            get {
+                return ResourceManager.GetString("UploadItems_Update_ImpersonateBySmtp", resourceCulture);
             }
         }
     }

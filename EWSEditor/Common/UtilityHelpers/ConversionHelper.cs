@@ -39,5 +39,18 @@ namespace EWSEditor.Common
 
             return ret.ToString();
         }
+
+
+        public static Byte[] HexStringToByteArray(String HexString)
+        {
+            // http://gsexdev.blogspot.com/2011/03/using-prfolderpath-property-in-exchange.html#!/2011/03/using-prfolderpath-property-in-exchange.html
+
+            Byte[] ByteArray = new Byte[HexString.Length / 2];
+            for (int i = 0; i < HexString.Length; i += 2)
+            {
+                ByteArray[i / 2] = Convert.ToByte(HexString.Substring(i, 2), 16);
+            }
+            return ByteArray;
+        }
     }
 }
