@@ -60,20 +60,14 @@ namespace EWSEditor.Forms
         // PR_CREATION_TIME, PidTagCreationTime, ptagCreationTime http://schemas.microsoft.com/mapi/proptag/0x30070040
         // PR_HAS_RULES, PidTagHasRules, ptagHasRules   http://schemas.microsoft.com/mapi/proptag/0x663A000B
         // PR_LAST_MODIFICATION_TIME, PidTagLastModificationTime, ptagLastModificationTime  0x30080040
-        // private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);        //  Item - PidTagRetentionFlags - PR_RETENTION_FLAGS 0x301D   
-        // private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);      //  Item - PidTagRetentionPeriod - PR_RETENTION_PERIOD 0x301A
-        // private static ExtendedPropertyDefinition Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT = new ExtendedPropertyDefinition(0x66B1, MapiPropertyType.Long);    // PR_ATTACH_ON_NORMAL_MSG_COUNT 0x66B1
-        // private static ExtendedPropertyDefinition Prop_PidTagArchiveTag = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);              // Guid of Archive tag - PR_ARCHIVE_TAG - PidTagArchiveTag 
-        // private static ExtendedPropertyDefinition Prop_PidTagPolicyTag = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Integer);              // Item - PidTagPolicyTag - PR_POLICY_TAG
-        // private static ExtendedPropertyDefinition Prop_PidTagRetentionPeriod = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);        // Message - PidTagRetentionPeriod - PR_RETENTION_PERIOD 
-        // ?? https://blogs.msdn.microsoft.com/akashb/2011/08/10/stamping-retention-policy-tag-using-ews-managed-api-1-1-from-powershellexchange-2010/
+         // ?? https://blogs.msdn.microsoft.com/akashb/2011/08/10/stamping-retention-policy-tag-using-ews-managed-api-1-1-from-powershellexchange-2010/
 
         // private static ExtendedPropertyDefinition Prop_PidTagMessageSizeExtended = new ExtendedPropertyDefinition(0xe08, MapiPropertyType.Long);        // Message - PidTagMessageSizeExtended - PR_MESSAGE_SIZE_EXTENDED
-        private static ExtendedPropertyDefinition Prop_PidTagDeletedOn = new ExtendedPropertyDefinition(0x668F, MapiPropertyType.SystemTime);           // Folder/Item - PidTagDeletedOn - PR_DELETED_ON
-        private static ExtendedPropertyDefinition Prop_PidTagFolderFlags = new ExtendedPropertyDefinition(0x66A8, MapiPropertyType.Integer);            // Folder - PidTagFolderFlags - PR_FOLDER_FLAGS
-        private static ExtendedPropertyDefinition Prop_PidTagLocalCommitTime = new ExtendedPropertyDefinition(0x6709, MapiPropertyType.SystemTime);     // Folder/item - PidTagLocalCommitTime - PR_LOCAL_COMMIT_TIME
-        private static ExtendedPropertyDefinition Prop_PidTagLocalCommitTimeMax = new ExtendedPropertyDefinition(0x670A, MapiPropertyType.SystemTime);  // Folder/item - PidTagLocalCommitTimeMax - PR_LOCAL_COMMIT_TIME_MAX
-        private static ExtendedPropertyDefinition Prop_PidTagDeletedCountTotal = new ExtendedPropertyDefinition(0x0003, MapiPropertyType.Integer);      // Folder - PidTagDeletedCountTotal - PR_DELETED_COUNT_TOTAL
+        //private static ExtendedPropertyDefinition Prop_PidTagDeletedOn = new ExtendedPropertyDefinition(0x668F, MapiPropertyType.SystemTime);           // Folder/Item - PidTagDeletedOn - PR_DELETED_ON
+        //private static ExtendedPropertyDefinition Prop_PidTagFolderFlags = new ExtendedPropertyDefinition(0x66A8, MapiPropertyType.Integer);            // Folder - PidTagFolderFlags - PR_FOLDER_FLAGS
+        //private static ExtendedPropertyDefinition Prop_PidTagLocalCommitTime = new ExtendedPropertyDefinition(0x6709, MapiPropertyType.SystemTime);     // Folder/item - PidTagLocalCommitTime - PR_LOCAL_COMMIT_TIME
+        //private static ExtendedPropertyDefinition Prop_PidTagLocalCommitTimeMax = new ExtendedPropertyDefinition(0x670A, MapiPropertyType.SystemTime);  // Folder/item - PidTagLocalCommitTimeMax - PR_LOCAL_COMMIT_TIME_MAX
+        //private static ExtendedPropertyDefinition Prop_PidTagDeletedCountTotal = new ExtendedPropertyDefinition(0x0003, MapiPropertyType.Integer);      // Folder - PidTagDeletedCountTotal - PR_DELETED_COUNT_TOTAL
 
         private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
         private static ExtendedPropertyDefinition Prop_PR_ATTR_HIDDEN = new ExtendedPropertyDefinition(0x10F4, MapiPropertyType.Boolean);
@@ -91,23 +85,27 @@ namespace EWSEditor.Forms
         private static ExtendedPropertyDefinition PR_MESSAGE_SIZE_EXTENDED = new ExtendedPropertyDefinition(0x0E08, MapiPropertyType.Long);
         private static ExtendedPropertyDefinition PR_DELETED_MESSAGE_SIZE_EXTENDED = new ExtendedPropertyDefinition(0x669B, MapiPropertyType.Long);
         private static ExtendedPropertyDefinition PR_DELETED_MSG_COUNT = new ExtendedPropertyDefinition(0x6640, MapiPropertyType.Integer);
- 
-      
+
         private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
    
         private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
         private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
         private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C    
 
-        // PR_START_DATE_ETC
+        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_TAG = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_PERIOD = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer); // Prop_PR_RETENTION_DATE 0x301C    
+ 
         private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.String); // PR_START_DATE_ETC  GUID 0x30190102
 
+        private static ExtendedPropertyDefinition Prop_PR_ENTRYID = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);  // PidTagEntryId, PidTagMemberEntryId, ptagEntryId
+        private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FB0, MapiPropertyType.Binary);  // PidTagStoreEntryId
+        private static ExtendedPropertyDefinition Prop_PR_EXTENDED_FOLDER_FLAGS = new ExtendedPropertyDefinition(0x36DA, MapiPropertyType.Binary);  // PidTagExtendedFolderFlags, ptagExtendedFolderFlags
 
         private static ExtendedPropertyDefinition Prop_FolderPath = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
-          private static ExtendedPropertyDefinition Prop_PR_FOLDER_TYPE = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);  // PR_FOLDER_TYPE 0x3601 (13825)
+        private static ExtendedPropertyDefinition Prop_PR_FOLDER_TYPE = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);  // PR_FOLDER_TYPE 0x3601 (13825)
 
 
-        private PropertySet folderNodePropertySet = new PropertySet(
+        private PropertySet folderNodePropertySet = new PropertySet(  
             BasePropertySet.FirstClassProperties,
             new PropertyDefinitionBase[] { 
                 FolderSchema.DisplayName, 
@@ -115,7 +113,9 @@ namespace EWSEditor.Forms
  
                 FolderSchema.FolderClass, 
                 FolderSchema.ManagedFolderInformation,  
-    
+               // FolderSchema.WellKnownFolderName,  2013 and later
+               
+               // FolderSchema.ChildFolderCount,
                 FolderSchema.TotalCount,  
                 FolderSchema.UnreadCount,  
                 FolderSchema.EffectiveRights,
@@ -124,6 +124,7 @@ namespace EWSEditor.Forms
                 Prop_FolderPath,
                 Prop_PR_CREATION_TIME,
                 Prop_PR_COMMENT,
+                Prop_PR_CREATION_TIME, 
                 Prop_PR_LAST_MODIFICATION_TIME,
                 Prop_PR_POLICY_TAG,
                 Prop_PR_HAS_RULES,
@@ -132,6 +133,10 @@ namespace EWSEditor.Forms
                 Prop_PR_RETENTION_DATE,
                 Prop_PR_RETENTION_PERIOD,
                 Prop_PR_RETENTION_FLAGS,
+
+                Prop_PR_ARCHIVE_TAG ,
+                Prop_PR_ARCHIVE_PERIOD,
+
                 
                 Prop_PR_ATTR_HIDDEN,
                 Prop_PR_ATTR_READONLY,
@@ -141,36 +146,15 @@ namespace EWSEditor.Forms
                 Prop_PR_CONTENT_UNREAD,
                 Prop_PR_CONTENT_COUNT,
      
-                Prop_PR_CONTAINER_CLASS 
-        
-            // Invalid?
-                       // Prop_PR_CONTENT_UNREAD,
-                        //  Prop_PR_CONTENT_COUNT,
-
-
-                //Prop_Retention_Period,
-                //Prop_RetentionFlags,
-                //Prop_PidTagMessageSizeExtended,
-                //Prop_PidTagDeletedOn,
-                //Prop_PidTagFolderFlag,
-                //Prop_PidTagLocalCommitTime,
-                //Prop_PidTagLocalCommitTimeMax,
-                //Prop_PidTagDeletedCountTotal,
-                //Prop_PR_ATTACH_ON_NORMAL_MSG_COUNT,
-                //Prop_PidTagArchiveTag,
-                //Prop_PidTagPolicyTag,
-                //Prop_PidTagRetentionPeriod
-  
-                // FolderSchema.WellKnownFolderName 
-                // FolderSchema.PolicyTag,  
-                // FolderSchema.ArchiveTag, 
+                Prop_PR_CONTAINER_CLASS, 
+                Prop_PR_ENTRYID,
+                Prop_PR_STORE_ENTRYID, 
+                Prop_PR_EXTENDED_FOLDER_FLAGS 
 
  
 
             });
 
-         //                   FolderSchema.ArchiveTag, 
-      
  
 
         // MenuItems to add to the File menu
@@ -914,10 +898,17 @@ namespace EWSEditor.Forms
                         //mnuFolderCalendarItemsBreakdown.Visible = true;
                         toolStripMenuItem14.Visible = true;
                         bShowStrip = true;
+
+                 
+                        //SearchForCalendarItemsToolStripMenuItem.Visible = true;
+                        ////mnuFolderCalendarItemsBreakdown.Visible = true;
+                        //toolStripMenuItem14.Visible = true;
+                        //bShowStrip = true;
                     }
                     else
                     {
                         mnuFolderCalendarView.Visible = false;
+                        //SearchForCalendarItemsToolStripMenuItem.Visible = false;
                         //mnuFolderCalendarItemsBreakdown.Visible = false;
                         toolStripMenuItem14.Visible = false;
                     }
@@ -1808,7 +1799,7 @@ namespace EWSEditor.Forms
         /// </summary>
         /// <param name="e">TreeViewCancelEventArgs used to cancel and defer the TreeViewAction</param>
         private void DeferTreeViewAction(TreeViewCancelEventArgs e)
-        {
+        { 
             if (this.deferredTreeViewAction != null)
             {
                 DebugLog.WriteVerbose(string.Format("Leave: {0}, is already deferred will skip deferring passed action, {1}", this.deferredTreeViewAction, e.Action));
@@ -2045,6 +2036,14 @@ namespace EWSEditor.Forms
             Folder oFolder = (GetFolderFromNode(FolderTreeView.SelectedNode));
             CalendarBreakdownView oForm = new CalendarBreakdownView(this.CurrentService, oFolder.Id);
             oForm.Show();
+        }
+
+        private void SearchForCalendarItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // SearchForCalendarItemsToolStripMenuItem
+            Folder oFolder = (GetFolderFromNode(FolderTreeView.SelectedNode));
+            SearchCalendarsForm oForm = new SearchCalendarsForm(this.CurrentService, oFolder.Id);
+            oForm.ShowDialog();
         }
     }
 }

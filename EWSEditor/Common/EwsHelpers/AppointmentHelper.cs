@@ -9,6 +9,70 @@ namespace EWSEditor.Common
 {
     public class AppointmentHelper
     {
+        private static ExtendedPropertyDefinition PidLidAppointmentRecur = new ExtendedPropertyDefinition(new Guid("00062002-0000-0000-C000-000000000046"), 0x8216, MapiPropertyType.Binary); // dispidApptRecur
+        private static ExtendedPropertyDefinition PidLidClientIntent = new ExtendedPropertyDefinition(new Guid("11000E07-B51B-40D6-AF21-CAA85EDAB1D0"), 0x0015, MapiPropertyType.Integer); // dispidClientIntent
+ 
+        public static Appointment GetAppointmentDetails(string sId, ExchangeService oExchangeService)
+        {
+            ItemId oItem = new ItemId(sId);
+
+            PropertySet appointmentPropertySet = GetAppointmentCalendarPropertySet();
+            Appointment oAppointment = Appointment.Bind(oExchangeService, oItem, appointmentPropertySet);
+
+            return (oAppointment);
+        }
+
+        public static Appointment GetAppointmentDetails(Appointment oAppointment)
+        {
+            PropertySet appointmentPropertySet = GetAppointmentCalendarPropertySet();
+            oAppointment.Load(appointmentPropertySet);
+
+            return (oAppointment);
+        }
+
+        private static PropertySet GetAppointmentCalendarPropertySet()
+        {
+            PropertySet appointmentPropertySet = new PropertySet
+            (
+                BasePropertySet.FirstClassProperties// ,
+                //new PropertyDefinitionBase[] 
+                //{ 
+                //    AppointmentSchema.Organizer,
+                //    AppointmentSchema.ParentFolderId,
+                //    AppointmentSchema.Organizer,
+                //    AppointmentSchema.StoreEntryId,
+                //    AppointmentSchema.RequiredAttendees,
+                //    AppointmentSchema.OptionalAttendees,
+                //    AppointmentSchema.Subject,
+                //    AppointmentSchema.DisplayTo,
+                //    AppointmentSchema.DisplayCc,
+                //    AppointmentSchema.Subject,
+                //    AppointmentSchema.ICalUid,
+                //    AppointmentSchema.DateTimeCreated,
+                //    AppointmentSchema.LastModifiedName,
+                //    AppointmentSchema.LastModifiedTime,
+                //    AppointmentSchema.HasAttachments,
+                //    AppointmentSchema.ItemClass,
+                //    AppointmentSchema.Start,
+                //    AppointmentSchema.End,            
+                //    AppointmentSchema.IsAllDayEvent,
+                //    AppointmentSchema.IsRecurring,
+                //    AppointmentSchema.IsReminderSet,
+                //    AppointmentSchema.IsOnlineMeeting,
+                //    AppointmentSchema.RetentionDate,
+                //    AppointmentSchema.Organizer,
+                //    AppointmentSchema.ICalRecurrenceId,
+                //    AppointmentSchema.IsResend,
+                //    AppointmentSchema.IsDraft,
+                //    AppointmentSchema.Size
+                //}
+            );
+
+            appointmentPropertySet.Add(PidLidAppointmentRecur);
+            appointmentPropertySet.Add(PidLidClientIntent);
+
+            return appointmentPropertySet;
+        }
 
         public static string GetAttendeeStatusAsInfoString(Appointment oAppointment)
         {
@@ -196,26 +260,9 @@ namespace EWSEditor.Common
                         oListView.Items.AddRange(new ListViewItem[] { oListItem });
                         oListItem = null;
 
-                        //Attachment oAttachment = (Attachment)lvFileAttachments.SelectedItems[0].Tag;
-
+ 
                         iAttachments++;
-                    //}
-                    //else
-                    //{
-                    //    oListItem = new ListViewItem(oAttach.Id, 0);
-                    //    oListItem.SubItems.Add(oAttach.ContentId);
-                    //    oListItem.SubItems.Add(oAttach.ContentLocation);
-                    //    oListItem.SubItems.Add(oAttach.ContentType);
-                    //    oListItem.SubItems.Add(oAttach.Name);
-                    //    oListItem.SubItems.Add(oAttach.FileName);
-                    //    oListItem.SubItems.Add(bIsInline.ToString());
-                    //    oListItem.SubItems.Add(oAttach.IsContactPhoto.ToString());
-
-                    //    oListItem.Tag = iAttachmentCount;
-                    //    oListView.Items.AddRange(new ListViewItem[] { oListItem });
-                    //    oListItem = null;
-                    //    iAttachments++;
-                    //}
+ 
 
                 }
 

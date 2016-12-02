@@ -62,6 +62,7 @@ namespace EWSEditor.Forms
             this.mnuNewItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchFoldersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SearchForCalendarItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.developerFolderTestFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -178,10 +179,11 @@ namespace EWSEditor.Forms
             this.mnuNewItem,
             this.SearchFoldersMenuItem,
             this.SearchItemsMenuItem,
+            this.SearchForCalendarItemsToolStripMenuItem,
             this.toolStripSeparator3,
             this.developerFolderTestFormToolStripMenuItem});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
-            this.cmsFolderMenu.Size = new System.Drawing.Size(331, 534);
+            this.cmsFolderMenu.Size = new System.Drawing.Size(331, 560);
             // 
             // mnuOpenContents
             // 
@@ -370,6 +372,13 @@ namespace EWSEditor.Forms
             this.SearchItemsMenuItem.Text = "Search For Items...";
             this.SearchItemsMenuItem.Click += new System.EventHandler(this.SearchItemsMenuItem_Click);
             // 
+            // SearchForCalendarItemsToolStripMenuItem
+            // 
+            this.SearchForCalendarItemsToolStripMenuItem.Name = "SearchForCalendarItemsToolStripMenuItem";
+            this.SearchForCalendarItemsToolStripMenuItem.Size = new System.Drawing.Size(330, 26);
+            this.SearchForCalendarItemsToolStripMenuItem.Text = "Search For Calendar Items...";
+            this.SearchForCalendarItemsToolStripMenuItem.Click += new System.EventHandler(this.SearchForCalendarItemsToolStripMenuItem_Click);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
@@ -520,7 +529,8 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem developerFolderTestFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SearchFoldersMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuFolderCalendarItemsBreakdown; 
+        private System.Windows.Forms.ToolStripMenuItem mnuFolderCalendarItemsBreakdown;
+        private System.Windows.Forms.ToolStripMenuItem SearchForCalendarItemsToolStripMenuItem; 
      
     }
 }

@@ -22,6 +22,9 @@ namespace EWSEditor.Forms
         public bool ChoseOK = false;
         private ExchangeService _CurrentService = null;
         private FolderId _CurrentFolderId = null;
+        //private static ExtendedPropertyDefinition Prop_FolderPath = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
+        //private static ExtendedPropertyDefinition Prop_PR_FOLDER_TYPE = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);  // PR_FOLDER_TYPE 0x3601 (13825)
+
 
         public SearchForm()
         {
@@ -52,6 +55,7 @@ namespace EWSEditor.Forms
             
             cmboLogicalOperation.Text = "And";
 
+            cmboUidConditional.Text = "ContainsSubstring";
             cmboSubjectConditional.Text = "ContainsSubstring";
             cmboToConditional.Text = "ContainsSubstring";
             cmboCCConditional.Text = "ContainsSubstring";
@@ -92,6 +96,7 @@ namespace EWSEditor.Forms
                 this.txtClass.Enabled = false;
                 this.chkClass.Enabled = false;
 
+                cmboUidConditional.Enabled = false;
                 cmboSubjectConditional.Enabled = false;
                 cmboToConditional.Enabled = false;
                 cmboCCConditional.Enabled = false;
@@ -217,15 +222,53 @@ namespace EWSEditor.Forms
                 {
                     List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
                     ItemView oItemView = new ItemView(iPageSize);
+
+                    //oItemView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
+                    //                    ItemSchema.Subject,
+                    //                    ItemSchema.DisplayTo,
+                    //                    ItemSchema.Subject,
+                    //                    ItemSchema.DisplayCc,
+                    //                    ItemSchema.DateTimeReceived,
+                    //                    ItemSchema.HasAttachments,
+                    //                    ItemSchema.ItemClass
+                    //                    );
+
                     oItemView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
-                                        ItemSchema.Subject,
-                                        ItemSchema.DisplayTo,
-                                        ItemSchema.Subject,
-                                        ItemSchema.DisplayCc,
-                                        ItemSchema.DateTimeReceived,
-                                        ItemSchema.HasAttachments,
-                                        ItemSchema.ItemClass
-                                        );
+                        ItemSchema.Subject,
+                        ItemSchema.DisplayTo,
+                        ItemSchema.Subject,
+                        ItemSchema.DisplayCc,
+                        ItemSchema.DateTimeReceived,
+                        ItemSchema.HasAttachments,
+                        ItemSchema.ItemClass,
+
+
+                        ItemSchema.IsResend,
+                        ItemSchema.IsDraft,
+                        ItemSchema.DateTimeCreated,
+                        ItemSchema.DateTimeReceived,
+               
+                        ItemSchema.LastModifiedName,
+                        ItemSchema.LastModifiedTime,        
+                        ItemSchema.Size  
+
+
+                        //AppointmentSchema.IsMeeting,
+                        //AppointmentSchema.StartTimeZone,
+                        //AppointmentSchema.EndTimeZone,
+                        //AppointmentSchema.Start,
+                        //AppointmentSchema.End,
+                        //AppointmentSchema.ICalUid,
+                        //AppointmentSchema.IsAllDayEvent,
+                        //AppointmentSchema.IsCancelled,
+                        //AppointmentSchema.IsRecurring,
+                        //AppointmentSchema.IsReminderSet,
+                        //AppointmentSchema.IsOnlineMeeting,
+                        //AppointmentSchema.RetentionDate,
+                        //AppointmentSchema.Organizer,
+                        //AppointmentSchema.ICalRecurrenceId
+
+                        );
 
                     // Examples of requesting extended properties:
                     //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x1000, MapiPropertyType.String)); // PR_BODY
@@ -254,14 +297,23 @@ namespace EWSEditor.Forms
                     }
                     else
                     {
-                        if (this.chkClass.Checked == true)
-                            if (this.txtClass.Text.Length != 0)
-                                AddCondition(ref searchFilterCollection, ItemSchema.ItemClass, this.txtClass.Text, cmboClassConditional.Text);
-                                //searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.ItemClass, this.txtClass.Text));
+                        txtUID.Enabled = chkUID.Checked;
+                        cmboUidConditional.Enabled = chkUID.Checked;
+
+                        //if (this.chkUID.Checked == true)
+                        //    AddCondition(ref searchFilterCollection, ItemSchema.UID, this.txtUID.Text, cmboUidConditional.Text);
+
+                        //if (this.chkIsRead.Checked == true)
+                        //    AddCondition(ref searchFilterCollection, ItemSchema.IsRead, this.txtIsRead.Text, cmboIsRead.Text);
+
+
+                        if (this.chkClass.Checked == true)                            
+                            AddCondition(ref searchFilterCollection, ItemSchema.ItemClass, this.txtClass.Text, cmboClassConditional.Text);
+ 
                         if (this.chkSubject.Checked == true)
                             if (this.txtSubject.Text.Length != 0)
                                 AddCondition(ref searchFilterCollection, ItemSchema.Subject, this.txtSubject.Text, cmboSubjectConditional.Text); 
-                                // searchFilterCollection.Add(new SearchFilter.ContainsSubstring(ItemSchema.Subject, this.txtSubject.Text));
+ 
                         if (this.chkTo.Checked == true)
                             if (this.txtTo.Text.Length != 0)
                                 AddCondition(ref searchFilterCollection, ItemSchema.DisplayTo, this.txtTo.Text, cmboToConditional.Text); 
@@ -315,7 +367,19 @@ namespace EWSEditor.Forms
                     lvItems.Columns.Add("Subject", 170, HorizontalAlignment.Left);
                     lvItems.Columns.Add("Class", 150, HorizontalAlignment.Left);
                     lvItems.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);
                     lvItems.Columns.Add("Attatch", 50, HorizontalAlignment.Left);
+
+                    lvItems.Columns.Add("IsResend", 50, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("IsDraft", 50, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("DateTimeCreated", 50, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("DateTimeReceived", 100, HorizontalAlignment.Left);
+                     
+                    lvItems.Columns.Add("LastModifiedName", 100, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("LastModifiedTime", 100, HorizontalAlignment.Left);
+                
+                    lvItems.Columns.Add("Size", 50, HorizontalAlignment.Left);
+
                     //lvItems.Columns.Add("Id", 50, HorizontalAlignment.Left);
                     lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
                     lvItems.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
@@ -333,7 +397,21 @@ namespace EWSEditor.Forms
                             oListItem.SubItems.Add(oItem.Subject);
                             oListItem.SubItems.Add(oItem.ItemClass);
                             oListItem.SubItems.Add(oItem.DisplayTo);
+                            oListItem.SubItems.Add(oItem.DisplayCc);
+
                             oListItem.SubItems.Add(oItem.HasAttachments.ToString());
+
+                            oListItem.SubItems.Add(oItem.IsResend.ToString());
+                            oListItem.SubItems.Add(oItem.IsDraft.ToString());
+                            oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
+                            oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());
+                      
+                            oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
+                            oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
+                        
+                            oListItem.SubItems.Add(oItem.Size.ToString());
+
+
                             oListItem.SubItems.Add(oItem.Id.UniqueId);
                             oListItem.SubItems.Add(oItem.Id.ChangeKey);
 
@@ -367,7 +445,19 @@ namespace EWSEditor.Forms
                     lvItems.Columns.Add("Subject", 170, HorizontalAlignment.Left);
                     lvItems.Columns.Add("Class", 150, HorizontalAlignment.Left);
                     lvItems.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);
                     lvItems.Columns.Add("Attatch", 50, HorizontalAlignment.Left);
+
+                    lvItems.Columns.Add("IsResend", 50, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("IsDraft", 50, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("DateTimeCreated", 50, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("DateTimeReceived", 100, HorizontalAlignment.Left);
+                 
+                    lvItems.Columns.Add("LastModifiedName", 100, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("LastModifiedTime", 100, HorizontalAlignment.Left);
+                  
+                    lvItems.Columns.Add("Size", 50, HorizontalAlignment.Left);
+
                     //lvItems.Columns.Add("Id", 50, HorizontalAlignment.Left);
                     lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
                     lvItems.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
@@ -389,7 +479,18 @@ namespace EWSEditor.Forms
                                             ItemSchema.DisplayCc,
                                             ItemSchema.DateTimeReceived,
                                             ItemSchema.HasAttachments,
-                                            ItemSchema.ItemClass
+                                            ItemSchema.ItemClass,
+
+                                            ItemSchema.IsResend,
+                                            ItemSchema.IsDraft,
+                                            ItemSchema.DateTimeCreated,
+                                            ItemSchema.DateTimeReceived,
+                                        
+                                            ItemSchema.LastModifiedName,
+                                            ItemSchema.LastModifiedTime,
+                                          
+                                            ItemSchema.Size 
+      
                                             );
 
                         // Examples of requesting extended properties:
@@ -416,6 +517,13 @@ namespace EWSEditor.Forms
                         }
                         else
                         {
+
+                            //if (this.chkUID.Checked == true)
+                            //    AddCondition(ref searchFilterCollection, ItemSchema.UID, this.txtUID.Text, cmboUidConditional.Text);
+                            
+                            //if (this.chkIsRead.Checked == true)
+                            //    AddCondition(ref searchFilterCollection, ItemSchema.IsRead, this.txtIsRead.Text, cmboIsRead.Text);
+
                             if (this.chkClass.Checked == true)
                                  AddCondition(ref searchFilterCollection, ItemSchema.ItemClass, this.txtClass.Text, cmboClassConditional.Text);
                             if (this.chkSubject.Checked == true)
@@ -471,13 +579,51 @@ namespace EWSEditor.Forms
 
                                 oListItem = new ListViewItem(iCountMore.ToString() + ":" +iCount.ToString(), 0);
 
-                                oListItem.SubItems.Add(oItem.Subject);
-                                oListItem.SubItems.Add(oItem.ItemClass);
-                                oListItem.SubItems.Add(oItem.DisplayTo);
-                                oListItem.SubItems.Add(oItem.HasAttachments.ToString());
-                                oListItem.SubItems.Add(oItem.Id.UniqueId);
-                                oListItem.SubItems.Add(oItem.Id.ChangeKey);
+                                //oListItem.SubItems.Add(oItem.Subject);
+                                //oListItem.SubItems.Add(oItem.ItemClass);
+                                //oListItem.SubItems.Add(oItem.DisplayTo);
+                                //oListItem.SubItems.Add(oItem.HasAttachments.ToString());
+                                //oListItem.SubItems.Add(oItem.Id.UniqueId);
+                                //oListItem.SubItems.Add(oItem.Id.ChangeKey);
+
+                    // test
+                        oListItem.SubItems.Add(oItem.Subject);
+                        oListItem.SubItems.Add(oItem.ItemClass);
+                        oListItem.SubItems.Add(oItem.DisplayTo);
+                        oListItem.SubItems.Add(oItem.DisplayCc);
+                        oListItem.SubItems.Add(oItem.HasAttachments.ToString());
+
+                        oListItem.SubItems.Add(oItem.IsResend.ToString());
+                        oListItem.SubItems.Add(oItem.IsDraft.ToString());
+                        oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
+                        oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());
+                  
+                        oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
+                        oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
+                   
+                        oListItem.SubItems.Add(oItem.Size.ToString());
  
+ 
+                         
+                        //oListItem.SubItems.Add(oItem.IsMeeting.ToString());
+                        //oListItem.SubItems.Add(oItem.StartTimeZone.ToString());
+                        //oListItem.SubItems.Add(oItem.EndTimeZone.ToString());
+                        //oListItem.SubItems.Add(oItem.Start.ToString());
+                        //oListItem.SubItems.Add(oItem.End.ToString());
+                        //oListItem.SubItems.Add(oItem.ICalUid.ToString());
+                        //oListItem.SubItems.Add(oItem.IsAllDayEvent.ToString());
+                        //oListItem.SubItems.Add(oItem.IsCancelled.ToString());
+                        //oListItem.SubItems.Add(oItem.IsRecurring.ToString());
+                        //oListItem.SubItems.Add(oItem.IsReminderSet.ToString());
+                        //oListItem.SubItems.Add(oItem.IsOnlineMeeting.ToString());
+                        //oListItem.SubItems.Add(oItem.RetentionDate.ToString());
+                        //oListItem.SubItems.Add(oItem.Organizer.ToString());
+                        //oListItem.SubItems.Add(oItem.ICalRecurrenceId.ToString());
+
+                        oListItem.SubItems.Add(oItem.Id.UniqueId);
+                        oListItem.SubItems.Add(oItem.Id.ChangeKey);
+
+                             
 
                                 oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass);
                                 lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
@@ -561,7 +707,7 @@ namespace EWSEditor.Forms
             if (lvItems.SelectedItems.Count > 0)
             {
      
-                string sId = lvItems.SelectedItems[0].SubItems[5].Text;
+                string sId = lvItems.SelectedItems[0].SubItems[13].Text;
                 ItemId oItemId = new ItemId(sId);
 
 
@@ -631,6 +777,12 @@ namespace EWSEditor.Forms
                     break;
 
             }
+        }
+
+        private void chkUID_CheckedChanged(object sender, EventArgs e)
+        {
+            txtUID.Enabled = chkUID.Checked;
+            cmboUidConditional.Enabled = chkUID.Checked;
         }
     }
 }

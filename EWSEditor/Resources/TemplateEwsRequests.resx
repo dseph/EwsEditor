@@ -137,6 +137,30 @@
 &lt;/soap:Envelope&gt;</value>
     <comment>Used in POST for getting full fidelity binary of an item.</comment>
   </data>
+  <data name="ExportItems_ImpersonateBySmtp" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+      xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+      xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"&gt;
+  &lt;soap:Header&gt;
+      &lt;t:RequestServerVersion Version="##RequestServerVersion##"/&gt;
+      &lt;ExchangeImpersonation xmlns="http://schemas.microsoft.com/exchange/services/2006/types"&gt;
+          &lt;ConnectingSID&gt;
+              &lt;PrimarySmtpAddress&gt;##PrimarySmtpAddress##&lt;/PrimarySmtpAddress&gt;
+          &lt;/ConnectingSID&gt;
+        &lt;/ExchangeImpersonation&gt; 
+  &lt;/soap:Header&gt;
+  &lt;soap:Body&gt;
+    &lt;m:ExportItems&gt;
+      &lt;m:ItemIds&gt;
+        &lt;t:ItemId Id="##ItemId##"/&gt;
+      &lt;/m:ItemIds&gt;
+    &lt;/m:ExportItems&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</value>
+  </data>
   <data name="GetMailTips" xml:space="preserve">
     <value>&lt;?xml version="1.0" encoding="utf-8" ?&gt;
 &lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -211,6 +235,33 @@
 &lt;/soap:Envelope&gt;</value>
     <comment>Used in POST for creating a new item in a folder.</comment>
   </data>
+  <data name="UploadItems_CreateNew_ImpersonateBySmtp" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap:Envelope 
+        xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+&lt;soap:Header&gt;
+    &lt;RequestServerVersion Version="##RequestServerVersion##" xmlns="http://schemas.microsoft.com/exchange/services/2006/types" /&gt;
+    &lt;ExchangeImpersonation xmlns="http://schemas.microsoft.com/exchange/services/2006/types"&gt;
+      &lt;ConnectingSID&gt;
+        &lt;PrimarySmtpAddress&gt;##PrimarySmtpAddress##&lt;/PrimarySmtpAddress&gt;
+      &lt;/ConnectingSID&gt;
+    &lt;/ExchangeImpersonation&gt; 
+&lt;/soap:Header&gt;
+&lt;soap:Body&gt;
+    &lt;UploadItems xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"&gt;
+        &lt;Items&gt;
+        &lt;Item CreateAction="##CreateAction##" xmlns="http://schemas.microsoft.com/exchange/services/2006/types"&gt;
+                    &lt;ParentFolderId Id="##ParentFolderId_Id##"  /&gt;
+                    &lt;Data&gt;##Data##&lt;/Data&gt;
+                &lt;/Item&gt;
+            &lt;/Items&gt;
+        &lt;/UploadItems&gt;
+    &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</value>
+    <comment>Used in POST for creating a new item in a folder.</comment>
+  </data>
   <data name="UploadItems_Update" xml:space="preserve">
     <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;soap:Envelope 
@@ -219,6 +270,34 @@
        xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
 &lt;soap:Header&gt;
     &lt;RequestServerVersion Version="##RequestServerVersion##" xmlns="http://schemas.microsoft.com/exchange/services/2006/types" /&gt;
+&lt;/soap:Header&gt;
+&lt;soap:Body&gt;
+    &lt;UploadItems xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"&gt;
+        &lt;Items&gt;
+        &lt;Item CreateAction="##CreateAction##" xmlns="http://schemas.microsoft.com/exchange/services/2006/types"&gt;
+                    &lt;ParentFolderId Id="##ParentFolderId_Id##"  /&gt;
+                    &lt;ItemId Id="##ItemId##"/&gt;
+                    &lt;Data&gt;##Data##&lt;/Data&gt;
+                &lt;/Item&gt;
+            &lt;/Items&gt;
+        &lt;/UploadItems&gt;
+    &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</value>
+    <comment>Used in POST for  updating an existing item in a folder.</comment>
+  </data>
+  <data name="UploadItems_Update_ImpersonateBySmtp" xml:space="preserve">
+    <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;soap:Envelope 
+        xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+&lt;soap:Header&gt;
+    &lt;RequestServerVersion Version="##RequestServerVersion##" xmlns="http://schemas.microsoft.com/exchange/services/2006/types" /&gt;
+      &lt;ExchangeImpersonation xmlns="http://schemas.microsoft.com/exchange/services/2006/types"&gt;
+        &lt;ConnectingSID&gt;
+          &lt;PrimarySmtpAddress&gt;##PrimarySmtpAddress##&lt;/PrimarySmtpAddress&gt;
+        &lt;/ConnectingSID&gt;
+      &lt;/ExchangeImpersonation&gt; 
 &lt;/soap:Header&gt;
 &lt;soap:Body&gt;
     &lt;UploadItems xmlns="http://schemas.microsoft.com/exchange/services/2006/messages"&gt;
