@@ -25,6 +25,10 @@
         private const string ColNameResources = "colResources";
         private const string ColNameItemId = "colItemId";
 
+        protected const string ColPidLidClientIntent = "colPidLidClientIntent";
+        protected const string ColClientInfoString = "colClientInfoString";
+        protected const string ColPidLidCleanGlobalObjectId = "colPidLidCleanGlobalObjectId";
+
         private List<Appointment> currentAppointments = null;
 
         private AppointmentsContentForm()
@@ -86,6 +90,17 @@
             col = this.ContentsGrid.Columns.Add(ColNameItemId, "Item Id");
             this.ContentsGrid.Columns[col].Visible = false;
 
+            //col = this.ContentsGrid.Columns.Add(ColPidLidClientIntent, "PidLidClientIntent");
+            //this.ContentsGrid.Columns[col].Visible = false;
+
+            //col = this.ContentsGrid.Columns.Add(ColClientInfoString, "ClientInfoString");
+            //this.ContentsGrid.Columns[col].Visible = false;
+
+            //col = this.ContentsGrid.Columns.Add(ColPidLidCleanGlobalObjectId, "PidLidCleanGlobalObjectId");
+            //this.ContentsGrid.Columns[col].Visible = false;
+ 
+         
+
             base.SetupForm();
         }
 
@@ -111,7 +126,15 @@
                 this.ContentsGrid.Rows[row].Cells[ColNameResources].Value =
                     PropertyInterpretation.GetPropertyValue(appt.Resources);
 
-                this.ContentsGrid.Rows[row].Cells[ColNameItemId].Value = appt.Id.UniqueId;
+                //this.ContentsGrid.Rows[row].Cells[ColNameItemId].Value = appt.Id.UniqueId;
+
+                //this.ContentsGrid.Rows[row].Cells[ColPidLidClientIntent].Value = PropertyInterpretation.GetPropertyValue(appt.Resources);
+
+                //this.ContentsGrid.Rows[row].Cells[ColClientInfoString].Value = PropertyInterpretation.GetPropertyValue(appt.Resources);
+
+                //this.ContentsGrid.Rows[row].Cells[ColPidLidCleanGlobalObjectId].Value = PropertyInterpretation.GetPropertyValue(appt.Resources);
+
+ 
             }
 
             base.LoadContents();

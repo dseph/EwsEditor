@@ -96,7 +96,7 @@
             this.toolStripSeparator3,
             this.developerItemTestWindowToolStripMenuItem});
             this.mnuItemContext.Name = "mnuItemContext";
-            this.mnuItemContext.Size = new System.Drawing.Size(441, 424);
+            this.mnuItemContext.Size = new System.Drawing.Size(441, 452);
             this.mnuItemContext.Opening += new System.ComponentModel.CancelEventHandler(this.mnuItemContext_Opening);
             this.mnuItemContext.Click += new System.EventHandler(this.mnuItemContext_Click);
             // 

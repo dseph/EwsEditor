@@ -38,7 +38,27 @@ namespace EWSEditor.Forms
         protected const string ColNameCategories = "colCategories";
         protected const string ColNameCulture = "colCulture";
         protected const string ColNameItemId = "colItemId";
+        protected const string ColPidLidClientIntent = "colPidLidClientIntent";
+        protected const string ColClientInfoString = "colClientInfoString";
+        protected const string ColLogTriggerAction = "colLogTriggerAction";
+        protected const string ColPidLidGlobalObjectId = "colPidLidGlobalObjectId";
+        protected const string ColPidLidCleanGlobalObjectId = "colPidLidCleanGlobalObjectId";
+         
         //protected const string ColNameItemId = "colTimeZone";
+
+        private static ExtendedPropertyDefinition Prop_PR_FOLDER_PATH = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
+        private static ExtendedPropertyDefinition PidLidCleanGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0023, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition PidLidGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0003, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FFB, MapiPropertyType.Binary);  // PidTagStoreEntryId
+        private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+        private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x301B, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
+        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_TAG = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition PidLidClientIntent = new ExtendedPropertyDefinition(new Guid("11000E07-B51B-40D6-AF21-CAA85EDAB1D0"), 0x0015, MapiPropertyType.Integer); // dispidClientIntent
+        private static ExtendedPropertyDefinition ClientInfoString = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x000B, MapiPropertyType.String); //  
+        private static ExtendedPropertyDefinition LogTriggerAction = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x0006, MapiPropertyType.String); //  
+
+
+ 
 
         private List<ItemId> currentItemIds = new List<ItemId>();
         private ItemView contentItemView = new ItemView(GlobalSettings.FindItemViewSize);
@@ -91,7 +111,28 @@ namespace EWSEditor.Forms
         protected override void SetupForm()
         {
             this.ContentIdColumnName = ColNameItemId;
-            this.DefaultDetailPropertySet = new PropertySet(BasePropertySet.FirstClassProperties);
+            this.DefaultDetailPropertySet = new PropertySet(BasePropertySet.FirstClassProperties,
+                Prop_PR_STORE_ENTRYID,
+                Prop_PR_IS_HIDDEN,
+                PidLidCleanGlobalObjectId,
+                PidLidGlobalObjectId,
+                ClientInfoString,
+                PidLidClientIntent,
+                LogTriggerAction,
+                Prop_PR_POLICY_TAG,
+                Prop_PR_ARCHIVE_TAG
+                
+                );
+            //this.contentItemView.PropertySet.Add(Prop_PR_STORE_ENTRYID);
+            //this.contentItemView.PropertySet.Add(Prop_PR_IS_HIDDEN);
+            ////this.contentItemView.PropertySet.Add(Prop_PR_FOLDER_PATH);
+            //this.contentItemView.PropertySet.Add(PidLidCleanGlobalObjectId);
+            //this.contentItemView.PropertySet.Add(PidLidGlobalObjectId);
+
+            //this.contentItemView.PropertySet.Add(PidLidClientIntent);
+            //this.contentItemView.PropertySet.Add(ClientInfoString);
+            //this.contentItemView.PropertySet.Add(Prop_PR_POLICY_TAG);
+            //this.contentItemView.PropertySet.Add(Prop_PR_ARCHIVE_TAG);
 
             // Create the folder contents property set, including specifying *only*
             // the properties to be displayed in the data grid in order to get the
@@ -107,6 +148,26 @@ namespace EWSEditor.Forms
             this.contentItemView.PropertySet.Add(ItemSchema.DateTimeSent);
             this.contentItemView.PropertySet.Add(ItemSchema.LastModifiedTime);
             this.contentItemView.PropertySet.Add(ItemSchema.LastModifiedName);
+
+            this.contentItemView.PropertySet.Add(PidLidClientIntent);
+            this.contentItemView.PropertySet.Add(ClientInfoString);
+            this.contentItemView.PropertySet.Add(LogTriggerAction);
+ 
+            this.contentItemView.PropertySet.Add(PidLidGlobalObjectId);
+            this.contentItemView.PropertySet.Add(PidLidCleanGlobalObjectId);
+             
+ 
+ 
+  
+ 
+
+              
+        //private PropertySet defaultDetailPropertySet = new PropertySet(BasePropertySet.FirstClassProperties,
+        //    Prop_PR_STORE_ENTRYID,
+        //    Prop_PR_IS_HIDDEN,
+        //    Prop_PR_FOLDER_PATH,
+        //    PidLidCleanGlobalObjectId,
+        //    PidLidGlobalObjectId);
 
             // IsAssociated is not supported in Exchange 2007
             if (this.CurrentService != null &&
@@ -171,9 +232,31 @@ namespace EWSEditor.Forms
             col = this.ContentsGrid.Columns.Add(ColNameCulture, "Culture");
             this.ContentsGrid.Columns[col].Width = 50;
 
+            col = this.ContentsGrid.Columns.Add(ColClientInfoString, "ClientInfoString");
+            this.ContentsGrid.Columns[col].Width = 200;
+            this.ContentsGrid.Columns[col].Visible = true; 
+            
+            col = this.ContentsGrid.Columns.Add(ColPidLidClientIntent, "PidLidClientIntent");
+            this.ContentsGrid.Columns[col].Visible = true;
+
+            col = this.ContentsGrid.Columns.Add(ColLogTriggerAction, "LogTriggerAction");
+            this.ContentsGrid.Columns[col].Visible = true;
+ 
+            col = this.ContentsGrid.Columns.Add(ColPidLidGlobalObjectId, "PidLidGlobalObjectId");
+            this.ContentsGrid.Columns[col].Width = 200;
+            this.ContentsGrid.Columns[col].Visible = true;
+
+            col = this.ContentsGrid.Columns.Add(ColPidLidCleanGlobalObjectId, "PidLidCleanGlobalObjectId");
+            this.ContentsGrid.Columns[col].Width = 200;
+            this.ContentsGrid.Columns[col].Visible = true;
+
+ 
+
             col = this.ContentsGrid.Columns.Add(ColNameItemId, "ItemId");
             this.ContentsGrid.Columns[col].Visible = false;
         }
+
+ 
 
         protected override void LoadContents()
         {
@@ -298,8 +381,128 @@ namespace EWSEditor.Forms
                 this.ContentsGrid.Rows[row].Cells[ColNameCulture].Value = ex.Message;
             }
 
+            string sVal = string.Empty;
+            try
+            {
+                if (item.TryGetProperty(ClientInfoString, out sVal))  //  
+                    this.ContentsGrid.Rows[row].Cells[ColClientInfoString].Value = sVal;
+                else
+                    this.ContentsGrid.Rows[row].Cells[ColClientInfoString].Value = "";
+            }
+            catch (Exception ex)
+            {
+                this.ContentsGrid.Rows[row].Cells[ColPidLidClientIntent].Value = ex.Message;
+            }
+
+ 
+
+             
+
+            Int32 iVal;
+            try
+            {
+                if (item.TryGetProperty(PidLidClientIntent, out iVal))  //  
+                {
+                    // https://msdn.microsoft.com/en-us/library/ff368035(v=exchg.80).aspx
+                    string sDesc = GetPidLidClientIntentDescription(iVal);
+                    //string s = iVal.ToString() + ":  " + GetPidLidClientIntentDescription(iVal);
+                    if (sDesc.Length != 0)
+                        this.ContentsGrid.Rows[row].Cells[ColPidLidClientIntent].Value = iVal.ToString() + ":  " + sDesc;
+                    else
+                        this.ContentsGrid.Rows[row].Cells[ColPidLidClientIntent].Value = iVal.ToString();
+                }
+                else
+                    this.ContentsGrid.Rows[row].Cells[ColPidLidClientIntent].Value = "";
+            }
+            catch (Exception ex)
+            {
+                this.ContentsGrid.Rows[row].Cells[ColPidLidClientIntent].Value = ex.Message;
+            }
+
+            try
+            {
+                if (item.TryGetProperty(LogTriggerAction, out sVal))  //  
+                    this.ContentsGrid.Rows[row].Cells[ColLogTriggerAction].Value = sVal;
+                else
+                    this.ContentsGrid.Rows[row].Cells[ColLogTriggerAction].Value = "";
+            }
+            catch (Exception ex)
+            {
+                this.ContentsGrid.Rows[row].Cells[ColPidLidClientIntent].Value = ex.Message;
+            }
+
+
+            byte[] bytearrVal;
+            try
+            {
+                 if (item.TryGetProperty(PidLidGlobalObjectId, out bytearrVal))  // CleanGlobalObjectId
+                     this.ContentsGrid.Rows[row].Cells[ColPidLidGlobalObjectId].Value = Convert.ToBase64String(bytearrVal);
+                else
+                     this.ContentsGrid.Rows[row].Cells[ColPidLidGlobalObjectId].Value = "";
+            }
+            catch (Exception ex)
+            {
+                this.ContentsGrid.Rows[row].Cells[ColPidLidGlobalObjectId].Value = ex.Message;
+            }
+
+            try
+            {
+                 if (item.TryGetProperty(PidLidCleanGlobalObjectId, out bytearrVal))  // CleanGlobalObjectId
+                     this.ContentsGrid.Rows[row].Cells[ColPidLidCleanGlobalObjectId].Value = Convert.ToBase64String(bytearrVal);
+                else
+                     this.ContentsGrid.Rows[row].Cells[ColPidLidCleanGlobalObjectId].Value = "";
+            }
+            catch (Exception ex)
+            {
+                this.ContentsGrid.Rows[row].Cells[ColPidLidCleanGlobalObjectId].Value = ex.Message;
+            }
+
+ 
+
             this.ContentsGrid.Rows[row].Cells[ColNameItemId].Value = item.Id.UniqueId;
             this.ContentsGrid.Rows[row].ContextMenuStrip = this.mnuItemContext;
+        }
+
+        private string GetPidLidClientIntentDescription(int iVal)
+        {
+            string s = "";
+            if (IsBitSet(iVal, 0))
+                s += "ciManager: The user is the owner of the Meeting object's Calendar folder. If this bit is set, the ciDelegate bit SHOULD NOT be set. ";
+            if (IsBitSet(iVal, 1))
+                s += " ciDelegate: The user is a delegate acting on a Meeting object in a delegator's Calendar folder.  If this bit is set, the ciManager bit SHOULD NOT be set. ";
+            if (IsBitSet(iVal, 2))
+                s += "ciDeletedWithNoResponse: The user deleted the Meeting object with no response sent to the organizer. ";
+            if (IsBitSet(iVal, 3))
+                s += "ciDeletedExceptionWithNoResponse: The user deleted an exception to a recurring series with no response sent to the organizer. ";
+            if (IsBitSet(iVal, 4))
+                s += "ciRespondedTentative: The user tentatively accepted the meeting request. ";
+            if (IsBitSet(iVal, 5))  // F
+                s += "ciRespondedAccept: The user accepted the meeting request. ";
+            if (IsBitSet(iVal, 6)) // G
+                s += "ciRespondedDecline: The user declined the meeting request. ";
+            if (IsBitSet(iVal, 7)) // H
+                s += "ciModifiedStartTime: The user modified the start time. ";
+            if (IsBitSet(iVal, 8)) // I
+                s += "ciModifiedEndTime: The user modified the end time.  ";
+            if (IsBitSet(iVal, 9)) // J
+                s += "ciModifiedLocation: The user changed the location of the meeting.  ";
+            if (IsBitSet(iVal, 10)) // K
+                s += "ciRespondedExceptionDecline: The user declined an exception to a recurring series.  ";
+            if (IsBitSet(iVal, 11)) // L
+                s += " ciCanceled: The user canceled a meeting request.  ";
+            if (IsBitSet(iVal, 12)) // M
+                s += "ciExceptionCanceled: The user canceled an exception to a recurring series.  ";
+            return s;
+        }
+
+        // http://stackoverflow.com/questions/2431732/checking-if-a-bit-is-set-or-not
+        private bool IsBitSet(byte b, int pos)
+        {
+            return (b & (1 << pos)) != 0;
+        }
+        private bool IsBitSet(int b, int pos)
+        {
+            return (b & (1 << pos)) != 0;
         }
 
         #region Item Right-Click Menu
