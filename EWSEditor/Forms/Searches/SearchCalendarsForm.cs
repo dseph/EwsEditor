@@ -24,17 +24,16 @@ namespace EWSEditor.Forms
         private FolderId _CurrentFolderId = null;
 
         private static ExtendedPropertyDefinition Prop_PR_FOLDER_PATH = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
-        //private static ExtendedPropertyDefinition Prop_PR_FOLDER_TYPE = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);  // PR_FOLDER_TYPE 0x3601 (13825)
-
         private static ExtendedPropertyDefinition PidLidAppointmentRecur = new ExtendedPropertyDefinition(new Guid("00062002-0000-0000-C000-000000000046"), 0x8216, MapiPropertyType.Binary); // dispidApptRecur
         private static ExtendedPropertyDefinition PidLidClientIntent = new ExtendedPropertyDefinition(new Guid("11000E07-B51B-40D6-AF21-CAA85EDAB1D0"), 0x0015, MapiPropertyType.Integer); // dispidClientIntent
-
         private static ExtendedPropertyDefinition ClientInfoString = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x000B, MapiPropertyType.String); //  
         private static ExtendedPropertyDefinition LogTriggerAction = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x0006, MapiPropertyType.String); //  
-
         private static ExtendedPropertyDefinition PidLidCleanGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0023, MapiPropertyType.Binary);
         private static ExtendedPropertyDefinition PidLidGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0003, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition ICalId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 3, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FFB, MapiPropertyType.Binary);  // PidTagStoreEntryId
 
+ 
 
         //private static ExtendedPropertyDefinition dispidCalLogClientInfoString = new ExtendedPropertyDefinition(new Guid("xxxxxxxxxxxxxxx"), 0x0015, MapiPropertyType.Integer);  
 
@@ -55,12 +54,12 @@ namespace EWSEditor.Forms
         ////$PidLidClientIntent = new-object Microsoft.Exchange.WebServices.Data.ExtendedPropertyDefinition([Microsoft.Exchange.WebServices.Data.DefaultExtendedPropertySet]::CalendarAssistant,0x0015,[Microsoft.Exchange.WebServices.Data.MapiPropertyType]::Integer)
         ////$ItemView =  New-Object Microsoft.Exchange.WebServices.Data.ItemView(1000)
 
- 
 
- 
+
+
 
         //private static ExtendedPropertyDefinition PROP_DEF_PidLidGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x00000003, MapiPropertyType.Binary);
-        
+
         public SearchCalendarsForm()
         {
             InitializeComponent();
@@ -72,7 +71,7 @@ namespace EWSEditor.Forms
             _CurrentFolderId = oCurrentFolderId;
 
             InitializeComponent();
- 
+
         }
 
 
@@ -87,8 +86,8 @@ namespace EWSEditor.Forms
             cmboSearchType.Text = "Direct";
 
             cmboSearchDepth.Text = "Shallow";
-            
-            cmboLogicalOperation.Text = "And";
+
+            //cmboLogicalOperation.Text = "And";
 
             cmboUidConditional.Text = "ContainsSubstring";
             cmboSubjectConditional.Text = "ContainsSubstring";
@@ -96,15 +95,15 @@ namespace EWSEditor.Forms
             cmboCCConditional.Text = "ContainsSubstring";
             cmboBodyConditional.Text = "ContainsSubstring";
             cmboClassConditional.Text = "ContainsSubstring";
-             
+
 
             SetCheckboxes();
-           
+
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
- 
+
             this.Close();
         }
 
@@ -169,12 +168,12 @@ namespace EWSEditor.Forms
             this.txtAQS.Enabled = rdoAqsSearch.Checked;
             this.txtUID.Enabled = chkUID.Checked;
             this.txtSubject.Enabled = chkSubject.Checked;
-            this.txtTo.Enabled  = chkTo.Checked;
-            this.txtCC.Enabled  = chkCC.Checked;
+            this.txtTo.Enabled = chkTo.Checked;
+            this.txtCC.Enabled = chkCC.Checked;
             this.txtBody.Enabled = chkBody.Checked;
             this.cmboClass.Enabled = chkClass.Checked;
- 
- 
+
+
         }
 
         private bool CheckFields()
@@ -286,10 +285,10 @@ namespace EWSEditor.Forms
 
             lvItems.Columns.Add("LastModifiedName", 150, HorizontalAlignment.Left);
             lvItems.Columns.Add("LastModifiedTime", 150, HorizontalAlignment.Left);
- 
+
             lvItems.Columns.Add("AppointmentType", 150, HorizontalAlignment.Left);
             lvItems.Columns.Add("AppointmentState", 150, HorizontalAlignment.Left);
- 
+
             lvItems.Columns.Add("IsAllDayEvent", 100, HorizontalAlignment.Left);
             lvItems.Columns.Add("IsCancelled", 100, HorizontalAlignment.Left);
             lvItems.Columns.Add("IsRecurring", 100, HorizontalAlignment.Left);
@@ -305,7 +304,7 @@ namespace EWSEditor.Forms
 
             lvItems.Columns.Add("PidLidAppointmentRecur ", 100, HorizontalAlignment.Left);
             lvItems.Columns.Add("PidLidClientIntent ", 100, HorizontalAlignment.Left);
-            lvItems.Columns.Add("ClientInfoString ", 100, HorizontalAlignment.Left); 
+            lvItems.Columns.Add("ClientInfoString ", 100, HorizontalAlignment.Left);
             lvItems.Columns.Add("LogTriggerAction ", 100, HorizontalAlignment.Left);
 
             lvItems.Columns.Add("IsHidden", 50, HorizontalAlignment.Left);
@@ -317,7 +316,7 @@ namespace EWSEditor.Forms
 
         }
 
-      
+
 
         private void ConfigureListView_Message(ref ListView lvItems, string SearchType)
         {
@@ -339,10 +338,8 @@ namespace EWSEditor.Forms
             lvItems.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
             lvItems.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);
 
-            lvItems.Columns.Add("ICalUid", 200, HorizontalAlignment.Left);
-            lvItems.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);
-            lvItems.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);
  
+
             lvItems.Columns.Add("RetentionDate", 150, HorizontalAlignment.Left);
             lvItems.Columns.Add("DateTimeCreated", 150, HorizontalAlignment.Left);
 
@@ -363,6 +360,10 @@ namespace EWSEditor.Forms
 
             lvItems.Columns.Add("FolderPath", 250, HorizontalAlignment.Left);
 
+          //  lvItems.Columns.Add("ICalUid", 200, HorizontalAlignment.Left);
+            lvItems.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);
+            lvItems.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);
+
             lvItems.Columns.Add("StoreEntryId", 250, HorizontalAlignment.Left);
             lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
             //lvItems.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
@@ -370,38 +371,41 @@ namespace EWSEditor.Forms
 
         }
 
-        private FindItemsResults<Item> DoSearch(FolderId oFolderId, ref ItemView oItemView) 
-        { 
+        private FindItemsResults<Item> DoSearch(FolderId oFolderId, ref ItemView oItemView)
+        {
             FindItemsResults<Item> oFindItemsResults = null;
             List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
- 
+
             if (this.rdoAqsSearch.Checked == true)
             {
                 try
-                { 
+                {
                     oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
-                }   
+                }
                 catch (Exception ex)
                 {
                     this.Cursor = Cursors.Default;
                     throw ex;
-                          
+
                 }
             }
             else
             {
+
+                string sSearchCleanGlobalObjectId = GetObjectIdStringFromUid(this.txtUID.Text.Trim());
+
                 if (this.chkUID.Checked == true)
-                    AddCondition(ref searchFilterCollection, AppointmentSchema.ICalUid, this.txtUID.Text.Trim(), this.cmboUidConditional.Text); 
+                    AddCondition(ref searchFilterCollection, PidLidCleanGlobalObjectId, sSearchCleanGlobalObjectId, this.cmboUidConditional.Text);
                 if (this.chkClass.Checked == true)
-                    AddCondition(ref searchFilterCollection, AppointmentSchema.ItemClass, this.cmboClass.Text.Trim(), cmboClassConditional.Text);
+                    AddCondition(ref searchFilterCollection, ItemSchema.ItemClass, this.cmboClass.Text.Trim(), cmboClassConditional.Text);
                 if (this.chkSubject.Checked == true)
-                    AddCondition(ref searchFilterCollection, AppointmentSchema.Subject, this.txtSubject.Text.Trim(), cmboSubjectConditional.Text); 
+                    AddCondition(ref searchFilterCollection, ItemSchema.Subject, this.txtSubject.Text.Trim(), cmboSubjectConditional.Text);
                 if (this.chkTo.Checked == true)
-                    AddCondition(ref searchFilterCollection, AppointmentSchema.DisplayTo, this.txtTo.Text.Trim(), cmboToConditional.Text); 
+                    AddCondition(ref searchFilterCollection, ItemSchema.DisplayTo, this.txtTo.Text.Trim(), cmboToConditional.Text);
                 if (this.chkCC.Checked == true)
-                    AddCondition(ref searchFilterCollection, AppointmentSchema.DisplayCc, this.txtCC.Text.Trim(), cmboCCConditional.Text); 
+                    AddCondition(ref searchFilterCollection, ItemSchema.DisplayCc, this.txtCC.Text.Trim(), cmboCCConditional.Text);
                 if (this.chkBody.Checked == true)
-                    AddCondition(ref searchFilterCollection, AppointmentSchema.Body, this.txtBody.Text.Trim(), cmboBodyConditional.Text);
+                    AddCondition(ref searchFilterCollection, ItemSchema.Body, this.txtBody.Text.Trim(), cmboBodyConditional.Text);
 
 
                 SearchFilter searchFilter = null;
@@ -415,22 +419,34 @@ namespace EWSEditor.Forms
                     {
                         this.Cursor = Cursors.Default;
                         throw ex;
-                                
+
                     }
                 }
                 else
                 {
-                    if (cmboLogicalOperation.Text == "And")
-                        searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.And, searchFilterCollection.ToArray());
-                    if (cmboLogicalOperation.Text == "Or")
-                        searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
- 
+                    //if (cmboLogicalOperation.Text == "And")
+                    //    searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.And, searchFilterCollection.ToArray());
+                    //if (cmboLogicalOperation.Text == "Or")
+                    //    searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
+
                     oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
                 }
- 
+
             }
 
             return oFindItemsResults;
+        }
+
+        // http://www.infinitec.de/post/2009/04/13/Searching-a-meeting-with-a-specific-UID-using-Exchange-Web-Services-2007.aspx
+        private static string GetObjectIdStringFromUid(string id)
+        {
+            var buffer = new byte[id.Length/2];
+            for (int i = 0; i < id.Length/2; i++)
+            {
+                var hexValue = byte.Parse(id.Substring(i*2, 2), System.Globalization.NumberStyles.AllowHexSpecifier);
+                buffer[i] = hexValue;
+            }
+            return Convert.ToBase64String(buffer);
         }
 
         private bool AddSearchResultsToListViews(FindItemsResults<Item> oFindItemsResults, int iCountMore)
@@ -443,23 +459,27 @@ namespace EWSEditor.Forms
             ListViewItem oListItem = null;
 
             int iCount = 0;
- 
+
             oListItem = null;
- 
+
             iCount = 0;
             foreach (Item oItem in oFindItemsResults.Items)
             {
 
 
-                if (oItem.ItemClass.ToUpper().StartsWith("IPM.APPOINTMENT"))
+                if (oItem.ItemClass.ToUpper().StartsWith("IPM.APPOINTMENT") )
                 {
 
                     iCount++;
-                     
-                    CalendarData oCalendarData = new CalendarData();
-                    Appointment oAppointment = oCalendarData.GetAppointment(oItem.Service, oItem.Id);
-                    oCalendarData.SetAppointmentData(oAppointment);
- 
+
+                    EWSEditor.Common.Exports.CalendarData oCalendarData = new EWSEditor.Common.Exports.CalendarData();
+                    EWSEditor.Common.Exports.CalendarExport oCalendarExport = new EWSEditor.Common.Exports.CalendarExport();
+                    oCalendarData = oCalendarExport.GetAppointmentDataFromItem(oItem.Service, oItem.Id);
+
+                    //EWSEditor.Common.EwsHelpers.CalendarExport oCalendarExport = new EWSEditor.Common.EwsHelpers.CalendarExport();
+                    //Appointment oAppointment = oCalendarExport.GetAppointment(oItem.Service, oItem.Id);
+                    //oCalendarExport.SetAppointmentData(oAppointment);
+
 
                     if (this.cmboSearchType.Text == "Direct")
                         oListItem = new ListViewItem(iCount.ToString(), 0);
@@ -469,60 +489,57 @@ namespace EWSEditor.Forms
                     //CalendarData oCalendarData = new CalendarData();
                     //oCalendarData.SetAppointmentData(oAppointment);
 
-                    oListItem.SubItems.Add(oCalendarData._Subject);
-                    oListItem.SubItems.Add(oCalendarData._ItemClass);
-                    oListItem.SubItems.Add(oCalendarData._Organizer_Address);
+                    oListItem.SubItems.Add(oCalendarData.Subject);
+                    oListItem.SubItems.Add(oCalendarData.ItemClass);
+                    oListItem.SubItems.Add(oCalendarData.OrganizerAddress);
 
-                    oListItem.SubItems.Add(oCalendarData._DisplayTo);
-                    oListItem.SubItems.Add(oCalendarData._DisplayCc);
-                    oListItem.SubItems.Add(oCalendarData._RequiredAttendees);
-                    oListItem.SubItems.Add(oCalendarData._OptionalAttendees);
-                    oListItem.SubItems.Add(oCalendarData._ICalUid);
+                    oListItem.SubItems.Add(oCalendarData.DisplayTo);
+                    oListItem.SubItems.Add(oCalendarData.DisplayCc);
+                    oListItem.SubItems.Add(oCalendarData.RequiredAttendees);
+                    oListItem.SubItems.Add(oCalendarData.OptionalAttendees);
+                    oListItem.SubItems.Add(oCalendarData.ICalUid);
 
-                    oListItem.SubItems.Add(oCalendarData._PidLidCleanGlobalObjectId);
-                    oListItem.SubItems.Add(oCalendarData._PidLidGlobalObjectId);
+                    oListItem.SubItems.Add(oCalendarData.PidLidCleanGlobalObjectId);
+                    oListItem.SubItems.Add(oCalendarData.PidLidGlobalObjectId);
 
-                    oListItem.SubItems.Add(oCalendarData._Start);
-                    oListItem.SubItems.Add(oCalendarData._End);
+                    oListItem.SubItems.Add(oCalendarData.Start);
+                    oListItem.SubItems.Add(oCalendarData.End);
 
-                    oListItem.SubItems.Add(oCalendarData._RetentionDate);
-                    oListItem.SubItems.Add(oCalendarData._DateTimeCreated);
+                    oListItem.SubItems.Add(oCalendarData.RetentionDate);
+                    oListItem.SubItems.Add(oCalendarData.DateTimeCreated);
 
-                    oListItem.SubItems.Add(oCalendarData._LastModifiedName);
-                    oListItem.SubItems.Add(oCalendarData._LastModifiedTime);
+                    oListItem.SubItems.Add(oCalendarData.LastModifiedName);
+                    oListItem.SubItems.Add(oCalendarData.LastModifiedTime);
 
-                    oListItem.SubItems.Add(oCalendarData._AppointmentType);
-                    oListItem.SubItems.Add(oCalendarData._AppointmentState);
+                    oListItem.SubItems.Add(oCalendarData.AppointmentType);
+                    oListItem.SubItems.Add(oCalendarData.AppointmentState);
 
-                    oListItem.SubItems.Add(oCalendarData._IsAllDayEvent);
-                    oListItem.SubItems.Add(oCalendarData._IsCancelled);
-                    oListItem.SubItems.Add(oCalendarData._IsRecurring);
-                    oListItem.SubItems.Add(oCalendarData._IsReminderSet);
+                    oListItem.SubItems.Add(oCalendarData.IsAllDayEvent);
+                    oListItem.SubItems.Add(oCalendarData.IsCancelled);
+                    oListItem.SubItems.Add(oCalendarData.IsRecurring);
+                    oListItem.SubItems.Add(oCalendarData.IsReminderSet);
 
-                    oListItem.SubItems.Add(oCalendarData._IsOnlineMeeting);
-                    oListItem.SubItems.Add(oCalendarData._IsResend);
-                    oListItem.SubItems.Add(oCalendarData._IsDraft);
+                    oListItem.SubItems.Add(oCalendarData.IsOnlineMeeting);
+                    oListItem.SubItems.Add(oCalendarData.IsResend);
+                    oListItem.SubItems.Add(oCalendarData.IsDraft);
 
-                    oListItem.SubItems.Add(oCalendarData._Size);
-                    oListItem.SubItems.Add(oCalendarData._HasAttachments);
+                    oListItem.SubItems.Add(oCalendarData.Size);
+                    oListItem.SubItems.Add(oCalendarData.HasAttachments);
 
-                    oListItem.SubItems.Add(oCalendarData._PidLidAppointmentRecur);
-                    oListItem.SubItems.Add(oCalendarData._PidLidClientIntent);
-                    oListItem.SubItems.Add(oCalendarData._ClientInfoString);
-                    oListItem.SubItems.Add(oCalendarData._LogTriggerAction);
+                    oListItem.SubItems.Add(oCalendarData.PidLidAppointmentRecur);
 
-                    oListItem.SubItems.Add(oCalendarData._IsHidden);
+                    oListItem.SubItems.Add(oCalendarData.PidLidClientIntent);
+                    oListItem.SubItems.Add(oCalendarData.ClientInfoString);
+                    oListItem.SubItems.Add(oCalendarData.LogTriggerAction);
 
-                    oListItem.SubItems.Add(oCalendarData._FolderPath);
-                    oListItem.SubItems.Add(oCalendarData._StoreEntryId);
-                    oListItem.SubItems.Add(oCalendarData._UniqueId);
+                    oListItem.SubItems.Add(oCalendarData.IsHidden);
+
+                    oListItem.SubItems.Add(oCalendarData.FolderPath);
+                    oListItem.SubItems.Add(oCalendarData.StoreEntryId);
+                    oListItem.SubItems.Add(oCalendarData.UniqueId);
  
-                    //
 
-
-                 
-
-                    oListItem.Tag = new ItemTag(oAppointment.Id, oAppointment.ItemClass);
+                    oListItem.Tag = new ItemTag(oCalendarData.UniqueId, oCalendarData.ItemClass);
                     lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
                     oListItem = null;
 
@@ -530,7 +547,7 @@ namespace EWSEditor.Forms
 
                 }
 
-                if (oItem.ItemClass.ToUpper().StartsWith("IPM.NOTE"))
+                if (oItem.ItemClass.ToUpper().StartsWith("IPM.SCHEDULE"))
                 {
                     iCount++;
 
@@ -545,27 +562,25 @@ namespace EWSEditor.Forms
                     oListItem.SubItems.Add(oItem.DisplayTo);
                     oListItem.SubItems.Add(oItem.DisplayCc);
 
-                    oListItem.SubItems.Add("");  // ICalUid
+                    //oListItem.SubItems.Add("");  // ICalUid
 
-                    byte[] bytearrVal;
-                    if (oItem.TryGetProperty(PidLidCleanGlobalObjectId, out bytearrVal))  // CleanGlobalObjectId
-                        oListItem.SubItems.Add(Convert.ToBase64String(bytearrVal));  // reverse: Convert.FromBase64String(string data)
-                    else
-                        oListItem.SubItems.Add("");
-
-
-                    if (oItem.TryGetProperty(PidLidGlobalObjectId, out bytearrVal))  // GlobalObjectId
-                        oListItem.SubItems.Add(Convert.ToBase64String(bytearrVal));  // reverse: Convert.FromBase64String(string data)
-                    else
-                        oListItem.SubItems.Add("");
  
-                    oListItem.SubItems.Add(oItem.RetentionDate.ToString());
+                    try
+                    {
+                        if (oItem.RetentionDate != null)
+                            oListItem.SubItems.Add(oItem.RetentionDate.ToString());
+                        else
+                            oListItem.SubItems.Add("");
+                    }
+                    catch (Exception ex)
+                    {
+                        oListItem.SubItems.Add("");
+                    }
+
                     oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
                     oListItem.SubItems.Add(oItem.LastModifiedName);
                     oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
-
-                    oListItem.SubItems.Add(""); //oItem.IsReminderSet.ToString());
-
+ 
                     oListItem.SubItems.Add(oItem.IsResend.ToString());
                     oListItem.SubItems.Add(oItem.IsDraft.ToString());
 
@@ -596,18 +611,46 @@ namespace EWSEditor.Forms
                         oListItem.SubItems.Add(sVal2);
                     else
                         oListItem.SubItems.Add("");
+                    
+ 
 
-                    if (oItem.StoreEntryId != null)
-                        oListItem.SubItems.Add(ConversionHelper.GetStringFromBytes(oItem.StoreEntryId));
-                    else
-                        oListItem.SubItems.Add("");
-
-                  
                     string sFolderPath = string.Empty;
                     if (EwsFolderHelper.GetFolderPath(_CurrentService, oItem.ParentFolderId, ref sFolderPath))
                         oListItem.SubItems.Add(sFolderPath);
                     else
                         oListItem.SubItems.Add("");
+
+                    //oListItem.SubItems.Add(oItem.ICalUid);
+ 
+
+                    byte[] bytearrVal;
+                    if (oItem.TryGetProperty(PidLidCleanGlobalObjectId, out bytearrVal))  // CleanGlobalObjectId
+                        oListItem.SubItems.Add(Convert.ToBase64String(bytearrVal));  // reverse: Convert.FromBase64String(string data)
+                    else
+                        oListItem.SubItems.Add("");
+
+
+                    if (oItem.TryGetProperty(PidLidGlobalObjectId, out bytearrVal))  // GlobalObjectId
+                        oListItem.SubItems.Add(Convert.ToBase64String(bytearrVal));  // reverse: Convert.FromBase64String(string data)
+                    else
+                        oListItem.SubItems.Add("");
+
+                    if (oItem.TryGetProperty(Prop_PR_STORE_ENTRYID, out byteArrVal))
+                        oListItem.SubItems.Add(ConversionHelper.GetStringFromBytes(byteArrVal));
+                    else
+                        oListItem.SubItems.Add("");
+
+                    //try
+                    //{
+                    //    if (oItem.StoreEntryId != null)
+                    //        oListItem.SubItems.Add(ConversionHelper.GetStringFromBytes(oItem.StoreEntryId));
+                    //    else
+                    //        oListItem.SubItems.Add("");
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    oListItem.SubItems.Add("");
+                    //}
 
                     oListItem.SubItems.Add(oItem.Id.UniqueId);
                     //oListItem.SubItems.Add(oItem.Id.ChangeKey);
@@ -615,7 +658,7 @@ namespace EWSEditor.Forms
                     oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass);
                     lvItemsMessages.Items.AddRange(new ListViewItem[] { oListItem }); ;
                     oListItem = null;
- 
+
                     bRet = true;
 
                 }
@@ -638,7 +681,7 @@ namespace EWSEditor.Forms
 
             if (oFolderId != null)
             {
- 
+
                 //FindItemsResults<Item> oFindItemsResults = null;
 
                 if (this.cmboSearchType.Text == "Direct")
@@ -646,8 +689,8 @@ namespace EWSEditor.Forms
                     List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
                     ItemView oItemView = new ItemView(iPageSize);
 
-                    oItemView.PropertySet =  GetPropertySet();
- 
+                    oItemView.PropertySet = GetPropertySet();
+
                     oItemView.OrderBy.Add(AppointmentSchema.LastModifiedTime, SortDirection.Descending);
 
                     //oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
@@ -664,7 +707,7 @@ namespace EWSEditor.Forms
 
                     AddSearchResultsToListViews(oFindItemsResults, 0);
 
-                     
+
                 }
 
 
@@ -674,28 +717,28 @@ namespace EWSEditor.Forms
                     // http://msdn.microsoft.com/en-us/library/exchange/dd633698(v=exchg.80).aspx
 
                     int offset = 0;
-                         
- 
+
+
                     bool MoreItems = true;
                     //ListViewItem oListItem = null;
 
                     ConfigureListView_Calendar(ref lvItems, cmboSearchType.Text.Trim());
 
                     ConfigureListView_Message(ref lvItemsMessages, cmboSearchType.Text.Trim());
- 
+
                     int iCountMore = 0;
 
                     while (MoreItems)
                     {
                         iCountMore++;
 
-                         
+
                         ItemView oItemView = new ItemView(iPageSize, offset, OffsetBasePoint.Beginning);
 
-   
+
                         oItemView.PropertySet = GetPropertySet();
 
-                      
+
                         oItemView.OrderBy.Add(ContactSchema.LastModifiedTime, SortDirection.Ascending);
                         //oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
 
@@ -705,7 +748,7 @@ namespace EWSEditor.Forms
                         oFindItemsResults = DoSearch(oFolderId, ref oItemView);
 
                         AddSearchResultsToListViews(oFindItemsResults, iCountMore);
- 
+
                         // Set the flag to discontinue paging.
                         if (!oFindItemsResults.MoreAvailable)
                         {
@@ -738,10 +781,10 @@ namespace EWSEditor.Forms
             oPropertySet.Add(ClientInfoString);
 
             oPropertySet.Add(LogTriggerAction);
- 
+
             return oPropertySet;
 
- 
+
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -767,7 +810,7 @@ namespace EWSEditor.Forms
         {
             this.txtBody.Enabled = this.chkBody.Checked;
             cmboBodyConditional.Enabled = this.chkBody.Checked;
-      
+
         }
 
         private void btnMailboxSearch_Click(object sender, EventArgs e)
@@ -775,7 +818,7 @@ namespace EWSEditor.Forms
             //DoMailboxSearch();
         }
 
-      
+
 
         private void btnListSearchableMailboxes_Click(object sender, EventArgs e)
         {
@@ -788,17 +831,24 @@ namespace EWSEditor.Forms
 
         private void lvItems_DoubleClick(object sender, EventArgs e)
         {
-            DisplayItem();
-        }
-
-        private void DisplayItem()
-        {
             if (lvItems.SelectedItems.Count > 0)
             {
-      
-                string sId = lvItems.SelectedItems[0].SubItems[34].Text;
-                ItemId oItemId = new ItemId(sId);
+                ItemTag oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
+                string sId = oItemTag.Id.UniqueId;
+                DisplayItemx(sId);
+            }
+        }
 
+        private void DisplayItemx(string sId)
+        {
+           // if (lvItems.SelectedItems.Count > 0)
+          //  {
+                //ItemTag oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
+
+                //string sId = oItemTag.Id.UniqueId;
+
+                //string sId = lvItems.SelectedItems[0].SubItems[34].;
+                ItemId oItemId = new ItemId(sId);
 
                 List<ItemId> item = new List<ItemId>();
                 item.Add(oItemId);
@@ -808,14 +858,14 @@ namespace EWSEditor.Forms
                     item,
                     _CurrentService,
                     this);
-            }
+           // }
         }
 
         private void chkClass_CheckedChanged(object sender, EventArgs e)
         {
             this.cmboClass.Enabled = this.chkClass.Checked;
             cmboClassConditional.Enabled = this.chkClass.Checked;
- 
+
         }
 
         private void cmboSearchDepth_SelectedIndexChanged(object sender, EventArgs e)
@@ -914,1023 +964,936 @@ namespace EWSEditor.Forms
 
         }
 
-        // 
-        private CalendarData GetRecurrenceInfo(Appointment oAppointment)
+        private void lvItemsMessages_DoubleClick(object sender, EventArgs e)
         {
-            CalendarData oCalendarData = new CalendarData();
-
-            string StartingDateRange = string.Empty;
-            string RecurrStartTime = string.Empty;
-            string RecurrEndTime = string.Empty;
-            string RecurrencePattern = string.Empty;
-            string RecurrencePatternInterval = string.Empty;
-            string RecurrencePatternDaysOfTheWeek = string.Empty;
-            string RecurrMonthlyPatternDayOfMonth = string.Empty;
-            string RecurrMonthlyPatternEveryMonths = string.Empty;
-            string RecurrDayOfTheWeekIndex  = string.Empty;
-            string RecurrDayOfWeek = string.Empty;
-            string RecurrInterval  = string.Empty;
-            string RecurrYearlyOnSpecificDay  = string.Empty;                   
-            string RecurrYearlyOnSpecificDayForMonthOf  = string.Empty;
-            string RecurrYearlyOnDayPatternDayOfWeekIndex = string.Empty;                 
-            string RecurrYearlyOnDayPatternDayOfWeek  = string.Empty;                   
-            string RecurrYearlyOnDayPatternMonth  = string.Empty;
-            string RangeHasEnd  = string.Empty;
-            string RangeNumberOccurrences  = string.Empty;
-            string RangeEndByDate  = string.Empty;
- 
-            if (oAppointment.Recurrence != null)
+            if (lvItems.SelectedItems.Count > 0)
             {
-
-                StartingDateRange  = oAppointment.Recurrence.StartDate.ToString();
-                RecurrStartTime = oAppointment.Recurrence.StartDate.ToString();
-
-                if (oAppointment.Recurrence.EndDate.HasValue)
-                    RecurrEndTime= oAppointment.Recurrence.EndDate.ToString();
-                else
-                    RecurrEndTime = oAppointment.Recurrence.StartDate.ToString();
-
-                if (oAppointment.Recurrence is Recurrence.DailyPattern)
-                {
-                    RecurrencePattern = "DailyPattern";
-                    Recurrence.DailyPattern o = (Recurrence.DailyPattern)oAppointment.Recurrence;
-
-                    RecurrencePatternInterval = o.Interval.ToString();
-
-                    o = null; 
-                }
-
-                if (oAppointment.Recurrence is Recurrence.WeeklyPattern)
-                {
-                    RecurrencePattern = "WeeklyPattern";
-                    Recurrence.WeeklyPattern o = (Recurrence.WeeklyPattern)oAppointment.Recurrence;
- 
-                    RecurrencePatternInterval = o.Interval.ToString();
-                    
-                     
-
-                    foreach (DayOfTheWeek dotw in o.DaysOfTheWeek)
-                    {
-                        switch(dotw)
-                        {
-                            case DayOfTheWeek.Sunday:
-                                RecurrencePatternDaysOfTheWeek += "Sunday,";
-                                break;
-                            case DayOfTheWeek.Monday:
-                                RecurrencePatternDaysOfTheWeek += "Monday,";
-                                break;
-                            case DayOfTheWeek.Tuesday:
-                                RecurrencePatternDaysOfTheWeek += "Tuesday,";
-                                break;
-                            case DayOfTheWeek.Wednesday:
-                                RecurrencePatternDaysOfTheWeek += "Wednesday,";
-                                break;
-                            case DayOfTheWeek.Thursday:
-                                RecurrencePatternDaysOfTheWeek += "Thursday,";
-                                break;
-                            case DayOfTheWeek.Friday:
-                                RecurrencePatternDaysOfTheWeek += "Friday,";
-                                break;
-                            case DayOfTheWeek.Saturday:
-                                RecurrencePatternDaysOfTheWeek += "Saturday,";
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-
-                    if (RecurrencePatternDaysOfTheWeek.EndsWith(","))
-                        RecurrencePatternDaysOfTheWeek.Remove(RecurrencePatternDaysOfTheWeek.Length, 1);
-                    o = null; 
-      
-                }
-
-               if (oAppointment.Recurrence is Recurrence.MonthlyPattern)
-               {
-                   RecurrencePattern = "MonthlyPattern";
-
-                   Recurrence.MonthlyPattern o = (Recurrence.MonthlyPattern)oAppointment.Recurrence;
-                   RecurrMonthlyPatternDayOfMonth = o.DayOfMonth.ToString();
-                   RecurrMonthlyPatternEveryMonths = o.Interval.ToString();
-
-               }
-
-                if (oAppointment.Recurrence is Recurrence.RelativeMonthlyPattern)
-                {
-                    RecurrencePattern = "RelativeMonthlyPattern";
-                     
-                    Recurrence.RelativeMonthlyPattern o = (Recurrence.RelativeMonthlyPattern)oAppointment.Recurrence;
-  
-                    RecurrDayOfTheWeekIndex = o.DayOfTheWeekIndex.ToString();
-                    RecurrDayOfWeek= o.DayOfTheWeek.ToString();
-                    RecurrInterval = o.Interval.ToString();
-                     
-                }
-
-                if (oAppointment.Recurrence is Recurrence.YearlyPattern)
-                {
-                    RecurrencePattern = "YearlyPattern";
-
-                    Recurrence.YearlyPattern o = (Recurrence.YearlyPattern)oAppointment.Recurrence;
-
-                    RecurrYearlyOnSpecificDay = o.DayOfMonth.ToString();
-                   
-                    RecurrYearlyOnSpecificDayForMonthOf = Enum.GetName(typeof(Month), o.Month);
-
-                    o = null;
-                }
-
-                if (oAppointment.Recurrence is Recurrence.RelativeYearlyPattern)
-                {
-                    RecurrencePattern = "RelativeYearlyPattern";
- 
-                    Recurrence.RelativeYearlyPattern o = (Recurrence.RelativeYearlyPattern)oAppointment.Recurrence;
- 
-                    RecurrYearlyOnDayPatternDayOfWeekIndex= o.DayOfTheWeekIndex.ToString();
-                    RecurrYearlyOnDayPatternDayOfWeekIndex = Enum.GetName(typeof(DayOfTheWeekIndex), o.DayOfTheWeekIndex);                     
-                    RecurrYearlyOnDayPatternDayOfWeek = Enum.GetName(typeof(DayOfTheWeek), o.DayOfTheWeek);                    
-                    RecurrYearlyOnDayPatternMonth = Enum.GetName(typeof(Month), o.Month);
-                     
-                    o = null;
-                }
-  
-                // Range
-                if (oAppointment.Recurrence.HasEnd == true)
-                {
-                    RangeHasEnd = oAppointment.Recurrence.HasEnd.ToString();
-                    RangeNumberOccurrences = "";
-                    RangeEndByDate = "";
-                    //RangeEndByDate = oAppointment.Recurrence.EndDate.Value;  // ??
-                }
-                else
-                {
-
-                    if (oAppointment.Recurrence.NumberOfOccurrences.HasValue )
-                    {   
-                        RangeNumberOccurrences = oAppointment.Recurrence.NumberOfOccurrences.ToString();
-                    }
-                    else
-                    {
-                        RangeNumberOccurrences = "";
-                        if (oAppointment.Recurrence.EndDate.HasValue )
-                        {
-                            RangeEndByDate  = oAppointment.Recurrence.EndDate.ToString();
-                        }
-                    }
-                }
+                ItemTag oItemTag = (ItemTag)lvItemsMessages.SelectedItems[0].Tag;
+                string sId = oItemTag.Id.UniqueId;
+                DisplayItemx(sId);
+            }
         }
 
-                           if (oAppointment.Recurrence is Recurrence.MonthlyPattern)
-               {
-                   RecurrencePattern = "MonthlyPattern";
-
-                   Recurrence.MonthlyPattern o = (Recurrence.MonthlyPattern)oAppointment.Recurrence;
-                   RecurrMonthlyPatternDayOfMonth = o.DayOfMonth.ToString();
-                   RecurrMonthlyPatternEveryMonths = o.Interval.ToString();
-
-               }
-
-                if (oAppointment.Recurrence is Recurrence.RelativeMonthlyPattern)
-                {
-                    RecurrencePattern = "RelativeMonthlyPattern";
-                     
-                    Recurrence.RelativeMonthlyPattern o = (Recurrence.RelativeMonthlyPattern)oAppointment.Recurrence;
-  
-                    RecurrDayOfTheWeekIndex = o.DayOfTheWeekIndex.ToString();
-                    RecurrDayOfWeek= o.DayOfTheWeek.ToString();
-                    RecurrInterval = o.Interval.ToString();
-                     
-                }
-
-                if (oAppointment.Recurrence is Recurrence.YearlyPattern)
-                {
-                    RecurrencePattern = "YearlyPattern";
-
-                    Recurrence.YearlyPattern o = (Recurrence.YearlyPattern)oAppointment.Recurrence;
-
-                    RecurrYearlyOnSpecificDay = o.DayOfMonth.ToString();
-                   
-                    RecurrYearlyOnSpecificDayForMonthOf = Enum.GetName(typeof(Month), o.Month);
-
-                    o = null;
-                }
-
-                if (oAppointment.Recurrence is Recurrence.RelativeYearlyPattern)
-                {
-                    RecurrencePattern = "RelativeYearlyPattern";
- 
-                    Recurrence.RelativeYearlyPattern o = (Recurrence.RelativeYearlyPattern)oAppointment.Recurrence;
- 
-                    RecurrYearlyOnDayPatternDayOfWeekIndex= o.DayOfTheWeekIndex.ToString();
-                    RecurrYearlyOnDayPatternDayOfWeekIndex = Enum.GetName(typeof(DayOfTheWeekIndex), o.DayOfTheWeekIndex);                     
-                    RecurrYearlyOnDayPatternDayOfWeek = Enum.GetName(typeof(DayOfTheWeek), o.DayOfTheWeek);                    
-                    RecurrYearlyOnDayPatternMonth = Enum.GetName(typeof(Month), o.Month);
-                     
-                    o = null;
-                }
-  
-                // Range
-                if (oAppointment.Recurrence.HasEnd == true)
-                {
-                    RangeHasEnd = oAppointment.Recurrence.HasEnd.ToString();
-                    RangeNumberOccurrences = "";
-                    RangeEndByDate = "";
-                    //RangeEndByDate = oAppointment.Recurrence.EndDate.Value;  // ??
-                }
-                else
-                {
-
-                    if (oAppointment.Recurrence.NumberOfOccurrences.HasValue )
-                    {   
-                        RangeNumberOccurrences = oAppointment.Recurrence.NumberOfOccurrences.ToString();
-                    }
-                    else
-                    {
-                        RangeNumberOccurrences = "";
-                        if (oAppointment.Recurrence.EndDate.HasValue )
-                        {
-                            RangeEndByDate  = oAppointment.Recurrence.EndDate.ToString();
-                        }
-                    }
-                }
-
-                return oCalendarData;
-        }
-   
-    }
- 
-    public class CalendarExport 
-    {
-        private static ExtendedPropertyDefinition PidLidAppointmentRecur = new ExtendedPropertyDefinition(new Guid("00062002-0000-0000-C000-000000000046"), 0x8216, MapiPropertyType.Binary); // dispidApptRecur
-        private static ExtendedPropertyDefinition PidLidClientIntent = new ExtendedPropertyDefinition(new Guid("11000E07-B51B-40D6-AF21-CAA85EDAB1D0"), 0x0015, MapiPropertyType.Integer); // dispidClientIntent
-
-        private static ExtendedPropertyDefinition ClientInfoString = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x000B, MapiPropertyType.String); //  
-        private static ExtendedPropertyDefinition LogTriggerAction = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x0006, MapiPropertyType.String); //  
-
-        private static ExtendedPropertyDefinition PidLidCleanGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0023, MapiPropertyType.Binary);
-        private static ExtendedPropertyDefinition PidLidGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0003, MapiPropertyType.Binary);
-
-        public static bool SaveToFile(string sFile, ExchangeService _Service, Item[] oItems)
+        private void lvItemsMessages_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool bRet = true;
 
-
-
-            return bRet;
         }
 
-        public static Appointment LoadProperties(ExchangeService _Service, ItemId oItemId)
-        {
-            Appointment oAppointment = Appointment.Bind(_Service, oItemId);
+        //    // 
+        //    private CalendarExport GetRecurrenceInfo(Appointment oAppointment)
+        //    {
+        //        CalendarExport oCalendarData = new CalendarExport();
 
-            return oAppointment;
-        }
+        //        string StartingDateRange = string.Empty;
+        //        string RecurrStartTime = string.Empty;
+        //        string RecurrEndTime = string.Empty;
+        //        string RecurrencePattern = string.Empty;
+        //        string RecurrencePatternInterval = string.Empty;
+        //        string RecurrencePatternDaysOfTheWeek = string.Empty;
+        //        string RecurrMonthlyPatternDayOfMonth = string.Empty;
+        //        string RecurrMonthlyPatternEveryMonths = string.Empty;
+        //        string RecurrDayOfTheWeekIndex  = string.Empty;
+        //        string RecurrDayOfWeek = string.Empty;
+        //        string RecurrInterval  = string.Empty;
+        //        string RecurrYearlyOnSpecificDay  = string.Empty;                   
+        //        string RecurrYearlyOnSpecificDayForMonthOf  = string.Empty;
+        //        string RecurrYearlyOnDayPatternDayOfWeekIndex = string.Empty;                 
+        //        string RecurrYearlyOnDayPatternDayOfWeek  = string.Empty;                   
+        //        string RecurrYearlyOnDayPatternMonth  = string.Empty;
+        //        string RangeHasEnd  = string.Empty;
+        //        string RangeNumberOccurrences  = string.Empty;
+        //        string RangeEndByDate  = string.Empty;
 
- 
-    }
+        //        if (oAppointment.Recurrence != null)
+        //        {
 
-    public class CalendarData
-    {       
-        private static ExtendedPropertyDefinition Prop_PR_FOLDER_PATH = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
-        //private static ExtendedPropertyDefinition Prop_PR_FOLDER_TYPE = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);  // PR_FOLDER_TYPE 0x3601 (13825)
+        //            StartingDateRange  = oAppointment.Recurrence.StartDate.ToString();
+        //            RecurrStartTime = oAppointment.Recurrence.StartDate.ToString();
 
-        private static ExtendedPropertyDefinition PidLidAppointmentRecur = new ExtendedPropertyDefinition(new Guid("00062002-0000-0000-C000-000000000046"), 0x8216, MapiPropertyType.Binary); // dispidApptRecur
-        private static ExtendedPropertyDefinition PidLidClientIntent = new ExtendedPropertyDefinition(new Guid("11000E07-B51B-40D6-AF21-CAA85EDAB1D0"), 0x0015, MapiPropertyType.Integer); // dispidClientIntent
+        //            if (oAppointment.Recurrence.EndDate.HasValue)
+        //                RecurrEndTime= oAppointment.Recurrence.EndDate.ToString();
+        //            else
+        //                RecurrEndTime = oAppointment.Recurrence.StartDate.ToString();
 
-        private static ExtendedPropertyDefinition ClientInfoString = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x000B, MapiPropertyType.String); //  
-        private static ExtendedPropertyDefinition LogTriggerAction = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x0006, MapiPropertyType.String); //  
+        //            if (oAppointment.Recurrence is Recurrence.DailyPattern)
+        //            {
+        //                RecurrencePattern = "DailyPattern";
+        //                Recurrence.DailyPattern o = (Recurrence.DailyPattern)oAppointment.Recurrence;
 
-        private static ExtendedPropertyDefinition PidLidCleanGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0023, MapiPropertyType.Binary);
-        private static ExtendedPropertyDefinition PidLidGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0003, MapiPropertyType.Binary);
+        //                RecurrencePatternInterval = o.Interval.ToString();
 
-        private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x301B, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
-        private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
-        private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
-        private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C    
-        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_TAG = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
-        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_PERIOD = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer); // Prop_PR_RETENTION_DATE 0x301C    
-        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_DATE = new ExtendedPropertyDefinition(0x301F, MapiPropertyType.SystemTime);
-        private static ExtendedPropertyDefinition Prop_PR_ENTRYID = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);  // PidTagEntryId, PidTagMemberEntryId, ptagEntryId
-        private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FB0, MapiPropertyType.Binary);  // PidTagStoreEntryId
+        //                o = null; 
+        //            }
 
-        private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+        //            if (oAppointment.Recurrence is Recurrence.WeeklyPattern)
+        //            {
+        //                RecurrencePattern = "WeeklyPattern";
+        //                Recurrence.WeeklyPattern o = (Recurrence.WeeklyPattern)oAppointment.Recurrence;
 
-        public string _UniqueId = string.Empty;
-        public string _FolderPath = string.Empty;
-        public string _Organizer_Address = string.Empty;
-        public string _ParentFolderId = string.Empty;
+        //                RecurrencePatternInterval = o.Interval.ToString();
+
+
+
+        //                foreach (DayOfTheWeek dotw in o.DaysOfTheWeek)
+        //                {
+        //                    switch(dotw)
+        //                    {
+        //                        case DayOfTheWeek.Sunday:
+        //                            RecurrencePatternDaysOfTheWeek += "Sunday,";
+        //                            break;
+        //                        case DayOfTheWeek.Monday:
+        //                            RecurrencePatternDaysOfTheWeek += "Monday,";
+        //                            break;
+        //                        case DayOfTheWeek.Tuesday:
+        //                            RecurrencePatternDaysOfTheWeek += "Tuesday,";
+        //                            break;
+        //                        case DayOfTheWeek.Wednesday:
+        //                            RecurrencePatternDaysOfTheWeek += "Wednesday,";
+        //                            break;
+        //                        case DayOfTheWeek.Thursday:
+        //                            RecurrencePatternDaysOfTheWeek += "Thursday,";
+        //                            break;
+        //                        case DayOfTheWeek.Friday:
+        //                            RecurrencePatternDaysOfTheWeek += "Friday,";
+        //                            break;
+        //                        case DayOfTheWeek.Saturday:
+        //                            RecurrencePatternDaysOfTheWeek += "Saturday,";
+        //                            break;
+        //                        default:
+        //                            break;
+        //                    }
+        //                }
+
+        //                if (RecurrencePatternDaysOfTheWeek.EndsWith(","))
+        //                    RecurrencePatternDaysOfTheWeek.Remove(RecurrencePatternDaysOfTheWeek.Length, 1);
+        //                o = null; 
+
+        //            }
+
+        //           if (oAppointment.Recurrence is Recurrence.MonthlyPattern)
+        //           {
+        //               RecurrencePattern = "MonthlyPattern";
+
+        //               Recurrence.MonthlyPattern o = (Recurrence.MonthlyPattern)oAppointment.Recurrence;
+        //               RecurrMonthlyPatternDayOfMonth = o.DayOfMonth.ToString();
+        //               RecurrMonthlyPatternEveryMonths = o.Interval.ToString();
+
+        //           }
+
+        //            if (oAppointment.Recurrence is Recurrence.RelativeMonthlyPattern)
+        //            {
+        //                RecurrencePattern = "RelativeMonthlyPattern";
+
+        //                Recurrence.RelativeMonthlyPattern o = (Recurrence.RelativeMonthlyPattern)oAppointment.Recurrence;
+
+        //                RecurrDayOfTheWeekIndex = o.DayOfTheWeekIndex.ToString();
+        //                RecurrDayOfWeek= o.DayOfTheWeek.ToString();
+        //                RecurrInterval = o.Interval.ToString();
+
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.YearlyPattern)
+        //            {
+        //                RecurrencePattern = "YearlyPattern";
+
+        //                Recurrence.YearlyPattern o = (Recurrence.YearlyPattern)oAppointment.Recurrence;
+
+        //                RecurrYearlyOnSpecificDay = o.DayOfMonth.ToString();
+
+        //                RecurrYearlyOnSpecificDayForMonthOf = Enum.GetName(typeof(Month), o.Month);
+
+        //                o = null;
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.RelativeYearlyPattern)
+        //            {
+        //                RecurrencePattern = "RelativeYearlyPattern";
+
+        //                Recurrence.RelativeYearlyPattern o = (Recurrence.RelativeYearlyPattern)oAppointment.Recurrence;
+
+        //                RecurrYearlyOnDayPatternDayOfWeekIndex= o.DayOfTheWeekIndex.ToString();
+        //                RecurrYearlyOnDayPatternDayOfWeekIndex = Enum.GetName(typeof(DayOfTheWeekIndex), o.DayOfTheWeekIndex);                     
+        //                RecurrYearlyOnDayPatternDayOfWeek = Enum.GetName(typeof(DayOfTheWeek), o.DayOfTheWeek);                    
+        //                RecurrYearlyOnDayPatternMonth = Enum.GetName(typeof(Month), o.Month);
+
+        //                o = null;
+        //            }
+
+        //            // Range
+        //            if (oAppointment.Recurrence.HasEnd == true)
+        //            {
+        //                RangeHasEnd = oAppointment.Recurrence.HasEnd.ToString();
+        //                RangeNumberOccurrences = "";
+        //                RangeEndByDate = "";
+        //                //RangeEndByDate = oAppointment.Recurrence.EndDate.Value;  // ??
+        //            }
+        //            else
+        //            {
+
+        //                if (oAppointment.Recurrence.NumberOfOccurrences.HasValue )
+        //                {   
+        //                    RangeNumberOccurrences = oAppointment.Recurrence.NumberOfOccurrences.ToString();
+        //                }
+        //                else
+        //                {
+        //                    RangeNumberOccurrences = "";
+        //                    if (oAppointment.Recurrence.EndDate.HasValue )
+        //                    {
+        //                        RangeEndByDate  = oAppointment.Recurrence.EndDate.ToString();
+        //                    }
+        //                }
+        //            }
+        //    }
+
+        //         if (oAppointment.Recurrence is Recurrence.MonthlyPattern)
+        //           {
+        //               RecurrencePattern = "MonthlyPattern";
+
+        //               Recurrence.MonthlyPattern o = (Recurrence.MonthlyPattern)oAppointment.Recurrence;
+        //               RecurrMonthlyPatternDayOfMonth = o.DayOfMonth.ToString();
+        //               RecurrMonthlyPatternEveryMonths = o.Interval.ToString();
+
+        //           }
+
+        //            if (oAppointment.Recurrence is Recurrence.RelativeMonthlyPattern)
+        //            {
+        //                RecurrencePattern = "RelativeMonthlyPattern";
+
+        //                Recurrence.RelativeMonthlyPattern o = (Recurrence.RelativeMonthlyPattern)oAppointment.Recurrence;
+
+        //                RecurrDayOfTheWeekIndex = o.DayOfTheWeekIndex.ToString();
+        //                RecurrDayOfWeek= o.DayOfTheWeek.ToString();
+        //                RecurrInterval = o.Interval.ToString();
+
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.YearlyPattern)
+        //            {
+        //                RecurrencePattern = "YearlyPattern";
+
+        //                Recurrence.YearlyPattern o = (Recurrence.YearlyPattern)oAppointment.Recurrence;
+
+        //                RecurrYearlyOnSpecificDay = o.DayOfMonth.ToString();
+
+        //                RecurrYearlyOnSpecificDayForMonthOf = Enum.GetName(typeof(Month), o.Month);
+
+        //                o = null;
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.RelativeYearlyPattern)
+        //            {
+        //                RecurrencePattern = "RelativeYearlyPattern";
+
+        //                Recurrence.RelativeYearlyPattern o = (Recurrence.RelativeYearlyPattern)oAppointment.Recurrence;
+
+        //                RecurrYearlyOnDayPatternDayOfWeekIndex= o.DayOfTheWeekIndex.ToString();
+        //                RecurrYearlyOnDayPatternDayOfWeekIndex = Enum.GetName(typeof(DayOfTheWeekIndex), o.DayOfTheWeekIndex);                     
+        //                RecurrYearlyOnDayPatternDayOfWeek = Enum.GetName(typeof(DayOfTheWeek), o.DayOfTheWeek);                    
+        //                RecurrYearlyOnDayPatternMonth = Enum.GetName(typeof(Month), o.Month);
+
+        //                o = null;
+        //            }
+
+        //            // Range
+        //            if (oAppointment.Recurrence.HasEnd == true)
+        //            {
+        //                RangeHasEnd = oAppointment.Recurrence.HasEnd.ToString();
+        //                RangeNumberOccurrences = "";
+        //                RangeEndByDate = "";
+        //                //RangeEndByDate = oAppointment.Recurrence.EndDate.Value;  // ??
+        //            }
+        //            else
+        //            {
+
+        //                if (oAppointment.Recurrence.NumberOfOccurrences.HasValue )
+        //                {   
+        //                    RangeNumberOccurrences = oAppointment.Recurrence.NumberOfOccurrences.ToString();
+        //                }
+        //                else
+        //                {
+        //                    RangeNumberOccurrences = "";
+        //                    if (oAppointment.Recurrence.EndDate.HasValue )
+        //                    {
+        //                        RangeEndByDate  = oAppointment.Recurrence.EndDate.ToString();
+        //                    }
+        //                }
+        //            }
+
+        //            return oCalendarData;
+        //    }
+
+        //}
+
+        //public class CalendarExport 
+        //{
+        //    private static ExtendedPropertyDefinition PidLidAppointmentRecur = new ExtendedPropertyDefinition(new Guid("00062002-0000-0000-C000-000000000046"), 0x8216, MapiPropertyType.Binary); // dispidApptRecur
+        //    private static ExtendedPropertyDefinition PidLidClientIntent = new ExtendedPropertyDefinition(new Guid("11000E07-B51B-40D6-AF21-CAA85EDAB1D0"), 0x0015, MapiPropertyType.Integer); // dispidClientIntent
+
+        //    private static ExtendedPropertyDefinition ClientInfoString = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x000B, MapiPropertyType.String); //  
+        //    private static ExtendedPropertyDefinition LogTriggerAction = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x0006, MapiPropertyType.String); //  
+
+        //    private static ExtendedPropertyDefinition PidLidCleanGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0023, MapiPropertyType.Binary);
+        //    private static ExtendedPropertyDefinition PidLidGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0003, MapiPropertyType.Binary);
+
+        //    public static bool SaveToFile(string sFile, ExchangeService _Service, Item[] oItems)
+        //    {
+        //        bool bRet = true;
+        //        return bRet;
+        //    }
+        //    public static Appointment LoadProperties(ExchangeService _Service, ItemId oItemId)
+        //    {
+        //        Appointment oAppointment = Appointment.Bind(_Service, oItemId);
+        //        return oAppointment;
+        //    }
+        //}
          
-        public string _Subject = string.Empty;
-        public string _DisplayTo = string.Empty;
-         
-        public string _ICalUid = string.Empty;
-        public string _DisplayCc = string.Empty;
-
-        public string _RequiredAttendees = string.Empty;
-        public string _OptionalAttendees = string.Empty;
-
-        public string _DateTimeCreated = string.Empty;
-
-        public string _LastModifiedName = string.Empty;
-        public string _LastModifiedTime = string.Empty;
-        public string _HasAttachments = string.Empty;
-        public string _ItemClass = string.Empty;
-        public string _Start = string.Empty;
-        public string _End = string.Empty;
-
-        public string _IsAllDayEvent = string.Empty;
-        public string _IsCancelled = string.Empty;
-        public string _AppointmentState = string.Empty;
-        public string _AppointmentType = string.Empty;
-
-        public string _IsRecurring = string.Empty;
-        public string _IsReminderSet = string.Empty;
-        public string _IsOnlineMeeting = string.Empty;
-        public string _RetentionDate = string.Empty;
-
-        public string _ICalRecurrenceId = string.Empty;
-        public string _IsResend = string.Empty;
-        public string _IsDraft = string.Empty;
-        public string _Size = string.Empty;
-        public string _StoreEntryId = string.Empty;
-
-        public string _PidLidAppointmentRecur = string.Empty;
-        public string _PidLidClientIntent = string.Empty;
-        public string _ClientInfoString = string.Empty;
-        public string _LogTriggerAction = string.Empty;
-        public string _PidLidCleanGlobalObjectId = string.Empty;
-        public string _PidLidGlobalObjectId = string.Empty;
-        public string _IsHidden = string.Empty;
-
-        public string _AppointmentReplyTime = string.Empty;
-        public string _AllowNewTimeProposal = string.Empty;
-        public string _AllowedResponseActions = string.Empty;
-        public string _AdjacentMeetingCount = string.Empty;
-        public string _AppointmentSequenceNumber = string.Empty;
-        public string _Body = string.Empty;
-        public string _Categories = string.Empty;
-        public string _ConferenceType = string.Empty;
-        public string _ConflictingMeetingCount = string.Empty;
-        public string _ConflictingMeetings = string.Empty;
-        public string _Culture = string.Empty;
-        public string _DateTimeReceived = string.Empty;
-        public string _Duration = string.Empty;
-        public string _EffectiveRights = string.Empty;
-        public string _ICalDateTimeStamp = string.Empty;
-        public string _Importance = string.Empty;
-        public string _InReplyTo = string.Empty;
-        public string _InternetMessageHeaders = string.Empty;                         
-        public string _IsResponseRequested = string.Empty;
-        public string _IsSubmitted = string.Empty;
-        public string _IsUnmodified = string.Empty;
-        public string _LegacyFreeBusyStatus = string.Empty;
-        public string _Location = string.Empty;
-        public string _MeetingRequestWasSent = string.Empty;
-        public string _MeetingWorkspaceUrl = string.Empty;
-        public string _MimeContent   = string.Empty;          
-        public string _MyResponseType = string.Empty;
-        public string _NetShowUrl = string.Empty;  
-        public string _ModifiedOccurrences = string.Empty;
-        public string _ReminderDueBy = string.Empty;
-        public string _ReminderMinutesBeforeStart = string.Empty;
-        public string _Resources  = string.Empty;     
-        public string _StartTimeZone = string.Empty;
-        public string _Sensitivity = string.Empty;
-        public string _When  = string.Empty;
-
-        public string _Recurr_StartingDateRange = string.Empty;
-        public string _Recurr_RecurrStartTime = string.Empty;
-        public string _Recurr_RecurrEndTime = string.Empty;
-        public string _Recurr_RecurrencePattern = string.Empty;
-        public string _Recurr_RecurrencePatternInterval = string.Empty;
-        public string _Recurr_RecurrencePatternDaysOfTheWeek = string.Empty;
-        public string _Recurr_RecurrMonthlyPatternDayOfMonth = string.Empty;
-        public string _Recurr_RecurrMonthlyPatternEveryMonths = string.Empty;
-        public string _Recurr_RecurrDayOfTheWeekIndex = string.Empty;
-        public string _Recurr_RecurrDayOfWeek = string.Empty;
-        public string _Recurr_RecurrInterval = string.Empty;
-        public string _Recurr_RecurrYearlyOnSpecificDay = string.Empty;
-        public string _Recurr_RecurrYearlyOnSpecificDayForMonthOf = string.Empty;
-        public string _Recurr_RecurrYearlyOnDayPatternDayOfWeekIndex = string.Empty;
-        public string _Recurr_RecurrYearlyOnDayPatternDayOfWeek = string.Empty;
-        public string _Recurr_RecurrYearlyOnDayPatternMonth = string.Empty;
-        public string _Recurr_RangeHasEnd = string.Empty;
-        public string _Recurr_RangeNumberOccurrences = string.Empty;
-        public string _Recurr_RangeEndByDate = string.Empty;
-
-        public Appointment GetAppointment(ExchangeService oExchangeService, ItemId oItemId)
-        {
-            Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId, GetCalendarPropset());
-            CalendarData oCalendarData = new CalendarData();
-            oCalendarData.SetAppointmentData(oAppointment);
-            return oAppointment;
-        }
- 
-        public void SetAppointmentData(Appointment oAppointment)
-        {
-            // Appointment:
-            byte[] byteArrVal;
-            StringBuilder oSB = new StringBuilder();
-
-            _Subject = oAppointment.Subject;
-            _ItemClass = oAppointment.ItemClass;
-            _Organizer_Address = oAppointment.Organizer.Address;
-            _DisplayTo = oAppointment.DisplayTo;
-            _DisplayCc = oAppointment.DisplayCc;
-
-            _Subject = oAppointment.Subject;
-            _Subject = oAppointment.Subject;
-
-
-            if (oAppointment.RequiredAttendees != null)
-            {
-                StringBuilder sbRequired = new StringBuilder();
-                foreach (Attendee oAttendee in oAppointment.RequiredAttendees)
-                    sbRequired.AppendFormat("{0} <{1}>;", oAttendee.Name, oAttendee.Address);
-                _RequiredAttendees = sbRequired.ToString();
-            }
-            else
-                _RequiredAttendees = string.Empty;
-
-
-            if (oAppointment.OptionalAttendees != null)
-            {
-                StringBuilder sbOptional = new StringBuilder();
-                foreach (Attendee oAttendee in oAppointment.OptionalAttendees)
-                    sbOptional.AppendFormat("{0} <{1}>;", oAttendee.Name, oAttendee.Address);
-                _OptionalAttendees = sbOptional.ToString();
-            }
-            else
-            { 
-                _OptionalAttendees = string.Empty;
-            }
-
-            _ICalUid = oAppointment.ICalUid;         
-
-            byte[] bytearrVal;
-            if (oAppointment.TryGetProperty(PidLidCleanGlobalObjectId, out bytearrVal))  // CleanGlobalObjectId
-                _PidLidCleanGlobalObjectId = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
-            else
-                _PidLidCleanGlobalObjectId = "";
-
-
-            if (oAppointment.TryGetProperty(PidLidGlobalObjectId, out bytearrVal))  // GlobalObjectId
-                _PidLidGlobalObjectId = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
-            else
-                _PidLidGlobalObjectId = "";
-
-            _Start = oAppointment.Start.ToString();
-            _End = oAppointment.End.ToString();
-
- 
-
-            _DateTimeCreated = oAppointment.DateTimeCreated.ToString();
-
-            _Start = oAppointment.Start.ToString();
-            _End = oAppointment.End.ToString();
-
-            _LastModifiedName = oAppointment.LastModifiedName;
-            _LastModifiedTime = oAppointment.LastModifiedTime.ToString();
-
-            _AppointmentType = oAppointment.AppointmentType.ToString();
-            _AppointmentState = oAppointment.AppointmentState.ToString();
-
-            _IsAllDayEvent = oAppointment.IsAllDayEvent.ToString();
-            _IsCancelled = oAppointment.IsCancelled.ToString();
-            _IsRecurring = oAppointment.IsRecurring.ToString();
-            _IsReminderSet = oAppointment.IsReminderSet.ToString();
- 
-            _IsOnlineMeeting = oAppointment.IsOnlineMeeting.ToString();
-            _IsResend = oAppointment.IsResend.ToString();
-            _IsDraft = oAppointment.IsDraft.ToString();
-
-            _Size = oAppointment.Size.ToString();
-            _HasAttachments = oAppointment.HasAttachments.ToString();
-
-
- 
-            if (oAppointment.TryGetProperty(PidLidAppointmentRecur, out byteArrVal))
-                _PidLidAppointmentRecur =  ConversionHelper.GetStringFromBytes(byteArrVal);
-            else
-                _PidLidAppointmentRecur = "";
-
-            int lVal;
-            if (oAppointment.TryGetProperty(PidLidClientIntent, out lVal))
-                _PidLidClientIntent = lVal.ToString();
-            else
-                _PidLidClientIntent = "";
-
-            string sVal;
-            if (oAppointment.TryGetProperty(ClientInfoString, out sVal))
-                _ClientInfoString = sVal;
-            else
-                _ClientInfoString = "";
-
-            string sVal2;
-            if (oAppointment.TryGetProperty(LogTriggerAction, out sVal2))
-                _LogTriggerAction = sVal2;
-            else
-                _LogTriggerAction = "";
- 
-             
-            string sFolderPath = string.Empty;
-            if (EwsFolderHelper.GetFolderPath(oAppointment.Service, oAppointment.ParentFolderId, ref sFolderPath))
-                _FolderPath = sFolderPath;
-            else
-                _FolderPath = "";
-
- 
-            //if (oAppointment.TryGetProperty(Prop_PR_STORE_ENTRYID, out byteArrVal))
-            //    _StoreEntryId = ConversionHelper.GetStringFromBytes(byteArrVal);
-            //else
-            //    _StoreEntryId = "";
-
-            //  ?????
-            if (oAppointment.TryGetProperty(Prop_PR_ENTRYID, out byteArrVal))    
-                _StoreEntryId = ConversionHelper.GetStringFromBytes(byteArrVal);
-            else
-                _StoreEntryId = "";
-
-  
- 
-            if (oAppointment.TryGetProperty(Prop_PR_RETENTION_DATE, out byteArrVal))
-                _RetentionDate = ConversionHelper.GetStringFromBytes(byteArrVal);
-            else
-                _RetentionDate = "";
-
-            bool bolVal = false;
-            if (oAppointment.TryGetProperty(Prop_PR_IS_HIDDEN, out bolVal))
-                _RetentionDate = bolVal.ToString();
-            else
-                _RetentionDate = "";
-
-            //if (oAppointment.AppointmentReplyTime != null) _AppointmentReplyTime = oAppointment.AppointmentReplyTime.ToString();   Not being returned
-            try
-            {
-                _AllowNewTimeProposal = oAppointment.AllowNewTimeProposal.ToString();
-            }
-            catch (Exception ex)
-            {
-                _AllowNewTimeProposal = "";
-            }
-            //if (oAppointment.AllowNewTimeProposal != null) _AllowNewTimeProposal = oAppointment.AllowNewTimeProposal.ToString();
-            _AllowedResponseActions = oAppointment.AllowedResponseActions.ToString();
-            _AdjacentMeetingCount = oAppointment.AdjacentMeetingCount.ToString();
-            _AppointmentSequenceNumber = oAppointment.AppointmentSequenceNumber.ToString();
-            _Body = oAppointment.Body;
-            _Categories = oAppointment.Categories.ToString();
-            // _ConferenceType = oAppointment.ConferenceType.ToString();  Not being returned
-            _ConflictingMeetingCount = oAppointment.ConflictingMeetingCount.ToString();
-
-
-            if (oAppointment.ConflictingMeetings != null)
-            {
-                oSB = new StringBuilder();
-                foreach (Appointment a in oAppointment.ConflictingMeetings)
-                {
-                    oSB.AppendFormat("Subject: {0}  Start: {1}  End: {2}  UniqueId: {3} \r\n", a.Subject, a.Start, a.End, a.Id.UniqueId);
-                }
-                _ConflictingMeetings = oSB.ToString();
-            }
-            else
-                _ConflictingMeetings = "";
-
-            _Culture = oAppointment.Culture.ToString();
-            _DateTimeReceived = oAppointment.DateTimeReceived.ToString();
-            _Duration = oAppointment.Duration.ToString();
-            _EffectiveRights = oAppointment.EffectiveRights.ToString();
-            _ICalDateTimeStamp = oAppointment.ICalDateTimeStamp.ToString();
-            _Importance = oAppointment.Importance.ToString();
-            if (oAppointment.InReplyTo != null)
-                _InReplyTo = oAppointment.InReplyTo.ToString();
-            if (oAppointment.InternetMessageHeaders != null)
-                _InternetMessageHeaders = oAppointment.InternetMessageHeaders.ToString();
-
-            bool boolVal = false;
-            if (oAppointment.TryGetProperty(Prop_PR_IS_HIDDEN, out boolVal))
-                _IsHidden = boolVal.ToString();
-            else
-                _IsHidden = "";
-
-            _IsResponseRequested = oAppointment.IsResponseRequested.ToString();
-            _IsSubmitted = oAppointment.IsSubmitted.ToString();
-            _IsUnmodified = oAppointment.IsUnmodified.ToString();
-            _LegacyFreeBusyStatus = oAppointment.LegacyFreeBusyStatus.ToString();
-            if (oAppointment.Location != null)
-                _Location = oAppointment.Location.ToString();
-            _MeetingRequestWasSent = oAppointment.MeetingRequestWasSent.ToString();
-            if (oAppointment.MeetingWorkspaceUrl != null)
-                _MeetingWorkspaceUrl = oAppointment.MeetingWorkspaceUrl.ToString();
-            _MimeContent   = oAppointment.MimeContent.ToString();         
-            _MyResponseType = oAppointment.MyResponseType.ToString();
-            if (oAppointment.NetShowUrl != null)
-                _NetShowUrl = oAppointment.NetShowUrl;
-           
-            try
-            { 
-                _ReminderDueBy = oAppointment.ReminderDueBy.ToString();
-            }
-            catch (Exception ex)
-            {
-                _ReminderDueBy = "";
-            }
- 
-            _ReminderMinutesBeforeStart = oAppointment.ReminderMinutesBeforeStart.ToString();
-            
-
-             oSB = new StringBuilder();
-             foreach (Attendee oAttendee in oAppointment.Resources)
-                 oSB.AppendFormat("{0} <{1}>;", oAttendee.Name, oAttendee.Address);
-             _Resources = _Resources.ToString();
-
-            _StartTimeZone = oAppointment.StartTimeZone.ToString();
-            _Sensitivity = oAppointment.Sensitivity.ToString();
-            if (oAppointment.When != null) 
-                _When = oAppointment.When.ToString();
-
- 
- 
-            //private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x301B, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
-            //private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
-            //private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
-            //private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C    
-            //private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_TAG = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
-            //private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_PERIOD = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer); // Prop_PR_RETENTION_DATE 0x301C    
-            //private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_DATE = new ExtendedPropertyDefinition(0x301F, MapiPropertyType.SystemTime);
-            //private static ExtendedPropertyDefinition Prop_PR_ENTRYID = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);  // PidTagEntryId, PidTagMemberEntryId, ptagEntryId
-            //private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FB0, MapiPropertyType.Binary);  // PidTagStoreEntryId
-
-                    
-            _UniqueId = oAppointment.Id.UniqueId;
-
-            SetAppointmentRecurrenceData(oAppointment);
- 
-        }
-
-        private void SetAppointmentRecurrenceData(Appointment oAppointment)
-        { 
-            //  Recurrence  -----------------------------------------------------------------------
-
-            if (oAppointment.Recurrence != null)
-            {
-
-                _Recurr_StartingDateRange = oAppointment.Recurrence.StartDate.ToString();
-                _Recurr_RecurrStartTime = oAppointment.Recurrence.StartDate.ToString();
-
-                if (oAppointment.Recurrence.EndDate.HasValue)
-                    _Recurr_RecurrEndTime = oAppointment.Recurrence.EndDate.ToString();
-                else
-                    _Recurr_RecurrEndTime = oAppointment.Recurrence.StartDate.ToString();
-
-                if (oAppointment.Recurrence is Recurrence.DailyPattern)
-                {
-                    _Recurr_RecurrencePattern = "DailyPattern";
-                    Recurrence.DailyPattern o = (Recurrence.DailyPattern)oAppointment.Recurrence;
-
-                    _Recurr_RecurrencePatternInterval = o.Interval.ToString();
-
-                    o = null;
-                }
-
-                if (oAppointment.Recurrence is Recurrence.WeeklyPattern)
-                {
-                    _Recurr_RecurrencePattern = "WeeklyPattern";
-                    Recurrence.WeeklyPattern o = (Recurrence.WeeklyPattern)oAppointment.Recurrence;
-
-                    _Recurr_RecurrencePatternInterval = o.Interval.ToString();
-
-
-
-                    foreach (DayOfTheWeek dotw in o.DaysOfTheWeek)
-                    {
-                        switch (dotw)
-                        {
-                            case DayOfTheWeek.Sunday:
-                                _Recurr_RecurrencePatternDaysOfTheWeek += "Sunday, ";
-                                break;
-                            case DayOfTheWeek.Monday:
-                                _Recurr_RecurrencePatternDaysOfTheWeek += "Monday, ";
-                                break;
-                            case DayOfTheWeek.Tuesday:
-                                _Recurr_RecurrencePatternDaysOfTheWeek += "Tuesday, ";
-                                break;
-                            case DayOfTheWeek.Wednesday:
-                                _Recurr_RecurrencePatternDaysOfTheWeek += "Wednesday, ";
-                                break;
-                            case DayOfTheWeek.Thursday:
-                                _Recurr_RecurrencePatternDaysOfTheWeek += "Thursday, ";
-                                break;
-                            case DayOfTheWeek.Friday:
-                                _Recurr_RecurrencePatternDaysOfTheWeek += "Friday, ";
-                                break;
-                            case DayOfTheWeek.Saturday:
-                                _Recurr_RecurrencePatternDaysOfTheWeek += "Saturday, ";
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-
-                    if (_Recurr_RecurrencePatternDaysOfTheWeek.EndsWith(", "))
-                        _Recurr_RecurrencePatternDaysOfTheWeek = _Recurr_RecurrencePatternDaysOfTheWeek.Remove(_Recurr_RecurrencePatternDaysOfTheWeek.Length - 2, 2);
-                    o = null;
-
-                }
-
-                if (oAppointment.Recurrence is Recurrence.MonthlyPattern)
-                {
-                    _Recurr_RecurrencePattern = "MonthlyPattern";
-
-                    Recurrence.MonthlyPattern o = (Recurrence.MonthlyPattern)oAppointment.Recurrence;
-                    _Recurr_RecurrMonthlyPatternDayOfMonth = o.DayOfMonth.ToString();
-                    _Recurr_RecurrMonthlyPatternEveryMonths = o.Interval.ToString();
-
-                }
-
-                if (oAppointment.Recurrence is Recurrence.RelativeMonthlyPattern)
-                {
-                    _Recurr_RecurrencePattern = "RelativeMonthlyPattern";
-
-                    Recurrence.RelativeMonthlyPattern o = (Recurrence.RelativeMonthlyPattern)oAppointment.Recurrence;
-
-                    _Recurr_RecurrDayOfTheWeekIndex = o.DayOfTheWeekIndex.ToString();
-                    _Recurr_RecurrDayOfWeek = o.DayOfTheWeek.ToString();
-                    _Recurr_RecurrInterval = o.Interval.ToString();
-
-                }
-
-                if (oAppointment.Recurrence is Recurrence.YearlyPattern)
-                {
-                    _Recurr_RecurrencePattern = "YearlyPattern";
-
-                    Recurrence.YearlyPattern o = (Recurrence.YearlyPattern)oAppointment.Recurrence;
-
-                    _Recurr_RecurrYearlyOnSpecificDay = o.DayOfMonth.ToString();
-
-                    _Recurr_RecurrYearlyOnSpecificDayForMonthOf = Enum.GetName(typeof(Month), o.Month);
-
-                    o = null;
-                }
-
-                if (oAppointment.Recurrence is Recurrence.RelativeYearlyPattern)
-                {
-                    _Recurr_RecurrencePattern = "RelativeYearlyPattern";
-
-                    Recurrence.RelativeYearlyPattern o = (Recurrence.RelativeYearlyPattern)oAppointment.Recurrence;
-
-                    _Recurr_RecurrYearlyOnDayPatternDayOfWeekIndex = o.DayOfTheWeekIndex.ToString();
-                    _Recurr_RecurrYearlyOnDayPatternDayOfWeekIndex = Enum.GetName(typeof(DayOfTheWeekIndex), o.DayOfTheWeekIndex);
-                    _Recurr_RecurrYearlyOnDayPatternDayOfWeek = Enum.GetName(typeof(DayOfTheWeek), o.DayOfTheWeek);
-                    _Recurr_RecurrYearlyOnDayPatternMonth = Enum.GetName(typeof(Month), o.Month);
-
-                    o = null;
-                }
-
-                // Range
-                if (oAppointment.Recurrence.HasEnd == true)
-                {
-                    _Recurr_RangeHasEnd = oAppointment.Recurrence.HasEnd.ToString();
-                    _Recurr_RangeNumberOccurrences = "";
-                    _Recurr_RangeEndByDate = "";
-                    //RangeEndByDate = oAppointment.Recurrence.EndDate.Value;  // ??
-                }
-                else
-                {
-
-                    if (oAppointment.Recurrence.NumberOfOccurrences.HasValue)
-                    {
-                        _Recurr_RangeNumberOccurrences = oAppointment.Recurrence.NumberOfOccurrences.ToString();
-                    }
-                    else
-                    {
-                        _Recurr_RangeNumberOccurrences = "";
-                        if (oAppointment.Recurrence.EndDate.HasValue)
-                        {
-                            _Recurr_RangeEndByDate = oAppointment.Recurrence.EndDate.ToString();
-                        }
-                    }
-                }
-
-
-                if (oAppointment.Recurrence is Recurrence.MonthlyPattern)
-                {
-                    _Recurr_RecurrencePattern = "MonthlyPattern";
-
-                    Recurrence.MonthlyPattern o = (Recurrence.MonthlyPattern)oAppointment.Recurrence;
-                    _Recurr_RecurrMonthlyPatternDayOfMonth = o.DayOfMonth.ToString();
-                    _Recurr_RecurrMonthlyPatternEveryMonths = o.Interval.ToString();
-
-                }
-
-                if (oAppointment.Recurrence is Recurrence.RelativeMonthlyPattern)
-                {
-                    _Recurr_RecurrencePattern = "RelativeMonthlyPattern";
-
-                    Recurrence.RelativeMonthlyPattern o = (Recurrence.RelativeMonthlyPattern)oAppointment.Recurrence;
-
-                    _Recurr_RecurrDayOfTheWeekIndex = o.DayOfTheWeekIndex.ToString();
-                    _Recurr_RecurrDayOfWeek = o.DayOfTheWeek.ToString();
-                    _Recurr_RecurrInterval = o.Interval.ToString();
-
-                }
-
-                if (oAppointment.Recurrence is Recurrence.YearlyPattern)
-                {
-                    _Recurr_RecurrencePattern = "YearlyPattern";
-
-                    Recurrence.YearlyPattern o = (Recurrence.YearlyPattern)oAppointment.Recurrence;
-
-                    _Recurr_RecurrYearlyOnSpecificDay = o.DayOfMonth.ToString();
-
-                    _Recurr_RecurrYearlyOnSpecificDayForMonthOf = Enum.GetName(typeof(Month), o.Month);
-
-                    o = null;
-                }
-
-                if (oAppointment.Recurrence is Recurrence.RelativeYearlyPattern)
-                {
-                    _Recurr_RecurrencePattern = "RelativeYearlyPattern";
-
-                    Recurrence.RelativeYearlyPattern o = (Recurrence.RelativeYearlyPattern)oAppointment.Recurrence;
-
-                    _Recurr_RecurrYearlyOnDayPatternDayOfWeekIndex = o.DayOfTheWeekIndex.ToString();
-                    _Recurr_RecurrYearlyOnDayPatternDayOfWeekIndex = Enum.GetName(typeof(DayOfTheWeekIndex), o.DayOfTheWeekIndex);
-                    _Recurr_RecurrYearlyOnDayPatternDayOfWeek = Enum.GetName(typeof(DayOfTheWeek), o.DayOfTheWeek);
-                    _Recurr_RecurrYearlyOnDayPatternMonth = Enum.GetName(typeof(Month), o.Month);
-
-                    o = null;
-                }
-
-                // Range
-                if (oAppointment.Recurrence.HasEnd == true)
-                {
-                    _Recurr_RangeHasEnd = oAppointment.Recurrence.HasEnd.ToString();
-                    _Recurr_RangeNumberOccurrences = "";
-                    _Recurr_RangeEndByDate = "";
-                    //RangeEndByDate = oAppointment.Recurrence.EndDate.Value;  // ??
-                }
-                else
-                {
-
-                    if (oAppointment.Recurrence.NumberOfOccurrences.HasValue)
-                    {
-                        _Recurr_RangeNumberOccurrences = oAppointment.Recurrence.NumberOfOccurrences.ToString();
-                    }
-                    else
-                    {
-                        _Recurr_RangeNumberOccurrences = "";
-                        if (oAppointment.Recurrence.EndDate.HasValue)
-                            _Recurr_RangeEndByDate = oAppointment.Recurrence.EndDate.ToString();
-                    }
-                }
-            }
-
-        }
-
-        private PropertySet GetCalendarPropset()
-        {
-
-            PropertySet appointmentPropertySet = new PropertySet(BasePropertySet.IdOnly,
- 
-                AppointmentSchema.AdjacentMeetingCount,
-                AppointmentSchema.AdjacentMeetings,
-                AppointmentSchema.AllowedResponseActions,
-                AppointmentSchema.AllowNewTimeProposal,
-                /* AppointmentSchema.AppointmentReplyTime,  */
-                AppointmentSchema.AppointmentSequenceNumber,
-                AppointmentSchema.AppointmentState,
-                AppointmentSchema.AppointmentType,
-                AppointmentSchema.Attachments,
-                AppointmentSchema.Body,
-                AppointmentSchema.Categories,
-                /*  AppointmentSchema.ConferenceType,   */
-                AppointmentSchema.ConflictingMeetingCount,
-                AppointmentSchema.ConflictingMeetings,  
-                AppointmentSchema.Culture,
-                AppointmentSchema.DateTimeCreated,
-                AppointmentSchema.DateTimeReceived,
-                AppointmentSchema.DateTimeSent,
-                AppointmentSchema.DeletedOccurrences,
-                AppointmentSchema.DisplayCc,
-                AppointmentSchema.DisplayTo,
-                AppointmentSchema.Duration,
-                AppointmentSchema.EffectiveRights,
-                AppointmentSchema.End,
-                AppointmentSchema.HasAttachments,
-                AppointmentSchema.ICalDateTimeStamp,
-                AppointmentSchema.ICalRecurrenceId,
-                AppointmentSchema.ICalUid,
-                AppointmentSchema.Id,
-                AppointmentSchema.Importance,
-                AppointmentSchema.InReplyTo,
-                AppointmentSchema.InternetMessageHeaders,
-
-                AppointmentSchema.IsAllDayEvent,
-                AppointmentSchema.IsCancelled,
-                AppointmentSchema.IsDraft,
-                AppointmentSchema.IsFromMe,
-                AppointmentSchema.IsMeeting,
-                AppointmentSchema.IsOnlineMeeting,
-                AppointmentSchema.IsRecurring,
-                AppointmentSchema.IsReminderSet,
-                AppointmentSchema.IsResend,
-                AppointmentSchema.IsResponseRequested,
-                AppointmentSchema.IsSubmitted,
-                AppointmentSchema.IsUnmodified,
-                AppointmentSchema.ItemClass, 
-                AppointmentSchema.LastModifiedName,
-                AppointmentSchema.LastModifiedTime,
-                AppointmentSchema.LegacyFreeBusyStatus,
-                AppointmentSchema.Location,
-                AppointmentSchema.MeetingRequestWasSent,
-                AppointmentSchema.MeetingWorkspaceUrl,
-                AppointmentSchema.MimeContent,
-                AppointmentSchema.ModifiedOccurrences,
-                AppointmentSchema.MyResponseType,
-                AppointmentSchema.NetShowUrl,
-                AppointmentSchema.OptionalAttendees,
-                AppointmentSchema.Organizer,
-                AppointmentSchema.OriginalStart,
-                AppointmentSchema.ParentFolderId,
-                AppointmentSchema.Recurrence,
-                AppointmentSchema.ReminderDueBy,
-                AppointmentSchema.ReminderMinutesBeforeStart,
-                AppointmentSchema.RequiredAttendees,
-                AppointmentSchema.Resources,  
-                AppointmentSchema.Sensitivity,
-                AppointmentSchema.Size,
-                AppointmentSchema.Start,
-                AppointmentSchema.StartTimeZone,
-                AppointmentSchema.Subject,
-                AppointmentSchema.TimeZone,
-                AppointmentSchema.When
-
- 
-              );
-
-            // Not included:
-            //    AppointmentSchema.FirstOccurrence.,
-            //    AppointmentSchema.LastOccurrence,
-            //    AppointmentSchema.ModifiedOccurrences,
-            //    AppointmentSchema.DeletedOccurrences,
-            //    AppointmentSchema.ExtendedProperties
-
-            // These are version specific:
-            //      AppointmentSchema.Hashtags,                     2015+
-            //      AppointmentSchema.MentionedMe,                  2015+
-            //      AppointmentSchema.Mentions                      2015+
-            //      AppointmentSchema.MimeContentUTF8,              Exchange2013_SP1+
-            //      AppointmentSchema.ArchiveTag,                   2013+                +
-            //      AppointmentSchema.ConversationId                2010+                +
-            //      AppointmentSchema.EndTimeZone,                  2010+                 
-            //      AppointmentSchema.EnhancedLocation,             2013+
-            //      AppointmentSchema.EntityExtractionResult,       2013+
-            //      AppointmentSchema.Flag,                         2013+
-            //      AppointmentSchema.IconIndex,                    2013+                +
-            //      AppointmentSchema.InstanceKey,                  2013+                +
-            //      AppointmentSchema.IsAssociated,                 2010+
-            //      AppointmentSchema.JoinOnlineMeetingUrl,         2013+
-            //      AppointmentSchema.NormalizedBody,               2013+
-            //      AppointmentSchema.OnlineMeetingSettings,        2013+
-            //      AppointmentSchema.PolicyTag,                    2013+                +
-            //      AppointmentSchema.Preview,                      2013+
-            //      AppointmentSchema.RetentionDate,                2013+                +
-            //      AppointmentSchema.StoreEntryId,                 2013+                +
-            //      AppointmentSchema.TextBody,                     2013+
-            //      AppointmentSchema.UniqueBody,                   2010+
-            //      AppointmentSchema.WebClientEditFormQueryString, 2010+
-            //      AppointmentSchema.WebClientReadFormQueryString, 2010+
-      
-            // Problems loading or need extra work to implement:
-            //   AppointmentSchema.AppointmentReplyTime 
-            //   AppointmentSchema.ConferenceType 
-          
-  
-
-
-            // Need to add these:
-            appointmentPropertySet.Add(PidLidAppointmentRecur);
-            appointmentPropertySet.Add(PidLidClientIntent);
-            appointmentPropertySet.Add(ClientInfoString);
-            appointmentPropertySet.Add(LogTriggerAction);
-            appointmentPropertySet.Add(PidLidCleanGlobalObjectId);
-            appointmentPropertySet.Add(PidLidGlobalObjectId);
-         
-            appointmentPropertySet.Add(Prop_PR_POLICY_TAG);
-
-            appointmentPropertySet.Add(Prop_PR_RETENTION_FLAGS);
-            appointmentPropertySet.Add(Prop_PR_RETENTION_PERIOD);
-            appointmentPropertySet.Add(Prop_PR_ARCHIVE_TAG);
-            appointmentPropertySet.Add(Prop_PR_ARCHIVE_PERIOD);
-            appointmentPropertySet.Add(Prop_PR_ARCHIVE_DATE);
-            appointmentPropertySet.Add(Prop_PR_ENTRYID);
-
-            appointmentPropertySet.Add(Prop_PR_RETENTION_DATE);
-            appointmentPropertySet.Add(Prop_PR_STORE_ENTRYID);
-            appointmentPropertySet.Add(Prop_PR_IS_HIDDEN);
- 
-            return appointmentPropertySet;
-        }
+
+        //    public Appointment GetAppointment(ExchangeService oExchangeService, ItemId oItemId)
+        //    {
+        //        Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId, GetCalendarPropset());
+        //        CalendarExport oCalendarData = new CalendarExport();
+        //        oCalendarData.SetAppointmentData(oAppointment);
+        //        return oAppointment;
+        //    }
+
+        //    public void SetAppointmentData(Appointment oAppointment)
+        //    {
+        //        // Appointment:
+        //        byte[] byteArrVal;
+        //        StringBuilder oSB = new StringBuilder();
+
+        //        this.CalendarAppointment.Subject = oAppointment.Subject;
+        //        this.CalendarAppointment.ItemClass = oAppointment.ItemClass;
+        //        this.CalendarAppointment.OrganizerAddress = oAppointment.Organizer.Address;
+        //        this.CalendarAppointment.DisplayTo = oAppointment.DisplayTo;
+        //        this.CalendarAppointment.DisplayCc = oAppointment.DisplayCc;
+
+        //        this.CalendarAppointment.Subject = oAppointment.Subject;
+        //        this.CalendarAppointment.Subject = oAppointment.Subject;
+
+
+        //        if (oAppointment.RequiredAttendees != null)
+        //        {
+        //            StringBuilder sbRequired = new StringBuilder();
+        //            foreach (Attendee oAttendee in oAppointment.RequiredAttendees)
+        //                sbRequired.AppendFormat("{0} <{1}>;", oAttendee.Name, oAttendee.Address);
+        //            this.CalendarAppointment.RequiredAttendees = sbRequired.ToString();
+        //        }
+        //        else
+        //            this.CalendarAppointment.RequiredAttendees = string.Empty;
+
+
+        //        if (oAppointment.OptionalAttendees != null)
+        //        {
+        //            StringBuilder sbOptional = new StringBuilder();
+        //            foreach (Attendee oAttendee in oAppointment.OptionalAttendees)
+        //                sbOptional.AppendFormat("{0} <{1}>;", oAttendee.Name, oAttendee.Address);
+        //            this.CalendarAppointment.OptionalAttendees = sbOptional.ToString();
+        //        }
+        //        else
+        //        { 
+        //            this.CalendarAppointment.OptionalAttendees = string.Empty;
+        //        }
+
+        //        this.CalendarAppointment.ICalUid = oAppointment.ICalUid;         
+
+        //        byte[] bytearrVal;
+        //        if (oAppointment.TryGetProperty(PidLidCleanGlobalObjectId, out bytearrVal))  // CleanGlobalObjectId
+        //            this.CalendarAppointment.PidLidCleanGlobalObjectId = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
+        //        else
+        //            this.CalendarAppointment.PidLidCleanGlobalObjectId = "";
+
+
+        //        if (oAppointment.TryGetProperty(PidLidGlobalObjectId, out bytearrVal))  // GlobalObjectId
+        //            this.CalendarAppointment.PidLidGlobalObjectId = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
+        //        else
+        //            this.CalendarAppointment.PidLidGlobalObjectId = "";
+
+        //        this.CalendarAppointment.Start = oAppointment.Start.ToString();
+        //        this.CalendarAppointment.End = oAppointment.End.ToString();
+
+
+
+        //        this.CalendarAppointment.DateTimeCreated = oAppointment.DateTimeCreated.ToString();
+
+        //        this.CalendarAppointment.Start = oAppointment.Start.ToString();
+        //        this.CalendarAppointment.End = oAppointment.End.ToString();
+
+        //        this.CalendarAppointment.LastModifiedName = oAppointment.LastModifiedName;
+        //        this.CalendarAppointment.LastModifiedTime = oAppointment.LastModifiedTime.ToString();
+
+        //        this.CalendarAppointment.AppointmentType = oAppointment.AppointmentType.ToString();
+        //        this.CalendarAppointment.AppointmentState = oAppointment.AppointmentState.ToString();
+
+        //        this.CalendarAppointment.IsAllDayEvent = oAppointment.IsAllDayEvent.ToString();
+        //        this.CalendarAppointment.IsCancelled = oAppointment.IsCancelled.ToString();
+        //        this.CalendarAppointment.IsRecurring = oAppointment.IsRecurring.ToString();
+        //        this.CalendarAppointment.IsReminderSet = oAppointment.IsReminderSet.ToString();
+
+        //        this.CalendarAppointment.IsOnlineMeeting = oAppointment.IsOnlineMeeting.ToString();
+        //        this.CalendarAppointment.IsResend = oAppointment.IsResend.ToString();
+        //        this.CalendarAppointment.IsDraft = oAppointment.IsDraft.ToString();
+
+        //        this.CalendarAppointment.Size = oAppointment.Size.ToString();
+        //        this.CalendarAppointment.HasAttachments = oAppointment.HasAttachments.ToString();
+
+
+
+        //        if (oAppointment.TryGetProperty(PidLidAppointmentRecur, out byteArrVal))
+        //            this.CalendarAppointment.PidLidAppointmentRecur =  ConversionHelper.GetStringFromBytes(byteArrVal);
+        //        else
+        //            this.CalendarAppointment.PidLidAppointmentRecur = "";
+
+        //        int lVal;
+        //        if (oAppointment.TryGetProperty(PidLidClientIntent, out lVal))
+        //            this.CalendarAppointment.PidLidClientIntent = lVal.ToString();
+        //        else
+        //            this.CalendarAppointment.PidLidClientIntent = "";
+
+        //        string sVal;
+        //        if (oAppointment.TryGetProperty(ClientInfoString, out sVal))
+        //            this.CalendarAppointment.ClientInfoString = sVal;
+        //        else
+        //            this.CalendarAppointment.ClientInfoString = "";
+
+        //        string sVal2;
+        //        if (oAppointment.TryGetProperty(LogTriggerAction, out sVal2))
+        //            this.CalendarAppointment.LogTriggerAction = sVal2;
+        //        else
+        //            this.CalendarAppointment.LogTriggerAction = "";
+
+
+        //        string sFolderPath = string.Empty;
+        //        if (EwsFolderHelper.GetFolderPath(oAppointment.Service, oAppointment.ParentFolderId, ref sFolderPath))
+        //            this.CalendarAppointment.FolderPath = sFolderPath;
+        //        else
+        //            this.CalendarAppointment.FolderPath = "";
+
+
+        //        //if (oAppointment.TryGetProperty(Prop_PR_STORE_ENTRYID, out byteArrVal))
+        //        //    _StoreEntryId = ConversionHelper.GetStringFromBytes(byteArrVal);
+        //        //else
+        //        //    _StoreEntryId = "";
+
+        //        //  ?????
+        //        if (oAppointment.TryGetProperty(Prop_PR_ENTRYID, out byteArrVal))    
+        //            this.CalendarAppointment.StoreEntryId = ConversionHelper.GetStringFromBytes(byteArrVal);
+        //        else
+        //            this.CalendarAppointment.StoreEntryId = "";
+
+
+
+        //        if (oAppointment.TryGetProperty(Prop_PR_RETENTION_DATE, out byteArrVal))
+        //            this.CalendarAppointment.RetentionDate = ConversionHelper.GetStringFromBytes(byteArrVal);
+        //        else
+        //            this.CalendarAppointment.RetentionDate = "";
+
+        //        bool bolVal = false;
+        //        if (oAppointment.TryGetProperty(Prop_PR_IS_HIDDEN, out bolVal))
+        //            this.CalendarAppointment.RetentionDate = bolVal.ToString();
+        //        else
+        //            this.CalendarAppointment.RetentionDate = "";
+
+        //        //if (oAppointment.AppointmentReplyTime != null) this.CalendarAppointment.AppointmentReplyTime = oAppointment.AppointmentReplyTime.ToString();   Not being returned
+        //        try
+        //        {
+        //            this.CalendarAppointment.AllowNewTimeProposal = oAppointment.AllowNewTimeProposal.ToString();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            this.CalendarAppointment.AllowNewTimeProposal = "";
+        //        }
+        //        //if (oAppointment.AllowNewTimeProposal != null) this.CalendarAppointment.AllowNewTimeProposal = oAppointment.AllowNewTimeProposal.ToString();
+        //        this.CalendarAppointment.AllowedResponseActions = oAppointment.AllowedResponseActions.ToString();
+        //        this.CalendarAppointment.AdjacentMeetingCount = oAppointment.AdjacentMeetingCount.ToString();
+        //        this.CalendarAppointment.AppointmentSequenceNumber = oAppointment.AppointmentSequenceNumber.ToString();
+        //        this.CalendarAppointment.Body = oAppointment.Body;
+        //        this.CalendarAppointment.Categories = oAppointment.Categories.ToString();
+        //        // this.CalendarAppointment.ConferenceType = oAppointment.ConferenceType.ToString();  Not being returned
+        //        this.CalendarAppointment.ConflictingMeetingCount = oAppointment.ConflictingMeetingCount.ToString();
+
+
+        //        if (oAppointment.ConflictingMeetings != null)
+        //        {
+        //            oSB = new StringBuilder();
+        //            foreach (Appointment a in oAppointment.ConflictingMeetings)
+        //            {
+        //                oSB.AppendFormat("Subject: {0}  Start: {1}  End: {2}  UniqueId: {3} \r\n", a.Subject, a.Start, a.End, a.Id.UniqueId);
+        //            }
+        //            this.CalendarAppointment.ConflictingMeetings = oSB.ToString();
+        //        }
+        //        else
+        //            this.CalendarAppointment.ConflictingMeetings = "";
+
+        //        this.CalendarAppointment.Culture = oAppointment.Culture.ToString();
+        //        this.CalendarAppointment.DateTimeReceived = oAppointment.DateTimeReceived.ToString();
+        //        this.CalendarAppointment.Duration = oAppointment.Duration.ToString();
+        //        this.CalendarAppointment.EffectiveRights = oAppointment.EffectiveRights.ToString();
+        //        this.CalendarAppointment.ICalDateTimeStamp = oAppointment.ICalDateTimeStamp.ToString();
+        //        this.CalendarAppointment.Importance = oAppointment.Importance.ToString();
+        //        if (oAppointment.InReplyTo != null)
+        //            this.CalendarAppointment.InReplyTo = oAppointment.InReplyTo.ToString();
+        //        if (oAppointment.InternetMessageHeaders != null)
+        //            this.CalendarAppointment.InternetMessageHeaders = oAppointment.InternetMessageHeaders.ToString();
+
+        //        bool boolVal = false;
+        //        if (oAppointment.TryGetProperty(Prop_PR_IS_HIDDEN, out boolVal))
+        //            this.CalendarAppointment.IsHidden = boolVal.ToString();
+        //        else
+        //            this.CalendarAppointment.IsHidden = "";
+
+        //        this.CalendarAppointment.IsResponseRequested = oAppointment.IsResponseRequested.ToString();
+        //        this.CalendarAppointment.IsSubmitted = oAppointment.IsSubmitted.ToString();
+        //        this.CalendarAppointment.IsUnmodified = oAppointment.IsUnmodified.ToString();
+        //        this.CalendarAppointment.LegacyFreeBusyStatus = oAppointment.LegacyFreeBusyStatus.ToString();
+        //        if (oAppointment.Location != null)
+        //            this.CalendarAppointment.Location = oAppointment.Location.ToString();
+        //        this.CalendarAppointment.MeetingRequestWasSent = oAppointment.MeetingRequestWasSent.ToString();
+        //        if (oAppointment.MeetingWorkspaceUrl != null)
+        //            this.CalendarAppointment.MeetingWorkspaceUrl = oAppointment.MeetingWorkspaceUrl.ToString();
+        //        this.CalendarAppointment.MimeContent   = oAppointment.MimeContent.ToString();         
+        //        this.CalendarAppointment.MyResponseType = oAppointment.MyResponseType.ToString();
+        //        if (oAppointment.NetShowUrl != null)
+        //            this.CalendarAppointment.NetShowUrl = oAppointment.NetShowUrl;
+
+        //        try
+        //        { 
+        //            this.CalendarAppointment.ReminderDueBy = oAppointment.ReminderDueBy.ToString();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            this.CalendarAppointment.ReminderDueBy = "";
+        //        }
+
+        //        this.CalendarAppointment.ReminderMinutesBeforeStart = oAppointment.ReminderMinutesBeforeStart.ToString();
+
+
+        //         oSB = new StringBuilder();
+        //         foreach (Attendee oAttendee in oAppointment.Resources)
+        //             oSB.AppendFormat("{0} <{1}>;", oAttendee.Name, oAttendee.Address);
+        //         this.CalendarAppointment.Resources = this.CalendarAppointment.Resources.ToString();
+
+        //        this.CalendarAppointment.StartTimeZone = oAppointment.StartTimeZone.ToString();
+        //        this.CalendarAppointment.Sensitivity = oAppointment.Sensitivity.ToString();
+        //        if (oAppointment.When != null) 
+        //            this.CalendarAppointment.When = oAppointment.When.ToString();
+
+
+
+        //        //private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x301B, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
+        //        //private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
+        //        //private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
+        //        //private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C    
+        //        //private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_TAG = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
+        //        //private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_PERIOD = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer); // Prop_PR_RETENTION_DATE 0x301C    
+        //        //private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_DATE = new ExtendedPropertyDefinition(0x301F, MapiPropertyType.SystemTime);
+        //        //private static ExtendedPropertyDefinition Prop_PR_ENTRYID = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);  // PidTagEntryId, PidTagMemberEntryId, ptagEntryId
+        //        //private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FFB, MapiPropertyType.Binary);  // PidTagStoreEntryId
+
+
+        //        this.CalendarAppointment.UniqueId = oAppointment.Id.UniqueId;
+
+        //        SetAppointmentRecurrenceData(oAppointment);
+
+        //    }
+
+        //    private void SetAppointmentRecurrenceData(Appointment oAppointment)
+        //    { 
+        //        //  Recurrence  -----------------------------------------------------------------------
+
+        //        if (oAppointment.Recurrence != null)
+        //        {
+
+        //            this.CalendarAppointment.StartingDateRange = oAppointment.Recurrence.StartDate.ToString();
+        //            this.CalendarAppointment.RecurrStartTime = oAppointment.Recurrence.StartDate.ToString();
+
+        //            if (oAppointment.Recurrence.EndDate.HasValue)
+        //                this.CalendarAppointment.RecurrEndTime = oAppointment.Recurrence.EndDate.ToString();
+        //            else
+        //                this.CalendarAppointment.RecurrEndTime = oAppointment.Recurrence.StartDate.ToString();
+
+        //            if (oAppointment.Recurrence is Recurrence.DailyPattern)
+        //            {
+        //                this.CalendarAppointment.RecurrencePattern = "DailyPattern";
+        //                Recurrence.DailyPattern o = (Recurrence.DailyPattern)oAppointment.Recurrence;
+
+        //                this.CalendarAppointment.RecurrencePatternInterval = o.Interval.ToString();
+
+        //                o = null;
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.WeeklyPattern)
+        //            {
+        //                this.CalendarAppointment.RecurrencePattern = "WeeklyPattern";
+        //                Recurrence.WeeklyPattern o = (Recurrence.WeeklyPattern)oAppointment.Recurrence;
+
+        //                this.CalendarAppointment.RecurrencePatternInterval = o.Interval.ToString();
+
+
+
+        //                foreach (DayOfTheWeek dotw in o.DaysOfTheWeek)
+        //                {
+        //                    switch (dotw)
+        //                    {
+        //                        case DayOfTheWeek.Sunday:
+        //                            this.CalendarAppointment.RecurrencePatternDaysOfTheWeek += "Sunday, ";
+        //                            break;
+        //                        case DayOfTheWeek.Monday:
+        //                            this.CalendarAppointment.RecurrencePatternDaysOfTheWeek += "Monday, ";
+        //                            break;
+        //                        case DayOfTheWeek.Tuesday:
+        //                            this.CalendarAppointment.RecurrencePatternDaysOfTheWeek += "Tuesday, ";
+        //                            break;
+        //                        case DayOfTheWeek.Wednesday:
+        //                            this.CalendarAppointment.RecurrencePatternDaysOfTheWeek += "Wednesday, ";
+        //                            break;
+        //                        case DayOfTheWeek.Thursday:
+        //                            this.CalendarAppointment.RecurrencePatternDaysOfTheWeek += "Thursday, ";
+        //                            break;
+        //                        case DayOfTheWeek.Friday:
+        //                            this.CalendarAppointment.RecurrencePatternDaysOfTheWeek += "Friday, ";
+        //                            break;
+        //                        case DayOfTheWeek.Saturday:
+        //                            this.CalendarAppointment.RecurrencePatternDaysOfTheWeek += "Saturday, ";
+        //                            break;
+        //                        default:
+        //                            break;
+        //                    }
+        //                }
+
+        //                if (this.CalendarAppointment.RecurrencePatternDaysOfTheWeek.EndsWith(", "))
+        //                    this.CalendarAppointment.RecurrencePatternDaysOfTheWeek = this.CalendarAppointment.RecurrencePatternDaysOfTheWeek.Remove(this.CalendarAppointment.RecurrencePatternDaysOfTheWeek.Length - 2, 2);
+        //                o = null;
+
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.MonthlyPattern)
+        //            {
+        //                this.CalendarAppointment.RecurrencePattern = "MonthlyPattern";
+
+        //                Recurrence.MonthlyPattern o = (Recurrence.MonthlyPattern)oAppointment.Recurrence;
+        //                this.CalendarAppointment.RecurrMonthlyPatternDayOfMonth = o.DayOfMonth.ToString();
+        //                this.CalendarAppointment.RecurrMonthlyPatternEveryMonths = o.Interval.ToString();
+
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.RelativeMonthlyPattern)
+        //            {
+        //                this.CalendarAppointment.RecurrencePattern = "RelativeMonthlyPattern";
+
+        //                Recurrence.RelativeMonthlyPattern o = (Recurrence.RelativeMonthlyPattern)oAppointment.Recurrence;
+
+        //                this.CalendarAppointment.RecurrDayOfTheWeekIndex = o.DayOfTheWeekIndex.ToString();
+        //                this.CalendarAppointment.RecurrDayOfWeek = o.DayOfTheWeek.ToString();
+        //                this.CalendarAppointment.RecurrInterval = o.Interval.ToString();
+
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.YearlyPattern)
+        //            {
+        //                this.CalendarAppointment.RecurrencePattern = "YearlyPattern";
+
+        //                Recurrence.YearlyPattern o = (Recurrence.YearlyPattern)oAppointment.Recurrence;
+
+        //                this.CalendarAppointment.RecurrYearlyOnSpecificDay = o.DayOfMonth.ToString();
+
+        //                this.CalendarAppointment.RecurrYearlyOnSpecificDayForMonthOf = Enum.GetName(typeof(Month), o.Month);
+
+        //                o = null;
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.RelativeYearlyPattern)
+        //            {
+        //                this.CalendarAppointment.RecurrencePattern = "RelativeYearlyPattern";
+
+        //                Recurrence.RelativeYearlyPattern o = (Recurrence.RelativeYearlyPattern)oAppointment.Recurrence;
+
+        //                this.CalendarAppointment.RecurrYearlyOnDayPatternDayOfWeekIndex = o.DayOfTheWeekIndex.ToString();
+        //                this.CalendarAppointment.RecurrYearlyOnDayPatternDayOfWeekIndex = Enum.GetName(typeof(DayOfTheWeekIndex), o.DayOfTheWeekIndex);
+        //                this.CalendarAppointment.RecurrYearlyOnDayPatternDayOfWeek = Enum.GetName(typeof(DayOfTheWeek), o.DayOfTheWeek);
+        //                this.CalendarAppointment.RecurrYearlyOnDayPatternMonth = Enum.GetName(typeof(Month), o.Month);
+
+        //                o = null;
+        //            }
+
+        //            // Range
+        //            if (oAppointment.Recurrence.HasEnd == true)
+        //            {
+        //                this.CalendarAppointment.RangeHasEnd = oAppointment.Recurrence.HasEnd.ToString();
+        //                this.CalendarAppointment.RangeNumberOccurrences = "";
+        //                this.CalendarAppointment.RangeEndByDate = "";
+        //                //RangeEndByDate = oAppointment.Recurrence.EndDate.Value;  // ??
+        //            }
+        //            else
+        //            {
+
+        //                if (oAppointment.Recurrence.NumberOfOccurrences.HasValue)
+        //                {
+        //                    this.CalendarAppointment.RangeNumberOccurrences = oAppointment.Recurrence.NumberOfOccurrences.ToString();
+        //                }
+        //                else
+        //                {
+        //                    this.CalendarAppointment.RangeNumberOccurrences = "";
+        //                    if (oAppointment.Recurrence.EndDate.HasValue)
+        //                    {
+        //                        this.CalendarAppointment.RangeEndByDate = oAppointment.Recurrence.EndDate.ToString();
+        //                    }
+        //                }
+        //            }
+
+
+        //            if (oAppointment.Recurrence is Recurrence.MonthlyPattern)
+        //            {
+        //                this.CalendarAppointment.RecurrencePattern = "MonthlyPattern";
+
+        //                Recurrence.MonthlyPattern o = (Recurrence.MonthlyPattern)oAppointment.Recurrence;
+        //                this.CalendarAppointment.RecurrMonthlyPatternDayOfMonth = o.DayOfMonth.ToString();
+        //                this.CalendarAppointment.RecurrMonthlyPatternEveryMonths = o.Interval.ToString();
+
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.RelativeMonthlyPattern)
+        //            {
+        //                this.CalendarAppointment.RecurrencePattern = "RelativeMonthlyPattern";
+
+        //                Recurrence.RelativeMonthlyPattern o = (Recurrence.RelativeMonthlyPattern)oAppointment.Recurrence;
+
+        //                this.CalendarAppointment.RecurrDayOfTheWeekIndex = o.DayOfTheWeekIndex.ToString();
+        //                this.CalendarAppointment.RecurrDayOfWeek = o.DayOfTheWeek.ToString();
+        //                this.CalendarAppointment.RecurrInterval = o.Interval.ToString();
+
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.YearlyPattern)
+        //            {
+        //                this.CalendarAppointment.RecurrencePattern = "YearlyPattern";
+
+        //                Recurrence.YearlyPattern o = (Recurrence.YearlyPattern)oAppointment.Recurrence;
+
+        //                this.CalendarAppointment.RecurrYearlyOnSpecificDay = o.DayOfMonth.ToString();
+
+        //                this.CalendarAppointment.RecurrYearlyOnSpecificDayForMonthOf = Enum.GetName(typeof(Month), o.Month);
+
+        //                o = null;
+        //            }
+
+        //            if (oAppointment.Recurrence is Recurrence.RelativeYearlyPattern)
+        //            {
+        //                this.CalendarAppointment.RecurrencePattern = "RelativeYearlyPattern";
+
+        //                Recurrence.RelativeYearlyPattern o = (Recurrence.RelativeYearlyPattern)oAppointment.Recurrence;
+
+        //                this.CalendarAppointment.RecurrYearlyOnDayPatternDayOfWeekIndex = o.DayOfTheWeekIndex.ToString();
+        //                this.CalendarAppointment.RecurrYearlyOnDayPatternDayOfWeekIndex = Enum.GetName(typeof(DayOfTheWeekIndex), o.DayOfTheWeekIndex);
+        //                this.CalendarAppointment.RecurrYearlyOnDayPatternDayOfWeek = Enum.GetName(typeof(DayOfTheWeek), o.DayOfTheWeek);
+        //                this.CalendarAppointment.RecurrYearlyOnDayPatternMonth = Enum.GetName(typeof(Month), o.Month);
+
+        //                o = null;
+        //            }
+
+        //            // Range
+        //            if (oAppointment.Recurrence.HasEnd == true)
+        //            {
+        //                this.CalendarAppointment.RangeHasEnd = oAppointment.Recurrence.HasEnd.ToString();
+        //                this.CalendarAppointment.RangeNumberOccurrences = "";
+        //                this.CalendarAppointment.RangeEndByDate = "";
+        //                //RangeEndByDate = oAppointment.Recurrence.EndDate.Value;  // ??
+        //            }
+        //            else
+        //            {
+
+        //                if (oAppointment.Recurrence.NumberOfOccurrences.HasValue)
+        //                {
+        //                    this.CalendarAppointment.RangeNumberOccurrences = oAppointment.Recurrence.NumberOfOccurrences.ToString();
+        //                }
+        //                else
+        //                {
+        //                    this.CalendarAppointment.RangeNumberOccurrences = "";
+        //                    if (oAppointment.Recurrence.EndDate.HasValue)
+        //                        this.CalendarAppointment.RangeEndByDate = oAppointment.Recurrence.EndDate.ToString();
+        //                }
+        //            }
+        //        }
+
+        //    }
+
+        //    private PropertySet GetCalendarPropset()
+        //    {
+
+        //        PropertySet appointmentPropertySet = new PropertySet(BasePropertySet.IdOnly,
+
+        //            AppointmentSchema.AdjacentMeetingCount,
+        //            AppointmentSchema.AdjacentMeetings,
+        //            AppointmentSchema.AllowedResponseActions,
+        //            AppointmentSchema.AllowNewTimeProposal,
+        //            /* AppointmentSchema.AppointmentReplyTime,  */
+        //            AppointmentSchema.AppointmentSequenceNumber,
+        //            AppointmentSchema.AppointmentState,
+        //            AppointmentSchema.AppointmentType,
+        //            AppointmentSchema.Attachments,
+        //            AppointmentSchema.Body,
+        //            AppointmentSchema.Categories,
+        //            /*  AppointmentSchema.ConferenceType,   */
+        //            AppointmentSchema.ConflictingMeetingCount,
+        //            AppointmentSchema.ConflictingMeetings,  
+        //            AppointmentSchema.Culture,
+        //            AppointmentSchema.DateTimeCreated,
+        //            AppointmentSchema.DateTimeReceived,
+        //            AppointmentSchema.DateTimeSent,
+        //            AppointmentSchema.DeletedOccurrences,
+        //            AppointmentSchema.DisplayCc,
+        //            AppointmentSchema.DisplayTo,
+        //            AppointmentSchema.Duration,
+        //            AppointmentSchema.EffectiveRights,
+        //            AppointmentSchema.End,
+        //            AppointmentSchema.HasAttachments,
+        //            AppointmentSchema.ICalDateTimeStamp,
+        //            AppointmentSchema.ICalRecurrenceId,
+        //            AppointmentSchema.ICalUid,
+        //            AppointmentSchema.Id,
+        //            AppointmentSchema.Importance,
+        //            AppointmentSchema.InReplyTo,
+        //            AppointmentSchema.InternetMessageHeaders,
+
+        //            AppointmentSchema.IsAllDayEvent,
+        //            AppointmentSchema.IsCancelled,
+        //            AppointmentSchema.IsDraft,
+        //            AppointmentSchema.IsFromMe,
+        //            AppointmentSchema.IsMeeting,
+        //            AppointmentSchema.IsOnlineMeeting,
+        //            AppointmentSchema.IsRecurring,
+        //            AppointmentSchema.IsReminderSet,
+        //            AppointmentSchema.IsResend,
+        //            AppointmentSchema.IsResponseRequested,
+        //            AppointmentSchema.IsSubmitted,
+        //            AppointmentSchema.IsUnmodified,
+        //            AppointmentSchema.ItemClass, 
+        //            AppointmentSchema.LastModifiedName,
+        //            AppointmentSchema.LastModifiedTime,
+        //            AppointmentSchema.LegacyFreeBusyStatus,
+        //            AppointmentSchema.Location,
+        //            AppointmentSchema.MeetingRequestWasSent,
+        //            AppointmentSchema.MeetingWorkspaceUrl,
+        //            AppointmentSchema.MimeContent,
+        //            AppointmentSchema.ModifiedOccurrences,
+        //            AppointmentSchema.MyResponseType,
+        //            AppointmentSchema.NetShowUrl,
+        //            AppointmentSchema.OptionalAttendees,
+        //            AppointmentSchema.Organizer,
+        //            AppointmentSchema.OriginalStart,
+        //            AppointmentSchema.ParentFolderId,
+        //            AppointmentSchema.Recurrence,
+        //            AppointmentSchema.ReminderDueBy,
+        //            AppointmentSchema.ReminderMinutesBeforeStart,
+        //            AppointmentSchema.RequiredAttendees,
+        //            AppointmentSchema.Resources,  
+        //            AppointmentSchema.Sensitivity,
+        //            AppointmentSchema.Size,
+        //            AppointmentSchema.Start,
+        //            AppointmentSchema.StartTimeZone,
+        //            AppointmentSchema.Subject,
+        //            AppointmentSchema.TimeZone,
+        //            AppointmentSchema.When
+
+
+        //          );
+
+        //        // Not included:
+        //        //    AppointmentSchema.FirstOccurrence.,
+        //        //    AppointmentSchema.LastOccurrence,
+        //        //    AppointmentSchema.ModifiedOccurrences,
+        //        //    AppointmentSchema.DeletedOccurrences,
+        //        //    AppointmentSchema.ExtendedProperties
+
+        //        // These are version specific:
+        //        //      AppointmentSchema.Hashtags,                     2015+
+        //        //      AppointmentSchema.MentionedMe,                  2015+
+        //        //      AppointmentSchema.Mentions                      2015+
+        //        //      AppointmentSchema.MimeContentUTF8,              Exchange2013_SP1+
+        //        //      AppointmentSchema.ArchiveTag,                   2013+                +
+        //        //      AppointmentSchema.ConversationId                2010+                +
+        //        //      AppointmentSchema.EndTimeZone,                  2010+                 
+        //        //      AppointmentSchema.EnhancedLocation,             2013+
+        //        //      AppointmentSchema.EntityExtractionResult,       2013+
+        //        //      AppointmentSchema.Flag,                         2013+
+        //        //      AppointmentSchema.IconIndex,                    2013+                +
+        //        //      AppointmentSchema.InstanceKey,                  2013+                +
+        //        //      AppointmentSchema.IsAssociated,                 2010+
+        //        //      AppointmentSchema.JoinOnlineMeetingUrl,         2013+
+        //        //      AppointmentSchema.NormalizedBody,               2013+
+        //        //      AppointmentSchema.OnlineMeetingSettings,        2013+
+        //        //      AppointmentSchema.PolicyTag,                    2013+                +
+        //        //      AppointmentSchema.Preview,                      2013+
+        //        //      AppointmentSchema.RetentionDate,                2013+                +
+        //        //      AppointmentSchema.StoreEntryId,                 2013+                +
+        //        //      AppointmentSchema.TextBody,                     2013+
+        //        //      AppointmentSchema.UniqueBody,                   2010+
+        //        //      AppointmentSchema.WebClientEditFormQueryString, 2010+
+        //        //      AppointmentSchema.WebClientReadFormQueryString, 2010+
+
+        //        // Problems loading or need extra work to implement:
+        //        //   AppointmentSchema.AppointmentReplyTime 
+        //        //   AppointmentSchema.ConferenceType 
+
+
+
+
+        //        // Need to add these:
+        //        appointmentPropertySet.Add(PidLidAppointmentRecur);
+        //        appointmentPropertySet.Add(PidLidClientIntent);
+        //        appointmentPropertySet.Add(ClientInfoString);
+        //        appointmentPropertySet.Add(LogTriggerAction);
+        //        appointmentPropertySet.Add(PidLidCleanGlobalObjectId);
+        //        appointmentPropertySet.Add(PidLidGlobalObjectId);
+
+        //        appointmentPropertySet.Add(Prop_PR_POLICY_TAG);
+
+        //        appointmentPropertySet.Add(Prop_PR_RETENTION_FLAGS);
+        //        appointmentPropertySet.Add(Prop_PR_RETENTION_PERIOD);
+        //        appointmentPropertySet.Add(Prop_PR_ARCHIVE_TAG);
+        //        appointmentPropertySet.Add(Prop_PR_ARCHIVE_PERIOD);
+        //        appointmentPropertySet.Add(Prop_PR_ARCHIVE_DATE);
+        //        appointmentPropertySet.Add(Prop_PR_ENTRYID);
+
+        //        appointmentPropertySet.Add(Prop_PR_RETENTION_DATE);
+        //        appointmentPropertySet.Add(Prop_PR_STORE_ENTRYID);
+        //        appointmentPropertySet.Add(Prop_PR_IS_HIDDEN);
+
+        //        return appointmentPropertySet;
+        //    }
+        //}
+
+        //private void MnuExportXml_Click(object sender, EventArgs e)
+        //{
+        //    // Get the folder to save the output files to, if the user
+        //    // cancels this dialog bail out
+        //    FolderBrowserDialog browser = new FolderBrowserDialog();
+        //    browser.Description = "Pick an output folder to save the XML file to.";
+        //    if (browser.ShowDialog() != DialogResult.OK)
+        //    {
+        //        return;
+        //    }
+
+        //    try
+        //    {
+        //        ItemId id = GetSelectedContentId();
+        //        if (id == null)
+        //        {
+        //            return;
+        //        }
+
+        //        DumpHelper.DumpXML(
+        //            new List<ItemId> { id },
+        //            this.CurrentDetailPropertySet,
+        //            browser.SelectedPath,
+        //            this.CurrentService);
+        //    }
+        //    finally
+        //    {
+        //        this.Cursor = Cursors.Default;
+        //    }
+        //}
+
     }
  
 }

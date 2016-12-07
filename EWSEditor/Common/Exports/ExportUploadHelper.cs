@@ -13,89 +13,10 @@ using EWSEditor.Forms;
 using EWSEditor.Forms.Controls;
 
 namespace EWSEditor.Exchange
-{
+{ 
     public class ExportUploadHelper
     {
-        ///// <summary>
-        ///// Restore an item from a stream to a given folder using the UploadItems operation which is not
-        ///// in the EWS API so the given ExchangeService object must be converted to a proxy binding
-        ///// to make the request.
-        ///// </summary>
-        ///// <param name="service">ExchangeService object to convert to a WCF client</param>
-        ///// <param name="folderId">Id of target folder where item will be uploaded to</param>
-        ///// <param name="data">Stream to import</param>
-        //public static void UploadItem(ExchangeService service, FolderId folderId, CreateActionType oCreateActionType, string sItemId, byte[] data)
-        //{
-        //    ExchangeServiceBinding client = ConvertExchangeService(service);
-        //    var upload = new UploadItemsType();
-        //    var item = new UploadItemType();
-             
-        //    item.IsAssociated = false;
-        //    item.ParentFolderId = new FolderIdType();
-        //    item.ParentFolderId.Id = folderId.UniqueId;
-        //    item.ParentFolderId.ChangeKey = folderId.ChangeKey;
-        //    item.Data = data;
- 
-        //    if (oCreateActionType == CreateActionType.UpdateOrCreate ||
-        //        oCreateActionType == CreateActionType.Update)
-        //    {
-   
-        //        ItemIdType oItem = new ItemIdType() ;
-        //        oItem.Id = sItemId;
-        //        item.ItemId = oItem;   
-        //    }
-
-
-        //    // TODO: Finish changes to make this an option instead of hardcoding in the future
-   
-        //    item.CreateAction = oCreateActionType;
-
-        //    upload.Items = new UploadItemType[]
-        //    {
-        //        item
-        //    };
-
- 
-        //    UploadItemsResponseType response = client.UploadItems(upload);
-
-        //    // Look for errors in the response
-        //    ThrowIfResponseError(response);
-        //}
-
-        ///// <summary>
-        ///// Get a stream from an item using the ExportItems operation which is not implemented in the EWS API
-        ///// so the given ExchangeService object must be converted to a proxy binding to make the request.
-        ///// </summary>
-        ///// <param name="service">ExchangeService object to convert to a WCF client</param>
-        ///// <param name="itemId">Id of target item to export</param>
-        ///// <param name="data">Stream that was exported</param>
-        //public static void ExportItem(ExchangeService service, ItemId itemId, out byte[] data)
-        //{
-        //    data = null;
-            
-        //    ExchangeServiceBinding client = ConvertExchangeService(service);
-        //    ExportItemsType export = new ExportItemsType();
-        //    export.ItemIds = new ItemIdType[]
-        //    {
-        //        ConvertItemId(itemId)
-        //    };
-
-        //    ExportItemsResponseType response = client.ExportItems(export);
-
-        //    // Look for errors in the response
-        //    ThrowIfResponseError(response);
-
-        //    ExportItemsResponseMessageType exportResponse = 
-        //        response.ResponseMessages.Items[0] as ExportItemsResponseMessageType;
-
-        //    if (exportResponse == null)
-        //    {
-        //        throw new ApplicationException("Unexpected ExportItems response message type");
-        //    }
-
-        //    data = exportResponse.Data;
-        //}
-
+      
 
         public static bool ExportItemPost(string ServerVersion, string sItemId, string sFile)
         {

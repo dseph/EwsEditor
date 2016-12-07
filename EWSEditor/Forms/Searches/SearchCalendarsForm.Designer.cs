@@ -55,8 +55,6 @@
             this.cmboCCConditional = new System.Windows.Forms.ComboBox();
             this.cmboBodyConditional = new System.Windows.Forms.ComboBox();
             this.cmboClassConditional = new System.Windows.Forms.ComboBox();
-            this.cmboLogicalOperation = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cmboUidConditional = new System.Windows.Forms.ComboBox();
             this.txtUID = new System.Windows.Forms.TextBox();
@@ -64,16 +62,15 @@
             this.cmboClass = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lvItemsMessages = new System.Windows.Forms.ListView();
-            this.label8 = new System.Windows.Forms.Label();
             this.btnExportCalendarItems = new System.Windows.Forms.Button();
-            this.btnExportMailItems = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 9);
+            this.label1.Location = new System.Drawing.Point(12, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 17);
             this.label1.TabIndex = 0;
@@ -86,7 +83,7 @@
             this.cmboSearchType.Items.AddRange(new object[] {
             "Direct",
             "More Available"});
-            this.cmboSearchType.Location = new System.Drawing.Point(107, 5);
+            this.cmboSearchType.Location = new System.Drawing.Point(111, 5);
             this.cmboSearchType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboSearchType.Name = "cmboSearchType";
             this.cmboSearchType.Size = new System.Drawing.Size(151, 24);
@@ -97,18 +94,18 @@
             this.txtAQS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAQS.Enabled = false;
-            this.txtAQS.Location = new System.Drawing.Point(124, 67);
+            this.txtAQS.Location = new System.Drawing.Point(123, 55);
             this.txtAQS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtAQS.Multiline = true;
             this.txtAQS.Name = "txtAQS";
             this.txtAQS.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtAQS.Size = new System.Drawing.Size(874, 56);
+            this.txtAQS.Size = new System.Drawing.Size(961, 63);
             this.txtAQS.TabIndex = 8;
             // 
             // txtBody
             // 
             this.txtBody.Enabled = false;
-            this.txtBody.Location = new System.Drawing.Point(593, 182);
+            this.txtBody.Location = new System.Drawing.Point(679, 154);
             this.txtBody.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBody.Name = "txtBody";
             this.txtBody.Size = new System.Drawing.Size(261, 22);
@@ -118,7 +115,7 @@
             // 
             this.chkBody.AutoSize = true;
             this.chkBody.Enabled = false;
-            this.chkBody.Location = new System.Drawing.Point(520, 184);
+            this.chkBody.Location = new System.Drawing.Point(610, 158);
             this.chkBody.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkBody.Name = "chkBody";
             this.chkBody.Size = new System.Drawing.Size(62, 21);
@@ -130,7 +127,7 @@
             // txtCC
             // 
             this.txtCC.Enabled = false;
-            this.txtCC.Location = new System.Drawing.Point(593, 150);
+            this.txtCC.Location = new System.Drawing.Point(679, 122);
             this.txtCC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCC.Name = "txtCC";
             this.txtCC.Size = new System.Drawing.Size(261, 22);
@@ -140,7 +137,7 @@
             // 
             this.chkCC.AutoSize = true;
             this.chkCC.Enabled = false;
-            this.chkCC.Location = new System.Drawing.Point(521, 152);
+            this.chkCC.Location = new System.Drawing.Point(611, 126);
             this.chkCC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkCC.Name = "chkCC";
             this.chkCC.Size = new System.Drawing.Size(48, 21);
@@ -152,17 +149,17 @@
             // txtTo
             // 
             this.txtTo.Enabled = false;
-            this.txtTo.Location = new System.Drawing.Point(107, 218);
+            this.txtTo.Location = new System.Drawing.Point(228, 185);
             this.txtTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(262, 22);
+            this.txtTo.Size = new System.Drawing.Size(224, 22);
             this.txtTo.TabIndex = 14;
             // 
             // chkTo
             // 
             this.chkTo.AutoSize = true;
             this.chkTo.Enabled = false;
-            this.chkTo.Location = new System.Drawing.Point(33, 221);
+            this.chkTo.Location = new System.Drawing.Point(154, 188);
             this.chkTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkTo.Name = "chkTo";
             this.chkTo.Size = new System.Drawing.Size(47, 21);
@@ -174,17 +171,17 @@
             // txtSubject
             // 
             this.txtSubject.Enabled = false;
-            this.txtSubject.Location = new System.Drawing.Point(108, 186);
+            this.txtSubject.Location = new System.Drawing.Point(228, 156);
             this.txtSubject.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(262, 22);
+            this.txtSubject.Size = new System.Drawing.Size(224, 22);
             this.txtSubject.TabIndex = 11;
             // 
             // chkSubject
             // 
             this.chkSubject.AutoSize = true;
             this.chkSubject.Enabled = false;
-            this.chkSubject.Location = new System.Drawing.Point(34, 186);
+            this.chkSubject.Location = new System.Drawing.Point(154, 156);
             this.chkSubject.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkSubject.Name = "chkSubject";
             this.chkSubject.Size = new System.Drawing.Size(77, 21);
@@ -198,10 +195,10 @@
             this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItems.FullRowSelect = true;
-            this.lvItems.Location = new System.Drawing.Point(28, 310);
+            this.lvItems.Location = new System.Drawing.Point(26, 234);
             this.lvItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(968, 129);
+            this.lvItems.Size = new System.Drawing.Size(1055, 170);
             this.lvItems.TabIndex = 26;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
@@ -209,7 +206,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(860, 244);
+            this.btnSearch.Location = new System.Drawing.Point(748, 5);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(136, 29);
@@ -221,7 +218,7 @@
             // rdoAqsSearch
             // 
             this.rdoAqsSearch.AutoSize = true;
-            this.rdoAqsSearch.Location = new System.Drawing.Point(11, 67);
+            this.rdoAqsSearch.Location = new System.Drawing.Point(10, 55);
             this.rdoAqsSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdoAqsSearch.Name = "rdoAqsSearch";
             this.rdoAqsSearch.Size = new System.Drawing.Size(107, 21);
@@ -274,7 +271,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 45);
+            this.label3.Location = new System.Drawing.Point(12, 34);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(563, 17);
             this.label3.TabIndex = 6;
@@ -285,7 +282,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 602);
+            this.label4.Location = new System.Drawing.Point(11, 598);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(384, 17);
             this.label4.TabIndex = 27;
@@ -294,10 +291,8 @@
             // chkClass
             // 
             this.chkClass.AutoSize = true;
-            this.chkClass.Checked = true;
-            this.chkClass.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkClass.Enabled = false;
-            this.chkClass.Location = new System.Drawing.Point(520, 216);
+            this.chkClass.Location = new System.Drawing.Point(610, 190);
             this.chkClass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkClass.Name = "chkClass";
             this.chkClass.Size = new System.Drawing.Size(64, 21);
@@ -314,7 +309,7 @@
             "Shallow",
             "ItemTraversal",
             "SoftDeleted"});
-            this.cmboSearchDepth.Location = new System.Drawing.Point(590, 7);
+            this.cmboSearchDepth.Location = new System.Drawing.Point(580, 4);
             this.cmboSearchDepth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboSearchDepth.Name = "cmboSearchDepth";
             this.cmboSearchDepth.Size = new System.Drawing.Size(126, 24);
@@ -324,7 +319,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(534, 10);
+            this.label5.Location = new System.Drawing.Point(524, 10);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 17);
             this.label5.TabIndex = 4;
@@ -342,7 +337,7 @@
             "IsLessThan",
             "IsGreaterThanOrEqualTo",
             "IsNotEqualTo"});
-            this.cmboSubjectConditional.Location = new System.Drawing.Point(376, 184);
+            this.cmboSubjectConditional.Location = new System.Drawing.Point(459, 155);
             this.cmboSubjectConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboSubjectConditional.Name = "cmboSubjectConditional";
             this.cmboSubjectConditional.Size = new System.Drawing.Size(135, 24);
@@ -361,7 +356,7 @@
             "IsLessThan",
             "IsGreaterThanOrEqualTo",
             "IsNotEqualTo"});
-            this.cmboToConditional.Location = new System.Drawing.Point(375, 216);
+            this.cmboToConditional.Location = new System.Drawing.Point(458, 187);
             this.cmboToConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboToConditional.Name = "cmboToConditional";
             this.cmboToConditional.Size = new System.Drawing.Size(136, 24);
@@ -380,7 +375,7 @@
             "IsLessThan",
             "IsGreaterThanOrEqualTo",
             "IsNotEqualTo"});
-            this.cmboCCConditional.Location = new System.Drawing.Point(861, 150);
+            this.cmboCCConditional.Location = new System.Drawing.Point(946, 122);
             this.cmboCCConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboCCConditional.Name = "cmboCCConditional";
             this.cmboCCConditional.Size = new System.Drawing.Size(136, 24);
@@ -399,7 +394,7 @@
             "IsLessThan",
             "IsGreaterThanOrEqualTo",
             "IsNotEqualTo"});
-            this.cmboBodyConditional.Location = new System.Drawing.Point(860, 180);
+            this.cmboBodyConditional.Location = new System.Drawing.Point(945, 152);
             this.cmboBodyConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboBodyConditional.Name = "cmboBodyConditional";
             this.cmboBodyConditional.Size = new System.Drawing.Size(136, 24);
@@ -418,42 +413,19 @@
             "IsLessThan",
             "IsGreaterThanOrEqualTo",
             "IsNotEqualTo"});
-            this.cmboClassConditional.Location = new System.Drawing.Point(862, 212);
+            this.cmboClassConditional.Location = new System.Drawing.Point(947, 184);
             this.cmboClassConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboClassConditional.Name = "cmboClassConditional";
             this.cmboClassConditional.Size = new System.Drawing.Size(136, 24);
             this.cmboClassConditional.TabIndex = 24;
             this.cmboClassConditional.SelectedIndexChanged += new System.EventHandler(this.cmboClassConditional_SelectedIndexChanged);
             // 
-            // cmboLogicalOperation
-            // 
-            this.cmboLogicalOperation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmboLogicalOperation.FormattingEnabled = true;
-            this.cmboLogicalOperation.Items.AddRange(new object[] {
-            "And",
-            "Or"});
-            this.cmboLogicalOperation.Location = new System.Drawing.Point(139, 252);
-            this.cmboLogicalOperation.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmboLogicalOperation.Name = "cmboLogicalOperation";
-            this.cmboLogicalOperation.Size = new System.Drawing.Size(126, 24);
-            this.cmboLogicalOperation.TabIndex = 29;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 255);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(124, 17);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Logical Operation:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1003, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1090, 24);
             this.menuStrip1.TabIndex = 30;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -469,7 +441,7 @@
             "IsLessThan",
             "IsGreaterThanOrEqualTo",
             "IsNotEqualTo"});
-            this.cmboUidConditional.Location = new System.Drawing.Point(376, 155);
+            this.cmboUidConditional.Location = new System.Drawing.Point(459, 126);
             this.cmboUidConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboUidConditional.Name = "cmboUidConditional";
             this.cmboUidConditional.Size = new System.Drawing.Size(135, 24);
@@ -479,17 +451,17 @@
             // txtUID
             // 
             this.txtUID.Enabled = false;
-            this.txtUID.Location = new System.Drawing.Point(108, 157);
+            this.txtUID.Location = new System.Drawing.Point(228, 131);
             this.txtUID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtUID.Name = "txtUID";
-            this.txtUID.Size = new System.Drawing.Size(262, 22);
+            this.txtUID.Size = new System.Drawing.Size(224, 22);
             this.txtUID.TabIndex = 32;
             // 
             // chkUID
             // 
             this.chkUID.AutoSize = true;
             this.chkUID.Enabled = false;
-            this.chkUID.Location = new System.Drawing.Point(34, 157);
+            this.chkUID.Location = new System.Drawing.Point(154, 131);
             this.chkUID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkUID.Name = "chkUID";
             this.chkUID.Size = new System.Drawing.Size(53, 21);
@@ -504,8 +476,13 @@
             this.cmboClass.Items.AddRange(new object[] {
             "IPM.Appointment",
             "IPM.Appointment.MeetingPlace",
-            "IPM.Appointment.MP"});
-            this.cmboClass.Location = new System.Drawing.Point(594, 212);
+            "IPM.Appointment.MP",
+            "IPM.Schedule",
+            "IPM.Schedule.Meeting.Resp.Tent",
+            "IPM.Schedule.Meeting.Pos",
+            "IPM.Schedule.Meeting.Forward",
+            "IPM.Schedule.Meeting.Canceled"});
+            this.cmboClass.Location = new System.Drawing.Point(680, 184);
             this.cmboClass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboClass.Name = "cmboClass";
             this.cmboClass.Size = new System.Drawing.Size(261, 24);
@@ -515,70 +492,60 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 285);
+            this.label7.Location = new System.Drawing.Point(11, 213);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 17);
+            this.label7.Size = new System.Drawing.Size(235, 17);
             this.label7.TabIndex = 34;
-            this.label7.Text = "Calendar Items:";
+            this.label7.Text = "Calendar Items (IPM.Appointment.*):";
             // 
             // lvItemsMessages
             // 
-            this.lvItemsMessages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lvItemsMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItemsMessages.FullRowSelect = true;
-            this.lvItemsMessages.Location = new System.Drawing.Point(28, 472);
+            this.lvItemsMessages.Location = new System.Drawing.Point(26, 429);
             this.lvItemsMessages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvItemsMessages.Name = "lvItemsMessages";
-            this.lvItemsMessages.Size = new System.Drawing.Size(963, 126);
+            this.lvItemsMessages.Size = new System.Drawing.Size(1050, 165);
             this.lvItemsMessages.TabIndex = 35;
             this.lvItemsMessages.UseCompatibleStateImageBehavior = false;
+            this.lvItemsMessages.SelectedIndexChanged += new System.EventHandler(this.lvItemsMessages_SelectedIndexChanged);
+            this.lvItemsMessages.DoubleClick += new System.EventHandler(this.lvItemsMessages_DoubleClick);
+            // 
+            // btnExportCalendarItems
+            // 
+            this.btnExportCalendarItems.Location = new System.Drawing.Point(904, 5);
+            this.btnExportCalendarItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnExportCalendarItems.Name = "btnExportCalendarItems";
+            this.btnExportCalendarItems.Size = new System.Drawing.Size(153, 29);
+            this.btnExportCalendarItems.TabIndex = 37;
+            this.btnExportCalendarItems.Text = "Export Results";
+            this.btnExportCalendarItems.UseVisualStyleBackColor = true;
+            this.btnExportCalendarItems.Click += new System.EventHandler(this.btnExportCalendarItems_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 443);
+            this.label8.Location = new System.Drawing.Point(8, 408);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(106, 17);
-            this.label8.TabIndex = 36;
-            this.label8.Text = "Message Items:";
-            // 
-            // btnExportCalendarItems
-            // 
-            this.btnExportCalendarItems.Location = new System.Drawing.Point(827, 281);
-            this.btnExportCalendarItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnExportCalendarItems.Name = "btnExportCalendarItems";
-            this.btnExportCalendarItems.Size = new System.Drawing.Size(169, 26);
-            this.btnExportCalendarItems.TabIndex = 37;
-            this.btnExportCalendarItems.Text = "Export Calendar Items";
-            this.btnExportCalendarItems.UseVisualStyleBackColor = true;
-            this.btnExportCalendarItems.Click += new System.EventHandler(this.btnExportCalendarItems_Click);
-            // 
-            // btnExportMailItems
-            // 
-            this.btnExportMailItems.Location = new System.Drawing.Point(822, 443);
-            this.btnExportMailItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnExportMailItems.Name = "btnExportMailItems";
-            this.btnExportMailItems.Size = new System.Drawing.Size(169, 26);
-            this.btnExportMailItems.TabIndex = 38;
-            this.btnExportMailItems.Text = "Export Mail Items";
-            this.btnExportMailItems.UseVisualStyleBackColor = true;
+            this.label8.Size = new System.Drawing.Size(248, 17);
+            this.label8.TabIndex = 38;
+            this.label8.Text = "Schedule Messages (IPM.Schedule.*):";
             // 
             // SearchCalendarsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1003, 628);
-            this.Controls.Add(this.btnExportMailItems);
-            this.Controls.Add(this.btnExportCalendarItems);
+            this.ClientSize = new System.Drawing.Size(1090, 624);
             this.Controls.Add(this.label8);
+            this.Controls.Add(this.btnExportCalendarItems);
             this.Controls.Add(this.lvItemsMessages);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.cmboClass);
             this.Controls.Add(this.cmboUidConditional);
             this.Controls.Add(this.txtUID);
             this.Controls.Add(this.chkUID);
-            this.Controls.Add(this.cmboLogicalOperation);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.cmboClassConditional);
             this.Controls.Add(this.cmboBodyConditional);
             this.Controls.Add(this.cmboCCConditional);
@@ -647,8 +614,6 @@
         public System.Windows.Forms.ComboBox cmboCCConditional;
         public System.Windows.Forms.ComboBox cmboBodyConditional;
         public System.Windows.Forms.ComboBox cmboClassConditional;
-        public System.Windows.Forms.ComboBox cmboLogicalOperation;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MenuStrip menuStrip1;
         public System.Windows.Forms.ComboBox cmboUidConditional;
         public System.Windows.Forms.TextBox txtUID;
@@ -656,8 +621,7 @@
         public System.Windows.Forms.ComboBox cmboClass;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListView lvItemsMessages;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnExportCalendarItems;
-        private System.Windows.Forms.Button btnExportMailItems;
+        private System.Windows.Forms.Label label8;
     }
 }

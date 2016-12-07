@@ -150,11 +150,17 @@
     <Compile Include="Common\AutodiscoverInfo.cs" />
     <Compile Include="Common\CalCheck.cs" />
     <Compile Include="Common\EwsEditorServiceInstanceSettings.cs" />
+    <Compile Include="Common\Exports\AttachmentExport.cs" />
+    <Compile Include="Common\Exports\CalendarData.cs" />
+    <Compile Include="Common\Exports\CalendarExport.cs" />
     <Compile Include="Common\EwsHelpers\EwsFolderHelper.cs" />
+    <Compile Include="Common\Exports\ExportMeetingMessage.cs" />
+    <Compile Include="Common\Exports\MeetingMessageData.cs" />
     <Compile Include="Common\ProxyMappedTypes\ProxyMappedTypes.cs" />
     <Compile Include="Common\EwsHelpers\SharedCalendarsHelper.cs" />
     <Compile Include="Common\UIHelpers\ListViewItemComparer.cs" />
     <Compile Include="Common\UIHelpers\TextEdit.cs" />
+    <Compile Include="Common\Exports\AttachmentTableEntryData.cs" />
     <Compile Include="Forms\Calendar\CalendarBreakdownView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -513,7 +519,7 @@
     <Compile Include="Common\Extensions\ExchangeServiceExtensions.cs" />
     <Compile Include="Common\EwsHelpers\CertificateValidationHelper.cs" />
     <Compile Include="Common\EwsProxyFactory.cs" />
-    <Compile Include="Common\EwsHelpers\ExportUploadHelper.cs" />
+    <Compile Include="Common\Exports\ExportUploadHelper.cs" />
     <Compile Include="Forms\AppointmentsContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1289,7 +1295,9 @@
     <Content Include="EwsPostExamples\CreateFolder.xml" />
     <Content Include="EwsPostExamples\CreateFolderPath.xml" />
     <Content Include="EwsPostExamples\CreateItem - AcceptSharingInvitation.xml" />
-    <Content Include="EwsPostExamples\CreateItem - calendar item.xml" />
+    <Content Include="EwsPostExamples\CreateItem - calendar item.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\CreateItem - contact.xml" />
     <Content Include="EwsPostExamples\CreateItem - email message.xml" />
     <Content Include="EwsPostExamples\CreateItem - accept meeting request.xml" />

@@ -596,7 +596,14 @@ namespace EWSEditor.Forms
                         oListItem.SubItems.Add(oItem.IsResend.ToString());
                         oListItem.SubItems.Add(oItem.IsDraft.ToString());
                         oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
-                        oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());
+                        try
+                        {
+                            oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());
+                        }
+                        catch
+                        {
+                            oListItem.SubItems.Add("");
+                        }
                   
                         oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
                         oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());

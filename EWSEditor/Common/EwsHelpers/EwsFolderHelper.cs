@@ -10,7 +10,7 @@ namespace EWSEditor.Common
 {
     public class EwsFolderHelper
     {
-        private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+        private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10F4, MapiPropertyType.Boolean);
         private static ExtendedPropertyDefinition Prop_PR_ATTR_HIDDEN = new ExtendedPropertyDefinition(0x10F4, MapiPropertyType.Boolean);
         private static ExtendedPropertyDefinition Prop_PR_ATTR_READONLY = new ExtendedPropertyDefinition(0x10F6, MapiPropertyType.Boolean);
         private static ExtendedPropertyDefinition Prop_PR_ATTR_SYSTEM = new ExtendedPropertyDefinition(0x10F5, MapiPropertyType.Boolean);
@@ -44,9 +44,10 @@ namespace EWSEditor.Common
        // private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.String); // PR_START_DATE_ETC  GUID 0x30190102
 
         private static ExtendedPropertyDefinition Prop_PR_ENTRYID = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);  // PidTagEntryId, PidTagMemberEntryId, ptagEntryId
-        private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FB0, MapiPropertyType.Binary);  // PidTagStoreEntryId
+        private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FFB, MapiPropertyType.Binary);  // PidTagStoreEntryId
+        //private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FB0, MapiPropertyType.Binary);  // PidTagStoreEntryId
         private static ExtendedPropertyDefinition Prop_PR_EXTENDED_FOLDER_FLAGS = new ExtendedPropertyDefinition(0x36DA, MapiPropertyType.Binary);  // PidTagExtendedFolderFlags, ptagExtendedFolderFlags
-
+        
         private static ExtendedPropertyDefinition Prop_PR_FOLDER_PATH = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
         private static ExtendedPropertyDefinition Prop_PR_FOLDER_TYPE = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);  // PR_FOLDER_TYPE 0x3601 (13825)
 

@@ -65,7 +65,9 @@ namespace EWSEditor.PropertyInformation
             this.PropertyDictionary.Add(PidLidClassificationDescription, new KnownExtendedPropertyInfo("PidLidClassificationDescription", "dispidClassDesc", "General Message Properties", "[MS-OXCMAIL]"));
             this.PropertyDictionary.Add(PidLidClassificationGuid, new KnownExtendedPropertyInfo("PidLidClassificationGuid", "dispidClassGuid", "General Message Properties", "[MS-OXCMAIL]"));
             this.PropertyDictionary.Add(PidLidClassificationKeep, new KnownExtendedPropertyInfo("PidLidClassificationKeep", "dispidClassKeep", "General Message Properties", "[MS-OXCMAIL]"));
-            this.PropertyDictionary.Add(PidLidClassified, new KnownExtendedPropertyInfo("PidLidClassified", "dispidClassified", "General Message Properties", "[MS-OXCMAIL]"));
+            this.PropertyDictionary.Add(PidLidClassified, new KnownExtendedPropertyInfo("PidLidClassified", "PidLidClassified", "General Message Properties", "[MS-OXCMAIL]"));
+            this.PropertyDictionary.Add(PidLidClientIntent, new KnownExtendedPropertyInfo("PidLidClientIntent", "dispidClientIntent", "Meeting Property", "[MS-OXCDATA], [MS-OXPROPS]"));
+ 
             this.PropertyDictionary.Add(PidLidCleanGlobalObjectId, new KnownExtendedPropertyInfo("PidLidCleanGlobalObjectId", "dispidCleanGlobalObjId", "Meetings", "[MS-OXCICAL], [MS-OXOCAL]"));
             this.PropertyDictionary.Add(PidLidClipEnd, new KnownExtendedPropertyInfo("PidLidClipEnd", "dispidClipEnd", "Calendar", "[MS-OXCICAL], [MS-OXOCAL]"));
             this.PropertyDictionary.Add(PidLidClipStart, new KnownExtendedPropertyInfo("PidLidClipStart", "dispidClipStart", "Calendar", "[MS-OXCICAL], [MS-OXOCAL]"));
@@ -768,6 +770,8 @@ namespace EWSEditor.PropertyInformation
             //this.PropertyDictionary.Add(PidTagFolderAssociatedContents, new MasterListPropertyInfo("PidTagFolderAssociatedContents", "PR_FOLDER_ASSOCIATED_CONTENTS", "MapiContainer", "[MS-OXCFXICS], [MS-OXCICAL]"));
             this.PropertyDictionary.Add(PidTagFolderId, new KnownExtendedPropertyInfo("PidTagFolderId", "ptagFID", "ID Properties", "[MS-OXCFOLD], [MS-OXCFXICS], [MS-OXCROPS], [MS-OXCTABL],[MS-OXOCFG], [MS-OXOPFFB], [MS-OXOTASK], [MS-OXRTFEX]"));
             this.PropertyDictionary.Add(PidTagFolderType, new KnownExtendedPropertyInfo("PidTagFolderType", "PR_FOLDER_TYPE, ptagFolderType", "MapiContainer", "[MS-OXCFOLD], [MS-OXCICAL], [MS-OXOSRCH]"));
+            //this.PropertyDictionary.Add(PidTagFolderPath, new KnownExtendedPropertyInfo("PidTagFolderPath", "xxxxxxxxx", "xxxxxxxxxxx", "xxxxxxxxxxxx"));
+             
             this.PropertyDictionary.Add(PidTagFollowupIcon, new KnownExtendedPropertyInfo("PidTagFollowupIcon", "PR_FOLLOWUP_ICON, ptagFollowupIcon", "RenMessageFolder", "[MS-OXCFXICS], [MS-OXOFLAG], [MS-OXOSFLD]"));
             this.PropertyDictionary.Add(PidTagFreeBusyCountMonths, new KnownExtendedPropertyInfo("PidTagFreeBusyCountMonths", "PR_FREEBUSY_COUNT_MONTHS", "MessageClassDefinedTransmittable", "[MS-OXOCAL], [MS-OXOPFFB]"));
             this.PropertyDictionary.Add(PidTagFreeBusyEntryIds, new KnownExtendedPropertyInfo("PidTagFreeBusyEntryIds", "PR_FREEBUSY_ENTRYIDS, ptagFreeBusyEntryIds", "MapiContainer", "[MS-OXODLGT], [MS-OXOPFFB], [MS-OXOSFLD]"));
@@ -1200,6 +1204,8 @@ namespace EWSEditor.PropertyInformation
         public readonly ExtendedPropertyDefinition PidLidClassificationGuid = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x000085B8, MapiPropertyType.String);
         public readonly ExtendedPropertyDefinition PidLidClassificationKeep = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x000085BA, MapiPropertyType.Boolean);
         public readonly ExtendedPropertyDefinition PidLidClassified = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x000085B5, MapiPropertyType.Boolean);
+        public readonly ExtendedPropertyDefinition PidLidClientIntent = new ExtendedPropertyDefinition(new Guid("11000E07-B51B-40D6-AF21-CAA85EDAB1D0"), 0x0015, MapiPropertyType.Integer);
+     
         public readonly ExtendedPropertyDefinition PidLidCleanGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x00000023, MapiPropertyType.Binary);
         public readonly ExtendedPropertyDefinition PidLidClipEnd = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008236, MapiPropertyType.SystemTime);
         public readonly ExtendedPropertyDefinition PidLidClipStart = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008235, MapiPropertyType.SystemTime);
@@ -1948,7 +1954,7 @@ namespace EWSEditor.PropertyInformation
         //public readonly ExtendedPropertyDefinition PidTagFolderAssociatedContents = new ExtendedPropertyDefinition(0x3610, MapiPropertyType.Object);
         public readonly ExtendedPropertyDefinition PidTagFolderId = new ExtendedPropertyDefinition(0x6748, MapiPropertyType.Integer);
         public readonly ExtendedPropertyDefinition PidTagFolderType = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);
-        //public readonly ExtendedPropertyDefinition PidTagFolderPath? = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);
+        //public readonly ExtendedPropertyDefinition PidTagFolderPath = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);
         public readonly ExtendedPropertyDefinition PidTagFollowupIcon = new ExtendedPropertyDefinition(0x1095, MapiPropertyType.Integer);
         public readonly ExtendedPropertyDefinition PidTagFreeBusyCountMonths = new ExtendedPropertyDefinition(0x6869, MapiPropertyType.Integer);
         public readonly ExtendedPropertyDefinition PidTagFreeBusyEntryIds = new ExtendedPropertyDefinition(0x36E4, MapiPropertyType.BinaryArray);
