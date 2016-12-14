@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using EWSEditor.Logging;
+using Microsoft.Exchange.WebServices.Data;
 
 namespace EWSEditor.Forms
 {
@@ -18,6 +19,7 @@ namespace EWSEditor.Forms
         private Form callingForm = null;
         private string contentIdColumnName = string.Empty;
         private string detailIdColumnName = string.Empty;
+        private PropertySet overrideDetailPropertySet = null;
 
         public BaseContentForm()
         {
@@ -38,6 +40,22 @@ namespace EWSEditor.Forms
             set
             {
                 this.callingForm = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the form which created this form.
+        /// </summary>
+        protected PropertySet OverrideDetailPropertySet  
+        {
+            get
+            {
+                return this.overrideDetailPropertySet;
+            }
+
+            set
+            {
+                this.overrideDetailPropertySet = value;
             }
         }
 

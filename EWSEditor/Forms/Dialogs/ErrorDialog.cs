@@ -77,9 +77,19 @@ namespace EWSEditor.Forms
 
             // Set the header text of the dialog with the exception message 
             // and calling method.
-            dialog.ExceptionMessage.Text = ex.Message;
-            dialog.FromWhere.Text = EwsMethodFromStackTrace(ex);
+            //ex.InnerException.
+             dialog.FromWhere.Text = EwsMethodFromStackTrace(ex);
 
+            if (ex is  Microsoft.Exchange.WebServices.Data.ServiceObjectPropertyException)
+            {
+                Microsoft.Exchange.WebServices.Data.ServiceObjectPropertyException x = (Microsoft.Exchange.WebServices.Data.ServiceObjectPropertyException)ex;
+                dialog.ExceptionMessage.Text = ex.Message +  "\r\nPropertyName: " + x.Name;
+            }
+            else
+            {
+                dialog.ExceptionMessage.Text = ex.Message;
+            }
+            
             dialog.txtHResult.Text =  ex.HResult.ToString();
             dialog.txtHResultHex.Text = String.Format("{0:X}", ex.HResult);
 
@@ -311,6 +321,11 @@ namespace EWSEditor.Forms
         }
 
         private void Header_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ExceptionDetailBox_TextChanged(object sender, EventArgs e)
         {
 
         }

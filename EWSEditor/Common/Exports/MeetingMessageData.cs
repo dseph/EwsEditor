@@ -58,7 +58,8 @@ namespace EWSEditor.Common.Exports
         public string IsSubmitted = string.Empty; 
         public string IsUnmodified = string.Empty;            
         public string ItemClass = string.Empty;
-        public string LastModifiedName = string.Empty;   
+        public string LastModifiedName = string.Empty;
+        public string LastModifiedTime = string.Empty;
         public string MimeContent = string.Empty;
         public string NormalizedBody = string.Empty;
         public string ParentFolderId = string.Empty;
@@ -85,6 +86,22 @@ namespace EWSEditor.Common.Exports
         public string VotingInformation = string.Empty;
         public string WebClientEditFormQueryString = string.Empty;
         public string WebClientReadFormQueryString = string.Empty;
+
+        public string PidLidCleanGlobalObjectId = string.Empty;
+        public string PidLidGlobalObjectId = string.Empty;
+        public string PidLidAppointmentRecur = string.Empty;
+        public string PidLidClientIntent = string.Empty;
+        public string ClientInfoString    = string.Empty;
+        public string EntryId  = string.Empty;
+        public string IsHidden = string.Empty;
+        public string FolderPath = string.Empty;
+        public string LogTriggerAction = string.Empty;
+
+ 
+ 
+ 
+ 
+                    
 
 
         // Randy's tool: TLMsg

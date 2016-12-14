@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SpecialUtility;
+//using SpecialUtility;
 
 namespace EWSEditor.Forms
 {
@@ -22,7 +22,7 @@ namespace EWSEditor.Forms
         {
             //bool bRet = false;
             //string sResultsSummary = "";
-            CalCheck oCalCheck = new CalCheck();
+            //CalCheck oCalCheck = new CalCheck();
 
             // Collection of a custom class for  results?
 

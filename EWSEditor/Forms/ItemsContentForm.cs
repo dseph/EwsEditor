@@ -58,7 +58,7 @@ namespace EWSEditor.Forms
         private static ExtendedPropertyDefinition LogTriggerAction = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x0006, MapiPropertyType.String); //  
 
 
- 
+        
 
         private List<ItemId> currentItemIds = new List<ItemId>();
         private ItemView contentItemView = new ItemView(GlobalSettings.FindItemViewSize);
@@ -108,21 +108,50 @@ namespace EWSEditor.Forms
             form.Show();
         }
 
+        public static void Show(
+            string caption,
+            List<ItemId> itemIds,
+            ExchangeService service,
+            Form parentForm,
+            PropertySet OverrideDetailPropertySet )
+        {
+            ItemsContentForm form = new ItemsContentForm();
+
+            form.CurrentService = service;
+            form.PropertyDetailsGrid.CurrentService = service;
+            form.currentItemIds = itemIds;
+            form.Text = caption;
+            form.CallingForm = parentForm;
+            form.OverrideDetailPropertySet = OverrideDetailPropertySet;
+
+            form.Show();
+        }
+
+         
+
         protected override void SetupForm()
         {
             this.ContentIdColumnName = ColNameItemId;
-            this.DefaultDetailPropertySet = new PropertySet(BasePropertySet.FirstClassProperties,
-                Prop_PR_STORE_ENTRYID,
-                Prop_PR_IS_HIDDEN,
-                PidLidCleanGlobalObjectId,
-                PidLidGlobalObjectId,
-                ClientInfoString,
-                PidLidClientIntent,
-                LogTriggerAction,
-                Prop_PR_POLICY_TAG,
-                Prop_PR_ARCHIVE_TAG
-                
-                );
+
+            if (OverrideDetailPropertySet != null)
+            {
+                this.DefaultDetailPropertySet = OverrideDetailPropertySet;
+            }
+            else
+            {
+                this.DefaultDetailPropertySet = new PropertySet(BasePropertySet.FirstClassProperties,
+                    Prop_PR_STORE_ENTRYID,
+                    Prop_PR_IS_HIDDEN,
+                    PidLidCleanGlobalObjectId,
+                    PidLidGlobalObjectId,
+                    ClientInfoString,
+                    PidLidClientIntent,
+                    LogTriggerAction,
+                    Prop_PR_POLICY_TAG,
+                    Prop_PR_ARCHIVE_TAG
+
+                    );
+            }
             //this.contentItemView.PropertySet.Add(Prop_PR_STORE_ENTRYID);
             //this.contentItemView.PropertySet.Add(Prop_PR_IS_HIDDEN);
             ////this.contentItemView.PropertySet.Add(Prop_PR_FOLDER_PATH);
@@ -157,11 +186,6 @@ namespace EWSEditor.Forms
             this.contentItemView.PropertySet.Add(PidLidCleanGlobalObjectId);
              
  
- 
-  
- 
-
-              
         //private PropertySet defaultDetailPropertySet = new PropertySet(BasePropertySet.FirstClassProperties,
         //    Prop_PR_STORE_ENTRYID,
         //    Prop_PR_IS_HIDDEN,
