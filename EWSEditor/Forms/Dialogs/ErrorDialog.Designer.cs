@@ -46,10 +46,10 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(1020, 724);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnOK.Location = new System.Drawing.Point(907, 579);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(112, 35);
+            this.btnOK.Size = new System.Drawing.Size(100, 28);
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -62,15 +62,16 @@
             this.ExceptionDetailBox.BackColor = System.Drawing.SystemColors.Control;
             this.ExceptionDetailBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ExceptionDetailBox.HideSelection = false;
-            this.ExceptionDetailBox.Location = new System.Drawing.Point(6, 232);
-            this.ExceptionDetailBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ExceptionDetailBox.Location = new System.Drawing.Point(5, 186);
+            this.ExceptionDetailBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ExceptionDetailBox.Name = "ExceptionDetailBox";
             this.ExceptionDetailBox.ReadOnly = true;
             this.ExceptionDetailBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.ExceptionDetailBox.Size = new System.Drawing.Size(1131, 482);
+            this.ExceptionDetailBox.Size = new System.Drawing.Size(1006, 386);
             this.ExceptionDetailBox.TabIndex = 1;
             this.ExceptionDetailBox.Text = "[ExceptionDetails]";
             this.ExceptionDetailBox.WordWrap = false;
+            this.ExceptionDetailBox.TextChanged += new System.EventHandler(this.ExceptionDetailBox_TextChanged);
             // 
             // Header
             // 
@@ -84,44 +85,46 @@
             this.Header.Controls.Add(this.FromWhere);
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Header.Location = new System.Drawing.Point(0, 0);
-            this.Header.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Header.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(1145, 222);
+            this.Header.Size = new System.Drawing.Size(1018, 178);
             this.Header.TabIndex = 2;
             this.Header.Paint += new System.Windows.Forms.PaintEventHandler(this.Header_Paint);
             // 
             // lblHResultHex
             // 
             this.lblHResultHex.AutoSize = true;
-            this.lblHResultHex.Location = new System.Drawing.Point(530, 186);
+            this.lblHResultHex.Location = new System.Drawing.Point(471, 149);
             this.lblHResultHex.Name = "lblHResultHex";
-            this.lblHResultHex.Size = new System.Drawing.Size(113, 20);
+            this.lblHResultHex.Size = new System.Drawing.Size(100, 17);
             this.lblHResultHex.TabIndex = 16;
             this.lblHResultHex.Text = "HResult (Hex):";
             // 
             // txtHResultHex
             // 
-            this.txtHResultHex.Location = new System.Drawing.Point(649, 180);
+            this.txtHResultHex.Location = new System.Drawing.Point(577, 144);
+            this.txtHResultHex.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHResultHex.Name = "txtHResultHex";
             this.txtHResultHex.ReadOnly = true;
-            this.txtHResultHex.Size = new System.Drawing.Size(304, 26);
+            this.txtHResultHex.Size = new System.Drawing.Size(271, 22);
             this.txtHResultHex.TabIndex = 15;
             // 
             // lblHResult
             // 
             this.lblHResult.AutoSize = true;
-            this.lblHResult.Location = new System.Drawing.Point(113, 187);
+            this.lblHResult.Location = new System.Drawing.Point(100, 150);
             this.lblHResult.Name = "lblHResult";
-            this.lblHResult.Size = new System.Drawing.Size(71, 20);
+            this.lblHResult.Size = new System.Drawing.Size(62, 17);
             this.lblHResult.TabIndex = 14;
             this.lblHResult.Text = "HResult:";
             // 
             // txtHResult
             // 
-            this.txtHResult.Location = new System.Drawing.Point(190, 183);
+            this.txtHResult.Location = new System.Drawing.Point(169, 146);
+            this.txtHResult.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHResult.Name = "txtHResult";
             this.txtHResult.ReadOnly = true;
-            this.txtHResult.Size = new System.Drawing.Size(304, 26);
+            this.txtHResult.Size = new System.Drawing.Size(271, 22);
             this.txtHResult.TabIndex = 13;
             // 
             // ExceptionMessage
@@ -131,19 +134,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ExceptionMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.ExceptionMessage.HideSelection = false;
-            this.ExceptionMessage.Location = new System.Drawing.Point(117, 18);
+            this.ExceptionMessage.Location = new System.Drawing.Point(104, 14);
+            this.ExceptionMessage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ExceptionMessage.Multiline = true;
             this.ExceptionMessage.Name = "ExceptionMessage";
             this.ExceptionMessage.ReadOnly = true;
-            this.ExceptionMessage.Size = new System.Drawing.Size(1020, 86);
+            this.ExceptionMessage.Size = new System.Drawing.Size(907, 70);
             this.ExceptionMessage.TabIndex = 3;
             // 
             // ErrorIcon
             // 
-            this.ErrorIcon.Location = new System.Drawing.Point(18, 18);
-            this.ErrorIcon.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ErrorIcon.Location = new System.Drawing.Point(16, 14);
+            this.ErrorIcon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ErrorIcon.Name = "ErrorIcon";
-            this.ErrorIcon.Size = new System.Drawing.Size(78, 80);
+            this.ErrorIcon.Size = new System.Drawing.Size(69, 64);
             this.ErrorIcon.TabIndex = 12;
             this.ErrorIcon.TabStop = false;
             // 
@@ -153,23 +157,24 @@
             this.FromWhere.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FromWhere.HideSelection = false;
-            this.FromWhere.Location = new System.Drawing.Point(117, 110);
+            this.FromWhere.Location = new System.Drawing.Point(104, 88);
+            this.FromWhere.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FromWhere.Multiline = true;
             this.FromWhere.Name = "FromWhere";
             this.FromWhere.ReadOnly = true;
-            this.FromWhere.Size = new System.Drawing.Size(1020, 67);
+            this.FromWhere.Size = new System.Drawing.Size(907, 54);
             this.FromWhere.TabIndex = 3;
             // 
             // ErrorDialog
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.ClientSize = new System.Drawing.Size(1145, 773);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(1018, 618);
             this.Controls.Add(this.Header);
             this.Controls.Add(this.ExceptionDetailBox);
             this.Controls.Add(this.btnOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
-            this.Margin = new System.Windows.Forms.Padding(9);
+            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "ErrorDialog";
             this.ShowIcon = false;
             this.Text = "";

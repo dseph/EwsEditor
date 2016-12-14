@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace EWSEditor.Common.Exports
 {
-    public class CalendarData
+    public class AppointmentData
     {   
         public string UniqueId = string.Empty;
         public string FolderPath = string.Empty;
+        public string OrganizerName = string.Empty;
         public string OrganizerAddress = string.Empty;
         public string ParentFolderId = string.Empty;
 
         public string Subject = string.Empty;
         public string DisplayTo = string.Empty;
 
-        public string ICalUid = string.Empty;
+         
         public string DisplayCc = string.Empty;
 
         public string RequiredAttendees = string.Empty;
@@ -41,10 +42,10 @@ namespace EWSEditor.Common.Exports
         public string IsOnlineMeeting = string.Empty;
         public string RetentionDate = string.Empty;
 
-        public string ICalRecurrenceId = string.Empty;
+ 
         public string IsResend = string.Empty;
         public string IsDraft = string.Empty;
-        public string Size = string.Empty;
+
         public string EntryId = string.Empty;
         public string StoreEntryId = string.Empty;
 
@@ -66,11 +67,16 @@ namespace EWSEditor.Common.Exports
         public string ConferenceType = string.Empty;
         public string ConflictingMeetingCount = string.Empty;
         public string ConflictingMeetings = string.Empty;
+        public string ConversationId = string.Empty;
+
         public string Culture = string.Empty;
         public string DateTimeReceived = string.Empty;
         public string Duration = string.Empty;
         public string EffectiveRights = string.Empty;
+    
         public string ICalDateTimeStamp = string.Empty;
+        public string ICalRecurrenceId = string.Empty;
+        public string ICalUid = string.Empty;
         public string Importance = string.Empty;
         public string InReplyTo = string.Empty;
         public string InternetMessageHeaders = string.Empty;
@@ -88,9 +94,14 @@ namespace EWSEditor.Common.Exports
         public string ReminderDueBy = string.Empty;
         public string ReminderMinutesBeforeStart = string.Empty;
         public string Resources = string.Empty;
+        public string Size = string.Empty;
         public string StartTimeZone = string.Empty;
         public string Sensitivity = string.Empty;
+        public string TextBody = string.Empty;
         public string When = string.Empty;
+        public string WebClientEditFormQueryString = string.Empty;
+        public string WebClientReadFormQueryString = string.Empty;
+
 
         public string StartingDateRange = string.Empty;
         public string RecurrStartTime = string.Empty;
@@ -111,5 +122,7 @@ namespace EWSEditor.Common.Exports
         public string RangeHasEnd = string.Empty;
         public string RangeNumberOccurrences = string.Empty;
         public string RangeEndByDate = string.Empty;
+
+
    }
 }

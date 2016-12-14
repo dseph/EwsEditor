@@ -46,7 +46,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.numPageSize = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.chkClass = new System.Windows.Forms.CheckBox();
             this.cmboSearchDepth = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -64,7 +63,14 @@
             this.lvItemsMessages = new System.Windows.Forms.ListView();
             this.btnExportCalendarItems = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.lvCommon = new System.Windows.Forms.ListView();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -99,7 +105,7 @@
             this.txtAQS.Multiline = true;
             this.txtAQS.Name = "txtAQS";
             this.txtAQS.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtAQS.Size = new System.Drawing.Size(961, 63);
+            this.txtAQS.Size = new System.Drawing.Size(964, 63);
             this.txtAQS.TabIndex = 8;
             // 
             // txtBody
@@ -195,13 +201,16 @@
             this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItems.FullRowSelect = true;
-            this.lvItems.Location = new System.Drawing.Point(26, 234);
+            this.lvItems.GridLines = true;
+            this.lvItems.HideSelection = false;
+            this.lvItems.Location = new System.Drawing.Point(6, 22);
             this.lvItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lvItems.MultiSelect = false;
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(1055, 170);
+            this.lvItems.Size = new System.Drawing.Size(1054, 154);
             this.lvItems.TabIndex = 26;
             this.lvItems.UseCompatibleStateImageBehavior = false;
-            this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
+            this.lvItems.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvItems_ColumnClick);
             this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_DoubleClick);
             // 
             // btnSearch
@@ -277,16 +286,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Note:  Exchange Online may limit AQS results to 250 items due to default policy s" +
     "ettings.";
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 598);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(384, 17);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Note:  Double click a result for more properties and options.";
             // 
             // chkClass
             // 
@@ -425,7 +424,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1090, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1093, 24);
             this.menuStrip1.TabIndex = 30;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -478,10 +477,14 @@
             "IPM.Appointment.MeetingPlace",
             "IPM.Appointment.MP",
             "IPM.Schedule",
+            "IPM.Schedule.Request",
+            "IPM.Schedule.Meeting.Resp.Neg",
             "IPM.Schedule.Meeting.Resp.Tent",
             "IPM.Schedule.Meeting.Pos",
             "IPM.Schedule.Meeting.Forward",
-            "IPM.Schedule.Meeting.Canceled"});
+            "IPM.Schedule.Meeting.Canceled",
+            "IPM.Schedule.Meeting.Notification.Forward",
+            "IPM.OLE.CLASS.{00061055-0000-0000-C000-000000000046}\""});
             this.cmboClass.Location = new System.Drawing.Point(680, 184);
             this.cmboClass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboClass.Name = "cmboClass";
@@ -492,7 +495,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 213);
+            this.label7.Location = new System.Drawing.Point(6, 3);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(235, 17);
             this.label7.TabIndex = 34;
@@ -504,12 +507,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvItemsMessages.FullRowSelect = true;
-            this.lvItemsMessages.Location = new System.Drawing.Point(26, 429);
+            this.lvItemsMessages.GridLines = true;
+            this.lvItemsMessages.HideSelection = false;
+            this.lvItemsMessages.Location = new System.Drawing.Point(6, 201);
             this.lvItemsMessages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lvItemsMessages.MultiSelect = false;
             this.lvItemsMessages.Name = "lvItemsMessages";
-            this.lvItemsMessages.Size = new System.Drawing.Size(1050, 165);
+            this.lvItemsMessages.Size = new System.Drawing.Size(1054, 146);
             this.lvItemsMessages.TabIndex = 35;
             this.lvItemsMessages.UseCompatibleStateImageBehavior = false;
+            this.lvItemsMessages.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvItemsMessages_ColumnClick);
             this.lvItemsMessages.SelectedIndexChanged += new System.EventHandler(this.lvItemsMessages_SelectedIndexChanged);
             this.lvItemsMessages.DoubleClick += new System.EventHandler(this.lvItemsMessages_DoubleClick);
             // 
@@ -527,21 +534,73 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 408);
+            this.label8.Location = new System.Drawing.Point(6, 180);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(248, 17);
             this.label8.TabIndex = 38;
             this.label8.Text = "Schedule Messages (IPM.Schedule.*):";
             // 
+            // lvCommon
+            // 
+            this.lvCommon.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvCommon.GridLines = true;
+            this.lvCommon.Location = new System.Drawing.Point(4, 7);
+            this.lvCommon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lvCommon.MultiSelect = false;
+            this.lvCommon.Name = "lvCommon";
+            this.lvCommon.Size = new System.Drawing.Size(1060, 340);
+            this.lvCommon.TabIndex = 39;
+            this.lvCommon.UseCompatibleStateImageBehavior = false;
+            this.lvCommon.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvCommon_ColumnClick);
+            this.lvCommon.DoubleClick += new System.EventHandler(this.lvCommon_DoubleClick);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(7, 218);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1074, 383);
+            this.tabControl1.TabIndex = 40;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.lvCommon);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1066, 354);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Combined Calendar and Meeting Messages";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.lvItems);
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.lvItemsMessages);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1066, 354);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Details";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // SearchCalendarsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1090, 624);
-            this.Controls.Add(this.label8);
+            this.ClientSize = new System.Drawing.Size(1093, 605);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnExportCalendarItems);
-            this.Controls.Add(this.lvItemsMessages);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.cmboClass);
             this.Controls.Add(this.cmboUidConditional);
             this.Controls.Add(this.txtUID);
@@ -554,14 +613,12 @@
             this.Controls.Add(this.cmboSearchDepth);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.chkClass);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numPageSize);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rdoFindItemSearch);
             this.Controls.Add(this.rdoAqsSearch);
             this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.lvItems);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmboSearchType);
             this.Controls.Add(this.txtAQS);
@@ -580,6 +637,10 @@
             this.Text = "Search Calendars Form";
             this.Load += new System.EventHandler(this.SearchForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -605,7 +666,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numPageSize;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         public System.Windows.Forms.CheckBox chkClass;
         public System.Windows.Forms.ComboBox cmboSearchDepth;
         private System.Windows.Forms.Label label5;
@@ -623,5 +683,9 @@
         private System.Windows.Forms.ListView lvItemsMessages;
         private System.Windows.Forms.Button btnExportCalendarItems;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListView lvCommon;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }

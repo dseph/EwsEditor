@@ -148,19 +148,25 @@
   <ItemGroup>
     <Compile Include="Common\EwsHelpers\AuthenticationHelper.cs" />
     <Compile Include="Common\AutodiscoverInfo.cs" />
-    <Compile Include="Common\CalCheck.cs" />
+    <Compile Include="Common\ItemCheckers\CalCheck.cs" />
     <Compile Include="Common\EwsEditorServiceInstanceSettings.cs" />
     <Compile Include="Common\Exports\AttachmentExport.cs" />
-    <Compile Include="Common\Exports\CalendarData.cs" />
+    <Compile Include="Common\Exports\AppointmentData.cs" />
     <Compile Include="Common\Exports\CalendarExport.cs" />
     <Compile Include="Common\EwsHelpers\EwsFolderHelper.cs" />
-    <Compile Include="Common\Exports\ExportMeetingMessage.cs" />
+    <Compile Include="Common\Exports\MeetingMessageExport.cs" />
     <Compile Include="Common\Exports\MeetingMessageData.cs" />
+    <Compile Include="Common\ItemCheckers\MsgData.cs" />
+    <Compile Include="Common\ItemCheckers\RecurBlob.cs" />
+    <Compile Include="Common\ItemCheckers\Timeline.cs" />
+    <Compile Include="Common\ItemCheckers\Utils.cs" />
+    <Compile Include="Common\ItemCheckers\TLMsg.cs" />
     <Compile Include="Common\ProxyMappedTypes\ProxyMappedTypes.cs" />
     <Compile Include="Common\EwsHelpers\SharedCalendarsHelper.cs" />
     <Compile Include="Common\UIHelpers\ListViewItemComparer.cs" />
     <Compile Include="Common\UIHelpers\TextEdit.cs" />
     <Compile Include="Common\Exports\AttachmentTableEntryData.cs" />
+    <Compile Include="Common\UtilityHelpers\IcsHelper.cs" />
     <Compile Include="Forms\Calendar\CalendarBreakdownView.cs">
       <SubType>Form</SubType>
     </Compile>
