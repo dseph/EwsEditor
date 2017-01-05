@@ -156,21 +156,26 @@ namespace EWSEditor.Common.Exports
             return bRet;
         }
 
-        public bool SaveAppointmentBlobToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFolder )
-        {
-            string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
-            if (ServerVersion.StartsWith("Exchange2007") || ServerVersion == "Exchange2010")
-            {
-                MessageBox.Show("Exchange 2010 SP1 or later is requred to use ExportItems to do a blog export of an item.", "Invalid version for blog export using ExportItem");
-                return false;
-            }
-            string tempFile = Path.GetTempFileName().Replace(".tmp", ".bin");
-            //string sFile = sFolder + "\\Appointment\\" + tempFile;
-            string sFile = sFolder +  tempFile;
-            return SaveAppointmentBlobToFolder(oExchangeService, oItemId, sFolder, sFile);
-        }
+        //public bool SaveAppointmentBlobToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFolder, string sSeedFileName)
+        //{
+        //    string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
+        //    if (ServerVersion.StartsWith("Exchange2007") || ServerVersion == "Exchange2010")
+        //    {
+        //        MessageBox.Show("Exchange 2010 SP1 or later is requred to use ExportItems to do a blog export of an item.", "Invalid version for blog export using ExportItem");
+        //        return false;
+        //    }
+        //    //string tempFile = Path.GetTempFileName().Replace(".tmp", ".bin");
+        //    string tempFile = Path.GetTempFileName();
+        //    tempFile = tempFile.Replace(".tmp", ".bin");
 
-        public bool SaveAppointmentBlobToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFolder, string sFile) 
+        //    //string sFile = sFolder + "\\Appointment\\" + tempFile;
+
+        //    string sFile = sSeedFileName + " - " + tempFile + ".bin";
+        //    sFile = Path.Combine(sFolder, sSeedFileName );
+        //    return SaveAppointmentBlobToFolder(oExchangeService, oItemId,  sFile);
+        //}
+
+        public bool SaveAppointmentBlobToFolder(ExchangeService oExchangeService, ItemId oItemId,  string sFile) 
         {
             bool bRet = false;
             string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
@@ -179,8 +184,7 @@ namespace EWSEditor.Common.Exports
             {
                 MessageBox.Show("Exchange 2010 SP1 or later is requred to use ExportItems to do a blob export of an item.", "Invalid version for blob export using ExportItem");
                     return false;
-            }
-            
+            }           
              
             Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId);
 
@@ -976,6 +980,277 @@ namespace EWSEditor.Common.Exports
             }
 
             return appointmentPropertySet;
+        }
+
+
+        public string GetAppointmentDataAsCsv(AppointmentData oAppointmentData)
+        {
+            char[] TrimChars = { ',', ' ' };
+            string sRet = string.Empty;
+            List<string> o = new List<string> { };
+ 
+            o.Add(oAppointmentData.UniqueId .Replace(',', ' '));
+            o.Add(oAppointmentData.FolderPath .Replace(',', ' '));
+            o.Add(oAppointmentData.OrganizerName .Replace(',', ' '));
+            o.Add(oAppointmentData.OrganizerAddress .Replace(',', ' '));
+            o.Add(oAppointmentData.ParentFolderId .Replace(',', ' '));
+
+            o.Add(oAppointmentData.Subject .Replace(',', ' '));
+            o.Add(oAppointmentData.DisplayTo .Replace(',', ' '));
+
+         
+            o.Add(oAppointmentData.DisplayCc .Replace(',', ' '));
+
+            o.Add(oAppointmentData.RequiredAttendees .Replace(',', ' '));
+            o.Add(oAppointmentData.OptionalAttendees .Replace(',', ' '));
+
+            o.Add(oAppointmentData.DateTimeCreated .Replace(',', ' '));
+
+            o.Add(oAppointmentData.LastModifiedName .Replace(',', ' '));
+            o.Add(oAppointmentData.LastModifiedTime .Replace(',', ' '));
+            o.Add(oAppointmentData.HasAttachments .Replace(',', ' '));
+            o.Add(oAppointmentData.ItemClass .Replace(',', ' '));
+            o.Add(oAppointmentData.Start .Replace(',', ' '));
+            o.Add(oAppointmentData.End .Replace(',', ' '));
+
+            o.Add(oAppointmentData.IsAllDayEvent .Replace(',', ' '));
+            o.Add(oAppointmentData.IsCancelled .Replace(',', ' '));
+            o.Add(oAppointmentData.AppointmentState .Replace(',', ' '));
+            o.Add(oAppointmentData.AppointmentType .Replace(',', ' '));
+
+            o.Add(oAppointmentData.IsRecurring .Replace(',', ' '));
+            o.Add(oAppointmentData.IsReminderSet .Replace(',', ' '));
+            o.Add(oAppointmentData.IsOnlineMeeting .Replace(',', ' '));
+            o.Add(oAppointmentData.RetentionDate .Replace(',', ' '));
+
+ 
+            o.Add(oAppointmentData.IsResend .Replace(',', ' '));
+            o.Add(oAppointmentData.IsDraft .Replace(',', ' '));
+
+            o.Add(oAppointmentData.EntryId .Replace(',', ' '));
+            o.Add(oAppointmentData.StoreEntryId .Replace(',', ' '));
+
+            o.Add(oAppointmentData.PidLidAppointmentRecur .Replace(',', ' '));
+            o.Add(oAppointmentData.PidLidClientIntent .Replace(',', ' '));
+            o.Add(oAppointmentData.ClientInfoString .Replace(',', ' '));
+            o.Add(oAppointmentData.LogTriggerAction .Replace(',', ' '));
+            o.Add(oAppointmentData.PidLidCleanGlobalObjectId .Replace(',', ' '));
+            o.Add(oAppointmentData.PidLidGlobalObjectId .Replace(',', ' '));
+            o.Add(oAppointmentData.IsHidden .Replace(',', ' '));
+
+            o.Add(oAppointmentData.AppointmentReplyTime .Replace(',', ' '));
+            o.Add(oAppointmentData.AllowNewTimeProposal .Replace(',', ' '));
+            o.Add(oAppointmentData.AllowedResponseActions .Replace(',', ' '));
+            o.Add(oAppointmentData.AdjacentMeetingCount .Replace(',', ' '));
+            o.Add(oAppointmentData.AppointmentSequenceNumber .Replace(',', ' '));
+            o.Add(oAppointmentData.Body .Replace(',', ' '));
+            o.Add(oAppointmentData.Categories .Replace(',', ' '));
+            o.Add(oAppointmentData.ConferenceType .Replace(',', ' '));
+            o.Add(oAppointmentData.ConflictingMeetingCount .Replace(',', ' '));
+            o.Add(oAppointmentData.ConflictingMeetings .Replace(',', ' '));
+            o.Add(oAppointmentData.ConversationId .Replace(',', ' '));
+
+            o.Add(oAppointmentData.Culture .Replace(',', ' '));
+            o.Add(oAppointmentData.DateTimeReceived .Replace(',', ' '));
+            o.Add(oAppointmentData.Duration .Replace(',', ' '));
+            o.Add(oAppointmentData.EffectiveRights .Replace(',', ' '));
+    
+            o.Add(oAppointmentData.ICalDateTimeStamp .Replace(',', ' '));
+            o.Add(oAppointmentData.ICalRecurrenceId .Replace(',', ' '));
+            o.Add(oAppointmentData.ICalUid .Replace(',', ' '));
+            o.Add(oAppointmentData.Importance .Replace(',', ' '));
+            o.Add(oAppointmentData.InReplyTo .Replace(',', ' '));
+            o.Add(oAppointmentData.InternetMessageHeaders .Replace(',', ' '));
+            o.Add(oAppointmentData.IsResponseRequested .Replace(',', ' '));
+            o.Add(oAppointmentData.IsSubmitted .Replace(',', ' '));
+            o.Add(oAppointmentData.IsUnmodified .Replace(',', ' '));
+            o.Add(oAppointmentData.LegacyFreeBusyStatus .Replace(',', ' '));
+            o.Add(oAppointmentData.Location .Replace(',', ' '));
+            o.Add(oAppointmentData.MeetingRequestWasSent .Replace(',', ' '));
+            o.Add(oAppointmentData.MeetingWorkspaceUrl .Replace(',', ' '));
+            o.Add(oAppointmentData.MimeContent .Replace(',', ' '));
+            o.Add(oAppointmentData.MyResponseType .Replace(',', ' '));
+            o.Add(oAppointmentData.NetShowUrl .Replace(',', ' '));
+            o.Add(oAppointmentData.ModifiedOccurrences .Replace(',', ' '));
+            o.Add(oAppointmentData.ReminderDueBy .Replace(',', ' '));
+            o.Add(oAppointmentData.ReminderMinutesBeforeStart .Replace(',', ' '));
+            o.Add(oAppointmentData.Resources .Replace(',', ' '));
+            o.Add(oAppointmentData.Size .Replace(',', ' '));
+            o.Add(oAppointmentData.StartTimeZone .Replace(',', ' '));
+            o.Add(oAppointmentData.Sensitivity .Replace(',', ' '));
+            o.Add(oAppointmentData.TextBody .Replace(',', ' '));
+            o.Add(oAppointmentData.When .Replace(',', ' '));
+            o.Add(oAppointmentData.WebClientEditFormQueryString .Replace(',', ' '));
+            o.Add(oAppointmentData.WebClientReadFormQueryString .Replace(',', ' '));
+ 
+            o.Add(oAppointmentData.StartingDateRange .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrStartTime .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrEndTime .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrencePattern .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrencePatternInterval .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrencePatternDaysOfTheWeek .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrMonthlyPatternDayOfMonth .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrMonthlyPatternEveryMonths .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrDayOfTheWeekIndex .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrDayOfWeek .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrInterval .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrYearlyOnSpecificDay .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrYearlyOnSpecificDayForMonthOf .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrYearlyOnDayPatternDayOfWeekIndex .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrYearlyOnDayPatternDayOfWeek .Replace(',', ' '));
+            o.Add(oAppointmentData.RecurrYearlyOnDayPatternMonth .Replace(',', ' '));
+            o.Add(oAppointmentData.RangeHasEnd .Replace(',', ' '));
+            o.Add(oAppointmentData.RangeNumberOccurrences .Replace(',', ' '));
+            o.Add(oAppointmentData.RangeEndByDate .Replace(',', ' '));
+
+            // ...
+
+            StringBuilder oSB = new StringBuilder();
+            for (int i = 0; i < o.Count - 1; i++)
+            {
+                oSB.AppendFormat("{0}, ", o[i]);
+            }
+
+            sRet = oSB.ToString();
+            sRet = sRet.TrimEnd(TrimChars);
+
+            return sRet;
+        }
+
+        public string GetAppointmentDataAsCsvHeaders()
+        {
+            char[] TrimChars = { ',', ' ' };
+            string sRet = string.Empty;
+            List<string> o = new List<string> { };
+            o.Add("AllowedResponseActions");
+
+
+            o.Add("UniqueId");
+            o.Add("FolderPath");
+            o.Add("OrganizerName");
+            o.Add("OrganizerAddress");
+            o.Add("ParentFolderId");
+
+            o.Add("Subject");
+            o.Add("DisplayTo");
+
+
+            o.Add("DisplayCc");
+
+            o.Add("RequiredAttendees");
+            o.Add("OptionalAttendees");
+
+            o.Add("DateTimeCreated");
+
+            o.Add("LastModifiedName");
+            o.Add("LastModifiedTime");
+            o.Add("HasAttachments");
+            o.Add("ItemClass");
+            o.Add("Start");
+            o.Add("End");
+
+            o.Add("IsAllDayEvent");
+            o.Add("IsCancelled");
+            o.Add("AppointmentState");
+            o.Add("AppointmentType");
+
+            o.Add("IsRecurring");
+            o.Add("IsReminderSet");
+            o.Add("IsOnlineMeeting");
+            o.Add("RetentionDate");
+
+
+            o.Add("IsResend");
+            o.Add("IsDraft");
+
+            o.Add("EntryId");
+            o.Add("StoreEntryId");
+
+            o.Add("PidLidAppointmentRecur");
+            o.Add("PidLidClientIntent");
+            o.Add("ClientInfoString");
+            o.Add("LogTriggerAction");
+            o.Add("PidLidCleanGlobalObjectId");
+            o.Add("PidLidGlobalObjectId");
+            o.Add("IsHidden");
+
+            o.Add("AppointmentReplyTime");
+            o.Add("AllowNewTimeProposal");
+            o.Add("AllowedResponseActions");
+            o.Add("AdjacentMeetingCount");
+            o.Add("AppointmentSequenceNumber");
+            o.Add("Body");
+            o.Add("Categories");
+            o.Add("ConferenceType");
+            o.Add("ConflictingMeetingCount");
+            o.Add("ConflictingMeetings");
+            o.Add("ConversationId");
+
+            o.Add("Culture");
+            o.Add("DateTimeReceived");
+            o.Add("Duration");
+            o.Add("EffectiveRights");
+
+            o.Add("ICalDateTimeStamp");
+            o.Add("ICalRecurrenceId");
+            o.Add("ICalUid");
+            o.Add("Importance");
+            o.Add("InReplyTo");
+            o.Add("InternetMessageHeaders");
+            o.Add("IsResponseRequested");
+            o.Add("IsSubmitted");
+            o.Add("IsUnmodified");
+            o.Add("LegacyFreeBusyStatus");
+            o.Add("Location");
+            o.Add("MeetingRequestWasSent");
+            o.Add("MeetingWorkspaceUrl");
+            o.Add("MimeContent");
+            o.Add("MyResponseType");
+            o.Add("NetShowUrl");
+            o.Add("ModifiedOccurrences");
+            o.Add("ReminderDueBy");
+            o.Add("ReminderMinutesBeforeStart");
+            o.Add("Resources");
+            o.Add("Size");
+            o.Add("StartTimeZone");
+            o.Add("Sensitivity");
+            o.Add("TextBody");
+            o.Add("When");
+            o.Add("WebClientEditFormQueryString");
+            o.Add("WebClientReadFormQueryString");
+
+            o.Add("StartingDateRange");
+            o.Add("RecurrStartTime");
+            o.Add("RecurrEndTime");
+            o.Add("RecurrencePattern");
+            o.Add("RecurrencePatternInterval");
+            o.Add("RecurrencePatternDaysOfTheWeek");
+            o.Add("RecurrMonthlyPatternDayOfMonth");
+            o.Add("RecurrMonthlyPatternEveryMonths");
+            o.Add("RecurrDayOfTheWeekIndex");
+            o.Add("RecurrDayOfWeek");
+            o.Add("RecurrInterval");
+            o.Add("RecurrYearlyOnSpecificDay");
+            o.Add("RecurrYearlyOnSpecificDayForMonthOf");
+            o.Add("RecurrYearlyOnDayPatternDayOfWeekIndex");
+            o.Add("RecurrYearlyOnDayPatternDayOfWeek");
+            o.Add("RecurrYearlyOnDayPatternMonth");
+            o.Add("RangeHasEnd");
+            o.Add("RangeNumberOccurrences");
+            o.Add("RangeEndByDate");
+
+            // ...
+
+            StringBuilder oSB = new StringBuilder();
+            for (int i = 0; i < o.Count - 1; i++)
+            {
+                oSB.AppendFormat("{0}, ", o[i]);
+            }
+
+            sRet = oSB.ToString();
+            sRet = sRet.TrimEnd(TrimChars);
+
+            return sRet;
         }
 
 

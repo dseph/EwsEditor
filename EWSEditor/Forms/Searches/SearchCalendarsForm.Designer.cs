@@ -39,7 +39,6 @@
             this.chkTo = new System.Windows.Forms.CheckBox();
             this.txtSubject = new System.Windows.Forms.TextBox();
             this.chkSubject = new System.Windows.Forms.CheckBox();
-            this.lvItems = new System.Windows.Forms.ListView();
             this.btnSearch = new System.Windows.Forms.Button();
             this.rdoAqsSearch = new System.Windows.Forms.RadioButton();
             this.rdoFindItemSearch = new System.Windows.Forms.RadioButton();
@@ -59,20 +58,11 @@
             this.txtUID = new System.Windows.Forms.TextBox();
             this.chkUID = new System.Windows.Forms.CheckBox();
             this.cmboClass = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lvItemsMessages = new System.Windows.Forms.ListView();
             this.btnExportCalendarItems = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.lvCommon = new System.Windows.Forms.ListView();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).BeginInit();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -198,23 +188,6 @@
             this.chkSubject.Text = "Subject";
             this.chkSubject.UseVisualStyleBackColor = true;
             this.chkSubject.CheckedChanged += new System.EventHandler(this.chkSubject_CheckedChanged);
-            // 
-            // lvItems
-            // 
-            this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvItems.FullRowSelect = true;
-            this.lvItems.GridLines = true;
-            this.lvItems.HideSelection = false;
-            this.lvItems.Location = new System.Drawing.Point(6, 22);
-            this.lvItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lvItems.MultiSelect = false;
-            this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(1054, 154);
-            this.lvItems.TabIndex = 26;
-            this.lvItems.UseCompatibleStateImageBehavior = false;
-            this.lvItems.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvItems_ColumnClick);
-            this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_DoubleClick);
             // 
             // btnSearch
             // 
@@ -495,34 +468,6 @@
             this.cmboClass.TabIndex = 23;
             this.cmboClass.Text = "IPM.Appointment ";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 3);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(235, 17);
-            this.label7.TabIndex = 34;
-            this.label7.Text = "Calendar Items (IPM.Appointment.*):";
-            // 
-            // lvItemsMessages
-            // 
-            this.lvItemsMessages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvItemsMessages.FullRowSelect = true;
-            this.lvItemsMessages.GridLines = true;
-            this.lvItemsMessages.HideSelection = false;
-            this.lvItemsMessages.Location = new System.Drawing.Point(6, 201);
-            this.lvItemsMessages.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lvItemsMessages.MultiSelect = false;
-            this.lvItemsMessages.Name = "lvItemsMessages";
-            this.lvItemsMessages.Size = new System.Drawing.Size(1054, 146);
-            this.lvItemsMessages.TabIndex = 35;
-            this.lvItemsMessages.UseCompatibleStateImageBehavior = false;
-            this.lvItemsMessages.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvItemsMessages_ColumnClick);
-            this.lvItemsMessages.SelectedIndexChanged += new System.EventHandler(this.lvItemsMessages_SelectedIndexChanged);
-            this.lvItemsMessages.DoubleClick += new System.EventHandler(this.lvItemsMessages_DoubleClick);
-            // 
             // btnExportCalendarItems
             // 
             this.btnExportCalendarItems.Location = new System.Drawing.Point(904, 5);
@@ -534,15 +479,6 @@
             this.btnExportCalendarItems.UseVisualStyleBackColor = true;
             this.btnExportCalendarItems.Click += new System.EventHandler(this.btnExportCalendarItems_Click);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 180);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(248, 17);
-            this.label8.TabIndex = 38;
-            this.label8.Text = "Schedule Messages (IPM.Schedule.*):";
-            // 
             // lvCommon
             // 
             this.lvCommon.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -550,53 +486,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvCommon.FullRowSelect = true;
             this.lvCommon.GridLines = true;
-            this.lvCommon.Location = new System.Drawing.Point(4, 7);
+            this.lvCommon.Location = new System.Drawing.Point(10, 219);
             this.lvCommon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.lvCommon.MultiSelect = false;
             this.lvCommon.Name = "lvCommon";
-            this.lvCommon.Size = new System.Drawing.Size(1060, 307);
+            this.lvCommon.Size = new System.Drawing.Size(1075, 357);
             this.lvCommon.TabIndex = 39;
             this.lvCommon.UseCompatibleStateImageBehavior = false;
             this.lvCommon.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvCommon_ColumnClick);
+            this.lvCommon.SelectedIndexChanged += new System.EventHandler(this.lvCommon_SelectedIndexChanged);
             this.lvCommon.DoubleClick += new System.EventHandler(this.lvCommon_DoubleClick);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(7, 218);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1074, 350);
-            this.tabControl1.TabIndex = 40;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.lvCommon);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1066, 321);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Combined Calendar and Meeting Messages";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.lvItems);
-            this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.lvItemsMessages);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1066, 354);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Details";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
             // 
@@ -620,8 +518,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1093, 605);
+            this.Controls.Add(this.lvCommon);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnExportCalendarItems);
             this.Controls.Add(this.cmboClass);
             this.Controls.Add(this.cmboUidConditional);
@@ -659,10 +557,6 @@
             this.Text = "Search Calendars Form";
             this.Load += new System.EventHandler(this.SearchForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPageSize)).EndInit();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -683,7 +577,6 @@
         public System.Windows.Forms.CheckBox chkTo;
         public System.Windows.Forms.TextBox txtSubject;
         public System.Windows.Forms.CheckBox chkSubject;
-        private System.Windows.Forms.ListView lvItems;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.RadioButton rdoAqsSearch;
         private System.Windows.Forms.RadioButton rdoFindItemSearch;
@@ -703,14 +596,8 @@
         public System.Windows.Forms.TextBox txtUID;
         public System.Windows.Forms.CheckBox chkUID;
         public System.Windows.Forms.ComboBox cmboClass;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListView lvItemsMessages;
         private System.Windows.Forms.Button btnExportCalendarItems;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListView lvCommon;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }

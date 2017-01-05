@@ -107,9 +107,9 @@ namespace EWSEditor.Common.Exports
             return bRet;
         }
 
- 
 
-        public bool SaveMeetingMessageBlobToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFolder)
+
+        public bool SaveMeetingMessageBlobToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFile)
         {
             string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
             if (ServerVersion.StartsWith("Exchange2007") || ServerVersion == "Exchange2010")
@@ -117,32 +117,35 @@ namespace EWSEditor.Common.Exports
                 MessageBox.Show("Exchange 2010 SP1 or later is requred to use ExportItems to do a blog export of an item.", "Invalid version for blog export using ExportItem");
                 return false;
             }
-            string tempFile = Path.GetTempFileName().Replace(".tmp", ".bin");
-            //string sFile = sFolder + "\\MeetingMessage\\" + tempFile;
-            string sFile = sFolder + "\\" + tempFile;
-            return SaveMeetingMessageBlobToFolder(oExchangeService, oItemId, sFolder, sFile);
+            //string tempFile = Path.GetTempFileName().Replace(".tmp", ".bin");
+            ////string sFile = sFolder + "\\MeetingMessage\\" + tempFile;
+            //string sFile = sFolder + "\\" + tempFile;
+
+            return EWSEditor.Exchange.ExportUploadHelper.ExportItemPost(ServerVersion, oItemId.UniqueId, sFile);
+
+            //return SaveMeetingMessageBlobToFolder(oExchangeService, oItemId, sFolder, sFile);
         }
 
-        public bool SaveMeetingMessageBlobToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFolder, string sFile)
-        {
-            bool bRet = false;
-            string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
+        //public bool SaveMeetingMessageBlobToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFolder, string sFile)
+        //{
+        //    bool bRet = false;
+        //    string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
 
-            if (ServerVersion.StartsWith("Exchange2007") || ServerVersion == "Exchange2010")
-            {
-                MessageBox.Show("Exchange 2010 SP1 or later is requred to use ExportItems to do a blog export of an item.", "Invalid version for blog export using ExportItem");
-                return false;
-            }
+        //    if (ServerVersion.StartsWith("Exchange2007") || ServerVersion == "Exchange2010")
+        //    {
+        //        MessageBox.Show("Exchange 2010 SP1 or later is requred to use ExportItems to do a blog export of an item.", "Invalid version for blog export using ExportItem");
+        //        return false;
+        //    }
 
 
-            MeetingMessage oMeetingMessage = MeetingMessage.Bind(oExchangeService, oItemId);
+        //    MeetingMessage oMeetingMessage = MeetingMessage.Bind(oExchangeService, oItemId);
 
-            // Exchange2010_SP1 is the minimal version
-            bRet = EWSEditor.Exchange.ExportUploadHelper.ExportItemPost(ServerVersion, oItemId.UniqueId, sFile);
+        //    // Exchange2010_SP1 is the minimal version
+        //    bRet = EWSEditor.Exchange.ExportUploadHelper.ExportItemPost(ServerVersion, oItemId.UniqueId, sFile);
 
-            bRet = true;
-            return bRet;
-        }
+        //    bRet = true;
+        //    return bRet;
+        //}
 
         public bool SaveMeetingMessagesToFolder(ExchangeService oExchangeService, List<ItemId> oItemIds, string sFolder)
         {
@@ -743,6 +746,220 @@ namespace EWSEditor.Common.Exports
             //      MeetingMessageSchema.StoreEntryId,                  Exchange2010_SP2    xp Prop_PR_STORE_ENTRYID
 
             return meetingMessagePropertySet;
+        }
+
+        public string GetMeetingMessageDataAsCsv(MeetingMessageData oMeetingMessageData)
+        {
+            char[] TrimChars = { ',', ' ' };
+            string sRet = string.Empty;
+            List<string> o = new List<string> { }; 
+            o.Add(oMeetingMessageData.AllowedResponseActions.Replace(',', ' '));            
+            o.Add(oMeetingMessageData.ApprovalRequestData.Replace(',', ' '));     
+            o.Add(oMeetingMessageData.ArchiveTag.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.AssociatedAppointmentId.Replace(',', ' '));  
+            // o.Add(oMeetingMessageData.Attachments // 
+            o.Add(oMeetingMessageData.BccRecipients.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.Body.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.Categories.Replace(',', ' '));  
+            o.Add(oMeetingMessageData.CcRecipients.Replace(',', ' '));    
+            o.Add(oMeetingMessageData.ConversationId.Replace(',', ' '));  
+            o.Add(oMeetingMessageData.ConversationIndex.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ConversationTopic.Replace(',', ' '));  
+            o.Add(oMeetingMessageData.Culture.Replace(',', ' '));  
+            o.Add(oMeetingMessageData.DateTimeCreated.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.DateTimeReceived.Replace(',', ' '));   
+            o.Add(oMeetingMessageData.DateTimeSent.Replace(',', ' '));   
+            o.Add(oMeetingMessageData.DisplayCc.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.DisplayTo.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.EffectiveRights.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.EntityExtractionResult.Replace(',', ' '));   
+            o.Add(oMeetingMessageData.ExtendedProperties.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.Flag.Replace(',', ' '));     
+            o.Add(oMeetingMessageData.From.Replace(',', ' '));   
+            o.Add(oMeetingMessageData.HasAttachments.Replace(',', ' '));   
+            o.Add(oMeetingMessageData.HasBeenProcessed.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ICalDateTimeStamp.Replace(',', ' '));   
+            o.Add(oMeetingMessageData.ICalRecurrenceId.Replace(',', ' '));  
+            o.Add(oMeetingMessageData.ICalUid.Replace(',', ' '));     
+            o.Add(oMeetingMessageData.IconIndex.Replace(',', ' '));  
+            o.Add(oMeetingMessageData.UniqueId.Replace(',', ' '));   // Id
+            o.Add(oMeetingMessageData.Importance.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.InstanceKey.Replace(',', ' '));   
+            o.Add(oMeetingMessageData.InternetMessageHeaders.Replace(',', ' '));   
+            o.Add(oMeetingMessageData.InternetMessageId.Replace(',', ' '));  
+            o.Add(oMeetingMessageData.IsAssociated.Replace(',', ' '));           
+            o.Add(oMeetingMessageData.IsDelegated.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.IsDeliveryReceiptRequested.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.IsDraft.Replace(',', ' '));  
+            o.Add(oMeetingMessageData.IsFromMe.Replace(',', ' '));           
+            o.Add(oMeetingMessageData.IsOrganizer.Replace(',', ' '));    
+            o.Add(oMeetingMessageData.IsOutOfDate.Replace(',', ' '));    
+            o.Add(oMeetingMessageData.IsRead.Replace(',', ' '));    
+            o.Add(oMeetingMessageData.IsReadReceiptRequested.Replace(',', ' '));  
+            o.Add(oMeetingMessageData.IsReminderSet.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.IsResend.Replace(',', ' '));   
+            o.Add(oMeetingMessageData.IsResponseRequested.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.IsSubmitted.Replace(',', ' '));  
+            o.Add(oMeetingMessageData.IsUnmodified.Replace(',', ' '));             
+            o.Add(oMeetingMessageData.ItemClass.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.LastModifiedName.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.LastModifiedTime.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.MimeContent.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.NormalizedBody.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ParentFolderId.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.PolicyTag.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.Preview.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ReceivedBy.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ReceivedRepresenting.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.References.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ReminderDueBy.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ReminderMinutesBeforeStart.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ReplyTo.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ResponseType.Replace(',', ' '));  
+            o.Add(oMeetingMessageData.RetentionDate.Replace(',', ' ')); 
+         
+            o.Add(oMeetingMessageData.Sender.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.Sensitivity.Replace(',', ' ')); 
+            
+            o.Add(oMeetingMessageData.Size.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.StoreEntryId.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.Subject.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.TextBody.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ToRecipients .Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.UniqueBody.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.VotingInformation.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.WebClientEditFormQueryString.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.WebClientReadFormQueryString.Replace(',', ' ')); 
+
+            o.Add(oMeetingMessageData.PidLidCleanGlobalObjectId.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.PidLidGlobalObjectId.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.PidLidAppointmentRecur.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.PidLidClientIntent.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ClientInfoString   .Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.EntryId .Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.IsHidden.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.FolderPath.Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.LogTriggerAction.Replace(',', ' ')); 
+            
+            // ...
+
+            StringBuilder oSB = new StringBuilder();
+            for (int i = 0; i < o.Count - 1; i++ )
+            {
+                oSB.AppendFormat("{0}, ", o[i]);
+            }
+ 
+            sRet = oSB.ToString();
+            sRet = sRet.TrimEnd(TrimChars);
+   
+            return sRet;
+        }
+
+        public string GetMeetingMessageDataAsCsvHeaders( )
+        {
+            char[] TrimChars = { ',', ' ' };
+            string sRet = string.Empty;
+            List<string> o = new List<string> { };
+            o.Add("AllowedResponseActions");
+            o.Add("ApprovalRequestData");
+            o.Add("ArchiveTag");
+            o.Add("AssociatedAppointmentId");
+            // o.Add("Attachments // 
+            o.Add("BccRecipients");
+            o.Add("Body");
+            o.Add("Categories");
+            o.Add("CcRecipients");
+            o.Add("ConversationId");
+            o.Add("ConversationIndex");
+            o.Add("ConversationTopic");
+            o.Add("Culture");
+            o.Add("DateTimeCreated");
+            o.Add("DateTimeReceived");
+            o.Add("DateTimeSent");
+            o.Add("DisplayCc");
+            o.Add("DisplayTo");
+            o.Add("EffectiveRights");
+            o.Add("EntityExtractionResult");
+            o.Add("ExtendedProperties");
+            o.Add("Flag");
+            o.Add("From");
+            o.Add("HasAttachments");
+            o.Add("HasBeenProcessed");
+            o.Add("ICalDateTimeStamp");
+            o.Add("ICalRecurrenceId");
+            o.Add("ICalUid");
+            o.Add("IconIndex");
+            o.Add("UniqueId");  // Id
+            o.Add("Importance");
+            o.Add("InstanceKey");
+            o.Add("InternetMessageHeaders");
+            o.Add("InternetMessageId");
+            o.Add("IsAssociated");
+            o.Add("IsDelegated");
+            o.Add("IsDeliveryReceiptRequested");
+            o.Add("IsDraft");
+            o.Add("IsFromMe");
+            o.Add("IsOrganizer");
+            o.Add("IsOutOfDate");
+            o.Add("IsRead");
+            o.Add("IsReadReceiptRequested");
+            o.Add("IsReminderSet");
+            o.Add("IsResend");
+            o.Add("IsResponseRequested");
+            o.Add("IsSubmitted");
+            o.Add("IsUnmodified");
+            o.Add("ItemClass");
+            o.Add("LastModifiedName");
+            o.Add("LastModifiedTime");
+            o.Add("MimeContent");
+            o.Add("NormalizedBody");
+            o.Add("ParentFolderId");
+            o.Add("PolicyTag");
+            o.Add("Preview");
+            o.Add("ReceivedBy");
+            o.Add("ReceivedRepresenting");
+            o.Add("References");
+            o.Add("ReminderDueBy");
+            o.Add("ReminderMinutesBeforeStart");
+            o.Add("ReplyTo");
+            o.Add("ResponseType");
+            o.Add("RetentionDate");
+
+            o.Add("Sender");
+            o.Add("Sensitivity");
+
+            o.Add("Size");
+            o.Add("StoreEntryId");
+            o.Add("Subject");
+            o.Add("TextBody");
+            o.Add("ToRecipients");
+            o.Add("UniqueBody");
+            o.Add("VotingInformation");
+            o.Add("WebClientEditFormQueryString");
+            o.Add("WebClientReadFormQueryString");
+
+            o.Add("PidLidCleanGlobalObjectId");
+            o.Add("PidLidGlobalObjectId");
+            o.Add("PidLidAppointmentRecur");
+            o.Add("PidLidClientIntent");
+            o.Add("ClientInfoString");
+            o.Add("EntryId");
+            o.Add("IsHidden");
+            o.Add("FolderPath");
+            o.Add("LogTriggerAction");
+
+            // ...
+
+            StringBuilder oSB = new StringBuilder();
+            for (int i = 0; i < o.Count - 1; i++)
+            {
+                oSB.AppendFormat("{0}, ", o[i]);
+            }
+
+            sRet = oSB.ToString();
+            sRet = sRet.TrimEnd(TrimChars);
+
+            return sRet;
         }
     }
 }

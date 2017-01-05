@@ -630,11 +630,11 @@ namespace EWSEditor.Forms
                         oListItem.SubItems.Add(oItem.Id.UniqueId);
                         oListItem.SubItems.Add(oItem.Id.ChangeKey);
 
-                             
+                       
 
-                                oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass);
-                                lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
-                                oListItem = null;
+                        oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass );
+                        lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
+                        oListItem = null;
                             //}
                         }
 
