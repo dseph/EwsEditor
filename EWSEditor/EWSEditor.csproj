@@ -149,6 +149,7 @@
     <Compile Include="Common\EwsHelpers\AuthenticationHelper.cs" />
     <Compile Include="Common\AutodiscoverInfo.cs" />
     <Compile Include="Common\EwsHelpers\EwsExtendedPropertyHelper.cs" />
+    <Compile Include="Common\Exports\ListViewExport.cs" />
     <Compile Include="Common\ItemCheckers\CalCheck.cs" />
     <Compile Include="Common\EwsEditorServiceInstanceSettings.cs" />
     <Compile Include="Common\Exports\AttachmentExport.cs" />

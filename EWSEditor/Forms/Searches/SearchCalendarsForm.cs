@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
-
+using EWSEditor.Common.Exports;
 using EWSEditor.Common;
 using EWSEditor.Common.Extensions;
 using EWSEditor.Resources;
@@ -272,7 +273,7 @@ namespace EWSEditor.Forms
 
         private void ConfigureListView_Calendar(ref ListView oListView, string SearchType)
         {
-
+            ColumnHeader o = null;
             oListView.Clear();
             oListView.View = View.Details;
             oListView.GridLines = true;
@@ -317,12 +318,17 @@ namespace EWSEditor.Forms
             oListView.Columns.Add("IsResend", 100, HorizontalAlignment.Left);
             oListView.Columns.Add("IsDraft", 100, HorizontalAlignment.Left);
 
-            oListView.Columns.Add("Size", 70, HorizontalAlignment.Left);
+            o = oListView.Columns.Add("Size", 70, HorizontalAlignment.Left);
+            o.Tag = "int";
+            o.TextAlign = HorizontalAlignment.Right;
             oListView.Columns.Add("Attatch", 80, HorizontalAlignment.Left);
 
 
             oListView.Columns.Add("PidLidAppointmentRecur ", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("PidLidClientIntent ", 100, HorizontalAlignment.Left);
+            o = oListView.Columns.Add("PidLidClientIntent ", 100, HorizontalAlignment.Left);
+            o.Tag = "int";
+            o.TextAlign = HorizontalAlignment.Right;
+
             oListView.Columns.Add("ClientInfoString ", 100, HorizontalAlignment.Left);
             oListView.Columns.Add("LogTriggerAction ", 100, HorizontalAlignment.Left);
 
@@ -369,8 +375,6 @@ namespace EWSEditor.Forms
             oListView.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);
             oListView.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);
 
- 
- 
 
             oListView.Columns.Add("LastModifiedName", 150, HorizontalAlignment.Left);
             oListView.Columns.Add("LastModifiedTime", 150, HorizontalAlignment.Left);
@@ -536,8 +540,8 @@ namespace EWSEditor.Forms
         {
             bool bRet = false;
 
-            lvItemsMessages.Visible = false;
-            lvItems.Visible = false;
+            //lvItemsMessages.Visible = false;
+            //lvItems.Visible = false;
 
             ListViewItem oListItem = null;
 
@@ -681,9 +685,9 @@ namespace EWSEditor.Forms
                     oListItem.SubItems.Add(oAppointmentData.FolderPath);
                     oListItem.SubItems.Add(oAppointmentData.StoreEntryId);
                     oListItem.SubItems.Add(oAppointmentData.UniqueId);
-                
 
-                    oListItem.Tag = new ItemTag(oAppointmentData.UniqueId, oAppointmentData.ItemClass);
+
+                    oListItem.Tag = new CalendarItemTag(oAppointmentData.UniqueId, oAppointmentData.ItemClass, oAppointmentData.ICalUid);
                     lvCommon.Items.AddRange(new ListViewItem[] { oListItem }); ;
                     oListItem = null;
 
@@ -782,9 +786,10 @@ namespace EWSEditor.Forms
                     oListItem.SubItems.Add(oMeetingMessageData.FolderPath);
                     oListItem.SubItems.Add(oMeetingMessageData.StoreEntryId);
                     oListItem.SubItems.Add(oMeetingMessageData.UniqueId);
-                
 
-                    oListItem.Tag = new ItemTag(oMeetingMessageData.UniqueId, oMeetingMessageData.ItemClass);
+
+                    oListItem.Tag = new CalendarItemTag(oMeetingMessageData.UniqueId, oMeetingMessageData.ItemClass, oMeetingMessageData.ICalUid);
+                    //oListItem.Tag = new ItemTag(oMeetingMessageData.UniqueId, oMeetingMessageData.ItemClass);
                     lvCommon.Items.AddRange(new ListViewItem[] { oListItem }); ;
                     oListItem = null;
 
@@ -805,8 +810,8 @@ namespace EWSEditor.Forms
             oListItem = null;
 
             lvCommon.Visible = true;
-            lvItemsMessages.Visible = true;
-            lvItems.Visible = true;
+            //lvItemsMessages.Visible = true;
+            //lvItems.Visible = true;
 
 
             return bRet;
@@ -967,9 +972,9 @@ namespace EWSEditor.Forms
 
 
 
-                    ConfigureListView_Calendar(ref lvItems, cmboSearchType.Text.Trim());
+                    //ConfigureListView_Calendar(ref lvItems, cmboSearchType.Text.Trim());
 
-                    ConfigureListView_Message(ref lvItemsMessages, cmboSearchType.Text.Trim());
+                    //ConfigureListView_Message(ref lvItemsMessages, cmboSearchType.Text.Trim());
 
                     ConfigureListView_Common(ref lvCommon, cmboSearchType.Text.Trim());
 
@@ -990,9 +995,9 @@ namespace EWSEditor.Forms
                     bool MoreItems = true;
                     //ListViewItem oListItem = null;
 
-                    ConfigureListView_Calendar(ref lvItems, cmboSearchType.Text.Trim());
+                    //ConfigureListView_Calendar(ref lvItems, cmboSearchType.Text.Trim());
 
-                    ConfigureListView_Message(ref lvItemsMessages, cmboSearchType.Text.Trim());
+                    //ConfigureListView_Message(ref lvItemsMessages, cmboSearchType.Text.Trim());
                  
                     ConfigureListView_Common(ref lvCommon, cmboSearchType.Text.Trim());
 
@@ -1109,15 +1114,15 @@ namespace EWSEditor.Forms
 
         private void lvItems_DoubleClick(object sender, EventArgs e)
         {
-            if (lvItems.SelectedItems.Count > 0)
-            {
-                ItemTag oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
-                string sId = oItemTag.Id.UniqueId;
-                //string sClass = oItemTag.ItemClass;
+            //if (lvItems.SelectedItems.Count > 0)
+            //{
+            //    ItemTag oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
+            //    string sId = oItemTag.Id.UniqueId;
+            //    //string sClass = oItemTag.ItemClass;
 
-                DisplayItems(sId);
-                //DisplayItems(sId, "IPM.Appointment");
-            }
+            //    DisplayItems(sId);
+            //    //DisplayItems(sId, "IPM.Appointment");
+            //}
         }
 
         //private void DisplayItems(string sId, string sClass)
@@ -1297,27 +1302,72 @@ namespace EWSEditor.Forms
 
         private void btnExportCalendarItems_Click(object sender, EventArgs e)
         {
+            ExportCalendarItems();
+        }
+
+        private void ExportCalendarItems() 
+        { 
             SearchCalendarExportPicker oForm = new SearchCalendarExportPicker();
             oForm.ShowDialog();
             
             if (oForm.bChoseOk == true)
             {
-                
-                string sFilePath = oForm.txtFolderPath.Text.Trim();
-                // validate folder path is correct.
-                if (System.IO.Directory.Exists(sFilePath) == false)
-                {
-                    // ask to create and  create it.
-                    // if they say no then return
-                }
-
+ 
                 if (oForm.rdoExportDisplayedResults.Checked == true)
                 {
+                    string sPath = oForm.txtDisplayedResultsFolderPath.Text.Trim();
+                    string sRoot = Path.GetPathRoot(sPath);
 
+                    if (CheckFolder(sRoot))
+                    { 
+                        if (File.Exists(sPath))
+                        {
+                            MessageBox.Show("File Already Exists",  "File already exists.  Choose a different file name.");
+                        }
+                        else
+                        {
+                            ExportDisplayedResults(sPath);
+                        }
+                    }
                 }                
                 
                 if (oForm.rdoExportDetailedProperties.Checked == true)
                 {
+                    string sAppointmentPath = oForm.txtAppointmentDetailedFolderPath.Text.Trim();
+                    string sAppointmentRoot = Path.GetPathRoot(sAppointmentPath);
+
+                    string sMeetingMessagePath = oForm.txtMeetingMessageDetailedFolderPath.Text.Trim();
+                    string sMeetingMessageRoot = Path.GetPathRoot(sMeetingMessagePath);
+
+                    if (CheckFolder(sAppointmentRoot))
+                    {
+                        if (File.Exists(sAppointmentPath))
+                        {
+                            MessageBox.Show("Appoinment export file Already Exists", "File already exists.  Choose a different file name.");
+                            return;
+                        }
+                    }
+                    else
+                        return;
+
+                    if (CheckFolder(sMeetingMessageRoot))
+                    {
+                        if (File.Exists(sMeetingMessagePath))
+                        {
+                            MessageBox.Show("Meeting Message export file already exists", "File already exists.  Choose a different file name.");
+                            return;
+                        }
+                    }
+                    else
+                        return;
+
+                    ExportDetailedProperties(
+                        sAppointmentPath,
+                        sMeetingMessagePath,
+                        oForm.chkIncludeBodyProperties.Checked,
+                        oForm.chkIncludeMime.Checked
+                        );
+
                     //oForm.chkIncludeAttachments
                     // oForm.chkIncludeBodyProperties
                     // oForm.chkIncludeMime
@@ -1325,24 +1375,188 @@ namespace EWSEditor.Forms
 
                 if (oForm.rdoExportItemsAsBlobs.Checked == true)
                 {
-
+                    
+                    if (CheckFolder(oForm.txtBlobFolderPath.Text.Trim()))
+                        ExportItemsAsBlobs(oForm.txtBlobFolderPath.Text.Trim());
                 }
 
             }
 
         }
 
+        private bool CheckFolder(string sFolderPath)
+        {
+            // validate folder path is correct.
+            if (System.IO.Directory.Exists(sFolderPath) == false)
+            {
+                DialogResult oDlg = MessageBox.Show("Create Folder", "The folder path chosen does not exist.  Do you wish to create this folder?", MessageBoxButtons.YesNo);
+                if (oDlg == System.Windows.Forms.DialogResult.Yes)
+                {
+                    System.IO.Directory.CreateDirectory(sFolderPath);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void ExportDisplayedResults(string sFolderPath)
+        {
+            //string sFileName = sFolderPath; //  "ExportedSearchCalendarResults.CSV";
+            //string sPath = Path.Combine(sFolderPath, sFileName);
+            ListViewExport.SaveListViewToCsv(lvCommon, sFolderPath);
+        }
+
+       
+
+        /// ExportDetailedProperties()
+        /// Save items in grid with many properties to CSV files.
+        private bool ExportDetailedProperties(
+                string sAppointmentFilePath,
+                string sMeetingMessageFilePath,
+                bool chkIncludeBodyProperties,
+                bool chkIncludeMime)
+        {
+            bool bRet = false;
+            EWSEditor.Common.Exports.CalendarExport oCalendarExport = new EWSEditor.Common.Exports.CalendarExport();
+            EWSEditor.Common.Exports.MeetingMessageExport oMeetingMessageExport = new EWSEditor.Common.Exports.MeetingMessageExport();
+
+            string sHeader = string.Empty;
+            string sLine = string.Empty;
+
+            //StreamWriter w = File.AppendText(sFilePath);
+            //char[] TrimChars = { ',', ' ' };
+            //StringBuilder SbHeader = new StringBuilder();
+            //foreach (ColumnHeader oCH in oListView.Columns)
+            //{
+            //    SbHeader.Append(oCH.Text);
+            //    SbHeader.Append(",");
+            //}
+            //sHeader = SbHeader.ToString();
+            //sHeader = sHeader.TrimEnd(TrimChars);
+            //w.WriteLine(sHeader);
+
+            ItemId oItemId = null;
+            CalendarItemTag oCalendarItemTag = null;
+            string sFile = string.Empty;
+           
+            int iCount = 0;
+            string s = string.Empty;
+            string sId = string.Empty;
+            string sUID = string.Empty;
+            string sClass = string.Empty;
+
+            AppointmentData oAppointmentData;
+            MeetingMessageData oMeetingMessageData;
+
+            StreamWriter swAppointment = File.AppendText(sAppointmentFilePath);
+            StreamWriter swMeetingMessage = File.AppendText(sMeetingMessageFilePath);
+
+            sHeader = oCalendarExport.GetAppointmentDataAsCsvHeaders();
+            swAppointment.WriteLine(sHeader);
+
+            sHeader = oMeetingMessageExport.GetMeetingMessageDataAsCsvHeaders();
+            swAppointment.WriteLine(sHeader);
+ 
+            foreach (ListViewItem oListViewItem in lvCommon.Items)
+            {
+                if (oListViewItem.Selected == true)
+                {
+                    iCount++;
+                    sLine = string.Empty;
+                    oCalendarItemTag = (CalendarItemTag)oListViewItem.Tag;
+                    sId = oCalendarItemTag.Id.UniqueId;
+                    sUID = oCalendarItemTag.ItemUid;
+                    sClass = oCalendarItemTag.ItemClass.ToUpper();
+                    oItemId = new ItemId(sId);
+ 
+                    if (sClass.StartsWith("IPM.APPOINTMENT"))
+                    {
+                        oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(_CurrentService, oItemId);
+                        sLine = oCalendarExport.GetAppointmentDataAsCsv(oAppointmentData);
+                        swAppointment.WriteLine(sLine);
+                    }
+                        
+
+                    if (sClass.StartsWith("IPM.SCHEDULE"))
+                    {
+                        oMeetingMessageData = oMeetingMessageExport.GetMeetingMessageDataFromItem(_CurrentService, oItemId);
+                        sLine = oMeetingMessageExport.GetMeetingMessageDataAsCsv(oMeetingMessageData);
+                        swMeetingMessage.WriteLine(sLine);
+                    }
+                    bRet = true;
+                }
+            }
+
+            swAppointment.Close();
+            swMeetingMessage.Close();
+
+            return bRet;
+        }
+
+        /// ExportItemsAsBlobs()
+        /// Save all items in grid as blobs. These can be reloaded later with EWSEditor.
+        private bool ExportItemsAsBlobs(string sFolderPath)
+        {
+            bool bRet = false;
+            EWSEditor.Common.Exports.CalendarExport oCalendarExport = new EWSEditor.Common.Exports.CalendarExport();
+            EWSEditor.Common.Exports.MeetingMessageExport oMeetingMessageExport = new EWSEditor.Common.Exports.MeetingMessageExport();
+
+             
+            ItemId oItemId = null;
+            CalendarItemTag oCalendarItemTag = null;
+            string sFile = string.Empty;
+            string sFilePath = string.Empty;
+            int iCount = 0;
+            string s = string.Empty;
+            string sId = string.Empty;
+            string sUID = string.Empty;
+            string sClass = string.Empty;
+
+            foreach (ListViewItem oListViewItem in  lvCommon.Items)
+            {
+                if (oListViewItem.Selected == true)
+                {
+                    iCount++;
+                    oCalendarItemTag = (CalendarItemTag)oListViewItem.Tag;
+                    sId = oCalendarItemTag.Id.UniqueId;
+                    sUID = oCalendarItemTag.ItemUid;
+                    sClass = oCalendarItemTag.ItemClass.ToUpper();
+                    oItemId = new ItemId(sId);
+
+                    sFile = sUID + "-" + sClass + "-" + iCount.ToString() + ".bin";
+
+                    sFilePath = Path.Combine(sFolderPath, sFile);
+
+                    if (sClass.StartsWith("IPM.APPOINTMENT"))
+                        oCalendarExport.SaveAppointmentBlobToFolder(_CurrentService, oItemId, sFilePath);
+
+                    if (sClass.StartsWith("IPM.SCHEDULE"))
+                        oMeetingMessageExport.SaveMeetingMessageBlobToFolder(_CurrentService, oItemId, sFilePath);
+                    bRet = true;
+                }                
+            }
+
+            return bRet;
+        }
+
         private void lvItemsMessages_DoubleClick(object sender, EventArgs e)
         {
-            if (lvItems.SelectedItems.Count > 0)
-            {
-                ItemTag oItemTag = (ItemTag)lvItemsMessages.SelectedItems[0].Tag;
-                string sId = oItemTag.Id.UniqueId;
-                //string sClass = oItemTag.ItemClass;
+            //if (lvItems.SelectedItems.Count > 0)
+            //{
+            //    ItemTag oItemTag = (ItemTag)lvItemsMessages.SelectedItems[0].Tag;
+            //    string sId = oItemTag.Id.UniqueId;
+            //    //string sClass = oItemTag.ItemClass;
 
-                DisplayItems(sId);
-                //DisplayItems(sId, "IPM.Schedule");
-            }
+            //    DisplayItems(sId);
+            //    //DisplayItems(sId, "IPM.Schedule");
+            //}
 
         }
 
@@ -1353,12 +1567,12 @@ namespace EWSEditor.Forms
 
         private void lvItems_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            LvColumnSort(ref lvItems, e.Column);
+            //LvColumnSort(ref lvItems, e.Column);
         }
 
         private void lvItemsMessages_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            LvColumnSort(ref lvItemsMessages, e.Column);
+            //LvColumnSort(ref lvItemsMessages, e.Column);
         }
 
         private void lvCommon_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -1393,10 +1607,15 @@ namespace EWSEditor.Forms
         {
             if (lvCommon.SelectedItems.Count > 0)
             {
-                ItemTag oItemTag = (ItemTag)lvCommon.SelectedItems[0].Tag;
-                string sId = oItemTag.Id.UniqueId;
+                CalendarItemTag oCalendarItemTag = (CalendarItemTag)lvCommon.SelectedItems[0].Tag;
+                string sId = oCalendarItemTag.Id.UniqueId;
                 DisplayItems(sId);
             }
+        }
+
+        private void lvCommon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
  
 

@@ -33,19 +33,29 @@
             this.rdoExportItemsAsBlobs = new System.Windows.Forms.RadioButton();
             this.chkIncludeBodyProperties = new System.Windows.Forms.CheckBox();
             this.chkIncludeMime = new System.Windows.Forms.CheckBox();
-            this.chkIncludeAttachments = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtFolderPath = new System.Windows.Forms.TextBox();
+            this.txtAppointmentDetailedFolderPath = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.OkButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnPickFolder = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtBlobFolderPath = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnPickFolderDisplayedResults = new System.Windows.Forms.Button();
+            this.txtDisplayedResultsFolderPath = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnPickFolderAppointmentDetailedProperties = new System.Windows.Forms.Button();
+            this.btnPickFolderMeetingMessageDetailedProperties = new System.Windows.Forms.Button();
+            this.txtMeetingMessageDetailedFolderPath = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnPickFolderBlobProperties = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // rdoExportDisplayedResults
             // 
             this.rdoExportDisplayedResults.AutoSize = true;
+            this.rdoExportDisplayedResults.Checked = true;
             this.rdoExportDisplayedResults.Location = new System.Drawing.Point(10, 30);
             this.rdoExportDisplayedResults.Name = "rdoExportDisplayedResults";
             this.rdoExportDisplayedResults.Size = new System.Drawing.Size(179, 21);
@@ -58,11 +68,10 @@
             // rdoExportDetailedProperties
             // 
             this.rdoExportDetailedProperties.AutoSize = true;
-            this.rdoExportDetailedProperties.Location = new System.Drawing.Point(10, 57);
+            this.rdoExportDetailedProperties.Location = new System.Drawing.Point(10, 89);
             this.rdoExportDetailedProperties.Name = "rdoExportDetailedProperties";
             this.rdoExportDetailedProperties.Size = new System.Drawing.Size(186, 21);
             this.rdoExportDetailedProperties.TabIndex = 1;
-            this.rdoExportDetailedProperties.TabStop = true;
             this.rdoExportDetailedProperties.Text = "Export detailed propeties";
             this.rdoExportDetailedProperties.UseVisualStyleBackColor = true;
             this.rdoExportDetailedProperties.CheckedChanged += new System.EventHandler(this.rdoExportDetailedProperties_CheckedChanged);
@@ -70,11 +79,10 @@
             // rdoExportItemsAsBlobs
             // 
             this.rdoExportItemsAsBlobs.AutoSize = true;
-            this.rdoExportItemsAsBlobs.Location = new System.Drawing.Point(10, 165);
+            this.rdoExportItemsAsBlobs.Location = new System.Drawing.Point(10, 228);
             this.rdoExportItemsAsBlobs.Name = "rdoExportItemsAsBlobs";
             this.rdoExportItemsAsBlobs.Size = new System.Drawing.Size(357, 21);
             this.rdoExportItemsAsBlobs.TabIndex = 2;
-            this.rdoExportItemsAsBlobs.TabStop = true;
             this.rdoExportItemsAsBlobs.Text = "Export items as blobs (reload using EwsEditor later).";
             this.rdoExportItemsAsBlobs.UseVisualStyleBackColor = true;
             this.rdoExportItemsAsBlobs.CheckedChanged += new System.EventHandler(this.rdoExportItemsAsBlobs_CheckedChanged);
@@ -82,7 +90,7 @@
             // chkIncludeBodyProperties
             // 
             this.chkIncludeBodyProperties.AutoSize = true;
-            this.chkIncludeBodyProperties.Location = new System.Drawing.Point(30, 84);
+            this.chkIncludeBodyProperties.Location = new System.Drawing.Point(39, 171);
             this.chkIncludeBodyProperties.Name = "chkIncludeBodyProperties";
             this.chkIncludeBodyProperties.Size = new System.Drawing.Size(213, 21);
             this.chkIncludeBodyProperties.TabIndex = 3;
@@ -92,46 +100,36 @@
             // chkIncludeMime
             // 
             this.chkIncludeMime.AutoSize = true;
-            this.chkIncludeMime.Location = new System.Drawing.Point(30, 111);
+            this.chkIncludeMime.Location = new System.Drawing.Point(39, 198);
             this.chkIncludeMime.Name = "chkIncludeMime";
             this.chkIncludeMime.Size = new System.Drawing.Size(113, 21);
             this.chkIncludeMime.TabIndex = 4;
             this.chkIncludeMime.Text = "Include MIME";
             this.chkIncludeMime.UseVisualStyleBackColor = true;
             // 
-            // chkIncludeAttachments
-            // 
-            this.chkIncludeAttachments.AutoSize = true;
-            this.chkIncludeAttachments.Location = new System.Drawing.Point(30, 138);
-            this.chkIncludeAttachments.Name = "chkIncludeAttachments";
-            this.chkIncludeAttachments.Size = new System.Drawing.Size(157, 21);
-            this.chkIncludeAttachments.TabIndex = 5;
-            this.chkIncludeAttachments.Text = "Include Attachments";
-            this.chkIncludeAttachments.UseVisualStyleBackColor = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 221);
+            this.label1.Location = new System.Drawing.Point(30, 118);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 17);
+            this.label1.Size = new System.Drawing.Size(189, 17);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Export path:";
+            this.label1.Text = "Appointment Export file path:";
             // 
-            // txtFolderPath
+            // txtAppointmentDetailedFolderPath
             // 
-            this.txtFolderPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtAppointmentDetailedFolderPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFolderPath.Location = new System.Drawing.Point(104, 218);
-            this.txtFolderPath.Name = "txtFolderPath";
-            this.txtFolderPath.Size = new System.Drawing.Size(527, 22);
-            this.txtFolderPath.TabIndex = 7;
+            this.txtAppointmentDetailedFolderPath.Location = new System.Drawing.Point(253, 115);
+            this.txtAppointmentDetailedFolderPath.Name = "txtAppointmentDetailedFolderPath";
+            this.txtAppointmentDetailedFolderPath.Size = new System.Drawing.Size(387, 22);
+            this.txtAppointmentDetailedFolderPath.TabIndex = 7;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(572, 252);
+            this.btnCancel.Location = new System.Drawing.Point(631, 364);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 28);
@@ -143,7 +141,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(465, 252);
+            this.OkButton.Location = new System.Drawing.Point(524, 364);
             this.OkButton.Margin = new System.Windows.Forms.Padding(4);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 28);
@@ -154,7 +152,19 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.chkIncludeAttachments);
+            this.groupBox1.Controls.Add(this.btnPickFolderBlobProperties);
+            this.groupBox1.Controls.Add(this.btnPickFolderMeetingMessageDetailedProperties);
+            this.groupBox1.Controls.Add(this.txtMeetingMessageDetailedFolderPath);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.btnPickFolderAppointmentDetailedProperties);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txtBlobFolderPath);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.btnPickFolderDisplayedResults);
+            this.groupBox1.Controls.Add(this.txtDisplayedResultsFolderPath);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtAppointmentDetailedFolderPath);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.rdoExportDisplayedResults);
             this.groupBox1.Controls.Add(this.rdoExportDetailedProperties);
             this.groupBox1.Controls.Add(this.rdoExportItemsAsBlobs);
@@ -162,40 +172,128 @@
             this.groupBox1.Controls.Add(this.chkIncludeMime);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(661, 194);
+            this.groupBox1.Size = new System.Drawing.Size(724, 333);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Export Type";
             // 
-            // btnPickFolder
+            // label4
             // 
-            this.btnPickFolder.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnPickFolder.Location = new System.Drawing.Point(637, 218);
-            this.btnPickFolder.Name = "btnPickFolder";
-            this.btnPickFolder.Size = new System.Drawing.Size(36, 22);
-            this.btnPickFolder.TabIndex = 11;
-            this.btnPickFolder.Text = "...";
-            this.btnPickFolder.UseVisualStyleBackColor = true;
-            this.btnPickFolder.Click += new System.EventHandler(this.btnPickFolder_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 300);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(298, 17);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Note: You must select items prior to exporting.";
+            // 
+            // txtBlobFolderPath
+            // 
+            this.txtBlobFolderPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBlobFolderPath.Location = new System.Drawing.Point(160, 255);
+            this.txtBlobFolderPath.Name = "txtBlobFolderPath";
+            this.txtBlobFolderPath.Size = new System.Drawing.Size(480, 22);
+            this.txtBlobFolderPath.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(30, 258);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Export folder path:";
+            // 
+            // btnPickFolderDisplayedResults
+            // 
+            this.btnPickFolderDisplayedResults.Location = new System.Drawing.Point(646, 55);
+            this.btnPickFolderDisplayedResults.Name = "btnPickFolderDisplayedResults";
+            this.btnPickFolderDisplayedResults.Size = new System.Drawing.Size(36, 22);
+            this.btnPickFolderDisplayedResults.TabIndex = 14;
+            this.btnPickFolderDisplayedResults.Text = "...";
+            this.btnPickFolderDisplayedResults.UseVisualStyleBackColor = true;
+            this.btnPickFolderDisplayedResults.Click += new System.EventHandler(this.btnPickFolderDisplayedResults_Click);
+            // 
+            // txtDisplayedResultsFolderPath
+            // 
+            this.txtDisplayedResultsFolderPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDisplayedResultsFolderPath.Location = new System.Drawing.Point(160, 57);
+            this.txtDisplayedResultsFolderPath.Name = "txtDisplayedResultsFolderPath";
+            this.txtDisplayedResultsFolderPath.Size = new System.Drawing.Size(480, 22);
+            this.txtDisplayedResultsFolderPath.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(30, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 17);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Export fiile path:";
+            // 
+            // btnPickFolderAppointmentDetailedProperties
+            // 
+            this.btnPickFolderAppointmentDetailedProperties.Location = new System.Drawing.Point(646, 113);
+            this.btnPickFolderAppointmentDetailedProperties.Name = "btnPickFolderAppointmentDetailedProperties";
+            this.btnPickFolderAppointmentDetailedProperties.Size = new System.Drawing.Size(36, 22);
+            this.btnPickFolderAppointmentDetailedProperties.TabIndex = 16;
+            this.btnPickFolderAppointmentDetailedProperties.Text = "...";
+            this.btnPickFolderAppointmentDetailedProperties.UseVisualStyleBackColor = true;
+            this.btnPickFolderAppointmentDetailedProperties.Click += new System.EventHandler(this.btnPickFolderAppointmentDetailedProperties_Click);
+            // 
+            // btnPickFolderMeetingMessageDetailedProperties
+            // 
+            this.btnPickFolderMeetingMessageDetailedProperties.Location = new System.Drawing.Point(646, 139);
+            this.btnPickFolderMeetingMessageDetailedProperties.Name = "btnPickFolderMeetingMessageDetailedProperties";
+            this.btnPickFolderMeetingMessageDetailedProperties.Size = new System.Drawing.Size(36, 22);
+            this.btnPickFolderMeetingMessageDetailedProperties.TabIndex = 19;
+            this.btnPickFolderMeetingMessageDetailedProperties.Text = "...";
+            this.btnPickFolderMeetingMessageDetailedProperties.UseVisualStyleBackColor = true;
+            this.btnPickFolderMeetingMessageDetailedProperties.Click += new System.EventHandler(this.btnPickFolderMeetingMessageDetailedProperties_Click);
+            // 
+            // txtMeetingMessageDetailedFolderPath
+            // 
+            this.txtMeetingMessageDetailedFolderPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMeetingMessageDetailedFolderPath.Location = new System.Drawing.Point(253, 141);
+            this.txtMeetingMessageDetailedFolderPath.Name = "txtMeetingMessageDetailedFolderPath";
+            this.txtMeetingMessageDetailedFolderPath.Size = new System.Drawing.Size(387, 22);
+            this.txtMeetingMessageDetailedFolderPath.TabIndex = 18;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(30, 144);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(217, 17);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "MeetingMessage Export file path:";
+            // 
+            // btnPickFolderBlobProperties
+            // 
+            this.btnPickFolderBlobProperties.Location = new System.Drawing.Point(646, 255);
+            this.btnPickFolderBlobProperties.Name = "btnPickFolderBlobProperties";
+            this.btnPickFolderBlobProperties.Size = new System.Drawing.Size(36, 22);
+            this.btnPickFolderBlobProperties.TabIndex = 20;
+            this.btnPickFolderBlobProperties.Text = "...";
+            this.btnPickFolderBlobProperties.UseVisualStyleBackColor = true;
+            this.btnPickFolderBlobProperties.Click += new System.EventHandler(this.btnPickFolderBlobProperties_Click);
             // 
             // SearchCalendarExportPicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 293);
-            this.Controls.Add(this.btnPickFolder);
+            this.ClientSize = new System.Drawing.Size(744, 405);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.OkButton);
-            this.Controls.Add(this.txtFolderPath);
-            this.Controls.Add(this.label1);
             this.Name = "SearchCalendarExportPicker";
             this.Text = "Select Export Type";
             this.Load += new System.EventHandler(this.SearchCalendarExportPicker_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -205,13 +303,22 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnPickFolder;
-        public System.Windows.Forms.TextBox txtFolderPath;
+        public System.Windows.Forms.TextBox txtAppointmentDetailedFolderPath;
         public System.Windows.Forms.RadioButton rdoExportDisplayedResults;
         public System.Windows.Forms.RadioButton rdoExportDetailedProperties;
         public System.Windows.Forms.RadioButton rdoExportItemsAsBlobs;
         public System.Windows.Forms.CheckBox chkIncludeBodyProperties;
         public System.Windows.Forms.CheckBox chkIncludeMime;
-        public System.Windows.Forms.CheckBox chkIncludeAttachments;
+        public System.Windows.Forms.TextBox txtBlobFolderPath;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnPickFolderDisplayedResults;
+        public System.Windows.Forms.TextBox txtDisplayedResultsFolderPath;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnPickFolderAppointmentDetailedProperties;
+        private System.Windows.Forms.Button btnPickFolderMeetingMessageDetailedProperties;
+        public System.Windows.Forms.TextBox txtMeetingMessageDetailedFolderPath;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnPickFolderBlobProperties;
     }
 }
