@@ -28,6 +28,9 @@ namespace EWSEditor.Forms
         private int _lvItemsMessages_SortColumn = -1;
         private int _lvCommon_SortColumn = -1;
 
+        private int _CountAppointment = 0;
+        private int _CountMeetingMessage = 0;
+
         private static ExtendedPropertyDefinition Prop_PR_FOLDER_PATH = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
         private static ExtendedPropertyDefinition PidLidAppointmentRecur = new ExtendedPropertyDefinition(new Guid("00062002-0000-0000-C000-000000000046"), 0x8216, MapiPropertyType.Binary); // dispidApptRecur
         private static ExtendedPropertyDefinition PidLidClientIntent = new ExtendedPropertyDefinition(new Guid("11000E07-B51B-40D6-AF21-CAA85EDAB1D0"), 0x0015, MapiPropertyType.Integer); // dispidClientIntent
@@ -97,6 +100,8 @@ namespace EWSEditor.Forms
             //http://msdn.microsoft.com/en-us/library/exchange/dd633674(v=exchg.80).aspx
 
             // http://msdn.microsoft.com/en-us/library/exchange/dd633693(v=exchg.80).aspx 
+
+            toolStripStatusLabel1.Text = "Ready to search.";
 
             cmboSearchType.Text = "Direct";
 
@@ -347,6 +352,10 @@ namespace EWSEditor.Forms
                 oListView.Columns.Add("Count", 100, HorizontalAlignment.Left);
             else
                 oListView.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
+ 
+            oListView.Columns.Add("Organizer", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("From", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("Sender", 150, HorizontalAlignment.Left);
 
             oListView.Columns.Add("Subject", 170, HorizontalAlignment.Left);
             oListView.Columns.Add("Class", 150, HorizontalAlignment.Left);
@@ -447,6 +456,8 @@ namespace EWSEditor.Forms
             FindItemsResults<Item> oFindItemsResults = null;
             List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
 
+            toolStripStatusLabel1.Text = "Searching...";
+
             if (this.rdoAqsSearch.Checked == true)
             {
                 try
@@ -521,7 +532,7 @@ namespace EWSEditor.Forms
             return Convert.ToBase64String(buffer);
         }
 
-        private bool AddSearchResultsToListViews(FindItemsResults<Item> oFindItemsResults, int iCountMore)
+        private bool  AddSearchResultsToListViews(FindItemsResults<Item> oFindItemsResults, int iCountMore)
         {
             bool bRet = false;
 
@@ -536,6 +547,8 @@ namespace EWSEditor.Forms
 
             oListItem = null;
 
+            toolStripStatusLabel1.Text = "Processing Items...";
+            lvCommon.Visible = false;
  
             foreach (Item oItem in oFindItemsResults.Items)
             {
@@ -555,6 +568,7 @@ namespace EWSEditor.Forms
                 if (oItem.ItemClass.ToUpper().StartsWith("IPM.APPOINTMENT") )
                 {
 
+                    _CountAppointment++;
                     iCountAppointment++;
 
                     EWSEditor.Common.Exports.AppointmentData oAppointmentData = new EWSEditor.Common.Exports.AppointmentData();
@@ -625,12 +639,18 @@ namespace EWSEditor.Forms
                     //oListItem = null;
 
                     //  Load common data listview ------------------------------------------------
+                     
                     iCountCommon++;
 
                     if (this.cmboSearchType.Text == "Direct")
                         oListItem = new ListViewItem(iCountCommon.ToString(), 0);
                     else
                         oListItem = new ListViewItem(iCountCommon.ToString() + ":" + iCountCommon.ToString(), 0);
+
+                    oListItem.SubItems.Add(oAppointmentData.OrganizerName + " <" +  oAppointmentData.OrganizerAddress + ">");
+                    oListItem.SubItems.Add(""); // From
+                    oListItem.SubItems.Add(""); // Sender
+ 
 
                     oListItem.SubItems.Add(oAppointmentData.Subject);
 
@@ -676,6 +696,7 @@ namespace EWSEditor.Forms
                 if (oItem.ItemClass.ToUpper().StartsWith("IPM.SCHEDULE"))
                 {
 
+                    _CountMeetingMessage++;
                     iCountMeetingMessage++;
 
                     EWSEditor.Common.Exports.MeetingMessageData oMeetingMessageData = new EWSEditor.Common.Exports.MeetingMessageData();
@@ -728,6 +749,10 @@ namespace EWSEditor.Forms
                     else
                         oListItem = new ListViewItem(iCountCommon.ToString() + ":" + iCountCommon.ToString(), 0);
 
+                    oListItem.SubItems.Add(""); // Organizer
+                    oListItem.SubItems.Add(oMeetingMessageData.From);
+                    oListItem.SubItems.Add(oMeetingMessageData.Sender);
+
                     oListItem.SubItems.Add(oMeetingMessageData.Subject);
 
                     oListItem.SubItems.Add(oMeetingMessageData.ItemClass);
@@ -767,14 +792,19 @@ namespace EWSEditor.Forms
 
                     bRet = true;
 
+                    if (iCountCommon % 10 == 0)
+                        toolStripStatusLabel1.Text = string.Format("Searching - Retrieved {0} Calendar item(s), {1} Meeting Message(s) ...", _CountAppointment, _CountMeetingMessage);
+
                 }
 
- 
+                toolStripStatusLabel1.Text = string.Format("Searching - Retrieved {0} Calendar item(s), {1} Meeting message(s).", _CountAppointment, _CountMeetingMessage);
 
+                
             }
 
             oListItem = null;
 
+            lvCommon.Visible = true;
             lvItemsMessages.Visible = true;
             lvItems.Visible = true;
 
@@ -907,6 +937,8 @@ namespace EWSEditor.Forms
             //int iCount = 0;
             bool bRet = false;
 
+            int TotalRetrieved = 0;
+
             if (oFolderId != null)
             {
 
@@ -926,8 +958,13 @@ namespace EWSEditor.Forms
 
                     SetSearchDepth(ref oItemView);
 
+     
+
                     FindItemsResults<Item> oFindItemsResults = null;
                     oFindItemsResults = DoSearch(oFolderId, ref oItemView);
+
+                    
+
 
 
                     ConfigureListView_Calendar(ref lvItems, cmboSearchType.Text.Trim());
@@ -961,9 +998,13 @@ namespace EWSEditor.Forms
 
                     int iCountMore = 0;
 
+                    TotalRetrieved = 0;
+
                     while (MoreItems)
                     {
                         iCountMore++;
+
+ 
 
 
                         ItemView oItemView = new ItemView(iPageSize, offset, OffsetBasePoint.Beginning);
@@ -1026,10 +1067,13 @@ namespace EWSEditor.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            _CountAppointment = 0;
+            _CountMeetingMessage = 0;
             int iPageSize = 100;
             iPageSize = (int)this.numPageSize.Value;
             this.Cursor = Cursors.WaitCursor;
             ProcessSearch(_CurrentFolderId, iPageSize);
+            //toolStripStatusLabel1.Text = "Ready to search."; 
             this.Cursor = Cursors.Default;
         }
 
@@ -1253,6 +1297,38 @@ namespace EWSEditor.Forms
 
         private void btnExportCalendarItems_Click(object sender, EventArgs e)
         {
+            SearchCalendarExportPicker oForm = new SearchCalendarExportPicker();
+            oForm.ShowDialog();
+            
+            if (oForm.bChoseOk == true)
+            {
+                
+                string sFilePath = oForm.txtFolderPath.Text.Trim();
+                // validate folder path is correct.
+                if (System.IO.Directory.Exists(sFilePath) == false)
+                {
+                    // ask to create and  create it.
+                    // if they say no then return
+                }
+
+                if (oForm.rdoExportDisplayedResults.Checked == true)
+                {
+
+                }                
+                
+                if (oForm.rdoExportDetailedProperties.Checked == true)
+                {
+                    //oForm.chkIncludeAttachments
+                    // oForm.chkIncludeBodyProperties
+                    // oForm.chkIncludeMime
+                }
+
+                if (oForm.rdoExportItemsAsBlobs.Checked == true)
+                {
+
+                }
+
+            }
 
         }
 

@@ -148,6 +148,7 @@
   <ItemGroup>
     <Compile Include="Common\EwsHelpers\AuthenticationHelper.cs" />
     <Compile Include="Common\AutodiscoverInfo.cs" />
+    <Compile Include="Common\EwsHelpers\EwsExtendedPropertyHelper.cs" />
     <Compile Include="Common\ItemCheckers\CalCheck.cs" />
     <Compile Include="Common\EwsEditorServiceInstanceSettings.cs" />
     <Compile Include="Common\Exports\AttachmentExport.cs" />
@@ -260,6 +261,12 @@
     </Compile>
     <Compile Include="Forms\Searches\FindCertainFolders.Designer.cs">
       <DependentUpon>FindCertainFolders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Searches\SearchCalendarExportPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Searches\SearchCalendarExportPicker.Designer.cs">
+      <DependentUpon>SearchCalendarExportPicker.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Searches\SearchFolders.cs">
       <SubType>Form</SubType>
@@ -893,6 +900,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Searches\FindCertainFolders.resx">
       <DependentUpon>FindCertainFolders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Searches\SearchCalendarExportPicker.resx">
+      <DependentUpon>SearchCalendarExportPicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Searches\SearchFolders.resx">
       <DependentUpon>SearchFolders.cs</DependentUpon>
