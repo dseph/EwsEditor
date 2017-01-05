@@ -38,6 +38,21 @@ namespace EWSEditor.Common.Exports
         private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FFB, MapiPropertyType.Binary);  // PidTagStoreEntryId
         private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
 
+        private static ExtendedPropertyDefinition PR_SENT_REPRESENTING_EMAIL_ADDRESS = new ExtendedPropertyDefinition(0x0065, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition PR_SENDER_EMAIL_ADDRESS = new ExtendedPropertyDefinition(0x4030, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition ptagSenderSimpleDispName  = new ExtendedPropertyDefinition(0x0C1F, MapiPropertyType.String);
+
+        private static ExtendedPropertyDefinition PR_PARENT_ENTRYID = new ExtendedPropertyDefinition(0x0E09, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition PR_MESSAGE_FLAGS = new ExtendedPropertyDefinition(0x0E07, MapiPropertyType.Integer); // PT_LONG
+        private static ExtendedPropertyDefinition PR_MSG_STATUS = new ExtendedPropertyDefinition(0x0E17, MapiPropertyType.Integer);// PT_LONG
+        private static ExtendedPropertyDefinition PR_MESSAGE_DELIVERY_TIME = new ExtendedPropertyDefinition(0x0E06, MapiPropertyType.Binary);   // PT_SYSTIME  
+        private static ExtendedPropertyDefinition PR_CONVERSATION_TOPIC = new ExtendedPropertyDefinition(0x0070, MapiPropertyType.String);   
+        private static ExtendedPropertyDefinition PR_CONVERSATION_ID  = new ExtendedPropertyDefinition(0x3013, MapiPropertyType.Binary);   
+        private static ExtendedPropertyDefinition PPR_CONVERSATION_INDEX = new ExtendedPropertyDefinition(0x0071, MapiPropertyType.Binary);   
+        private static ExtendedPropertyDefinition PR_CONTROL_FLAGS = new ExtendedPropertyDefinition(0x3F00, MapiPropertyType.Integer);// PT_LONG
+
+ 
+        // PT_LONG  0003
 
         //// From calcheck
         //private static ExtendedPropertyDefinition dispidRecurring = new ExtendedPropertyDefinition(0x8223, MapiPropertyType.xxxx);
@@ -90,7 +105,8 @@ namespace EWSEditor.Common.Exports
 
         public AppointmentData GetAppointmentDataFromItem(ExchangeService oExchangeService, ItemId oItemId)
         {
-            Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId, GetCalendarPropset());
+            string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
+            Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId, GetCalendarPropset(ServerVersion));
             AppointmentData oAppointmentData = new AppointmentData();
 
             SetAppointmentData(oAppointment, ref oAppointmentData);
@@ -161,7 +177,7 @@ namespace EWSEditor.Common.Exports
 
             if (ServerVersion.StartsWith("Exchange2007") || ServerVersion == "Exchange2010")
             {
-                MessageBox.Show("Exchange 2010 SP1 or later is requred to use ExportItems to do a blog export of an item.", "Invalid version for blog export using ExportItem");
+                MessageBox.Show("Exchange 2010 SP1 or later is requred to use ExportItems to do a blob export of an item.", "Invalid version for blob export using ExportItem");
                     return false;
             }
             
@@ -272,14 +288,16 @@ namespace EWSEditor.Common.Exports
             //else
             //    oAppointmentData.PidLidCleanGlobalObjectId = "";
 
-            oAppointmentData.PidLidCleanGlobalObjectId = GetExtendedPropByteArrAsString(oAppointment, PidLidCleanGlobalObjectId);
+            //oAppointmentData.PidLidCleanGlobalObjectId = GetExtendedPropByteArrAsString(oAppointment, PidLidCleanGlobalObjectId);
+
+            oAppointmentData.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedPropByteArrAsString(oAppointment, PidLidCleanGlobalObjectId);
 
             //if (oAppointment.TryGetProperty(PidLidGlobalObjectId, out bytearrVal))  // GlobalObjectId
             //    oAppointmentData.PidLidGlobalObjectId = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
             //else
             //    oAppointmentData.PidLidGlobalObjectId = "";
 
-            oAppointmentData.PidLidGlobalObjectId = GetExtendedPropByteArrAsString(oAppointment, PidLidGlobalObjectId);
+            oAppointmentData.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedPropByteArrAsString(oAppointment, PidLidGlobalObjectId);
 
 
 
@@ -339,7 +357,7 @@ namespace EWSEditor.Common.Exports
                 oAppointmentData.AllowNewTimeProposal = "";
             }
             //if (oAppointment.AllowNewTimeProposal != null) oAppointmentData.AllowNewTimeProposal = oAppointment.AllowNewTimeProposal.ToString();
-            oAppointmentData.AllowedResponseActions = oAppointment.AllowedResponseActions.ToString();
+            if (oAppointment.AllowedResponseActions != null) oAppointmentData.AllowedResponseActions = oAppointment.AllowedResponseActions.ToString();
             oAppointmentData.AdjacentMeetingCount = oAppointment.AdjacentMeetingCount.ToString();
             oAppointmentData.AppointmentSequenceNumber = oAppointment.AppointmentSequenceNumber.ToString();
             try
@@ -468,8 +486,9 @@ namespace EWSEditor.Common.Exports
             oAppointmentData.UniqueId = oAppointment.Id.UniqueId;
 
             SetAppointmentRecurrenceData(oAppointment, ref oAppointmentData);
- 
 
+            //string s = AppointmentHelper.GetAttendeeStatusAsInfoString(oAppointment);
+            oAppointmentData.AttendeeStatus = AppointmentHelper.GetAttendeeStatusAsInfoString(oAppointment);
         }
 
 
@@ -754,12 +773,14 @@ namespace EWSEditor.Common.Exports
 
         }
 
-        public PropertySet GetCalendarPropset()
+        public PropertySet GetCalendarPropset(string ExchangeVersion)
         {
-            return GetCalendarPropset(false, false);
+            return GetCalendarPropset(ExchangeVersion, false, false);
+
+            
         }
 
-        public static PropertySet GetCalendarPropset(bool bIncludeAttachments, bool bIncludeBodies)
+        public static PropertySet GetCalendarPropset(string ExchangeVersion, bool bIncludeAttachments, bool bIncludeBodies)
         {
 
             PropertySet appointmentPropertySet = new PropertySet(BasePropertySet.IdOnly,
@@ -778,7 +799,7 @@ namespace EWSEditor.Common.Exports
                 /*  AppointmentSchema.ConferenceType,   */
                 AppointmentSchema.ConflictingMeetingCount,
                 AppointmentSchema.ConflictingMeetings,
-                AppointmentSchema.ConversationId,
+            
                 AppointmentSchema.Culture,
                 AppointmentSchema.DateTimeCreated,
                 AppointmentSchema.DateTimeReceived,
@@ -837,9 +858,7 @@ namespace EWSEditor.Common.Exports
                 AppointmentSchema.Subject,
                 
                 AppointmentSchema.TimeZone,
-                AppointmentSchema.When,
-                AppointmentSchema.WebClientEditFormQueryString,
-                AppointmentSchema.WebClientReadFormQueryString 
+                AppointmentSchema.When 
      
 
               );
@@ -866,14 +885,13 @@ namespace EWSEditor.Common.Exports
             //      AppointmentSchema.Mentions                      2015+
             //      AppointmentSchema.MimeContentUTF8,              Exchange2013_SP1+
             //      AppointmentSchema.ArchiveTag,                   2013+                +
-            //      AppointmentSchema.ConversationId                2010+                +
-            //      AppointmentSchema.EndTimeZone,                  2010+                 
+              
             //      AppointmentSchema.EnhancedLocation,             2013+
             //      AppointmentSchema.EntityExtractionResult,       2013+
             //      AppointmentSchema.Flag,                         2013+
             //      AppointmentSchema.IconIndex,                    2013+                +
             //      AppointmentSchema.InstanceKey,                  2013+                +
-            //      AppointmentSchema.IsAssociated,                 2010+
+ 
             //      AppointmentSchema.JoinOnlineMeetingUrl,         2013+
             //      AppointmentSchema.NormalizedBody,               2013+
             //      AppointmentSchema.OnlineMeetingSettings,        2013+
@@ -882,6 +900,10 @@ namespace EWSEditor.Common.Exports
             //      AppointmentSchema.RetentionDate,                2013+                +
             //      AppointmentSchema.StoreEntryId,                 2013+                +
             //      AppointmentSchema.TextBody,                     2013+
+
+            //      AppointmentSchema.ConversationId                2010+                +
+            //      AppointmentSchema.EndTimeZone,                  2010+  
+            //      AppointmentSchema.IsAssociated,                 2010+
             //      AppointmentSchema.UniqueBody,                   2010+
             //      AppointmentSchema.WebClientEditFormQueryString, 2010+
             //      AppointmentSchema.WebClientReadFormQueryString, 2010+
@@ -915,21 +937,59 @@ namespace EWSEditor.Common.Exports
             appointmentPropertySet.Add(Prop_PR_STORE_ENTRYID);
             appointmentPropertySet.Add(Prop_PR_IS_HIDDEN);
 
+            if (!ExchangeVersion.StartsWith("Exchange_2007"))
+            {
+                // Already accounted for.
+
+            }
+            else
+            {
+                // 2010 and above...
+
+                appointmentPropertySet.Add(AppointmentSchema.ConversationId);
+                appointmentPropertySet.Add(AppointmentSchema.EndTimeZone);
+                appointmentPropertySet.Add(AppointmentSchema.IsAssociated);
+                appointmentPropertySet.Add(AppointmentSchema.UniqueBody);
+                appointmentPropertySet.Add(AppointmentSchema.UniqueBody);
+                appointmentPropertySet.Add(AppointmentSchema.WebClientEditFormQueryString);
+                appointmentPropertySet.Add(AppointmentSchema.WebClientReadFormQueryString);
+ 
+                if (!ExchangeVersion.StartsWith("Exchange_2010"))  // after 2010 (2013, 2016, etc.)
+                {
+                    // appointmentPropertySet.Add(AppointmentSchema.ArchiveTag);           // covered by extended property
+                    appointmentPropertySet.Add(AppointmentSchema.EnhancedLocation);
+                    appointmentPropertySet.Add(AppointmentSchema.EntityExtractionResult);
+                    appointmentPropertySet.Add(AppointmentSchema.Flag);
+                    appointmentPropertySet.Add(AppointmentSchema.IconIndex);
+                    appointmentPropertySet.Add(AppointmentSchema.InstanceKey);
+                    appointmentPropertySet.Add(AppointmentSchema.JoinOnlineMeetingUrl);
+                    if (bIncludeBodies == true) 
+                        appointmentPropertySet.Add(AppointmentSchema.NormalizedBody);
+                    appointmentPropertySet.Add(AppointmentSchema.OnlineMeetingSettings);
+                    //appointmentPropertySet.Add(AppointmentSchema.PolicyTag);            // covered by extended property
+                    appointmentPropertySet.Add(AppointmentSchema.Preview);
+                    //appointmentPropertySet.Add(AppointmentSchema.RetentionDate);        // covered by extended property
+                    //appointmentPropertySet.Add(AppointmentSchema.StoreEntryId);         // covered by extended property
+                    appointmentPropertySet.Add(AppointmentSchema.TextBody);
+ 
+                }
+            }
+
             return appointmentPropertySet;
         }
 
 
-        private string GetExtendedPropByteArrAsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            byte[] bytearrVal;
+        //private string GetExtendedPropByteArrAsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        //{
+        //    byte[] bytearrVal;
 
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bytearrVal))  // Example: CleanGlobalObjectId
-                sReturn = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
-            else
-                sReturn = "";
-            return sReturn;
-        }
+        //    string sReturn = "";
+        //    if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bytearrVal))  // Example: CleanGlobalObjectId
+        //        sReturn = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
+        //    else
+        //        sReturn = "";
+        //    return sReturn;
+        //}
 
  
 

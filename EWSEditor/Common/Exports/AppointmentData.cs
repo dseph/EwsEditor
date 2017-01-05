@@ -101,8 +101,7 @@ namespace EWSEditor.Common.Exports
         public string When = string.Empty;
         public string WebClientEditFormQueryString = string.Empty;
         public string WebClientReadFormQueryString = string.Empty;
-
-
+ 
         public string StartingDateRange = string.Empty;
         public string RecurrStartTime = string.Empty;
         public string RecurrEndTime = string.Empty;
@@ -123,6 +122,7 @@ namespace EWSEditor.Common.Exports
         public string RangeNumberOccurrences = string.Empty;
         public string RangeEndByDate = string.Empty;
 
+        public string AttendeeStatus = string.Empty;  // calculated by AttachmentExport 
 
    }
 }
