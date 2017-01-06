@@ -486,6 +486,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvCommon.FullRowSelect = true;
             this.lvCommon.GridLines = true;
+            this.lvCommon.HideSelection = false;
             this.lvCommon.Location = new System.Drawing.Point(10, 219);
             this.lvCommon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvCommon.Name = "lvCommon";

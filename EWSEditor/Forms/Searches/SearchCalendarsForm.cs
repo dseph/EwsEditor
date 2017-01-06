@@ -1302,7 +1302,11 @@ namespace EWSEditor.Forms
 
         private void btnExportCalendarItems_Click(object sender, EventArgs e)
         {
+            toolStripStatusLabel1.Text = "Exporting...";
+            this.Cursor = Cursors.WaitCursor;
             ExportCalendarItems();
+            toolStripStatusLabel1.Text = "Ready to search.";
+            this.Cursor = Cursors.Default;
         }
 
         private void ExportCalendarItems() 
@@ -1455,8 +1459,9 @@ namespace EWSEditor.Forms
             AppointmentData oAppointmentData;
             MeetingMessageData oMeetingMessageData;
 
-            StreamWriter swAppointment = File.AppendText(sAppointmentFilePath);
-            StreamWriter swMeetingMessage = File.AppendText(sMeetingMessageFilePath);
+            //E:\msft tools\ewseditor\EWSEditor\bin\Debug\Export
+            StreamWriter swAppointment = File.CreateText(sAppointmentFilePath);
+            StreamWriter swMeetingMessage = File.CreateText(sMeetingMessageFilePath);
 
             sHeader = oCalendarExport.GetAppointmentDataAsCsvHeaders();
             swAppointment.WriteLine(sHeader);
@@ -1478,16 +1483,24 @@ namespace EWSEditor.Forms
  
                     if (sClass.StartsWith("IPM.APPOINTMENT"))
                     {
-                        oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(_CurrentService, oItemId);
-                        sLine = oCalendarExport.GetAppointmentDataAsCsv(oAppointmentData);
+                        oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(_CurrentService, oItemId,
+                            false,
+                            chkIncludeBodyProperties,
+                            chkIncludeMime
+                            );
+                        sLine = oCalendarExport.GetAppointmentDataAsCsv2(oAppointmentData);
                         swAppointment.WriteLine(sLine);
                     }
                         
 
                     if (sClass.StartsWith("IPM.SCHEDULE"))
                     {
-                        oMeetingMessageData = oMeetingMessageExport.GetMeetingMessageDataFromItem(_CurrentService, oItemId);
-                        sLine = oMeetingMessageExport.GetMeetingMessageDataAsCsv(oMeetingMessageData);
+                        oMeetingMessageData = oMeetingMessageExport.GetMeetingMessageDataFromItem(_CurrentService, oItemId, 
+                            false,
+                            chkIncludeBodyProperties,
+                            chkIncludeMime
+                            );
+                        sLine = oMeetingMessageExport.GetMeetingMessageDataAsCsv2(oMeetingMessageData);
                         swMeetingMessage.WriteLine(sLine);
                     }
                     bRet = true;
