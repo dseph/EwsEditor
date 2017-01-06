@@ -202,7 +202,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.AllowedResponseActions = ex.Message.ToString();
+                oMM.AllowedResponseActions = "";
             }
             //oMM.AllowedResponseActions = oMeetingMessage.AllowedResponseActions.ToString();       
             try
@@ -211,7 +211,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.ApprovalRequestData = ex.Message.ToString();
+                oMM.ApprovalRequestData = "";
             }
 //            if (oMeetingMessage.ApprovalRequestData != null) oMM.ApprovalRequestData  = oMeetingMessage.ApprovalRequestData.ToString();
 //            if (oMeetingMessage.ArchiveTag != null) oMM.ArchiveTag = oMeetingMessage.ArchiveTag.ToString();
@@ -222,7 +222,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.AssociatedAppointmentId = ex.Message.ToString();
+                oMM.AssociatedAppointmentId = "";
             }
             //oMM.Attachments = oMeetingMessage.Attachments;  
             if (oMeetingMessage.BccRecipients != null) oMM.BccRecipients = oMeetingMessage.BccRecipients.ToString();  
@@ -233,7 +233,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.Body = ex.Message.ToString();
+                oMM.Body = "";
             }
             // if (oMeetingMessage.xxxxxx != null) 
             if (oMeetingMessage.Categories != null) oMM.Categories = oMeetingMessage.Categories.ToString();
@@ -245,7 +245,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.ConversationIndex = ex.Message.ToString();
+                oMM.ConversationIndex = "";
             }
             try
             {
@@ -282,7 +282,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.IconIndex = ex.Message.ToString();
+                oMM.IconIndex = "";
             }
             if (oMeetingMessage.Id != null) oMM.UniqueId = oMeetingMessage.Id.UniqueId;
             oMM.Importance = oMeetingMessage.Importance.ToString();
@@ -298,7 +298,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.IsDeliveryReceiptRequested = ex.Message.ToString();
+                oMM.IsDeliveryReceiptRequested = ""; ;
             }
 
            
@@ -318,7 +318,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.IsReminderSet = ex.Message.ToString();
+                oMM.IsReminderSet = "";
             }
             oMM.IsResend = oMeetingMessage.IsResend.ToString();
             if (oMeetingMessage.IsResponseRequested != null) oMM.IsResponseRequested = oMeetingMessage.IsResponseRequested.ToString();
@@ -337,7 +337,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.NormalizedBody = ex.Message.ToString();
+                oMM.NormalizedBody = "";
             }
             oMM.ParentFolderId = "";
             try
@@ -359,7 +359,7 @@ namespace EWSEditor.Common.Exports
             }   
             catch (Exception ex)
             {
-                oMM.ReminderDueBy = ex.Message.ToString();
+                oMM.ReminderDueBy = "";
             }
            // oMM.ReminderMinutesBeforeStart = GetItemValue(oMeetingMessage.ReminderMinutesBeforeStart);
             
@@ -369,7 +369,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.ReminderMinutesBeforeStart = ex.Message.ToString();
+                oMM.ReminderMinutesBeforeStart = "";
             }
 
             if (oMeetingMessage.ReplyTo != null) oMM.ReplyTo = oMeetingMessage.ReplyTo.ToString(); //  //.name+ " <" + oMeetingMessage.ReplyTo.Address + ">";
@@ -380,7 +380,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.ResponseType = ex.Message.ToString();
+                oMM.ResponseType = "";
             }
 
  //           if (oMeetingMessage.RetentionDate != null) oMM.RetentionDate = oMeetingMessage.RetentionDate.ToString();
@@ -398,7 +398,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.TextBody = ex.Message.ToString();
+                oMM.TextBody = "";
             }
             if (oMeetingMessage.ToRecipients != null) oMM.ToRecipients = oMeetingMessage.ToRecipients.ToString();
 
@@ -410,7 +410,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.UniqueBody = ex.Message.ToString();
+                oMM.UniqueBody = "";
             }
              
             //try
@@ -435,7 +435,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.WebClientEditFormQueryString = ex.Message.ToString();
+                oMM.WebClientEditFormQueryString = "";
             }
             try
             {
@@ -443,7 +443,7 @@ namespace EWSEditor.Common.Exports
             }
             catch (Exception ex)
             {
-                oMM.WebClientReadFormQueryString = ex.Message.ToString();
+                oMM.WebClientReadFormQueryString = "";
             }
 
 //            if (oMeetingMessage.VotingInformation != null) oMM.VotingInformation = oMeetingMessage.VotingInformation.ToString();
@@ -662,8 +662,8 @@ namespace EWSEditor.Common.Exports
             if (bIncludeBody == true)
             {
                 meetingMessagePropertySet.Add(MeetingMessageSchema.Body);
-                //meetingMessagePropertySet.Add(MeetingMessageSchema.NormalizedBody);
-                //meetingMessagePropertySet.Add(MeetingMessageSchema.UniqueBody);    
+                meetingMessagePropertySet.Add(MeetingMessageSchema.NormalizedBody);
+                meetingMessagePropertySet.Add(MeetingMessageSchema.UniqueBody);    
             }
 
             if (bIncludeAttachments == true)
@@ -825,7 +825,8 @@ namespace EWSEditor.Common.Exports
             o.Add(oMeetingMessageData.StoreEntryId.Replace(',', ' ')); 
             o.Add(oMeetingMessageData.Subject.Replace(',', ' ')); 
             o.Add(oMeetingMessageData.TextBody.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ToRecipients .Replace(',', ' ')); 
+            o.Add(oMeetingMessageData.ToRecipients .Replace(',', ' '));
+
             o.Add(oMeetingMessageData.UniqueBody.Replace(',', ' ')); 
             o.Add(oMeetingMessageData.VotingInformation.Replace(',', ' ')); 
             o.Add(oMeetingMessageData.WebClientEditFormQueryString.Replace(',', ' ')); 

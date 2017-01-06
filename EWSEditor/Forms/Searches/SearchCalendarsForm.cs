@@ -1462,7 +1462,7 @@ namespace EWSEditor.Forms
             swAppointment.WriteLine(sHeader);
 
             sHeader = oMeetingMessageExport.GetMeetingMessageDataAsCsvHeaders();
-            swAppointment.WriteLine(sHeader);
+            swMeetingMessage.WriteLine(sHeader);
  
             foreach (ListViewItem oListViewItem in lvCommon.Items)
             {
