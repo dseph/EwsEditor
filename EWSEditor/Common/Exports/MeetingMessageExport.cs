@@ -54,9 +54,23 @@ namespace EWSEditor.Common.Exports
 
         public MeetingMessageData GetMeetingMessageDataFromItem(ExchangeService oExchangeService, ItemId oItemId)
         {
+            //string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
+            //PropertySet oPropertySet = null;
+            //oPropertySet = GetMeetingMessageDataPropset(ServerVersion, false, false, false);
+            //MeetingMessage oMeetingMessage = MeetingMessage.Bind(oExchangeService, oItemId, oPropertySet);
+            //MeetingMessageData oMeetingMessageData = new MeetingMessageData();
+
+            //SetMeetingMessageData(oMeetingMessage, ref oMeetingMessageData);
+            MeetingMessageData oMeetingMessageData = GetMeetingMessageDataFromItem(oExchangeService, oItemId, false, false, false);
+
+            return oMeetingMessageData;
+        }
+
+        public MeetingMessageData GetMeetingMessageDataFromItem(ExchangeService oExchangeService, ItemId oItemId, bool bIncludeAttachments, bool bIncludeBody, bool bIncludeMime)
+        {
             string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
             PropertySet oPropertySet = null;
-            oPropertySet = GetMeetingMessageDataPropset(ServerVersion, false, false, false);
+            oPropertySet = GetMeetingMessageDataPropset(ServerVersion, bIncludeAttachments, bIncludeBody, bIncludeMime);
             MeetingMessage oMeetingMessage = MeetingMessage.Bind(oExchangeService, oItemId, oPropertySet);
             MeetingMessageData oMeetingMessageData = new MeetingMessageData();
 
@@ -225,11 +239,21 @@ namespace EWSEditor.Common.Exports
                 oMM.AssociatedAppointmentId = "";
             }
             //oMM.Attachments = oMeetingMessage.Attachments;  
-            if (oMeetingMessage.BccRecipients != null) oMM.BccRecipients = oMeetingMessage.BccRecipients.ToString();  
+            //if (oMeetingMessage.BccRecipients != null) oMM.BccRecipients = oMeetingMessage.BccRecipients.ToString();
+
+            if (oMeetingMessage.BccRecipients != null)
+            {
+                StringBuilder oSbBccRecipients = new StringBuilder();
+                foreach (EmailAddress oEmailAddress in oMeetingMessage.BccRecipients)
+                    oSbBccRecipients.AppendFormat("{0} <{1}>;", oEmailAddress.Name, oEmailAddress.Address);
+                oMM.BccRecipients = oSbBccRecipients.ToString();
+            }
+            else
+                oMM.BccRecipients = "";
              
             try
             {
-                oMM.Body = oMeetingMessage.Body;
+                oMM.Body = oMeetingMessage.Body.Text;
             }
             catch (Exception ex)
             {
@@ -237,7 +261,20 @@ namespace EWSEditor.Common.Exports
             }
             // if (oMeetingMessage.xxxxxx != null) 
             if (oMeetingMessage.Categories != null) oMM.Categories = oMeetingMessage.Categories.ToString();
-            if (oMeetingMessage.CcRecipients != null) oMM.CcRecipients = oMeetingMessage.CcRecipients.ToString();
+            //if (oMeetingMessage.CcRecipients != null) oMM.CcRecipients = oMeetingMessage.CcRecipients.ToString();
+
+
+
+            if (oMeetingMessage.CcRecipients != null)
+            {
+                StringBuilder oSbCcRecipients = new StringBuilder();
+                foreach (EmailAddress oEmailAddress in oMeetingMessage.CcRecipients)
+                    oSbCcRecipients.AppendFormat("{0} <{1}>;", oEmailAddress.Name, oEmailAddress.Address);
+                oMM.CcRecipients = oSbCcRecipients.ToString();
+            }
+            else
+                oMM.CcRecipients = "";
+
  //           if (oMeetingMessage.ConversationId != null) oMM.ConversationId = oMeetingMessage.ConversationId.ToString();
             try
             {
@@ -284,10 +321,25 @@ namespace EWSEditor.Common.Exports
             {
                 oMM.IconIndex = "";
             }
+            
             if (oMeetingMessage.Id != null) oMM.UniqueId = oMeetingMessage.Id.UniqueId;
             oMM.Importance = oMeetingMessage.Importance.ToString();
 //            if (oMeetingMessage.InstanceKey != null) oMM.InstanceKey = oMeetingMessage.InstanceKey.ToString();
             if (oMeetingMessage.InternetMessageHeaders != null) oMM.InternetMessageHeaders = oMeetingMessage.InternetMessageHeaders.ToString();
+
+
+            if (oMeetingMessage.InternetMessageHeaders != null)
+            {
+                StringBuilder oSbInternetMessageHeaders = new StringBuilder();
+                foreach (InternetMessageHeader imh in oMeetingMessage.InternetMessageHeaders)
+                    oSbInternetMessageHeaders.AppendFormat("{0}: {1};", imh.Name, imh.Value.ToString());
+                oMM.InternetMessageHeaders = oSbInternetMessageHeaders.ToString();
+            }
+            else
+                oMM.InternetMessageHeaders = "";
+
+            //oMeetingMessage.InternetMessageHeaders = 
+              
             if (oMeetingMessage.InternetMessageId != null) oMM.InternetMessageId = oMeetingMessage.InternetMessageId.ToString();
 //            if (oMeetingMessage.IsAssociated != null) oMM.IsAssociated = oMeetingMessage.IsAssociated.ToString();
 
@@ -339,7 +391,7 @@ namespace EWSEditor.Common.Exports
             {
                 oMM.NormalizedBody = "";
             }
-            oMM.ParentFolderId = "";
+            //oMM.ParentFolderId = "";
             try
             {  
                 if (oMeetingMessage.ParentFolderId != null) oMM.ParentFolderId = oMeetingMessage.ParentFolderId.ToString();
@@ -372,8 +424,18 @@ namespace EWSEditor.Common.Exports
                 oMM.ReminderMinutesBeforeStart = "";
             }
 
-            if (oMeetingMessage.ReplyTo != null) oMM.ReplyTo = oMeetingMessage.ReplyTo.ToString(); //  //.name+ " <" + oMeetingMessage.ReplyTo.Address + ">";
-            
+            //if (oMeetingMessage.ReplyTo != null) oMM.ReplyTo = oMeetingMessage.ReplyTo.ToString(); //  //.name+ " <" + oMeetingMessage.ReplyTo.Address + ">";
+
+            if (oMeetingMessage.ReplyTo != null)
+            {
+                StringBuilder oSbReplyTo = new StringBuilder();
+                foreach (EmailAddress oEmailAddress in oMeetingMessage.ReplyTo)
+                    oSbReplyTo.AppendFormat("{0} <{1}>;", oEmailAddress.Name, oEmailAddress.Address);
+                oMM.ReplyTo = oSbReplyTo.ToString();
+            }
+            else
+                oMM.ReplyTo = "";
+
             try
             { 
                 oMM.ResponseType = oMeetingMessage.ResponseType.ToString();
@@ -400,7 +462,17 @@ namespace EWSEditor.Common.Exports
             {
                 oMM.TextBody = "";
             }
-            if (oMeetingMessage.ToRecipients != null) oMM.ToRecipients = oMeetingMessage.ToRecipients.ToString();
+            //if (oMeetingMessage.ToRecipients != null) oMM.ToRecipients = oMeetingMessage.ToRecipients.ToString();
+
+            if (oMeetingMessage.ToRecipients != null)
+            {
+                StringBuilder oSbToRecipients = new StringBuilder();
+                foreach (EmailAddress oEmailAddress in oMeetingMessage.ToRecipients)
+                    oSbToRecipients.AppendFormat("{0} <{1}>;", oEmailAddress.Name, oEmailAddress.Address);
+                oMM.ToRecipients = oSbToRecipients.ToString();
+            }
+            else
+                oMM.ToRecipients = "";
 
             //if (oMeetingMessage.UniqueBody != null) oMM.UniqueBody = oMeetingMessage.UniqueBody.Text.ToString();
 
@@ -477,7 +549,17 @@ namespace EWSEditor.Common.Exports
                 if (EwsFolderHelper.GetFolderPath(oMeetingMessage.Service, oMeetingMessage.ParentFolderId, ref sFolderPath))
                     oMM.FolderPath = sFolderPath;
             }
-            
+
+            try
+            {
+                oMM.MimeContent = oMeetingMessage.MimeContent.ToString();
+            }
+            catch (Exception ex)
+            {
+                oMM.MimeContent = "";
+            }
+
+            //oMM.MimeContent = oMeetingMessage.MimeContent.ToString();
 
             oMeetingMessageData = oMM;
         }
@@ -748,6 +830,153 @@ namespace EWSEditor.Common.Exports
             return meetingMessagePropertySet;
         }
 
+        public List<string> GetMeetingMessageDataAsList(MeetingMessageData oMeetingMessageData)
+        {
+            List<string> o = new List<string> { };
+            o.Add(oMeetingMessageData.AllowedResponseActions);
+            o.Add(oMeetingMessageData.ApprovalRequestData);
+            o.Add(oMeetingMessageData.ArchiveTag);
+            o.Add(oMeetingMessageData.AssociatedAppointmentId);
+            // o.Add(oMeetingMessageData.Attachments // 
+            o.Add(oMeetingMessageData.BccRecipients);
+            o.Add(oMeetingMessageData.Body);
+            o.Add(oMeetingMessageData.Categories);
+            o.Add(oMeetingMessageData.CcRecipients);
+            o.Add(oMeetingMessageData.ConversationId);
+            o.Add(oMeetingMessageData.ConversationIndex);
+            o.Add(oMeetingMessageData.ConversationTopic);
+            o.Add(oMeetingMessageData.Culture);
+            o.Add(oMeetingMessageData.DateTimeCreated);
+            o.Add(oMeetingMessageData.DateTimeReceived);
+            o.Add(oMeetingMessageData.DateTimeSent);
+            o.Add(oMeetingMessageData.DisplayCc);
+            o.Add(oMeetingMessageData.DisplayTo);
+            o.Add(oMeetingMessageData.EffectiveRights);
+            o.Add(oMeetingMessageData.EntityExtractionResult);
+            o.Add(oMeetingMessageData.ExtendedProperties);
+            o.Add(oMeetingMessageData.Flag);
+            o.Add(oMeetingMessageData.From);
+            o.Add(oMeetingMessageData.HasAttachments);
+            o.Add(oMeetingMessageData.HasBeenProcessed);
+            o.Add(oMeetingMessageData.ICalDateTimeStamp);
+            o.Add(oMeetingMessageData.ICalRecurrenceId);
+            o.Add(oMeetingMessageData.ICalUid);
+            o.Add(oMeetingMessageData.IconIndex);
+            o.Add(oMeetingMessageData.UniqueId);   // Id
+            o.Add(oMeetingMessageData.Importance);
+            o.Add(oMeetingMessageData.InstanceKey);
+            o.Add(oMeetingMessageData.InternetMessageHeaders);
+            o.Add(oMeetingMessageData.InternetMessageId);
+            o.Add(oMeetingMessageData.IsAssociated);
+            o.Add(oMeetingMessageData.IsDelegated);
+            o.Add(oMeetingMessageData.IsDeliveryReceiptRequested);
+            o.Add(oMeetingMessageData.IsDraft);
+            o.Add(oMeetingMessageData.IsFromMe);
+            o.Add(oMeetingMessageData.IsOrganizer);
+            o.Add(oMeetingMessageData.IsOutOfDate);
+            o.Add(oMeetingMessageData.IsRead);
+            o.Add(oMeetingMessageData.IsReadReceiptRequested);
+            o.Add(oMeetingMessageData.IsReminderSet);
+            o.Add(oMeetingMessageData.IsResend);
+            o.Add(oMeetingMessageData.IsResponseRequested);
+            o.Add(oMeetingMessageData.IsSubmitted);
+            o.Add(oMeetingMessageData.IsUnmodified);
+            o.Add(oMeetingMessageData.ItemClass);
+            o.Add(oMeetingMessageData.LastModifiedName);
+            o.Add(oMeetingMessageData.LastModifiedTime);
+            o.Add(oMeetingMessageData.MimeContent);
+            o.Add(oMeetingMessageData.NormalizedBody);
+            o.Add(oMeetingMessageData.ParentFolderId);
+            o.Add(oMeetingMessageData.PolicyTag);
+            o.Add(oMeetingMessageData.Preview);
+            o.Add(oMeetingMessageData.ReceivedBy);
+            o.Add(oMeetingMessageData.ReceivedRepresenting);
+            o.Add(oMeetingMessageData.References);
+            o.Add(oMeetingMessageData.ReminderDueBy);
+            o.Add(oMeetingMessageData.ReminderMinutesBeforeStart);
+            o.Add(oMeetingMessageData.ReplyTo);
+            o.Add(oMeetingMessageData.ResponseType);
+            o.Add(oMeetingMessageData.RetentionDate);
+
+            o.Add(oMeetingMessageData.Sender);
+            o.Add(oMeetingMessageData.Sensitivity);
+
+            o.Add(oMeetingMessageData.Size);
+            o.Add(oMeetingMessageData.StoreEntryId);
+            o.Add(oMeetingMessageData.Subject);
+            o.Add(oMeetingMessageData.TextBody);
+            o.Add(oMeetingMessageData.ToRecipients);
+
+            o.Add(oMeetingMessageData.UniqueBody);
+            o.Add(oMeetingMessageData.VotingInformation);
+            o.Add(oMeetingMessageData.WebClientEditFormQueryString);
+            o.Add(oMeetingMessageData.WebClientReadFormQueryString);
+
+            o.Add(oMeetingMessageData.PidLidCleanGlobalObjectId);
+            o.Add(oMeetingMessageData.PidLidGlobalObjectId);
+            o.Add(oMeetingMessageData.PidLidAppointmentRecur);
+            o.Add(oMeetingMessageData.PidLidClientIntent);
+            o.Add(oMeetingMessageData.ClientInfoString);
+            o.Add(oMeetingMessageData.EntryId);
+            o.Add(oMeetingMessageData.IsHidden);
+            o.Add(oMeetingMessageData.FolderPath);
+            o.Add(oMeetingMessageData.LogTriggerAction);
+
+            return o;
+        }
+
+
+        public string GetMeetingMessageDataAsCsv2(MeetingMessageData oMeetingMessageData)
+        {
+            string sRet = string.Empty;
+            char[] TrimChars = { ',', ' ' };
+
+            List<string> h = GetMeetingMessageDataHeadersAsList();
+            List<string> d = GetMeetingMessageDataAsList(oMeetingMessageData);
+
+            string ToText = string.Empty;
+            byte[] oFromBytes = null;
+            string sHeader = string.Empty;
+            for (int i = 0; i < d.Count - 1; i++)
+            {
+                sHeader = h[i];
+                if (sHeader == "Body" ||
+                    sHeader == "MimeContent" ||
+                    sHeader == "TextBody" ||
+                    sHeader == "NormalizedBody" ||
+                    sHeader == "UniqueBody" ||
+                    sHeader == "ConversationIndex")
+                {
+                    string x = d[i];
+                    if (d[i] != null)
+                    {
+                        oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(d[i]);
+                        ToText = System.Convert.ToBase64String(oFromBytes);
+
+                        d[i] = ToText;
+                    }
+                    else
+                        d[i] = "";
+                }
+                else
+                {
+                    d[i] = d[i].Replace(',', ' ');
+                }
+            }
+
+            StringBuilder oSB = new StringBuilder();
+            for (int i = 0; i < d.Count - 1; i++)
+            {
+                oSB.AppendFormat("{0}, ", d[i]);
+            }
+
+            sRet = oSB.ToString();
+            sRet = sRet.TrimEnd(TrimChars); // remove last comma
+            sRet = sRet.Replace("\r\n", "");  // There shold be no crlf
+            return sRet;
+
+        }
+
         public string GetMeetingMessageDataAsCsv(MeetingMessageData oMeetingMessageData)
         {
             char[] TrimChars = { ',', ' ' };
@@ -852,11 +1081,128 @@ namespace EWSEditor.Common.Exports
  
             sRet = oSB.ToString();
             sRet = sRet.TrimEnd(TrimChars);
-   
+            sRet = sRet.Replace("\r\n", "");  // There shold be no crlf
             return sRet;
         }
 
-        public string GetMeetingMessageDataAsCsvHeaders( )
+        public string GetMeetingMessageDataAsXml(MeetingMessageData oMeetingMessageData)
+        {
+            string sXML = string.Empty;
+            List<string> h = GetMeetingMessageDataHeadersAsList();
+            List<string> d = GetMeetingMessageDataAsList(oMeetingMessageData);
+
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlNode rootNode = xmlDoc.CreateElement("MeetingMessage");
+            xmlDoc.AppendChild(rootNode);
+
+            for (int i = 0; i < d.Count - 1; i++)
+            {
+                XmlNode dataNode = xmlDoc.CreateElement(h[i]);
+                dataNode.InnerText = d[i];
+                rootNode.AppendChild(dataNode);
+            }
+
+            sXML = xmlDoc.Value;
+
+            return sXML;
+        }
+
+        public List<string> GetMeetingMessageDataHeadersAsList()
+        {
+  
+            List<string> o = new List<string> { };
+            o.Add("AllowedResponseActions");
+            o.Add("ApprovalRequestData");
+            o.Add("ArchiveTag");
+            o.Add("AssociatedAppointmentId");
+            // o.Add("Attachments // 
+            o.Add("BccRecipients");
+            o.Add("Body");
+            o.Add("Categories");
+            o.Add("CcRecipients");
+            o.Add("ConversationId");
+            o.Add("ConversationIndex");
+            o.Add("ConversationTopic");
+            o.Add("Culture");
+            o.Add("DateTimeCreated");
+            o.Add("DateTimeReceived");
+            o.Add("DateTimeSent");
+            o.Add("DisplayCc");
+            o.Add("DisplayTo");
+            o.Add("EffectiveRights");
+            o.Add("EntityExtractionResult");
+            o.Add("ExtendedProperties");
+            o.Add("Flag");
+            o.Add("From");
+            o.Add("HasAttachments");
+            o.Add("HasBeenProcessed");
+            o.Add("ICalDateTimeStamp");
+            o.Add("ICalRecurrenceId");
+            o.Add("ICalUid");
+            o.Add("IconIndex");
+            o.Add("UniqueId");  // Id
+            o.Add("Importance");
+            o.Add("InstanceKey");
+            o.Add("InternetMessageHeaders");
+            o.Add("InternetMessageId");
+            o.Add("IsAssociated");
+            o.Add("IsDelegated");
+            o.Add("IsDeliveryReceiptRequested");
+            o.Add("IsDraft");
+            o.Add("IsFromMe");
+            o.Add("IsOrganizer");
+            o.Add("IsOutOfDate");
+            o.Add("IsRead");
+            o.Add("IsReadReceiptRequested");
+            o.Add("IsReminderSet");
+            o.Add("IsResend");
+            o.Add("IsResponseRequested");
+            o.Add("IsSubmitted");
+            o.Add("IsUnmodified");
+            o.Add("ItemClass");
+            o.Add("LastModifiedName");
+            o.Add("LastModifiedTime");
+            o.Add("MimeContent");
+            o.Add("NormalizedBody");
+            o.Add("ParentFolderId");
+            o.Add("PolicyTag");
+            o.Add("Preview");
+            o.Add("ReceivedBy");
+            o.Add("ReceivedRepresenting");
+            o.Add("References");
+            o.Add("ReminderDueBy");
+            o.Add("ReminderMinutesBeforeStart");
+            o.Add("ReplyTo");
+            o.Add("ResponseType");
+            o.Add("RetentionDate");
+
+            o.Add("Sender");
+            o.Add("Sensitivity");
+
+            o.Add("Size");
+            o.Add("StoreEntryId");
+            o.Add("Subject");
+            o.Add("TextBody");
+            o.Add("ToRecipients");
+            o.Add("UniqueBody");
+            o.Add("VotingInformation");
+            o.Add("WebClientEditFormQueryString");
+            o.Add("WebClientReadFormQueryString");
+
+            o.Add("PidLidCleanGlobalObjectId");
+            o.Add("PidLidGlobalObjectId");
+            o.Add("PidLidAppointmentRecur");
+            o.Add("PidLidClientIntent");
+            o.Add("ClientInfoString");
+            o.Add("EntryId");
+            o.Add("IsHidden");
+            o.Add("FolderPath");
+            o.Add("LogTriggerAction");
+
+            return o;
+        }
+
+        public string GetMeetingMessageDataAsCsvHeaders()
         {
             char[] TrimChars = { ',', ' ' };
             string sRet = string.Empty;
