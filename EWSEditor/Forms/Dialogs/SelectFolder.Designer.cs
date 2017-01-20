@@ -105,7 +105,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.FolderTreeView);
             this.Name = "SelectFolder";
-            this.Text = "SelectFolder";
+            this.Text = "Pick Folder";
             this.Load += new System.EventHandler(this.SelectFolder_Load);
             this.ResumeLayout(false);
 
