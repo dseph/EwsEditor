@@ -39,13 +39,23 @@ namespace EWSEditor.Forms
 
         private void btnGetFolderId_Click(object sender, EventArgs e)
         {
-            FolderId oFolder = null;
-            if (Forms.FolderIdDialog.ShowDialog(ref oFolder) == DialogResult.OK)
+            FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
+            oForm.ShowDialog();
+            if (oForm.ChoseOK == true)
             {
-                CurrentFolderId = oFolder;
-                this.txtFolderId.Text = PropertyInformation.TypeValues.FolderIdTypeValue.GetValue(oFolder, true);
+                //oForm.ChosenFolderId 
 
+                CurrentFolderId = oForm.ChosenFolderId;
+                this.txtFolderId.Text = PropertyInformation.TypeValues.FolderIdTypeValue.GetValue(oForm.ChosenFolderId, true);
             }
+
+            //FolderId oFolder = null;
+            //if (Forms.FolderIdDialog.ShowDialog(ref oFolder) == DialogResult.OK)
+            //{
+            //    CurrentFolderId = oFolder;
+            //    this.txtFolderId.Text = PropertyInformation.TypeValues.FolderIdTypeValue.GetValue(oFolder, true);
+
+            //}
         }
 
         private void btnOK_Click(object sender, EventArgs e)

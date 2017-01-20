@@ -1,0 +1,7 @@
+﻿"PropertyName",     "PropertySetId",                        "PropertyDefinitionType",  PropertyDefinitionValue", PropertyType" 
+"ExpirationDate",   "c11ff724-aa03-4555-9952-8fa248a1123e", "PropertyName",            "Expiration Date",       "String"
+
+"MyIndicator",      "11000e07-b51b-40d6-af21-caa85eda21d0", "PropertyId",              "1",                     "Boolean"
+"MyFlag",           "75a5486f-9267-49ca-9b4e-3d04ca9ec149", "PropertyName",            "MyFlag",                "Integer"
+
+"ExpirationDate",   "c11ff724-aa03-4555-9952-8fa248a1123e", "PropertyName",            "Expiration Date",       "String"

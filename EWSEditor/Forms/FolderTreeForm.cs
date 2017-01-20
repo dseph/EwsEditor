@@ -1094,11 +1094,21 @@ namespace EWSEditor.Forms
             {
                 this.Cursor = Cursors.WaitCursor;
 
-                FolderId folderId = null;
-                if (FolderIdDialog.ShowDialog(ref folderId) == DialogResult.OK)
+                FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
+                oForm.ShowDialog();
+                if (oForm.ChoseOK == true)
                 {
-                    this.AddRootFolderToTreeView(folderId, FolderTreeView.SelectedNode);
+                    //oForm.ChosenFolderId 
+
+                      this.AddRootFolderToTreeView(oForm.ChosenFolderId, FolderTreeView.SelectedNode);
                 }
+
+
+                //FolderId folderId = null;
+                //if (FolderIdDialog.ShowDialog(ref folderId) == DialogResult.OK)
+                //{
+                //    this.AddRootFolderToTreeView(folderId, FolderTreeView.SelectedNode);
+                //}
             }
             finally
             {
@@ -1406,15 +1416,19 @@ namespace EWSEditor.Forms
                 return;
             }
 
+            FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
+            oForm.ShowDialog();
+
             FolderId targetFolderId = null;
-            if (FolderIdDialog.ShowDialog(ref targetFolderId) == DialogResult.OK)
+            if (oForm.ChoseOK == true)
             {
                 try
                 {
                     this.Cursor = Cursors.WaitCursor;
-
+                    targetFolderId = oForm.ChosenFolderId;
                     folder.Move(targetFolderId);
 
+                    
                     // Remove moved node from tree view
                     TreeNode movedNode = this.FolderTreeView.SelectedNode;
                     this.FolderTreeView.SelectedNode = movedNode.Parent;
@@ -1427,6 +1441,28 @@ namespace EWSEditor.Forms
                     this.Cursor = Cursors.Default;
                 }
             }
+
+            //FolderId targetFolderId = null;
+            //if (FolderIdDialog.ShowDialog(ref targetFolderId) == DialogResult.OK)
+            //{
+            //    try
+            //    {
+            //        this.Cursor = Cursors.WaitCursor;
+
+            //        folder.Move(targetFolderId);
+
+            //        // Remove moved node from tree view
+            //        TreeNode movedNode = this.FolderTreeView.SelectedNode;
+            //        this.FolderTreeView.SelectedNode = movedNode.Parent;
+            //        movedNode.Remove();
+
+            //        this.BindSelectedNode();
+            //    }
+            //    finally
+            //    {
+            //        this.Cursor = Cursors.Default;
+            //    }
+            //}
         }
 
         /// <summary>
@@ -1444,13 +1480,16 @@ namespace EWSEditor.Forms
                 return;
             }
 
+            FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
+            oForm.ShowDialog();
+
             FolderId targetFolderId = null;
-            if (FolderIdDialog.ShowDialog(ref targetFolderId) == DialogResult.OK)
+            if (oForm.ChoseOK == true)
             {
                 try
                 {
                     this.Cursor = Cursors.WaitCursor;
-
+                    targetFolderId = oForm.ChosenFolderId;
                     folder.Copy(targetFolderId);
 
                     this.BindSelectedNode();
@@ -1618,17 +1657,8 @@ namespace EWSEditor.Forms
             }
 
             newNode.ContextMenuStrip = this.cmsFolderMenu;
-            
-            // RootFolderNodeTag - 10/26/2009 mstehle
-            // Only add the RootFolderNodeTag to root folders underneath an
-            // ExchangeService node.
-
-            //EWSEditor.Common.EwsSession oSession = new EwsSession();
-            //oSession.SessionService = service;
-            //oSession.SessionEwsEditorAppSettings = oAppSettings;
-            //serviceRootNode.Tag = oSession;
-
-            //             if (parentNode.Tag is ExchangeService)
+ 
+ 
             if (parentNode.Tag is EwsSession)
             {
                 EWSEditor.Common.EwsSession oSession = (EWSEditor.Common.EwsSession)parentNode.Tag;

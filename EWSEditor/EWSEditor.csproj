@@ -150,7 +150,6 @@
     <Compile Include="Common\AutodiscoverInfo.cs" />
     <Compile Include="Common\EwsHelpers\EwsExtendedPropertyHelper.cs" />
     <Compile Include="Common\Exports\ListViewExport.cs" />
-    <Compile Include="Common\ItemCheckers\CalCheck.cs" />
     <Compile Include="Common\EwsEditorServiceInstanceSettings.cs" />
     <Compile Include="Common\Exports\AttachmentExport.cs" />
     <Compile Include="Common\Exports\AppointmentData.cs" />
@@ -158,11 +157,6 @@
     <Compile Include="Common\EwsHelpers\EwsFolderHelper.cs" />
     <Compile Include="Common\Exports\MeetingMessageExport.cs" />
     <Compile Include="Common\Exports\MeetingMessageData.cs" />
-    <Compile Include="Common\ItemCheckers\MsgData.cs" />
-    <Compile Include="Common\ItemCheckers\RecurBlob.cs" />
-    <Compile Include="Common\ItemCheckers\Timeline.cs" />
-    <Compile Include="Common\ItemCheckers\Utils.cs" />
-    <Compile Include="Common\ItemCheckers\TLMsg.cs" />
     <Compile Include="Common\ProxyMappedTypes\ProxyMappedTypes.cs" />
     <Compile Include="Common\EwsHelpers\SharedCalendarsHelper.cs" />
     <Compile Include="Common\UIHelpers\ListViewItemComparer.cs" />
@@ -233,6 +227,12 @@
     <Compile Include="Forms\Dialogs\EnterTextForm.Designer.cs">
       <DependentUpon>EnterTextForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dialogs\SelectFolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\SelectFolder.Designer.cs">
+      <DependentUpon>SelectFolder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Discovery\DomainSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +280,12 @@
     </Compile>
     <Compile Include="Forms\Searches\SearchCalendarsForm.Designer.cs">
       <DependentUpon>SearchCalendarsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Searches\SearchItemsMultiSelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Searches\SearchItemsMultiSelectForm.Designer.cs">
+      <DependentUpon>SearchItemsMultiSelectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ToolsForms\FileContentHelper.cs">
       <SubType>Form</SubType>
@@ -887,6 +893,9 @@
     <EmbeddedResource Include="Forms\Dialogs\EnterTextForm.resx">
       <DependentUpon>EnterTextForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\SelectFolder.resx">
+      <DependentUpon>SelectFolder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Discovery\DomainSettingsForm.resx">
       <DependentUpon>DomainSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -910,6 +919,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Searches\SearchCalendarsForm.resx">
       <DependentUpon>SearchCalendarsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Searches\SearchItemsMultiSelectForm.resx">
+      <DependentUpon>SearchItemsMultiSelectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolsForms\FileContentHelper.resx">
       <DependentUpon>FileContentHelper.cs</DependentUpon>
@@ -1189,6 +1201,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TemplateEwsRequests.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="AdditionalProperties\Example.csv" />
+    <None Include="AdditionalProperties\UnknownCalendarProperties.csv" />
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -1467,6 +1481,7 @@
     <Content Include="Resources\StatusAnnotations_Critical_16xLG.png" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Common\ItemCheckers\" />
     <Folder Include="Exchange\" />
     <Folder Include="Forms\Dialogs\SmartEditors\" />
     <Folder Include="Forms\ServiceLevelForms\" />

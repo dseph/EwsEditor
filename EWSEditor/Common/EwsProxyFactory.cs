@@ -182,7 +182,6 @@ namespace EWSEditor.Exchange
                     service = new ExchangeService(ExchangeVersion.Exchange2010_SP2);
 
             }
-
              
 
  

@@ -104,10 +104,19 @@ namespace EWSEditor.Forms
         /// </summary>
         private void btnFolderId_Click(object sender, EventArgs e)
         {
-            if (FolderIdDialog.ShowDialog(ref this.CurrentCalendar) == DialogResult.OK)
+            FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
+            oForm.ShowDialog();
+            if (oForm.ChoseOK == true)
             {
-                lblFolderId.Text = PropertyInterpretation.GetPropertyValue(this.CurrentCalendar);
+                //oForm.ChosenFolderId 
+                lblFolderId.Text = PropertyInterpretation.GetPropertyValue(oForm.ChosenFolderId);
+                this.CurrentCalendar = oForm.ChosenFolderId;
             }
+
+            //if (FolderIdDialog.ShowDialog(ref this.CurrentCalendar) == DialogResult.OK)
+            //{
+            //    lblFolderId.Text = PropertyInterpretation.GetPropertyValue(this.CurrentCalendar);
+            //}
         }
 
         private void FindAppointmentsDialog_Load(object sender, EventArgs e)

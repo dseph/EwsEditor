@@ -78,11 +78,20 @@ namespace EWSEditor.Forms
 
         private void btnGetFolderId_Click(object sender, EventArgs e)
         {
-            FolderId folderId = null;
-            if (Forms.FolderIdDialog.ShowDialog(ref folderId) == DialogResult.OK)
+
+
+            FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
+            oForm.ShowDialog();
+            if (oForm.ChoseOK == true)
             {
-                SetAndDisplayFolderId(folderId);
+                SetAndDisplayFolderId(oForm.ChosenFolderId);
             }
+
+            //FolderId folderId = null;
+            //if (Forms.FolderIdDialog.ShowDialog(ref folderId) == DialogResult.OK)
+            //{
+            //    SetAndDisplayFolderId(folderId);
+            //}
         }
 
         /// <summary>

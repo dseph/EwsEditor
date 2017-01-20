@@ -100,10 +100,15 @@ namespace EWSEditor.Forms
 
         private void btnFolderId_Click(object sender, EventArgs e)
         {
-            if (FolderIdDialog.ShowDialog(ref this._SelectedFolder) == DialogResult.OK)
-            {
-                lblFolderId.Text = PropertyInterpretation.GetPropertyValue(this._SelectedFolder);
-            }
+            FolderIdDialog oForm = new FolderIdDialog(_CurrentService);
+            oForm.ShowDialog();
+            if (oForm.ChoseOK == true)
+                lblFolderId.Text = PropertyInterpretation.GetPropertyValue(oForm.ChosenFolderId); 
+
+            //if (FolderIdDialog.ShowDialog(ref this._SelectedFolder) == DialogResult.OK)
+            //{
+            //    lblFolderId.Text = PropertyInterpretation.GetPropertyValue(this._SelectedFolder);
+            //}
         }
     }
 }

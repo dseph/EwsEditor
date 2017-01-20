@@ -1,0 +1,43 @@
+﻿"PropertyName",    "PropertySetId",                        "PropertyDefinitionType",  Property",              "PropertyType" 
+"Diag_1",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "1",                    "Boolean" 
+"Diag_3",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "3",                    "Integer" 
+"Diag_4",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "4",                    "Integer" 
+"Diag_5",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "5",                    "String" 
+"Diag_7",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "7",                    "Binary" 
+"Diag_8",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "8",                    "SystemTime" 
+"Diag_9",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "9",                    "SystemTime" 
+
+"Diag_10",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "10",                    "String" 
+"Diag_11",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "11",                    "String" 
+"Diag_12",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "12",                    "String" 
+"Diag_13",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "13",                    "String" 
+"Diag_14",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "14",                    "String" 
+
+"Diag_16",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "16",                    "String" 
+"Diag_17",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "17",                    "String" 
+"Diag_18",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "18",                    "String" 
+"Diag_19",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "19",                    "String" 
+"Diag_20",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "20",                    "String" 
+
+"Diag_21",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "21",                    "String" 
+"Diag_22",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "22",                    "String" 
+"Diag_23",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "23",                    "String" 
+"Diag_24",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "24",                    "String" 
+"Diag_25",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "25",                    "Boolean" 
+
+"Diag_26",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "26",                    "String" 
+"Diag_27",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "27",                    "String" 
+"Diag_28",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "28",                    "String" 
+"Diag_29",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "29",                    "String" 
+"Diag_30",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "30",                    "String" 
+
+"Diag_31",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "31",                    "String" 
+"Diag_32",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "32",                    "Binary" 
+"Diag_33",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "33",                    "SystemTime" 
+"Diag_34",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "34",                    "SystemTime" 
+
+"Diag_40",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "40",                    "String" 
+"Diag_41",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "41",                    "SystemTime" 
+"Diag_42",          "11000e07-b51b-40d6-af21-caa85edab1d0", "PropertyType",			  "42",                    "SystemTime" 
+
+ 

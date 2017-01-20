@@ -183,7 +183,7 @@ namespace EWSEditor.Forms
             this.toolStripSeparator3,
             this.developerFolderTestFormToolStripMenuItem});
             this.cmsFolderMenu.Name = "cmsFolderMenu";
-            this.cmsFolderMenu.Size = new System.Drawing.Size(331, 560);
+            this.cmsFolderMenu.Size = new System.Drawing.Size(331, 588);
             // 
             // mnuOpenContents
             // 

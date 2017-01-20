@@ -26,6 +26,7 @@ namespace EWSEditor.Forms
             this.txtDisplayedResultsFolderPath.Text = StarFolder + "\\Export\\ExportedSearchCalendarResults.CSV";
             this.txtAppointmentDetailedFolderPath.Text = StarFolder + "\\Export\\ExportedDetailedAppointmentResults.CSV";
             this.txtMeetingMessageDetailedFolderPath.Text = StarFolder + "\\Export\\ExportedDetailedMeetingMessageResults.CSV";
+            this.txtDiagnosticExportFolderPath.Text = StarFolder + "\\Export\\ExportedDiagnosticMeetingMessageResults.CSV";
             this.txtBlobFolderPath.Text = Application.StartupPath + "\\Export";
            
             SetEnablement();
@@ -115,26 +116,7 @@ namespace EWSEditor.Forms
         {
  
             txtAppointmentDetailedFolderPath.Text = ChooseFilePath(txtAppointmentDetailedFolderPath.Text.Trim() );
-
-
-            //System.Windows.Forms.SaveFileDialog oFD = new System.Windows.Forms.SaveFileDialog();
-            //string sFullPath = txtAppointmentDetailedFolderPath.Text;
-            ////System.Windows.Forms.FolderBrowserDialog oFDB = new FolderBrowserDialog();
-             
-            //oFD.InitialDirectory = Path.GetPathRoot(sFullPath);
-            //oFD.FileName = sFullPath; // = Path.GetFileName(sFullPath);
-            //oFD.CheckFileExists = true;
-            //oFD.CheckPathExists = true;
-            //oFD.DefaultExt = "bin";
-            //oFD.Filter = "Bin files (*.bin)|*.bin";
-            //oFD.FilterIndex = 1;
-            //oFD.Title = "Save item as blob";
-
-            //if (oFD.ShowDialog() == DialogResult.OK)
-            //{
-            //    sFullPath = oFD.FileName;
-            //    txtAppointmentDetailedFolderPath.Text = sFolderPath;
-            //}
+ 
         }
 
         private string ChooseFilePath(string sFullPath )
@@ -143,14 +125,12 @@ namespace EWSEditor.Forms
             string sNewFullPath = string.Empty;
            
             System.Windows.Forms.SaveFileDialog oFD = new System.Windows.Forms.SaveFileDialog();
-            //string sFullPath = txtAppointmentDetailedFolderPath.Text;
-            //System.Windows.Forms.FolderBrowserDialog oFDB = new FolderBrowserDialog();
-
+ 
             sNewFullPath = sFullPath;
 
             oFD.InitialDirectory = Path.GetDirectoryName(sFullPath);
-            oFD.FileName = sFullPath; // = Path.GetFileName(sFullPath);
-            //oFD.CheckFileExists = true;
+            oFD.FileName = sFullPath;  
+            
             oFD.CheckPathExists = true;
             oFD.DefaultExt = "csv";
             oFD.Filter = "Bin files (*.csv)|*.csv";
@@ -160,8 +140,7 @@ namespace EWSEditor.Forms
             if (oFD.ShowDialog() == DialogResult.OK)
             {
                 sNewFullPath = oFD.FileName;
- 
-                //txtAppointmentDetailedFolderPath.Text = sFolderPath;
+  
             }
             return sNewFullPath;
         }
@@ -171,34 +150,14 @@ namespace EWSEditor.Forms
             txtMeetingMessageDetailedFolderPath.Text = ChooseFilePath(txtMeetingMessageDetailedFolderPath.Text.Trim());
 
  
-            //string sFolderPath = string.Empty;
-            //System.Windows.Forms.FolderBrowserDialog oFDB = new FolderBrowserDialog();
-
-            //oFDB.SelectedPath = txtMeetingMessageDetailedFolderPath.Text;
-            //if (oFDB.ShowDialog() == DialogResult.OK)
-            //{
-            //    sFolderPath = oFDB.SelectedPath;
-
-            //    txtMeetingMessageDetailedFolderPath.Text = sFolderPath;
-            //}
 
         }
 
         private void btnPickFolderDisplayedResults_Click(object sender, EventArgs e)
         {
 
-            txtDisplayedResultsFolderPath.Text = ChooseFilePath(txtDisplayedResultsFolderPath.Text.Trim());
-
-            //string sFolderPath = string.Empty;
-            //System.Windows.Forms.FolderBrowserDialog oFDB = new FolderBrowserDialog();
-
-            //oFDB.SelectedPath = txtDisplayedResultsFolderPath.Text;
-            //if (oFDB.ShowDialog() == DialogResult.OK)
-            //{
-            //    sFolderPath = oFDB.SelectedPath;
-
-            //    txtDisplayedResultsFolderPath.Text = sFolderPath;
-            //}
+            txtDiagnosticExportFolderPath.Text = ChooseFilePath(txtDiagnosticExportFolderPath.Text.Trim());
+ 
         }
 
         private void btnPickFolderBlobProperties_Click(object sender, EventArgs e)
