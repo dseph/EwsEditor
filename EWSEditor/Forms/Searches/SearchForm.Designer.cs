@@ -80,7 +80,7 @@
             this.label1.Location = new System.Drawing.Point(10, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 17);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 1;
             this.label1.Text = "Search Type:";
             // 
             // cmboSearchType
@@ -94,7 +94,7 @@
             this.cmboSearchType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboSearchType.Name = "cmboSearchType";
             this.cmboSearchType.Size = new System.Drawing.Size(151, 24);
-            this.cmboSearchType.TabIndex = 1;
+            this.cmboSearchType.TabIndex = 2;
             // 
             // txtAQS
             // 
@@ -107,7 +107,7 @@
             this.txtAQS.Name = "txtAQS";
             this.txtAQS.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtAQS.Size = new System.Drawing.Size(808, 57);
-            this.txtAQS.TabIndex = 8;
+            this.txtAQS.TabIndex = 7;
             // 
             // txtBody
             // 
@@ -116,7 +116,7 @@
             this.txtBody.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBody.Name = "txtBody";
             this.txtBody.Size = new System.Drawing.Size(209, 22);
-            this.txtBody.TabIndex = 20;
+            this.txtBody.TabIndex = 19;
             // 
             // chkBody
             // 
@@ -126,7 +126,7 @@
             this.chkBody.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkBody.Name = "chkBody";
             this.chkBody.Size = new System.Drawing.Size(62, 21);
-            this.chkBody.TabIndex = 19;
+            this.chkBody.TabIndex = 18;
             this.chkBody.Text = "Body";
             this.chkBody.UseVisualStyleBackColor = true;
             this.chkBody.CheckedChanged += new System.EventHandler(this.chkBody_CheckedChanged);
@@ -138,7 +138,7 @@
             this.txtCC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtCC.Name = "txtCC";
             this.txtCC.Size = new System.Drawing.Size(194, 22);
-            this.txtCC.TabIndex = 17;
+            this.txtCC.TabIndex = 16;
             // 
             // chkCC
             // 
@@ -148,7 +148,7 @@
             this.chkCC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkCC.Name = "chkCC";
             this.chkCC.Size = new System.Drawing.Size(48, 21);
-            this.chkCC.TabIndex = 16;
+            this.chkCC.TabIndex = 15;
             this.chkCC.Text = "CC";
             this.chkCC.UseVisualStyleBackColor = true;
             this.chkCC.CheckedChanged += new System.EventHandler(this.chkCC_CheckedChanged);
@@ -160,7 +160,7 @@
             this.txtTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(193, 22);
-            this.txtTo.TabIndex = 14;
+            this.txtTo.TabIndex = 13;
             // 
             // chkTo
             // 
@@ -170,7 +170,7 @@
             this.chkTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkTo.Name = "chkTo";
             this.chkTo.Size = new System.Drawing.Size(47, 21);
-            this.chkTo.TabIndex = 13;
+            this.chkTo.TabIndex = 12;
             this.chkTo.Text = "To";
             this.chkTo.UseVisualStyleBackColor = true;
             this.chkTo.CheckedChanged += new System.EventHandler(this.chkTo_CheckedChanged);
@@ -182,7 +182,7 @@
             this.txtSubject.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(193, 22);
-            this.txtSubject.TabIndex = 11;
+            this.txtSubject.TabIndex = 10;
             // 
             // chkSubject
             // 
@@ -192,7 +192,7 @@
             this.chkSubject.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkSubject.Name = "chkSubject";
             this.chkSubject.Size = new System.Drawing.Size(77, 21);
-            this.chkSubject.TabIndex = 10;
+            this.chkSubject.TabIndex = 9;
             this.chkSubject.Text = "Subject";
             this.chkSubject.UseVisualStyleBackColor = true;
             this.chkSubject.CheckedChanged += new System.EventHandler(this.chkSubject_CheckedChanged);
@@ -208,7 +208,7 @@
             this.lvItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvItems.Name = "lvItems";
             this.lvItems.Size = new System.Drawing.Size(924, 232);
-            this.lvItems.TabIndex = 26;
+            this.lvItems.TabIndex = 27;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvItems_ColumnClick);
             this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
@@ -276,7 +276,7 @@
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(153, 29);
-            this.btnSearch.TabIndex = 25;
+            this.btnSearch.TabIndex = 30;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -289,7 +289,7 @@
             this.rdoAqsSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdoAqsSearch.Name = "rdoAqsSearch";
             this.rdoAqsSearch.Size = new System.Drawing.Size(107, 21);
-            this.rdoAqsSearch.TabIndex = 7;
+            this.rdoAqsSearch.TabIndex = 6;
             this.rdoAqsSearch.TabStop = true;
             this.rdoAqsSearch.Text = "AQS Search";
             this.rdoAqsSearch.UseVisualStyleBackColor = true;
@@ -302,7 +302,7 @@
             this.rdoFindItemSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rdoFindItemSearch.Name = "rdoFindItemSearch";
             this.rdoFindItemSearch.Size = new System.Drawing.Size(135, 21);
-            this.rdoFindItemSearch.TabIndex = 9;
+            this.rdoFindItemSearch.TabIndex = 8;
             this.rdoFindItemSearch.Text = "Find Item Search";
             this.rdoFindItemSearch.UseVisualStyleBackColor = true;
             this.rdoFindItemSearch.CheckedChanged += new System.EventHandler(this.rdoFindItemSearch_CheckedChanged);
@@ -313,7 +313,7 @@
             this.label2.Location = new System.Drawing.Point(300, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 17);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 3;
             this.label2.Text = "Page Size:";
             // 
             // numPageSize
@@ -327,7 +327,7 @@
             0});
             this.numPageSize.Name = "numPageSize";
             this.numPageSize.Size = new System.Drawing.Size(150, 22);
-            this.numPageSize.TabIndex = 3;
+            this.numPageSize.TabIndex = 4;
             this.numPageSize.Value = new decimal(new int[] {
             250,
             0,
@@ -340,7 +340,7 @@
             this.label3.Location = new System.Drawing.Point(11, 45);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(563, 17);
-            this.label3.TabIndex = 6;
+            this.label3.TabIndex = 5;
             this.label3.Text = "Note:  Exchange Online may limit AQS results to 250 items due to default policy s" +
     "ettings.";
             // 
@@ -351,7 +351,7 @@
             this.label4.Location = new System.Drawing.Point(551, 256);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(384, 17);
-            this.label4.TabIndex = 27;
+            this.label4.TabIndex = 26;
             this.label4.Text = "Note:  Double click a result for more properties and options.";
             // 
             // txtClass
@@ -361,7 +361,7 @@
             this.txtClass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtClass.Name = "txtClass";
             this.txtClass.Size = new System.Drawing.Size(209, 22);
-            this.txtClass.TabIndex = 23;
+            this.txtClass.TabIndex = 22;
             // 
             // chkClass
             // 
@@ -371,7 +371,7 @@
             this.chkClass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkClass.Name = "chkClass";
             this.chkClass.Size = new System.Drawing.Size(64, 21);
-            this.chkClass.TabIndex = 22;
+            this.chkClass.TabIndex = 21;
             this.chkClass.Text = "Class";
             this.chkClass.UseVisualStyleBackColor = true;
             this.chkClass.CheckedChanged += new System.EventHandler(this.chkClass_CheckedChanged);
@@ -388,7 +388,7 @@
             this.cmboSearchDepth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboSearchDepth.Name = "cmboSearchDepth";
             this.cmboSearchDepth.Size = new System.Drawing.Size(126, 24);
-            this.cmboSearchDepth.TabIndex = 5;
+            this.cmboSearchDepth.TabIndex = 29;
             this.cmboSearchDepth.SelectedIndexChanged += new System.EventHandler(this.cmboSearchDepth_SelectedIndexChanged);
             // 
             // label5
@@ -397,7 +397,7 @@
             this.label5.Location = new System.Drawing.Point(583, 15);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 17);
-            this.label5.TabIndex = 4;
+            this.label5.TabIndex = 28;
             this.label5.Text = "Depth:";
             // 
             // cmboSubjectConditional
@@ -416,7 +416,7 @@
             this.cmboSubjectConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboSubjectConditional.Name = "cmboSubjectConditional";
             this.cmboSubjectConditional.Size = new System.Drawing.Size(135, 24);
-            this.cmboSubjectConditional.TabIndex = 12;
+            this.cmboSubjectConditional.TabIndex = 11;
             // 
             // cmboToConditional
             // 
@@ -434,7 +434,7 @@
             this.cmboToConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboToConditional.Name = "cmboToConditional";
             this.cmboToConditional.Size = new System.Drawing.Size(135, 24);
-            this.cmboToConditional.TabIndex = 15;
+            this.cmboToConditional.TabIndex = 14;
             // 
             // cmboCCConditional
             // 
@@ -452,7 +452,7 @@
             this.cmboCCConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboCCConditional.Name = "cmboCCConditional";
             this.cmboCCConditional.Size = new System.Drawing.Size(135, 24);
-            this.cmboCCConditional.TabIndex = 18;
+            this.cmboCCConditional.TabIndex = 17;
             // 
             // cmboBodyConditional
             // 
@@ -470,7 +470,7 @@
             this.cmboBodyConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboBodyConditional.Name = "cmboBodyConditional";
             this.cmboBodyConditional.Size = new System.Drawing.Size(135, 24);
-            this.cmboBodyConditional.TabIndex = 21;
+            this.cmboBodyConditional.TabIndex = 20;
             // 
             // cmboClassConditional
             // 
@@ -488,7 +488,7 @@
             this.cmboClassConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboClassConditional.Name = "cmboClassConditional";
             this.cmboClassConditional.Size = new System.Drawing.Size(135, 24);
-            this.cmboClassConditional.TabIndex = 24;
+            this.cmboClassConditional.TabIndex = 23;
             // 
             // cmboLogicalOperation
             // 
@@ -501,7 +501,7 @@
             this.cmboLogicalOperation.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboLogicalOperation.Name = "cmboLogicalOperation";
             this.cmboLogicalOperation.Size = new System.Drawing.Size(126, 24);
-            this.cmboLogicalOperation.TabIndex = 29;
+            this.cmboLogicalOperation.TabIndex = 25;
             // 
             // label6
             // 
@@ -509,7 +509,7 @@
             this.label6.Location = new System.Drawing.Point(8, 259);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(124, 17);
-            this.label6.TabIndex = 28;
+            this.label6.TabIndex = 24;
             this.label6.Text = "Logical Operation:";
             // 
             // menuStrip1
@@ -518,7 +518,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(949, 24);
-            this.menuStrip1.TabIndex = 30;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // statusStrip1
