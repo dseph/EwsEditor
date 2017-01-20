@@ -55,14 +55,14 @@ namespace EWSEditor.Forms
             
             cmboLogicalOperation.Text = "And";
 
-            cmboUidConditional.Text = "ContainsSubstring";
+            
             cmboSubjectConditional.Text = "ContainsSubstring";
             cmboToConditional.Text = "ContainsSubstring";
             cmboCCConditional.Text = "ContainsSubstring";
             cmboBodyConditional.Text = "ContainsSubstring";
             cmboClassConditional.Text = "ContainsSubstring";
-             
-        
+
+            toolStripStatusLabel1.Text = "";
 
             SetCheckboxes();
            
@@ -84,19 +84,22 @@ namespace EWSEditor.Forms
         {
             if (this.rdoAqsSearch.Checked == true)
             {
+    
+              
                 this.txtSubject.Enabled = false;
                 this.txtTo.Enabled = false;
                 this.txtCC.Enabled = false;
                 this.txtBody.Enabled = false;
+                this.txtClass.Enabled = false;
 
+                
                 this.chkSubject.Enabled = false;
                 this.chkTo.Enabled = false;
                 this.chkCC.Enabled = false;
-                this.chkBody.Enabled = false;
-                this.txtClass.Enabled = false;
+                this.chkBody.Enabled = false;        
                 this.chkClass.Enabled = false;
 
-                cmboUidConditional.Enabled = false;
+               
                 cmboSubjectConditional.Enabled = false;
                 cmboToConditional.Enabled = false;
                 cmboCCConditional.Enabled = false;
@@ -107,12 +110,14 @@ namespace EWSEditor.Forms
             }
             if (this.rdoFindItemSearch.Checked == true)
             {
+                 
                 this.chkSubject.Enabled = true;
                 this.chkTo.Enabled = true;
                 this.chkCC.Enabled = true;
                 this.chkBody.Enabled = true;
                 this.chkClass.Enabled = true;
 
+               
                 this.txtSubject.Enabled = true;
                 this.txtTo.Enabled = true;
                 this.txtCC.Enabled = true;
@@ -120,6 +125,7 @@ namespace EWSEditor.Forms
                 this.txtClass.Enabled = true;
 
                 cmboSubjectConditional.Enabled = chkSubject.Checked;
+                
                 cmboToConditional.Enabled = chkTo.Checked;
                 cmboCCConditional.Enabled = chkCC.Checked;
                 cmboBodyConditional.Enabled = chkBody.Checked;
@@ -128,27 +134,32 @@ namespace EWSEditor.Forms
             }
 
             this.txtAQS.Enabled = rdoAqsSearch.Checked;
+
             this.txtSubject.Enabled = chkSubject.Checked;
+           
             this.txtTo.Enabled  = chkTo.Checked;
             this.txtCC.Enabled  = chkCC.Checked;
             this.txtBody.Enabled = chkBody.Checked;
             this.txtClass.Enabled = chkClass.Checked;
 
-            //cmboSubjectConditional.Enabled = chkSubject.Checked;
-            //cmboToConditional.Enabled = chkTo.Checked;
-            //cmboCCConditional.Enabled = chkCC.Checked;
-            //cmboBodyConditional.Enabled = chkBody.Checked;
-            //cmboClassConditional.Enabled = chkClass.Checked;
+ 
         }
 
         private bool CheckFields()
         {
             bool bRet = true;
+
             if (this.chkSubject.Checked == true)
                 if (this.txtSubject.Text.Trim().Length == 0)
                 {
                     MessageBox.Show("Subject line text cannot be blank");
                 }
+
+            //if (this.chkUID.Checked == true)
+            //    if (this.txtUID.Text.Trim().Length == 0)
+            //    {
+            //        MessageBox.Show("The UID line text cannot be blank");
+            //    }
 
             if (this.chkTo.Checked == true)
                 if (this.txtTo.Text.Trim().Length == 0)
@@ -223,16 +234,7 @@ namespace EWSEditor.Forms
                     List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
                     ItemView oItemView = new ItemView(iPageSize);
 
-                    //oItemView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
-                    //                    ItemSchema.Subject,
-                    //                    ItemSchema.DisplayTo,
-                    //                    ItemSchema.Subject,
-                    //                    ItemSchema.DisplayCc,
-                    //                    ItemSchema.DateTimeReceived,
-                    //                    ItemSchema.HasAttachments,
-                    //                    ItemSchema.ItemClass
-                    //                    );
-
+ 
                     oItemView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
                         ItemSchema.Subject,
                         ItemSchema.DisplayTo,
@@ -251,34 +253,13 @@ namespace EWSEditor.Forms
                         ItemSchema.LastModifiedName,
                         ItemSchema.LastModifiedTime,        
                         ItemSchema.Size  
-
-
-                        //AppointmentSchema.IsMeeting,
-                        //AppointmentSchema.StartTimeZone,
-                        //AppointmentSchema.EndTimeZone,
-                        //AppointmentSchema.Start,
-                        //AppointmentSchema.End,
-                        //AppointmentSchema.ICalUid,
-                        //AppointmentSchema.IsAllDayEvent,
-                        //AppointmentSchema.IsCancelled,
-                        //AppointmentSchema.IsRecurring,
-                        //AppointmentSchema.IsReminderSet,
-                        //AppointmentSchema.IsOnlineMeeting,
-                        //AppointmentSchema.RetentionDate,
-                        //AppointmentSchema.Organizer,
-                        //AppointmentSchema.ICalRecurrenceId
+ 
 
                         );
-
-                    // Examples of requesting extended properties:
-                    //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x1000, MapiPropertyType.String)); // PR_BODY
-                    //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x1035, MapiPropertyType.String)); // CdoPR_INTERNET_MESSAGE_ID 
-                    //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x0C1A, MapiPropertyType.String)); // CdoPR_SENDER_NAME
-
+ 
                     oItemView.OrderBy.Add(ItemSchema.DateTimeReceived, SortDirection.Descending);
 
-                    //oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
-
+ 
                     SetSearchDepth(ref oItemView);
  
  
@@ -297,8 +278,8 @@ namespace EWSEditor.Forms
                     }
                     else
                     {
-                        txtUID.Enabled = chkUID.Checked;
-                        cmboUidConditional.Enabled = chkUID.Checked;
+                        //txtUID.Enabled = chkUID.Checked;
+                        //cmboUidConditional.Enabled = chkUID.Checked;
 
                         //if (this.chkUID.Checked == true)
                         //    AddCondition(ref searchFilterCollection, ItemSchema.UID, this.txtUID.Text, cmboUidConditional.Text);
@@ -352,10 +333,7 @@ namespace EWSEditor.Forms
                             oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
                         }
 
-                        //SearchFilter searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
-
-                        //oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
-
+ 
                     }
 
                     lvItems.Clear();
@@ -380,46 +358,44 @@ namespace EWSEditor.Forms
                 
                     lvItems.Columns.Add("Size", 50, HorizontalAlignment.Left);
 
-                    //lvItems.Columns.Add("Id", 50, HorizontalAlignment.Left);
+ 
                     lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
                     lvItems.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
- 
+
+                    lvItems.Tag = -1;
 
                     ListViewItem oListItem = null;
                     iCount = 0;
                     foreach (Item oItem in oFindItemsResults.Items)
                     {
                         iCount++;
-                        //if (oItem is EmailMessage || oItem is MeetingRequest || oItem is Contact)
-                        //{
-                            oListItem = new ListViewItem(iCount.ToString(), 0);
+ 
+                        oListItem = new ListViewItem(iCount.ToString(), 0);
                                 
-                            oListItem.SubItems.Add(oItem.Subject);
-                            oListItem.SubItems.Add(oItem.ItemClass);
-                            oListItem.SubItems.Add(oItem.DisplayTo);
-                            oListItem.SubItems.Add(oItem.DisplayCc);
+                        oListItem.SubItems.Add(oItem.Subject);
+                        oListItem.SubItems.Add(oItem.ItemClass);
+                        oListItem.SubItems.Add(oItem.DisplayTo);
+                        oListItem.SubItems.Add(oItem.DisplayCc);
 
-                            oListItem.SubItems.Add(oItem.HasAttachments.ToString());
+                        oListItem.SubItems.Add(oItem.HasAttachments.ToString());
 
-                            oListItem.SubItems.Add(oItem.IsResend.ToString());
-                            oListItem.SubItems.Add(oItem.IsDraft.ToString());
-                            oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
-                            oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());
+                        oListItem.SubItems.Add(oItem.IsResend.ToString());
+                        oListItem.SubItems.Add(oItem.IsDraft.ToString());
+                        oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
+                        oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());
                       
-                            oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
-                            oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
+                        oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
+                        oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
                         
-                            oListItem.SubItems.Add(oItem.Size.ToString());
+                        oListItem.SubItems.Add(oItem.Size.ToString());
 
 
-                            oListItem.SubItems.Add(oItem.Id.UniqueId);
-                            oListItem.SubItems.Add(oItem.Id.ChangeKey);
+                        oListItem.SubItems.Add(oItem.Id.UniqueId);
+                        oListItem.SubItems.Add(oItem.Id.ChangeKey);
 
-                            oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass);
-                            lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
-                            oListItem = null;
-                        //}  
-                         
+                        oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass);
+                        lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
+                        oListItem = null;     
                     }
 
                     oListItem = null;
@@ -492,12 +468,7 @@ namespace EWSEditor.Forms
                                             ItemSchema.Size 
       
                                             );
-
-                        // Examples of requesting extended properties:
-                        //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x1000, MapiPropertyType.String)); // PR_BODY
-                        //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x1035, MapiPropertyType.String)); // CdoPR_INTERNET_MESSAGE_ID 
-                        //oItemView.PropertySet.Add(new ExtendedPropertyDefinition(0x0C1A, MapiPropertyType.String)); // CdoPR_SENDER_NAME
-
+ 
                         oItemView.OrderBy.Add(ContactSchema.DisplayName, SortDirection.Ascending);
                         //oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
 
@@ -573,69 +544,42 @@ namespace EWSEditor.Forms
                         foreach (Item oItem in oFindItemsResults.Items)
                         {
                             iCount++;
-                             
-                            //if (oItem is EmailMessage || oItem is MeetingRequest || oItem is Contact)
-                            //{
+ 
+                            oListItem = new ListViewItem(iCountMore.ToString() + ":" +iCount.ToString(), 0);
 
-                                oListItem = new ListViewItem(iCountMore.ToString() + ":" +iCount.ToString(), 0);
+ 
+                            oListItem.SubItems.Add(oItem.Subject);
+                            oListItem.SubItems.Add(oItem.ItemClass);
+                            oListItem.SubItems.Add(oItem.DisplayTo);
+                            oListItem.SubItems.Add(oItem.DisplayCc);
+                            oListItem.SubItems.Add(oItem.HasAttachments.ToString());
 
-                                //oListItem.SubItems.Add(oItem.Subject);
-                                //oListItem.SubItems.Add(oItem.ItemClass);
-                                //oListItem.SubItems.Add(oItem.DisplayTo);
-                                //oListItem.SubItems.Add(oItem.HasAttachments.ToString());
-                                //oListItem.SubItems.Add(oItem.Id.UniqueId);
-                                //oListItem.SubItems.Add(oItem.Id.ChangeKey);
-
-                    // test
-                        oListItem.SubItems.Add(oItem.Subject);
-                        oListItem.SubItems.Add(oItem.ItemClass);
-                        oListItem.SubItems.Add(oItem.DisplayTo);
-                        oListItem.SubItems.Add(oItem.DisplayCc);
-                        oListItem.SubItems.Add(oItem.HasAttachments.ToString());
-
-                        oListItem.SubItems.Add(oItem.IsResend.ToString());
-                        oListItem.SubItems.Add(oItem.IsDraft.ToString());
-                        oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
-                        try
-                        {
-                            oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());
-                        }
-                        catch
-                        {
-                            oListItem.SubItems.Add("");
-                        }
+                            oListItem.SubItems.Add(oItem.IsResend.ToString());
+                            oListItem.SubItems.Add(oItem.IsDraft.ToString());
+                            oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
+                            try
+                            {
+                                oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());
+                            }
+                            catch
+                            {
+                                oListItem.SubItems.Add("");
+                            }
                   
-                        oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
-                        oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
+                            oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
+                            oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
                    
-                        oListItem.SubItems.Add(oItem.Size.ToString());
+                            oListItem.SubItems.Add(oItem.Size.ToString());
  
- 
-                         
-                        //oListItem.SubItems.Add(oItem.IsMeeting.ToString());
-                        //oListItem.SubItems.Add(oItem.StartTimeZone.ToString());
-                        //oListItem.SubItems.Add(oItem.EndTimeZone.ToString());
-                        //oListItem.SubItems.Add(oItem.Start.ToString());
-                        //oListItem.SubItems.Add(oItem.End.ToString());
-                        //oListItem.SubItems.Add(oItem.ICalUid.ToString());
-                        //oListItem.SubItems.Add(oItem.IsAllDayEvent.ToString());
-                        //oListItem.SubItems.Add(oItem.IsCancelled.ToString());
-                        //oListItem.SubItems.Add(oItem.IsRecurring.ToString());
-                        //oListItem.SubItems.Add(oItem.IsReminderSet.ToString());
-                        //oListItem.SubItems.Add(oItem.IsOnlineMeeting.ToString());
-                        //oListItem.SubItems.Add(oItem.RetentionDate.ToString());
-                        //oListItem.SubItems.Add(oItem.Organizer.ToString());
-                        //oListItem.SubItems.Add(oItem.ICalRecurrenceId.ToString());
-
-                        oListItem.SubItems.Add(oItem.Id.UniqueId);
-                        oListItem.SubItems.Add(oItem.Id.ChangeKey);
+                            oListItem.SubItems.Add(oItem.Id.UniqueId);
+                            oListItem.SubItems.Add(oItem.Id.ChangeKey);
 
                        
 
-                        oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass );
-                        lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
-                        oListItem = null;
-                            //}
+                            oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass );
+                            lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
+                            oListItem = null;
+                        
                         }
 
                         // Set the flag to discontinue paging.
@@ -664,6 +608,7 @@ namespace EWSEditor.Forms
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            toolStripStatusLabel1.Text = "";
             int iPageSize = 100;
             iPageSize = (int)this.numPageSize.Value;
             this.Cursor = Cursors.WaitCursor;
@@ -690,7 +635,7 @@ namespace EWSEditor.Forms
 
         private void btnMailboxSearch_Click(object sender, EventArgs e)
         {
-            //DoMailboxSearch();
+           
         }
 
       
@@ -713,9 +658,12 @@ namespace EWSEditor.Forms
         {
             if (lvItems.SelectedItems.Count > 0)
             {
-     
-                string sId = lvItems.SelectedItems[0].SubItems[13].Text;
-                ItemId oItemId = new ItemId(sId);
+
+ 
+                ItemTag oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
+                ItemId oItemId = oItemTag.Id;
+                //string sId = lvItems.SelectedItems[0].SubItems[13].Text;
+                //ItemId oItemId = new ItemId(sId);
 
 
                 List<ItemId> item = new List<ItemId>();
@@ -786,10 +734,498 @@ namespace EWSEditor.Forms
             }
         }
 
-        private void chkUID_CheckedChanged(object sender, EventArgs e)
+        private void mnuCopyItems_Click(object sender, EventArgs e)
         {
-            txtUID.Enabled = chkUID.Checked;
-            cmboUidConditional.Enabled = chkUID.Checked;
+             
+            PickFolderAndCopyItems();
+            
+        }
+         
+ 
+
+        private void mnuMoveItems_Click(object sender, EventArgs e)
+        {
+            
+            PickFolderAndMoveItems();
+            
+        }
+
+
+        public bool PickFolderAndCopyItems()
+        {
+            int iCountItems = 0;
+
+            FolderIdDialog oForm = new FolderIdDialog(_CurrentService);
+            oForm.ShowDialog();
+            if (oForm.ChoseOK != true)
+            {
+                //oForm.ChosenFolderId 
+                this.Cursor = Cursors.Default;
+                return false;
+            }
+
+            this.Cursor = Cursors.WaitCursor;
+
+            //FolderId oFolderId = null;
+            //if (FolderIdDialog.ShowDialog(ref oFolderId) != DialogResult.OK)
+            //{
+            //    return false;
+            //}
+
+            StringBuilder oSB = new StringBuilder();
+            List<ItemId> oItemIds = new List<ItemId>();
+
+
+            string sId = string.Empty;
+            ItemId oItemId = null;
+            ItemTag oItemTag = null;
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                ListViewItem oListViewItem = null;
+                // build list.
+                for (int i = (lvItems.SelectedItems.Count - 1); i >= 0; i--)
+                {
+                    oListViewItem = lvItems.SelectedItems[i];
+
+                    oItemIds.Clear();
+                    oItemTag = (ItemTag)oListViewItem.Tag;
+                    oItemId = oItemTag.Id;
+                    oItemIds.Add(oItemId);
+
+                    oSB = new StringBuilder();
+
+                    if (CopyItem(oItemIds, oForm.ChosenFolderId, ref oSB) == false)
+                    {
+                        toolStripStatusLabel1.Text = string.Format("Error copying items.  Moved {0}", iCountItems);
+                        return false;
+                    }
+                    else
+                    {
+
+                        iCountItems++;
+
+                        if (iCountItems % 10 == 0)
+                            toolStripStatusLabel1.Text = string.Format("Copied: {0}", iCountItems);
+
+                        
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error moving items.", ex.InnerException.ToString());
+
+                ShowTextDocument oFormError = new ShowTextDocument();
+                oFormError.txtEntry.WordWrap = true;
+                oFormError.Text = "Error.";
+                oFormError.txtEntry.Text = ex.ToString();
+                oFormError.ShowDialog();
+
+                return false;
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+                this.Cursor = Cursors.Default;
+            }
+
+    
+
+            ShowTextDocument oShowTextDocument = new ShowTextDocument();
+            oShowTextDocument.txtEntry.WordWrap = true;
+            oShowTextDocument.Text = "Move Results.";
+            oShowTextDocument.txtEntry.Text = string.Format("Total Copied {0}", iCountItems); // // oSB.ToString();
+            oShowTextDocument.ShowDialog();
+
+            toolStripStatusLabel1.Text = string.Format("Total Copied {0}", iCountItems);
+
+            this.Cursor = Cursors.Default;
+
+            return true;
+        }
+
+
+        private bool CopyItem(List<ItemId> oItemIds, FolderId oFolderId, ref StringBuilder oSB)
+        {
+
+            ServiceResponseCollection<MoveCopyItemResponse> oResponses = this._CurrentService.CopyItems(
+                oItemIds,
+                oFolderId,
+                false);
+            try
+            {
+
+                if (oResponses.OverallResult != ServiceResult.Success)
+                {
+
+                    oSB.AppendFormat("Errors found in some of {0} response(s) .\r\n", oResponses.Count);
+
+                    foreach (MoveCopyItemResponse oResponse in oResponses)
+                    {
+                        oSB.AppendFormat("Error copying: {0} Error: {1} - {2}\r\n",
+                            oItemIds[0], oResponse.ErrorCode.ToString(), oResponse.ErrorMessage.ToString());
+
+                        if (oResponse.ErrorDetails.Count != 0)
+                        {
+                            oSB.AppendFormat("    ErrorDetails: \r\n");
+                            foreach (KeyValuePair<string, string> kvp in oResponse.ErrorDetails)
+                            {
+                                oSB.AppendFormat("         Item: {0}\r\n", kvp.Key);
+                                oSB.AppendFormat("        Value: {0}\r\n", kvp.Value);
+                                oSB.AppendLine();
+                            }
+                        }
+
+                        if (oResponse.ErrorProperties.Count != 0)
+                        {
+                            oSB.AppendFormat("    ErrorProperties:  \r\n");
+                            foreach (PropertyDefinitionBase oProps in oResponse.ErrorProperties)
+                            {
+                                oSB.AppendFormat("        Property: {0}\r\n", oProps.ToString());
+
+                            }
+                            oSB.AppendLine();
+                        }
+                        oSB.AppendLine();
+                    }
+                }
+                else
+                {
+                    //Success!!!
+
+                    foreach (MoveCopyItemResponse oResponse in oResponses)
+                    {
+                        oSB.AppendFormat("Copied: {0}\r\n\r\n", oResponse.Item.Id.UniqueId);
+
+                        //if (oResponse.Item != null)
+                        //{   // copy/moved item - null if between mailboxes or from mailbox to public folder.
+                        //    oSB.AppendFormat("    Item - Id: {0}\r\n", oResponse.Item.Id.UniqueId);
+                        //    //oSB.AppendFormat("           ParentFolderId: {0}\r\n", oResponse.Item.ParentFolderId);
+                        //}
+                    }
+                }
+
+                // Refresh the view
+                //this.RefreshContentAndDetails();
+            }
+            catch (ServiceResponseException ex)
+            {
+                oSB.AppendFormat("");
+                oSB.AppendFormat("Error: ");
+                oSB.AppendFormat("    Item: {0}\r\n", oItemIds[0]);
+                oSB.AppendFormat("    Error code: {0}\r\n", ex.ErrorCode);
+                oSB.AppendFormat("    Error message: {0}\r\n", ex.Message);
+                oSB.AppendFormat("    Response: {0}\r\n", ex.Response);
+
+
+                StringBuilder oSB_Error = new StringBuilder();
+                oSB_Error.AppendFormat("Error: ");
+                oSB_Error.AppendFormat("    Item: {0}\r\n", oItemIds[0]);
+                oSB_Error.AppendFormat("    Error code: {0}\r\n", ex.ErrorCode);
+                oSB_Error.AppendFormat("    Error message: {0}\r\n", ex.Message);
+                oSB_Error.AppendFormat("    Response: {0}\r\n", ex.Response);
+
+                ShowTextDocument oForm = new ShowTextDocument();
+                oForm.txtEntry.WordWrap = false;
+                oForm.Text = "Error copy item: ";
+                oForm.txtEntry.Text = oSB_Error.ToString();
+                oForm.ShowDialog();
+
+                this.Cursor = Cursors.Default;
+                return false;
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+
+            return true;
+
+        }
+
+        public bool PickFolderAndMoveItems()
+        {
+            int iCountItems = 0;
+
+            FolderIdDialog oForm = new FolderIdDialog(_CurrentService);
+            oForm.ShowDialog();
+            if (oForm.ChoseOK != true)
+            {
+                //oForm.ChosenFolderId 
+                this.Cursor = Cursors.Default;
+                return false;
+            }
+
+            this.Cursor = Cursors.WaitCursor;
+
+            //FolderId oFolderId = null;
+            //if (FolderIdDialog.ShowDialog(ref oFolderId) != DialogResult.OK)
+            //{
+            //    return false;
+            //}
+
+            StringBuilder oSB = new StringBuilder();
+            List<ItemId> oItemIds = new List<ItemId>();
+ 
+
+            string sId = string.Empty;
+            ItemId oItemId = null;
+            ItemTag oItemTag = null;
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                ListViewItem oListViewItem = null;
+                // build list.
+                for (int i = (lvItems.SelectedItems.Count-1); i >= 0; i--) 
+                {
+                    oListViewItem = lvItems.SelectedItems[i];
+
+                    oItemIds.Clear();
+                    oItemTag = (ItemTag)oListViewItem.Tag;
+                    oItemId = oItemTag.Id;
+                    oItemIds.Add(oItemId);
+
+                   // sId = (string)lvItems.SelectedItems[i].Tag;  
+
+                    //oItemId = new ItemId(sId);
+                    //oItemIds.Add(oItemId);
+
+                    oSB = new StringBuilder();
+
+                    if (MoveItem(oItemIds, oForm.ChosenFolderId, ref oSB) == false)
+                    {
+                        toolStripStatusLabel1.Text = string.Format("Error moving items.  Moved {0}", iCountItems);
+                        return false;
+                    }
+                    else
+                    {
+                        iCountItems++;
+                        if (iCountItems % 10 == 0)
+                        {
+                            toolStripStatusLabel1.Text = string.Format("Moved: {0}", iCountItems);
+                            this.Update();
+                        }
+                         
+ 
+
+                        //toolStripStatusLabel1.Text = string.Format("Moved {0}", iCountItems);
+
+                        oListViewItem.Remove();
+                    }
+ 
+                }
+
+            }
+            catch(Exception ex)
+            { 
+                //MessageBox.Show("Error moving items.", ex.InnerException.ToString());
+
+                ShowTextDocument oFormError = new ShowTextDocument();
+                oFormError.txtEntry.WordWrap = true;
+                oFormError.Text = "Error.";
+                oFormError.txtEntry.Text = ex.ToString();
+                oFormError.ShowDialog();
+
+                return false;
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+
+            ShowTextDocument oShowTextDocument = new ShowTextDocument();
+            oShowTextDocument.txtEntry.WordWrap = true;
+            oShowTextDocument.Text = "Move Results.";
+            oShowTextDocument.txtEntry.Text = string.Format("Total Moved {0}", iCountItems); // oSB.ToString();
+            oShowTextDocument.ShowDialog();
+
+            toolStripStatusLabel1.Text = string.Format("Total Moved {0}", iCountItems);
+
+            this.Cursor = Cursors.Default;
+
+            return true;
+        }
+
+        private bool MoveItem(List<ItemId> oItemIds, FolderId oFolderId, ref StringBuilder oSB)
+        { 
+     
+            ServiceResponseCollection<MoveCopyItemResponse> oResponses = this._CurrentService.MoveItems(
+                oItemIds,
+                oFolderId, 
+                false);
+             try
+             { 
+
+                if (oResponses.OverallResult != ServiceResult.Success)
+                {
+
+                    oSB.AppendFormat("Errors found in some of {0} response(s) .\r\n", oResponses.Count);
+
+                    foreach (MoveCopyItemResponse oResponse in oResponses)
+                    {
+                        oSB.AppendFormat("Error moving: {0} Error: {1} - {2}\r\n",
+                            oItemIds[0], oResponse.ErrorCode.ToString(), oResponse.ErrorMessage.ToString());
+
+                        if (oResponse.ErrorDetails.Count != 0)
+                        {
+                            oSB.AppendFormat("    ErrorDetails: \r\n");
+                            foreach (KeyValuePair<string, string> kvp in oResponse.ErrorDetails)
+                            {
+                                oSB.AppendFormat("         Item: {0}\r\n", kvp.Key);
+                                oSB.AppendFormat("        Value: {0}\r\n", kvp.Value);
+                                oSB.AppendLine();
+                            }
+                        }
+
+                        if (oResponse.ErrorProperties.Count != 0)
+                        {
+                            oSB.AppendFormat("    ErrorProperties:  \r\n");
+                            foreach (PropertyDefinitionBase oProps in oResponse.ErrorProperties)
+                            {
+                                oSB.AppendFormat("        Property: {0}\r\n", oProps.ToString());
+
+                            }
+                            oSB.AppendLine();
+                        }
+                        oSB.AppendLine();
+                    }
+                }
+                else
+                {   
+                    //Success!!!
+ 
+                    foreach (MoveCopyItemResponse oResponse in oResponses)
+                    {
+
+                         oSB.AppendFormat("Moved: {0}\r\n\r\n", oItemIds[0].UniqueId);
+
+                        //if (oResponse.Item != null)
+                        //{   // copy/moved item - null if between mailboxes or from mailbox to public folder.
+                        //    oSB.AppendFormat("    Item - Id: {0}\r\n", oResponse.Item.Id.UniqueId);
+                        //    //oSB.AppendFormat("           ParentFolderId: {0}\r\n", oResponse.Item.ParentFolderId);
+                        //}
+                    }
+                }
+
+                // Refresh the view
+                //this.RefreshContentAndDetails();
+            }
+            catch (ServiceResponseException ex)
+            { 
+                oSB.AppendFormat("");
+                oSB.AppendFormat("Error: ");
+                oSB.AppendFormat("    Item: {0}\r\n", oItemIds[0]);
+                oSB.AppendFormat("    Error code: {0}\r\n", ex.ErrorCode);
+                oSB.AppendFormat("    Error message: {0}\r\n", ex.Message);
+                oSB.AppendFormat("    Response: {0}\r\n", ex.Response);
+ 
+                 
+                StringBuilder oSB_Error = new StringBuilder();
+                oSB_Error.AppendFormat("Error: ");
+                oSB_Error.AppendFormat("    Item: {0}\r\n", oItemIds[0]);
+                oSB_Error.AppendFormat("    Error code: {0}\r\n", ex.ErrorCode);
+                oSB_Error.AppendFormat("    Error message: {0}\r\n", ex.Message);
+                oSB_Error.AppendFormat("    Response: {0}\r\n", ex.Response);
+
+                ShowTextDocument oForm = new ShowTextDocument();
+                oForm.txtEntry.WordWrap = false;
+                oForm.Text = "Error moving item: ";
+                oForm.txtEntry.Text = oSB_Error.ToString();
+                oForm.ShowDialog();
+
+                this.Cursor = Cursors.Default;
+                return false;
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+
+             return true;
+ 
+        }
+
+        private void mnuDeleteItems_Click(object sender, EventArgs e)
+        {
+            this.DeleteItem(DeleteMode.HardDelete);
+        }
+
+        /// <summary>
+        /// There are three different delete modes, this function is called by
+        /// each of the menu events passing a different mode.
+        /// </summary>
+        /// <param name="mode">Type of delete to peform</param>
+        private void DeleteItem(DeleteMode mode)
+        {
+            //try
+            //{
+            //    this.Cursor = Cursors.WaitCursor;
+
+            //    ItemId id = GetSelectedContentId();
+            //    if (id == null)
+            //    {
+            //        return;
+            //    }
+
+            //    List<ItemId> item = new List<ItemId>();
+            //    item.Add(id);
+
+            //    this.CurrentService.DeleteItems(
+            //        item,
+            //        mode,
+            //        SendCancellationsMode.SendToAllAndSaveCopy,
+            //        AffectedTaskOccurrence.AllOccurrences);
+
+            //    // Refresh the view
+            //    this.RefreshContentAndDetails();
+            //}
+            //finally
+            //{
+            //    this.Cursor = Cursors.Default;
+            //}
+        }
+
+        private void mnuSoftDelete_Click(object sender, EventArgs e)
+        {
+            //this.DeleteItem(DeleteMode.SoftDelete);
+        }
+
+        private void mnuMoveToDeletedItems_Click(object sender, EventArgs e)
+        {
+            //this.DeleteItem(DeleteMode.MoveToDeletedItems);
+        }
+
+        private void lvItems_ColumnClick(object sender, ColumnClickEventArgs e)
+        { 
+            LvColumnSort(ref lvItems, e.Column);
+        }
+
+        private void LvColumnSort(ref ListView oListView, int iClickedColumn)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            int iLastColumn = (int)oListView.Tag;
+            if (iClickedColumn != iLastColumn)  //Already sorted On the clicked column?
+            {
+                iLastColumn = iClickedColumn;
+                oListView.Tag = iLastColumn;
+                oListView.Sorting = SortOrder.Ascending;
+            }
+            else
+            {
+                if (oListView.Sorting == SortOrder.Ascending)  // togle sort order if same column clicked
+                    oListView.Sorting = SortOrder.Descending;
+                else
+                    oListView.Sorting = SortOrder.Ascending;
+            }
+            oListView.Sort();
+            oListView.ListViewItemSorter = new EWSEditor.Common.UIHelpers.ListViewItemComparer_Dates(iClickedColumn, oListView.Sorting);
+            this.Cursor = Cursors.Default;
         }
     }
 }

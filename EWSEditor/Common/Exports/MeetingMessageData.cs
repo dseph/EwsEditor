@@ -60,6 +60,7 @@ namespace EWSEditor.Common.Exports
         public string ItemClass = string.Empty;
         public string LastModifiedName = string.Empty;
         public string LastModifiedTime = string.Empty;
+        public string Location = string.Empty;
         public string MimeContent = string.Empty;
         public string NormalizedBody = string.Empty;
         public string ParentFolderId = string.Empty;
@@ -89,7 +90,7 @@ namespace EWSEditor.Common.Exports
 
         public string PidLidCleanGlobalObjectId = string.Empty;
         public string PidLidGlobalObjectId = string.Empty;
-        public string PidLidAppointmentRecur = string.Empty;
+        //public string PidLidAppointmentRecur = string.Empty;
         public string PidLidClientIntent = string.Empty;
         public string ClientInfoString    = string.Empty;
         public string EntryId  = string.Empty;
@@ -97,84 +98,47 @@ namespace EWSEditor.Common.Exports
         public string FolderPath = string.Empty;
         public string LogTriggerAction = string.Empty;
 
+        // Additional 
+        public string  PidLidCurrentVersion  = string.Empty;
+        public string  PidLidCurrentVersionName  = string.Empty;
+        public string  PidNameCalendarUid  = string.Empty;
+        public string  PidLidOrganizerAlias  = string.Empty;
+        public string  PidTagSenderSmtpAddress  = string.Empty;
+
+        public string PidLidAppointmentAuxiliaryFlags = string.Empty;
+        public string PidLidRecurrencePattern = string.Empty;
+        public string PidLidRecurrenceType = string.Empty;
+        public string PidLidRecurring = string.Empty;
+        public string PidLidAppointmentRecur = string.Empty;
+        //public string PidLidAppointmentStartDate = string.Empty;
+        //public string PidLidAppointmentStartTime = string.Empty;
+
  
+        public string PidLidAppointmentStartWhole = string.Empty;
+        public string PidLidAppointmentEndWhole = string.Empty;
+
+        public string PidLidAppointmentStateFlags = string.Empty;
  
+        public string PidNameFrom = string.Empty;
+        public string PidNameHttpmailFrom = string.Empty;
+        public string PidNameHttpmailFromEmail = string.Empty;
+        public string PidTagSenderEmailAddress = string.Empty;
+        public string PidTagSenderFlags = string.Empty;
+        public string PidTagSenderName = string.Empty;
+        public string PidTagSenderSimpleDisplayName = string.Empty;
+        public string PidTagSentRepresentingEmailAddress = string.Empty;
+        public string PidTagSentRepresentingFlags = string.Empty;
+        public string PidTagSentRepresentingName = string.Empty;
+        public string PidTagSentRepresentingSimpleDisplayName = string.Empty;
+        public string IsMeeting = string.Empty;
+        public string PidTagProcessed = string.Empty;
+        public string PidNameCalendarIsOrganizer = string.Empty;
+       // public string PidLidResponseStatus = string.Empty;
+        public string PidLidIsException = string.Empty;
+        public string PidLidInboundICalStream = string.Empty;
+        public string PidTagCreatorName = string.Empty;
+        public string PidTagCreatorSimpleDisplayName = string.Empty;
  
- 
-                    
-
-
-        // Randy's tool: TLMsg
-        // ApptAuxFlags     // AppointmentAuxiliaryFlags
-        // ApptEndWhole     // MapiEndTime              // x  End?
-        // AppRecurrBlob    //AppointmentRecurrenceBlob
-        //public string PidLidAppointmentRecur = string.Empty; // AppRecurrBlob    //AppointmentRecurrenceBlob  // https://msdn.microsoft.com/en-us/library/ee204268(v=exchg.80).aspx
-        // ApptRecurring    // AppointmentRecurring
-        // ApptStartWhole   // MapiStartTime            // x  Start?
-        // AppointmentState  //AppointmentStateFlags
-        // AttendeeCC       // DisplayAttendeesCc       // x    DisplayCc?
-        // AttendeeTo       // DisplayAttendeesTo       // x    ToRecipients?
-        // BusyStatus   // FreeBusyStatus               // PidLidBusyStatus             // https://msdn.microsoft.com/en-us/library/ee219533(v=exchg.80).aspx
-        //public string BusyStatus = string.Empty;      // ?? its on the Appointmet object - LegacyFreeBusyStatus
-        //public string CalProcessed = string.Empty;
-        //public string CleanGOID = string.Empty;       // PidLidCleanGlobalObjectId    // https://msdn.microsoft.com/en-us/library/ee203416(v=exchg.80).aspx
-        //public string ClientInfoString = string.Empty;
-        //public string ClientIntent = string.Empty;
-        //public string EndTime = string.Empty;         //??
-        //public string EndWallClock = string.Empty;
-        //public string From = string.Empty;
-        //public string IsAllDayEvent = string.Empty;
-        //public string IsCancelled = string.Empty;
-        //public string IsException = string.Empty;
-        //public string IsHijacked = string.Empty;
-        //public string IsOrganizer = string.Empty;
-        //public string IsProcessed = string.Empty;
-        //public string IsRecurring = string.Empty;
-        //public string IsSeriesCancelled = string.Empty;
-        //public string IsSoftDeleted = string.Empty;
-        //public string ItemMsgClass = string.Empty;
-        //public string LastModTime = string.Empty;
-        //public string Location = string.Empty;
-        //public string MeetReqType = string.Empty;
-        //public string OrganizerAddr = string.Empty;
-        //public string OrganizerName = string.Empty;
-        //public string OrigLastModTime = string.Empty;
-        //public string ParentFolder = string.Empty;
-        //public string RcvdBy = string.Empty;
-        //public string RcvdRepresenting = string.Empty;
-        //public string RecurPattern = string.Empty;
-        //public string ResponsibleUser = string.Empty;
-        //public string SenderAddress = string.Empty;
-        //public string StartTime = string.Empty;
-        //public string StartWallClock = string.Empty;
-        //public string Subject = string.Empty;
-        //public string TimeZoneDesc = string.Empty;
-        //public string TriggerAction = string.Empty;
-        //public string ViewEndTime = string.Empty;
-        //public string ViewStartTime = string.Empty;
-
-        // https://social.msdn.microsoft.com/Forums/pt-BR/018b0b69-8345-40db-bee7-7ae6237bb916/appointmentitem-timezone-event?forum=outlookdev
-
-        //             _Appointment.LegacyFreeBusyStatus = (LegacyFreeBusyStatus)Enum.Parse(typeof(LegacyFreeBusyStatus), cmboLegacyFreeBusyStatus.Text.Trim());
- 
-        //    AppointmentStateFlags (DASL name http://schemas.microsoft.com/mapi/id/{00062002-0000-0000-C000-000000000046}/82170003)
-        //FInvited (DASL name http://schemas.microsoft.com/mapi/id/{00062002-0000-0000-C000-000000000046}/8229000B)
-        //    ResponseStatus (DASL name http://schemas.microsoft.com/mapi/id/{00062002-0000-0000-C000-000000000046}/82180003) 
-
-        // PR_INTERNET_MESSAGE_ID, PR_INTERNET_MESSAGE_ID_A  http://schemas.microsoft.com/mapi/proptag/0x1035001E
-
-        // ptagCreatorSimpleDispName Tag: 0x4038001E  Type: PT_STRING8
-        // ptagLastModifierSimpleDispName  0x4039001E   PT_STRING8
-        // ptagSenderSimpleDispName  0x4030001E PT_STRING8
-        // R_DISPLAY_BCC, PR_DISPLAY_BCC_A, ptagDisplayBcc  PR_DISPLAY_BCC_W, PidTagDisplayBcc  0x0E02001E  PT_STRING8
-        // PR_MESSAGE_DELIVERY_TIME, PidTagMessageDeliveryTime 0x0E060040  PT_SYSTIME
-        // PR_MESSAGE_FLAGS, PidTagMessageFlags, ptagMessageFlags  0x0E070003  PT_LONG
-        // PR_MESSAGE_LOCALE_ID, PidTagMessageLocaleId  0x3FF10003  PT_LONG
-
-        // R_SENDER_NAME, PR_SENDER_NAME_A, ptagSenderName  PR_SENDER_NAME_W, PidTagSenderName  0x0C1A001E  PT_STRING8
-        // PR_SENT_REPRESENTING_ADDRTYPE, PR_SENT_REPRESENTING_ADDRTYPE_A, ptagSentRepresentingAddrType  PR_SENT_REPRESENTING_ADDRTYPE_W, PidTagSentRepresentingAddressType  0x0064001E  PT_STRING8
-        // PR_SENT_REPRESENTING_EMAIL_ADDRESS, PR_SENT_REPRESENTING_EMAIL_ADDRESS_A PR_SENT_REPRESENTING_EMAIL_ADDRESS_W, PidTagSentRepresentingEmailAddress 0x0065001E  PT_STRING8
-        // PR_SENT_REPRESENTING_NAME, PR_SENT_REPRESENTING_NAME_A, ptagSentRepresentingName  PR_SENT_REPRESENTING_NAME_W, PidTagSentRepresentingName  0x0042001E  PT_STRING8
-        // 
+         
     }
 }

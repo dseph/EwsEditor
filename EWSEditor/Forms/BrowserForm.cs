@@ -499,14 +499,17 @@
         /// <param name="e">The parameter is not used.</param>
         private void MnuOpenFolderById_Click(object sender, EventArgs e)
         {
-            FolderId folderId = null;
-            if (FolderIdDialog.ShowDialog(ref folderId) == DialogResult.OK && folderId != null)
+            FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
+            oForm.ShowDialog();
+            if (oForm.ChoseOK == true && oForm.ChosenFolderId != null)
             {
+                //oForm.ChosenFolderId 
+ 
                 Folder folder = Folder.Bind(
                     this.CurrentService,
-                    folderId,
+                    oForm.ChosenFolderId,
                     this.CurrentDetailPropertySet);
-                 
+
                 FolderContentForm.Show(
                     string.Format(DisplayStrings.TITLE_CONTENTS_FOLDER, folder.DisplayName),
                     folder,
@@ -514,6 +517,22 @@
                     this.CurrentService,
                     this);
             }
+
+            //FolderId folderId = null;
+            //if (FolderIdDialog.ShowDialog(ref folderId) == DialogResult.OK && folderId != null)
+            //{
+            //    Folder folder = Folder.Bind(
+            //        this.CurrentService,
+            //        folderId,
+            //        this.CurrentDetailPropertySet);
+                 
+            //    FolderContentForm.Show(
+            //        string.Format(DisplayStrings.TITLE_CONTENTS_FOLDER, folder.DisplayName),
+            //        folder,
+            //        ItemTraversal.Shallow,
+            //        this.CurrentService,
+            //        this);
+            //}
         }
 
         /// <summary>

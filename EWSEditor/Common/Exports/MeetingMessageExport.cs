@@ -13,13 +13,15 @@ using System.Xml;
 using System.IO;
 using System.Windows.Forms;
 
+using EWSEditor.PropertyInformation;
+
 namespace EWSEditor.Common.Exports
 { 
     class MeetingMessageExport
     {
         private static ExtendedPropertyDefinition Prop_PR_FOLDER_PATH = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
         //private static ExtendedPropertyDefinition Prop_PR_FOLDER_TYPE = new ExtendedPropertyDefinition(0x3601, MapiPropertyType.Integer);  // PR_FOLDER_TYPE 0x3601 (13825)
-        private static ExtendedPropertyDefinition PidLidAppointmentRecur = new ExtendedPropertyDefinition(new Guid("00062002-0000-0000-C000-000000000046"), 0x8216, MapiPropertyType.Binary); // dispidApptRecur
+        //private static ExtendedPropertyDefinition PidLidAppointmentRecur = new ExtendedPropertyDefinition(new Guid("00062002-0000-0000-C000-000000000046"), 0x8216, MapiPropertyType.Binary); // dispidApptRecur
         private static ExtendedPropertyDefinition PidLidClientIntent = new ExtendedPropertyDefinition(new Guid("11000E07-B51B-40D6-AF21-CAA85EDAB1D0"), 0x0015, MapiPropertyType.Integer); // dispidClientIntent
         private static ExtendedPropertyDefinition ClientInfoString = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x000B, MapiPropertyType.String); //  
         private static ExtendedPropertyDefinition LogTriggerAction = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x0006, MapiPropertyType.String); //  
@@ -49,8 +51,56 @@ namespace EWSEditor.Common.Exports
         private static ExtendedPropertyDefinition PPR_CONVERSATION_INDEX = new ExtendedPropertyDefinition(0x0071, MapiPropertyType.Binary);
         private static ExtendedPropertyDefinition PR_CONTROL_FLAGS = new ExtendedPropertyDefinition(0x3F00, MapiPropertyType.Integer);// PT_LONG
 
-        //  PR_CONVERSATION_ID
-        //  PR_PARENT_ENTRYID
+        // New:
+//        private static ExtendedPropertyDefinition PidLidCurrentVersion = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x00008552, MapiPropertyType.Integer);
+        private static ExtendedPropertyDefinition PidLidCurrentVersionName = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x00008554, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition PidNameCalendarUid = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x001F, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition PidLidOrganizerAlias = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008243, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition PidTagSenderSmtpAddress = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x5D01, MapiPropertyType.String);   
+
+        private static ExtendedPropertyDefinition PidLidInboundICalStream = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0102, MapiPropertyType.Binary);
+
+        private static ExtendedPropertyDefinition PidLidAppointmentAuxiliaryFlags = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008207, MapiPropertyType.Integer);
+        private static ExtendedPropertyDefinition PidLidRecurrencePattern = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008232, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition PidLidRecurrenceType = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008231, MapiPropertyType.Integer);
+        private static ExtendedPropertyDefinition PidLidRecurring = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008223, MapiPropertyType.Boolean); // "dispidRecurring, http://schemas.microsoft.com/mapi/recurring", "Calendar", "[MS-OXCDATA], [MS-OXCICAL], [MS-OXOCAL], [MS-OXOSFLD], [MS-OXWAVLS], [MS-XWDCAL]"));
+        private static ExtendedPropertyDefinition PidLidAppointmentRecur = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008216, MapiPropertyType.Binary); // "dispidApptRecur, http://schemas.microsoft.com/mapi/apptrecur", "Calendar", "[MS-OXCICAL], [MS-OXOCAL], [MS-OXORMDR], [MS-OXOTASK],[MS-XWDCAL]"));
+        //private ExtendedPropertyDefinition PidLidAppointmentStartWhole = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0000820D, MapiPropertyType.SystemTime); // "PidLidAppointmentStartWhole", "dispidApptStartWhole, http://schemas.microsoft.com/mapi/apptstartwhole", "Calendar", "[MS-OXCICAL], [MS-OXOCAL], [MS-OXOPFFB], [MS-XWDCAL]"));
+        //private static ExtendedPropertyDefinition PidLidAppointmentStartDate = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008212, MapiPropertyType.SystemTime);
+        //private static ExtendedPropertyDefinition PidLidAppointmentStartTime = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0000820F, MapiPropertyType.SystemTime);
+
+        public static ExtendedPropertyDefinition PidLidAppointmentStartWhole = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0000820D, MapiPropertyType.SystemTime); // "PidLidAppointmentStartWhole", "dispidApptStartWhole, http://schemas.microsoft.com/mapi/apptstartwhole", "Calendar", "[MS-OXCICAL], [MS-OXOCAL], [MS-OXOPFFB], [MS-XWDCAL]"));
+        public static ExtendedPropertyDefinition PidLidAppointmentEndWhole = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0000820E, MapiPropertyType.SystemTime); // "PidLidAppointmentEndWhole", "dispidApptEndWhole, 
+        
+        private static ExtendedPropertyDefinition PidLidAppointmentStateFlags = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008217, MapiPropertyType.Integer);
+        private static ExtendedPropertyDefinition PidNameFrom = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.InternetHeaders, "From", MapiPropertyType.String);  // PidNameFrom -  Its the Organizer.
+        private static ExtendedPropertyDefinition PidNameHttpmailFrom = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.PublicStrings, "urn:schemas:httpmail:from", MapiPropertyType.String); // PidNameHttpmailFromEmail - 
+        private static ExtendedPropertyDefinition PidNameHttpmailFromEmail = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.PublicStrings, "urn:schemas:httpmail:fromemail", MapiPropertyType.String); // PidNameHttpmailFromEmail          
+        private static ExtendedPropertyDefinition PidTagSenderEmailAddress = new ExtendedPropertyDefinition(0x0C1F, MapiPropertyType.String); //  "PidTagSenderEmailAddress", "PR_SENDER_EMAIL_ADDRESS,PR_SENDER_EMAIL_ADDRESS_A, PR_SENDER_EMAIL_ADDRESS_W", "Address Properties", "[MS-OXCFXICS], [MS-OXCICAL], [MS-OXCSPAM], [MS-OXOMSG],[MS-OXORSS], [MS-OXOTASK], [MS-OXPSVAL], [MS-OXTNEF]"));        
+        private static ExtendedPropertyDefinition PidTagSenderFlags = new ExtendedPropertyDefinition(0x4019, MapiPropertyType.Integer); // "PidTagSenderFlags", "ptagSenderFlags", "Miscellaneous Properties", "[MS-OXCFXICS], [MS-OXTNEF]")); 
+        private static ExtendedPropertyDefinition PidTagSenderName = new ExtendedPropertyDefinition(0x0C1A, MapiPropertyType.String);  // 
+        private static ExtendedPropertyDefinition PidTagSenderSimpleDisplayName = new ExtendedPropertyDefinition(0x4030, MapiPropertyType.String);  // "PidTagSenderName", "PR_SENDER_NAME, PR_SENDER_NAME_A, ptagSenderName,PR_SENDER_NAME_W, urn:schemas:httpmail:sendername,http://schemas.microsoft.com/exchange/sender-name-utf8", "Address Properties Property set", "[MS-OXCFXICS], [MS-OXCICAL], [MS-OXCSYNC], [MS-OXOCAL], [MS-OXOMSG], [MS-OXOPOST], [MS-OXORSS], [MS-OXOTASK], [MS-OXTNEF], [MS-XWDMAIL]")); 
+        private static ExtendedPropertyDefinition PidTagSentRepresentingEmailAddress = new ExtendedPropertyDefinition(0x0065, MapiPropertyType.String); // PR_SENT_REPRESENTING_EMAIL_ADDRESS,PR_SENT_REPRESENTING_EMAIL_ADDRESS_A,PR_SENT_REPRESENTING_EMAIL_ADDRESS_W"
+        private static ExtendedPropertyDefinition PidTagSentRepresentingFlags = new ExtendedPropertyDefinition(0x401A, MapiPropertyType.Integer);  // ptagSentRepresentingFlags
+        private static ExtendedPropertyDefinition PidTagSentRepresentingName = new ExtendedPropertyDefinition(0x0042, MapiPropertyType.String);   // // ptagSentRepresentingName, PR_SENT_REPRESENTING_NAME,PR_SENT_REPRESENTING_NAME_A,PR_SENT_REPRESENTING_NAME_W        private string PidTagSentRepresentingSimpleDisplayName = new ExtendedPropertyDefinition(0x4031, MapiPropertyType.String);  // ptagSentRepresentingName, PR_SENT_REPRESENTING_NAME,PR_SENT_REPRESENTING_NAME_A,PR_SENT_REPRESENTING_NAME_W
+        private static ExtendedPropertyDefinition PidTagSentRepresentingSimpleDisplayName = new ExtendedPropertyDefinition(0x4031, MapiPropertyType.String);  // PidTagSentRepresentingSimpleDisplayName", "ptagSentRepresentingSimpleDispName",  
+        private static ExtendedPropertyDefinition PidTagProcessed = new ExtendedPropertyDefinition(0x7D01, MapiPropertyType.Boolean); // (PidTagProcessed, new KnownExtendedPropertyInfo("PidTagProcessed", "PR_PROCESSED", "Calendar", "[MS-OXCICAL], [MS-OXOCAL], [MS-OXOTASK]"));
+     //   private static ExtendedPropertyDefinition PidLidResponseStatus = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008218, MapiPropertyType.Long); //"dispidResponseStatus, urn:schemas:calendar:attendeestatus,http://schemas.microsoft.com/mapi/responsestatus", "Meetings", "[MS-OXCICAL], [MS-OXOCAL], [MS-XWDCAL]"));
+        private static ExtendedPropertyDefinition PidLidIsException = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0000000A, MapiPropertyType.Boolean); // "PidLidIsException", "LID_IS_EXCEPTION, http://schemas.microsoft.com/mapi/is_exception", "Meetings", "[MS-OXCICAL], [MS-OXOCAL], [MS-OXWAVLS], [MS-XWDCAL]")); 
+ 
+// Replace1s
+  // Replace1e
+
+        private static ExtendedPropertyDefinition PidTagCreatorName = new ExtendedPropertyDefinition(0x3FF8, MapiPropertyType.String);  // "PidTagCreatorName", "PR_CREATOR_NAME, PR_CREATOR_NAME_A, ptagCreatorName,PR_CREATOR_NAME_W", "General Message Properties", "[MS-OXCFXICS], [MS-OXCMSG], [MS-OXTNEF]"));
+        private static ExtendedPropertyDefinition PidTagCreatorSimpleDisplayName = new ExtendedPropertyDefinition(0x4038, MapiPropertyType.String);  // "PidTagCreatorSimpleDisplayName", "ptagCreatorSimpleDispName", "TransportEnvelope", "[MS-OXTNEF]"));
+        private static ExtendedPropertyDefinition PidNameCalendarIsOrganizer = new ExtendedPropertyDefinition(new Guid("00062002-0000-0000-C000-000000000046"), 0x000B, MapiPropertyType.Boolean);  
+
+        // https://msdn.microsoft.com/en-us/library/ee203019(v=exchg.80).aspx
+
+
+        //PR_CreatorEmailAddr  http://schemas.microsoft.com/mapi/id/{11000E07-B51B-40D6-AF21-CAA85EDAB1D0}/000A001F) 
+        // PSETID_CalendarAssistant = Guid("11000e07-b51b-40d6-af21-caa85edab1d0")  // http://stackoverflow.com/questions/30911510/getting-information-from-delegated-email-account-from-appointment-inspector-wind
+  
 
         public MeetingMessageData GetMeetingMessageDataFromItem(ExchangeService oExchangeService, ItemId oItemId)
         {
@@ -73,10 +123,13 @@ namespace EWSEditor.Common.Exports
             oPropertySet = GetMeetingMessageDataPropset(ServerVersion, bIncludeAttachments, bIncludeBody, bIncludeMime);
             MeetingMessage oMeetingMessage = MeetingMessage.Bind(oExchangeService, oItemId, oPropertySet);
             MeetingMessageData oMeetingMessageData = new MeetingMessageData();
-
+            
             SetMeetingMessageData(oMeetingMessage, ref oMeetingMessageData);
-
+          
             return oMeetingMessageData;
+
+  
+ 
         }
         public bool GetFolderPath(ref string sFolder)
         {
@@ -227,9 +280,6 @@ namespace EWSEditor.Common.Exports
             {
                 oMM.ApprovalRequestData = "";
             }
-//            if (oMeetingMessage.ApprovalRequestData != null) oMM.ApprovalRequestData  = oMeetingMessage.ApprovalRequestData.ToString();
-//            if (oMeetingMessage.ArchiveTag != null) oMM.ArchiveTag = oMeetingMessage.ArchiveTag.ToString();
-//            if (oMeetingMessage.AssociatedAppointmentId != null) oMM.AssociatedAppointmentId = oMeetingMessage.AssociatedAppointmentId.UniqueId;    
             try
             {
                 oMM.AssociatedAppointmentId = oMeetingMessage.AssociatedAppointmentId.ToString();
@@ -238,8 +288,6 @@ namespace EWSEditor.Common.Exports
             {
                 oMM.AssociatedAppointmentId = "";
             }
-            //oMM.Attachments = oMeetingMessage.Attachments;  
-            //if (oMeetingMessage.BccRecipients != null) oMM.BccRecipients = oMeetingMessage.BccRecipients.ToString();
 
             if (oMeetingMessage.BccRecipients != null)
             {
@@ -259,10 +307,7 @@ namespace EWSEditor.Common.Exports
             {
                 oMM.Body = "";
             }
-            // if (oMeetingMessage.xxxxxx != null) 
-            if (oMeetingMessage.Categories != null) oMM.Categories = oMeetingMessage.Categories.ToString();
-            //if (oMeetingMessage.CcRecipients != null) oMM.CcRecipients = oMeetingMessage.CcRecipients.ToString();
-
+             if (oMeetingMessage.Categories != null) oMM.Categories = oMeetingMessage.Categories.ToString();
 
 
             if (oMeetingMessage.CcRecipients != null)
@@ -275,8 +320,7 @@ namespace EWSEditor.Common.Exports
             else
                 oMM.CcRecipients = "";
 
- //           if (oMeetingMessage.ConversationId != null) oMM.ConversationId = oMeetingMessage.ConversationId.ToString();
-            try
+             try
             {
                 oMM.ConversationIndex = oMeetingMessage.ConversationIndex.ToString();
             }
@@ -311,7 +355,7 @@ namespace EWSEditor.Common.Exports
             //if (oMeetingMessage.HasBeenProcessed != null) oMM.HasBeenProcessed = oMeetingMessage.HasBeenProcessed.ToString();
             if (oMeetingMessage.ICalDateTimeStamp != null) oMM.ICalDateTimeStamp = oMeetingMessage.ICalDateTimeStamp.ToString();
             if (oMeetingMessage.ICalRecurrenceId != null) oMM.ICalRecurrenceId = oMeetingMessage.ICalRecurrenceId.ToString();
-            if (oMeetingMessage.ICalUid != null) oMM.ICalUid = oMeetingMessage.ICalUid.ToString();
+           if (oMeetingMessage.ICalUid != null) oMM.ICalUid = oMeetingMessage.ICalUid.ToString();
             
             try
             {
@@ -380,8 +424,9 @@ namespace EWSEditor.Common.Exports
             if (oMeetingMessage.ItemClass != null) oMM.ItemClass = oMeetingMessage.ItemClass;
             if (oMeetingMessage.LastModifiedName != null) oMM.LastModifiedName = oMeetingMessage.LastModifiedName.ToString();
             if (oMeetingMessage.LastModifiedTime != null) oMM.LastModifiedTime = oMeetingMessage.LastModifiedTime.ToString();
-            //oMM.MimeContent  = oMeetingMessage.MimeContent.; 
 
+            //if (oMeetingMessage.Location != null) oMM.Location = oMeetingMessage.Location.ToString();
+            oMM.Location = "";
 
             try
             {
@@ -445,7 +490,7 @@ namespace EWSEditor.Common.Exports
                 oMM.ResponseType = "";
             }
 
- //           if (oMeetingMessage.RetentionDate != null) oMM.RetentionDate = oMeetingMessage.RetentionDate.ToString();
+//           if (oMeetingMessage.RetentionDate != null) oMM.RetentionDate = oMeetingMessage.RetentionDate.ToString();
 
             if (oMeetingMessage.Sender.Name != null) oMM.Sender = oMeetingMessage.Sender.Name + " <" + oMeetingMessage.Sender.Address + ">";
             oMM.Sensitivity = oMeetingMessage.Sensitivity.ToString();
@@ -457,7 +502,7 @@ namespace EWSEditor.Common.Exports
             try
             {
                 oMM.TextBody = oMeetingMessage.TextBody;
-            }
+           }
             catch (Exception ex)
             {
                 oMM.TextBody = "";
@@ -494,7 +539,7 @@ namespace EWSEditor.Common.Exports
             //    oMM.UniqueBody = ex.Message.ToString();
             //}
             try
-            {
+           {
                 oMM.VotingInformation = oMeetingMessage.VotingInformation.ToString();
             }
             catch (Exception ex)
@@ -518,19 +563,83 @@ namespace EWSEditor.Common.Exports
                 oMM.WebClientReadFormQueryString = "";
             }
 
+            //oAppointmentData.PidLidAppointmentRecur = GetExtendedProp_ByteArr_AsString(oAppointment, PidLidAppointmentRecur);
+            //oAppointmentData.PidLidClientIntent = GetExtendedProp_Int_AsString(oAppointment, PidLidClientIntent);
+            //oAppointmentData.ClientInfoString = GetExtendedProp_String_AsString(oAppointment, ClientInfoString);
+            //oAppointmentData.StoreEntryId = GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
+            //oAppointmentData.EntryId = GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_ENTRYID);
+            //oAppointmentData.RetentionDate = GetExtendedProp_DateTime_AsString(oAppointment, Prop_PR_RETENTION_DATE);
+            //oAppointmentData.IsHidden = GetExtendedProp_Bool_AsString(oAppointment, Prop_PR_IS_HIDDEN);
+            //oAppointmentData.LogTriggerAction = GetExtendedProp_String_AsString(oAppointment, LogTriggerAction);
+
+            //oAppointmentData.PidLidCurrentVersion = GetExtendedProp_Int_AsString(oAppointment, PidLidCurrentVersion);
+            //oAppointmentData.PidLidCurrentVersion = GetExtendedProp_Int_AsString(oAppointment, PidLidCurrentVersion);
+            //oAppointmentData.PidNameCalendarUid = GetExtendedProp_Int_AsString(oAppointment, PidNameCalendarUid);
+            //oAppointmentData.PidLidOrganizerAlias = GetExtendedProp_Int_AsString(oAppointment, PidLidOrganizerAlias);
+            //oAppointmentData.PidTagSenderSmtpAddress = GetExtendedProp_Int_AsString(oAppointment, PidTagSenderSmtpAddress);
+
 //            if (oMeetingMessage.VotingInformation != null) oMM.VotingInformation = oMeetingMessage.VotingInformation.ToString();
 //            if (oMeetingMessage.WebClientEditFormQueryString != null) oMM.WebClientEditFormQueryString = oMeetingMessage.WebClientEditFormQueryString;
 //            if (oMeetingMessage.WebClientReadFormQueryString != null) oMM.WebClientReadFormQueryString = oMeetingMessage.WebClientReadFormQueryString;
 
-            oMM.PidLidAppointmentRecur = GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidAppointmentRecur);
+            //oMM.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedPropByteArrAsString(oMeetingMessage, PidLidCleanGlobalObjectId);
+            //oMM.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedPropByteArrAsString(oMeetingMessage, PidLidGlobalObjectId);
+
+            oMM.PidLidCleanGlobalObjectId =  GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidCleanGlobalObjectId);
+            
+            oMM.PidLidGlobalObjectId = GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidGlobalObjectId);
+
+            oMM.PidLidAppointmentRecur =  GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidAppointmentRecur);
             oMM.PidLidClientIntent = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidClientIntent);
             oMM.ClientInfoString = GetExtendedProp_String_AsString(oMeetingMessage, ClientInfoString);
-            oMM.StoreEntryId = GetExtendedProp_ByteArr_AsString(oMeetingMessage, Prop_PR_STORE_ENTRYID);
+            oMM.StoreEntryId  = GetExtendedProp_ByteArr_AsString(oMeetingMessage, Prop_PR_STORE_ENTRYID);
             oMM.EntryId = GetExtendedProp_ByteArr_AsString(oMeetingMessage, Prop_PR_ENTRYID);
             oMM.RetentionDate = GetExtendedProp_DateTime_AsString(oMeetingMessage, Prop_PR_RETENTION_DATE);
             oMM.IsHidden = GetExtendedProp_Bool_AsString(oMeetingMessage, Prop_PR_IS_HIDDEN);
             oMM.LogTriggerAction = GetExtendedProp_String_AsString(oMeetingMessage, LogTriggerAction);
 
+            //oMM.PidLidCurrentVersion = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidCurrentVersion);
+            oMM.PidLidCurrentVersionName = GetExtendedProp_String_AsString(oMeetingMessage, PidLidCurrentVersionName);
+            oMM.PidNameCalendarUid = GetExtendedProp_String_AsString(oMeetingMessage, PidNameCalendarUid);
+            oMM.PidLidOrganizerAlias = GetExtendedProp_String_AsString(oMeetingMessage, PidLidOrganizerAlias);
+            oMM.PidTagSenderSmtpAddress = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderSmtpAddress);
+
+            oMM.PidLidInboundICalStream = GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidInboundICalStream);
+            oMM.PidLidAppointmentAuxiliaryFlags = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidAppointmentAuxiliaryFlags);
+            oMM.PidLidRecurrencePattern = GetExtendedProp_String_AsString(oMeetingMessage, PidLidRecurrencePattern);
+            oMM.PidLidRecurrenceType = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidRecurrenceType);
+            oMM.PidLidRecurring = GetExtendedProp_Bool_AsString(oMeetingMessage, PidLidRecurring);
+
+            oMM.PidLidAppointmentRecur = GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidAppointmentRecur);
+            //oMM.PidLidAppointmentStartDate = GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartDate);
+            //oMM.PidLidAppointmentStartTime = GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartTime);
+            oMM.PidLidAppointmentStartWhole = GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartWhole);
+            oMM.PidLidAppointmentEndWhole = GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentEndWhole);
+            oMM.PidLidAppointmentStateFlags = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidAppointmentStateFlags);
+
+            oMM.PidNameFrom = GetExtendedProp_String_AsString(oMeetingMessage, PidNameFrom);
+            oMM.PidNameHttpmailFrom = GetExtendedProp_String_AsString(oMeetingMessage, PidNameHttpmailFrom);
+            oMM.PidNameHttpmailFromEmail = GetExtendedProp_String_AsString(oMeetingMessage, PidNameHttpmailFromEmail);
+
+            oMM.PidTagSenderEmailAddress = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderEmailAddress);
+            oMM.PidTagSenderFlags = GetExtendedProp_Int_AsString(oMeetingMessage, PidTagSenderFlags);
+            oMM.PidTagSenderName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderName);
+            oMM.PidTagSenderSimpleDisplayName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderSimpleDisplayName);
+
+            oMM.PidTagSentRepresentingEmailAddress = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSentRepresentingEmailAddress);
+            oMM.PidTagSentRepresentingFlags = GetExtendedProp_Int_AsString(oMeetingMessage, PidTagSentRepresentingFlags);
+            oMM.PidTagSentRepresentingName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSentRepresentingName);
+            oMM.PidTagSentRepresentingSimpleDisplayName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSentRepresentingSimpleDisplayName);
+
+            oMM.PidTagProcessed = GetExtendedProp_Bool_AsString(oMeetingMessage, PidTagProcessed);
+            //oMM.PidLidResponseStatus = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidResponseStatus);
+            oMM.PidLidIsException = GetExtendedProp_Bool_AsString(oMeetingMessage, PidLidIsException);
+
+            oMM.PidTagCreatorName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagCreatorName);
+            oMM.PidTagCreatorSimpleDisplayName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagCreatorSimpleDisplayName);
+            oMM.PidNameCalendarIsOrganizer = GetExtendedProp_String_AsString(oMeetingMessage, PidNameCalendarIsOrganizer);
+
+      
  
         //public string PidLidAppointmentRecur = string.Empty;
         //public string PidLidClientIntent = string.Empty;
@@ -578,66 +687,6 @@ namespace EWSEditor.Common.Exports
             }
 
             return sRet;
-        }
-
-        private string GetExtendedProp_DateTime_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            DateTime oDateTime;
- 
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oDateTime))  
-                sReturn = oDateTime.ToString();   
-            else
-                sReturn = "";
-            return sReturn;
-        }
-
-        private string GetExtendedProp_ByteArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            byte[] bytearrVal;
-
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bytearrVal))  // Example: CleanGlobalObjectId
-                sReturn = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
-            else
-                sReturn = "";
-            return sReturn;
-        }
-
-        private string GetExtendedProp_String_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            string sString = string.Empty;
-
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out sString))  
-                sReturn = sString;   
-            else
-                sReturn = "";
-            return sReturn;
-        }
-
-        private string GetExtendedProp_Int_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            int lVal = 0;
-
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out lVal))
-                sReturn = lVal.ToString();
-            else
-                sReturn = "";
-            return sReturn;
-        }
-
-        private string GetExtendedProp_Bool_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            bool bVal = false;
-
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bVal))
-                sReturn = bVal.ToString();
-            else
-                sReturn = "";
-            return sReturn;
         }
 
 
@@ -755,12 +804,53 @@ namespace EWSEditor.Common.Exports
                 meetingMessagePropertySet.Add(MeetingMessageSchema.MimeContent);
 
             //// Need to add these:
+
+
+            //meetingMessagePropertySet.Add(PidLidCurrentVersion);
+            meetingMessagePropertySet.Add(PidLidCurrentVersionName);
+            meetingMessagePropertySet.Add(PidNameCalendarUid);
+            meetingMessagePropertySet.Add(PidLidOrganizerAlias);
+            meetingMessagePropertySet.Add(PidTagSenderSmtpAddress);
+            meetingMessagePropertySet.Add(PidLidInboundICalStream);
+            meetingMessagePropertySet.Add(PidLidAppointmentAuxiliaryFlags);
+            meetingMessagePropertySet.Add(PidLidRecurrencePattern);
+            meetingMessagePropertySet.Add(PidLidRecurrenceType);
+            meetingMessagePropertySet.Add(PidLidRecurring);
+            meetingMessagePropertySet.Add(PidLidAppointmentRecur);
+
+            //meetingMessagePropertySet.Add(PidLidAppointmentStartDate);
+            //meetingMessagePropertySet.Add(PidLidAppointmentStartTime);
+            meetingMessagePropertySet.Add(PidLidAppointmentStartWhole);
+            meetingMessagePropertySet.Add(PidLidAppointmentEndWhole);
+            meetingMessagePropertySet.Add(PidLidAppointmentStateFlags);
+
+            meetingMessagePropertySet.Add(PidNameFrom); // PidNameFrom -  Its the Organizer.
+            meetingMessagePropertySet.Add(PidNameHttpmailFrom);
+            meetingMessagePropertySet.Add(PidNameHttpmailFromEmail);
+
+            meetingMessagePropertySet.Add(PidTagSenderEmailAddress);
+            meetingMessagePropertySet.Add(PidTagSenderFlags);
+            meetingMessagePropertySet.Add(PidTagSenderName);
+            meetingMessagePropertySet.Add(PidTagSenderSimpleDisplayName);
+
+            meetingMessagePropertySet.Add(PidTagSentRepresentingEmailAddress);
+            meetingMessagePropertySet.Add(PidTagSentRepresentingFlags);
+            meetingMessagePropertySet.Add(PidTagSentRepresentingName);
+            meetingMessagePropertySet.Add(PidTagSentRepresentingSimpleDisplayName);
+
+            meetingMessagePropertySet.Add(PidTagProcessed);
+            //meetingMessagePropertySet.Add(PidLidResponseStatus);
+            meetingMessagePropertySet.Add(PidLidIsException);
+            meetingMessagePropertySet.Add(PidTagCreatorName);
+            meetingMessagePropertySet.Add(PidTagCreatorSimpleDisplayName);
+            meetingMessagePropertySet.Add(PidNameCalendarIsOrganizer);
+
             meetingMessagePropertySet.Add(PidLidAppointmentRecur);
             meetingMessagePropertySet.Add(PidLidClientIntent);
             meetingMessagePropertySet.Add(ClientInfoString);
             meetingMessagePropertySet.Add(LogTriggerAction);
             meetingMessagePropertySet.Add(PidLidCleanGlobalObjectId);
-            meetingMessagePropertySet.Add(PidLidGlobalObjectId);
+           meetingMessagePropertySet.Add(PidLidGlobalObjectId);
 
             meetingMessagePropertySet.Add(Prop_PR_POLICY_TAG);
 
@@ -804,7 +894,7 @@ namespace EWSEditor.Common.Exports
                     meetingMessagePropertySet.Add(MeetingMessageSchema.VotingInformation);
                 }
             }
- 
+
 
             // Schema properties not requested due to not being viable for 2007 sp1
             // Exchange2013:
@@ -833,99 +923,175 @@ namespace EWSEditor.Common.Exports
         public List<string> GetMeetingMessageDataAsList(MeetingMessageData oMeetingMessageData)
         {
             List<string> o = new List<string> { };
-            o.Add(oMeetingMessageData.AllowedResponseActions);
-            o.Add(oMeetingMessageData.ApprovalRequestData);
-            o.Add(oMeetingMessageData.ArchiveTag);
-            o.Add(oMeetingMessageData.AssociatedAppointmentId);
-            // o.Add(oMeetingMessageData.Attachments // 
-            o.Add(oMeetingMessageData.BccRecipients);
-            o.Add(oMeetingMessageData.Body);
-            o.Add(oMeetingMessageData.Categories);
-            o.Add(oMeetingMessageData.CcRecipients);
-            o.Add(oMeetingMessageData.ConversationId);
-            o.Add(oMeetingMessageData.ConversationIndex);
-            o.Add(oMeetingMessageData.ConversationTopic);
-            o.Add(oMeetingMessageData.Culture);
-            o.Add(oMeetingMessageData.DateTimeCreated);
-            o.Add(oMeetingMessageData.DateTimeReceived);
-            o.Add(oMeetingMessageData.DateTimeSent);
-            o.Add(oMeetingMessageData.DisplayCc);
-            o.Add(oMeetingMessageData.DisplayTo);
-            o.Add(oMeetingMessageData.EffectiveRights);
-            o.Add(oMeetingMessageData.EntityExtractionResult);
-            o.Add(oMeetingMessageData.ExtendedProperties);
-            o.Add(oMeetingMessageData.Flag);
-            o.Add(oMeetingMessageData.From);
-            o.Add(oMeetingMessageData.HasAttachments);
-            o.Add(oMeetingMessageData.HasBeenProcessed);
-            o.Add(oMeetingMessageData.ICalDateTimeStamp);
-            o.Add(oMeetingMessageData.ICalRecurrenceId);
-            o.Add(oMeetingMessageData.ICalUid);
-            o.Add(oMeetingMessageData.IconIndex);
-            o.Add(oMeetingMessageData.UniqueId);   // Id
-            o.Add(oMeetingMessageData.Importance);
-            o.Add(oMeetingMessageData.InstanceKey);
-            o.Add(oMeetingMessageData.InternetMessageHeaders);
-            o.Add(oMeetingMessageData.InternetMessageId);
-            o.Add(oMeetingMessageData.IsAssociated);
-            o.Add(oMeetingMessageData.IsDelegated);
-            o.Add(oMeetingMessageData.IsDeliveryReceiptRequested);
-            o.Add(oMeetingMessageData.IsDraft);
-            o.Add(oMeetingMessageData.IsFromMe);
-            o.Add(oMeetingMessageData.IsOrganizer);
-            o.Add(oMeetingMessageData.IsOutOfDate);
-            o.Add(oMeetingMessageData.IsRead);
-            o.Add(oMeetingMessageData.IsReadReceiptRequested);
-            o.Add(oMeetingMessageData.IsReminderSet);
-            o.Add(oMeetingMessageData.IsResend);
-            o.Add(oMeetingMessageData.IsResponseRequested);
-            o.Add(oMeetingMessageData.IsSubmitted);
-            o.Add(oMeetingMessageData.IsUnmodified);
-            o.Add(oMeetingMessageData.ItemClass);
-            o.Add(oMeetingMessageData.LastModifiedName);
-            o.Add(oMeetingMessageData.LastModifiedTime);
-            o.Add(oMeetingMessageData.MimeContent);
-            o.Add(oMeetingMessageData.NormalizedBody);
-            o.Add(oMeetingMessageData.ParentFolderId);
-            o.Add(oMeetingMessageData.PolicyTag);
-            o.Add(oMeetingMessageData.Preview);
-            o.Add(oMeetingMessageData.ReceivedBy);
-            o.Add(oMeetingMessageData.ReceivedRepresenting);
-            o.Add(oMeetingMessageData.References);
-            o.Add(oMeetingMessageData.ReminderDueBy);
-            o.Add(oMeetingMessageData.ReminderMinutesBeforeStart);
-            o.Add(oMeetingMessageData.ReplyTo);
-            o.Add(oMeetingMessageData.ResponseType);
-            o.Add(oMeetingMessageData.RetentionDate);
 
-            o.Add(oMeetingMessageData.Sender);
-            o.Add(oMeetingMessageData.Sensitivity);
+             o.Add(CleanString(oMeetingMessageData.AllowedResponseActions));
+             o.Add(CleanString(oMeetingMessageData.ApprovalRequestData));
+             o.Add(CleanString(oMeetingMessageData.ArchiveTag));
+             o.Add(CleanString(oMeetingMessageData.AssociatedAppointmentId));
 
-            o.Add(oMeetingMessageData.Size);
-            o.Add(oMeetingMessageData.StoreEntryId);
-            o.Add(oMeetingMessageData.Subject);
-            o.Add(oMeetingMessageData.TextBody);
-            o.Add(oMeetingMessageData.ToRecipients);
+            //  o.Add(CleanString(oMeetingMessageData.Attachments // 
+             o.Add(CleanString(oMeetingMessageData.BccRecipients));
+             o.Add(CleanString(oMeetingMessageData.Body));
+             o.Add(CleanString(oMeetingMessageData.Categories));
+             o.Add(CleanString(oMeetingMessageData.CcRecipients));
 
-            o.Add(oMeetingMessageData.UniqueBody);
-            o.Add(oMeetingMessageData.VotingInformation);
-            o.Add(oMeetingMessageData.WebClientEditFormQueryString);
-            o.Add(oMeetingMessageData.WebClientReadFormQueryString);
+             o.Add(CleanString(oMeetingMessageData.ConversationId));
+             o.Add(CleanString(oMeetingMessageData.ConversationIndex));
+             o.Add(CleanString(oMeetingMessageData.ConversationTopic));
+             o.Add(CleanString(oMeetingMessageData.Culture));
 
-            o.Add(oMeetingMessageData.PidLidCleanGlobalObjectId);
-            o.Add(oMeetingMessageData.PidLidGlobalObjectId);
-            o.Add(oMeetingMessageData.PidLidAppointmentRecur);
-            o.Add(oMeetingMessageData.PidLidClientIntent);
-            o.Add(oMeetingMessageData.ClientInfoString);
-            o.Add(oMeetingMessageData.EntryId);
-            o.Add(oMeetingMessageData.IsHidden);
-            o.Add(oMeetingMessageData.FolderPath);
-            o.Add(oMeetingMessageData.LogTriggerAction);
+             o.Add(CleanString(oMeetingMessageData.DateTimeCreated));
+             o.Add(CleanString(oMeetingMessageData.DateTimeReceived));
+             o.Add(CleanString(oMeetingMessageData.DateTimeSent));
+
+             o.Add(CleanString(oMeetingMessageData.DisplayCc));
+             o.Add(CleanString(oMeetingMessageData.DisplayTo));
+
+             o.Add(CleanString(oMeetingMessageData.EffectiveRights));
+             o.Add(CleanString(oMeetingMessageData.EntityExtractionResult));
+             o.Add(CleanString(oMeetingMessageData.ExtendedProperties));
+
+             o.Add(CleanString(oMeetingMessageData.Flag));
+             o.Add(CleanString(oMeetingMessageData.From));
+
+             o.Add(CleanString(oMeetingMessageData.HasAttachments));
+            o.Add(CleanString(oMeetingMessageData.HasBeenProcessed));
+
+             o.Add(CleanString(oMeetingMessageData.ICalDateTimeStamp));
+             o.Add(CleanString(oMeetingMessageData.ICalRecurrenceId));
+             o.Add(CleanString(oMeetingMessageData.ICalUid));
+
+             o.Add(CleanString(oMeetingMessageData.IconIndex));
+             o.Add(CleanString(oMeetingMessageData.UniqueId));   // Id
+             o.Add(CleanString(oMeetingMessageData.Importance));
+             o.Add(CleanString(oMeetingMessageData.InstanceKey));
+
+             o.Add(CleanString(oMeetingMessageData.InternetMessageHeaders));
+             o.Add(CleanString(oMeetingMessageData.InternetMessageId));
+
+             o.Add(CleanString(oMeetingMessageData.IsAssociated));
+             o.Add(CleanString(oMeetingMessageData.IsDelegated));
+             o.Add(CleanString(oMeetingMessageData.IsDeliveryReceiptRequested));
+
+             o.Add(CleanString(oMeetingMessageData.IsDraft));
+             o.Add(CleanString(oMeetingMessageData.IsFromMe));
+             o.Add(CleanString(oMeetingMessageData.IsOrganizer));
+             o.Add(CleanString(oMeetingMessageData.IsOutOfDate));
+
+             o.Add(CleanString(oMeetingMessageData.IsRead));
+             o.Add(CleanString(oMeetingMessageData.IsReadReceiptRequested));
+             o.Add(CleanString(oMeetingMessageData.IsReminderSet));
+             o.Add(CleanString(oMeetingMessageData.IsResend));
+
+             o.Add(CleanString(oMeetingMessageData.IsResponseRequested));
+             o.Add(CleanString(oMeetingMessageData.IsSubmitted));
+             o.Add(CleanString(oMeetingMessageData.IsUnmodified));
+             o.Add(CleanString(oMeetingMessageData.ItemClass));
+
+             o.Add(CleanString(oMeetingMessageData.LastModifiedName));
+             o.Add(CleanString(oMeetingMessageData.LastModifiedTime));
+             o.Add(CleanString(oMeetingMessageData.MimeContent));
+             o.Add(CleanString(oMeetingMessageData.NormalizedBody));
+
+             o.Add(CleanString(oMeetingMessageData.ParentFolderId));
+             o.Add(CleanString(oMeetingMessageData.PolicyTag));
+             o.Add(CleanString(oMeetingMessageData.Preview));
+             o.Add(CleanString(oMeetingMessageData.ReceivedBy));
+             o.Add(CleanString(oMeetingMessageData.ReceivedRepresenting));
+
+             o.Add(CleanString(oMeetingMessageData.References));
+             o.Add(CleanString(oMeetingMessageData.ReminderDueBy));
+             o.Add(CleanString(oMeetingMessageData.ReminderMinutesBeforeStart));
+             o.Add(CleanString(oMeetingMessageData.ReplyTo));
+             o.Add(CleanString(oMeetingMessageData.ResponseType));
+             o.Add(CleanString(oMeetingMessageData.RetentionDate));
+
+             o.Add(CleanString(oMeetingMessageData.Sender));
+             o.Add(CleanString(oMeetingMessageData.Sensitivity));
+
+             o.Add(CleanString(oMeetingMessageData.Size));
+             o.Add(CleanString(oMeetingMessageData.StoreEntryId));
+             o.Add(CleanString(oMeetingMessageData.Subject));
+             o.Add(CleanString(oMeetingMessageData.TextBody));
+             o.Add(CleanString(oMeetingMessageData.ToRecipients));
+
+             o.Add(CleanString(oMeetingMessageData.UniqueBody));
+             o.Add(CleanString(oMeetingMessageData.VotingInformation));
+             o.Add(CleanString(oMeetingMessageData.WebClientEditFormQueryString));
+             o.Add(CleanString(oMeetingMessageData.WebClientReadFormQueryString));
+
+            // New:
+             //o.Add(CleanString(oMeetingMessageData.PidLidCurrentVersion));
+             o.Add(CleanString(oMeetingMessageData.PidLidCurrentVersionName));
+             o.Add(CleanString(oMeetingMessageData.PidNameCalendarUid));
+
+             o.Add(CleanString(oMeetingMessageData.PidLidOrganizerAlias));
+             o.Add(CleanString(oMeetingMessageData.PidTagSenderSmtpAddress));
+             o.Add(CleanString(oMeetingMessageData.PidLidInboundICalStream));
+
+             o.Add(CleanString(oMeetingMessageData.PidLidAppointmentAuxiliaryFlags));
+             o.Add(CleanString(oMeetingMessageData.PidLidRecurrencePattern));
+             o.Add(CleanString(oMeetingMessageData.PidLidRecurrenceType));
+             o.Add(CleanString(oMeetingMessageData.PidLidRecurring));
+             o.Add(CleanString(oMeetingMessageData.PidLidAppointmentRecur));
+
+            // o.Add(CleanString(oMeetingMessageData.PidLidAppointmentStartDate));
+            // o.Add(CleanString(oMeetingMessageData.PidLidAppointmentStartTime));
+             o.Add(CleanString(oMeetingMessageData.PidLidAppointmentStartWhole));
+             o.Add(CleanString(oMeetingMessageData.PidLidAppointmentEndWhole));
+             o.Add(CleanString(oMeetingMessageData.PidLidAppointmentStateFlags));
+
+             o.Add(CleanString(oMeetingMessageData.PidNameFrom)); // PidNameFrom -  Its the Organizer.
+             o.Add(CleanString(oMeetingMessageData.PidNameHttpmailFrom));
+             o.Add(CleanString(oMeetingMessageData.PidNameHttpmailFromEmail));
+
+             o.Add(CleanString(oMeetingMessageData.PidTagSenderEmailAddress));
+             o.Add(CleanString(oMeetingMessageData.PidTagSenderFlags));
+             o.Add(CleanString(oMeetingMessageData.PidTagSenderName));
+             o.Add(CleanString(oMeetingMessageData.PidTagSenderSimpleDisplayName));
+
+             o.Add(CleanString(oMeetingMessageData.PidTagSentRepresentingEmailAddress));
+             o.Add(CleanString(oMeetingMessageData.PidTagSentRepresentingFlags));
+             o.Add(CleanString(oMeetingMessageData.PidTagSentRepresentingName));
+             o.Add(CleanString(oMeetingMessageData.PidTagSentRepresentingSimpleDisplayName));
+
+             o.Add(CleanString(oMeetingMessageData.PidTagProcessed));
+           //  o.Add(CleanString(oMeetingMessageData.PidLidResponseStatus));
+             o.Add(CleanString(oMeetingMessageData.PidLidIsException));
+             o.Add(CleanString(oMeetingMessageData.PidTagCreatorName));
+             o.Add(CleanString(oMeetingMessageData.PidTagCreatorSimpleDisplayName));
+             o.Add(CleanString(oMeetingMessageData.PidNameCalendarIsOrganizer));
+
+   
+            // older
+
+            o.Add(CleanString(oMeetingMessageData.PidLidAppointmentRecur));
+
+             o.Add(CleanString(oMeetingMessageData.PidLidCleanGlobalObjectId));
+             o.Add(CleanString(oMeetingMessageData.PidLidGlobalObjectId)); 
+             o.Add(CleanString(oMeetingMessageData.PidLidClientIntent));
+             o.Add(CleanString(oMeetingMessageData.ClientInfoString));
+             o.Add(CleanString(oMeetingMessageData.EntryId));
+             o.Add(CleanString(oMeetingMessageData.IsHidden));
+             o.Add(CleanString(oMeetingMessageData.FolderPath));
+             o.Add(CleanString(oMeetingMessageData.LogTriggerAction));
 
             return o;
         }
 
+        private string CleanString(string s)
+        {
 
+            string sRet = string.Empty;
+            if (s != null)
+                return s;
+            else
+                return "";
+
+        }
+
+
+        // GetMeetingMessageDataAsCsv2
         public string GetMeetingMessageDataAsCsv2(MeetingMessageData oMeetingMessageData)
         {
             string sRet = string.Empty;
@@ -960,7 +1126,287 @@ namespace EWSEditor.Common.Exports
                 }
                 else
                 {
-                    d[i] = d[i].Replace(',', ' ');
+                    if (d[i] != null)
+                        d[i] = d[i].Replace(',', ' ');
+                    else
+                        d[i] = "";
+                }
+            }
+
+            StringBuilder oSB = new StringBuilder();
+            for (int i = 0; i < d.Count - 1; i++)
+            {
+                oSB.AppendFormat("{0}, ", d[i]);
+            }
+
+            sRet = oSB.ToString();
+            sRet = sRet.TrimEnd(TrimChars); // remove last comma
+            sRet = sRet.Replace("\r\n", "");  // There shold be no crlf
+            return sRet;
+
+        }
+         
+
+        public List<string> GetMeetingMessageDataHeadersAsList()
+        {
+
+            List<string> o = new List<string> { };
+            o.Add("AllowedResponseActions");
+            o.Add("ApprovalRequestData");
+            o.Add("ArchiveTag");
+            o.Add("AssociatedAppointmentId");
+            // o.Add("Attachments // 
+
+            o.Add("BccRecipients");
+            o.Add("Body");
+            o.Add("Categories");
+            o.Add("CcRecipients");
+
+            o.Add("ConversationId");
+            o.Add("ConversationIndex");
+            o.Add("ConversationTopic");
+            o.Add("Culture");
+
+            o.Add("DateTimeCreated");
+            o.Add("DateTimeReceived");
+            o.Add("DateTimeSent");
+
+            o.Add("DisplayCc");
+            o.Add("DisplayTo");
+
+            o.Add("EffectiveRights");
+            o.Add("EntityExtractionResult");
+            o.Add("ExtendedProperties");
+
+
+            o.Add("Flag");
+            o.Add("From");
+
+            o.Add("HasAttachments");
+            o.Add("HasBeenProcessed");
+
+            o.Add("ICalDateTimeStamp");
+            o.Add("ICalRecurrenceId");
+            o.Add("ICalUid");
+
+            o.Add("IconIndex");
+            o.Add("UniqueId");  // Id
+            o.Add("Importance");
+            o.Add("InstanceKey");
+
+            o.Add("InternetMessageHeaders");
+            o.Add("InternetMessageId");
+
+            o.Add("IsAssociated");
+            o.Add("IsDelegated");
+            o.Add("IsDeliveryReceiptRequested");
+
+            o.Add("IsDraft");
+            o.Add("IsFromMe");
+            o.Add("IsOrganizer");
+            o.Add("IsOutOfDate");
+
+            o.Add("IsRead");
+            o.Add("IsReadReceiptRequested");
+            o.Add("IsReminderSet");
+            o.Add("IsResend");
+
+            o.Add("IsResponseRequested");
+            o.Add("IsSubmitted");
+            o.Add("IsUnmodified");
+            o.Add("ItemClass");
+
+            o.Add("LastModifiedName");
+            o.Add("LastModifiedTime");
+            o.Add("MimeContent");
+            o.Add("NormalizedBody");
+
+            o.Add("ParentFolderId");
+            o.Add("PolicyTag");
+            o.Add("Preview");
+            o.Add("ReceivedBy");
+            o.Add("ReceivedRepresenting");
+
+            o.Add("References");
+            o.Add("ReminderDueBy");
+            o.Add("ReminderMinutesBeforeStart");
+            o.Add("ReplyTo");
+            o.Add("ResponseType");
+            o.Add("RetentionDate");
+
+            o.Add("Sender");
+            o.Add("Sensitivity");
+
+            o.Add("Size");
+            o.Add("StoreEntryId");
+            o.Add("Subject");
+            o.Add("TextBody");
+            o.Add("ToRecipients");
+
+            o.Add("UniqueBody");
+            o.Add("VotingInformation");
+            o.Add("WebClientEditFormQueryString");
+            o.Add("WebClientReadFormQueryString");
+
+
+            // New:
+            //o.Add("PidLidCurrentVersion");
+            o.Add("PidLidCurrentVersionName");
+            o.Add("PidNameCalendarUid");
+
+            o.Add("PidLidOrganizerAlias");
+            o.Add("PidTagSenderSmtpAddress");
+            o.Add("PidLidInboundICalStream");
+
+            o.Add("PidLidAppointmentAuxiliaryFlags");
+            o.Add("PidLidRecurrencePattern");
+            o.Add("PidLidRecurrenceType");
+            o.Add("PidLidRecurring");
+            o.Add("PidLidAppointmentRecur");
+
+            //o.Add("PidLidAppointmentStartDate");
+            //o.Add("PidLidAppointmentStartTime");
+            o.Add("PidLidAppointmentStartWhole");
+            o.Add("PidLidAppointmentEndWhole");
+            o.Add("PidLidAppointmentStateFlags");
+
+            o.Add("PidNameFrom"); // PidNameFrom -  Its the Organizer.
+            o.Add("PidNameHttpmailFrom");
+            o.Add("PidNameHttpmailFromEmail");
+
+            o.Add("PidTagSenderEmailAddress");
+            o.Add("PidTagSenderFlags");
+            o.Add("PidTagSenderName");
+            o.Add("PidTagSenderSimpleDisplayName");
+
+            o.Add("PidTagSentRepresentingEmailAddress");
+            o.Add("PidTagSentRepresentingFlags");
+            o.Add("PidTagSentRepresentingName");
+            o.Add("PidTagSentRepresentingSimpleDisplayName");
+
+            o.Add("PidTagProcessed");
+            // o.Add("PidLidResponseStatus");
+            o.Add("PidLidIsException");
+            o.Add("PidTagCreatorName");
+            o.Add("PidTagCreatorSimpleDisplayName");
+            o.Add("PidNameCalendarIsOrganizer");
+
+
+
+
+            o.Add("PidLidAppointmentRecur");
+
+            o.Add("PidLidCleanGlobalObjectId");
+            o.Add("PidLidGlobalObjectId");
+            o.Add("PidLidClientIntent");
+            o.Add("ClientInfoString");
+            o.Add("EntryId");
+            o.Add("IsHidden");
+            o.Add("FolderPath");
+            o.Add("LogTriggerAction");
+
+
+            return o;
+        }
+
+
+
+        //  
+        public string GetMeetingMessageDataAsCsvHeaders()
+        {
+            char[] TrimChars = { ',', ' ' };
+            string sRet = string.Empty;
+
+            List<string> o = GetMeetingMessageDataHeadersAsList();
+
+
+            StringBuilder oSB = new StringBuilder();
+            for (int i = 0; i < o.Count - 1; i++)
+            {
+                oSB.AppendFormat("{0}, ", o[i]);
+            }
+
+            sRet = oSB.ToString();
+            sRet = sRet.TrimEnd(TrimChars);
+
+            return sRet;
+        }
+
+
+
+        public List<string> GetDiagHeadersAsList()
+        {
+
+            List<string> o = new List<string> { };
+
+         
+// Replace2s
+   
+// Replace2e
+
+            return o;
+        }
+
+        public string GetDiagMeetingMessageDataAsCsvHeaders()
+        {
+            char[] TrimChars = { ',', ' ' };
+            string sRet = string.Empty;
+
+            List<string> o = GetDiagHeadersAsList();
+
+
+            // ...
+
+            StringBuilder oSB = new StringBuilder();
+            for (int i = 0; i < o.Count - 1; i++)
+            {
+                oSB.AppendFormat("{0}, ", o[i]);
+            }
+
+            sRet = oSB.ToString();
+            sRet = sRet.TrimEnd(TrimChars);
+
+            return sRet;
+        }
+
+         public string GetDiagMeetingMessageDataAsCsv(MeetingMessageData oMeetingMessageData)
+        {
+            string sRet = string.Empty;
+            char[] TrimChars = { ',', ' ' };
+
+            List<string> h = GetDiagHeadersAsList();
+            List<string> d = GetDiagMeetingMessageDataAsList(oMeetingMessageData);
+
+            string ToText = string.Empty;
+            byte[] oFromBytes = null;
+            string sHeader = string.Empty;
+            for (int i = 0; i < d.Count - 1; i++)
+            {
+                sHeader = h[i];
+                if (sHeader == "Body" ||
+                    sHeader == "MimeContent" ||
+                    sHeader == "TextBody" ||
+                   sHeader == "NormalizedBody" ||
+                    sHeader == "UniqueBody" ||
+                    sHeader == "ConversationIndex")
+                {
+                    string x = d[i];
+                    if (d[i] != null)
+                    {
+                        oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(d[i]);
+                        ToText = System.Convert.ToBase64String(oFromBytes);
+
+                        d[i] = ToText;
+                    }
+                    else
+                        d[i] = "";
+                }
+                else
+                {
+                    if (d[i] != null)
+                        d[i] = d[i].Replace(',', ' ');
+                    else
+                        d[i] = "";
                 }
             }
 
@@ -977,336 +1423,87 @@ namespace EWSEditor.Common.Exports
 
         }
 
-        public string GetMeetingMessageDataAsCsv(MeetingMessageData oMeetingMessageData)
+
+         public List<string> GetDiagMeetingMessageDataAsList(MeetingMessageData oMeetingMessageData)
         {
-            char[] TrimChars = { ',', ' ' };
-            string sRet = string.Empty;
-            List<string> o = new List<string> { }; 
-            o.Add(oMeetingMessageData.AllowedResponseActions.Replace(',', ' '));            
-            o.Add(oMeetingMessageData.ApprovalRequestData.Replace(',', ' '));     
-            o.Add(oMeetingMessageData.ArchiveTag.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.AssociatedAppointmentId.Replace(',', ' '));  
-            // o.Add(oMeetingMessageData.Attachments // 
-            o.Add(oMeetingMessageData.BccRecipients.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.Body.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.Categories.Replace(',', ' '));  
-            o.Add(oMeetingMessageData.CcRecipients.Replace(',', ' '));    
-            o.Add(oMeetingMessageData.ConversationId.Replace(',', ' '));  
-            o.Add(oMeetingMessageData.ConversationIndex.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ConversationTopic.Replace(',', ' '));  
-            o.Add(oMeetingMessageData.Culture.Replace(',', ' '));  
-            o.Add(oMeetingMessageData.DateTimeCreated.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.DateTimeReceived.Replace(',', ' '));   
-            o.Add(oMeetingMessageData.DateTimeSent.Replace(',', ' '));   
-            o.Add(oMeetingMessageData.DisplayCc.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.DisplayTo.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.EffectiveRights.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.EntityExtractionResult.Replace(',', ' '));   
-            o.Add(oMeetingMessageData.ExtendedProperties.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.Flag.Replace(',', ' '));     
-            o.Add(oMeetingMessageData.From.Replace(',', ' '));   
-            o.Add(oMeetingMessageData.HasAttachments.Replace(',', ' '));   
-            o.Add(oMeetingMessageData.HasBeenProcessed.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ICalDateTimeStamp.Replace(',', ' '));   
-            o.Add(oMeetingMessageData.ICalRecurrenceId.Replace(',', ' '));  
-            o.Add(oMeetingMessageData.ICalUid.Replace(',', ' '));     
-            o.Add(oMeetingMessageData.IconIndex.Replace(',', ' '));  
-            o.Add(oMeetingMessageData.UniqueId.Replace(',', ' '));   // Id
-            o.Add(oMeetingMessageData.Importance.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.InstanceKey.Replace(',', ' '));   
-            o.Add(oMeetingMessageData.InternetMessageHeaders.Replace(',', ' '));   
-            o.Add(oMeetingMessageData.InternetMessageId.Replace(',', ' '));  
-            o.Add(oMeetingMessageData.IsAssociated.Replace(',', ' '));           
-            o.Add(oMeetingMessageData.IsDelegated.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.IsDeliveryReceiptRequested.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.IsDraft.Replace(',', ' '));  
-            o.Add(oMeetingMessageData.IsFromMe.Replace(',', ' '));           
-            o.Add(oMeetingMessageData.IsOrganizer.Replace(',', ' '));    
-            o.Add(oMeetingMessageData.IsOutOfDate.Replace(',', ' '));    
-            o.Add(oMeetingMessageData.IsRead.Replace(',', ' '));    
-            o.Add(oMeetingMessageData.IsReadReceiptRequested.Replace(',', ' '));  
-            o.Add(oMeetingMessageData.IsReminderSet.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.IsResend.Replace(',', ' '));   
-            o.Add(oMeetingMessageData.IsResponseRequested.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.IsSubmitted.Replace(',', ' '));  
-            o.Add(oMeetingMessageData.IsUnmodified.Replace(',', ' '));             
-            o.Add(oMeetingMessageData.ItemClass.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.LastModifiedName.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.LastModifiedTime.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.MimeContent.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.NormalizedBody.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ParentFolderId.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.PolicyTag.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.Preview.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ReceivedBy.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ReceivedRepresenting.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.References.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ReminderDueBy.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ReminderMinutesBeforeStart.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ReplyTo.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ResponseType.Replace(',', ' '));  
-            o.Add(oMeetingMessageData.RetentionDate.Replace(',', ' ')); 
-         
-            o.Add(oMeetingMessageData.Sender.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.Sensitivity.Replace(',', ' ')); 
-            
-            o.Add(oMeetingMessageData.Size.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.StoreEntryId.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.Subject.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.TextBody.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ToRecipients .Replace(',', ' '));
+            List<string> o = new List<string> { };
+            MeetingMessageData x = null;
+            AppointmentData a = null;
+          
+            // https://technet.microsoft.com/en-us/library/dd638102(v=exchg.160).aspx
+            // https://technet.microsoft.com/en-us/library/jj552406(v=exchg.160).aspx
 
-            o.Add(oMeetingMessageData.UniqueBody.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.VotingInformation.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.WebClientEditFormQueryString.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.WebClientReadFormQueryString.Replace(',', ' ')); 
+            // TODO: Map meeting properties - the commented out ones below need to be mapped.
 
-            o.Add(oMeetingMessageData.PidLidCleanGlobalObjectId.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.PidLidGlobalObjectId.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.PidLidAppointmentRecur.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.PidLidClientIntent.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.ClientInfoString   .Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.EntryId .Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.IsHidden.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.FolderPath.Replace(',', ' ')); 
-            o.Add(oMeetingMessageData.LogTriggerAction.Replace(',', ' ')); 
-            
-            // ...
-
-            StringBuilder oSB = new StringBuilder();
-            for (int i = 0; i < o.Count - 1; i++ )
-            {
-                oSB.AppendFormat("{0}, ", o[i]);
-            }
+// Replace3s
  
-            sRet = oSB.ToString();
-            sRet = sRet.TrimEnd(TrimChars);
-            sRet = sRet.Replace("\r\n", "");  // There shold be no crlf
-            return sRet;
-        }
-
-        public string GetMeetingMessageDataAsXml(MeetingMessageData oMeetingMessageData)
-        {
-            string sXML = string.Empty;
-            List<string> h = GetMeetingMessageDataHeadersAsList();
-            List<string> d = GetMeetingMessageDataAsList(oMeetingMessageData);
-
-            XmlDocument xmlDoc = new XmlDocument();
-            XmlNode rootNode = xmlDoc.CreateElement("MeetingMessage");
-            xmlDoc.AppendChild(rootNode);
-
-            for (int i = 0; i < d.Count - 1; i++)
-            {
-                XmlNode dataNode = xmlDoc.CreateElement(h[i]);
-                dataNode.InnerText = d[i];
-                rootNode.AppendChild(dataNode);
-            }
-
-            sXML = xmlDoc.Value;
-
-            return sXML;
-        }
-
-        public List<string> GetMeetingMessageDataHeadersAsList()
-        {
-  
-            List<string> o = new List<string> { };
-            o.Add("AllowedResponseActions");
-            o.Add("ApprovalRequestData");
-            o.Add("ArchiveTag");
-            o.Add("AssociatedAppointmentId");
-            // o.Add("Attachments // 
-            o.Add("BccRecipients");
-            o.Add("Body");
-            o.Add("Categories");
-            o.Add("CcRecipients");
-            o.Add("ConversationId");
-            o.Add("ConversationIndex");
-            o.Add("ConversationTopic");
-            o.Add("Culture");
-            o.Add("DateTimeCreated");
-            o.Add("DateTimeReceived");
-            o.Add("DateTimeSent");
-            o.Add("DisplayCc");
-            o.Add("DisplayTo");
-            o.Add("EffectiveRights");
-            o.Add("EntityExtractionResult");
-            o.Add("ExtendedProperties");
-            o.Add("Flag");
-            o.Add("From");
-            o.Add("HasAttachments");
-            o.Add("HasBeenProcessed");
-            o.Add("ICalDateTimeStamp");
-            o.Add("ICalRecurrenceId");
-            o.Add("ICalUid");
-            o.Add("IconIndex");
-            o.Add("UniqueId");  // Id
-            o.Add("Importance");
-            o.Add("InstanceKey");
-            o.Add("InternetMessageHeaders");
-            o.Add("InternetMessageId");
-            o.Add("IsAssociated");
-            o.Add("IsDelegated");
-            o.Add("IsDeliveryReceiptRequested");
-            o.Add("IsDraft");
-            o.Add("IsFromMe");
-            o.Add("IsOrganizer");
-            o.Add("IsOutOfDate");
-            o.Add("IsRead");
-            o.Add("IsReadReceiptRequested");
-            o.Add("IsReminderSet");
-            o.Add("IsResend");
-            o.Add("IsResponseRequested");
-            o.Add("IsSubmitted");
-            o.Add("IsUnmodified");
-            o.Add("ItemClass");
-            o.Add("LastModifiedName");
-            o.Add("LastModifiedTime");
-            o.Add("MimeContent");
-            o.Add("NormalizedBody");
-            o.Add("ParentFolderId");
-            o.Add("PolicyTag");
-            o.Add("Preview");
-            o.Add("ReceivedBy");
-            o.Add("ReceivedRepresenting");
-            o.Add("References");
-            o.Add("ReminderDueBy");
-            o.Add("ReminderMinutesBeforeStart");
-            o.Add("ReplyTo");
-            o.Add("ResponseType");
-            o.Add("RetentionDate");
-
-            o.Add("Sender");
-            o.Add("Sensitivity");
-
-            o.Add("Size");
-            o.Add("StoreEntryId");
-            o.Add("Subject");
-            o.Add("TextBody");
-            o.Add("ToRecipients");
-            o.Add("UniqueBody");
-            o.Add("VotingInformation");
-            o.Add("WebClientEditFormQueryString");
-            o.Add("WebClientReadFormQueryString");
-
-            o.Add("PidLidCleanGlobalObjectId");
-            o.Add("PidLidGlobalObjectId");
-            o.Add("PidLidAppointmentRecur");
-            o.Add("PidLidClientIntent");
-            o.Add("ClientInfoString");
-            o.Add("EntryId");
-            o.Add("IsHidden");
-            o.Add("FolderPath");
-            o.Add("LogTriggerAction");
-
+// Replace3e
             return o;
+
+
         }
 
-        public string GetMeetingMessageDataAsCsvHeaders()
+
+
+        public static string GetExtendedProp_DateTime_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
-            char[] TrimChars = { ',', ' ' };
-            string sRet = string.Empty;
-            List<string> o = new List<string> { };
-            o.Add("AllowedResponseActions");
-            o.Add("ApprovalRequestData");
-            o.Add("ArchiveTag");
-            o.Add("AssociatedAppointmentId");
-            // o.Add("Attachments // 
-            o.Add("BccRecipients");
-            o.Add("Body");
-            o.Add("Categories");
-            o.Add("CcRecipients");
-            o.Add("ConversationId");
-            o.Add("ConversationIndex");
-            o.Add("ConversationTopic");
-            o.Add("Culture");
-            o.Add("DateTimeCreated");
-            o.Add("DateTimeReceived");
-            o.Add("DateTimeSent");
-            o.Add("DisplayCc");
-            o.Add("DisplayTo");
-            o.Add("EffectiveRights");
-            o.Add("EntityExtractionResult");
-            o.Add("ExtendedProperties");
-            o.Add("Flag");
-            o.Add("From");
-            o.Add("HasAttachments");
-            o.Add("HasBeenProcessed");
-            o.Add("ICalDateTimeStamp");
-            o.Add("ICalRecurrenceId");
-            o.Add("ICalUid");
-            o.Add("IconIndex");
-            o.Add("UniqueId");  // Id
-            o.Add("Importance");
-            o.Add("InstanceKey");
-            o.Add("InternetMessageHeaders");
-            o.Add("InternetMessageId");
-            o.Add("IsAssociated");
-            o.Add("IsDelegated");
-            o.Add("IsDeliveryReceiptRequested");
-            o.Add("IsDraft");
-            o.Add("IsFromMe");
-            o.Add("IsOrganizer");
-            o.Add("IsOutOfDate");
-            o.Add("IsRead");
-            o.Add("IsReadReceiptRequested");
-            o.Add("IsReminderSet");
-            o.Add("IsResend");
-            o.Add("IsResponseRequested");
-            o.Add("IsSubmitted");
-            o.Add("IsUnmodified");
-            o.Add("ItemClass");
-            o.Add("LastModifiedName");
-            o.Add("LastModifiedTime");
-            o.Add("MimeContent");
-            o.Add("NormalizedBody");
-            o.Add("ParentFolderId");
-            o.Add("PolicyTag");
-            o.Add("Preview");
-            o.Add("ReceivedBy");
-            o.Add("ReceivedRepresenting");
-            o.Add("References");
-            o.Add("ReminderDueBy");
-            o.Add("ReminderMinutesBeforeStart");
-            o.Add("ReplyTo");
-            o.Add("ResponseType");
-            o.Add("RetentionDate");
+            DateTime oDateTime;
 
-            o.Add("Sender");
-            o.Add("Sensitivity");
+            string sReturn = "";
+            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oDateTime))
+                sReturn = oDateTime.ToString();
+            else
+                sReturn = "";
+            return sReturn;
+        }
 
-            o.Add("Size");
-            o.Add("StoreEntryId");
-            o.Add("Subject");
-            o.Add("TextBody");
-            o.Add("ToRecipients");
-            o.Add("UniqueBody");
-            o.Add("VotingInformation");
-            o.Add("WebClientEditFormQueryString");
-            o.Add("WebClientReadFormQueryString");
+        public  string GetExtendedProp_ByteArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+            byte[] bytearrVal;
 
-            o.Add("PidLidCleanGlobalObjectId");
-            o.Add("PidLidGlobalObjectId");
-            o.Add("PidLidAppointmentRecur");
-            o.Add("PidLidClientIntent");
-            o.Add("ClientInfoString");
-            o.Add("EntryId");
-            o.Add("IsHidden");
-            o.Add("FolderPath");
-            o.Add("LogTriggerAction");
+            string sReturn = "";
+            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bytearrVal))  // Example: CleanGlobalObjectId
+                sReturn = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
+            else
+                sReturn = "";
+            return sReturn;
+        }
 
-            // ...
+        public static string GetExtendedProp_String_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+            string sString = string.Empty;
 
-            StringBuilder oSB = new StringBuilder();
-            for (int i = 0; i < o.Count - 1; i++)
-            {
-                oSB.AppendFormat("{0}, ", o[i]);
-            }
+            string sReturn = "";
+            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out sString))
+                sReturn = sString;
+            else
+                sReturn = "";
+            return sReturn;
+        }
 
-            sRet = oSB.ToString();
-            sRet = sRet.TrimEnd(TrimChars);
+        public static string GetExtendedProp_Int_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+            int lVal = 0;
 
-            return sRet;
+            string sReturn = "";
+            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out lVal))
+                sReturn = lVal.ToString();
+            else
+                sReturn = "";
+            return sReturn;
+        }
+
+        public static string GetExtendedProp_Bool_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+            bool bVal = false;
+
+            string sReturn = "";
+            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bVal))
+                sReturn = bVal.ToString();
+            else
+                sReturn = "";
+            return sReturn;
         }
     }
 }
+

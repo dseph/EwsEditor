@@ -57,6 +57,67 @@ namespace EWSEditor.Forms
         private static ExtendedPropertyDefinition ClientInfoString = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x000B, MapiPropertyType.String); //  
         private static ExtendedPropertyDefinition LogTriggerAction = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x0006, MapiPropertyType.String); //  
 
+       // private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x301B, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
+        private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
+        private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
+        private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C    
+        //private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_TAG = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_PERIOD = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer); // Prop_PR_RETENTION_DATE 0x301C    
+        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_DATE = new ExtendedPropertyDefinition(0x301F, MapiPropertyType.SystemTime);
+        private static ExtendedPropertyDefinition Prop_PR_ENTRYID = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);  // PidTagEntryId, PidTagMemberEntryId, ptagEntryId
+        //private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FFB, MapiPropertyType.Binary);  // PidTagStoreEntryId
+        //private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+
+        private static ExtendedPropertyDefinition PR_SENT_REPRESENTING_EMAIL_ADDRESS = new ExtendedPropertyDefinition(0x0065, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition PR_SENDER_EMAIL_ADDRESS = new ExtendedPropertyDefinition(0x4030, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition ptagSenderSimpleDispName = new ExtendedPropertyDefinition(0x0C1F, MapiPropertyType.String);
+
+        private static ExtendedPropertyDefinition PR_PARENT_ENTRYID = new ExtendedPropertyDefinition(0x0E09, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition PR_MESSAGE_FLAGS = new ExtendedPropertyDefinition(0x0E07, MapiPropertyType.Integer); // PT_LONG
+        private static ExtendedPropertyDefinition PR_MSG_STATUS = new ExtendedPropertyDefinition(0x0E17, MapiPropertyType.Integer);// PT_LONG
+        private static ExtendedPropertyDefinition PR_MESSAGE_DELIVERY_TIME = new ExtendedPropertyDefinition(0x0E06, MapiPropertyType.SystemTime);   // PT_SYSTIME  
+        private static ExtendedPropertyDefinition PR_CONVERSATION_TOPIC = new ExtendedPropertyDefinition(0x0070, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition PR_CONVERSATION_ID = new ExtendedPropertyDefinition(0x3013, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition PPR_CONVERSATION_INDEX = new ExtendedPropertyDefinition(0x0071, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition PR_CONTROL_FLAGS = new ExtendedPropertyDefinition(0x3F00, MapiPropertyType.Integer);// PT_LONG
+
+        public static ExtendedPropertyDefinition PidLidCurrentVersion = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x00008552, MapiPropertyType.Integer);
+        public static ExtendedPropertyDefinition PidLidCurrentVersionName = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x00008554, MapiPropertyType.String);
+        public static ExtendedPropertyDefinition PidNameCalendarUid = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x001F, MapiPropertyType.String);
+        public static ExtendedPropertyDefinition PidLidOrganizerAlias = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008243, MapiPropertyType.String);
+        //public static ExtendedPropertyDefinition PidNameCalendarIsOrganizer = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x00008552, MapiPropertyType.String);  
+        public static ExtendedPropertyDefinition PidTagSenderSmtpAddress = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x5D01, MapiPropertyType.String);
+        public static ExtendedPropertyDefinition PidTagSenderName = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x0C1A, MapiPropertyType.String);
+
+        //dispidapptrecur
+
+        private static ExtendedPropertyDefinition PidLidInboundICalStream = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0102, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition PidLidAppointmentAuxiliaryFlags = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008207, MapiPropertyType.Integer);
+        private static ExtendedPropertyDefinition PidLidRecurrencePattern = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008232, MapiPropertyType.String);
+        private static ExtendedPropertyDefinition PidLidRecurrenceType = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008231, MapiPropertyType.Integer);
+        private static ExtendedPropertyDefinition PidLidRecurring = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008223, MapiPropertyType.Boolean); // "dispidRecurring, http://schemas.microsoft.com/mapi/recurring", "Calendar", "[MS-OXCDATA], [MS-OXCICAL], [MS-OXOCAL], [MS-OXOSFLD], [MS-OXWAVLS], [MS-XWDCAL]"));
+        private static ExtendedPropertyDefinition PidLidAppointmentRecur = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008216, MapiPropertyType.Binary); // "dispidApptRecur, http://schemas.microsoft.com/mapi/apptrecur", "Calendar", "[MS-OXCICAL], [MS-OXOCAL], [MS-OXORMDR], [MS-OXOTASK],[MS-XWDCAL]"));
+        //private static ExtendedPropertyDefinition PidLidAppointmentStartWhole = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0000820D, MapiPropertyType.SystemTime); // "PidLidAppointmentStartWhole", "dispidApptStartWhole, http://schemas.microsoft.com/mapi/apptstartwhole", "Calendar", "[MS-OXCICAL], [MS-OXOCAL], [MS-OXOPFFB], [MS-XWDCAL]"));
+        private static ExtendedPropertyDefinition PidLidAppointmentStartDate = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008212, MapiPropertyType.SystemTime);
+        private static ExtendedPropertyDefinition PidLidAppointmentStartTime = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0000820F, MapiPropertyType.SystemTime);
+        private static ExtendedPropertyDefinition PidLidAppointmentStartWhole = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0000820D, MapiPropertyType.SystemTime);
+        private static ExtendedPropertyDefinition PidLidAppointmentStateFlags = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008217, MapiPropertyType.Integer);
+        private static ExtendedPropertyDefinition PidNameFrom = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.InternetHeaders, "From", MapiPropertyType.String);  // PidNameFrom -  Its the Organizer.
+        private static ExtendedPropertyDefinition PidNameHttpmailFrom = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.PublicStrings, "urn:schemas:httpmail:from", MapiPropertyType.String); // PidNameHttpmailFromEmail - 
+        private static ExtendedPropertyDefinition PidNameHttpmailFromEmail = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.PublicStrings, "urn:schemas:httpmail:fromemail", MapiPropertyType.String); // PidNameHttpmailFromEmail          
+        private static ExtendedPropertyDefinition PidTagSenderEmailAddress = new ExtendedPropertyDefinition(0x0C1F, MapiPropertyType.String); //  "PidTagSenderEmailAddress", "PR_SENDER_EMAIL_ADDRESS,PR_SENDER_EMAIL_ADDRESS_A, PR_SENDER_EMAIL_ADDRESS_W", "Address Properties", "[MS-OXCFXICS], [MS-OXCICAL], [MS-OXCSPAM], [MS-OXOMSG],[MS-OXORSS], [MS-OXOTASK], [MS-OXPSVAL], [MS-OXTNEF]"));        
+        private static ExtendedPropertyDefinition PidTagSenderFlags = new ExtendedPropertyDefinition(0x4019, MapiPropertyType.Integer); // "PidTagSenderFlags", "ptagSenderFlags", "Miscellaneous Properties", "[MS-OXCFXICS], [MS-OXTNEF]")); 
+       // private static ExtendedPropertyDefinition PidTagSenderName = new ExtendedPropertyDefinition(0x0C1A, MapiPropertyType.String);  // 
+        private static ExtendedPropertyDefinition PidTagSenderSimpleDisplayName = new ExtendedPropertyDefinition(0x4030, MapiPropertyType.String);  // "PidTagSenderName", "PR_SENDER_NAME, PR_SENDER_NAME_A, ptagSenderName,PR_SENDER_NAME_W, urn:schemas:httpmail:sendername,http://schemas.microsoft.com/exchange/sender-name-utf8", "Address Properties Property set", "[MS-OXCFXICS], [MS-OXCICAL], [MS-OXCSYNC], [MS-OXOCAL], [MS-OXOMSG], [MS-OXOPOST], [MS-OXORSS], [MS-OXOTASK], [MS-OXTNEF], [MS-XWDMAIL]")); 
+        private static ExtendedPropertyDefinition PidTagSentRepresentingEmailAddress = new ExtendedPropertyDefinition(0x0065, MapiPropertyType.String); // PR_SENT_REPRESENTING_EMAIL_ADDRESS,PR_SENT_REPRESENTING_EMAIL_ADDRESS_A,PR_SENT_REPRESENTING_EMAIL_ADDRESS_W"
+        private static ExtendedPropertyDefinition PidTagSentRepresentingFlags = new ExtendedPropertyDefinition(0x401A, MapiPropertyType.Integer);  // ptagSentRepresentingFlags
+        private static ExtendedPropertyDefinition PidTagSentRepresentingName = new ExtendedPropertyDefinition(0x0042, MapiPropertyType.String);   // // ptagSentRepresentingName, PR_SENT_REPRESENTING_NAME,PR_SENT_REPRESENTING_NAME_A,PR_SENT_REPRESENTING_NAME_W        public string PidTagSentRepresentingSimpleDisplayName = new ExtendedPropertyDefinition(0x4031, MapiPropertyType.String);  // ptagSentRepresentingName, PR_SENT_REPRESENTING_NAME,PR_SENT_REPRESENTING_NAME_A,PR_SENT_REPRESENTING_NAME_W
+        private static ExtendedPropertyDefinition PidTagSentRepresentingSimpleDisplayName = new ExtendedPropertyDefinition(0x4031, MapiPropertyType.String);  // PidTagSentRepresentingSimpleDisplayName", "ptagSentRepresentingSimpleDispName",  
+        private static ExtendedPropertyDefinition PidTagProcessed = new ExtendedPropertyDefinition(0x7D01, MapiPropertyType.Boolean); // (PidTagProcessed, new KnownExtendedPropertyInfo("PidTagProcessed", "PR_PROCESSED", "Calendar", "[MS-OXCICAL], [MS-OXOCAL], [MS-OXOTASK]"));
+       // private static ExtendedPropertyDefinition PidLidResponseStatus = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008218, MapiPropertyType.Integer); //"dispidResponseStatus, urn:schemas:calendar:attendeestatus,http://schemas.microsoft.com/mapi/responsestatus", "Meetings", "[MS-OXCICAL], [MS-OXOCAL], [MS-XWDCAL]"));
+        private static ExtendedPropertyDefinition PidLidIsException = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0000000A, MapiPropertyType.Boolean); // "PidLidIsException", "LID_IS_EXCEPTION, http://schemas.microsoft.com/mapi/is_exception", "Meetings", "[MS-OXCICAL], [MS-OXOCAL], [MS-OXWAVLS], [MS-XWDCAL]"));
+        private static ExtendedPropertyDefinition PidTagCreatorName = new ExtendedPropertyDefinition(0x3FF8, MapiPropertyType.String);  // "PidTagCreatorName", "PR_CREATOR_NAME, PR_CREATOR_NAME_A, ptagCreatorName,PR_CREATOR_NAME_W", "General Message Properties", "[MS-OXCFXICS], [MS-OXCMSG], [MS-OXTNEF]"));
+        private static ExtendedPropertyDefinition PidTagCreatorSimpleDisplayName = new ExtendedPropertyDefinition(0x4038, MapiPropertyType.String);  // "PidTagCreatorSimpleDisplayName", "ptagCreatorSimpleDispName", "TransportEnvelope", "[MS-OXTNEF]"));
 
         
 
@@ -148,9 +209,103 @@ namespace EWSEditor.Forms
                     PidLidClientIntent,
                     LogTriggerAction,
                     Prop_PR_POLICY_TAG,
-                    Prop_PR_ARCHIVE_TAG
+                    Prop_PR_ARCHIVE_TAG,
 
+                    Prop_PR_POLICY_TAG,
+                    Prop_PR_RETENTION_FLAGS,
+                    Prop_PR_RETENTION_PERIOD,
+                    Prop_PR_RETENTION_DATE,
+                    Prop_PR_ARCHIVE_TAG,
+                    Prop_PR_ARCHIVE_PERIOD,
+                    Prop_PR_ARCHIVE_DATE,
+                    Prop_PR_ENTRYID,
+
+                    Prop_PR_IS_HIDDEN,
+                    PR_SENT_REPRESENTING_EMAIL_ADDRESS,
+                    PR_SENDER_EMAIL_ADDRESS,
+                    ptagSenderSimpleDispName,
+                    PR_PARENT_ENTRYID,
+                    PR_MESSAGE_FLAGS,
+                    PR_MSG_STATUS,
+                    PR_MESSAGE_DELIVERY_TIME,
+                    PR_CONVERSATION_TOPIC,
+                    PR_CONVERSATION_ID,
+                    PPR_CONVERSATION_INDEX,
+                    PR_CONTROL_FLAGS,
+
+                    PidLidCurrentVersion,
+                    PidLidCurrentVersionName, 
+                    PidNameCalendarUid, 
+                    PidLidOrganizerAlias,
+ 
+                    PidLidInboundICalStream,
+                    PidLidAppointmentAuxiliaryFlags,
+                    PidLidRecurrencePattern,
+                    PidLidRecurrenceType,
+                    PidLidRecurring,
+                    PidLidAppointmentRecur,
+                    PidLidAppointmentStartDate,
+                    PidLidAppointmentStartTime,
+                    PidLidAppointmentStartWhole,
+                    PidLidAppointmentStateFlags,
+                    PidNameFrom,
+                    PidNameHttpmailFrom,
+                    PidNameHttpmailFromEmail,
+                    PidTagSenderEmailAddress,
+                    PidTagSenderFlags,
+                    PidTagSenderName,
+                    PidTagSenderSimpleDisplayName,
+                    PidTagSentRepresentingEmailAddress,
+                    PidTagSentRepresentingFlags,
+                    PidTagSentRepresentingName,
+                    PidTagSentRepresentingSimpleDisplayName,
+                    PidTagProcessed,
+                 
+                    PidLidIsException,
+                    PidTagCreatorName,
+                    PidTagCreatorSimpleDisplayName 
                     );
+          
+                    //Prop_PR_IS_HIDDEN,
+                    //PR_SENT_REPRESENTING_EMAIL_ADDRESS,
+                    //PR_SENDER_EMAIL_ADDRESS,
+                    //ptagSenderSimpleDispName,
+                    //PR_PARENT_ENTRYID,
+                    //PR_MESSAGE_FLAGS,
+                    //PR_MSG_STATUS,
+                    //PR_MESSAGE_DELIVERY_TIME,
+                    //PR_CONVERSATION_TOPIC,
+                    //PR_CONVERSATION_ID,
+                    //PPR_CONVERSATION_INDEX,
+                    //PR_CONTROL_FLAGS,
+                    //PidLidInboundICalStream,
+                    //PidLidAppointmentAuxiliaryFlags,
+                    //PidLidRecurrencePattern,
+                    //PidLidRecurrenceType,
+                    //PidLidRecurring, 
+                    //PidLidAppointmentRecur,
+                    //PidLidAppointmentStartDate,
+                    //PidLidAppointmentStartTime,
+                    //PidLidAppointmentStartWhole,
+                    //PidLidAppointmentStateFlags,
+                    //PidNameFrom,
+                    //PidNameHttpmailFrom,
+                    //PidNameHttpmailFromEmail,     
+                    //PidTagSenderEmailAddress,       
+                    //PidTagSenderFlags,
+                    //PidTagSenderName,
+                    //PidTagSenderSimpleDisplayName,
+                    //PidTagSentRepresentingEmailAddress,
+                    //PidTagSentRepresentingFlags,
+                    //PidTagSentRepresentingName,
+                    //PidTagSentRepresentingSimpleDisplayName,
+                    //PidTagProcessed,
+                   
+                    //PidLidIsException,
+                    //PidTagCreatorName,
+                    //PidTagCreatorSimpleDisplayName 
+                
+ 
             }
             //this.contentItemView.PropertySet.Add(Prop_PR_STORE_ENTRYID);
             //this.contentItemView.PropertySet.Add(Prop_PR_IS_HIDDEN);
@@ -643,10 +798,21 @@ namespace EWSEditor.Forms
         private void MnuMoveItem_Click(object sender, EventArgs e)
         {
             FolderId destId = null;
-            if (FolderIdDialog.ShowDialog(ref destId) != DialogResult.OK)
+
+            FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
+            oForm.ShowDialog();
+            if (oForm.ChoseOK != true)
             {
+                //oForm.ChosenFolderId 
+                destId = oForm.ChosenFolderId;
                 return;
             }
+
+            //FolderId destId = null;
+            //if (FolderIdDialog.ShowDialog(ref destId) != DialogResult.OK)
+            //{
+            //    return;
+            //}
 
             StringBuilder oSB = new StringBuilder();
 
@@ -707,11 +873,11 @@ namespace EWSEditor.Forms
                         }
                         oSB.AppendLine();
                     }
-                    ShowTextDocument oForm = new ShowTextDocument();
-                    oForm.txtEntry.WordWrap = false;
-                    oForm.Text = "Move Results";
-                    oForm.txtEntry.Text = oSB.ToString();
-                    oForm.ShowDialog();
+                    ShowTextDocument oForm3 = new ShowTextDocument();
+                    oForm3.txtEntry.WordWrap = false;
+                    oForm3.Text = "Move Results";
+                    oForm3.txtEntry.Text = oSB.ToString();
+                    oForm3.ShowDialog();
                 }
                 else
                 {
@@ -730,11 +896,11 @@ namespace EWSEditor.Forms
                     oSB.AppendLine();
                     oSB.AppendFormat("Note: Ids will not be returned when copying between mailboxes or to a public folder.\r\n");
 
-                    ShowTextDocument oForm = new ShowTextDocument();
-                    oForm.txtEntry.WordWrap = false;
-                    oForm.Text = "Move Result";
-                    oForm.txtEntry.Text = oSB.ToString();
-                    oForm.ShowDialog();
+                    ShowTextDocument oForm4 = new ShowTextDocument();
+                    oForm4.txtEntry.WordWrap = false;
+                    oForm4.Text = "Move Result";
+                    oForm4.txtEntry.Text = oSB.ToString();
+                    oForm4.ShowDialog();
                 }
 
                 // Refresh the view
@@ -747,11 +913,11 @@ namespace EWSEditor.Forms
                 oSB.AppendFormat("Error message: {0}\r\n", ex.Message);
                 oSB.AppendFormat("Response: {0}\r\n", ex.Response);
 
-                ShowTextDocument oForm = new ShowTextDocument();
-                oForm.txtEntry.WordWrap = false;
-                oForm.Text = "Move Error";
-                oForm.txtEntry.Text = oSB.ToString();
-                oForm.ShowDialog();
+                ShowTextDocument oForm7 = new ShowTextDocument();
+                oForm7.txtEntry.WordWrap = false;
+                oForm7.Text = "Move Error";
+                oForm7.txtEntry.Text = oSB.ToString();
+                oForm7.ShowDialog();
             }
             finally
             {
@@ -1131,10 +1297,22 @@ namespace EWSEditor.Forms
         private void mnuCopyItem_Click(object sender, EventArgs e)
         {
             FolderId destId = null;
-            if (FolderIdDialog.ShowDialog(ref destId) != DialogResult.OK)
+
+            FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
+            oForm.ShowDialog();
+            if (oForm.ChoseOK != true)
             {
+                //oForm.ChosenFolderId 
+                destId = oForm.ChosenFolderId;
                 return;
             }
+            destId = oForm.ChosenFolderId;
+
+            //FolderId destId = null;
+            //if (FolderIdDialog.ShowDialog(ref destId) != DialogResult.OK)
+            //{
+            //    return;
+            //}
 
             StringBuilder oSB = new StringBuilder();
 
@@ -1151,7 +1329,6 @@ namespace EWSEditor.Forms
                 List<ItemId> itemId = new List<ItemId>();
                 itemId.Add(id);
 
-                //this.CurrentService.CopyItems(itemId, destId);
 
                 // https://msdn.microsoft.com/en-us/library/office/Dn771039(v=EXCHG.150).aspx#bk_ewsmaerrors
 
@@ -1199,11 +1376,11 @@ namespace EWSEditor.Forms
                         }
                         oSB.AppendLine();
                     }
-                    ShowTextDocument oForm = new ShowTextDocument();
-                    oForm.txtEntry.WordWrap = false;
-                    oForm.Text = "Copy Results";
-                    oForm.txtEntry.Text = oSB.ToString();
-                    oForm.ShowDialog();
+                    ShowTextDocument oForm6 = new ShowTextDocument();
+                    oForm6.txtEntry.WordWrap = false;
+                    oForm6.Text = "Copy Results";
+                    oForm6.txtEntry.Text = oSB.ToString();
+                    oForm6.ShowDialog();
                 }
                 else
                 {
@@ -1219,14 +1396,17 @@ namespace EWSEditor.Forms
                         }
                     }
 
+
+
+
                     oSB.AppendLine();
                     oSB.AppendFormat("Note: Ids will not be returned when copying between mailboxes or to a public folder.\r\n");
 
-                    ShowTextDocument oForm = new ShowTextDocument();
-                    oForm.txtEntry.WordWrap = false;
-                    oForm.Text = "Copy Result";
-                    oForm.txtEntry.Text = oSB.ToString();
-                    oForm.ShowDialog();
+                    ShowTextDocument oForm2 = new ShowTextDocument();
+                    oForm2.txtEntry.WordWrap = false;
+                    oForm2.Text = "Copy Result";
+                    oForm2.txtEntry.Text = oSB.ToString();
+                    oForm2.ShowDialog();
                 }
 
                 // Refresh the view
@@ -1234,16 +1414,16 @@ namespace EWSEditor.Forms
             }
             catch (ServiceResponseException ex)
             {
-
+                
                 oSB.AppendFormat("Error code: {0}\r\n", ex.ErrorCode);
                 oSB.AppendFormat("Error message: {0}\r\n", ex.Message);
                 oSB.AppendFormat("Response: {0}\r\n", ex.Response);
 
-                ShowTextDocument oForm = new ShowTextDocument();
-                oForm.txtEntry.WordWrap = false;
-                oForm.Text = "Copy Error";
-                oForm.txtEntry.Text = oSB.ToString();
-                oForm.ShowDialog();
+                ShowTextDocument oFormShowDocument = new ShowTextDocument();
+                oFormShowDocument.txtEntry.WordWrap = false;
+                oFormShowDocument.Text = "Copy Error";
+                oFormShowDocument.txtEntry.Text = oSB.ToString();
+                oFormShowDocument.ShowDialog();
             }
             finally
             {

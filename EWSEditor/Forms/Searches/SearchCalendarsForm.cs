@@ -32,6 +32,7 @@ namespace EWSEditor.Forms
         private int _CountAppointment = 0;
         private int _CountMeetingMessage = 0;
 
+        private static ExtendedPropertyDefinition PidNameCalendarIsOrganizer = new ExtendedPropertyDefinition(new Guid("00062002-0000-0000-C000-000000000046"), 0x000B, MapiPropertyType.Boolean);  
         private static ExtendedPropertyDefinition Prop_PR_FOLDER_PATH = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
         private static ExtendedPropertyDefinition PidLidAppointmentRecur = new ExtendedPropertyDefinition(new Guid("00062002-0000-0000-C000-000000000046"), 0x8216, MapiPropertyType.Binary); // dispidApptRecur
         private static ExtendedPropertyDefinition PidLidClientIntent = new ExtendedPropertyDefinition(new Guid("11000E07-B51B-40D6-AF21-CAA85EDAB1D0"), 0x0015, MapiPropertyType.Integer); // dispidClientIntent
@@ -42,38 +43,12 @@ namespace EWSEditor.Forms
         private static ExtendedPropertyDefinition ICalId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 3, MapiPropertyType.String);
         private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FFB, MapiPropertyType.Binary);  // PidTagStoreEntryId
  
-        //private static ExtendedPropertyDefinition dispidCalLogClientInfoString = new ExtendedPropertyDefinition(new Guid("xxxxxxxxxxxxxxx"), 0x0015, MapiPropertyType.Integer);  
-
+ 
         // see: https://blogs.msdn.microsoft.com/mstehle/2009/09/02/ews-uid-not-always-the-same-for-orphaned-instances-of-the-same-meeting/
-        //private static ExtendedPropertyDefinition PidLidCleanGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0023, MapiPropertyType.Binary);
-        //private static ExtendedPropertyDefinition PidLidGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0003, MapiPropertyType.Binary);
-        // Microsoft.Exchange.WebServices.Data.DefaultExtendedPropertySet]::CalendarAssistant
-
+ 
         // https://ingogegenwarth.wordpress.com/2015/05/01/troubleshooting-calendar-items/
-        //    0x8059001E This extended property records the client, which modified the item. 
-        //    0x8054001E This extended property records the last action performed on the item. 
-        ////$Client = new-object Microsoft.Exchange.WebServices.Data.ExtendedPropertyDefinition([Microsoft.Exchange.WebServices.Data.DefaultExtendedPropertySet]::CalendarAssistant,0x000B,[Microsoft.Exchange.WebServices.Data.MapiPropertyType]::String)
-        ////$Action = new-object Microsoft.Exchange.WebServices.Data.ExtendedPropertyDefinition([Microsoft.Exchange.WebServices.Data.DefaultExtendedPropertySet]::CalendarAssistant,0x0006,[Microsoft.Exchange.WebServices.Data.MapiPropertyType]::String)
-        ////$PidLidGlobalObjectId = new-object Microsoft.Exchange.WebServices.Data.ExtendedPropertyDefinition([Microsoft.Exchange.WebServices.Data.DefaultExtendedPropertySet]::Meeting,0x0003,[Microsoft.Exchange.WebServices.Data.MapiPropertyType]::Binary)
-        ////$PidLidCleanGlobalObjectId = new-object Microsoft.Exchange.WebServices.Data.ExtendedPropertyDefinition([Microsoft.Exchange.WebServices.Data.DefaultExtendedPropertySet]::Meeting,0x0023,[Microsoft.Exchange.WebServices.Data.MapiPropertyType]::Binary)
-        ////$PidLidAppointmentMessageClass = new-object Microsoft.Exchange.WebServices.Data.ExtendedPropertyDefinition([Microsoft.Exchange.WebServices.Data.DefaultExtendedPropertySet]::Meeting,0x0024,[Microsoft.Exchange.WebServices.Data.MapiPropertyType]::String)
-        ////#$PidLidClientIntent = new-object Microsoft.Exchange.WebServices.Data.ExtendedPropertyDefinition([Microsoft.Exchange.WebServices.Data.DefaultExtendedPropertySet]::CalendarAssistant,0x0015,[Microsoft.Exchange.WebServices.Data.MapiPropertyType]::Long)
-        ////$PidLidClientIntent = new-object Microsoft.Exchange.WebServices.Data.ExtendedPropertyDefinition([Microsoft.Exchange.WebServices.Data.DefaultExtendedPropertySet]::CalendarAssistant,0x0015,[Microsoft.Exchange.WebServices.Data.MapiPropertyType]::Integer)
-        ////$ItemView =  New-Object Microsoft.Exchange.WebServices.Data.ItemView(1000)
-
-        private void x()
-        {
-            
-            //DataSet m_DS;
-            //DataSet msgDataSet { get { return m_DS; } }
-
-            //DataTable dt = m_DS.Tables.Add("tblAppointment");
-            //dt.Columns.Add("PropName");
-            //dt.Columns.Add("PropVal");
-            //dt.Columns.Add("SmartVal");
-
-            //foreach property
-        }
+  
+ 
 
 
 
@@ -116,6 +91,7 @@ namespace EWSEditor.Forms
             cmboCCConditional.Text = "ContainsSubstring";
             cmboBodyConditional.Text = "ContainsSubstring";
             cmboClassConditional.Text = "ContainsSubstring";
+            //cmboGlobalObjIdConditional.Text = "ContainsSubstring";
 
 
             SetCheckboxes();
@@ -144,6 +120,7 @@ namespace EWSEditor.Forms
                 this.txtCC.Enabled = false;
                 this.txtBody.Enabled = false;
                 this.cmboClass.Enabled = false;
+                 
 
                 this.chkUID.Enabled = false;
                 this.chkSubject.Enabled = false;
@@ -158,6 +135,7 @@ namespace EWSEditor.Forms
                 cmboCCConditional.Enabled = false;
                 cmboBodyConditional.Enabled = false;
                 cmboClassConditional.Enabled = false;
+                //this.cmboGlobalObjIdConditional.Enabled = false;
 
 
             }
@@ -169,6 +147,7 @@ namespace EWSEditor.Forms
                 this.chkCC.Enabled = true;
                 this.chkBody.Enabled = true;
                 this.chkClass.Enabled = true;
+                this.chkGlobalObjId.Enabled = true;
 
                 this.txtUID.Enabled = true;
                 this.txtSubject.Enabled = true;
@@ -176,6 +155,7 @@ namespace EWSEditor.Forms
                 this.txtCC.Enabled = true;
                 this.txtBody.Enabled = true;
                 this.cmboClass.Enabled = true;
+                this.txtGlobalObjId.Enabled = true;
 
                 cmboUidConditional.Enabled = chkSubject.Checked;
                 cmboSubjectConditional.Enabled = chkSubject.Checked;
@@ -183,6 +163,7 @@ namespace EWSEditor.Forms
                 cmboCCConditional.Enabled = chkCC.Checked;
                 cmboBodyConditional.Enabled = chkBody.Checked;
                 cmboClassConditional.Enabled = chkClass.Checked;
+                //cmboGlobalObjIdConditional.Enabled = chkGlobalObjId.Checked;
 
             }
 
@@ -237,6 +218,12 @@ namespace EWSEditor.Forms
                     MessageBox.Show("Class line text cannot be blank");
                 }
 
+            if (this.chkGlobalObjId.Checked == true)
+                if (this.txtGlobalObjId.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("Global Obj ID line text cannot be blank");
+                }
+
             if (this.rdoAqsSearch.Checked == true)
                 if (this.txtAQS.Text.Trim().Length == 0)
                 {
@@ -271,77 +258,84 @@ namespace EWSEditor.Forms
             cmboCCConditional.Enabled = chkCC.Checked;
         }
 
-        private void ConfigureListView_Calendar(ref ListView oListView, string SearchType)
-        {
-            ColumnHeader o = null;
-            oListView.Clear();
-            oListView.View = View.Details;
-            oListView.GridLines = true;
-            //oListView.Dock = DockStyle.Fill;
-
-            if (SearchType == "Direct")
-                oListView.Columns.Add("Count", 100, HorizontalAlignment.Left);
-            else
-                oListView.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
-
-            oListView.Columns.Add("Subject", 170, HorizontalAlignment.Left);
-            oListView.Columns.Add("Class", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("Organizer", 100, HorizontalAlignment.Left);
-
-            oListView.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);
-
-            oListView.Columns.Add("RequiredAttendees", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("OptionalAttendees", 100, HorizontalAlignment.Left);
-
-            oListView.Columns.Add("ICalUid", 200, HorizontalAlignment.Left);
-            oListView.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);
-            oListView.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);
-
-            oListView.Columns.Add("Start", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("End", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("RetentionDate", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("DateTimeCreated", 150, HorizontalAlignment.Left);
-
-            oListView.Columns.Add("LastModifiedName", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("LastModifiedTime", 150, HorizontalAlignment.Left);
-
-            oListView.Columns.Add("AppointmentType", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("AppointmentState", 150, HorizontalAlignment.Left);
-
-            oListView.Columns.Add("IsAllDayEvent", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("IsCancelled", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("IsRecurring", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("IsReminderSet", 100, HorizontalAlignment.Left);
-
-            oListView.Columns.Add("IsOnlineMeeting", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("IsResend", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("IsDraft", 100, HorizontalAlignment.Left);
-
-            o = oListView.Columns.Add("Size", 70, HorizontalAlignment.Left);
-            o.Tag = "int";
-            o.TextAlign = HorizontalAlignment.Right;
-            oListView.Columns.Add("Attatch", 80, HorizontalAlignment.Left);
-
-
-            oListView.Columns.Add("PidLidAppointmentRecur ", 100, HorizontalAlignment.Left);
-            o = oListView.Columns.Add("PidLidClientIntent ", 100, HorizontalAlignment.Left);
-            o.Tag = "int";
-            o.TextAlign = HorizontalAlignment.Right;
-
-            oListView.Columns.Add("ClientInfoString ", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("LogTriggerAction ", 100, HorizontalAlignment.Left);
-
-            oListView.Columns.Add("IsHidden", 50, HorizontalAlignment.Left);
-            oListView.Columns.Add("FolderPath", 200, HorizontalAlignment.Left);
-
-            oListView.Columns.Add("StoreEntryId", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
-            //oListView.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
-
-            oListView.Tag = -1;
+        private void chkGlobalObjId_CheckedChanged(object sender, EventArgs e)
+        { 
+            txtGlobalObjId.Enabled = chkGlobalObjId.Checked;
+            //cmboGlobalObjIdConditional.Enabled = chkGlobalObjId.Checked;
 
         }
+
+        //private void ConfigureListView_Calendar(ref ListView oListView, string SearchType)
+        //{
+        //    ColumnHeader o = null;
+        //    oListView.Clear();
+        //    oListView.View = View.Details;
+        //    oListView.GridLines = true;
+        //    //oListView.Dock = DockStyle.Fill;
+
+        //    if (SearchType == "Direct")
+        //        oListView.Columns.Add("Count", 100, HorizontalAlignment.Left);
+        //    else
+        //        oListView.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
+
+        //    oListView.Columns.Add("Subject", 170, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("Class", 150, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("Organizer", 100, HorizontalAlignment.Left);
+
+        //    oListView.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);
+
+        //    oListView.Columns.Add("RequiredAttendees", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("OptionalAttendees", 100, HorizontalAlignment.Left);
+
+        //    oListView.Columns.Add("ICalUid", 200, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);
+
+        //    oListView.Columns.Add("Start", 150, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("End", 150, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("RetentionDate", 150, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("DateTimeCreated", 150, HorizontalAlignment.Left);
+
+        //    oListView.Columns.Add("LastModifiedName", 150, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("LastModifiedTime", 150, HorizontalAlignment.Left);
+
+        //    oListView.Columns.Add("AppointmentType", 150, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("AppointmentState", 150, HorizontalAlignment.Left);
+
+        //    oListView.Columns.Add("IsAllDayEvent", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("IsCancelled", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("IsRecurring", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("IsReminderSet", 100, HorizontalAlignment.Left);
+
+        //    oListView.Columns.Add("IsOnlineMeeting", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("IsResend", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("IsDraft", 100, HorizontalAlignment.Left);
+
+        //    o = oListView.Columns.Add("Size", 70, HorizontalAlignment.Left);
+        //    o.Tag = "int";
+        //    o.TextAlign = HorizontalAlignment.Right;
+        //    oListView.Columns.Add("Attatch", 80, HorizontalAlignment.Left);
+
+
+        //    oListView.Columns.Add("PidLidAppointmentRecur ", 100, HorizontalAlignment.Left);
+        //    o = oListView.Columns.Add("PidLidClientIntent ", 100, HorizontalAlignment.Left);
+        //    o.Tag = "int";
+        //    o.TextAlign = HorizontalAlignment.Right;
+
+        //    oListView.Columns.Add("ClientInfoString ", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("LogTriggerAction ", 100, HorizontalAlignment.Left);
+
+        //    oListView.Columns.Add("IsHidden", 50, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("FolderPath", 200, HorizontalAlignment.Left);
+
+        //    oListView.Columns.Add("StoreEntryId", 250, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
+        //    //oListView.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
+
+        //    oListView.Tag = -1;
+
+        //}
 
 
 
@@ -360,6 +354,8 @@ namespace EWSEditor.Forms
                 oListView.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
  
             oListView.Columns.Add("Organizer", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("PidNameCalendarIsOrganizer", 150, HorizontalAlignment.Left);
+             
             oListView.Columns.Add("From", 150, HorizontalAlignment.Left);
             oListView.Columns.Add("Sender", 150, HorizontalAlignment.Left);
 
@@ -402,56 +398,55 @@ namespace EWSEditor.Forms
         }
 
         
-        private void ConfigureListView_Message(ref ListView oListView, string SearchType)
-        {
+        //private void ConfigureListView_Message(ref ListView oListView, string SearchType)
+        //{
 
-            oListView.Clear();
-            oListView.View = View.Details;
-            oListView.GridLines = true;
-            //oListView.Dock = DockStyle.Fill;
+        //    oListView.Clear();
+        //    oListView.View = View.Details;
+        //    oListView.GridLines = true;
+        //    //oListView.Dock = DockStyle.Fill;
 
-            if (SearchType == "Direct")
-                oListView.Columns.Add("Count", 100, HorizontalAlignment.Left);
-            else
-                oListView.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
+        //    if (SearchType == "Direct")
+        //        oListView.Columns.Add("Count", 100, HorizontalAlignment.Left);
+        //    else
+        //        oListView.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
              
-            oListView.Columns.Add("Subject", 170, HorizontalAlignment.Left);
-            oListView.Columns.Add("Class", 150, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("Subject", 170, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("Class", 150, HorizontalAlignment.Left);
 
 
-            oListView.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);
 
 
-            oListView.Columns.Add("RetentionDate", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("DateTimeCreated", 150, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("RetentionDate", 150, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("DateTimeCreated", 150, HorizontalAlignment.Left);
 
-            oListView.Columns.Add("LastModifiedName", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("LastModifiedTime", 150, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("LastModifiedName", 150, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("LastModifiedTime", 150, HorizontalAlignment.Left);
 
-            oListView.Columns.Add("IsResend", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("IsDraft", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("IsResend", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("IsDraft", 100, HorizontalAlignment.Left);
 
-            oListView.Columns.Add("Size", 70, HorizontalAlignment.Left);
-            oListView.Columns.Add("Attatch", 80, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("Size", 70, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("Attatch", 80, HorizontalAlignment.Left);
 
-            oListView.Columns.Add("PidLidAppointmentRecur ", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("PidLidClientIntent ", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("dispidCalLogClientInfoString ", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("LogTriggerAction ", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("PidLidAppointmentRecur ", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("PidLidClientIntent ", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("dispidCalLogClientInfoString ", 100, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("LogTriggerAction ", 100, HorizontalAlignment.Left);
 
-            oListView.Columns.Add("ICalUid", 200, HorizontalAlignment.Left);
-            oListView.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);
-            oListView.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("ICalUid", 200, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);
 
-            oListView.Columns.Add("FolderPath", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("StoreEntryId", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("FolderPath", 250, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("StoreEntryId", 250, HorizontalAlignment.Left);
+        //    oListView.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
 
-            oListView.Tag = -1;
-
-             
-        }
+        //    oListView.Tag = -1;
+ 
+        //}
 
 
 
@@ -493,7 +488,12 @@ namespace EWSEditor.Forms
                 if (this.chkBody.Checked == true)
                     AddCondition(ref searchFilterCollection, ItemSchema.Body, this.txtBody.Text.Trim(), cmboBodyConditional.Text);
 
+                // Cannot search on PidLidCleanGlobalObjectId because its a binary property... so, need to loop through results later and
+                // skip processing any result which has a PidLidCleanGlobalObjectId that does not match the PidLidCleanGlobalObjectId to filter on.
+                //if (this.chkGlobalObjId.Checked == true)
+                //    AddCondition(ref searchFilterCollection, PidLidCleanGlobalObjectId, this.txtGlobalObjId.Text.Trim(), cmboGlobalObjIdConditional.Text);
 
+ 
                 SearchFilter searchFilter = null;
                 if (searchFilterCollection.Count == 0)
                 {
@@ -511,11 +511,7 @@ namespace EWSEditor.Forms
                 else
                 {
                     searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.And, searchFilterCollection.ToArray());
-                    //if (cmboLogicalOperation.Text == "And")
-                    //    searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.And, searchFilterCollection.ToArray());
-                    //if (cmboLogicalOperation.Text == "Or")
-                    //    searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
-
+ 
                     oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
                 }
 
@@ -540,9 +536,7 @@ namespace EWSEditor.Forms
         {
             bool bRet = false;
 
-            //lvItemsMessages.Visible = false;
-            //lvItems.Visible = false;
-
+  
             ListViewItem oListItem = null;
 
             int iCountAppointment = 0;
@@ -553,21 +547,70 @@ namespace EWSEditor.Forms
 
             toolStripStatusLabel1.Text = "Processing Items...";
             lvCommon.Visible = false;
+
+            string sPidLidCleanGlobalObjectId = string.Empty;
  
             foreach (Item oItem in oFindItemsResults.Items)
             {
-                //1 // update window for appointment items
-                //2 // create a window fo message meetings
-                //3// have both of the item windows be used by the calendar search window
-                
-                //5// add an export window to be used by the calendar search window.  Export as xml - text view, 
-                //  // Export serialized appointment and export serialized calendar message, export appointments.
-                //  // export attachments table
-              
-                //7 // find which properties are common betwen appointments and meeting messages - create a new list view '
-                //// on a tab control on the search window - it will need to be sortable by date and by global object id at lease.
-                //8 // add more columns to listvies based on Randy's code.
-                //9 // demo to randy.
+ 
+                if (this.chkGlobalObjId.Checked == true)
+                {
+                    // Cannot search on binary data in EWS... so we need to read everything and Check to see if sPidLidCleanGlobalObjectId matches. 
+                    sPidLidCleanGlobalObjectId = GetExtendedProp_ByteArr_AsString(oItem, PidLidCleanGlobalObjectId);
+
+                    //sPidLidCleanGlobalObjectId = "BAAAAIIA4AB0xbcQGoLgCAAAAACw3QTCJQLSAQAAAAAAAAAAEAAAAFoK+9tWrCtDrCobiLnYnfQ="
+                    // txtGlobalObjId.Text         "BAAAAIIA4AB0xbcQGoLgCAAAAACw3QTCJQLSAQAAAAAAAAAAEAAAAFoK+9tWrCtDrCobiLnYnfQ="
+
+                    if (this.txtGlobalObjId.Text == sPidLidCleanGlobalObjectId)
+                    {
+  
+
+                    }
+                    else
+                    {
+ 
+
+                        continue;
+                    }
+
+            
+ 
+                }
+                if (oItem.ItemClass.StartsWith("IPM.A"))
+                { 
+                    Appointment o = (Appointment)oItem;
+                    if (this.txtUID.Text == (o.ICalUid))
+                    {
+                        System.Diagnostics.Debug.WriteLine("Query: " + this.txtGlobalObjId.Text.Trim());
+                        System.Diagnostics.Debug.WriteLine("sPidLidCleanGlobalObjectId: " + sPidLidCleanGlobalObjectId);
+                        System.Diagnostics.Debug.WriteLine("PidLidGlobalObjectId:       " + PidLidGlobalObjectId);
+                        System.Diagnostics.Debug.WriteLine("ICalUid: " + AppointmentSchema.ICalUid);
+                        System.Diagnostics.Debug.WriteLine("Subject: " + ItemSchema.Subject);
+                        System.Diagnostics.Debug.WriteLine(" ");
+
+                    }
+                }
+                else
+                {
+                    MeetingMessage o = (MeetingMessage)oItem;
+                    
+                    if (this.txtUID.Text == (o.ICalUid))
+                    {
+                        System.Diagnostics.Debug.WriteLine("Query: " + this.txtGlobalObjId.Text.Trim());
+                        System.Diagnostics.Debug.WriteLine("sPidLidCleanGlobalObjectId: " + sPidLidCleanGlobalObjectId);
+                        System.Diagnostics.Debug.WriteLine("PidLidGlobalObjectId:       " + PidLidGlobalObjectId);
+                        System.Diagnostics.Debug.WriteLine("ICalUid: " + AppointmentSchema.ICalUid);
+                        System.Diagnostics.Debug.WriteLine("Subject: " + ItemSchema.Subject);
+                        System.Diagnostics.Debug.WriteLine(" ");
+
+                    }
+                }
+               
+          
+ 
+
+                //System.Diagnostics.Debug.WriteLine("Query: " + this.txtGlobalObjId.Text.Trim());
+                //System.Diagnostics.Debug.WriteLine("Data: " + sPidLidCleanGlobalObjectId);
 
                 if (oItem.ItemClass.ToUpper().StartsWith("IPM.APPOINTMENT") )
                 {
@@ -579,69 +622,7 @@ namespace EWSEditor.Forms
                     EWSEditor.Common.Exports.CalendarExport oCalendarExport = new EWSEditor.Common.Exports.CalendarExport();
                     oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(oItem.Service, oItem.Id);
 
-
-                    //if (this.cmboSearchType.Text == "Direct")
-                    //    oListItem = new ListViewItem(iCountAppointment.ToString(), 0);
-                    //else
-                    //    oListItem = new ListViewItem(iCountMore.ToString() + ":" + iCountAppointment.ToString(), 0);
-
-                    //oListItem.SubItems.Add(oAppointmentData.Subject);
-                    //oListItem.SubItems.Add(oAppointmentData.ItemClass);
-                    //oListItem.SubItems.Add(oAppointmentData.OrganizerAddress);
-
-                    //oListItem.SubItems.Add(oAppointmentData.DisplayTo);
-                    //oListItem.SubItems.Add(oAppointmentData.DisplayCc);
-                    //oListItem.SubItems.Add(oAppointmentData.RequiredAttendees);
-                    //oListItem.SubItems.Add(oAppointmentData.OptionalAttendees);
-                    //oListItem.SubItems.Add(oAppointmentData.ICalUid);
-
-                    //oListItem.SubItems.Add(oAppointmentData.PidLidCleanGlobalObjectId);
-                    //oListItem.SubItems.Add(oAppointmentData.PidLidGlobalObjectId);
-
-                    //oListItem.SubItems.Add(oAppointmentData.Start);
-                    //oListItem.SubItems.Add(oAppointmentData.End);
-
-                    //oListItem.SubItems.Add(oAppointmentData.RetentionDate);
-                    //oListItem.SubItems.Add(oAppointmentData.DateTimeCreated);
-
-                    //oListItem.SubItems.Add(oAppointmentData.LastModifiedName);
-                    //oListItem.SubItems.Add(oAppointmentData.LastModifiedTime);
-
-                    //oListItem.SubItems.Add(oAppointmentData.AppointmentType);
-                    //oListItem.SubItems.Add(oAppointmentData.AppointmentState);
-
-                    //oListItem.SubItems.Add(oAppointmentData.IsAllDayEvent);
-                    //oListItem.SubItems.Add(oAppointmentData.IsCancelled);
-                    //oListItem.SubItems.Add(oAppointmentData.IsRecurring);
-                    //oListItem.SubItems.Add(oAppointmentData.IsReminderSet);
-
-                    //oListItem.SubItems.Add(oAppointmentData.IsOnlineMeeting);
-                    //oListItem.SubItems.Add(oAppointmentData.IsResend);
-                    //oListItem.SubItems.Add(oAppointmentData.IsDraft);
-
-                    //oListItem.SubItems.Add(oAppointmentData.Size);
-                    //oListItem.SubItems.Add(oAppointmentData.HasAttachments);
-
-                    //oListItem.SubItems.Add(oAppointmentData.PidLidAppointmentRecur);
-
-                    //oListItem.SubItems.Add(oAppointmentData.PidLidClientIntent);
-                    //oListItem.SubItems.Add(oAppointmentData.ClientInfoString);
-                    //oListItem.SubItems.Add(oAppointmentData.LogTriggerAction);
-
-                    //oListItem.SubItems.Add(oAppointmentData.IsHidden);
-
-                    //// instancecount
-                    //// Exception count
-
-                    //oListItem.SubItems.Add(oAppointmentData.FolderPath);
-                    //oListItem.SubItems.Add(oAppointmentData.StoreEntryId);
-                    //oListItem.SubItems.Add(oAppointmentData.UniqueId);
  
-
-                    //oListItem.Tag = new ItemTag(oAppointmentData.UniqueId, oAppointmentData.ItemClass);
-                    //lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
-                    //oListItem = null;
-
                     //  Load common data listview ------------------------------------------------
                      
                     iCountCommon++;
@@ -652,6 +633,8 @@ namespace EWSEditor.Forms
                         oListItem = new ListViewItem(iCountCommon.ToString() + ":" + iCountCommon.ToString(), 0);
 
                     oListItem.SubItems.Add(oAppointmentData.OrganizerName + " <" +  oAppointmentData.OrganizerAddress + ">");
+                    oListItem.SubItems.Add(oAppointmentData.PidNameCalendarIsOrganizer);
+
                     oListItem.SubItems.Add(""); // From
                     oListItem.SubItems.Add(""); // Sender
  
@@ -706,44 +689,7 @@ namespace EWSEditor.Forms
                     EWSEditor.Common.Exports.MeetingMessageData oMeetingMessageData = new EWSEditor.Common.Exports.MeetingMessageData();
                     EWSEditor.Common.Exports.MeetingMessageExport oMeetingMessageExport = new EWSEditor.Common.Exports.MeetingMessageExport();
                     oMeetingMessageData = oMeetingMessageExport.GetMeetingMessageDataFromItem(oItem.Service, oItem.Id);
-
-                    //if (this.cmboSearchType.Text == "Direct")
-                    //    oListItem = new ListViewItem(iCountMeetingMessage.ToString(), 0);
-                    //else
-                    //    oListItem = new ListViewItem(iCountMore.ToString() + ":" + iCountMeetingMessage.ToString(), 0);
-
-                    //oListItem.SubItems.Add(oMeetingMessageData.Subject);
-                    //oListItem.SubItems.Add(oMeetingMessageData.ItemClass);
-
-                    //oListItem.SubItems.Add(oMeetingMessageData.DisplayTo);
-                    //oListItem.SubItems.Add(oMeetingMessageData.DisplayCc);
  
-                    //oListItem.SubItems.Add(oMeetingMessageData.RetentionDate.ToString());
-                    //oListItem.SubItems.Add(oMeetingMessageData.DateTimeCreated.ToString());
-                    //oListItem.SubItems.Add(oMeetingMessageData.LastModifiedName);
-                    //oListItem.SubItems.Add(oMeetingMessageData.LastModifiedName.ToString());
-                    //oListItem.SubItems.Add(oMeetingMessageData.IsResend.ToString());
-                    //oListItem.SubItems.Add(oMeetingMessageData.IsDraft.ToString());
-                    //oListItem.SubItems.Add(oMeetingMessageData.Size.ToString());
-                    //oListItem.SubItems.Add(oMeetingMessageData.HasAttachments.ToString());
-            
-                    //oListItem.SubItems.Add(oMeetingMessageData.PidLidAppointmentRecur);
-                    //oListItem.SubItems.Add(oMeetingMessageData.PidLidClientIntent);
-                    //oListItem.SubItems.Add(oMeetingMessageData.ClientInfoString);
-                    //oListItem.SubItems.Add(oMeetingMessageData.LogTriggerAction);
-
-                    //oListItem.SubItems.Add(oMeetingMessageData.ICalUid);  // ICalUid
-                    //oListItem.SubItems.Add(oMeetingMessageData.PidLidCleanGlobalObjectId);
-                    //oListItem.SubItems.Add(oMeetingMessageData.PidLidGlobalObjectId);
-   
-                    //oListItem.SubItems.Add(oMeetingMessageData.FolderPath); 
-                    //oListItem.SubItems.Add(oMeetingMessageData.StoreEntryId);
-                    //oListItem.SubItems.Add(oItem.Id.UniqueId);
- 
-
-                    //oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass);
-                    //lvItemsMessages.Items.AddRange(new ListViewItem[] { oListItem }); ;
-                    //oListItem = null;
 
                     //  Load common data listview ------------------------------------------------
                     iCountCommon++;
@@ -754,6 +700,8 @@ namespace EWSEditor.Forms
                         oListItem = new ListViewItem(iCountCommon.ToString() + ":" + iCountCommon.ToString(), 0);
 
                     oListItem.SubItems.Add(""); // Organizer
+                    oListItem.SubItems.Add(oMeetingMessageData.PidNameCalendarIsOrganizer);
+
                     oListItem.SubItems.Add(oMeetingMessageData.From);
                     oListItem.SubItems.Add(oMeetingMessageData.Sender);
 
@@ -810,12 +758,12 @@ namespace EWSEditor.Forms
             oListItem = null;
 
             lvCommon.Visible = true;
-            //lvItemsMessages.Visible = true;
-            //lvItems.Visible = true;
-
+ 
 
             return bRet;
         }
+
+        #region CalendarCheck definition
 
         string GetappointmentFromMeetingMessage(MeetingMessage oMeetingMessage)
         {
@@ -922,19 +870,15 @@ namespace EWSEditor.Forms
         //    //oApptProps.ViewEnd = oAppointment.ViewEndTime;
         //}
 
-  
 
-
-
-        //xx
 
         // http://stackoverflow.com/questions/3829039/get-the-organizers-calendar-appointment-using-ews-for-exchange-2010
-            
-   
 
-       
 
- 
+
+        #endregion
+
+
 
 
         private bool ProcessSearch(FolderId oFolderId, int iPageSize)
@@ -968,14 +912,7 @@ namespace EWSEditor.Forms
                     FindItemsResults<Item> oFindItemsResults = null;
                     oFindItemsResults = DoSearch(oFolderId, ref oItemView);
 
-                    
-
-
-
-                    //ConfigureListView_Calendar(ref lvItems, cmboSearchType.Text.Trim());
-
-                    //ConfigureListView_Message(ref lvItemsMessages, cmboSearchType.Text.Trim());
-
+ 
                     ConfigureListView_Common(ref lvCommon, cmboSearchType.Text.Trim());
 
                     AddSearchResultsToListViews(oFindItemsResults, 0);
@@ -991,13 +928,8 @@ namespace EWSEditor.Forms
 
                     int offset = 0;
 
-
                     bool MoreItems = true;
-                    //ListViewItem oListItem = null;
-
-                    //ConfigureListView_Calendar(ref lvItems, cmboSearchType.Text.Trim());
-
-                    //ConfigureListView_Message(ref lvItemsMessages, cmboSearchType.Text.Trim());
+ 
                  
                     ConfigureListView_Common(ref lvCommon, cmboSearchType.Text.Trim());
 
@@ -1058,6 +990,12 @@ namespace EWSEditor.Forms
             PropertySet oPropertySet = new PropertySet(BasePropertySet.IdOnly);
             oPropertySet.Add(ItemSchema.LastModifiedTime);
             oPropertySet.Add(ItemSchema.ItemClass);
+            oPropertySet.Add(PidLidCleanGlobalObjectId);
+            oPropertySet.Add(PidLidGlobalObjectId);
+
+            oPropertySet.Add(ItemSchema.Subject);
+            oPropertySet.Add(AppointmentSchema.ICalUid);
+
             //oPropertySet.Add(ItemSchema.LastModifiedTime);
             //oPropertySet.Add(PidLidAppointmentRecur);
             //oPropertySet.Add(PidLidClientIntent);
@@ -1078,7 +1016,7 @@ namespace EWSEditor.Forms
             iPageSize = (int)this.numPageSize.Value;
             this.Cursor = Cursors.WaitCursor;
             ProcessSearch(_CurrentFolderId, iPageSize);
-            //toolStripStatusLabel1.Text = "Ready to search."; 
+            toolStripStatusLabel1.Text = "Ready to search."; 
             this.Cursor = Cursors.Default;
         }
 
@@ -1101,7 +1039,7 @@ namespace EWSEditor.Forms
 
         private void btnMailboxSearch_Click(object sender, EventArgs e)
         {
-            //DoMailboxSearch();
+ 
         }
 
 
@@ -1114,35 +1052,9 @@ namespace EWSEditor.Forms
 
         private void lvItems_DoubleClick(object sender, EventArgs e)
         {
-            //if (lvItems.SelectedItems.Count > 0)
-            //{
-            //    ItemTag oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
-            //    string sId = oItemTag.Id.UniqueId;
-            //    //string sClass = oItemTag.ItemClass;
-
-            //    DisplayItems(sId);
-            //    //DisplayItems(sId, "IPM.Appointment");
-            //}
+ 
         }
-
-        //private void DisplayItems(string sId, string sClass)
-        //{
-
-        //    ItemId oItemId = new ItemId(sId);
-        //    List<ItemId> item = new List<ItemId>();
-        //    item.Add(oItemId);
-        //    DisplayItems(item, sClass);
-        //}
-
-        //private void DisplayItems(string sId, string sClass)
-        //{
-        //    ItemId oItemId = new ItemId(sId);
-        //    List<ItemId> item = new List<ItemId>();
-        //    item.Add(oItemId);
-        //    DisplayItems(item, sClass);
-        //}
-
-     
+ 
 
         private void DisplayItems(string sId)
         {
@@ -1162,45 +1074,7 @@ namespace EWSEditor.Forms
                 this
                 );
         }
-
-        //private void DisplayItems(List<ItemId> oItemIds, string sClass)
-        //{
-        //    PropertySet oPropertySet = null;
-
-        //    if (sClass.StartsWith("IPM.Appointment"))
-        //        oPropertySet = EWSEditor.Common.Exports.MeetingMessageExport.GetMeetingMessageDataPropset(false);
-        //    if (sClass.StartsWith("IPM.Schedule"))
-        //        oPropertySet = EWSEditor.Common.Exports.CalendarExport.GetCalendarPropset(false);
- 
-        //    ItemsContentForm.Show(
-        //        "Displaying items",
-        //        oItemIds,
-        //        _CurrentService,
-        //        this 
-        //        );
-        //}
-
-        //private void DisplayItem(string sId, string sClass)
-        //{
-        //    PropertySet oPropertySet = null;
-
-        //    if (sClass.StartsWith("IPM.Appointment"))
-        //        oPropertySet = EWSEditor.Common.Exports.ExportMeetingMessage.GetMeetingMessageDataPropset(false);
-        //    if (sClass.StartsWith("IPM.SCHEDULE"))
-        //        oPropertySet = EWSEditor.Common.Exports.CalendarExport.GetCalendarPropset(false);
-
-        //    ItemId oItemId = new ItemId(sId);
-        //    List<ItemId> item = new List<ItemId>();
-        //    item.Add(oItemId);
-
-        //    ItemsContentForm.Show(
-        //        "Displaying item",
-        //        item,
-        //        _CurrentService,
-        //        this,
-        //        oPropertySet
-        //        );
-        //}
+         
 
         private void chkClass_CheckedChanged(object sender, EventArgs e)
         {
@@ -1237,7 +1111,8 @@ namespace EWSEditor.Forms
                 case "ContainsSubstring":
                     searchFilterCollection.Add(new SearchFilter.ContainsSubstring(oProp, sValue));
                     break;
-                case "IsEqualTo":
+                case "IsEqualTo":  //Convert.FromBase64String
+                    //searchFilterCollection.Add(new SearchFilter.IsEqualTo(oProp, Convert.FromBase64String(sValue)));
                     searchFilterCollection.Add(new SearchFilter.IsEqualTo(oProp, sValue));
                     break;
                 case "IsGreaterThan":
@@ -1309,6 +1184,8 @@ namespace EWSEditor.Forms
             this.Cursor = Cursors.Default;
         }
 
+        #region ExportCalendarItems definition
+
         private void ExportCalendarItems() 
         { 
             SearchCalendarExportPicker oForm = new SearchCalendarExportPicker();
@@ -1372,10 +1249,26 @@ namespace EWSEditor.Forms
                         oForm.chkIncludeMime.Checked
                         );
 
-                    //oForm.chkIncludeAttachments
-                    // oForm.chkIncludeBodyProperties
-                    // oForm.chkIncludeMime
+  
                 }
+
+                if (oForm.rdoDiagnosticExport.Checked == true)
+                {
+                    string sPath = oForm.txtDiagnosticExportFolderPath.Text.Trim();
+                    string sRoot = Path.GetPathRoot(sPath);
+
+                    if (CheckFolder(sRoot))
+                    {
+                        if (File.Exists(sPath))
+                        {
+                            MessageBox.Show("File Already Exists", "File already exists.  Choose a different file name.");
+                        }
+                        else
+                        {
+                            this.ExportDiagProperties(sPath);                            
+                        }
+                    }
+                }  
 
                 if (oForm.rdoExportItemsAsBlobs.Checked == true)
                 {
@@ -1434,18 +1327,7 @@ namespace EWSEditor.Forms
             string sHeader = string.Empty;
             string sLine = string.Empty;
 
-            //StreamWriter w = File.AppendText(sFilePath);
-            //char[] TrimChars = { ',', ' ' };
-            //StringBuilder SbHeader = new StringBuilder();
-            //foreach (ColumnHeader oCH in oListView.Columns)
-            //{
-            //    SbHeader.Append(oCH.Text);
-            //    SbHeader.Append(",");
-            //}
-            //sHeader = SbHeader.ToString();
-            //sHeader = sHeader.TrimEnd(TrimChars);
-            //w.WriteLine(sHeader);
-
+ 
             ItemId oItemId = null;
             CalendarItemTag oCalendarItemTag = null;
             string sFile = string.Empty;
@@ -1459,7 +1341,7 @@ namespace EWSEditor.Forms
             AppointmentData oAppointmentData;
             MeetingMessageData oMeetingMessageData;
 
-            //E:\msft tools\ewseditor\EWSEditor\bin\Debug\Export
+      
             StreamWriter swAppointment = File.CreateText(sAppointmentFilePath);
             StreamWriter swMeetingMessage = File.CreateText(sMeetingMessageFilePath);
 
@@ -1559,34 +1441,36 @@ namespace EWSEditor.Forms
             return bRet;
         }
 
-        private void lvItemsMessages_DoubleClick(object sender, EventArgs e)
-        {
-            //if (lvItems.SelectedItems.Count > 0)
-            //{
-            //    ItemTag oItemTag = (ItemTag)lvItemsMessages.SelectedItems[0].Tag;
-            //    string sId = oItemTag.Id.UniqueId;
-            //    //string sClass = oItemTag.ItemClass;
+        #endregion
 
-            //    DisplayItems(sId);
-            //    //DisplayItems(sId, "IPM.Schedule");
-            //}
+        //private void lvItemsMessages_DoubleClick(object sender, EventArgs e)
+        //{
+        //    //if (lvItems.SelectedItems.Count > 0)
+        //    //{
+        //    //    ItemTag oItemTag = (ItemTag)lvItemsMessages.SelectedItems[0].Tag;
+        //    //    string sId = oItemTag.Id.UniqueId;
+        //    //    //string sClass = oItemTag.ItemClass;
 
-        }
+        //    //    DisplayItems(sId);
+        //    //    //DisplayItems(sId, "IPM.Schedule");
+        //    //}
 
-        private void lvItemsMessages_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        //}
 
-        }
+        //private void lvItemsMessages_SelectedIndexChanged(object sender, EventArgs e)
+        //{
 
-        private void lvItems_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            //LvColumnSort(ref lvItems, e.Column);
-        }
+        //}
 
-        private void lvItemsMessages_ColumnClick(object sender, ColumnClickEventArgs e)
-        {
-            //LvColumnSort(ref lvItemsMessages, e.Column);
-        }
+        //private void lvItems_ColumnClick(object sender, ColumnClickEventArgs e)
+        //{
+        //    //LvColumnSort(ref lvItems, e.Column);
+        //}
+
+        //private void lvItemsMessages_ColumnClick(object sender, ColumnClickEventArgs e)
+        //{
+        //    //LvColumnSort(ref lvItemsMessages, e.Column);
+        //}
 
         private void lvCommon_ColumnClick(object sender, ColumnClickEventArgs e)
         {
@@ -1630,7 +1514,19 @@ namespace EWSEditor.Forms
         {
 
         }
- 
+
+
+        public string GetExtendedProp_ByteArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+            byte[] bytearrVal;
+
+            string sReturn = "";
+            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bytearrVal))  // Example: CleanGlobalObjectId
+                sReturn = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
+            else
+                sReturn = "";
+            return sReturn;
+        }
 
         //    }
 
@@ -1809,6 +1705,83 @@ namespace EWSEditor.Forms
         //    }
         //}
 
+
+        private bool ExportDiagProperties(string sDiagFilePath)
+        {
+            bool bRet = false;
+            EWSEditor.Common.Exports.CalendarExport oCalendarExport = new EWSEditor.Common.Exports.CalendarExport();
+            EWSEditor.Common.Exports.MeetingMessageExport oMeetingMessageExport = new EWSEditor.Common.Exports.MeetingMessageExport();
+
+            string sHeader = string.Empty;
+            string sLine = string.Empty;
+ 
+
+            ItemId oItemId = null;
+            CalendarItemTag oCalendarItemTag = null;
+            string sFile = string.Empty;
+
+            int iCount = 0;
+            string s = string.Empty;
+            string sId = string.Empty;
+            string sUID = string.Empty;
+            string sClass = string.Empty;
+
+            AppointmentData oAppointmentData;
+            MeetingMessageData oMeetingMessageData;
+
+            //E:\msft tools\ewseditor\EWSEditor\bin\Debug\Export
+            StreamWriter swDiag = File.CreateText(sDiagFilePath);
+
+
+            sHeader = oCalendarExport.GetDiagMeetingMessageDataAsCsvHeaders();
+            swDiag.WriteLine(sHeader);
+ 
+
+            foreach (ListViewItem oListViewItem in lvCommon.Items)
+            {
+                if (oListViewItem.Selected == true)
+                {
+                    iCount++;
+                    sLine = string.Empty;
+                    oCalendarItemTag = (CalendarItemTag)oListViewItem.Tag;
+                    sId = oCalendarItemTag.Id.UniqueId;
+                    sUID = oCalendarItemTag.ItemUid;
+                    sClass = oCalendarItemTag.ItemClass.ToUpper();
+                    oItemId = new ItemId(sId);
+
+                    if (sClass.StartsWith("IPM.APPOINTMENT"))
+                    {
+                        oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(_CurrentService, oItemId,
+                            false,
+                            false,
+                            false
+                            );
+                        sLine = oCalendarExport.GetDiagtAppointmenDataAsCsv(oAppointmentData);
+                        swDiag.WriteLine(sLine);
+                    }
+
+
+                    if (sClass.StartsWith("IPM.SCHEDULE"))
+                    {
+                        oMeetingMessageData = oMeetingMessageExport.GetMeetingMessageDataFromItem(_CurrentService, oItemId,
+                            false,
+                            false,
+                            false
+                            );
+                        sLine = oMeetingMessageExport.GetDiagMeetingMessageDataAsCsv(oMeetingMessageData);
+                        swDiag.WriteLine(sLine);
+                    }
+                    bRet = true;
+                }
+            }
+
+            swDiag.Close();
+ 
+
+            return bRet;
+        }
+
     }
+ 
  
 }

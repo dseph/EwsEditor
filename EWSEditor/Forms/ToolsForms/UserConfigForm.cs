@@ -205,14 +205,23 @@ namespace EWSEditor.Forms
 
         private void btnGetFolderId_Click(object sender, EventArgs e)
         {
-            FolderId folderId = null;
-            if (Forms.FolderIdDialog.ShowDialog(ref folderId) == DialogResult.OK)
+
+            FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
+            oForm.ShowDialog();
+            if (oForm.ChoseOK == true)
             {
-               // SetAndDisplayFolderId(folderId);
-                _ChosenFolderId = folderId;
-                txtFolderId.Text = PropertyInformation.TypeValues.FolderIdTypeValue.GetValue(folderId, true);
-  
+                txtFolderId.Text = PropertyInformation.TypeValues.FolderIdTypeValue.GetValue(oForm.ChosenFolderId, true);
+                
             }
+
+            //FolderId folderId = null;
+            //if (Forms.FolderIdDialog.ShowDialog(ref folderId) == DialogResult.OK)
+            //{
+            //   // SetAndDisplayFolderId(folderId);
+            //    _ChosenFolderId = folderId;
+            //    txtFolderId.Text = PropertyInformation.TypeValues.FolderIdTypeValue.GetValue(folderId, true);
+  
+            //}
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
