@@ -85,7 +85,7 @@ namespace EWSEditor.Forms
 
             //cmboLogicalOperation.Text = "And";
 
-            cmboUidConditional.Text = "ContainsSubstring";
+            cmboUidConditional.Text = "IsEqualTo";
             cmboSubjectConditional.Text = "ContainsSubstring";
             cmboToConditional.Text = "ContainsSubstring";
             cmboCCConditional.Text = "ContainsSubstring";
@@ -120,6 +120,7 @@ namespace EWSEditor.Forms
                 this.txtCC.Enabled = false;
                 this.txtBody.Enabled = false;
                 this.cmboClass.Enabled = false;
+                this.txtGlobalObjId.Enabled = false;
                  
 
                 this.chkUID.Enabled = false;
@@ -128,6 +129,7 @@ namespace EWSEditor.Forms
                 this.chkCC.Enabled = false;
                 this.chkBody.Enabled = false;
                 this.chkClass.Enabled = false;
+                this.chkGlobalObjId.Enabled = false;
 
                 cmboUidConditional.Enabled = false;
                 cmboSubjectConditional.Enabled = false;
@@ -156,6 +158,7 @@ namespace EWSEditor.Forms
                 this.txtBody.Enabled = true;
                 this.cmboClass.Enabled = true;
                 this.txtGlobalObjId.Enabled = true;
+                 
 
                 cmboUidConditional.Enabled = chkSubject.Checked;
                 cmboSubjectConditional.Enabled = chkSubject.Checked;
@@ -174,7 +177,8 @@ namespace EWSEditor.Forms
             this.txtCC.Enabled = chkCC.Checked;
             this.txtBody.Enabled = chkBody.Checked;
             this.cmboClass.Enabled = chkClass.Checked;
- 
+            this.txtGlobalObjId.Enabled = chkGlobalObjId.Checked;
+  
         }
 
         private bool CheckFields()

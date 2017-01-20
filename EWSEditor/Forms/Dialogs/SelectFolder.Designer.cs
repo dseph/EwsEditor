@@ -53,7 +53,7 @@
             this.FolderTreeView.SelectedImageIndex = 1;
             this.FolderTreeView.ShowNodeToolTips = true;
             this.FolderTreeView.Size = new System.Drawing.Size(613, 475);
-            this.FolderTreeView.TabIndex = 1;
+            this.FolderTreeView.TabIndex = 0;
             this.FolderTreeView.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.FolderTreeView_BeforeCollapse);
             this.FolderTreeView.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.FolderTreeView_BeforeExpand);
             this.FolderTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.FolderTreeView_AfterSelect);

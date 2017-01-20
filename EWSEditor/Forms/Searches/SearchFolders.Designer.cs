@@ -60,7 +60,7 @@
             this.txtClass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtClass.Name = "txtClass";
             this.txtClass.Size = new System.Drawing.Size(400, 22);
-            this.txtClass.TabIndex = 11;
+            this.txtClass.TabIndex = 7;
             // 
             // chkClass
             // 
@@ -70,7 +70,7 @@
             this.chkClass.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkClass.Name = "chkClass";
             this.chkClass.Size = new System.Drawing.Size(64, 21);
-            this.chkClass.TabIndex = 10;
+            this.chkClass.TabIndex = 6;
             this.chkClass.Text = "Class";
             this.chkClass.UseVisualStyleBackColor = true;
             this.chkClass.CheckedChanged += new System.EventHandler(this.chkClass_CheckedChanged);
@@ -108,7 +108,7 @@
             this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(153, 29);
-            this.btnSearch.TabIndex = 16;
+            this.btnSearch.TabIndex = 14;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -124,7 +124,7 @@
             this.lvItems.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvItems.Name = "lvItems";
             this.lvItems.Size = new System.Drawing.Size(741, 179);
-            this.lvItems.TabIndex = 17;
+            this.lvItems.TabIndex = 15;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_DoubleClick);
             // 
@@ -134,12 +134,12 @@
             this.mnuFolderStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFolderStripFolderProperties});
             this.mnuFolderStrip.Name = "mnuFolderStrip";
-            this.mnuFolderStrip.Size = new System.Drawing.Size(195, 28);
+            this.mnuFolderStrip.Size = new System.Drawing.Size(201, 30);
             // 
             // mnuFolderStripFolderProperties
             // 
             this.mnuFolderStripFolderProperties.Name = "mnuFolderStripFolderProperties";
-            this.mnuFolderStripFolderProperties.Size = new System.Drawing.Size(194, 24);
+            this.mnuFolderStripFolderProperties.Size = new System.Drawing.Size(200, 26);
             this.mnuFolderStripFolderProperties.Text = "Folder Poperties...";
             this.mnuFolderStripFolderProperties.Click += new System.EventHandler(this.mnuFolderStripFolderProperties_Click);
             // 
@@ -175,7 +175,7 @@
             this.txtDisplayName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDisplayName.Name = "txtDisplayName";
             this.txtDisplayName.Size = new System.Drawing.Size(400, 22);
-            this.txtDisplayName.TabIndex = 14;
+            this.txtDisplayName.TabIndex = 10;
             // 
             // chkDisplayName
             // 
@@ -185,7 +185,7 @@
             this.chkDisplayName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkDisplayName.Name = "chkDisplayName";
             this.chkDisplayName.Size = new System.Drawing.Size(117, 21);
-            this.chkDisplayName.TabIndex = 13;
+            this.chkDisplayName.TabIndex = 9;
             this.chkDisplayName.Text = "Display Name";
             this.chkDisplayName.UseVisualStyleBackColor = true;
             this.chkDisplayName.CheckedChanged += new System.EventHandler(this.chkSubject_CheckedChanged);
@@ -226,11 +226,11 @@
             "IsLessThan",
             "IsGreaterThanOrEqualTo",
             "IsNotEqualTo"});
-            this.cmboClassConditional.Location = new System.Drawing.Point(585, 48);
+            this.cmboClassConditional.Location = new System.Drawing.Point(555, 48);
             this.cmboClassConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboClassConditional.Name = "cmboClassConditional";
-            this.cmboClassConditional.Size = new System.Drawing.Size(181, 24);
-            this.cmboClassConditional.TabIndex = 12;
+            this.cmboClassConditional.Size = new System.Drawing.Size(211, 24);
+            this.cmboClassConditional.TabIndex = 8;
             // 
             // cmboDisplayNameConditional
             // 
@@ -245,11 +245,11 @@
             "IsLessThan",
             "IsGreaterThanOrEqualTo",
             "IsNotEqualTo"});
-            this.cmboDisplayNameConditional.Location = new System.Drawing.Point(585, 80);
+            this.cmboDisplayNameConditional.Location = new System.Drawing.Point(555, 80);
             this.cmboDisplayNameConditional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboDisplayNameConditional.Name = "cmboDisplayNameConditional";
-            this.cmboDisplayNameConditional.Size = new System.Drawing.Size(181, 24);
-            this.cmboDisplayNameConditional.TabIndex = 15;
+            this.cmboDisplayNameConditional.Size = new System.Drawing.Size(211, 24);
+            this.cmboDisplayNameConditional.TabIndex = 11;
             // 
             // label5
             // 
@@ -257,7 +257,7 @@
             this.label5.Location = new System.Drawing.Point(15, 119);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(124, 17);
-            this.label5.TabIndex = 18;
+            this.label5.TabIndex = 12;
             this.label5.Text = "Logical Operation:";
             // 
             // cmboLogicalOperation
@@ -271,7 +271,7 @@
             this.cmboLogicalOperation.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmboLogicalOperation.Name = "cmboLogicalOperation";
             this.cmboLogicalOperation.Size = new System.Drawing.Size(126, 24);
-            this.cmboLogicalOperation.TabIndex = 19;
+            this.cmboLogicalOperation.TabIndex = 13;
             // 
             // SearchFolders
             // 
