@@ -118,6 +118,7 @@ namespace EWSEditor.Common.Exports
 
             int iColumnCount = 0;
 
+            int iPropertyId = 0;
             AdditionalPropertyDefinition oAdditionalPropertyDefinition = null;
             string sUseLine = string.Empty;
             int iLine = 0;
@@ -140,11 +141,28 @@ namespace EWSEditor.Common.Exports
                         return false;
                     }
 
-                    
+                    string sVal = sColumns[3].Trim().ToUpper();
+                    try
+                    {
+                        if (sVal.StartsWith("0X"))  // Hex value?
+                        {
+                            sVal = sVal.Replace("0X", ""); // remove hex prefix
+                            iPropertyId = Convert.ToInt32(sVal, 16);    // Convert from hex to int.
+                        }
+                        else
+                            iPropertyId = Convert.ToInt32(sColumns[3].Trim());  // value is already an int.
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format("Line {0} of the CSV file has a non-numeric PropertyId.", iLine), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+
+ 
                     oAdditionalPropertyDefinition.PropertyName = sColumns[0].Trim();
                     oAdditionalPropertyDefinition.PropertySetId = sColumns[1].Trim();
                     oAdditionalPropertyDefinition.PropertyDefinitionType = sColumns[2].Trim();
-                    oAdditionalPropertyDefinition.PropertyId = sColumns[3].Trim();
+                    oAdditionalPropertyDefinition.PropertyId = iPropertyId;
                     oAdditionalPropertyDefinition.PropertyType = sColumns[4].Trim();
 
                     oAdditionalPropertyDefinitions.Add(oAdditionalPropertyDefinition);
@@ -165,8 +183,9 @@ namespace EWSEditor.Common.Exports
 
             string sFile = string.Empty;
 
+            string sPath = (Path.GetDirectoryName(sChosenFile));
 
-            if (UserIoHelper.PickLoadFromFile(Application.UserAppDataPath, "*.csv", ref sFile, "CSV files (*.csv)|*.csv"))
+            if (UserIoHelper.PickLoadFromFile(sPath, "*.csv", ref sFile, "CSV files (*.csv)|*.csv"))
             {
                 try
                 {
@@ -233,6 +252,7 @@ namespace EWSEditor.Common.Exports
 
             foreach (ExtendedPropertyDefinition oEPD in oExtendedPropertyDefinitions)
             {
+                System.Diagnostics.Debug.WriteLine(oEPD.ToString());
                 oPropertySet.Add(oEPD);
             }
         }
@@ -283,6 +303,10 @@ namespace EWSEditor.Common.Exports
 
                 }  // end switch
 
+                if (sExtendedValue == null)
+                {
+                    sExtendedValue ="";
+                }
                 if (sExtendedValue.Contains(','))
                     sExtendedValue = sExtendedValue.Replace(",", " "); // need to strip commas as this is a csv file.
 
@@ -294,7 +318,7 @@ namespace EWSEditor.Common.Exports
 
             }  // end foreach
 
-            sItemLine += oStringBuilder.ToString();
+            sItemLine = oStringBuilder.ToString();
             sItemLine = sItemLine.TrimEnd(TrimChars);
             return sItemLine;
         }
@@ -306,7 +330,7 @@ namespace EWSEditor.Common.Exports
         public string PropertyName = string.Empty;
         public string PropertySetId = string.Empty;
         public string PropertyDefinitionType = string.Empty;
-        public string PropertyId = string.Empty;
+        public int PropertyId = 0;
         public string PropertyType = string.Empty;
 
  
