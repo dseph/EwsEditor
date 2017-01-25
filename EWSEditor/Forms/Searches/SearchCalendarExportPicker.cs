@@ -35,6 +35,7 @@ namespace EWSEditor.Forms
             this.txtMeetingMessageDetailedFolderPath.Text = StarFolder + "\\Export\\ExportedDetailedMeetingMessageResults.CSV";
             this.txtDiagnosticExportFolderPath.Text = StarFolder + "\\Export\\ExportedDiagnosticMeetingMessageResults.CSV";
             this.txtBlobFolderPath.Text = Application.StartupPath + "\\Export";
+            this.txtIncludeUsersAdditionalPropertiesFile.Text = Application.StartupPath + "\\AdditionalItemsExamples";
            
             SetEnablement();
         }
@@ -199,9 +200,10 @@ namespace EWSEditor.Forms
 
             List<AdditionalPropertyDefinition> oAPD = null;
             List<ExtendedPropertyDefinition> oEPD = null;
-
+ 
             string sChosenFile = string.Empty;
-        
+             
+            sChosenFile = txtIncludeUsersAdditionalPropertiesFile.Text;
              
             if (AdditionalProperties.GetAdditionalPropertiesFromCsv(ref sChosenFile, ref oAPD, ref oEPD))
             {

@@ -67,7 +67,7 @@ namespace EWSEditor.Common
             string sExtendedValue = string.Empty;
 
             string s = string.Empty;
-            foreach (ListViewItem oListViewItem in oListView.Items)
+            foreach (ListViewItem oListViewItem in oListView.SelectedItems)
             {
                 StringBuilder SbLine = new StringBuilder();
                 //oCalendarItemTag = (CalendarItemTag)oListViewItem.Tag;
@@ -94,7 +94,7 @@ namespace EWSEditor.Common
                 //  Add Additional Properties ----------------------------------------------
 
 
-               // StringBuilder oStringBuilder = new StringBuilder();
+                StringBuilder oStringBuilder = new StringBuilder();
 
                 if (oExtendedPropertyDefinitions != null)
                 {
@@ -103,7 +103,7 @@ namespace EWSEditor.Common
                         oItemId,
                         oExtendedPropertyDefinitions
                         );
-                    sLine = "," + sExt;
+                    sLine += "," + sExt;
 
                     //sLine = SbLine.ToString();
                     sLine = sLine.TrimEnd(TrimChars);

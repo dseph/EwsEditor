@@ -18,7 +18,13 @@ namespace EWSEditor.Common
 
             string sReturn = "";
             if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oDateTime))
-                sReturn = oDateTime.ToString();
+            {
+                if (oDateTime == null)
+                    sReturn = "";
+
+                else
+                    sReturn = oDateTime.ToString();
+            }
             else
                 sReturn = "";
             return sReturn;
@@ -30,7 +36,14 @@ namespace EWSEditor.Common
 
             string sReturn = "";
             if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bytearrVal))  // Example: CleanGlobalObjectId
-                sReturn = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
+            {
+                {
+                    if (bytearrVal == null)
+                        sReturn = "";
+                    else
+                        sReturn = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
+                }
+            }
             else
                 sReturn = "";
             return sReturn;
@@ -42,7 +55,12 @@ namespace EWSEditor.Common
 
             string sReturn = "";
             if (oItem.TryGetProperty(oExtendedPropertyDefinition, out sString))
-                sReturn = sString;
+            {
+                if (sString == null)
+                    sReturn = "";
+                else
+                    sReturn = sString;
+            }
             else
                 sReturn = "";
             return sReturn;
@@ -54,9 +72,19 @@ namespace EWSEditor.Common
 
             string sReturn = "";
             if (oItem.TryGetProperty(oExtendedPropertyDefinition, out lVal))
-                sReturn = lVal.ToString();
+            {
+                if (lVal == null)
+                    sReturn = "";
+                else
+                    sReturn = lVal.ToString();
+            }
             else
                 sReturn = "";
+
+            if (sReturn == null)
+            {
+                sReturn = "";
+            }
             return sReturn;
         }
 
@@ -66,7 +94,12 @@ namespace EWSEditor.Common
 
             string sReturn = "";
             if (oItem.TryGetProperty(oExtendedPropertyDefinition, out lVal))
-                sReturn = lVal.ToString();
+            {
+                if (lVal == null)
+                    sReturn = "";
+                else
+                    sReturn = lVal.ToString();
+            }
             else
                 sReturn = "";
             return sReturn;
@@ -78,7 +111,12 @@ namespace EWSEditor.Common
 
             string sReturn = "";
             if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bVal))
-                sReturn = bVal.ToString();
+            {
+                if (bVal == null)
+                    sReturn = "";
+                else
+                    sReturn = bVal.ToString();
+            }
             else
                 sReturn = "";
             return sReturn;
