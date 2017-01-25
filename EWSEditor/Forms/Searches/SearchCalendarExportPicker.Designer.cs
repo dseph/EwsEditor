@@ -53,6 +53,10 @@
             this.btnPickFolderDisplayedResults = new System.Windows.Forms.Button();
             this.txtDisplayedResultsFolderPath = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.chkIncludeUsersAdditionalProperties = new System.Windows.Forms.CheckBox();
+            this.txtIncludeUsersAdditionalPropertiesFile = new System.Windows.Forms.TextBox();
+            this.btnPickFolderIncludeUsersAdditionalProperties = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,6 +114,7 @@
             this.chkIncludeMime.TabIndex = 12;
             this.chkIncludeMime.Text = "Include MIME";
             this.chkIncludeMime.UseVisualStyleBackColor = true;
+            this.chkIncludeMime.CheckedChanged += new System.EventHandler(this.chkIncludeMime_CheckedChanged);
             // 
             // label1
             // 
@@ -126,14 +131,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAppointmentDetailedFolderPath.Location = new System.Drawing.Point(253, 115);
             this.txtAppointmentDetailedFolderPath.Name = "txtAppointmentDetailedFolderPath";
-            this.txtAppointmentDetailedFolderPath.Size = new System.Drawing.Size(554, 22);
+            this.txtAppointmentDetailedFolderPath.Size = new System.Drawing.Size(526, 22);
             this.txtAppointmentDetailedFolderPath.TabIndex = 6;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(766, 401);
+            this.btnCancel.Location = new System.Drawing.Point(734, 455);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 28);
@@ -145,7 +150,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(659, 401);
+            this.OkButton.Location = new System.Drawing.Point(627, 455);
             this.OkButton.Margin = new System.Windows.Forms.Padding(4);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 28);
@@ -182,7 +187,7 @@
             this.groupBox1.Controls.Add(this.chkIncludeMime);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(850, 372);
+            this.groupBox1.Size = new System.Drawing.Size(822, 364);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Export Type";
@@ -190,7 +195,7 @@
             // btnPickFolderDiagnosticExport
             // 
             this.btnPickFolderDiagnosticExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPickFolderDiagnosticExport.Location = new System.Drawing.Point(813, 256);
+            this.btnPickFolderDiagnosticExport.Location = new System.Drawing.Point(785, 256);
             this.btnPickFolderDiagnosticExport.Name = "btnPickFolderDiagnosticExport";
             this.btnPickFolderDiagnosticExport.Size = new System.Drawing.Size(31, 22);
             this.btnPickFolderDiagnosticExport.TabIndex = 16;
@@ -204,7 +209,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDiagnosticExportFolderPath.Location = new System.Drawing.Point(160, 256);
             this.txtDiagnosticExportFolderPath.Name = "txtDiagnosticExportFolderPath";
-            this.txtDiagnosticExportFolderPath.Size = new System.Drawing.Size(647, 22);
+            this.txtDiagnosticExportFolderPath.Size = new System.Drawing.Size(619, 22);
             this.txtDiagnosticExportFolderPath.TabIndex = 15;
             this.txtDiagnosticExportFolderPath.Visible = false;
             // 
@@ -232,7 +237,7 @@
             // btnPickFolderBlobProperties
             // 
             this.btnPickFolderBlobProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPickFolderBlobProperties.Location = new System.Drawing.Point(813, 314);
+            this.btnPickFolderBlobProperties.Location = new System.Drawing.Point(785, 311);
             this.btnPickFolderBlobProperties.Name = "btnPickFolderBlobProperties";
             this.btnPickFolderBlobProperties.Size = new System.Drawing.Size(31, 22);
             this.btnPickFolderBlobProperties.TabIndex = 21;
@@ -243,7 +248,7 @@
             // btnPickFolderMeetingMessageDetailedProperties
             // 
             this.btnPickFolderMeetingMessageDetailedProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPickFolderMeetingMessageDetailedProperties.Location = new System.Drawing.Point(813, 141);
+            this.btnPickFolderMeetingMessageDetailedProperties.Location = new System.Drawing.Point(785, 141);
             this.btnPickFolderMeetingMessageDetailedProperties.Name = "btnPickFolderMeetingMessageDetailedProperties";
             this.btnPickFolderMeetingMessageDetailedProperties.Size = new System.Drawing.Size(31, 22);
             this.btnPickFolderMeetingMessageDetailedProperties.TabIndex = 10;
@@ -257,7 +262,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMeetingMessageDetailedFolderPath.Location = new System.Drawing.Point(253, 141);
             this.txtMeetingMessageDetailedFolderPath.Name = "txtMeetingMessageDetailedFolderPath";
-            this.txtMeetingMessageDetailedFolderPath.Size = new System.Drawing.Size(554, 22);
+            this.txtMeetingMessageDetailedFolderPath.Size = new System.Drawing.Size(526, 22);
             this.txtMeetingMessageDetailedFolderPath.TabIndex = 9;
             // 
             // label5
@@ -272,7 +277,7 @@
             // btnPickFolderAppointmentDetailedProperties
             // 
             this.btnPickFolderAppointmentDetailedProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPickFolderAppointmentDetailedProperties.Location = new System.Drawing.Point(813, 115);
+            this.btnPickFolderAppointmentDetailedProperties.Location = new System.Drawing.Point(785, 115);
             this.btnPickFolderAppointmentDetailedProperties.Name = "btnPickFolderAppointmentDetailedProperties";
             this.btnPickFolderAppointmentDetailedProperties.Size = new System.Drawing.Size(31, 22);
             this.btnPickFolderAppointmentDetailedProperties.TabIndex = 7;
@@ -295,7 +300,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBlobFolderPath.Location = new System.Drawing.Point(160, 311);
             this.txtBlobFolderPath.Name = "txtBlobFolderPath";
-            this.txtBlobFolderPath.Size = new System.Drawing.Size(647, 22);
+            this.txtBlobFolderPath.Size = new System.Drawing.Size(619, 22);
             this.txtBlobFolderPath.TabIndex = 20;
             // 
             // label3
@@ -310,7 +315,7 @@
             // btnPickFolderDisplayedResults
             // 
             this.btnPickFolderDisplayedResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPickFolderDisplayedResults.Location = new System.Drawing.Point(813, 57);
+            this.btnPickFolderDisplayedResults.Location = new System.Drawing.Point(785, 57);
             this.btnPickFolderDisplayedResults.Name = "btnPickFolderDisplayedResults";
             this.btnPickFolderDisplayedResults.Size = new System.Drawing.Size(31, 22);
             this.btnPickFolderDisplayedResults.TabIndex = 3;
@@ -324,7 +329,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDisplayedResultsFolderPath.Location = new System.Drawing.Point(160, 57);
             this.txtDisplayedResultsFolderPath.Name = "txtDisplayedResultsFolderPath";
-            this.txtDisplayedResultsFolderPath.Size = new System.Drawing.Size(647, 22);
+            this.txtDisplayedResultsFolderPath.Size = new System.Drawing.Size(619, 22);
             this.txtDisplayedResultsFolderPath.TabIndex = 2;
             // 
             // label2
@@ -336,11 +341,56 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Export fiile path:";
             // 
+            // chkIncludeUsersAdditionalProperties
+            // 
+            this.chkIncludeUsersAdditionalProperties.AutoSize = true;
+            this.chkIncludeUsersAdditionalProperties.Location = new System.Drawing.Point(22, 392);
+            this.chkIncludeUsersAdditionalProperties.Name = "chkIncludeUsersAdditionalProperties";
+            this.chkIncludeUsersAdditionalProperties.Size = new System.Drawing.Size(210, 21);
+            this.chkIncludeUsersAdditionalProperties.TabIndex = 13;
+            this.chkIncludeUsersAdditionalProperties.Text = "Include Additional Properties";
+            this.chkIncludeUsersAdditionalProperties.UseVisualStyleBackColor = true;
+            this.chkIncludeUsersAdditionalProperties.CheckedChanged += new System.EventHandler(this.chkIncludeUsersAdditionalProperties_CheckedChanged);
+            // 
+            // txtIncludeUsersAdditionalPropertiesFile
+            // 
+            this.txtIncludeUsersAdditionalPropertiesFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIncludeUsersAdditionalPropertiesFile.Enabled = false;
+            this.txtIncludeUsersAdditionalPropertiesFile.Location = new System.Drawing.Point(166, 416);
+            this.txtIncludeUsersAdditionalPropertiesFile.Name = "txtIncludeUsersAdditionalPropertiesFile";
+            this.txtIncludeUsersAdditionalPropertiesFile.Size = new System.Drawing.Size(625, 22);
+            this.txtIncludeUsersAdditionalPropertiesFile.TabIndex = 21;
+            // 
+            // btnPickFolderIncludeUsersAdditionalProperties
+            // 
+            this.btnPickFolderIncludeUsersAdditionalProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPickFolderIncludeUsersAdditionalProperties.Location = new System.Drawing.Point(797, 414);
+            this.btnPickFolderIncludeUsersAdditionalProperties.Name = "btnPickFolderIncludeUsersAdditionalProperties";
+            this.btnPickFolderIncludeUsersAdditionalProperties.Size = new System.Drawing.Size(31, 22);
+            this.btnPickFolderIncludeUsersAdditionalProperties.TabIndex = 22;
+            this.btnPickFolderIncludeUsersAdditionalProperties.Text = "...";
+            this.btnPickFolderIncludeUsersAdditionalProperties.UseVisualStyleBackColor = true;
+            this.btnPickFolderIncludeUsersAdditionalProperties.Click += new System.EventHandler(this.btnPickFolderIncludeUsersAdditionalProperties_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(48, 419);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(114, 17);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "Import from CSV:";
+            // 
             // SearchCalendarExportPicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(879, 442);
+            this.ClientSize = new System.Drawing.Size(851, 496);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnPickFolderIncludeUsersAdditionalProperties);
+            this.Controls.Add(this.txtIncludeUsersAdditionalPropertiesFile);
+            this.Controls.Add(this.chkIncludeUsersAdditionalProperties);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.OkButton);
@@ -350,6 +400,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -380,5 +431,9 @@
         public System.Windows.Forms.TextBox txtDiagnosticExportFolderPath;
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.RadioButton rdoDiagnosticExport;
+        public System.Windows.Forms.CheckBox chkIncludeUsersAdditionalProperties;
+        public System.Windows.Forms.TextBox txtIncludeUsersAdditionalPropertiesFile;
+        private System.Windows.Forms.Button btnPickFolderIncludeUsersAdditionalProperties;
+        private System.Windows.Forms.Label label7;
     }
 }

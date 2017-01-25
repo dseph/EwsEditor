@@ -14,6 +14,7 @@ using EWSEditor.Common.Extensions;
 using EWSEditor.Resources;
 using Microsoft.Exchange.WebServices.Data;
 using EWSEditor.PropertyInformation;
+using EWSEditor.Common.EwsHelpers;
 
 namespace EWSEditor.Common.Exports
 {
@@ -156,28 +157,28 @@ namespace EWSEditor.Common.Exports
         // 2.130 PidLidFExceptionalAttendees
  
         // PT_LONG  0003
+ 
 
  
-  
 
-       public AppointmentData GetAppointmentDataFromItem(ExchangeService oExchangeService, ItemId oItemId)
-        {
-            AppointmentData oAppointmentData = GetAppointmentDataFromItem(oExchangeService, oItemId, false, false, false);
-            return oAppointmentData;
-
-           
-           
-       }
-
-       public AppointmentData GetAppointmentDataFromItem(ExchangeService oExchangeService, ItemId oItemId, bool bIncludeAttachments, bool bIncludeBody, bool bIncludeMime)
+       public AppointmentData GetAppointmentDataFromItem(
+           ExchangeService oExchangeService, 
+           ItemId oItemId,
+           List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions, 
+           List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
+           bool bIncludeBody, 
+           bool bIncludeMime)
         {
             string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
             PropertySet oPropertySet = null;
-            oPropertySet = GetCalendarPropset(ServerVersion,  bIncludeAttachments,  bIncludeBody,  bIncludeMime);
-            Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId, GetCalendarPropset(ServerVersion));
+            oPropertySet = GetCalendarPropset(ServerVersion, bIncludeBody, bIncludeMime, oExtendedPropertyDefinitions);
+            
+
+            //Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId, GetCalendarPropset(ServerVersion, false, false, oAdditionalPropertyDefinitions));
+            Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId, oPropertySet);
             AppointmentData oAppointmentData = new AppointmentData();
 
-            SetAppointmentData(oAppointment, ref oAppointmentData);
+            SetAppointmentData(oAppointment, ref oAppointmentData, oAdditionalPropertyDefinitions);
 
             return oAppointmentData;
         }
@@ -199,50 +200,31 @@ namespace EWSEditor.Common.Exports
             return bRet;
         }
 
-        public bool SaveAppointmentToFolder(ExchangeService oExchangeService, ItemId oItemId)
-        {
-            bool bRet = true;
  
-            List<ItemId> oItemIds = new List<ItemId> { oItemId };
-            SaveAppointmentsToFolder(oExchangeService, oItemIds);
-            return bRet;
-        }
 
-        public bool SaveAppointmentsToFolder(ExchangeService oExchangeService, List<ItemId> oItemIds)
+        public bool SaveAppointmentsToFolder(
+            ExchangeService oExchangeService, 
+            List<ItemId> oItemIds, 
+            List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions,
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions 
+            )
         {
             bool bRet = true;
             string sFolder = string.Empty;
             if (GetFolderPath(ref sFolder))
-                SaveAppointmentsToFolder(oExchangeService, oItemIds, sFolder);
+            {
+                SaveAppointmentsToFolder(
+                    oExchangeService,
+                    oItemIds,
+                    sFolder,
+                    oAdditionalPropertyDefinitions,
+                    oExtendedPropertyDefinitions
+                    );
+            }
             return bRet;
         }
-
-        public bool SaveAppointmentToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFolder)
-        {
-            bool bRet = true;
-            List<ItemId> oItemIds = new List<ItemId> { oItemId };
-            SaveAppointmentsToFolder(oExchangeService, oItemIds);
-            return bRet;
-        }
-
-        //public bool SaveAppointmentBlobToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFolder, string sSeedFileName)
-        //{
-        //    string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
-        //    if (ServerVersion.StartsWith("Exchange2007") || ServerVersion == "Exchange2010")
-        //    {
-        //        MessageBox.Show("Exchange 2010 SP1 or later is requred to use ExportItems to do a blog export of an item.", "Invalid version for blog export using ExportItem");
-        //        return false;
-        //    }
-        //    //string tempFile = Path.GetTempFileName().Replace(".tmp", ".bin");
-        //    string tempFile = Path.GetTempFileName();
-        //    tempFile = tempFile.Replace(".tmp", ".bin");
-
-        //    //string sFile = sFolder + "\\Appointment\\" + tempFile;
-
-        //    string sFile = sSeedFileName + " - " + tempFile + ".bin";
-        //    sFile = Path.Combine(sFolder, sSeedFileName );
-        //    return SaveAppointmentBlobToFolder(oExchangeService, oItemId,  sFile);
-        //}
+         
+     
 
         public bool SaveAppointmentBlobToFolder(ExchangeService oExchangeService, ItemId oItemId,  string sFile) 
         {
@@ -264,7 +246,13 @@ namespace EWSEditor.Common.Exports
             return bRet;
         }
 
-        public bool SaveAppointmentsToFolder(ExchangeService oExchangeService, List<ItemId> oItemIds, string sFolder)
+        public bool SaveAppointmentsToFolder(
+            ExchangeService oExchangeService, 
+            List<ItemId> oItemIds, 
+            string sFolder, 
+            List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions, 
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions 
+            )
         {
             bool bRet = true;
 
@@ -284,7 +272,13 @@ namespace EWSEditor.Common.Exports
                 sFilePath = sStorageFolder + "\\" + sFileName;
 
                 AppointmentData oAppointmentData = new AppointmentData();
-                oAppointmentData = GetAppointmentDataFromItem(oExchangeService, oItemId);
+                oAppointmentData = GetAppointmentDataFromItem(
+                    oExchangeService, 
+                    oItemId,
+                    oAdditionalPropertyDefinitions,
+                    oExtendedPropertyDefinitions,
+                    false,
+                    false);
 
                 //http://msdn.microsoft.com/en-us/library/system.xml.xmlwritersettings.newlinehandling(v=vs.110).aspx
                 sContent = SerialHelper.SerializeObjectToString<AppointmentData>(oAppointmentData);
@@ -307,10 +301,10 @@ namespace EWSEditor.Common.Exports
             return bRet;
         }
 
-  
 
- 
-        public void SetAppointmentData(Appointment oAppointment, ref AppointmentData oAppointmentData)
+
+
+        public void SetAppointmentData(Appointment oAppointment, ref AppointmentData oAppointmentData, List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions)
         {
             AppointmentData oCA = new AppointmentData();
 
@@ -320,7 +314,17 @@ namespace EWSEditor.Common.Exports
   
             StringBuilder oSB = new StringBuilder();
 
-             
+            //string sProp;
+            //foreach (ExtendedPropertyDefinition ap in oAdditionalPropertiesDefs)
+            //{
+            //    //sProp = GetExtendedProp_String_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
+            //}
+
+            //foreach (ExtendedPropertyDefinition apd in oAppointmentData.AdditionalExtendedPropertyDefinitions)
+            //{
+                 
+            //}
+    
             oAppointmentData.Subject = oAppointment.Subject;
             oAppointmentData.ItemClass = oAppointment.ItemClass;
             oAppointmentData.OrganizerName = oAppointment.Organizer.Name;
@@ -329,12 +333,7 @@ namespace EWSEditor.Common.Exports
                 oAppointmentData.DisplayTo = oAppointment.DisplayTo;
             if (oAppointment.DisplayCc != null)
                 oAppointmentData.DisplayCc = oAppointment.DisplayCc;
-
  
-
-
-
-        
             oAppointmentData.Subject = oAppointment.Subject;
 
  
@@ -408,19 +407,19 @@ namespace EWSEditor.Common.Exports
             //oAppointmentData.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidCleanGlobalObjectId);
             //oAppointmentData.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidGlobalObjectId);
 
-            oAppointmentData.PidNameCalendarIsOrganizer = GetExtendedProp_Bool_AsString(oAppointment, PidNameCalendarIsOrganizer);
+            oAppointmentData.PidNameCalendarIsOrganizer = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, PidNameCalendarIsOrganizer);
 
- 
-            oAppointmentData.PidLidCleanGlobalObjectId = GetExtendedProp_ByteArr_AsString(oAppointment, PidLidCleanGlobalObjectId);
-            oAppointmentData.PidLidGlobalObjectId = GetExtendedProp_ByteArr_AsString(oAppointment, PidLidGlobalObjectId);
-            oAppointmentData.PidLidAppointmentRecur = GetExtendedProp_ByteArr_AsString(oAppointment, PidLidAppointmentRecur);
-            oAppointmentData.PidLidClientIntent = GetExtendedProp_Int_AsString(oAppointment, PidLidClientIntent);
-            oAppointmentData.ClientInfoString = GetExtendedProp_String_AsString(oAppointment, ClientInfoString);
-            oAppointmentData.StoreEntryId = GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
-            oAppointmentData.EntryId = GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_ENTRYID);
-            oAppointmentData.RetentionDate = GetExtendedProp_DateTime_AsString(oAppointment, Prop_PR_RETENTION_DATE);
-            oAppointmentData.IsHidden = GetExtendedProp_Bool_AsString(oAppointment, Prop_PR_IS_HIDDEN);
-            oAppointmentData.LogTriggerAction = GetExtendedProp_String_AsString(oAppointment, LogTriggerAction);
+
+            oAppointmentData.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidCleanGlobalObjectId);
+            oAppointmentData.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidGlobalObjectId);
+            oAppointmentData.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidAppointmentRecur);
+            oAppointmentData.PidLidClientIntent = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidLidClientIntent);
+            oAppointmentData.ClientInfoString = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, ClientInfoString);
+            oAppointmentData.StoreEntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
+            oAppointmentData.EntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_ENTRYID);
+            oAppointmentData.RetentionDate = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oAppointment, Prop_PR_RETENTION_DATE);
+            oAppointmentData.IsHidden = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, Prop_PR_IS_HIDDEN);
+            oAppointmentData.LogTriggerAction = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, LogTriggerAction);
 
             oAppointmentData.ParentFolderId = oAppointment.ParentFolderId.ToString();
   
@@ -589,123 +588,69 @@ namespace EWSEditor.Common.Exports
             //string s = AppointmentHelper.GetAttendeeStatusAsInfoString(oAppointment);
             oAppointmentData.AttendeeStatus = AppointmentHelper.GetAttendeeStatusAsInfoString(oAppointment);
 
-            oAppointmentData.PidLidAppointmentRecur = GetExtendedProp_ByteArr_AsString(oAppointment, PidLidAppointmentRecur);
-            oAppointmentData.PidLidClientIntent = GetExtendedProp_Int_AsString(oAppointment, PidLidClientIntent);
-            oAppointmentData.ClientInfoString = GetExtendedProp_String_AsString(oAppointment, ClientInfoString);
-            oAppointmentData.StoreEntryId = GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
-            oAppointmentData.EntryId = GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_ENTRYID);
-            oAppointmentData.RetentionDate = GetExtendedProp_DateTime_AsString(oAppointment, Prop_PR_RETENTION_DATE);
-            oAppointmentData.IsHidden = GetExtendedProp_Bool_AsString(oAppointment, Prop_PR_IS_HIDDEN);
-            oAppointmentData.LogTriggerAction = GetExtendedProp_String_AsString(oAppointment, LogTriggerAction);
+            oAppointmentData.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidAppointmentRecur);
+            oAppointmentData.PidLidClientIntent = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidLidClientIntent);
+            oAppointmentData.ClientInfoString = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, ClientInfoString);
+            oAppointmentData.StoreEntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
+            oAppointmentData.EntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_ENTRYID);
+            oAppointmentData.RetentionDate = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oAppointment, Prop_PR_RETENTION_DATE);
+            oAppointmentData.IsHidden = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, Prop_PR_IS_HIDDEN);
+            oAppointmentData.LogTriggerAction = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, LogTriggerAction);
 
             //oAppointmentData.PidLidCurrentVersion = GetExtendedProp_Int_AsString(oAppointment, PidLidCurrentVersion);
-            oAppointmentData.PidLidCurrentVersionName = GetExtendedProp_String_AsString(oAppointment, PidLidCurrentVersionName);
-            oAppointmentData.PidNameCalendarUid = GetExtendedProp_Int_AsString(oAppointment, PidNameCalendarUid);
-            oAppointmentData.PidLidOrganizerAlias = GetExtendedProp_String_AsString(oAppointment, PidLidOrganizerAlias);
-            oAppointmentData.PidTagSenderSmtpAddress = GetExtendedProp_Int_AsString(oAppointment, PidTagSenderSmtpAddress);
- 
+            oAppointmentData.PidLidCurrentVersionName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidLidCurrentVersionName);
+            oAppointmentData.PidNameCalendarUid = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidNameCalendarUid);
+            oAppointmentData.PidLidOrganizerAlias = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidLidOrganizerAlias);
+            oAppointmentData.PidTagSenderSmtpAddress = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidTagSenderSmtpAddress);
 
-            oAppointmentData.PidLidInboundICalStream = GetExtendedProp_ByteArr_AsString(oAppointment, PidLidInboundICalStream);
-            oAppointmentData.PidLidAppointmentAuxiliaryFlags = GetExtendedProp_Int_AsString(oAppointment, PidLidAppointmentAuxiliaryFlags);
-            oAppointmentData.PidLidRecurrencePattern = GetExtendedProp_String_AsString(oAppointment, PidLidRecurrencePattern);
-            oAppointmentData.PidLidRecurrenceType = GetExtendedProp_Int_AsString(oAppointment, PidLidRecurrenceType);
-            oAppointmentData.PidLidRecurring = GetExtendedProp_Bool_AsString(oAppointment, PidLidRecurring);
 
-            oAppointmentData.PidLidAppointmentRecur = GetExtendedProp_ByteArr_AsString(oAppointment, PidLidAppointmentRecur);
+            oAppointmentData.PidLidInboundICalStream = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidInboundICalStream);
+            oAppointmentData.PidLidAppointmentAuxiliaryFlags = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidLidAppointmentAuxiliaryFlags);
+            oAppointmentData.PidLidRecurrencePattern = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidLidRecurrencePattern);
+            oAppointmentData.PidLidRecurrenceType = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidLidRecurrenceType);
+            oAppointmentData.PidLidRecurring = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, PidLidRecurring);
+
+            oAppointmentData.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidAppointmentRecur);
 
             //oAppointmentData.PidLidAppointmentStartDate = GetExtendedProp_DateTime_AsString(oAppointment, PidLidAppointmentStartDate);
             //oAppointmentData.PidLidAppointmentStartTime = GetExtendedProp_DateTime_AsString(oAppointment, PidLidAppointmentStartTime);
 
-            oAppointmentData.PidLidAppointmentStartWhole = GetExtendedProp_DateTime_AsString(oAppointment, PidLidAppointmentStartWhole);
-            oAppointmentData.PidLidAppointmentEndWhole = GetExtendedProp_DateTime_AsString(oAppointment, PidLidAppointmentEndWhole);
- 
-            oAppointmentData.PidLidAppointmentStateFlags = GetExtendedProp_Int_AsString(oAppointment, PidLidAppointmentStateFlags);
+            oAppointmentData.PidLidAppointmentStartWhole = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oAppointment, PidLidAppointmentStartWhole);
+            oAppointmentData.PidLidAppointmentEndWhole = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oAppointment, PidLidAppointmentEndWhole);
 
-            oAppointmentData.PidNameFrom = GetExtendedProp_String_AsString(oAppointment, PidNameFrom);
-            oAppointmentData.PidNameHttpmailFrom = GetExtendedProp_String_AsString(oAppointment, PidNameHttpmailFrom);
-            oAppointmentData.PidNameHttpmailFromEmail = GetExtendedProp_String_AsString(oAppointment, PidNameHttpmailFromEmail);
+            oAppointmentData.PidLidAppointmentStateFlags = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidLidAppointmentStateFlags);
 
-            oAppointmentData.PidTagSenderEmailAddress = GetExtendedProp_String_AsString(oAppointment, PidTagSenderEmailAddress);
-            oAppointmentData.PidTagSenderFlags = GetExtendedProp_Int_AsString(oAppointment, PidTagSenderFlags);
-            oAppointmentData.PidTagSenderName = GetExtendedProp_String_AsString(oAppointment, PidTagSenderName);
-            oAppointmentData.PidTagSenderSimpleDisplayName = GetExtendedProp_String_AsString(oAppointment, PidTagSenderSimpleDisplayName);
+            oAppointmentData.PidNameFrom = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidNameFrom);
+            oAppointmentData.PidNameHttpmailFrom = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidNameHttpmailFrom);
+            oAppointmentData.PidNameHttpmailFromEmail = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidNameHttpmailFromEmail);
 
-            oAppointmentData.PidTagSentRepresentingEmailAddress = GetExtendedProp_String_AsString(oAppointment, PidTagSentRepresentingEmailAddress);
-            oAppointmentData.PidTagSentRepresentingFlags = GetExtendedProp_Int_AsString(oAppointment, PidTagSentRepresentingFlags);
-            oAppointmentData.PidTagSentRepresentingName = GetExtendedProp_String_AsString(oAppointment, PidTagSentRepresentingName);
-            oAppointmentData.PidTagSentRepresentingSimpleDisplayName = GetExtendedProp_String_AsString(oAppointment, PidTagSentRepresentingSimpleDisplayName);
+            oAppointmentData.PidTagSenderEmailAddress = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidTagSenderEmailAddress);
+            oAppointmentData.PidTagSenderFlags = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidTagSenderFlags);
+            oAppointmentData.PidTagSenderName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidTagSenderName);
+            oAppointmentData.PidTagSenderSimpleDisplayName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidTagSenderSimpleDisplayName);
 
-            oAppointmentData.PidTagProcessed = GetExtendedProp_Bool_AsString(oAppointment, PidTagProcessed);
-           // oAppointmentData.PidLidResponseStatus = GetExtendedProp_Int_AsString(oAppointment, PidLidResponseStatus);
-            oAppointmentData.PidLidIsException = GetExtendedProp_Bool_AsString(oAppointment, PidLidIsException);
+            oAppointmentData.PidTagSentRepresentingEmailAddress = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidTagSentRepresentingEmailAddress);
+            oAppointmentData.PidTagSentRepresentingFlags = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidTagSentRepresentingFlags);
+            oAppointmentData.PidTagSentRepresentingName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidTagSentRepresentingName);
+            oAppointmentData.PidTagSentRepresentingSimpleDisplayName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidTagSentRepresentingSimpleDisplayName);
 
-            oAppointmentData.PidTagCreatorName = GetExtendedProp_String_AsString(oAppointment, PidTagCreatorName);
-            oAppointmentData.PidTagCreatorSimpleDisplayName = GetExtendedProp_String_AsString(oAppointment, PidTagCreatorSimpleDisplayName);
-            oAppointmentData.PidNameCalendarIsOrganizer = GetExtendedProp_Bool_AsString(oAppointment, PidNameCalendarIsOrganizer);
+            oAppointmentData.PidTagProcessed = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, PidTagProcessed);
+            // oAppointmentData.PidLidResponseStatus = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidLidResponseStatus);
+            oAppointmentData.PidLidIsException = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, PidLidIsException);
 
-              
+            oAppointmentData.PidTagCreatorName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidTagCreatorName);
+            oAppointmentData.PidTagCreatorSimpleDisplayName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidTagCreatorSimpleDisplayName);
+            oAppointmentData.PidNameCalendarIsOrganizer = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, PidNameCalendarIsOrganizer);
+
+            if (oAdditionalPropertyDefinitions != null)
+            {
+                foreach (AdditionalPropertyDefinition oAPD in oAdditionalPropertyDefinitions)
+                {
+                    //oAppointmentData.AdditionalExtendedPropertyDefinitions.Add
+                }
+            }
         }
 
-
-        private string GetExtendedProp_DateTime_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            DateTime oDateTime;
-
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oDateTime))
-                sReturn = oDateTime.ToString();
-            else
-                sReturn = "";
-            return sReturn;
-        }
-
-        private string GetExtendedProp_ByteArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            byte[] bytearrVal;
-
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bytearrVal))  // Example: CleanGlobalObjectId
-                sReturn = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
-            else
-                sReturn = "";
-            return sReturn;
-        }
-
-        private string GetExtendedProp_String_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            string sString = string.Empty;
-
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out sString))
-                sReturn = sString;
-            else
-                sReturn = "";
-            return sReturn;
-        }
-
-        private string GetExtendedProp_Int_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            int lVal = 0;
-
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out lVal))
-                sReturn = lVal.ToString();
-            else
-                sReturn = "";
-            return sReturn;
-        }
-
-        private string GetExtendedProp_Bool_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            bool bVal = false;
-
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bVal))
-                sReturn = bVal.ToString();
-            else
-                sReturn = "";
-            return sReturn;
-        }
 
         private void SetAppointmentRecurrenceData(Appointment oAppointment, ref AppointmentData oAppointmentData)
         {
@@ -929,17 +874,22 @@ namespace EWSEditor.Common.Exports
         }
 
 
-        public PropertySet GetCalendarPropset(string ExchangeVersion)
-        {
-            return GetCalendarPropset(ExchangeVersion, false, false, false);
+        //public PropertySet GetCalendarPropset(string ExchangeVersion)
+        //{
+        //    return GetCalendarPropset(ExchangeVersion, false, false, false);
 
             
-        }
+        //}
 
-        public static PropertySet GetCalendarPropset(string ExchangeVersion, bool bIncludeAttachments, bool bIncludeBodies, bool bIncludeMime)
+        //List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions
+
+ 
+        public static PropertySet GetCalendarPropset(string ExchangeVersion, bool bIncludeBodies, bool bIncludeMime, List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions)
         { 
             
-            PropertySet appointmentPropertySet = new PropertySet(BasePropertySet.IdOnly,
+            PropertySet appointmentPropertySet = new PropertySet(
+                
+                BasePropertySet.IdOnly,
                  
                 AppointmentSchema.AdjacentMeetingCount,
                 AppointmentSchema.AdjacentMeetings,
@@ -1072,8 +1022,8 @@ namespace EWSEditor.Common.Exports
             //   AppointmentSchema.AppointmentReplyTime 
             //   AppointmentSchema.ConferenceType 
 
-            if (bIncludeAttachments == true)
-                appointmentPropertySet.Add(AppointmentSchema.Attachments);
+            //if (bIncludeAttachments == true)
+            //    appointmentPropertySet.Add(AppointmentSchema.Attachments);
 
 
             // Need to add these:
@@ -1179,6 +1129,13 @@ namespace EWSEditor.Common.Exports
                     appointmentPropertySet.Add(AppointmentSchema.TextBody);
  
                 }
+
+                foreach (ExtendedPropertyDefinition oEPD in oExtendedPropertyDefinitions)
+                {
+                    appointmentPropertySet.Add(oEPD);
+                }
+
+                 
             }
 
             return appointmentPropertySet;
@@ -1966,15 +1923,14 @@ namespace EWSEditor.Common.Exports
         }
 
 
-         
-        public string GetAppointmentDataAsCsvHeaders()
+
+        public string GetAppointmentDataAsCsvHeaders(List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions)
         {
             char[] TrimChars = { ',', ' ' };
             string sRet = string.Empty;
 
             List<string> o = GetAppointmentDataHeadersAsList();
 
-  
 
             StringBuilder oSB = new StringBuilder();
             for (int i = 0; i < o.Count - 1; i++)
@@ -1984,6 +1940,12 @@ namespace EWSEditor.Common.Exports
 
             sRet = oSB.ToString();
             sRet = sRet.TrimEnd(TrimChars);
+
+            if (oAdditionalPropertyDefinitions != null)
+            {
+                sRet += "," + AdditionalProperties.GetExtendedPropertyHeadersAsCsvContent(oAdditionalPropertyDefinitions);
+                sRet = sRet.TrimEnd(TrimChars);
+            }
 
             return sRet;
         }

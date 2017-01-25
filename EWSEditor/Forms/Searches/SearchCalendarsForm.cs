@@ -466,6 +466,7 @@ namespace EWSEditor.Forms
                 try
                 {
                     oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
+
                 }
                 catch (Exception ex)
                 {
@@ -536,7 +537,11 @@ namespace EWSEditor.Forms
             return Convert.ToBase64String(buffer);
         }
 
-        private bool  AddSearchResultsToListViews(FindItemsResults<Item> oFindItemsResults, int iCountMore)
+        private bool AddSearchResultsToListViews(FindItemsResults<Item> oFindItemsResults, 
+            int iCountMore, 
+            List < AdditionalPropertyDefinition > oAdditionalPropertyDefinitions,
+            List < ExtendedPropertyDefinition > oExtendedPropertyDefinitions 
+            )
         {
             bool bRet = false;
 
@@ -562,22 +567,15 @@ namespace EWSEditor.Forms
                     // Cannot search on binary data in EWS... so we need to read everything and Check to see if sPidLidCleanGlobalObjectId matches. 
                     sPidLidCleanGlobalObjectId = GetExtendedProp_ByteArr_AsString(oItem, PidLidCleanGlobalObjectId);
 
-                    //sPidLidCleanGlobalObjectId = "BAAAAIIA4AB0xbcQGoLgCAAAAACw3QTCJQLSAQAAAAAAAAAAEAAAAFoK+9tWrCtDrCobiLnYnfQ="
-                    // txtGlobalObjId.Text         "BAAAAIIA4AB0xbcQGoLgCAAAAACw3QTCJQLSAQAAAAAAAAAAEAAAAFoK+9tWrCtDrCobiLnYnfQ="
-
+ 
                     if (this.txtGlobalObjId.Text == sPidLidCleanGlobalObjectId)
                     {
-  
-
                     }
                     else
                     {
- 
-
                         continue;
                     }
-
-            
+ 
  
                 }
                 if (oItem.ItemClass.StartsWith("IPM.A"))
@@ -624,7 +622,13 @@ namespace EWSEditor.Forms
 
                     EWSEditor.Common.Exports.AppointmentData oAppointmentData = new EWSEditor.Common.Exports.AppointmentData();
                     EWSEditor.Common.Exports.CalendarExport oCalendarExport = new EWSEditor.Common.Exports.CalendarExport();
-                    oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(oItem.Service, oItem.Id);
+                    oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(
+                        oItem.Service, 
+                        oItem.Id,
+                        oAdditionalPropertyDefinitions,
+                        oExtendedPropertyDefinitions,
+                        false, 
+                        false);
 
  
                     //  Load common data listview ------------------------------------------------
@@ -692,7 +696,15 @@ namespace EWSEditor.Forms
 
                     EWSEditor.Common.Exports.MeetingMessageData oMeetingMessageData = new EWSEditor.Common.Exports.MeetingMessageData();
                     EWSEditor.Common.Exports.MeetingMessageExport oMeetingMessageExport = new EWSEditor.Common.Exports.MeetingMessageExport();
-                    oMeetingMessageData = oMeetingMessageExport.GetMeetingMessageDataFromItem(oItem.Service, oItem.Id);
+
+                    oMeetingMessageData = oMeetingMessageExport.GetMeetingMessageDataFromItem(
+                            oItem.Service, 
+                            oItem.Id,
+                            oAdditionalPropertyDefinitions,
+                            oExtendedPropertyDefinitions,
+                            false,
+                            false
+                            ); 
  
 
                     //  Load common data listview ------------------------------------------------
@@ -782,99 +794,15 @@ namespace EWSEditor.Forms
                         FileAttachment fileAttachment = oAttachment as FileAttachment;
                         // Load the file attachment into memory and print out its file name.
                         fileAttachment.Load();
-                        
-
-                        //Console.WriteLine("Attachment name: " + fileAttachment.Name);
-
-                        //// Load attachment contents into a file.
-                        //fileAttachment.Load("C:\\temp\\" + fileAttachment.Name);
-
-                        //// Stream attachment contents into a file.
-                        //FileStream theStream = new FileStream("C:\\temp\\Stream_" + fileAttachment.Name, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                        //fileAttachment.Load(theStream);
-                        //theStream.Close();
-                        //theStream.Dispose();
+  
 
                     }
                 }
             }
             return sRet;
         }
-
-        private bool CheckAppointmentforProblems(Appointment oAppointment)
-        {
-            bool bRet = false;
-
-            return bRet;
-        }
-
-        private bool CheckRecurringforProblems(Appointment oAppointment)
-        {
-            bool bRet = false;
-
-
-
-            return bRet;
-        }
-
-        private bool CheckMeetingMessageforProblems(MeetingMessage oMeetingMessage)
-        {
-            bool bRet = false;
-
-           
-
-            return bRet;
-        }
-
-        private bool CheckAppointmentChangesforProblems(Appointment oAppointment)
-        {
-            bool bRet = false;
-
-            // Loop through them, compare and check...
-
-            // see CompareApptProps(Appointment oAppointment)
-
-            return bRet; 
-        }
-
-        // Used for comparing current appointment vs prior one.
-        public static class ApptProps 
-        {
-
-            //public string ApptStateFlags = string.Empty;
-            //public string ApptRecurring = string.Empty;
-            //public string BusyStatus = string.Empty;
-            //public string EndWhole = string.Empty;
-            //public string IsRecurring = string.Empty;
-            //public string Location = string.Empty;
-            //public string OrganizerAddr = string.Empty;  
-            //public string OrganizerName = string.Empty;
-            //public string Sender = string.Empty;
-            //public string StartWhole = string.Empty;
-            //public string Cc = string.Empty;
-            //public string To = string.Empty;
-            //public string ViewEnd = string.Empty;
-        }
-
-        //public static void SaveApptProps(ref ApptProps oApptProps, Appointment oAppointment)
-        //{
-
-        //    //oApptProps.ApptStateFlags = oAppointment.ApptStateFlags;
-        //    //oApptProps.ApptRecurring = oAppointment.ApptRecurring;
-        //    //oApptProps.BusyStatus = oAppointment.BusyStatus;
-        //    //oApptProps.EndWhole = oAppointment.ApptEndWhole;
-        //    //oApptProps.IsRecurring = oAppointment.IsRecurring;
-        //    //oApptProps.Location = oAppointment.Location;
-        //    //oApptProps.OrganizerAddr = oAppointment.OrganizerAddr;
-        //    //oApptProps.OrganizerName = oAppointment.OrganizerName;
-        //    //oApptProps.Sender = oAppointment.SenderAddress;
-        //    //oApptProps.StartWhole = oAppointment.ApptStartWhole;
-        //    //oApptProps.Cc = oAppointment.AttendeeCC;
-        //    //oApptProps.To = oAppointment.AttendeeTo;
-        //    //oApptProps.ViewEnd = oAppointment.ViewEndTime;
-        //}
-
-
+ 
+ 
 
         // http://stackoverflow.com/questions/3829039/get-the-organizers-calendar-appointment-using-ews-for-exchange-2010
 
@@ -885,7 +813,10 @@ namespace EWSEditor.Forms
 
 
 
-        private bool ProcessSearch(FolderId oFolderId, int iPageSize)
+        private bool ProcessSearch(FolderId oFolderId, 
+            int iPageSize, 
+            List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions,
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions )
         {
             //int iCount = 0;
             bool bRet = false;
@@ -903,11 +834,7 @@ namespace EWSEditor.Forms
                     ItemView oItemView = new ItemView(iPageSize);
 
                     oItemView.PropertySet = GetPropertySet();
-
-              //      oItemView.OrderBy.Add(ItemSchema.LastModifiedTime, SortDirection.Descending);
-                    //oItemView.OrderBy.Add(AppointmentSchema.LastModifiedTime, SortDirection.Descending);
-
-                    //oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
+ 
 
                     SetSearchDepth(ref oItemView);
 
@@ -916,10 +843,17 @@ namespace EWSEditor.Forms
                     FindItemsResults<Item> oFindItemsResults = null;
                     oFindItemsResults = DoSearch(oFolderId, ref oItemView);
 
+
+               
  
                     ConfigureListView_Common(ref lvCommon, cmboSearchType.Text.Trim());
 
-                    AddSearchResultsToListViews(oFindItemsResults, 0);
+                    AddSearchResultsToListViews(
+                        oFindItemsResults, 
+                        0,  
+                        oAdditionalPropertyDefinitions,
+                        oExtendedPropertyDefinitions  
+                        );
 
                     
                 }
@@ -946,24 +880,23 @@ namespace EWSEditor.Forms
                         iCountMore++;
 
  
-
-
                         ItemView oItemView = new ItemView(iPageSize, offset, OffsetBasePoint.Beginning);
 
 
                         oItemView.PropertySet = GetPropertySet();
-
-                    
-                        //oItemView.OrderBy.Add(ContactSchema.LastModifiedTime, SortDirection.Ascending);
-              //          oItemView.OrderBy.Add(ItemSchema.LastModifiedTime, SortDirection.Ascending);
-                        //oItemView.Traversal = ItemTraversal.Shallow; // shallow, associated, soft deleted
+ 
 
                         SetSearchDepth(ref oItemView);
 
                         FindItemsResults<Item> oFindItemsResults = null;
                         oFindItemsResults = DoSearch(oFolderId, ref oItemView);
 
-                        AddSearchResultsToListViews(oFindItemsResults, iCountMore);
+                        AddSearchResultsToListViews(
+                            oFindItemsResults, 
+                            iCountMore, 
+                            oAdditionalPropertyDefinitions,
+                            oExtendedPropertyDefinitions 
+                            );
 
                         // Set the flag to discontinue paging.
                         if (!oFindItemsResults.MoreAvailable)
@@ -999,14 +932,7 @@ namespace EWSEditor.Forms
 
             oPropertySet.Add(ItemSchema.Subject);
             oPropertySet.Add(AppointmentSchema.ICalUid);
-
-            //oPropertySet.Add(ItemSchema.LastModifiedTime);
-            //oPropertySet.Add(PidLidAppointmentRecur);
-            //oPropertySet.Add(PidLidClientIntent);
-            //oPropertySet.Add(ClientInfoString);
-
-            //oPropertySet.Add(LogTriggerAction);
-
+ 
             return oPropertySet;
 
 
@@ -1019,7 +945,12 @@ namespace EWSEditor.Forms
             int iPageSize = 100;
             iPageSize = (int)this.numPageSize.Value;
             this.Cursor = Cursors.WaitCursor;
-            ProcessSearch(_CurrentFolderId, iPageSize);
+
+ 
+            List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions = null;
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions = null;
+            ProcessSearch(_CurrentFolderId, iPageSize, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions);
+
             toolStripStatusLabel1.Text = "Ready to search."; 
             this.Cursor = Cursors.Default;
         }
@@ -1190,13 +1121,24 @@ namespace EWSEditor.Forms
 
         #region ExportCalendarItems definition
 
-        private void ExportCalendarItems() 
+        private void ExportCalendarItems( ) 
         { 
             SearchCalendarExportPicker oForm = new SearchCalendarExportPicker();
             oForm.ShowDialog();
-            
+
+            List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions = null;
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions = null;
+ 
+            //List<AdditionalProperty> oAdditionalPropertiesDefs = null;
+ 
             if (oForm.bChoseOk == true)
             {
+
+                if (oForm.chkIncludeUsersAdditionalProperties.Checked == true)
+                {
+                    oAdditionalPropertyDefinitions = oForm.AdditionalPropertyDefinitions;
+                    oExtendedPropertyDefinitions = oForm.ExtendedPropertyDefinitions;
+                }
  
                 if (oForm.rdoExportDisplayedResults.Checked == true)
                 {
@@ -1211,7 +1153,9 @@ namespace EWSEditor.Forms
                         }
                         else
                         {
-                            ExportDisplayedResults(sPath);
+                            ExportDisplayedResults(_CurrentService,  sPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions);
+
+ 
                         }
                     }
                 }                
@@ -1249,6 +1193,8 @@ namespace EWSEditor.Forms
                     ExportDetailedProperties(
                         sAppointmentPath,
                         sMeetingMessagePath,
+                        oAdditionalPropertyDefinitions,
+                        oExtendedPropertyDefinitions,
                         oForm.chkIncludeBodyProperties.Checked,
                         oForm.chkIncludeMime.Checked
                         );
@@ -1269,7 +1215,11 @@ namespace EWSEditor.Forms
                         }
                         else
                         {
-                            this.ExportDiagProperties(sPath);                            
+                            this.ExportDiagProperties(
+                                sPath,   
+                                oAdditionalPropertyDefinitions,
+                                oExtendedPropertyDefinitions 
+                                );                            
                         }
                     }
                 }  
@@ -1307,11 +1257,15 @@ namespace EWSEditor.Forms
             }
         }
 
-        private void ExportDisplayedResults(string sFolderPath)
+        private void ExportDisplayedResults(
+            ExchangeService oExchangeService,
+            string sFolderPath,
+            List<EWSEditor.Common.Exports.AdditionalPropertyDefinition> oAdditionalPropertyDefinitions, 
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions
+            )
         {
-            //string sFileName = sFolderPath; //  "ExportedSearchCalendarResults.CSV";
-            //string sPath = Path.Combine(sFolderPath, sFileName);
-            ListViewExport.SaveListViewToCsv(lvCommon, sFolderPath);
+
+            ListViewExport.SaveCalendarListViewToCsv(oExchangeService, lvCommon, sFolderPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions);
         }
 
        
@@ -1321,6 +1275,8 @@ namespace EWSEditor.Forms
         private bool ExportDetailedProperties(
                 string sAppointmentFilePath,
                 string sMeetingMessageFilePath,
+                List<EWSEditor.Common.Exports.AdditionalPropertyDefinition> oAdditionalPropertyDefinitions, 
+                List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
                 bool chkIncludeBodyProperties,
                 bool chkIncludeMime)
         {
@@ -1349,12 +1305,13 @@ namespace EWSEditor.Forms
             StreamWriter swAppointment = File.CreateText(sAppointmentFilePath);
             StreamWriter swMeetingMessage = File.CreateText(sMeetingMessageFilePath);
 
-            sHeader = oCalendarExport.GetAppointmentDataAsCsvHeaders();
+            sHeader = oCalendarExport.GetAppointmentDataAsCsvHeaders(oAdditionalPropertyDefinitions);
             swAppointment.WriteLine(sHeader);
 
-            sHeader = oMeetingMessageExport.GetMeetingMessageDataAsCsvHeaders();
+            sHeader = oMeetingMessageExport.GetMeetingMessageDataAsCsvHeaders(oAdditionalPropertyDefinitions);
             swMeetingMessage.WriteLine(sHeader);
- 
+            char[] TrimChars = { ',', ' ' };
+
             foreach (ListViewItem oListViewItem in lvCommon.Items)
             {
                 if (oListViewItem.Selected == true)
@@ -1369,24 +1326,59 @@ namespace EWSEditor.Forms
  
                     if (sClass.StartsWith("IPM.APPOINTMENT"))
                     {
-                        oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(_CurrentService, oItemId,
-                            false,
+                        oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(
+                            _CurrentService, 
+                            oItemId,
+                            oAdditionalPropertyDefinitions = null,
+                            oExtendedPropertyDefinitions = null,
                             chkIncludeBodyProperties,
                             chkIncludeMime
                             );
+
+
+  
+                        if (oExtendedPropertyDefinitions != null)
+                        {
+                            AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(_CurrentService, oItemId, oExtendedPropertyDefinitions);
+                        }
+                      
                         sLine = oCalendarExport.GetAppointmentDataAsCsv2(oAppointmentData);
+
+                        if (oExtendedPropertyDefinitions != null)
+                        {
+                            sLine = sLine.Trim();
+                            sLine += "," + AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(_CurrentService, oItemId, oExtendedPropertyDefinitions);
+                            sLine = sLine.TrimEnd(TrimChars);
+                            sLine = sLine + "\r\n";
+                        }
+
                         swAppointment.WriteLine(sLine);
+
+                         
                     }
-                        
 
                     if (sClass.StartsWith("IPM.SCHEDULE"))
                     {
-                        oMeetingMessageData = oMeetingMessageExport.GetMeetingMessageDataFromItem(_CurrentService, oItemId, 
-                            false,
+                        oMeetingMessageData = oMeetingMessageExport.GetMeetingMessageDataFromItem(
+                            _CurrentService, 
+                            oItemId,
+                            oAdditionalPropertyDefinitions,
+                            oExtendedPropertyDefinitions,
                             chkIncludeBodyProperties,
                             chkIncludeMime
                             );
+
                         sLine = oMeetingMessageExport.GetMeetingMessageDataAsCsv2(oMeetingMessageData);
+
+
+                        if (oExtendedPropertyDefinitions != null)
+                        {
+                            sLine = sLine.Trim();
+                            sLine += "," + AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(_CurrentService, oItemId, oExtendedPropertyDefinitions);
+                            sLine = sLine.TrimEnd(TrimChars);
+                            sLine = sLine + "\r\n";
+                        }
+
                         swMeetingMessage.WriteLine(sLine);
                     }
                     bRet = true;
@@ -1710,7 +1702,11 @@ namespace EWSEditor.Forms
         //}
 
 
-        private bool ExportDiagProperties(string sDiagFilePath)
+        private bool ExportDiagProperties(
+            string sDiagFilePath, 
+            List < AdditionalPropertyDefinition > oAdditionalPropertyDefinitions,
+            List < ExtendedPropertyDefinition > oExtendedPropertyDefinitions 
+            )
         {
             bool bRet = false;
             EWSEditor.Common.Exports.CalendarExport oCalendarExport = new EWSEditor.Common.Exports.CalendarExport();
@@ -1755,8 +1751,11 @@ namespace EWSEditor.Forms
 
                     if (sClass.StartsWith("IPM.APPOINTMENT"))
                     {
-                        oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(_CurrentService, oItemId,
-                            false,
+                        oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(
+                            _CurrentService, 
+                            oItemId,
+                            oAdditionalPropertyDefinitions,
+                            oExtendedPropertyDefinitions,
                             false,
                             false
                             );
@@ -1767,8 +1766,11 @@ namespace EWSEditor.Forms
 
                     if (sClass.StartsWith("IPM.SCHEDULE"))
                     {
-                        oMeetingMessageData = oMeetingMessageExport.GetMeetingMessageDataFromItem(_CurrentService, oItemId,
-                            false,
+                        oMeetingMessageData = oMeetingMessageExport.GetMeetingMessageDataFromItem(
+                            _CurrentService, 
+                            oItemId,
+                            oAdditionalPropertyDefinitions,
+                            oExtendedPropertyDefinitions,
                             false,
                             false
                             );

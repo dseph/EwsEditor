@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Exchange.WebServices.Data;
 
 namespace EWSEditor.Common.Exports
 {
@@ -13,7 +14,7 @@ namespace EWSEditor.Common.Exports
         public string ApprovalRequestData = string.Empty;    
         public string ArchiveTag = string.Empty;
         public string AssociatedAppointmentId = string.Empty; 
-        // public string Attachments // 
+         
         public string BccRecipients = string.Empty;
         public string Body = string.Empty;
         public string Categories = string.Empty; 
@@ -138,7 +139,7 @@ namespace EWSEditor.Common.Exports
         public string PidLidInboundICalStream = string.Empty;
         public string PidTagCreatorName = string.Empty;
         public string PidTagCreatorSimpleDisplayName = string.Empty;
- 
-         
+
+        //public List<ExtendedProperty> AdditionalExtendedProperties = null;
     }
 }

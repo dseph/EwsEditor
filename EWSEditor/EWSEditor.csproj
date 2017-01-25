@@ -149,6 +149,8 @@
     <Compile Include="Common\EwsHelpers\AuthenticationHelper.cs" />
     <Compile Include="Common\AutodiscoverInfo.cs" />
     <Compile Include="Common\EwsHelpers\EwsExtendedPropertyHelper.cs" />
+    <Compile Include="Common\EwsHelpers\EwsPropertyHelper.cs" />
+    <Compile Include="Common\Exports\AdditionalProperties.cs" />
     <Compile Include="Common\Exports\ListViewExport.cs" />
     <Compile Include="Common\EwsEditorServiceInstanceSettings.cs" />
     <Compile Include="Common\Exports\AttachmentExport.cs" />
@@ -1309,7 +1311,9 @@
     <Content Include="deps\Microsoft.Exchange.WebServices.dll" />
     <Content Include="EwsPostExamples\Autodiscover - POX .xml" />
     <Content Include="EwsPostExamples\AddDelegate.xml" />
-    <Content Include="EwsPostExamples\AddDistributionGroupToImList.xml" />
+    <Content Include="EwsPostExamples\AddDistributionGroupToImList.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\AddImContactToGroup.xml" />
     <Content Include="EwsPostExamples\AddImGroup.xml" />
     <Content Include="EwsPostExamples\AddNewImContactToGroup.xml" />
@@ -1406,7 +1410,9 @@
     <Content Include="EwsPostExamples\GetPhoneCallInformation.xml" />
     <Content Include="EwsPostExamples\GetReminders.xml" />
     <Content Include="EwsPostExamples\GetRoomLists .xml" />
-    <Content Include="EwsPostExamples\GetRooms.xml" />
+    <Content Include="EwsPostExamples\GetRooms.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\GetSearchableMailboxes.xml">
       <SubType>Designer</SubType>
     </Content>
