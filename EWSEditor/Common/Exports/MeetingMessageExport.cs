@@ -102,29 +102,32 @@ namespace EWSEditor.Common.Exports
         // PSETID_CalendarAssistant = Guid("11000e07-b51b-40d6-af21-caa85edab1d0")  // http://stackoverflow.com/questions/30911510/getting-information-from-delegated-email-account-from-appointment-inspector-wind
   
 
-        public MeetingMessageData GetMeetingMessageDataFromItem(ExchangeService oExchangeService, ItemId oItemId)
-        {
-            //string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
-            //PropertySet oPropertySet = null;
-            //oPropertySet = GetMeetingMessageDataPropset(ServerVersion, false, false, false);
-            //MeetingMessage oMeetingMessage = MeetingMessage.Bind(oExchangeService, oItemId, oPropertySet);
-            //MeetingMessageData oMeetingMessageData = new MeetingMessageData();
+        //public MeetingMessageData GetMeetingMessageDataFromItem(ExchangeService oExchangeService, ItemId oItemId)
+        //{AdditionalPropertiesDefs
+        //    MeetingMessageData oMeetingMessageData = GetMeetingMessageDataFromItem(oExchangeService, oItemId, false, faAdditionalPropertyDefinitionslse, false);
+        //    return oMeetingMessageData;
+        //}
 
-            //SetMeetingMessageData(oMeetingMessage, ref oMeetingMessageData);
-            MeetingMessageData oMeetingMessageData = GetMeetingMessageDataFromItem(oExchangeService, oItemId, false, false, false);
-
-            return oMeetingMessageData;
-        }
-
-        public MeetingMessageData GetMeetingMessageDataFromItem(ExchangeService oExchangeService, ItemId oItemId, bool bIncludeAttachments, bool bIncludeBody, bool bIncludeMime)
+ 
+        public MeetingMessageData GetMeetingMessageDataFromItem(
+            ExchangeService oExchangeService, 
+            ItemId oItemId,
+            List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions,
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
+            bool bIncludeBody, 
+            bool bIncludeMime)
         {
             string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
             PropertySet oPropertySet = null;
-            oPropertySet = GetMeetingMessageDataPropset(ServerVersion, bIncludeAttachments, bIncludeBody, bIncludeMime);
+            oPropertySet = GetMeetingMessageDataPropset(ServerVersion, bIncludeBody, bIncludeMime, oExtendedPropertyDefinitions);
             MeetingMessage oMeetingMessage = MeetingMessage.Bind(oExchangeService, oItemId, oPropertySet);
             MeetingMessageData oMeetingMessageData = new MeetingMessageData();
-            
-            SetMeetingMessageData(oMeetingMessage, ref oMeetingMessageData);
+
+            SetMeetingMessageData(
+                oMeetingMessage, 
+                ref oMeetingMessageData,  
+                oAdditionalPropertyDefinitions, 
+                oExtendedPropertyDefinitions);
           
             return oMeetingMessageData;
 
@@ -148,33 +151,7 @@ namespace EWSEditor.Common.Exports
             return bRet;
         }
 
-        public bool SaveMeetingMessageToFolder(ExchangeService oExchangeService, ItemId oItemId)
-        {
-            bool bRet = true;
-
-            List<ItemId> oItemIds = new List<ItemId> { oItemId };
-            SaveMeetingMessagesToFolder(oExchangeService, oItemIds);
-            return bRet;
-        }
-
-        public bool SaveMeetingMessagesToFolder(ExchangeService oExchangeService, List<ItemId> oItemIds)
-        {
-            bool bRet = true;
-            string sFolder = string.Empty;
-            if (GetFolderPath(ref sFolder))
-                SaveMeetingMessagesToFolder(oExchangeService, oItemIds, sFolder);
-            return bRet;
-        }
-
-        public bool SaveMeetingMessageToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFolder)
-        {
-            bool bRet = true;
-            List<ItemId> oItemIds = new List<ItemId> { oItemId };
-            SaveMeetingMessagesToFolder(oExchangeService, oItemIds);
-            return bRet;
-        }
-
-
+   
 
         public bool SaveMeetingMessageBlobToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFile)
         {
@@ -214,7 +191,12 @@ namespace EWSEditor.Common.Exports
         //    return bRet;
         //}
 
-        public bool SaveMeetingMessagesToFolder(ExchangeService oExchangeService, List<ItemId> oItemIds, string sFolder)
+        public bool SaveMeetingMessagesToFolder(
+            ExchangeService oExchangeService, 
+            List<ItemId> oItemIds, string sFolder, 
+            List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions, 
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions 
+            )
         {
             bool bRet = true;
 
@@ -233,7 +215,14 @@ namespace EWSEditor.Common.Exports
                 sFileName = Path.GetTempFileName().Replace(".tmp", ".xml");
                 sFilePath = sStorageFolder + "\\" + sFileName;
 
-                MeetingMessageData oMeetingMessageData = GetMeetingMessageDataFromItem(oExchangeService, oItemId);
+                MeetingMessageData oMeetingMessageData = GetMeetingMessageDataFromItem(
+                        oExchangeService, 
+                        oItemId,
+                        oAdditionalPropertyDefinitions,
+                        oExtendedPropertyDefinitions,
+                        false,
+                        false
+                        );
 
                 //http://msdn.microsoft.com/en-us/library/system.xml.xmlwritersettings.newlinehandling(v=vs.110).aspx
                 sContent = SerialHelper.SerializeObjectToString<MeetingMessageData>(oMeetingMessageData);
@@ -257,7 +246,12 @@ namespace EWSEditor.Common.Exports
         }
 
 
-        public void SetMeetingMessageData(MeetingMessage oMeetingMessage, ref MeetingMessageData oMeetingMessageData)
+        public void SetMeetingMessageData(
+            MeetingMessage oMeetingMessage, 
+            ref MeetingMessageData oMeetingMessageData, 
+            List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions, 
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions 
+            )
         {
             MeetingMessageData oMM = new MeetingMessageData();
        
@@ -585,59 +579,59 @@ namespace EWSEditor.Common.Exports
             //oMM.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedPropByteArrAsString(oMeetingMessage, PidLidCleanGlobalObjectId);
             //oMM.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedPropByteArrAsString(oMeetingMessage, PidLidGlobalObjectId);
 
-            oMM.PidLidCleanGlobalObjectId =  GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidCleanGlobalObjectId);
-            
-            oMM.PidLidGlobalObjectId = GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidGlobalObjectId);
+            oMM.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidCleanGlobalObjectId);
 
-            oMM.PidLidAppointmentRecur =  GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidAppointmentRecur);
-            oMM.PidLidClientIntent = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidClientIntent);
-            oMM.ClientInfoString = GetExtendedProp_String_AsString(oMeetingMessage, ClientInfoString);
-            oMM.StoreEntryId  = GetExtendedProp_ByteArr_AsString(oMeetingMessage, Prop_PR_STORE_ENTRYID);
-            oMM.EntryId = GetExtendedProp_ByteArr_AsString(oMeetingMessage, Prop_PR_ENTRYID);
-            oMM.RetentionDate = GetExtendedProp_DateTime_AsString(oMeetingMessage, Prop_PR_RETENTION_DATE);
-            oMM.IsHidden = GetExtendedProp_Bool_AsString(oMeetingMessage, Prop_PR_IS_HIDDEN);
-            oMM.LogTriggerAction = GetExtendedProp_String_AsString(oMeetingMessage, LogTriggerAction);
+            oMM.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidGlobalObjectId);
 
-            //oMM.PidLidCurrentVersion = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidCurrentVersion);
-            oMM.PidLidCurrentVersionName = GetExtendedProp_String_AsString(oMeetingMessage, PidLidCurrentVersionName);
-            oMM.PidNameCalendarUid = GetExtendedProp_String_AsString(oMeetingMessage, PidNameCalendarUid);
-            oMM.PidLidOrganizerAlias = GetExtendedProp_String_AsString(oMeetingMessage, PidLidOrganizerAlias);
-            oMM.PidTagSenderSmtpAddress = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderSmtpAddress);
+            oMM.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidAppointmentRecur);
+            oMM.PidLidClientIntent = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oMeetingMessage, PidLidClientIntent);
+            oMM.ClientInfoString = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, ClientInfoString);
+            oMM.StoreEntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, Prop_PR_STORE_ENTRYID);
+            oMM.EntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, Prop_PR_ENTRYID);
+            oMM.RetentionDate = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oMeetingMessage, Prop_PR_RETENTION_DATE);
+            oMM.IsHidden = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oMeetingMessage, Prop_PR_IS_HIDDEN);
+            oMM.LogTriggerAction = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, LogTriggerAction);
 
-            oMM.PidLidInboundICalStream = GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidInboundICalStream);
-            oMM.PidLidAppointmentAuxiliaryFlags = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidAppointmentAuxiliaryFlags);
-            oMM.PidLidRecurrencePattern = GetExtendedProp_String_AsString(oMeetingMessage, PidLidRecurrencePattern);
-            oMM.PidLidRecurrenceType = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidRecurrenceType);
-            oMM.PidLidRecurring = GetExtendedProp_Bool_AsString(oMeetingMessage, PidLidRecurring);
+            //oMM.PidLidCurrentVersion = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oMeetingMessage, PidLidCurrentVersion);
+            oMM.PidLidCurrentVersionName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidLidCurrentVersionName);
+            oMM.PidNameCalendarUid = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidNameCalendarUid);
+            oMM.PidLidOrganizerAlias = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidLidOrganizerAlias);
+            oMM.PidTagSenderSmtpAddress = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderSmtpAddress);
 
-            oMM.PidLidAppointmentRecur = GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidAppointmentRecur);
-            //oMM.PidLidAppointmentStartDate = GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartDate);
-            //oMM.PidLidAppointmentStartTime = GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartTime);
-            oMM.PidLidAppointmentStartWhole = GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartWhole);
-            oMM.PidLidAppointmentEndWhole = GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentEndWhole);
-            oMM.PidLidAppointmentStateFlags = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidAppointmentStateFlags);
+            oMM.PidLidInboundICalStream = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidInboundICalStream);
+            oMM.PidLidAppointmentAuxiliaryFlags = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oMeetingMessage, PidLidAppointmentAuxiliaryFlags);
+            oMM.PidLidRecurrencePattern = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidLidRecurrencePattern);
+            oMM.PidLidRecurrenceType = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oMeetingMessage, PidLidRecurrenceType);
+            oMM.PidLidRecurring = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oMeetingMessage, PidLidRecurring);
 
-            oMM.PidNameFrom = GetExtendedProp_String_AsString(oMeetingMessage, PidNameFrom);
-            oMM.PidNameHttpmailFrom = GetExtendedProp_String_AsString(oMeetingMessage, PidNameHttpmailFrom);
-            oMM.PidNameHttpmailFromEmail = GetExtendedProp_String_AsString(oMeetingMessage, PidNameHttpmailFromEmail);
+            oMM.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidAppointmentRecur);
+            //oMM.PidLidAppointmentStartDate = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartDate);
+            //oMM.PidLidAppointmentStartTime = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartTime);
+            oMM.PidLidAppointmentStartWhole = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartWhole);
+            oMM.PidLidAppointmentEndWhole = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentEndWhole);
+            oMM.PidLidAppointmentStateFlags = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oMeetingMessage, PidLidAppointmentStateFlags);
 
-            oMM.PidTagSenderEmailAddress = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderEmailAddress);
-            oMM.PidTagSenderFlags = GetExtendedProp_Int_AsString(oMeetingMessage, PidTagSenderFlags);
-            oMM.PidTagSenderName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderName);
-            oMM.PidTagSenderSimpleDisplayName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderSimpleDisplayName);
+            oMM.PidNameFrom = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidNameFrom);
+            oMM.PidNameHttpmailFrom = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidNameHttpmailFrom);
+            oMM.PidNameHttpmailFromEmail = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidNameHttpmailFromEmail);
 
-            oMM.PidTagSentRepresentingEmailAddress = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSentRepresentingEmailAddress);
-            oMM.PidTagSentRepresentingFlags = GetExtendedProp_Int_AsString(oMeetingMessage, PidTagSentRepresentingFlags);
-            oMM.PidTagSentRepresentingName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSentRepresentingName);
-            oMM.PidTagSentRepresentingSimpleDisplayName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagSentRepresentingSimpleDisplayName);
+            oMM.PidTagSenderEmailAddress = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderEmailAddress);
+            oMM.PidTagSenderFlags = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oMeetingMessage, PidTagSenderFlags);
+            oMM.PidTagSenderName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderName);
+            oMM.PidTagSenderSimpleDisplayName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderSimpleDisplayName);
 
-            oMM.PidTagProcessed = GetExtendedProp_Bool_AsString(oMeetingMessage, PidTagProcessed);
-            //oMM.PidLidResponseStatus = GetExtendedProp_Int_AsString(oMeetingMessage, PidLidResponseStatus);
-            oMM.PidLidIsException = GetExtendedProp_Bool_AsString(oMeetingMessage, PidLidIsException);
+            oMM.PidTagSentRepresentingEmailAddress = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidTagSentRepresentingEmailAddress);
+            oMM.PidTagSentRepresentingFlags = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oMeetingMessage, PidTagSentRepresentingFlags);
+            oMM.PidTagSentRepresentingName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidTagSentRepresentingName);
+            oMM.PidTagSentRepresentingSimpleDisplayName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidTagSentRepresentingSimpleDisplayName);
 
-            oMM.PidTagCreatorName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagCreatorName);
-            oMM.PidTagCreatorSimpleDisplayName = GetExtendedProp_String_AsString(oMeetingMessage, PidTagCreatorSimpleDisplayName);
-            oMM.PidNameCalendarIsOrganizer = GetExtendedProp_String_AsString(oMeetingMessage, PidNameCalendarIsOrganizer);
+            oMM.PidTagProcessed = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oMeetingMessage, PidTagProcessed);
+            //oMM.PidLidResponseStatus = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oMeetingMessage, PidLidResponseStatus);
+            oMM.PidLidIsException = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oMeetingMessage, PidLidIsException);
+
+            oMM.PidTagCreatorName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidTagCreatorName);
+            oMM.PidTagCreatorSimpleDisplayName = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidTagCreatorSimpleDisplayName);
+            oMM.PidNameCalendarIsOrganizer = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidNameCalendarIsOrganizer);
 
       
  
@@ -691,12 +685,20 @@ namespace EWSEditor.Common.Exports
 
 
 
-        public PropertySet GetCalendarPropset(string ExchangeVersion)
-        {
-            return GetMeetingMessageDataPropset(ExchangeVersion, false, false, false);
-        } 
+        //public PropertySet GetCalendarPropset(string ExchangeVersion)
+        //{
+        //    return GetMeetingMessageDataPropset(
+        //        ExchangeVersion,
+        //        false, 
+        //        false);
+        //} 
 
-        public static PropertySet GetMeetingMessageDataPropset(string ExchangeVersion, bool bIncludeAttachments, bool bIncludeBody, bool bIncludeMime)
+        public static PropertySet GetMeetingMessageDataPropset(
+            string ExchangeVersion, 
+            bool bIncludeBody, 
+            bool bIncludeMime,
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions
+            )
         {
             // Removed for testing:
             //      BasePropertySet.IdOnly,
@@ -797,8 +799,8 @@ namespace EWSEditor.Common.Exports
                 meetingMessagePropertySet.Add(MeetingMessageSchema.UniqueBody);    
             }
 
-            if (bIncludeAttachments == true)
-                meetingMessagePropertySet.Add(MeetingMessageSchema.Attachments);
+            //if (bIncludeAttachments == true)
+            //    meetingMessagePropertySet.Add(MeetingMessageSchema.Attachments);
 
             if (bIncludeMime == true)
                 meetingMessagePropertySet.Add(MeetingMessageSchema.MimeContent);
@@ -894,6 +896,15 @@ namespace EWSEditor.Common.Exports
                     meetingMessagePropertySet.Add(MeetingMessageSchema.VotingInformation);
                 }
             }
+
+            if (oExtendedPropertyDefinitions != null)
+            {
+                foreach (ExtendedPropertyDefinition oEPD in oExtendedPropertyDefinitions)
+                {
+                    meetingMessagePropertySet.Add(oEPD);
+                }
+            }
+
 
 
             // Schema properties not requested due to not being viable for 2007 sp1
@@ -1312,7 +1323,7 @@ namespace EWSEditor.Common.Exports
 
 
         //  
-        public string GetMeetingMessageDataAsCsvHeaders()
+        public string GetMeetingMessageDataAsCsvHeaders(List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions)
         {
             char[] TrimChars = { ',', ' ' };
             string sRet = string.Empty;
@@ -1445,65 +1456,65 @@ namespace EWSEditor.Common.Exports
 
 
 
-        public static string GetExtendedProp_DateTime_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            DateTime oDateTime;
+        //public static string GetExtendedProp_DateTime_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        //{
+        //    DateTime oDateTime;
 
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oDateTime))
-                sReturn = oDateTime.ToString();
-            else
-                sReturn = "";
-            return sReturn;
-        }
+        //    string sReturn = "";
+        //    if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oDateTime))
+        //        sReturn = oDateTime.ToString();
+        //    else
+        //        sReturn = "";
+        //    return sReturn;
+        //}
 
-        public  string GetExtendedProp_ByteArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            byte[] bytearrVal;
+        //public  string GetExtendedProp_ByteArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        //{
+        //    byte[] bytearrVal;
 
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bytearrVal))  // Example: CleanGlobalObjectId
-                sReturn = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
-            else
-                sReturn = "";
-            return sReturn;
-        }
+        //    string sReturn = "";
+        //    if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bytearrVal))  // Example: CleanGlobalObjectId
+        //        sReturn = Convert.ToBase64String(bytearrVal);  // reverse: Convert.FromBase64String(string data)
+        //    else
+        //        sReturn = "";
+        //    return sReturn;
+        //}
 
-        public static string GetExtendedProp_String_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            string sString = string.Empty;
+        //public static string GetExtendedProp_String_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        //{
+        //    string sString = string.Empty;
 
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out sString))
-                sReturn = sString;
-            else
-                sReturn = "";
-            return sReturn;
-        }
+        //    string sReturn = "";
+        //    if (oItem.TryGetProperty(oExtendedPropertyDefinition, out sString))
+        //        sReturn = sString;
+        //    else
+        //        sReturn = "";
+        //    return sReturn;
+        //}
 
-        public static string GetExtendedProp_Int_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            int lVal = 0;
+        //public static string GetExtendedProp_Int_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        //{
+        //    int lVal = 0;
 
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out lVal))
-                sReturn = lVal.ToString();
-            else
-                sReturn = "";
-            return sReturn;
-        }
+        //    string sReturn = "";
+        //    if (oItem.TryGetProperty(oExtendedPropertyDefinition, out lVal))
+        //        sReturn = lVal.ToString();
+        //    else
+        //        sReturn = "";
+        //    return sReturn;
+        //}
 
-        public static string GetExtendedProp_Bool_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
-        {
-            bool bVal = false;
+        //public static string GetExtendedProp_Bool_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        //{
+        //    bool bVal = false;
 
-            string sReturn = "";
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bVal))
-                sReturn = bVal.ToString();
-            else
-                sReturn = "";
-            return sReturn;
-        }
+        //    string sReturn = "";
+        //    if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bVal))
+        //        sReturn = bVal.ToString();
+        //    else
+        //        sReturn = "";
+        //    return sReturn;
+        //}
     }
 }
 

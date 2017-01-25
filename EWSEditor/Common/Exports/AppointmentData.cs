@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EWSEditor.Common.Exports;
+using Microsoft.Exchange.WebServices.Data;
 
 namespace EWSEditor.Common.Exports
 {
@@ -110,7 +112,6 @@ namespace EWSEditor.Common.Exports
         public string WebClientReadFormQueryString = string.Empty;
 
  
-
         //private string PidLidInboundICalStream = string.Empty;
         //private string PidLidAppointmentAuxiliaryFlags = string.Empty;
         //private string PidLidRecurrencePattern = string.Empty;
@@ -204,6 +205,7 @@ namespace EWSEditor.Common.Exports
 
         public string AttendeeStatus = string.Empty;  // calculated by AttachmentExport 
 
+        //public List<ExtendedProperty> AdditionalExtendedProperties = null;
  
    }
 }
