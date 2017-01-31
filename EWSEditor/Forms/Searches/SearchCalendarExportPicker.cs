@@ -29,13 +29,13 @@ namespace EWSEditor.Forms
 
         private void SearchCalendarExportPicker_Load(object sender, EventArgs e)
         {
-            string StarFolder = Application.StartupPath  + "";
-            this.txtDisplayedResultsFolderPath.Text = StarFolder + "\\Export\\ExportedSearchCalendarResults.CSV";
-            this.txtAppointmentDetailedFolderPath.Text = StarFolder + "\\Export\\ExportedDetailedAppointmentResults.CSV";
-            this.txtMeetingMessageDetailedFolderPath.Text = StarFolder + "\\Export\\ExportedDetailedMeetingMessageResults.CSV";
-            this.txtDiagnosticExportFolderPath.Text = StarFolder + "\\Export\\ExportedDiagnosticMeetingMessageResults.CSV";
+            string StartFolder = Application.StartupPath  + "";
+            this.txtDisplayedResultsFolderPath.Text = StartFolder + "\\Export\\ExportedSearchCalendarResults.CSV";
+            this.txtAppointmentDetailedFolderPath.Text = StartFolder + "\\Export\\ExportedDetailedAppointmentResults.CSV";
+            this.txtMeetingMessageDetailedFolderPath.Text = StartFolder + "\\Export\\ExportedDetailedMeetingMessageResults.CSV";
+            this.txtDiagnosticExportFolderPath.Text = StartFolder + "\\Export\\ExportedDiagnosticMeetingMessageResults.CSV";
             this.txtBlobFolderPath.Text = Application.StartupPath + "\\Export";
-            this.txtIncludeUsersAdditionalPropertiesFile.Text = Application.StartupPath + "\\AdditionalItemsExamples";
+            this.txtIncludeUsersAdditionalPropertiesFile.Text = Application.StartupPath + "\\AdditionalPropertiesExamples";
            
             SetEnablement();
         }
@@ -97,7 +97,7 @@ namespace EWSEditor.Forms
             btnPickFolderBlobProperties.Enabled = rdoExportItemsAsBlobs.Checked;
 
             txtIncludeUsersAdditionalPropertiesFile.Enabled = chkIncludeUsersAdditionalProperties.Checked;
-            btnPickFolderIncludeUsersAdditionalProperties.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+            //btnPickFolderIncludeUsersAdditionalProperties.Enabled = chkIncludeUsersAdditionalProperties.Checked;
         }
 
         private void rdoExportItemsAsBlobs_CheckedChanged(object sender, EventArgs e)
@@ -125,11 +125,11 @@ namespace EWSEditor.Forms
         private void btnPickFolderAppointmentDetailedProperties_Click(object sender, EventArgs e)
         {
  
-            txtAppointmentDetailedFolderPath.Text = ChooseFilePath(txtAppointmentDetailedFolderPath.Text.Trim() );
+            txtAppointmentDetailedFolderPath.Text = ChooseFilePath(txtAppointmentDetailedFolderPath.Text.Trim(), "CSV");
  
         }
 
-        private string ChooseFilePath(string sFullPath )
+        private string ChooseFilePath(string sFullPath, string sExtensionType)
         {
             //string sFolderPath = string.Empty;
             string sNewFullPath = string.Empty;
@@ -142,10 +142,21 @@ namespace EWSEditor.Forms
             oFD.FileName = sFullPath;  
             
             oFD.CheckPathExists = true;
-            oFD.DefaultExt = "csv";
-            oFD.Filter = "Bin files (*.csv)|*.csv";
-            oFD.FilterIndex = 1;
-            oFD.Title = "Save item as csv";
+            if (sExtensionType.ToUpper() == "CSV")
+            {
+                oFD.DefaultExt = "csv";
+                oFD.Filter = "csv files (*.csv)|*.csv";
+                oFD.FilterIndex = 1;
+                oFD.Title = "Save item as csv";
+            }
+
+            if (sExtensionType.ToUpper() == "BIN")
+            {
+                oFD.DefaultExt = "bin";
+                oFD.Filter = "bin files (*.bin)|*.bin";
+                oFD.FilterIndex = 1;
+                oFD.Title = "Save item as bin";
+            }
 
             if (oFD.ShowDialog() == DialogResult.OK)
             {
@@ -157,7 +168,7 @@ namespace EWSEditor.Forms
 
         private void btnPickFolderMeetingMessageDetailedProperties_Click(object sender, EventArgs e)
         {
-            txtMeetingMessageDetailedFolderPath.Text = ChooseFilePath(txtMeetingMessageDetailedFolderPath.Text.Trim());
+            txtMeetingMessageDetailedFolderPath.Text = ChooseFilePath(txtMeetingMessageDetailedFolderPath.Text.Trim(), "CSV");
 
  
 
@@ -166,7 +177,7 @@ namespace EWSEditor.Forms
         private void btnPickFolderDisplayedResults_Click(object sender, EventArgs e)
         {
 
-            txtDiagnosticExportFolderPath.Text = ChooseFilePath(txtDiagnosticExportFolderPath.Text.Trim());
+            txtDiagnosticExportFolderPath.Text = ChooseFilePath(txtDiagnosticExportFolderPath.Text.Trim(), "CSV");
  
         }
 
@@ -174,6 +185,11 @@ namespace EWSEditor.Forms
         {
             string sFolderPath = string.Empty;
             System.Windows.Forms.FolderBrowserDialog oFDB = new FolderBrowserDialog();
+
+            //oFDB.DefaultExt = "bin";
+            //oFDB.Filter = "bin files (*.bin)|*.bin";
+            //oFDB.FilterIndex = 1;
+            //oFDB.Title = "Save item as bin";
 
             oFDB.SelectedPath = txtBlobFolderPath.Text;
             if (oFDB.ShowDialog() == DialogResult.OK)
@@ -191,7 +207,7 @@ namespace EWSEditor.Forms
 
         private void chkIncludeUsersAdditionalProperties_CheckedChanged(object sender, EventArgs e)
         {
-            txtIncludeUsersAdditionalPropertiesFile.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+           // txtIncludeUsersAdditionalPropertiesFile.Enabled = chkIncludeUsersAdditionalProperties.Checked;
             btnPickFolderIncludeUsersAdditionalProperties.Enabled = chkIncludeUsersAdditionalProperties.Checked;
         }
         
@@ -212,6 +228,11 @@ namespace EWSEditor.Forms
 
                 this.txtIncludeUsersAdditionalPropertiesFile.Text = sChosenFile;
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

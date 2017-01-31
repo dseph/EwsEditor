@@ -190,5 +190,10 @@ namespace EWSEditor.Forms
             this.ChoseOK = false;
             this.Close();
         }
+
+        private void TempWellKnownFolderCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

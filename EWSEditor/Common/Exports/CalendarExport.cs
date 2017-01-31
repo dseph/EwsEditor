@@ -30,17 +30,24 @@ namespace EWSEditor.Common.Exports
         private static ExtendedPropertyDefinition LogTriggerAction = new ExtendedPropertyDefinition(new Guid("11000e07-b51b-40d6-af21-caa85edab1d0"), 0x0006, MapiPropertyType.String); //  
         private static ExtendedPropertyDefinition PidLidCleanGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0023, MapiPropertyType.Binary);
         private static ExtendedPropertyDefinition PidLidGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0003, MapiPropertyType.Binary);
-       
+
+       // private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.SystemTime); // PR_START_DATE_ETC SystemTime for items
+        private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
+        private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C           
         private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x301B, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
         private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
-        private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
-        private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C    
         private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_TAG = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
         private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_PERIOD = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer); // Prop_PR_RETENTION_DATE 0x301C    
         private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_DATE = new ExtendedPropertyDefinition(0x301F, MapiPropertyType.SystemTime);
+
         private static ExtendedPropertyDefinition Prop_PR_ENTRYID = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);  // PidTagEntryId, PidTagMemberEntryId, ptagEntryId
         private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FFB, MapiPropertyType.Binary);  // PidTagStoreEntryId
         private static ExtendedPropertyDefinition Prop_PR_IS_HIDDEN = new ExtendedPropertyDefinition(0x10f4, MapiPropertyType.Boolean);
+ 
+        //private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_DATE = new ExtendedPropertyDefinition(0x301F, MapiPropertyType.SystemTime);
+         //private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.String); // PR_START_DATE_ETC  GUID 0x30190102
+
+
 
         private static ExtendedPropertyDefinition PR_SENT_REPRESENTING_EMAIL_ADDRESS = new ExtendedPropertyDefinition(0x0065, MapiPropertyType.String);
         private static ExtendedPropertyDefinition PR_SENDER_EMAIL_ADDRESS = new ExtendedPropertyDefinition(0x4030, MapiPropertyType.String);
@@ -198,6 +205,9 @@ namespace EWSEditor.Common.Exports
                 bRet = false;
 
             return bRet;
+
+ 
+          
         }
 
  
@@ -390,23 +400,7 @@ namespace EWSEditor.Common.Exports
             oAppointmentData.HasAttachments = oAppointment.HasAttachments.ToString();
 
 
-
-            //oAppointmentData.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, KnownExtendedProperties.Instance().PidLidCleanGlobalObjectId);
-
-            //oAppointmentData.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedPropByteArrAsString(oAppointment, KnownExtendedProperties.Instance().PidLidCleanGlobalObjectId);
-            //oAppointmentData.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedPropByteArrAsString(oAppointment, KnownExtendedProperties.Instance().PidLidGlobalObjectId);
-            //oAppointmentData.PidLidAppointmentRecur = GetExtendedProp_ByteArr_AsString(oAppointment, KnownExtendedProperties.Instance().PidLidAppointmentRecur);
-            //oAppointmentData.PidLidClientIntent = GetExtendedProp_Int_AsString(oAppointment, KnownExtendedProperties.Instance().PidLidClientIntent);
-            //oAppointmentData.ClientInfoString = GetExtendedProp_String_AsString(oAppointment, KnownExtendedProperties.Instance().ClientInfoString);
-            //oAppointmentData.StoreEntryId = GetExtendedProp_ByteArr_AsString(oAppointment, KnownExtendedProperties.Instance().Prop_PR_STORE_ENTRYID);
-            //oAppointmentData.EntryId = GetExtendedProp_ByteArr_AsString(oAppointment, KnownExtendedProperties.Instance().Prop_PR_ENTRYID);
-            //oAppointmentData.RetentionDate = GetExtendedProp_DateTime_AsString(oAppointment, KnownExtendedProperties.Instance().Prop_PR_RETENTION_DATE);
-            //oAppointmentData.IsHidden = GetExtendedProp_Bool_AsString(oAppointment, KnownExtendedProperties.Instance().Prop_PR_IS_HIDDEN);
-            //oAppointmentData.LogTriggerAction = GetExtendedProp_String_AsString(oAppointment, KnownExtendedProperties.Instance().LogTriggerAction);
-
-            //oAppointmentData.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidCleanGlobalObjectId);
-            //oAppointmentData.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidGlobalObjectId);
-
+ 
             oAppointmentData.PidNameCalendarIsOrganizer = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, PidNameCalendarIsOrganizer);
 
 
@@ -1069,6 +1063,9 @@ namespace EWSEditor.Common.Exports
             appointmentPropertySet.Add(PidNameCalendarIsOrganizer);
      
 
+ 
+
+
             // older
             appointmentPropertySet.Add(PidLidAppointmentRecur);
             appointmentPropertySet.Add(PidLidClientIntent);
@@ -1077,16 +1074,16 @@ namespace EWSEditor.Common.Exports
             appointmentPropertySet.Add(PidLidCleanGlobalObjectId);
             appointmentPropertySet.Add(PidLidGlobalObjectId);
 
-            appointmentPropertySet.Add(Prop_PR_POLICY_TAG);
-
-            appointmentPropertySet.Add(Prop_PR_RETENTION_FLAGS);
+            //appointmentPropertySet.Add(Prop_PR_START_DATE_ETC);
             appointmentPropertySet.Add(Prop_PR_RETENTION_PERIOD);
+            appointmentPropertySet.Add(Prop_PR_RETENTION_DATE);
+            appointmentPropertySet.Add(Prop_PR_POLICY_TAG);
+            appointmentPropertySet.Add(Prop_PR_RETENTION_FLAGS);
             appointmentPropertySet.Add(Prop_PR_ARCHIVE_TAG);
             appointmentPropertySet.Add(Prop_PR_ARCHIVE_PERIOD);
             appointmentPropertySet.Add(Prop_PR_ARCHIVE_DATE);
-            appointmentPropertySet.Add(Prop_PR_ENTRYID);
 
-            appointmentPropertySet.Add(Prop_PR_RETENTION_DATE);
+            appointmentPropertySet.Add(Prop_PR_ENTRYID);
             appointmentPropertySet.Add(Prop_PR_STORE_ENTRYID);
             appointmentPropertySet.Add(Prop_PR_IS_HIDDEN);
              
@@ -1311,168 +1308,7 @@ namespace EWSEditor.Common.Exports
             o.Add(CleanString(oAppointmentData.RangeEndByDate));
 
  
-            //o.Add(oAppointmentData.UniqueId);
-            //o.Add(oAppointmentData.FolderPath);
-            //o.Add(oAppointmentData.OrganizerName);
-            //o.Add(oAppointmentData.OrganizerAddress);
-            //o.Add(oAppointmentData.ParentFolderId);
-
-            //o.Add(oAppointmentData.Subject);
-            //o.Add(oAppointmentData.DisplayTo);
-
-            //if (oAppointmentData.DisplayCc != null)
-            //    o.Add(oAppointmentData.DisplayCc);
-            //else
-            //    o.Add("");
-
-            //o.Add(oAppointmentData.RequiredAttendees);
-            //o.Add(oAppointmentData.OptionalAttendees);
-
-            //o.Add(oAppointmentData.DateTimeCreated);
-
-            //o.Add(oAppointmentData.LastModifiedName);
-            //o.Add(oAppointmentData.LastModifiedTime);
-            //o.Add(oAppointmentData.HasAttachments);
-            //o.Add(oAppointmentData.ItemClass);
-            //o.Add(oAppointmentData.Start);
-            //o.Add(oAppointmentData.End);
-
-            //o.Add(oAppointmentData.IsAllDayEvent);
-            //o.Add(oAppointmentData.IsCancelled);
-            //o.Add(oAppointmentData.AppointmentState);
-            //o.Add(oAppointmentData.AppointmentType);
-
-            //o.Add(oAppointmentData.IsRecurring);
-            //o.Add(oAppointmentData.IsReminderSet);
-            //o.Add(oAppointmentData.IsOnlineMeeting);
-            //o.Add(oAppointmentData.RetentionDate);
-
- 
-            //o.Add(oAppointmentData.IsResend);
-            //o.Add(oAppointmentData.IsDraft);
-
-            //o.Add(oAppointmentData.EntryId);
-            //o.Add(oAppointmentData.StoreEntryId);
-
-            //o.Add(oAppointmentData.PidLidAppointmentRecur);
-            //o.Add(oAppointmentData.PidLidClientIntent);
-            //o.Add(oAppointmentData.ClientInfoString);
-            //o.Add(oAppointmentData.LogTriggerAction);
-            //o.Add(oAppointmentData.PidLidCleanGlobalObjectId);
-            //o.Add(oAppointmentData.PidLidGlobalObjectId);
-            //o.Add(oAppointmentData.IsHidden);
-
-            //o.Add(oAppointmentData.AppointmentReplyTime);
-            //o.Add(oAppointmentData.AllowNewTimeProposal);
-            //o.Add(oAppointmentData.AllowedResponseActions);
-            //o.Add(oAppointmentData.AdjacentMeetingCount);
-            //o.Add(oAppointmentData.AppointmentSequenceNumber);
-            //if (oAppointmentData.Body != null)
-            //    o.Add(oAppointmentData.Body);
-            //else
-            //    o.Add("");
-            //o.Add(oAppointmentData.Categories);
-            //o.Add(oAppointmentData.ConferenceType);
-            //o.Add(oAppointmentData.ConflictingMeetingCount);
-            //o.Add(oAppointmentData.ConflictingMeetings);
-            //if (oAppointmentData.ConversationId != null)
-            //    o.Add(oAppointmentData.ConversationId);
-            //else
-            //    o.Add("");
-            //o.Add(oAppointmentData.Culture);
-            //o.Add(oAppointmentData.DateTimeReceived);
-            //o.Add(oAppointmentData.Duration);
-            //o.Add(oAppointmentData.EffectiveRights);
-    
-            //o.Add(oAppointmentData.ICalDateTimeStamp);
-            //o.Add(oAppointmentData.ICalRecurrenceId);
-            //o.Add(oAppointmentData.ICalUid);
-            //o.Add(oAppointmentData.Importance);
-            //o.Add(oAppointmentData.InReplyTo);
-            //o.Add(oAppointmentData.InternetMessageHeaders);
-            //o.Add(oAppointmentData.IsResponseRequested);
-            //o.Add(oAppointmentData.IsSubmitted);
-            //o.Add(oAppointmentData.IsUnmodified);
-            //o.Add(oAppointmentData.LegacyFreeBusyStatus);
-            //o.Add(oAppointmentData.Location);
-            //o.Add(oAppointmentData.MeetingRequestWasSent);
-            //o.Add(oAppointmentData.MeetingWorkspaceUrl);
-            //o.Add(oAppointmentData.MimeContent);
-            //o.Add(oAppointmentData.MyResponseType);
-            //o.Add(oAppointmentData.NetShowUrl);
-            //o.Add(oAppointmentData.ModifiedOccurrences);
-            //o.Add(oAppointmentData.ReminderDueBy);
-            //o.Add(oAppointmentData.ReminderMinutesBeforeStart);
-            //o.Add(oAppointmentData.Resources);
-            //o.Add(oAppointmentData.Size);
-            //o.Add(oAppointmentData.StartTimeZone);
-            //o.Add(oAppointmentData.Sensitivity);
-            //o.Add(oAppointmentData.TextBody);
-            //o.Add(oAppointmentData.When);
-            //o.Add(oAppointmentData.WebClientEditFormQueryString);
-            //o.Add(oAppointmentData.WebClientReadFormQueryString);
-
-            //// New:
- 
- 
-            //o.Add(oAppointmentData.PidLidCurrentVersionName);
-            //o.Add(oAppointmentData.PidNameCalendarUid);
-            //o.Add(oAppointmentData.PidLidOrganizerAlias);
-            //o.Add(oAppointmentData.PidTagSenderSmtpAddress);
-            //o.Add(oAppointmentData.PidLidInboundICalStream);
-            //o.Add(oAppointmentData.PidLidAppointmentAuxiliaryFlags);
-            //o.Add(oAppointmentData.PidLidRecurrencePattern);
-            //o.Add(oAppointmentData.PidLidRecurrenceType);
-            //o.Add(oAppointmentData.PidLidRecurring);
-            //o.Add(oAppointmentData.PidLidAppointmentRecur);
-
- 
- 
-            //o.Add(oAppointmentData.PidLidAppointmentStartWhole);
-            //o.Add(oAppointmentData.PidLidAppointmentEndWhole);
-            //o.Add(oAppointmentData.PidLidAppointmentStateFlags);
-
-            //o.Add(oAppointmentData.PidNameFrom); // PidNameFrom -  Its the Organizer.
-            //o.Add(oAppointmentData.PidNameHttpmailFrom);
-            //o.Add(oAppointmentData.PidNameHttpmailFromEmail);
-
-            //o.Add(oAppointmentData.PidTagSenderEmailAddress);
-            //o.Add(oAppointmentData.PidTagSenderFlags);
-            //o.Add(oAppointmentData.PidTagSenderName);
-            //o.Add(oAppointmentData.PidTagSenderSimpleDisplayName);
-
-            //o.Add(oAppointmentData.PidTagSentRepresentingEmailAddress);
-            //o.Add(oAppointmentData.PidTagSentRepresentingFlags);
-            //o.Add(oAppointmentData.PidTagSentRepresentingName);
-            //o.Add(oAppointmentData.PidTagSentRepresentingSimpleDisplayName);
-
-            //o.Add(oAppointmentData.PidTagProcessed);
-            ////o.Add(oAppointmentData.PidLidResponseStatus);
-            //o.Add(oAppointmentData.PidLidIsException);
-            //o.Add(oAppointmentData.PidTagCreatorName);
-            //o.Add(oAppointmentData.PidTagCreatorSimpleDisplayName);
-
-            //// recurring
-            //o.Add(oAppointmentData.StartingDateRange);
-            //o.Add(oAppointmentData.RecurrStartTime);
-            //o.Add(oAppointmentData.RecurrEndTime);
-            //o.Add(oAppointmentData.RecurrencePattern);
-            //o.Add(oAppointmentData.RecurrencePatternInterval);
-            //o.Add(oAppointmentData.RecurrencePatternDaysOfTheWeek);
-            //o.Add(oAppointmentData.RecurrMonthlyPatternDayOfMonth);
-            //o.Add(oAppointmentData.RecurrMonthlyPatternEveryMonths);
-            //o.Add(oAppointmentData.RecurrDayOfTheWeekIndex);
-            //o.Add(oAppointmentData.RecurrDayOfWeek);
-            //o.Add(oAppointmentData.RecurrInterval);
-            //o.Add(oAppointmentData.RecurrYearlyOnSpecificDay);
-            //o.Add(oAppointmentData.RecurrYearlyOnSpecificDayForMonthOf);
-            //o.Add(oAppointmentData.RecurrYearlyOnDayPatternDayOfWeekIndex);
-            //o.Add(oAppointmentData.RecurrYearlyOnDayPatternDayOfWeek);
-            //o.Add(oAppointmentData.RecurrYearlyOnDayPatternMonth);
-            //o.Add(oAppointmentData.RangeHasEnd);
-            //o.Add(oAppointmentData.RangeNumberOccurrences);
-            //o.Add(oAppointmentData.RangeEndByDate);
-
+  
             return o;
         }
 
@@ -1531,193 +1367,25 @@ namespace EWSEditor.Common.Exports
 
         }
 
-        public string GetAppointmentDataAsCsv(AppointmentData oAppointmentData)
-        {
-            char[] TrimChars = { ',', ' ' };
-            string sRet = string.Empty;
-            List<string> o = new List<string> { };
+        //public string GetAppointmentDataAsCsv(AppointmentData oAppointmentData)
+        //{
+        //    char[] TrimChars = { ',', ' ' };
+        //    string sRet = string.Empty;
+        //    List<string> o = new List<string> { };
  
-           // o.Add(oAppointmentData.UniqueId.Replace(',', ' '));
-           // o.Add(oAppointmentData.FolderPath.Replace(',', ' '));
-           // o.Add(oAppointmentData.OrganizerName.Replace(',', ' '));
-           // o.Add(oAppointmentData.OrganizerAddress.Replace(',', ' '));
-           // o.Add(oAppointmentData.ParentFolderId.Replace(',', ' '));
+          
 
-           // o.Add(oAppointmentData.Subject.Replace(',', ' '));
-           // o.Add(oAppointmentData.DisplayTo.Replace(',', ' '));
+        //    StringBuilder oSB = new StringBuilder();
+        //    for (int i = 0; i < o.Count - 1; i++)
+        //    {
+        //        oSB.AppendFormat("{0}, ", o[i]);
+        //    }
 
-           // if (oAppointmentData.DisplayCc != null)
-           //     o.Add(oAppointmentData.DisplayCc.Replace(',', ' '));
-           // else
-           //     o.Add("");
-
-           // o.Add(oAppointmentData.RequiredAttendees.Replace(',', ' '));
-           // o.Add(oAppointmentData.OptionalAttendees.Replace(',', ' '));
-
-           // o.Add(oAppointmentData.DateTimeCreated.Replace(',', ' '));
-
-           // o.Add(oAppointmentData.LastModifiedName.Replace(',', ' '));
-           // o.Add(oAppointmentData.LastModifiedTime.Replace(',', ' '));
-           // o.Add(oAppointmentData.HasAttachments.Replace(',', ' '));
-           // o.Add(oAppointmentData.ItemClass.Replace(',', ' '));
-           // o.Add(oAppointmentData.Start.Replace(',', ' '));
-           // o.Add(oAppointmentData.End.Replace(',', ' '));
-
-           // o.Add(oAppointmentData.IsAllDayEvent.Replace(',', ' '));
-           // o.Add(oAppointmentData.IsCancelled.Replace(',', ' '));
-           // o.Add(oAppointmentData.AppointmentState.Replace(',', ' '));
-           // o.Add(oAppointmentData.AppointmentType.Replace(',', ' '));
-
-           // o.Add(oAppointmentData.IsRecurring.Replace(',', ' '));
-           // o.Add(oAppointmentData.IsReminderSet.Replace(',', ' '));
-           // o.Add(oAppointmentData.IsOnlineMeeting.Replace(',', ' '));
-           // o.Add(oAppointmentData.RetentionDate.Replace(',', ' '));
-
- 
-           // o.Add(oAppointmentData.IsResend.Replace(',', ' '));
-           // o.Add(oAppointmentData.IsDraft.Replace(',', ' '));
-
-           // o.Add(oAppointmentData.EntryId.Replace(',', ' '));
-           // o.Add(oAppointmentData.StoreEntryId.Replace(',', ' '));
-
-           // o.Add(oAppointmentData.PidLidAppointmentRecur.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidClientIntent.Replace(',', ' '));
-           // o.Add(oAppointmentData.ClientInfoString.Replace(',', ' '));
-           // o.Add(oAppointmentData.LogTriggerAction.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidCleanGlobalObjectId.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidGlobalObjectId.Replace(',', ' '));
-           // o.Add(oAppointmentData.IsHidden.Replace(',', ' '));
-
-           // o.Add(oAppointmentData.AppointmentReplyTime.Replace(',', ' '));
-           // o.Add(oAppointmentData.AllowNewTimeProposal.Replace(',', ' '));
-           // o.Add(oAppointmentData.AllowedResponseActions.Replace(',', ' '));
-           // o.Add(oAppointmentData.AdjacentMeetingCount.Replace(',', ' '));
-           // o.Add(oAppointmentData.AppointmentSequenceNumber.Replace(',', ' '));
-           // if (oAppointmentData.Body != null)
-           //     o.Add(oAppointmentData.Body.Replace(',', ' '));
-           // else
-           //     o.Add("");
-           // o.Add(oAppointmentData.Categories.Replace(',', ' '));
-           // o.Add(oAppointmentData.ConferenceType.Replace(',', ' '));
-           // o.Add(oAppointmentData.ConflictingMeetingCount.Replace(',', ' '));
-           // o.Add(oAppointmentData.ConflictingMeetings.Replace(',', ' '));
-           // if (oAppointmentData.ConversationId != null)
-           //     o.Add(oAppointmentData.ConversationId.Replace(',', ' '));
-           // else
-           //     o.Add("");
-           // o.Add(oAppointmentData.Culture.Replace(',', ' '));
-           // o.Add(oAppointmentData.DateTimeReceived.Replace(',', ' '));
-           // o.Add(oAppointmentData.Duration.Replace(',', ' '));
-           // o.Add(oAppointmentData.EffectiveRights.Replace(',', ' '));
-    
-           // o.Add(oAppointmentData.ICalDateTimeStamp.Replace(',', ' '));
-           // o.Add(oAppointmentData.ICalRecurrenceId.Replace(',', ' '));
-           // o.Add(oAppointmentData.ICalUid.Replace(',', ' '));
-           // o.Add(oAppointmentData.Importance.Replace(',', ' '));
-           // o.Add(oAppointmentData.InReplyTo.Replace(',', ' '));
-           // o.Add(oAppointmentData.InternetMessageHeaders.Replace(',', ' '));
-           // o.Add(oAppointmentData.IsResponseRequested.Replace(',', ' '));
-           // o.Add(oAppointmentData.IsSubmitted.Replace(',', ' '));
-           // o.Add(oAppointmentData.IsUnmodified.Replace(',', ' '));
-           // o.Add(oAppointmentData.LegacyFreeBusyStatus.Replace(',', ' '));
-           // o.Add(oAppointmentData.Location.Replace(',', ' '));
-           // o.Add(oAppointmentData.MeetingRequestWasSent.Replace(',', ' '));
-           // o.Add(oAppointmentData.MeetingWorkspaceUrl.Replace(',', ' '));
-           // o.Add(oAppointmentData.MimeContent.Replace(',', ' '));
-           // o.Add(oAppointmentData.MyResponseType.Replace(',', ' '));
-           // o.Add(oAppointmentData.NetShowUrl.Replace(',', ' '));
-           // o.Add(oAppointmentData.ModifiedOccurrences.Replace(',', ' '));
-           // o.Add(oAppointmentData.ReminderDueBy.Replace(',', ' '));
-           // o.Add(oAppointmentData.ReminderMinutesBeforeStart.Replace(',', ' '));
-           // o.Add(oAppointmentData.Resources.Replace(',', ' '));
-           // o.Add(oAppointmentData.Size.Replace(',', ' '));
-           // o.Add(oAppointmentData.StartTimeZone.Replace(',', ' '));
-           // o.Add(oAppointmentData.Sensitivity.Replace(',', ' '));
-           // o.Add(oAppointmentData.TextBody.Replace(',', ' '));
-           // o.Add(oAppointmentData.When.Replace(',', ' '));
-           // o.Add(oAppointmentData.WebClientEditFormQueryString.Replace(',', ' '));
-           // o.Add(oAppointmentData.WebClientReadFormQueryString.Replace(',', ' '));
-
-
-           // // New:
-
-           // //o.Add(oAppointmentData.PidLidCurrentVersion.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidCurrentVersionName.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidNameCalendarUid.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidOrganizerAlias.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidTagSenderSmtpAddress.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidInboundICalStream.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidAppointmentAuxiliaryFlags.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidRecurrencePattern.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidRecurrenceType.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidRecurring.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidAppointmentRecur.Replace(',', ' '));
-
-           // //o.Add(oAppointmentData.PidLidAppointmentStartDate.Replace(',', ' '));
-           // //o.Add(oAppointmentData.PidLidAppointmentStartTime.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidAppointmentStartWhole.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidAppointmentEndWhole.Replace(',', ' '));
- 
-
-           // o.Add(oAppointmentData.PidLidAppointmentStateFlags.Replace(',', ' '));
-
-           // o.Add(oAppointmentData.PidNameFrom.Replace(',', ' ')); // PidNameFrom -  Its the Organizer.
-           // o.Add(oAppointmentData.PidNameHttpmailFrom.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidNameHttpmailFromEmail.Replace(',', ' '));
-
-           // o.Add(oAppointmentData.PidTagSenderEmailAddress.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidTagSenderFlags.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidTagSenderName.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidTagSenderSimpleDisplayName.Replace(',', ' '));
-
-           // o.Add(oAppointmentData.PidTagSentRepresentingEmailAddress.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidTagSentRepresentingFlags.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidTagSentRepresentingName.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidTagSentRepresentingSimpleDisplayName.Replace(',', ' '));
-
-           // o.Add(oAppointmentData.PidTagProcessed.Replace(',', ' '));
-           //// o.Add(oAppointmentData.PidLidResponseStatus.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidLidIsException.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidTagCreatorName.Replace(',', ' '));
-           // o.Add(oAppointmentData.PidTagCreatorSimpleDisplayName.Replace(',', ' '));
-
-           // // Recurring Pattern
- 
-           // o.Add(oAppointmentData.StartingDateRange.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrStartTime.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrEndTime.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrencePattern.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrencePatternInterval.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrencePatternDaysOfTheWeek.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrMonthlyPatternDayOfMonth.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrMonthlyPatternEveryMonths.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrDayOfTheWeekIndex.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrDayOfWeek.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrInterval.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrYearlyOnSpecificDay.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrYearlyOnSpecificDayForMonthOf.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrYearlyOnDayPatternDayOfWeekIndex.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrYearlyOnDayPatternDayOfWeek.Replace(',', ' '));
-           // o.Add(oAppointmentData.RecurrYearlyOnDayPatternMonth.Replace(',', ' '));
-           // o.Add(oAppointmentData.RangeHasEnd.Replace(',', ' '));
-           // o.Add(oAppointmentData.RangeNumberOccurrences.Replace(',', ' '));
-           // o.Add(oAppointmentData.RangeEndByDate.Replace(',', ' '));
-
- 
-
-            // ...
-
-            StringBuilder oSB = new StringBuilder();
-            for (int i = 0; i < o.Count - 1; i++)
-            {
-                oSB.AppendFormat("{0}, ", o[i]);
-            }
-
-            sRet = oSB.ToString();
-            sRet = sRet.TrimEnd(TrimChars);
-            sRet = sRet.Replace("\r\n", "");  // There shold be no crlf
-            return sRet;
-        }
+        //    sRet = oSB.ToString();
+        //    sRet = sRet.TrimEnd(TrimChars);
+        //    sRet = sRet.Replace("\r\n", "");  // There shold be no crlf
+        //    return sRet;
+        //}
 
         //public string GetAppointmentDataAsXml(AppointmentData oAppointmentData)
         //{

@@ -112,33 +112,7 @@ namespace EWSEditor.Common.Exports
         public string WebClientReadFormQueryString = string.Empty;
 
  
-        //private string PidLidInboundICalStream = string.Empty;
-        //private string PidLidAppointmentAuxiliaryFlags = string.Empty;
-        //private string PidLidRecurrencePattern = string.Empty;
-        //private string PidLidRecurrenceType = string.Empty;
-        //private string PidLidRecurring = string.Empty;
-        //private string PidLidAppointmentRecur = string.Empty;
-        ////private string PidLidAppointmentStartWhole = 
-        //private string PidLidAppointmentStartDate = string.Empty;
-        //private string PidLidAppointmentStartTime = string.Empty;
-        //private string PidLidAppointmentStartWhole = string.Empty;
-        //private string PidLidAppointmentStateFlags = string.Empty;
-        //private string PidNameFrom = string.Empty;
-        //private string PidNameHttpmailFrom = string.Empty;
-        //private string PidNameHttpmailFromEmail = string.Empty;
-        //private string PidTagSenderEmailAddress = string.Empty;
-        //private string PidTagSenderFlags = string.Empty;
-        //// private static PidTagSenderName = new (0x0C1A, MapiPropertyType.String);  // 
-        //private string PidTagSenderSimpleDisplayName = string.Empty;
-        //private string PidTagSentRepresentingEmailAddress = string.Empty;
-        //private string PidTagSentRepresentingFlags = string.Empty;
-        //private string PidTagSentRepresentingName = string.Empty;
-        //private string PidTagSentRepresentingSimpleDisplayName = string.Empty;
-        //private string PidTagProcessed = string.Empty;
-        //private string PidLidResponseStatus = string.Empty;
-        //private string PidLidIsException = string.Empty;
-        //private string PidTagCreatorName = string.Empty;
-        //private string PidTagCreatorSimpleDisplayName = string.Empty;
+      
 
         // Additional master
 
