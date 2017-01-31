@@ -88,6 +88,7 @@
             this.TempWellKnownFolderCombo.Name = "TempWellKnownFolderCombo";
             this.TempWellKnownFolderCombo.Size = new System.Drawing.Size(448, 24);
             this.TempWellKnownFolderCombo.TabIndex = 1;
+            this.TempWellKnownFolderCombo.SelectedIndexChanged += new System.EventHandler(this.TempWellKnownFolderCombo_SelectedIndexChanged);
             // 
             // label8
             // 

@@ -56,16 +56,18 @@
             this.mnuToolsNotificationsStreamingNotificationsViewer = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsNotificationsItemSynchronizationViewer = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsSplit3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuUserSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuUserSettingsUserOofSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuUserSettingsUserAvailability = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuUserSettingsUserRetentionTags = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuUserSettingsUserConfiguration = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDisplayDelegates = new System.Windows.Forms.ToolStripMenuItem();
-            this.UserOofSettingsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UserAvailabilityMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MeetingRoomsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DistributionListMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InboxRulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ConvertIdMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serverTimeZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UserConfigurationMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eDiscoverySearchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mailAppsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMailTips = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,7 +123,6 @@
             this.mnuMain.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.mnuMain.Size = new System.Drawing.Size(901, 28);
             this.mnuMain.TabIndex = 4;
-            //this.mnuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnuMain_ItemClicked);
             // 
             // mnuFile
             // 
@@ -188,16 +189,14 @@
             this.mnuResolveExProp,
             this.mnuToolsNotifications,
             this.mnuToolsSplit3,
+            this.mnuUserSettings,
             this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem,
             this.mnuDisplayDelegates,
-            this.UserOofSettingsMenuItem,
-            this.UserAvailabilityMenuItem,
             this.MeetingRoomsMenuItem,
             this.DistributionListMenuItem,
             this.InboxRulesMenuItem,
             this.ConvertIdMenuItem,
             this.serverTimeZoneToolStripMenuItem,
-            this.UserConfigurationMenuItem,
             this.eDiscoverySearchToolStripMenuItem,
             this.mailAppsToolStripMenuItem,
             this.mnuMailTips,
@@ -321,6 +320,46 @@
             this.mnuToolsSplit3.Name = "mnuToolsSplit3";
             this.mnuToolsSplit3.Size = new System.Drawing.Size(382, 6);
             // 
+            // mnuUserSettings
+            // 
+            this.mnuUserSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuUserSettingsUserOofSettings,
+            this.mnuUserSettingsUserAvailability,
+            this.mnuUserSettingsUserRetentionTags,
+            this.mnuUserSettingsUserConfiguration});
+            this.mnuUserSettings.Name = "mnuUserSettings";
+            this.mnuUserSettings.Size = new System.Drawing.Size(385, 26);
+            this.mnuUserSettings.Text = "User Settings";
+            this.mnuUserSettings.Click += new System.EventHandler(this.mnuUserSettings_Click);
+            // 
+            // mnuUserSettingsUserOofSettings
+            // 
+            this.mnuUserSettingsUserOofSettings.Name = "mnuUserSettingsUserOofSettings";
+            this.mnuUserSettingsUserOofSettings.Size = new System.Drawing.Size(223, 26);
+            this.mnuUserSettingsUserOofSettings.Text = "User OOF Settings...";
+            this.mnuUserSettingsUserOofSettings.Click += new System.EventHandler(this.mnuUserSettingsUserOofSettings_Click);
+            // 
+            // mnuUserSettingsUserAvailability
+            // 
+            this.mnuUserSettingsUserAvailability.Name = "mnuUserSettingsUserAvailability";
+            this.mnuUserSettingsUserAvailability.Size = new System.Drawing.Size(223, 26);
+            this.mnuUserSettingsUserAvailability.Text = "User Availability...";
+            this.mnuUserSettingsUserAvailability.Click += new System.EventHandler(this.mnuUserSettingsUserAvailability_Click);
+            // 
+            // mnuUserSettingsUserRetentionTags
+            // 
+            this.mnuUserSettingsUserRetentionTags.Name = "mnuUserSettingsUserRetentionTags";
+            this.mnuUserSettingsUserRetentionTags.Size = new System.Drawing.Size(223, 26);
+            this.mnuUserSettingsUserRetentionTags.Text = "User Retention Tags...";
+            this.mnuUserSettingsUserRetentionTags.Click += new System.EventHandler(this.mnuUserSettingsUserRetentionTags_Click);
+            // 
+            // mnuUserSettingsUserConfiguration
+            // 
+            this.mnuUserSettingsUserConfiguration.Name = "mnuUserSettingsUserConfiguration";
+            this.mnuUserSettingsUserConfiguration.Size = new System.Drawing.Size(223, 26);
+            this.mnuUserSettingsUserConfiguration.Text = "User Configuration...";
+            this.mnuUserSettingsUserConfiguration.Click += new System.EventHandler(this.mnuUserSettingsUserConfiguration_Click);
+            // 
             // checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem
             // 
             this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem.Name = "checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem";
@@ -334,20 +373,6 @@
             this.mnuDisplayDelegates.Size = new System.Drawing.Size(385, 26);
             this.mnuDisplayDelegates.Text = "Delegate Information...";
             this.mnuDisplayDelegates.Click += new System.EventHandler(this.MnuDelegateInformation_Click);
-            // 
-            // UserOofSettingsMenuItem
-            // 
-            this.UserOofSettingsMenuItem.Name = "UserOofSettingsMenuItem";
-            this.UserOofSettingsMenuItem.Size = new System.Drawing.Size(385, 26);
-            this.UserOofSettingsMenuItem.Text = "User OOF Settings...";
-            this.UserOofSettingsMenuItem.Click += new System.EventHandler(this.MnuOOFSettings_Click);
-            // 
-            // UserAvailabilityMenuItem
-            // 
-            this.UserAvailabilityMenuItem.Name = "UserAvailabilityMenuItem";
-            this.UserAvailabilityMenuItem.Size = new System.Drawing.Size(385, 26);
-            this.UserAvailabilityMenuItem.Text = "User Availability...";
-            this.UserAvailabilityMenuItem.Click += new System.EventHandler(this.MnuAvailability_Click);
             // 
             // MeetingRoomsMenuItem
             // 
@@ -383,13 +408,6 @@
             this.serverTimeZoneToolStripMenuItem.Size = new System.Drawing.Size(385, 26);
             this.serverTimeZoneToolStripMenuItem.Text = "Server TimeZone...";
             this.serverTimeZoneToolStripMenuItem.Click += new System.EventHandler(this.serverTimeZoneToolStripMenuItem_Click);
-            // 
-            // UserConfigurationMenuItem
-            // 
-            this.UserConfigurationMenuItem.Name = "UserConfigurationMenuItem";
-            this.UserConfigurationMenuItem.Size = new System.Drawing.Size(385, 26);
-            this.UserConfigurationMenuItem.Text = "User Configuration...";
-            this.UserConfigurationMenuItem.Click += new System.EventHandler(this.UserConfigurationMenuItem_Click);
             // 
             // eDiscoverySearchToolStripMenuItem
             // 
@@ -585,8 +603,6 @@
         public System.Windows.Forms.ToolStripMenuItem mnuAbout;
         public System.Windows.Forms.ToolStripMenuItem mnuTools;
         public System.Windows.Forms.ToolStripMenuItem mnuEwsPost;
-        public System.Windows.Forms.ToolStripMenuItem UserOofSettingsMenuItem;
-        public System.Windows.Forms.ToolStripMenuItem UserAvailabilityMenuItem;
         public System.Windows.Forms.ToolStripMenuItem ConvertIdMenuItem;
         public System.Windows.Forms.ToolStripSeparator mnuToolsSplit4;
         public System.Windows.Forms.ToolStripMenuItem OptionsMenuItem;
@@ -601,7 +617,6 @@
         public System.Windows.Forms.ToolStripSeparator mnuOtherSplit2;
         private System.Windows.Forms.ToolStripMenuItem mnuSnmClient;
         private System.Windows.Forms.ToolStripMenuItem mnuEncodingHelper;
-        public System.Windows.Forms.ToolStripMenuItem UserConfigurationMenuItem;
         public System.Windows.Forms.ToolStripMenuItem eDiscoverySearchToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem serverTimeZoneToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem mailAppsToolStripMenuItem;
@@ -618,5 +633,10 @@
         public System.Windows.Forms.ToolStripMenuItem mnuToolsNotificationsStreamingNotificationsViewer;
         public System.Windows.Forms.ToolStripMenuItem mnuToolsNotificationsItemSynchronizationViewer;
         private System.Windows.Forms.ToolStripMenuItem mnuMimeParser;
+        private System.Windows.Forms.ToolStripMenuItem mnuUserSettingsUserOofSettings;
+        private System.Windows.Forms.ToolStripMenuItem mnuUserSettingsUserAvailability;
+        private System.Windows.Forms.ToolStripMenuItem mnuUserSettingsUserRetentionTags;
+        private System.Windows.Forms.ToolStripMenuItem mnuUserSettingsUserConfiguration;
+        public System.Windows.Forms.ToolStripMenuItem mnuUserSettings;
     }
 }

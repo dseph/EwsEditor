@@ -27,8 +27,8 @@ namespace EWSEditor.Common
         private static ExtendedPropertyDefinition PR_DELETED_MESSAGE_SIZE_EXTENDED = new ExtendedPropertyDefinition(0x669B, MapiPropertyType.Long);
         private static ExtendedPropertyDefinition PR_DELETED_MSG_COUNT = new ExtendedPropertyDefinition(0x6640, MapiPropertyType.Integer);
 
-        private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.SystemTime);   
-   
+        private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.SystemTime);
+ 
  
         private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x301B, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
    

@@ -40,8 +40,16 @@ namespace EWSEditor.Common.Exports
                 {
                     if (GetMapiPropertyTypeFromString(o.PropertyType, ref oType))
                     {
-                        oExtendedPropertyDefinition = new ExtendedPropertyDefinition(new Guid(o.PropertySetId), o.PropertyId, oType);
-                        oExtendedPropertyDefinitions.Add(oExtendedPropertyDefinition);
+                        if (o.PropertySetId == "")
+                        { 
+                            oExtendedPropertyDefinition = new ExtendedPropertyDefinition(o.PropertyId, oType);
+                            oExtendedPropertyDefinitions.Add(oExtendedPropertyDefinition);
+                        }
+                        else
+                        {
+                            oExtendedPropertyDefinition = new ExtendedPropertyDefinition(new Guid(o.PropertySetId), o.PropertyId, oType);
+                            oExtendedPropertyDefinitions.Add(oExtendedPropertyDefinition);
+                        }
                     }
                     else
                     {
@@ -58,6 +66,8 @@ namespace EWSEditor.Common.Exports
 
             return bRet;
         }
+
+
 
         public static bool GetMapiPropertyTypeFromString(string sProperty, ref MapiPropertyType oMapiPropertyType)
         {
@@ -89,6 +99,103 @@ namespace EWSEditor.Common.Exports
             return true;
         }
 
+        public static bool GetAdditionalPropertiesDefinitionsFromString(
+        string sFileContents,
+         ref List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions)
+        {
+            bool bRet = false;
+
+            
+            oAdditionalPropertyDefinitions = new List<AdditionalPropertyDefinition>();
+            //bRet = GetCsvFile(sFile, ref sFileContents);
+
+            List<string> listHeaders = new List<string>();
+
+            sFileContents = sFileContents.Replace("\r\n", "\n");
+            sFileContents = sFileContents.Replace("\r", "\n");
+            sFileContents = sFileContents.Replace("\n", "\r\n");
+            string[] sArrSplitLines = { "\r\n" };
+            string[] sLines = sFileContents.Split(sArrSplitLines, StringSplitOptions.None);
+
+            string[] sArrSplitFields = { "," };
+            string[] sColumns;
+
+            int iColumnCount = 0;
+
+            int iPropertyId = 0;
+            AdditionalPropertyDefinition oAdditionalPropertyDefinition = null;
+            string sUseLine = string.Empty;
+            bool bFoundFirstDataLine = false;
+            string sPropertySetId = string.Empty;
+
+            int iLine = 0;
+            foreach (string sLine in sLines)
+            {
+                iLine++;
+                sUseLine = sLine.Replace("\"", "");
+                sUseLine = sUseLine.Trim();
+
+                if (sUseLine.Length == 0 || (sUseLine.Trim().StartsWith("//") == true))  // skip blank lines and comment lines.
+                    continue;
+
+                if (bFoundFirstDataLine == false)
+                {
+                    // This should be the header line. If so then skip it.
+                    bFoundFirstDataLine = true;
+                }
+                else
+                {
+                    // These should all be lines to process.
+
+
+                    oAdditionalPropertyDefinition = new AdditionalPropertyDefinition();
+
+                    sColumns = sUseLine.Split(sArrSplitFields, StringSplitOptions.None);
+                    iColumnCount = sColumns.Count<string>();
+                    if (iColumnCount != 5)
+                    {
+                        MessageBox.Show(string.Format("Line {0} of the CSV file does not have the correct number of columns. ", iLine), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+
+                    string sVal = sColumns[3].Trim().ToUpper();
+                    try
+                    {
+                        if (sVal.StartsWith("0X"))  // Hex value?
+                        {
+                            sVal = sVal.Replace("0X", ""); // remove hex prefix
+                            iPropertyId = Convert.ToInt32(sVal, 16);    // Convert from hex to int.
+                        }
+                        else
+                            iPropertyId = Convert.ToInt32(sColumns[3].Trim());  // value is already an int.
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(string.Format("Line {0} of the CSV file has a non-numeric PropertyId. See {1} ", iLine, sColumns[1].Trim()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+
+
+                    oAdditionalPropertyDefinition.DescPropertyName = sColumns[0].Trim();
+                    oAdditionalPropertyDefinition.PropertyName = sColumns[1].Trim();
+
+                    sPropertySetId = EwsExtendedPropertyHelper.TrySwapGuidForPropSetName(sColumns[2].Trim());
+                    oAdditionalPropertyDefinition.PropertySetId = sPropertySetId;
+
+                    //oAdditionalPropertyDefinition.PropertyDefinitionType = sColumns[3].Trim();
+
+
+                    oAdditionalPropertyDefinition.PropertyId = iPropertyId;
+                    oAdditionalPropertyDefinition.PropertyType = sColumns[4].Trim();
+
+                    oAdditionalPropertyDefinitions.Add(oAdditionalPropertyDefinition);
+                }
+            }
+
+            bRet = true;
+
+            return bRet;
+        }
 
 
         private static bool GetAdditionalPropertiesDefinitionsFromCsv(
@@ -101,6 +208,13 @@ namespace EWSEditor.Common.Exports
 
             if (bRet == false)
                 return false;
+
+ 
+            // return GetAdditionalPropertiesDefinitionsFromString(sFileContents, ref oAdditionalPropertyDefinitions);
+            // Look at replacing whats below  with the line above.
+
+            // The file is now loaded....
+
 
             oAdditionalPropertyDefinitions = new List<AdditionalPropertyDefinition>();
             //bRet = GetCsvFile(sFile, ref sFileContents);
@@ -121,23 +235,36 @@ namespace EWSEditor.Common.Exports
             int iPropertyId = 0;
             AdditionalPropertyDefinition oAdditionalPropertyDefinition = null;
             string sUseLine = string.Empty;
+            bool bFoundFirstDataLine = false;
+            string sPropertySetId = string.Empty;
+
             int iLine = 0;
             foreach (string sLine in sLines)
             {
                 iLine++;
                 sUseLine = sLine.Replace("\"", "");
-                
+                sUseLine = sUseLine.Trim();
 
-                // skip first line (header) and skip blank lines
-                if (sUseLine.Trim().Length != 0 && iLine != 1)
+                if (sUseLine.Length == 0 || (sUseLine.Trim().StartsWith("//") == true))  // skip blank lines and comment lines.
+                    continue;
+
+                if (bFoundFirstDataLine == false)
                 {
+                    // This should be the header line. If so then skip it.
+                    bFoundFirstDataLine = true;
+                }
+                else
+                {
+                    // These should all be lines to process.
+
+ 
                     oAdditionalPropertyDefinition = new AdditionalPropertyDefinition();
 
                     sColumns = sUseLine.Split(sArrSplitFields, StringSplitOptions.None);
                     iColumnCount = sColumns.Count<string>();
                     if (iColumnCount != 5)
                     {
-                        MessageBox.Show(string.Format("Line {0} of the CSV file does not have the correct number of columns.", iLine), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show(string.Format("Line {0} of the CSV file does not have the correct number of columns. ", iLine ), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return false;
                     }
 
@@ -154,24 +281,34 @@ namespace EWSEditor.Common.Exports
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(string.Format("Line {0} of the CSV file has a non-numeric PropertyId.", iLine), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show(string.Format("Line {0} of the CSV file has a non-numeric PropertyId. See {1} ", iLine, sColumns[1].Trim()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return false;
                     }
 
  
-                    oAdditionalPropertyDefinition.PropertyName = sColumns[0].Trim();
-                    oAdditionalPropertyDefinition.PropertySetId = sColumns[1].Trim();
-                    oAdditionalPropertyDefinition.PropertyDefinitionType = sColumns[2].Trim();
-                    oAdditionalPropertyDefinition.PropertyId = iPropertyId;
+                    oAdditionalPropertyDefinition.DescPropertyName = sColumns[0].Trim();
+                    oAdditionalPropertyDefinition.PropertyName = sColumns[1].Trim();
+
+                    sPropertySetId = EwsExtendedPropertyHelper.TrySwapGuidForPropSetName(sColumns[2].Trim());
+                    oAdditionalPropertyDefinition.PropertySetId = sPropertySetId;
+ 
+                    //oAdditionalPropertyDefinition.PropertyDefinitionType = sColumns[3].Trim();
+   
+
+                    oAdditionalPropertyDefinition.PropertyId = iPropertyId;   
                     oAdditionalPropertyDefinition.PropertyType = sColumns[4].Trim();
 
                     oAdditionalPropertyDefinitions.Add(oAdditionalPropertyDefinition);
                 }
             }
 
+            bRet = true;
+
             return bRet;
         }
 
+      
+ 
 
         public static bool GetCsvFileContents(ref string sChosenFile, ref string sCsvFileContents)
         {
@@ -278,7 +415,7 @@ namespace EWSEditor.Common.Exports
             foreach (ExtendedPropertyDefinition oEPD in oExtendedPropertyDefinitions)
             {
                 switch (oEPD.MapiType)
-                {
+                { 
                     case MapiPropertyType.Integer:
                         sExtendedValue = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oItem, oEPD);
                         break;
@@ -327,6 +464,7 @@ namespace EWSEditor.Common.Exports
 
     public class AdditionalPropertyDefinition
     {
+        public string DescPropertyName = string.Empty;
         public string PropertyName = string.Empty;
         public string PropertySetId = string.Empty;
         public string PropertyDefinitionType = string.Empty;
@@ -336,15 +474,7 @@ namespace EWSEditor.Common.Exports
  
     }
 
-    //public class AdditionalPropertyData : AdditionalPropertyDefinition 
-    //{
-    //    //public string PropertyName = string.Empty;
-    //    //public string PropertySetId = string.Empty;
-    //    //public string PropertyDefinitionType = string.Empty;
-    //    //public string Property = string.Empty;
-    //    //public string PropertyType = string.Empty;
-    //    public string PropertyData = string.Empty;
-    //}
+ 
 
 
 }

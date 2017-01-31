@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using EWSEditor.Forms.Controls;
 using EWSEditor.PropertyInformation;
 using Microsoft.Exchange.WebServices.Data;
+using EWSEditor.Common.Exports;
 
 namespace EWSEditor.Forms
 {
@@ -291,6 +292,9 @@ namespace EWSEditor.Forms
             { 
                 return; 
             }
+ 
+
+ 
 
             DataRow row = this.propertyDisplayTable.NewRow();
 
@@ -316,6 +320,62 @@ namespace EWSEditor.Forms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnAddPropertiesFromCsv_Click(object sender, EventArgs e)
+        {
+            PropertySetDialogAddFromCSV oForm = new PropertySetDialogAddFromCSV();
+            oForm.ShowDialog();
+            if (oForm.ClickedOK == true)
+            {
+
+                PropertyDefinitionBase oPD = null;
+
+                bool bNamedProp = false;
+
+
+                foreach (AdditionalPropertyDefinition o in oForm.APD)
+                {
+
+                    MapiPropertyType oMapiPropertyType = MapiPropertyType.String;
+
+ 
+                    AdditionalProperties.GetMapiPropertyTypeFromString(o.PropertyType, ref oMapiPropertyType);
+
+                    if (o.PropertyDefinitionType != "")
+                    {
+                        oPD = (PropertyDefinitionBase) new ExtendedPropertyDefinition(
+                            new Guid(o.PropertyDefinitionType),
+                            o.PropertyId,
+                            oMapiPropertyType);
+                    }
+                    else
+                    {
+                        oPD = (PropertyDefinitionBase) new ExtendedPropertyDefinition( 
+                            o.PropertyId,
+                            oMapiPropertyType);
+                    }
+
+                    AddPropertyToDisplayTable(oPD);
+
+ 
+                    //DataRow row = this.propertyDisplayTable.NewRow();
+
+                    //row["PropertyName"] = o.PropertyName;  
+                    //row["PropertyType"] = o.PropertyType;
+                    //row["WellKnownName"] = o.PropertyName;
+                    //row["PropertyDefinitionBase"] = o.PropertyDefinitionType;
+
+                    //// Don't add the row if it already exists
+                    //if (!this.propertyDisplayTable.Rows.Contains(row["PropertyName"]))
+                    //{
+                    //    this.propertyDisplayTable.Rows.Add(row);
+                    //}
+                    
+                    //AddPropertyToDisplayTable(PropertyDefinitionBase prop)
+                }
+            }
 
         }
     }

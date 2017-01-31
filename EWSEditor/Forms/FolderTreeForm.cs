@@ -86,17 +86,26 @@ namespace EWSEditor.Forms
         private static ExtendedPropertyDefinition PR_DELETED_MESSAGE_SIZE_EXTENDED = new ExtendedPropertyDefinition(0x669B, MapiPropertyType.Long);
         private static ExtendedPropertyDefinition PR_DELETED_MSG_COUNT = new ExtendedPropertyDefinition(0x6640, MapiPropertyType.Integer);
 
-        private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
-   
+
+
+        // PR_START_DATE_ETC    0x301B0102 is a GUID (binary) for folders only.
+        // PR_START_DATE_ETC    0x301B0102 is a DateTime for items only.
+        // PR_POLICY_TAG        0x30190102 is a GUID (binary) for items only.  
+
+        // PR_START_DATE_ETC (guid), PR_RETENTION_FLAGS and PR_RETENTION_PERIOD are for folders.
+        private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary); // PR_START_DATE_ETC  GUID 0x30190102
         private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
         private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
-        private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C    
+        
+        //private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C    
 
-        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_TAG = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
-        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_PERIOD = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer); // Prop_PR_RETENTION_DATE 0x301C    
+        // Archive props are for items...
+        //private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_TAG = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
+        // private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_PERIOD = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer); // Prop_PR_RETENTION_DATE 0x301C    
+
+        // PR_POLICY_TAG is for items...
+        //private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
  
-        private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.String); // PR_START_DATE_ETC  GUID 0x30190102
-
         private static ExtendedPropertyDefinition Prop_PR_ENTRYID = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);  // PidTagEntryId, PidTagMemberEntryId, ptagEntryId
         //private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FB0, MapiPropertyType.Binary);  // PidTagStoreEntryId
         private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FFB, MapiPropertyType.Binary);  // PidTagStoreEntryId
@@ -127,18 +136,15 @@ namespace EWSEditor.Forms
                 Prop_PR_COMMENT,
                 Prop_PR_CREATION_TIME, 
                 Prop_PR_LAST_MODIFICATION_TIME,
-                Prop_PR_POLICY_TAG,
+               
                 Prop_PR_HAS_RULES,
                 Prop_PR_FOLDER_TYPE,
 
-                Prop_PR_RETENTION_DATE,
+                Prop_PR_START_DATE_ETC,         
                 Prop_PR_RETENTION_PERIOD,
                 Prop_PR_RETENTION_FLAGS,
 
-                Prop_PR_ARCHIVE_TAG ,
-                Prop_PR_ARCHIVE_PERIOD,
-
-                
+ 
                 Prop_PR_ATTR_HIDDEN,
                 Prop_PR_ATTR_READONLY,
                 Prop_PR_ATTR_SYSTEM,
@@ -310,11 +316,11 @@ namespace EWSEditor.Forms
 
 
                 this.mnuDisplayDelegates.Enabled = isCurrentService;
-                this.UserAvailabilityMenuItem.Enabled = isCurrentService;
-                this.UserOofSettingsMenuItem.Enabled = isCurrentService;
+                this.mnuUserSettings.Enabled = isCurrentService;
+             //   this.UserOofSettingsMenuItem.Enabled = isCurrentService;
                 this.ConvertIdMenuItem.Enabled = isCurrentService;
                 this.InboxRulesMenuItem.Enabled = isCurrentService;
-                this.UserConfigurationMenuItem.Enabled = isCurrentService;
+              //this.UserConfigurationMenuItem.Enabled = isCurrentService;
 
                 this.mnuResolveName.Enabled = isCurrentService;
                 this.mnuResolveExProp.Enabled = isCurrentService;

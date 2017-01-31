@@ -1329,18 +1329,18 @@ namespace EWSEditor.Forms
                         oAppointmentData = oCalendarExport.GetAppointmentDataFromItem(
                             _CurrentService, 
                             oItemId,
-                            oAdditionalPropertyDefinitions = null,
-                            oExtendedPropertyDefinitions = null,
+                            oAdditionalPropertyDefinitions,
+                            oExtendedPropertyDefinitions,
                             chkIncludeBodyProperties,
                             chkIncludeMime
                             );
 
-
+                        string sExtendedProps = string.Empty;
   
-                        if (oExtendedPropertyDefinitions != null)
-                        {
-                            AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(_CurrentService, oItemId, oExtendedPropertyDefinitions);
-                        }
+                        //if (oExtendedPropertyDefinitions != null)
+                        //{
+                        //    sExtendedProps = AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(_CurrentService, oItemId, oExtendedPropertyDefinitions);
+                        //}
                       
                         sLine = oCalendarExport.GetAppointmentDataAsCsv2(oAppointmentData);
 
@@ -1349,7 +1349,7 @@ namespace EWSEditor.Forms
                             sLine = sLine.Trim();
                             sLine += "," + AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(_CurrentService, oItemId, oExtendedPropertyDefinitions);
                             sLine = sLine.TrimEnd(TrimChars);
-                            sLine = sLine + "\r\n";
+                            //sLine = sLine + "\r\n";
                         }
 
                         swAppointment.WriteLine(sLine);
@@ -1376,7 +1376,7 @@ namespace EWSEditor.Forms
                             sLine = sLine.Trim();
                             sLine += "," + AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(_CurrentService, oItemId, oExtendedPropertyDefinitions);
                             sLine = sLine.TrimEnd(TrimChars);
-                            sLine = sLine + "\r\n";
+                            //sLine = sLine + "\r\n";
                         }
 
                         swMeetingMessage.WriteLine(sLine);

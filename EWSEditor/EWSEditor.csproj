@@ -229,6 +229,12 @@
     <Compile Include="Forms\Dialogs\EnterTextForm.Designer.cs">
       <DependentUpon>EnterTextForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dialogs\PropertySetDialogAddFromCSV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\PropertySetDialogAddFromCSV.Designer.cs">
+      <DependentUpon>PropertySetDialogAddFromCSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dialogs\SelectFolder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -507,6 +513,12 @@
     </Compile>
     <Compile Include="Forms\ToolsForms\GetMailTipsForm.Designer.cs">
       <DependentUpon>GetMailTipsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ToolsForms\UserRetentionTagPolicyTagsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToolsForms\UserRetentionTagPolicyTagsForm.Designer.cs">
+      <DependentUpon>UserRetentionTagPolicyTagsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ToolsForms\ViewHtmlAsWebPage.cs">
       <SubType>Form</SubType>
@@ -895,6 +907,9 @@
     <EmbeddedResource Include="Forms\Dialogs\EnterTextForm.resx">
       <DependentUpon>EnterTextForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\PropertySetDialogAddFromCSV.resx">
+      <DependentUpon>PropertySetDialogAddFromCSV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\SelectFolder.resx">
       <DependentUpon>SelectFolder.cs</DependentUpon>
     </EmbeddedResource>
@@ -1183,6 +1198,9 @@
     <EmbeddedResource Include="Forms\ToolsForms\GetMailTipsForm.resx">
       <DependentUpon>GetMailTipsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToolsForms\UserRetentionTagPolicyTagsForm.resx">
+      <DependentUpon>UserRetentionTagPolicyTagsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolsForms\ViewHtmlAsWebPage.resx">
       <DependentUpon>ViewHtmlAsWebPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -1203,7 +1221,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TemplateEwsRequests.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="AdditionalProperties\Example.csv" />
+    <None Include="AdditionalProperties\ExamplePropertiesDefinition.csv" />
     <None Include="AdditionalProperties\UnknownCalendarProperties.csv" />
     <None Include="App.config">
       <SubType>Designer</SubType>
@@ -1525,6 +1543,8 @@
     <PostBuildEvent>md "$(TargetDir)EwsPostExamples"
 md "$(TargetDir)Testing"
 md "$(TargetDir)HtmlBodyExamples
+md "$(TargetDir)AdditionalPropertiesExamples
+Copy /Y "$(ProjectDir)AdditionalPropertiesExamples\*.*" "$(TargetDir)AdditionalPropertiesExamples\*.*"
 Copy /Y "$(ProjectDir)EwsPostExamples\*.*" "$(TargetDir)EwsPostExamples\*.*"
 Copy /Y "$(ProjectDir)HtmlBodyExamples\*.*" "$(TargetDir)HtmlBodyExamples\*.*"
 Copy /Y "$(ProjectDir)deps\Microsoft.Exchange.WebServices.dll" "$(TargetDir)"</PostBuildEvent>

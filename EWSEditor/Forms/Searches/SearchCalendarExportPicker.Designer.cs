@@ -191,13 +191,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Export Type";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnPickFolderDiagnosticExport
             // 
             this.btnPickFolderDiagnosticExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPickFolderDiagnosticExport.Location = new System.Drawing.Point(785, 256);
             this.btnPickFolderDiagnosticExport.Name = "btnPickFolderDiagnosticExport";
-            this.btnPickFolderDiagnosticExport.Size = new System.Drawing.Size(31, 22);
+            this.btnPickFolderDiagnosticExport.Size = new System.Drawing.Size(31, 24);
             this.btnPickFolderDiagnosticExport.TabIndex = 16;
             this.btnPickFolderDiagnosticExport.Text = "...";
             this.btnPickFolderDiagnosticExport.UseVisualStyleBackColor = true;
@@ -239,7 +240,7 @@
             this.btnPickFolderBlobProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPickFolderBlobProperties.Location = new System.Drawing.Point(785, 311);
             this.btnPickFolderBlobProperties.Name = "btnPickFolderBlobProperties";
-            this.btnPickFolderBlobProperties.Size = new System.Drawing.Size(31, 22);
+            this.btnPickFolderBlobProperties.Size = new System.Drawing.Size(31, 24);
             this.btnPickFolderBlobProperties.TabIndex = 21;
             this.btnPickFolderBlobProperties.Text = "...";
             this.btnPickFolderBlobProperties.UseVisualStyleBackColor = true;
@@ -250,7 +251,7 @@
             this.btnPickFolderMeetingMessageDetailedProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPickFolderMeetingMessageDetailedProperties.Location = new System.Drawing.Point(785, 141);
             this.btnPickFolderMeetingMessageDetailedProperties.Name = "btnPickFolderMeetingMessageDetailedProperties";
-            this.btnPickFolderMeetingMessageDetailedProperties.Size = new System.Drawing.Size(31, 22);
+            this.btnPickFolderMeetingMessageDetailedProperties.Size = new System.Drawing.Size(31, 24);
             this.btnPickFolderMeetingMessageDetailedProperties.TabIndex = 10;
             this.btnPickFolderMeetingMessageDetailedProperties.Text = "...";
             this.btnPickFolderMeetingMessageDetailedProperties.UseVisualStyleBackColor = true;
@@ -279,7 +280,7 @@
             this.btnPickFolderAppointmentDetailedProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPickFolderAppointmentDetailedProperties.Location = new System.Drawing.Point(785, 115);
             this.btnPickFolderAppointmentDetailedProperties.Name = "btnPickFolderAppointmentDetailedProperties";
-            this.btnPickFolderAppointmentDetailedProperties.Size = new System.Drawing.Size(31, 22);
+            this.btnPickFolderAppointmentDetailedProperties.Size = new System.Drawing.Size(31, 24);
             this.btnPickFolderAppointmentDetailedProperties.TabIndex = 7;
             this.btnPickFolderAppointmentDetailedProperties.Text = "...";
             this.btnPickFolderAppointmentDetailedProperties.UseVisualStyleBackColor = true;
@@ -317,7 +318,7 @@
             this.btnPickFolderDisplayedResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPickFolderDisplayedResults.Location = new System.Drawing.Point(785, 57);
             this.btnPickFolderDisplayedResults.Name = "btnPickFolderDisplayedResults";
-            this.btnPickFolderDisplayedResults.Size = new System.Drawing.Size(31, 22);
+            this.btnPickFolderDisplayedResults.Size = new System.Drawing.Size(31, 24);
             this.btnPickFolderDisplayedResults.TabIndex = 3;
             this.btnPickFolderDisplayedResults.Text = "...";
             this.btnPickFolderDisplayedResults.UseVisualStyleBackColor = true;
@@ -367,7 +368,7 @@
             this.btnPickFolderIncludeUsersAdditionalProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPickFolderIncludeUsersAdditionalProperties.Location = new System.Drawing.Point(797, 414);
             this.btnPickFolderIncludeUsersAdditionalProperties.Name = "btnPickFolderIncludeUsersAdditionalProperties";
-            this.btnPickFolderIncludeUsersAdditionalProperties.Size = new System.Drawing.Size(31, 22);
+            this.btnPickFolderIncludeUsersAdditionalProperties.Size = new System.Drawing.Size(31, 24);
             this.btnPickFolderIncludeUsersAdditionalProperties.TabIndex = 22;
             this.btnPickFolderIncludeUsersAdditionalProperties.Text = "...";
             this.btnPickFolderIncludeUsersAdditionalProperties.UseVisualStyleBackColor = true;

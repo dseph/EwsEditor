@@ -369,49 +369,49 @@
         /// <param name="e">The parameter is not used.</param>
         private void MnuOOFSettings_Click(object sender, EventArgs e)
         {
-            NameResolutionCollection names = null;
-            try
-            {
-                this.Cursor = Cursors.WaitCursor;
+            //NameResolutionCollection names = null;
+            //try
+            //{
+            //    this.Cursor = Cursors.WaitCursor;
 
-                // If there is no CurrentService then we can't do anything
-                if (this.CurrentService == null)
-                {
-                    return;
-                }
-                if (this.CurrentAppSettings != null)
-                {
-                    if (this.CurrentAppSettings.AuthenticationMethod == RequestedAuthType.oAuth)
-                    {
-                        names = this.CurrentService.ResolveName(this.CurrentAppSettings.MailboxBeingAccessed);
-                    }
-                    else
-                    {
-                        // Attempt to resolve the Act As account name.  If there is only one
-                        // hit from ResolveNames then assume it is the right one.
-                        names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
-                    }
-                }
-                else
-                {
-                    names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
-                }
-            }
-            finally
-            {
-                this.Cursor = Cursors.Default;
-            }
+            //    // If there is no CurrentService then we can't do anything
+            //    if (this.CurrentService == null)
+            //    {
+            //        return;
+            //    }
+            //    if (this.CurrentAppSettings != null)
+            //    {
+            //        if (this.CurrentAppSettings.AuthenticationMethod == RequestedAuthType.oAuth)
+            //        {
+            //            names = this.CurrentService.ResolveName(this.CurrentAppSettings.MailboxBeingAccessed);
+            //        }
+            //        else
+            //        {
+            //            // Attempt to resolve the Act As account name.  If there is only one
+            //            // hit from ResolveNames then assume it is the right one.
+            //            names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
+            //        }
+            //    }
+            //    else
+            //    {
+            //        names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
+            //    }
+            //}
+            //finally
+            //{
+            //    this.Cursor = Cursors.Default;
+            //}
 
-            if (names != null && names.Count == 1)
-            {
-                OofForm.ShowDialog(
-                    this.CurrentService,
-                    new Mailbox(names[0].Mailbox.Address));
-            }
-            else
-            {
-                OofForm.ShowDialog(this.CurrentService);
-            }
+            //if (names != null && names.Count == 1)
+            //{
+            //    OofForm.ShowDialog(
+            //        this.CurrentService,
+            //        new Mailbox(names[0].Mailbox.Address));
+            //}
+            //else
+            //{
+            //    OofForm.ShowDialog(this.CurrentService);
+            //}
 
  
 
@@ -424,7 +424,7 @@
         /// <param name="e">The parameter is not used.</param>
         private void MnuAvailability_Click(object sender, EventArgs e)
         {
-            AvailabilityForm.Show(this.CurrentService);
+           // AvailabilityForm.Show(this.CurrentService);
         }
 
         /// <summary>
@@ -1027,8 +1027,8 @@
 
         private void UserConfigurationMenuItem_Click(object sender, EventArgs e)
         {
-            UserConfigForm oForm = new UserConfigForm(this.CurrentService);
-            oForm.ShowDialog();
+            //UserConfigForm oForm = new UserConfigForm(this.CurrentService);
+            //oForm.ShowDialog();
         }
 
         private void eDiscoverySearchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1144,6 +1144,77 @@
         {
             MimeParserForm oForm = new MimeParserForm();
             oForm.Show();
+        }
+
+        private void mnuUserSettingsUserOofSettings_Click(object sender, EventArgs e)
+        {
+            NameResolutionCollection names = null;
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                // If there is no CurrentService then we can't do anything
+                if (this.CurrentService == null)
+                {
+                    return;
+                }
+                if (this.CurrentAppSettings != null)
+                {
+                    if (this.CurrentAppSettings.AuthenticationMethod == RequestedAuthType.oAuth)
+                    {
+                        names = this.CurrentService.ResolveName(this.CurrentAppSettings.MailboxBeingAccessed);
+                    }
+                    else
+                    {
+                        // Attempt to resolve the Act As account name.  If there is only one
+                        // hit from ResolveNames then assume it is the right one.
+                        names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
+                    }
+                }
+                else
+                {
+                    names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
+                }
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+
+            if (names != null && names.Count == 1)
+            {
+                OofForm.ShowDialog(
+                    this.CurrentService,
+                    new Mailbox(names[0].Mailbox.Address));
+            }
+            else
+            {
+                OofForm.ShowDialog(this.CurrentService);
+            }
+
+        }
+
+        private void mnuUserSettingsUserAvailability_Click(object sender, EventArgs e)
+        {
+            AvailabilityForm.Show(this.CurrentService);
+
+        }
+
+        private void mnuUserSettingsUserRetentionTags_Click(object sender, EventArgs e)
+        {
+            UserRetentionTagPolicyTagsForm oForm = new UserRetentionTagPolicyTagsForm(CurrentService);
+            oForm.Show();
+        }
+
+        private void mnuUserSettingsUserConfiguration_Click(object sender, EventArgs e)
+        {
+            UserConfigForm oForm = new UserConfigForm(this.CurrentService);
+            oForm.ShowDialog();
+        }
+
+        private void mnuUserSettings_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
