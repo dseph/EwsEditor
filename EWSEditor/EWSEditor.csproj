@@ -1544,7 +1544,8 @@
 md "$(TargetDir)Testing"
 md "$(TargetDir)HtmlBodyExamples
 md "$(TargetDir)AdditionalPropertiesExamples
-Copy /Y "$(ProjectDir)AdditionalPropertiesExamples\*.*" "$(TargetDir)AdditionalPropertiesExamples\*.*"
+md "$(TargetDir)Export
+Copy /Y "$(ProjectDir)AdditionalProperties\*.*" "$(TargetDir)AdditionalPropertiesExamples\*.*"
 Copy /Y "$(ProjectDir)EwsPostExamples\*.*" "$(TargetDir)EwsPostExamples\*.*"
 Copy /Y "$(ProjectDir)HtmlBodyExamples\*.*" "$(TargetDir)HtmlBodyExamples\*.*"
 Copy /Y "$(ProjectDir)deps\Microsoft.Exchange.WebServices.dll" "$(TargetDir)"</PostBuildEvent>
