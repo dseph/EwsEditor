@@ -1,0 +1,108 @@
+﻿// Description of how to configure properties.
+//  EwsEditor will read in a csv file such as this in order to import extended properties.  The form for this CSV is not conventional as
+//  it allows blank lines and comments (lines starting with "//".
+//  Lines starting with a two forward slashes (//) or are blank are ignored 
+// The first non-ignored line needs to be the header
+ 
+// Columns:
+//		DescPropertyName:
+//			This will be used as the description of the data.  This is the user readable value.
+//		ProbablePropertyName:
+//				This is the name of the property or what you think it is.  This is informational only.
+//		PropertySetId:
+//			This is the property set guid. You can use Property set names such as PSETID_Meeting - EWS will swap it for 
+//			the GUID at run time. If you don't need the GUID for the property then just enter "" for the value.
+//
+//				Area Name			Property Set Name			GUID
+//				Common				PS_PUBLIC_STRINGS	 		00020329-0000-0000-C000-000000000046 
+//				Common				PSETID_Common				00062008-0000-0000-C000-000000000046
+//				Contact				PSETID_Address				00062004-0000-0000-C000-000000000046
+//				Email				PS_INTERNET_HEADERS			00020386-0000-0000-C000-000000000046
+//
+//				Calendar			PSETID_Appointment			00062002-0000-0000-C000-000000000046
+//				Calendar			PSETID_Meeting				6ED8DA90-450B-101B-98DA-00AA003F1305
+//				Journal				PSETID_Log					0006200A-0000-0000-C000-000000000046
+//				Messaging			PSETID_Messaging			41F28F13-83F4-4114-A584-EEDB5A6B0BFF
+//
+//				Sticky note			PSETID_Note					0006200E-0000-0000-C000-000000000046
+//				RSS feed			PSETID_PostRss				00062041-0000-0000-C000-000000000046
+//				Task				PSETID_Task					00062003-0000-0000-C000-000000000046
+//				Unified messaging	PSETID_UnifiedMessaging		4442858E-A9E3-4E80-B900-317A210CC15B 
+//
+//				Common				PS_MAPI						00020328-0000-0000-C000-000000000046
+//				Sync				PSETID_AirSync				71035549-0739-4DCB-9163-00F0580DBBDF
+//				Sharing				PSETID_Sharing				00062040-0000-0000-C000-000000000046
+//				Extracted entities	PSETID_XmlExtractedEntities	23239608-685D-4732-9C55-4C95CB4E8E33 
+//
+//				Calendar Assistant?	PSETID_CalendarAssistant	11000E07-B51B-40D6-AF21-CAA85EDAB1D0
+//
+//		PropertyDefinitionType
+//		
+//		PropertyType:
+//		 	 	
+//				SystemTime	 	
+//				String		 	
+//				Integer
+//				Long
+//				Boolean		 		
+//				Binary			
+//
+//		PropertyId:
+//			If you prefix a property id with "0x" (upper or lower case) then the value is handled as a hex value.  Without this prefix the 
+//			value is treated as a decimal value.  A tag with the type included is not supported in EWS Editor yet - types and Id values need to be 
+//          sepertate values.
+//
+//
+ 				
+"DescPropertyName",				"ProbablePropertyName",				"PropertySetId",							"PropertyId",	"PropertyType" 
+ 
+"AppointmentAuxiliaryFlags,		"dispidApptAuxFlags",				"PSETID_Appointment",						"0x8207",		"Integer"  
+"AppointmentRecurrenceBlob",	"dispidApptRecur",					"00062002-0000-0000-C000-000000000046",		"0x8216",		"Binary"  
+"AppointmentRecurring",			"dispidApptRecurring",				"00062002-0000-0000-C000-000000000046",		"0X8223",		"Boolean"  
+
+"CleanGlobalObjectId",			"dispidCleanGlobalObjId",			"6ED8DA90-450B-101B-98DA-00AA003F1305",		"0x0023",		"Binary"	 
+
+"DisplayAttendeesCc",			"PidLidCcAttendeesString",			"6ED8DA90-450B-101B-98DA-00AA003F1305",		"0x823C",		"String"  
+"IsException", 					"PidLidIsException",				"6ED8DA90-450B-101B-98DA-00AA003F1305",		"0x000A",		"Boolean"  
+"ItemClass",					"PidTagMessageClass",				"00062008-0000-0000-C000-000000000046",		"0x001A",		"String"  
+ 
+"LastModifiedTime", 			"PidTagLastModificationTime",		"",											"0x3008",		"SystemTime"   
+"Location", 					"dispidLocation",					"00062002-0000-0000-C000-000000000046",		"0x8208",		"String"  
+"NormalizedSubject", 			"PidTagNormalizedSubject",			" ",										"0x0E1D",		"String"  
+"MapiEndTime", 					"dispidApptEndWhole",				"00062002-0000-0000-C000-000000000046",		"0x820D",		"SystemTime" 
+
+"MapiStartTime", 				"dispidApptStartWhole",				"00062002-0000-0000-C000-000000000046",		"0x820E",		"SystemTime" 
+"OriginalLastModifiedTime", 	"dispidCalLogLastModifiedTime",		" ",										"0x3008",		"SystemTime" 
+"SenderEmailAddress", 			"PidTagSentRepresentingEmailAddress",	 " ",									"0x0065",		"String"  
+"SentRepresentingDisplayName",	"PidTagSentRepresentingName",		"",											"0x4031",		"String" 
+
+"TimeZone", 					"dispidTimeZoneDesc",				"00062002-0000-0000-C000-000000000046",		"0x8234",		"String"  
+"AttendeeCriticalChangeTime",   "AttendeeCriticalChangeTime",		"6ED8DA90-450B-101B-98DA-00AA003F1305",		"0x1",			"SystemTime" 
+"MeetingRequestType",			"MeetingRequestType",				"6ED8DA90-450B-101B-98DA-00AA003F1305",		"38",			"Integer" 
+
+"OldLocation",					"OldLocation",						"6ED8DA90-450B-101B-98DA-00AA003F1305",		"0x0028",		"String" 
+"OldStartWhole",				"OldStartWhole",					"6ED8DA90-450B-101B-98DA-00AA003F1305",		"0x0029",		"SystemTime" 
+"OldEndWhole",					"OldEndWhole",						"6ED8DA90-450B-101B-98DA-00AA003F1305",		"0x002a",		"SystemTime" 
+
+"PidTagCreatorName",			"PidTagCreatorName",				"",											"0x3FF8",		"String"
+"PidTagCreatorSimpleDisplayName, "PidTagCreatorSimpleDisplayName,	"",											"0x4038",		"String" 
+"PidNameCalendarIsOrganizer",	"PidNameCalendarIsOrganizer",		"00062002-0000-0000-C000-000000000046",		"0x000B,		"Boolean"
+"PidLidOrganizerAlias",			"PidLidOrganizerAlias",				"PSETID_Appointment",						"0x8243",		"String" 
+"PidTagSenderSmtpAddress",		"PidTagSenderSmtpAddress",			"PSETID_Common",							"0x5D01",		"String"  
+
+// And more...
+"dispidLogStart",				"dispidLogStart",					"PSETID_Log",								"0x8706",		"SystemTime"
+"dispidLogEnd",					"dispidLogEnd",						"PSETID_Log",								"0x8708",		"SystemTime"	  
+"dispidLogDuration",			"dispidLogDuration",				"PSETID_Log",								"0x8707",		"Integer"
+"dispidLogType",				"dispidLogType",					"PSETID_Log",								"0x7000",		"String" 
+"dispidMeetingType",			"dispidMeetingType",				"PSETID_Meeting",							"0x0026",		"Integer"
+"dispidOldWhenStartWhole",		"dispidOldWhenStartWhole",			"PSETID_Meeting",							"0x0029",		"SystemTime"
+
+// And more...
+"PidNameCalendarIsOrganizer",	"PidNameCalendarIsOrganizer",		"00062002-0000-0000-C000-000000000046",		"0x000B",	"Boolean"
+"Prop_PR_FOLDER_PATH",			"Prop_PR_FOLDER_PATH",				"",											"0x66B5",	"String"  
+"PidLidAppointmentRecur",		"PidLidAppointmentRecur",			"00062002-0000-0000-C000-000000000046",		"0x8216",	"Binary"  
+"PidLidCleanGlobalObjectId",	"PidLidCleanGlobalObjectId",		"PSETID_Messaging",							"0x0023",	"Binary"
+"PidLidGlobalObjectId",			"PidLidGlobalObjectId",				"PSETID_Messaging",							"0x0003",	"Binary"
+"ICalId",						"ICalId",							"PSETID_Appointment",						"3",		"String"
+"Prop_PR_STORE_ENTRYID",		"Prop_PR_STORE_ENTRYID",			"",											"0x0FFB",	"Binary"
