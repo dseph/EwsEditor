@@ -514,10 +514,10 @@
             // txtGlobalObjId
             // 
             this.txtGlobalObjId.Enabled = false;
-            this.txtGlobalObjId.Location = new System.Drawing.Point(271, 223);
+            this.txtGlobalObjId.Location = new System.Drawing.Point(314, 220);
             this.txtGlobalObjId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtGlobalObjId.Name = "txtGlobalObjId";
-            this.txtGlobalObjId.Size = new System.Drawing.Size(220, 22);
+            this.txtGlobalObjId.Size = new System.Drawing.Size(655, 22);
             this.txtGlobalObjId.TabIndex = 18;
             // 
             // chkGlobalObjId
@@ -527,9 +527,9 @@
             this.chkGlobalObjId.Location = new System.Drawing.Point(154, 220);
             this.chkGlobalObjId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chkGlobalObjId.Name = "chkGlobalObjId";
-            this.chkGlobalObjId.Size = new System.Drawing.Size(114, 21);
+            this.chkGlobalObjId.Size = new System.Drawing.Size(154, 21);
             this.chkGlobalObjId.TabIndex = 17;
-            this.chkGlobalObjId.Text = "Global Obj ID";
+            this.chkGlobalObjId.Text = "Clean Global Obj ID";
             this.chkGlobalObjId.UseVisualStyleBackColor = true;
             this.chkGlobalObjId.CheckedChanged += new System.EventHandler(this.chkGlobalObjId_CheckedChanged);
             // 
