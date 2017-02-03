@@ -1222,6 +1222,7 @@
       <LastGenOutput>TemplateEwsRequests.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="AdditionalProperties\ExamplePropertiesDefinition.csv" />
+    <None Include="AdditionalProperties\KnownProperties.csv" />
     <None Include="AdditionalProperties\UnknownCalendarProperties.csv" />
     <None Include="App.config">
       <SubType>Designer</SubType>

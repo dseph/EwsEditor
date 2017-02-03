@@ -33,22 +33,57 @@ namespace EWSEditor.Common.Exports
             if (bRet == false)
                 return false;
 
+            int iCount = 0;
+
             // build list of ExtendedPropertyDefinition using list of AdditionalProperty
             try
             {
                 foreach (AdditionalPropertyDefinition o in oAdditionalPropertyDefinitions)
                 {
+
+                    iCount++;
+ 
                     if (GetMapiPropertyTypeFromString(o.PropertyType, ref oType))
                     {
-                        if (o.PropertySetId == "")
+                        // Named Property?
+                        if (o.PropertyIdIsString == true)
                         { 
-                            oExtendedPropertyDefinition = new ExtendedPropertyDefinition(o.PropertyId, oType);
-                            oExtendedPropertyDefinitions.Add(oExtendedPropertyDefinition);
+                            
+                            ////PropertyType = string.Empty;
+                            ////ropertyIdIsString = false;
+                            //oExtendedPropertyDefinition = new ExtendedPropertyDefinition(o.PropertySetIdString, o., oType);
+                            //oExtendedPropertyDefinitions.Add(oExtendedPropertyDefinition);
+
+                            if (o.PropertySetId == "")   // Have a propset guid?
+                            {
+                                // Need the propset guid for the custom property...
+
+                                string sBad = string.Format("Line {0} has an invalide Property Set ID: \"{1}\".",
+                                    iCount, o.PropertySetId);
+                                MessageBox.Show(sBad, "Error in CSV.");
+
+                                return false;
+                            }
+                            else
+                            {
+                                oExtendedPropertyDefinition = new ExtendedPropertyDefinition(new Guid(o.PropertySetId), o.PropertySetIdString, oType);
+                                oExtendedPropertyDefinitions.Add(oExtendedPropertyDefinition);
+                            }
+
                         }
-                        else
-                        {
-                            oExtendedPropertyDefinition = new ExtendedPropertyDefinition(new Guid(o.PropertySetId), o.PropertyId, oType);
-                            oExtendedPropertyDefinitions.Add(oExtendedPropertyDefinition);
+
+                        if (o.PropertyIdIsString == false)
+                        { 
+                            if (o.PropertySetId == "")      // Have a propset guid?
+                            { 
+                                oExtendedPropertyDefinition = new ExtendedPropertyDefinition(o.PropertyId, oType);
+                                oExtendedPropertyDefinitions.Add(oExtendedPropertyDefinition);
+                            }
+                            else
+                            {
+                                oExtendedPropertyDefinition = new ExtendedPropertyDefinition(new Guid(o.PropertySetId), o.PropertyId, oType);
+                                oExtendedPropertyDefinitions.Add(oExtendedPropertyDefinition);
+                            }
                         }
                     }
                     else
@@ -72,26 +107,49 @@ namespace EWSEditor.Common.Exports
         public static bool GetMapiPropertyTypeFromString(string sProperty, ref MapiPropertyType oMapiPropertyType)
         {
 
-            switch (sProperty)
+            switch (sProperty.ToUpper())
             {
-                case "Integer":
+                case "INTEGER":
                     oMapiPropertyType = MapiPropertyType.Integer;
                     break;
-                case "String":
+                case "STRING":
                     oMapiPropertyType = MapiPropertyType.String;
                     break;
-                case "Binary":
+                case "BINARY":
                     oMapiPropertyType = MapiPropertyType.Binary;
                     break;
-                case "Long":
+                case "LONG":
                     oMapiPropertyType = MapiPropertyType.Long;
                     break;
-                case "Boolean":
+                case "SHORT":   
+                    oMapiPropertyType = MapiPropertyType.Short;
+                    break;
+                case "BOOLEAN":
                     oMapiPropertyType = MapiPropertyType.Boolean;
                     break;
-                case "SystemTime":
+                case "SYSTEMTIME":
                     oMapiPropertyType = MapiPropertyType.SystemTime;
                     break;
+
+                //case "IntegerArray":
+                //    oMapiPropertyType = MapiPropertyType.IntegerArray;
+                //    break;
+                //case "StringArray":
+                //    oMapiPropertyType = MapiPropertyType.StringArray;
+                //    break;
+                //case "BinaryArray":
+                //    oMapiPropertyType = MapiPropertyType.BinaryArray;
+                //    break;
+                //case "LongArray":
+                //    oMapiPropertyType = MapiPropertyType.LongArray;
+                //    break;
+                //case "ShortArray":
+                //    oMapiPropertyType = MapiPropertyType.ShortArray;
+                //    break;
+                //case "SystemTimeArray":
+                //    oMapiPropertyType = MapiPropertyType.SystemTimeArray;
+                //    break;
+
                 default:
                     MessageBox.Show(string.Format("Non-supported data type in CSV: {0}.", sProperty), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
@@ -146,7 +204,7 @@ namespace EWSEditor.Common.Exports
                 else
                 {
                     // These should all be lines to process.
-
+                    
 
                     oAdditionalPropertyDefinition = new AdditionalPropertyDefinition();
 
@@ -154,41 +212,64 @@ namespace EWSEditor.Common.Exports
                     iColumnCount = sColumns.Count<string>();
                     if (iColumnCount != 5)
                     {
-                        MessageBox.Show(string.Format("Line {0} of the CSV file does not have the correct number of columns. ", iLine), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        string sInfo = (string.Format("Line {0} of the CSV file does not have the correct number of columns. See line with the following text:\r\n{1}", iLine, sUseLine));
+                        MessageBox.Show(sInfo, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return false;
                     }
-
-                    string sVal = sColumns[3].Trim().ToUpper();
-                    try
-                    {
-                        if (sVal.StartsWith("0X"))  // Hex value?
-                        {
-                            sVal = sVal.Replace("0X", ""); // remove hex prefix
-                            iPropertyId = Convert.ToInt32(sVal, 16);    // Convert from hex to int.
-                        }
-                        else
-                            iPropertyId = Convert.ToInt32(sColumns[3].Trim());  // value is already an int.
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(string.Format("Line {0} of the CSV file has a non-numeric PropertyId. See {1} ", iLine, sColumns[1].Trim()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        return false;
-                    }
-
 
                     oAdditionalPropertyDefinition.DescPropertyName = sColumns[0].Trim();
                     oAdditionalPropertyDefinition.PropertyName = sColumns[1].Trim();
-
-                    sPropertySetId = EwsExtendedPropertyHelper.TrySwapGuidForPropSetName(sColumns[2].Trim());
-                    oAdditionalPropertyDefinition.PropertySetId = sPropertySetId;
-
-                    //oAdditionalPropertyDefinition.PropertyDefinitionType = sColumns[3].Trim();
-
-
-                    oAdditionalPropertyDefinition.PropertyId = iPropertyId;
                     oAdditionalPropertyDefinition.PropertyType = sColumns[4].Trim();
+                    //oAdditionalPropertyDefinition.PropertyId = iPropertyId;
+                     
+ 
+
+                    bool bIsNumber = false;
+                    string sVal = sColumns[3].Trim().ToUpper();  
+
+                    if (StringHelper.IsInteger(sVal))
+                        bIsNumber = true;
+                    if (sVal.StartsWith("0X"))
+                        bIsNumber = true;
+
+                    if (bIsNumber == false)
+                    {
+                        // This would be a named property - so, no id.
+                        oAdditionalPropertyDefinition.PropertyIdIsString = true;
+                        oAdditionalPropertyDefinition.PropertySetIdString = sVal;
+                    }
+
+ 
+                    if (bIsNumber == true)
+                    {
+                        oAdditionalPropertyDefinition.PropertyIdIsString = false;
+                        try
+                        {
+                            if (sVal.StartsWith("0X"))  // Hex value?
+                            {
+                                sVal = sVal.Replace("0X", ""); // remove hex prefix
+                                iPropertyId = Convert.ToInt32(sVal, 16);    // Convert from hex to int.
+                            }
+                            else
+                            {
+                                iPropertyId = Convert.ToInt32(sColumns[3].Trim());  // value is already an int.
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(string.Format("Line {0} of the CSV file has a non-numeric PropertyId. See {1} ", iLine, sColumns[1].Trim()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            return false;
+                        }
+                    }
+
+                    sPropertySetId = EwsExtendedPropertyHelper.TrySwapGuidForPropSetName(sColumns[2].Trim(),
+                        oAdditionalPropertyDefinition.PropertyId, 
+                        oAdditionalPropertyDefinition.PropertyType
+                        );                    
+                        oAdditionalPropertyDefinition.PropertySetId = sPropertySetId;
 
                     oAdditionalPropertyDefinitions.Add(oAdditionalPropertyDefinition);
+                   
                 }
             }
 
@@ -264,20 +345,45 @@ namespace EWSEditor.Common.Exports
                     iColumnCount = sColumns.Count<string>();
                     if (iColumnCount != 5)
                     {
-                        MessageBox.Show(string.Format("Line {0} of the CSV file does not have the correct number of columns. ", iLine ), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                       string sInfo = (string.Format("Line {0} of the CSV file does not have the correct number of columns. See line with the following text:\r\n{1}", iLine, sUseLine));
+                        MessageBox.Show(sInfo, "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return false;
+                       
                     }
 
-                    string sVal = sColumns[3].Trim().ToUpper();
+                    bool bIsNumber = false;
+
+                    // Property ID can be different things
+                    string sVal = sColumns[3].Trim().ToUpper();  
                     try
-                    {
-                        if (sVal.StartsWith("0X"))  // Hex value?
+                    {// PropertyIdIsString
+
+                        if (!StringHelper.IsInteger(sVal))
+                            bIsNumber = true;
+                        if (!sVal.StartsWith("0X"))
+                            bIsNumber = true;
+
+                        if (bIsNumber == false)
                         {
-                            sVal = sVal.Replace("0X", ""); // remove hex prefix
-                            iPropertyId = Convert.ToInt32(sVal, 16);    // Convert from hex to int.
+                            // This would be a named property - so, no id.
+                            oAdditionalPropertyDefinition.PropertyIdIsString = false;
+
+                            oAdditionalPropertyDefinition.PropertySetIdString = sVal;
                         }
-                        else
-                            iPropertyId = Convert.ToInt32(sColumns[3].Trim());  // value is already an int.
+
+                        if (bIsNumber)
+                        {
+                            oAdditionalPropertyDefinition.PropertyIdIsString  = false;
+                            if (sVal.StartsWith("0X"))  // Hex value?
+                            {
+
+                                sVal = sVal.Replace("0X", ""); // remove hex prefix
+                                iPropertyId = Convert.ToInt32(sVal, 16);    // Convert from hex to int.
+                            }
+                            else
+                                iPropertyId = Convert.ToInt32(sColumns[3].Trim());  // value is already an int.
+                        }
+                         
                     }
                     catch (Exception ex)
                     {
@@ -289,14 +395,18 @@ namespace EWSEditor.Common.Exports
                     oAdditionalPropertyDefinition.DescPropertyName = sColumns[0].Trim();
                     oAdditionalPropertyDefinition.PropertyName = sColumns[1].Trim();
 
-                    sPropertySetId = EwsExtendedPropertyHelper.TrySwapGuidForPropSetName(sColumns[2].Trim());
+                    oAdditionalPropertyDefinition.PropertyId = iPropertyId;   
+                    oAdditionalPropertyDefinition.PropertyType = sColumns[4].Trim();
+
+                    sPropertySetId = EwsExtendedPropertyHelper.TrySwapGuidForPropSetName(sColumns[2].Trim(),
+                        oAdditionalPropertyDefinition.PropertyId,
+                        oAdditionalPropertyDefinition.PropertyType);
                     oAdditionalPropertyDefinition.PropertySetId = sPropertySetId;
  
                     //oAdditionalPropertyDefinition.PropertyDefinitionType = sColumns[3].Trim();
    
 
-                    oAdditionalPropertyDefinition.PropertyId = iPropertyId;   
-                    oAdditionalPropertyDefinition.PropertyType = sColumns[4].Trim();
+
 
                     oAdditionalPropertyDefinitions.Add(oAdditionalPropertyDefinition);
                 }
@@ -434,6 +544,12 @@ namespace EWSEditor.Common.Exports
                     case MapiPropertyType.SystemTime:
                         sExtendedValue = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oItem, oEPD);
                         break;
+                    case MapiPropertyType.Short:
+                        sExtendedValue = EwsExtendedPropertyHelper.GetExtendedProp_Short_AsString(oItem, oEPD);
+                        break;
+
+ 
+
                     default:
                         sExtendedValue = "";
                         break;
@@ -468,8 +584,10 @@ namespace EWSEditor.Common.Exports
         public string PropertyName = string.Empty;
         public string PropertySetId = string.Empty;
         public string PropertyDefinitionType = string.Empty;
-        public int PropertyId = 0;
-        public string PropertyType = string.Empty;
+        public int      PropertyId = 0;
+        public string   PropertyType = string.Empty;
+        public bool     PropertyIdIsString = false;
+        public string   PropertySetIdString = string.Empty;
 
  
     }

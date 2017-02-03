@@ -9,6 +9,33 @@ namespace EWSEditor.Common
 {
     class StringHelper
     {
+        public static  bool IsInteger(string s)
+        {
+            int xVal = 0;
+            return  int.TryParse(s, out xVal);
+     
+        }
+        public static bool IsDouble(string s)
+        {
+            double xVal = 0;
+            return  double.TryParse(s, out xVal);
+        }
+        public static bool IsShort(string s)
+        {
+            short xVal = 0;
+            return short.TryParse(s, out xVal);
+        }
+
+
+        public static bool IsNumeric(object Expression)
+        {
+            http://stackoverflow.com/questions/894263/how-do-i-identify-if-a-string-is-a-number
+
+            double retNum;
+
+            bool isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            return isNum;
+        }
 
         //*************************************************************************************
         //GetStringStats() Provides information on the characters which are in a string.

@@ -77,11 +77,17 @@ namespace EWSEditor.Forms
                     oListViewItem.Text = o.DescPropertyName;
                     oListViewItem.SubItems.Add(o.PropertyName);
                     oListViewItem.SubItems.Add(o.PropertySetId);  // GUID
-               
-                    string sVal = "0x" + o.PropertyId.ToString("X");
 
-                    oListViewItem.SubItems.Add(sVal);
+                    if (o.PropertyIdIsString == false)
+                    {
+                        string sVal = "0x" + o.PropertyId.ToString("X");
+                        oListViewItem.SubItems.Add(sVal);
+                    }
+                    else
+                    {
+                        oListViewItem.SubItems.Add(o.PropertySetIdString);   // custom property;
 
+                    }
                     oListViewItem.SubItems.Add(o.PropertyType);
 
                     lvCsvParsed.Items.Add(oListViewItem);
@@ -93,6 +99,23 @@ namespace EWSEditor.Forms
             }
         }
 
+                            //        //oExtendedPropertyDefinitions.Add(oExtendedPropertyDefinition);
+
+                            //if (o.PropertySetId == "")   // Have a propset guid?
+                            //{
+                            //    // Need the propset guid for the custom property...
+
+                            //    string sBad = string.Format("Line {0} has an invalide Property Set ID: \"{1}\".",
+                            //        iCount, o.PropertySetId);
+                            //    MessageBox.Show(sBad, "Error in CSV.");
+
+                            //    return false;
+                            //}
+                            //else
+                            //{
+                            //    oExtendedPropertyDefinition = new ExtendedPropertyDefinition(new Guid(o.PropertySetId), o.PropertySetIdString, oType);
+                            //    oExtendedPropertyDefinitions.Add(oExtendedPropertyDefinition);
+                            //}
  
 
         private string ChooseFilePath(string sFullPath)
