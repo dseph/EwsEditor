@@ -61,6 +61,20 @@ namespace EWSEditor.Forms // .Calendar
                     AppointmentSchema.DeletedOccurrences
                     );
 
+        PropertySet InstanceCalProps = new PropertySet(BasePropertySet.IdOnly,
+                    AppointmentSchema.ParentFolderId,
+                    AppointmentSchema.AppointmentType,
+                    AppointmentSchema.Subject,
+                    AppointmentSchema.Start,
+                    AppointmentSchema.End,
+                    AppointmentSchema.ItemClass,
+                    AppointmentSchema.ICalUid,
+                    AppointmentSchema.IsRecurring,
+                    AppointmentSchema.Size,
+                    AppointmentSchema.Duration 
+
+                    );
+
         //PropertySet props = new PropertySet(AppointmentSchema.AppointmentType,
         //                            AppointmentSchema.Subject,
         //                            AppointmentSchema.Start,
@@ -105,18 +119,20 @@ namespace EWSEditor.Forms // .Calendar
             //searchFilter.Add(new SearchFilter.IsGreaterThanOrEqualTo(AppointmentSchema.Start, startSearchDate));
 
             // Create an item view to specify which properties to return.
-            ItemView view = new ItemView(10000);
-            //view.PropertySet = new PropertySet(BasePropertySet.IdOnly,
-            //                                    AppointmentSchema.Subject,
-            //                                    AppointmentSchema.Start,
-            //                                    AppointmentSchema.End,
-            //                                    AppointmentSchema.AppointmentType,
-            //                                    AppointmentSchema.IsRecurring,
-            //                                    AppointmentSchema.Size 
-            //                                   );
+            ItemView view = new ItemView(10000 );
 
+            view.PropertySet = new PropertySet(BasePropertySet.IdOnly,
+                                                AppointmentSchema.Subject,
+                                                AppointmentSchema.Start,
+                                                AppointmentSchema.End,
+                                                AppointmentSchema.AppointmentType,
+                                                AppointmentSchema.IsRecurring,
+                                                AppointmentSchema.Size
+                                               );
+           
+            //view.PropertySet = BasicCalProps;
             // Get the appointment items from the server with the properties we specified.
-            FindItemsResults<Item> findResults = service.FindItems(oFolder, view);
+            FindItemsResults<Item> findResults = service.FindItems(oFolder, view );
 
             TreeNode oParentNode = null;
             TreeNode oNode = null;
@@ -155,8 +171,19 @@ namespace EWSEditor.Forms // .Calendar
 
                             //if (appt.Recurrence!= null)
                             //{
-                            string sStart = recurrMaster.FirstOccurrence.ToString();
-                            string sEnd = recurrMaster.LastOccurrence.ToString();
+
+                            string sStart = string.Empty;
+                            string sEnd = string.Empty;
+                            if (recurrMaster.FirstOccurrence == null)
+                                sStart = "";
+                            else
+                                sStart = recurrMaster.FirstOccurrence.ToString();
+                            
+
+                            if (recurrMaster.LastOccurrence == null)
+                                sEnd = "";
+                            else
+                                sEnd = recurrMaster.LastOccurrence.ToString();
 
                             string sInfo = string.Empty; //= "Recurring Master: " + recurrMaster.Subject + "(" + recurrMaster.Recurrence.StartDate.ToString() + " - ";
                             sInfo = "Recurring Master: " + recurrMaster.Subject + "(" + sStart + " - " + sEnd + ")";
@@ -376,7 +403,7 @@ namespace EWSEditor.Forms // .Calendar
                     //    sInfo += "This has a fixed number of " + appt.Recurrence.NumberOfOccurrences.ToString() + " instances.";
             //
             CalendarView calView = new CalendarView(recurrMaster.Start, recurrMaster.End);
-            calView.PropertySet = BasicCalProps;
+            calView.PropertySet = InstanceCalProps;
 
             FindItemsResults<Appointment> findResults = service.FindAppointments(recurrMaster.ParentFolderId, calView);
 
@@ -411,7 +438,7 @@ namespace EWSEditor.Forms // .Calendar
 
             Collection<Appointment> foundAppointments = new Collection<Appointment>();
             CalendarView calView = new CalendarView(recurrMaster.Start, recurrMaster.End);
-            calView.PropertySet = BasicCalProps;
+            calView.PropertySet = InstanceCalProps;
 
             FindItemsResults<Appointment> findResults = service.FindAppointments(recurrMaster.ParentFolderId, calView);
 

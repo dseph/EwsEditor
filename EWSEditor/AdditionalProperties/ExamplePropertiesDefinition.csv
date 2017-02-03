@@ -45,7 +45,8 @@
 //				Integer
 //				Long
 //				Boolean		 		
-//				Binary			
+//				Binary,
+//				Short			
 //
 //		PropertyId:
 //			If you prefix a property id with "0x" (upper or lower case) then the value is handled as a hex value.  Without this prefix the 

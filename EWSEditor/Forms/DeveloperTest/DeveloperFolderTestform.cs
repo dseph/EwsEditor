@@ -195,20 +195,7 @@ namespace EWSEditor.Forms
                             oSB.AppendLine("PR_ATTACH_ON_NORMAL_MSG_COUNT: Not found.");
 
  
-                        if (oReturnFolder.TryGetProperty(Prop_PR_POLICY_TAG, out oVal))
-                            oSB.AppendFormat("PR_POLICY_TAG: {0}\r\n", oVal);
-                        //else
-                        //    oSB.AppendLine("PR_RETENTION_TAG: Not found.");
-
-                        if (oReturnFolder.TryGetProperty(Prop_Retention_Flags, out iVal))
-                            oSB.AppendFormat("PR_RETENTION_FLAGS: {0}\r\n", iVal);
-                        //else
-                        //    oSB.AppendLine("PR_RETENTION_FLAGS: Not found.");
-
-                        if (oReturnFolder.TryGetProperty(Prop_Retention_Period, out iVal))
-                            oSB.AppendFormat("PR_RETENTION_PERIOD:  {0}\r\n", iVal);
-                        //else
-                        //    oSB.AppendLine("PR_RETENTION_PERIOD: Not found.");
+ 
 
 
                         MessageBox.Show(oSB.ToString(), "ServiceResult.Success");
@@ -231,12 +218,6 @@ namespace EWSEditor.Forms
                                 {
                                     //sError += "\r\n    Tag: " + x.Tag;
                                     iVal = (int)x.Tag;
-                                    if (iVal == 12313)
-                                        sError += string.Format("\r\n    PR_RETENTION_TAG Hex: {00:X} Int: {1} ", iVal, iVal);
-                                    if (iVal == 12317)
-                                        sError += string.Format("\r\n    PR_RETENTION_FLAGS Hex: {00:X} Int: {1} ", iVal, iVal);
-                                    if (iVal == 12314)
-                                        sError += string.Format("\r\n    PR_RETENTION_PERIOD Hex: {00:X} Int: {1} ", iVal, iVal);
                                     if (iVal == 13825)
                                         sError += string.Format("\r\n    PR_FOLDER_TYPE Hex: {00:X} Int: {1} ", iVal, iVal);
                                     if (iVal == 26293)
@@ -308,8 +289,7 @@ namespace EWSEditor.Forms
 
             bRet = LoadFolder(_service, _folderId, out oFolder);
 
-            //CalendarBreakdownView oForm = new CalendarBreakdownView(_service, oFolder.Id);
-            //oForm.Show();
+
 
             // Load the item for _itemId
             //bRet = CallMyCustomCode(oFolder);  // Modify to call your code.

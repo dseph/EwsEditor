@@ -43,9 +43,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tvItems.FullRowSelect = true;
-            this.tvItems.Location = new System.Drawing.Point(3, 3);
+            this.tvItems.Location = new System.Drawing.Point(4, 4);
+            this.tvItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tvItems.Name = "tvItems";
-            this.tvItems.Size = new System.Drawing.Size(1063, 348);
+            this.tvItems.Size = new System.Drawing.Size(1004, 280);
             this.tvItems.TabIndex = 0;
             this.tvItems.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvItems_AfterSelect);
             // 
@@ -54,9 +55,10 @@
             this.lvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lvItems.Location = new System.Drawing.Point(3, 3);
+            this.lvItems.Location = new System.Drawing.Point(4, 4);
+            this.lvItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(1063, 233);
+            this.lvItems.Size = new System.Drawing.Size(1004, 186);
             this.lvItems.TabIndex = 1;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             // 
@@ -65,7 +67,8 @@
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(12, 12);
+            this.splitContainer1.Location = new System.Drawing.Point(16, 15);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -77,16 +80,18 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.lvItems);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-            this.splitContainer1.Size = new System.Drawing.Size(1069, 597);
-            this.splitContainer1.SplitterDistance = 354;
+            this.splitContainer1.Size = new System.Drawing.Size(1013, 487);
+            this.splitContainer1.SplitterDistance = 288;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 2;
             // 
             // CalendarBreakdownView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1105, 631);
+            this.ClientSize = new System.Drawing.Size(1061, 529);
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CalendarBreakdownView";
             this.Text = "Calendar Breakdown View";
             this.Load += new System.EventHandler(this.CalendarBreakdownView_Load);

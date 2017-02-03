@@ -343,18 +343,29 @@ namespace EWSEditor.Forms
  
                     AdditionalProperties.GetMapiPropertyTypeFromString(o.PropertyType, ref oMapiPropertyType);
 
-                    if (o.PropertyDefinitionType != "")
+                    if (o.PropertyIdIsString == true)
                     {
-                        oPD = (PropertyDefinitionBase) new ExtendedPropertyDefinition(
-                            new Guid(o.PropertyDefinitionType),
-                            o.PropertyId,
+                                                
+                        oPD = (PropertyDefinitionBase)new ExtendedPropertyDefinition(
+                            new Guid(o.PropertySetId),
+                            o.PropertySetIdString,
                             oMapiPropertyType);
                     }
                     else
                     {
-                        oPD = (PropertyDefinitionBase) new ExtendedPropertyDefinition( 
-                            o.PropertyId,
-                            oMapiPropertyType);
+                        if (o.PropertySetId != "")
+                        {
+                            oPD = (PropertyDefinitionBase)new ExtendedPropertyDefinition(
+                                new Guid(o.PropertySetId),
+                                o.PropertyId,
+                                oMapiPropertyType);
+                        }
+                        else
+                        {
+                            oPD = (PropertyDefinitionBase)new ExtendedPropertyDefinition(
+                                o.PropertyId,
+                                oMapiPropertyType);
+                        }
                     }
 
                     AddPropertyToDisplayTable(oPD);

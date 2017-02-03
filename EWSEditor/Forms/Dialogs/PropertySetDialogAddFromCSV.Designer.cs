@@ -75,11 +75,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCsv.Font = new System.Drawing.Font("Courier New", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCsv.Location = new System.Drawing.Point(12, 66);
+            this.txtCsv.MaxLength = 0;
             this.txtCsv.Multiline = true;
             this.txtCsv.Name = "txtCsv";
             this.txtCsv.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtCsv.Size = new System.Drawing.Size(903, 212);
             this.txtCsv.TabIndex = 28;
+            this.txtCsv.WordWrap = false;
             // 
             // lvCsv
             // 
