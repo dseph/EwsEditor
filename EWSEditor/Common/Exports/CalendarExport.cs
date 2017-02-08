@@ -404,13 +404,13 @@ namespace EWSEditor.Common.Exports
             oAppointmentData.PidNameCalendarIsOrganizer = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, PidNameCalendarIsOrganizer);
 
 
-            oAppointmentData.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidCleanGlobalObjectId);
-            oAppointmentData.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidGlobalObjectId);
-            oAppointmentData.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidAppointmentRecur);
+            oAppointmentData.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oAppointment, PidLidCleanGlobalObjectId);
+            oAppointmentData.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oAppointment, PidLidGlobalObjectId);
+            oAppointmentData.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oAppointment, PidLidAppointmentRecur);
             oAppointmentData.PidLidClientIntent = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidLidClientIntent);
             oAppointmentData.ClientInfoString = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, ClientInfoString);
-            oAppointmentData.StoreEntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
-            oAppointmentData.EntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_ENTRYID);
+            oAppointmentData.StoreEntryId = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
+            oAppointmentData.EntryId = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oAppointment, Prop_PR_ENTRYID);
             oAppointmentData.RetentionDate = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oAppointment, Prop_PR_RETENTION_DATE);
             oAppointmentData.IsHidden = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, Prop_PR_IS_HIDDEN);
             oAppointmentData.LogTriggerAction = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, LogTriggerAction);
@@ -582,11 +582,11 @@ namespace EWSEditor.Common.Exports
             //string s = AppointmentHelper.GetAttendeeStatusAsInfoString(oAppointment);
             oAppointmentData.AttendeeStatus = AppointmentHelper.GetAttendeeStatusAsInfoString(oAppointment);
 
-            oAppointmentData.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidAppointmentRecur);
+            oAppointmentData.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oAppointment, PidLidAppointmentRecur);
             oAppointmentData.PidLidClientIntent = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidLidClientIntent);
             oAppointmentData.ClientInfoString = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, ClientInfoString);
-            oAppointmentData.StoreEntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
-            oAppointmentData.EntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_ENTRYID);
+            oAppointmentData.StoreEntryId = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
+            oAppointmentData.EntryId = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oAppointment, Prop_PR_ENTRYID);
             oAppointmentData.RetentionDate = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oAppointment, Prop_PR_RETENTION_DATE);
             oAppointmentData.IsHidden = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, Prop_PR_IS_HIDDEN);
             oAppointmentData.LogTriggerAction = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, LogTriggerAction);
@@ -598,13 +598,13 @@ namespace EWSEditor.Common.Exports
             oAppointmentData.PidTagSenderSmtpAddress = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidTagSenderSmtpAddress);
 
 
-            oAppointmentData.PidLidInboundICalStream = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidInboundICalStream);
+            oAppointmentData.PidLidInboundICalStream = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oAppointment, PidLidInboundICalStream);
             oAppointmentData.PidLidAppointmentAuxiliaryFlags = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidLidAppointmentAuxiliaryFlags);
             oAppointmentData.PidLidRecurrencePattern = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oAppointment, PidLidRecurrencePattern);
             oAppointmentData.PidLidRecurrenceType = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oAppointment, PidLidRecurrenceType);
             oAppointmentData.PidLidRecurring = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oAppointment, PidLidRecurring);
 
-            oAppointmentData.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oAppointment, PidLidAppointmentRecur);
+            oAppointmentData.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oAppointment, PidLidAppointmentRecur);
 
             //oAppointmentData.PidLidAppointmentStartDate = GetExtendedProp_DateTime_AsString(oAppointment, PidLidAppointmentStartDate);
             //oAppointmentData.PidLidAppointmentStartTime = GetExtendedProp_DateTime_AsString(oAppointment, PidLidAppointmentStartTime);
