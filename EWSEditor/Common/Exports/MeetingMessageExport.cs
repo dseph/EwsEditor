@@ -570,11 +570,11 @@ namespace EWSEditor.Common.Exports
                 oMM.WebClientReadFormQueryString = "";
             }
 
-            //oAppointmentData.PidLidAppointmentRecur = GetExtendedProp_ByteArr_AsString(oAppointment, PidLidAppointmentRecur);
+            //oAppointmentData.PidLidAppointmentRecur = GetExtendedProp_Byte_AsString(oAppointment, PidLidAppointmentRecur);
             //oAppointmentData.PidLidClientIntent = GetExtendedProp_Int_AsString(oAppointment, PidLidClientIntent);
             //oAppointmentData.ClientInfoString = GetExtendedProp_String_AsString(oAppointment, ClientInfoString);
-            //oAppointmentData.StoreEntryId = GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
-            //oAppointmentData.EntryId = GetExtendedProp_ByteArr_AsString(oAppointment, Prop_PR_ENTRYID);
+            //oAppointmentData.StoreEntryId = GetExtendedProp_Byte_AsString(oAppointment, Prop_PR_STORE_ENTRYID);
+            //oAppointmentData.EntryId = GetExtendedProp_Byte_AsString(oAppointment, Prop_PR_ENTRYID);
             //oAppointmentData.RetentionDate = GetExtendedProp_DateTime_AsString(oAppointment, Prop_PR_RETENTION_DATE);
             //oAppointmentData.IsHidden = GetExtendedProp_Bool_AsString(oAppointment, Prop_PR_IS_HIDDEN);
             //oAppointmentData.LogTriggerAction = GetExtendedProp_String_AsString(oAppointment, LogTriggerAction);
@@ -592,15 +592,15 @@ namespace EWSEditor.Common.Exports
             //oMM.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedPropByteArrAsString(oMeetingMessage, PidLidCleanGlobalObjectId);
             //oMM.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedPropByteArrAsString(oMeetingMessage, PidLidGlobalObjectId);
 
-            oMM.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidCleanGlobalObjectId);
+            oMM.PidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oMeetingMessage, PidLidCleanGlobalObjectId);
 
-            oMM.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidGlobalObjectId);
+            oMM.PidLidGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oMeetingMessage, PidLidGlobalObjectId);
 
-            oMM.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidAppointmentRecur);
+            oMM.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oMeetingMessage, PidLidAppointmentRecur);
             oMM.PidLidClientIntent = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oMeetingMessage, PidLidClientIntent);
             oMM.ClientInfoString = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, ClientInfoString);
-            oMM.StoreEntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, Prop_PR_STORE_ENTRYID);
-            oMM.EntryId = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, Prop_PR_ENTRYID);
+            oMM.StoreEntryId = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oMeetingMessage, Prop_PR_STORE_ENTRYID);
+            oMM.EntryId = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oMeetingMessage, Prop_PR_ENTRYID);
             oMM.RetentionDate = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oMeetingMessage, Prop_PR_RETENTION_DATE);
             oMM.IsHidden = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oMeetingMessage, Prop_PR_IS_HIDDEN);
             oMM.LogTriggerAction = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, LogTriggerAction);
@@ -611,13 +611,13 @@ namespace EWSEditor.Common.Exports
             oMM.PidLidOrganizerAlias = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidLidOrganizerAlias);
             oMM.PidTagSenderSmtpAddress = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidTagSenderSmtpAddress);
 
-            oMM.PidLidInboundICalStream = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidInboundICalStream);
+            oMM.PidLidInboundICalStream = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oMeetingMessage, PidLidInboundICalStream);
             oMM.PidLidAppointmentAuxiliaryFlags = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oMeetingMessage, PidLidAppointmentAuxiliaryFlags);
             oMM.PidLidRecurrencePattern = EwsExtendedPropertyHelper.GetExtendedProp_String_AsString(oMeetingMessage, PidLidRecurrencePattern);
             oMM.PidLidRecurrenceType = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oMeetingMessage, PidLidRecurrenceType);
             oMM.PidLidRecurring = EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oMeetingMessage, PidLidRecurring);
 
-            oMM.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oMeetingMessage, PidLidAppointmentRecur);
+            oMM.PidLidAppointmentRecur = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oMeetingMessage, PidLidAppointmentRecur);
             //oMM.PidLidAppointmentStartDate = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartDate);
             //oMM.PidLidAppointmentStartTime = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartTime);
             oMM.PidLidAppointmentStartWhole = EwsExtendedPropertyHelper.GetExtendedProp_DateTime_AsString(oMeetingMessage, PidLidAppointmentStartWhole);
