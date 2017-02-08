@@ -20,17 +20,17 @@ namespace EWSEditor.Common
             string sReturn = "";
 
             try
-            {  
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oDateTime))
             {
-                if (oDateTime == null)
-                    sReturn = "";
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oDateTime))
+                {
+                    if (oDateTime == null)
+                        sReturn = "";
 
+                    else
+                        sReturn = oDateTime.ToString();
+                }
                 else
-                    sReturn = oDateTime.ToString();
-            }
-            else
-                sReturn = "";
+                    sReturn = "";
             }
             catch (InvalidCastException ex)
             {
@@ -44,7 +44,39 @@ namespace EWSEditor.Common
             return sReturn;
         }
 
-        public static string GetExtendedProp_ByteArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+
+        //public static string GetExtendedProp_DateTime_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        //{
+        //    DateTime oDateTime;
+
+        //    string sReturn = "";
+
+        //    try
+        //    {  
+        //    if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oDateTime))
+        //    {
+        //        if (oDateTime == null)
+        //            sReturn = "";
+
+        //        else
+        //            sReturn = oDateTime.ToString();
+        //    }
+        //    else
+        //        sReturn = "";
+        //    }
+        //    catch (InvalidCastException ex)
+        //    {
+        //        string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+        //                    oExtendedPropertyDefinition.PropertySetId,
+        //                    oExtendedPropertyDefinition.Id,
+        //                    ex.Message);
+        //        MessageBox.Show(sError, "Casting Error");
+        //        throw ex;
+        //    }
+        //    return sReturn;
+        //}
+
+        public static string GetExtendedProp_Byte_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
             byte[] bytearrVal;
 
@@ -141,6 +173,8 @@ namespace EWSEditor.Common
             return sReturn;
         }
 
+
+
         public static string GetExtendedProp_Long_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
             long lVal = 0;
@@ -169,6 +203,37 @@ namespace EWSEditor.Common
             }
             return sReturn;
         }
+
+
+        public static string GetExtendedProp_Float_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+            float fVal = 0;
+
+            string sReturn = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out fVal))
+                {
+                    if (fVal == null)
+                        sReturn = "";
+                    else
+                        sReturn = fVal.ToString();
+                }
+                else
+                    sReturn = "";
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
 
         public static string GetExtendedProp_Short_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
@@ -262,7 +327,7 @@ namespace EWSEditor.Common
             return sReturn;
         }
 
-        public static string GetExtendedProp_ByteArr_AsString(Folder oFolder, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        public static string GetExtendedProp_Byte_AsString(Folder oFolder, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
             byte[] bytearrVal;
 
@@ -418,6 +483,35 @@ namespace EWSEditor.Common
             return sReturn;
         }
 
+        public static string GetExtendedProp_Float_AsString(Folder oFolder, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+            float fVal = 0;
+
+            string sReturn = "";
+            try
+            {
+                if (oFolder.TryGetProperty(oExtendedPropertyDefinition, out fVal))
+                {
+                    if (fVal == null)
+                        sReturn = "";
+                    else
+                        sReturn = fVal.ToString();
+                }
+                else
+                    sReturn = "";
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
         public static string GetExtendedProp_Bool_AsString(Folder oFolder, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
             bool bVal = false;
@@ -449,6 +543,850 @@ namespace EWSEditor.Common
         }
 
 
+        // ======================================================================
+        // Item Array props
+
+ 
+        public static string GetExtendedProp_DateTimeArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            DateTime[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                     
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (DateTime[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);  // *
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                    
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+         
+
+
+        public static string GetExtendedProp_LongArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            long[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                     
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (long[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);  // *
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                   
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+         
+ 
+
+        public static string GetExtendedProp_ByteArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+             
+            byte[][] bytearrVal;
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bytearrVal))  // Example: CleanGlobalObjectId
+                {
+                  
+                        if (bytearrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (byte[] oByteArray in bytearrVal)
+                            {
+                                s = Convert.ToBase64String(oByteArray);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length -1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes); 
+
+                            //sReturn = Convert.ToBase64String(sEntry);  // reverse: Convert.FromBase64String(string data)
+                        }
+                 
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+        public static string GetExtendedProp_StringArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            string[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))   
+                {
+             
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (string[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);  // *
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                         }
+                     
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+         
+
+
+        public static string GetExtendedProp_IntArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            int[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                 
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (int[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                   
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+        public static string GetExtendedProp_DoubleArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            double[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                     
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (double[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                    
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+
+        public static string GetExtendedProp_ShortArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+    
+
+            short[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                     
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (short[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                    
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+
+        public static string GetExtendedProp_FloatArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+
+            float[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                    
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (float[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                     
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+        // ======================================================================
+        // Folder Array props
+
+
+        public static string GetExtendedProp_DateTimeArr_AsString(Folder oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            DateTime[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                    
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (DateTime[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);  // *
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                     
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+
+
+        public static string GetExtendedProp_LongArr_AsString(Folder oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            long[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                     
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (long[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);  // *
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                     
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+         
+
+        public static string GetExtendedProp_ByteArr_AsString(Folder oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            byte[][] bytearrVal;
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out bytearrVal))  // Example: CleanGlobalObjectId
+                {
+                     
+                        if (bytearrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (byte[] oByteArray in bytearrVal)
+                            {
+                                s = Convert.ToBase64String(oByteArray);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+
+                            //sReturn = Convert.ToBase64String(sEntry);  // reverse: Convert.FromBase64String(string data)
+                        }
+                     
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+        public static string GetExtendedProp_StringArr_AsString(Folder oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            string[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                     
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (string[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);  // *
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                     
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+        public static string GetExtendedProp_BoolArr_AsString(Folder oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            bool[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                     
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (bool[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                    
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+
+        public static string GetExtendedProp_IntArr_AsString(Folder oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            int[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                    
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (int[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                     
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+        public static string GetExtendedProp_DoubleArr_AsString(Folder oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+            double[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                     
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (double[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                    
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+
+        public static string GetExtendedProp_ShortArr_AsString(Folder oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+
+            short[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                     
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (short[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                     
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
+
+        public static string GetExtendedProp_FloatArr_AsString(Folder oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        {
+
+
+            float[][] oArrVal;     // *
+
+            string sReturn = "";
+            string sEntry = "";
+            try
+            {
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out oArrVal))
+                {
+                     
+                        if (oArrVal == null)
+                            sReturn = "";
+                        else
+                        {
+                            string s = string.Empty;
+                            sEntry = string.Empty;
+                            foreach (float[] oVal in oArrVal)    // *
+                            {
+                                byte[] oFromVal = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                                s = Convert.ToBase64String(oFromVal);
+                                sEntry += s + ",";
+                            }
+                            sEntry = sEntry.Remove(sEntry.Length - 1, 1);  // get rid of last comma;
+
+                            // Base64 encode final results.
+                            byte[] oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sEntry);
+                            sReturn = System.Convert.ToBase64String(oFromBytes);
+                        }
+                     
+                }
+                else
+                    sReturn = "";
+
+            }
+            catch (InvalidCastException ex)
+            {
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
+                            ex.Message);
+                MessageBox.Show(sError, "Casting Error");
+                throw ex;
+            }
+            return sReturn;
+        }
+
         //        case MapiPropertyType.IntegerArray:
         //    sExtendedValue = EwsExtendedPropertyHelper.GetExtendedProp_IntArray_AsString(oItem, oEPD);
         //    break;
@@ -469,12 +1407,14 @@ namespace EWSEditor.Common
         //    break;
 
 
-        public static string TrySwapGuidForPropSetName( string sPropertySetName, int oPropertyId, string oPropertyType )
+        public static string TrySwapGuidForPropSetName( string sPropertySetName, int oPropertyId, string oPropertyType, 
+                        string sUseLine,
+                        int iLine)
  
         {
             string sGuid = null;
 
-            switch (sPropertySetName.ToUpper())
+            switch (sPropertySetName.Trim().ToUpper())
             {
                 case "PS_PUBLIC_STRINGS":           sGuid = "00020329-0000-0000-C000-000000000046"; break;
                 case "PSETID_COMMON":               sGuid = "00062008-0000-0000-C000-000000000046"; break;
@@ -489,7 +1429,10 @@ namespace EWSEditor.Common
                 case "PSETID_NOTE":                 sGuid = "0006200E-0000-0000-C000-000000000046"; break;
                 case "PSETID_POSTRSS":              sGuid = "00062041-0000-0000-C000-000000000046"; break;
                 case "PSETID_TASK":                 sGuid = "00062003-0000-0000-C000-000000000046"; break;
-                case "PSETID_UnifiedMessaging":     sGuid = "4442858E-A9E3-4E80-B900-317A210CC15B"; break;
+                case "PSETID_UNIFIEDMESSAGING":
+                        sGuid = "4442858E-A9E3-4E80-B900-317A210CC15B"; 
+                        break;
+                       
 
                 case "PS_MAPI":                     sGuid = "00020328-0000-0000-C000-000000000046"; break;
                 case "PSETID_AIRSYNC":              sGuid = "71035549-0739-4DCB-9163-00F0580DBBDF"; break;
@@ -504,9 +1447,9 @@ namespace EWSEditor.Common
                     sGuid = sPropertySetName;
                     if (sGuid.Length != 36 && sGuid.Length != 0)
                     {
-                        string s = string.Format("On {0} - {1}: Unknown Property set name or GUID a of the wrong length: \"{0}\".  ",  sGuid);
-                        s += string.Format("A property set GUID should have 36 characters; however this one has {0} characters. ", sGuid.Length.ToString());
-                        s += string.Format("See Property: {0} - {1}  \\", oPropertyId, oPropertyType.ToString());
+                        string s = string.Format("On Line {0} : Unknown Property set name or GUID a of the wrong length: \"{1}\".\r\n", iLine, sGuid);
+                        s += string.Format("A property set GUID should have 36 characters; however this one has {0} characters. \r\n", sGuid.Length.ToString());
+                        s += string.Format("See line {0}: \r\n{1}\r\n", iLine, sUseLine);
                         throw new Exception(s);
                     }
                     //string s = sGuid.Length.ToString();
