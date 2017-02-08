@@ -32,8 +32,8 @@ namespace EWSEditor.Common
             http://stackoverflow.com/questions/894263/how-do-i-identify-if-a-string-is-a-number
 
             double retNum;
-
-            bool isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
+            bool isNum = double.TryParse(Convert.ToString(Expression), out retNum); //i now = 10
+            //bool isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
             return isNum;
         }
 

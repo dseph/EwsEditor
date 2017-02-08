@@ -51,7 +51,7 @@
             // btnPickFolderIncludeUsersAdditionalProperties
             // 
             this.btnPickFolderIncludeUsersAdditionalProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPickFolderIncludeUsersAdditionalProperties.Location = new System.Drawing.Point(883, 5);
+            this.btnPickFolderIncludeUsersAdditionalProperties.Location = new System.Drawing.Point(1131, 5);
             this.btnPickFolderIncludeUsersAdditionalProperties.Name = "btnPickFolderIncludeUsersAdditionalProperties";
             this.btnPickFolderIncludeUsersAdditionalProperties.Size = new System.Drawing.Size(31, 29);
             this.btnPickFolderIncludeUsersAdditionalProperties.TabIndex = 26;
@@ -66,7 +66,7 @@
             this.txtIncludeUsersAdditionalPropertiesFile.Enabled = false;
             this.txtIncludeUsersAdditionalPropertiesFile.Location = new System.Drawing.Point(134, 12);
             this.txtIncludeUsersAdditionalPropertiesFile.Name = "txtIncludeUsersAdditionalPropertiesFile";
-            this.txtIncludeUsersAdditionalPropertiesFile.Size = new System.Drawing.Size(743, 22);
+            this.txtIncludeUsersAdditionalPropertiesFile.Size = new System.Drawing.Size(991, 22);
             this.txtIncludeUsersAdditionalPropertiesFile.TabIndex = 25;
             // 
             // txtCsv
@@ -79,7 +79,7 @@
             this.txtCsv.Multiline = true;
             this.txtCsv.Name = "txtCsv";
             this.txtCsv.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtCsv.Size = new System.Drawing.Size(903, 212);
+            this.txtCsv.Size = new System.Drawing.Size(1151, 212);
             this.txtCsv.TabIndex = 28;
             this.txtCsv.WordWrap = false;
             // 
@@ -94,7 +94,7 @@
             this.lvCsv.Location = new System.Drawing.Point(12, 318);
             this.lvCsv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lvCsv.Name = "lvCsv";
-            this.lvCsv.Size = new System.Drawing.Size(903, 237);
+            this.lvCsv.Size = new System.Drawing.Size(1151, 159);
             this.lvCsv.TabIndex = 29;
             this.lvCsv.UseCompatibleStateImageBehavior = false;
             // 
@@ -110,7 +110,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(758, 562);
+            this.btnOK.Location = new System.Drawing.Point(1006, 484);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 32;
@@ -121,7 +121,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(839, 562);
+            this.btnCancel.Location = new System.Drawing.Point(1087, 484);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 33;
@@ -143,7 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 595);
+            this.ClientSize = new System.Drawing.Size(1174, 517);
             this.Controls.Add(this.btnLoadFromCsv);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);

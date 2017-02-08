@@ -21,6 +21,7 @@ namespace EWSEditor.Forms
         public bool bChoseOk = false;
         public List<EWSEditor.Common.Exports.AdditionalPropertyDefinition> AdditionalPropertyDefinitions = null;
         public List<ExtendedPropertyDefinition> ExtendedPropertyDefinitions = null;
+        public CsvStringHandling StringHandling = CsvStringHandling.Base64encode;
 
         public SearchCalendarExportPicker()
         {
@@ -34,8 +35,8 @@ namespace EWSEditor.Forms
             this.txtAppointmentDetailedFolderPath.Text = StartFolder + "\\Export\\ExportedDetailedAppointmentResults.CSV";
             this.txtMeetingMessageDetailedFolderPath.Text = StartFolder + "\\Export\\ExportedDetailedMeetingMessageResults.CSV";
             this.txtDiagnosticExportFolderPath.Text = StartFolder + "\\Export\\ExportedDiagnosticMeetingMessageResults.CSV";
-            this.txtBlobFolderPath.Text = Application.StartupPath + "\\Export";
-            this.txtIncludeUsersAdditionalPropertiesFile.Text = Application.StartupPath + "\\AdditionalPropertiesExamples";
+            this.txtBlobFolderPath.Text = Application.StartupPath + "\\Export\\";
+            this.txtIncludeUsersAdditionalPropertiesFile.Text = Application.StartupPath + "\\AdditionalPropertiesExamples\\";
            
             SetEnablement();
         }
@@ -55,11 +56,14 @@ namespace EWSEditor.Forms
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            bool bAllowOK = true;
+
             if (rdoExportDisplayedResults.Checked)
             {
                 if (File.Exists(txtDisplayedResultsFolderPath.Text.Trim()))
                 {
                     MessageBox.Show("File Already Exists", "File already exists.  Choose a different file name.");
+                    bAllowOK = false;
                 }
             }
 
@@ -68,11 +72,23 @@ namespace EWSEditor.Forms
                 if (File.Exists(this.txtAppointmentDetailedFolderPath.Text.Trim()))
                 {
                     MessageBox.Show("File Already Exists", "File already exists.  Choose a different file name.");
+                    bAllowOK = false;
                 }
             }
+            
+            // String Handling...
+            if (rdoBase64EncodeStrings.Checked == true) 
+                StringHandling = CsvStringHandling.Base64encode;
+            if (rdoSanitizeStrings.Checked == true)
+                StringHandling = CsvStringHandling.SanitizeStrings;
+            if (rdoNone.Checked == true)
+                StringHandling = CsvStringHandling.None;
 
-            bChoseOk = true;
-            this.Close();
+            if (bAllowOK == true)
+            {
+                bChoseOk = true;
+                this.Close();
+            }
         }
 
         private void rdoExportDisplayedResults_CheckedChanged(object sender, EventArgs e)
@@ -96,7 +112,7 @@ namespace EWSEditor.Forms
             txtBlobFolderPath.Enabled = rdoExportItemsAsBlobs.Checked;
             btnPickFolderBlobProperties.Enabled = rdoExportItemsAsBlobs.Checked;
 
-            txtIncludeUsersAdditionalPropertiesFile.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+            //txtIncludeUsersAdditionalPropertiesFile.Enabled = chkIncludeUsersAdditionalProperties.Checked;
             //btnPickFolderIncludeUsersAdditionalProperties.Enabled = chkIncludeUsersAdditionalProperties.Checked;
         }
 
@@ -209,6 +225,9 @@ namespace EWSEditor.Forms
         {
            // txtIncludeUsersAdditionalPropertiesFile.Enabled = chkIncludeUsersAdditionalProperties.Checked;
             btnPickFolderIncludeUsersAdditionalProperties.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+            this.rdoBase64EncodeStrings.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+            this.rdoSanitizeStrings.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+            this.rdoNone.Enabled = chkIncludeUsersAdditionalProperties.Checked;
         }
         
         private void btnPickFolderIncludeUsersAdditionalProperties_Click(object sender, EventArgs e)
@@ -228,6 +247,8 @@ namespace EWSEditor.Forms
 
                 this.txtIncludeUsersAdditionalPropertiesFile.Text = sChosenFile;
             }
+
+            txtIncludeUsersAdditionalPropertiesFile.Enabled = false;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

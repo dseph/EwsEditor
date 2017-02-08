@@ -560,12 +560,12 @@ namespace EWSEditor.Forms
             string sPidLidCleanGlobalObjectId = string.Empty;
  
             foreach (Item oItem in oFindItemsResults.Items)
-            {
+            { 
  
                 if (this.chkGlobalObjId.Checked == true)
                 {
                     // Cannot search on binary data in EWS... so we need to read everything and Check to see if sPidLidCleanGlobalObjectId matches. 
-                    sPidLidCleanGlobalObjectId = GetExtendedProp_ByteArr_AsString(oItem, PidLidCleanGlobalObjectId);
+                    sPidLidCleanGlobalObjectId = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oItem, PidLidCleanGlobalObjectId);
 
  
                     if (this.txtGlobalObjId.Text == sPidLidCleanGlobalObjectId)
@@ -578,7 +578,7 @@ namespace EWSEditor.Forms
  
  
                 }
-                if (oItem.ItemClass.StartsWith("IPM.A"))
+                if (oItem.ItemClass.ToUpper().StartsWith("IPM.APPOINTMENT"))
                 { 
                     Appointment o = (Appointment)oItem;
                     if (this.txtUID.Text == (o.ICalUid))
@@ -592,7 +592,7 @@ namespace EWSEditor.Forms
 
                     }
                 }
-                else
+                if (oItem.ItemClass.ToUpper().StartsWith("IPM.SCHEDULE"))
                 {
                     MeetingMessage o = (MeetingMessage)oItem;
                     
@@ -1153,7 +1153,7 @@ namespace EWSEditor.Forms
                         }
                         else
                         {
-                            ExportDisplayedResults(_CurrentService,  sPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions);
+                            ExportDisplayedResults(_CurrentService, sPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions, oForm.StringHandling);
 
  
                         }
@@ -1196,7 +1196,8 @@ namespace EWSEditor.Forms
                         oAdditionalPropertyDefinitions,
                         oExtendedPropertyDefinitions,
                         oForm.chkIncludeBodyProperties.Checked,
-                        oForm.chkIncludeMime.Checked
+                        oForm.chkIncludeMime.Checked,
+                        oForm.StringHandling
                         );
 
   
@@ -1261,11 +1262,12 @@ namespace EWSEditor.Forms
             ExchangeService oExchangeService,
             string sFolderPath,
             List<EWSEditor.Common.Exports.AdditionalPropertyDefinition> oAdditionalPropertyDefinitions, 
-            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
+            CsvStringHandling oCsvStringHandling
             )
         {
 
-            ListViewExport.SaveCalendarListViewToCsv(oExchangeService, lvCommon, sFolderPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions);
+            ListViewExport.SaveCalendarListViewToCsv(oExchangeService, lvCommon, sFolderPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions, oCsvStringHandling);
         }
 
        
@@ -1278,7 +1280,8 @@ namespace EWSEditor.Forms
                 List<EWSEditor.Common.Exports.AdditionalPropertyDefinition> oAdditionalPropertyDefinitions, 
                 List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
                 bool chkIncludeBodyProperties,
-                bool chkIncludeMime)
+                bool chkIncludeMime,
+                CsvStringHandling oCsvStringHandling)
         {
             bool bRet = false;
             EWSEditor.Common.Exports.CalendarExport oCalendarExport = new EWSEditor.Common.Exports.CalendarExport();
@@ -1347,7 +1350,11 @@ namespace EWSEditor.Forms
                         if (oExtendedPropertyDefinitions != null)
                         {
                             sLine = sLine.Trim();
-                            sLine += "," + AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(_CurrentService, oItemId, oExtendedPropertyDefinitions);
+                            sLine += "," + AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(
+                                        _CurrentService, 
+                                        oItemId, 
+                                        oExtendedPropertyDefinitions,
+                                        oCsvStringHandling);
                             sLine = sLine.TrimEnd(TrimChars);
                             //sLine = sLine + "\r\n";
                         }
@@ -1374,7 +1381,12 @@ namespace EWSEditor.Forms
                         if (oExtendedPropertyDefinitions != null)
                         {
                             sLine = sLine.Trim();
-                            sLine += "," + AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(_CurrentService, oItemId, oExtendedPropertyDefinitions);
+                            sLine += "," + AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(
+                                    _CurrentService, 
+                                    oItemId, 
+                                    oExtendedPropertyDefinitions,
+                                    oCsvStringHandling
+                                    );
                             sLine = sLine.TrimEnd(TrimChars);
                             //sLine = sLine + "\r\n";
                         }
@@ -1512,7 +1524,7 @@ namespace EWSEditor.Forms
         }
 
 
-        public string GetExtendedProp_ByteArr_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
+        public string GetExtendedProp_Byte_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
             byte[] bytearrVal;
 
