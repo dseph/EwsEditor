@@ -300,7 +300,7 @@ namespace EWSEditor.Forms
                     for (int i = 0; i < displayCount; i++)
                     {
                         Folder oFolder = oFindFoldersResults.Folders[i];
-                        string sResult = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oFolder, Prop_PR_POLICY_TAG);
+                        string sResult = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_POLICY_TAG);
 
                         if (sResult != "")
                         {
@@ -313,12 +313,12 @@ namespace EWSEditor.Forms
                             oListViewItem.SubItems.Add(oFolder.DisplayName);
                             EwsFolderHelper.GetFolderPath(oFolder, ref sPath);
                             oListViewItem.SubItems.Add(sPath);
-                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oFolder, Prop_PR_POLICY_TAG));
-                            //oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oFolder, Prop_PR_START_DATE_ETC));
-                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oFolder, Prop_PR_RETENTION_FLAGS));
-                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oFolder, Prop_PR_RETENTION_DATE));
-                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oFolder, Prop_PR_ARCHIVE_TAG));
-                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oFolder, Prop_PR_IS_HIDDEN));
+                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_POLICY_TAG));
+                            //oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_START_DATE_ETC));
+                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_RETENTION_FLAGS));
+                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_RETENTION_DATE));
+                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_ARCHIVE_TAG));
+                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_IS_HIDDEN));
                             
                             oListViewItem.SubItems.Add(FolderSchema.TotalCount.ToString());
  

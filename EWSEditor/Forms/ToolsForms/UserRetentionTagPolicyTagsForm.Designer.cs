@@ -42,7 +42,8 @@
             // 
             // lvUserRetentionTags
             // 
-            this.lvUserRetentionTags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lvUserRetentionTags.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvUserRetentionTags.FullRowSelect = true;
             this.lvUserRetentionTags.HideSelection = false;
@@ -74,7 +75,7 @@
             this.oLvRetionStampedFolders.HideSelection = false;
             this.oLvRetionStampedFolders.Location = new System.Drawing.Point(12, 388);
             this.oLvRetionStampedFolders.Name = "oLvRetionStampedFolders";
-            this.oLvRetionStampedFolders.Size = new System.Drawing.Size(1057, 31);
+            this.oLvRetionStampedFolders.Size = new System.Drawing.Size(1057, 0);
             this.oLvRetionStampedFolders.TabIndex = 5;
             this.oLvRetionStampedFolders.UseCompatibleStateImageBehavior = false;
             this.oLvRetionStampedFolders.Visible = false;
@@ -95,7 +96,7 @@
             // 
             this.TempWellKnownFolderCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempWellKnownFolderCombo.FormattingEnabled = true;
-            this.TempWellKnownFolderCombo.Location = new System.Drawing.Point(502, 353);
+            this.TempWellKnownFolderCombo.Location = new System.Drawing.Point(502, 360);
             this.TempWellKnownFolderCombo.Margin = new System.Windows.Forms.Padding(4);
             this.TempWellKnownFolderCombo.Name = "TempWellKnownFolderCombo";
             this.TempWellKnownFolderCombo.Size = new System.Drawing.Size(369, 24);
@@ -160,7 +161,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1106, 431);
+            this.ClientSize = new System.Drawing.Size(1106, 353);
             this.Controls.Add(this.txtTagId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmboSearchDepth);

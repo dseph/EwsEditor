@@ -19,17 +19,27 @@ namespace EWSEditor.Forms
         public bool ClickedOK = false;
         public List<ExtendedPropertyDefinition> EPD = null;
         public List<AdditionalPropertyDefinition> APD = null;
- 
+        public string ChosenFile = string.Empty;
 
         public PropertySetDialogAddFromCSV()
         {
             InitializeComponent();
+
+            string StartFolder = Application.StartupPath + "";
+            ChosenFile = StartFolder + "\\AdditionalPropertiesExamples\\";
         }
+
+        public PropertySetDialogAddFromCSV(string sChosenFile)
+        {
+            InitializeComponent();
+            ChosenFile = sChosenFile;
+        }
+
+        
 
         private void PropertySetDialogAddFromCSV_Load(object sender, EventArgs e)
         {
-            string StartFolder = Application.StartupPath + "";
-            this.txtIncludeUsersAdditionalPropertiesFile.Text = StartFolder + "\\AdditionalPropertiesExamples\\";
+            this.txtIncludeUsersAdditionalPropertiesFile.Text = ChosenFile;
         }
 
         private void LoadLvHeaders(ref ListView oListView)
@@ -42,11 +52,13 @@ namespace EWSEditor.Forms
 
             oListView.Columns.Add("DescPropertyName", 200, HorizontalAlignment.Left);
             oListView.Columns.Add("ProbablePropertyName", 200, HorizontalAlignment.Left);
-            oListView.Columns.Add("PropertySetId", 200, HorizontalAlignment.Left);
+            oListView.Columns.Add("PropertySetId", 240, HorizontalAlignment.Left);
             c = oListView.Columns.Add("PropertyId", 70, HorizontalAlignment.Left);
             c.TextAlign = HorizontalAlignment.Right;
             c = null;
-            oListView.Columns.Add("PropertyType", 70, HorizontalAlignment.Left);
+            oListView.Columns.Add("PropertyId (Named Prop)", 200, HorizontalAlignment.Left);
+
+            oListView.Columns.Add("PropertyType", 80, HorizontalAlignment.Left);
 
             oListView.Tag = -1;
 
@@ -54,8 +66,11 @@ namespace EWSEditor.Forms
 
         private void LoadPropeties(string sCsv, ref ListView lvCsvParsed)
         {
-            List<AdditionalPropertyDefinition> oAPD = null;
-            List<ExtendedPropertyDefinition> oEPD = null;
+          List<AdditionalPropertyDefinition> oAPD = null;
+          List<ExtendedPropertyDefinition> oEPD = null;
+
+            //public List<ExtendedPropertyDefinition> EPD = null;
+            //public List<AdditionalPropertyDefinition> APD = null;
 
             APD = null;
             EPD = null;
@@ -85,9 +100,11 @@ namespace EWSEditor.Forms
                     }
                     else
                     {
-                        oListViewItem.SubItems.Add(o.PropertySetIdString);   // custom property;
+                        oListViewItem.SubItems.Add("");   // custom property;
+                        //oListViewItem.SubItems.Add(o.PropertySetIdString);   // custom property;
 
                     }
+                    oListViewItem.SubItems.Add(o.PropertySetIdString);
                     oListViewItem.SubItems.Add(o.PropertyType);
 
                     lvCsvParsed.Items.Add(oListViewItem);
@@ -169,7 +186,9 @@ namespace EWSEditor.Forms
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (APD != null)
-            { 
+            {
+                ChosenFile = txtIncludeUsersAdditionalPropertiesFile.Text.Trim();
+                 
                 ClickedOK = true;
                 this.Close();
             }
