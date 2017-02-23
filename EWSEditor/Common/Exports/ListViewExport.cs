@@ -25,7 +25,7 @@ namespace EWSEditor.Common
             string sFilePath,
             List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions,
             List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
-            CsvStringHandling oCsvStringHandling
+             CsvExportOptions oCsvExportOptions
     )
         {
             bool bRet = false;
@@ -33,6 +33,9 @@ namespace EWSEditor.Common
             string sHeader = string.Empty;
             string sLine = string.Empty;
 
+            int iFolderPathColumn = 23;  // Folder Path
+            int[] iByteArrCollumns = { 12, 13, 24};   // Byte array properties in listview
+          
 
             PropertySet oExtendedPropSet = new PropertySet(BasePropertySet.IdOnly);
 
@@ -54,14 +57,36 @@ namespace EWSEditor.Common
             StreamWriter w = File.AppendText(sFilePath);
             char[] TrimChars = { ',', ' ' };
             StringBuilder SbHeader = new StringBuilder();
+            int iHeaderCount = 0;
+            // Build header part for listview
             foreach (ColumnHeader oCH in oListView.Columns)
             {
-                SbHeader.Append(oCH.Text);
-                SbHeader.Append(",");
+                iHeaderCount++;
+                // Exclusions
+                if (oCsvExportOptions._CsvExportGridExclusions != Exports.CsvExportGridExclusions.ExportAll)
+                {
+                    if (oCsvExportOptions._CsvExportGridExclusions == Exports.CsvExportGridExclusions.ExcludeAllInGridExceptFilePath)
+                    {
+                        if (iFolderPathColumn == iHeaderCount)
+                        {
+
+                            SbHeader.Append(oCH.Text);
+                            SbHeader.Append(",");
+                        }
+                    }
+                }
+                else
+                {
+
+
+                    SbHeader.Append(oCH.Text);
+                    SbHeader.Append(",");
+                }
+ 
             }
             sHeader = SbHeader.ToString();
             sHeader = sHeader.TrimEnd(TrimChars);
-
+            // Add headers for custom properties.
             if (oAdditionalPropertyDefinitions != null)
             {
                 sHeader += "," + AdditionalProperties.GetExtendedPropertyHeadersAsCsvContent(oAdditionalPropertyDefinitions);
@@ -76,6 +101,8 @@ namespace EWSEditor.Common
 
             int iCount = 0;
 
+  
+
             string s = string.Empty;
             foreach (ListViewItem oListViewItem in oListView.SelectedItems)
             {
@@ -88,15 +115,19 @@ namespace EWSEditor.Common
                 oItemId = oCalendarItemTag.Id;
                 byte[] oFromBytes;
 
+ 
                 if (oListViewItem.Selected == true)
                 {
-
+                      
                     foreach (ListViewItem.ListViewSubItem o in oListViewItem.SubItems)
                     {
                         s = (o.Text);
                        
-                        if (oCsvStringHandling != CsvStringHandling.None)
-                            s = AdditionalProperties.DoStringHandling(s , oCsvStringHandling);
+                        if (oCsvExportOptions._CsvStringHandling != CsvStringHandling.None)
+                            s = AdditionalProperties.DoStringHandling(s , oCsvExportOptions._CsvStringHandling );
+
+ 
+
 
                         //if (oCsvStringHandling != CsvStringHandling.None)
                         //{
@@ -119,12 +150,45 @@ namespace EWSEditor.Common
                         //    s = s.Replace("\n", "");
                         //}
 
-                        s = s.Replace(",", " "); // need to strip commas as this is a csv file.
-                        s = s.Replace("\r", "");
-                        s = s.Replace("\n", "");
+                        //s = s.Replace(",", " "); // need to strip commas as this is a csv file.
+                        //s = s.Replace("\r", "");
+                        //s = s.Replace("\n", "");
 
-                        SbLine.Append(s);
-                        SbLine.Append(",");
+                        // Re-encode byte data?
+                        bool bColumnIsByteArray = false;  
+                        foreach (int i in iByteArrCollumns)
+                        {
+                            if (iCount == i)
+                                bColumnIsByteArray = true;
+                        }
+
+                        if (oCsvExportOptions.HexEncodeBinaryData == true && bColumnIsByteArray == true)
+                        {
+                            oFromBytes = System.Convert.FromBase64String(s); // Base64 to byte array.
+                            s = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                        }
+ 
+                        // Exclusions
+                        if (oCsvExportOptions._CsvExportGridExclusions != Exports.CsvExportGridExclusions.ExportAll)
+                        {
+                            if (oCsvExportOptions._CsvExportGridExclusions == Exports.CsvExportGridExclusions.ExcludeAllInGridExceptFilePath)
+                            {
+                                if (iFolderPathColumn == iCount)
+                                {
+                                    SbLine.Append(s);
+                                    SbLine.Append(",");
+                                }
+                            }
+                        }
+                        else
+                        {
+
+                            SbLine.Append(s);
+                            SbLine.Append(",");
+                        }
+ 
+
+                       
                     }
 
                 }
@@ -143,7 +207,7 @@ namespace EWSEditor.Common
                         oExchangeService,
                         oItemId,
                         oExtendedPropertyDefinitions,
-                        oCsvStringHandling
+                        oCsvExportOptions
                         );
 
                     // xxx

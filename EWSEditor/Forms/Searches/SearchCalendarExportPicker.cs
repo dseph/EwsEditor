@@ -21,7 +21,9 @@ namespace EWSEditor.Forms
         public bool bChoseOk = false;
         public List<EWSEditor.Common.Exports.AdditionalPropertyDefinition> AdditionalPropertyDefinitions = null;
         public List<ExtendedPropertyDefinition> ExtendedPropertyDefinitions = null;
-        public CsvStringHandling StringHandling = CsvStringHandling.Base64encode;
+        //public CsvStringHandling StringHandling = CsvStringHandling.Base64encode;
+        public CsvExportOptions ExportOptions = new CsvExportOptions();
+
 
         public SearchCalendarExportPicker()
         {
@@ -34,7 +36,7 @@ namespace EWSEditor.Forms
             this.txtDisplayedResultsFolderPath.Text = StartFolder + "\\Export\\ExportedSearchCalendarResults.CSV";
             this.txtAppointmentDetailedFolderPath.Text = StartFolder + "\\Export\\ExportedDetailedAppointmentResults.CSV";
             this.txtMeetingMessageDetailedFolderPath.Text = StartFolder + "\\Export\\ExportedDetailedMeetingMessageResults.CSV";
-            this.txtDiagnosticExportFolderPath.Text = StartFolder + "\\Export\\ExportedDiagnosticMeetingMessageResults.CSV";
+            //this.txtDiagnosticExportFolderPath.Text = StartFolder + "\\Export\\ExportedDiagnosticMeetingMessageResults.CSV";
             this.txtBlobFolderPath.Text = Application.StartupPath + "\\Export\\";
             this.txtIncludeUsersAdditionalPropertiesFile.Text = Application.StartupPath + "\\AdditionalPropertiesExamples\\";
            
@@ -76,13 +78,26 @@ namespace EWSEditor.Forms
                 }
             }
             
-            // String Handling...
-            if (rdoBase64EncodeStrings.Checked == true) 
-                StringHandling = CsvStringHandling.Base64encode;
+            
+            // Export Options
+            if (rdoBase64EncodeStrings.Checked == true)
+                ExportOptions._CsvStringHandling = CsvStringHandling.Base64encode;
+            if (this.rdoHexEncodeStrings.Checked == true)
+                ExportOptions._CsvStringHandling = CsvStringHandling.HexEncode;
             if (rdoSanitizeStrings.Checked == true)
-                StringHandling = CsvStringHandling.SanitizeStrings;
+                ExportOptions._CsvStringHandling = CsvStringHandling.SanitizeStrings;
             if (rdoNone.Checked == true)
-                StringHandling = CsvStringHandling.None;
+                ExportOptions._CsvStringHandling = CsvStringHandling.None;
+
+            if (rdoExportAllGridData.Checked == true)
+                ExportOptions._CsvExportGridExclusions = CsvExportGridExclusions.ExportAll;
+            if (rdoExcludeAllGridContentExceptFolderPath.Checked == true)
+                ExportOptions._CsvExportGridExclusions = CsvExportGridExclusions.ExcludeAllInGridExceptFilePath;
+            if (rdoExcludeAllSearchGridContent.Checked == true)
+                ExportOptions._CsvExportGridExclusions = CsvExportGridExclusions.ExcludeAllInGrid;
+
+            ExportOptions.HexEncodeBinaryData = chkConvertBase64BinaryHex.Checked;
+ 
 
             if (bAllowOK == true)
             {
@@ -192,8 +207,8 @@ namespace EWSEditor.Forms
 
         private void btnPickFolderDisplayedResults_Click(object sender, EventArgs e)
         {
-
-            txtDiagnosticExportFolderPath.Text = ChooseFilePath(txtDiagnosticExportFolderPath.Text.Trim(), "CSV");
+            txtDisplayedResultsFolderPath.Text = ChooseFilePath(txtDisplayedResultsFolderPath.Text.Trim(), "CSV");
+            //txtDiagnosticExportFolderPath.Text = ChooseFilePath(txtDiagnosticExportFolderPath.Text.Trim(), "CSV");
  
         }
 
@@ -252,6 +267,26 @@ namespace EWSEditor.Forms
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grpStringHandling_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDisplayedResultsFolderPath_TextChanged(object sender, EventArgs e)
         {
 
         }

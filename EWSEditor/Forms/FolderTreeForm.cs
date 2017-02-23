@@ -2082,5 +2082,13 @@ namespace EWSEditor.Forms
             SearchCalendarsForm oForm = new SearchCalendarsForm(this.CurrentService, oFolder.Id);
             oForm.Show();
         }
+
+        private void mnuFolderRetentionFlags_Click(object sender, EventArgs e)
+        {
+            Folder oFolder = (GetFolderFromNode(FolderTreeView.SelectedNode));
+            FolderRetentionSettings oForm = new FolderRetentionSettings(CurrentService, oFolder.Id);
+            oForm.Show();
+
+        }
     }
 }

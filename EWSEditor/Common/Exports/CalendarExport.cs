@@ -1323,8 +1323,11 @@ namespace EWSEditor.Common.Exports
 
         }
 
-        public string GetAppointmentDataAsCsv2(AppointmentData oAppointmentData)
+        public string GetAppointmentDataAsCsv2(AppointmentData oAppointmentData, CsvExportOptions oCsvExportOption)
         {
+
+            Todo:  Add coding for new paramater:  CsvExportOptions oCsvExportOption) - need to use it for encoding each string.
+
             string sRet = string.Empty;
             char[] TrimChars = { ',', ' ' };
 

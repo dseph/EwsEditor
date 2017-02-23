@@ -563,7 +563,7 @@ namespace EWSEditor.Common.Exports
             ExchangeService oExchangeService, 
             ItemId oItemId,
             List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
-            CsvStringHandling oCsvStringHandling
+            CsvExportOptions oCsvExportOptions
             )
         {
             //AddExtendedPropertPropertyDefinitionsToPropertySet(oExtendedPropertyDefinitions)
@@ -632,6 +632,12 @@ namespace EWSEditor.Common.Exports
                         break;
                     case MapiPropertyType.BinaryArray:
                         sExtendedValue = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oItem, oEPD);
+                        if (oCsvExportOptions.HexEncodeBinaryData == true)
+                        {
+                            //byte[] oFromBytes;
+                            oFromBytes = System.Convert.FromBase64String(sExtendedValue); // Base64 to byte array.
+                            sExtendedValue = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                        }
                         break;
                     case MapiPropertyType.LongArray:
                         sExtendedValue = EwsExtendedPropertyHelper.GetExtendedProp_LongArr_AsString(oItem, oEPD);
@@ -658,10 +664,10 @@ namespace EWSEditor.Common.Exports
                 }
 
 
-                if (oCsvStringHandling != CsvStringHandling.None)
+                if (oCsvExportOptions._CsvStringHandling != CsvStringHandling.None)
                 {
                     if (oEPD.MapiType == MapiPropertyType.String)
-                        sExtendedValue = DoStringHandling(sExtendedValue, oCsvStringHandling);
+                        sExtendedValue = DoStringHandling(sExtendedValue, oCsvExportOptions._CsvStringHandling);
                 }
 
                 //{ 
@@ -720,6 +726,13 @@ namespace EWSEditor.Common.Exports
                 sString = Convert.ToBase64String(oFromBytes);  // reverse: Convert.FromBase64String(string data)
             }
 
+            if (oCsvStringHandling == CsvStringHandling.HexEncode)
+            {
+                byte[] oFromBytes;
+                oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sString);
+                sString = StringHelper.HexStringFromByteArray(oFromBytes, false);
+            }
+
             if (oCsvStringHandling == CsvStringHandling.SanitizeStrings)
             {
                 //if (s.Contains(','))
@@ -744,17 +757,29 @@ namespace EWSEditor.Common.Exports
         public bool     PropertyIdIsString = false;
         public string   PropertySetIdString = string.Empty;
 
- 
     }
 
     public enum CsvStringHandling
     {
-        Base64encode,
         SanitizeStrings,
+        Base64encode,
+        HexEncode,
         None
     }
 
- 
+    public class CsvExportOptions
+    {
+        public CsvStringHandling _CsvStringHandling = CsvStringHandling.SanitizeStrings;
+        public CsvExportGridExclusions _CsvExportGridExclusions = CsvExportGridExclusions.ExportAll;
+        public bool HexEncodeBinaryData = false;
+    }
+
+    public enum CsvExportGridExclusions
+    {
+        ExportAll,
+        ExcludeAllInGrid,
+        ExcludeAllInGridExceptFilePath
+    }
 
 
 }
