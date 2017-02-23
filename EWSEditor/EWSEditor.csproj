@@ -265,6 +265,12 @@
     <Compile Include="Forms\MarkAsJunkForm.Designer.cs">
       <DependentUpon>MarkAsJunkForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Retention\FolderRetentionSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Retention\FolderRetentionSettings.Designer.cs">
+      <DependentUpon>FolderRetentionSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Searches\FindCertainFolders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -925,6 +931,9 @@
     <EmbeddedResource Include="Forms\MarkAsJunkForm.resx">
       <DependentUpon>MarkAsJunkForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Retention\FolderRetentionSettings.resx">
+      <DependentUpon>FolderRetentionSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Searches\FindCertainFolders.resx">
       <DependentUpon>FindCertainFolders.cs</DependentUpon>
     </EmbeddedResource>
@@ -1221,7 +1230,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TemplateEwsRequests.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="AdditionalProperties\ExamplePropertiesDefinition.csv" />
     <None Include="AdditionalProperties\KnownProperties.csv" />
     <None Include="AdditionalProperties\UnknownCalendarProperties.csv" />
     <None Include="App.config">

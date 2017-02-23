@@ -143,8 +143,6 @@ namespace EWSEditor.Common.Exports
                 oExtendedPropertyDefinitions);
           
             return oMeetingMessageData;
-
-  
  
         }
         public bool GetFolderPath(ref string sFolder)
@@ -406,14 +404,48 @@ namespace EWSEditor.Common.Exports
 
            
             
-            oMM.IsDraft = oMeetingMessage.IsDraft.ToString();
+            //oMM.IsDraft = oMeetingMessage.IsDraft.ToString();
+
+            try
+            {
+                oMM.IsDraft = oMeetingMessage.IsDraft.ToString();
+            }
+            catch (Exception ex)
+            {
+                oMM.IsDraft = "";
+            }
            // if (oMeetingMessage.IsFromMe != null) oMM.IsFromMe = oMeetingMessage.IsFromMe.ToString();//
 
             //if (oMeetingMessage.IsOrganizer != null) oMM.IsOrganizer = oMeetingMessage.IsOrganizer.ToString();
 
-            oMM.IsOutOfDate = oMeetingMessage.IsOutOfDate.ToString();
-            oMM.IsRead = oMeetingMessage.IsRead.ToString();
-            oMM.IsReadReceiptRequested = oMeetingMessage.IsReadReceiptRequested.ToString();
+            try
+            {
+                oMM.IsOutOfDate = oMeetingMessage.IsOutOfDate.ToString();
+            }
+            catch (Exception ex)
+            {
+                oMM.IsOutOfDate = "";
+            }
+            //oMM.IsRead = oMeetingMessage.IsRead.ToString();
+
+            try
+            {
+                oMM.IsRead = oMeetingMessage.IsRead.ToString();
+            }
+            catch (Exception ex)
+            {
+                oMM.IsRead = "";
+            }
+
+            //oMM.IsReadReceiptRequested = oMeetingMessage.IsReadReceiptRequested.ToString();
+            try
+            {
+                oMM.IsReadReceiptRequested = oMeetingMessage.IsReadReceiptRequested.ToString();
+            }
+            catch (Exception ex)
+            {
+                oMM.IsReadReceiptRequested = "";
+            }
             //if (oMeetingMessage.IsReminderSet != null) oMM.IsReminderSet = oMeetingMessage.IsReminderSet.ToString();
             try
             {
@@ -423,10 +455,45 @@ namespace EWSEditor.Common.Exports
             {
                 oMM.IsReminderSet = "";
             }
-            oMM.IsResend = oMeetingMessage.IsResend.ToString();
-            if (oMeetingMessage.IsResponseRequested != null) oMM.IsResponseRequested = oMeetingMessage.IsResponseRequested.ToString();
-            oMM.IsSubmitted = oMeetingMessage.IsSubmitted.ToString();
-            oMM.IsUnmodified = oMeetingMessage.IsUnmodified.ToString();
+            //oMM.IsResend = oMeetingMessage.IsResend.ToString();
+            try
+            {
+                oMM.IsResend = oMeetingMessage.IsResend.ToString();
+            }
+            catch (Exception ex)
+            {
+                oMM.IsResend = "";
+            }
+
+           // if (oMeetingMessage.IsResponseRequested != null) oMM.IsResponseRequested = oMeetingMessage.IsResponseRequested.ToString();
+            try
+            {
+                if (oMeetingMessage.IsResponseRequested != null) oMM.IsResponseRequested = oMeetingMessage.IsResponseRequested.ToString();
+            }
+            catch (Exception ex)
+            {
+                oMM.IsResponseRequested = "";
+            }
+
+            //oMM.IsSubmitted = oMeetingMessage.IsSubmitted.ToString();
+            try
+            {
+                oMM.IsSubmitted = oMeetingMessage.IsSubmitted.ToString();
+            }
+            catch (Exception ex)
+            {
+                oMM.IsSubmitted = "";
+            }
+
+            //oMM.IsUnmodified = oMeetingMessage.IsUnmodified.ToString();
+            try
+            {
+                oMM.IsUnmodified = oMeetingMessage.IsUnmodified.ToString();
+            }
+            catch (Exception ex)
+            {
+                oMM.IsUnmodified = "";
+            }
 
             if (oMeetingMessage.ItemClass != null) oMM.ItemClass = oMeetingMessage.ItemClass;
             if (oMeetingMessage.LastModifiedName != null) oMM.LastModifiedName = oMeetingMessage.LastModifiedName.ToString();
@@ -1122,8 +1189,12 @@ namespace EWSEditor.Common.Exports
 
 
         // GetMeetingMessageDataAsCsv2
-        public string GetMeetingMessageDataAsCsv2(MeetingMessageData oMeetingMessageData)
+        public string GetMeetingMessageDataAsCsv2(MeetingMessageData oMeetingMessageData, CsvExportOptions oCsvExportOption)
         {
+
+            Todo:  Add coding for new paramater:  CsvExportOptions oCsvExportOption) - need to use it for encoding each string.
+
+
             string sRet = string.Empty;
             char[] TrimChars = { ',', ' ' };
 

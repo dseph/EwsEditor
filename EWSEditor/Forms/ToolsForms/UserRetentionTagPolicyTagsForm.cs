@@ -27,16 +27,12 @@ namespace EWSEditor.Forms
         private EnumComboBox<WellKnownFolderName> wellKnownFolderCombo = new EnumComboBox<WellKnownFolderName>();
 
         private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
-        //private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.String); // PR_START_DATE_ETC  GUID 0x30190102
-
-  
-
         private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
-        private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
+        private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A           
+        
         private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C    
-       
         private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_TAG = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
-        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_PERIOD = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer); // Prop_PR_RETENTION_DATE 0x301C    
+        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_PERIOD = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer); // Prop_PR_RETENTION_DATE 0x301C            
         private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_DATE = new ExtendedPropertyDefinition(0x301F, MapiPropertyType.SystemTime);
 
         private static ExtendedPropertyDefinition Prop_PR_FOLDER_PATH = new ExtendedPropertyDefinition(0x66B5, MapiPropertyType.String);   // Folder Path - PR_Folder_Path
@@ -77,7 +73,6 @@ namespace EWSEditor.Forms
 
             oListView.Columns.Add("DisplayName", 200,  HorizontalAlignment.Left);
             oListView.Columns.Add("Description", 250, HorizontalAlignment.Left);
-
             oListView.Columns.Add("Type", 70, HorizontalAlignment.Left);
             oListView.Columns.Add("OptedInto", 70, HorizontalAlignment.Left);
 
@@ -121,17 +116,17 @@ namespace EWSEditor.Forms
                 ListViewItem o = lvUserRetentionTags.SelectedItems[0];
 
                 StringBuilder oSB = new StringBuilder();
-                oSB.AppendFormat("{0}:  {1}\r\n", "DisplayName:      ", o.Text);
-                oSB.AppendFormat("{0}:  {1}\r\n", "Description:      ", o.SubItems[0].Text);
-                oSB.AppendFormat("{0}:  {1}\r\n", "Type:             ", o.SubItems[1].Text);
-                oSB.AppendFormat("{0}:  {1}\r\n", "OptedInto:        ", o.SubItems[2].Text);
+                oSB.AppendFormat("{0}:  {1}\r\n", "DisplayName:      ", o.SubItems[0].Text);
+                oSB.AppendFormat("{0}:  {1}\r\n", "Description:      ", o.SubItems[1].Text);
+                oSB.AppendFormat("{0}:  {1}\r\n", "Type:             ", o.SubItems[2].Text);
+                oSB.AppendFormat("{0}:  {1}\r\n", "OptedInto:        ", o.SubItems[3].Text);
 
-                oSB.AppendFormat("{0}:  {1}\r\n", "RetentionAction:  ", o.SubItems[3].Text);
-                oSB.AppendFormat("{0}:  {1}\r\n", "RetentionId:      ", o.SubItems[4].Text);
-                oSB.AppendFormat("{0}:  {1}\r\n", "RetentionPeriod:  ", o.SubItems[5].Text);
+                oSB.AppendFormat("{0}:  {1}\r\n", "RetentionAction:  ", o.SubItems[4].Text);
+                oSB.AppendFormat("{0}:  {1}\r\n", "RetentionId:      ", o.SubItems[5].Text);
+                oSB.AppendFormat("{0}:  {1}\r\n", "RetentionPeriod:  ", o.SubItems[6].Text);
 
-                oSB.AppendFormat("{0}:  {1}\r\n", "IsArchive:        ", o.SubItems[6].Text);
-                oSB.AppendFormat("{0}:  {1}\r\n", "IsVisible:        ", o.SubItems[7].Text);
+                oSB.AppendFormat("{0}:  {1}\r\n", "IsArchive:        ", o.SubItems[7].Text);
+                oSB.AppendFormat("{0}:  {1}\r\n", "IsVisible:        ", o.SubItems[8].Text);
 
                 ShowTextDocument oForm = new ShowTextDocument();
                 oForm.Text = "User Retention Tag";
@@ -146,7 +141,7 @@ namespace EWSEditor.Forms
         {
             this.wellKnownFolderCombo.TransformComboBox(this.TempWellKnownFolderCombo);
             this.wellKnownFolderCombo.SelectedItem = WellKnownFolderName.Root;
-            cmboSearchDepth.Text = "Shallow";
+           // cmboSearchDepth.Text = "Deep";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -163,7 +158,7 @@ namespace EWSEditor.Forms
 
         private void btnFindRetentionStampedFolders_Click(object sender, EventArgs e)
         {
-
+            FindRetentionStampedFolders();
         }
 
         private void FindRetentionStampedFolders()
@@ -191,25 +186,25 @@ namespace EWSEditor.Forms
             this.Cursor = Cursors.Default;
          }
 
-        private FolderTraversal GetSearchDepth(string sSearchDepth)
-        {
-            FolderTraversal oFolderTraversal = FolderTraversal.Shallow; 
+        //private FolderTraversal GetSearchDepth(string sSearchDepth)
+        //{
+        //    FolderTraversal oFolderTraversal = FolderTraversal.Shallow; 
 
-            switch (sSearchDepth)
-            {
-                case "Shallow":
-                    oFolderTraversal = FolderTraversal.Shallow; // Shallow, Deep, SoftDeleted
-                    break;
-                case "Deep":
-                    oFolderTraversal = FolderTraversal.Deep; // Shallow, Deep, SoftDeleted
-                    break;
-                case "SoftDeleted":
-                    oFolderTraversal = FolderTraversal.SoftDeleted; // Shallow, Deep, SoftDeleted
-                    break;
-            }
+        //    switch (sSearchDepth)
+        //    {
+        //        case "Shallow":
+        //            oFolderTraversal = FolderTraversal.Shallow; // Shallow, Deep, SoftDeleted
+        //            break;
+        //        case "Deep":
+        //            oFolderTraversal = FolderTraversal.Deep; // Shallow, Deep, SoftDeleted
+        //            break;
+        //        case "SoftDeleted":
+        //            oFolderTraversal = FolderTraversal.SoftDeleted; // Shallow, Deep, SoftDeleted
+        //            break;
+        //    }
 
-            return oFolderTraversal;
-        }
+        //    return oFolderTraversal;
+        //}
 
         private void DisplayFindRetentionStampedFoldersInListView(
             ExchangeService oExchangeService,
@@ -226,23 +221,25 @@ namespace EWSEditor.Forms
             oListView.Columns.Add("Id", 200, HorizontalAlignment.Left);
             oListView.Columns.Add("FolderName", 250, HorizontalAlignment.Left);
             oListView.Columns.Add("Folder Path", 400, HorizontalAlignment.Left);
+
             oListView.Columns.Add("PR_POLICY_TAG", 100, HorizontalAlignment.Left);
-            //oListView.Columns.Add("PR_START_DATE_ETC", 100, HorizontalAlignment.Left);
-   
             oListView.Columns.Add("PR_RETENTION_FLAGS", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("PR_RETENTION_DATE", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("ARCHIVE_TAG", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("PR_RETENTION_Period", 100, HorizontalAlignment.Left);
+
             oListView.Columns.Add("PR_IS_HIDDEN", 100, HorizontalAlignment.Left);
             oListView.Columns.Add("TotalCount", 100, HorizontalAlignment.Left);
 
  
 
-            GetUserRetentionPolicyTagsResponse oResponse = null;
+            //GetUserRetentionPolicyTagsResponse oResponse = null;
            // oResponse = _ExchangeService.GetUserRetentionPolicyTags();
 
- 
-            FolderTraversal oFolderTraversal = GetSearchDepth(cmboSearchDepth.Text);
+
+            //FolderTraversal oFolderTraversal = GetSearchDepth(cmboSearchDepth.Text);
+            FolderTraversal oFolderTraversal = FolderTraversal.Deep;
+            this.Cursor = Cursors.WaitCursor;
             FindFoldersWithPolicyTag(_ExchangeService, oParentFolder, sPolicy, ref oLvRetionStampedFolders, oFolderTraversal);
+            this.Cursor = Cursors.Default;
         }
 
 
@@ -252,6 +249,7 @@ namespace EWSEditor.Forms
             ref ListView oListView,
             FolderTraversal oFolderTraversal)
         {
+             
             int pageSize = 5;
             int offset = 0;
 
@@ -261,17 +259,28 @@ namespace EWSEditor.Forms
             PropertySet oPropertySet = new PropertySet(BasePropertySet.IdOnly);
             oPropertySet.Add(FolderSchema.DisplayName);
             oPropertySet.Add(FolderSchema.FolderClass);
-            //oPropertySet.Add(Prop_PR_START_DATE_ETC);
+       
             oPropertySet.Add(Prop_PR_POLICY_TAG);
             oPropertySet.Add(Prop_PR_RETENTION_FLAGS);
-            oPropertySet.Add(Prop_PR_RETENTION_DATE);
-            oPropertySet.Add(Prop_PR_ARCHIVE_TAG);
-            oPropertySet.Add(Prop_PR_ARCHIVE_PERIOD);
+            oPropertySet.Add(Prop_PR_RETENTION_PERIOD); 
+
+            //oPropertySet.Add(Prop_PR_RETENTION_DATE);
+            //oPropertySet.Add(Prop_PR_ARCHIVE_TAG);
+            //oPropertySet.Add(Prop_PR_ARCHIVE_PERIOD);
             oPropertySet.Add(FolderSchema.TotalCount);
             oPropertySet.Add(Prop_PR_FOLDER_PATH);
             oPropertySet.Add(Prop_PR_IS_HIDDEN);
 
- 
+            oListView.Columns.Add("Id", 200, HorizontalAlignment.Left);
+            oListView.Columns.Add("FolderName", 250, HorizontalAlignment.Left);
+            oListView.Columns.Add("Folder Path", 400, HorizontalAlignment.Left);
+
+            oListView.Columns.Add("PR_POLICY_TAG", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("PR_RETENTION_FLAGS", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("PR_RETENTION_Period", 100, HorizontalAlignment.Left);
+
+            oListView.Columns.Add("PR_IS_HIDDEN", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("TotalCount", 100, HorizontalAlignment.Left);
 
             oFolderView.PropertySet = oPropertySet;
 
@@ -296,43 +305,72 @@ namespace EWSEditor.Forms
       
                     int displayCount = oFindFoldersResults.Folders.Count > pageSize ? pageSize : oFindFoldersResults.Folders.Count;
 
+                    string sPR_POLICY_TAG = string.Empty;
+                    string iPR_RETENTION_FLAGS = string.Empty;
+                    string iPR_RETENTION_PERIOD = string.Empty;
+
+                    //private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
+                    //private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
+                    //private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A           
+       
  
                     for (int i = 0; i < displayCount; i++)
                     {
                         Folder oFolder = oFindFoldersResults.Folders[i];
-                        string sResult = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_POLICY_TAG);
-
-                        if (sResult != "")
+                        //string sResult = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_POLICY_TAG);
+                        //sResult = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oFolder, Prop_PR_RETENTION_FLAGS);
+                        //sResult = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oFolder, Prop_PR_RETENTION_PERIOD);
+                        
+                        string sFrom = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_POLICY_TAG);
+                        if (sFrom == "")
                         {
-                          
-                            Console.WriteLine("Folder: " + oFolder.DisplayName + "      Policy: " + sResult);
+                            sPR_POLICY_TAG = "";
                         }
-                        if (sResult == sPolicyTag)
+                        else
+                        {
+                            byte[] oFromBytes = System.Convert.FromBase64String(sFrom);
+                            Guid guidTemp = new Guid(oFromBytes);
+                            sPR_POLICY_TAG = guidTemp.ToString();
+                        }
+                        string sPR_RETENTION_FLAGS = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oFolder, Prop_PR_RETENTION_FLAGS);
+                        string sPR_RETENTION_PERIOD = EwsExtendedPropertyHelper.GetExtendedProp_Int_AsString(oFolder, Prop_PR_RETENTION_PERIOD);
+
+                        if (sPR_POLICY_TAG != "")
+                        {
+
+                            Console.WriteLine("Folder: " + oFolder.DisplayName + "      Policy: " + sPR_POLICY_TAG);
+
+                        }
+
+                        if (sPR_POLICY_TAG == sPolicyTag)
                         {
                             oListViewItem = oListView.Items.Add(oFolder.Id.ToString());
                             oListViewItem.SubItems.Add(oFolder.DisplayName);
                             EwsFolderHelper.GetFolderPath(oFolder, ref sPath);
                             oListViewItem.SubItems.Add(sPath);
-                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_POLICY_TAG));
-                            //oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_START_DATE_ETC));
-                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_RETENTION_FLAGS));
-                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_RETENTION_DATE));
-                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_ARCHIVE_TAG));
-                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_IS_HIDDEN));
+                            oListViewItem.SubItems.Add(sPR_POLICY_TAG);   // Policy
+
+                            oListViewItem.SubItems.Add(sPR_RETENTION_FLAGS);
+                            oListViewItem.SubItems.Add(sPR_RETENTION_PERIOD);
+                            //oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_RETENTION_PERIOD).ToString());
+ 
+                            oListViewItem.SubItems.Add(EwsExtendedPropertyHelper.GetExtendedProp_Bool_AsString(oFolder, Prop_PR_IS_HIDDEN).ToString());
                             
                             oListViewItem.SubItems.Add(FolderSchema.TotalCount.ToString());
  
                         }
                     }
- 
 
                 }
                 catch (Exception ex)
                 {
+                   
                     MessageBox.Show(ex.ToString(), "Error while paging results");
                     return;
                 }
+              
             }
+            
         }
 
         private void lvUserRetentionTags_SelectedIndexChanged(object sender, EventArgs e)

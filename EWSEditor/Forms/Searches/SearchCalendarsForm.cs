@@ -353,7 +353,7 @@ namespace EWSEditor.Forms
             //oListView.Dock = DockStyle.Fill;
 
             if (SearchType == "Direct")
-                oListView.Columns.Add("Count", 100, HorizontalAlignment.Left);
+                oListView.Columns.Add("Count", 100, HorizontalAlignment.Left);   // 1
             else
                 oListView.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
  
@@ -361,32 +361,32 @@ namespace EWSEditor.Forms
             oListView.Columns.Add("PidNameCalendarIsOrganizer", 150, HorizontalAlignment.Left);
              
             oListView.Columns.Add("From", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("Sender", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("Sender", 150, HorizontalAlignment.Left);    // 5
 
             oListView.Columns.Add("Subject", 170, HorizontalAlignment.Left);
             oListView.Columns.Add("Class", 150, HorizontalAlignment.Left);
 
 
             oListView.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);   // 9
 
             oListView.Columns.Add("ICalDateTimeStamp", 100, HorizontalAlignment.Left);
             oListView.Columns.Add("ICalUid", 200, HorizontalAlignment.Left);
-            oListView.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);
-            oListView.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);
-
+            oListView.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);    // 12 * bytearray
+            oListView.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);         // 13 * bytearray
+          
 
             oListView.Columns.Add("LastModifiedName", 150, HorizontalAlignment.Left);
             oListView.Columns.Add("LastModifiedTime", 150, HorizontalAlignment.Left);
             oListView.Columns.Add("DateTimeCreated", 150, HorizontalAlignment.Left);
-            oListView.Columns.Add("DateTimeReceived", 150, HorizontalAlignment.Left);
+            oListView.Columns.Add("DateTimeReceived", 150, HorizontalAlignment.Left);    // 17
 
             oListView.Columns.Add("Size", 90, HorizontalAlignment.Left);
             oListView.Columns.Add("IsHidden", 90, HorizontalAlignment.Left);
 
             oListView.Columns.Add("ClientInfoString", 100, HorizontalAlignment.Left);
             oListView.Columns.Add("PidLidClientIntent", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("LogTriggerAction ", 100, HorizontalAlignment.Left);
+            oListView.Columns.Add("LogTriggerAction ", 100, HorizontalAlignment.Left);    // 22
 
 
             //oListView.Columns.Add("PidLidAppointmentRecur ", 100, HorizontalAlignment.Left);
@@ -394,8 +394,8 @@ namespace EWSEditor.Forms
             //oListView.Columns.Add("dispidCalLogClientInfoString ", 100, HorizontalAlignment.Left);
 
              
-            oListView.Columns.Add("FolderPath", 250, HorizontalAlignment.Left);
-            oListView.Columns.Add("StoreEntryId", 250, HorizontalAlignment.Left);
+            oListView.Columns.Add("FolderPath", 250, HorizontalAlignment.Left);           // 23 *
+            oListView.Columns.Add("StoreEntryId", 250, HorizontalAlignment.Left);         // 24 *   bytearray
             oListView.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
 
             oListView.Tag = -1;
@@ -1128,6 +1128,16 @@ namespace EWSEditor.Forms
 
             List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions = null;
             List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions = null;
+
+            CsvExportOptions oCsvExportOptions = new CsvExportOptions();
+            //if (oForm.rdoExportAllGridData == true)
+            //    oCsvExportOptions._CsvExportGridExclusions = CsvExportGridExclusions.ExportAll;
+            //if (oForm.rdoExcludeAllGridContentExceptFolderPath == true)
+            //    oCsvExportOptions._CsvExportGridExclusions = CsvExportGridExclusions.ExcludeAllInGridExceptFilePath;
+            //if (oForm.rdoExcludeAllSearchGridContent == true)
+            //    oCsvExportOptions._CsvExportGridExclusions = CsvExportGridExclusions.ExcludeAllInGrid;
+            //oCsvExportOptions.HexEncodeBinaryData = oForm.chkConvertBase64BinaryHex;
+            //oCsvExportOptions._CsvStringHandling = oForm.StringHandling;
  
             //List<AdditionalProperty> oAdditionalPropertiesDefs = null;
  
@@ -1153,7 +1163,7 @@ namespace EWSEditor.Forms
                         }
                         else
                         {
-                            ExportDisplayedResults(_CurrentService, sPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions, oForm.StringHandling);
+                            ExportDisplayedResults(_CurrentService, sPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions, oCsvExportOptions);
 
  
                         }
@@ -1197,33 +1207,33 @@ namespace EWSEditor.Forms
                         oExtendedPropertyDefinitions,
                         oForm.chkIncludeBodyProperties.Checked,
                         oForm.chkIncludeMime.Checked,
-                        oForm.StringHandling
+                        oCsvExportOptions
                         );
 
   
                 }
 
-                if (oForm.rdoDiagnosticExport.Checked == true)
-                {
-                    string sPath = oForm.txtDiagnosticExportFolderPath.Text.Trim();
-                    string sRoot = Path.GetPathRoot(sPath);
+                //if (oForm.rdoDiagnosticExport.Checked == true)
+                //{
+                //    string sPath = oForm.txtDiagnosticExportFolderPath.Text.Trim();
+                //    string sRoot = Path.GetPathRoot(sPath);
 
-                    if (CheckFolder(sRoot))
-                    {
-                        if (File.Exists(sPath))
-                        {
-                            MessageBox.Show("File Already Exists", "File already exists.  Choose a different file name.");
-                        }
-                        else
-                        {
-                            this.ExportDiagProperties(
-                                sPath,   
-                                oAdditionalPropertyDefinitions,
-                                oExtendedPropertyDefinitions 
-                                );                            
-                        }
-                    }
-                }  
+                //    if (CheckFolder(sRoot))
+                //    {
+                //        if (File.Exists(sPath))
+                //        {
+                //            MessageBox.Show("File Already Exists", "File already exists.  Choose a different file name.");
+                //        }
+                //        else
+                //        {
+                //            this.ExportDiagProperties(
+                //                sPath,   
+                //                oAdditionalPropertyDefinitions,
+                //                oExtendedPropertyDefinitions 
+                //                );                            
+                //        }
+                //    }
+                //}  
 
                 if (oForm.rdoExportItemsAsBlobs.Checked == true)
                 {
@@ -1263,11 +1273,11 @@ namespace EWSEditor.Forms
             string sFolderPath,
             List<EWSEditor.Common.Exports.AdditionalPropertyDefinition> oAdditionalPropertyDefinitions, 
             List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
-            CsvStringHandling oCsvStringHandling
+             CsvExportOptions oCsvExportOptions
             )
         {
 
-            ListViewExport.SaveCalendarListViewToCsv(oExchangeService, lvCommon, sFolderPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions, oCsvStringHandling);
+            ListViewExport.SaveCalendarListViewToCsv(oExchangeService, lvCommon, sFolderPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions, oCsvExportOptions);
         }
 
        
@@ -1281,7 +1291,7 @@ namespace EWSEditor.Forms
                 List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
                 bool chkIncludeBodyProperties,
                 bool chkIncludeMime,
-                CsvStringHandling oCsvStringHandling)
+                CsvExportOptions oCsvExportOption)
         {
             bool bRet = false;
             EWSEditor.Common.Exports.CalendarExport oCalendarExport = new EWSEditor.Common.Exports.CalendarExport();
@@ -1345,7 +1355,7 @@ namespace EWSEditor.Forms
                         //    sExtendedProps = AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(_CurrentService, oItemId, oExtendedPropertyDefinitions);
                         //}
                       
-                        sLine = oCalendarExport.GetAppointmentDataAsCsv2(oAppointmentData);
+                        sLine = oCalendarExport.GetAppointmentDataAsCsv2(oAppointmentData, oCsvExportOption);
 
                         if (oExtendedPropertyDefinitions != null)
                         {
@@ -1354,7 +1364,8 @@ namespace EWSEditor.Forms
                                         _CurrentService, 
                                         oItemId, 
                                         oExtendedPropertyDefinitions,
-                                        oCsvStringHandling);
+                                        oCsvExportOption
+                                        );
                             sLine = sLine.TrimEnd(TrimChars);
                             //sLine = sLine + "\r\n";
                         }
@@ -1375,7 +1386,7 @@ namespace EWSEditor.Forms
                             chkIncludeMime
                             );
 
-                        sLine = oMeetingMessageExport.GetMeetingMessageDataAsCsv2(oMeetingMessageData);
+                        sLine = oMeetingMessageExport.GetMeetingMessageDataAsCsv2(oMeetingMessageData, oCsvExportOption);
 
 
                         if (oExtendedPropertyDefinitions != null)
@@ -1385,7 +1396,7 @@ namespace EWSEditor.Forms
                                     _CurrentService, 
                                     oItemId, 
                                     oExtendedPropertyDefinitions,
-                                    oCsvStringHandling
+                                    oCsvExportOption
                                     );
                             sLine = sLine.TrimEnd(TrimChars);
                             //sLine = sLine + "\r\n";
@@ -1797,6 +1808,11 @@ namespace EWSEditor.Forms
  
 
             return bRet;
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
 
     }
