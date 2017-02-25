@@ -1326,7 +1326,7 @@ namespace EWSEditor.Common.Exports
         public string GetAppointmentDataAsCsv2(AppointmentData oAppointmentData, CsvExportOptions oCsvExportOption)
         {
 
-            Todo:  Add coding for new paramater:  CsvExportOptions oCsvExportOption) - need to use it for encoding each string.
+            //Todo:  Add coding for new paramater:  CsvExportOptions oCsvExportOption) - need to use it for encoding each string.
 
             string sRet = string.Empty;
             char[] TrimChars = { ',', ' ' };
@@ -1351,7 +1351,11 @@ namespace EWSEditor.Common.Exports
                 {
                     //string x = h[i];
                     if (d[i] != null)
-                        d[i] = d[i].Replace(',', ' ');
+                    { 
+                        d[i] = EWSEditor.Common.Exports.AdditionalProperties.DoStringHandling(d[i], CsvStringHandling.HexEncode);
+
+                        //d[i] = d[i].Replace(',', ' ');
+                    }
                     else
                         d[i] = "";
                 }
@@ -1369,49 +1373,7 @@ namespace EWSEditor.Common.Exports
             return sRet;
 
         }
-
-        //public string GetAppointmentDataAsCsv(AppointmentData oAppointmentData)
-        //{
-        //    char[] TrimChars = { ',', ' ' };
-        //    string sRet = string.Empty;
-        //    List<string> o = new List<string> { };
  
-          
-
-        //    StringBuilder oSB = new StringBuilder();
-        //    for (int i = 0; i < o.Count - 1; i++)
-        //    {
-        //        oSB.AppendFormat("{0}, ", o[i]);
-        //    }
-
-        //    sRet = oSB.ToString();
-        //    sRet = sRet.TrimEnd(TrimChars);
-        //    sRet = sRet.Replace("\r\n", "");  // There shold be no crlf
-        //    return sRet;
-        //}
-
-        //public string GetAppointmentDataAsXml(AppointmentData oAppointmentData)
-        //{
-        //    string sXML = string.Empty;
-        //    List<string> h = GetAppointmentDataHeadersAsList();
-        //    List<string> d = GetAppointmentDataAsList(oAppointmentData);
-
-        //    XmlDocument xmlDoc = new XmlDocument();
-        //    XmlNode rootNode = xmlDoc.CreateElement("AppointmentData");
-        //    xmlDoc.AppendChild(rootNode);
-
-        //    for (int i = 0; i < d.Count - 1; i++)
-        //    {
-        //        XmlNode dataNode = xmlDoc.CreateElement(h[i]);
-        //        dataNode.InnerText = d[i];
-        //        rootNode.AppendChild(dataNode);
-        //    }
-
-        //    sXML = xmlDoc.Value;
-             
-        //    return sXML;
-        //}
-
 
         public List<string> GetAppointmentDataHeadersAsList()
         {
