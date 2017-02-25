@@ -1191,10 +1191,7 @@ namespace EWSEditor.Common.Exports
         // GetMeetingMessageDataAsCsv2
         public string GetMeetingMessageDataAsCsv2(MeetingMessageData oMeetingMessageData, CsvExportOptions oCsvExportOption)
         {
-
-            Todo:  Add coding for new paramater:  CsvExportOptions oCsvExportOption) - need to use it for encoding each string.
-
-
+ 
             string sRet = string.Empty;
             char[] TrimChars = { ',', ' ' };
 
@@ -1228,9 +1225,13 @@ namespace EWSEditor.Common.Exports
                 else
                 {
                     if (d[i] != null)
-                        d[i] = d[i].Replace(',', ' ');
+                    { 
+                        d[i] = EWSEditor.Common.Exports.AdditionalProperties.DoStringHandling(d[i], CsvStringHandling.HexEncode);
+                        //d[i] = d[i].Replace(',', ' ');  // remove in-data commas    
+                    }
                     else
                         d[i] = "";
+
                 }
             }
 

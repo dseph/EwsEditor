@@ -118,9 +118,11 @@ namespace EWSEditor.Common
  
                 if (oListViewItem.Selected == true)
                 {
-                      
+                    int iColumnCount = 0;
                     foreach (ListViewItem.ListViewSubItem o in oListViewItem.SubItems)
                     {
+                        iColumnCount++;
+
                         s = (o.Text);
                        
                         if (oCsvExportOptions._CsvStringHandling != CsvStringHandling.None)
@@ -156,9 +158,9 @@ namespace EWSEditor.Common
 
                         // Re-encode byte data?
                         bool bColumnIsByteArray = false;  
-                        foreach (int i in iByteArrCollumns)
+                        foreach (int iColumn in iByteArrCollumns)
                         {
-                            if (iCount == i)
+                            if (iColumnCount == iColumn)
                                 bColumnIsByteArray = true;
                         }
 

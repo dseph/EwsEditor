@@ -666,7 +666,7 @@ namespace EWSEditor.Common.Exports
 
                 if (oCsvExportOptions._CsvStringHandling != CsvStringHandling.None)
                 {
-                    if (oEPD.MapiType == MapiPropertyType.String)
+                    //if (oEPD.MapiType == MapiPropertyType.String)
                         sExtendedValue = DoStringHandling(sExtendedValue, oCsvExportOptions._CsvStringHandling);
                 }
 

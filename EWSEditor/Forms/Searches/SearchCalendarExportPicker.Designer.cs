@@ -97,10 +97,10 @@
             // rdoExportItemsAsBlobs
             // 
             this.rdoExportItemsAsBlobs.AutoSize = true;
-            this.rdoExportItemsAsBlobs.Location = new System.Drawing.Point(6, 225);
+            this.rdoExportItemsAsBlobs.Location = new System.Drawing.Point(10, 225);
             this.rdoExportItemsAsBlobs.Name = "rdoExportItemsAsBlobs";
             this.rdoExportItemsAsBlobs.Size = new System.Drawing.Size(446, 21);
-            this.rdoExportItemsAsBlobs.TabIndex = 17;
+            this.rdoExportItemsAsBlobs.TabIndex = 13;
             this.rdoExportItemsAsBlobs.Text = "Export items as blobs (you can reload them using EwsEditor later).";
             this.rdoExportItemsAsBlobs.UseVisualStyleBackColor = true;
             this.rdoExportItemsAsBlobs.CheckedChanged += new System.EventHandler(this.rdoExportItemsAsBlobs_CheckedChanged);
@@ -141,14 +141,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAppointmentDetailedFolderPath.Location = new System.Drawing.Point(253, 115);
             this.txtAppointmentDetailedFolderPath.Name = "txtAppointmentDetailedFolderPath";
-            this.txtAppointmentDetailedFolderPath.Size = new System.Drawing.Size(668, 22);
+            this.txtAppointmentDetailedFolderPath.Size = new System.Drawing.Size(672, 22);
             this.txtAppointmentDetailedFolderPath.TabIndex = 6;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(883, 588);
+            this.btnCancel.Location = new System.Drawing.Point(887, 584);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 28);
@@ -160,7 +160,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(776, 588);
+            this.OkButton.Location = new System.Drawing.Point(780, 584);
             this.OkButton.Margin = new System.Windows.Forms.Padding(4);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 28);
@@ -193,7 +193,7 @@
             this.groupBox1.Controls.Add(this.chkIncludeMime);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(976, 302);
+            this.groupBox1.Size = new System.Drawing.Size(980, 302);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Export Type";
@@ -203,10 +203,10 @@
             // 
             this.btnPickFolderBlobProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPickFolderBlobProperties.Font = new System.Drawing.Font("Berlin Sans FB", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnPickFolderBlobProperties.Location = new System.Drawing.Point(923, 252);
+            this.btnPickFolderBlobProperties.Location = new System.Drawing.Point(927, 252);
             this.btnPickFolderBlobProperties.Name = "btnPickFolderBlobProperties";
             this.btnPickFolderBlobProperties.Size = new System.Drawing.Size(43, 24);
-            this.btnPickFolderBlobProperties.TabIndex = 21;
+            this.btnPickFolderBlobProperties.TabIndex = 16;
             this.btnPickFolderBlobProperties.Text = "...";
             this.btnPickFolderBlobProperties.UseVisualStyleBackColor = true;
             this.btnPickFolderBlobProperties.Click += new System.EventHandler(this.btnPickFolderBlobProperties_Click);
@@ -215,7 +215,7 @@
             // 
             this.btnPickFolderMeetingMessageDetailedProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPickFolderMeetingMessageDetailedProperties.Font = new System.Drawing.Font("Berlin Sans FB", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnPickFolderMeetingMessageDetailedProperties.Location = new System.Drawing.Point(927, 141);
+            this.btnPickFolderMeetingMessageDetailedProperties.Location = new System.Drawing.Point(931, 141);
             this.btnPickFolderMeetingMessageDetailedProperties.Name = "btnPickFolderMeetingMessageDetailedProperties";
             this.btnPickFolderMeetingMessageDetailedProperties.Size = new System.Drawing.Size(43, 24);
             this.btnPickFolderMeetingMessageDetailedProperties.TabIndex = 10;
@@ -229,7 +229,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMeetingMessageDetailedFolderPath.Location = new System.Drawing.Point(253, 141);
             this.txtMeetingMessageDetailedFolderPath.Name = "txtMeetingMessageDetailedFolderPath";
-            this.txtMeetingMessageDetailedFolderPath.Size = new System.Drawing.Size(668, 22);
+            this.txtMeetingMessageDetailedFolderPath.Size = new System.Drawing.Size(672, 22);
             this.txtMeetingMessageDetailedFolderPath.TabIndex = 9;
             // 
             // label5
@@ -245,7 +245,7 @@
             // 
             this.btnPickFolderAppointmentDetailedProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPickFolderAppointmentDetailedProperties.Font = new System.Drawing.Font("Berlin Sans FB", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnPickFolderAppointmentDetailedProperties.Location = new System.Drawing.Point(927, 115);
+            this.btnPickFolderAppointmentDetailedProperties.Location = new System.Drawing.Point(931, 115);
             this.btnPickFolderAppointmentDetailedProperties.Name = "btnPickFolderAppointmentDetailedProperties";
             this.btnPickFolderAppointmentDetailedProperties.Size = new System.Drawing.Size(43, 24);
             this.btnPickFolderAppointmentDetailedProperties.TabIndex = 7;
@@ -259,7 +259,7 @@
             this.label4.Location = new System.Drawing.Point(7, 277);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(298, 17);
-            this.label4.TabIndex = 1;
+            this.label4.TabIndex = 17;
             this.label4.Text = "Note: You must select items prior to exporting.";
             // 
             // txtBlobFolderPath
@@ -268,8 +268,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBlobFolderPath.Location = new System.Drawing.Point(156, 252);
             this.txtBlobFolderPath.Name = "txtBlobFolderPath";
-            this.txtBlobFolderPath.Size = new System.Drawing.Size(761, 22);
-            this.txtBlobFolderPath.TabIndex = 20;
+            this.txtBlobFolderPath.Size = new System.Drawing.Size(765, 22);
+            this.txtBlobFolderPath.TabIndex = 15;
             // 
             // label3
             // 
@@ -277,14 +277,14 @@
             this.label3.Location = new System.Drawing.Point(26, 255);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(124, 17);
-            this.label3.TabIndex = 19;
+            this.label3.TabIndex = 14;
             this.label3.Text = "Export folder path:";
             // 
             // btnPickFolderDisplayedResults
             // 
             this.btnPickFolderDisplayedResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPickFolderDisplayedResults.Font = new System.Drawing.Font("Berlin Sans FB", 10.2F, System.Drawing.FontStyle.Bold);
-            this.btnPickFolderDisplayedResults.Location = new System.Drawing.Point(927, 57);
+            this.btnPickFolderDisplayedResults.Location = new System.Drawing.Point(931, 57);
             this.btnPickFolderDisplayedResults.Name = "btnPickFolderDisplayedResults";
             this.btnPickFolderDisplayedResults.Size = new System.Drawing.Size(43, 24);
             this.btnPickFolderDisplayedResults.TabIndex = 3;
@@ -298,7 +298,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDisplayedResultsFolderPath.Location = new System.Drawing.Point(160, 57);
             this.txtDisplayedResultsFolderPath.Name = "txtDisplayedResultsFolderPath";
-            this.txtDisplayedResultsFolderPath.Size = new System.Drawing.Size(761, 22);
+            this.txtDisplayedResultsFolderPath.Size = new System.Drawing.Size(765, 22);
             this.txtDisplayedResultsFolderPath.TabIndex = 2;
             this.txtDisplayedResultsFolderPath.TextChanged += new System.EventHandler(this.txtDisplayedResultsFolderPath_TextChanged);
             // 
@@ -314,10 +314,10 @@
             // chkIncludeUsersAdditionalProperties
             // 
             this.chkIncludeUsersAdditionalProperties.AutoSize = true;
-            this.chkIncludeUsersAdditionalProperties.Location = new System.Drawing.Point(12, 320);
+            this.chkIncludeUsersAdditionalProperties.Location = new System.Drawing.Point(40, 350);
             this.chkIncludeUsersAdditionalProperties.Name = "chkIncludeUsersAdditionalProperties";
             this.chkIncludeUsersAdditionalProperties.Size = new System.Drawing.Size(210, 21);
-            this.chkIncludeUsersAdditionalProperties.TabIndex = 13;
+            this.chkIncludeUsersAdditionalProperties.TabIndex = 1;
             this.chkIncludeUsersAdditionalProperties.Text = "Include Additional Properties";
             this.chkIncludeUsersAdditionalProperties.UseVisualStyleBackColor = true;
             this.chkIncludeUsersAdditionalProperties.CheckedChanged += new System.EventHandler(this.chkIncludeUsersAdditionalProperties_CheckedChanged);
@@ -327,19 +327,19 @@
             this.txtIncludeUsersAdditionalPropertiesFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIncludeUsersAdditionalPropertiesFile.Enabled = false;
-            this.txtIncludeUsersAdditionalPropertiesFile.Location = new System.Drawing.Point(168, 344);
+            this.txtIncludeUsersAdditionalPropertiesFile.Location = new System.Drawing.Point(185, 371);
             this.txtIncludeUsersAdditionalPropertiesFile.Name = "txtIncludeUsersAdditionalPropertiesFile";
-            this.txtIncludeUsersAdditionalPropertiesFile.Size = new System.Drawing.Size(761, 22);
-            this.txtIncludeUsersAdditionalPropertiesFile.TabIndex = 21;
+            this.txtIncludeUsersAdditionalPropertiesFile.Size = new System.Drawing.Size(747, 22);
+            this.txtIncludeUsersAdditionalPropertiesFile.TabIndex = 3;
             // 
             // btnPickFolderIncludeUsersAdditionalProperties
             // 
             this.btnPickFolderIncludeUsersAdditionalProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPickFolderIncludeUsersAdditionalProperties.Font = new System.Drawing.Font("Berlin Sans FB", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPickFolderIncludeUsersAdditionalProperties.Location = new System.Drawing.Point(940, 340);
+            this.btnPickFolderIncludeUsersAdditionalProperties.Location = new System.Drawing.Point(943, 367);
             this.btnPickFolderIncludeUsersAdditionalProperties.Name = "btnPickFolderIncludeUsersAdditionalProperties";
             this.btnPickFolderIncludeUsersAdditionalProperties.Size = new System.Drawing.Size(43, 24);
-            this.btnPickFolderIncludeUsersAdditionalProperties.TabIndex = 22;
+            this.btnPickFolderIncludeUsersAdditionalProperties.TabIndex = 4;
             this.btnPickFolderIncludeUsersAdditionalProperties.Text = "...";
             this.btnPickFolderIncludeUsersAdditionalProperties.UseVisualStyleBackColor = true;
             this.btnPickFolderIncludeUsersAdditionalProperties.Click += new System.EventHandler(this.btnPickFolderIncludeUsersAdditionalProperties_Click);
@@ -347,20 +347,19 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(30, 347);
+            this.label7.Location = new System.Drawing.Point(65, 374);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(114, 17);
-            this.label7.TabIndex = 23;
+            this.label7.TabIndex = 2;
             this.label7.Text = "Import from CSV:";
             // 
             // rdoBase64EncodeStrings
             // 
             this.rdoBase64EncodeStrings.AutoSize = true;
-            this.rdoBase64EncodeStrings.Enabled = false;
             this.rdoBase64EncodeStrings.Location = new System.Drawing.Point(420, 24);
             this.rdoBase64EncodeStrings.Name = "rdoBase64EncodeStrings";
             this.rdoBase64EncodeStrings.Size = new System.Drawing.Size(129, 21);
-            this.rdoBase64EncodeStrings.TabIndex = 24;
+            this.rdoBase64EncodeStrings.TabIndex = 2;
             this.rdoBase64EncodeStrings.Text = "Base64 Encode";
             this.rdoBase64EncodeStrings.UseVisualStyleBackColor = true;
             // 
@@ -368,14 +367,14 @@
             // 
             this.rdoSanitizeStrings.AutoSize = true;
             this.rdoSanitizeStrings.Checked = true;
-            this.rdoSanitizeStrings.Enabled = false;
             this.rdoSanitizeStrings.Location = new System.Drawing.Point(12, 24);
             this.rdoSanitizeStrings.Name = "rdoSanitizeStrings";
             this.rdoSanitizeStrings.Size = new System.Drawing.Size(279, 21);
-            this.rdoSanitizeStrings.TabIndex = 25;
+            this.rdoSanitizeStrings.TabIndex = 0;
             this.rdoSanitizeStrings.TabStop = true;
             this.rdoSanitizeStrings.Text = "Sanitize - Remove commas, CRLF, etc.)";
             this.rdoSanitizeStrings.UseVisualStyleBackColor = true;
+            this.rdoSanitizeStrings.CheckedChanged += new System.EventHandler(this.rdoSanitizeStrings_CheckedChanged);
             // 
             // grpStringHandling
             // 
@@ -386,10 +385,10 @@
             this.grpStringHandling.Controls.Add(this.rdoNone);
             this.grpStringHandling.Controls.Add(this.rdoBase64EncodeStrings);
             this.grpStringHandling.Controls.Add(this.rdoSanitizeStrings);
-            this.grpStringHandling.Location = new System.Drawing.Point(33, 396);
+            this.grpStringHandling.Location = new System.Drawing.Point(39, 399);
             this.grpStringHandling.Name = "grpStringHandling";
-            this.grpStringHandling.Size = new System.Drawing.Size(951, 82);
-            this.grpStringHandling.TabIndex = 26;
+            this.grpStringHandling.Size = new System.Drawing.Size(947, 82);
+            this.grpStringHandling.TabIndex = 6;
             this.grpStringHandling.TabStop = false;
             this.grpStringHandling.Text = "Exported data handling";
             this.grpStringHandling.Enter += new System.EventHandler(this.grpStringHandling_Enter);
@@ -400,29 +399,27 @@
             this.label6.Location = new System.Drawing.Point(9, 62);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(932, 17);
-            this.label6.TabIndex = 29;
+            this.label6.TabIndex = 4;
             this.label6.Text = "The data being exported may contain characters which will prevent loading the SCV" +
     " such as commas or CRLF, so special handling may be needed.";
             // 
             // rdoHexEncodeStrings
             // 
             this.rdoHexEncodeStrings.AutoSize = true;
-            this.rdoHexEncodeStrings.Enabled = false;
             this.rdoHexEncodeStrings.Location = new System.Drawing.Point(297, 24);
             this.rdoHexEncodeStrings.Name = "rdoHexEncodeStrings";
             this.rdoHexEncodeStrings.Size = new System.Drawing.Size(105, 21);
-            this.rdoHexEncodeStrings.TabIndex = 28;
+            this.rdoHexEncodeStrings.TabIndex = 1;
             this.rdoHexEncodeStrings.Text = "Hex Encode";
             this.rdoHexEncodeStrings.UseVisualStyleBackColor = true;
             // 
             // rdoNone
             // 
             this.rdoNone.AutoSize = true;
-            this.rdoNone.Enabled = false;
             this.rdoNone.Location = new System.Drawing.Point(555, 24);
             this.rdoNone.Name = "rdoNone";
             this.rdoNone.Size = new System.Drawing.Size(63, 21);
-            this.rdoNone.TabIndex = 27;
+            this.rdoNone.TabIndex = 3;
             this.rdoNone.Text = "None";
             this.rdoNone.UseVisualStyleBackColor = true;
             // 
@@ -433,10 +430,10 @@
             this.groupBox2.Controls.Add(this.rdoExportAllGridData);
             this.groupBox2.Controls.Add(this.rdoExcludeAllGridContentExceptFolderPath);
             this.groupBox2.Controls.Add(this.rdoExcludeAllSearchGridContent);
-            this.groupBox2.Location = new System.Drawing.Point(33, 484);
+            this.groupBox2.Location = new System.Drawing.Point(39, 487);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(951, 54);
-            this.groupBox2.TabIndex = 30;
+            this.groupBox2.Size = new System.Drawing.Size(947, 54);
+            this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search Grid Exclusions";
             // 
@@ -444,66 +441,58 @@
             // 
             this.rdoExportAllGridData.AutoSize = true;
             this.rdoExportAllGridData.Checked = true;
-            this.rdoExportAllGridData.Enabled = false;
             this.rdoExportAllGridData.Location = new System.Drawing.Point(18, 21);
             this.rdoExportAllGridData.Name = "rdoExportAllGridData";
             this.rdoExportAllGridData.Size = new System.Drawing.Size(88, 21);
-            this.rdoExportAllGridData.TabIndex = 35;
-            this.rdoExportAllGridData.TabStop = true;
+            this.rdoExportAllGridData.TabIndex = 0;
             this.rdoExportAllGridData.Text = "Export All";
             this.rdoExportAllGridData.UseVisualStyleBackColor = true;
             // 
             // rdoExcludeAllGridContentExceptFolderPath
             // 
             this.rdoExcludeAllGridContentExceptFolderPath.AutoSize = true;
-            this.rdoExcludeAllGridContentExceptFolderPath.Checked = true;
-            this.rdoExcludeAllGridContentExceptFolderPath.Enabled = false;
             this.rdoExcludeAllGridContentExceptFolderPath.Location = new System.Drawing.Point(112, 21);
             this.rdoExcludeAllGridContentExceptFolderPath.Name = "rdoExcludeAllGridContentExceptFolderPath";
             this.rdoExcludeAllGridContentExceptFolderPath.Size = new System.Drawing.Size(352, 21);
-            this.rdoExcludeAllGridContentExceptFolderPath.TabIndex = 34;
-            this.rdoExcludeAllGridContentExceptFolderPath.TabStop = true;
+            this.rdoExcludeAllGridContentExceptFolderPath.TabIndex = 1;
             this.rdoExcludeAllGridContentExceptFolderPath.Text = "Exclude all Search Grid Content Except Folder Path";
             this.rdoExcludeAllGridContentExceptFolderPath.UseVisualStyleBackColor = true;
             // 
             // rdoExcludeAllSearchGridContent
             // 
             this.rdoExcludeAllSearchGridContent.AutoSize = true;
-            this.rdoExcludeAllSearchGridContent.Checked = true;
-            this.rdoExcludeAllSearchGridContent.Enabled = false;
             this.rdoExcludeAllSearchGridContent.Location = new System.Drawing.Point(493, 21);
             this.rdoExcludeAllSearchGridContent.Name = "rdoExcludeAllSearchGridContent";
             this.rdoExcludeAllSearchGridContent.Size = new System.Drawing.Size(229, 21);
-            this.rdoExcludeAllSearchGridContent.TabIndex = 30;
-            this.rdoExcludeAllSearchGridContent.TabStop = true;
+            this.rdoExcludeAllSearchGridContent.TabIndex = 2;
             this.rdoExcludeAllSearchGridContent.Text = "Exclude all Search Grid Content";
             this.rdoExcludeAllSearchGridContent.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 376);
+            this.label8.Location = new System.Drawing.Point(12, 317);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(105, 17);
-            this.label8.TabIndex = 31;
+            this.label8.TabIndex = 5;
             this.label8.Text = "Export Options:";
             this.label8.Visible = false;
             // 
             // chkConvertBase64BinaryHex
             // 
             this.chkConvertBase64BinaryHex.AutoSize = true;
-            this.chkConvertBase64BinaryHex.Location = new System.Drawing.Point(33, 544);
+            this.chkConvertBase64BinaryHex.Location = new System.Drawing.Point(40, 547);
             this.chkConvertBase64BinaryHex.Name = "chkConvertBase64BinaryHex";
-            this.chkConvertBase64BinaryHex.Size = new System.Drawing.Size(198, 21);
+            this.chkConvertBase64BinaryHex.Size = new System.Drawing.Size(507, 21);
             this.chkConvertBase64BinaryHex.TabIndex = 33;
-            this.chkConvertBase64BinaryHex.Text = "Encode binary data as hex";
+            this.chkConvertBase64BinaryHex.Text = "Encode binary data as hex (Search grid and included additional properties).";
             this.chkConvertBase64BinaryHex.UseVisualStyleBackColor = true;
             // 
             // SearchCalendarExportPicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 629);
+            this.ClientSize = new System.Drawing.Size(1004, 625);
             this.Controls.Add(this.chkConvertBase64BinaryHex);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox2);

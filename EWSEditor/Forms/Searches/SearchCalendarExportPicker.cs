@@ -113,7 +113,8 @@ namespace EWSEditor.Forms
 
         private void SetEnablement()
         {
-            //chkIncludeAttachments.Enabled =  rdoExportDetailedProperties.Checked;          
+            //chkIncludeAttachments.Enabled =  rdoExportDetailedProperties.Checked;  
+        
             chkIncludeBodyProperties.Enabled =  rdoExportDetailedProperties.Checked;
             chkIncludeMime.Enabled =  rdoExportDetailedProperties.Checked;
             txtAppointmentDetailedFolderPath.Enabled = rdoExportDetailedProperties.Checked;
@@ -127,8 +128,59 @@ namespace EWSEditor.Forms
             txtBlobFolderPath.Enabled = rdoExportItemsAsBlobs.Checked;
             btnPickFolderBlobProperties.Enabled = rdoExportItemsAsBlobs.Checked;
 
+            if (this.rdoExportDisplayedResults.Checked == true)
+            {
+                SetEnablement_ExportOptions(true);
+            }
+
+            if (this.rdoExportDetailedProperties.Checked == true)
+            {
+                SetEnablement_ExportOptions(true);
+            }
+
+            if (this.rdoExportItemsAsBlobs.Checked == true)
+            {
+                SetEnablement_ExportOptions(false);
+            }
+
             //txtIncludeUsersAdditionalPropertiesFile.Enabled = chkIncludeUsersAdditionalProperties.Checked;
             //btnPickFolderIncludeUsersAdditionalProperties.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+        }
+
+        private void SetEnablement_ExportOptions(bool isEnabled)
+        {
+    
+            if (this.rdoExportItemsAsBlobs.Checked == true)
+            {
+                this.chkIncludeUsersAdditionalProperties.Enabled = false;
+                txtIncludeUsersAdditionalPropertiesFile.Enabled = false;
+                btnPickFolderIncludeUsersAdditionalProperties.Enabled = false;
+            }
+            else
+            {
+                // Note: this.rdoExportItemsAsBlobs.Checked == false
+
+                this.chkIncludeUsersAdditionalProperties.Enabled = true;
+                this.txtIncludeUsersAdditionalPropertiesFile.Enabled = this.chkIncludeUsersAdditionalProperties.Checked;
+                this.btnPickFolderIncludeUsersAdditionalProperties.Enabled = this.chkIncludeUsersAdditionalProperties.Checked;
+            }
+
+            //txtIncludeUsersAdditionalPropertiesFile.Enabled = isEnabled;
+            //btnPickFolderIncludeUsersAdditionalProperties.Enabled = isEnabled;
+
+            //txtIncludeUsersAdditionalPropertiesFile.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+            //btnPickFolderIncludeUsersAdditionalProperties.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+
+            rdoSanitizeStrings.Enabled = isEnabled;
+            rdoHexEncodeStrings.Enabled = isEnabled;
+            rdoBase64EncodeStrings.Enabled = isEnabled;
+            rdoNone.Enabled = isEnabled;
+
+            rdoExportAllGridData.Enabled = isEnabled;
+            rdoExcludeAllGridContentExceptFolderPath.Enabled = isEnabled;
+            rdoExcludeAllSearchGridContent.Enabled = isEnabled;
+
+            chkConvertBase64BinaryHex.Enabled = isEnabled;
         }
 
         private void rdoExportItemsAsBlobs_CheckedChanged(object sender, EventArgs e)
@@ -238,11 +290,12 @@ namespace EWSEditor.Forms
 
         private void chkIncludeUsersAdditionalProperties_CheckedChanged(object sender, EventArgs e)
         {
-           // txtIncludeUsersAdditionalPropertiesFile.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+            txtIncludeUsersAdditionalPropertiesFile.Enabled = chkIncludeUsersAdditionalProperties.Checked;
             btnPickFolderIncludeUsersAdditionalProperties.Enabled = chkIncludeUsersAdditionalProperties.Checked;
-            this.rdoBase64EncodeStrings.Enabled = chkIncludeUsersAdditionalProperties.Checked;
-            this.rdoSanitizeStrings.Enabled = chkIncludeUsersAdditionalProperties.Checked;
-            this.rdoNone.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+
+           // this.rdoBase64EncodeStrings.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+           // this.rdoSanitizeStrings.Enabled = chkIncludeUsersAdditionalProperties.Checked;
+           // this.rdoNone.Enabled = chkIncludeUsersAdditionalProperties.Checked;
         }
         
         private void btnPickFolderIncludeUsersAdditionalProperties_Click(object sender, EventArgs e)
@@ -287,6 +340,11 @@ namespace EWSEditor.Forms
         }
 
         private void txtDisplayedResultsFolderPath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdoSanitizeStrings_CheckedChanged(object sender, EventArgs e)
         {
 
         }

@@ -269,77 +269,7 @@ namespace EWSEditor.Forms
 
         }
 
-        //private void ConfigureListView_Calendar(ref ListView oListView, string SearchType)
-        //{
-        //    ColumnHeader o = null;
-        //    oListView.Clear();
-        //    oListView.View = View.Details;
-        //    oListView.GridLines = true;
-        //    //oListView.Dock = DockStyle.Fill;
-
-        //    if (SearchType == "Direct")
-        //        oListView.Columns.Add("Count", 100, HorizontalAlignment.Left);
-        //    else
-        //        oListView.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("Subject", 170, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("Class", 150, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("Organizer", 100, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("RequiredAttendees", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("OptionalAttendees", 100, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("ICalUid", 200, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("Start", 150, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("End", 150, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("RetentionDate", 150, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("DateTimeCreated", 150, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("LastModifiedName", 150, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("LastModifiedTime", 150, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("AppointmentType", 150, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("AppointmentState", 150, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("IsAllDayEvent", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("IsCancelled", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("IsRecurring", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("IsReminderSet", 100, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("IsOnlineMeeting", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("IsResend", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("IsDraft", 100, HorizontalAlignment.Left);
-
-        //    o = oListView.Columns.Add("Size", 70, HorizontalAlignment.Left);
-        //    o.Tag = "int";
-        //    o.TextAlign = HorizontalAlignment.Right;
-        //    oListView.Columns.Add("Attatch", 80, HorizontalAlignment.Left);
-
-
-        //    oListView.Columns.Add("PidLidAppointmentRecur ", 100, HorizontalAlignment.Left);
-        //    o = oListView.Columns.Add("PidLidClientIntent ", 100, HorizontalAlignment.Left);
-        //    o.Tag = "int";
-        //    o.TextAlign = HorizontalAlignment.Right;
-
-        //    oListView.Columns.Add("ClientInfoString ", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("LogTriggerAction ", 100, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("IsHidden", 50, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("FolderPath", 200, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("StoreEntryId", 250, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
-        //    //oListView.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
-
-        //    oListView.Tag = -1;
-
-        //}
+       
 
 
 
@@ -371,9 +301,9 @@ namespace EWSEditor.Forms
             oListView.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);   // 9
 
             oListView.Columns.Add("ICalDateTimeStamp", 100, HorizontalAlignment.Left);
-            oListView.Columns.Add("ICalUid", 200, HorizontalAlignment.Left);
-            oListView.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);    // 12 * bytearray
-            oListView.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);         // 13 * bytearray
+            oListView.Columns.Add("ICalUid", 730, HorizontalAlignment.Left);
+            oListView.Columns.Add("CleanGlobalObjectId", 550, HorizontalAlignment.Left);    // 12 * bytearray
+            oListView.Columns.Add("GlobalObjectId", 550, HorizontalAlignment.Left);         // 13 * bytearray
           
 
             oListView.Columns.Add("LastModifiedName", 150, HorizontalAlignment.Left);
@@ -401,56 +331,7 @@ namespace EWSEditor.Forms
             oListView.Tag = -1;
         }
 
-        
-        //private void ConfigureListView_Message(ref ListView oListView, string SearchType)
-        //{
-
-        //    oListView.Clear();
-        //    oListView.View = View.Details;
-        //    oListView.GridLines = true;
-        //    //oListView.Dock = DockStyle.Fill;
-
-        //    if (SearchType == "Direct")
-        //        oListView.Columns.Add("Count", 100, HorizontalAlignment.Left);
-        //    else
-        //        oListView.Columns.Add("Frame:Count", 100, HorizontalAlignment.Left);
-             
-        //    oListView.Columns.Add("Subject", 170, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("Class", 150, HorizontalAlignment.Left);
-
-
-        //    oListView.Columns.Add("DisplayTo", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("DisplayCc", 100, HorizontalAlignment.Left);
-
-
-        //    oListView.Columns.Add("RetentionDate", 150, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("DateTimeCreated", 150, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("LastModifiedName", 150, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("LastModifiedTime", 150, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("IsResend", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("IsDraft", 100, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("Size", 70, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("Attatch", 80, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("PidLidAppointmentRecur ", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("PidLidClientIntent ", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("dispidCalLogClientInfoString ", 100, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("LogTriggerAction ", 100, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("ICalUid", 200, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("CleanGlobalObjectId", 200, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("GlobalObjectId", 200, HorizontalAlignment.Left);
-
-        //    oListView.Columns.Add("FolderPath", 250, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("StoreEntryId", 250, HorizontalAlignment.Left);
-        //    oListView.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
-
-        //    oListView.Tag = -1;
- 
-        //}
+         
 
 
 
@@ -1130,6 +1011,8 @@ namespace EWSEditor.Forms
             List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions = null;
 
             CsvExportOptions oCsvExportOptions = new CsvExportOptions();
+
+            oCsvExportOptions = oForm.ExportOptions;
             //if (oForm.rdoExportAllGridData == true)
             //    oCsvExportOptions._CsvExportGridExclusions = CsvExportGridExclusions.ExportAll;
             //if (oForm.rdoExcludeAllGridContentExceptFolderPath == true)
@@ -1276,6 +1159,8 @@ namespace EWSEditor.Forms
              CsvExportOptions oCsvExportOptions
             )
         {
+            TODO:  include filepath when excluding All but filepath 
+            TODO:  Get hex encoding of binary data from base64 to hex
 
             ListViewExport.SaveCalendarListViewToCsv(oExchangeService, lvCommon, sFolderPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions, oCsvExportOptions);
         }
@@ -1461,35 +1346,8 @@ namespace EWSEditor.Forms
         }
 
         #endregion
-
-        //private void lvItemsMessages_DoubleClick(object sender, EventArgs e)
-        //{
-        //    //if (lvItems.SelectedItems.Count > 0)
-        //    //{
-        //    //    ItemTag oItemTag = (ItemTag)lvItemsMessages.SelectedItems[0].Tag;
-        //    //    string sId = oItemTag.Id.UniqueId;
-        //    //    //string sClass = oItemTag.ItemClass;
-
-        //    //    DisplayItems(sId);
-        //    //    //DisplayItems(sId, "IPM.Schedule");
-        //    //}
-
-        //}
-
-        //private void lvItemsMessages_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void lvItems_ColumnClick(object sender, ColumnClickEventArgs e)
-        //{
-        //    //LvColumnSort(ref lvItems, e.Column);
-        //}
-
-        //private void lvItemsMessages_ColumnClick(object sender, ColumnClickEventArgs e)
-        //{
-        //    //LvColumnSort(ref lvItemsMessages, e.Column);
-        //}
+ 
+ 
 
         private void lvCommon_ColumnClick(object sender, ColumnClickEventArgs e)
         {
@@ -1547,182 +1405,6 @@ namespace EWSEditor.Forms
             return sReturn;
         }
 
-        //    }
-
-        //    private PropertySet GetCalendarPropset()
-        //    {
-
-        //        PropertySet appointmentPropertySet = new PropertySet(BasePropertySet.IdOnly,
-
-        //            AppointmentSchema.AdjacentMeetingCount,
-        //            AppointmentSchema.AdjacentMeetings,
-        //            AppointmentSchema.AllowedResponseActions,
-        //            AppointmentSchema.AllowNewTimeProposal,
-        //            /* AppointmentSchema.AppointmentReplyTime,  */
-        //            AppointmentSchema.AppointmentSequenceNumber,
-        //            AppointmentSchema.AppointmentState,
-        //            AppointmentSchema.AppointmentType,
-        //            AppointmentSchema.Attachments,
-        //            AppointmentSchema.Body,
-        //            AppointmentSchema.Categories,
-        //            /*  AppointmentSchema.ConferenceType,   */
-        //            AppointmentSchema.ConflictingMeetingCount,
-        //            AppointmentSchema.ConflictingMeetings,  
-        //            AppointmentSchema.Culture,
-        //            AppointmentSchema.DateTimeCreated,
-        //            AppointmentSchema.DateTimeReceived,
-        //            AppointmentSchema.DateTimeSent,
-        //            AppointmentSchema.DeletedOccurrences,
-        //            AppointmentSchema.DisplayCc,
-        //            AppointmentSchema.DisplayTo,
-        //            AppointmentSchema.Duration,
-        //            AppointmentSchema.EffectiveRights,
-        //            AppointmentSchema.End,
-        //            AppointmentSchema.HasAttachments,
-        //            AppointmentSchema.ICalDateTimeStamp,
-        //            AppointmentSchema.ICalRecurrenceId,
-        //            AppointmentSchema.ICalUid,
-        //            AppointmentSchema.Id,
-        //            AppointmentSchema.Importance,
-        //            AppointmentSchema.InReplyTo,
-        //            AppointmentSchema.InternetMessageHeaders,
-
-        //            AppointmentSchema.IsAllDayEvent,
-        //            AppointmentSchema.IsCancelled,
-        //            AppointmentSchema.IsDraft,
-        //            AppointmentSchema.IsFromMe,
-        //            AppointmentSchema.IsMeeting,
-        //            AppointmentSchema.IsOnlineMeeting,
-        //            AppointmentSchema.IsRecurring,
-        //            AppointmentSchema.IsReminderSet,
-        //            AppointmentSchema.IsResend,
-        //            AppointmentSchema.IsResponseRequested,
-        //            AppointmentSchema.IsSubmitted,
-        //            AppointmentSchema.IsUnmodified,
-        //            AppointmentSchema.ItemClass, 
-        //            AppointmentSchema.LastModifiedName,
-        //            AppointmentSchema.LastModifiedTime,
-        //            AppointmentSchema.LegacyFreeBusyStatus,
-        //            AppointmentSchema.Location,
-        //            AppointmentSchema.MeetingRequestWasSent,
-        //            AppointmentSchema.MeetingWorkspaceUrl,
-        //            AppointmentSchema.MimeContent,
-        //            AppointmentSchema.ModifiedOccurrences,
-        //            AppointmentSchema.MyResponseType,
-        //            AppointmentSchema.NetShowUrl,
-        //            AppointmentSchema.OptionalAttendees,
-        //            AppointmentSchema.Organizer,
-        //            AppointmentSchema.OriginalStart,
-        //            AppointmentSchema.ParentFolderId,
-        //            AppointmentSchema.Recurrence,
-        //            AppointmentSchema.ReminderDueBy,
-        //            AppointmentSchema.ReminderMinutesBeforeStart,
-        //            AppointmentSchema.RequiredAttendees,
-        //            AppointmentSchema.Resources,  
-        //            AppointmentSchema.Sensitivity,
-        //            AppointmentSchema.Size,
-        //            AppointmentSchema.Start,
-        //            AppointmentSchema.StartTimeZone,
-        //            AppointmentSchema.Subject,
-        //            AppointmentSchema.TimeZone,
-        //            AppointmentSchema.When
-
-
-        //          );
-
-        //        // Not included:
-        //        //    AppointmentSchema.FirstOccurrence.,
-        //        //    AppointmentSchema.LastOccurrence,
-        //        //    AppointmentSchema.ModifiedOccurrences,
-        //        //    AppointmentSchema.DeletedOccurrences,
-        //        //    AppointmentSchema.ExtendedProperties
-
-        //        // These are version specific:
-        //        //      AppointmentSchema.Hashtags,                     2015+
-        //        //      AppointmentSchema.MentionedMe,                  2015+
-        //        //      AppointmentSchema.Mentions                      2015+
-        //        //      AppointmentSchema.MimeContentUTF8,              Exchange2013_SP1+
-        //        //      AppointmentSchema.ArchiveTag,                   2013+                +
-        //        //      AppointmentSchema.ConversationId                2010+                +
-        //        //      AppointmentSchema.EndTimeZone,                  2010+                 
-        //        //      AppointmentSchema.EnhancedLocation,             2013+
-        //        //      AppointmentSchema.EntityExtractionResult,       2013+
-        //        //      AppointmentSchema.Flag,                         2013+
-        //        //      AppointmentSchema.IconIndex,                    2013+                +
-        //        //      AppointmentSchema.InstanceKey,                  2013+                +
-        //        //      AppointmentSchema.IsAssociated,                 2010+
-        //        //      AppointmentSchema.JoinOnlineMeetingUrl,         2013+
-        //        //      AppointmentSchema.NormalizedBody,               2013+
-        //        //      AppointmentSchema.OnlineMeetingSettings,        2013+
-        //        //      AppointmentSchema.PolicyTag,                    2013+                +
-        //        //      AppointmentSchema.Preview,                      2013+
-        //        //      AppointmentSchema.RetentionDate,                2013+                +
-        //        //      AppointmentSchema.StoreEntryId,                 2013+                +
-        //        //      AppointmentSchema.TextBody,                     2013+
-        //        //      AppointmentSchema.UniqueBody,                   2010+
-        //        //      AppointmentSchema.WebClientEditFormQueryString, 2010+
-        //        //      AppointmentSchema.WebClientReadFormQueryString, 2010+
-
-        //        // Problems loading or need extra work to implement:
-        //        //   AppointmentSchema.AppointmentReplyTime 
-        //        //   AppointmentSchema.ConferenceType 
-
-
-        //        // Need to add these:
-        //        appointmentPropertySet.Add(PidLidAppointmentRecur);
-        //        appointmentPropertySet.Add(PidLidClientIntent);
-        //        appointmentPropertySet.Add(ClientInfoString);
-        //        appointmentPropertySet.Add(LogTriggerAction);
-        //        appointmentPropertySet.Add(PidLidCleanGlobalObjectId);
-        //        appointmentPropertySet.Add(PidLidGlobalObjectId);
-
-        //        appointmentPropertySet.Add(Prop_PR_POLICY_TAG);
-
-        //        appointmentPropertySet.Add(Prop_PR_RETENTION_FLAGS);
-        //        appointmentPropertySet.Add(Prop_PR_RETENTION_PERIOD);
-        //        appointmentPropertySet.Add(Prop_PR_ARCHIVE_TAG);
-        //        appointmentPropertySet.Add(Prop_PR_ARCHIVE_PERIOD);
-        //        appointmentPropertySet.Add(Prop_PR_ARCHIVE_DATE);
-        //        appointmentPropertySet.Add(Prop_PR_ENTRYID);
-
-        //        appointmentPropertySet.Add(Prop_PR_RETENTION_DATE);
-        //        appointmentPropertySet.Add(Prop_PR_STORE_ENTRYID);
-        //        appointmentPropertySet.Add(Prop_PR_IS_HIDDEN);
-
-        //        return appointmentPropertySet;
-        //    }
-        //}
-
-        //private void MnuExportXml_Click(object sender, EventArgs e)
-        //{
-        //    // Get the folder to save the output files to, if the user
-        //    // cancels this dialog bail out
-        //    FolderBrowserDialog browser = new FolderBrowserDialog();
-        //    browser.Description = "Pick an output folder to save the XML file to.";
-        //    if (browser.ShowDialog() != DialogResult.OK)
-        //    {
-        //        return;
-        //    }
-
-        //    try
-        //    {
-        //        ItemId id = GetSelectedContentId();
-        //        if (id == null)
-        //        {
-        //            return;
-        //        }
-
-        //        DumpHelper.DumpXML(
-        //            new List<ItemId> { id },
-        //            this.CurrentDetailPropertySet,
-        //            browser.SelectedPath,
-        //            this.CurrentService);
-        //    }
-        //    finally
-        //    {
-        //        this.Cursor = Cursors.Default;
-        //    }
-        //}
 
 
         private bool ExportDiagProperties(
