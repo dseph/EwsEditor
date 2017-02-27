@@ -370,5 +370,11 @@ namespace EWSEditor.Forms
         {
 
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            bChoseOk = false;
+            this.Close();
+        }
     }
 }
