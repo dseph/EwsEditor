@@ -664,38 +664,24 @@ namespace EWSEditor.Common.Exports
                 }
 
 
+                // String  Handling
                 if (oCsvExportOptions._CsvStringHandling != CsvStringHandling.None)
                 {
-                    //if (oEPD.MapiType == MapiPropertyType.String)
-                        sExtendedValue = DoStringHandling(sExtendedValue, oCsvExportOptions._CsvStringHandling);
+                    sExtendedValue = DoStringHandling(sExtendedValue, oCsvExportOptions._CsvStringHandling);
                 }
 
-                //{ 
-                //// -----------
-                //// String Handling
-                //if (oCsvStringHandling == CsvStringHandling.Base64encode)
-                //{
-                //    oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(sExtendedValue);
-                //    sExtendedValue = Convert.ToBase64String(oFromBytes);  // reverse: Convert.FromBase64String(string data)
-                //}
+                // Hex encode binary (base64 encoded) data.
+                if (oCsvExportOptions.HexEncodeBinaryData == true)
+                {
+                    //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
+                    if (StringHelper.IsBase64Encoded(sExtendedValue) == true)
+                    {
+                        oFromBytes = System.Convert.FromBase64String(sExtendedValue); // Base64 to byte array.
+                        sExtendedValue = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                    }
+                }
 
-                //if (oCsvStringHandling == CsvStringHandling.SanitizeStrings)
-                //{
-                //    //if (s.Contains(','))
-                //    sExtendedValue = sExtendedValue.Replace(",", " "); // need to strip commas as this is a csv file.
-                //    sExtendedValue = sExtendedValue.Replace("\r", "");
-                //    sExtendedValue = sExtendedValue.Replace("\n", "");
-                //}
-  
-                // ---------
-
-
-                //if (sExtendedValue.Contains(','))
-                //    sExtendedValue = sExtendedValue.Replace(",", " "); // need to strip commas as this is a csv file.
-
-                //// Test below.  Consider adding a property setting for each property to base64 encode the contents per the config file
-                //sExtendedValue = sExtendedValue.Replace("\r", ""); // need to strip \r\n as this is a csv file.
-                //sExtendedValue = sExtendedValue.Replace("\n", ""); // need to strip \r\n as this is a csv file.
+                 
 
 
                 oStringBuilder.Append(sExtendedValue);

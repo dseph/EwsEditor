@@ -962,12 +962,13 @@ namespace EWSEditor.Common.Exports
      
 
               );
+
             //Appointment appDetailed = Appointment.Bind(service, app.Id, new PropertySet(BasePropertySet.FirstClassProperties) { RequestedBodyType = BodyType.Text });
 
-            if (bIncludeBodies == true)
+            if (bIncludeBodies == true)  // 2007 +
             {
                 appointmentPropertySet.Add(AppointmentSchema.Body);
-                appointmentPropertySet.Add(AppointmentSchema.TextBody);
+                //appointmentPropertySet.Add(AppointmentSchema.TextBody);
     
                 //appointmentPropertySet.Add(AppointmentSchema.NormalizedBody);
                 //appointmentPropertySet.Add(AppointmentSchema.UniqueBody);    
@@ -1103,7 +1104,6 @@ namespace EWSEditor.Common.Exports
                 appointmentPropertySet.Add(AppointmentSchema.EndTimeZone);
                 appointmentPropertySet.Add(AppointmentSchema.IsAssociated);
                 appointmentPropertySet.Add(AppointmentSchema.UniqueBody);
-                appointmentPropertySet.Add(AppointmentSchema.UniqueBody);
                 appointmentPropertySet.Add(AppointmentSchema.WebClientEditFormQueryString);
                 appointmentPropertySet.Add(AppointmentSchema.WebClientReadFormQueryString);
  
@@ -1116,16 +1116,24 @@ namespace EWSEditor.Common.Exports
                     appointmentPropertySet.Add(AppointmentSchema.IconIndex);
                     appointmentPropertySet.Add(AppointmentSchema.InstanceKey);
                     appointmentPropertySet.Add(AppointmentSchema.JoinOnlineMeetingUrl);
-                    if (bIncludeBodies == true) 
+                    if (bIncludeBodies == true)
+                    {
                         appointmentPropertySet.Add(AppointmentSchema.NormalizedBody);
+                        appointmentPropertySet.Add(AppointmentSchema.TextBody);
+                    } 
                     appointmentPropertySet.Add(AppointmentSchema.OnlineMeetingSettings);
                     //appointmentPropertySet.Add(AppointmentSchema.PolicyTag);            // covered by extended property
                     appointmentPropertySet.Add(AppointmentSchema.Preview);
                     //appointmentPropertySet.Add(AppointmentSchema.RetentionDate);        // covered by extended property
                     //appointmentPropertySet.Add(AppointmentSchema.StoreEntryId);         // covered by extended property
-                    appointmentPropertySet.Add(AppointmentSchema.TextBody);
+                     
  
                 }
+
+                //if (!ExchangeVersion.StartsWith("Exchange_2013"))   
+                //{
+                //    appointmentPropertySet.Add(AppointmentSchema.TextBody);
+                //}
 
                 foreach (ExtendedPropertyDefinition oEPD in oExtendedPropertyDefinitions)
                 {
@@ -1323,7 +1331,7 @@ namespace EWSEditor.Common.Exports
 
         }
 
-        public string GetAppointmentDataAsCsv2(AppointmentData oAppointmentData, CsvExportOptions oCsvExportOption)
+        public string GetAppointmentDataAsCsv2(AppointmentData oAppointmentData, CsvExportOptions oCsvExportOptions)
         {
 
             //Todo:  Add coding for new paramater:  CsvExportOptions oCsvExportOption) - need to use it for encoding each string.
@@ -1349,15 +1357,36 @@ namespace EWSEditor.Common.Exports
                 }
                 else
                 {
-                    //string x = h[i];
-                    if (d[i] != null)
-                    { 
-                        d[i] = EWSEditor.Common.Exports.AdditionalProperties.DoStringHandling(d[i], CsvStringHandling.HexEncode);
+                    ////string x = h[i];
+                    //if (d[i] != null)
+                    //{ 
+                    //    d[i] = EWSEditor.Common.Exports.AdditionalProperties.DoStringHandling(d[i], CsvStringHandling.HexEncode);
 
-                        //d[i] = d[i].Replace(',', ' ');
-                    }
-                    else
+                    //    //d[i] = d[i].Replace(',', ' ');
+                    //}
+                    //else
+                    //    d[i] = "";
+
+
+                    if (d[i] == null) // No null data
                         d[i] = "";
+
+                    // String  Handling
+                    if (oCsvExportOptions._CsvStringHandling != CsvStringHandling.None)
+                    {
+                        d[i] = AdditionalProperties.DoStringHandling(d[i], oCsvExportOptions._CsvStringHandling);
+                    }
+
+                    // Hex encode binary (base64 encoded) data.
+                    if (oCsvExportOptions.HexEncodeBinaryData == true)
+                    {
+                        //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
+                        if (StringHelper.IsBase64Encoded(d[i]) == true)
+                        {
+                            oFromBytes = System.Convert.FromBase64String(d[i]); // Base64 to byte array.
+                            d[i] = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                        }
+                    }
                 }
             }
 
