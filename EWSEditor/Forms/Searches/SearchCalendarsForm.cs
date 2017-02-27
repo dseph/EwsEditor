@@ -996,6 +996,7 @@ namespace EWSEditor.Forms
             toolStripStatusLabel1.Text = "Exporting...";
             this.Cursor = Cursors.WaitCursor;
             ExportCalendarItems();
+            MessageBox.Show("The data export has completed.", "Export finished.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             toolStripStatusLabel1.Text = "Ready to search.";
             this.Cursor = Cursors.Default;
         }
@@ -1007,22 +1008,15 @@ namespace EWSEditor.Forms
             SearchCalendarExportPicker oForm = new SearchCalendarExportPicker();
             oForm.ShowDialog();
 
+            this.Cursor = Cursors.WaitCursor;
+
             List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions = null;
             List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions = null;
 
             CsvExportOptions oCsvExportOptions = new CsvExportOptions();
 
             oCsvExportOptions = oForm.ExportOptions;
-            //if (oForm.rdoExportAllGridData == true)
-            //    oCsvExportOptions._CsvExportGridExclusions = CsvExportGridExclusions.ExportAll;
-            //if (oForm.rdoExcludeAllGridContentExceptFolderPath == true)
-            //    oCsvExportOptions._CsvExportGridExclusions = CsvExportGridExclusions.ExcludeAllInGridExceptFilePath;
-            //if (oForm.rdoExcludeAllSearchGridContent == true)
-            //    oCsvExportOptions._CsvExportGridExclusions = CsvExportGridExclusions.ExcludeAllInGrid;
-            //oCsvExportOptions.HexEncodeBinaryData = oForm.chkConvertBase64BinaryHex;
-            //oCsvExportOptions._CsvStringHandling = oForm.StringHandling;
  
-            //List<AdditionalProperty> oAdditionalPropertiesDefs = null;
  
             if (oForm.bChoseOk == true)
             {
@@ -1095,28 +1089,7 @@ namespace EWSEditor.Forms
 
   
                 }
-
-                //if (oForm.rdoDiagnosticExport.Checked == true)
-                //{
-                //    string sPath = oForm.txtDiagnosticExportFolderPath.Text.Trim();
-                //    string sRoot = Path.GetPathRoot(sPath);
-
-                //    if (CheckFolder(sRoot))
-                //    {
-                //        if (File.Exists(sPath))
-                //        {
-                //            MessageBox.Show("File Already Exists", "File already exists.  Choose a different file name.");
-                //        }
-                //        else
-                //        {
-                //            this.ExportDiagProperties(
-                //                sPath,   
-                //                oAdditionalPropertyDefinitions,
-                //                oExtendedPropertyDefinitions 
-                //                );                            
-                //        }
-                //    }
-                //}  
+                 
 
                 if (oForm.rdoExportItemsAsBlobs.Checked == true)
                 {
@@ -1126,6 +1099,8 @@ namespace EWSEditor.Forms
                 }
 
             }
+
+            this.Cursor = Cursors.Default;
 
         }
 
@@ -1159,9 +1134,7 @@ namespace EWSEditor.Forms
              CsvExportOptions oCsvExportOptions
             )
         {
-            TODO:  include filepath when excluding All but filepath 
-            TODO:  Get hex encoding of binary data from base64 to hex
-
+ 
             ListViewExport.SaveCalendarListViewToCsv(oExchangeService, lvCommon, sFolderPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions, oCsvExportOptions);
         }
 

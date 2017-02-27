@@ -64,17 +64,25 @@ namespace EWSEditor.Forms
             {
                 if (File.Exists(txtDisplayedResultsFolderPath.Text.Trim()))
                 {
-                    MessageBox.Show("File Already Exists", "File already exists.  Choose a different file name.");
+                    MessageBox.Show("Diplayed Results Export File already exists", "File already exists.  Choose a different file name.");
                     bAllowOK = false;
                 }
             }
 
-            if (this.rdoExportDisplayedResults.Checked)
+            if (this.rdoExportDetailedProperties.Checked)
             {
                 if (File.Exists(this.txtAppointmentDetailedFolderPath.Text.Trim()))
                 {
-                    MessageBox.Show("File Already Exists", "File already exists.  Choose a different file name.");
+                    MessageBox.Show("Appointment Export File File already exists", "File already exists.  Choose a different file name.");
                     bAllowOK = false;
+                }
+                else
+                {
+                    if (File.Exists(this.txtAppointmentDetailedFolderPath.Text.Trim()))
+                    {
+                        MessageBox.Show("Meeting Message File Already Exists", "File already exists.  Choose a different file name.");
+                        bAllowOK = false;
+                    }
                 }
             }
             
@@ -176,9 +184,18 @@ namespace EWSEditor.Forms
             rdoBase64EncodeStrings.Enabled = isEnabled;
             rdoNone.Enabled = isEnabled;
 
-            rdoExportAllGridData.Enabled = isEnabled;
-            rdoExcludeAllGridContentExceptFolderPath.Enabled = isEnabled;
-            rdoExcludeAllSearchGridContent.Enabled = isEnabled;
+            if (this.rdoExportDetailedProperties.Checked)
+            {
+                rdoExportAllGridData.Enabled = false;
+                rdoExcludeAllGridContentExceptFolderPath.Enabled = false;
+                rdoExcludeAllSearchGridContent.Enabled = false;
+            }
+            else
+            {
+                rdoExportAllGridData.Enabled = isEnabled;
+                rdoExcludeAllGridContentExceptFolderPath.Enabled = isEnabled;
+                rdoExcludeAllSearchGridContent.Enabled = isEnabled;
+            }
 
             chkConvertBase64BinaryHex.Enabled = isEnabled;
         }
@@ -345,6 +362,11 @@ namespace EWSEditor.Forms
         }
 
         private void rdoSanitizeStrings_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkIncludeBodyProperties_CheckedChanged(object sender, EventArgs e)
         {
 
         }
