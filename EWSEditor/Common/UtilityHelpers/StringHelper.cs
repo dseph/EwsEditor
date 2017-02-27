@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace EWSEditor.Common
 {
-    class StringHelper
+    public class StringHelper
     {
         public static  bool IsInteger(string s)
         {
@@ -35,6 +35,42 @@ namespace EWSEditor.Common
             bool isNum = double.TryParse(Convert.ToString(Expression), out retNum); //i now = 10
             //bool isNum = Double.TryParse(Convert.ToString(Expression), System.Globalization.NumberStyles.Any, System.Globalization.NumberFormatInfo.InvariantInfo, out retNum);
             return isNum;
+        }
+
+        public static bool IsBase64Encoded(string base64String)
+        {
+            // /part of the code came from: oybek http://stackoverflow.com/users/794764/oybek
+            //string s = base64String.Trim();
+            //base64String = base64String.Trim();
+
+            if (base64String == null ||
+                base64String.Length == 0 ||
+                base64String.Length % 4 != 0 ||
+                base64String.Contains(" ") ||
+                base64String.Contains("\t") ||
+                base64String.Contains("\r") ||
+                base64String.Contains("\n"))
+                return false;
+
+            // String length should be divisible by 4 with no remainder.
+
+            // https://en.wikipedia.org/wiki/Base64
+            // Base64 transfer encoding for MIME manates a '=' pad character. (RFC 2045)
+            // Standard 'base64' encoding for RFC 3548 or RFC 4648 - mandated '=' unless another doc says otherwise.
+            // In testing of various base64 encoded strings I see that some will not end with an equal sign.
+            //if (!base64String.EndsWith("="))
+            //    return false;
+
+            try
+            {
+                Convert.FromBase64String(base64String);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception
+            }
+            return false;
         }
 
         //*************************************************************************************

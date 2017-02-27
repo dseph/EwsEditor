@@ -12,7 +12,7 @@ using EWSEditor.Common.Extensions;
 using EWSEditor.Resources;
 using Microsoft.Exchange.WebServices.Data;
 
-using EWSEditor.Common.Exports;
+//using EWSEditor.Common.Exports;
  
 
 namespace EWSEditor.Common 
@@ -25,8 +25,8 @@ namespace EWSEditor.Common
             string sFilePath,
             List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions,
             List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
-             CsvExportOptions oCsvExportOptions
-    )
+            CsvExportOptions oCsvExportOptions
+            )
         {
             bool bRet = false;
 
@@ -125,57 +125,35 @@ namespace EWSEditor.Common
 
                         s = (o.Text);
                        
+                        // clean or encode strings to prevent issus with usage in a CSV? ----------
                         if (oCsvExportOptions._CsvStringHandling != CsvStringHandling.None)
                             s = AdditionalProperties.DoStringHandling(s , oCsvExportOptions._CsvStringHandling );
 
- 
-
-
-                        //if (oCsvStringHandling != CsvStringHandling.None)
+                        // Re-encode byte data?   --------------------------------------------
+                        //bool bColumnIsByteArray = false;  
+                        //foreach (int iColumn in iByteArrCollumns) // re-encode known binary grid columns.
                         //{
-                        //    if (oEPD.MapiType == MapiPropertyType.String)
-                        //        sExtendedValue = DoStringHandling(sExtendedValue, oCsvStringHandling);
+                        //    if (iColumnCount == iColumn)
+                        //        bColumnIsByteArray = true;
                         //}
 
-                        //// String Handling
-                        //if (oCsvStringHandling == CsvStringHandling.Base64encode)
-                        //{
-                        //    oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(s);
-                        //    s = Convert.ToBase64String(oFromBytes);  // reverse: Convert.FromBase64String(string data)
-                        //}
-
-                        //if (oCsvStringHandling == CsvStringHandling.SanitizeStrings)
-                        //{
-                        //    //if (s.Contains(','))
-                        //    s = s.Replace(",", " "); // need to strip commas as this is a csv file.
-                        //    s = s.Replace("\r", "");
-                        //    s = s.Replace("\n", "");
-                        //}
-
-                        //s = s.Replace(",", " "); // need to strip commas as this is a csv file.
-                        //s = s.Replace("\r", "");
-                        //s = s.Replace("\n", "");
-
-                        // Re-encode byte data?
-                        bool bColumnIsByteArray = false;  
-                        foreach (int iColumn in iByteArrCollumns)
+                        // If its base64 encoded then convert it to hex encoded.
+                        if (oCsvExportOptions.HexEncodeBinaryData == true)
                         {
-                            if (iColumnCount == iColumn)
-                                bColumnIsByteArray = true;
+                            //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
+                            if (StringHelper.IsBase64Encoded(s) == true)
+                            {
+                                oFromBytes = System.Convert.FromBase64String(s); // Base64 to byte array.
+                                s = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                            }
                         }
 
-                        if (oCsvExportOptions.HexEncodeBinaryData == true && bColumnIsByteArray == true)
-                        {
-                            oFromBytes = System.Convert.FromBase64String(s); // Base64 to byte array.
-                            s = StringHelper.HexStringFromByteArray(oFromBytes, false);
-                        }
- 
-                        // Exclusions
+                        // Exclusions --------------------------------------------
                         if (oCsvExportOptions._CsvExportGridExclusions != Exports.CsvExportGridExclusions.ExportAll)
                         {
                             if (oCsvExportOptions._CsvExportGridExclusions == Exports.CsvExportGridExclusions.ExcludeAllInGridExceptFilePath)
                             {
-                                if (iFolderPathColumn == iCount)
+                                if (iFolderPathColumn == iColumnCount)
                                 {
                                     SbLine.Append(s);
                                     SbLine.Append(",");
@@ -211,26 +189,7 @@ namespace EWSEditor.Common
                         oExtendedPropertyDefinitions,
                         oCsvExportOptions
                         );
-
-                    // xxx
-                    // String Handling
-                        //if (oCsvStringHandling == CsvStringHandling.Base64encode)
-                        //{
-                        //    oFromBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(s);
-                        //    s = Convert.ToBase64String(oFromBytes);  // reverse: Convert.FromBase64String(string data)
-                        //}
-
-                        //if (oCsvStringHandling == CsvStringHandling.SanitizeStrings)
-                        //{
-                        //    //if (s.Contains(','))
-                        //    s = s.Replace(",", " "); // need to strip commas as this is a csv file.
-                        //    s = s.Replace("\r", "");
-                        //    s = s.Replace("\n", "");
-                        //}
-
-                        //SbLine.Append(s);
-                        //SbLine.Append(",");
-                    //   
+ 
                     sLine += "," + sExt;
 
                     //sLine = SbLine.ToString();
@@ -248,112 +207,43 @@ namespace EWSEditor.Common
             return bRet;
         }
 
-        //public static bool SaveListViewToCsv(
-        //    ExchangeService oExchangeService,
-        //    ListView oListView, 
-        //    string sFilePath,
-        //    List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions,
-        //    List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions
-        //    )
+ 
+        //private   bool IsBase64Encoded(this string base64String)
         //{
-        //    bool bRet = false;
-
-        //    string sHeader = string.Empty;
-        //    string sLine = string.Empty;
-
- 
-        //    PropertySet oExtendedPropSet = new PropertySet(BasePropertySet.IdOnly);
-
-        //    if (oExtendedPropertyDefinitions != null)
-        //    {
-        //        foreach (ExtendedPropertyDefinition oEPD in oExtendedPropertyDefinitions)
-        //        {
-        //            oExtendedPropSet.Add(oEPD);
-        //        }
-        //    }
-
-        //    StreamWriter w = File.AppendText(sFilePath);
-        //    char[] TrimChars = { ',', ' ' };
-        //    StringBuilder SbHeader = new StringBuilder();
-        //    foreach (ColumnHeader oCH in oListView.Columns)
-        //    {
-        //        SbHeader.Append(oCH.Text);
-        //        SbHeader.Append(",");
-        //    }
-        //    sHeader = SbHeader.ToString();
-        //    sHeader = sHeader.TrimEnd(TrimChars);
-
-        //    if (oAdditionalPropertyDefinitions != null)
-        //    {
-        //        sHeader += "," + AdditionalProperties.GetExtendedPropertyHeadersAsCsvContent(oAdditionalPropertyDefinitions);
-        //        sHeader = sHeader.TrimEnd(TrimChars);
-        //    }
-
-        //    w.WriteLine(sHeader);
-
-             
-        //    ItemId oItemId = null;
-        //    string sExtendedValue = string.Empty;
-
-        //    string s = string.Empty;
-        //    foreach (ListViewItem oListViewItem in oListView.Items)
-        //    {
-        //        StringBuilder SbLine = new StringBuilder();
-        //        //oCalendarItemTag = (CalendarItemTag)oListViewItem.Tag;
-        //        oItemId = (ItemId)oListViewItem.Tag;
-
-        //        if (oListViewItem.Selected == true)
-        //        {
-                      
-        //            foreach (ListViewItem.ListViewSubItem o in oListViewItem.SubItems)
-        //            {
+        //    return false;
+        //    //// /part of the code came from: oybek http://stackoverflow.com/users/794764/oybek
+        //    ////string s = base64String.Trim();
 
 
-        //                //s = (o.Text);
-        //                //if (s.Contains(','))
-        //                //    s = s.Replace(",", " "); // need to strip commas as this is a csv file.
-        //                //SbLine.Append(s);
-        //                //SbLine.Append(",");
+        //    //if (base64String == null ||
+        //    //    base64String.Length == 0 ||
+        //    //    base64String.Length % 4 != 0 ||
+        //    //    base64String.Contains(" ") ||
+        //    //    base64String.Contains("\t") ||
+        //    //    base64String.Contains("\r") ||
+        //    //    base64String.Contains("\n"))
+        //    //    return false;
 
+        //    //// String length should be divisible by 4 with no remainder.
 
+        //    //// https://en.wikipedia.org/wiki/Base64
+        //    //// Base64 transfer encoding for MIME manates a '=' pad character. (RFC 2045)
+        //    //// Standard 'base64' encoding for RFC 3548 or RFC 4648 - mandated '=' unless another doc says otherwise.
+        //    //if (!base64String.EndsWith("="))
+        //    //    return false;
 
-        //            }
- 
-        //        }
-
-        //        sLine = SbLine.ToString();
-        //        sLine = sLine.TrimEnd(TrimChars);
-
-        //        //  Add Additional Properties ----------------------------------------------
-
-
-        //        StringBuilder oStringBuilder = new StringBuilder();
-
-        //        if (oExtendedPropertyDefinitions != null)
-        //        {
-        //            string sExt = AdditionalProperties.GetExtendedPropertiesForItemAsCsvContent(
-        //                oExchangeService,
-        //                oItemId,
-        //                oExtendedPropertyDefinitions,
-        //                oCsvStringHandling
-        //                );
-        //            sLine = "," + sExt;
-
-        //            sLine = SbLine.ToString();
-        //            sLine = sLine.TrimEnd(TrimChars);
-
-        //        }
-  
-        //        w.WriteLine(sLine);
-
-        //        bRet = true;
-        //    }
-
-        //    w.Close();
-
-        //    return bRet;
+        //    //try
+        //    //{
+        //    //    Convert.FromBase64String(base64String);
+        //    //    return true;
+        //    //}
+        //    //catch (Exception ex)
+        //    //{
+        //    //    // Handle the exception
+        //    //}
+        //    //return false;
         //}
  
-        
+   
     }
 }

@@ -774,8 +774,8 @@ namespace EWSEditor.Common.Exports
         //} 
 
         public static PropertySet GetMeetingMessageDataPropset(
-            string ExchangeVersion, 
-            bool bIncludeBody, 
+            string ExchangeVersion,
+            bool bIncludeBodies, 
             bool bIncludeMime,
             List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions
             )
@@ -872,10 +872,10 @@ namespace EWSEditor.Common.Exports
                 MeetingMessageSchema.ToRecipients
             );
 
-            if (bIncludeBody == true)
+            if (bIncludeBodies == true)
             {
                 meetingMessagePropertySet.Add(MeetingMessageSchema.Body);
-                meetingMessagePropertySet.Add(MeetingMessageSchema.NormalizedBody);
+                //meetingMessagePropertySet.Add(MeetingMessageSchema.NormalizedBody);
                 meetingMessagePropertySet.Add(MeetingMessageSchema.UniqueBody);    
             }
 
@@ -978,8 +978,15 @@ namespace EWSEditor.Common.Exports
                     //meetingMessagePropertySet.Add(MeetingMessageSchema.PolicyTag); // covered by extended property
                     meetingMessagePropertySet.Add(MeetingMessageSchema.Preview);
                     //meetingMessagePropertySet.Add(MeetingMessageSchema.RetentionDate); // covered by extended property
-                    meetingMessagePropertySet.Add(MeetingMessageSchema.TextBody);
+                    //meetingMessagePropertySet.Add(MeetingMessageSchema.TextBody);
                     meetingMessagePropertySet.Add(MeetingMessageSchema.VotingInformation);
+
+                    if (bIncludeBodies == true)
+                    {
+                        meetingMessagePropertySet.Add(MeetingMessageSchema.TextBody);
+                        meetingMessagePropertySet.Add(MeetingMessageSchema.NormalizedBody);
+                    }
+  
                 }
             }
 
@@ -1028,6 +1035,7 @@ namespace EWSEditor.Common.Exports
 
             //  o.Add(CleanString(oMeetingMessageData.Attachments // 
              o.Add(CleanString(oMeetingMessageData.BccRecipients));
+            
              o.Add(CleanString(oMeetingMessageData.Body));
              o.Add(CleanString(oMeetingMessageData.Categories));
              o.Add(CleanString(oMeetingMessageData.CcRecipients));
@@ -1088,6 +1096,8 @@ namespace EWSEditor.Common.Exports
              o.Add(CleanString(oMeetingMessageData.LastModifiedName));
              o.Add(CleanString(oMeetingMessageData.LastModifiedTime));
              o.Add(CleanString(oMeetingMessageData.MimeContent));
+
+
              o.Add(CleanString(oMeetingMessageData.NormalizedBody));
 
              o.Add(CleanString(oMeetingMessageData.ParentFolderId));
@@ -1189,7 +1199,7 @@ namespace EWSEditor.Common.Exports
 
 
         // GetMeetingMessageDataAsCsv2
-        public string GetMeetingMessageDataAsCsv2(MeetingMessageData oMeetingMessageData, CsvExportOptions oCsvExportOption)
+        public string GetMeetingMessageDataAsCsv2(MeetingMessageData oMeetingMessageData, CsvExportOptions oCsvExportOptions)
         {
  
             string sRet = string.Empty;
@@ -1224,13 +1234,33 @@ namespace EWSEditor.Common.Exports
                 }
                 else
                 {
-                    if (d[i] != null)
+                    //if (d[i] != null)
+                    //{ 
+                    //    d[i] = EWSEditor.Common.Exports.AdditionalProperties.DoStringHandling(d[i], CsvStringHandling.HexEncode);
+                    //    //d[i] = d[i].Replace(',', ' ');  // remove in-data commas    
+                    //}
+                    //else
+                    //    d[i] = "";
+
+                    //if (d[i] == null) // No null data
+                    //    d[i] = "";
+
+                    // String  Handling
+                    if (oCsvExportOptions._CsvStringHandling != CsvStringHandling.None)
                     { 
-                        d[i] = EWSEditor.Common.Exports.AdditionalProperties.DoStringHandling(d[i], CsvStringHandling.HexEncode);
-                        //d[i] = d[i].Replace(',', ' ');  // remove in-data commas    
+                        d[i] = AdditionalProperties.DoStringHandling(d[i], oCsvExportOptions._CsvStringHandling);
                     }
-                    else
-                        d[i] = "";
+
+                    // Hex encode binary (base64 encoded) data.
+                    if (oCsvExportOptions.HexEncodeBinaryData == true)
+                    {
+                        //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
+                        if (StringHelper.IsBase64Encoded(d[i]) == true)
+                        {
+                            oFromBytes = System.Convert.FromBase64String(d[i]); // Base64 to byte array.
+                            d[i] = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                        }
+                    }
 
                 }
             }
