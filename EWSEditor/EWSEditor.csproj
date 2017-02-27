@@ -283,6 +283,12 @@
     <Compile Include="Forms\Searches\SearchCalendarExportPicker.Designer.cs">
       <DependentUpon>SearchCalendarExportPicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Searches\SearchExportPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Searches\SearchExportPicker.Designer.cs">
+      <DependentUpon>SearchExportPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Searches\SearchFolders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -939,6 +945,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Searches\SearchCalendarExportPicker.resx">
       <DependentUpon>SearchCalendarExportPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Searches\SearchExportPicker.resx">
+      <DependentUpon>SearchExportPicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Searches\SearchFolders.resx">
       <DependentUpon>SearchFolders.cs</DependentUpon>

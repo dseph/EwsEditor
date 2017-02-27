@@ -7,13 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
+using EWSEditor.Common.Exports;
 using EWSEditor.Common;
 using EWSEditor.Common.Extensions;
 using EWSEditor.Resources;
 using Microsoft.Exchange.WebServices.Data;
 using System.Net;
 using System.Xml;
+
+ 
 
 namespace EWSEditor.Forms
 {
@@ -223,6 +227,7 @@ namespace EWSEditor.Forms
         {
             int iCount = 0;
             bool bRet = false;
+            string sItemFolderPath = string.Empty;
 
             if (oFolderId != null)
             {
@@ -236,6 +241,7 @@ namespace EWSEditor.Forms
 
  
                     oItemView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
+                        ItemSchema.ParentFolderId,
                         ItemSchema.Subject,
                         ItemSchema.DisplayTo,
                         ItemSchema.Subject,
@@ -355,8 +361,9 @@ namespace EWSEditor.Forms
                      
                     lvItems.Columns.Add("LastModifiedName", 100, HorizontalAlignment.Left);
                     lvItems.Columns.Add("LastModifiedTime", 100, HorizontalAlignment.Left);
-                
+
                     lvItems.Columns.Add("Size", 50, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("Folder Path", 200, HorizontalAlignment.Left);
 
  
                     lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
@@ -364,31 +371,38 @@ namespace EWSEditor.Forms
 
                     lvItems.Tag = -1;
 
+              
+                     
                     ListViewItem oListItem = null;
                     iCount = 0;
                     foreach (Item oItem in oFindItemsResults.Items)
                     {
                         iCount++;
  
-                        oListItem = new ListViewItem(iCount.ToString(), 0);
+                        oListItem = new ListViewItem(iCount.ToString(), 0);    // 1
                                 
                         oListItem.SubItems.Add(oItem.Subject);
                         oListItem.SubItems.Add(oItem.ItemClass);
                         oListItem.SubItems.Add(oItem.DisplayTo);
-                        oListItem.SubItems.Add(oItem.DisplayCc);
+                        oListItem.SubItems.Add(oItem.DisplayCc);                // 5
 
                         oListItem.SubItems.Add(oItem.HasAttachments.ToString());
 
                         oListItem.SubItems.Add(oItem.IsResend.ToString());
                         oListItem.SubItems.Add(oItem.IsDraft.ToString());
                         oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
-                        oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());
+                        oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());      // 10
                       
                         oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
                         oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
                         
                         oListItem.SubItems.Add(oItem.Size.ToString());
 
+
+                        if (EwsFolderHelper.GetFolderPath(oItem.Service, oItem.ParentFolderId, ref sItemFolderPath))  // 14
+                            oListItem.SubItems.Add(sItemFolderPath);
+                        else
+                            oListItem.SubItems.Add("");
 
                         oListItem.SubItems.Add(oItem.Id.UniqueId);
                         oListItem.SubItems.Add(oItem.Id.ChangeKey);
@@ -431,12 +445,15 @@ namespace EWSEditor.Forms
                  
                     lvItems.Columns.Add("LastModifiedName", 100, HorizontalAlignment.Left);
                     lvItems.Columns.Add("LastModifiedTime", 100, HorizontalAlignment.Left);
-                  
+
                     lvItems.Columns.Add("Size", 50, HorizontalAlignment.Left);
+                    lvItems.Columns.Add("Folder Path", 200, HorizontalAlignment.Left);
 
                     //lvItems.Columns.Add("Id", 50, HorizontalAlignment.Left);
                     lvItems.Columns.Add("UniqueId", 250, HorizontalAlignment.Left);
                     lvItems.Columns.Add("ChangeKey", 250, HorizontalAlignment.Left);
+
+                    lvItems.Tag = -1;
 
                     int iCountMore = 0;
 
@@ -450,6 +467,7 @@ namespace EWSEditor.Forms
                         List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
 
                         oItemView.PropertySet = new PropertySet(BasePropertySet.IdOnly,
+                                            ItemSchema.ParentFolderId,
                                             ItemSchema.Subject,
                                             ItemSchema.DisplayTo,
                                             ItemSchema.DisplayCc,
@@ -570,6 +588,11 @@ namespace EWSEditor.Forms
                             oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
                    
                             oListItem.SubItems.Add(oItem.Size.ToString());
+
+                            if (EwsFolderHelper.GetFolderPath(oItem.Service, oItem.ParentFolderId, ref sItemFolderPath))
+                                oListItem.SubItems.Add(sItemFolderPath);
+                            else
+                                oListItem.SubItems.Add("");
  
                             oListItem.SubItems.Add(oItem.Id.UniqueId);
                             oListItem.SubItems.Add(oItem.Id.ChangeKey);
@@ -603,8 +626,7 @@ namespace EWSEditor.Forms
             return bRet;
 
         }
-
-
+ 
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -1226,6 +1248,171 @@ namespace EWSEditor.Forms
             oListView.Sort();
             oListView.ListViewItemSorter = new EWSEditor.Common.UIHelpers.ListViewItemComparer_Dates(iClickedColumn, oListView.Sorting);
             this.Cursor = Cursors.Default;
+        }
+
+        private void btnExportCalendarItems_Click(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "Exporting...";
+            this.Cursor = Cursors.WaitCursor;
+            ExportItems();
+            MessageBox.Show("The data export has completed.", "Export finished.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            toolStripStatusLabel1.Text = "Ready to search.";
+            this.Cursor = Cursors.Default;
+        }
+
+        private void ExportItems()
+        { 
+
+            EWSEditor.Forms.Searches.SearchExportPicker oForm = new EWSEditor.Forms.Searches.SearchExportPicker();
+            oForm.ShowDialog();
+
+            this.Cursor = Cursors.WaitCursor;
+
+            List<AdditionalPropertyDefinition> oAdditionalPropertyDefinitions = null;
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions = null;
+
+            CsvExportOptions oCsvExportOptions = new CsvExportOptions();
+
+            oCsvExportOptions = oForm.ExportOptions;
+
+
+            if (oForm.bChoseOk == true)
+            {
+
+                if (oForm.chkIncludeUsersAdditionalProperties.Checked == true)
+                {
+                    oAdditionalPropertyDefinitions = oForm.AdditionalPropertyDefinitions;
+                    oExtendedPropertyDefinitions = oForm.ExtendedPropertyDefinitions;
+                }
+
+                if (oForm.rdoExportDisplayedResults.Checked == true)
+                {
+                    string sPath = oForm.txtDisplayedResultsFolderPath.Text.Trim();
+                    string sRoot = Path.GetPathRoot(sPath);
+
+                    if (CheckFolder(sRoot))
+                    {
+                        if (File.Exists(sPath))
+                        {
+                            MessageBox.Show("File Already Exists", "File already exists.  Choose a different file name.");
+                        }
+                        else
+                        {
+                            ExportDisplayedResults(_CurrentService, sPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions, oCsvExportOptions);
+
+
+                        }
+                    }
+                }
+
+  
+
+
+                if (oForm.rdoExportItemsAsBlobs.Checked == true)
+                {
+
+                    if (CheckFolder(oForm.txtBlobFolderPath.Text.Trim()))
+                        ExportItemsAsBlobs(oForm.txtBlobFolderPath.Text.Trim());
+                }
+
+            }
+
+            this.Cursor = Cursors.Default;
+
+        }
+
+
+        private bool CheckFolder(string sFolderPath)
+        {
+            // validate folder path is correct.
+            if (System.IO.Directory.Exists(sFolderPath) == false)
+            {
+                DialogResult oDlg = MessageBox.Show("Create Folder", "The folder path chosen does not exist.  Do you wish to create this folder?", MessageBoxButtons.YesNo);
+                if (oDlg == System.Windows.Forms.DialogResult.Yes)
+                {
+                    System.IO.Directory.CreateDirectory(sFolderPath);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void ExportDisplayedResults(
+            ExchangeService oExchangeService,
+            string sFolderPath,
+            List<EWSEditor.Common.Exports.AdditionalPropertyDefinition> oAdditionalPropertyDefinitions,
+            List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
+             CsvExportOptions oCsvExportOptions
+            )
+        {
+             
+            ListViewExport.SaveItemListViewToCsv(oExchangeService, lvItems, sFolderPath, oAdditionalPropertyDefinitions, oExtendedPropertyDefinitions, oCsvExportOptions);
+        }
+
+        /// ExportItemsAsBlobs()
+        /// Save all items in grid as blobs. These can be reloaded later with EWSEditor.
+        private bool ExportItemsAsBlobs(string sFolderPath)
+        {
+            bool bRet = false;
+            EWSEditor.Common.Exports.CalendarExport oCalendarExport = new EWSEditor.Common.Exports.CalendarExport();
+            EWSEditor.Common.Exports.MeetingMessageExport oMeetingMessageExport = new EWSEditor.Common.Exports.MeetingMessageExport();
+
+
+            ItemId oItemId = null;
+            ItemTag oItemTag = null;
+            string sFile = string.Empty;
+            string sFilePath = string.Empty;
+            int iCount = 0;
+            string s = string.Empty;
+            string sId = string.Empty;
+            string sUID = string.Empty;
+            string sClass = string.Empty;
+            string sSubject = string.Empty;
+            char[] c = Path.GetInvalidFileNameChars();
+
+            foreach (ListViewItem oListViewItem in lvItems.Items)
+            {
+                if (oListViewItem.Selected == true)
+                {
+                    iCount++;
+                    oItemTag = (ItemTag)oListViewItem.Tag;
+                    sId = oItemTag.Id.UniqueId;
+                    //sUID = oItemTag.ItemUid;
+                    sClass = oItemTag.ItemClass.ToUpper();
+                    oItemId = new ItemId(sId);
+ 
+                    sSubject = FileHelper.SanitizeFileName(oListViewItem.SubItems[1].Text);
+                    sFile = sSubject + "-" + sClass + "-" + iCount.ToString() + ".bin";
+
+                    sFilePath = Path.Combine(sFolderPath, sFile);
+
+                    SaveItemBlobToFolder(_CurrentService, oItemId, sFilePath);
+
+                    bRet = true;
+                }
+            }
+
+            return bRet;
+        }
+
+        public bool SaveItemBlobToFolder(ExchangeService oExchangeService, ItemId oItemId, string sFile)
+        {
+            string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
+            if (ServerVersion.StartsWith("Exchange2007") || ServerVersion == "Exchange2010")
+            {
+                MessageBox.Show("Exchange 2010 SP1 or later is requred to use ExportItems to do a blog export of an item.", "Invalid version for blog export using ExportItem");
+                return false;
+            }
+
+            return EWSEditor.Exchange.ExportUploadHelper.ExportItemPost(ServerVersion, oItemId.UniqueId, sFile);
+
         }
     }
 }

@@ -40,6 +40,10 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPickFolderBlobProperties = new System.Windows.Forms.Button();
             this.btnPickFolderMeetingMessageDetailedProperties = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdoExportAllGridData = new System.Windows.Forms.RadioButton();
+            this.rdoExcludeAllGridContentExceptFolderPath = new System.Windows.Forms.RadioButton();
+            this.rdoExcludeAllSearchGridContent = new System.Windows.Forms.RadioButton();
             this.txtMeetingMessageDetailedFolderPath = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnPickFolderAppointmentDetailedProperties = new System.Windows.Forms.Button();
@@ -59,15 +63,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.rdoHexEncodeStrings = new System.Windows.Forms.RadioButton();
             this.rdoNone = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdoExportAllGridData = new System.Windows.Forms.RadioButton();
-            this.rdoExcludeAllGridContentExceptFolderPath = new System.Windows.Forms.RadioButton();
-            this.rdoExcludeAllSearchGridContent = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
             this.chkConvertBase64BinaryHex = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
-            this.grpStringHandling.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.grpStringHandling.SuspendLayout();
             this.SuspendLayout();
             // 
             // rdoExportDisplayedResults
@@ -155,6 +155,7 @@
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // OkButton
             // 
@@ -222,6 +223,52 @@
             this.btnPickFolderMeetingMessageDetailedProperties.Text = "...";
             this.btnPickFolderMeetingMessageDetailedProperties.UseVisualStyleBackColor = true;
             this.btnPickFolderMeetingMessageDetailedProperties.Click += new System.EventHandler(this.btnPickFolderMeetingMessageDetailedProperties_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.rdoExportAllGridData);
+            this.groupBox2.Controls.Add(this.rdoExcludeAllGridContentExceptFolderPath);
+            this.groupBox2.Controls.Add(this.rdoExcludeAllSearchGridContent);
+            this.groupBox2.Location = new System.Drawing.Point(33, 85);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(943, 46);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Search Grid Exclusions";
+            // 
+            // rdoExportAllGridData
+            // 
+            this.rdoExportAllGridData.AutoSize = true;
+            this.rdoExportAllGridData.Checked = true;
+            this.rdoExportAllGridData.Location = new System.Drawing.Point(18, 21);
+            this.rdoExportAllGridData.Name = "rdoExportAllGridData";
+            this.rdoExportAllGridData.Size = new System.Drawing.Size(88, 21);
+            this.rdoExportAllGridData.TabIndex = 0;
+            this.rdoExportAllGridData.TabStop = true;
+            this.rdoExportAllGridData.Text = "Export All";
+            this.rdoExportAllGridData.UseVisualStyleBackColor = true;
+            // 
+            // rdoExcludeAllGridContentExceptFolderPath
+            // 
+            this.rdoExcludeAllGridContentExceptFolderPath.AutoSize = true;
+            this.rdoExcludeAllGridContentExceptFolderPath.Location = new System.Drawing.Point(112, 21);
+            this.rdoExcludeAllGridContentExceptFolderPath.Name = "rdoExcludeAllGridContentExceptFolderPath";
+            this.rdoExcludeAllGridContentExceptFolderPath.Size = new System.Drawing.Size(352, 21);
+            this.rdoExcludeAllGridContentExceptFolderPath.TabIndex = 1;
+            this.rdoExcludeAllGridContentExceptFolderPath.Text = "Exclude all Search Grid Content Except Folder Path";
+            this.rdoExcludeAllGridContentExceptFolderPath.UseVisualStyleBackColor = true;
+            // 
+            // rdoExcludeAllSearchGridContent
+            // 
+            this.rdoExcludeAllSearchGridContent.AutoSize = true;
+            this.rdoExcludeAllSearchGridContent.Location = new System.Drawing.Point(493, 21);
+            this.rdoExcludeAllSearchGridContent.Name = "rdoExcludeAllSearchGridContent";
+            this.rdoExcludeAllSearchGridContent.Size = new System.Drawing.Size(229, 21);
+            this.rdoExcludeAllSearchGridContent.TabIndex = 2;
+            this.rdoExcludeAllSearchGridContent.Text = "Exclude all Search Grid Content";
+            this.rdoExcludeAllSearchGridContent.UseVisualStyleBackColor = true;
             // 
             // txtMeetingMessageDetailedFolderPath
             // 
@@ -423,52 +470,6 @@
             this.rdoNone.Text = "None";
             this.rdoNone.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.rdoExportAllGridData);
-            this.groupBox2.Controls.Add(this.rdoExcludeAllGridContentExceptFolderPath);
-            this.groupBox2.Controls.Add(this.rdoExcludeAllSearchGridContent);
-            this.groupBox2.Location = new System.Drawing.Point(33, 85);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(943, 46);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Search Grid Exclusions";
-            // 
-            // rdoExportAllGridData
-            // 
-            this.rdoExportAllGridData.AutoSize = true;
-            this.rdoExportAllGridData.Checked = true;
-            this.rdoExportAllGridData.Location = new System.Drawing.Point(18, 21);
-            this.rdoExportAllGridData.Name = "rdoExportAllGridData";
-            this.rdoExportAllGridData.Size = new System.Drawing.Size(88, 21);
-            this.rdoExportAllGridData.TabIndex = 0;
-            this.rdoExportAllGridData.TabStop = true;
-            this.rdoExportAllGridData.Text = "Export All";
-            this.rdoExportAllGridData.UseVisualStyleBackColor = true;
-            // 
-            // rdoExcludeAllGridContentExceptFolderPath
-            // 
-            this.rdoExcludeAllGridContentExceptFolderPath.AutoSize = true;
-            this.rdoExcludeAllGridContentExceptFolderPath.Location = new System.Drawing.Point(112, 21);
-            this.rdoExcludeAllGridContentExceptFolderPath.Name = "rdoExcludeAllGridContentExceptFolderPath";
-            this.rdoExcludeAllGridContentExceptFolderPath.Size = new System.Drawing.Size(352, 21);
-            this.rdoExcludeAllGridContentExceptFolderPath.TabIndex = 1;
-            this.rdoExcludeAllGridContentExceptFolderPath.Text = "Exclude all Search Grid Content Except Folder Path";
-            this.rdoExcludeAllGridContentExceptFolderPath.UseVisualStyleBackColor = true;
-            // 
-            // rdoExcludeAllSearchGridContent
-            // 
-            this.rdoExcludeAllSearchGridContent.AutoSize = true;
-            this.rdoExcludeAllSearchGridContent.Location = new System.Drawing.Point(493, 21);
-            this.rdoExcludeAllSearchGridContent.Name = "rdoExcludeAllSearchGridContent";
-            this.rdoExcludeAllSearchGridContent.Size = new System.Drawing.Size(229, 21);
-            this.rdoExcludeAllSearchGridContent.TabIndex = 2;
-            this.rdoExcludeAllSearchGridContent.Text = "Exclude all Search Grid Content";
-            this.rdoExcludeAllSearchGridContent.UseVisualStyleBackColor = true;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -504,14 +505,14 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.OkButton);
             this.Name = "SearchCalendarExportPicker";
-            this.Text = "Select Export Type";
+            this.Text = "Calendar Search Result Export";
             this.Load += new System.EventHandler(this.SearchCalendarExportPicker_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.grpStringHandling.ResumeLayout(false);
-            this.grpStringHandling.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.grpStringHandling.ResumeLayout(false);
+            this.grpStringHandling.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
