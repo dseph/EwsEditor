@@ -34,7 +34,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -98,7 +98,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -116,19 +116,19 @@ namespace EWSEditor.Common
 
             try
             {  
-            if (oItem.TryGetProperty(oExtendedPropertyDefinition, out sString))
-            {
-                if (sString == null)
-                    sReturn = "";
+                if (oItem.TryGetProperty(oExtendedPropertyDefinition, out sString))
+                {
+                    if (sString == null)
+                        sReturn = "";
+                    else
+                        sReturn = sString;
+                }
                 else
-                    sReturn = sString;
-            }
-            else
-                sReturn = "";
+                    sReturn = "";
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -145,6 +145,12 @@ namespace EWSEditor.Common
             string sReturn = "";
             try
             {
+
+                if (oExtendedPropertyDefinition.Id == 33285)
+                {
+                    Console.WriteLine("");
+ 
+                }
                 //if (oItem.TryGetProperty(oExtendedPropertyDefinition, out x))
                 if (oItem.TryGetProperty(oExtendedPropertyDefinition, out lVal))
                 {
@@ -162,13 +168,53 @@ namespace EWSEditor.Common
                 }
             }
             catch (InvalidCastException ex)
-            {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
-                            oExtendedPropertyDefinition.PropertySetId, 
-                            oExtendedPropertyDefinition.Id, 
+            {    
+                // One EWS int prop gets retured as a string  - this is a workaround.
+                if (oExtendedPropertyDefinition.Id == 33285 && 
+                    (oExtendedPropertyDefinition.PropertySet == DefaultExtendedPropertySet.Appointment || 
+                     oExtendedPropertyDefinition.PropertySetId == new Guid("00062002-0000-0000-c000-000000000046"))
+                    )
+                {
+                    //Console.WriteLine("");
+                    //ExtendedPropertyDefinition Odd_ExtendedPropertyDefinition = 
+                    //    new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 33285, MapiPropertyType.String);
+                    //string s = GetExtendedProp_String_AsString(oItem, Odd_ExtendedPropertyDefinition);
+                    //return s;
+
+                
+                foreach (ExtendedProperty ep in oItem.ExtendedProperties)
+                {
+                    if (ep.PropertyDefinition.Id == 33285 && 
+                        (ep.PropertyDefinition.PropertySet == DefaultExtendedPropertySet.Appointment || 
+                         ep.PropertyDefinition.PropertySetId == new Guid("00062002-0000-0000-c000-000000000046"))
+                        )
+                    {
+                        try 
+                        { 
+                            string sVal = ep.Value.ToString();
+                            return sVal;
+                          
+                        }
+                        catch (Exception ex_swap)
+                        {
+                            string sError_Swap = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
+                                ep.PropertyDefinition.PropertySetId,
+                                ep.PropertyDefinition.Id,
+                                ex_swap.Message);
+                            MessageBox.Show(sError_Swap, "Casting Error");
+                        }
+                    }
+                }
+
+                
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
+                            oExtendedPropertyDefinition.PropertySetId,
+                            oExtendedPropertyDefinition.Id,
                             ex.Message);
                 MessageBox.Show(sError, "Casting Error");
                 throw ex;
+  
+                }
             }
             return sReturn;
         }
@@ -194,7 +240,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -224,7 +270,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -254,7 +300,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -284,7 +330,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -317,7 +363,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -349,7 +395,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -379,7 +425,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -414,7 +460,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -444,7 +490,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -473,7 +519,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -502,7 +548,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
@@ -532,7 +578,7 @@ namespace EWSEditor.Common
             }
             catch (InvalidCastException ex)
             {
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: {1}\r\nError: {2}",
+                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
                             oExtendedPropertyDefinition.PropertySetId,
                             oExtendedPropertyDefinition.Id,
                             ex.Message);
