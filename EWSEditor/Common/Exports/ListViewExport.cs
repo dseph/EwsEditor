@@ -140,12 +140,50 @@ namespace EWSEditor.Common
                         // If its base64 encoded then convert it to hex encoded.
                         if (oCsvExportOptions.HexEncodeBinaryData == true)
                         {
-                            //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
-                            if (StringHelper.IsBase64Encoded(s) == true)
+
+                            //if (oEPD.Id == 0x0005 ||
+                            //    oEPD.Id == 0x8223 ||
+                            //    oEPD.Id == 0x000C ||
+                            //    oEPD.Id == 0x000D ||
+                            //    oEPD.Id == 0x000F ||
+                            //    oEPD.Id == 0x0019
+                            //    )
+                            //{
+                            //    int a = 0;
+                            //    a = 1;
+                            //}
+
+                            string ss = string.Empty;
+
+                            if (oCsvExportOptions.HexEncodeBinaryData == true)
                             {
-                                oFromBytes = System.Convert.FromBase64String(s); // Base64 to byte array.
-                                s = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                                if (o.Tag != null)
+                                {
+                                    ss = o.Tag.ToString();
+                                    if (o.Tag.ToString() == "Binary")
+                                    {
+                                        oFromBytes = System.Convert.FromBase64String(s); // Base64 to byte array.
+                                        s = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                                    }
+                                }
                             }
+
+                            //if (iColumnCount == 11  ||
+                            //    iColumnCount == 11  ||
+                            //    iColumnCount == 11  ||
+                            //    iColumnCount == 11  
+                            //  )
+                            //{
+                            //    int b = 0;
+                            //    b = 1;
+                            //}
+
+                            ////bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
+                            //if (StringHelper.IsBase64Encoded(s) == true)
+                            //{
+                            //    oFromBytes = System.Convert.FromBase64String(s); // Base64 to byte array.
+                            //    s = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                            //}
                         }
 
                         // Exclusions --------------------------------------------
@@ -308,18 +346,29 @@ namespace EWSEditor.Common
                         if (oCsvExportOptions._CsvStringHandling != CsvStringHandling.None)
                             s = AdditionalProperties.DoStringHandling(s, oCsvExportOptions._CsvStringHandling);
 
- 
 
-                        // If its base64 encoded then convert it to hex encoded.
                         if (oCsvExportOptions.HexEncodeBinaryData == true)
                         {
-                            //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
-                            if (StringHelper.IsBase64Encoded(s) == true)
+                            if (oListViewItem.Tag != null)
                             {
-                                oFromBytes = System.Convert.FromBase64String(s); // Base64 to byte array.
-                                s = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                                if (oListViewItem.Tag.ToString() == "Binary")
+                                {
+                                    oFromBytes = System.Convert.FromBase64String(s); // Base64 to byte array.
+                                    s = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                                }
                             }
                         }
+
+                        //// If its base64 encoded then convert it to hex encoded.
+                        //if (oCsvExportOptions.HexEncodeBinaryData == true)
+                        //{
+                        //    //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
+                        //    if (StringHelper.IsBase64Encoded(s) == true)
+                        //    {
+                        //        oFromBytes = System.Convert.FromBase64String(s); // Base64 to byte array.
+                        //        s = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                        //    }
+                        //}
 
                         // Exclusions --------------------------------------------
                         if (oCsvExportOptions._CsvExportGridExclusions != Exports.CsvExportGridExclusions.ExportAll)
