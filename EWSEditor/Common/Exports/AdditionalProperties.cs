@@ -634,6 +634,17 @@ namespace EWSEditor.Common.Exports
                         sExtendedValue = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oItem, oEPD);
                         if (oCsvExportOptions.HexEncodeBinaryData == true)
                         {
+                            //if (oEPD.Id == 0x0005 || 
+                            //    oEPD.Id == 0x8223 ||
+                            //    oEPD.Id == 0x000C ||
+                            //    oEPD.Id == 0x000D ||
+                            //    oEPD.Id == 0x000F ||
+                            //    oEPD.Id == 0x0019
+                            //    )
+                            //{ 
+                            //    int a = 0;
+                            //    a = 1;
+                            //}
                             //byte[] oFromBytes;
                             oFromBytes = System.Convert.FromBase64String(sExtendedValue); // Base64 to byte array.
                             sExtendedValue = StringHelper.HexStringFromByteArray(oFromBytes, false);
@@ -670,16 +681,16 @@ namespace EWSEditor.Common.Exports
                     sExtendedValue = DoStringHandling(sExtendedValue, oCsvExportOptions._CsvStringHandling);
                 }
 
-                // Hex encode binary (base64 encoded) data.
-                if (oCsvExportOptions.HexEncodeBinaryData == true)
-                {
-                    //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
-                    if (StringHelper.IsBase64Encoded(sExtendedValue) == true)
-                    {
-                        oFromBytes = System.Convert.FromBase64String(sExtendedValue); // Base64 to byte array.
-                        sExtendedValue = StringHelper.HexStringFromByteArray(oFromBytes, false);
-                    }
-                }
+                //// Hex encode binary (base64 encoded) data.
+                //if (oCsvExportOptions.HexEncodeBinaryData == true)
+                //{
+                //    //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
+                //    if (StringHelper.IsBase64Encoded(sExtendedValue) == true)
+                //    {
+                //        oFromBytes = System.Convert.FromBase64String(sExtendedValue); // Base64 to byte array.
+                //        sExtendedValue = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                //    }
+                //}
 
                  
 

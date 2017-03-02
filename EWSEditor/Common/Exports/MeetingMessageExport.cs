@@ -1234,33 +1234,23 @@ namespace EWSEditor.Common.Exports
                 }
                 else
                 {
-                    //if (d[i] != null)
-                    //{ 
-                    //    d[i] = EWSEditor.Common.Exports.AdditionalProperties.DoStringHandling(d[i], CsvStringHandling.HexEncode);
-                    //    //d[i] = d[i].Replace(',', ' ');  // remove in-data commas    
-                    //}
-                    //else
-                    //    d[i] = "";
-
-                    //if (d[i] == null) // No null data
-                    //    d[i] = "";
-
+ 
                     // String  Handling
                     if (oCsvExportOptions._CsvStringHandling != CsvStringHandling.None)
                     { 
                         d[i] = AdditionalProperties.DoStringHandling(d[i], oCsvExportOptions._CsvStringHandling);
                     }
 
-                    // Hex encode binary (base64 encoded) data.
-                    if (oCsvExportOptions.HexEncodeBinaryData == true)
-                    {
-                        //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
-                        if (StringHelper.IsBase64Encoded(d[i]) == true)
-                        {
-                            oFromBytes = System.Convert.FromBase64String(d[i]); // Base64 to byte array.
-                            d[i] = StringHelper.HexStringFromByteArray(oFromBytes, false);
-                        }
-                    }
+                    //// Hex encode binary (base64 encoded) data.
+                    //if (oCsvExportOptions.HexEncodeBinaryData == true)
+                    //{
+                    //    //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
+                    //    if (StringHelper.IsBase64Encoded(d[i]) == true)
+                    //    {
+                    //        oFromBytes = System.Convert.FromBase64String(d[i]); // Base64 to byte array.
+                    //        d[i] = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                    //    }
+                    //}
 
                 }
             }

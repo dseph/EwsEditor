@@ -426,6 +426,8 @@ namespace EWSEditor.Forms
         {
             bool bRet = false;
 
+            ListViewItem.ListViewSubItem oLVSI = null; 
+        
   
             ListViewItem oListItem = null;
 
@@ -517,47 +519,77 @@ namespace EWSEditor.Forms
                     iCountCommon++;
 
                     if (this.cmboSearchType.Text == "Direct")
+                    {
                         oListItem = new ListViewItem(iCountCommon.ToString(), 0);
+                       
+                    }
                     else
+                    {
                         oListItem = new ListViewItem(iCountCommon.ToString() + ":" + iCountCommon.ToString(), 0);
+                         
+                    }
 
-                    oListItem.SubItems.Add(oAppointmentData.OrganizerName + " <" +  oAppointmentData.OrganizerAddress + ">");
-                    oListItem.SubItems.Add(oAppointmentData.PidNameCalendarIsOrganizer);
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.OrganizerName + " <" + oAppointmentData.OrganizerAddress + ">");
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.PidNameCalendarIsOrganizer);
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(""); // From
-                    oListItem.SubItems.Add(""); // Sender
- 
+                    oLVSI = oListItem.SubItems.Add(""); // From
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(""); // Sender
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(oAppointmentData.Subject);
 
-                    oListItem.SubItems.Add(oAppointmentData.ItemClass);
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.Subject);
+                    oLVSI.Tag = "String";
+
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.ItemClass);
+                    oLVSI.Tag = "String";
 
                     //oListItem.SubItems.Add(oAppointmentData.Organizer);
-                    oListItem.SubItems.Add(oAppointmentData.DisplayTo);
-                    oListItem.SubItems.Add(oAppointmentData.DisplayCc);
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.DisplayTo);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.DisplayCc);
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(oAppointmentData.ICalDateTimeStamp);
-                    oListItem.SubItems.Add(oAppointmentData.ICalUid);
-                    oListItem.SubItems.Add(oAppointmentData.PidLidCleanGlobalObjectId);
-                    oListItem.SubItems.Add(oAppointmentData.PidLidGlobalObjectId);
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.ICalDateTimeStamp);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.ICalUid);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.PidLidCleanGlobalObjectId);
+                    oLVSI.Tag = "Binary";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.PidLidGlobalObjectId);
+                    oLVSI.Tag = "Binary";
 
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.LastModifiedName);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.LastModifiedTime);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.DateTimeCreated);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.DateTimeReceived);
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(oAppointmentData.LastModifiedName);
-                    oListItem.SubItems.Add(oAppointmentData.LastModifiedTime);
-                    oListItem.SubItems.Add(oAppointmentData.DateTimeCreated);
-                    oListItem.SubItems.Add(oAppointmentData.DateTimeReceived);
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.Size);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.IsHidden);
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(oAppointmentData.Size);
-                    oListItem.SubItems.Add(oAppointmentData.IsHidden);
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.ClientInfoString);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.PidLidClientIntent);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.LogTriggerAction);
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(oAppointmentData.ClientInfoString);
-                    oListItem.SubItems.Add(oAppointmentData.PidLidClientIntent);
-                    oListItem.SubItems.Add(oAppointmentData.LogTriggerAction);
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.FolderPath);
+                    oLVSI.Tag = "String";
+                    oLVSI = oLVSI = oListItem.SubItems.Add(oAppointmentData.StoreEntryId);
+                    oLVSI.Tag = "Binary";
+                    oLVSI = oListItem.SubItems.Add(oAppointmentData.UniqueId);
+                    oLVSI.Tag = "Binary";
 
-                    oListItem.SubItems.Add(oAppointmentData.FolderPath);
-                    oListItem.SubItems.Add(oAppointmentData.StoreEntryId);
-                    oListItem.SubItems.Add(oAppointmentData.UniqueId);
-
+                    oLVSI = null;
 
                     oListItem.Tag = new CalendarItemTag(oAppointmentData.UniqueId, oAppointmentData.ItemClass, oAppointmentData.ICalUid);
                     lvCommon.Items.AddRange(new ListViewItem[] { oListItem }); ;
@@ -592,46 +624,77 @@ namespace EWSEditor.Forms
                     iCountCommon++;
 
                     if (this.cmboSearchType.Text == "Direct")
+                    {
                         oListItem = new ListViewItem(iCountCommon.ToString(), 0);
+                      
+                    }
                     else
+                    {
                         oListItem = new ListViewItem(iCountCommon.ToString() + ":" + iCountCommon.ToString(), 0);
+                      
+                    }
 
-                    oListItem.SubItems.Add(""); // Organizer
-                    oListItem.SubItems.Add(oMeetingMessageData.PidNameCalendarIsOrganizer);
+                    oLVSI = oListItem.SubItems.Add(""); // Organizer
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.PidNameCalendarIsOrganizer);
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(oMeetingMessageData.From);
-                    oListItem.SubItems.Add(oMeetingMessageData.Sender);
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.From);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.Sender);
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(oMeetingMessageData.Subject);
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.Subject);
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(oMeetingMessageData.ItemClass);
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.ItemClass);
+                    oLVSI.Tag = "String";
 
                     //oListItem.SubItems.Add(oMeetingMessageData.Organizer);
-                    oListItem.SubItems.Add(oMeetingMessageData.DisplayTo);
-                    oListItem.SubItems.Add(oMeetingMessageData.DisplayCc);
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.DisplayTo);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.DisplayCc);
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(oMeetingMessageData.ICalDateTimeStamp);
-                    oListItem.SubItems.Add(oMeetingMessageData.ICalUid);
-                    oListItem.SubItems.Add(oMeetingMessageData.PidLidCleanGlobalObjectId);
-                    oListItem.SubItems.Add(oMeetingMessageData.PidLidGlobalObjectId);
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.ICalDateTimeStamp);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.ICalUid);
+                    oLVSI.Tag = "String";
+                    oLVSI = oLVSI = oListItem.SubItems.Add(oMeetingMessageData.PidLidCleanGlobalObjectId);
+                    oLVSI.Tag = "Binary";
+                    oLVSI = oLVSI = oListItem.SubItems.Add(oMeetingMessageData.PidLidGlobalObjectId);
+                    oLVSI.Tag = "Binary";
 
-                     
-                    oListItem.SubItems.Add(oMeetingMessageData.LastModifiedName);
-                    oListItem.SubItems.Add(oMeetingMessageData.LastModifiedTime);
-                    oListItem.SubItems.Add(oMeetingMessageData.DateTimeCreated);
-                    oListItem.SubItems.Add(oMeetingMessageData.DateTimeReceived);
 
-                    oListItem.SubItems.Add(oMeetingMessageData.Size);
-                    oListItem.SubItems.Add(oMeetingMessageData.IsHidden);
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.LastModifiedName);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.LastModifiedTime);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.DateTimeCreated);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.DateTimeReceived);
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(oMeetingMessageData.ClientInfoString);
-                    oListItem.SubItems.Add(oMeetingMessageData.PidLidClientIntent);
-                    oListItem.SubItems.Add(oMeetingMessageData.LogTriggerAction);
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.Size);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.IsHidden);
+                    oLVSI.Tag = "String";
 
-                    oListItem.SubItems.Add(oMeetingMessageData.FolderPath);
-                    oListItem.SubItems.Add(oMeetingMessageData.StoreEntryId);
-                    oListItem.SubItems.Add(oMeetingMessageData.UniqueId);
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.ClientInfoString);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.PidLidClientIntent);
+                    oLVSI.Tag = "String";
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.LogTriggerAction);
+                    oLVSI.Tag = "String";
 
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.FolderPath);
+                    oLVSI.Tag = "String";
+                    oLVSI = oLVSI = oListItem.SubItems.Add(oMeetingMessageData.StoreEntryId);
+                    oLVSI.Tag = "Binary";
+                    oLVSI = oListItem.SubItems.Add(oMeetingMessageData.UniqueId);
+                    oLVSI.Tag = "Binary";
+
+                    oLVSI = null;
 
                     oListItem.Tag = new CalendarItemTag(oMeetingMessageData.UniqueId, oMeetingMessageData.ItemClass, oMeetingMessageData.ICalUid);
                     //oListItem.Tag = new ItemTag(oMeetingMessageData.UniqueId, oMeetingMessageData.ItemClass);

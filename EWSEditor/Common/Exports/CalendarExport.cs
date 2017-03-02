@@ -1377,16 +1377,16 @@ namespace EWSEditor.Common.Exports
                         d[i] = AdditionalProperties.DoStringHandling(d[i], oCsvExportOptions._CsvStringHandling);
                     }
 
-                    // Hex encode binary (base64 encoded) data.
-                    if (oCsvExportOptions.HexEncodeBinaryData == true)
-                    {
-                        //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
-                        if (StringHelper.IsBase64Encoded(d[i]) == true)
-                        {
-                            oFromBytes = System.Convert.FromBase64String(d[i]); // Base64 to byte array.
-                            d[i] = StringHelper.HexStringFromByteArray(oFromBytes, false);
-                        }
-                    }
+                    //// Hex encode binary (base64 encoded) data.
+                    //if (oCsvExportOptions.HexEncodeBinaryData == true)
+                    //{
+                    //    //bColumnIsByteArray = StringHelper.IsBase64Encoded(s);
+                    //    if (StringHelper.IsBase64Encoded(d[i]) == true)
+                    //    {
+                    //        oFromBytes = System.Convert.FromBase64String(d[i]); // Base64 to byte array.
+                    //        d[i] = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                    //    }
+                    //}
                 }
             }
 

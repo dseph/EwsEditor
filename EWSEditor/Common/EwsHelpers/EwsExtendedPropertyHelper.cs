@@ -175,44 +175,37 @@ namespace EWSEditor.Common
                      oExtendedPropertyDefinition.PropertySetId == new Guid("00062002-0000-0000-c000-000000000046"))
                     )
                 {
-                    //Console.WriteLine("");
-                    //ExtendedPropertyDefinition Odd_ExtendedPropertyDefinition = 
-                    //    new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 33285, MapiPropertyType.String);
-                    //string s = GetExtendedProp_String_AsString(oItem, Odd_ExtendedPropertyDefinition);
-                    //return s;
-
-                
-                foreach (ExtendedProperty ep in oItem.ExtendedProperties)
-                {
-                    if (ep.PropertyDefinition.Id == 33285 && 
-                        (ep.PropertyDefinition.PropertySet == DefaultExtendedPropertySet.Appointment || 
-                         ep.PropertyDefinition.PropertySetId == new Guid("00062002-0000-0000-c000-000000000046"))
-                        )
+ 
+                    foreach (ExtendedProperty ep in oItem.ExtendedProperties)
                     {
-                        try 
-                        { 
-                            string sVal = ep.Value.ToString();
-                            return sVal;
-                          
-                        }
-                        catch (Exception ex_swap)
+                        if (ep.PropertyDefinition.Id == 33285 && 
+                            (ep.PropertyDefinition.PropertySet == DefaultExtendedPropertySet.Appointment || 
+                             ep.PropertyDefinition.PropertySetId == new Guid("00062002-0000-0000-c000-000000000046"))
+                            )
                         {
-                            string sError_Swap = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
-                                ep.PropertyDefinition.PropertySetId,
-                                ep.PropertyDefinition.Id,
-                                ex_swap.Message);
-                            MessageBox.Show(sError_Swap, "Casting Error");
+                            try 
+                            { 
+                                string sVal = ep.Value.ToString();
+                                return sVal;
+                          
+                            }
+                            catch (Exception ex_swap)
+                            {
+                                string sError_Swap = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
+                                    ep.PropertyDefinition.PropertySetId,
+                                    ep.PropertyDefinition.Id,
+                                    ex_swap.Message);
+                                MessageBox.Show(sError_Swap, "Casting Error");
+                            }
                         }
                     }
-                }
-
-                
-                string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
-                            oExtendedPropertyDefinition.PropertySetId,
-                            oExtendedPropertyDefinition.Id,
-                            ex.Message);
-                MessageBox.Show(sError, "Casting Error");
-                throw ex;
+ 
+                    string sError = string.Format("Error casting extended property.  GUID: {0} Property ID: 0x{1:X}\r\nError: {2}",
+                                oExtendedPropertyDefinition.PropertySetId,
+                                oExtendedPropertyDefinition.Id,
+                                ex.Message);
+                    MessageBox.Show(sError, "Casting Error");
+                    throw ex;
   
                 }
             }
