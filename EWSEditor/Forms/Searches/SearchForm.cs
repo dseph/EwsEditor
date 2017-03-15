@@ -228,6 +228,8 @@ namespace EWSEditor.Forms
             int iCount = 0;
             bool bRet = false;
             string sItemFolderPath = string.Empty;
+            ListViewItem.ListViewSubItem oLVSI = null; 
+           
 
             if (oFolderId != null)
             {
@@ -379,33 +381,56 @@ namespace EWSEditor.Forms
                     {
                         iCount++;
  
+                        // Note:  If you change any columns then you may need to chage other code such as
+                        // that for then listview property export code, which references columns by position.
+
                         oListItem = new ListViewItem(iCount.ToString(), 0);    // 1
-                                
-                        oListItem.SubItems.Add(oItem.Subject);
-                        oListItem.SubItems.Add(oItem.ItemClass);
-                        oListItem.SubItems.Add(oItem.DisplayTo);
-                        oListItem.SubItems.Add(oItem.DisplayCc);                // 5
 
-                        oListItem.SubItems.Add(oItem.HasAttachments.ToString());
+                        oLVSI = oListItem.SubItems.Add(oItem.Subject);
+                        oLVSI.Tag = "String";
+                        oLVSI = oListItem.SubItems.Add(oItem.ItemClass);
+                        oLVSI.Tag = "String";
+                        oLVSI = oListItem.SubItems.Add(oItem.DisplayTo);
+                        oLVSI.Tag = "String";
+                        oLVSI = oListItem.SubItems.Add(oItem.DisplayCc);                // 5
 
-                        oListItem.SubItems.Add(oItem.IsResend.ToString());
-                        oListItem.SubItems.Add(oItem.IsDraft.ToString());
-                        oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
-                        oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());      // 10
-                      
-                        oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
-                        oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
-                        
-                        oListItem.SubItems.Add(oItem.Size.ToString());
+                        oLVSI = oListItem.SubItems.Add(oItem.HasAttachments.ToString());
+                        oLVSI.Tag = "String";
+
+                        oLVSI = oListItem.SubItems.Add(oItem.IsResend.ToString());
+                        oLVSI.Tag = "String";
+                        oLVSI = oListItem.SubItems.Add(oItem.IsDraft.ToString());
+                        oLVSI.Tag = "String";
+                        oLVSI = oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
+                        oLVSI.Tag = "String";
+                        oLVSI = oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());      // 10
+                        oLVSI.Tag = "String";
+                        oLVSI = oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
+                        oLVSI.Tag = "String";
+                        oLVSI = oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
+                        oLVSI.Tag = "String";
+
+                        oLVSI = oListItem.SubItems.Add(oItem.Size.ToString());
+                        oLVSI.Tag = "String";
 
 
                         if (EwsFolderHelper.GetFolderPath(oItem.Service, oItem.ParentFolderId, ref sItemFolderPath))  // 14
-                            oListItem.SubItems.Add(sItemFolderPath);
+                        {
+                            oLVSI = oListItem.SubItems.Add(sItemFolderPath);
+                            oLVSI.Tag = "String";
+                        }
                         else
-                            oListItem.SubItems.Add("");
+                        {
+                            oLVSI = oListItem.SubItems.Add("");
+                            oLVSI.Tag = "String";
+                        }
 
-                        oListItem.SubItems.Add(oItem.Id.UniqueId);
-                        oListItem.SubItems.Add(oItem.Id.ChangeKey);
+                        oLVSI = oListItem.SubItems.Add(oItem.Id.UniqueId);
+                        oLVSI.Tag = "Binary";
+                        oLVSI = oListItem.SubItems.Add(oItem.Id.ChangeKey);
+                        oLVSI.Tag = "Binary";
+
+                        oLVSI = null;
 
                         oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass);
                         lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;
@@ -562,42 +587,67 @@ namespace EWSEditor.Forms
                         foreach (Item oItem in oFindItemsResults.Items)
                         {
                             iCount++;
+
+                            // Note:  If you change any columns then you may need to chage other code such as
+                            // that for then listview property export code, which references columns by position.
+
  
                             oListItem = new ListViewItem(iCountMore.ToString() + ":" +iCount.ToString(), 0);
 
- 
-                            oListItem.SubItems.Add(oItem.Subject);
-                            oListItem.SubItems.Add(oItem.ItemClass);
-                            oListItem.SubItems.Add(oItem.DisplayTo);
-                            oListItem.SubItems.Add(oItem.DisplayCc);
-                            oListItem.SubItems.Add(oItem.HasAttachments.ToString());
 
-                            oListItem.SubItems.Add(oItem.IsResend.ToString());
-                            oListItem.SubItems.Add(oItem.IsDraft.ToString());
-                            oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
+                            oLVSI = oListItem.SubItems.Add(oItem.Subject);
+                            oLVSI.Tag = "String";
+                            oLVSI = oListItem.SubItems.Add(oItem.ItemClass);
+                            oLVSI.Tag = "String";
+                            oLVSI = oListItem.SubItems.Add(oItem.DisplayTo);
+                            oLVSI.Tag = "String";
+                            oLVSI = oListItem.SubItems.Add(oItem.DisplayCc);
+                            oLVSI.Tag = "String";
+                            oLVSI = oListItem.SubItems.Add(oItem.HasAttachments.ToString());
+                            oLVSI.Tag = "String";
+
+                            oLVSI = oListItem.SubItems.Add(oItem.IsResend.ToString());
+                            oLVSI.Tag = "String";
+                            oLVSI = oListItem.SubItems.Add(oItem.IsDraft.ToString());
+                            oLVSI.Tag = "String";
+                            oLVSI = oListItem.SubItems.Add(oItem.DateTimeCreated.ToString());
+                            oLVSI.Tag = "String";
                             try
                             {
-                                oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());
+                                oLVSI = oListItem.SubItems.Add(oItem.DateTimeReceived.ToString());
+                                oLVSI.Tag = "String";
                             }
                             catch
                             {
-                                oListItem.SubItems.Add("");
+                                oLVSI = oListItem.SubItems.Add("");
+                                oLVSI.Tag = "String";
                             }
-                  
-                            oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
-                            oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
-                   
-                            oListItem.SubItems.Add(oItem.Size.ToString());
+
+                            oLVSI = oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
+                            oLVSI.Tag = "String";
+                            oLVSI = oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
+                            oLVSI.Tag = "String";
+
+                            oLVSI = oListItem.SubItems.Add(oItem.Size.ToString());
+                            oLVSI.Tag = "String";
 
                             if (EwsFolderHelper.GetFolderPath(oItem.Service, oItem.ParentFolderId, ref sItemFolderPath))
-                                oListItem.SubItems.Add(sItemFolderPath);
+                            {
+                                oLVSI = oListItem.SubItems.Add(sItemFolderPath);
+                                oLVSI.Tag = "String";
+                            }
                             else
-                                oListItem.SubItems.Add("");
- 
-                            oListItem.SubItems.Add(oItem.Id.UniqueId);
-                            oListItem.SubItems.Add(oItem.Id.ChangeKey);
+                            {
+                                oLVSI = oListItem.SubItems.Add("");
+                                oLVSI.Tag = "String";
+                            }
 
-                       
+                            oLVSI = oListItem.SubItems.Add(oItem.Id.UniqueId);
+                            oLVSI.Tag = "Binary";
+                            oLVSI = oListItem.SubItems.Add(oItem.Id.ChangeKey);
+                            oLVSI.Tag = "Binary";
+
+                            oLVSI = null;
 
                             oListItem.Tag = new ItemTag(oItem.Id, oItem.ItemClass );
                             lvItems.Items.AddRange(new ListViewItem[] { oListItem }); ;

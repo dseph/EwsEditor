@@ -1385,6 +1385,7 @@
     <Content Include="EwsPostExamples\DisableApp.xml" />
     <Content Include="EwsPostExamples\DisconnectPhoneCall.xml" />
     <Content Include="EwsPostExamples\EmptyFolder - HardDelete - SubFolders.xml" />
+    <Content Include="EwsPostExamples\Office365ReportingServices.xml" />
     <Content Include="EwsPostExamples\ExpandDL.xml" />
     <Content Include="EwsPostExamples\ExportItems.xml" />
     <Content Include="EwsPostExamples\FindConversation.xml" />

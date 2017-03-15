@@ -116,11 +116,43 @@ namespace EWSEditor.Common
 
                 // =============================================
                 // Do the EWS call:
+ 
+                //    header('Transfer-Encoding: chunked');
+                if (sVerb != "GET")
+                {
+                    Encoding oEncoding = System.Text.Encoding.GetEncoding("utf-8");
+                    oHttpWebResponse = (HttpWebResponse)oHttpWebRequest.GetResponse();
+                    StreamReader oStreadReader = new StreamReader(oHttpWebResponse.GetResponseStream(), oEncoding);
+                    sResult = oStreadReader.ReadToEnd();
+                }
 
-                Encoding oEncoding = System.Text.Encoding.GetEncoding("utf-8");
-                oHttpWebResponse = (HttpWebResponse)oHttpWebRequest.GetResponse();
-                StreamReader oStreadReader = new StreamReader(oHttpWebResponse.GetResponseStream(), oEncoding);
-                sResult = oStreadReader.ReadToEnd();
+                // for GET:
+                // Note: Some data returned from a GET may be chunk encoded.
+                if (sVerb == "GET")
+                {
+                    byte[] bData = new byte[1028];
+                    string sData = string.Empty;
+                    StringBuilder sbFullData = new StringBuilder();
+                    oHttpWebResponse = (HttpWebResponse)oHttpWebRequest.GetResponse();
+
+                    //bool bFoundChunkedHeader = false;
+                    //string sTransferEncoding = string.Empty;
+                    //sTransferEncoding = oHttpWebResponse.Headers.Get("Transfer-Encoding");
+                    //if (sTransferEncoding.ToLower() == "chunked")
+                    //    bFoundChunkedHeader = true;
+
+                    Stream oStream = oHttpWebResponse.GetResponseStream();
+                    int bytesRead = 0;
+
+                    //while ((bytesRead = await result.Result.ReadAsync(data, 0, data.Length)) > 0)
+                    while ((bytesRead = oStream.Read(bData, 0, bData.Length)) > 0)
+                    {
+                        sData = System.Text.Encoding.UTF8.GetString(bData, 0, bytesRead);
+                        sbFullData.Append(sData);
+                    }
+                    oStream.Close();
+                    sResult = sbFullData.ToString();
+                }
 
                 // ============================================
 

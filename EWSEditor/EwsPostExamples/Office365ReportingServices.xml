@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+
+<!--  
+ 
+Below is information on accessing the Exchange Reporting Services.  Note that you will need to do 
+a GET and a property formatted URL with an admin account which can pull the reports.  If there 
+are issues you can check the report by running it in ECP and also by pulling the report with 
+Excel.  Be sure to read the documentation on the options for the report parameters. Code wise 
+your code will need to handle reading the data in a chunked format.   To get back an XML response 
+use “format=Atom” at the end and for a Json response use “format=Json”.  Basic auth can be used 
+against Exchange Online for these reports.
+
+Exchange reports:
+
+  Office 365 Reporting web service
+  https://msdn.microsoft.com/en-us/library/office/jj984325.aspx
+
+  Exchange reports available in Office 365 Reporting web service
+  https://msdn.microsoft.com/en-us/library/office/jj984342.aspx
+
+  Office 365 Admin portal
+  https://portal.office.com/AdminPortal/Home#/homepage
+
+  Office 365 Reporting web service and Windows PowerShell cmdlets
+  https://msdn.microsoft.com/en-us/library/office/jj984326.aspx
+
+Example report URLs:
+
+  List reports - see the possible reports to run
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc
+  
+  General weekly report:
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/CsActiveUserWeekly
+  
+  A daily reprot for 15 days:
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/CsActiveUserDaily?$select=Date,ActiveUsers &$filter=Date%20ge%20datetime'2017-01-01T00:00:00'%20and%20Date%20le%20datetime'2017-01-15T00:00:00'&$orderby=Date%20desc&$format=Atom
+  
+  A daily report for 2 weeks:
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/CsActiveUserWeekly?$select=Date,ActiveUsers &$filter=Date%20ge%20datetime'2017-01-01T00:00:00'%20and%20Date%20le%20datetime'2017-01-14T00:00:00'&$orderby=Date%20desc&$format=Atom
+  
+  Monthly activity:
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/CsActiveUserMonthly
+  
+  Mailbox usage:
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/MailboxUsage
+  
+  Mailbox daily activity report – top 20:
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/MailboxActivityDaily?$select=Date,TotalNumberOfActiveMailboxes&$top=20&$orderby=Date%20desc&$format=Atom
+
+  Connections by client type
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/ConnectionbyClientTypeDetailDaily
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/ConnectionbyClientTypeDetailWeekly
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/ConnectionbyClientTypeDetailYearly
+
+  Daily connection report
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/ConnectionbyClientTypeDetailDaily?$select=Date,ClientType,Count,Date,UserName,WindowsLiveID&$format=Atom
+
+  Daily connection report during a time range:
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/ConnectionbyClientTypeDetailDaily?$select=ClientType,Date,Count,UserName,WindowsLiveID&$filter=Date%20ge%20datetime'2017-01-01T00:00:00'%20and%20Date%20le%20datetime'2017-01-14T00:00:00'&$orderby=ClientType,Date&$format=Atom
+  
+  Daily connection report for a specific mailbox during a time range:
+  https://reports.office365.com/ecp/reportingwebservice/reporting.svc/ConnectionbyClientTypeDetailDaily?$select=ClientType,Date,Count,UserName,WindowsLiveID&$filter=Date%20ge%20datetime'2017-01-01T00:00:00'%20and%20Date%20le%20datetime'2017-01-14T00:00:00'%20and%20WindowsLiveID %20eq%20'myuser@contoso.onmicrosoft.com'&$orderby=ClientType,Date&$format=Atom
+
+Below is a sample of pulling the report with a GET.  Note that the code needs to handle a chunked response.  For a full sample look at the HttpHelper.cs file in EwsEditor’s code.
+// for GET:
+// Note: Some data returned from a GET may be chunk encoded.
+
+  if (sVerb == "GET")
+  {
+    byte[] bData = new byte[1028];
+    string sData = string.Empty;
+    StringBuilder sbFullData = new StringBuilder();
+    oHttpWebResponse = (HttpWebResponse)oHttpWebRequest.GetResponse();
+    Stream oStream = oHttpWebResponse.GetResponseStream();
+    int bytesRead = 0;
+
+    //while ((bytesRead = await result.Result.ReadAsync(data, 0, data.Length)) > 0)
+    while ((bytesRead = oStream.Read(bData, 0, bData.Length)) > 0)
+    {
+      sData = System.Text.Encoding.UTF8.GetString(bData, 0, bytesRead);
+      sbFullData.Append(sData);
+    }
+    oStream.Close();
+    sResult = sbFullData.ToString();
+  }
+
+
+ -->

@@ -518,6 +518,10 @@ namespace EWSEditor.Forms
                      
                     iCountCommon++;
 
+                    // Note:  If you change any columns then you may need to chage other code such as
+                    // that for then listview property export code, which references columns by position.
+
+
                     if (this.cmboSearchType.Text == "Direct")
                     {
                         oListItem = new ListViewItem(iCountCommon.ToString(), 0);
@@ -622,6 +626,11 @@ namespace EWSEditor.Forms
 
                     //  Load common data listview ------------------------------------------------
                     iCountCommon++;
+
+                    // Note:  If you change any columns then you may need to chage other code such as
+                    // that for then listview property export code, which references columns by position.
+
+
 
                     if (this.cmboSearchType.Text == "Direct")
                     {
