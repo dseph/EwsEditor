@@ -607,6 +607,23 @@ namespace EWSEditor.Common.Exports
                         break;
                     case MapiPropertyType.Binary:
                         sExtendedValue = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oItem, oEPD);
+                        if (oCsvExportOptions.HexEncodeBinaryData == true)
+                        {
+                            //if (oEPD.Id == 0x0005 || 
+                            //    oEPD.Id == 0x8223 ||
+                            //    oEPD.Id == 0x000C ||
+                            //    oEPD.Id == 0x000D ||
+                            //    oEPD.Id == 0x000F ||
+                            //    oEPD.Id == 0x0019
+                            //    )
+                            //{ 
+                            //    int a = 0;
+                            //    a = 1;
+                            //}
+                            //byte[] oFromBytes;
+                            oFromBytes = System.Convert.FromBase64String(sExtendedValue); // Base64 to byte array.
+                            sExtendedValue = StringHelper.HexStringFromByteArray(oFromBytes, false);
+                        }
                         break;
                     case MapiPropertyType.Long:
                         sExtendedValue = EwsExtendedPropertyHelper.GetExtendedProp_Long_AsString(oItem, oEPD);
@@ -632,23 +649,7 @@ namespace EWSEditor.Common.Exports
                         break;
                     case MapiPropertyType.BinaryArray:
                         sExtendedValue = EwsExtendedPropertyHelper.GetExtendedProp_ByteArr_AsString(oItem, oEPD);
-                        if (oCsvExportOptions.HexEncodeBinaryData == true)
-                        {
-                            //if (oEPD.Id == 0x0005 || 
-                            //    oEPD.Id == 0x8223 ||
-                            //    oEPD.Id == 0x000C ||
-                            //    oEPD.Id == 0x000D ||
-                            //    oEPD.Id == 0x000F ||
-                            //    oEPD.Id == 0x0019
-                            //    )
-                            //{ 
-                            //    int a = 0;
-                            //    a = 1;
-                            //}
-                            //byte[] oFromBytes;
-                            oFromBytes = System.Convert.FromBase64String(sExtendedValue); // Base64 to byte array.
-                            sExtendedValue = StringHelper.HexStringFromByteArray(oFromBytes, false);
-                        }
+ 
                         break;
                     case MapiPropertyType.LongArray:
                         sExtendedValue = EwsExtendedPropertyHelper.GetExtendedProp_LongArr_AsString(oItem, oEPD);

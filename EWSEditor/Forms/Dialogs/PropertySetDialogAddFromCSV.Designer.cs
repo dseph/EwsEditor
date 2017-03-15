@@ -51,9 +51,10 @@
             // btnPickFolderIncludeUsersAdditionalProperties
             // 
             this.btnPickFolderIncludeUsersAdditionalProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPickFolderIncludeUsersAdditionalProperties.Location = new System.Drawing.Point(1131, 5);
+            this.btnPickFolderIncludeUsersAdditionalProperties.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPickFolderIncludeUsersAdditionalProperties.Location = new System.Drawing.Point(1114, 4);
             this.btnPickFolderIncludeUsersAdditionalProperties.Name = "btnPickFolderIncludeUsersAdditionalProperties";
-            this.btnPickFolderIncludeUsersAdditionalProperties.Size = new System.Drawing.Size(31, 29);
+            this.btnPickFolderIncludeUsersAdditionalProperties.Size = new System.Drawing.Size(48, 30);
             this.btnPickFolderIncludeUsersAdditionalProperties.TabIndex = 26;
             this.btnPickFolderIncludeUsersAdditionalProperties.Text = "...";
             this.btnPickFolderIncludeUsersAdditionalProperties.UseVisualStyleBackColor = true;
@@ -66,7 +67,7 @@
             this.txtIncludeUsersAdditionalPropertiesFile.Enabled = false;
             this.txtIncludeUsersAdditionalPropertiesFile.Location = new System.Drawing.Point(134, 12);
             this.txtIncludeUsersAdditionalPropertiesFile.Name = "txtIncludeUsersAdditionalPropertiesFile";
-            this.txtIncludeUsersAdditionalPropertiesFile.Size = new System.Drawing.Size(991, 22);
+            this.txtIncludeUsersAdditionalPropertiesFile.Size = new System.Drawing.Size(974, 22);
             this.txtIncludeUsersAdditionalPropertiesFile.TabIndex = 25;
             // 
             // txtCsv

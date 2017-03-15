@@ -484,9 +484,10 @@
             this.chkConvertBase64BinaryHex.AutoSize = true;
             this.chkConvertBase64BinaryHex.Location = new System.Drawing.Point(41, 526);
             this.chkConvertBase64BinaryHex.Name = "chkConvertBase64BinaryHex";
-            this.chkConvertBase64BinaryHex.Size = new System.Drawing.Size(507, 21);
+            this.chkConvertBase64BinaryHex.Size = new System.Drawing.Size(834, 21);
             this.chkConvertBase64BinaryHex.TabIndex = 33;
-            this.chkConvertBase64BinaryHex.Text = "Encode binary data as hex (Search grid and included additional properties).";
+            this.chkConvertBase64BinaryHex.Text = "Encode Binary data as hex. This is for the search results grid and included addit" +
+    "ional properties. Array type data is not covered.";
             this.chkConvertBase64BinaryHex.UseVisualStyleBackColor = true;
             // 
             // SearchCalendarExportPicker
