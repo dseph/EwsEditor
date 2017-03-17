@@ -104,6 +104,7 @@ namespace EWSEditor.Forms
                 ItemTag oItemTag = null;
                 oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
                 //Item oSomeItem = Item.Bind(CurrentService, oItemTag.Id);
+                _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 Appointment oSomeAppointment = Appointment.Bind(_CurrentService, oItemTag.Id);
                 string sAppointmentType = oSomeAppointment.AppointmentType.ToString();
                 if (sAppointmentType == "Single")
@@ -177,6 +178,7 @@ namespace EWSEditor.Forms
                 ItemTag oItemTag = (ItemTag)this.lvItems.SelectedItems[0].Tag;
 
                 oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
+                _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 Appointment oAppointment = Appointment.Bind(_CurrentService, oItemTag.Id);
                 string s = AppointmentHelper.GetAttendeeStatusAsInfoString(oAppointment);
 

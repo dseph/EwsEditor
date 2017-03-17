@@ -58,6 +58,7 @@ namespace EWSEditor.Common
 
             PropertySet oPropertySet = new PropertySet(BasePropertySet.IdOnly, Prop_PR_FOLDER_PATH);
 
+            oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             oFolder = Folder.Bind(oExchangeService, oFolderId, oPropertySet);
 
             bRet = GetFolderPath(oFolder, ref sFolderPath);
@@ -172,6 +173,7 @@ namespace EWSEditor.Common
                 }
             );
 
+            oFolder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             oFolder.Load(folderPropertySet);
 
             return oFolder;

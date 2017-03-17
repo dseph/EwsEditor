@@ -26,6 +26,7 @@ namespace EWSEditor.Common
             FolderId rfRootFolderid = new FolderId(WellKnownFolderName.Root, mbMailboxname);
             FolderView fvFolderView = new FolderView(1000);
             SearchFilter sfSearchFilter = new SearchFilter.IsEqualTo(FolderSchema.DisplayName, "Common Views");
+            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             FindFoldersResults ffoldres = service.FindFolders(rfRootFolderid, sfSearchFilter, fvFolderView);
             if (ffoldres.Folders.Count == 1)
             {
@@ -42,6 +43,7 @@ namespace EWSEditor.Common
                 iv.Traversal = ItemTraversal.Associated;
 
                 SearchFilter cntSearch = new SearchFilter.IsEqualTo(PidTagWlinkGroupName, "Other Calendars");
+                service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.             
                 FindItemsResults<Item> fiResults = ffoldres.Folders[0].FindItems(cntSearch, iv);
                 foreach (Item itItem in fiResults.Items)
                 {
@@ -69,6 +71,7 @@ namespace EWSEditor.Common
                             {
 
                                 FolderId SharedCalendarId = new FolderId(WellKnownFolderName.Calendar, ncCol[0].Mailbox.Address);
+                                service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                                 Folder SharedCalendaFolder = Folder.Bind(service, SharedCalendarId);
                                 rtList.Add(ncCol[0].Mailbox.Address, SharedCalendaFolder);
 

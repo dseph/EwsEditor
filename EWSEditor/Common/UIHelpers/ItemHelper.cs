@@ -116,13 +116,16 @@ namespace EWSEditor.Common
         {
             string sRet = string.Empty;
 
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             PropertySet oPropSet = new PropertySet(PropertySet.FirstClassProperties);
             oItem.Load(PropertySet.FirstClassProperties);
 
             PropertySet oPropSetForBodyText = new PropertySet(PropertySet.FirstClassProperties);
             oPropSetForBodyText.RequestedBodyType = oBodyType;
             oPropSetForBodyText.Add(ItemSchema.Body);
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             Item oItemForBodyText = Item.Bind((ExchangeService)oItem.Service, oItem.Id, (PropertySet)oPropSetForBodyText);
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             oItem.Load(oPropSetForBodyText);
             sRet = oItem.Body.Text;
 
@@ -139,7 +142,9 @@ namespace EWSEditor.Common
             PropertySet oPropSetForBodyText = new PropertySet(PropertySet.FirstClassProperties);
             oPropSetForBodyText.RequestedBodyType = BodyType.HTML;
             oPropSetForBodyText.Add(ItemSchema.Body);
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             Item oItemForBodyText = Item.Bind((ExchangeService)oItem.Service, oItem.Id, (PropertySet)oPropSetForBodyText);
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             oItem.Load(oPropSetForBodyText);
             sRet = oItem.Body.Text;
             MessageBodyHtml = sRet;
@@ -153,6 +158,7 @@ namespace EWSEditor.Common
             {
 
                 PropertySet oMimePropertySet = new PropertySet(ItemSchema.MimeContent);
+                oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 Item oItem = Item.Bind(oExchangeService, oItemId, oMimePropertySet);
                 sReturn = oItem.MimeContent.ToString();
             }
@@ -171,6 +177,7 @@ namespace EWSEditor.Common
             try
             {
                 PropertySet oMimePropertySet = new PropertySet(ItemSchema.MimeContent);
+                oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 oItem.Load(oMimePropertySet);
                 sReturn = oItem.MimeContent.ToString();
             }
@@ -218,13 +225,14 @@ namespace EWSEditor.Common
 
             if (sItemClass == "IPM.Note")
             {
+                oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 EmailMessage oEmailMessage = EmailMessage.Bind(oExchangeService, oItemId);
 
                 GetItemInfo(oEmailMessage, ref sReturn);
             }
             else
             {
-                 
+                oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID 
                 Item.Bind(oExchangeService, oItemId);
                 GetItemInfo(oExchangeService,oItemId, sItemClass,ref sReturn);
             }
@@ -238,6 +246,7 @@ namespace EWSEditor.Common
             iNothing = iNothing + 0;
 
             PropertySet oPropSet = new PropertySet(PropertySet.FirstClassProperties);
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             oItem.Load(PropertySet.FirstClassProperties);
 
             foreach (PropertyDefinitionBase o in oItem.GetLoadedPropertyDefinitions())
@@ -279,7 +288,9 @@ namespace EWSEditor.Common
             PropertySet oPropSetForBodyText = new PropertySet(PropertySet.FirstClassProperties);
             oPropSetForBodyText.RequestedBodyType = BodyType.Text;
             oPropSetForBodyText.Add(ItemSchema.Body);
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             Item oItemForBodyText = Item.Bind((ExchangeService)oItem.Service, oItem.Id, (PropertySet)oPropSetForBodyText);
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             oItem.Load(oPropSetForBodyText);
 
             sRet += string.Format("\r\n\r\n----[Body.Text]--------------------------------------------------------------\r\n\r\n{0}\r\n", oItem.Body.Text);
@@ -292,6 +303,7 @@ namespace EWSEditor.Common
             string sRet = string.Empty;
 
             PropertySet oPropSet = new PropertySet(PropertySet.FirstClassProperties);
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             oItem.Load(PropertySet.FirstClassProperties);
 
 
@@ -359,7 +371,9 @@ namespace EWSEditor.Common
             PropertySet oPropSetForBodyText = new PropertySet(PropertySet.FirstClassProperties);
             oPropSetForBodyText.RequestedBodyType = BodyType.Text;
             oPropSetForBodyText.Add(ItemSchema.Body);
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             Item oItemForBodyText = Item.Bind((ExchangeService)oItem.Service, oItem.Id, (PropertySet)oPropSetForBodyText);
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             oItem.Load(oPropSetForBodyText);
 
             sRet += string.Format("\r\n\r\n----[Body.Text]--------------------------------------------------------------\r\n\r\n{0}\r\n", oItem.Body.Text);

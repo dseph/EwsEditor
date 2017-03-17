@@ -305,10 +305,10 @@ namespace EWSEditor.Forms
                 AppointmentSchema.TimeZone 
                 );
             }
-
+            oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId) as Appointment;
 
-
+            oAppointment.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             oAppointment.Load(oPropertySet);
 
             return oAppointment;
@@ -1197,8 +1197,8 @@ namespace EWSEditor.Forms
                                 oForm.ShowDialog();
                                 if (oForm.ChoseOK == true)
                                 {
-                                     
-                          
+
+                                    _Appointment.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                                     _Appointment.Update(ConflictResolutionMode.AlwaysOverwrite, oForm.SelectedSendInvitationsOrCancellationsMode);
                                     _WasSaved = true;
                                     _WasSent = true;
@@ -1206,15 +1206,12 @@ namespace EWSEditor.Forms
                                 }
 
                                 oForm = null; 
-                                ////_Appointment.Save(SendInvitationsMode.SendToAllAndSaveCopy);
-                                //_Appointment.Update(ConflictResolutionMode.AutoResolve, SendInvitationsOrCancellationsMode.SendToAllAndSaveCopy);
-                                //_WasSaved = true;
-                                //_WasSent = true;
-                                //bRet = true;
+         
                             }
                             else
                             {
                                //_Appointment.Save();
+                                _Appointment.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                                 _Appointment.Update(ConflictResolutionMode.AutoResolve);
                                 _WasSaved = true;
                                 bRet = true;

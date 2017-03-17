@@ -365,6 +365,7 @@ namespace EWSEditor.Forms
             while (MoreItems)
             {
                 ItemView oView = new ItemView(pageSize, offset, OffsetBasePoint.Beginning);
+                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 FindItemsResults<Item> oFound = CurrentService.FindItems(CurrentFolderId, oView);
 
                 foreach (Item oItem in oFound.Items)

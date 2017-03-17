@@ -102,6 +102,7 @@ namespace EWSEditor.Forms
                         UpdateExtendedProperty(folder.ExtendedProperties);
                     }
 
+                    folder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     folder.Update();
                 }
                 else if (this.CurrentServiceObejct is Item)
@@ -121,12 +122,14 @@ namespace EWSEditor.Forms
                     if (appt != null)
                     {
                         // TODO: Let the user choose these options before calling Update()
+                        appt.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                         appt.Update(ConflictResolutionMode.AutoResolve,
                             SendInvitationsOrCancellationsMode.SendToAllAndSaveCopy);
                     }
                     else
                     {
                         // TODO: Let the user choose these options before calling Update()
+                        item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                         item.Update(ConflictResolutionMode.AutoResolve);
                     }
                     

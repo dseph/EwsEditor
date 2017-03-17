@@ -58,6 +58,7 @@ namespace EWSEditor.Forms
         private void LoadForm()
         { 
             PropertySet oPropertySet = GetPropSet();
+            _ExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Folder oFolder = Folder.Bind(_ExchangeService, _FolderId, oPropertySet);
             string sFrom = EwsExtendedPropertyHelper.GetExtendedProp_Byte_AsString(oFolder, Prop_PR_POLICY_TAG);
 
@@ -85,6 +86,7 @@ namespace EWSEditor.Forms
         private void SaveForm()
         {
             PropertySet oPropertySet = GetPropSet();
+            _ExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Folder oFolder = Folder.Bind(_ExchangeService, _FolderId, oPropertySet);
 
             Guid guidPR_POLICY_TAG = new Guid(txtPR_POLICY_TAG.Text.Trim());  // Guid
@@ -95,6 +97,7 @@ namespace EWSEditor.Forms
             oFolder.SetExtendedProperty(Prop_PR_RETENTION_FLAGS,intPR_RETENTION_FLAGS);
             oFolder.SetExtendedProperty(Prop_PR_RETENTION_PERIOD, intPR_RETENTION_PERIOD);
 
+            oFolder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             oFolder.Update();
 
         }

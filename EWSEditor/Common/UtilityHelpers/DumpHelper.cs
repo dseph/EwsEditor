@@ -63,6 +63,7 @@ namespace EWSEditor.Common
             //mimeSet.Add(AppointmentSchema.Subject);
             //mimeSet.Add(AppointmentSchema.RequiredAttendees);
             //mimeSet.Add(AppointmentSchema.OptionalAttendees);
+            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             ServiceResponseCollection<GetItemResponse> responses = service.BindToItems(itemIds, mimeSet);
 
             DebugLog.WriteVerbose("Finished getting items.");
@@ -108,7 +109,7 @@ namespace EWSEditor.Common
             mimeSet.Add(EmailMessageSchema.MimeContent);
             mimeSet.Add(EmailMessageSchema.Subject);
 
- 
+            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             ServiceResponseCollection<GetItemResponse> responses = service.BindToItems(itemIds, mimeSet);
 
             DebugLog.WriteVerbose("Finished getting items.");
@@ -164,6 +165,8 @@ namespace EWSEditor.Common
 
                 PropertySet oMimePropertySet = new PropertySet(ItemSchema.MimeContent);
                 //Appointment oItem = (Appointment)Item.Bind(service, oItemId, oMimePropertySet);
+
+                service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 Item oItem = Item.Bind(service, oItemId, oMimePropertySet);
                 if (oItem.MimeContent == null)
                     throw new ApplicationException("No MIME content to write");
@@ -195,6 +198,7 @@ namespace EWSEditor.Common
             try 
             {
                 PropertySet oMimePropertySet = new PropertySet(ItemSchema.MimeContent);
+                oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 oItem.Load(oMimePropertySet);
  
                 if (oItem.MimeContent == null)
@@ -284,6 +288,7 @@ namespace EWSEditor.Common
             ExchangeService service)
         {
             DebugLog.WriteVerbose(String.Format("Getting {0} items by ItemId.", itemIds.Count));
+            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             ServiceResponseCollection<GetItemResponse> responses = service.BindToItems(itemIds, propertySet);
             DebugLog.WriteVerbose("Finished getting items.");
 
@@ -441,6 +446,7 @@ namespace EWSEditor.Common
 
                 view.Traversal = traversal;
                 view.PropertySet = new PropertySet(BasePropertySet.IdOnly);
+                source.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 findResults = source.FindItems(view);
 
                 DebugLog.WriteVerbose(String.Concat("FindItems returned {0} items", findResults.Items.Count));

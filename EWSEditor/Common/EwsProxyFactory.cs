@@ -198,6 +198,7 @@ namespace EWSEditor.Exchange
 
             // Instrumentation settings: http://msdn.microsoft.com/en-us/library/office/dn720380(v=exchg.150).aspx
             service.ReturnClientRequestId = true;  // This will give us more data back about the servers used in the response headers
+            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             service.SendClientLatencies = true;  // sends latency info which is used by Microsoft to improve EWS and Exchagne 365.
 
             if (EnableScpLookup.HasValue)

@@ -77,35 +77,7 @@ namespace EWSEditor.Forms
              TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WorkHours (WellKnownFolderName.Calendar)", "WorkHours", ref sError);
 
 
-            //try
-            //{
-            //    Folder RootFolder = Folder.Bind(service, WellKnownFolderName.Root);
-            //    oNode = oParentNode.Nodes.Add("OWA.UserOptions");
-            //    oNode.Tag = null;
-            //    LoadUserConfigIntoTreeViewNode(service, ref oNode, RootFolder.Id, "OWA.UserOptions");
-            //}  
-            //catch (Exception ex)
-            //{
-            //    System.Diagnostics.Debug.WriteLine("Error: " + ex.Message.ToString());
-            //}
-
-            //try
-            //{
-            //    Folder CalendarFolder = Folder.Bind(service, WellKnownFolderName.Calendar);
-            //    oNode = oParentNode.Nodes.Add("WellKnownFolderName.Calendar CategoryList");
-            //    oNode.Tag = null;
-            //    LoadUserConfigIntoTreeViewNodeCategoryList(service, ref oNode, CalendarFolder.Id, "CategoryList");
-            //}
-            //catch (Exception ex)
-            //{
-            //    System.Diagnostics.Debug.WriteLine("Error: " + ex.Message.ToString());
-            //}
-
-            ////Folder CalendarFolderBookInPolicy = Folder.Bind(service, WellKnownFolderName.Calendar);
-            ////oNode = oParentNode.Nodes.Add("WellKnownFolderName.Calendar BookInPolicy");
-            ////oNode.Tag = null;
-            ////LoadUserConfigIntoTreeViewNodeCategoryList(service, ref oNode, CalendarFolderBookInPolicy.Id, "BookInPolicy");
-
+             
             _ParentNode.ExpandAll();
 
             this.Cursor = Cursors.Default;
@@ -124,6 +96,7 @@ namespace EWSEditor.Forms
 
             try
             {
+                oService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 Folder RootFolder = Folder.Bind(oService, oFolderId);
                 oNode = oParentNode.Nodes.Add(sStartingNodeName);
                 oNode.Tag = null;
@@ -142,6 +115,7 @@ namespace EWSEditor.Forms
 
         public void LoadUserConfigIntoTreeViewNode(ExchangeService service, ref TreeNode oNode, string sSettingsName)
         {
+            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Folder Root = Folder.Bind(service, WellKnownFolderName.Root);
             LoadUserConfigIntoTreeViewNode(service, ref  oNode, Root.ParentFolderId, sSettingsName);
         }
@@ -150,6 +124,7 @@ namespace EWSEditor.Forms
         {
             bool bFound = false;
 
+            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             UserConfiguration OWAConfiguration = UserConfiguration.Bind(service,
                 sSettingsName,
                 oFolderId,
@@ -180,7 +155,7 @@ namespace EWSEditor.Forms
         // Note: Accessing hidden folders such as the one for categories is not something which is considered supportable or advised by MS.
         public void LoadUserConfigIntoTreeViewNodeCategoryList(ExchangeService service, ref TreeNode oNode, FolderId oFolderId, string sSettingsName)
         {
-
+            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             UserConfiguration oUserConfiguration = UserConfiguration.Bind(service,
                 sSettingsName,
                 oFolderId,

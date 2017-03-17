@@ -181,18 +181,18 @@ namespace EWSEditor.Forms
 
         private void DisplayFolder(FolderId folderId)
         {
+            _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID  
+            Folder oFolder = Folder.Bind(
+                _CurrentService,
+                folderId,
+                _CurrentDetailPropertySet);
 
-                Folder oFolder = Folder.Bind(
-                    _CurrentService,
-                    folderId,
-                    _CurrentDetailPropertySet);
-
-                FolderContentForm.Show(
-                    string.Format(DisplayStrings.TITLE_CONTENTS_FOLDER, oFolder.DisplayName),
-                    oFolder,
-                    ItemTraversal.Shallow,
-                    _CurrentService,
-                    this);
+            FolderContentForm.Show(
+                string.Format(DisplayStrings.TITLE_CONTENTS_FOLDER, oFolder.DisplayName),
+                oFolder,
+                ItemTraversal.Shallow,
+                _CurrentService,
+                this);
   
            
         }
@@ -241,18 +241,15 @@ namespace EWSEditor.Forms
                         if (this.chkDisplayName.Checked == true)
                             AddCondition(ref searchFilterCollection, FolderSchema.DisplayName, this.txtDisplayName.Text, cmboDisplayNameConditional.Text);
 
-                        //SearchFilter searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
-
-                        //oFindFoldersResults = _CurrentService.FindFolders(oFolderId, searchFilter, oFolderView);
+ 
 
                         SearchFilter searchFilter = null;
                         if (searchFilterCollection.Count == 0)
                         {
-                            //searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
-                            //oFindFoldersResults = _CurrentService.FindFolders(oFolderId, searchFilter, oFolderView);
  
                             try
                             {
+                                _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                                 oFindFoldersResults = _CurrentService.FindFolders(oFolderId, oFolderView);
                             }
                             catch (Exception ex)
@@ -268,9 +265,10 @@ namespace EWSEditor.Forms
                             if (cmboLogicalOperation.Text == "Or")
                                 searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
 
-                            //oFindFoldersResults = _CurrentService.FindFolders(oFolderId, searchFilter, oFolderView);
+                            
                             try
                             {
+                                _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                                 oFindFoldersResults = _CurrentService.FindFolders(oFolderId, searchFilter, oFolderView);
                             }
                             catch (Exception ex)
@@ -384,6 +382,7 @@ namespace EWSEditor.Forms
  
                             try
                             {
+                                _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                                 oFindFoldersResults = _CurrentService.FindFolders(oFolderId, oFolderView);
                             }
                             catch (Exception ex)
@@ -401,6 +400,7 @@ namespace EWSEditor.Forms
  
                             try
                             {
+                                _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                                 oFindFoldersResults = _CurrentService.FindFolders(oFolderId, searchFilter, oFolderView);
                             }
                             catch (Exception ex)

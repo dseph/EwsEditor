@@ -346,6 +346,7 @@ namespace EWSEditor.Forms
             {
                 try
                 {
+                    _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
 
                 }
@@ -385,6 +386,7 @@ namespace EWSEditor.Forms
                 {
                     try
                     {
+                        _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                         oFindItemsResults = _CurrentService.FindItems(oFolderId, oItemView);
                     }
                     catch (Exception ex)
@@ -397,7 +399,7 @@ namespace EWSEditor.Forms
                 else
                 {
                     searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.And, searchFilterCollection.ToArray());
- 
+                    _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
                 }
 
@@ -746,6 +748,7 @@ namespace EWSEditor.Forms
                     {
                         FileAttachment fileAttachment = oAttachment as FileAttachment;
                         // Load the file attachment into memory and print out its file name.
+                        oMeetingMessage.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                         fileAttachment.Load();
   
 

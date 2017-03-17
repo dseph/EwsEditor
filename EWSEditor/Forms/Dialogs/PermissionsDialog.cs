@@ -48,6 +48,7 @@
                 // Get the Folder with just the Id and Permissions properties
                 PropertySet propSet = new PropertySet(BasePropertySet.IdOnly);
                 propSet.Add(FolderSchema.Permissions);
+                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 this.CurrentFolder = Folder.Bind(CurrentService, CurrentFolderId, propSet);
 
                 this.permissionLevelCombo.TransformComboBox(this.TempPermissionLevelCombo);
@@ -187,6 +188,7 @@
                 }
 
                 // Commit changes.
+                this.CurrentFolder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 this.CurrentFolder.Update();
             }
             finally

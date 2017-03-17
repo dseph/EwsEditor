@@ -201,6 +201,7 @@ namespace EWSEditor.Forms
             bRet = LoadItem(_service, _itemId, out oItem);
 
             // Want more properties?
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             oItem.Load(new PropertySet(BasePropertySet.FirstClassProperties, ItemSchema.MimeContent, ItemSchema.Attachments));
 
             //// Load the item for _itemId

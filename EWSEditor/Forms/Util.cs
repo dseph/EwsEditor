@@ -89,6 +89,7 @@ namespace EWSEditor.Forms
             {
                 try
                 {
+                    service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                     item = Item.Bind(service, id, propSet);
                     return item;
                 }
@@ -137,6 +138,7 @@ namespace EWSEditor.Forms
             {
                 try
                 {
+                    obj.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                     obj.Load(propSet);
                     retry = false;
                 }

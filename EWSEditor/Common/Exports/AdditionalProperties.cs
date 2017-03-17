@@ -589,6 +589,7 @@ namespace EWSEditor.Common.Exports
             //             Console.Write("");
             //}
 
+            oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Item oItem = Item.Bind(oExchangeService, oItemId, oExtendedPropSet);
 
             string sItemLine = string.Empty;

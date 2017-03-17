@@ -117,7 +117,8 @@ namespace EWSEditor.Forms
             // Be sure to select the type of body to retrieve.
             oPropertySet.RequestedBodyType = BodyType.HTML;     // Choose the HTML body.
             //oPropertySet.RequestedBodyType = BodyType.Text;   // Choose the Text body.
-    
+
+            CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Task oTask = Task.Bind(CurrentService, oItemId, oPropertySet);
             
             //// Versions of bodies which can be retrieved as of 4/2016
@@ -237,6 +238,7 @@ namespace EWSEditor.Forms
                     SetTaskFromForm(ref _Task);
                     if (_IsExistingTask == true)
                     {
+                        _Task.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                         _Task.Update(ConflictResolutionMode.AlwaysOverwrite);
                     }
                     else

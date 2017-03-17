@@ -235,9 +235,10 @@ namespace EWSEditor.Forms
 //                new ExtendedPropertyDefinition(oGuid, 0x03, MapiPropertyType.Binary);
 //            oPropertySet.Add(oExtendedPropertyDefinition);
 //// TO: Test - End
-
+            _ExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             Appointment oAppointment = Appointment.Bind(_ExchangeService, oItemId) as Appointment;
-             oAppointment.Load(oPropertySet);
+            oAppointment.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
+            oAppointment.Load(oPropertySet);
 //// TO: Test - Start
 //            object value = null;
 //            oAppointment.TryGetProperty(oExtendedPropertyDefinition, out value);
@@ -551,6 +552,7 @@ namespace EWSEditor.Forms
                 {
                     try
                     {
+                        _Appointment.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                         _Appointment.Update(ConflictResolutionMode.AutoResolve);
                         bRet = true;
                     }
@@ -567,6 +569,7 @@ namespace EWSEditor.Forms
                         oForm.ShowDialog();
                         if (oForm.ChoseOK == true)
                         {
+                            _Appointment.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                             _Appointment.Update(ConflictResolutionMode.AutoResolve, oForm.SelectedSendInvitationsOrCancellationsMode);
                             bRet = true;
                         }

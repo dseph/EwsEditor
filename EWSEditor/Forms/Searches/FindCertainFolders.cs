@@ -138,6 +138,7 @@ namespace EWSEditor.Forms.Searches
 
                SearchFilter searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
 
+               oService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                FindFoldersResults oFindFoldersResults = oService.FindFolders(WellKnownFolderName.MsgFolderRoot, searchFilter, view);
  
                

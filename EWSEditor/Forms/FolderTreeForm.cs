@@ -1068,6 +1068,7 @@ namespace EWSEditor.Forms
             if (ExtendedPropertyDialog.ShowDialog(ref propDef) == DialogResult.OK)
             {
                 folder.SetExtendedProperty(propDef, "Blah");
+                folder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 folder.Update();
             }
         }
@@ -1333,13 +1334,13 @@ namespace EWSEditor.Forms
 
                         folder.Save(parentFolder.Id);
  
-                        //// Load the current PropertySet for this new folder
-                        //folder.Load(this.CurrentDetailPropertySet);  // not working if folder class is set
-                        //TreeNode newNode = this.AddFolderToTreeView(folder, this.FolderTreeView.SelectedNode);
-                        //this.FolderTreeView.SelectedNode = newNode;
+    
 
+                        CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                         Folder folder2 = Folder.Bind(this.CurrentService, folder.Id);
+                        CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                         folder2.Load(this.CurrentDetailPropertySet);
+                        CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                         TreeNode newNode = this.AddFolderToTreeView(folder2, this.FolderTreeView.SelectedNode);
                         this.FolderTreeView.SelectedNode = newNode;
 
@@ -1380,14 +1381,17 @@ namespace EWSEditor.Forms
                         // Delete the folder in the manner selected in the context menu
                         if (item.Name == this.DeleteHardMenu.Name)
                         {
+                            folder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                             folder.Delete(DeleteMode.HardDelete);
                         }
                         else if (item.Name == this.DeleteSoftMenu.Name)
                         {
+                            folder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                             folder.Delete(DeleteMode.SoftDelete);
                         }
                         else if (item.Name == this.DeleteMoveMenu.Name)
                         {
+                            folder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                             folder.Delete(DeleteMode.MoveToDeletedItems);
                         }
 
@@ -1448,27 +1452,7 @@ namespace EWSEditor.Forms
                 }
             }
 
-            //FolderId targetFolderId = null;
-            //if (FolderIdDialog.ShowDialog(ref targetFolderId) == DialogResult.OK)
-            //{
-            //    try
-            //    {
-            //        this.Cursor = Cursors.WaitCursor;
-
-            //        folder.Move(targetFolderId);
-
-            //        // Remove moved node from tree view
-            //        TreeNode movedNode = this.FolderTreeView.SelectedNode;
-            //        this.FolderTreeView.SelectedNode = movedNode.Parent;
-            //        movedNode.Remove();
-
-            //        this.BindSelectedNode();
-            //    }
-            //    finally
-            //    {
-            //        this.Cursor = Cursors.Default;
-            //    }
-            //}
+            
         }
 
         /// <summary>
@@ -1618,6 +1602,7 @@ namespace EWSEditor.Forms
 
         private TreeNode AddRootFolderToTreeView(ExchangeService service, EWSEditor.Common.EwsEditorAppSettings oAppSettings,  FolderId folderId, TreeNode parent)
         {
+            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Folder folder = Folder.Bind(
                 service,
                 folderId,
@@ -1818,11 +1803,7 @@ namespace EWSEditor.Forms
                 SetServiceLabel(this.CurrentAppSettings);
             }
 
-            //else if (FolderTreeView.SelectedNode.Tag is ExchangeService)
-            //{
-            //    this.CurrentService = FolderTreeView.SelectedNode.Tag as ExchangeService;
-            //    this.FolderPropertyDetailsGrid.LoadObject(this.CurrentService);
-            //}
+ 
         }
 
         #endregion
@@ -1937,6 +1918,7 @@ namespace EWSEditor.Forms
             while (!finished)
             {
                 FolderView view = new FolderView(viewSize, subFolders.Count);
+                parentFolder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.   
                 FindFoldersResults results = parentFolder.FindFolders(view);
                 subFolders.AddRange(results.Folders);
                 finished = !results.MoreAvailable;
