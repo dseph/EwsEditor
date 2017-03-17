@@ -134,6 +134,7 @@ namespace EWSEditor.Forms
             ServiceResponseCollection<ServiceResponse> oServiceResponse = null;
             try
             {
+                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 oServiceResponse = CurrentService.LoadPropertiesForItems(oItemList, CurrentPropertySet);
             }
             catch (ServiceObjectPropertyException oServiceObjectPropertyException)

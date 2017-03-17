@@ -214,7 +214,7 @@ namespace EWSEditor
             {
                 oSB.AppendLine("");
                 oSB.AppendFormat("[Calling LoadPropertiesForItems]-------------------------\r\n");
-
+                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 oServiceResponse = CurrentService.LoadPropertiesForItems(oItemList, oPropertySet);
             }
             catch (ServiceObjectPropertyException oServiceObjectPropertyException)
