@@ -75,6 +75,7 @@ namespace EWSEditor.Forms
 
             ItemView view = new ItemView(20);
             view.PropertySet = new PropertySet(BasePropertySet.IdOnly, AppointmentSchema.Subject, AppointmentSchema.Start, AppointmentSchema.AppointmentType);
+            _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             FindItemsResults<Item> findResults = _CurrentService.FindItems(WellKnownFolderName.Calendar, searchFilter, view);
 
             foreach (Item item in findResults.Items)

@@ -135,6 +135,10 @@
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.Management.Automation.dll.10.0.10586.0\lib\net40\System.Management.Automation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
@@ -548,6 +552,12 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="RemotePowerShell\PowerShellForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemotePowerShell\PowerShellForm.Designer.cs">
+      <DependentUpon>PowerShellForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\TemplateEwsRequests.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1230,6 +1240,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="RemotePowerShell\PowerShellForm.resx">
+      <DependentUpon>PowerShellForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\DisplayStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DisplayStrings.Designer.cs</LastGenOutput>
@@ -1363,7 +1376,9 @@
     <Content Include="EwsPostExamples\CreateFolder - SearchFolder- Complex.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="EwsPostExamples\CreateFolder.xml" />
+    <Content Include="EwsPostExamples\CreateFolder.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="EwsPostExamples\CreateFolderPath.xml" />
     <Content Include="EwsPostExamples\CreateItem - AcceptSharingInvitation.xml" />
     <Content Include="EwsPostExamples\CreateItem - calendar item.xml">

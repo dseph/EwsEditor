@@ -129,10 +129,12 @@ namespace EWSEditor.Common.Exports
             List<ExtendedPropertyDefinition> oExtendedPropertyDefinitions,
             bool bIncludeBody, 
             bool bIncludeMime)
-        {
+        {        
             string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
             PropertySet oPropertySet = null;
+
             oPropertySet = GetMeetingMessageDataPropset(ServerVersion, bIncludeBody, bIncludeMime, oExtendedPropertyDefinitions);
+            oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             MeetingMessage oMeetingMessage = MeetingMessage.Bind(oExchangeService, oItemId, oPropertySet);
             MeetingMessageData oMeetingMessageData = new MeetingMessageData();
 
@@ -141,7 +143,7 @@ namespace EWSEditor.Common.Exports
                 ref oMeetingMessageData,  
                 oAdditionalPropertyDefinitions, 
                 oExtendedPropertyDefinitions);
-          
+ 
             return oMeetingMessageData;
  
         }

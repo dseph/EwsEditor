@@ -141,7 +141,7 @@ namespace EWSEditor.Forms
             //mExtendedPropertyPostalAddressId = new ExtendedPropertyDefinition(myGuidPostalAddressId, myPropertyIdPostalAddressId, MapiPropertyType.Integer);
             
             //oPropertySet.Add();
-
+            CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Contact oContact = Contact.Bind(CurrentService, oItemId, oPropertySet);
              
  
@@ -625,6 +625,7 @@ namespace EWSEditor.Forms
                     SetContactFromForm(ref _Contact);
                     if (_IsExistingContact == true)
                     {
+                        _Contact.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                         _Contact.Update(ConflictResolutionMode.AlwaysOverwrite); 
                     }
                     else

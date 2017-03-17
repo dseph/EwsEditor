@@ -335,7 +335,7 @@ namespace EWSEditor.Forms
                         {
                             try
                             {
-
+                                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                                 oSomeItem = Item.Bind(CurrentService, new ItemId(oItemEvent.ItemId.UniqueId));
 
                                 if (oSomeItem != null)
@@ -354,7 +354,7 @@ namespace EWSEditor.Forms
                         {
                             try
                             {
-
+                                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                                 oSomeItem = Item.Bind(CurrentService, new ItemId(oItemEvent.OldItemId.UniqueId));
 
                                 if (oSomeItem != null)
@@ -373,6 +373,7 @@ namespace EWSEditor.Forms
                         {
                             try
                             {
+                                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                                 oFolder = Folder.Bind(CurrentService, new FolderId(oItemEvent.ParentFolderId.UniqueId));
                                 if (oFolder  != null)
                                 {
@@ -389,6 +390,7 @@ namespace EWSEditor.Forms
                         {
                             try
                             {
+                                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                                 oFolder  = Folder.Bind(CurrentService, new FolderId(oItemEvent.OldParentFolderId.UniqueId));
                                 if (oFolder  != null)
                                 {
@@ -477,7 +479,7 @@ namespace EWSEditor.Forms
                         {
                             try
                             {
-
+                                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                                 oFolder = Folder.Bind(CurrentService, new FolderId(oFolderEvent.FolderId.UniqueId));
 
                                 if (oFolder != null)
@@ -494,7 +496,7 @@ namespace EWSEditor.Forms
                         {
                             try
                             {
-
+                                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                                 oFolder = Folder.Bind(CurrentService, new FolderId(oFolderEvent.OldFolderId.UniqueId));
 
                                 if (oFolder != null)
@@ -511,6 +513,7 @@ namespace EWSEditor.Forms
                         {
                             try
                             {
+                                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                                 oFolder = Folder.Bind(CurrentService, new FolderId(oFolderEvent.ParentFolderId.UniqueId));
                                 if (oFolder != null)
                                 {
@@ -525,6 +528,7 @@ namespace EWSEditor.Forms
                         {
                             try
                             {
+                                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                                 oFolder = Folder.Bind(CurrentService, new FolderId(oFolderEvent.OldParentFolderId.UniqueId));
                                 if (oFolder != null)
                                 {

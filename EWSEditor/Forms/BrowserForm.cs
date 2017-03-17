@@ -504,7 +504,8 @@
             if (oForm.ChoseOK == true && oForm.ChosenFolderId != null)
             {
                 //oForm.ChosenFolderId 
- 
+                this.CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
+
                 Folder folder = Folder.Bind(
                     this.CurrentService,
                     oForm.ChosenFolderId,

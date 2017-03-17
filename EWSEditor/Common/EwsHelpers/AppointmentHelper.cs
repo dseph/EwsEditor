@@ -17,6 +17,7 @@ namespace EWSEditor.Common
             ItemId oItem = new ItemId(sId);
 
             PropertySet appointmentPropertySet = GetAppointmentCalendarPropertySet();
+            oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             Appointment oAppointment = Appointment.Bind(oExchangeService, oItem, appointmentPropertySet);
 
             return (oAppointment);
@@ -25,6 +26,7 @@ namespace EWSEditor.Common
         public static Appointment GetAppointmentDetails(Appointment oAppointment)
         {
             PropertySet appointmentPropertySet = GetAppointmentCalendarPropertySet();
+            oAppointment.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             oAppointment.Load(appointmentPropertySet);
 
             return (oAppointment);
@@ -128,12 +130,14 @@ namespace EWSEditor.Common
             int iAttachmentCount = 0;
             foreach (Attachment oAttachment in oItem.Attachments)
             {
+                oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 oAttachment.Load();
                 if (oAttachment is ItemAttachment)
                 {
                     ItemAttachment oItemAttachment = oAttachment as ItemAttachment;
 
                     // Load attachment into memory so we can get to the item properties (such as subject).
+                    oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                     oItemAttachment.Load();
 
                     oListItem = new ListViewItem(oAttachment.Id, 0);
@@ -185,8 +189,10 @@ namespace EWSEditor.Common
             foreach (Attachment oAttachment in oItem.Attachments)
             {
                 if (oAttachment.Id != null)   // dont reload if attachment was added but message was not saved yet.
+                {
+                    oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                     oAttachment.Load();
-               
+                }
                 // Note: As of EWS 2013_sp1 the schema for attachments is fixed, so we cannot pull extended properties like the ones below
                 //      ExtendedPropertyDefinition PidTagAttachPathname = new ExtendedPropertyDefinition(0x3708, MapiPropertyType.String);
                 //      ExtendedPropertyDefinition PidTagAttachEncoding = new ExtendedPropertyDefinition(0x3702, MapiPropertyType.Binary);

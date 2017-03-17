@@ -45,7 +45,7 @@ namespace EWSEditor.Common
 
             try
             {
-                //FindItemsResults<Item> findResults = this._ExchangeService.FindItems(oFolderTag.Id, searchFilter, view);
+                oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 FindItemsResults<Item> findResults = oExchangeService.FindItems(oFolderTag.Id, view);
                 ListViewItem oListItem = null;
                 foreach (Item item in findResults.Items)
@@ -208,10 +208,12 @@ namespace EWSEditor.Common
             ItemView oView = new ItemView(9999);
             try
             {
+                oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 Folder folder = Folder.Bind(oExchangeService, oFolder);  
                 //Folder folder = GetFolderBinding(oFolder);
                 try
                 {
+                    folder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     FindItemsResults<Item> oResults = folder.FindItems(oView);
 
 
@@ -267,7 +269,9 @@ namespace EWSEditor.Common
             oFolder = oFolderTag.Id;
 
             ItemView oView = new ItemView(9999);
+            oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             Folder folder = Folder.Bind(oExchangeService, oFolder);
+            folder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             FindItemsResults<Microsoft.Exchange.WebServices.Data.Item> oResults = folder.FindItems(oView);
 
             ListViewItem oListItem = null;
@@ -341,9 +345,10 @@ namespace EWSEditor.Common
 
 
             ItemView oView = new ItemView(9999);
+            oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             Folder folder = Folder.Bind(oExchangeService, oFolder, oPropSet);
 
-
+            folder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             FindItemsResults<Microsoft.Exchange.WebServices.Data.Item> oResults = folder.FindItems(oView);
 
             ListViewItem oListItem = null;

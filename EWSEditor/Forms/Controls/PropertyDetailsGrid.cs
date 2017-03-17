@@ -40,6 +40,7 @@ namespace EWSEditor.Forms.Controls
             {
                 try
                 {
+                    service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                     item = Item.Bind(service, itemId, propertySet);
                     retry = false;
                     this.CurrentObject = item;
@@ -274,6 +275,7 @@ namespace EWSEditor.Forms.Controls
                 if (item != null)
                 {
                     item.RemoveExtendedProperty(exPropDef);
+                    item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     item.Update(ConflictResolutionMode.AutoResolve);
                 }
                 else
@@ -282,6 +284,7 @@ namespace EWSEditor.Forms.Controls
                     if (folder != null) { return; }
 
                     folder.RemoveExtendedProperty(exPropDef);
+                    folder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     folder.Update();
                 }
             }

@@ -295,7 +295,7 @@ namespace EWSEditor.Forms
             {   
                 try 
                 {
-
+                    oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     oFindFoldersResults = oExchangeService.FindFolders(oParentFolder, oFolderView);
                     moreItems = oFindFoldersResults.MoreAvailable;
  

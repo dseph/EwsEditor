@@ -274,7 +274,8 @@ namespace EWSEditor.Forms
                     if (this.rdoAqsSearch.Checked == true)
                     {
                         try
-                        { 
+                        {
+                            _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.   
                             oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
                         }   
                         catch (Exception ex)
@@ -322,6 +323,7 @@ namespace EWSEditor.Forms
                         {
                             try
                             {
+                                _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.   
                                 oFindItemsResults = _CurrentService.FindItems(oFolderId, oItemView);
                             }
                             catch (Exception ex)
@@ -337,7 +339,8 @@ namespace EWSEditor.Forms
                                 searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.And, searchFilterCollection.ToArray());
                             if (cmboLogicalOperation.Text == "Or")
                                 searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
- 
+
+                            _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.   
                             oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
                         }
 
@@ -520,7 +523,8 @@ namespace EWSEditor.Forms
                         if (this.rdoAqsSearch.Checked == true)
                         {
                             try
-                            { 
+                            {
+                                _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.   
                                 oFindItemsResults = _CurrentService.FindItems(oFolderId, this.txtAQS.Text, oItemView);
                             }
                             catch(Exception ex)
@@ -554,6 +558,7 @@ namespace EWSEditor.Forms
                             {
                                 try
                                 {
+                                    _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.   
                                     oFindItemsResults = _CurrentService.FindItems(oFolderId, oItemView);
                                 }
                                 catch(Exception ex)
@@ -571,8 +576,9 @@ namespace EWSEditor.Forms
                                     searchFilter = new SearchFilter.SearchFilterCollection(LogicalOperator.Or, searchFilterCollection.ToArray());
 
                                 try
-                                { 
-                                 oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
+                                {
+                                    _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.   
+                                    oFindItemsResults = _CurrentService.FindItems(oFolderId, searchFilter, oItemView);
                                 }
                                 catch(Exception ex)
                                 {
@@ -1080,6 +1086,7 @@ namespace EWSEditor.Forms
                         if (iCountItems % 10 == 0)
                         {
                             toolStripStatusLabel1.Text = string.Format("Moved: {0}", iCountItems);
+                            this._CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                             this.Update();
                         }
                          
@@ -1224,6 +1231,8 @@ namespace EWSEditor.Forms
 
         private void mnuDeleteItems_Click(object sender, EventArgs e)
         {
+            
+            _CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             this.DeleteItem(DeleteMode.HardDelete);
         }
 
@@ -1264,11 +1273,13 @@ namespace EWSEditor.Forms
 
         private void mnuSoftDelete_Click(object sender, EventArgs e)
         {
+            //this.CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             //this.DeleteItem(DeleteMode.SoftDelete);
         }
 
         private void mnuMoveToDeletedItems_Click(object sender, EventArgs e)
         {
+            //this.CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             //this.DeleteItem(DeleteMode.MoveToDeletedItems);
         }
 

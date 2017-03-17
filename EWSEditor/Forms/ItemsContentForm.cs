@@ -456,7 +456,9 @@ namespace EWSEditor.Forms
 
         protected override void LoadContents()
         {
+             
             // Make one call to get all the items.
+            CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             ServiceResponseCollection<GetItemResponse> getItems = this.CurrentService.BindToItems(
                 this.currentItemIds.ToArray(), 
                 this.contentItemView.PropertySet);
@@ -727,9 +729,10 @@ namespace EWSEditor.Forms
                     {
                         return;
                     }
-
+                    CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                     Item item = Item.Bind(this.CurrentService, id, this.CurrentDetailPropertySet);
                     item.Attachments.AddFileAttachment(ofd.FileName);
+                    item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     item.Update(ConflictResolutionMode.AutoResolve);
 
                     // Refresh the view
@@ -758,10 +761,11 @@ namespace EWSEditor.Forms
                     {
                         return;
                     }
-
+                    CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                     Item item = Item.Bind(this.CurrentService, id, this.CurrentDetailPropertySet);
                     ItemAttachment<Item> itemAttach = item.Attachments.AddItemAttachment<Item>();
- 
+
+                    item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     item.Update(ConflictResolutionMode.AutoResolve);
           
 
@@ -791,7 +795,7 @@ namespace EWSEditor.Forms
                 {
                     return;
                 }
-
+                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 Item item = Item.Bind(this.CurrentService, id, this.CurrentDetailPropertySet);
                 if (item.Attachments.Count == 0)
                 {
@@ -944,16 +948,20 @@ namespace EWSEditor.Forms
 
         private void MnuHardDelete_Click(object sender, EventArgs e)
         {
+            this.CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             this.DeleteItem(DeleteMode.HardDelete);
         }
 
         private void MnuSoftDelete_Click(object sender, EventArgs e)
         {
+
+            this.CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             this.DeleteItem(DeleteMode.SoftDelete);
         }
 
         private void MnuMoveToDeleted_Click(object sender, EventArgs e)
         {
+            this.CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             this.DeleteItem(DeleteMode.MoveToDeletedItems);
         }
 
@@ -975,8 +983,10 @@ namespace EWSEditor.Forms
                 }
 
                 List<ItemId> item = new List<ItemId>();
+                ///item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 item.Add(id);
 
+                this.CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 this.CurrentService.DeleteItems(
                     item,
                     mode,
@@ -1132,7 +1142,7 @@ namespace EWSEditor.Forms
                 {
                     return;
                 }
-
+                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 Item item = Item.Bind(this.CurrentService, id, new PropertySet(BasePropertySet.FirstClassProperties));
 
                 MeetingRequest meeting;
@@ -1238,6 +1248,7 @@ namespace EWSEditor.Forms
         private void EditCurrentItemByType()
         {
             ItemId id = GetSelectedContentId();
+            CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Item oItem = Item.Bind(CurrentService, id);
             string sClass = string.Empty;
             sClass = GetBaseClass(oItem.ItemClass);
@@ -1261,6 +1272,7 @@ namespace EWSEditor.Forms
                         break;
 
                     case "IPM.Contact":
+                        CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                         Contact oContact = Contact.Bind(CurrentService, oItem.Id);
                         ContactsForm oContactsForm = new ContactsForm(CurrentService, ref oContact);
                         oContactsForm.ShowDialog();
@@ -1463,6 +1475,7 @@ namespace EWSEditor.Forms
         private void HandleItemMenuOpening()
         {
             ItemId id = GetSelectedContentId();
+            CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Item oItem = Item.Bind(CurrentService, id);
             string sClass = string.Empty;
             sClass = GetBaseClass(oItem.ItemClass);
@@ -1560,12 +1573,15 @@ namespace EWSEditor.Forms
             string owaReadFormQueryString = string.Empty;
             var ewsIdentifer = oItemId.UniqueId;
  
-            string sClass = string.Empty; 
+            string sClass = string.Empty;
+            CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Item oSomeItem = Item.Bind(service, oItemId);
             sClass =  GetBaseClass(oSomeItem.ItemClass);  // need to get class id.
             oSomeItem = null;
 
+            CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Item oWorkItem = Item.Bind(service, oItemId);
+            oWorkItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             oWorkItem.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientReadFormQueryString));
             sWebClientReadFormQueryString = oWorkItem.WebClientReadFormQueryString;
             oWorkItem = null;
@@ -1640,18 +1656,23 @@ namespace EWSEditor.Forms
             try
             {
                 string sWebClientEditFormQueryString = string.Empty;
-
+                service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 Item oItem = Item.Bind(service, oItemId);
+                oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 oItem.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientEditFormQueryString));
                 owaEditFormQueryString = oItem.WebClientEditFormQueryString;
 
 
                 string sClass = string.Empty;
+                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 Item oSomeItem = Item.Bind(service, oItemId);
                 sClass = GetBaseClass(oSomeItem.ItemClass);  // need to get class id.
                 oSomeItem = null;
 
+                CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
+                service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 Item oWorkItem = Item.Bind(service, oItemId);
+                oWorkItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 oWorkItem.Load(new PropertySet(BasePropertySet.IdOnly, ItemSchema.WebClientEditFormQueryString));
                 sWebClientEditFormQueryString = oWorkItem.WebClientEditFormQueryString;
                 oWorkItem = null;

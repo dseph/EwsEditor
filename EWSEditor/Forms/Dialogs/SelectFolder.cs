@@ -68,6 +68,7 @@ namespace EWSEditor.Forms.Dialogs
 
             try
             {
+                oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 oUseFolder = Folder.Bind(
                     oExchangeService,
                     StartingFolderId,
@@ -144,10 +145,11 @@ namespace EWSEditor.Forms.Dialogs
             try
             {
                 FolderView oView = new FolderView(9999);
-                
 
+                oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 Folder folder = Folder.Bind(oExchangeService, oFolder);
                 FindFoldersResults oResults = null;
+                folder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 oResults = folder.FindFolders(oView);
                 TreeNode xNode = null;
                 foreach (Folder o in oResults)

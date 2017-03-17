@@ -165,6 +165,7 @@ namespace EWSEditor.Forms
                 try
                 {
                     this.Cursor = Cursors.WaitCursor;
+                    this.currentFolder.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.   
                     findResults = this.currentFolder.FindItems(this.ContentItemView);
                 }
                 finally

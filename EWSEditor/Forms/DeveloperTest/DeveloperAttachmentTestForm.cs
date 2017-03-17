@@ -100,6 +100,7 @@ namespace EWSEditor.Forms
             oPropertySet.Add(EmailMessageSchema.StoreEntryId);
             oPropertySet.Add(EmailMessageSchema.Size);
 
+            oService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             ServiceResponseCollection<GetItemResponse> oGetItemResponses = oService.BindToItems(oItems, oPropertySet);
 
 
@@ -165,9 +166,11 @@ namespace EWSEditor.Forms
             Item oItem = null;
 
             //  Load item properties...
+            _service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             bRet = LoadItem(this._service, this._itemId, out oItem);
             
             // Want more properties?
+            oItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             oItem.Load(new PropertySet(BasePropertySet.FirstClassProperties, ItemSchema.MimeContent, ItemSchema.Attachments));
  
  

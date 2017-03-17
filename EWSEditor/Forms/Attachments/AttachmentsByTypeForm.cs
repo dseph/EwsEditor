@@ -35,7 +35,7 @@ namespace EWSEditor.Forms
             InitializeComponent();
 
             _CurrentService = CurrentService;  // oEwsCaller contains the ExchangeService object, plus some wraps some additonal common calls.
-             
+            CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID  
             _Item = Item.Bind(CurrentService, oItemId);
  
             //_Item = Item.Bind(oEwsCaller.ExchService, new ItemId(oItemId.UniqueId),new PropertySet(BasePropertySet.FirstClassProperties, ItemSchema.Attachments));
@@ -80,6 +80,7 @@ namespace EWSEditor.Forms
                 if (oAttachment is FileAttachment)
                 {
                     FileAttachment oAttach = oAttachment as FileAttachment;
+                    _Item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                     oAttachment.Load();
 
                     // For Exchange 2010, check for Inline attachments using:
@@ -147,6 +148,7 @@ namespace EWSEditor.Forms
             int iAttachmentCount = 0;
             foreach (Attachment oAttachment in _Item.Attachments)
             {
+                _Item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 oAttachment.Load(); 
 
                 if (oAttachment is FileAttachment)
@@ -211,12 +213,14 @@ namespace EWSEditor.Forms
             int iAttachmentCount = 0;
             foreach (Attachment oAttachment in _Item.Attachments)
             {
+                _Item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 oAttachment.Load(); 
                 if (oAttachment is ItemAttachment)
                 {
                     ItemAttachment oItemAttachment = oAttachment as ItemAttachment;
 
                     // Load attachment into memory so we can get to the item properties (such as subject).
+                    _Item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                     oItemAttachment.Load();
  
                     oListItem = new ListViewItem(oAttachment.Id, 0);
@@ -268,6 +272,7 @@ namespace EWSEditor.Forms
                     FileAttachment oFileAttachment = (FileAttachment)_Item.Attachments[iAttachment];
                     if (UserIoHelper.PickSaveFileToFolder(oFileAttachment.Name, ref SelectedFile))
                     {
+                        _Item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                         oFileAttachment.Load((SelectedFile));
                     }
                 }
@@ -286,6 +291,7 @@ namespace EWSEditor.Forms
                     FileAttachment oFileAttachment = (FileAttachment)_Item.Attachments[iAttachment];
                     if (UserIoHelper.PickSaveFileToFolder(oFileAttachment.Name, ref SelectedFile))
                     {
+                        _Item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                         oFileAttachment.Load((SelectedFile));
                     }
                 }
@@ -307,6 +313,7 @@ namespace EWSEditor.Forms
                     FileAttachment oFileAttachment = (FileAttachment)_Item.Attachments[iAttachment];
                     if (UserIoHelper.PickSaveFileToFolder(oFileAttachment.Name, ref SelectedFile))
                     {
+                        _Item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                         oFileAttachment.Load((SelectedFile));
                     }
                 }

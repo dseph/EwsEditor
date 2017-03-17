@@ -498,14 +498,18 @@ namespace EWSEditor.Forms
  
                 if (SetMessageFromForm(ref _EmailMessage))
                 {
-                    
+
                     if (_IsExistingEmail == false)
                     {
+                        _EmailMessage.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                         _EmailMessage.Save(WellKnownFolderName.Drafts);
-   
+
                     }
                     else
+                    {
+                        _EmailMessage.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                         _EmailMessage.Update(ConflictResolutionMode.AutoResolve);
+                    }
                 }
                 bRet = true;
             }
@@ -574,7 +578,9 @@ namespace EWSEditor.Forms
                 //oResponseMessage.BodyPrefix = "===========\r\n";
                
                 // Save as drafts AND set as new current message.
+                _EmailMessage.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 _EmailMessage = oResponseMessage.Save(WellKnownFolderName.Drafts);
+                _EmailMessage.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 _EmailMessage.Load();
 
                 SetFormFromMessage(_EmailMessage, true, true, false);

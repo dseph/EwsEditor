@@ -132,6 +132,7 @@ namespace EWSEditor.Forms // .Calendar
            
             //view.PropertySet = BasicCalProps;
             // Get the appointment items from the server with the properties we specified.
+            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
             FindItemsResults<Item> findResults = service.FindItems(oFolder, view );
 
             TreeNode oParentNode = null;
@@ -155,8 +156,9 @@ namespace EWSEditor.Forms // .Calendar
 
                         try
                         {
- 
+                            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                             Appointment recurrMaster = Appointment.Bind(service, item.Id, BasicCalProps);
+                            recurrMaster.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                             recurrMaster.Load(RecurrCalProps);
 
                             //try  // debug test
@@ -286,7 +288,7 @@ namespace EWSEditor.Forms // .Calendar
             ResetListView();
 
             bool bRet = true;
-
+            service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Appointment calendarItem = Appointment.Bind(service, oItemId, new PropertySet(BasicCalProps)); //new PropertySet(AppointmentSchema.AppointmentType));  
             Appointment recurrMaster = null;
  
@@ -297,7 +299,7 @@ namespace EWSEditor.Forms // .Calendar
             {
                 try
                 {
-                    //recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                    
                     oListItem = new ListViewItem(calendarItem.Id.UniqueId, 0);
                     oListItem.SubItems.Add(calendarItem.ItemClass);
                     oListItem.SubItems.Add(calendarItem.AppointmentType.ToString());
@@ -319,11 +321,14 @@ namespace EWSEditor.Forms // .Calendar
             if (oType == AppointmentType.RecurringMaster)
             {
                 try
-                { 
+                {
+                    service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                     recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                    service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
+                    recurrMaster.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                     recurrMaster.Load(RecurrCalProps);
 
-                    //recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                    
                     oListItem = new ListViewItem(recurrMaster.Id.UniqueId, 0);
                     oListItem.SubItems.Add(recurrMaster.ItemClass);
                     oListItem.SubItems.Add(recurrMaster.AppointmentType.ToString());
@@ -346,8 +351,11 @@ namespace EWSEditor.Forms // .Calendar
             // http://stackoverflow.com/questions/24143970/ews-getting-all-occurences-from-a-master-recurrence-appointment
             if (oType == AppointmentType.Occurrence)
             {
-                //recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                 
+                service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
+                recurrMaster.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
                 recurrMaster.Load(RecurrCalProps);
 
                 try
@@ -365,7 +373,10 @@ namespace EWSEditor.Forms // .Calendar
             if (oType == AppointmentType.Exception)
             {
                 //recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 recurrMaster = Appointment.Bind(service, oItemId, BasicCalProps);
+                service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
+                recurrMaster.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                 recurrMaster.Load(RecurrCalProps);
 
                 try
@@ -415,6 +426,7 @@ namespace EWSEditor.Forms // .Calendar
             {
                 if (appt.AppointmentType == AppointmentType.Occurrence)
                 {
+                    service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                     oAppt = Appointment.Bind(service, appt.Id, BasicCalProps);
                     oListItem = new ListViewItem(oAppt.Id.UniqueId, 0);
                     oListItem.SubItems.Add(oAppt.ItemClass);
@@ -450,6 +462,7 @@ namespace EWSEditor.Forms // .Calendar
             {
                 if (appt.AppointmentType == AppointmentType.Exception)
                 {
+                    service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
                     oAppt = Appointment.Bind(service, appt.Id, BasicCalProps);
                     oListItem = new ListViewItem(oAppt.Id.UniqueId, 0);
                     oListItem.SubItems.Add(oAppt.ItemClass);

@@ -96,7 +96,8 @@ namespace EWSEditor.Forms
             {
                 return;
             }
-
+           
+            this.CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             attach.Load();
             
             this.PropertyDetailsGrid.LoadObject(attach);
@@ -235,8 +236,9 @@ namespace EWSEditor.Forms
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                
+                this.currentParentItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 this.currentParentItem.Attachments.Remove(attach);
+                this.currentParentItem.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                 this.currentParentItem.Update(ConflictResolutionMode.AlwaysOverwrite);
             }
             finally

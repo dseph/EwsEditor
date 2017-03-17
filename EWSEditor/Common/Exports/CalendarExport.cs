@@ -179,9 +179,9 @@ namespace EWSEditor.Common.Exports
             string ServerVersion = oExchangeService.RequestedServerVersion.ToString();
             PropertySet oPropertySet = null;
             oPropertySet = GetCalendarPropset(ServerVersion, bIncludeBody, bIncludeMime, oExtendedPropertyDefinitions);
-            
 
-            //Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId, GetCalendarPropset(ServerVersion, false, false, oAdditionalPropertyDefinitions));
+
+            oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId, oPropertySet);
             AppointmentData oAppointmentData = new AppointmentData();
 
@@ -245,8 +245,9 @@ namespace EWSEditor.Common.Exports
             {
                 MessageBox.Show("Exchange 2010 SP1 or later is requred to use ExportItems to do a blob export of an item.", "Invalid version for blob export using ExportItem");
                     return false;
-            }           
-             
+            }
+
+            oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
             Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId);
 
             // Exchange2010_SP1 is the minimal version
@@ -963,15 +964,11 @@ namespace EWSEditor.Common.Exports
 
               );
 
-            //Appointment appDetailed = Appointment.Bind(service, app.Id, new PropertySet(BasePropertySet.FirstClassProperties) { RequestedBodyType = BodyType.Text });
-
+ 
             if (bIncludeBodies == true)  // 2007 +
             {
                 appointmentPropertySet.Add(AppointmentSchema.Body);
-                //appointmentPropertySet.Add(AppointmentSchema.TextBody);
-    
-                //appointmentPropertySet.Add(AppointmentSchema.NormalizedBody);
-                //appointmentPropertySet.Add(AppointmentSchema.UniqueBody);    
+     
             }
             if (bIncludeMime == true)
                 appointmentPropertySet.Add(AppointmentSchema.MimeContent);
