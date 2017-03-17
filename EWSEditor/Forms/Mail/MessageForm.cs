@@ -560,16 +560,19 @@ namespace EWSEditor.Forms
             {
                 if (oResponseMessageType == ResponseMessageType.Reply)
                 {
+                    _EmailMessage.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     oResponseMessage = _EmailMessage.CreateReply(false);
                     sWindowTitle = "Reply Message";
                 }
                 if (oResponseMessageType == ResponseMessageType.ReplyAll)
                 {
+                    _EmailMessage.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     oResponseMessage = _EmailMessage.CreateReply(true);
                     sWindowTitle = "Reply All Message";
                 }
                 if (oResponseMessageType == ResponseMessageType.Forward)
                 {
+                    _EmailMessage.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
                     oResponseMessage = _EmailMessage.CreateForward();
                     sWindowTitle = "Forward Message";
 

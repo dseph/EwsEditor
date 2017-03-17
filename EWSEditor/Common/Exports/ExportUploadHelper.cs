@@ -24,12 +24,15 @@ namespace EWSEditor.Exchange
             string sResponseText = string.Empty;
             System.Net.HttpWebRequest oHttpWebRequest = null;
             EwsProxyFactory.CreateHttpWebRequest(ref oHttpWebRequest);
+            oHttpWebRequest.Headers.Add("client-request-id", Guid.NewGuid().ToString());
+            oHttpWebRequest.Headers.Add("return-client-request-id: ", "true"); 
 
             // Build request body...
             string EwsRequest = TemplateEwsRequests.ExportItems;
             EwsRequest = EwsRequest.Replace("##RequestServerVersion##", ServerVersion);
             EwsRequest = EwsRequest.Replace("##ItemId##", sItemId);
-       
+ 
+
             try
             {
  
@@ -127,6 +130,8 @@ namespace EWSEditor.Exchange
             string sResponseText = string.Empty;
             System.Net.HttpWebRequest oHttpWebRequest = null;
             EwsProxyFactory.CreateHttpWebRequest(ref oHttpWebRequest);
+            oHttpWebRequest.Headers.Add("client-request-id", Guid.NewGuid().ToString());
+            oHttpWebRequest.Headers.Add("return-client-request-id: ", "true"); 
 
             string EwsRequest = string.Empty;
 
