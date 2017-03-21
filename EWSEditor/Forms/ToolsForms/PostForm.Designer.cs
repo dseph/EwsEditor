@@ -553,7 +553,7 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPage4.Size = new System.Drawing.Size(1338, 142);
+            this.tabPage4.Size = new System.Drawing.Size(1256, 115);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Resposne XML (Read Only)";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -756,6 +756,7 @@
             this.rdoDontOverrideProxySettings.TabStop = true;
             this.rdoDontOverrideProxySettings.Text = "Don\'t Override Proxy";
             this.rdoDontOverrideProxySettings.UseVisualStyleBackColor = true;
+            this.rdoDontOverrideProxySettings.CheckedChanged += new System.EventHandler(this.rdoDontOverrideProxySettings_CheckedChanged);
             // 
             // txtProxyServerPort
             // 
@@ -783,6 +784,7 @@
             this.txtProxyServerName.Size = new System.Drawing.Size(106, 22);
             this.txtProxyServerName.TabIndex = 3;
             this.txtProxyServerName.Text = "127.0.0.1";
+            this.txtProxyServerName.TextChanged += new System.EventHandler(this.txtProxyServerName_TextChanged);
             // 
             // lblProxyServer
             // 
