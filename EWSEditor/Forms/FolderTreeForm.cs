@@ -1103,10 +1103,11 @@ namespace EWSEditor.Forms
 
                 FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
                 oForm.ShowDialog();
+
                 if (oForm.ChoseOK == true)
                 {
                     //oForm.ChosenFolderId 
-
+                     
                       this.AddRootFolderToTreeView(oForm.ChosenFolderId, FolderTreeView.SelectedNode);
                 }
 

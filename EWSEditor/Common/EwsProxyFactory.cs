@@ -58,8 +58,11 @@ namespace EWSEditor.Exchange
         public static string ImpersonationType  = string.Empty;
         public static string ImpersonatedId  = string.Empty;
 
-        public static bool?  SetXAnchorMailbox = null;
+        public static bool? SetXAnchorMailbox = null;
+        public static bool? SetXPublicFolderMailbox = null;
+
         public static string XAnchorMailbox;
+        public static string XPublicFolderMailbox;
 
         public static string UserAgent;
 
@@ -280,10 +283,15 @@ namespace EWSEditor.Exchange
                 // Set headers which help with affinity when Impersonation is being used against Exchange 2013 and Exchagne Online 15.
                 // http://blogs.msdn.com/b/mstehle/archive/2013/07/17/more-affinity-considerations-for-exchange-online-and-exchange-2013.aspx
  
-                if (SetXAnchorMailbox == true)
-                {
-                    service.HttpHeaders.Add("X-AnchorMailbox", XAnchorMailbox);
-                }
+            }
+
+            if (SetXAnchorMailbox == true)
+            {
+                service.HttpHeaders.Add("X-AnchorMailbox", XAnchorMailbox);
+            }
+            if (SetXPublicFolderMailbox == true)
+            {
+                service.HttpHeaders.Add("X-PublicFolderMailbox",  XPublicFolderMailbox);
             }
 
 
@@ -315,6 +323,7 @@ namespace EWSEditor.Exchange
             oHttpWebRequest.Method = "POST";
             oHttpWebRequest.ContentType = "text/xml";
 
+
             if (OverrideTimeout.HasValue)
             {
                 if (OverrideTimeout == true)
@@ -327,6 +336,7 @@ namespace EWSEditor.Exchange
             oHttpWebRequest.Headers.Add("Translate", "f");
             oHttpWebRequest.Headers.Add("Pragma", "no-cache");
             oHttpWebRequest.Headers.Add("return-client-request-id", "true");  // This will give us more data back about the servers used in the response headers
+            oHttpWebRequest.Headers.Add("client-request-id", Guid.NewGuid().ToString());   
             if (PreAuthenticate.HasValue)
             {
                 oHttpWebRequest.Headers.Add("PreAuthenticate", PreAuthenticate.Value.ToString());

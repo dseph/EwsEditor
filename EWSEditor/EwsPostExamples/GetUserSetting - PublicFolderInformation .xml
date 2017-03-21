@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:a="http://schemas.microsoft.com/exchange/2010/Autodiscover"
+               xmlns:wsa="http://www.w3.org/2005/08/addressing"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <a:RequestedServerVersion>Exchange2007_SP1</a:RequestedServerVersion>
+    <wsa:Action>http://schemas.microsoft.com/exchange/2010/Autodiscover/Autodiscover/GetUserSettings</wsa:Action>
+    <wsa:To>https://pod51042.outlook.com/autodiscover/autodiscover.svc</wsa:To>
+  </soap:Header>
+  <soap:Body>
+    <a:GetUserSettingsRequestMessage xmlns:a="http://schemas.microsoft.com/exchange/2010/Autodiscover">
+      <a:Request>
+        <a:Users>
+          <a:User>
+            <a:Mailbox>sonyaf@contoso.com</a:Mailbox>
+          </a:User>
+        </a:Users>
+        <a:RequestedSettings>
+          <a:Setting>PublicFolderInformation</a:Setting>
+        </a:RequestedSettings>
+      </a:Request>
+    </a:GetUserSettingsRequestMessage>
+  </soap:Body>
+</soap:Envelope>

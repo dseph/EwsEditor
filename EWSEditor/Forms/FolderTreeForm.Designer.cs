@@ -42,6 +42,7 @@ namespace EWSEditor.Forms
             this.mnuOpenStreamingNotifications = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuPermissions = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFolderRetentionFlags = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuCreateSubFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEmptyFolder = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,6 @@ namespace EWSEditor.Forms
             this.SearchFoldersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchItemsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchForCalendarItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFolderRetentionFlags = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.developerFolderTestFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -234,6 +234,13 @@ namespace EWSEditor.Forms
             this.mnuPermissions.Text = "Display Permissions...";
             this.mnuPermissions.Click += new System.EventHandler(this.PermissionsMenu_Click);
             // 
+            // mnuFolderRetentionFlags
+            // 
+            this.mnuFolderRetentionFlags.Name = "mnuFolderRetentionFlags";
+            this.mnuFolderRetentionFlags.Size = new System.Drawing.Size(330, 26);
+            this.mnuFolderRetentionFlags.Text = "Folder Retention Settings...";
+            this.mnuFolderRetentionFlags.Click += new System.EventHandler(this.mnuFolderRetentionFlags_Click);
+            // 
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
@@ -380,13 +387,6 @@ namespace EWSEditor.Forms
             this.SearchForCalendarItemsToolStripMenuItem.Size = new System.Drawing.Size(330, 26);
             this.SearchForCalendarItemsToolStripMenuItem.Text = "Search For Calendar Items...";
             this.SearchForCalendarItemsToolStripMenuItem.Click += new System.EventHandler(this.SearchForCalendarItemsToolStripMenuItem_Click);
-            // 
-            // mnuFolderRetentionFlags
-            // 
-            this.mnuFolderRetentionFlags.Name = "mnuFolderRetentionFlags";
-            this.mnuFolderRetentionFlags.Size = new System.Drawing.Size(330, 26);
-            this.mnuFolderRetentionFlags.Text = "Folder Retention Settings...";
-            this.mnuFolderRetentionFlags.Click += new System.EventHandler(this.mnuFolderRetentionFlags_Click);
             // 
             // toolStripSeparator3
             // 
