@@ -187,6 +187,11 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.SetXAnchorMailbox = this.chkSetXAnchorMailbox.Checked;
                 EwsProxyFactory.XAnchorMailbox = this.txtXAnchorMailbox.Text.Trim();
 
+                EwsProxyFactory.SetXPublicFolderMailbox = this.chkSetXPublicFolderMailbox.Checked;
+                EwsProxyFactory.XPublicFolderMailbox = this.txtXPublicFolderMailbox.Text.Trim();
+
+ 
+
 
                 EwsProxyFactory.EnableAdditionalHeader1 = GlobalSettings.EnableAdditionalHeader1;
                 EwsProxyFactory.AdditionalHeader1 = GlobalSettings.AdditionalHeader1;
@@ -614,6 +619,13 @@ namespace EWSEditor.Forms
         private void btnDefaultUserNameSmtp_Click(object sender, EventArgs e)
         {
             this.txtUserName.Text = UserPrincipal.Current.EmailAddress;
+        }
+
+        private void chkSetXPublicFolderMailbox_CheckedChanged(object sender, EventArgs e)
+        {
+            txtXPublicFolderMailbox.Enabled = chkSetXPublicFolderMailbox.Checked;
+ 
+ 
         }
  
     }

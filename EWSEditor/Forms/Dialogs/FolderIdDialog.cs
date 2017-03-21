@@ -67,6 +67,17 @@ namespace EWSEditor.Forms
                 else
                 {
                     this.ChosenFolderId = new FolderId(this.SpecFolderIdText.Text);
+
+                    //FolderId idPublicFoldersRoot = new FolderId(WellKnownFolderName.PublicFoldersRoot);
+                    //if (this.ChosenFolderId == idPublicFoldersRoot)
+                    //{
+                    //    if (_ExchangeService.HttpHeaders.ContainsKey("X-PublicFolderMailbox"))
+                    //        _ExchangeService.HttpHeaders.Remove("X-PublicFolderMailbox");
+                    //    ...
+                    //    GetUserSettingsResponse userResponse = GetUserSettings(adservice, "sonyaf@contoso.com", 3, UserSettingName.PublicFolderInformation);
+                    //    Console.WriteLine("X-AnchorMailbox value for public folder hierarchy requests: {0}", userResponse.Settings[UserSettingName.PublicFolderInformation]);
+                    //}
+
                     this.ChoseOK = true;
                     this.Close();
                 }
