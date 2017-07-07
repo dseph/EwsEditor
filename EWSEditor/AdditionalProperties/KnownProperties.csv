@@ -1,4 +1,8 @@
-﻿// Description of how to configure properties.
+﻿// KnownProperties.csv
+//
+//-------------------------------------------------------------------------------
+//
+// Description of how to configure properties.
 //
 // EwsEditor 1.18 and later has the ability to pull in a list of extended properties using a CSV file such as this one.  This list
 // can be pulled in from where the view is defined on the main window.  Its also used by the Calendar Search window in order to export
@@ -72,6 +76,8 @@
 //      checked on the second page and "General" or "Text" on the last page.  You could open the CSV file from the File menu, however if you do this
 //      you may find that Excel will break long lines.
 // 
+//-------------------------------------------------------------------------------
+//
 //  The list of properties below are the ones I have pulled from EWSEditor's code and elsewhere.
  	
  
