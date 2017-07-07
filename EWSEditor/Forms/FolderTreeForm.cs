@@ -203,9 +203,9 @@ namespace EWSEditor.Forms
             foreach (ServiceProfileItem item in profile.Items)
             {   
                 TreeNode serviceNode = this.AddServiceToTreeView(item.Service, item.AppSettings, false);
-
+                
                 foreach (FolderId folder in item.RootFolderIds)
-                {
+                {   
                     try
                     {
                         this.AddRootFolderToTreeView(item.Service, item.AppSettings, folder, serviceNode);
