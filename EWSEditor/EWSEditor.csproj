@@ -152,6 +152,7 @@
   <ItemGroup>
     <Compile Include="Common\EwsHelpers\AuthenticationHelper.cs" />
     <Compile Include="Common\AutodiscoverInfo.cs" />
+    <Compile Include="Common\EwsHelpers\ContactSpecailCalendars.cs" />
     <Compile Include="Common\EwsHelpers\EwsExtendedPropertyHelper.cs" />
     <Compile Include="Common\EwsHelpers\EwsPropertyHelper.cs" />
     <Compile Include="Common\Exports\AdditionalProperties.cs" />
@@ -169,6 +170,18 @@
     <Compile Include="Common\UIHelpers\TextEdit.cs" />
     <Compile Include="Common\Exports\AttachmentTableEntryData.cs" />
     <Compile Include="Common\UtilityHelpers\IcsHelper.cs" />
+    <Compile Include="ExchangeReports\ExchangeMeetingRoomStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExchangeReports\ExchangeMeetingRoomStatistics.Designer.cs">
+      <DependentUpon>ExchangeMeetingRoomStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExchangeReports\TotalEmailsSentAndReceivedPerDayAndSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExchangeReports\TotalEmailsSentAndReceivedPerDayAndSize.Designer.cs">
+      <DependentUpon>TotalEmailsSentAndReceivedPerDayAndSize.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Calendar\CalendarBreakdownView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +258,12 @@
     <Compile Include="Forms\Dialogs\SelectFolder.Designer.cs">
       <DependentUpon>SelectFolder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dialogs\SelectPSetId.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\SelectPSetId.Designer.cs">
+      <DependentUpon>SelectPSetId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Discovery\DomainSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +299,12 @@
     </Compile>
     <Compile Include="Forms\Searches\FindCertainFolders.Designer.cs">
       <DependentUpon>FindCertainFolders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Searches\SearchAccrossMailboxes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Searches\SearchAccrossMailboxes.Designer.cs">
+      <DependentUpon>SearchAccrossMailboxes.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Searches\SearchCalendarExportPicker.cs">
       <SubType>Form</SubType>
@@ -849,7 +874,6 @@
     </Compile>
     <Compile Include="Forms\Controls\GridDataTables.cs">
       <DependentUpon>GridDataTables.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Forms\Controls\GridDataTables.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -902,6 +926,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Settings\ServiceSessionSetting.cs" />
+    <EmbeddedResource Include="ExchangeReports\ExchangeMeetingRoomStatistics.resx">
+      <DependentUpon>ExchangeMeetingRoomStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExchangeReports\TotalEmailsSentAndReceivedPerDayAndSize.resx">
+      <DependentUpon>TotalEmailsSentAndReceivedPerDayAndSize.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Calendar\CalendarBreakdownView.resx">
       <DependentUpon>CalendarBreakdownView.cs</DependentUpon>
     </EmbeddedResource>
@@ -935,6 +965,9 @@
     <EmbeddedResource Include="Forms\Dialogs\SelectFolder.resx">
       <DependentUpon>SelectFolder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\SelectPSetId.resx">
+      <DependentUpon>SelectPSetId.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Discovery\DomainSettingsForm.resx">
       <DependentUpon>DomainSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -952,6 +985,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Searches\FindCertainFolders.resx">
       <DependentUpon>FindCertainFolders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Searches\SearchAccrossMailboxes.resx">
+      <DependentUpon>SearchAccrossMailboxes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Searches\SearchCalendarExportPicker.resx">
       <DependentUpon>SearchCalendarExportPicker.cs</DependentUpon>
@@ -1252,6 +1288,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TemplateEwsRequests.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="AdditionalProperties\ContactSpecialCalendarProperties.csv" />
     <None Include="AdditionalProperties\KnownProperties.csv" />
     <None Include="AdditionalProperties\RetentionProperties.csv" />
     <None Include="AdditionalProperties\UnknownCalendarProperties.csv" />
@@ -1274,7 +1311,6 @@
     </Compile>
     <Compile Include="Common\ServiceProfiles\ServicesProfile.cs">
       <DependentUpon>ServicesProfile.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Common\ServiceProfiles\ServicesProfile.Designer.cs">
       <AutoGen>True</AutoGen>

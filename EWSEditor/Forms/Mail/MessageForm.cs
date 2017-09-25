@@ -611,6 +611,31 @@ namespace EWSEditor.Forms
         private void btnHeaders_Click(object sender, EventArgs e)
         {
             string sInfo = string.Empty;
+           
+            //if (_EmailMessage.ExtendedProperties.Count > 0)
+            //{
+            //    foreach (ExtendedProperty xp in _EmailMessage.ExtendedProperties)
+            //    {
+            //        if (xp.PropertyDefinition.PropertySetId != null)
+            //            sInfo += "PropertySetId: " + xp.PropertyDefinition.PropertySetId.ToString() + "\r\n";
+            //        if (xp.PropertyDefinition.Name != null)
+            //            sInfo += "Name: " + xp.PropertyDefinition.Name.ToString() + "\r\n";
+            //        if (xp.PropertyDefinition.Id != null)
+            //            sInfo += "id: " + xp.PropertyDefinition.Id.ToString() + "\r\n";
+            //        //if (xp.PropertyDefinition.MapiType  != null)
+            //        sInfo += "MapiType: " + xp.PropertyDefinition.MapiType.ToString() + "\r\n";
+            //        sInfo += "Value: " + xp.Value.ToString() + "\r\n";
+            //        sInfo += "----------\r\n";
+
+            //    }
+
+            //    ShowTextDocument oForm = new ShowTextDocument();
+            //    oForm.Text = "Extended Properties - test";
+            //    oForm.txtEntry.Text = sInfo;
+            //    oForm.ShowDialog();
+            //    oForm = null;
+            //}
+
 
             if (_EmailMessage != null)
             {   
@@ -618,19 +643,25 @@ namespace EWSEditor.Forms
                 {
                     if (_EmailMessage.IsDraft == false)
                     {
-                        foreach (InternetMessageHeader oHeader in _EmailMessage.InternetMessageHeaders)
+                        if (_EmailMessage.InternetMessageHeaders != null)
                         {
-                            sInfo += oHeader.Name + ": " + oHeader.Value + "\r\n";
+                            foreach (InternetMessageHeader oHeader in _EmailMessage.InternetMessageHeaders)
+                            {
+                                sInfo += oHeader.Name + ": " + oHeader.Value + "\r\n";
+                            }
+
+                            ShowTextDocument oForm = new ShowTextDocument();
+                            oForm.Text = "Message Headers";
+                            oForm.txtEntry.Text = sInfo;
+                            oForm.ShowDialog();
+                            oForm = null;
+
+                            //ExtendedPropertyDefinition PidTagMimeSkeleton = new ExtendedPropertyDefinition(0x64F00102, MapiPropertyType.String);
+                            // http://msdn.microsoft.com/en-us/library/office/hh545614(v=exchg.140).aspx
                         }
+                        else
+                            MessageBox.Show("No message transport headers.", "No headers.");
 
-                        ShowTextDocument oForm = new ShowTextDocument();
-                        oForm.Text = "Message Headers";
-                        oForm.txtEntry.Text = sInfo;
-                        oForm.ShowDialog();
-                        oForm = null;
-
-                        //ExtendedPropertyDefinition PidTagMimeSkeleton = new ExtendedPropertyDefinition(0x64F00102, MapiPropertyType.String);
-                        // http://msdn.microsoft.com/en-us/library/office/hh545614(v=exchg.140).aspx
                     }
                     else
                     {

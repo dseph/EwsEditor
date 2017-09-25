@@ -434,6 +434,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oAppointmentData.AllowNewTimeProposal = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             //if (oAppointment.AllowNewTimeProposal != null) oAppointmentData.AllowNewTimeProposal = oAppointment.AllowNewTimeProposal.ToString();
             if (oAppointment.AllowedResponseActions != null) oAppointmentData.AllowedResponseActions = oAppointment.AllowedResponseActions.ToString();
@@ -446,6 +447,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oAppointmentData.Body = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             oAppointmentData.Categories = oAppointment.Categories.ToString();
             // oAppointmentData.ConferenceType = oAppointment.ConferenceType.ToString();  Not being returned
@@ -471,6 +473,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oAppointmentData.ConversationId = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             oAppointmentData.Culture = oAppointment.Culture.ToString();
@@ -515,6 +518,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oAppointmentData.MimeContent = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             //if (oAppointment.MimeContent != null) oAppointmentData.MimeContent = oAppointment.MimeContent.ToString();
             
@@ -528,6 +532,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oAppointmentData.ReminderDueBy = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             oAppointmentData.ReminderMinutesBeforeStart = oAppointment.ReminderMinutesBeforeStart.ToString();
@@ -552,6 +557,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oAppointmentData.TextBody = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             if (oAppointment.When != null) oAppointmentData.When = oAppointment.When.ToString();
@@ -563,6 +569,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oAppointmentData.WebClientEditFormQueryString = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             try
@@ -572,6 +579,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oAppointmentData.WebClientReadFormQueryString = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             oAppointmentData.UniqueId = oAppointment.Id.UniqueId;

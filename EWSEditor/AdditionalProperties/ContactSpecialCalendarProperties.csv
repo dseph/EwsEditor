@@ -1,0 +1,137 @@
+﻿// ContactSpecialCalendarProperties.csv
+// 
+// These are properties used for tying Contacts to their entries in the Birthday and Anniversary calendars.
+//
+//-------------------------------------------------------------------------------
+//
+// Description of how to configure properties.
+//
+// EwsEditor 1.18 and later has the ability to pull in a list of extended properties using a CSV file such as this one.  This list
+// can be pulled in from where the view is defined on the main window.  Its also used by the Calendar Search window in order to export
+// specified properties.
+//
+//  EwsEditor will read in a csv file such as this in order to import extended properties.  The form for this CSV is not conventional as
+//  it allows blank lines and comments (lines starting with "//".  Lines starting with a two forward slashes (//) or are blank are ignored.
+// The first non-ignored line needs to be the header
+// Columns:
+//		DescPropertyName:
+//			This will be used as the description of the data.  This is the user readable value.
+
+//		ProbablePropertyName:
+//				This is the name of the property or what you think it is.  This is informational only.
+
+//		PropertySetId:
+//			This is the property set guid. You can use Property set names such as PSETID_Meeting - EWS will swap it for 
+//			the GUID at run time. If you don't need the GUID for the property then just enter "" for the value.
+//
+//				Area Name			Property Set Name			GUID
+//				Common				PS_PUBLIC_STRINGS	 		00020329-0000-0000-C000-000000000046 
+//				Common				PSETID_Common				00062008-0000-0000-C000-000000000046
+//				Contact				PSETID_Address				00062004-0000-0000-C000-000000000046
+//				Email				PS_INTERNET_HEADERS			00020386-0000-0000-C000-000000000046
+//
+//				Calendar			PSETID_Appointment			00062002-0000-0000-C000-000000000046
+//				Calendar			PSETID_Meeting				6ED8DA90-450B-101B-98DA-00AA003F1305
+//				Journal				PSETID_Log					0006200A-0000-0000-C000-000000000046
+//				Messaging			PSETID_Messaging			41F28F13-83F4-4114-A584-EEDB5A6B0BFF
+//
+//				Sticky note			PSETID_Note					0006200E-0000-0000-C000-000000000046
+//				RSS feed			PSETID_PostRss				00062041-0000-0000-C000-000000000046
+//				Task				PSETID_Task					00062003-0000-0000-C000-000000000046
+//				Unified messaging	PSETID_UnifiedMessaging		4442858E-A9E3-4E80-B900-317A210CC15B 
+//
+//				Common				PS_MAPI						00020328-0000-0000-C000-000000000046
+//				Sync				PSETID_AirSync				71035549-0739-4DCB-9163-00F0580DBBDF
+//				Sharing				PSETID_Sharing				00062040-0000-0000-C000-000000000046
+//				Extracted entities	PSETID_XmlExtractedEntities	23239608-685D-4732-9C55-4C95CB4E8E33 
+//
+//				Calendar Assistant?	PSETID_CalendarAssistant	11000E07-B51B-40D6-AF21-CAA85EDAB1D0
+//
+//		PropertyType:
+//		 	 	
+//				SystemTime	SysTimeArray	 	
+//				String		StringArray	 	
+//				Integer		IntegerArray
+//				Long		LongArray	
+//				Boolean			 		
+//				Binary 		BinaryArray
+//				Short 		ShortArray
+//				Float 		FloatArray		
+//
+//		PropertyId:
+//				If you prefix a property id with "0x" (upper or lower case) then the value is handled as a hex value.  
+//				Without this prefix the value is treated as a decimal value if it is numeric.  If it is not prefixed
+//              by "0x" and not an integer then its treated as a string.  A tag with the type included is not 
+//              supported in EWS Editor yet - types and Id values need to be sepertate values.
+//
+//      When EWSEditor uses properties defined from this list to pull properties from items and add them to a CSV file, it will provde
+//      the abliity to handle strings in different ways.  The best option for programatic comnsuption is to choose to have all strings
+//      base 64 encoded.  You can select to have the string type data sanitized also - this will remove comma, CR and LF characters - 
+//      this helps if you want to read the csv file content or load it into an applicaiton which cannot base 64 decode the content.
+//		You can choose to have no actions to be taken on string type data, however this can lead to probelms when such content contains commas,
+//      CR or LF character since the file is a CSV. Selecting None will caue it to take no actions on string data.
+//      Array data such as a StringArray will have each instance of the item Base 64 encoded and seperated by a comma.  The final 
+//      resulting string is base 64 encoded.
+//     
+//      When importing the data into Excel its best to open a new worksheet, click on the Data tab, click on the "From Text" icon then slelect
+//      the csv file to import.  While importing you should select "Delimited on the first page of the wizard, have only the "Comma" check box
+//      checked on the second page and "General" or "Text" on the last page.  You could open the CSV file from the File menu, however if you do this
+//      you may find that Excel will break long lines.
+// 
+//-------------------------------------------------------------------------------
+// These are properties used for tying Contacts to their entries in the Birthday and Anniversary calendars.
+//
+//  Documentation:
+//
+//			Protocol documents to review:
+//				
+//				[MS-OXCMSG]: Message and Attachment Object Protocol
+//				https://msdn.microsoft.com/en-us/library/cc463900(v=exchg.80).aspx
+//				http://interoperability.blob.core.windows.net/files/MS-OXCMSG/[MS-OXCMSG].pdf
+//				
+//			More:
+//				https://social.msdn.microsoft.com/Forums/onedrive/en-US/f08c4573-2f9d-4322-a83d-02a9620e8f8c/contact-created-using-ews-does-not-have-the-birthday-displayed-in-the-calendar?forum=exchangesvrdevelopment
+//				http://gsexdev.blogspot.com/2016/11/using-birthday-calendar-in-ews-in.html#!/2016/11/using-birthday-calendar-in-ews-in.html
+//				https://support.office.com/en-us/article/Add-a-birthday-or-anniversary-for-a-contact-333ccb47-1d57-405a-8d61-3cc39b80912e
+//				https://gallery.technet.microsoft.com/office/Add-Birthday-or-Anniversary-e111b73d
+//				https://msdn.microsoft.com/en-us/library/ee159359(v=exchg.80).aspx
+//				https://blogs.msdn.microsoft.com/emeamsgdev/2014/06/17/programmatically-add-links-to-outlook-contactitems-in-outlook-2013/
+//
+//  The properties:
+//
+//			PidLidAnniversaryEventEntryId
+//				https://msdn.microsoft.com/en-us/library/office/cc765710.aspx
+//				https://msdn.microsoft.com/en-us/library/ee204213(v=exchg.80).aspx
+//				
+//				Note:  The appointment specified by the dispidAnniversaryEventEID property must be linked to this contact by 
+//				    using the dispidContactLinkEntry (PidLidContactLinkEntry), dispidContactLinkSearchKey (PidLidContactLinkSearchKey), 
+//				    and dispidContactLinkName (PidLidContactLinkName) properties, as detailed in [MS-OXCMSG].
+//				
+//			PidLidBirthdayEventEntryId 
+//				https://msdn.microsoft.com/en-us/library/cc839623(v=office.12).aspx  
+//				https://msdn.microsoft.com/en-us/library/cc839623(v=office.12).aspx
+//				
+//				    Note: The appointment this is specified by this property must be linked to this contact by 
+//				    using the dispidApptStateFlags(PidLidContactLinkEntry), dispidContactLinkSearchKey(PidLidContactLinkSearchKey), 
+//				    and dispidContactLinkName(PidLidContactLinkName) properties, as specified in [MS-OXCMSG].
+//				
+
+
+"DescPropertyName",							"ProbablePropertyName",					"PropertySetId",			"PropertyId",		"PropertyType" 
+
+"BirthdayCalendarFolderEntryId",			"BirthdayCalendarFolderEntryId", 		"PSETID_Common",			"BirthdayCalendarFolderEntryId",		Binary
+
+"PidLidContacts",							"PidLidContacts",						"PSETID_Common",			"0x0000853A",		StringArray  
+
+"PidLidAnniversaryEventEntryId",			"PidLidAnniversaryEventEntryId",		"PSETID_Address",			"0x0000804E",		Binary                    
+"PidLidBirthdayEventEntryId",				"PidLidBirthdayEventEntryId",			"PSETID_Address",			"0x0000804D",		Binary 
+
+"BirthDayLocal",							"BirthDayLocal",						"PSETID_Address",			"0x000080DE",		SystemTime  
+
+"PidLidContactLinkEntry",					"PidLidContactLinkEntry,				"PSETID_Common",			"0x00008585",		Binary                    
+"PidLidContactLinkName",					"PidLidContactLinkName,					"PSETID_Common",			"0x00008586",		String                    
+"PidLidContactLinkSearchKey",				"PidLidContactLinkSearchKey,			"PSETID_Common",			"0x00008584",		Binary                    
+  
+  
+  
+  

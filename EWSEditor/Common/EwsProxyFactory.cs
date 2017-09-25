@@ -191,8 +191,10 @@ namespace EWSEditor.Exchange
             if (UserAgent != null)
                 if (UserAgent.Length != 0)
                     service.UserAgent = UserAgent;
- 
 
+            //service.UserAgent = UserAgent;
+            //service.HttpHeaders.Add("client-request-id", Guid.NewGuid().ToString());
+            //service.HttpHeaders.Add("return-client-request-id", "true");
 
             // EWS Tracing: http://msdn.microsoft.com/en-us/library/office/dn495632(v=exchg.150).aspx
             service.TraceEnabled = true;
@@ -318,13 +320,14 @@ namespace EWSEditor.Exchange
             HttpWebRequest oHttpWebRequest = (HttpWebRequest)WebRequest.Create(EwsUrl);
              
             if (UserAgent.Length != 0)
-                oHttpWebRequest.Headers.Add("UserAgent", UserAgent);
+                oHttpWebRequest.Headers.Add("User-Agent", UserAgent);
 
             oHttpWebRequest.Method = "POST";
             oHttpWebRequest.ContentType = "text/xml";
 
 
             if (OverrideTimeout.HasValue)
+
             {
                 if (OverrideTimeout == true)
                 {

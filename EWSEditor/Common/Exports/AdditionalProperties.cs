@@ -257,12 +257,14 @@ namespace EWSEditor.Common.Exports
                         bIsNumber = true;
                     if (sVal.StartsWith("0X"))
                         bIsNumber = true;
+                    //if (bIsNumber == false)
+                    //    sVal = sColumns[3].Trim();
 
                     if (bIsNumber == false)
                     {
                         // This would be a named property - so, no id.
                         oAdditionalPropertyDefinition.PropertyIdIsString = true;
-                        oAdditionalPropertyDefinition.PropertySetIdString = sVal;
+                        oAdditionalPropertyDefinition.PropertySetIdString = sColumns[3].Trim();
                     }
 
  

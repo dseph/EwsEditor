@@ -794,13 +794,13 @@ namespace EWSEditor.Common
                 iVal = (int)c;
                 if (iVal > 127 & iVal < 256)
                 {
-                    sComment = "Over 127";
+                    sComment = "Over 127 ********** ********** **********";
                     bResponseHasOddCharacters = true;
                     bResponseHasExtendedAsciiCharacters = true;
                 }
                 if (iVal > 255)
                 {
-                    sComment = "Over 255";
+                    sComment = "Over 255 ********** ********** **********";
                     bResponseHasOddCharacters = true;
                     bResponseHasUnicode = true;
                 }
@@ -808,7 +808,7 @@ namespace EWSEditor.Common
                 // Control Characters except CR(13) LF (10) and TAB (9)
                 if ((iVal >= 0 && iVal <= 31) && (iVal != 10 && iVal != 13 && iVal != 9))
                 {
-                    sComment = "Control Character";
+                    sComment = "Control Character ********** ********** **********";
                     bResponseHasControlCharacters = true;
                     bResponseHasOddCharacters = true;
                 }
@@ -824,11 +824,11 @@ namespace EWSEditor.Common
             {
                 oSB.AppendLine("***");
                 if (bResponseHasControlCharacters == true)
-                    oSB.AppendLine("***  Control Characters found. ***");
+                    oSB.AppendLine("***  Control Characters found.  ********** ********** **********");
                 if (bResponseHasUnicode == true)
-                    oSB.AppendLine("***  Unicode characters found. ***");
+                    oSB.AppendLine("***  Unicode characters found.  ********** ********** **********");
                 if (bResponseHasExtendedAsciiCharacters == true)
-                    oSB.AppendLine("***  Extended ASCII characters found. ***");
+                    oSB.AppendLine("***  Extended ASCII characters found.  ********** ********** **********");
                 oSB.AppendLine("***");
                 oSB.Append(oCharCheck.ToString());  // Character by character check
 

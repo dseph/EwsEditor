@@ -94,6 +94,9 @@ namespace EWSEditor.Forms
         private static ExtendedPropertyDefinition PPR_CONVERSATION_INDEX = new ExtendedPropertyDefinition(0x0071, MapiPropertyType.Binary);
         private static ExtendedPropertyDefinition PR_CONTROL_FLAGS = new ExtendedPropertyDefinition(0x3F00, MapiPropertyType.Integer);// PT_LONG
 
+        private static ExtendedPropertyDefinition PR_TRANSPORT_MESSAGE_HEADERS = new ExtendedPropertyDefinition(0x007D, MapiPropertyType.String); 
+
+
         public static ExtendedPropertyDefinition PidLidCurrentVersion = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x00008552, MapiPropertyType.Integer);
         public static ExtendedPropertyDefinition PidLidCurrentVersionName = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x00008554, MapiPropertyType.String);
         public static ExtendedPropertyDefinition PidNameCalendarUid = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Common, 0x001F, MapiPropertyType.String);
@@ -249,6 +252,8 @@ namespace EWSEditor.Forms
                     PR_CONVERSATION_ID,
                     PPR_CONVERSATION_INDEX,
                     PR_CONTROL_FLAGS,
+
+                    PR_TRANSPORT_MESSAGE_HEADERS,
 
                     PidLidCurrentVersion,
                     PidLidCurrentVersionName, 

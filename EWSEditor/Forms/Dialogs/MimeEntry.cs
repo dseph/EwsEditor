@@ -59,6 +59,7 @@ namespace EWSEditor
                 {
 
                     Appointment item = new Appointment(_Service);
+                    item.MimeContent = new MimeContent();
                     //item.MimeContent = new MimeContent();
 
                     //MimeEntry oMimeEntry = new MimeEntry();
@@ -80,7 +81,8 @@ namespace EWSEditor
                 {
 
                     Contact item = new Contact(_Service);
- 
+                    item.MimeContent = new MimeContent();
+
                     if (chkIsBase64Encoded.Checked == true)
                         item.MimeContent.Content = Convert.FromBase64String(txtEntry.Text.Trim());
                     else
@@ -97,11 +99,17 @@ namespace EWSEditor
                 {
 
                     EmailMessage item = new EmailMessage(_Service);
- 
+                    item.MimeContent = new MimeContent();
+
                     if (chkIsBase64Encoded.Checked == true)
                         item.MimeContent.Content = Convert.FromBase64String(txtEntry.Text.Trim());
                     else
+                    {
+                       // item.MimeContent = new MimeContent();
                         item.MimeContent.Content = System.Text.Encoding.UTF8.GetBytes(txtEntry.Text);
+                         
+                        //item.MimeContentUTF8.Content = System.Text.Encoding.UTF8.GetBytes(txtEntry.Text);
+                    }
 
                     item.Save(_Folder.Id);
                     //this.RefreshContentAndDetails();

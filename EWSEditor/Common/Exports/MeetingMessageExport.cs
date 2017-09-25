@@ -277,6 +277,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.AllowedResponseActions = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             //oMM.AllowedResponseActions = oMeetingMessage.AllowedResponseActions.ToString();       
             try
@@ -286,6 +287,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.ApprovalRequestData = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             try
             {
@@ -294,6 +296,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.AssociatedAppointmentId = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             if (oMeetingMessage.BccRecipients != null)
@@ -313,6 +316,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.Body = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
              if (oMeetingMessage.Categories != null) oMM.Categories = oMeetingMessage.Categories.ToString();
 
@@ -334,6 +338,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.ConversationIndex = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             try
             {
@@ -371,6 +376,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.IconIndex = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             
             if (oMeetingMessage.Id != null) oMM.UniqueId = oMeetingMessage.Id.UniqueId;
@@ -402,6 +408,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.IsDeliveryReceiptRequested = ""; ;
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
            
@@ -415,6 +422,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.IsDraft = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
            // if (oMeetingMessage.IsFromMe != null) oMM.IsFromMe = oMeetingMessage.IsFromMe.ToString();//
 
@@ -427,6 +435,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.IsOutOfDate = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             //oMM.IsRead = oMeetingMessage.IsRead.ToString();
 
@@ -437,6 +446,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.IsRead = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             //oMM.IsReadReceiptRequested = oMeetingMessage.IsReadReceiptRequested.ToString();
@@ -447,6 +457,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.IsReadReceiptRequested = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             //if (oMeetingMessage.IsReminderSet != null) oMM.IsReminderSet = oMeetingMessage.IsReminderSet.ToString();
             try
@@ -456,6 +467,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.IsReminderSet = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             //oMM.IsResend = oMeetingMessage.IsResend.ToString();
             try
@@ -465,6 +477,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.IsResend = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
            // if (oMeetingMessage.IsResponseRequested != null) oMM.IsResponseRequested = oMeetingMessage.IsResponseRequested.ToString();
@@ -475,6 +488,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.IsResponseRequested = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             //oMM.IsSubmitted = oMeetingMessage.IsSubmitted.ToString();
@@ -485,6 +499,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.IsSubmitted = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             //oMM.IsUnmodified = oMeetingMessage.IsUnmodified.ToString();
@@ -495,6 +510,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.IsUnmodified = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             if (oMeetingMessage.ItemClass != null) oMM.ItemClass = oMeetingMessage.ItemClass;
@@ -511,6 +527,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.NormalizedBody = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             //oMM.ParentFolderId = "";
             try
@@ -520,6 +537,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.ParentFolderId = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 //            if (oMeetingMessage.PolicyTag != null) oMM.PolicyTag = oMeetingMessage.PolicyTag.ToString();
 //            if (oMeetingMessage.Preview != null) oMM.Preview = oMeetingMessage.Preview.ToString();
@@ -533,6 +551,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.ReminderDueBy = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
            // oMM.ReminderMinutesBeforeStart = GetItemValue(oMeetingMessage.ReminderMinutesBeforeStart);
             
@@ -543,6 +562,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.ReminderMinutesBeforeStart = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             //if (oMeetingMessage.ReplyTo != null) oMM.ReplyTo = oMeetingMessage.ReplyTo.ToString(); //  //.name+ " <" + oMeetingMessage.ReplyTo.Address + ">";
@@ -564,6 +584,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.ResponseType = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
 //           if (oMeetingMessage.RetentionDate != null) oMM.RetentionDate = oMeetingMessage.RetentionDate.ToString();
@@ -582,6 +603,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.TextBody = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             //if (oMeetingMessage.ToRecipients != null) oMM.ToRecipients = oMeetingMessage.ToRecipients.ToString();
 
@@ -604,6 +626,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.UniqueBody = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
              
             //try
@@ -621,6 +644,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.UniqueBody = ex.Message.ToString();
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             try
             {
@@ -629,6 +653,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.WebClientEditFormQueryString = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             try
             {
@@ -637,6 +662,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.WebClientReadFormQueryString = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             //oAppointmentData.PidLidAppointmentRecur = GetExtendedProp_Byte_AsString(oAppointment, PidLidAppointmentRecur);
@@ -742,6 +768,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oMM.MimeContent = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             //oMM.MimeContent = oMeetingMessage.MimeContent.ToString();
@@ -1560,8 +1587,8 @@ namespace EWSEditor.Common.Exports
          public List<string> GetDiagMeetingMessageDataAsList(MeetingMessageData oMeetingMessageData)
         {
             List<string> o = new List<string> { };
-            MeetingMessageData x = null;
-            AppointmentData a = null;
+            //MeetingMessageData x = null;
+            //AppointmentData a = null;
           
             // https://technet.microsoft.com/en-us/library/dd638102(v=exchg.160).aspx
             // https://technet.microsoft.com/en-us/library/jj552406(v=exchg.160).aspx
