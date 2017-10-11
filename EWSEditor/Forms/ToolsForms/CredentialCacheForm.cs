@@ -53,12 +53,20 @@ namespace EWSEditor.Forms.ToolsForms
                     sHexPassword = EWSEditor.Common.StringHelper.UnicodeStringToHexString(c.Password);
                 }
 
-                oSB.AppendFormat("Application: {0}\r\nType: {1}\r\nUserName: {2}\r\nPassword (NULL stripped): {3}\r\nPassword (full hex): {4}\r\n----\r\n\r\n",
+                oSB.AppendFormat("Application: {0}\r\nType: {1}\r\nUserName: {2}\r\n",
                     c.ApplicationName,
                     c.CredentialType.ToString(),
-                    c.UserName,
-                    sPassword,
-                    sHexPassword) ;
+                    c.UserName) ;
+
+                if (chkShowPasswords.Checked == true)
+                {
+                    oSB.AppendFormat("Password (NULL stripped): {0}\r\nPassword(full hex): {1}\r\n",
+                        sPassword,
+                        sHexPassword);
+                }
+                oSB.AppendFormat("\r\n----\r\n\r\n");
+
+
                 iCount++;
             }
 

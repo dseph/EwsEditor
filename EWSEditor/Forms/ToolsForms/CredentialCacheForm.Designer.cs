@@ -31,6 +31,7 @@
             this.txtCredentials = new System.Windows.Forms.TextBox();
             this.btnEnumerateCredentials = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkShowPasswords = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtCredentials
@@ -66,11 +67,22 @@
             this.label1.Text = "Nulls in passwords are stripped for presentation.  The hex encoded password cotai" +
     "ns all data.";
             // 
+            // chkShowPasswords
+            // 
+            this.chkShowPasswords.AutoSize = true;
+            this.chkShowPasswords.Location = new System.Drawing.Point(424, 13);
+            this.chkShowPasswords.Name = "chkShowPasswords";
+            this.chkShowPasswords.Size = new System.Drawing.Size(136, 21);
+            this.chkShowPasswords.TabIndex = 4;
+            this.chkShowPasswords.Text = "Show Passwords";
+            this.chkShowPasswords.UseVisualStyleBackColor = true;
+            // 
             // CredentialCacheForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(921, 451);
+            this.Controls.Add(this.chkShowPasswords);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEnumerateCredentials);
             this.Controls.Add(this.txtCredentials);
@@ -86,5 +98,6 @@
         private System.Windows.Forms.TextBox txtCredentials;
         private System.Windows.Forms.Button btnEnumerateCredentials;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkShowPasswords;
     }
 }
