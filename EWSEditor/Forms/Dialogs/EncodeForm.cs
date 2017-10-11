@@ -53,6 +53,9 @@ namespace EWSEditor.Forms
 
         private const string XmlConvertVerifyXmlChars = "XmlConvert - VerifyXmlChars";
 
+        private const string UnicodeStringToHexString = "Unicode String to Hex String";
+        private const string HexStringToUnicodeString = "Hex String to Unicode String";
+
         private const string StringStatistics = "Information about text";
         private const string CheckForNonASCIICharacters = "Check for non-ASCII characters and control codes (Except CR, LF and TAB)";
         private const string sRemoveControlCodes = "Remove control codes (Except CR, LF and TAB)";
@@ -94,6 +97,9 @@ namespace EWSEditor.Forms
         cmboFrom.Items.Add(XmlTextToHexSpaceDelimited);
         cmboFrom.Items.Add(XmlHexDumpText);
         cmboFrom.Items.Add(XmlBase64ToHexDump);
+
+        cmboFrom.Items.Add(UnicodeStringToHexString);
+        cmboFrom.Items.Add(HexStringToUnicodeString);
 
         cmboFrom.Items.Add(StringStatistics);
         cmboFrom.Items.Add(CheckForNonASCIICharacters);
@@ -495,6 +501,32 @@ namespace EWSEditor.Forms
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
+
+                case UnicodeStringToHexString:
+
+                    try
+                    {
+                        ToText = StringHelper.UnicodeStringToHexString(FromText);
+
+                    }
+                    catch (Exception Ex)
+                    {
+                        MessageBox.Show(Ex.ToString(), "Error");
+                    }
+                    break;
+
+                case HexStringToUnicodeString:
+
+                    try
+                    {
+                        ToText = StringHelper.HexStringToUnicodeString(FromText);
+
+                    }
+                    catch (Exception Ex)
+                    {
+                        MessageBox.Show(Ex.ToString(), "Error");
                     }
                     break;
 

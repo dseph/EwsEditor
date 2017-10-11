@@ -88,6 +88,7 @@
             this.mnuMimeParser = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCredentialCache = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -456,7 +457,8 @@
             this.mnuEncodingHelper,
             this.mnuFileContentHelper,
             this.viewHTMLInBrowserToolStripMenuItem,
-            this.mnuMimeParser});
+            this.mnuMimeParser,
+            this.mnuCredentialCache});
             this.mnuOther.Name = "mnuOther";
             this.mnuOther.Size = new System.Drawing.Size(58, 24);
             this.mnuOther.Text = "Other";
@@ -556,6 +558,13 @@
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
+            // mnuCredentialCache
+            // 
+            this.mnuCredentialCache.Name = "mnuCredentialCache";
+            this.mnuCredentialCache.Size = new System.Drawing.Size(324, 26);
+            this.mnuCredentialCache.Text = "Credential Cache";
+            this.mnuCredentialCache.Click += new System.EventHandler(this.mnuCredentialCache_Click);
+            // 
             // BrowserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -638,5 +647,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuUserSettingsUserRetentionTags;
         private System.Windows.Forms.ToolStripMenuItem mnuUserSettingsUserConfiguration;
         public System.Windows.Forms.ToolStripMenuItem mnuUserSettings;
+        private System.Windows.Forms.ToolStripMenuItem mnuCredentialCache;
     }
 }

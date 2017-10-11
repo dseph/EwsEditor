@@ -166,6 +166,7 @@
     <Compile Include="Common\Exports\MeetingMessageData.cs" />
     <Compile Include="Common\ProxyMappedTypes\ProxyMappedTypes.cs" />
     <Compile Include="Common\EwsHelpers\SharedCalendarsHelper.cs" />
+    <Compile Include="Common\Security\CredentialManager.cs" />
     <Compile Include="Common\UIHelpers\ListViewItemComparer.cs" />
     <Compile Include="Common\UIHelpers\TextEdit.cs" />
     <Compile Include="Common\Exports\AttachmentTableEntryData.cs" />
@@ -335,6 +336,12 @@
     </Compile>
     <Compile Include="Forms\Searches\SearchItemsMultiSelectForm.Designer.cs">
       <DependentUpon>SearchItemsMultiSelectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ToolsForms\CredentialCacheForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToolsForms\CredentialCacheForm.Designer.cs">
+      <DependentUpon>CredentialCacheForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ToolsForms\FileContentHelper.cs">
       <SubType>Form</SubType>
@@ -1003,6 +1010,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Searches\SearchItemsMultiSelectForm.resx">
       <DependentUpon>SearchItemsMultiSelectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToolsForms\CredentialCacheForm.resx">
+      <DependentUpon>CredentialCacheForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolsForms\FileContentHelper.resx">
       <DependentUpon>FileContentHelper.cs</DependentUpon>

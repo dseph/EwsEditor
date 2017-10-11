@@ -16,6 +16,7 @@
     using EWSEditor.Common.Extensions;
     using EWSEditor.Resources;
     using EWSEditor.Forms.Dialogs;
+    using EWSEditor.Forms.ToolsForms;
     using System.Net;
 
     using Microsoft.Exchange.WebServices.Data;
@@ -1216,6 +1217,12 @@
         private void mnuUserSettings_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void mnuCredentialCache_Click(object sender, EventArgs e)
+        {
+            CredentialCacheForm oForm = new CredentialCacheForm();
+            oForm.Show();
         }
     }
 }

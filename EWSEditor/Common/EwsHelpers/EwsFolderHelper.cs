@@ -86,7 +86,7 @@ namespace EWSEditor.Common
                 sFolderPath = "";
                 bRet = false;
             }
-            System.Web.Services.Protocols.SoapHttpClientProtocol x;
+            //System.Web.Services.Protocols.SoapHttpClientProtocol x;
            
             return bRet;
         }
