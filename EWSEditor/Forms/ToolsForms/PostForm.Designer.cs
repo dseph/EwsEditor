@@ -555,7 +555,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage4.Size = new System.Drawing.Size(1256, 115);
             this.tabPage4.TabIndex = 1;
-            this.tabPage4.Text = "Resposne XML (Read Only)";
+            this.tabPage4.Text = "Response XML (Read Only)";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // wbResponse

@@ -326,7 +326,7 @@ namespace EWSEditor.Forms
         {
             bool bRet = false;
             ClearForm();
-
+             
             txtGivenName.Text = oContact.GivenName;
             txtMiddleName.Text = oContact.MiddleName;
             txtSurname.Text = oContact.Surname;
