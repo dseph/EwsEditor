@@ -57,6 +57,7 @@ namespace EWSEditor.Forms.ToolsForms
                     c.ApplicationName,
                     c.CredentialType.ToString(),
                     c.UserName) ;
+                 
 
                 if (chkShowPasswords.Checked == true)
                 {

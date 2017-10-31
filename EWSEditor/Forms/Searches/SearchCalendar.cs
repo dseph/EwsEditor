@@ -61,10 +61,8 @@ namespace EWSEditor.Forms
             //// TODO: Add more search capablities
             // http://msdn.microsoft.com/en-us/library/dd633700(v=exchg.80).aspx
 
-            SearchFilter.
-                
-                
-                searchFilter = new SearchFilter.SearchFilterCollection();
+            SearchFilter.SearchFilterCollection searchFilter = new SearchFilter.SearchFilterCollection();
+            searchFilter = new SearchFilter.SearchFilterCollection();
             searchFilter.Add(new SearchFilter.IsGreaterThanOrEqualTo(AppointmentSchema.Start, start));
             searchFilter.Add(new SearchFilter.IsGreaterThanOrEqualTo(AppointmentSchema.Start, end));
             if (this.chkSearchSubject.Checked == true)
@@ -113,6 +111,11 @@ namespace EWSEditor.Forms
             //{
             //    lblFolderId.Text = PropertyInterpretation.GetPropertyValue(this._SelectedFolder);
             //}
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

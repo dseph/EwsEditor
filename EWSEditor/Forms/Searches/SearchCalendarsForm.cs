@@ -338,8 +338,7 @@ namespace EWSEditor.Forms
         private FindItemsResults<Item> DoSearch(FolderId oFolderId, ref ItemView oItemView)
         {
             FindItemsResults<Item> oFindItemsResults = null;
-            List<SearchFilter> 
-                = new List<SearchFilter>();
+            List<SearchFilter> searchFilterCollection = new List<SearchFilter>();
 
             toolStripStatusLabel1.Text = "Searching...";
 

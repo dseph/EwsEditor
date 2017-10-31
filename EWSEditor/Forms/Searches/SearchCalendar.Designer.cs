@@ -82,7 +82,7 @@
             // txtEndTime
             // 
             this.txtEndTime.Location = new System.Drawing.Point(533, 107);
-            this.txtEndTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEndTime.Margin = new System.Windows.Forms.Padding(4);
             this.txtEndTime.Name = "txtEndTime";
             this.txtEndTime.Size = new System.Drawing.Size(263, 22);
             this.txtEndTime.TabIndex = 6;
@@ -99,7 +99,7 @@
             // txtStartTime
             // 
             this.txtStartTime.Location = new System.Drawing.Point(143, 107);
-            this.txtStartTime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStartTime.Margin = new System.Windows.Forms.Padding(4);
             this.txtStartTime.Name = "txtStartTime";
             this.txtStartTime.Size = new System.Drawing.Size(263, 22);
             this.txtStartTime.TabIndex = 4;
@@ -107,7 +107,7 @@
             // btnFolderId
             // 
             this.btnFolderId.Location = new System.Drawing.Point(764, 41);
-            this.btnFolderId.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFolderId.Margin = new System.Windows.Forms.Padding(4);
             this.btnFolderId.Name = "btnFolderId";
             this.btnFolderId.Size = new System.Drawing.Size(33, 25);
             this.btnFolderId.TabIndex = 16;
@@ -129,7 +129,7 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(732, 377);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 28);
             this.btnCancel.TabIndex = 17;
@@ -141,7 +141,7 @@
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Location = new System.Drawing.Point(604, 377);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(100, 28);
             this.btnOK.TabIndex = 16;
@@ -152,7 +152,7 @@
             // txtSubject
             // 
             this.txtSubject.Location = new System.Drawing.Point(143, 153);
-            this.txtSubject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSubject.Margin = new System.Windows.Forms.Padding(4);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(636, 22);
             this.txtSubject.TabIndex = 8;
@@ -161,7 +161,7 @@
             // 
             this.chkSearchSubject.AutoSize = true;
             this.chkSearchSubject.Location = new System.Drawing.Point(20, 153);
-            this.chkSearchSubject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkSearchSubject.Margin = new System.Windows.Forms.Padding(4);
             this.chkSearchSubject.Name = "chkSearchSubject";
             this.chkSearchSubject.Size = new System.Drawing.Size(81, 21);
             this.chkSearchSubject.TabIndex = 7;
@@ -172,7 +172,7 @@
             // 
             this.chkSearchBody.AutoSize = true;
             this.chkSearchBody.Location = new System.Drawing.Point(20, 185);
-            this.chkSearchBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkSearchBody.Margin = new System.Windows.Forms.Padding(4);
             this.chkSearchBody.Name = "chkSearchBody";
             this.chkSearchBody.Size = new System.Drawing.Size(66, 21);
             this.chkSearchBody.TabIndex = 9;
@@ -182,7 +182,7 @@
             // txtBody
             // 
             this.txtBody.Location = new System.Drawing.Point(143, 185);
-            this.txtBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBody.Margin = new System.Windows.Forms.Padding(4);
             this.txtBody.Name = "txtBody";
             this.txtBody.Size = new System.Drawing.Size(636, 22);
             this.txtBody.TabIndex = 10;
@@ -191,7 +191,7 @@
             // 
             this.chkSearchCCAttendee.AutoSize = true;
             this.chkSearchCCAttendee.Location = new System.Drawing.Point(20, 247);
-            this.chkSearchCCAttendee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkSearchCCAttendee.Margin = new System.Windows.Forms.Padding(4);
             this.chkSearchCCAttendee.Name = "chkSearchCCAttendee";
             this.chkSearchCCAttendee.Size = new System.Drawing.Size(113, 21);
             this.chkSearchCCAttendee.TabIndex = 13;
@@ -201,7 +201,7 @@
             // txtCCAttendee
             // 
             this.txtCCAttendee.Location = new System.Drawing.Point(143, 247);
-            this.txtCCAttendee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCCAttendee.Margin = new System.Windows.Forms.Padding(4);
             this.txtCCAttendee.Name = "txtCCAttendee";
             this.txtCCAttendee.Size = new System.Drawing.Size(636, 22);
             this.txtCCAttendee.TabIndex = 14;
@@ -210,7 +210,7 @@
             // 
             this.chkSearchToAttendee.AutoSize = true;
             this.chkSearchToAttendee.Location = new System.Drawing.Point(20, 215);
-            this.chkSearchToAttendee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkSearchToAttendee.Margin = new System.Windows.Forms.Padding(4);
             this.chkSearchToAttendee.Name = "chkSearchToAttendee";
             this.chkSearchToAttendee.Size = new System.Drawing.Size(112, 21);
             this.chkSearchToAttendee.TabIndex = 11;
@@ -220,7 +220,7 @@
             // txtToAttendee
             // 
             this.txtToAttendee.Location = new System.Drawing.Point(143, 215);
-            this.txtToAttendee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtToAttendee.Margin = new System.Windows.Forms.Padding(4);
             this.txtToAttendee.Name = "txtToAttendee";
             this.txtToAttendee.Size = new System.Drawing.Size(636, 22);
             this.txtToAttendee.TabIndex = 12;
@@ -233,6 +233,7 @@
             this.label3.Size = new System.Drawing.Size(553, 20);
             this.label3.TabIndex = 15;
             this.label3.Text = "Note: This uses FindItems instead of FindAppointments.";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -269,7 +270,7 @@
             this.Controls.Add(this.lblFolderId);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SearchCalendar";
             this.Text = "SearchCalendar";
             this.Load += new System.EventHandler(this.SearchCalendar_Load);
