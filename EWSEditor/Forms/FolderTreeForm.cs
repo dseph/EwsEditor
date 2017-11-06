@@ -20,7 +20,7 @@ namespace EWSEditor.Forms
         // https://msdn.microsoft.com/en-us/library/office/cc842328.aspx   // MAPI Property Type Overview
         // http://www.imibo.com/lazymapi/mapiproptypeslist.aspx
         
-        // TODO: remove.
+        // TODO: remove. 
         // just some notes...  
         //   P Type             MAPI Type   MAPI Type Name      EWS Type    .NET type  
         //   PtypInteger32      0x0003  
