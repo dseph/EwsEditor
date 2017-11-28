@@ -36,14 +36,15 @@
             // 
             // txtCredentials
             // 
-            this.txtCredentials.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCredentials.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCredentials.Location = new System.Drawing.Point(12, 42);
+            this.txtCredentials.Location = new System.Drawing.Point(3, 42);
             this.txtCredentials.MaxLength = 0;
             this.txtCredentials.Multiline = true;
             this.txtCredentials.Name = "txtCredentials";
             this.txtCredentials.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtCredentials.Size = new System.Drawing.Size(871, 380);
+            this.txtCredentials.Size = new System.Drawing.Size(1179, 399);
             this.txtCredentials.TabIndex = 1;
             this.txtCredentials.WordWrap = false;
             // 
@@ -60,7 +61,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 425);
+            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label1.Location = new System.Drawing.Point(0, 458);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(598, 17);
             this.label1.TabIndex = 3;
@@ -81,7 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(921, 451);
+            this.ClientSize = new System.Drawing.Size(1194, 475);
             this.Controls.Add(this.chkShowPasswords);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEnumerateCredentials);

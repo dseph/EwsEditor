@@ -18,7 +18,7 @@ namespace EWSEditor.Forms
     public partial class SystemNetMainForm : Form
     {
         public string hdrName, hdrValue;
-        bool ContinueTimerRun = false;
+        bool ContinueTimerRun = false; 
 
         public SystemNetMainForm()
         {
@@ -209,7 +209,7 @@ namespace EWSEditor.Forms
                         smtp.DeliveryMethod = SmtpDeliveryMethod.PickupDirectoryFromIis;
                     }
                 }
-
+                // int x = smtp.Timeout;  // 100 seconds is default.
                 // send email
                 smtp.Send(mail);
 
