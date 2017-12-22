@@ -42,13 +42,15 @@ namespace EWSEditor.Forms
         private static ExtendedPropertyDefinition PidLidGlobalObjectId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0003, MapiPropertyType.Binary);
         private static ExtendedPropertyDefinition ICalId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 3, MapiPropertyType.String);
         private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FFB, MapiPropertyType.Binary);  // PidTagStoreEntryId
- 
- 
+        private static ExtendedPropertyDefinition PidNameCalendarUid = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.PublicStrings, 0x001F, MapiPropertyType.String);   
+
+
+
         // see: https://blogs.msdn.microsoft.com/mstehle/2009/09/02/ews-uid-not-always-the-same-for-orphaned-instances-of-the-same-meeting/
- 
+
         // https://ingogegenwarth.wordpress.com/2015/05/01/troubleshooting-calendar-items/
-  
- 
+
+
 
 
 
@@ -359,9 +361,12 @@ namespace EWSEditor.Forms
             }
             else
             {
-
+ 
                 string sSearchCleanGlobalObjectId = GetObjectIdStringFromUid(this.txtUID.Text.Trim());
 
+ 
+                //if (this.chkUID.Checked == true)
+                //    AddCondition(ref searchFilterCollection, PidNameCalendarUid, (this.txtUID.Text.Trim()), this.cmboUidConditional.Text);
                 if (this.chkUID.Checked == true)
                     AddCondition(ref searchFilterCollection, PidLidCleanGlobalObjectId, sSearchCleanGlobalObjectId, this.cmboUidConditional.Text);
                 if (this.chkClass.Checked == true)
@@ -428,8 +433,8 @@ namespace EWSEditor.Forms
         {
             bool bRet = false;
 
-            ListViewItem.ListViewSubItem oLVSI = null; 
-        
+            ListViewItem.ListViewSubItem oLVSI = null;
+            bool bCasted = false;
   
             ListViewItem oListItem = null;
 
@@ -463,35 +468,76 @@ namespace EWSEditor.Forms
  
  
                 }
-                if (oItem.ItemClass.ToUpper().StartsWith("IPM.APPOINTMENT"))
-                { 
-                    Appointment o = (Appointment)oItem;
-                    if (this.txtUID.Text == (o.ICalUid))
-                    {
-                        System.Diagnostics.Debug.WriteLine("Query: " + this.txtGlobalObjId.Text.Trim());
-                        System.Diagnostics.Debug.WriteLine("sPidLidCleanGlobalObjectId: " + sPidLidCleanGlobalObjectId);
-                        System.Diagnostics.Debug.WriteLine("PidLidGlobalObjectId:       " + PidLidGlobalObjectId);
-                        System.Diagnostics.Debug.WriteLine("ICalUid: " + AppointmentSchema.ICalUid);
-                        System.Diagnostics.Debug.WriteLine("Subject: " + ItemSchema.Subject);
-                        System.Diagnostics.Debug.WriteLine(" ");
 
-                    }
-                }
-                if (oItem.ItemClass.ToUpper().StartsWith("IPM.SCHEDULE"))
-                {
-                    MeetingMessage o = (MeetingMessage)oItem;
+                //
+                // Diagnostic logging - uncomment if needed:
+                //if (oItem.ItemClass.ToUpper().StartsWith("IPM.APPOINTMENT"))
+                //{
+                //    Appointment o = null;
+                //    try
+                //    {
+                //        bCasted = false;
+                //        o = (Appointment)oItem;
+                //        bCasted = true;
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        StringBuilder oSbEx = new StringBuilder();
+                //        oSbEx.AppendFormat("Errror casting IPM.APPOINTMENT type to Appointment\r\n");
+                //        oSbEx.AppendFormat("    Subject: {0}\r\n", oItem.Subject);
+                //        oSbEx.AppendFormat("    ItemClass: {0}\r\n", oItem.ItemClass);
+                //        oSbEx.AppendFormat("    UniqueId: {0}\r\n", oItem.Id.UniqueId);
+                //        oSbEx.AppendFormat("    Exception: {0}\r\n", ex.ToString());
+                //        System.Diagnostics.Debug.WriteLine(oSbEx.ToString());
+                //    }
+
+                //    if (bCasted == true && this.txtUID.Text == (o.ICalUid))
+                //    {
+                         
+                //        System.Diagnostics.Debug.WriteLine("Query: " + this.txtGlobalObjId.Text.Trim());
+                //        System.Diagnostics.Debug.WriteLine("sPidLidCleanGlobalObjectId: " + sPidLidCleanGlobalObjectId);
+                //        System.Diagnostics.Debug.WriteLine("PidLidGlobalObjectId:       " + PidLidGlobalObjectId);
+                //        System.Diagnostics.Debug.WriteLine("ICalUid: " + AppointmentSchema.ICalUid);
+                //        System.Diagnostics.Debug.WriteLine("Subject: " + ItemSchema.Subject);
+                //        System.Diagnostics.Debug.WriteLine(" ");
+
+                //    }
                     
-                    if (this.txtUID.Text == (o.ICalUid))
-                    {
-                        System.Diagnostics.Debug.WriteLine("Query: " + this.txtGlobalObjId.Text.Trim());
-                        System.Diagnostics.Debug.WriteLine("sPidLidCleanGlobalObjectId: " + sPidLidCleanGlobalObjectId);
-                        System.Diagnostics.Debug.WriteLine("PidLidGlobalObjectId:       " + PidLidGlobalObjectId);
-                        System.Diagnostics.Debug.WriteLine("ICalUid: " + AppointmentSchema.ICalUid);
-                        System.Diagnostics.Debug.WriteLine("Subject: " + ItemSchema.Subject);
-                        System.Diagnostics.Debug.WriteLine(" ");
+                //}
+                //if (oItem.ItemClass.ToUpper().StartsWith("IPM.SCHEDULE"))
+                //{
+                //    MeetingMessage o = null;
+                //    try
+                //    {
+                //        bCasted = false;
+                //        o = (MeetingMessage)oItem;
+                //        bCasted = true;
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        StringBuilder oSbEx = new StringBuilder();
+                //        oSbEx.AppendFormat("Errror casting IPM.SCHEDULE type to MeetingMessage\r\n");
+                //        oSbEx.AppendFormat("    Subject: {0}\r\n", oItem.Subject);
+                //        oSbEx.AppendFormat("    ItemClass: {0}\r\n", oItem.ItemClass);
+                //        oSbEx.AppendFormat("    UniqueId: {0}\r\n", oItem.Id.UniqueId);
+                //        oSbEx.AppendFormat("    Exception: {0}\r\n", ex.ToString());
+                //        oSbEx.AppendFormat("\r\n");
+                //        System.Diagnostics.Debug.WriteLine(oSbEx.ToString());
+                //    }
 
-                    }
-                }
+                //    if (bCasted == true && this.txtUID.Text == (o.ICalUid))
+                //    {
+                //        System.Diagnostics.Debug.WriteLine("Query: " + this.txtGlobalObjId.Text.Trim());
+                //        System.Diagnostics.Debug.WriteLine("sPidLidCleanGlobalObjectId: " + sPidLidCleanGlobalObjectId);
+                //        System.Diagnostics.Debug.WriteLine("PidLidGlobalObjectId:       " + PidLidGlobalObjectId);
+                //        System.Diagnostics.Debug.WriteLine("ICalUid: " + AppointmentSchema.ICalUid);
+                //        System.Diagnostics.Debug.WriteLine("Subject: " + ItemSchema.Subject);
+                //        System.Diagnostics.Debug.WriteLine(" ");
+
+                //    }
+                //
+                // 
+                // }
                
           
  
@@ -1021,6 +1067,7 @@ namespace EWSEditor.Forms
                 case "IsNotEqualTo":
                     searchFilterCollection.Add(new SearchFilter.IsNotEqualTo(oProp, sValue));
                     break;
+
 
             }
         }

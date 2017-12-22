@@ -592,12 +592,32 @@ namespace EWSEditor.Common.Exports
             //}
 
             oExchangeService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
-            Item oItem = Item.Bind(oExchangeService, oItemId, oExtendedPropSet);
+            Item oItem = null;
+            try
+            {
+                oItem = Item.Bind(oExchangeService, oItemId, oExtendedPropSet);
+            }
+            catch (Exception ex)
+            {
+                StringBuilder oSB = new StringBuilder();
+                //foreach (ExtendedPropertyDefinition pd in oExtendedPropertyDefinitions)
+                //{
+                //   // oSB.AppendFormat("[0] [1]", pd.)
+                     
+                //}
+                MessageBox.Show("Error: " + ex.ToString());
+               // throw (ex);
+            }
 
             string sItemLine = string.Empty;
             char[] TrimChars = { ',', ' ' };
             byte[] oFromBytes;
-            
+
+            //foreach (ExtendedPropertyDefinition oEPDx in oExtendedPropSet)
+            //{
+            //    MessageBox.Show(oEPDx.Type.ToString());
+            //}
+
             foreach (ExtendedPropertyDefinition oEPD in oExtendedPropertyDefinitions)
             {
                 switch (oEPD.MapiType)

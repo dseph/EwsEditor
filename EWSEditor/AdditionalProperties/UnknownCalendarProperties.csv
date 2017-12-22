@@ -20,7 +20,7 @@
 
 //		PropertySetId:
 //			This is the property set guid. You can use Property set names such as PSETID_Meeting - EWS will swap it for 
-//			the GUID at run time. If you don't need the GUID for the property then just enter "" for the value.
+//			the GUID at run time. If you don't need the GUID for the property then just enter "" for the value. 
 //
 //				Area Name			Property Set Name			GUID
 //				Common				PS_PUBLIC_STRINGS	 		00020329-0000-0000-C000-000000000046 
@@ -62,13 +62,13 @@
 //              by "0x" and not an integer then its treated as a string.  A tag with the type included is not 
 //              supported in EWS Editor yet - types and Id values need to be sepertate values.
 //
-//      When EWSEditor uses properties defined from this list to pull properties from items and add them to a CSV file, it will provde
-//      the abliity to handle strings in different ways.  The best option for programatic comnsuption is to choose to have all strings
+//      When EWSEditor uses properties defined from this list to pull properties from items and add them to a CSV file, it will proved
+//      the ability to handle strings in different ways.  The best option for programmatic consumption is to choose to have all strings
 //      base 64 encoded.  You can select to have the string type data sanitized also - this will remove comma, CR and LF characters - 
-//      this helps if you want to read the csv file content or load it into an applicaiton which cannot base 64 decode the content.
-//		You can choose to have no actions to be taken on string type data, however this can lead to probelms when such content contains commas,
-//      CR or LF character since the file is a CSV. Selecting None will caue it to take no actions on string data.
-//      Array data such as a StringArray will have each instance of the item Base 64 encoded and seperated by a comma.  The final 
+//      this helps if you want to read the csv file content or load it into an application which cannot base 64 decode the content.
+//		You can choose to have no actions to be taken on string type data, however this can lead to problems when such content contains commas,
+//      CR or LF character since the file is a CSV. Selecting None will cause it to take no actions on string data.
+//      Array data such as a StringArray will have each instance of the item Base 64 encoded and separated by a comma.  The final 
 //      resulting string is base 64 encoded.
 //     
 //      When importing the data into Excel its best to open a new worksheet, click on the Data tab, click on the "From Text" icon then slelect
@@ -81,7 +81,7 @@
 //  The list of properties below are the ones I have pulled from EWSEditor's code and elsewhere.
  	
 
-"PropertyName",			"PropertySetId",                        "PropertyDefinitionType",  Property",		"PropertyType" 
+"DescPropertyName",	 "ProbablePropertyName",					"PropertySetId",			"PropertyId",		"PropertyType" " 
 
 "Meeting_x1",			"Meeting_x1",			"6ED8DA90-450B-101B-98DA-00AA003F1305",			"0x1",		"SystemTime" 
 
