@@ -384,7 +384,7 @@ namespace EWSEditor.Common
             string sResponseStatusDescription = string.Empty;
 
             this.Cursor = Cursors.WaitCursor;
-
+            string sUseVerb = cmboVerb.Text.Trim();
 
             // http://msdn.microsoft.com/en-us/library/office/bb409286(v=exchg.150).aspx
 
@@ -398,6 +398,15 @@ namespace EWSEditor.Common
                 }
             }
 
+            if (cmboVerb.Text.Trim().ToUpper() == "GET RESTREPORT" )
+            {
+                oHeadersList.Add(new KeyValuePair<string, string>("DataServiceVersion", "2.0"));
+                oHeadersList.Add(new KeyValuePair<string, string>("MaxDataServiceVersion", "2.0"));
+                oHeadersList.Add(new KeyValuePair<string, string>("Accept-Language", "EN-US"));
+                oHeadersList.Add(new KeyValuePair<string, string>("X-RWS-Version", "2013-V1"));
+
+                sUseVerb = "GET";
+            }
 
 
             System.Net.WebProxy oWebProxy = null;
@@ -435,7 +444,7 @@ namespace EWSEditor.Common
             oStopwatch.Start();
 
             bRet = EWSEditor.Common.HttpHelper.HtppCall(
-                cmboVerb.Text,
+                sUseVerb,
                 txtUrl.Text.Trim(),
                 cmboContentType.Text,
                 cmboAuthentication.Text,
