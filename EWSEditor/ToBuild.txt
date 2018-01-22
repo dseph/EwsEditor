@@ -25,9 +25,15 @@ To build:
 
 Add the following NuGet packages:
 
-    Microsoft.IdentityModel.Clients.ActiveDirectory
+    Microsoft.IdentityModel.Clients.ActiveDirectory  (For oAuth)
 
     System.Management.Automation.dll  (for something I’m adding for a future release).
+
+	Microsoft.Bcl
+
+    Microsoft.Bcl.Build
+
+    Microsoft.Net.Http
 
 There is a reference to CDOSYS, for which Visual Studio generated the ADODB and CDO interops.  If you need to regenerate them 
 then remove the references and be sure to delete the interop files. Next set a new reference to CDOSYS and Visual studio will 
@@ -40,3 +46,5 @@ Set a reference to .Net 4.5.1
 You should be able to use a newer version of .NET, however it’s not been tested against higher versions. The reason 4.5.1 was
 chosen is that it is widely installed and had needed features and fixes for EWSEditor, so it’s used as the minimum bar for .NET. 
 Later builds of EWSEditor may use a newer version of .NET.
+
+If you have issues with the referenced components then update the compenents and references.
