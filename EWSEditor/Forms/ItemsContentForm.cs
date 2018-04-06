@@ -464,9 +464,17 @@ namespace EWSEditor.Forms
              
             // Make one call to get all the items.
             CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
-            ServiceResponseCollection<GetItemResponse> getItems = this.CurrentService.BindToItems(
-                this.currentItemIds.ToArray(), 
-                this.contentItemView.PropertySet);
+            IEnumerable<GetItemResponse> getItems;
+            if (currentItemIds.Count > 0)
+            {
+                getItems = this.CurrentService.BindToItems(
+                    this.currentItemIds.ToArray(),
+                    this.contentItemView.PropertySet);
+            }
+            else
+            {
+                getItems = Enumerable.Empty<GetItemResponse>();
+            }
 
             // Convert the GetItemResponseCollection to an Item list.
             List<Item> items = new List<Item>();
