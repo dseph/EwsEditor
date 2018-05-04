@@ -53,6 +53,13 @@ namespace EWSEditor.Forms
         private void FolderRetentionSettings_Load(object sender, EventArgs e)
         {
             LoadForm();
+
+            // Compare:
+            // https://blogs.msdn.microsoft.com/akashb/2012/12/07/stamping-archive-policy-tag-using-ews-managed-api-from-powershellexchange-2010/
+            // to
+            // https://blogs.msdn.microsoft.com/akashb/2011/08/10/stamping-retention-policy-tag-using-ews-managed-api-1-1-from-powershellexchange-2010/
+
+            // And see: https://blogs.technet.microsoft.com/anya/2014/11/19/understanding-of-managed-folder-assistant-with-retention-policies/
         }
 
         private void LoadForm()

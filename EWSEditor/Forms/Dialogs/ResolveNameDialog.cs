@@ -210,5 +210,10 @@ namespace EWSEditor.Forms
         {
 
         }
+
+        private void lstNames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

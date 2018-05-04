@@ -183,6 +183,12 @@
     <Compile Include="ExchangeReports\TotalEmailsSentAndReceivedPerDayAndSize.Designer.cs">
       <DependentUpon>TotalEmailsSentAndReceivedPerDayAndSize.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Archive\FolderArchiveSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Archive\FolderArchiveSettings.Designer.cs">
+      <DependentUpon>FolderArchiveSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Calendar\CalendarBreakdownView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,12 @@
     </Compile>
     <Compile Include="Forms\EmptyFolder.Designer.cs">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\IMAP\ImapTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IMAP\ImapTest.Designer.cs">
+      <DependentUpon>ImapTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\MarkAsJunkForm.cs">
       <SubType>Form</SubType>
@@ -939,6 +951,9 @@
     <EmbeddedResource Include="ExchangeReports\TotalEmailsSentAndReceivedPerDayAndSize.resx">
       <DependentUpon>TotalEmailsSentAndReceivedPerDayAndSize.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Archive\FolderArchiveSettings.resx">
+      <DependentUpon>FolderArchiveSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Calendar\CalendarBreakdownView.resx">
       <DependentUpon>CalendarBreakdownView.cs</DependentUpon>
     </EmbeddedResource>
@@ -983,6 +998,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EmptyFolder.resx">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\IMAP\ImapTest.resx">
+      <DependentUpon>ImapTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MarkAsJunkForm.resx">
       <DependentUpon>MarkAsJunkForm.cs</DependentUpon>

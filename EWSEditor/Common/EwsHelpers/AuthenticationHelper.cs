@@ -24,7 +24,7 @@ namespace EWSEditor.Common
             bool bRet = false;
 
 
-            // See // https://msdn.microsoft.com/en-us/library/office/dn903761%28v=exchg.150%29.aspx?f=255&MSPPError=-2147217396#bk_getToken
+            // See // https://msdn.microsoft.com/en-us/library/office/dn903761(v=exchg.150).aspx
             // get authentication token
             string authority = sAuthority;
             string clientID = sAppId;
@@ -53,7 +53,7 @@ namespace EWSEditor.Common
              
             ExchangeCredentials oExchangeCredentials = null;
 
-            // See // https://msdn.microsoft.com/en-us/library/office/dn903761%28v=exchg.150%29.aspx?f=255&MSPPError=-2147217396#bk_getToken
+            // See // https://msdn.microsoft.com/en-us/library/office/dn903761(v=exchg.150).aspx
             // get authentication token
             string authority = sAuthority;
             string clientID = sAppId;

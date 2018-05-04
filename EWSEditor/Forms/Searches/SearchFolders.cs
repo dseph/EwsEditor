@@ -562,8 +562,9 @@ namespace EWSEditor.Forms
             }
         }
 
- 
+        private void lvItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

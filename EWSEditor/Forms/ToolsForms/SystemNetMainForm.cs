@@ -211,6 +211,7 @@ namespace EWSEditor.Forms
                 }
                 // int x = smtp.Timeout;  // 100 seconds is default.
                 // send email
+                // smtp.Timeout = 10000;
                 smtp.Send(mail);
 
 
@@ -228,6 +229,7 @@ namespace EWSEditor.Forms
             catch (Exception ex)
             {
                 AddLineToLog(string.Format("\r\nError sending message:  {0}\r\n", DateTime.Now), true);
+               
                 AddLineToLog(ex.Message + "\r\n\r\n" + "StackTrace: " + "\r\n" + ex.StackTrace, true);
                 bRet = false;
             }

@@ -126,6 +126,7 @@
             this.lvItems.Size = new System.Drawing.Size(741, 179);
             this.lvItems.TabIndex = 15;
             this.lvItems.UseCompatibleStateImageBehavior = false;
+            this.lvItems.SelectedIndexChanged += new System.EventHandler(this.lvItems_SelectedIndexChanged);
             this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_DoubleClick);
             // 
             // mnuFolderStrip
@@ -134,12 +135,12 @@
             this.mnuFolderStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFolderStripFolderProperties});
             this.mnuFolderStrip.Name = "mnuFolderStrip";
-            this.mnuFolderStrip.Size = new System.Drawing.Size(201, 30);
+            this.mnuFolderStrip.Size = new System.Drawing.Size(195, 28);
             // 
             // mnuFolderStripFolderProperties
             // 
             this.mnuFolderStripFolderProperties.Name = "mnuFolderStripFolderProperties";
-            this.mnuFolderStripFolderProperties.Size = new System.Drawing.Size(200, 26);
+            this.mnuFolderStripFolderProperties.Size = new System.Drawing.Size(194, 24);
             this.mnuFolderStripFolderProperties.Text = "Folder Poperties...";
             this.mnuFolderStripFolderProperties.Click += new System.EventHandler(this.mnuFolderStripFolderProperties_Click);
             // 

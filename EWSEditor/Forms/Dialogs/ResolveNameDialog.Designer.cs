@@ -49,7 +49,7 @@
             this.chkReturnContactDetails.Checked = true;
             this.chkReturnContactDetails.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkReturnContactDetails.Location = new System.Drawing.Point(367, 43);
-            this.chkReturnContactDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkReturnContactDetails.Margin = new System.Windows.Forms.Padding(4);
             this.chkReturnContactDetails.Name = "chkReturnContactDetails";
             this.chkReturnContactDetails.Size = new System.Drawing.Size(172, 21);
             this.chkReturnContactDetails.TabIndex = 9;
@@ -65,7 +65,7 @@
             "ContactsOnly",
             "ContactsThenDirectory"});
             this.cmboResolveNameSearchLocation.Location = new System.Drawing.Point(140, 40);
-            this.cmboResolveNameSearchLocation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmboResolveNameSearchLocation.Margin = new System.Windows.Forms.Padding(4);
             this.cmboResolveNameSearchLocation.Name = "cmboResolveNameSearchLocation";
             this.cmboResolveNameSearchLocation.Size = new System.Drawing.Size(206, 24);
             this.cmboResolveNameSearchLocation.TabIndex = 8;
@@ -85,7 +85,7 @@
             // 
             this.btnGo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGo.Location = new System.Drawing.Point(16, 68);
-            this.btnGo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGo.Margin = new System.Windows.Forms.Padding(4);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(107, 28);
             this.btnGo.TabIndex = 2;
@@ -98,7 +98,7 @@
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Location = new System.Drawing.Point(241, 7);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(701, 22);
             this.txtName.TabIndex = 1;
@@ -109,7 +109,7 @@
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Location = new System.Drawing.Point(839, 341);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(100, 28);
             this.btnOK.TabIndex = 5;
@@ -131,13 +131,14 @@
             this.lstNames.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.lstNames.HideSelection = false;
             this.lstNames.Location = new System.Drawing.Point(44, 126);
-            this.lstNames.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstNames.Margin = new System.Windows.Forms.Padding(4);
             this.lstNames.MultiSelect = false;
             this.lstNames.Name = "lstNames";
             this.lstNames.Size = new System.Drawing.Size(895, 207);
             this.lstNames.TabIndex = 4;
             this.lstNames.UseCompatibleStateImageBehavior = false;
             this.lstNames.View = System.Windows.Forms.View.Details;
+            this.lstNames.SelectedIndexChanged += new System.EventHandler(this.lstNames_SelectedIndexChanged);
             this.lstNames.DoubleClick += new System.EventHandler(this.lstNames_DoubleClick);
             // 
             // colName

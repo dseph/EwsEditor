@@ -467,6 +467,10 @@ namespace EWSEditor.Forms
             else if (folder.DisplayName == null || folder.DisplayName.Length == 0)
             {
                 nodeText = System.Enum.GetName(typeof(WellKnownFolderName), WellKnownFolderName.MsgFolderRoot);
+              
+                if (origFolderId.FolderName.ToString() == "Root")
+                    nodeText = "Root";
+                //nodeText = "Root";
             }
             else
             {
@@ -2070,6 +2074,14 @@ namespace EWSEditor.Forms
         {
             Folder oFolder = (GetFolderFromNode(FolderTreeView.SelectedNode));
             FolderRetentionSettings oForm = new FolderRetentionSettings(CurrentService, oFolder.Id);
+            oForm.Show();
+
+        }
+
+        private void mnuFolderArchiveFlags_Click(object sender, EventArgs e)
+        {
+            Folder oFolder = (GetFolderFromNode(FolderTreeView.SelectedNode));
+            FolderArchiveSettings oForm = new FolderArchiveSettings(CurrentService, oFolder.Id);
             oForm.Show();
 
         }
