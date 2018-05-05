@@ -46,21 +46,22 @@
             // 
             // txtMailboxes
             // 
-            this.txtMailboxes.Location = new System.Drawing.Point(12, 65);
+            this.txtMailboxes.Location = new System.Drawing.Point(11, 52);
+            this.txtMailboxes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMailboxes.MaxLength = 0;
             this.txtMailboxes.Multiline = true;
             this.txtMailboxes.Name = "txtMailboxes";
             this.txtMailboxes.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMailboxes.Size = new System.Drawing.Size(642, 122);
+            this.txtMailboxes.Size = new System.Drawing.Size(571, 98);
             this.txtMailboxes.TabIndex = 1;
             // 
             // btnSearch
             // 
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearch.Location = new System.Drawing.Point(692, 152);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSearch.Location = new System.Drawing.Point(615, 122);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(184, 35);
+            this.btnSearch.Size = new System.Drawing.Size(164, 28);
             this.btnSearch.TabIndex = 25;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -71,20 +72,20 @@
             this.txtClass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtClass.Enabled = false;
-            this.txtClass.Location = new System.Drawing.Point(114, 281);
-            this.txtClass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtClass.Location = new System.Drawing.Point(101, 225);
+            this.txtClass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtClass.Name = "txtClass";
-            this.txtClass.Size = new System.Drawing.Size(762, 26);
+            this.txtClass.Size = new System.Drawing.Size(678, 22);
             this.txtClass.TabIndex = 20;
             // 
             // chkClass
             // 
             this.chkClass.AutoSize = true;
             this.chkClass.Enabled = false;
-            this.chkClass.Location = new System.Drawing.Point(30, 281);
-            this.chkClass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkClass.Location = new System.Drawing.Point(27, 225);
+            this.chkClass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkClass.Name = "chkClass";
-            this.chkClass.Size = new System.Drawing.Size(74, 24);
+            this.chkClass.Size = new System.Drawing.Size(64, 21);
             this.chkClass.TabIndex = 19;
             this.chkClass.Text = "Class";
             this.chkClass.UseVisualStyleBackColor = true;
@@ -94,20 +95,20 @@
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.Enabled = false;
-            this.txtName.Location = new System.Drawing.Point(115, 245);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtName.Location = new System.Drawing.Point(102, 196);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(761, 26);
+            this.txtName.Size = new System.Drawing.Size(677, 22);
             this.txtName.TabIndex = 18;
             // 
             // chkName
             // 
             this.chkName.AutoSize = true;
             this.chkName.Enabled = false;
-            this.chkName.Location = new System.Drawing.Point(30, 247);
-            this.chkName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkName.Location = new System.Drawing.Point(27, 198);
+            this.chkName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkName.Name = "chkName";
-            this.chkName.Size = new System.Drawing.Size(77, 24);
+            this.chkName.Size = new System.Drawing.Size(67, 21);
             this.chkName.TabIndex = 17;
             this.chkName.Text = "Name";
             this.chkName.UseVisualStyleBackColor = true;
@@ -115,9 +116,10 @@
             // rdoDisplayHere
             // 
             this.rdoDisplayHere.AutoSize = true;
-            this.rdoDisplayHere.Location = new System.Drawing.Point(30, 381);
+            this.rdoDisplayHere.Location = new System.Drawing.Point(27, 305);
+            this.rdoDisplayHere.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdoDisplayHere.Name = "rdoDisplayHere";
-            this.rdoDisplayHere.Size = new System.Drawing.Size(128, 24);
+            this.rdoDisplayHere.Size = new System.Drawing.Size(114, 21);
             this.rdoDisplayHere.TabIndex = 26;
             this.rdoDisplayHere.TabStop = true;
             this.rdoDisplayHere.Text = "Display Here:";
@@ -127,9 +129,10 @@
             // rdoSaveToCsvFile
             // 
             this.rdoSaveToCsvFile.AutoSize = true;
-            this.rdoSaveToCsvFile.Location = new System.Drawing.Point(30, 351);
+            this.rdoSaveToCsvFile.Location = new System.Drawing.Point(27, 281);
+            this.rdoSaveToCsvFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.rdoSaveToCsvFile.Name = "rdoSaveToCsvFile";
-            this.rdoSaveToCsvFile.Size = new System.Drawing.Size(153, 24);
+            this.rdoSaveToCsvFile.Size = new System.Drawing.Size(134, 21);
             this.rdoSaveToCsvFile.TabIndex = 27;
             this.rdoSaveToCsvFile.TabStop = true;
             this.rdoSaveToCsvFile.Text = "Save to CSV file:";
@@ -141,35 +144,36 @@
             this.txtCsvFilePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCsvFilePath.Enabled = false;
-            this.txtCsvFilePath.Location = new System.Drawing.Point(206, 351);
-            this.txtCsvFilePath.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtCsvFilePath.Location = new System.Drawing.Point(183, 281);
+            this.txtCsvFilePath.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtCsvFilePath.Name = "txtCsvFilePath";
-            this.txtCsvFilePath.Size = new System.Drawing.Size(670, 26);
+            this.txtCsvFilePath.Size = new System.Drawing.Size(596, 22);
             this.txtCsvFilePath.TabIndex = 28;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 321);
+            this.label2.Location = new System.Drawing.Point(5, 257);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 20);
+            this.label2.Size = new System.Drawing.Size(55, 17);
             this.label2.TabIndex = 29;
             this.label2.Text = "Output:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 211);
+            this.label3.Location = new System.Drawing.Point(5, 169);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 20);
+            this.label3.Size = new System.Drawing.Size(80, 17);
             this.label3.TabIndex = 30;
             this.label3.Text = "Search On:";
             // 
             // lvFolders
             // 
-            this.lvFolders.Location = new System.Drawing.Point(45, 420);
+            this.lvFolders.Location = new System.Drawing.Point(40, 336);
+            this.lvFolders.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lvFolders.Name = "lvFolders";
-            this.lvFolders.Size = new System.Drawing.Size(822, 180);
+            this.lvFolders.Size = new System.Drawing.Size(731, 145);
             this.lvFolders.TabIndex = 32;
             this.lvFolders.UseCompatibleStateImageBehavior = false;
             // 
@@ -177,19 +181,20 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(10, 3);
+            this.textBox1.Location = new System.Drawing.Point(9, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.MaxLength = 0;
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(866, 56);
+            this.textBox1.Size = new System.Drawing.Size(770, 45);
             this.textBox1.TabIndex = 33;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // FindCertainFolders
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 612);
+            this.ClientSize = new System.Drawing.Size(804, 490);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lvFolders);
             this.Controls.Add(this.label3);
@@ -203,8 +208,10 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.chkName);
             this.Controls.Add(this.txtMailboxes);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FindCertainFolders";
             this.Text = "FindCertainFolders";
+            this.Load += new System.EventHandler(this.FindCertainFolders_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

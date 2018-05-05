@@ -220,7 +220,11 @@ namespace EWSEditor.Forms.Searches
             lvFolders.Columns.Add("Item Count", 170, HorizontalAlignment.Left);
             lvFolders.Columns.Add("Unique Id", 250, HorizontalAlignment.Left);
             lvFolders.Columns.Add("FolderPath", 250, HorizontalAlignment.Left);
-        } 
+        }
 
+        private void FindCertainFolders_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

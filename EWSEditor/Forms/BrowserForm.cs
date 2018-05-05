@@ -1224,5 +1224,12 @@
             CredentialCacheForm oForm = new CredentialCacheForm();
             oForm.Show();
         }
+
+        private void mnuSearchForSearchFolders_Click(object sender, EventArgs e)
+        {
+  
+            FindSearchFolder oForm = new FindSearchFolder(this.CurrentService);
+            oForm.Show();
+        }
     }
 }

@@ -86,9 +86,10 @@
             this.mnuFileContentHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHTMLInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMimeParser = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCredentialCache = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCredentialCache = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSearchForSearchFolders = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -201,6 +202,7 @@
             this.eDiscoverySearchToolStripMenuItem,
             this.mailAppsToolStripMenuItem,
             this.mnuMailTips,
+            this.mnuSearchForSearchFolders,
             this.mnuToolsSplit4,
             this.developerToolsTestWindowToolStripMenuItem});
             this.mnuTools.Name = "mnuTools";
@@ -543,6 +545,13 @@
             this.mnuMimeParser.Text = "MIME Parser";
             this.mnuMimeParser.Click += new System.EventHandler(this.mnuMimeParser_Click);
             // 
+            // mnuCredentialCache
+            // 
+            this.mnuCredentialCache.Name = "mnuCredentialCache";
+            this.mnuCredentialCache.Size = new System.Drawing.Size(324, 26);
+            this.mnuCredentialCache.Text = "Credential Cache";
+            this.mnuCredentialCache.Click += new System.EventHandler(this.mnuCredentialCache_Click);
+            // 
             // mnuHelp
             // 
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -558,12 +567,12 @@
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
-            // mnuCredentialCache
+            // mnuSearchForSearchFolders
             // 
-            this.mnuCredentialCache.Name = "mnuCredentialCache";
-            this.mnuCredentialCache.Size = new System.Drawing.Size(324, 26);
-            this.mnuCredentialCache.Text = "Credential Cache";
-            this.mnuCredentialCache.Click += new System.EventHandler(this.mnuCredentialCache_Click);
+            this.mnuSearchForSearchFolders.Name = "mnuSearchForSearchFolders";
+            this.mnuSearchForSearchFolders.Size = new System.Drawing.Size(385, 26);
+            this.mnuSearchForSearchFolders.Text = "Search For Search Folders...";
+            this.mnuSearchForSearchFolders.Click += new System.EventHandler(this.mnuSearchForSearchFolders_Click);
             // 
             // BrowserForm
             // 
@@ -647,6 +656,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuUserSettingsUserRetentionTags;
         private System.Windows.Forms.ToolStripMenuItem mnuUserSettingsUserConfiguration;
         public System.Windows.Forms.ToolStripMenuItem mnuUserSettings;
-        private System.Windows.Forms.ToolStripMenuItem mnuCredentialCache;
+        public System.Windows.Forms.ToolStripMenuItem mnuCredentialCache;
+        public System.Windows.Forms.ToolStripMenuItem mnuSearchForSearchFolders;
     }
 }

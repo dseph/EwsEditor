@@ -337,7 +337,11 @@ namespace EWSEditor.Forms
                 this.mnuMailTips.Enabled = isCurrentService;
                 this.developerToolsTestWindowToolStripMenuItem.Enabled = isCurrentService;
 
-                 
+                this.mnuSearchForSearchFolders.Enabled = isCurrentService;
+           
+
+
+
             }
         }
 
@@ -2084,6 +2088,11 @@ namespace EWSEditor.Forms
             FolderArchiveSettings oForm = new FolderArchiveSettings(CurrentService, oFolder.Id);
             oForm.Show();
 
+        }
+
+        private void mnuSerachForSerachFolders_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
