@@ -44,13 +44,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label5.Location = new System.Drawing.Point(428, 188);
+            this.label5.Location = new System.Drawing.Point(430, 230);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 19);
             this.label5.TabIndex = 21;
@@ -60,7 +62,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Location = new System.Drawing.Point(428, 241);
+            this.label4.Location = new System.Drawing.Point(430, 283);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(359, 19);
             this.label4.TabIndex = 20;
@@ -70,14 +72,14 @@
             // 
             this.lblInfo.AutoSize = true;
             this.lblInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblInfo.Location = new System.Drawing.Point(277, 210);
+            this.lblInfo.Location = new System.Drawing.Point(279, 252);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(2, 19);
             this.lblInfo.TabIndex = 19;
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(864, 282);
+            this.btnCancel.Location = new System.Drawing.Point(1053, 367);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 18;
@@ -87,7 +89,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(757, 282);
+            this.btnOK.Location = new System.Drawing.Point(946, 367);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 17;
@@ -97,7 +99,7 @@
             // 
             // txtPR_ARCHIVE_PERIOD
             // 
-            this.txtPR_ARCHIVE_PERIOD.Location = new System.Drawing.Point(277, 238);
+            this.txtPR_ARCHIVE_PERIOD.Location = new System.Drawing.Point(279, 280);
             this.txtPR_ARCHIVE_PERIOD.Name = "txtPR_ARCHIVE_PERIOD";
             this.txtPR_ARCHIVE_PERIOD.Size = new System.Drawing.Size(145, 22);
             this.txtPR_ARCHIVE_PERIOD.TabIndex = 16;
@@ -106,7 +108,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 240);
+            this.label3.Location = new System.Drawing.Point(20, 282);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(219, 17);
             this.label3.TabIndex = 15;
@@ -114,15 +116,16 @@
             // 
             // txtPR_RETENTION_FLAGS
             // 
-            this.txtPR_RETENTION_FLAGS.Location = new System.Drawing.Point(277, 185);
+            this.txtPR_RETENTION_FLAGS.Location = new System.Drawing.Point(279, 227);
             this.txtPR_RETENTION_FLAGS.Name = "txtPR_RETENTION_FLAGS";
             this.txtPR_RETENTION_FLAGS.Size = new System.Drawing.Size(145, 22);
             this.txtPR_RETENTION_FLAGS.TabIndex = 14;
+            this.txtPR_RETENTION_FLAGS.TextChanged += new System.EventHandler(this.txtPR_RETENTION_FLAGS_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 187);
+            this.label2.Location = new System.Drawing.Point(20, 229);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(238, 17);
             this.label2.TabIndex = 13;
@@ -130,7 +133,7 @@
             // 
             // txtPR_ARCHIVE_TAG
             // 
-            this.txtPR_ARCHIVE_TAG.Location = new System.Drawing.Point(277, 157);
+            this.txtPR_ARCHIVE_TAG.Location = new System.Drawing.Point(279, 199);
             this.txtPR_ARCHIVE_TAG.Name = "txtPR_ARCHIVE_TAG";
             this.txtPR_ARCHIVE_TAG.Size = new System.Drawing.Size(479, 22);
             this.txtPR_ARCHIVE_TAG.TabIndex = 12;
@@ -138,7 +141,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 159);
+            this.label1.Location = new System.Drawing.Point(20, 201);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(195, 17);
             this.label1.TabIndex = 11;
@@ -157,7 +160,7 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(58, 57);
+            this.linkLabel1.Location = new System.Drawing.Point(67, 116);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(881, 17);
             this.linkLabel1.TabIndex = 23;
@@ -168,7 +171,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 57);
+            this.label7.Location = new System.Drawing.Point(20, 55);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 17);
             this.label7.TabIndex = 24;
@@ -177,7 +180,7 @@
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(58, 83);
+            this.linkLabel2.Location = new System.Drawing.Point(67, 142);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(790, 17);
             this.linkLabel2.TabIndex = 29;
@@ -188,7 +191,7 @@
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(58, 116);
+            this.linkLabel3.Location = new System.Drawing.Point(67, 60);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(762, 17);
             this.linkLabel3.TabIndex = 30;
@@ -196,11 +199,33 @@
             this.linkLabel3.Text = "https://blogs.technet.microsoft.com/anya/2014/11/19/understanding-of-managed-fold" +
     "er-assistant-with-retention-policies/";
             // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Location = new System.Drawing.Point(67, 87);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(442, 17);
+            this.linkLabel4.TabIndex = 31;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "https://msdn.microsoft.com/en-us/library/ee202166(v=exchg.80).aspx";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 330);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(1007, 17);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Note: When PR_RETENTION_FLAGS is set, Exchange may update its bitmask include the" +
+    " next action to perform - such as NeedsRescan and PendingRescan.";
+            // 
             // FolderArchiveSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 317);
+            this.ClientSize = new System.Drawing.Size(1157, 412);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.linkLabel4);
             this.Controls.Add(this.linkLabel3);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.label7);
@@ -243,5 +268,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.Label label9;
     }
 }

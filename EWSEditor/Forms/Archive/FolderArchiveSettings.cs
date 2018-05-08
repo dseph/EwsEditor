@@ -129,6 +129,101 @@ namespace EWSEditor.Forms
 
         private void txtPR_ARCHIVE_PERIOD_TextChanged(object sender, EventArgs e)
         {
+            //string s = txtPR_RETENTION_FLAGS.Text.Trim();
+            //if (s != "")
+            //{
+            //    try
+            //    {
+            //        int i = Convert.ToInt32(s);
+            //        RetentionFlags c = (RetentionFlags)i;
+            //        lblInfo.Text = GetRetentionFlagSettingAsString(c);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        lblInfo.Text = "";
+            //    }
+
+            //}
+        }
+ 
+        
+        string GetRetentionFlagSettingAsString(RetentionFlags r)
+        {
+            string sRet = "";
+            int i = (int)r;
+            sRet = (i.ToString("X4")) + " = ";
+
+            https://msdn.microsoft.com/en-us/library/ee202166(v=exchg.80).aspx
+
+            if (r == RetentionFlags.None)
+                sRet += "None (0x000). ";      
+            else
+            {
+                if (r.HasFlag(RetentionFlags.ExplicitTag)) sRet += "ExplicitTag (0x001) + ";
+
+                if (r.HasFlag(RetentionFlags.UserOverride)) sRet += "UserOverride (0x002) + ";
+                if (r.HasFlag(RetentionFlags.Autotag)) sRet += "Autotag (0x004) + ";
+                if (r.HasFlag(RetentionFlags.PersonalTag)) sRet += "PersonalTag (0x0008) + ";
+                if (r.HasFlag(RetentionFlags.ExplictArchiveTag)) sRet += "ExplictArchiveTag (0x0010) + ";
+                if (r.HasFlag(RetentionFlags.KeepInPlace)) sRet += "KeepInPlace. (0x0020) + ";
+                if (r.HasFlag(RetentionFlags.SystemData)) sRet += "SystemData. (0x0040) + ";
+                if (r.HasFlag(RetentionFlags.NeedsRescan)) sRet += "NeedsRescan. (0x0080) + ";
+                if (r.HasFlag(RetentionFlags.PendingRescan)) sRet += "PendingRescan. (0x0100)";
+            }
+            if (sRet.EndsWith(" + "))
+            {
+                sRet.Remove(sRet.Length - 4, 3);
+                sRet += ".";
+            }
+            return sRet;
+        }
+
+        //string GetRetentionFlagSettingAsString(RetentionFlags r)
+        //{
+        //    string sRet = "";
+
+        //    https://msdn.microsoft.com/en-us/library/ee202166(v=exchg.80).aspx
+
+        //    if (r == RetentionFlags.None)
+        //        sRet += "None (0x000). ";      
+        //    else
+        //    {
+        //        if (r.HasFlag(RetentionFlags.ExplicitTag)) sRet += "ExplicitTag (0x001) + ";
+
+        //        if (r.HasFlag(RetentionFlags.UserOverride)) sRet += "UserOverride (0x002) + ";
+        //        if (r.HasFlag(RetentionFlags.Autotag)) sRet += "Autotag (0x004) + ";
+        //        if (r.HasFlag(RetentionFlags.PersonalTag)) sRet += "PersonalTag (0x0008) + ";
+        //        if (r.HasFlag(RetentionFlags.ExplictArchiveTag)) sRet += "ExplictArchiveTag (0x0010) + ";
+        //        if (r.HasFlag(RetentionFlags.KeepInPlace)) sRet += "KeepInPlace. (0x0020) + ";
+        //        if (r.HasFlag(RetentionFlags.SystemData)) sRet += "SystemData. (0x0040) + ";
+        //        if (r.HasFlag(RetentionFlags.NeedsRescan)) sRet += "NeedsRescan. (0x0080) + ";
+        //        if (r.HasFlag(RetentionFlags.PendingRescan)) sRet += "PendingRescan. (0x0100)";
+        //    }
+        //    if (sRet.EndsWith(" + "))
+        //    {
+        //        sRet.Remove(sRet.Length - 4, 3);
+        //        sRet += ".".
+        //    }
+        //    return sRet;
+        //}
+
+        [Flags]
+        private enum RetentionFlags
+        {
+            None = 0,
+            ExplicitTag = 1,
+            UserOverride = 2,
+            Autotag = 4,
+            PersonalTag = 8,
+            ExplictArchiveTag = 16,
+            KeepInPlace = 32,
+            SystemData = 64,
+            NeedsRescan = 128,
+            PendingRescan = 256,
+        }
+
+        private void txtPR_RETENTION_FLAGS_TextChanged(object sender, EventArgs e)
+        {
             string s = txtPR_RETENTION_FLAGS.Text.Trim();
             if (s != "")
             {
@@ -145,45 +240,6 @@ namespace EWSEditor.Forms
 
             }
         }
-
-
-        string GetRetentionFlagSettingAsString(RetentionFlags r)
-        {
-            string sRet = "";
-
-
-
-            if (r.HasFlag(RetentionFlags.None)) sRet += "None.  ";
-            if (r.HasFlag(RetentionFlags.ExplicitTag)) sRet += "ExplicitTag.  ";
-            if (r.HasFlag(RetentionFlags.UserOverride)) sRet += "UserOverride. ";
-            if (r.HasFlag(RetentionFlags.Autotag)) sRet += "Autotag.  ";
-            if (r.HasFlag(RetentionFlags.PersonalTag)) sRet += "PersonalTag.  ";
-            if (r.HasFlag(RetentionFlags.AllRetentionFlags)) sRet += "AllRetentionFlags.  ";
-            if (r.HasFlag(RetentionFlags.ExplictArchiveTag)) sRet += "ExplictArchiveTag.  ";
-            if (r.HasFlag(RetentionFlags.KeepInPlace)) sRet += "KeepInPlace.  ";
-            if (r.HasFlag(RetentionFlags.AllArchiveFlags)) sRet += "AllArchiveFlags.  ";
-            if (r.HasFlag(RetentionFlags.NeedsRescan)) sRet += "NeedsRescan.  ";
-            if (r.HasFlag(RetentionFlags.PendingRescan)) sRet += "PendingRescan.  ";
-
-            return sRet;
-        }
-
-        [Flags]
-        private enum RetentionFlags
-        {
-            None = 0,
-            ExplicitTag = 1,
-            UserOverride = 2,
-            Autotag = 4,
-            PersonalTag = 8,
-            AllRetentionFlags = 15,
-            ExplictArchiveTag = 16,
-            KeepInPlace = 32,
-            AllArchiveFlags = 64,
-            NeedsRescan = 128,
-            PendingRescan = 256,
-        }
-
     }
 
 }
