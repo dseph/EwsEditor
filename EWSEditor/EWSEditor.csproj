@@ -1342,6 +1342,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="docs\ReleaseNotes.docx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Microsoft.Exchange.Data.Services.ExtendedPropertyDefinition.datasource" />
     <None Include="Properties\DataSources\Microsoft.Exchange.Data.Services.Item.datasource" />
@@ -1402,7 +1403,6 @@
     <None Include="Common\ServiceProfiles\ServicesProfile.xss">
       <DependentUpon>ServicesProfile.xsd</DependentUpon>
     </None>
-    <None Include="docs\ReleaseNotes.docx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\EWSEditor.PropertyInformation.KnownExtendedPropertyInfo.datasource" />
