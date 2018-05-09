@@ -96,7 +96,18 @@ namespace EWSEditor.Forms
         private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary); // PR_START_DATE_ETC  GUID 0x30190102
         private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
         private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
-        
+
+        // private static ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.SystemTime); // PR_START_DATE_ETC SystemTime for items
+        //private static ExtendedPropertyDefinition Prop_PR_RETENTION_PERIOD = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);  // PR_RETENTION_PERIOD 0x301A    
+        private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C           
+        private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x301B, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
+        //private static ExtendedPropertyDefinition Prop_PR_RETENTION_FLAGS = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);   // PR_RETENTION_FLAGS 0x301D   
+        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_TAG = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
+        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_PERIOD = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer); // Prop_PR_RETENTION_DATE 0x301C    
+        private static ExtendedPropertyDefinition Prop_PR_ARCHIVE_DATE = new ExtendedPropertyDefinition(0x301F, MapiPropertyType.SystemTime);
+
+
+
         //private static ExtendedPropertyDefinition Prop_PR_RETENTION_DATE = new ExtendedPropertyDefinition(0x301C, MapiPropertyType.SystemTime); // Prop_PR_RETENTION_DATE 0x301C    
 
         // Archive props are for items...
@@ -105,7 +116,7 @@ namespace EWSEditor.Forms
 
         // PR_POLICY_TAG is for items...
         //private static ExtendedPropertyDefinition Prop_PR_POLICY_TAG = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);  // PR_POLICY_TAG 0x3019   Data type: PtypBinary, 0x0102
- 
+
         private static ExtendedPropertyDefinition Prop_PR_ENTRYID = new ExtendedPropertyDefinition(0x0FFF, MapiPropertyType.Binary);  // PidTagEntryId, PidTagMemberEntryId, ptagEntryId
         //private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FB0, MapiPropertyType.Binary);  // PidTagStoreEntryId
         private static ExtendedPropertyDefinition Prop_PR_STORE_ENTRYID = new ExtendedPropertyDefinition(0x0FFB, MapiPropertyType.Binary);  // PidTagStoreEntryId
@@ -140,11 +151,16 @@ namespace EWSEditor.Forms
                 Prop_PR_HAS_RULES,
                 Prop_PR_FOLDER_TYPE,
 
-                Prop_PR_START_DATE_ETC,         
-                Prop_PR_RETENTION_PERIOD,
-                Prop_PR_RETENTION_FLAGS,
+                Prop_PR_START_DATE_ETC,     // 0x301C
+                Prop_PR_POLICY_TAG,         // 0x3019
+                Prop_PR_RETENTION_PERIOD,   // 0x301A
+                Prop_PR_RETENTION_FLAGS,    // 0x301D
+               
 
- 
+                Prop_PR_ARCHIVE_TAG,        // 0x3018
+                Prop_PR_ARCHIVE_PERIOD,     // 0x301E
+                Prop_PR_ARCHIVE_DATE,       // 0x301F
+
                 Prop_PR_ATTR_HIDDEN,
                 Prop_PR_ATTR_READONLY,
                 Prop_PR_ATTR_SYSTEM,
@@ -163,6 +179,8 @@ namespace EWSEditor.Forms
             });
 
  
+
+
 
         // MenuItems to add to the File menu
         private System.Windows.Forms.ToolStripMenuItem newExchangeServiceMenu = new ToolStripMenuItem();

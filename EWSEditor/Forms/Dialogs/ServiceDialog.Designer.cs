@@ -87,6 +87,8 @@ namespace EWSEditor.Forms
             this.label8 = new System.Windows.Forms.Label();
             this.txtXPublicFolderMailbox = new System.Windows.Forms.TextBox();
             this.chkSetXPublicFolderMailbox = new System.Windows.Forms.CheckBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -194,7 +196,7 @@ namespace EWSEditor.Forms
             // 
             // btnOptions
             // 
-            this.btnOptions.Location = new System.Drawing.Point(681, 315);
+            this.btnOptions.Location = new System.Drawing.Point(681, 326);
             this.btnOptions.Margin = new System.Windows.Forms.Padding(4);
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(135, 28);
@@ -776,6 +778,34 @@ namespace EWSEditor.Forms
             this.chkSetXPublicFolderMailbox.UseVisualStyleBackColor = true;
             this.chkSetXPublicFolderMailbox.CheckedChanged += new System.EventHandler(this.chkSetXPublicFolderMailbox_CheckedChanged);
             // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Location = new System.Drawing.Point(681, 366);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(380, 52);
+            this.textBox2.TabIndex = 19;
+            this.textBox2.Text = "Note: For delegate access: Log in as the delegate then the tree menu select \"Add " +
+    "Root Folder...\".  Use one of the options to add the folder of the mailbox to the" +
+    " folder tree.";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Location = new System.Drawing.Point(681, 422);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox3.Multiline = true;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(380, 52);
+            this.textBox3.TabIndex = 20;
+            this.textBox3.Text = "Note: It\'s best to set the X-AnchorMailbox header for Impersonation.";
+            // 
             // ServiceDialog
             // 
             this.AcceptButton = this.btnOK;
@@ -783,6 +813,8 @@ namespace EWSEditor.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(1097, 543);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -809,6 +841,7 @@ namespace EWSEditor.Forms
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -873,5 +906,7 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.TextBox txtXPublicFolderMailbox;
         private System.Windows.Forms.CheckBox chkSetXPublicFolderMailbox;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }

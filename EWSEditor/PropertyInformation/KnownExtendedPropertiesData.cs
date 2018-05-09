@@ -1141,6 +1141,15 @@ namespace EWSEditor.PropertyInformation
             this.PropertyDictionary.Add(PidTagVoiceMessageSenderName, new KnownExtendedPropertyInfo("PidTagVoiceMessageSenderName", "InternalSchemaVoiceMessageSenderName", "Unified Messaging Properties", "[MS-OXCMAIL]"));
             this.PropertyDictionary.Add(PidTagWeddingAnniversary, new KnownExtendedPropertyInfo("PidTagWeddingAnniversary", "PR_WEDDING_ANNIVERSARY,urn:schemas:contacts:weddinganniversary", "MapiMailUser", "[MS-OXOABK], [MS-OXOCNTC], [MS-XWDCNTC]"));
 
+ 
+            this.PropertyDictionary.Add(PidTagPolicyTag, new KnownExtendedPropertyInfo("PidTagPolicyTag", "PR_POLICY_TAG,PidTagPolicyTag", "Archive", "[MS-OXCMSG]"));
+            this.PropertyDictionary.Add(PidTagRetentionDate, new KnownExtendedPropertyInfo("PidTagRetentionDate", "PR_RETENTION_DATE,PidTagRetentionDate", "Archive", "[MS-OXCMSG]"));
+            this.PropertyDictionary.Add(PidTagRetentionFlags, new KnownExtendedPropertyInfo("PidTagRetentionFlags", "RETENTION_FLAGS,PidTagRetentionFlags", "Archive", "[MS-OXCMSG]"));
+            this.PropertyDictionary.Add(PidTagRetentionPeriod, new KnownExtendedPropertyInfo("PidTagRetentionPeriod", "PR_RETENTION_PERIOD,PidTagRetentionPeriod", "Archive", "[MS-OXCMSG]"));
+            this.PropertyDictionary.Add(PidTagArchiveTag, new KnownExtendedPropertyInfo("PidTagArchiveTag", "PR_ARCHIVE_TAG,PidTagArchiveTag", "Archive", "[MS-OXCMSG]"));
+            this.PropertyDictionary.Add(PidTagArchivePeriod, new KnownExtendedPropertyInfo("PidTagArchivePeriod", "PR_ARCHIVE_Period,PidTagArchivePeriod", "Archive", "[MS-OXCMSG]"));
+            this.PropertyDictionary.Add(PidTagArchiveDate, new KnownExtendedPropertyInfo("PidTagArchiveDate", "PR_ARCHIVE_DATE,PidTagArchiveDate", "Archive", "[MS-OXCMSG]"));
+
         }
 
         #endregion
@@ -2339,6 +2348,15 @@ namespace EWSEditor.PropertyInformation
         public readonly ExtendedPropertyDefinition PidTagVoiceMessageDuration = new ExtendedPropertyDefinition(0x6801, MapiPropertyType.Integer);
         public readonly ExtendedPropertyDefinition PidTagVoiceMessageSenderName = new ExtendedPropertyDefinition(0x6803, MapiPropertyType.String);
         public readonly ExtendedPropertyDefinition PidTagWeddingAnniversary = new ExtendedPropertyDefinition(0x3A41, MapiPropertyType.SystemTime);
+
+        //public readonly ExtendedPropertyDefinition Prop_PR_START_DATE_ETC = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.SystemTime); // PR_START_DATE_ETC SystemTime for items
+        public readonly ExtendedPropertyDefinition PidTagPolicyTag = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.Binary);
+        public readonly ExtendedPropertyDefinition PidTagRetentionDate = new ExtendedPropertyDefinition(0x3019, MapiPropertyType.SystemTime);
+        public readonly ExtendedPropertyDefinition PidTagRetentionFlags = new ExtendedPropertyDefinition(0x301D, MapiPropertyType.Integer);    
+        public readonly ExtendedPropertyDefinition PidTagRetentionPeriod = new ExtendedPropertyDefinition(0x301A, MapiPropertyType.Integer);     
+        public readonly ExtendedPropertyDefinition PidTagArchiveTag = new ExtendedPropertyDefinition(0x3018, MapiPropertyType.Binary);
+        public readonly ExtendedPropertyDefinition PidTagArchivePeriod = new ExtendedPropertyDefinition(0x301E, MapiPropertyType.Integer);
+        public readonly ExtendedPropertyDefinition PidTagArchiveDate = new ExtendedPropertyDefinition(0x301F, MapiPropertyType.SystemTime);
 
 
         #endregion

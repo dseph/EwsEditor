@@ -151,7 +151,7 @@ namespace EWSEditor.Forms
         {
             string sRet = "";
             int i = (int)r;
-            sRet = (i.ToString("X4")) + " = ";
+            sRet = "0x" + (i.ToString("X4")) + " = ";
 
             https://msdn.microsoft.com/en-us/library/ee202166(v=exchg.80).aspx
 
@@ -172,7 +172,7 @@ namespace EWSEditor.Forms
             }
             if (sRet.EndsWith(" + "))
             {
-                sRet.Remove(sRet.Length - 4, 3);
+                sRet = sRet.Remove(sRet.Length - 3, 3);
                 sRet += ".";
             }
             return sRet;
