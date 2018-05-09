@@ -1613,9 +1613,9 @@
     <Content Include="HtmlBodyExamples\ManyFormatsHtmlBody.txt" />
     <Content Include="HtmlBodyExamples\Field2MeterQarterGP.png" />
     <Content Include="docs\ToDo.txt" />
+    <None Include="License.md" />
     <Content Include="ToBuild.txt" />
     <None Include="Resources\action_add_16xLG.bmp" />
-    <Content Include="Notes.txt" />
     <Content Include="Resources\action_add_16xLG.png" />
     <Content Include="Resources\Error_red_16x16_exp.png" />
     <Content Include="Resources\EWSEditor2.ico" />
