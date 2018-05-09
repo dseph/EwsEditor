@@ -32,11 +32,11 @@ namespace EWSEditor.Common
             string serverName = sServername;
 
             AuthenticationContext authenticationContext = new AuthenticationContext(authority, false);
-
-            AuthenticationResult authenticationResult = authenticationContext.AcquireToken(serverName, clientID, clientAppUri, PromptBehavior.Always);
-
-            //System.Diagnostics.Debug.WriteLine(authenticationResult.UserInfo.DisplayableId);
-            MailboxBeingAccessed = authenticationResult.UserInfo.DisplayableId;
+            PlatformParameters oPlatformParameters = new PlatformParameters(PromptBehavior.Always);
+            AuthenticationResult authenticationResult =   authenticationContext.AcquireTokenAsync(serverName, clientID, clientAppUri, oPlatformParameters).Result; 
+             
+              //System.Diagnostics.Debug.WriteLine(authenticationResult.UserInfo.DisplayableId);
+              MailboxBeingAccessed = authenticationResult.UserInfo.DisplayableId;
             AccountAccessingMailbox = authenticationResult.UserInfo.DisplayableId;  // oAuth at this time does not support delegate or impersonation access - may need to change this in the future.
 
             // Add authenticaiton token to requests
@@ -61,8 +61,8 @@ namespace EWSEditor.Common
             string serverName = sServername;
 
             AuthenticationContext authenticationContext = new AuthenticationContext(authority, false);
-
-            AuthenticationResult authenticationResult = authenticationContext.AcquireToken(serverName, clientID, clientAppUri, PromptBehavior.Always);
+            PlatformParameters oPlatformParameters = new PlatformParameters(PromptBehavior.Always);
+            AuthenticationResult authenticationResult = authenticationContext.AcquireTokenAsync (serverName, clientID, clientAppUri, oPlatformParameters).Result;
 
             // Add authenticaiton token to requests
             oExchangeCredentials = new OAuthCredentials(authenticationResult.AccessToken);
