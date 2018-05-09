@@ -176,6 +176,6 @@
 </value>
   </data>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>This is an open source sample.  It is neither a Microsoft product nor is it a product of any sort.  It is intended to be used in a lab environment for educational purposes.  The goal of this sample is to demonstrate the EWS Managed API an EWS calls in general.  See the open source license for details.</value>
+    <value>This is an open source sample.  It is neither a Microsoft product nor is it a product of any sort.  It is intended to be used in a lab environment for educational purposes.  The goal of this sample is to demonstrate the EWS Managed API and EWS calls in general.  See the open source license for details.</value>
   </data>
 </root>
