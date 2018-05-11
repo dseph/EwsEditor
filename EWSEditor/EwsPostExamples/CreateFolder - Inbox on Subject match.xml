@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:m="http://schemas.microsoft.com/exchange/services/2006/messages"
+      xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types"
+      xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2010" />
+  </soap:Header>
+  <soap:Body>
+    <m:CreateFolder>
+      <m:ParentFolderId>
+        <t:DistinguishedFolderId Id="searchfolders" />
+      </m:ParentFolderId>
+      <m:Folders>
+        <t:SearchFolder>
+          <t:DisplayName>Extended</t:DisplayName>
+          <t:PermissionSet>
+            <t:Permissions />
+          </t:PermissionSet>
+          <t:SearchParameters Traversal="Shallow">
+            <t:Restriction>
+              <t:Contains ContainmentMode="Substring" ContainmentComparison="IgnoreCase">
+                <t:FieldURI FieldURI="item:Subject" />
+                <t:Constant Value="extended" />
+              </t:Contains>
+            </t:Restriction>
+            <t:BaseFolderIds>
+              <t:DistinguishedFolderId Id="inbox" />
+            </t:BaseFolderIds>
+          </t:SearchParameters>
+        </t:SearchFolder>
+      </m:Folders>
+    </m:CreateFolder>
+  </soap:Body>
+</soap:Envelope>

@@ -1457,6 +1457,7 @@
     <Content Include="EwsPostExamples\CopyFolder.xml" />
     <Content Include="EwsPostExamples\CopyItem.xml" />
     <Content Include="EwsPostExamples\CreateAttachment.xml" />
+    <Content Include="EwsPostExamples\CreateFolder - Inbox on Subject match.xml" />
     <Content Include="EwsPostExamples\CreateFolder - SearchFolder- Complex.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -1600,6 +1601,7 @@
     <Content Include="EwsPostExamples\UninstallApp.xml" />
     <Content Include="EwsPostExamples\Unsubscribe.xml" />
     <Content Include="EwsPostExamples\UpdateDelegate.xml" />
+    <Content Include="EwsPostExamples\UpdateFolder - SearchFolder - Inbox on Subject.xml" />
     <Content Include="EwsPostExamples\UpdateFolder.xml" />
     <Content Include="EwsPostExamples\UpdateInboxRules.xml" />
     <Content Include="EwsPostExamples\UpdateItem - Contact.xml" />

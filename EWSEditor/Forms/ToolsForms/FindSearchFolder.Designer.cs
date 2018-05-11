@@ -67,9 +67,9 @@
             this.chkShowFolderUnderSharedFolders.AutoSize = true;
             this.chkShowFolderUnderSharedFolders.Location = new System.Drawing.Point(24, 13);
             this.chkShowFolderUnderSharedFolders.Name = "chkShowFolderUnderSharedFolders";
-            this.chkShowFolderUnderSharedFolders.Size = new System.Drawing.Size(355, 21);
+            this.chkShowFolderUnderSharedFolders.Size = new System.Drawing.Size(354, 21);
             this.chkShowFolderUnderSharedFolders.TabIndex = 34;
-            this.chkShowFolderUnderSharedFolders.Text = "Show shared folders under SharedFolders (\\Finder)";
+            this.chkShowFolderUnderSharedFolders.Text = "Show search folders under SharedFolders (\\Finder)";
             this.chkShowFolderUnderSharedFolders.UseVisualStyleBackColor = true;
             // 
             // chkShowFoldersUnderRootFolder
@@ -77,9 +77,9 @@
             this.chkShowFoldersUnderRootFolder.AutoSize = true;
             this.chkShowFoldersUnderRootFolder.Location = new System.Drawing.Point(24, 40);
             this.chkShowFoldersUnderRootFolder.Name = "chkShowFoldersUnderRootFolder";
-            this.chkShowFoldersUnderRootFolder.Size = new System.Drawing.Size(292, 21);
+            this.chkShowFoldersUnderRootFolder.Size = new System.Drawing.Size(291, 21);
             this.chkShowFoldersUnderRootFolder.TabIndex = 35;
-            this.chkShowFoldersUnderRootFolder.Text = "Show shared folders under Root (\\) folder";
+            this.chkShowFoldersUnderRootFolder.Text = "Show search folders under Root (\\) folder";
             this.chkShowFoldersUnderRootFolder.UseVisualStyleBackColor = true;
             // 
             // chkShowSearchFoldersNotUnderSharedFoldersAndNotUnderRoot
