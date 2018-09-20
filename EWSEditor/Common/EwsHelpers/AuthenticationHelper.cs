@@ -48,7 +48,7 @@ namespace EWSEditor.Common
         }
 
         public ExchangeCredentials Do_OAuth( ref string MailboxBeingAccessed, ref string AccountAccessingMailbox,
-            string sAuthority, string sAppId, string sRedirectURL, string sServername)
+            string sAuthority, string sAppId, string sRedirectURL, string sServername, ref string sBearerToken)
         {
              
             ExchangeCredentials oExchangeCredentials = null;
@@ -63,6 +63,8 @@ namespace EWSEditor.Common
             AuthenticationContext authenticationContext = new AuthenticationContext(authority, false);
             PlatformParameters oPlatformParameters = new PlatformParameters(PromptBehavior.Always);
             AuthenticationResult authenticationResult = authenticationContext.AcquireTokenAsync (serverName, clientID, clientAppUri, oPlatformParameters).Result;
+
+            sBearerToken = authenticationResult.AccessToken;
 
             // Add authenticaiton token to requests
             oExchangeCredentials = new OAuthCredentials(authenticationResult.AccessToken);

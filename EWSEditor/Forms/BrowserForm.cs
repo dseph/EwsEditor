@@ -1167,7 +1167,7 @@
                         names = this.CurrentService.ResolveName(this.CurrentAppSettings.MailboxBeingAccessed);
                     }
                     else
-                    {
+                    {  
                         // Attempt to resolve the Act As account name.  If there is only one
                         // hit from ResolveNames then assume it is the right one.
                         names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());

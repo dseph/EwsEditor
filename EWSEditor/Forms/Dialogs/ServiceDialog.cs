@@ -151,7 +151,7 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.oAuthClientId = this.txtOAuthAppId.Text.Trim();
                 EwsProxyFactory.oAuthServerName = this.txtOAuthServerName.Text.Trim();
                 EwsProxyFactory.oAuthAuthority = this.txtOAuthAuthority.Text.Trim();
- 
+                EwsProxyFactory.oBearerToken = string.Empty;
  
                 EwsProxyFactory.EnableScpLookup = GlobalSettings.EnableScpLookups;
                 EwsProxyFactory.PreAuthenticate = GlobalSettings.PreAuthenticate;
@@ -244,10 +244,12 @@ namespace EWSEditor.Forms
                 if (this.rdoCredentialsOAuth.Checked)
                 {
                     AuthenticationHelper oAH = new AuthenticationHelper();
-
+                    string sBearerToken = string.Empty;
                     EwsProxyFactory.ServiceCredential = oAH.Do_OAuth(ref EwsProxyFactory.MailboxBeingAccessed, ref EwsProxyFactory.AccountAccessingMailbox,
-                      EwsProxyFactory.oAuthAuthority, EwsProxyFactory.oAuthClientId, EwsProxyFactory.oAuthRedirectUrl, EwsProxyFactory.oAuthServerName);
-                   
+                      EwsProxyFactory.oAuthAuthority, EwsProxyFactory.oAuthClientId, EwsProxyFactory.oAuthRedirectUrl, EwsProxyFactory.oAuthServerName, ref sBearerToken);
+
+                    EwsProxyFactory.oBearerToken = sBearerToken;
+
                     //EwsProxyFactory.AccountAccessingMailbox
                     //EwsProxyFactory.MailboxBeingAccessed = EwsProxyFactory.AccountAccessingMailbox;
                 }
@@ -262,13 +264,15 @@ namespace EWSEditor.Forms
                 // ----    New service & app settings    ----
                  
                 CurrentService = EwsProxyFactory.CreateExchangeService();
-                
+ 
 
                 // ----    Save settings    ----
                 EWSEditor.Common.EwsEditorAppSettings oAppSettings = new EwsEditorAppSettings();
                 EwsProxyFactory.SetAppSettingsFromProxyFactory(ref oAppSettings);
                 CurrentAppSettings = oAppSettings;
-                
+
+ 
+
                 //CurrentAppSettings.MailboxBeingAccessed = EwsProxyFactory.AccountAccessingMailbox;
                 // CurrentAppSettings
 
