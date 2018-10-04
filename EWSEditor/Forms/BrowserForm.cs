@@ -1231,5 +1231,11 @@
             FindSearchFolder oForm = new FindSearchFolder(this.CurrentService);
             oForm.Show();
         }
+
+        private void mnuPowerShellTester_Click(object sender, EventArgs e)
+        {
+            EWSEditor.RemotePowerShell.PowerShellForm oForm = new EWSEditor.RemotePowerShell.PowerShellForm();
+            oForm.Show();
+        }
     }
 }

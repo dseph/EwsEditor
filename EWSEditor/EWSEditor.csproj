@@ -619,6 +619,8 @@
     <Compile Include="RemotePowerShell\PowerShellForm.Designer.cs">
       <DependentUpon>PowerShellForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RemotePowerShell\PsCertificateCallbackHandler.cs" />
+    <Compile Include="RemotePowerShell\PsTestSettings.cs" />
     <Compile Include="Resources\TemplateEwsRequests.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1630,8 +1632,9 @@
     <Folder Include="Common\ItemCheckers\" />
     <Folder Include="Exchange\" />
     <Folder Include="Forms\Dialogs\SmartEditors\" />
+    <Folder Include="Forms\NewFolder1\" />
     <Folder Include="Forms\ServiceLevelForms\" />
-    <Folder Include="NewFolder1\" />
+    <Folder Include="PowerShellTester\" />
     <Folder Include="Retired\" />
   </ItemGroup>
   <ItemGroup>
