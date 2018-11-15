@@ -1587,22 +1587,23 @@ namespace EWSEditor.Forms
 
                 if (res == DialogResult.Yes)
                 {
-                    FolderId oNewFodler;
+                    FolderId oNewFodler = null;
 
-                    // if there is an anchor mailbox specified, use this for the root
-					// folder so that we open anchor mailbox folder tree. If the anchor mailbox
-					// is a group mailbox then this will display the group mailbox.
-                    string addr = service.HttpHeaders["X-AnchorMailbox"];
-                    if (!string.IsNullOrEmpty(addr))
+                    if (service.HttpHeaders.ContainsKey("X-AnchorMailbox"))
                     {
-                        Mailbox mailbox = new Mailbox(addr);
-                        oNewFodler = new FolderId(WellKnownFolderName.Root, mailbox);
+                        string addr = service.HttpHeaders["X-AnchorMailbox"];
+                        if (!string.IsNullOrEmpty(addr))
+                        {
+                            Mailbox mailbox = new Mailbox(addr);
+                            oNewFodler = new FolderId(WellKnownFolderName.Root, mailbox);
+                        }
                     }
-                    else
+                    
+                    if (oNewFodler == null)
                     {
                         oNewFodler = new FolderId(WellKnownFolderName.Root);
                     }
-					
+
                     this.AddRootFolderToTreeView(
                         service,
                         oAppSettings,
