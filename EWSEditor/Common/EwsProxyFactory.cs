@@ -318,9 +318,11 @@ namespace EWSEditor.Exchange
         public static void CreateHttpWebRequest(ref HttpWebRequest oRequest)
         {
             HttpWebRequest oHttpWebRequest = (HttpWebRequest)WebRequest.Create(EwsUrl);
-             
+
             if (UserAgent.Length != 0)
-                oHttpWebRequest.Headers.Add("User-Agent", UserAgent);
+            {
+                oHttpWebRequest.UserAgent = UserAgent;
+            }
 
             oHttpWebRequest.Method = "POST";
             oHttpWebRequest.ContentType = "text/xml";
