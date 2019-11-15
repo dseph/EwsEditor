@@ -39,7 +39,7 @@ There is a reference to CDOSYS, for which Visual Studio generated the ADODB and 
 then remove the references and be sure to delete the interop files. Next set a new reference to CDOSYS and Visual studio will 
 regenerate both interop files.  CDOSYS is a COM component which comes with Windows and has both 64bit and 32bit registrations.
 
-Set a reference to .Net 4.5.1
+Set a reference to .Net 4.7.2
 
 	https://www.microsoft.com/en-us/download/details.aspx?id=40779
 
