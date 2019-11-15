@@ -364,6 +364,7 @@
             this.chkFromPipeline.TabIndex = 152;
             this.chkFromPipeline.Text = "From Pipeline:";
             this.chkFromPipeline.UseVisualStyleBackColor = true;
+            this.chkFromPipeline.CheckedChanged += new System.EventHandler(this.chkFromPipeline_CheckedChanged);
             // 
             // txtFromPipeline
             // 

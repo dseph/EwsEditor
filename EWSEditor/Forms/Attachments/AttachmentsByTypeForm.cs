@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
- 
+using System.Drawing;
+using System.Drawing.Imaging;
+
+
 using Microsoft.Exchange.WebServices.Data;
 using EWSEditor.Forms.Controls;
 using EWSEditor.Logging;
@@ -292,7 +295,22 @@ namespace EWSEditor.Forms
                     if (UserIoHelper.PickSaveFileToFolder(oFileAttachment.Name, ref SelectedFile))
                     {
                         _Item.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID
-                        oFileAttachment.Load((SelectedFile));
+                        oFileAttachment.Load((SelectedFile));  // uncomment when testing done
+
+                        //if (oFileAttachment.Name.StartsWith("ATT") && oFileAttachment.ContentType == "application/octet-stream")
+                        //{
+                        //    MemoryStream o = new MemoryStream();
+                            
+                        //    oFileAttachment.Load(o);
+                            
+                        //    System.Drawing.Bitmap x = new Bitmap(o);
+
+                        //    x.Save(SelectedFile+"- out.bmp", ImageFormat.);
+
+                        //}
+                        //else
+                        //    oFileAttachment.Load((SelectedFile));
+
                     }
                 }
             }

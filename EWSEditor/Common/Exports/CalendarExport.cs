@@ -393,7 +393,16 @@ namespace EWSEditor.Common.Exports
             oAppointmentData.IsRecurring = oAppointment.IsRecurring.ToString();
             oAppointmentData.IsReminderSet = oAppointment.IsReminderSet.ToString();
 
-            oAppointmentData.IsOnlineMeeting = oAppointment.IsOnlineMeeting.ToString();
+
+            try
+            {
+                oAppointmentData.IsOnlineMeeting = oAppointment.IsOnlineMeeting.ToString();
+            }
+            catch (Exception exIsOnlineMeeting)
+            {
+                System.Diagnostics.Debug.WriteLine(exIsOnlineMeeting.ToString());
+                oAppointmentData.IsOnlineMeeting = "";
+            }
             oAppointmentData.IsResend = oAppointment.IsResend.ToString();
             oAppointmentData.IsDraft = oAppointment.IsDraft.ToString();
 
@@ -485,6 +494,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oAppointmentData.DateTimeReceived = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             oAppointmentData.Duration = oAppointment.Duration.ToString();

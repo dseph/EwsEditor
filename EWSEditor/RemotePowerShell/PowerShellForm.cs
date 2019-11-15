@@ -271,12 +271,13 @@ namespace EWSEditor.RemotePowerShell
                     oWSManConnectionInfo.SkipCACheck = this.chkSkipCACheck.Checked;
                     oWSManConnectionInfo.SkipCNCheck = this.chkSkipCNCheck.Checked;
                     oWSManConnectionInfo.SkipRevocationCheck = this.chkSkipRevocationCheck.Checked;
+               
 
                     oRunspace = RunspaceFactory.CreateRunspace(oWSManConnectionInfo);
-
+                     
                     oRunspace.Open();
 
-
+          
 
                     oPowerShell = PowerShell.Create();
                     oPowerShell.Runspace = oRunspace;
@@ -352,12 +353,8 @@ namespace EWSEditor.RemotePowerShell
                 #region Invoke
 
                 oCommand = new PSCommand();
-
-
                 SetUpInputVariablesAsCommandParameter(ref oRunspace, ref oCommand, oSetVariableType);
-
                 SetCommandsAndScripts(ref oCommand);
-
 
                 // PS C:\> set-variable -name processes -value (Get-Process) -option constant -scope global -description  "All processes" -passthru | format-list -property *
                 // $global:a = 1
@@ -1471,6 +1468,11 @@ namespace EWSEditor.RemotePowerShell
             {
             }
             return "";
+        }
+
+        private void chkFromPipeline_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

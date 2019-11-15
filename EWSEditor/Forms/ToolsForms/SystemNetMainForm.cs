@@ -192,7 +192,7 @@ namespace EWSEditor.Forms
                         else
                             smtp.Credentials = new NetworkCredential(sUser, sPassword, sDomain);
                     }
-                    smtp.EnableSsl = chkEnableSSL.Checked;
+                    smtp.EnableSsl = chkEnableSSL.Checked;       
                     smtp.Port = Int32.Parse(cboPort.Text.Trim());
                 }
 
@@ -229,7 +229,8 @@ namespace EWSEditor.Forms
             catch (Exception ex)
             {
                 AddLineToLog(string.Format("\r\nError sending message:  {0}\r\n", DateTime.Now), true);
-               
+
+                AddLineToLog(ex.Message + "\r\n\r\n" + "Error: " + "\r\n" + ex.Message, true);
                 AddLineToLog(ex.Message + "\r\n\r\n" + "StackTrace: " + "\r\n" + ex.StackTrace, true);
                 bRet = false;
             }
@@ -333,9 +334,9 @@ namespace EWSEditor.Forms
             Decimal iMessageCount = 0;
             ContinueTimerRun = true;
             //int iSecondsToSleep = (int)numericUpDownResendSeconds.Value * 1000;
-
-
-
+ 
+            int iMax = Int32.Parse(txtNumberOfEmails.Text.Trim());
+            
 
             if (ValidateForm())
             {
@@ -344,11 +345,19 @@ namespace EWSEditor.Forms
                 while (ContinueTimerRun == true)
                 {
                     iMessageCount++;
-                    AddLineToLog(string.Format("Message {0}...\r\n", iMessageCount), true);
- 
-                    SendEmail();
 
-                    WaitLoop((int)numericUpDownResendSeconds.Value);
+                    if (iMessageCount <= iMax)
+                    {
+                        AddLineToLog(string.Format("Message {0}...\r\n", iMessageCount), true);
+
+                        SendEmail();
+
+                        WaitLoop((int)numericUpDownResendSeconds.Value);
+
+
+                    }
+                    else
+                        ContinueTimerRun = false;
 
 
                 }

@@ -87,21 +87,31 @@ namespace EWSEditor.Common
             s += "Required attendee:\r\n";
             for (int i = 0; i < oAppointment.RequiredAttendees.Count; i++)
             {
-                s += "    " + oAppointment.RequiredAttendees[i].Address + ": " + oAppointment.RequiredAttendees[i].ResponseType.Value.ToString() + "\r\n";
+                if (oAppointment.RequiredAttendees[i].ResponseType != null)
+                    s += "    " + oAppointment.RequiredAttendees[i].Address + ": " + oAppointment.RequiredAttendees[i].ResponseType.Value.ToString() + "\r\n";
+                else
+                    s += "    " + oAppointment.RequiredAttendees[i].Address + ": \r\n";
+
             }
 
             // Check responses from optional attendees.
             s += "Optional attendee:\r\n";
             for (int i = 0; i < oAppointment.OptionalAttendees.Count; i++)
             {
-                s += "    " + oAppointment.OptionalAttendees[i].Address + ": " + oAppointment.OptionalAttendees[i].ResponseType.Value.ToString() + "\r\n";
+                if (oAppointment.OptionalAttendees[i].ResponseType != null)
+                    s += "    " + oAppointment.OptionalAttendees[i].Address + ": " + oAppointment.OptionalAttendees[i].ResponseType.Value.ToString() + "\r\n";
+                else
+                    s += "    " + oAppointment.OptionalAttendees[i].Address + ": \r\n";
             }
 
             // Check responses from resources.
             s += "Resource attendee:\r\n";
             for (int i = 0; i < oAppointment.Resources.Count; i++)
             {
-                s += "    " + oAppointment.Resources[i].Address + ": " + oAppointment.Resources[i].ResponseType.Value.ToString() + "\r\n";
+                if (oAppointment.Resources[i].ResponseType  != null)
+                    s += "    " + oAppointment.Resources[i].Address + ": " + oAppointment.Resources[i].ResponseType.Value.ToString() + "\r\n";
+                else
+                    s += "    " + oAppointment.Resources[i].Address + ": \r\n";
             }
 
             return s;

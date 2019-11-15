@@ -1,5 +1,6 @@
 ﻿namespace EWSEditor.Forms.Controls
 {
-    public partial class GridDataTables {
+    public partial class GridDataTables
+    {
     }
 }
