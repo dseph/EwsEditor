@@ -318,7 +318,7 @@
         /// <param name="e">The parameter is not used.</param>
         private void MnuResolveName_Click(object sender, EventArgs e)
         {
-            ResolveNameDialog.ShowDialog(this.CurrentService);
+            ResolveNameForm.Show(CurrentService, this);
         }
 
         /// <summary>
