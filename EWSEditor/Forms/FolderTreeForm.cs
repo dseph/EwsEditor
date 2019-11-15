@@ -1702,7 +1702,8 @@ namespace EWSEditor.Forms
             // The node image shouldn't change when selected
             newNode.SelectedImageIndex = newNode.ImageIndex;
 
-            if (folder.ChildFolderCount > 0)
+            // Note that search folders to not return a folder count
+            if (typeof(SearchFolder) != folder.GetType() && folder.ChildFolderCount > 0)
             {
                 newNode.Nodes.Add("[PLACEHOLDER]");
             }
