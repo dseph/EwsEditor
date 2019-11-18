@@ -12,7 +12,7 @@ EWSEditor has three goals:
     3.Assist non-developers in debugging and understanding Exchange stores by exploring items, folders, and their properties in depth. 
 
 Each release of EWSEditor includes the distribution of the EWS Managed API it was built for. This version of EWSEditor uses .NET Framework 
-version 4.5.1, which can be downloaded here: .NET Framework 4.5.1. The project is under Visual Studio 2013. This version of EwsEditor 
+version 4.7.2, which can be downloaded here: .NET Framework 4.7.2. The project is under Visual Studio 2013. This version of EwsEditor 
 uses EWS Managed API built from GIT. The EWS Managed API requires a minimal of .NET 3.5. A copy of the 2.2 version of the EWS Managed 
 API is included in case you wish to use it instead of the version built from GIT.  The GitHub source for the EWS Managed API has 
 fixes which are not in the MSDN release.  You should consider pulling fresh code for the EWS Managed API and building it for usage 
@@ -41,7 +41,7 @@ regenerate both interop files.  CDOSYS is a COM component which comes with Windo
 
 Set a reference to .Net 4.7.2
 
-	https://www.microsoft.com/en-us/download/details.aspx?id=40779
+	 https://dotnet.microsoft.com/download/dotnet-framework/net472
 
 You should be able to use a newer version of .NET, however it’s not been tested against higher versions. The reason 4.5.1 was
 chosen is that it is widely installed and had needed features and fixes for EWSEditor, so it’s used as the minimum bar for .NET. 
