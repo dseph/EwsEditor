@@ -61,8 +61,7 @@ namespace EWSEditor.Forms
 
         private void ExpandDL_PublicGroup(ref TreeNode oParentNode, string sSmtp)
         {
- 
-             
+
             try
             {
                 // Return the expanded group.
@@ -86,6 +85,34 @@ namespace EWSEditor.Forms
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void ExpandDL_PublicGroup(ref TreeNode oParentNode, ItemId groupID)
+        {
+
+            try
+            {
+                // Return the expanded group.
+                ExpandGroupResults myGroupMembers = _CurrentService.ExpandGroup(groupID);
+
+                // Display the group members.
+                foreach (EmailAddress address in myGroupMembers)
+                {
+                    if (address.MailboxType == MailboxType.PublicGroup || address.MailboxType == MailboxType.ContactGroup)
+                    {
+                        //oParentNode = AddNode(ref oParentNode, address);
+                        //oParentNode.Nodes.Add(""); // Add dummy       
+
+                        ExpandDL_PublicGroup(ref oParentNode, address.Address);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
 
         //private void ExpandDL_ContactGroup(ref TreeNode oParentNode, string sSmtp)
         //{
@@ -116,7 +143,7 @@ namespace EWSEditor.Forms
 
 
         //private TreeNode AddNode(ref TreeNode oParentNode, EmailAddress address, string sNote)
-       private TreeNode AddNode(ref TreeNode oParentNode, EmailAddress address)
+        private TreeNode AddNode(ref TreeNode oParentNode, EmailAddress address)
         {
             TreeNode oNode = null;
             oNode = oParentNode.Nodes.Add(address.Name + " <" + address.Address + "> ( Mbx Type: " + address.MailboxType + ")"+ " (Routing Type: " + address.RoutingType + ")"  );
@@ -137,46 +164,101 @@ namespace EWSEditor.Forms
         {
 
             lvItems.Items.Clear();
- 
-            EmailAddress oEmailAddress = (EmailAddress)oParentNode.Tag;
-        
- 
-            if (oEmailAddress != null)
+
+            if (oParentNode.Tag != null)
             {
-                string sSmtp = oEmailAddress.Address;
-                ListViewItem oItem = null;
-
-                try
+                if (oParentNode.Tag.GetType() == typeof(string))
                 {
-                    // Return the expanded group.
-                    ExpandGroupResults myGroupMembers = _CurrentService.ExpandGroup(oEmailAddress);
-
-                    // Display the group members.
-                    
-                    foreach (EmailAddress address in myGroupMembers.Members)
+                    EmailAddress oEmailAddress = (EmailAddress)oParentNode.Tag;
+                    string sSmtp = oEmailAddress.Address;
+                    ListViewItem oItem = null;
+                    try
                     {
+                        // Return the expanded group.
+                        ExpandGroupResults myGroupMembers = _CurrentService.ExpandGroup(oEmailAddress);
 
-                        if (address.MailboxType != MailboxType.PublicGroup && address.MailboxType != MailboxType.PublicGroup)
+                        // Display the group members.
+
+                        foreach (EmailAddress address in myGroupMembers.Members)
                         {
 
-                            oItem = lvItems.Items.Add(address.Name);
-                            oItem.SubItems.Add(address.Address);
-                            oItem.SubItems.Add(address.MailboxType.ToString());
-                            oItem.SubItems.Add(address.RoutingType);
-                            if (address.Id != null)
-                                oItem.SubItems.Add(address.Id.UniqueId);
-                            else
-                                oItem.SubItems.Add("");
-                            oItem.Tag = address;
-                        }
+                            if (address.MailboxType != MailboxType.PublicGroup && address.MailboxType != MailboxType.PublicGroup)
+                            {
 
+                                oItem = lvItems.Items.Add(address.Name);
+                                oItem.SubItems.Add(address.Address);
+                                oItem.SubItems.Add(address.MailboxType.ToString());
+                                oItem.SubItems.Add(address.RoutingType);
+                                if (address.Id != null)
+                                    oItem.SubItems.Add(address.Id.UniqueId);
+                                else
+                                    oItem.SubItems.Add("");
+                                oItem.Tag = address;
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
                     }
                 }
-                catch (Exception ex)
+                else if (oParentNode.Tag.GetType() == typeof(ItemId))
                 {
-                    MessageBox.Show(ex.ToString());
+                    ItemId oItemId = new ItemId(oParentNode.Tag.ToString());
+                    ListViewItem oItem = null;
+
+                    try
+                    {
+                        // Return the expanded group.
+                        ExpandGroupResults myGroupMembers = _CurrentService.ExpandGroup(oItemId);
+
+                        // Display the group members.
+
+                        foreach (EmailAddress address in myGroupMembers.Members)
+                        {
+
+                            if (address.MailboxType != MailboxType.PublicGroup && address.MailboxType != MailboxType.PublicGroup)
+                            {
+
+                                oItem = lvItems.Items.Add(address.Name);
+                                oItem.SubItems.Add(address.Address);
+                                oItem.SubItems.Add(address.MailboxType.ToString());
+                                oItem.SubItems.Add(address.RoutingType);
+                                if (address.Id != null)
+                                    oItem.SubItems.Add(address.Id.UniqueId);
+                                else
+                                    oItem.SubItems.Add("");
+                                oItem.Tag = address;
+                            }
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
                 }
             }
+        }
+
+        private ListViewItem NewMethod(EmailAddress address)
+        {
+            ListViewItem oItem;
+            {
+
+                oItem = lvItems.Items.Add(address.Name);
+                oItem.SubItems.Add(address.Address);
+                oItem.SubItems.Add(address.MailboxType.ToString());
+                oItem.SubItems.Add(address.RoutingType);
+                if (address.Id != null)
+                    oItem.SubItems.Add(address.Id.UniqueId);
+                else
+                    oItem.SubItems.Add("");
+                oItem.Tag = address;
+            }
+
+            return oItem;
         }
 
         private void tvDistributionLists_BeforeExpand(object sender, TreeViewCancelEventArgs e)
@@ -186,10 +268,20 @@ namespace EWSEditor.Forms
                 if (e.Node.Nodes[0].Text == "")  // veryify the dummy  
                 {
                     TreeNode oNode = e.Node;
-                    EmailAddress oEmailAddress = (EmailAddress)oNode.Tag;
+                    if (oNode.Tag.GetType() == typeof(string))
+                    {  
+                        EmailAddress oEmailAddress = (EmailAddress)oNode.Tag;
 
-                    oNode.Nodes.Clear();
-                    ExpandDL_PublicGroup(ref oNode, oEmailAddress.Address);
+                        oNode.Nodes.Clear();
+                        ExpandDL_PublicGroup(ref oNode, oEmailAddress.Address);
+                    }
+                    else if (oNode.Tag.GetType() == typeof(ItemId))
+                    {
+ 
+                        oNode.Nodes.Clear();
+                        ItemId oItemId = (ItemId)oNode.Tag;
+                        ExpandDL_PublicGroup(ref oNode, oItemId);
+                    }
                 }
             }
         }
@@ -199,5 +291,26 @@ namespace EWSEditor.Forms
 
         }
 
+        private void btnUniqueIdExpand_Click(object sender, EventArgs e)
+        {
+            string sUniqueId = txtUniqueId.Text.Trim();
+            if (sUniqueId.Length != 0)
+            {
+
+                tvDistributionLists.Nodes.Clear();
+                lvItems.Items.Clear();
+
+                TreeNode oRoot = null;
+                ItemId oItemId = new ItemId(sUniqueId);
+
+                oRoot = tvDistributionLists.Nodes.Add(sUniqueId);
+ 
+                oRoot.Tag = oItemId;
+               
+
+                ExpandDL_PublicGroup(ref oRoot, oItemId);
+
+            }
+        }
     }
 }
