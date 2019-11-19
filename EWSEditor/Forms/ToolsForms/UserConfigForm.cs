@@ -122,7 +122,7 @@ namespace EWSEditor.Forms
 
         public void LoadUserConfigIntoTreeViewNode(ExchangeService service, ref TreeNode oNode, FolderId oFolderId, string sSettingsName)
         {
-            bool bFound = false;
+            //bool bFound = false;
  
 
             service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
@@ -142,7 +142,7 @@ namespace EWSEditor.Forms
                 else
                     xNode.Tag = "";  
                 oNode.Nodes.Add(xNode);
-                bFound = true;
+                //bFound = true;
             }
 
 
