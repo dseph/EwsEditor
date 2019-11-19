@@ -106,7 +106,7 @@ namespace EWSEditor.Forms
             oPropertySet.Add(Prop_Retention_Flags);
 
             int iVal = 0;
-            long lVal = 0;
+            //long lVal = 0;
             object oVal = null;
             bool boolVal = false;
 

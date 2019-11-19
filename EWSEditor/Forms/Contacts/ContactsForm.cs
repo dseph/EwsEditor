@@ -546,7 +546,7 @@ namespace EWSEditor.Forms
 
             string sValue = "Not Set";
             //sValue = oContact.PostalAddressIndex.ToString();
-            bool bHasValue = false;
+           // bool bHasValue = false;
             try
             {
                 // [Microsoft.Exchange.WebServices.Data.ServiceObjectPropertyException] = {"This property was requested, but it wasn't returned by the server."}

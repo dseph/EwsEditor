@@ -1,4 +1,6 @@
-﻿using System;
+﻿// EwsProxyFactory.cs 
+
+using System;
 using System.Net;
 using EWSEditor.Common;
 //using EWSEditor.EwsVsProxy;

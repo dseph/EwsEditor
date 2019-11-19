@@ -25,9 +25,9 @@ namespace EWSEditor.Forms
         private ExchangeService _CurrentService = null;
         private FolderId _CurrentFolderId = null;
 
-        private int _lvItems_SortColumn = -1;
-        private int _lvItemsMessages_SortColumn = -1;
-        private int _lvCommon_SortColumn = -1;
+        //private int _lvItems_SortColumn = -1;
+       // private int _lvItemsMessages_SortColumn = -1;
+        //private int _lvCommon_SortColumn = -1;
 
         private int _CountAppointment = 0;
         private int _CountMeetingMessage = 0;
@@ -434,7 +434,7 @@ namespace EWSEditor.Forms
             bool bRet = false;
 
             ListViewItem.ListViewSubItem oLVSI = null;
-            bool bCasted = false;
+            //bool bCasted = false;
   
             ListViewItem oListItem = null;
 
@@ -824,6 +824,7 @@ namespace EWSEditor.Forms
             bool bRet = false;
 
             int TotalRetrieved = 0;
+            TotalRetrieved = TotalRetrieved + 0;  // defeat compiler warning for not being used - when it actually is
 
             if (oFolderId != null)
             {

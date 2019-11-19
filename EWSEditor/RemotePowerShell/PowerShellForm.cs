@@ -1466,6 +1466,7 @@ namespace EWSEditor.RemotePowerShell
             }
             catch (Exception ex)
             {
+                string x = ex.Message.ToString();
             }
             return "";
         }

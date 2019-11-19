@@ -339,7 +339,10 @@ namespace EWSEditor
 			try {
 				sValue = objField.ToString();
 				aListItem.SubItems.Add(sValue);
-			} catch (Exception ex) {
+			} 
+            catch (Exception ex) 
+            {
+                string x = ex.Message.ToString();
 				sValue = "(Cannot Extract - may not be set)";
 				aListItem.SubItems.Add(sValue);
 			}
@@ -458,7 +461,8 @@ namespace EWSEditor
 
 
 		// Get Encoded Stream
-		try {
+		try 
+        {
 			aStream = iBP.GetEncodedContentStream();
 			sText = aStream.ReadText();
 			aStream.Close();
@@ -466,8 +470,10 @@ namespace EWSEditor
 			txtStream.BackColor = Color.White;
            // Marshal.ReleaseComObject(aStream);
 		} 
-            catch (Exception ex) {
-			txtEncoded.Text = "";
+        catch (Exception ex) 
+        {
+            string x = ex.Message.ToString();
+            txtEncoded.Text = "";
 			txtStream.BackColor = Color.Gray;
 		}
 
@@ -480,8 +486,10 @@ namespace EWSEditor
 			txtStream.BackColor = Color.White;
            // Marshal.ReleaseComObject(aStream);
 		} 
-        catch (Exception ex) {
-			txtDecoded.Text = "";
+        catch (Exception ex) 
+        {
+            string x = ex.Message.ToString();
+            txtDecoded.Text = "";
 			txtStream.BackColor = Color.Gray;
 		}
 
@@ -495,7 +503,8 @@ namespace EWSEditor
             //Marshal.ReleaseComObject(aStream);
 		} 
         catch (Exception ex) {
-			txtStream.Text = "";
+            string x = ex.Message.ToString();
+            txtStream.Text = "";
 			txtStream.BackColor =Color.Gray;
 		}
 
@@ -518,7 +527,8 @@ namespace EWSEditor
                 sValue = objField.Value as string;
 				aListItem.SubItems.Add(sValue);
 			} catch (Exception ex) {
-				sValue = "(Cannot Extract - may not be set)";
+                string x = ex.Message.ToString();
+                sValue = "(Cannot Extract - may not be set)";
 				aListItem.SubItems.Add(sValue);
 			}
 			ListView1.Items.AddRange(new ListViewItem[] { aListItem });

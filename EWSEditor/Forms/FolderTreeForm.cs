@@ -431,7 +431,7 @@ namespace EWSEditor.Forms
                                 return  ((RootFolderNodeTag)oTreeNode.Tag).oAppSettings;
 
                                 //this.CurrentAppSettings = GetOptionsFromNode(this.FolderTreeView.SelectedNode);
-                                bFound = true;
+                                //bFound = true;
                             }
 
                         }
@@ -699,7 +699,7 @@ namespace EWSEditor.Forms
                         originalFolderId = ((RootFolderNodeTag)serviceNode.Tag).OriginalFolderId;
 
                         
-                        int a = 0;
+                        //int a = 0;
                     }
 
                     ExchangeService service = null;
@@ -707,22 +707,10 @@ namespace EWSEditor.Forms
                     EWSEditor.Common.EwsSession oSession = null;
                     oSession = (EWSEditor.Common.EwsSession)serviceNode.Tag;
                     service = oSession.SessionService;
-                    //service = (ExchangeService)serviceNode.Tag;  // Todo: - extact both ExchangeService and EwsEditorAppSettings from tag
-                    //ExchangeService service = (ExchangeService)serviceNode.Tag;  // Todo: - extact both ExchangeService and EwsEditorAppSettings from tag
-
-                   // EWSEditor.Common.EwsSession oSession = null
-                   // EWSEditor.Common.EwsSession oSession = (EWSEditor.Common.EwsSession)serviceNode.Tag;
-                    //ExchangeService service = oSession.SessionService;
-                   // EWSEditor.Common.EwsEditorAppSettings oAppSettings = oSession.SessionEwsEditorAppSettings;
-
  
-                    //ExchangeService service = (ExchangeService)serviceNode.Tag;  // Todo: - extact both ExchangeService and EwsEditorAppSettings from tag
-                    //EWSEditor.Common.EwsSession oSession = null;
                     EwsEditorAppSettings  oAppSettings  = GetOptionsFromNode(this.FolderTreeView.SelectedNode); 
  
-                    //oSession = (EWSEditor.Common.EwsSession)serviceNode.Tag;
-                    //ExchangeService service = oSession.SessionService;
-                    //EWSEditor.Common.EwsEditorAppSettings oAppSettings = oSession.SessionEwsEditorAppSettings;
+ 
 
                     // Each Service in a ServiceProfile can have multiple root folders
                     List<FolderId> rootFolderIds = new List<FolderId>();

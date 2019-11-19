@@ -109,7 +109,7 @@ namespace EWSEditor.Common.EwsHelpers
 
         public ItemId AddBirthdaysForContact(ExchangeService oExchangeServcie, string sSmtp, ref Contact oContact, DateTime oBirthDate)
         {
-            ItemId oItemId;
+            //ItemId oItemId;
 
             return null;
         }
@@ -119,7 +119,7 @@ namespace EWSEditor.Common.EwsHelpers
 
             // Converted from:  http://gsexdev.blogspot.com/2016/11/using-birthday-calendar-in-ews-in.html#!/2016/11/using-birthday-calendar-in-ews-in.html
 
-            ItemId oAppointmentId = null;
+            //ItemId oAppointmentId = null;
  
             DateTime oStartDateTime = DateTime.Now;
             DateTime oEndDateTime = DateTime.Now;

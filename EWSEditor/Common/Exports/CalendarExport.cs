@@ -446,7 +446,9 @@ namespace EWSEditor.Common.Exports
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             //if (oAppointment.AllowNewTimeProposal != null) oAppointmentData.AllowNewTimeProposal = oAppointment.AllowNewTimeProposal.ToString();
-            if (oAppointment.AllowedResponseActions != null) oAppointmentData.AllowedResponseActions = oAppointment.AllowedResponseActions.ToString();
+            if (oAppointment.AllowedResponseActions != null) 
+                oAppointmentData.AllowedResponseActions = oAppointment.AllowedResponseActions.ToString();
+
             oAppointmentData.AdjacentMeetingCount = oAppointment.AdjacentMeetingCount.ToString();
             oAppointmentData.AppointmentSequenceNumber = oAppointment.AppointmentSequenceNumber.ToString();
             try

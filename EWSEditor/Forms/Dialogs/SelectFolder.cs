@@ -43,7 +43,7 @@ namespace EWSEditor.Forms.Dialogs
 
         private void FolderTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            FolderId x = null;
+            //FolderId x = null;
            // x = (FolderId)FolderTreeView.SelectedNode.Tag;
              ChosenFolderId = (FolderId)FolderTreeView.SelectedNode.Tag;
             
