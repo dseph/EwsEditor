@@ -84,6 +84,7 @@
             this.mnuWindowsUserInformation = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSnmClient = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEncodingHelper = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCharactersetConversion = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileContentHelper = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHTMLInBrowserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMimeParser = new System.Windows.Forms.ToolStripMenuItem();
@@ -100,7 +101,7 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblExchangeService});
-            this.statusStrip.Location = new System.Drawing.Point(0, 593);
+            this.statusStrip.Location = new System.Drawing.Point(0, 808);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 28, 0);
             this.statusStrip.Size = new System.Drawing.Size(1352, 22);
@@ -124,7 +125,7 @@
             this.mnuHelp});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(1352, 44);
+            this.mnuMain.Size = new System.Drawing.Size(1352, 40);
             this.mnuMain.TabIndex = 4;
             // 
             // mnuFile
@@ -465,6 +466,7 @@
             this.mnuWindowsUserInformation,
             this.mnuSnmClient,
             this.mnuEncodingHelper,
+            this.mnuCharactersetConversion,
             this.mnuFileContentHelper,
             this.viewHTMLInBrowserToolStripMenuItem,
             this.mnuMimeParser,
@@ -533,6 +535,14 @@
             this.mnuEncodingHelper.Text = "Encoding Helper...";
             this.mnuEncodingHelper.Click += new System.EventHandler(this.mnuEncode_Click);
             // 
+            // mnuCharactersetConversion
+            // 
+            this.mnuCharactersetConversion.Name = "mnuCharactersetConversion";
+            this.mnuCharactersetConversion.Size = new System.Drawing.Size(534, 44);
+            this.mnuCharactersetConversion.Text = "Characterset Conversion";
+            this.mnuCharactersetConversion.Visible = false;
+            this.mnuCharactersetConversion.Click += new System.EventHandler(this.mnuCharactersetConversion_Click);
+            // 
             // mnuFileContentHelper
             // 
             this.mnuFileContentHelper.Name = "mnuFileContentHelper";
@@ -588,11 +598,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1352, 615);
+            this.ClientSize = new System.Drawing.Size(1352, 830);
             this.Controls.Add(this.mnuMain);
             this.Controls.Add(this.statusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.Margin = new System.Windows.Forms.Padding(10);
             this.Name = "BrowserForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.BrowserForm_Load_1);
@@ -669,5 +679,6 @@
         public System.Windows.Forms.ToolStripMenuItem mnuCredentialCache;
         public System.Windows.Forms.ToolStripMenuItem mnuSearchForSearchFolders;
         private System.Windows.Forms.ToolStripMenuItem mnuPowerShellTester;
+        private System.Windows.Forms.ToolStripMenuItem mnuCharactersetConversion;
     }
 }

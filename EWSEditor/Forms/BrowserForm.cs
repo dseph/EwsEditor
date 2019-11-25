@@ -1237,5 +1237,12 @@
             EWSEditor.RemotePowerShell.PowerShellForm oForm = new EWSEditor.RemotePowerShell.PowerShellForm();
             oForm.Show();
         }
+
+        private void mnuCharactersetConversion_Click(object sender, EventArgs e)
+        {
+            CharactersetConversionForm oForm = new CharactersetConversionForm();
+            oForm.Show();
+            
+        }
     }
 }

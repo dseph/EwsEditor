@@ -292,6 +292,12 @@
     <Compile Include="Forms\DeveloperTest\DeveloperServiceTestForm.Designer.cs">
       <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Dialogs\CharactersetConversionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dialogs\CharactersetConversionForm.Designer.cs">
+      <DependentUpon>CharactersetConversionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Dialogs\EnterTextForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1036,6 +1042,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DeveloperTest\DeveloperServiceTestForm.resx">
       <DependentUpon>DeveloperServiceTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dialogs\CharactersetConversionForm.resx">
+      <DependentUpon>CharactersetConversionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\EnterTextForm.resx">
       <DependentUpon>EnterTextForm.cs</DependentUpon>

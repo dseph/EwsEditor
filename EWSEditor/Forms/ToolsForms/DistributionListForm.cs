@@ -61,7 +61,7 @@ namespace EWSEditor.Forms
 
         private void ExpandDL_PublicGroup(ref TreeNode oParentNode, string sSmtp)
         {
-
+            TreeNode oNode = null;
             try
             {
                 // Return the expanded group.
@@ -72,10 +72,10 @@ namespace EWSEditor.Forms
                 {
                     if (address.MailboxType == MailboxType.PublicGroup || address.MailboxType == MailboxType.ContactGroup )
                     {
-                        oParentNode = AddNode(ref oParentNode, address);
+                        oNode = AddNode(ref oParentNode, address);
                         //address.MailboxType = MailboxType.ContactGroup
                         //address.RoutingType = string
-                        oParentNode.Nodes.Add(""); // Add dummy       
+                        oNode.Nodes.Add(""); // Add dummy       
                     }
                 }
  
@@ -88,7 +88,7 @@ namespace EWSEditor.Forms
 
         private void ExpandDL_PublicGroup(ref TreeNode oParentNode, ItemId groupID)
         {
-
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             try
             {
                 // Return the expanded group.
@@ -111,6 +111,7 @@ namespace EWSEditor.Forms
             {
                 MessageBox.Show(ex.ToString());
             }
+            this.Cursor = System.Windows.Forms.Cursors.Default;
         }
 
 
@@ -162,12 +163,13 @@ namespace EWSEditor.Forms
 
         private void DispalyNonDls(TreeNode oParentNode)
         {
-
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             lvItems.Items.Clear();
 
             if (oParentNode.Tag != null)
             {
-                if (oParentNode.Tag.GetType() == typeof(string))
+                // typeof oto = oParentNode.Tag.GetType();
+                if (oParentNode.Tag.GetType() != typeof(ItemId)) //(oParentNode.Tag.GetType() == typeof(string))
                 {
                     EmailAddress oEmailAddress = (EmailAddress)oParentNode.Tag;
                     string sSmtp = oEmailAddress.Address;
@@ -205,6 +207,7 @@ namespace EWSEditor.Forms
                 }
                 else if (oParentNode.Tag.GetType() == typeof(ItemId))
                 {
+                    string s =  (oParentNode.Tag.ToString());
                     ItemId oItemId = new ItemId(oParentNode.Tag.ToString());
                     ListViewItem oItem = null;
 
@@ -240,6 +243,7 @@ namespace EWSEditor.Forms
                     }
                 }
             }
+            this.Cursor = System.Windows.Forms.Cursors.Default;
         }
 
         private ListViewItem NewMethod(EmailAddress address)
@@ -263,12 +267,13 @@ namespace EWSEditor.Forms
 
         private void tvDistributionLists_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
+            this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             if (e.Node.Nodes.Count == 1)
             {
                 if (e.Node.Nodes[0].Text == "")  // veryify the dummy  
                 {
                     TreeNode oNode = e.Node;
-                    if (oNode.Tag.GetType() == typeof(string))
+                    if (oNode.Tag.GetType() != typeof(ItemId)) // (oNode.Tag.GetType() == typeof(string))
                     {  
                         EmailAddress oEmailAddress = (EmailAddress)oNode.Tag;
 
@@ -284,6 +289,7 @@ namespace EWSEditor.Forms
                     }
                 }
             }
+            this.Cursor = System.Windows.Forms.Cursors.Default;
         }
 
         private void lstEvents_SelectedIndexChanged(object sender, EventArgs e)
