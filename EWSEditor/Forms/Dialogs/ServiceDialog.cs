@@ -381,7 +381,6 @@ namespace EWSEditor.Forms
 
             this.connectingIdCombo.TransformComboBox(this.TempConnectingIdCombo);
             this.connectingIdCombo.SelectedItem = ConnectingIdType.SmtpAddress;
- 
 
             // If CurrentService is already set then we are editing an
             // existing ExchangeService and need to load it first.
