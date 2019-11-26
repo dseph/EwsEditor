@@ -114,9 +114,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\EWSManagedAPI\ews-managed-api\bin\Debug\Microsoft.Exchange.WebServices.dll</HintPath>
+    <Reference Include="Microsoft.Exchange.WebServices">
+      <HintPath>deps\Microsoft.Exchange.WebServices.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IdentityModel.Clients.ActiveDirectory.5.2.4\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
@@ -1495,8 +1494,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="deps\Microsoft.Exchange.WebServices.Auth.dll" />
-    <Content Include="deps\Microsoft.Exchange.WebServices.dll" />
     <Content Include="EwsPostExamples\Autodiscover - POX .xml" />
     <Content Include="EwsPostExamples\AddDelegate.xml" />
     <Content Include="EwsPostExamples\AddDistributionGroupToImList.xml">
@@ -1683,6 +1680,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\ItemCheckers\" />
+    <Folder Include="deps\" />
     <Folder Include="Exchange\" />
     <Folder Include="Forms\Dialogs\SmartEditors\" />
     <Folder Include="Forms\NewFolder1\" />

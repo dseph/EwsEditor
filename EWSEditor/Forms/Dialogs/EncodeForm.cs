@@ -643,7 +643,7 @@ namespace EWSEditor.Forms
 
         private void cmdLoad_Click(object sender, EventArgs e)
         {
-            bool bLoad = true;
+            //bool bLoad = true;
             string sFile = txtFileName.Text.Trim();
             if (sFile == string.Empty)
             {
