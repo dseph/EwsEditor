@@ -1670,6 +1670,7 @@
     <Content Include="HtmlBodyExamples\BodyWithInlineAttachment.txt" />
     <Content Include="HtmlBodyExamples\ManyFormatsHtmlBody.txt" />
     <Content Include="HtmlBodyExamples\Field2MeterQarterGP.png" />
+    <Content Include="Special\filer.txt" />
     <None Include="License.md" />
     <None Include="README.md" />
     <None Include="Resources\action_add_16xLG.bmp" />
@@ -1719,13 +1720,16 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>md "$(TargetDir)EwsPostExamples"
-md "$(TargetDir)HtmlBodyExamples
-md "$(TargetDir)AdditionalPropertiesExamples
-md "$(TargetDir)Export
+md "$(TargetDir)HtmlBodyExamples"
+md "$(TargetDir)AdditionalPropertiesExamples"
+md "$(TargetDir)Export"
+md "$(TargetDir)Testing"
 Copy /Y "$(ProjectDir)AdditionalProperties\*.*" "$(TargetDir)AdditionalPropertiesExamples\*.*"
 Copy /Y "$(ProjectDir)EwsPostExamples\*.*" "$(TargetDir)EwsPostExamples\*.*"
 Copy /Y "$(ProjectDir)HtmlBodyExamples\*.*" "$(TargetDir)HtmlBodyExamples\*.*"
-Copy /Y "$(ProjectDir)deps\Microsoft.Exchange.WebServices.dll" "$(TargetDir)"</PostBuildEvent>
+Copy /Y "$(ProjectDir)deps\Microsoft.Exchange.WebServices.dll" "$(TargetDir)"
+Copy /Y "$(ProjectDir)Special\Filer.txt" "$(TargetDir)Testing"
+Copy /Y "$(ProjectDir)Special\Filer.txt" "$(TargetDir)Export"</PostBuildEvent>
   </PropertyGroup>
   <Import Project="packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

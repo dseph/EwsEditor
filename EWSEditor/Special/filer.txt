@@ -1,0 +1,1 @@
+This is a file stub used to prevent errors when zipping the release files due to an empty folder.
