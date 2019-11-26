@@ -69,7 +69,7 @@
     <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>
@@ -1396,6 +1396,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="docs\About.docx" />
     <None Include="docs\ReleaseNotes.docx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Microsoft.Exchange.Data.Services.ExtendedPropertyDefinition.datasource" />
@@ -1670,7 +1671,7 @@
     <Content Include="HtmlBodyExamples\ManyFormatsHtmlBody.txt" />
     <Content Include="HtmlBodyExamples\Field2MeterQarterGP.png" />
     <None Include="License.md" />
-    <Content Include="ToBuild.txt" />
+    <None Include="README.md" />
     <None Include="Resources\action_add_16xLG.bmp" />
     <Content Include="Resources\action_add_16xLG.png" />
     <Content Include="Resources\Error_red_16x16_exp.png" />

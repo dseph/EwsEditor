@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("Example code demonstrating EWS calls.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EWSEditor - 1.20")]
+[assembly: AssemblyProduct("EWSEditor - 1.21")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.20.1.*")]
-[assembly: AssemblyFileVersion("1.20.1")]
+[assembly: AssemblyVersion("1.21.1.*")]
+[assembly: AssemblyFileVersion("1.21.1")]

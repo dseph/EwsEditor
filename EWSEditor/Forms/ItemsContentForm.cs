@@ -835,10 +835,13 @@ namespace EWSEditor.Forms
 
             FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
             oForm.ShowDialog();
-            if (oForm.ChoseOK != true)
+            if (oForm.ChoseOK == true)
             {
-                //oForm.ChosenFolderId 
                 destId = oForm.ChosenFolderId;
+            }
+            else
+            {  
+                //destId = oForm.ChosenFolderId;
                 return;
             }
 

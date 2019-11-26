@@ -91,7 +91,7 @@ namespace EWSEditor.Forms
             // 
             this.splitter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitter.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitter.Location = new System.Drawing.Point(0, 40);
+            this.splitter.Location = new System.Drawing.Point(0, 48);
             this.splitter.Margin = new System.Windows.Forms.Padding(6);
             this.splitter.Name = "splitter";
             // 
@@ -102,7 +102,7 @@ namespace EWSEditor.Forms
             // splitter.Panel2
             // 
             this.splitter.Panel2.Controls.Add(this.FolderPropertyDetailsGrid);
-            this.splitter.Size = new System.Drawing.Size(1416, 829);
+            this.splitter.Size = new System.Drawing.Size(1416, 821);
             this.splitter.SplitterDistance = 228;
             this.splitter.SplitterWidth = 8;
             this.splitter.TabIndex = 4;
@@ -121,7 +121,7 @@ namespace EWSEditor.Forms
             this.FolderTreeView.Name = "FolderTreeView";
             this.FolderTreeView.SelectedImageIndex = 1;
             this.FolderTreeView.ShowNodeToolTips = true;
-            this.FolderTreeView.Size = new System.Drawing.Size(228, 829);
+            this.FolderTreeView.Size = new System.Drawing.Size(228, 821);
             this.FolderTreeView.TabIndex = 0;
             this.FolderTreeView.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.FolderTreeView_BeforeCollapse);
             this.FolderTreeView.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.FolderTreeView_BeforeExpand);
@@ -149,7 +149,7 @@ namespace EWSEditor.Forms
             this.FolderPropertyDetailsGrid.Location = new System.Drawing.Point(0, 0);
             this.FolderPropertyDetailsGrid.Margin = new System.Windows.Forms.Padding(8);
             this.FolderPropertyDetailsGrid.Name = "FolderPropertyDetailsGrid";
-            this.FolderPropertyDetailsGrid.Size = new System.Drawing.Size(1180, 829);
+            this.FolderPropertyDetailsGrid.Size = new System.Drawing.Size(1180, 821);
             this.FolderPropertyDetailsGrid.TabIndex = 0;
             this.FolderPropertyDetailsGrid.PropertyChanged += new EWSEditor.Forms.Controls.PropertyDetialsGrid.PropertyChangedEventHandler(this.FolderPropertyDetailsGrid_PropertyChanged);
             this.FolderPropertyDetailsGrid.Load += new System.EventHandler(this.FolderPropertyDetailsGrid_Load);
