@@ -1719,7 +1719,6 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>md "$(TargetDir)EwsPostExamples"
-md "$(TargetDir)Testing"
 md "$(TargetDir)HtmlBodyExamples
 md "$(TargetDir)AdditionalPropertiesExamples
 md "$(TargetDir)Export
