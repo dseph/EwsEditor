@@ -10,6 +10,7 @@ using EWSEditor.Settings;
 using Microsoft.Exchange.WebServices.Data;
 using EWSEditor.Exchange;
 using EWSEditor.Common;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace EWSEditor.Forms
 {
@@ -691,7 +692,8 @@ namespace EWSEditor.Forms
                            this.CurrentAppSettings.oAuthClientId,
                            this.CurrentAppSettings.oAuthRedirectUrl,
                            this.CurrentAppSettings.oAuthServerName,
-                           ref sBearerToken);
+                           ref sBearerToken,
+                           PromptBehavior.Auto);
 
                 this.CurrentService.Credentials = oServiceCredential;
 
@@ -699,6 +701,7 @@ namespace EWSEditor.Forms
 
                 this.RenewOAuthTokenServiceMenu.Visible = true;
 
+                MessageBox.Show("The oAuth token has been refreshed.", "oAuth token refreshed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
