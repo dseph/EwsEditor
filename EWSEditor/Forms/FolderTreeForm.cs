@@ -161,8 +161,10 @@ namespace EWSEditor.Forms
 
         // MenuItems to add to the File menu
         private System.Windows.Forms.ToolStripMenuItem newExchangeServiceMenu = new ToolStripMenuItem();
+        private System.Windows.Forms.ToolStripMenuItem RenewOAuthTokenServiceMenu = new ToolStripMenuItem();
         private System.Windows.Forms.ToolStripMenuItem openDefaultExchangeServiceMenu = new ToolStripMenuItem();
         private System.Windows.Forms.ToolStripMenuItem closeExchangeServiceMenu = new ToolStripMenuItem();
+
         private System.Windows.Forms.ToolStripSeparator fileSplitMenu1 = new ToolStripSeparator();
         private System.Windows.Forms.ToolStripMenuItem openProfileMenu = new ToolStripMenuItem();
         private System.Windows.Forms.ToolStripMenuItem saveProfileMenu = new ToolStripMenuItem();
@@ -185,6 +187,8 @@ namespace EWSEditor.Forms
         {
             InitializeComponent();
             this.InitializeFileMenu();
+
+ 
 
             // Make sure the file exists
             if (!System.IO.File.Exists(profilePath))
@@ -282,6 +286,24 @@ namespace EWSEditor.Forms
                 this.openProfileMenu.Enabled = !isCurrentService;
                 this.newExchangeServiceMenu.Enabled = !isCurrentService;
 
+
+                this.RenewOAuthTokenServiceMenu.Visible = false;
+                if (base.CurrentService != null)
+                {
+                    if (base.CurrentService.Credentials != null)
+                    {
+                        Type x = base.CurrentService.Credentials.GetType();
+                        String s = base.CurrentService.Credentials.GetType().ToString();
+                        
+                        if (typeof(Microsoft.Exchange.WebServices.Data.OAuthCredentials).ToString() == base.CurrentService.Credentials.GetType().ToString())
+                        {
+                            this.RenewOAuthTokenServiceMenu.Visible = true;
+                        }
+                    }
+                }
+     
+                
+
                 // Actions Menu
                 this.mnuOpenItemById.Enabled = isCurrentService;
                 this.mnuOpenFolderById.Enabled = isCurrentService;
@@ -332,7 +354,7 @@ namespace EWSEditor.Forms
                 this.mnuMailTips.Enabled = isCurrentService;
                 this.developerToolsTestWindowToolStripMenuItem.Enabled = isCurrentService;
 
-                this.mnuSearchForSearchFolders.Enabled = isCurrentService;
+               // this.mnuSearchForSearchFolders.Enabled = isCurrentService;
            
 
 
@@ -538,10 +560,18 @@ namespace EWSEditor.Forms
             this.newExchangeServiceMenu.Text = "New Exchange Service...";
             this.newExchangeServiceMenu.Click += new System.EventHandler(this.NewExchangeServiceMenu_Click);
 
+
+
             this.openDefaultExchangeServiceMenu.Name = "mnuOpenDefaultBinding";
             this.openDefaultExchangeServiceMenu.Size = new System.Drawing.Size(237, 22);
             this.openDefaultExchangeServiceMenu.Text = "Open Default Exchange Service";
             this.openDefaultExchangeServiceMenu.Click += new System.EventHandler(this.OpenDefaultExchangeServiceMenu_Click);
+
+            this.RenewOAuthTokenServiceMenu.Name = "mnuRenewOauthToken";
+            this.RenewOAuthTokenServiceMenu.Size = new System.Drawing.Size(237, 22);
+            this.RenewOAuthTokenServiceMenu.Text = "Renew Oauth Token...";
+            this.RenewOAuthTokenServiceMenu.Click += new System.EventHandler(this.mnuRenewOAuthToken_Click);
+            this.RenewOAuthTokenServiceMenu.Visible = false;
 
             this.closeExchangeServiceMenu.Name = "mnuCloseBinding";
             this.closeExchangeServiceMenu.Size = new System.Drawing.Size(237, 22);
@@ -558,6 +588,7 @@ namespace EWSEditor.Forms
             this.saveProfileMenu.Text = "Save Services Profile...";
             this.saveProfileMenu.Click += new System.EventHandler(this.SaveProfileMenu_Click);
 
+
             int exit = this.mnuFile.DropDownItems.IndexOfKey(this.mnuExit.Name);
             this.mnuFile.DropDownItems.Insert(exit, this.fileSplitMenu2);
             
@@ -571,7 +602,17 @@ namespace EWSEditor.Forms
             //this.mnuFile.DropDownItems.Insert(exit, this.openProfileMenu);
             this.mnuFile.DropDownItems.Insert(exit, this.closeExchangeServiceMenu);
             this.mnuFile.DropDownItems.Insert(exit, this.openDefaultExchangeServiceMenu);
+            this.mnuFile.DropDownItems.Insert(exit, this.RenewOAuthTokenServiceMenu);
+
             this.mnuFile.DropDownItems.Insert(exit, this.newExchangeServiceMenu);
+
+            //this.RenewOAuthTokenServiceMenu.Visible = CurrentAppSettings.UseoAuth;
+
+            //this.RenewOAuthTokenServiceMenu.Visible = oAppSettings.UseoAuth;  // VS hates this
+            //if (this.CurrentAppSettings.UseoAuth == true)
+            //    this.RenewOAuthTokenServiceMenu.Visible = true;
+            //else
+            //    this.RenewOAuthTokenServiceMenu.Visible = false;
         }
 
         private void FolderTreeForm_Load(object sender, EventArgs e)
@@ -616,13 +657,51 @@ namespace EWSEditor.Forms
                 }
 
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+
                 TreeNode serviceNode = this.AddServiceToTreeView(service, oAppSettings);
+
+                ////this.RenewOAuthTokenServiceMenu.Visible = oAppSettings.UseoAuth;  // VS hates this
+                //if (oAppSettings.UseoAuth == true)
+                //    this.RenewOAuthTokenServiceMenu.Visible = true;
+                //else
+                //    this.RenewOAuthTokenServiceMenu.Visible = false;
+
+
             }
             finally
             {
                 this.Cursor = System.Windows.Forms.Cursors.Default;
             }
+            
         }
+
+        private void mnuRenewOAuthToken_Click(object sender, EventArgs e)
+        {
+            ExchangeCredentials oServiceCredential = null;
+
+            if (this.CurrentAppSettings.AuthenticationMethod == RequestedAuthType.oAuth)
+            {
+                AuthenticationHelper oAH = new AuthenticationHelper();
+                string sBearerToken = string.Empty;
+
+                oServiceCredential = oAH.Do_OAuth(
+                           ref this.CurrentAppSettings.MailboxBeingAccessed,
+                           ref this.CurrentAppSettings.AccountAccessingMailbox,
+                           this.CurrentAppSettings.oAuthAuthority,
+                           this.CurrentAppSettings.oAuthClientId,
+                           this.CurrentAppSettings.oAuthRedirectUrl,
+                           this.CurrentAppSettings.oAuthServerName,
+                           ref sBearerToken);
+
+                this.CurrentService.Credentials = oServiceCredential;
+
+                this.CurrentAppSettings.oBearerToken = sBearerToken;
+
+                this.RenewOAuthTokenServiceMenu.Visible = true;
+
+            }
+        }
+
 
         /// <summary>
         /// Close the selected ExchangeService and remove it from the tree view

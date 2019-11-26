@@ -9,7 +9,7 @@
     using System.Text;
     using System.Windows.Forms;
     using System.DirectoryServices.AccountManagement;
-   
+
     using System.Collections.ObjectModel;
 
     using EWSEditor.Common;
@@ -24,7 +24,7 @@
 
     using Microsoft.Win32;
     using System.Globalization;
-    
+    using System.Runtime.CompilerServices;
 
     public partial class BrowserForm : CountedForm
     {
@@ -47,10 +47,10 @@
         //    Prop_PR_FOLDER_PATH,
         //    PidLidCleanGlobalObjectId,
         //    PidLidGlobalObjectId);
- 
+
 
         private PropertySet currentDetailPropertySet = null;
-         
+
 
         public BrowserForm()
         {
@@ -111,7 +111,7 @@
             {
                 base.CurrentService = value;
                 //this.SetServiceLabel(value);
-
+                 
             }
         }
 
@@ -150,7 +150,7 @@
             if (oAppSettings != null)
             {
 
-                
+
                 if (oAppSettings != null)
                 {
                     if (oAppSettings.UserImpersonationSelected == true)
@@ -179,7 +179,7 @@
             }
 
             this.lblExchangeService.Text = sInfo;
-              
+
         }
 
         /// <summary>
@@ -298,7 +298,7 @@
                 names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
                 //this.CurrentAppSettings.MailboxBeingAccessed;
             }
-             
+
             if (names.Count == 1)
             {
                 DialogResult res = DelegateDialog.ShowDialog(
@@ -414,7 +414,7 @@
             //    OofForm.ShowDialog(this.CurrentService);
             //}
 
- 
+
 
         }
 
@@ -425,7 +425,7 @@
         /// <param name="e">The parameter is not used.</param>
         private void MnuAvailability_Click(object sender, EventArgs e)
         {
-           // AvailabilityForm.Show(this.CurrentService);
+            // AvailabilityForm.Show(this.CurrentService);
         }
 
         /// <summary>
@@ -447,10 +447,10 @@
         {
             PostForm oPostForm = new PostForm();
             oPostForm.Show();
- 
+
         }
 
-         
+
         private void OptionsMenuItem_Click(object sender, EventArgs e)
         {
             OptionsDialog.ShowDialog();
@@ -527,7 +527,7 @@
             //        this.CurrentService,
             //        folderId,
             //        this.CurrentDetailPropertySet);
-                 
+
             //    FolderContentForm.Show(
             //        string.Format(DisplayStrings.TITLE_CONTENTS_FOLDER, folder.DisplayName),
             //        folder,
@@ -572,8 +572,8 @@
             // If there is no CurrentService then we can't do anything
             //if (this.CurrentService != null)
             //{
-                TimeZonesForm oTimeZonesForm = new TimeZonesForm();
-                oTimeZonesForm.ShowDialog();
+            TimeZonesForm oTimeZonesForm = new TimeZonesForm();
+            oTimeZonesForm.ShowDialog();
             //}
 
             //this.Cursor = Cursors.Default;
@@ -587,7 +587,7 @@
 
         private void BrowserForm_Load_1(object sender, EventArgs e)
         {
-             
+
         }
 
         private void MeetingRoomsMenuItem_Click(object sender, EventArgs e)
@@ -607,7 +607,7 @@
                 oDistributionListForm.ShowDialog();
             }
         }
-        
+
         private void InboxRulesMenuItem_Click(object sender, EventArgs e)
         {
             if (this.CurrentService != null)
@@ -617,7 +617,7 @@
             }
         }
 
-   
+
 
         private void mnuFile_Click(object sender, EventArgs e)
         {
@@ -640,16 +640,16 @@
 
             PropertySet oPropertySet = null;
             ConversationId oConversationId = null;
-            FolderId oFolderId = null; 
- 
+            FolderId oFolderId = null;
+
             ConversationIdDialog oConversationIdDialog = new ConversationIdDialog();
             oConversationIdDialog.ShowDialog();
 
-            this.Cursor = Cursors.WaitCursor; 
-             
+            this.Cursor = Cursors.WaitCursor;
+
             if (oConversationIdDialog.ChoseOK == true)
             {
-                 
+
                 oPropertySet = oConversationIdDialog.CurrentPropertySet;
                 oConversationId = oConversationIdDialog.CurrentConversationId;
                 oFolderId = oConversationIdDialog.CurrentFolderId;
@@ -659,22 +659,22 @@
 
                 // Identify the folders to ignore.
                 Collection<FolderId> foldersToIgnore =
-                        new  Collection<FolderId>() { WellKnownFolderName.DeletedItems, WellKnownFolderName.Drafts };
- 
+                        new Collection<FolderId>() { WellKnownFolderName.DeletedItems, WellKnownFolderName.Drafts };
+
                 ConversationResponse oResponses = null;
                 oResponses = CurrentService.GetConversationItems(
                         oConversationId,
-                        oPropertySet, 
+                        oPropertySet,
                         null,
-                        foldersToIgnore, 
+                        foldersToIgnore,
                         ConversationSortOrder.TreeOrderDescending
                         );
-       
+
                 //Console.WriteLine("SyncState: " + oResponses.SyncState); // Get the synchronization state of the conversation.
 
-                 
+
                 try {
- 
+
                     foreach (ConversationNode node in oResponses.ConversationNodes) // Process each node of conversation items.
                     {
                         //Console.WriteLine("Parent conversation index: " + node.ParentConversationIndex);
@@ -684,10 +684,10 @@
                         // Process each item in the conversation node.
                         foreach (Item item in node.Items)
                         {
-                        //Console.WriteLine("   Item ID: " + item.Id.UniqueId);
-                        //Console.WriteLine("   Subject: " + item.Subject);
-                        //Console.WriteLine("   Received: " + item.DateTimeReceived);
-                        oConversationItems.Add(item.Id);
+                            //Console.WriteLine("   Item ID: " + item.Id.UniqueId);
+                            //Console.WriteLine("   Subject: " + item.Subject);
+                            //Console.WriteLine("   Received: " + item.DateTimeReceived);
+                            oConversationItems.Add(item.Id);
                         }
                     }
                 }
@@ -698,7 +698,7 @@
                 // This exception may occur if there is an error with the service.
                 catch (ServiceResponseException srException)
                 {
-                  Console.WriteLine(srException);
+                    Console.WriteLine(srException);
                 }
                 this.Cursor = Cursors.Default;
 
@@ -707,7 +707,7 @@
                     oConversationItems,
                     this.CurrentService,
                     this);
- 
+
             }
         }
 
@@ -741,8 +741,8 @@
                 oSB.AppendFormat("  Guid: {0}\r\n", UserPrincipal.Current.Guid.ToString());
             if (UserPrincipal.Current.Description != null)
                 oSB.AppendFormat("  Description: {0}\r\n", UserPrincipal.Current.Description.ToString());
- 
- 
+
+
             oSB.AppendFormat("\r\n");
             oSB.AppendFormat("  PasswordNeverExpires: {0}\r\n", UserPrincipal.Current.PasswordNeverExpires.ToString());
             oSB.AppendFormat("  PasswordNotRequired: {0}\r\n", UserPrincipal.Current.PasswordNotRequired.ToString());
@@ -753,8 +753,8 @@
                 oSB.AppendFormat("  AccountExpirationDate: {0}\r\n", UserPrincipal.Current.AccountExpirationDate.ToString());
             if (UserPrincipal.Current.AccountLockoutTime.HasValue)
                 oSB.AppendFormat("  AccountLockoutTime: {0}\r\n", UserPrincipal.Current.AccountLockoutTime.ToString());
-           
-             
+
+
             //string sUserName = UserPrincipal.Current.SamAccountName;
             //DirectorySearcher oDirectorySearcher = new DirectorySearcher();
             //oDirectorySearcher.Filter = String.Format("(SAMAccountName={0})", sUserName);
@@ -792,19 +792,19 @@
                 oSB.AppendFormat("Aliases :\r\n");
                 for (int index = 0; index < alias.Length; index++)
                 {
-                     
+
                     oSB.AppendFormat("    {0}\r\n", alias[index]);
                 }
 
                 oSB.AppendFormat("IP address list : \r\n");
                 for (int index = 0; index < address.Length; index++)
                 {
-                    oSB.AppendFormat("    {0}\r\n", address[index] );
+                    oSB.AppendFormat("    {0}\r\n", address[index]);
                 }
-         
+
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 oSB.AppendFormat("\r\n");
                 oSB.AppendFormat("Error trying to retrieve Host information for this machine:\r\n");
@@ -817,7 +817,7 @@
 
             oSB.AppendLine("");
             oSB.AppendLine(ProcessInfo());
-      
+
 
             oSB.AppendLine("");
             oSB.AppendLine(GetDotNetInfo());
@@ -833,7 +833,7 @@
             oForm.Text = "Run-time Information";
             oForm.txtEntry.Text = sContent;
             oForm.Show();
- 
+
         }
 
         private string MachineInfo()
@@ -847,13 +847,13 @@
             oSB.AppendLine("  Is64BitOperatingSystem: " + Environment.Is64BitOperatingSystem);
             oSB.AppendLine("  Is64BitProcess: " + Environment.Is64BitProcess);
             oSB.AppendLine("  OSVersion: " + Environment.OSVersion.VersionString);
-            oSB.AppendLine("  ProcessorCount: " + Environment.ProcessorCount.ToString());             
+            oSB.AppendLine("  ProcessorCount: " + Environment.ProcessorCount.ToString());
             oSB.AppendLine("  WorkingSet (Memory mapped to this process context): " + Environment.WorkingSet.ToString());
             oSB.AppendLine("  SystemPageSize: " + Environment.SystemPageSize);
             oSB.AppendLine("  SystemDirectory: " + Environment.SystemDirectory);
-            oSB.AppendLine("  CurrentDirectory: " + Environment.CurrentDirectory); 
+            oSB.AppendLine("  CurrentDirectory: " + Environment.CurrentDirectory);
             oSB.AppendLine("  CommandLine: " + Environment.CommandLine);
- 
+
 
             string[] logicalDrives = Environment.GetLogicalDrives();
             oSB.AppendLine("  Drives: ");
@@ -861,14 +861,14 @@
             {
                 oSB.AppendLine("    " + sDrive);
             }
- 
-            
+
+
             return oSB.ToString();
         }
 
         private string ProcessInfo()
         {
-            System.Diagnostics.Process oProc =  System.Diagnostics.Process.GetCurrentProcess();
+            System.Diagnostics.Process oProc = System.Diagnostics.Process.GetCurrentProcess();
 
             StringBuilder oSB = new StringBuilder();
             oSB.AppendLine("Process Information: ");
@@ -895,7 +895,7 @@
             oSB.AppendLine("  CommandLine: " + Environment.CommandLine);
             oSB.AppendLine("  MainModule: ");
             oSB.AppendLine("    FileName: " + oProc.MainModule.FileName);
-            oSB.AppendLine("    FileVersionInfo: "  );
+            oSB.AppendLine("    FileVersionInfo: ");
             oSB.AppendLine("      InternalName: " + oProc.MainModule.FileVersionInfo.InternalName);
             oSB.AppendLine("      OriginalFilename: " + oProc.MainModule.FileVersionInfo.OriginalFilename);
             oSB.AppendLine("      FileVersion: " + oProc.MainModule.FileVersionInfo.FileVersion);
@@ -911,7 +911,7 @@
             oSB.AppendLine("    ModuleName: " + oProc.MainModule.ModuleName.ToString());
             oSB.AppendLine("    ModuleMemorySize: " + oProc.MainModule.ModuleMemorySize.ToString());
             if (oProc.MainModule.Site != null)
-            { 
+            {
                 oSB.AppendLine("    Site:");
                 oSB.AppendLine("      Name: " + oProc.MainModule.Site.Name);
             }
@@ -924,7 +924,7 @@
             oSB.AppendLine("    Verb: " + oProc.StartInfo.Verb);
             oSB.AppendLine("    WorkingDirectory: " + oProc.StartInfo.WorkingDirectory);
 
- 
+
             return oSB.ToString();
         }
 
@@ -938,7 +938,7 @@
             oSB.AppendLine(DotNetUpdateInfo());
 
             return oSB.ToString();
-             
+
         }
 
 
@@ -1012,7 +1012,7 @@
 
         private void mnuSnmClient_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void mnuSnmClient_Click_1(object sender, EventArgs e)
@@ -1053,8 +1053,8 @@
             oForm.Text = "Server TimeZone";
             oForm.txtEntry.Text = oSB.ToString();
             oForm.Show();
-           
-             
+
+
         }
 
         private void mailAppsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1100,7 +1100,7 @@
         {
             DeveloperServiceTestForm oForm = new DeveloperServiceTestForm(CurrentService);
             oForm.Show();
-            
+
         }
 
         private void mnuDomainSettings_Click(object sender, EventArgs e)
@@ -1122,7 +1122,7 @@
 
         private void mnuToolsDiscoveryScpLookups_Click(object sender, EventArgs e)
         {
-            
+
             ScpLookupForm oForm = new ScpLookupForm();
             oForm.Show();
         }
@@ -1167,7 +1167,7 @@
                         names = this.CurrentService.ResolveName(this.CurrentAppSettings.MailboxBeingAccessed);
                     }
                     else
-                    {  
+                    {
                         // Attempt to resolve the Act As account name.  If there is only one
                         // hit from ResolveNames then assume it is the right one.
                         names = this.CurrentService.ResolveName(this.CurrentService.GetActAsAccountName());
@@ -1227,7 +1227,7 @@
 
         private void mnuSearchForSearchFolders_Click(object sender, EventArgs e)
         {
-  
+
             FindSearchFolder oForm = new FindSearchFolder(this.CurrentService);
             oForm.Show();
         }
@@ -1242,7 +1242,13 @@
         {
             CharactersetConversionForm oForm = new CharactersetConversionForm();
             oForm.Show();
-            
+
+        }
+
+        private void mnuRenewOAuthToken_Click(object sender, EventArgs e)
+        {
+ 
         }
     }
+
 }

@@ -101,10 +101,10 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblExchangeService});
-            this.statusStrip.Location = new System.Drawing.Point(0, 808);
+            this.statusStrip.Location = new System.Drawing.Point(0, 856);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 28, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1352, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1395, 22);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 3;
             // 
@@ -125,7 +125,7 @@
             this.mnuHelp});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(1352, 40);
+            this.mnuMain.Size = new System.Drawing.Size(1395, 40);
             this.mnuMain.TabIndex = 4;
             // 
             // mnuFile
@@ -140,7 +140,7 @@
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(186, 44);
+            this.mnuExit.Size = new System.Drawing.Size(359, 44);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.MnuExit_Click);
             // 
@@ -598,7 +598,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1352, 830);
+            this.ClientSize = new System.Drawing.Size(1395, 878);
             this.Controls.Add(this.mnuMain);
             this.Controls.Add(this.statusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
