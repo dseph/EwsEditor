@@ -1494,6 +1494,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="deps\Microsoft.Exchange.WebServices.dll" />
+    <Content Include="deps\Microsoft.Exchange.WebServices.pdb" />
+    <Content Include="deps\Microsoft.Exchange.WebServices.xml" />
     <Content Include="EwsPostExamples\Autodiscover - POX .xml" />
     <Content Include="EwsPostExamples\AddDelegate.xml" />
     <Content Include="EwsPostExamples\AddDistributionGroupToImList.xml">
@@ -1666,7 +1669,6 @@
     <Content Include="HtmlBodyExamples\BodyWithInlineAttachment.txt" />
     <Content Include="HtmlBodyExamples\ManyFormatsHtmlBody.txt" />
     <Content Include="HtmlBodyExamples\Field2MeterQarterGP.png" />
-    <Content Include="docs\ToDo.txt" />
     <None Include="License.md" />
     <Content Include="ToBuild.txt" />
     <None Include="Resources\action_add_16xLG.bmp" />
@@ -1680,7 +1682,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\ItemCheckers\" />
-    <Folder Include="deps\" />
     <Folder Include="Exchange\" />
     <Folder Include="Forms\Dialogs\SmartEditors\" />
     <Folder Include="Forms\NewFolder1\" />

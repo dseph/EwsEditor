@@ -1,5 +1,5 @@
 ﻿ToBuild.txt
-Build notes as of 1/22/2018.
+Build notes as of 11/26/2019.
 
 EWSEditor was created as a sample which demonstrates the EWS Managed API and EWS calls.  It is an open-source sample and is not a Microsoft
 application.  There is no support for this code or its build.
@@ -13,8 +13,8 @@ EWSEditor has three goals:
 
 Each release of EWSEditor includes the distribution of the EWS Managed API it was built for. This version of EWSEditor uses .NET Framework 
 version 4.7.2, which can be downloaded here: .NET Framework 4.7.2. The project is under Visual Studio 2013. This version of EwsEditor 
-uses EWS Managed API built from GIT. The EWS Managed API requires a minimal of .NET 3.5. A copy of the 2.2 version of the EWS Managed 
-API is included in case you wish to use it instead of the version built from GIT.  The GitHub source for the EWS Managed API has 
+uses EWS Managed API built from GIT. The EWS Managed API requires a minimal of .NET 3.5. The build of the EWS Managed API included is from 25a393d 
+on Jul 24, 2018.  The GitHub source for the EWS Managed API has 
 fixes which are not in the MSDN release.  You should consider pulling fresh code for the EWS Managed API and building it for usage 
 with EWSEditor and other code.   
 
@@ -43,7 +43,7 @@ Set a reference to .Net 4.7.2
 
 	 https://dotnet.microsoft.com/download/dotnet-framework/net472
 
-You should be able to use a newer version of .NET, however it’s not been tested against higher versions. The reason 4.5.1 was
+You should be able to use a newer version of .NET, however it’s not been tested against higher versions. The reason 4.7.2 was
 chosen is that it is widely installed and had needed features and fixes for EWSEditor, so it’s used as the minimum bar for .NET. 
 Later builds of EWSEditor may use a newer version of .NET.
 
