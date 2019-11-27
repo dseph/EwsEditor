@@ -1,7 +1,6 @@
 ### Project Description
 
-EWSEditor is an API explorer - an application which is used to explore the usage of an API.  In this case it was created to demonstrates 
-the EWS Managed API and EWS calls.  It is an open-source sample and is not a Microsoft application.  There is no support for this code or its build. 
+EWSEditor is an API explorer - an application which is used by programmers to explore the usage of an API.  In this case it was created to demonstrates the EWS Managed API and EWS calls.  It is an open-source sample and is not a Microsoft application.  There is no support for this code or any of its builds.
 
 EWSEditor has three goals:
 
@@ -42,10 +41,7 @@ If you have issues with the referenced components then update the components and
 
 ### About the EWS Managed API
 
-EWSEditor relies heavily on the EWS Managed API.  The EWS Managed API requires a minimal of .NET 3.5 - however, its best to use a recent build from 
-the published source code. The build of the EWS Managed API included with EWSEditor is from 25a393d on Jul 24, 2018.  The GitHub source for the 
-EWS Managed API has fixes which are not in the MSDN release.  If you think you are running into an issue with the EWS Managed API which might have 
-been fixed then you should consider pulling fresh code for the EWS Managed API and building it for usage with EWSEditor and other code.   
+EWSEditor relies heavily on the EWS Managed API.  The EWS Managed API requires a minimal of .NET 3.5 - however, its best to use a recent build from the published source code. The build of the EWS Managed API included with EWSEditor is from 25a393d on Jul 24, 2018.  The GitHub source for the EWS Managed API has fixes which are not in the MSDN release.  If you think you are running into an issue with the EWS Managed API which might have been fixed then you should consider pulling fresh code for the EWS Managed API and building it for usage with EWSEditor and other code.   
 
 Here is where can download the source code for the EWS Managed API.  
 
@@ -56,7 +52,4 @@ So, if you want the fixes done over the past few years then you should not use t
 
 	https://www.microsoft.com/en-us/download/details.aspx?id=40779
 
-WARNING: If you are tempted to use a build of the EWS Managed API you found on the web (including NuGet) then you should pass. Such downloads may contain 
-malicious code. One of my customers security software started screaming at them that a build of what seemed to be the EWS Managed API from a published
-download from NuGet was causing security violations. I looked at the publisher and it was nobody I know from Microsoft.  So, unless you want to run 
-the risk of a toxic download then you should be downloading the EWS Managed API and building it yourself.
+WARNING: If you are tempted to use a build of the EWS Managed API you found on the web (including NuGet) then you should pass. Such downloads may contain malicious code. One of my customers security software started screaming at them that a build of what seemed to be the EWS Managed API from a publisheddownload from NuGet was causing security violations. I looked at the publisher and it was nobody I know from Microsoft.  So, unless you want to run the risk of a toxic download then you should be downloading the EWS Managed API and building it yourself.
