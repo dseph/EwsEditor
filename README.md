@@ -1,8 +1,5 @@
 ### Project Description
 
-Description:
-============
-
 EWSEditor is an API explorer - an application which is used to explore the usage of an API.  In this case it was created to demonstrates 
 the EWS Managed API and EWS calls.  It is an open-source sample and is not a Microsoft application.  There is no support for this code or its build. 
 
@@ -15,9 +12,7 @@ EWSEditor has three goals:
 Each release of EWSEditor includes the distribution of the EWS Managed API it was built for. This version of EWSEditor uses EWS Managed API built from GIT. 
 This version of EWSEditor uses .NET Framework version 4.7.2 and a build of the EWS Managed API built as of check-in 25a393d on Jul 24, 2018. 
 
-
-To build EWSEditor:
-===================
+### To build EWSEditor:
 
 Add the following NuGet packages:
 
@@ -45,9 +40,7 @@ Later builds of EWSEditor may use a newer version of .NET.
 
 If you have issues with the referenced components then update the components and references.
 
-
-About the EWS Managed API:
-==========================
+### About the EWS Managed API:
 
 EWSEditor relies heavily on the EWS Managed API.  The EWS Managed API requires a minimal of .NET 3.5 - however, its best to use a recent build from 
 the published source code. The build of the EWS Managed API included with EWSEditor is from 25a393d on Jul 24, 2018.  The GitHub source for the 
