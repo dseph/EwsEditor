@@ -18,7 +18,7 @@ Add the following NuGet packages:
 
     Microsoft.IdentityModel.Clients.ActiveDirectory  (For oAuth)
 
-    System.Management.Automation.dll  (for something I’m adding for a future release).
+    System.Management.Automation.dll  
 
     Microsoft.Bcl
 
