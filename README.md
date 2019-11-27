@@ -1,5 +1,5 @@
 ### Project Description
-============
+
 Description:
 ============
 
@@ -15,7 +15,7 @@ EWSEditor has three goals:
 Each release of EWSEditor includes the distribution of the EWS Managed API it was built for. This version of EWSEditor uses EWS Managed API built from GIT. 
 This version of EWSEditor uses .NET Framework version 4.7.2 and a build of the EWS Managed API built as of check-in 25a393d on Jul 24, 2018. 
 
-===================
+
 To build EWSEditor:
 ===================
 
@@ -45,7 +45,7 @@ Later builds of EWSEditor may use a newer version of .NET.
 
 If you have issues with the referenced components then update the components and references.
 
-==========================
+
 About the EWS Managed API:
 ==========================
 
