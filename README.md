@@ -8,8 +8,7 @@ EWSEditor has three goals:
     2.Demonstrate the Exchange Web Services SOAP traffic used to perform actions initiated through an explorer user interface. 
     3.Assist non-developers in debugging and understanding Exchange stores by exploring items, folders, and their properties in depth. 
 
-Each release of EWSEditor includes the distribution of the EWS Managed API it was built for. This version of EWSEditor uses EWS Managed API built from GIT. 
-This version of EWSEditor uses .NET Framework version 4.7.2 and a build of the EWS Managed API built as of check-in 25a393d on Jul 24, 2018. 
+Each release of EWSEditor includes the distribution of the EWS Managed API it was built for. This version of EWSEditor uses EWS Managed API built from GIT. This version of EWSEditor uses .NET Framework version 4.7.2 and a build of the EWS Managed API built as of check-in 25a393d on Jul 24, 2018. 
 
 ### To build EWSEditor
 
@@ -27,9 +26,9 @@ Add the following NuGet packages:
 
 There is a reference to CDOSYS, for which Visual Studio generated the ADODB and CDO interops.  If you need to regenerate them 
 then remove the references and be sure to delete the interop files. Next set a new reference to CDOSYS and Visual studio will 
-regenerate both interop files.  CDOSYS is a COM component which comes with Windows and has both 64bit and 32bit registrations.
+regenerate both interop files.  CDOSYS is a COM component which comes with Windows and has both 64bit and 32bit registrations. CDOSYS is used in EWSEDitor for its MIME parsing functions.
 
-Set a reference to .Net 4.7.2
+The version of .NET used is .Net 4.7.2.  So, be sure this version of .NET is installed.
 
 	 https://dotnet.microsoft.com/download/dotnet-framework/net472
 
