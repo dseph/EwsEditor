@@ -36,8 +36,9 @@ Add the following NuGet packages:
 There is a reference to CDOSYS, for which Visual Studio generated the ADODB and CDO interops.  If you need to regenerate them 
 then remove the references and be sure to delete the interop files. Next set a new reference to CDOSYS and Visual studio will 
 regenerate both interop files.  CDOSYS is a COM component which comes with Windows and has both 64bit and 32bit registrations.
+CDOSYS is used in EWSEditor for its MIME parsing functions.
 
-Set a reference to .Net 4.7.2
+The version of .NET used is .Net 4.7.2.  So, be sure this version of .NET is installed.
 
 	 https://dotnet.microsoft.com/download/dotnet-framework/net472
 
