@@ -216,7 +216,7 @@ namespace EWSEditor.Forms
                         StreamingSubscription CurrentSubscription = null;
                         if (chkAllFoldes.Checked == false)
                         {
-                            CurrentSubscription = ThreadLocalService.SubscribeToStreamingNotifications(
+                            CurrentSubscription = ThreadLocalService.SubscribeToStreamingNotifications( 
                                                                                 new FolderId[] { this.CurrentFolderId },
                                                                                 EventTypes.ToArray());
                             //System.Diagnostics.Debug.WriteLine("-");
@@ -225,7 +225,8 @@ namespace EWSEditor.Forms
                         }
                         else
                         {
-                            CurrentSubscription = ThreadLocalService.SubscribeToStreamingNotificationsOnAllFolders(
+                             
+                              CurrentSubscription = ThreadLocalService.SubscribeToStreamingNotificationsOnAllFolders(
                                                                                  EventTypes.ToArray());
                             //System.Diagnostics.Debug.WriteLine("-");
                             //System.Diagnostics.Debug.WriteLine("Subscribe - ID: " + CurrentSubscription.Id + "  Watermark: " + CurrentSubscription.Watermark);
@@ -353,7 +354,7 @@ namespace EWSEditor.Forms
                     {
                         CurrentConnection.RemoveSubscription(CurrentSubscription);
                         CurrentSubscription.Unsubscribe();
-
+                        
                         //System.Diagnostics.Debug.WriteLine("-");
                         //System.Diagnostics.Debug.WriteLine("Unsubscribed - ID: " + CurrentSubscription.Id + "  Watermark: " + CurrentSubscription.Watermark);
                         //System.Diagnostics.Debug.WriteLine("-");

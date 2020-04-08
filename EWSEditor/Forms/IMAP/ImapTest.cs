@@ -22,15 +22,15 @@ namespace EWSEditor.Forms.IMAP
     public partial class ImapTest : Form
     {
 
-        static System.IO.StreamWriter sw = null;
-        static System.Net.Sockets.TcpClient tcpc = null;
-        static System.Net.Security.SslStream ssl = null;
-        static string username, password;
-        static string path;
-        static int bytes = -1;
-        static byte[] buffer;
-        static StringBuilder sb = new StringBuilder();
-        static byte[] dummy;
+        //static System.IO.StreamWriter sw = null;
+        //static System.Net.Sockets.TcpClient tcpc = null;
+        //static System.Net.Security.SslStream ssl = null;
+        //static string username, password;
+        //static string path;
+        //static int bytes = -1;
+        //static byte[] buffer;
+        //static StringBuilder sb = new StringBuilder();
+        //static byte[] dummy;
 
         public ImapTest()
         {

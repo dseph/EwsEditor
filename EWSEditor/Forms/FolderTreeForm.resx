@@ -118,14 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="imageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>267, 17</value>
+    <value>379, 17</value>
   </metadata>
   <data name="imageList.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAw
-        IQAAAk1TRnQBSQFMAgEBCQEAAbwBAgG8AQIBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        IQAAAk1TRnQBSQFMAgEBCQEAAewBAgHsAQIBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABMAMAAQEBAAEgBgABMBYAPP/FAAHMAv8BAAHMAv8BAAHMAv8BAAHMAv8BAAGZAcwB/wEAAZkBzAH/
         AQABmQHMAf8BAALMAf8BAAHMAv8BAAHMAv8BAAHMAv8BAAHMAv8BAAHMAv8BAAHMBv/FAAHMAv8BAAHM
         Av8BAAGZAcwB/wEAAZkBzAH/AQACzAH/AQABmQHMAf8BAAHMAv8BAAHMAv8BAAHMAv8BAAHMAv8BAAHM
@@ -270,22 +270,22 @@
 </value>
   </data>
   <metadata name="cmsFolderMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>655, 17</value>
+    <value>963, 17</value>
   </metadata>
   <metadata name="propertyListItemBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>388, 17</value>
+    <value>554, 17</value>
   </metadata>
   <metadata name="saveFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>821, 17</value>
+    <value>1209, 17</value>
   </metadata>
   <metadata name="openFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>975, 17</value>
+    <value>17, 73</value>
   </metadata>
   <metadata name="mnuServiceContext.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1134, 17</value>
+    <value>252, 73</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>40</value>
+    <value>117</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

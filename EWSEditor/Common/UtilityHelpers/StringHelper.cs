@@ -29,7 +29,7 @@ namespace EWSEditor.Common
 
         public static bool IsNumeric(object Expression)
         {
-            http://stackoverflow.com/questions/894263/how-do-i-identify-if-a-string-is-a-number
+            //http://stackoverflow.com/questions/894263/how-do-i-identify-if-a-string-is-a-number
 
             double retNum;
             bool isNum = double.TryParse(Convert.ToString(Expression), out retNum); //i now = 10
@@ -68,6 +68,7 @@ namespace EWSEditor.Common
             }
             catch (Exception ex)
             {
+                Console.WriteLine(" Error: IsBase64Encoded: " + ex.ToString());
                 // Handle the exception
             }
             return false;

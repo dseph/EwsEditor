@@ -332,7 +332,7 @@ namespace EWSEditor.Forms
 
                 PropertyDefinitionBase oPD = null;
 
-                bool bNamedProp = false;
+                //bool bNamedProp = false;
 
 
                 foreach (AdditionalPropertyDefinition o in oForm.APD)

@@ -464,9 +464,17 @@ namespace EWSEditor.Forms
              
             // Make one call to get all the items.
             CurrentService.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
-            ServiceResponseCollection<GetItemResponse> getItems = this.CurrentService.BindToItems(
-                this.currentItemIds.ToArray(), 
-                this.contentItemView.PropertySet);
+            IEnumerable<GetItemResponse> getItems;
+            if (currentItemIds.Count > 0)
+            {
+                getItems = this.CurrentService.BindToItems(
+                    this.currentItemIds.ToArray(),
+                    this.contentItemView.PropertySet);
+            }
+            else
+            {
+                getItems = Enumerable.Empty<GetItemResponse>();
+            }
 
             // Convert the GetItemResponseCollection to an Item list.
             List<Item> items = new List<Item>();
@@ -827,10 +835,13 @@ namespace EWSEditor.Forms
 
             FolderIdDialog oForm = new FolderIdDialog(this.CurrentService);
             oForm.ShowDialog();
-            if (oForm.ChoseOK != true)
+            if (oForm.ChoseOK == true)
             {
-                //oForm.ChosenFolderId 
                 destId = oForm.ChosenFolderId;
+            }
+            else
+            {  
+                //destId = oForm.ChosenFolderId;
                 return;
             }
 
@@ -1103,10 +1114,14 @@ namespace EWSEditor.Forms
             try
             {
                 string sVersion = this.CurrentService.RequestedServerVersion.ToString();
-           
+
                 ExportUploadHelper.ExportItemPost(sVersion, id.UniqueId, dialog.FileName);
-               
-        
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.InnerException.ToString(), "Error");
             }
             finally
             {

@@ -122,7 +122,8 @@ namespace EWSEditor.Forms
 
         public void LoadUserConfigIntoTreeViewNode(ExchangeService service, ref TreeNode oNode, FolderId oFolderId, string sSettingsName)
         {
-            bool bFound = false;
+            //bool bFound = false;
+ 
 
             service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID.
             UserConfiguration OWAConfiguration = UserConfiguration.Bind(service,
@@ -141,14 +142,9 @@ namespace EWSEditor.Forms
                 else
                     xNode.Tag = "";  
                 oNode.Nodes.Add(xNode);
-                bFound = true;
+                //bFound = true;
             }
 
-            //if (bFound == false)
-            //    oNode.ForeColor = Color.Gray;
-
-            //if (oNode.Nodes.Count == 0)
-            //    oNode.ForeColor = Color.Gray;
 
         }
 
@@ -189,14 +185,7 @@ namespace EWSEditor.Forms
                 
             }
 
-            //FolderId folderId = null;
-            //if (Forms.FolderIdDialog.ShowDialog(ref folderId) == DialogResult.OK)
-            //{
-            //   // SetAndDisplayFolderId(folderId);
-            //    _ChosenFolderId = folderId;
-            //    txtFolderId.Text = PropertyInformation.TypeValues.FolderIdTypeValue.GetValue(folderId, true);
-  
-            //}
+
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -225,20 +214,6 @@ namespace EWSEditor.Forms
             }
         }
 
-        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - OWA.UserOptions", "OWA.UserOptions", ref sError);
-        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - OWA.OtherMailbox", "OWA.OtherMailbox", ref sError);
-        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - OWA.AutocompleteCache", "OWA.AutocompleteCache", ref sError);
-        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - OWA.SendFromCache", "OWA.SendFromCache", ref sError);
-        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - OWA.ViewStateConfiguration", "OWA.ViewStateConfiguration", ref sError);
-
-        //TryLoadSettings(service, WellKnownFolderName.Root, ref _ParentNode, "WellKnownFolderName.Root - TargetFolderMRU", " ", ref sError);
-
-        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - Calendar", "Calendar", ref sError);
-        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - CategoryList", "CategoryList", ref sError);
-        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - BookInPolicy", "BookInPolicy", ref sError);
-        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - RequestInPolicy ", "RequestInPolicy ", ref sError);
-        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - RequestOutofPolicy ", "RequestOutofPolicy ", ref sError);
-        //TryLoadSettings(service, WellKnownFolderName.Calendar, ref _ParentNode, "WellKnownFolderName.Calendar - WorkHours", "WorkHours", ref sError);
 
        
         //http://stackoverflow.com/questions/20473013/available-userconfigurationname-names-for-getuserconfiguration-for-distinguished

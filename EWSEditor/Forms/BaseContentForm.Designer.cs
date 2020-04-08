@@ -29,36 +29,36 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseContentForm));
-            this.splitter = new System.Windows.Forms.SplitContainer();
+            this.Splitter = new System.Windows.Forms.SplitContainer();
             this.ContentsGrid = new System.Windows.Forms.DataGridView();
             this.TestColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyDetailsGrid = new EWSEditor.Forms.Controls.PropertyDetialsGrid();
-            ((System.ComponentModel.ISupportInitialize)(this.splitter)).BeginInit();
-            this.splitter.Panel1.SuspendLayout();
-            this.splitter.Panel2.SuspendLayout();
-            this.splitter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Splitter)).BeginInit();
+            this.Splitter.Panel1.SuspendLayout();
+            this.Splitter.Panel2.SuspendLayout();
+            this.Splitter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ContentsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // splitter
             // 
-            this.splitter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitter.Location = new System.Drawing.Point(0, 33);
-            this.splitter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.splitter.Name = "splitter";
-            this.splitter.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.Splitter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Splitter.Location = new System.Drawing.Point(0, 33);
+            this.Splitter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Splitter.Name = "splitter";
+            this.Splitter.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitter.Panel1
             // 
-            this.splitter.Panel1.Controls.Add(this.ContentsGrid);
+            this.Splitter.Panel1.Controls.Add(this.ContentsGrid);
             // 
             // splitter.Panel2
             // 
-            this.splitter.Panel2.Controls.Add(this.PropertyDetailsGrid);
-            this.splitter.Size = new System.Drawing.Size(1129, 628);
-            this.splitter.SplitterDistance = 299;
-            this.splitter.SplitterWidth = 6;
-            this.splitter.TabIndex = 5;
+            this.Splitter.Panel2.Controls.Add(this.PropertyDetailsGrid);
+            this.Splitter.Size = new System.Drawing.Size(1129, 628);
+            this.Splitter.SplitterDistance = 299;
+            this.Splitter.SplitterWidth = 6;
+            this.Splitter.TabIndex = 5;
             // 
             // ContentsGrid
             // 
@@ -106,16 +106,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1129, 683);
-            this.Controls.Add(this.splitter);
+            this.Controls.Add(this.Splitter);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
             this.Name = "BaseContentForm";
             this.Load += new System.EventHandler(this.BaseContentForm_Load);
-            this.Controls.SetChildIndex(this.splitter, 0);
-            this.splitter.Panel1.ResumeLayout(false);
-            this.splitter.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitter)).EndInit();
-            this.splitter.ResumeLayout(false);
+            this.Controls.SetChildIndex(this.Splitter, 0);
+            this.Splitter.Panel1.ResumeLayout(false);
+            this.Splitter.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Splitter)).EndInit();
+            this.Splitter.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ContentsGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -124,7 +124,7 @@
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitter;
+        protected System.Windows.Forms.SplitContainer Splitter;
         protected System.Windows.Forms.DataGridView ContentsGrid;
         protected EWSEditor.Forms.Controls.PropertyDetialsGrid PropertyDetailsGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn TestColumn;

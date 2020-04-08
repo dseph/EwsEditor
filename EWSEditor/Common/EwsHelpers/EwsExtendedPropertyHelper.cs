@@ -140,7 +140,7 @@ namespace EWSEditor.Common
 
         public static string GetExtendedProp_Int_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
-            int lVal = 0;
+            int ?lVal = 0;
             //long x = 0;
             string sReturn = "";
             try
@@ -216,7 +216,7 @@ namespace EWSEditor.Common
 
         public static string GetExtendedProp_Long_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
-            long lVal = 0;
+            long ?lVal = 0;
 
             string sReturn = "";
             try
@@ -246,7 +246,7 @@ namespace EWSEditor.Common
 
         public static string GetExtendedProp_Float_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
-            float fVal = 0;
+            float ?fVal = 0;
 
             string sReturn = "";
             try
@@ -276,7 +276,7 @@ namespace EWSEditor.Common
 
         public static string GetExtendedProp_Short_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
-            Int16 iVal = 0;
+            Int16 ?iVal = 0;
 
             string sReturn = "";
             try
@@ -306,7 +306,7 @@ namespace EWSEditor.Common
 
         public static string GetExtendedProp_Bool_AsString(Item oItem, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
-            bool bVal = false;
+            bool ?bVal = false;
 
             string sReturn = "";
             try
@@ -430,7 +430,7 @@ namespace EWSEditor.Common
 
         public static string GetExtendedProp_Int_AsString(Folder oFolder, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
-            int lVal = 0;
+            int ?lVal = 0;
 
             string sReturn = "";
 
@@ -465,7 +465,7 @@ namespace EWSEditor.Common
 
         public static string GetExtendedProp_Long_AsString(Folder oFolder, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
-            long lVal = 0;
+            long ?lVal = 0;
 
             string sReturn = "";
 
@@ -495,7 +495,7 @@ namespace EWSEditor.Common
 
         public static string GetExtendedProp_Short_AsString(Folder oFolder, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
-            Int16 iVal = 0;
+            Int16 ?iVal = 0;
 
             string sReturn = "";
             try
@@ -524,7 +524,7 @@ namespace EWSEditor.Common
 
         public static string GetExtendedProp_Float_AsString(Folder oFolder, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
-            float fVal = 0;
+            float ?fVal = 0;
 
             string sReturn = "";
             try
@@ -553,7 +553,7 @@ namespace EWSEditor.Common
 
         public static string GetExtendedProp_Bool_AsString(Folder oFolder, ExtendedPropertyDefinition oExtendedPropertyDefinition)
         {
-            bool bVal = false;
+            bool ?bVal = false;
 
             string sReturn = "";
 

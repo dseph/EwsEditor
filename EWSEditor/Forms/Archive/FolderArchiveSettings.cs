@@ -153,7 +153,7 @@ namespace EWSEditor.Forms
             int i = (int)r;
             sRet = "0x" + (i.ToString("X4")) + " = ";
 
-            https://msdn.microsoft.com/en-us/library/ee202166(v=exchg.80).aspx
+           // https://msdn.microsoft.com/en-us/library/ee202166(v=exchg.80).aspx
 
             if (r == RetentionFlags.None)
                 sRet += "None (0x000). ";      
@@ -235,6 +235,7 @@ namespace EWSEditor.Forms
                 }
                 catch (Exception ex)
                 {
+                    string x = ex.Message.ToString();
                     lblInfo.Text = "";
                 }
 

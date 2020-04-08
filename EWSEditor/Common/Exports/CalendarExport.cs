@@ -393,7 +393,16 @@ namespace EWSEditor.Common.Exports
             oAppointmentData.IsRecurring = oAppointment.IsRecurring.ToString();
             oAppointmentData.IsReminderSet = oAppointment.IsReminderSet.ToString();
 
-            oAppointmentData.IsOnlineMeeting = oAppointment.IsOnlineMeeting.ToString();
+
+            try
+            {
+                oAppointmentData.IsOnlineMeeting = oAppointment.IsOnlineMeeting.ToString();
+            }
+            catch (Exception exIsOnlineMeeting)
+            {
+                System.Diagnostics.Debug.WriteLine(exIsOnlineMeeting.ToString());
+                oAppointmentData.IsOnlineMeeting = "";
+            }
             oAppointmentData.IsResend = oAppointment.IsResend.ToString();
             oAppointmentData.IsDraft = oAppointment.IsDraft.ToString();
 
@@ -437,7 +446,11 @@ namespace EWSEditor.Common.Exports
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
             //if (oAppointment.AllowNewTimeProposal != null) oAppointmentData.AllowNewTimeProposal = oAppointment.AllowNewTimeProposal.ToString();
-            if (oAppointment.AllowedResponseActions != null) oAppointmentData.AllowedResponseActions = oAppointment.AllowedResponseActions.ToString();
+#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+            if (oAppointment.AllowedResponseActions != null) 
+#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                oAppointmentData.AllowedResponseActions = oAppointment.AllowedResponseActions.ToString();
+             
             oAppointmentData.AdjacentMeetingCount = oAppointment.AdjacentMeetingCount.ToString();
             oAppointmentData.AppointmentSequenceNumber = oAppointment.AppointmentSequenceNumber.ToString();
             try
@@ -485,6 +498,7 @@ namespace EWSEditor.Common.Exports
             catch (Exception ex)
             {
                 oAppointmentData.DateTimeReceived = "";
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 
             oAppointmentData.Duration = oAppointment.Duration.ToString();

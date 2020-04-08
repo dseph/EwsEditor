@@ -21,8 +21,8 @@ namespace EWSEditor.Settings
         //internal const string Framework35RegistryPath = @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5";
         internal const string Framework4RegistryPath = @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full";
         internal const string EwsManagedApiInstallPath = @"C:\Program Files\Microsoft\Exchange\Web Services\2.0\Microsoft.Exchange.WebServices.dll";
-        internal const string EwsManagedApiDownloadUrl = "http://www.microsoft.com/en-us/download/details.aspx?id=35371";
-        internal const string EwsEditorProjectUrl = "http://ewseditor.codeplex.com";
+        internal const string EwsManagedApiDownloadUrl = "https://github.com/OfficeDev/ews-managed-api";
+        internal const string EwsEditorProjectUrl = "https://github.com/dseph/EwsEditor";
         internal const string EwsEditorBlogPostsUrl = "http://blogs.msdn.com/mstehle/archive/tags/EWSEditor/default.aspx";
 
         internal static string EwsEditorVersion

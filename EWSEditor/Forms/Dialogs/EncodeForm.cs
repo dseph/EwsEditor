@@ -10,6 +10,7 @@ using System.Web;
 using System.Xml;
 using EWSEditor.Common;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace EWSEditor.Forms
 {
@@ -20,7 +21,8 @@ namespace EWSEditor.Forms
             InitializeComponent();
         }
 
- 
+         
+
         private const string UrlEncode = "Url Encode";
         private const string UrlDecode = "Url Decode";
         private const string UrlEncodeUnicode = "Url Encode Unicode";
@@ -56,7 +58,7 @@ namespace EWSEditor.Forms
         private const string UnicodeStringToHexString = "Unicode String to Hex String";
         private const string HexStringToUnicodeString = "Hex String to Unicode String";
 
-        private const string StringStatistics = "Information about text";
+        private const string StringStatistics = "Information about text"; 
         private const string CheckForNonASCIICharacters = "Check for non-ASCII characters and control codes (Except CR, LF and TAB)";
         private const string sRemoveControlCodes = "Remove control codes (Except CR, LF and TAB)";
         private const string sRemoveNonAsciiAndControlCharacters = "Remove non-ASCII and control codes (Except CR, LF and TAB)";
@@ -619,6 +621,47 @@ namespace EWSEditor.Forms
 
         }
 
+        private void cmdBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            string sDataPath = null;
+            sDataPath = txtFileName.Text.ToString();
+
+            openFileDialog1.InitialDirectory = sDataPath;
+            openFileDialog1.Filter = "eml files (*.eml)|*.eml |txt files (*.txt)|*.txt|All files (*.*)|*.*";
+
+            openFileDialog1.FilterIndex = 3;
+
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+              
+                txtFileName.Text = openFileDialog1.FileName;
+
+            }
+        }
+
+        private void cmdLoad_Click(object sender, EventArgs e)
+        {
+            //bool bLoad = true;
+            string sFile = txtFileName.Text.Trim();
+            if (sFile == string.Empty)
+            {
+                MessageBox.Show("File path needs to be set first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (!File.Exists(sFile))
+                {
+                    MessageBox.Show("The file does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    txtFrom.Text = UserIoHelper.GetFileAsString(sFile);
+                }
+            }
+        }
+
         //// DecodeQuotedPrintables
         //// from: http://stackoverflow.com/questions/2226554/c-class-for-decoding-quoted-printable-encoding
         //private string DecodeQuotedPrintables(string input, string charSet)
@@ -760,7 +803,7 @@ namespace EWSEditor.Forms
         //    return sReturn;
         //}
 
- 
+
         //string RemoveNonExtendedAsciiAndControlCharacters(string sBody)
         //{
         //    string sReturn = string.Empty;

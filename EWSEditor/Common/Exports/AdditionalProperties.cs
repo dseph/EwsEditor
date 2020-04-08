@@ -286,6 +286,7 @@ namespace EWSEditor.Common.Exports
                         }
                         catch (Exception ex)
                         {
+                            Console.WriteLine(" Error: GetAdditionalPropertiesDefinitionsFromString: " + ex.ToString());
                             MessageBox.Show(string.Format("Line {0} of the CSV file has a non-numeric PropertyId. See {1} ", iLine, sColumns[1].Trim()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             return false;
                         }
@@ -428,6 +429,7 @@ namespace EWSEditor.Common.Exports
                     }
                     catch (Exception ex)
                     {
+                        string x = ex.Message.ToString();
                         MessageBox.Show(string.Format("Line {0} of the CSV file has a non-numeric PropertyId. See {1} ", iLine, sColumns[1].Trim()), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return false;
                     }
@@ -574,7 +576,7 @@ namespace EWSEditor.Common.Exports
 
             string sExtendedValue = string.Empty;
             StringBuilder oStringBuilder = new StringBuilder();
-            int ix = 0;
+            //int ix = 0;
 
             //// Debug
             //foreach ( ExtendedPropertyDefinition  x in oExtendedPropSet )

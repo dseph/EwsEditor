@@ -147,7 +147,7 @@ namespace EWSEditor.Forms
             int iVal = 0;
             long lVal = 0;
             string sVal = string.Empty;
-            object oVal  = null;
+            //object oVal  = null;
              
 
             ServiceResponseCollection<GetFolderResponse> oGetFolderResponses = oService.BindToFolders(oFolders, oPropertySet);

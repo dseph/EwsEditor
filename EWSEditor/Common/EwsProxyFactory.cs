@@ -1,4 +1,6 @@
-﻿using System;
+﻿// EwsProxyFactory.cs 
+
+using System;
 using System.Net;
 using EWSEditor.Common;
 //using EWSEditor.EwsVsProxy;
@@ -51,8 +53,10 @@ namespace EWSEditor.Exchange
         public static string oAuthClientId = string.Empty;
         public static string oAuthServerName = string.Empty;
         public static string oAuthAuthority = string.Empty;
+        public static string oBearerToken = string.Empty;
 
-         
+
+
         public static bool? UserImpersonationSelected = false;
         public static ImpersonatedUserId UserToImpersonate = null;
         public static string ImpersonationType  = string.Empty;
@@ -226,19 +230,15 @@ namespace EWSEditor.Exchange
                 }
             }
 
-           // Proxy server settings.
+           // Proxy server settings for the 'service' object.
            if (SpecifyProxySettings == true)
             {
                 WebProxy oWebProxy  = null;
                 oWebProxy = new WebProxy(ProxyServerName, ProxyServerPort);
-
- 
                 oWebProxy.BypassProxyOnLocal = BypassProxyForLocalAddress;
    
-
                 if (OverrideProxyCredentials == true)
                 {
-                     
                     if (ProxyServerUser.Trim().Length == 0)
                     {
                         oWebProxy.UseDefaultCredentials = true;
@@ -253,11 +253,9 @@ namespace EWSEditor.Exchange
                 }   
                 else
                 {
-
                     oWebProxy.UseDefaultCredentials = true;
                 }
                 service.WebProxy = oWebProxy;
-
             }
  
 
@@ -320,7 +318,8 @@ namespace EWSEditor.Exchange
             HttpWebRequest oHttpWebRequest = (HttpWebRequest)WebRequest.Create(EwsUrl);
              
             if (UserAgent.Length != 0)
-                oHttpWebRequest.Headers.Add("User-Agent", UserAgent);
+                oHttpWebRequest.UserAgent = UserAgent;
+ 
 
             oHttpWebRequest.Method = "POST";
             oHttpWebRequest.ContentType = "text/xml";
@@ -394,44 +393,23 @@ namespace EWSEditor.Exchange
             {
                 oHttpWebRequest.UseDefaultCredentials = UseDefaultCredentials.Value;
             }
-
+          
 
             if (ServiceCredential != null)
             {
                 oHttpWebRequest.Credentials =  ServiceNetworkCredential ;
             }
 
+            if (oBearerToken != string.Empty)
+            {
+                oHttpWebRequest.Headers.Add("Authorization", "Bearer " + oBearerToken);
+
+      
+
+            }
 
 
-            //else
-            //{
-            //    oHttpWebRequest.Credentials =   GetNetworkCredential();
-   
-            //}
 
- 
-
-            //if (ServiceCredential != null)
-            //{
-            //    service.Credentials = ServiceCredential;
-            //}
-
-            //    if (sAuthentication == "DefaultCredentials")
-            //    {
-            //        oHttpWebRequest.UseDefaultCredentials = true;
-            //        oHttpWebRequest.Credentials = CredentialCache.DefaultCredentials;
-            //    }
-            //    else
-            //    {
-            //        if (sAuthentication == "DefaultNetworkCredentials")
-            //            oHttpWebRequest.Credentials = CredentialCache.DefaultNetworkCredentials;
-            //        else
-            //        {
-            //            oHttpWebRequest.Credentials = oCrentialCache;
-            //        }
-            //    }
-
- 
             if (UserToImpersonate != null)
             {
                 //service.ImpersonatedUserId = UserToImpersonate;
@@ -532,6 +510,7 @@ namespace EWSEditor.Exchange
             oSettings.oAuthClientId = oAuthClientId;
             oSettings.oAuthServerName = oAuthServerName;
             oSettings.oAuthAuthority = oAuthAuthority;
+            oSettings.oBearerToken = oBearerToken;
 
             oSettings.EnableAdditionalHeader1 = EnableAdditionalHeader1;
             oSettings.AdditionalHeader1 = AdditionalHeader1;
@@ -545,47 +524,6 @@ namespace EWSEditor.Exchange
 
         }
 
-        //public static void SetProxyFactoryFromAppSettings(ref EWSEditor.Common.EwsEditorAppSettings oSettings)
-        //{
-
-
-
-        //    MailboxBeingAccessed = oSettings.MailboxBeingAccessed;
-        //    AccountAccessingMailbox = oSettings.AccountAccessingMailbox;
-
-        //    AuthenticationMethod = oSettings.AuthenticationMethod;  // Default, UserSpecified, oAuth
-
-        //    UseAutoDiscover = (bool)oSettings.UseAutoDiscover;
-        //    RequestedAutodiscoverEmail = oSettings.RequestedAutodiscoverEmail;
-        //    RequestedExchangeServiceURL = oSettings.RequestedExchangeServiceURL;
-
-        //    RequestedExchangeVersion = oSettings.RequestedExchangeVersion;
-
-        //    UserName = oSettings.UserName;
-        //    Password = oSettings.Password;
-        //    Domain = oSettings.Domain;
-
-        //    UserImpersonationSelected = (bool)oSettings.UserImpersonationSelected;
-        //    UserToImpersonate = oSettings.UserToImpersonate;
-        //    ImpersonationType = oSettings.ImpersonationType;
-        //    ImpersonatedId = oSettings.ImpersonatedId;
-
-        //    UseoAuth = oSettings.UseoAuth;
-        //    oAuthRedirectUrl = oSettings.oAuthRedirectUrl;
-        //    oAuthClientId = oSettings.oAuthClientId;
-        //    oAuthServerName = oSettings.oAuthServerName;
-        //    oAuthAuthority = oSettings.oAuthAuthority;
-
-        //    EnableAdditionalHeader1 = oSettings.EnableAdditionalHeader1;
-        //    AdditionalHeader1 = oSettings.AdditionalHeader1;
-        //    AdditionalHeaderValue1 = oSettings.AdditionalHeaderValue1;
-        //    EnableAdditionalHeader2 = oSettings.EnableAdditionalHeader2;
-        //    AdditionalHeader2 = oSettings.AdditionalHeader2;
-        //    AdditionalHeaderValue2 = oSettings.AdditionalHeaderValue2;
-        //    EnableAdditionalHeader3 = oSettings.EnableAdditionalHeader3;
-        //    AdditionalHeader3 = oSettings.AdditionalHeader3;
-        //    AdditionalHeaderValue3 = oSettings.AdditionalHeaderValue3;
-
-        //}
+ 
     }
 }

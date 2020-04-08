@@ -39,6 +39,7 @@ namespace EWSEditor.Common
         public string oAuthClientId = string.Empty;
         public string oAuthServerName = string.Empty;
         public string oAuthAuthority = string.Empty;
+        public string oBearerToken = string.Empty;
 
         public bool EnableAdditionalHeader1 = false;
         public string AdditionalHeader1 = string.Empty;
