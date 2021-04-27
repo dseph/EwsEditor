@@ -1657,7 +1657,23 @@ namespace EWSEditor.Forms
 
                 if (res == DialogResult.Yes)
                 {
-                    FolderId oNewFodler = new FolderId(WellKnownFolderName.Root);
+                    FolderId oNewFodler = null;
+
+                    if (service.HttpHeaders.ContainsKey("X-AnchorMailbox"))
+                    {
+                        string addr = service.HttpHeaders["X-AnchorMailbox"];
+                        if (!string.IsNullOrEmpty(addr))
+                        {
+                            Mailbox mailbox = new Mailbox(addr);
+                            oNewFodler = new FolderId(WellKnownFolderName.Root, mailbox);
+                        }
+                    }
+                    
+                    if (oNewFodler == null)
+                    {
+                        oNewFodler = new FolderId(WellKnownFolderName.Root);
+                    }
+
                     this.AddRootFolderToTreeView(
                         service,
                         oAppSettings,
