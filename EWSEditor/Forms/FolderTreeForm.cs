@@ -296,14 +296,9 @@ namespace EWSEditor.Forms
                         Type x = base.CurrentService.Credentials.GetType();
                         String s = base.CurrentService.Credentials.GetType().ToString();
                         
-                        //if (typeof(Microsoft.Exchange.WebServices.Data.OAuthCredentials).ToString() == base.CurrentService.Credentials.GetType().ToString())
-                        if (this.CurrentAppSettings.UseoAuth2 == true || this.CurrentAppSettings.UseOAuthDelegate == true)
+                        if (typeof(Microsoft.Exchange.WebServices.Data.OAuthCredentials).ToString() == base.CurrentService.Credentials.GetType().ToString())
                         {
                             this.RenewOAuthTokenServiceMenu.Visible = true;
-                        }
-                        else
-                        {
-                            this.RenewOAuthTokenServiceMenu.Visible = false;
                         }
                     }
                 }
@@ -707,36 +702,6 @@ namespace EWSEditor.Forms
                 this.RenewOAuthTokenServiceMenu.Visible = true;
 
                 MessageBox.Show("The oAuth token has been refreshed.", "oAuth token refreshed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-            if (this.CurrentAppSettings.AuthenticationMethod == RequestedAuthType.oAuth2Delegate)
-            {
-                // No account for app flow 
-
-                //OAuthCredentials oCreds =  (OAuthCredentials) this.CurrentService.Credentials;
-                //EwsProxyFactory.ServiceCredential = oCredentials;
-                //Microsoft.Identity.Client.AuthenticationResult
-
-                Microsoft.Identity.Client.AuthenticationResult oAR = null;
-              
-                oAR = EwsProxyFactory.MsalAuthenticationResult;
-            
-                //IAccount oAccount = null;
-
-                EWSEditor.Common.Auth.OAuthHelper o = new EWSEditor.Common.Auth.OAuthHelper();
-                Microsoft.Identity.Client.AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetRefreshToken(EwsProxyFactory.CurrentPublicClientApplication)).Result;
-                //Microsoft.Identity.Client.AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetRefreshToken(EwsProxyFactory.oAuthApplicationId, EwsProxyFactory.oAuthTenantId)).Result;
-
-                EwsProxyFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
-
-                var oCredentials = new Microsoft.Exchange.WebServices.Data.OAuthCredentials(oResult.AccessToken);
- 
-                EwsProxyFactory.ServiceCredential = oCredentials;
-                EwsProxyFactory.MsalAuthenticationResult = oResult;
-                EwsProxyFactory.oBearerToken = o.BearerToken;
-                EwsProxyFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
-
-
             }
         }
 
@@ -1646,86 +1611,35 @@ namespace EWSEditor.Forms
             oSession.SessionService = service;
             oSession.SessionEwsEditorAppSettings = oAppSettings;
             serviceRootNode.Tag = oSession;
-
+            
 
             // ExchangeService ToolTip - mstehle 7/29/2009
             // ToolTips are used to give the user a literal definition of
             // the ExchangeService's configuration as far as what CAS server
             // the service will talk to and what account will be impersonated.
-
-            string sLabel = string.Empty;
-
-            if (oAppSettings.ImpersonatedId != null)
+            if (service.ImpersonatedUserId != null)
             {
-                if (oAppSettings.UseoAuth2 == true && oAppSettings.UseOAuthApplication == true)
-                {
-                    // With Impersonation = "ServiceAccount contacting HostName as ActAsAccount"
-                    sLabel = string.Format(
-                        System.Globalization.CultureInfo.CurrentCulture,
-                        "App '{0}' is contacting mailbox '{1}.",
-
-                        oAppSettings.oAuthApplicationId,
-                        oAppSettings.MailboxBeingAccessed
-
-                         );
-                }
-                else
-                {
-
-
-                    // With Impersonation = "ServiceAccount contacting HostName as ActAsAccount"
-                    sLabel = string.Format(
-                        System.Globalization.CultureInfo.CurrentCulture,
-                        "Service account '{0}' is contacting mailbox '{1}' via {2} as account '{3}'.",
-                        oAppSettings.AccountAccessingMailbox,
-                        oAppSettings.MailboxBeingAccessed,
-                        service.Url.Host,
-                        oAppSettings.ImpersonatedId);
-                }
- 
-
+                // With Impersonation = "ServiceAccount contacting HostName as ActAsAccount"
+                serviceRootNode.ToolTipText = string.Format(
+                    System.Globalization.CultureInfo.CurrentCulture, 
+                    "Service account '{0}' is contacting mailbox '{1}' via {2} as account '{3}'.",
+                    oAppSettings.AccountAccessingMailbox,
+                    oAppSettings.MailboxBeingAccessed,
+                    service.Url.Host,
+                    service.ImpersonatedUserId.Id);
             }
             else
             {
-                 if (oAppSettings.UseoAuth2 == true  && oAppSettings.UseOAuthDelegate == true)
-                {
-                    // With Impersonation = "ServiceAccount contacting HostName as ActAsAccount"
-                    sLabel = string.Format(
-                        System.Globalization.CultureInfo.CurrentCulture,
-                        "App '{0}' using user {1} is contacting mailbox '{2}.",
-
-                        oAppSettings.oAuthApplicationId,
-                        oAppSettings.MailboxBeingAccessed,
-                        oAppSettings.MailboxBeingAccessed 
-                         );
-                }
-                 else
-                {
-                    if (oAppSettings.AccountAccessingMailbox.Trim().Length != 0)
-                    {
-                        sLabel = string.Format(
-                            System.Globalization.CultureInfo.CurrentCulture,
-                            "Service account '{0}' is contacting mailbox '{1}' via {2}.",
-                            oAppSettings.AccountAccessingMailbox,
-                            oAppSettings.MailboxBeingAccessed,
-                            service.Url.Host);
-                    }
-                    else
-                    {
-                        sLabel = string.Format(
-                                System.Globalization.CultureInfo.CurrentCulture,
-                                "Contacting mailbox '{0}' via {1}.",
-                                oAppSettings.MailboxBeingAccessed,
-                                service.Url.Host);
-                    }
-                 
  
-                 }
 
-
+                serviceRootNode.ToolTipText = string.Format(
+                    System.Globalization.CultureInfo.CurrentCulture,
+                    "Service account '{0}' is contacting mailbox '{1}' via {2}.",
+                    oAppSettings.AccountAccessingMailbox,
+                    oAppSettings.MailboxBeingAccessed,
+                    service.Url.Host);
+                
             }
-            serviceRootNode.ToolTipText = sLabel;
-
 
             // Set the node image, don't show a different image when selected
             serviceRootNode.ImageIndex = ExchangeServiceImageIndex;

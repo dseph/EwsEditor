@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Exchange.WebServices.Data;
-using System.Security.Cryptography.X509Certificates;
 
 namespace EWSEditor.Common
 {
@@ -40,15 +39,6 @@ namespace EWSEditor.Common
         public string oAuthClientId = string.Empty;
         public string oAuthServerName = string.Empty;
         public string oAuthAuthority = string.Empty;
-
-        public bool? UseoAuth2 = null;
-        public bool? UseOAuthDelegate = null;
-        public bool? UseOAuthApplication = null;
-        public string oAuthApplicationId = string.Empty;
-        public string oAuthTenantId = string.Empty;
-        public string oAuthClientSecret = string.Empty;
-        public string oAuthClientCertificatePath = string.Empty;
-        public X509Certificate2 oAuthClientCertificate = null;
         public string oBearerToken = string.Empty;
 
         public bool EnableAdditionalHeader1 = false;
@@ -67,11 +57,7 @@ namespace EWSEditor.Common
     {
         DefaultAuth,
         SpecifiedCredentialsAuth,
-        oAuth,
-        oAuth2Delegate,
-        oAuth2Application,
-        oAuth2Certificate
-        
+        oAuth
     }
  
      

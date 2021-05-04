@@ -11,13 +11,8 @@ using System.DirectoryServices.AccountManagement;
 using System.Xml;
 using EWSEditor.Common;
  
-using Microsoft.Identity.Client;
-using System.Configuration;
-
 namespace EWSEditor.Forms
 {
- 
-
     public partial class ServiceDialog : DialogForm
     {
         private EnumComboBox<ConnectingIdType> connectingIdCombo = new EnumComboBox<ConnectingIdType>();
@@ -60,55 +55,8 @@ namespace EWSEditor.Forms
             return res;
         }
 
-
-
         private void BtnOK_Click(object sender, EventArgs e)
         {
-
-            if (rdoCredentialsOAuth2.Checked == true)
-            {
-                if (txtOAuthApplicationId.Text.Trim() == string.Empty)
-                {
-                    ErrorDialog.ShowInfo("Applicaiton Id is required for oAuth.");
-                    return;
-                }
-                if (txtOAuthTenantId.Text.Trim() == string.Empty)
-                {
-                    ErrorDialog.ShowInfo("Tenant Id is required for oAuth.");
-                    return;
-                }
- 
-            }
-
-
-            // Doing App permissions flow?
-            if (rdoCredentialsOAuth2.Checked == true && rdoCredentialsOAuthApplication.Checked)
-            {
-
-                if (txtOAuthTenantId.Text.Trim() == string.Empty)
-                {
-                    ErrorDialog.ShowInfo("Client Secret is required for oAuth Applicaiton permissions flow.");
-                    return;
-                }
-
-                if (this.ImpersonationCheck.Checked == false || this.ImpersonatedIdTextBox.Text.Trim() == string.Empty)
-                {
-                    // Impersonation is required for app permissions flow
-                    ErrorDialog.ShowInfo(DisplayStrings.MSG_IMPERSONATION_NEEDED_FOR_APP_PERMISSIONS_FLOW);
-                    return;
-  
-                }
-
-                // X-AnchorMailbox is required
-                if (this.chkSetXAnchorMailbox.Checked == false || this.txtXAnchorMailbox.Text.Trim() == string.Empty)
-                {
-                    ErrorDialog.ShowInfo(DisplayStrings.MSG_XANCHORMAILBOX_FOR_APP_PERMISSIONS_FLOW);
-                    return;
-                }
-
- 
-   
-            }
             // Validation for credential input...
             if (rdoCredentialsUserSpecified.Checked && (txtUserName.Text.Length == 0 || txtPassword.Text.Length == 0))
             {
@@ -157,7 +105,7 @@ namespace EWSEditor.Forms
 
                 EwsProxyFactory.CredentialsUserSpecified = this.rdoCredentialsUserSpecified.Checked;
 
-                if (this.rdoCredentialsUserSpecified.Checked || this.rdoCredentialsOAuth2.Checked)
+                if (this.rdoCredentialsUserSpecified.Checked)
                 {
                     EwsProxyFactory.AuthenticationMethod = RequestedAuthType.SpecifiedCredentialsAuth;
                 }
@@ -167,24 +115,13 @@ namespace EWSEditor.Forms
                     EwsProxyFactory.AuthenticationMethod = RequestedAuthType.oAuth;
                 }
 
-                if (this.rdoCredentialsOAuth2.Checked)
-                {  
-                    if (this.rdoCredentialsOAuthDelegated.Checked)
-                        EwsProxyFactory.AuthenticationMethod = RequestedAuthType.oAuth2Delegate;
-              
-                    if (this.rdoCredentialsOAuthApplication.Checked)
-                        EwsProxyFactory.AuthenticationMethod = RequestedAuthType.oAuth2Application;
-
-                    if (this.rdoCredentialsOAuthCertificate.Checked)
-                        EwsProxyFactory.AuthenticationMethod = RequestedAuthType.oAuth2Certificate;
-                }
-
                 // MailboxBeingAccessed
-                EwsProxyFactory.MailboxBeingAccessed = string.Empty;
                 switch (EwsProxyFactory.AuthenticationMethod)
                 {
                     case RequestedAuthType.DefaultAuth:
                         AutodiscoverEmailText.Text = UserPrincipal.Current.EmailAddress;
+                        //if (this.AutodiscoverEmailText.Text.Trim().Length != 0)
+                        //    EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();
                         break;
                     case RequestedAuthType.SpecifiedCredentialsAuth:
                         if (this.AutodiscoverEmailText.Text.Trim().Length != 0)
@@ -192,20 +129,16 @@ namespace EWSEditor.Forms
                         else
                             EwsProxyFactory.MailboxBeingAccessed = this.txtUserName.Text.Trim();
                         break;
-                    default:
-                        EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();  // override later in ewsproxyfactory (for oAuth)
+                    case RequestedAuthType.oAuth:
+                        EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();  // override later in ewsproxyfactory
                         break;
-                  
                 }
 
                 if (this.AutodiscoverEmailText.Text.Trim().Length != 0)
                     EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();
                 if (this.ImpersonationCheck.Checked) // Override
                     EwsProxyFactory.MailboxBeingAccessed = ImpersonatedIdTextBox.Text.Trim();
-
-                if (EwsProxyFactory.MailboxBeingAccessed == string.Empty && this.chkSetXAnchorMailbox.Checked && this.txtXAnchorMailbox.Text.Trim().Length != 0)
-                    EwsProxyFactory.MailboxBeingAccessed = this.txtXAnchorMailbox.Text.Trim();
-
+ 
 
                 EwsProxyFactory.UserImpersonationSelected = this.ImpersonationCheck.Checked;
                 //EwsProxyFactory.UserToImpersonate = this.ImpersonatedIdTextBox.Text  // set below
@@ -218,14 +151,6 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.oAuthClientId = this.txtOAuthAppId.Text.Trim();
                 EwsProxyFactory.oAuthServerName = this.txtOAuthServerName.Text.Trim();
                 EwsProxyFactory.oAuthAuthority = this.txtOAuthAuthority.Text.Trim();
-
-                EwsProxyFactory.UseoAuth2 = this.rdoCredentialsOAuth2.Checked;
-                EwsProxyFactory.UseOAuthDelegate = this.rdoCredentialsOAuthDelegated.Checked;
-                EwsProxyFactory.UseOAuthApplication = this.rdoCredentialsOAuthApplication.Checked;
-                EwsProxyFactory.oAuthApplicationId = this.txtOAuthApplicationId.Text.Trim();
-                EwsProxyFactory.oAuthTenantId = this.txtOAuthTenantId.Text.Trim();
-                EwsProxyFactory.oAuthClientSecret = this.txtOAuthClientSecret.Text.Trim();
-               // EwsProxyFactory.oAuthCertificate = this.txtAuthCertificate.Text.Trim();
                 EwsProxyFactory.oBearerToken = string.Empty;
  
                 EwsProxyFactory.EnableScpLookup = GlobalSettings.EnableScpLookups;
@@ -314,84 +239,20 @@ namespace EWSEditor.Forms
 
                     EwsProxyFactory.ServiceNetworkCredential = oNetworkCredential;
                 }
+ 
 
-                // Delegagte oAuth 1
                 if (this.rdoCredentialsOAuth.Checked)
                 {
-
                     AuthenticationHelper oAH = new AuthenticationHelper();
                     string sBearerToken = string.Empty;
                     EwsProxyFactory.ServiceCredential = oAH.Do_OAuth(ref EwsProxyFactory.MailboxBeingAccessed, ref EwsProxyFactory.AccountAccessingMailbox,
                       EwsProxyFactory.oAuthAuthority, EwsProxyFactory.oAuthClientId, EwsProxyFactory.oAuthRedirectUrl, EwsProxyFactory.oAuthServerName, ref sBearerToken);
 
                     EwsProxyFactory.oBearerToken = sBearerToken;
+
+                    //EwsProxyFactory.AccountAccessingMailbox
+                    //EwsProxyFactory.MailboxBeingAccessed = EwsProxyFactory.AccountAccessingMailbox;
                 }
-
-
-                // oAuth2
-                if (this.rdoCredentialsOAuth2.Checked)
-                {
-                    // https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth
-                    // Microsoft.Identity.Client is available under NewGet
-                    // https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-desktop-acquire-token?tabs=dotnet
-
-                    // https://www.skylinetechnologies.com/Blog/Skyline-Blog/December_2018/async-await-configureawait
-
-                    // Get Access token -----------------
-
-                    if (this.rdoCredentialsOAuthDelegated.Checked)
-                    {
-                        EWSEditor.Common.Auth.OAuthHelper o = new EWSEditor.Common.Auth.OAuthHelper();
-                        AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetDelegateToken(EwsProxyFactory.oAuthApplicationId, EwsProxyFactory.oAuthTenantId)).Result;
-                        EwsProxyFactory.MsalAuthenticationResult = oResult;
-                        var oCredentials =  new Microsoft.Exchange.WebServices.Data.OAuthCredentials(oResult.AccessToken);
-
-                        EwsProxyFactory.ServiceCredential = oCredentials;
-                        EwsProxyFactory.MsalAuthenticationResult = oResult;
-                        EwsProxyFactory.oBearerToken = o.BearerToken;
-                        EwsProxyFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
-
-                        EwsProxyFactory.MailboxBeingAccessed = oResult.Account.Username;
-
-                    }
-
-                    if (this.rdoCredentialsOAuthApplication.Checked)
-                    {
-                        EWSEditor.Common.Auth.OAuthHelper o = new EWSEditor.Common.Auth.OAuthHelper();
-                        AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetApplicationToken(EwsProxyFactory.oAuthApplicationId,
-                                                                                                                                EwsProxyFactory.oAuthTenantId,
-                                                                                                                                EwsProxyFactory.oAuthClientSecret)).Result;
-
-                        var oCredentials = new Microsoft.Exchange.WebServices.Data.OAuthCredentials(oResult.AccessToken);
-
-                        EwsProxyFactory.ServiceCredential = oCredentials;
-                        EwsProxyFactory.MsalAuthenticationResult = oResult;
-                        EwsProxyFactory.oBearerToken = o.BearerToken;
-                        EwsProxyFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
-
-                    }
-
-                    if (this.rdoCredentialsOAuthCertificate.Checked)
-                    {
-                        EWSEditor.Common.Auth.OAuthHelper o = new EWSEditor.Common.Auth.OAuthHelper();
-
-                        AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetCertificateToken(EwsProxyFactory.oAuthApplicationId,
-                                                                                                                                EwsProxyFactory.oAuthTenantId,
-                                                                                                                                EwsProxyFactory.oAuthClientCertificate)).Result;
-
-              
-
-                        var oCredentials = new Microsoft.Exchange.WebServices.Data.OAuthCredentials(oResult.AccessToken);
-
-                        EwsProxyFactory.ServiceCredential = oCredentials;
-                        EwsProxyFactory.MsalAuthenticationResult = oResult;
-                        EwsProxyFactory.oBearerToken = o.BearerToken;
-                        EwsProxyFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
-
-                    }
-
-                }
- 
 
                 // ----    Autodiscover    ----
 
@@ -410,6 +271,7 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.SetAppSettingsFromProxyFactory(ref oAppSettings);
                 CurrentAppSettings = oAppSettings;
 
+ 
 
                 //CurrentAppSettings.MailboxBeingAccessed = EwsProxyFactory.AccountAccessingMailbox;
                 // CurrentAppSettings
@@ -430,14 +292,11 @@ namespace EWSEditor.Forms
             }
         }
 
-        
-
-
-            ///// <summary>
-            /////  This is used for adding soap headers not exposed in the EWS Managed API
-            ///// </summary>
-            ///// <param name="oRequest"></param>
-            public void m_Service_OnSerializeCustomSoapHeaders(XmlWriter writer)
+        ///// <summary>
+        /////  This is used for adding soap headers not exposed in the EWS Managed API
+        ///// </summary>
+        ///// <param name="oRequest"></param>
+         public void m_Service_OnSerializeCustomSoapHeaders(XmlWriter writer)
         {
 
             // Add TimeZoneDefinition...
@@ -518,7 +377,7 @@ namespace EWSEditor.Forms
         {
             this.exchangeVersionCombo.TransformComboBox(this.TempExchangeVersionCombo);
             this.exchangeVersionCombo.HasEmptyItem = true;
-            this.exchangeVersionCombo.Text = "Exchange2016";
+            this.exchangeVersionCombo.Text = "Exchange2013";
 
             this.connectingIdCombo.TransformComboBox(this.TempConnectingIdCombo);
             this.connectingIdCombo.SelectedItem = ConnectingIdType.SmtpAddress;
@@ -697,7 +556,7 @@ namespace EWSEditor.Forms
         private void SetAuthEnablement()
         {
             bool bUserSpecified = this.rdoCredentialsUserSpecified.Checked;
-             
+            bool bUseOAuth = this.rdoCredentialsOAuth.Checked; 
 
             //txtUserName.Text = string.Empty;
             //txtPassword.Text = string.Empty;
@@ -724,8 +583,6 @@ namespace EWSEditor.Forms
                 }
             }
 
-            // oAuth 1
-            bool bUseOAuth = this.rdoCredentialsOAuth.Checked;
             this.lblOAuthAppId.Enabled = bUseOAuth;
             this.lblOAuthAuthority.Enabled = bUseOAuth;
             this.lblOAuthRedirectUri.Enabled = bUseOAuth;
@@ -735,24 +592,6 @@ namespace EWSEditor.Forms
             this.txtOAuthAuthority.Enabled = bUseOAuth;
             this.txtOAuthRedirectUri.Enabled = bUseOAuth;
             this.txtOAuthServerName.Enabled = bUseOAuth;
-
-            // oAuth 2
-            bool bUseOAuth2 = rdoCredentialsOAuth2.Checked;
-            this.lblOAuthApplicationId.Enabled = bUseOAuth2;
-            this.lblOAuthTenantId.Enabled = bUseOAuth2;
-            this.lblOAuthClientSecret.Enabled = (bUseOAuth2 && rdoCredentialsOAuthApplication.Checked);
-            this.txtAuthCertificatePath.Enabled = (bUseOAuth2 && rdoCredentialsOAuthCertificate.Checked);
-
-            this.rdoCredentialsOAuthDelegated.Enabled = bUseOAuth2;
-            this.rdoCredentialsOAuthApplication.Enabled = bUseOAuth2;
-            this.txtOAuthApplicationId.Enabled = bUseOAuth2;
-            this.txtOAuthTenantId.Enabled = bUseOAuth2;
-            this.txtOAuthClientSecret.Enabled = (bUseOAuth2 && rdoCredentialsOAuthApplication.Checked);
-            this.txtAuthCertificatePath.Enabled = (bUseOAuth2 && rdoCredentialsOAuthCertificate.Checked);
-            this.BtnLoadCertificate.Enabled = (bUseOAuth2 && rdoCredentialsOAuthCertificate.Checked);
-             
-
-
         }
 
         private void txtOAuthRedirectUri_TextChanged(object sender, EventArgs e)
@@ -791,59 +630,6 @@ namespace EWSEditor.Forms
  
  
         }
-
-        private void lblEWSOauthDocs_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            // Specify that the link was visited.
-            this.lblEWSOauthDocs.LinkVisited = true;
-
-            // Navigate to a URL.  https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth
-            System.Diagnostics.Process.Start("https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth");
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rdoCredentialsOAuthDelegated_CheckedChanged(object sender, EventArgs e)
-        {
-            SetAuthEnablement();
-        }
-
-        private void rdoCredentialsOAuthApplication_CheckedChanged(object sender, EventArgs e)
-        {
-            SetAuthEnablement();
-        }
-
-        private void rdoCredentialsOAuthCertificate_CheckedChanged(object sender, EventArgs e)
-        {
-            SetAuthEnablement();
-        }
-
-        private void BtnLoadCertificate_Click(object sender, EventArgs e)
-        {
-            string sFile = string.Empty;
-            string sConnectionSettings = string.Empty;
-           // PostFormSetting oPostFormSetting = null;
-            string sFileContents = string.Empty;
-
-            if (UserIoHelper.PickLoadFromFile(Application.UserAppDataPath, "*.cer", ref sFile, "CER files (*.cer)|*.cer"))
-            {
-                try
-                {
-                    txtAuthCertificatePath.Text = sFile;
-                    if (!System.IO.File.Exists(sFile))
-                        MessageBox.Show("File does not exist.");
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.ToString(), "Error Loading File");
-                }
  
-
-            }
-        }
     }
 }

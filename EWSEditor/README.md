@@ -1,5 +1,5 @@
 ﻿ToBuild.txt
-Build notes as of 5/4/2021.
+Build notes as of 11/26/2019.
 
 ============
 Description:
@@ -16,7 +16,7 @@ EWSEditor has three goals:
 
 Each release of EWSEditor includes the distribution of the EWS Managed API it was built for. This version of EWSEditor uses EWS Managed API built from GIT. 
 This version of EWSEditor uses .NET Framework version 4.7.2 and a build of the EWS Managed API built as of check-in 25a393d on Jul 24, 2018. 
- 
+
 ===================
 To build EWSEditor:
 ===================

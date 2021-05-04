@@ -14,8 +14,7 @@ using System.Xml;
 using Microsoft.Exchange.WebServices.Autodiscover;
 using System.Configuration;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.Identity.Client;
+ 
 
 namespace EWSEditor.Exchange
 {
@@ -54,19 +53,7 @@ namespace EWSEditor.Exchange
         public static string oAuthClientId = string.Empty;
         public static string oAuthServerName = string.Empty;
         public static string oAuthAuthority = string.Empty;
-
-        public static bool? UseoAuth2 = null;
-        public static bool? UseOAuthDelegate = null;
-        public static bool? UseOAuthApplication = null;
-        public static string oAuthApplicationId = string.Empty;
-        public static string oAuthTenantId = string.Empty;
-        public static string oAuthClientSecret = string.Empty;
-        public static string oAuthClientCertificatePath = string.Empty;
-        public static X509Certificate2 oAuthClientCertificate = null;
-        public static Microsoft.Identity.Client.AuthenticationResult MsalAuthenticationResult = null;
-        public static PublicClientApplication CurrentPublicClientApplication = null;
         public static string oBearerToken = string.Empty;
-
 
 
 
@@ -523,15 +510,6 @@ namespace EWSEditor.Exchange
             oSettings.oAuthClientId = oAuthClientId;
             oSettings.oAuthServerName = oAuthServerName;
             oSettings.oAuthAuthority = oAuthAuthority;
-
-            oSettings.UseoAuth2 = UseoAuth2;
-            oSettings.UseOAuthDelegate = UseOAuthDelegate;
-            oSettings.UseOAuthApplication = UseOAuthApplication;
-            oSettings.oAuthApplicationId = oAuthApplicationId;
-            oSettings.oAuthTenantId = oAuthTenantId;
-            oSettings.oAuthClientSecret = oAuthClientSecret;
-            oSettings.oAuthClientCertificate = oAuthClientCertificate;
-
             oSettings.oBearerToken = oBearerToken;
 
             oSettings.EnableAdditionalHeader1 = EnableAdditionalHeader1;
