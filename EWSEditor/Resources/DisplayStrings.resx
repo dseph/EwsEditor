@@ -138,6 +138,14 @@
   <data name="MSG_SPECIFY_CREDS" xml:space="preserve">
     <value>To use specific credentials you must input at least a user name and password.</value>
   </data>
+  <data name="MSG_IMPERSONATION_NEEDED_FOR_APP_PERMISSIONS_FLOW" xml:space="preserve">
+    <value>Application permissions flow requires EWS Impersonation to be used.</value>
+  </data>
+  <data name="MSG_XANCHORMAILBOX_FOR_APP_PERMISSIONS_FLOW" xml:space="preserve">
+    <value>Application permissions flow requires the X-AnchorMailbox header to be set.</value>
+  </data>
+
+
   <data name="TITLE_CONTENTS_ASSOC" xml:space="preserve">
     <value>Associated items in {0}</value>
   </data>

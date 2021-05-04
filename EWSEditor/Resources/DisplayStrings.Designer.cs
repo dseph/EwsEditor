@@ -19,7 +19,7 @@ namespace EWSEditor.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class DisplayStrings {
@@ -88,6 +88,15 @@ namespace EWSEditor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Application permissions flow requires EWS Impersonation to be used..
+        /// </summary>
+        internal static string MSG_IMPERSONATION_NEEDED_FOR_APP_PERMISSIONS_FLOW {
+            get {
+                return ResourceManager.GetString("MSG_IMPERSONATION_NEEDED_FOR_APP_PERMISSIONS_FLOW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There are no attachments on this item to display..
         /// </summary>
         internal static string MSG_NO_ATTACHMENTS {
@@ -120,6 +129,15 @@ namespace EWSEditor.Resources {
         internal static string MSG_SPECIFY_CREDS {
             get {
                 return ResourceManager.GetString("MSG_SPECIFY_CREDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application permissions flow requires the X-AnchorMailbox header to be set..
+        /// </summary>
+        internal static string MSG_XANCHORMAILBOX_FOR_APP_PERMISSIONS_FLOW {
+            get {
+                return ResourceManager.GetString("MSG_XANCHORMAILBOX_FOR_APP_PERMISSIONS_FLOW", resourceCulture);
             }
         }
         

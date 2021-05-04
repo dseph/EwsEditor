@@ -61,6 +61,24 @@ namespace EWSEditor.Settings
                 UserSettings.Default.Save();
             }
         }
+ 
+
+        /// <summary>
+        /// Indicagtes if the Bearer token should be logged or not.
+        /// </summary>
+        public static bool LogSecurityToken
+        {
+            get
+            {
+                return UserSettings.Default.LogSecurityToken;
+            }
+            set
+            {
+                UserSettings.Default.LogSecurityToken = value;
+ 
+                UserSettings.Default.Save();
+            }
+        }
 
         /// <summary>
         /// Defines the default page size used when issuing a CalendarView call
