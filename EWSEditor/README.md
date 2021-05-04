@@ -1,5 +1,5 @@
 ﻿ToBuild.txt
-Build notes as of 11/26/2019.
+Build notes as of 11/26/2019 .
 
 ============
 Description:
