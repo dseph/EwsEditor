@@ -74,6 +74,9 @@ namespace EWSEditor.Logging
     internal class DebugLog
     {
         private static readonly string LogFile = GlobalSettings.LogFilePath;
+
+        private static readonly bool LogSecurityToken  = GlobalSettings.LogSecurityToken;
+
         private static readonly bool ShouldSaveDebugOutput = GlobalSettings.ShouldSaveLogToFile;
 
         private static bool DebugLogDiskCommitEnabled = true;

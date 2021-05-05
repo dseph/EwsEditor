@@ -144,19 +144,56 @@
 
         public void SetServiceLabel(EwsEditorAppSettings oAppSettings)
         {
-
-            string sInfo = string.Empty;
-
+ 
             if (oAppSettings != null)
             {
 
+                string sLabel = string.Empty;
 
-                if (oAppSettings != null)
+                //if (oAppSettings != null)
+                //{
+                //    if (oAppSettings.UserImpersonationSelected == true)
+                //    {
+                //        // With Impersonation = "ServiceAccount contacting HostName as ActAsAccount"
+                //        sInfo = string.Format(
+                //            System.Globalization.CultureInfo.CurrentCulture,
+                //            "Service account '{0}' is contacting mailbox '{1}' via {2} as account '{3}'.",
+                //            oAppSettings.AccountAccessingMailbox,
+                //            oAppSettings.MailboxBeingAccessed,
+                //            oAppSettings.UrlHost,
+                //            oAppSettings.ImpersonatedId);
+                //    }
+                //    else
+                //    {
+                //        sInfo = string.Format(
+                //            System.Globalization.CultureInfo.CurrentCulture,
+                //            "Service account '{0}' is contacting mailbox '{1}' via {2}.",
+                //            oAppSettings.AccountAccessingMailbox,
+                //            oAppSettings.MailboxBeingAccessed,
+                //            oAppSettings.UrlHost);
+                //    }
+
+
+                if (oAppSettings.ImpersonatedId != null)
                 {
-                    if (oAppSettings.UserImpersonationSelected == true)
+                    if (oAppSettings.UseoAuth2 == true && oAppSettings.UseOAuthApplication == true)
                     {
                         // With Impersonation = "ServiceAccount contacting HostName as ActAsAccount"
-                        sInfo = string.Format(
+                        sLabel = string.Format(
+                            System.Globalization.CultureInfo.CurrentCulture,
+                            "App '{0}' is contacting mailbox '{1} via {2}.",
+
+                            oAppSettings.oAuthApplicationId,
+                            oAppSettings.MailboxBeingAccessed,
+                            oAppSettings.UrlHost
+                             );
+                    }
+                    else
+                    {
+
+
+                        // With Impersonation = "ServiceAccount contacting HostName as ActAsAccount"
+                        sLabel = string.Format(
                             System.Globalization.CultureInfo.CurrentCulture,
                             "Service account '{0}' is contacting mailbox '{1}' via {2} as account '{3}'.",
                             oAppSettings.AccountAccessingMailbox,
@@ -164,21 +201,52 @@
                             oAppSettings.UrlHost,
                             oAppSettings.ImpersonatedId);
                     }
+
+
+                }
+                else
+                {
+                    if (oAppSettings.UseoAuth2 == true && oAppSettings.UseOAuthDelegate == true)
+                    {
+                        // With Impersonation = "ServiceAccount contacting HostName as ActAsAccount"
+                        sLabel = string.Format(
+                            System.Globalization.CultureInfo.CurrentCulture,
+                            "App '{0}' using user {1} is contacting mailbox '{2}.",
+
+                            oAppSettings.oAuthApplicationId,
+                            oAppSettings.MailboxBeingAccessed,
+                            oAppSettings.MailboxBeingAccessed
+                             );
+                    }
                     else
                     {
-                        sInfo = string.Format(
-                            System.Globalization.CultureInfo.CurrentCulture,
-                            "Service account '{0}' is contacting mailbox '{1}' via {2}.",
-                            oAppSettings.AccountAccessingMailbox,
-                            oAppSettings.MailboxBeingAccessed,
-                            oAppSettings.UrlHost);
-                    }
+                        if (oAppSettings.AccountAccessingMailbox.Trim().Length != 0)
+                        {
+                            sLabel = string.Format(
+                                System.Globalization.CultureInfo.CurrentCulture,
+                                "Service account '{0}' is contacting mailbox '{1}' via {2}.",
+                                oAppSettings.AccountAccessingMailbox,
+                                oAppSettings.MailboxBeingAccessed,
+                                oAppSettings.UrlHost);
+                        }
+                        else
+                        {
+                            sLabel = string.Format(
+                                    System.Globalization.CultureInfo.CurrentCulture,
+                                    "Contacting mailbox '{0}' via {1}.",
+                                    oAppSettings.MailboxBeingAccessed,
+                                    oAppSettings.UrlHost);
+                        }
 
-                    this.lblExchangeService.Text = sInfo;
+
+                    }
                 }
+ 
+                this.lblExchangeService.Text = sLabel;
+               
             }
 
-            this.lblExchangeService.Text = sInfo;
+           //this.lblExchangeService.Text = sInfo;
 
         }
 

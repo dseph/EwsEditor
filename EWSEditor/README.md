@@ -1,5 +1,5 @@
 ﻿ToBuild.txt
-Build notes as of 11/26/2019.
+Build notes as of 5/4/2021.
 
 ============
 Description:
@@ -16,6 +16,16 @@ EWSEditor has three goals:
 
 Each release of EWSEditor includes the distribution of the EWS Managed API it was built for. This version of EWSEditor uses EWS Managed API built from GIT. 
 This version of EWSEditor uses .NET Framework version 4.7.2 and a build of the EWS Managed API built as of check-in 25a393d on Jul 24, 2018. 
+ 
+================
+Data collection:
+================
+EWSEditor will collect and store EWS traffic into a local log file for review and troubleshooting. You can ue its proxy settings to have 
+traffic routed thorugh a network tracing tool such as Fiddler if you apply the needed settings. Otherwise it does not collect and store any 
+data and never sends data out. EWSEDitor has no automatic updating mechanism - you have to download the latest release yourself.  It does not track 
+or send metric and usage data.  The reson for these limitations is so that those who want to use it in an environment where such is not allowed will
+be able to do so. Please note that any data you collect using EWSEditor and send out should first be reviewiewed to be sure it does not violate 
+any of your data handling policies.
 
 ===================
 To build EWSEditor:
