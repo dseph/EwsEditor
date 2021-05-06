@@ -493,6 +493,8 @@ namespace EWSEditor.Exchange
         public static void  SetAppSettingsFromProxyFactory (ref EWSEditor.Common.EwsEditorAppSettings oSettings)
         {
 
+            oSettings.oBearerToken = oBearerToken;
+
             oSettings.MailboxBeingAccessed = MailboxBeingAccessed;
             oSettings.AccountAccessingMailbox = AccountAccessingMailbox;
 

@@ -736,6 +736,13 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.oBearerToken = o.BearerToken;
                 EwsProxyFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
 
+                this.CurrentService.Credentials = oServiceCredential;
+
+                this.CurrentAppSettings.oBearerToken = o.BearerToken;
+
+                this.RenewOAuthTokenServiceMenu.Visible = true;
+
+                MessageBox.Show("The oAuth token has been refreshed.", "oAuth token refreshed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
         }

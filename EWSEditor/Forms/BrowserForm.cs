@@ -1317,6 +1317,14 @@
         {
  
         }
+
+        private void mnuViewOAuthToken_Click(object sender, EventArgs e)
+        { 
+            ViewToken oForm = new ViewToken(CurrentAppSettings.oBearerToken);
+            oForm.Show();
+
+             
+        }
     }
 
 }

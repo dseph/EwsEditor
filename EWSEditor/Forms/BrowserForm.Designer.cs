@@ -92,6 +92,7 @@
             this.mnuPowerShellTester = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuViewOAuthToken = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -115,7 +116,6 @@
             // 
             // mnuMain
             // 
-            this.mnuMain.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.mnuMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.mnuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
@@ -125,7 +125,7 @@
             this.mnuHelp});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(1395, 40);
+            this.mnuMain.Size = new System.Drawing.Size(1395, 42);
             this.mnuMain.TabIndex = 4;
             // 
             // mnuFile
@@ -133,14 +133,14 @@
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(72, 36);
+            this.mnuFile.Size = new System.Drawing.Size(72, 38);
             this.mnuFile.Text = "File";
             this.mnuFile.Click += new System.EventHandler(this.mnuFile_Click);
             // 
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(359, 44);
+            this.mnuExit.Size = new System.Drawing.Size(186, 44);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.MnuExit_Click);
             // 
@@ -152,7 +152,7 @@
             this.mnuViewSplit1,
             this.mnuRefresh});
             this.mnuView.Name = "mnuView";
-            this.mnuView.Size = new System.Drawing.Size(86, 36);
+            this.mnuView.Size = new System.Drawing.Size(86, 38);
             this.mnuView.Text = "View";
             // 
             // mnuViewConfigPropertySet
@@ -185,6 +185,7 @@
             this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DebugLogVeiwerMenuItem,
             this.OptionsMenuItem,
+            this.mnuViewOAuthToken,
             this.mnuToolsDiscovery,
             this.mnuEwsPost,
             this.TimeZonemenuitem,
@@ -205,10 +206,10 @@
             this.mailAppsToolStripMenuItem,
             this.mnuMailTips,
             this.mnuSearchForSearchFolders,
-            this.mnuToolsSplit4,
-            this.developerToolsTestWindowToolStripMenuItem});
+            this.developerToolsTestWindowToolStripMenuItem,
+            this.mnuToolsSplit4});
             this.mnuTools.Name = "mnuTools";
-            this.mnuTools.Size = new System.Drawing.Size(90, 36);
+            this.mnuTools.Size = new System.Drawing.Size(90, 38);
             this.mnuTools.Text = "Tools";
             // 
             // DebugLogVeiwerMenuItem
@@ -473,7 +474,7 @@
             this.mnuCredentialCache,
             this.mnuPowerShellTester});
             this.mnuOther.Name = "mnuOther";
-            this.mnuOther.Size = new System.Drawing.Size(96, 36);
+            this.mnuOther.Size = new System.Drawing.Size(96, 38);
             this.mnuOther.Text = "Other";
             // 
             // mnuOpenItemById
@@ -584,7 +585,7 @@
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuAbout});
             this.mnuHelp.Name = "mnuHelp";
-            this.mnuHelp.Size = new System.Drawing.Size(85, 36);
+            this.mnuHelp.Size = new System.Drawing.Size(85, 38);
             this.mnuHelp.Text = "Help";
             // 
             // mnuAbout
@@ -593,6 +594,13 @@
             this.mnuAbout.Size = new System.Drawing.Size(330, 44);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
+            // 
+            // mnuViewOAuthToken
+            // 
+            this.mnuViewOAuthToken.Name = "mnuViewOAuthToken";
+            this.mnuViewOAuthToken.Size = new System.Drawing.Size(636, 44);
+            this.mnuViewOAuthToken.Text = "oAuth Token";
+            this.mnuViewOAuthToken.Click += new System.EventHandler(this.mnuViewOAuthToken_Click);
             // 
             // BrowserForm
             // 
@@ -680,5 +688,6 @@
         public System.Windows.Forms.ToolStripMenuItem mnuSearchForSearchFolders;
         private System.Windows.Forms.ToolStripMenuItem mnuPowerShellTester;
         private System.Windows.Forms.ToolStripMenuItem mnuCharactersetConversion;
+        private System.Windows.Forms.ToolStripMenuItem mnuViewOAuthToken;
     }
 }

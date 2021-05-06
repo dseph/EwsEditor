@@ -157,7 +157,7 @@ namespace EWSEditor.Forms
 
                 EwsProxyFactory.CredentialsUserSpecified = this.rdoCredentialsUserSpecified.Checked;
 
-                if (this.rdoCredentialsUserSpecified.Checked || this.rdoCredentialsOAuth2.Checked)
+                if (this.rdoCredentialsUserSpecified.Checked == true)
                 {
                     EwsProxyFactory.AuthenticationMethod = RequestedAuthType.SpecifiedCredentialsAuth;
                 }
@@ -191,6 +191,13 @@ namespace EWSEditor.Forms
                             EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();
                         else
                             EwsProxyFactory.MailboxBeingAccessed = this.txtUserName.Text.Trim();
+                        break;
+                    case RequestedAuthType.oAuth2Application:
+                        EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();
+                        break;
+                    case RequestedAuthType.oAuth2Delegate:
+                        if (this.AutodiscoverEmailText.Text.Trim().Length != 0)
+                            EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();
                         break;
                     default:
                         EwsProxyFactory.MailboxBeingAccessed = this.AutodiscoverEmailText.Text.Trim();  // override later in ewsproxyfactory (for oAuth)
@@ -348,7 +355,7 @@ namespace EWSEditor.Forms
 
                         EwsProxyFactory.ServiceCredential = oCredentials;
                         EwsProxyFactory.MsalAuthenticationResult = oResult;
-                        EwsProxyFactory.oBearerToken = o.BearerToken;
+                        EwsProxyFactory.oBearerToken = oResult.AccessToken;
                         EwsProxyFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
 
                         EwsProxyFactory.MailboxBeingAccessed = oResult.Account.Username;
@@ -366,7 +373,7 @@ namespace EWSEditor.Forms
 
                         EwsProxyFactory.ServiceCredential = oCredentials;
                         EwsProxyFactory.MsalAuthenticationResult = oResult;
-                        EwsProxyFactory.oBearerToken = o.BearerToken;
+                        EwsProxyFactory.oBearerToken = oResult.AccessToken;
                         EwsProxyFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
 
                     }
@@ -385,7 +392,7 @@ namespace EWSEditor.Forms
 
                         EwsProxyFactory.ServiceCredential = oCredentials;
                         EwsProxyFactory.MsalAuthenticationResult = oResult;
-                        EwsProxyFactory.oBearerToken = o.BearerToken;
+                        EwsProxyFactory.oBearerToken = oResult.AccessToken;
                         EwsProxyFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
 
                     }

@@ -659,6 +659,12 @@
     <Compile Include="Forms\Dialogs\MimeParserForm.Designer.cs">
       <DependentUpon>MimeParserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ToolsForms\ViewToken.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToolsForms\ViewToken.Designer.cs">
+      <DependentUpon>ViewToken.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -1376,6 +1382,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\MimeParserForm.resx">
       <DependentUpon>MimeParserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToolsForms\ViewToken.resx">
+      <DependentUpon>ViewToken.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

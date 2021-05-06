@@ -68,24 +68,6 @@ namespace EWSEditor.Common
             this.OriginalTraceMessage = message;
             this.OriginalTraceMessageType = type;
 
-            //// Determine the trace log version
-            //switch (EnvironmentInfo.EwsApiVersion)
-            //{
-            //    case EwsApiVersions.OnePointOne:
-            //    case EwsApiVersions.OnePointOneHot:
-            //        this.UniqueKey = GetHeader_OnePointZero(message);
-            //        this.Method = GetMethod_OnePointZero(message);
-            //        break;
-            //    case EwsApiVersions.OnePointZero:
-            //    case EwsApiVersions.OnePointZeroHot:
-            //        this.UniqueKey = GetHeader_OnePointZero(message);
-            //        this.Method = GetMethod_OnePointZero(message);
-            //        break;
-            //    default:
-            //        this.UniqueKey = string.Empty;
-            //        this.Method = string.Empty;
-            //        break;
-            //}
             
             this.UniqueKey = GetHeader_OnePointZero(message);
             this.Method = GetMethod_OnePointZero(message);
@@ -112,36 +94,6 @@ namespace EWSEditor.Common
 
             return method;
         }
-
-        //private static string LogEWSChatter(string message)
-        //{
-        //    // Parse out the text to be used as the header
-        //    if (message.StartsWith(Constants.TraceLogBeginTag))
-        //    {
-
-        //        CurrentHeaders.Add(header, method);
-
-        //        // Write the message to the EWSChatter log
-        //        File.AppendAllText(ChatterLogFilePath, message);
-
-        //        // Write the header to the EWSEditor log as well to match
-        //        // up EWSChatter to the application logs
-        //        if (method.Length > 0)
-        //        {
-        //            TraceHelper.WriteInfo(String.Format("Header: {0} | Method: {1}", header, method));
-        //        }
-        //        else
-        //        {
-        //            TraceHelper.WriteInfo(String.Format("Header: {0}", header));
-        //        }
-
-        //        return header;
-        //    }
-        //    else
-        //    {
-        //        TraceHelper.WriteVerbose(String.Format("The following message could not be parsed\n'{0}'", message));
-        //        throw new ArgumentException("Could not parse trace message");
-        //    }
-        //}
+         
     }
 }

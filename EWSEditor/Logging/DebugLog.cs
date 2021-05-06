@@ -151,6 +151,28 @@ namespace EWSEditor.Logging
 
         internal static void WriteEwsLog(string traceType, string traceMessage)
         {
+            string sCleaned_traceMessage = traceMessage;
+
+            if (LogSecurityToken == false && traceType == "EwsRequestHttpHeaders"  )
+            {
+                // Remove authorization header from logging
+                if (sCleaned_traceMessage.ToLower().Contains("\r\nauthorization:"))
+                {
+                    int iLengthOrig = "\r\nauthorization:".Length;
+                    int iStart = sCleaned_traceMessage.ToLower().IndexOf("\r\nauthorization:");
+                    string sCopy = sCleaned_traceMessage.Substring(iStart, iLengthOrig);
+                    int iEnd = sCleaned_traceMessage.ToLower().IndexOf("\r\n", iStart + iLengthOrig);
+
+                    int iNumCharactersToRemove = iEnd - (iStart + iLengthOrig);
+                    int iRemovalStartingPoint = iStart + iLengthOrig;
+
+                    sCleaned_traceMessage = sCleaned_traceMessage.Remove(iRemovalStartingPoint, iNumCharactersToRemove); // remove from after end of header colon to end of line
+
+                    sCleaned_traceMessage = sCleaned_traceMessage.Insert(iRemovalStartingPoint, "  * *  The Bearer token has been removed from EWSEdtior logging for security. You can enable logging in Global Option or proxy through a network tool like Fiddler to get the token. * *");
+
+                }
+            }
+
             StackTrace stack = new StackTrace();
 
             foreach (StackFrame frame in stack.GetFrames())
@@ -159,7 +181,7 @@ namespace EWSEditor.Logging
                     frame != stack.GetFrame(1) &&
                     frame.GetMethod().DeclaringType.FullName.Contains("EWSEditor"))
                 {
-                    WriteLogItem(DateTime.Now, frame.GetMethod().Name, DebugLogType.EwsTrace, traceType, traceMessage);
+                    WriteLogItem(DateTime.Now, frame.GetMethod().Name, DebugLogType.EwsTrace, traceType, sCleaned_traceMessage);
                     return;
                 }
             }

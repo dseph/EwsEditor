@@ -50,22 +50,22 @@ namespace EWSEditor.Logging
 
   
 
-                // Remove authorization header from logging
-                if (sCleaned_traceMessage.ToLower().Contains("\r\nauthorization:"))
-                {
-                    int iLengthOrig = "\r\nauthorization:".Length;
-                    int iStart = sCleaned_traceMessage.ToLower().IndexOf("\r\nauthorization:");
-                    string sCopy = sCleaned_traceMessage.Substring(iStart, iLengthOrig);
-                    int iEnd = sCleaned_traceMessage.ToLower().IndexOf("\r\n", iStart + iLengthOrig);
+                //// Remove authorization header from logging
+                //if (sCleaned_traceMessage.ToLower().Contains("\r\nauthorization:"))
+                //{
+                //    int iLengthOrig = "\r\nauthorization:".Length;
+                //    int iStart = sCleaned_traceMessage.ToLower().IndexOf("\r\nauthorization:");
+                //    string sCopy = sCleaned_traceMessage.Substring(iStart, iLengthOrig);
+                //    int iEnd = sCleaned_traceMessage.ToLower().IndexOf("\r\n", iStart + iLengthOrig);
 
-                    int iNumCharactersToRemove = iEnd - (iStart + iLengthOrig);
-                    int iRemovalStartingPoint = iStart + iLengthOrig;
+                //    int iNumCharactersToRemove = iEnd - (iStart + iLengthOrig);
+                //    int iRemovalStartingPoint = iStart + iLengthOrig;
 
-                    sCleaned_traceMessage = sCleaned_traceMessage.Remove(iRemovalStartingPoint, iNumCharactersToRemove); // remove from after end of header colon to end of line
+                //    sCleaned_traceMessage = sCleaned_traceMessage.Remove(iRemovalStartingPoint, iNumCharactersToRemove); // remove from after end of header colon to end of line
 
-                    sCleaned_traceMessage = sCleaned_traceMessage.Insert(iRemovalStartingPoint, "  * *  The Bearer token has been removed from EWSEdtior logging for security. Use a networking tool like Fiddler to get the token. * *");
+                //    sCleaned_traceMessage = sCleaned_traceMessage.Insert(iRemovalStartingPoint, "  * *  The Bearer token has been removed from EWSEdtior logging for security. Use a networking tool like Fiddler to get the token. * *");
 
-                }
+                //}
 
 
                 DebugLog.WriteEwsLog(

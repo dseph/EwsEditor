@@ -65,6 +65,8 @@ namespace EWSEditor.Forms
             this.SaveLogFileCheck.Checked = GlobalSettings.ShouldSaveLogToFile;
             this.LogFilePathText.Text = GlobalSettings.LogFilePath;
 
+            this.chkLogSecurityToken.Checked  = GlobalSettings.LogSecurityToken;
+
             this.CalendarViewText.Text = GlobalSettings.CalendarViewSize.ToString();
             this.FindFolderText.Text = GlobalSettings.FindFolderViewSize.ToString();
             this.FindItemText.Text = GlobalSettings.FindItemViewSize.ToString();
@@ -148,6 +150,9 @@ namespace EWSEditor.Forms
 
             GlobalSettings.ShouldSaveLogToFile = this.SaveLogFileCheck.Checked;
             GlobalSettings.LogFilePath = this.LogFilePathText.Text;
+
+            GlobalSettings.LogSecurityToken = this.chkLogSecurityToken.Checked;
+
 
             GlobalSettings.CalendarViewSize = Convert.ToInt32(this.CalendarViewText.Text);
             GlobalSettings.FindFolderViewSize = Convert.ToInt32(this.FindFolderText.Text);
