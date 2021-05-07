@@ -234,7 +234,9 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.oAuthClientSecret = this.txtOAuthClientSecret.Text.Trim();
                // EwsProxyFactory.oAuthCertificate = this.txtAuthCertificate.Text.Trim();
                 EwsProxyFactory.oBearerToken = string.Empty;
- 
+                EwsProxyFactory.LogSecurityToken = GlobalSettings.LogSecurityToken;
+
+
                 EwsProxyFactory.EnableScpLookup = GlobalSettings.EnableScpLookups;
                 EwsProxyFactory.PreAuthenticate = GlobalSettings.PreAuthenticate;
 

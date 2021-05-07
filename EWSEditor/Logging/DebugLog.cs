@@ -73,11 +73,11 @@ namespace EWSEditor.Logging
 
     internal class DebugLog
     {
-        private static readonly string LogFile = GlobalSettings.LogFilePath;
+        //private static readonly string LogFile = GlobalSettings.LogFilePath;
 
-        private static readonly bool LogSecurityToken  = GlobalSettings.LogSecurityToken;
+       //private static readonly bool LogSecurityToken  = GlobalSettings.LogSecurityToken;
 
-        private static readonly bool ShouldSaveDebugOutput = GlobalSettings.ShouldSaveLogToFile;
+        //private static readonly bool ShouldSaveDebugOutput = GlobalSettings.ShouldSaveLogToFile;
 
         private static bool DebugLogDiskCommitEnabled = true;
 
@@ -153,7 +153,7 @@ namespace EWSEditor.Logging
         {
             string sCleaned_traceMessage = traceMessage;
 
-            if (LogSecurityToken == false && traceType == "EwsRequestHttpHeaders"  )
+            if (GlobalSettings.LogSecurityToken == false && traceType == "EwsRequestHttpHeaders"  )
             {
                 // Remove authorization header from logging
                 if (sCleaned_traceMessage.ToLower().Contains("\r\nauthorization:"))
@@ -207,7 +207,7 @@ namespace EWSEditor.Logging
 
                     // If the user wants to save debug output and we haven't disabled, then commit debug logs
                     // to disk as well
-                    if (DebugLog.ShouldSaveDebugOutput && DebugLog.DebugLogDiskCommitEnabled)
+                    if ( GlobalSettings.ShouldSaveLogToFile && DebugLog.DebugLogDiskCommitEnabled)
                     {
                         if (!TryWriteToDisk(item))
                         {
@@ -267,7 +267,7 @@ namespace EWSEditor.Logging
 
                 // Write the debug log to the output file
                 string LogEntry = sb.ToString();
-                System.IO.File.AppendAllText(DebugLog.LogFile, LogEntry);
+                System.IO.File.AppendAllText(GlobalSettings.LogFilePath, LogEntry);
                 return true;
             }
             catch (Exception ex)

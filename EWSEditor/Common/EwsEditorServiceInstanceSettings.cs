@@ -49,6 +49,7 @@ namespace EWSEditor.Common
         public string oAuthClientSecret = string.Empty;
         public string oAuthClientCertificatePath = string.Empty;
         public X509Certificate2 oAuthClientCertificate = null;
+        public bool LogSecurityToken = false;
         public string oBearerToken = string.Empty;
 
         public bool EnableAdditionalHeader1 = false;

@@ -65,6 +65,7 @@ namespace EWSEditor.Exchange
         public static X509Certificate2 oAuthClientCertificate = null;
         public static Microsoft.Identity.Client.AuthenticationResult MsalAuthenticationResult = null;
         public static PublicClientApplication CurrentPublicClientApplication = null;
+        public static bool LogSecurityToken = false;
         public static string oBearerToken = string.Empty;
 
 
@@ -493,6 +494,7 @@ namespace EWSEditor.Exchange
         public static void  SetAppSettingsFromProxyFactory (ref EWSEditor.Common.EwsEditorAppSettings oSettings)
         {
 
+            oSettings.LogSecurityToken = LogSecurityToken;
             oSettings.oBearerToken = oBearerToken;
 
             oSettings.MailboxBeingAccessed = MailboxBeingAccessed;
@@ -535,6 +537,7 @@ namespace EWSEditor.Exchange
             oSettings.oAuthClientCertificate = oAuthClientCertificate;
 
             oSettings.oBearerToken = oBearerToken;
+            oSettings.LogSecurityToken = LogSecurityToken;
 
             oSettings.EnableAdditionalHeader1 = EnableAdditionalHeader1;
             oSettings.AdditionalHeader1 = AdditionalHeader1;
