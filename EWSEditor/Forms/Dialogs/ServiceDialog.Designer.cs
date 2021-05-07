@@ -121,7 +121,7 @@ namespace EWSEditor.Forms
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(1256, 933);
+            this.btnOK.Location = new System.Drawing.Point(1195, 921);
             this.btnOK.Margin = new System.Windows.Forms.Padding(6);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(150, 44);
@@ -134,7 +134,7 @@ namespace EWSEditor.Forms
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(1418, 933);
+            this.btnCancel.Location = new System.Drawing.Point(1357, 921);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 44);
@@ -164,7 +164,7 @@ namespace EWSEditor.Forms
             this.panel4.Location = new System.Drawing.Point(1023, 189);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(556, 160);
+            this.panel4.Size = new System.Drawing.Size(512, 160);
             this.panel4.TabIndex = 3;
             // 
             // label9
@@ -234,7 +234,7 @@ namespace EWSEditor.Forms
             this.panel3.Location = new System.Drawing.Point(1028, 3);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(551, 163);
+            this.panel3.Size = new System.Drawing.Size(507, 163);
             this.panel3.TabIndex = 2;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -357,7 +357,7 @@ namespace EWSEditor.Forms
             // 
             // btnDefault365Settings
             // 
-            this.btnDefault365Settings.Location = new System.Drawing.Point(842, 100);
+            this.btnDefault365Settings.Location = new System.Drawing.Point(842, 91);
             this.btnDefault365Settings.Margin = new System.Windows.Forms.Padding(6);
             this.btnDefault365Settings.Name = "btnDefault365Settings";
             this.btnDefault365Settings.Size = new System.Drawing.Size(140, 44);
@@ -370,7 +370,7 @@ namespace EWSEditor.Forms
             // 
             this.rdoServiceUrl.AutoSize = true;
             this.rdoServiceUrl.Checked = true;
-            this.rdoServiceUrl.Location = new System.Drawing.Point(43, 100);
+            this.rdoServiceUrl.Location = new System.Drawing.Point(22, 100);
             this.rdoServiceUrl.Margin = new System.Windows.Forms.Padding(6);
             this.rdoServiceUrl.Name = "rdoServiceUrl";
             this.rdoServiceUrl.Size = new System.Drawing.Size(169, 29);
@@ -383,7 +383,7 @@ namespace EWSEditor.Forms
             // rdoAutodiscoverEmail
             // 
             this.rdoAutodiscoverEmail.AutoSize = true;
-            this.rdoAutodiscoverEmail.Location = new System.Drawing.Point(43, 30);
+            this.rdoAutodiscoverEmail.Location = new System.Drawing.Point(20, 30);
             this.rdoAutodiscoverEmail.Margin = new System.Windows.Forms.Padding(6);
             this.rdoAutodiscoverEmail.Name = "rdoAutodiscoverEmail";
             this.rdoAutodiscoverEmail.Size = new System.Drawing.Size(233, 29);
@@ -496,7 +496,7 @@ namespace EWSEditor.Forms
             this.panel6.Location = new System.Drawing.Point(1028, 382);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(556, 129);
+            this.panel6.Size = new System.Drawing.Size(507, 129);
             this.panel6.TabIndex = 7;
             // 
             // label7
@@ -569,7 +569,7 @@ namespace EWSEditor.Forms
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(570, 81);
+            this.textBox3.Size = new System.Drawing.Size(516, 100);
             this.textBox3.TabIndex = 20;
             this.textBox3.Text = "Note: It\'s best to set the X-AnchorMailbox header for Impersonation - it resolves" +
     " a lot of issue.  It also can help with delegate access..";
@@ -1034,7 +1034,7 @@ namespace EWSEditor.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1608, 1012);
+            this.ClientSize = new System.Drawing.Size(1547, 1000);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.panel6);

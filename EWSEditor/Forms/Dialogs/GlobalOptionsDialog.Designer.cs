@@ -73,6 +73,7 @@
             this.FindFolderLabel = new System.Windows.Forms.Label();
             this.CalendarViewLabel = new System.Windows.Forms.Label();
             this.LoggingGroup = new System.Windows.Forms.GroupBox();
+            this.chkLogSecurityToken = new System.Windows.Forms.CheckBox();
             this.LogFilePathText = new System.Windows.Forms.TextBox();
             this.SaveLogFileCheck = new System.Windows.Forms.CheckBox();
             this.grpAdditionalHeaders = new System.Windows.Forms.GroupBox();
@@ -87,7 +88,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.chkAdditionalHeader1 = new System.Windows.Forms.CheckBox();
-            this.chkLogSecurityToken = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.MiscSettingsGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeout)).BeginInit();
@@ -99,7 +99,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(1159, 811);
+            this.OkButton.Location = new System.Drawing.Point(1159, 822);
             this.OkButton.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(149, 44);
@@ -112,7 +112,7 @@
             // 
             this.MyCancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.MyCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.MyCancelButton.Location = new System.Drawing.Point(1319, 810);
+            this.MyCancelButton.Location = new System.Drawing.Point(1319, 821);
             this.MyCancelButton.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.MyCancelButton.Name = "MyCancelButton";
             this.MyCancelButton.Size = new System.Drawing.Size(149, 44);
@@ -596,10 +596,20 @@
             this.LoggingGroup.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.LoggingGroup.Name = "LoggingGroup";
             this.LoggingGroup.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.LoggingGroup.Size = new System.Drawing.Size(853, 121);
+            this.LoggingGroup.Size = new System.Drawing.Size(853, 132);
             this.LoggingGroup.TabIndex = 1;
             this.LoggingGroup.TabStop = false;
             this.LoggingGroup.Text = "Logging...";
+            // 
+            // chkLogSecurityToken
+            // 
+            this.chkLogSecurityToken.Location = new System.Drawing.Point(20, 76);
+            this.chkLogSecurityToken.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.chkLogSecurityToken.Name = "chkLogSecurityToken";
+            this.chkLogSecurityToken.Size = new System.Drawing.Size(461, 46);
+            this.chkLogSecurityToken.TabIndex = 2;
+            this.chkLogSecurityToken.Text = "Log oAuth Security Bearer Token";
+            this.chkLogSecurityToken.UseVisualStyleBackColor = true;
             // 
             // LogFilePathText
             // 
@@ -746,23 +756,13 @@
             this.chkAdditionalHeader1.UseVisualStyleBackColor = true;
             this.chkAdditionalHeader1.CheckedChanged += new System.EventHandler(this.chkAdditionalHeader1_CheckedChanged);
             // 
-            // chkLogSecurityToken
-            // 
-            this.chkLogSecurityToken.Location = new System.Drawing.Point(21, 69);
-            this.chkLogSecurityToken.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.chkLogSecurityToken.Name = "chkLogSecurityToken";
-            this.chkLogSecurityToken.Size = new System.Drawing.Size(461, 46);
-            this.chkLogSecurityToken.TabIndex = 2;
-            this.chkLogSecurityToken.Text = "Log oAuth Security Bearer Token";
-            this.chkLogSecurityToken.UseVisualStyleBackColor = true;
-            // 
             // OptionsDialog
             // 
             this.AcceptButton = this.OkButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.MyCancelButton;
-            this.ClientSize = new System.Drawing.Size(1509, 871);
+            this.ClientSize = new System.Drawing.Size(1509, 882);
             this.Controls.Add(this.grpAdditionalHeaders);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.MyCancelButton);
