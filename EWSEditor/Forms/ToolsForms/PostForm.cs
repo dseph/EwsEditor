@@ -35,7 +35,8 @@ namespace EWSEditor.Common
             InitializeComponent();
             _CurrentAppSettings = oCurrentAppSettings;
 
-            _XAnchorMailboxDefault = _CurrentAppSettings.MailboxBeingAccessed;
+            if (_CurrentAppSettings != null)
+                _XAnchorMailboxDefault = _CurrentAppSettings.MailboxBeingAccessed;
         }
 
         //private void SetCredentials(string sAuthentication, string User, string Password, string Domain, string Url, ref HttpWebRequest oHttpWebRequest)

@@ -70,8 +70,15 @@ namespace EWSEditor.Common
 
         private void PostFormQuickHeaders_Load(object sender, EventArgs e)
         {
-            if (_CurrentAppSettings.oBearerToken.Trim().Length == 0)
-                chkoAuthHeaderFromLogin.Visible = false;
+            if (_CurrentAppSettings != null)
+            {
+                if (_CurrentAppSettings.oBearerToken.Trim().Length == 0)
+                    chkoAuthHeaderFromLogin.Enabled = false;
+            }
+            else
+            {
+                chkoAuthHeaderFromLogin.Enabled = false;
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
