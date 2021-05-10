@@ -155,22 +155,47 @@ namespace EWSEditor.Logging
 
             if (GlobalSettings.LogSecurityToken == false && traceType == "EwsRequestHttpHeaders"  )
             {
+
+                // ****
+                // Note: This is exremly inefficient and needs to be rewritten to loop through the headers one time and do replacements.
+                // Note: Any changes must not change the CR and LF count or pairing
+                // ****
+
                 // Remove authorization header from logging
-                if (sCleaned_traceMessage.ToLower().Contains("\r\nauthorization:"))
+                while ( (sCleaned_traceMessage.ToLower().Contains("\r\nauthorization: basic") == true) )
                 {
-                    int iLengthOrig = "\r\nauthorization:".Length;
-                    int iStart = sCleaned_traceMessage.ToLower().IndexOf("\r\nauthorization:");
-                    string sCopy = sCleaned_traceMessage.Substring(iStart, iLengthOrig);
-                    int iEnd = sCleaned_traceMessage.ToLower().IndexOf("\r\n", iStart + iLengthOrig);
-
-                    int iNumCharactersToRemove = iEnd - (iStart + iLengthOrig);
-                    int iRemovalStartingPoint = iStart + iLengthOrig;
-
-                    sCleaned_traceMessage = sCleaned_traceMessage.Remove(iRemovalStartingPoint, iNumCharactersToRemove); // remove from after end of header colon to end of line
-
-                    sCleaned_traceMessage = sCleaned_traceMessage.Insert(iRemovalStartingPoint, "  * *  The Bearer token has been removed from EWSEdtior logging for security. You can enable logging in Global Option or proxy through a network tool like Fiddler to get the token. * *");
-
+                    sCleaned_traceMessage = StripSecurityHeader("authorization: Basic", sCleaned_traceMessage);
                 }
+
+                while ((sCleaned_traceMessage.ToLower().Contains("\r\nauthorization: bearer") == true))
+                {
+                    sCleaned_traceMessage = StripSecurityHeader("Authorization: Bearer", sCleaned_traceMessage);
+                }
+
+                while ((sCleaned_traceMessage.ToLower().Contains("\r\nauthorization: negotiate") == true))
+                {
+                    sCleaned_traceMessage = StripSecurityHeader("Authorization: Negotiate", sCleaned_traceMessage);
+                }
+
+     
+
+                //// Remove authorization header from logging
+                //if (sCleaned_traceMessage.ToLower().Contains("\r\nauthorization: "))
+                //{
+                //    int iLengthOrig = "\r\nauthorization:".Length;
+                //    int iStart = sCleaned_traceMessage.ToLower().IndexOf("\r\nauthorization:");
+                //    string sCopy = sCleaned_traceMessage.Substring(iStart, iLengthOrig);
+                //    int iEnd = sCleaned_traceMessage.ToLower().IndexOf("\r\n", iStart + iLengthOrig);
+
+                //    int iNumCharactersToRemove = iEnd - (iStart + iLengthOrig);
+                //    int iRemovalStartingPoint = iStart + iLengthOrig;
+
+                //    sCleaned_traceMessage = sCleaned_traceMessage.Remove(iRemovalStartingPoint, iNumCharactersToRemove); // remove from after end of header colon to end of line
+
+                //    sCleaned_traceMessage = sCleaned_traceMessage.Insert(iRemovalStartingPoint, "  * *  The Authentication header value has been removed from EWSEdtior logging for security. You can enable logging in Global Option or proxy through a network tool like Fiddler to get the token. * *");
+
+                //}
+
             }
 
             StackTrace stack = new StackTrace();
@@ -186,6 +211,32 @@ namespace EWSEditor.Logging
                 }
             }
         }
+
+        private static string StripSecurityHeader(string HeaderToReplace, string TraceHeaders)
+        {
+            string sStripped = string.Empty;
+            string sHeaders = TraceHeaders;
+
+            // Remove authorization header from logging
+            if (sHeaders.ToLower().Contains("\r\nauthorization: "))
+            {
+                int iLengthOrig = "\r\nauthorization:".Length;
+                int iStart = sHeaders.ToLower().IndexOf("\r\nauthorization:");
+                string sCopy = sHeaders.Substring(iStart, iLengthOrig);
+                int iEnd = sHeaders.ToLower().IndexOf("\r\n", iStart + iLengthOrig);
+
+                int iNumCharactersToRemove = iEnd - (iStart + iLengthOrig);
+                int iRemovalStartingPoint = iStart + iLengthOrig;
+
+                sHeaders = sHeaders.Remove(iRemovalStartingPoint, iNumCharactersToRemove); // remove from after end of header colon to end of line
+
+                sHeaders = sHeaders.Insert(iRemovalStartingPoint, "  * *  The Authorization header value has been removed from EWSEdtior logging for security. You can enable logging in Global Option or proxy through a network tool like Fiddler to get the token. * *");
+
+            }
+
+            return sHeaders;
+        }
+
 
         internal static void WriteLogItem(
             DateTime time,

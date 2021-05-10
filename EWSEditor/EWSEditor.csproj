@@ -539,6 +539,12 @@
     <Compile Include="Forms\Dialogs\GlobalOptionsDialog.Designer.cs">
       <DependentUpon>GlobalOptionsDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ToolsForms\PostFormQuickHeaders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToolsForms\PostFormQuickHeaders.Designer.cs">
+      <DependentUpon>PostFormQuickHeaders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ToolsForms\TimeZonesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1218,6 +1224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\GlobalOptionsDialog.resx">
       <DependentUpon>GlobalOptionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToolsForms\PostFormQuickHeaders.resx">
+      <DependentUpon>PostFormQuickHeaders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolsForms\TimeZonesForm.resx">
       <DependentUpon>TimeZonesForm.cs</DependentUpon>

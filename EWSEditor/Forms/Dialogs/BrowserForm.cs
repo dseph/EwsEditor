@@ -513,7 +513,8 @@
         /// <param name="e">The parameter is not used.</param>
         private void mnuEwsPost_Click(object sender, EventArgs e)
         {
-            PostForm oPostForm = new PostForm();
+            PostForm oPostForm = new PostForm(CurrentAppSettings);
+           
             oPostForm.Show();
 
         }

@@ -194,7 +194,7 @@ namespace EWSEditor.Common
 
                             foreach (string key in oHttpWebRequest.Headers.AllKeys)
                             {
-                                sHeader = string.Format("    {0}: {1}", key, oHttpWebRequest.Headers[key]);
+                                sHeader = string.Format("{0}: {1}", key, oHttpWebRequest.Headers[key]);
                                 oSB_RequestHeaders.AppendLine(sHeader);
                             }
                         //}
@@ -213,7 +213,7 @@ namespace EWSEditor.Common
 
                             foreach (string key in oHttpWebResponse.Headers.AllKeys)
                             {
-                                sHeader = string.Format("    {0}: {1}", key, oHttpWebResponse.Headers[key]);
+                                sHeader = string.Format("{0}: {1}", key, oHttpWebResponse.Headers[key]);
                                 oSB_ResponseHeaders.AppendLine(sHeader);
                             }
                         //}

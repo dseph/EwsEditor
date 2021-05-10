@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using EWSEditor.Common;
+using Microsoft.Exchange.WebServices.Data;
 using System.Net;
 using System.Web;
 
@@ -21,16 +22,27 @@ namespace EWSEditor.Common
 {
     public partial class PostForm : Form
     {
+        private EwsEditorAppSettings _CurrentAppSettings = null;
+
+        private string _XAnchorMailboxDefault = string.Empty;
+
         public PostForm()
         {
             InitializeComponent();
+        }
+        public PostForm(EwsEditorAppSettings oCurrentAppSettings)
+        {
+            InitializeComponent();
+            _CurrentAppSettings = oCurrentAppSettings;
+
+            _XAnchorMailboxDefault = _CurrentAppSettings.MailboxBeingAccessed;
         }
 
         //private void SetCredentials(string sAuthentication, string User, string Password, string Domain, string Url, ref HttpWebRequest oHttpWebRequest)
         //{
         //    NetworkCredential oNetworkCredential = null;
         //    CredentialCache oCredentialCache = null;
-             
+
 
         //    oCredentialCache = new CredentialCache();
 
@@ -70,7 +82,7 @@ namespace EWSEditor.Common
         //        }
         //    }
 
-            
+
         //}
 
 
@@ -108,7 +120,7 @@ namespace EWSEditor.Common
                 }
                 else
                 {
-                  
+                   
                 }
             }
  
@@ -122,12 +134,14 @@ namespace EWSEditor.Common
                 DoRawPost();
             else
                 DoPostByHttpVerb();
+ 
+
             //if (chkRawPost.Checked == false)
             //    DoPostByHttpVerb();
             //else
             //    DoRawPost();
 
-     
+
         }
 
         string CheckResponseForOddCharacters(string sBody)
@@ -383,6 +397,11 @@ namespace EWSEditor.Common
             int  iResponseStatusCodeNumber = 0;
             string sResponseStatusDescription = string.Empty;
 
+
+            EWSEditor.Logging.EwsTraceListener oETL = new Logging.EwsTraceListener();
+            //oETL.Trace("xxxx", "xxxx");
+
+
             this.Cursor = Cursors.WaitCursor;
             string sUseVerb = cmboVerb.Text.Trim();
 
@@ -478,9 +497,26 @@ namespace EWSEditor.Common
                     oTimeSpan.Minutes,
                     oTimeSpan.Seconds,
                     oTimeSpan.Milliseconds / 10);
- 
+
+            string sResultOrigional = sResult;
             sResult = SerialHelper.TryRestoreCrLfAndIndents(sResult);
             txtResponse.Text = sResult;
+
+            // Logging
+
+            if (chkLogCalls.Checked)
+            {
+                oETL.Trace("EwsRequestHttpHeaders", EWSPostLogEntry(sRequestHeaders, "EwsRequestHttpHeaders"));
+                oETL.Trace("EwsRequestHttpBody", EWSPostLogEntry(txtRequest.Text, "EwsRequestHttpBody"));
+
+                oETL.Trace("EwsResponseHttpHeaders", EWSPostLogEntry(sResponeHeaders, "EwsResponseHttpHeaders"));
+                oETL.Trace("EwsResponseHttpBody", EWSPostLogEntry(sResultOrigional, "EwsResponseHttpBody"));
+
+                //Debug this section
+            }
+
+            //if (traceType == "EwsResponseHttpHeaders" || traceType == "EwsRequestHttpHeaders")
+
 
             // Blank
             //string sFile = CreateTempFile(sResult, "xml");
@@ -555,6 +591,17 @@ namespace EWSEditor.Common
   
  
             this.Cursor = Cursors.Default;
+        }
+
+        private string EWSPostLogEntry(string sEntry, string sEntryType)
+        {
+            string sTraceTop = "< Trace Tag = \"EwsResponseHttpHeaders\" Tid = \"1\" Time = \"" + DateTime.Now.ToString() + "\" >\r\n";
+            string sTraceBottom = "\r\n</Trace>\r\n";
+
+            return sTraceTop + sEntry + sTraceBottom;
+
+
+            //< Trace Tag = "EwsResponseHttpHeaders" Tid = "1" Time = "2021-05-10 14:32:36Z" >
         }
 
         private void PostForm_Load(object sender, EventArgs e)
@@ -905,9 +952,70 @@ namespace EWSEditor.Common
         {
 
         }
+
+        private void btnAddQuickHeaders_Click(object sender, EventArgs e)
+        {
+            PostFormQuickHeaders oForm = new PostFormQuickHeaders(_CurrentAppSettings);
+            oForm.XAnchorMailbox = _XAnchorMailboxDefault;
+            oForm.ShowDialog(this);
+
+            if (oForm.choseOK)
+            {
+                if (oForm.choseNewClientRequestId == true)
+                    AddHeaderRows("client-request-id", Guid.NewGuid().ToString());
+
+                if (oForm.choseReturnClientRequestId == true)
+                    AddHeaderRows("return-client-request-id", "True");
+
+                if (oForm.choseLoginToken == true)
+                    AddHeaderRows("Authorization", "bearer " + _CurrentAppSettings.oBearerToken);
+
+                if (oForm.choseXAnchorMailbox == true)
+                {
+                    AddHeaderRows("X-AnchorMailbox", oForm.XAnchorMailbox);
+                    _XAnchorMailboxDefault = oForm.XAnchorMailbox;
+                }
+            }
+             
+            oForm = null;
+ 
+            //EwsTraceListener
+        }
+
+        private void AddHeaderRows(string sName, string sValue)
+        {
+
+            int x = 0;
+            x = dgvOptions.Rows.Count;
+            x = dgvOptions.RowCount;
+            x = 0;
+            foreach (DataGridViewRow xx  in dgvOptions.Rows)
+            {
+                //string sHeader = dgvOptions.Rows[x].Cells[0].Value.ToString();
+                x++;
+            }
+
+            // Remove existing header if there is a match.  
+            for (int iCount = dgvOptions.Rows.Count  -1; iCount > 0; iCount--)
+            {
+                DataGridViewRow o = dgvOptions.Rows[iCount-1];
+                //string sHeader = dgvOptions.Rows[iCount ].Cells[0].Value.ToString();
+                string sHeader = o.Cells[0].Value.ToString();
+
+                if (sHeader == sName)
+                {
+                    dgvOptions.Rows.RemoveAt(dgvOptions.Rows[iCount-1].Index);
+                }
+           }
+
+            // Add new header
+            int n = dgvOptions.Rows.Add();
+            dgvOptions.Rows[n].Cells[0].Value = sName;
+            dgvOptions.Rows[n].Cells[1].Value = sValue;
+        }
     }
 
-    
+
 
     public class PostFormSetting
     {
