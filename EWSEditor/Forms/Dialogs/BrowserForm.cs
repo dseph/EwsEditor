@@ -1320,8 +1320,13 @@
         }
 
         private void mnuViewOAuthToken_Click(object sender, EventArgs e)
-        { 
-            ViewToken oForm = new ViewToken(CurrentAppSettings.oBearerToken);
+        {
+            ViewToken oForm = null;
+            if (CurrentAppSettings == null)
+                oForm = new ViewToken();
+            else 
+                oForm = new ViewToken(CurrentAppSettings.oBearerToken);
+
             oForm.Show();
 
              

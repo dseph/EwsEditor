@@ -608,7 +608,7 @@
             this.chkLogSecurityToken.Name = "chkLogSecurityToken";
             this.chkLogSecurityToken.Size = new System.Drawing.Size(461, 46);
             this.chkLogSecurityToken.TabIndex = 2;
-            this.chkLogSecurityToken.Text = "Log oAuth Authorization Header. ";
+            this.chkLogSecurityToken.Text = "Log Authorization Header. ";
             this.chkLogSecurityToken.UseVisualStyleBackColor = true;
             // 
             // LogFilePathText
