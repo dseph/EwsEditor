@@ -1,4 +1,6 @@
-﻿using Microsoft.Exchange.WebServices.Data;
+﻿// EwsTraceListener.cs
+
+using Microsoft.Exchange.WebServices.Data;
 
 namespace EWSEditor.Logging
 {
@@ -44,28 +46,8 @@ namespace EWSEditor.Logging
 
                 sCleaned_traceMessage = sCleaned_traceMessage.Replace("\r\n", "\n");
                 sCleaned_traceMessage = sCleaned_traceMessage.Replace("\n", "\r\n");
-                //"<Trace Tag=\"EwsRequestHttpHeaders\" Tid=\"1\" Time=\"2017-07-07 16:06:43Z\">\r\nPOST /EWS/Exchange.asmx HTTP/1.1\r\nContent-Type: text/xml; charset=utf-8\r\nAccept: text/xml\r\nUser-Agent: EWSEditor (ExchangeServicesClient/0.0.0.0)\r\nAccept-Encoding: gzip,deflate\r\nclient-request-id: c3c5dc97-9433-4b15-bfa1-8867e96e2cfd\r\nreturn-client-request-id: true\r\n\r\n\r\n</Trace>\r\n"
                 sCleaned_traceMessage = sCleaned_traceMessage.Replace("\r\n\r\n\r\n</Trace>", "\r\n</Trace>");
                 sCleaned_traceMessage = sCleaned_traceMessage.Replace("\r\n\r\n</Trace>", "\r\n</Trace>");
-
-  
-
-                //// Remove authorization header from logging
-                //if (sCleaned_traceMessage.ToLower().Contains("\r\nauthorization:"))
-                //{
-                //    int iLengthOrig = "\r\nauthorization:".Length;
-                //    int iStart = sCleaned_traceMessage.ToLower().IndexOf("\r\nauthorization:");
-                //    string sCopy = sCleaned_traceMessage.Substring(iStart, iLengthOrig);
-                //    int iEnd = sCleaned_traceMessage.ToLower().IndexOf("\r\n", iStart + iLengthOrig);
-
-                //    int iNumCharactersToRemove = iEnd - (iStart + iLengthOrig);
-                //    int iRemovalStartingPoint = iStart + iLengthOrig;
-
-                //    sCleaned_traceMessage = sCleaned_traceMessage.Remove(iRemovalStartingPoint, iNumCharactersToRemove); // remove from after end of header colon to end of line
-
-                //    sCleaned_traceMessage = sCleaned_traceMessage.Insert(iRemovalStartingPoint, "  * *  The Bearer token has been removed from EWSEdtior logging for security. Use a networking tool like Fiddler to get the token. * *");
-
-                //}
 
 
                 DebugLog.WriteEwsLog(

@@ -1,4 +1,6 @@
-﻿using System;
+﻿// PostForm.cs
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,52 +41,7 @@ namespace EWSEditor.Common
                 _XAnchorMailboxDefault = _CurrentAppSettings.MailboxBeingAccessed;
         }
 
-        //private void SetCredentials(string sAuthentication, string User, string Password, string Domain, string Url, ref HttpWebRequest oHttpWebRequest)
-        //{
-        //    NetworkCredential oNetworkCredential = null;
-        //    CredentialCache oCredentialCache = null;
-
-
-        //    oCredentialCache = new CredentialCache();
-
-        //    Uri oUri = new Uri(Url);
-
-        //    if (sAuthentication == "Anonymous")
-        //    {
-        //        oCredentialCache = null;
-        //        //oNetworkCredential = new NetworkCredential();
-        //        oHttpWebRequest.UseDefaultCredentials = true;
-        //    }
-        //    else
-        //    {
-
-        //        if (sAuthentication != "DefaultCredentials" && sAuthentication != "DefaultNetworkCredentials")
-        //        {
-        //            if (txtDomain.Text.Trim().Length == 0)
-        //            {
-        //                oNetworkCredential = new NetworkCredential(User, Password);
-        //            }
-        //            else
-        //            {
-        //                oNetworkCredential = new NetworkCredential(User, Password, Domain);
-
-        //            }
-
-        //            oCredentialCache.Add(oUri, sAuthentication, oNetworkCredential);
-        //            //oCredentialCache.Add(oUri, "Basic", oNetworkCredential);
-        //            //oCredentialCache.Add(oUri, "NTLM", oNetworkCredential);
-        //            //oCredentialCache.Add(oUri, "Digest", oNetworkCredential);
-
-        //            oHttpWebRequest.Credentials = oNetworkCredential;
-        //        }
-        //        else
-        //        {
-
-        //        }
-        //    }
-
-
-        //}
+     
 
 
 
@@ -136,11 +93,6 @@ namespace EWSEditor.Common
             else
                 DoPostByHttpVerb();
  
-
-            //if (chkRawPost.Checked == false)
-            //    DoPostByHttpVerb();
-            //else
-            //    DoRawPost();
 
 
         }
@@ -516,26 +468,7 @@ namespace EWSEditor.Common
                 //Debug this section
             }
 
-            //if (traceType == "EwsResponseHttpHeaders" || traceType == "EwsRequestHttpHeaders")
 
-
-            // Blank
-            //string sFile = CreateTempFile(sResult, "xml");
-            //wbResponse.Navigate(sFile);
-
-            // blank
-            //wbResponse.DocumentText = sResult;
-
-            // blank...
-            //string sFile = CreateTempFile(sResult, "xml");
-            //wbResponse.Navigate(sFile);
-
-            // same...
-            //byte[] bytes = Encoding.UTF8.GetBytes(sResult);
-            //MemoryStream oMemoryStream = new MemoryStream();
-            //oMemoryStream.Write(bytes, 0, bytes.Length);
-            //oMemoryStream.Position = 0;
-            //wbResponse.DocumentStream = oMemoryStream;
 
             string utf16Line = "<?xml version=\"1.0\" encoding=\"utf-16\"?>";
             string utf8Line = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
@@ -548,17 +481,9 @@ namespace EWSEditor.Common
                 sCopy = sCopy.Replace(utf16Line, utf8Line + "\r\n<!-- Note: EwsEditor has replaced the \"utf-16\" text in the first line with\"utf-8\" in order for the XML to render in the response web control. -->");
                 //sCopy = sCopy.TrimStart();
             }
-            //if (sCopy.StartsWith(utf8Line))
-            //{
-            //    sCopy = sCopy.Remove(0, utf8Line.Length);
-            //    sCopy = sCopy.TrimStart();
-            //}
+
             wbResponse.DocumentText = sCopy;
             txtResponse.Text = sCopy;
-            //string sFile = CreateTempFile(sCopy, "xml");
-            //wbResponse.Navigate(sFile);
-            //wbResponse.DocumentText = sCopy;
-          
 
 
             StringBuilder oSB = new StringBuilder();
@@ -807,6 +732,7 @@ namespace EWSEditor.Common
             cmboUserAgent.Items.Clear();
             EWSEditor.Common.UserAgentHelper.AddUserAgentsToComboBox(ref cmboUserAgent);
 
+
             //cmboAuthentication.Text = "Basic";
             //cmboVerb.Text = "POST";
             //cmboAuthentication.Text = "text/xml";
@@ -872,7 +798,7 @@ namespace EWSEditor.Common
 
         private void cmboUserAgent_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+             
         }
 
         private void txtResponse_TextChanged(object sender, EventArgs e)
@@ -1013,6 +939,11 @@ namespace EWSEditor.Common
             int n = dgvOptions.Rows.Add();
             dgvOptions.Rows[n].Cells[0].Value = sName;
             dgvOptions.Rows[n].Cells[1].Value = sValue;
+        }
+
+        private void grpHttpVerbOptions_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -501,7 +501,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.tabPage2.Size = new System.Drawing.Size(1945, 180);
+            this.tabPage2.Size = new System.Drawing.Size(1940, 181);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Xml View of Request Text (Read Only)";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -516,7 +516,7 @@
             this.wbRequest.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.wbRequest.MinimumSize = new System.Drawing.Size(29, 26);
             this.wbRequest.Name = "wbRequest";
-            this.wbRequest.Size = new System.Drawing.Size(1921, 139);
+            this.wbRequest.Size = new System.Drawing.Size(1916, 140);
             this.wbRequest.TabIndex = 48;
             this.wbRequest.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.wbRequest_DocumentCompleted);
             // 
@@ -531,7 +531,7 @@
             this.tabControl2.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1954, 227);
+            this.tabControl2.Size = new System.Drawing.Size(1954, 225);
             this.tabControl2.TabIndex = 3;
             this.tabControl2.Click += new System.EventHandler(this.tabControl2_Click);
             // 
@@ -542,7 +542,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.tabPage3.Size = new System.Drawing.Size(1938, 180);
+            this.tabPage3.Size = new System.Drawing.Size(1938, 178);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Response Text";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -555,7 +555,7 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.tabPage4.Size = new System.Drawing.Size(1943, 177);
+            this.tabPage4.Size = new System.Drawing.Size(1938, 178);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Response XML (Read Only)";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -710,6 +710,7 @@
             this.grpHttpVerbOptions.Size = new System.Drawing.Size(687, 195);
             this.grpHttpVerbOptions.TabIndex = 4;
             this.grpHttpVerbOptions.TabStop = false;
+            this.grpHttpVerbOptions.Enter += new System.EventHandler(this.grpHttpVerbOptions_Enter);
             // 
             // cmboUserAgent
             // 
