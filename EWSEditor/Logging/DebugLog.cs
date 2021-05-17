@@ -158,52 +158,11 @@ namespace EWSEditor.Logging
 
             if (GlobalSettings.LogSecurityToken == false && traceType == "EwsRequestHttpHeaders"  )
             {
+ 
+                sCleaned_traceMessage = StripSecurityHeaders("Authorization", sCleaned_traceMessage);
 
-                // ****
-                // TODO: make code strip any header passed to it and use it to strip out the authorization header of any type.
-                // TODO:  Add code to strip the Proxy-Authorization header also.
-                // 
-                // Note: This is exremly inefficient and needs to be rewritten to loop through the headers one time and do replacements.
-                // Note: Any changes must not change the CR and LF count or pairing
-                // ****
-
-                // Remove authorization header from logging
-                while ( (sCleaned_traceMessage.ToLower().Contains("\r\nauthorization: basic") == true) )
-                {
-                    sCleaned_traceMessage = StripSecurityHeader("authorization: Basic", sCleaned_traceMessage);
-                }
-
-                while ((sCleaned_traceMessage.ToLower().Contains("\r\nauthorization: bearer") == true))
-                {
-                    sCleaned_traceMessage = StripSecurityHeader("Authorization: Bearer", sCleaned_traceMessage);
-                }
-
-                while ((sCleaned_traceMessage.ToLower().Contains("\r\nauthorization: negotiate") == true))
-                {
-                    sCleaned_traceMessage = StripSecurityHeader("Authorization: Negotiate", sCleaned_traceMessage);
-                }
-
-                
-
-     
-
-                //// Remove authorization header from logging
-                //if (sCleaned_traceMessage.ToLower().Contains("\r\nauthorization: "))
-                //{
-                //    int iLengthOrig = "\r\nauthorization:".Length;
-                //    int iStart = sCleaned_traceMessage.ToLower().IndexOf("\r\nauthorization:");
-                //    string sCopy = sCleaned_traceMessage.Substring(iStart, iLengthOrig);
-                //    int iEnd = sCleaned_traceMessage.ToLower().IndexOf("\r\n", iStart + iLengthOrig);
-
-                //    int iNumCharactersToRemove = iEnd - (iStart + iLengthOrig);
-                //    int iRemovalStartingPoint = iStart + iLengthOrig;
-
-                //    sCleaned_traceMessage = sCleaned_traceMessage.Remove(iRemovalStartingPoint, iNumCharactersToRemove); // remove from after end of header colon to end of line
-
-                //    sCleaned_traceMessage = sCleaned_traceMessage.Insert(iRemovalStartingPoint, "  * *  The Authentication header value has been removed from EWSEdtior logging for security. You can enable logging in Global Option or proxy through a network tool like Fiddler to get the token. * *");
-
-                //}
-
+                sCleaned_traceMessage = StripSecurityHeaders("Proxy-Authorization", sCleaned_traceMessage);
+ 
             }
 
             StackTrace stack = new StackTrace();
@@ -220,25 +179,53 @@ namespace EWSEditor.Logging
             }
         }
 
+        private static string StripSecurityHeaders(string HeaderToReplace, string TraceHeaders)
+        {
+            string sStripped = string.Empty;
+
+            string sFind = "\r\n" + HeaderToReplace.ToLower() + ":";
+            string sCleaned_traceMessage = TraceHeaders;
+            string sCopyOfHeaders = TraceHeaders.ToLower();
+
+            if (sCopyOfHeaders.Contains(sFind))
+            {
+                // Remove  header from logging - looping in case there are multiple of the header added in since its possible (additional user entry).
+                while ((sCopyOfHeaders.Contains(sFind) == true))
+                {
+                    sCleaned_traceMessage = StripSecurityHeader(HeaderToReplace, sCleaned_traceMessage);
+                    sCopyOfHeaders = sCleaned_traceMessage.ToLower();
+                }
+
+            }
+            return sCleaned_traceMessage;
+        }
+
+
+
         private static string StripSecurityHeader(string HeaderToReplace, string TraceHeaders)
         {
             string sStripped = string.Empty;
+            string sFind = "\r\n" + HeaderToReplace.ToLower() + ":";
             string sHeaders = TraceHeaders;
+            int iLengthOrig = 0;
+            int iStart = 0;
+            int iEnd = 0;
+            string sCopy = "";
+            int iNumCharactersToRemove = 0;
 
             // Remove authorization header from logging
-            if (sHeaders.ToLower().Contains("\r\nauthorization: "))
+            if (TraceHeaders.ToLower().Contains(sFind))
             {
-                int iLengthOrig = "\r\nauthorization:".Length;
-                int iStart = sHeaders.ToLower().IndexOf("\r\nauthorization:");
-                string sCopy = sHeaders.Substring(iStart, iLengthOrig);
-                int iEnd = sHeaders.ToLower().IndexOf("\r\n", iStart + iLengthOrig);
+                iLengthOrig = sFind.Length;
+                iStart = sHeaders.ToLower().IndexOf(sFind) + 2;
+                sCopy = sHeaders.Substring(iStart, iLengthOrig);
+                iEnd = sHeaders.ToLower().IndexOf("\r\n", (iStart + iLengthOrig));  // Get the end
 
-                int iNumCharactersToRemove = iEnd - (iStart + iLengthOrig);
-                int iRemovalStartingPoint = iStart + iLengthOrig;
+                iNumCharactersToRemove = (iEnd - iStart + 2);   // The +2 is for the trailing crlf pair.
 
-                sHeaders = sHeaders.Remove(iRemovalStartingPoint, iNumCharactersToRemove); // remove from after end of header colon to end of line
+                sCopy = sHeaders.Substring(iStart, iNumCharactersToRemove); // iNumCharactersToRemove-100);
 
-                sHeaders = sHeaders.Insert(iRemovalStartingPoint, "  * *  The Authorization header value has been removed from EWSEdtior logging for security. You can enable logging in Global Option or proxy through a network tool like Fiddler to get the token. * *");
+                sHeaders = sHeaders.Remove(iStart, iNumCharactersToRemove); // Remove entire header.
 
             }
 

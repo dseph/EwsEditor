@@ -603,12 +603,12 @@
             // 
             // chkLogSecurityToken
             // 
-            this.chkLogSecurityToken.Location = new System.Drawing.Point(20, 76);
+            this.chkLogSecurityToken.Location = new System.Drawing.Point(22, 76);
             this.chkLogSecurityToken.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.chkLogSecurityToken.Name = "chkLogSecurityToken";
-            this.chkLogSecurityToken.Size = new System.Drawing.Size(461, 46);
+            this.chkLogSecurityToken.Size = new System.Drawing.Size(728, 46);
             this.chkLogSecurityToken.TabIndex = 2;
-            this.chkLogSecurityToken.Text = "Log Authorization Header. ";
+            this.chkLogSecurityToken.Text = "Log Authorization and Proxy-Authorization Headers.";
             this.chkLogSecurityToken.UseVisualStyleBackColor = true;
             // 
             // LogFilePathText
