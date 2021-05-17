@@ -1,4 +1,7 @@
-﻿namespace EWSEditor.Forms
+﻿// OofForm.cs
+// Used to read and set out of office (OOF) settings for a user.
+
+namespace EWSEditor.Forms
 {
     using System;
     using System.Collections.Generic;

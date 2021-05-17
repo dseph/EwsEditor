@@ -33,6 +33,8 @@ namespace EWSEditor.Forms.ToolsForms
             this.txtToken = new System.Windows.Forms.TextBox();
             this.txtParsedToken = new System.Windows.Forms.TextBox();
             this.btnViewTokenParts = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // btnLoadCurrentSessionToken
@@ -68,7 +70,7 @@ namespace EWSEditor.Forms.ToolsForms
             this.txtParsedToken.Multiline = true;
             this.txtParsedToken.Name = "txtParsedToken";
             this.txtParsedToken.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtParsedToken.Size = new System.Drawing.Size(1620, 491);
+            this.txtParsedToken.Size = new System.Drawing.Size(1620, 443);
             this.txtParsedToken.TabIndex = 2;
             // 
             // btnViewTokenParts
@@ -81,11 +83,35 @@ namespace EWSEditor.Forms.ToolsForms
             this.btnViewTokenParts.UseVisualStyleBackColor = true;
             this.btnViewTokenParts.Click += new System.EventHandler(this.btnViewTokenParts_Click);
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 1002);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(168, 25);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Documentation: ";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(190, 1002);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(762, 25);
+            this.linkLabel1.TabIndex = 6;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "https://docs.microsoft.com/en-us/azure/active-directory/develop/access-tokens";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // ViewToken
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1653, 1041);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnViewTokenParts);
             this.Controls.Add(this.txtParsedToken);
             this.Controls.Add(this.txtToken);
@@ -104,5 +130,7 @@ namespace EWSEditor.Forms.ToolsForms
         private System.Windows.Forms.TextBox txtToken;
         private System.Windows.Forms.TextBox txtParsedToken;
         private System.Windows.Forms.Button btnViewTokenParts;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

@@ -160,6 +160,9 @@ namespace EWSEditor.Logging
             {
 
                 // ****
+                // TODO: make code strip any header passed to it and use it to strip out the authorization header of any type.
+                // TODO:  Add code to strip the Proxy-Authorization header also.
+                // 
                 // Note: This is exremly inefficient and needs to be rewritten to loop through the headers one time and do replacements.
                 // Note: Any changes must not change the CR and LF count or pairing
                 // ****
@@ -179,6 +182,8 @@ namespace EWSEditor.Logging
                 {
                     sCleaned_traceMessage = StripSecurityHeader("Authorization: Negotiate", sCleaned_traceMessage);
                 }
+
+                
 
      
 

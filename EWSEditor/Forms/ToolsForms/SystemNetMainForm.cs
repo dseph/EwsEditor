@@ -1,4 +1,7 @@
-﻿using System;
+﻿// System.Net.MailForm
+// Demonstrates sending email from a test client form using System.Web.Mail.
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -425,6 +428,11 @@ namespace EWSEditor.Forms
         }
 
         private void chkEnableSSL_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

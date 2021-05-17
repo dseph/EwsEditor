@@ -1,4 +1,7 @@
-﻿using System;
+﻿// PostFormQuickHeaders.cs
+// Used by PostForm.cs for quickly adding helpful headers.
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

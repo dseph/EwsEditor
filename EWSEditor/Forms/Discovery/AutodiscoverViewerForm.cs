@@ -1,4 +1,7 @@
-﻿using System;
+﻿// AutodiscoverViewerForm.cs
+// Used to show how to use a call to GetUserSettings in order to get information on the user's connection endpoints from the Disovery Service.
+
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using EWSEditor.Forms.Controls;

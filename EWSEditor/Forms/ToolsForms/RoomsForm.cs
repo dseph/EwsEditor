@@ -1,4 +1,7 @@
-﻿using System;
+﻿// RoomsForm.cs
+// Used for working with Rooms EWS calls.
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

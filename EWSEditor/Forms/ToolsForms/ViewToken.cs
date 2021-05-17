@@ -124,17 +124,17 @@ namespace EWSEditor.Forms.ToolsForms
 
             oSB.AppendFormat("Id: {0}\r\n\r\n", x.Id);
             oSB.AppendFormat("InitializationVector: {0}\r\n\r\n", x.InitializationVector);
-            oSB.AppendFormat("IssuedAt: {0}\r\n\r\n", x.IssuedAt.ToString());
+            oSB.AppendFormat("IssuedAt (UTC): {0}    In your timezone: {1}\r\n\r\n", x.IssuedAt.ToUniversalTime().ToString(), x.IssuedAt.ToLocalTime().ToString());
             oSB.AppendFormat("Issuer: {0}\r\n\r\n", x.Issuer.ToString());
-            oSB.AppendFormat("Kid {0}\r\n\r\n", x.Kid);
+            oSB.AppendFormat("Kid: {0}\r\n\r\n", x.Kid);
 
             oSB.AppendFormat("SecurityKey: {0}\r\n\r\n", x.SecurityKey);
             oSB.AppendFormat("SigningKey: {0}\r\n\r\n", x.SigningKey);
             oSB.AppendFormat("Subject: {0}\r\n\r\n", x.Subject);
-
+ 
             oSB.AppendFormat("Typ: {0}\r\n\r\n", x.Typ);
-            oSB.AppendFormat("ValidFrom: {0}\r\n\r\n", x.ValidFrom);
-            oSB.AppendFormat("ValidTo: {0}\r\n\r\n", x.ValidTo);
+            oSB.AppendFormat("ValidFrom (UTC): {0}    In your timezone: {1}\r\n\r\n", x.ValidFrom.ToUniversalTime().ToString() , x.ValidFrom.ToLocalTime().ToString());
+            oSB.AppendFormat("ValidTo (UTC): {0}    In your timezone: {1}\r\n\r\n", x.ValidTo.ToUniversalTime().ToString(), x.ValidTo.ToLocalTime().ToString() );
             oSB.AppendFormat("X5t: {0}\r\n\r\n", x.X5t);
             oSB.AppendFormat("Zip: {0}\r\n\r\n", x.Zip);
 
@@ -157,8 +157,10 @@ namespace EWSEditor.Forms.ToolsForms
             }
         }
 
-        
-
-
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            WebBrowser webBrowser1 = new WebBrowser();
+            webBrowser1.Navigate("https://docs.microsoft.com/en-us/azure/active-directory/develop/access-tokens", true);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿// PostForm.cs
+// Used for raw POSTs using EWS.
 
 using System;
 using System.Collections.Generic;
