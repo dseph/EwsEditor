@@ -42,6 +42,7 @@
             this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
             this.DebugLogVeiwerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OptionsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuViewOAuthToken = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsDiscovery = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsDiscoveryAutodiscoverViewer = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsDiscoveryDomainSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,8 +73,8 @@
             this.mailAppsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMailTips = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuSearchForSearchFolders = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuToolsSplit4 = new System.Windows.Forms.ToolStripSeparator();
             this.developerToolsTestWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsSplit4 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuOther = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenItemById = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOpenFolderById = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,7 +93,6 @@
             this.mnuPowerShellTester = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewOAuthToken = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -225,6 +225,13 @@
             this.OptionsMenuItem.Size = new System.Drawing.Size(636, 44);
             this.OptionsMenuItem.Text = "Options...";
             this.OptionsMenuItem.Click += new System.EventHandler(this.OptionsMenuItem_Click);
+            // 
+            // mnuViewOAuthToken
+            // 
+            this.mnuViewOAuthToken.Name = "mnuViewOAuthToken";
+            this.mnuViewOAuthToken.Size = new System.Drawing.Size(636, 44);
+            this.mnuViewOAuthToken.Text = "oAuth Token...";
+            this.mnuViewOAuthToken.Click += new System.EventHandler(this.mnuViewOAuthToken_Click);
             // 
             // mnuToolsDiscovery
             // 
@@ -443,17 +450,17 @@
             this.mnuSearchForSearchFolders.Text = "Search For Search Folders...";
             this.mnuSearchForSearchFolders.Click += new System.EventHandler(this.mnuSearchForSearchFolders_Click);
             // 
-            // mnuToolsSplit4
-            // 
-            this.mnuToolsSplit4.Name = "mnuToolsSplit4";
-            this.mnuToolsSplit4.Size = new System.Drawing.Size(633, 6);
-            // 
             // developerToolsTestWindowToolStripMenuItem
             // 
             this.developerToolsTestWindowToolStripMenuItem.Name = "developerToolsTestWindowToolStripMenuItem";
             this.developerToolsTestWindowToolStripMenuItem.Size = new System.Drawing.Size(636, 44);
             this.developerToolsTestWindowToolStripMenuItem.Text = "Developer Service Test Window...";
             this.developerToolsTestWindowToolStripMenuItem.Click += new System.EventHandler(this.developerToolsTestWindowToolStripMenuItem_Click);
+            // 
+            // mnuToolsSplit4
+            // 
+            this.mnuToolsSplit4.Name = "mnuToolsSplit4";
+            this.mnuToolsSplit4.Size = new System.Drawing.Size(633, 6);
             // 
             // mnuOther
             // 
@@ -594,13 +601,6 @@
             this.mnuAbout.Size = new System.Drawing.Size(330, 44);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
-            // 
-            // mnuViewOAuthToken
-            // 
-            this.mnuViewOAuthToken.Name = "mnuViewOAuthToken";
-            this.mnuViewOAuthToken.Size = new System.Drawing.Size(636, 44);
-            this.mnuViewOAuthToken.Text = "oAuth Token";
-            this.mnuViewOAuthToken.Click += new System.EventHandler(this.mnuViewOAuthToken_Click);
             // 
             // BrowserForm
             // 

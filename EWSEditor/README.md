@@ -1,5 +1,5 @@
 ﻿ToBuild.txt
-Build notes as of 5/4/2021.
+Build notes as of 5/17/2021.
 
 ============
 Description:
@@ -42,6 +42,8 @@ Add the following NuGet packages:
     Microsoft.Bcl.Build
 
     Microsoft.Net.Http
+
+    Microsoft.IdentityModel.JsonWebTokens
 
 There is a reference to CDOSYS, for which Visual Studio generated the ADODB and CDO interops.  If you need to regenerate them 
 then remove the references and be sure to delete the interop files. Next set a new reference to CDOSYS and Visual studio will 

@@ -668,6 +668,7 @@ namespace EWSEditor.Forms
         private void chkSetXAnchorMailbox_CheckedChanged(object sender, EventArgs e)
         {
             txtXAnchorMailbox.Enabled = chkSetXAnchorMailbox.Checked;
+            label1.Enabled = chkSetXAnchorMailbox.Checked;
 
             // Default ImpersonatedIdTextBox ImpersonationCheck
             if (chkSetXAnchorMailbox.Checked == true && txtXAnchorMailbox.Text.Trim().Length == 0)
@@ -797,8 +798,10 @@ namespace EWSEditor.Forms
         private void chkSetXPublicFolderMailbox_CheckedChanged(object sender, EventArgs e)
         {
             txtXPublicFolderMailbox.Enabled = chkSetXPublicFolderMailbox.Checked;
- 
- 
+            label8.Enabled = chkSetXPublicFolderMailbox.Checked;
+           
+
+
         }
 
         private void lblEWSOauthDocs_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -218,7 +218,7 @@ namespace EWSEditor.Forms
             this.btnOptions.Name = "btnOptions";
             this.btnOptions.Size = new System.Drawing.Size(202, 44);
             this.btnOptions.TabIndex = 0;
-            this.btnOptions.Text = "Global Options";
+            this.btnOptions.Text = "Options";
             this.btnOptions.UseVisualStyleBackColor = true;
             this.btnOptions.Click += new System.EventHandler(this.btnOptions_Click);
             // 
@@ -407,7 +407,7 @@ namespace EWSEditor.Forms
             this.lblExchangeServiceURLTextDesc.AutoSize = true;
             this.lblExchangeServiceURLTextDesc.Enabled = false;
             this.lblExchangeServiceURLTextDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lblExchangeServiceURLTextDesc.Location = new System.Drawing.Point(292, 137);
+            this.lblExchangeServiceURLTextDesc.Location = new System.Drawing.Point(283, 137);
             this.lblExchangeServiceURLTextDesc.Margin = new System.Windows.Forms.Padding(0);
             this.lblExchangeServiceURLTextDesc.Name = "lblExchangeServiceURLTextDesc";
             this.lblExchangeServiceURLTextDesc.Size = new System.Drawing.Size(552, 25);
@@ -476,9 +476,8 @@ namespace EWSEditor.Forms
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Enabled = false;
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label3.Location = new System.Drawing.Point(8, 39);
+            this.label3.Location = new System.Drawing.Point(8, 41);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(932, 25);
@@ -578,7 +577,7 @@ namespace EWSEditor.Forms
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Enabled = false;
-            this.lblUserName.Location = new System.Drawing.Point(57, 91);
+            this.lblUserName.Location = new System.Drawing.Point(57, 86);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(0);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(63, 25);
@@ -597,7 +596,7 @@ namespace EWSEditor.Forms
             // txtPassword
             // 
             this.txtPassword.Enabled = false;
-            this.txtPassword.Location = new System.Drawing.Point(712, 76);
+            this.txtPassword.Location = new System.Drawing.Point(712, 83);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(0);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
@@ -684,13 +683,11 @@ namespace EWSEditor.Forms
             // rdoCredentialsDefaultWindows
             // 
             this.rdoCredentialsDefaultWindows.AutoSize = true;
-            this.rdoCredentialsDefaultWindows.Checked = true;
             this.rdoCredentialsDefaultWindows.Location = new System.Drawing.Point(12, 6);
             this.rdoCredentialsDefaultWindows.Margin = new System.Windows.Forms.Padding(0);
             this.rdoCredentialsDefaultWindows.Name = "rdoCredentialsDefaultWindows";
             this.rdoCredentialsDefaultWindows.Size = new System.Drawing.Size(270, 29);
             this.rdoCredentialsDefaultWindows.TabIndex = 0;
-            this.rdoCredentialsDefaultWindows.TabStop = true;
             this.rdoCredentialsDefaultWindows.Text = "Use Default Credentails";
             this.rdoCredentialsDefaultWindows.UseVisualStyleBackColor = true;
             this.rdoCredentialsDefaultWindows.CheckedChanged += new System.EventHandler(this.rdoCredentialsDefaultWindows_CheckedChanged);
@@ -951,7 +948,7 @@ namespace EWSEditor.Forms
             // txtAuthCertificatePath
             // 
             this.txtAuthCertificatePath.Enabled = false;
-            this.txtAuthCertificatePath.Location = new System.Drawing.Point(217, 617);
+            this.txtAuthCertificatePath.Location = new System.Drawing.Point(218, 617);
             this.txtAuthCertificatePath.Margin = new System.Windows.Forms.Padding(0);
             this.txtAuthCertificatePath.Name = "txtAuthCertificatePath";
             this.txtAuthCertificatePath.Size = new System.Drawing.Size(609, 31);
@@ -973,11 +970,13 @@ namespace EWSEditor.Forms
             // rdoCredentialsOAuth2
             // 
             this.rdoCredentialsOAuth2.AutoSize = true;
+            this.rdoCredentialsOAuth2.Checked = true;
             this.rdoCredentialsOAuth2.Location = new System.Drawing.Point(20, 393);
             this.rdoCredentialsOAuth2.Margin = new System.Windows.Forms.Padding(6);
             this.rdoCredentialsOAuth2.Name = "rdoCredentialsOAuth2";
             this.rdoCredentialsOAuth2.Size = new System.Drawing.Size(257, 29);
             this.rdoCredentialsOAuth2.TabIndex = 25;
+            this.rdoCredentialsOAuth2.TabStop = true;
             this.rdoCredentialsOAuth2.Text = "Use oAuth 2.0 (MSAL)";
             this.rdoCredentialsOAuth2.UseVisualStyleBackColor = true;
             // 
@@ -1020,7 +1019,7 @@ namespace EWSEditor.Forms
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(355, 393);
+            this.linkLabel1.Location = new System.Drawing.Point(316, 393);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(446, 25);
             this.linkLabel1.TabIndex = 27;
