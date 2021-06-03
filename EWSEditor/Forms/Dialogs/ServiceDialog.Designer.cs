@@ -1045,6 +1045,7 @@ namespace EWSEditor.Forms
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Name = "ServiceDialog";
             this.Text = "EWS Editor - Exchange Service Configuration";

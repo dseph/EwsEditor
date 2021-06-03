@@ -63,7 +63,7 @@ namespace EWSEditor.Forms
 
 
         private void BtnOK_Click(object sender, EventArgs e)
-        {
+        { 
 
             if (rdoCredentialsOAuth2.Checked == true)
             {
