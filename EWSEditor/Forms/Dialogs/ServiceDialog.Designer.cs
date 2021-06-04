@@ -120,11 +120,9 @@ namespace EWSEditor.Forms
             // 
             // btnOK
             // 
-            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(1195, 921);
-            this.btnOK.Margin = new System.Windows.Forms.Padding(6);
+            this.btnOK.Location = new System.Drawing.Point(598, 484);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(150, 44);
+            this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 4;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -132,12 +130,10 @@ namespace EWSEditor.Forms
             // 
             // btnCancel
             // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(1357, 921);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(6);
+            this.btnCancel.Location = new System.Drawing.Point(678, 484);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(150, 44);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -146,10 +142,10 @@ namespace EWSEditor.Forms
             // 
             this.label1.AutoSize = true;
             this.label1.Enabled = false;
-            this.label1.Location = new System.Drawing.Point(42, 58);
+            this.label1.Location = new System.Drawing.Point(21, 30);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 25);
+            this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "SMTP:";
             // 
@@ -161,20 +157,20 @@ namespace EWSEditor.Forms
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.txtXAnchorMailbox);
             this.panel4.Controls.Add(this.chkSetXAnchorMailbox);
-            this.panel4.Location = new System.Drawing.Point(1023, 189);
+            this.panel4.Location = new System.Drawing.Point(512, 98);
             this.panel4.Margin = new System.Windows.Forms.Padding(0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(512, 160);
+            this.panel4.Size = new System.Drawing.Size(257, 84);
             this.panel4.TabIndex = 3;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label9.Location = new System.Drawing.Point(6, 119);
+            this.label9.Location = new System.Drawing.Point(3, 62);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(496, 25);
+            this.label9.Size = new System.Drawing.Size(246, 13);
             this.label9.TabIndex = 18;
             this.label9.Text = "Impersonation and when accessing a public folder.";
             // 
@@ -182,29 +178,29 @@ namespace EWSEditor.Forms
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label6.Location = new System.Drawing.Point(6, 94);
+            this.label6.Location = new System.Drawing.Point(3, 49);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(448, 25);
+            this.label6.Size = new System.Drawing.Size(220, 13);
             this.label6.TabIndex = 17;
             this.label6.Text = "Normaly set to the target mailbox when using ";
             // 
             // txtXAnchorMailbox
             // 
             this.txtXAnchorMailbox.Enabled = false;
-            this.txtXAnchorMailbox.Location = new System.Drawing.Point(129, 54);
+            this.txtXAnchorMailbox.Location = new System.Drawing.Point(64, 28);
             this.txtXAnchorMailbox.Margin = new System.Windows.Forms.Padding(0);
             this.txtXAnchorMailbox.Name = "txtXAnchorMailbox";
-            this.txtXAnchorMailbox.Size = new System.Drawing.Size(334, 31);
+            this.txtXAnchorMailbox.Size = new System.Drawing.Size(169, 20);
             this.txtXAnchorMailbox.TabIndex = 7;
             // 
             // chkSetXAnchorMailbox
             // 
             this.chkSetXAnchorMailbox.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.chkSetXAnchorMailbox.Location = new System.Drawing.Point(6, 8);
+            this.chkSetXAnchorMailbox.Location = new System.Drawing.Point(3, 4);
             this.chkSetXAnchorMailbox.Margin = new System.Windows.Forms.Padding(0);
             this.chkSetXAnchorMailbox.Name = "chkSetXAnchorMailbox";
-            this.chkSetXAnchorMailbox.Size = new System.Drawing.Size(452, 35);
+            this.chkSetXAnchorMailbox.Size = new System.Drawing.Size(226, 18);
             this.chkSetXAnchorMailbox.TabIndex = 5;
             this.chkSetXAnchorMailbox.Text = "Set X-AnchorMailox header.";
             this.chkSetXAnchorMailbox.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -213,10 +209,9 @@ namespace EWSEditor.Forms
             // 
             // btnOptions
             // 
-            this.btnOptions.Location = new System.Drawing.Point(1020, 524);
-            this.btnOptions.Margin = new System.Windows.Forms.Padding(6);
+            this.btnOptions.Location = new System.Drawing.Point(510, 272);
             this.btnOptions.Name = "btnOptions";
-            this.btnOptions.Size = new System.Drawing.Size(202, 44);
+            this.btnOptions.Size = new System.Drawing.Size(101, 23);
             this.btnOptions.TabIndex = 0;
             this.btnOptions.Text = "Options";
             this.btnOptions.UseVisualStyleBackColor = true;
@@ -231,10 +226,10 @@ namespace EWSEditor.Forms
             this.panel3.Controls.Add(this.ImpersonationCheck);
             this.panel3.Controls.Add(this.lblImpId);
             this.panel3.Controls.Add(this.ImpersonatedIdTextBox);
-            this.panel3.Location = new System.Drawing.Point(1028, 3);
+            this.panel3.Location = new System.Drawing.Point(514, 2);
             this.panel3.Margin = new System.Windows.Forms.Padding(0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(507, 163);
+            this.panel3.Size = new System.Drawing.Size(254, 86);
             this.panel3.TabIndex = 2;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
@@ -242,10 +237,10 @@ namespace EWSEditor.Forms
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label5.Location = new System.Drawing.Point(6, 131);
+            this.label5.Location = new System.Drawing.Point(3, 68);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(483, 25);
+            this.label5.Size = new System.Drawing.Size(238, 13);
             this.label5.TabIndex = 15;
             this.label5.Text = "Set to mailbox being accessed for Impersonation.";
             // 
@@ -254,31 +249,28 @@ namespace EWSEditor.Forms
             this.TempConnectingIdCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempConnectingIdCombo.Enabled = false;
             this.TempConnectingIdCombo.FormattingEnabled = true;
-            this.TempConnectingIdCombo.ItemHeight = 25;
-            this.TempConnectingIdCombo.Location = new System.Drawing.Point(150, 41);
-            this.TempConnectingIdCombo.Margin = new System.Windows.Forms.Padding(6);
+            this.TempConnectingIdCombo.ItemHeight = 13;
+            this.TempConnectingIdCombo.Location = new System.Drawing.Point(75, 21);
             this.TempConnectingIdCombo.Name = "TempConnectingIdCombo";
-            this.TempConnectingIdCombo.Size = new System.Drawing.Size(202, 33);
+            this.TempConnectingIdCombo.Size = new System.Drawing.Size(103, 21);
             this.TempConnectingIdCombo.TabIndex = 2;
             // 
             // lblImpIdType
             // 
             this.lblImpIdType.AutoSize = true;
             this.lblImpIdType.Enabled = false;
-            this.lblImpIdType.Location = new System.Drawing.Point(48, 47);
-            this.lblImpIdType.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblImpIdType.Location = new System.Drawing.Point(24, 24);
             this.lblImpIdType.Name = "lblImpIdType";
-            this.lblImpIdType.Size = new System.Drawing.Size(89, 25);
+            this.lblImpIdType.Size = new System.Drawing.Size(46, 13);
             this.lblImpIdType.TabIndex = 1;
             this.lblImpIdType.Text = "Id Type:";
             // 
             // ImpersonationCheck
             // 
             this.ImpersonationCheck.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.ImpersonationCheck.Location = new System.Drawing.Point(18, 6);
-            this.ImpersonationCheck.Margin = new System.Windows.Forms.Padding(6);
+            this.ImpersonationCheck.Location = new System.Drawing.Point(9, 3);
             this.ImpersonationCheck.Name = "ImpersonationCheck";
-            this.ImpersonationCheck.Size = new System.Drawing.Size(440, 34);
+            this.ImpersonationCheck.Size = new System.Drawing.Size(220, 18);
             this.ImpersonationCheck.TabIndex = 0;
             this.ImpersonationCheck.Text = "Check if using EWS Impersonation.  ";
             this.ImpersonationCheck.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -289,10 +281,9 @@ namespace EWSEditor.Forms
             // 
             this.lblImpId.AutoSize = true;
             this.lblImpId.Enabled = false;
-            this.lblImpId.Location = new System.Drawing.Point(48, 91);
-            this.lblImpId.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblImpId.Location = new System.Drawing.Point(24, 47);
             this.lblImpId.Name = "lblImpId";
-            this.lblImpId.Size = new System.Drawing.Size(35, 25);
+            this.lblImpId.Size = new System.Drawing.Size(19, 13);
             this.lblImpId.TabIndex = 3;
             this.lblImpId.Text = "Id:";
             this.lblImpId.Click += new System.EventHandler(this.lblImpId_Click);
@@ -300,10 +291,9 @@ namespace EWSEditor.Forms
             // ImpersonatedIdTextBox
             // 
             this.ImpersonatedIdTextBox.Enabled = false;
-            this.ImpersonatedIdTextBox.Location = new System.Drawing.Point(116, 84);
-            this.ImpersonatedIdTextBox.Margin = new System.Windows.Forms.Padding(6);
+            this.ImpersonatedIdTextBox.Location = new System.Drawing.Point(58, 44);
             this.ImpersonatedIdTextBox.Name = "ImpersonatedIdTextBox";
-            this.ImpersonatedIdTextBox.Size = new System.Drawing.Size(370, 31);
+            this.ImpersonatedIdTextBox.Size = new System.Drawing.Size(187, 20);
             this.ImpersonatedIdTextBox.TabIndex = 4;
             this.ImpersonatedIdTextBox.TextChanged += new System.EventHandler(this.ImpersonatedIdTextBox_TextChanged);
             // 
@@ -320,10 +310,10 @@ namespace EWSEditor.Forms
             this.panel1.Controls.Add(this.lblAutodiscoverEmailDesc);
             this.panel1.Controls.Add(this.ExchangeServiceURLText);
             this.panel1.Controls.Add(this.AutodiscoverEmailText);
-            this.panel1.Location = new System.Drawing.Point(16, 3);
+            this.panel1.Location = new System.Drawing.Point(8, 2);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(994, 230);
+            this.panel1.Size = new System.Drawing.Size(498, 121);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -332,12 +322,12 @@ namespace EWSEditor.Forms
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.textBox1.Location = new System.Drawing.Point(6, 173);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox1.Location = new System.Drawing.Point(3, 90);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(976, 52);
+            this.textBox1.Size = new System.Drawing.Size(488, 27);
             this.textBox1.TabIndex = 12;
             this.textBox1.Text = "Note: For Autodiscover against out of network servers such as Exchange Online, yo" +
     "u should set disable SCP Autodiscover so that only POX will be used.  You can do" +
@@ -346,10 +336,9 @@ namespace EWSEditor.Forms
             // btnDefaultSmtp
             // 
             this.btnDefaultSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDefaultSmtp.Location = new System.Drawing.Point(846, 24);
-            this.btnDefaultSmtp.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDefaultSmtp.Location = new System.Drawing.Point(423, 12);
             this.btnDefaultSmtp.Name = "btnDefaultSmtp";
-            this.btnDefaultSmtp.Size = new System.Drawing.Size(140, 44);
+            this.btnDefaultSmtp.Size = new System.Drawing.Size(70, 23);
             this.btnDefaultSmtp.TabIndex = 3;
             this.btnDefaultSmtp.Text = "Default";
             this.btnDefaultSmtp.UseVisualStyleBackColor = true;
@@ -357,10 +346,9 @@ namespace EWSEditor.Forms
             // 
             // btnDefault365Settings
             // 
-            this.btnDefault365Settings.Location = new System.Drawing.Point(842, 91);
-            this.btnDefault365Settings.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDefault365Settings.Location = new System.Drawing.Point(421, 47);
             this.btnDefault365Settings.Name = "btnDefault365Settings";
-            this.btnDefault365Settings.Size = new System.Drawing.Size(140, 44);
+            this.btnDefault365Settings.Size = new System.Drawing.Size(70, 23);
             this.btnDefault365Settings.TabIndex = 8;
             this.btnDefault365Settings.Text = "365 Default";
             this.btnDefault365Settings.UseVisualStyleBackColor = true;
@@ -370,10 +358,9 @@ namespace EWSEditor.Forms
             // 
             this.rdoServiceUrl.AutoSize = true;
             this.rdoServiceUrl.Checked = true;
-            this.rdoServiceUrl.Location = new System.Drawing.Point(22, 100);
-            this.rdoServiceUrl.Margin = new System.Windows.Forms.Padding(6);
+            this.rdoServiceUrl.Location = new System.Drawing.Point(11, 52);
             this.rdoServiceUrl.Name = "rdoServiceUrl";
-            this.rdoServiceUrl.Size = new System.Drawing.Size(169, 29);
+            this.rdoServiceUrl.Size = new System.Drawing.Size(89, 17);
             this.rdoServiceUrl.TabIndex = 5;
             this.rdoServiceUrl.TabStop = true;
             this.rdoServiceUrl.Text = "Service URL:";
@@ -383,10 +370,9 @@ namespace EWSEditor.Forms
             // rdoAutodiscoverEmail
             // 
             this.rdoAutodiscoverEmail.AutoSize = true;
-            this.rdoAutodiscoverEmail.Location = new System.Drawing.Point(20, 30);
-            this.rdoAutodiscoverEmail.Margin = new System.Windows.Forms.Padding(6);
+            this.rdoAutodiscoverEmail.Location = new System.Drawing.Point(10, 16);
             this.rdoAutodiscoverEmail.Name = "rdoAutodiscoverEmail";
-            this.rdoAutodiscoverEmail.Size = new System.Drawing.Size(233, 29);
+            this.rdoAutodiscoverEmail.Size = new System.Drawing.Size(118, 17);
             this.rdoAutodiscoverEmail.TabIndex = 1;
             this.rdoAutodiscoverEmail.Text = "Autodiscover Email:";
             this.rdoAutodiscoverEmail.UseVisualStyleBackColor = true;
@@ -395,10 +381,9 @@ namespace EWSEditor.Forms
             // lblUseAutodiscoverCheck
             // 
             this.lblUseAutodiscoverCheck.AutoSize = true;
-            this.lblUseAutodiscoverCheck.Location = new System.Drawing.Point(4, 0);
-            this.lblUseAutodiscoverCheck.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblUseAutodiscoverCheck.Location = new System.Drawing.Point(2, 0);
             this.lblUseAutodiscoverCheck.Name = "lblUseAutodiscoverCheck";
-            this.lblUseAutodiscoverCheck.Size = new System.Drawing.Size(606, 25);
+            this.lblUseAutodiscoverCheck.Size = new System.Drawing.Size(303, 13);
             this.lblUseAutodiscoverCheck.TabIndex = 0;
             this.lblUseAutodiscoverCheck.Text = "Use Autodiscover or use Exchange Web Service URL directly:";
             // 
@@ -407,10 +392,10 @@ namespace EWSEditor.Forms
             this.lblExchangeServiceURLTextDesc.AutoSize = true;
             this.lblExchangeServiceURLTextDesc.Enabled = false;
             this.lblExchangeServiceURLTextDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lblExchangeServiceURLTextDesc.Location = new System.Drawing.Point(283, 137);
+            this.lblExchangeServiceURLTextDesc.Location = new System.Drawing.Point(142, 71);
             this.lblExchangeServiceURLTextDesc.Margin = new System.Windows.Forms.Padding(0);
             this.lblExchangeServiceURLTextDesc.Name = "lblExchangeServiceURLTextDesc";
-            this.lblExchangeServiceURLTextDesc.Size = new System.Drawing.Size(552, 25);
+            this.lblExchangeServiceURLTextDesc.Size = new System.Drawing.Size(281, 13);
             this.lblExchangeServiceURLTextDesc.TabIndex = 7;
             this.lblExchangeServiceURLTextDesc.Text = "Example: https://mail.contoso.com/EWS/Exchange.asmx";
             // 
@@ -418,36 +403,33 @@ namespace EWSEditor.Forms
             // 
             this.lblAutodiscoverEmailDesc.Enabled = false;
             this.lblAutodiscoverEmailDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.lblAutodiscoverEmailDesc.Location = new System.Drawing.Point(283, 66);
+            this.lblAutodiscoverEmailDesc.Location = new System.Drawing.Point(142, 34);
             this.lblAutodiscoverEmailDesc.Margin = new System.Windows.Forms.Padding(0);
             this.lblAutodiscoverEmailDesc.Name = "lblAutodiscoverEmailDesc";
-            this.lblAutodiscoverEmailDesc.Size = new System.Drawing.Size(552, 28);
+            this.lblAutodiscoverEmailDesc.Size = new System.Drawing.Size(276, 15);
             this.lblAutodiscoverEmailDesc.TabIndex = 4;
             this.lblAutodiscoverEmailDesc.Text = "Target mailbox.  Example: myuser@contoso.com";
             // 
             // ExchangeServiceURLText
             // 
-            this.ExchangeServiceURLText.Location = new System.Drawing.Point(288, 100);
-            this.ExchangeServiceURLText.Margin = new System.Windows.Forms.Padding(6);
+            this.ExchangeServiceURLText.Location = new System.Drawing.Point(144, 52);
             this.ExchangeServiceURLText.Name = "ExchangeServiceURLText";
-            this.ExchangeServiceURLText.Size = new System.Drawing.Size(546, 31);
+            this.ExchangeServiceURLText.Size = new System.Drawing.Size(275, 20);
             this.ExchangeServiceURLText.TabIndex = 6;
             this.ExchangeServiceURLText.Text = "https://outlook.office365.com/EWS/Exchange.asmx";
             // 
             // AutodiscoverEmailText
             // 
-            this.AutodiscoverEmailText.Location = new System.Drawing.Point(288, 29);
-            this.AutodiscoverEmailText.Margin = new System.Windows.Forms.Padding(6);
+            this.AutodiscoverEmailText.Location = new System.Drawing.Point(144, 15);
             this.AutodiscoverEmailText.Name = "AutodiscoverEmailText";
-            this.AutodiscoverEmailText.Size = new System.Drawing.Size(546, 31);
+            this.AutodiscoverEmailText.Size = new System.Drawing.Size(275, 20);
             this.AutodiscoverEmailText.TabIndex = 2;
             // 
             // lblVersion
             // 
-            this.lblVersion.Location = new System.Drawing.Point(8, 6);
-            this.lblVersion.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblVersion.Location = new System.Drawing.Point(4, 3);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(234, 34);
+            this.lblVersion.Size = new System.Drawing.Size(117, 18);
             this.lblVersion.TabIndex = 9;
             this.lblVersion.Text = "EWS Schema Version:";
             // 
@@ -455,10 +437,9 @@ namespace EWSEditor.Forms
             // 
             this.TempExchangeVersionCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TempExchangeVersionCombo.FormattingEnabled = true;
-            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(254, 3);
-            this.TempExchangeVersionCombo.Margin = new System.Windows.Forms.Padding(6);
+            this.TempExchangeVersionCombo.Location = new System.Drawing.Point(127, 2);
             this.TempExchangeVersionCombo.Name = "TempExchangeVersionCombo";
-            this.TempExchangeVersionCombo.Size = new System.Drawing.Size(576, 33);
+            this.TempExchangeVersionCombo.Size = new System.Drawing.Size(290, 21);
             this.TempExchangeVersionCombo.TabIndex = 10;
             // 
             // panel5
@@ -467,20 +448,19 @@ namespace EWSEditor.Forms
             this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.lblVersion);
             this.panel5.Controls.Add(this.TempExchangeVersionCombo);
-            this.panel5.Location = new System.Drawing.Point(16, 244);
+            this.panel5.Location = new System.Drawing.Point(8, 127);
             this.panel5.Margin = new System.Windows.Forms.Padding(0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(994, 77);
+            this.panel5.Size = new System.Drawing.Size(498, 41);
             this.panel5.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label3.Location = new System.Drawing.Point(8, 41);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(4, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(932, 25);
+            this.label3.Size = new System.Drawing.Size(462, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Set the version of the EWS Schema to use.  This is not the same thing as the Exch" +
     "ange version.";
@@ -492,20 +472,20 @@ namespace EWSEditor.Forms
             this.panel6.Controls.Add(this.label8);
             this.panel6.Controls.Add(this.txtXPublicFolderMailbox);
             this.panel6.Controls.Add(this.chkSetXPublicFolderMailbox);
-            this.panel6.Location = new System.Drawing.Point(1028, 382);
+            this.panel6.Location = new System.Drawing.Point(514, 199);
             this.panel6.Margin = new System.Windows.Forms.Padding(0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(507, 129);
+            this.panel6.Size = new System.Drawing.Size(254, 68);
             this.panel6.TabIndex = 7;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label7.Location = new System.Drawing.Point(6, 92);
+            this.label7.Location = new System.Drawing.Point(3, 48);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(351, 25);
+            this.label7.Size = new System.Drawing.Size(175, 13);
             this.label7.TabIndex = 17;
             this.label7.Text = "Set when accessing a public folder.";
             // 
@@ -513,29 +493,29 @@ namespace EWSEditor.Forms
             // 
             this.label8.AutoSize = true;
             this.label8.Enabled = false;
-            this.label8.Location = new System.Drawing.Point(48, 53);
+            this.label8.Location = new System.Drawing.Point(24, 28);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(77, 25);
+            this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 6;
             this.label8.Text = "SMTP:";
             // 
             // txtXPublicFolderMailbox
             // 
             this.txtXPublicFolderMailbox.Enabled = false;
-            this.txtXPublicFolderMailbox.Location = new System.Drawing.Point(136, 50);
+            this.txtXPublicFolderMailbox.Location = new System.Drawing.Point(68, 26);
             this.txtXPublicFolderMailbox.Margin = new System.Windows.Forms.Padding(0);
             this.txtXPublicFolderMailbox.Name = "txtXPublicFolderMailbox";
-            this.txtXPublicFolderMailbox.Size = new System.Drawing.Size(334, 31);
+            this.txtXPublicFolderMailbox.Size = new System.Drawing.Size(169, 20);
             this.txtXPublicFolderMailbox.TabIndex = 7;
             // 
             // chkSetXPublicFolderMailbox
             // 
             this.chkSetXPublicFolderMailbox.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.chkSetXPublicFolderMailbox.Location = new System.Drawing.Point(6, 8);
+            this.chkSetXPublicFolderMailbox.Location = new System.Drawing.Point(3, 4);
             this.chkSetXPublicFolderMailbox.Margin = new System.Windows.Forms.Padding(0);
             this.chkSetXPublicFolderMailbox.Name = "chkSetXPublicFolderMailbox";
-            this.chkSetXPublicFolderMailbox.Size = new System.Drawing.Size(544, 42);
+            this.chkSetXPublicFolderMailbox.Size = new System.Drawing.Size(272, 22);
             this.chkSetXPublicFolderMailbox.TabIndex = 5;
             this.chkSetXPublicFolderMailbox.Text = "Set X-PublicFolderMailbox header.";
             this.chkSetXPublicFolderMailbox.TextAlign = System.Drawing.ContentAlignment.TopLeft;
@@ -547,12 +527,12 @@ namespace EWSEditor.Forms
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.ForeColor = System.Drawing.Color.Red;
-            this.textBox2.Location = new System.Drawing.Point(1018, 587);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox2.Location = new System.Drawing.Point(509, 305);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(496, 98);
+            this.textBox2.Size = new System.Drawing.Size(248, 51);
             this.textBox2.TabIndex = 19;
             this.textBox2.Text = "Note: For delegate access: Log in as the delegate then the tree menu select \"Add " +
     "Root Folder...\".  Use one of the options to add the folder of the mailbox to the" +
@@ -563,12 +543,12 @@ namespace EWSEditor.Forms
             this.textBox3.BackColor = System.Drawing.SystemColors.Control;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.ForeColor = System.Drawing.Color.Red;
-            this.textBox3.Location = new System.Drawing.Point(1019, 691);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.textBox3.Location = new System.Drawing.Point(510, 359);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(516, 100);
+            this.textBox3.Size = new System.Drawing.Size(258, 52);
             this.textBox3.TabIndex = 20;
             this.textBox3.Text = "Note: It\'s best to set the X-AnchorMailbox header for Impersonation - it resolves" +
     " a lot of issue.  It also can help with delegate access..";
@@ -577,40 +557,40 @@ namespace EWSEditor.Forms
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Enabled = false;
-            this.lblUserName.Location = new System.Drawing.Point(57, 86);
+            this.lblUserName.Location = new System.Drawing.Point(28, 45);
             this.lblUserName.Margin = new System.Windows.Forms.Padding(0);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(63, 25);
+            this.lblUserName.Size = new System.Drawing.Size(32, 13);
             this.lblUserName.TabIndex = 2;
             this.lblUserName.Text = "User:";
             // 
             // txtUserName
             // 
             this.txtUserName.Enabled = false;
-            this.txtUserName.Location = new System.Drawing.Point(186, 83);
+            this.txtUserName.Location = new System.Drawing.Point(93, 43);
             this.txtUserName.Margin = new System.Windows.Forms.Padding(0);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(251, 31);
+            this.txtUserName.Size = new System.Drawing.Size(128, 20);
             this.txtUserName.TabIndex = 3;
             // 
             // txtPassword
             // 
             this.txtPassword.Enabled = false;
-            this.txtPassword.Location = new System.Drawing.Point(712, 83);
+            this.txtPassword.Location = new System.Drawing.Point(356, 43);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(0);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(185, 31);
+            this.txtPassword.Size = new System.Drawing.Size(94, 20);
             this.txtPassword.TabIndex = 6;
             // 
             // lblDomain
             // 
             this.lblDomain.AutoSize = true;
             this.lblDomain.Enabled = false;
-            this.lblDomain.Location = new System.Drawing.Point(56, 120);
+            this.lblDomain.Location = new System.Drawing.Point(28, 62);
             this.lblDomain.Margin = new System.Windows.Forms.Padding(0);
             this.lblDomain.Name = "lblDomain";
-            this.lblDomain.Size = new System.Drawing.Size(91, 25);
+            this.lblDomain.Size = new System.Drawing.Size(46, 13);
             this.lblDomain.TabIndex = 7;
             this.lblDomain.Text = "Domain:";
             // 
@@ -618,10 +598,10 @@ namespace EWSEditor.Forms
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Enabled = false;
-            this.lblPassword.Location = new System.Drawing.Point(600, 86);
+            this.lblPassword.Location = new System.Drawing.Point(300, 45);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(112, 25);
+            this.lblPassword.Size = new System.Drawing.Size(56, 13);
             this.lblPassword.TabIndex = 5;
             this.lblPassword.Text = "Password:";
             // 
@@ -629,28 +609,28 @@ namespace EWSEditor.Forms
             // 
             this.lblExImp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblExImp.AutoSize = true;
-            this.lblExImp.Location = new System.Drawing.Point(76, 326);
+            this.lblExImp.Location = new System.Drawing.Point(38, 170);
             this.lblExImp.Margin = new System.Windows.Forms.Padding(0);
             this.lblExImp.Name = "lblExImp";
-            this.lblExImp.Size = new System.Drawing.Size(0, 25);
+            this.lblExImp.Size = new System.Drawing.Size(0, 13);
             this.lblExImp.TabIndex = 7;
             // 
             // txtDomain
             // 
             this.txtDomain.Enabled = false;
-            this.txtDomain.Location = new System.Drawing.Point(186, 114);
+            this.txtDomain.Location = new System.Drawing.Point(93, 59);
             this.txtDomain.Margin = new System.Windows.Forms.Padding(0);
             this.txtDomain.Name = "txtDomain";
-            this.txtDomain.Size = new System.Drawing.Size(251, 31);
+            this.txtDomain.Size = new System.Drawing.Size(128, 20);
             this.txtDomain.TabIndex = 8;
             // 
             // rdoCredentialsUserSpecified
             // 
             this.rdoCredentialsUserSpecified.AutoSize = true;
-            this.rdoCredentialsUserSpecified.Location = new System.Drawing.Point(12, 41);
+            this.rdoCredentialsUserSpecified.Location = new System.Drawing.Point(6, 21);
             this.rdoCredentialsUserSpecified.Margin = new System.Windows.Forms.Padding(0);
             this.rdoCredentialsUserSpecified.Name = "rdoCredentialsUserSpecified";
-            this.rdoCredentialsUserSpecified.Size = new System.Drawing.Size(735, 29);
+            this.rdoCredentialsUserSpecified.Size = new System.Drawing.Size(366, 17);
             this.rdoCredentialsUserSpecified.TabIndex = 1;
             this.rdoCredentialsUserSpecified.Text = "Use the following credentials instead of the default Windows credentials.";
             this.rdoCredentialsUserSpecified.UseVisualStyleBackColor = true;
@@ -659,10 +639,9 @@ namespace EWSEditor.Forms
             // rdoCredentialsOAuth
             // 
             this.rdoCredentialsOAuth.AutoSize = true;
-            this.rdoCredentialsOAuth.Location = new System.Drawing.Point(12, 210);
-            this.rdoCredentialsOAuth.Margin = new System.Windows.Forms.Padding(6);
+            this.rdoCredentialsOAuth.Location = new System.Drawing.Point(6, 109);
             this.rdoCredentialsOAuth.Name = "rdoCredentialsOAuth";
-            this.rdoCredentialsOAuth.Size = new System.Drawing.Size(149, 29);
+            this.rdoCredentialsOAuth.Size = new System.Drawing.Size(78, 17);
             this.rdoCredentialsOAuth.TabIndex = 11;
             this.rdoCredentialsOAuth.Text = "Use oAuth ";
             this.rdoCredentialsOAuth.UseVisualStyleBackColor = true;
@@ -671,10 +650,10 @@ namespace EWSEditor.Forms
             // label4
             // 
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label4.Location = new System.Drawing.Point(56, 182);
+            this.label4.Location = new System.Drawing.Point(28, 95);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(892, 36);
+            this.label4.Size = new System.Drawing.Size(446, 19);
             this.label4.TabIndex = 10;
             this.label4.Text = "Use credentials of mailbox being accessed or the those of the EWS Impersonation a" +
     "ccount.";
@@ -683,10 +662,10 @@ namespace EWSEditor.Forms
             // rdoCredentialsDefaultWindows
             // 
             this.rdoCredentialsDefaultWindows.AutoSize = true;
-            this.rdoCredentialsDefaultWindows.Location = new System.Drawing.Point(12, 6);
+            this.rdoCredentialsDefaultWindows.Location = new System.Drawing.Point(6, 3);
             this.rdoCredentialsDefaultWindows.Margin = new System.Windows.Forms.Padding(0);
             this.rdoCredentialsDefaultWindows.Name = "rdoCredentialsDefaultWindows";
-            this.rdoCredentialsDefaultWindows.Size = new System.Drawing.Size(270, 29);
+            this.rdoCredentialsDefaultWindows.Size = new System.Drawing.Size(136, 17);
             this.rdoCredentialsDefaultWindows.TabIndex = 0;
             this.rdoCredentialsDefaultWindows.Text = "Use Default Credentails";
             this.rdoCredentialsDefaultWindows.UseVisualStyleBackColor = true;
@@ -695,10 +674,10 @@ namespace EWSEditor.Forms
             // txtOAuthRedirectUri
             // 
             this.txtOAuthRedirectUri.Enabled = false;
-            this.txtOAuthRedirectUri.Location = new System.Drawing.Point(217, 248);
+            this.txtOAuthRedirectUri.Location = new System.Drawing.Point(108, 129);
             this.txtOAuthRedirectUri.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthRedirectUri.Name = "txtOAuthRedirectUri";
-            this.txtOAuthRedirectUri.Size = new System.Drawing.Size(688, 31);
+            this.txtOAuthRedirectUri.Size = new System.Drawing.Size(346, 20);
             this.txtOAuthRedirectUri.TabIndex = 15;
             this.txtOAuthRedirectUri.Text = "https://microsoft.com/EwsEditor";
             this.txtOAuthRedirectUri.TextChanged += new System.EventHandler(this.txtOAuthRedirectUri_TextChanged);
@@ -707,10 +686,10 @@ namespace EWSEditor.Forms
             // 
             this.lblOAuthAppId.AutoSize = true;
             this.lblOAuthAppId.Enabled = false;
-            this.lblOAuthAppId.Location = new System.Drawing.Point(56, 285);
+            this.lblOAuthAppId.Location = new System.Drawing.Point(28, 148);
             this.lblOAuthAppId.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthAppId.Name = "lblOAuthAppId";
-            this.lblOAuthAppId.Size = new System.Drawing.Size(143, 25);
+            this.lblOAuthAppId.Size = new System.Drawing.Size(72, 13);
             this.lblOAuthAppId.TabIndex = 16;
             this.lblOAuthAppId.Text = "Client App ID:";
             // 
@@ -718,20 +697,20 @@ namespace EWSEditor.Forms
             // 
             this.lblOAuthRedirectUri.AutoSize = true;
             this.lblOAuthRedirectUri.Enabled = false;
-            this.lblOAuthRedirectUri.Location = new System.Drawing.Point(52, 257);
+            this.lblOAuthRedirectUri.Location = new System.Drawing.Point(26, 134);
             this.lblOAuthRedirectUri.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthRedirectUri.Name = "lblOAuthRedirectUri";
-            this.lblOAuthRedirectUri.Size = new System.Drawing.Size(139, 25);
+            this.lblOAuthRedirectUri.Size = new System.Drawing.Size(72, 13);
             this.lblOAuthRedirectUri.TabIndex = 13;
             this.lblOAuthRedirectUri.Text = "Redirect URI:";
             // 
             // txtOAuthAppId
             // 
             this.txtOAuthAppId.Enabled = false;
-            this.txtOAuthAppId.Location = new System.Drawing.Point(217, 279);
+            this.txtOAuthAppId.Location = new System.Drawing.Point(108, 145);
             this.txtOAuthAppId.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthAppId.Name = "txtOAuthAppId";
-            this.txtOAuthAppId.Size = new System.Drawing.Size(688, 31);
+            this.txtOAuthAppId.Size = new System.Drawing.Size(346, 20);
             this.txtOAuthAppId.TabIndex = 18;
             this.txtOAuthAppId.Text = "0e4bf2e2-aa7d-46e8-aa12-263adeb3a62b";
             // 
@@ -739,20 +718,20 @@ namespace EWSEditor.Forms
             // 
             this.lblOAuthServerName.AutoSize = true;
             this.lblOAuthServerName.Enabled = false;
-            this.lblOAuthServerName.Location = new System.Drawing.Point(56, 319);
+            this.lblOAuthServerName.Location = new System.Drawing.Point(28, 166);
             this.lblOAuthServerName.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthServerName.Name = "lblOAuthServerName";
-            this.lblOAuthServerName.Size = new System.Drawing.Size(143, 25);
+            this.lblOAuthServerName.Size = new System.Drawing.Size(72, 13);
             this.lblOAuthServerName.TabIndex = 19;
             this.lblOAuthServerName.Text = "Server Name:";
             // 
             // txtOAuthServerName
             // 
             this.txtOAuthServerName.Enabled = false;
-            this.txtOAuthServerName.Location = new System.Drawing.Point(218, 310);
+            this.txtOAuthServerName.Location = new System.Drawing.Point(109, 161);
             this.txtOAuthServerName.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthServerName.Name = "txtOAuthServerName";
-            this.txtOAuthServerName.Size = new System.Drawing.Size(688, 31);
+            this.txtOAuthServerName.Size = new System.Drawing.Size(346, 20);
             this.txtOAuthServerName.TabIndex = 21;
             this.txtOAuthServerName.Text = "https://outlook.office365.com";
             // 
@@ -760,40 +739,39 @@ namespace EWSEditor.Forms
             // 
             this.lblOAuthAuthority.AutoSize = true;
             this.lblOAuthAuthority.Enabled = false;
-            this.lblOAuthAuthority.Location = new System.Drawing.Point(56, 349);
+            this.lblOAuthAuthority.Location = new System.Drawing.Point(28, 181);
             this.lblOAuthAuthority.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthAuthority.Name = "lblOAuthAuthority";
-            this.lblOAuthAuthority.Size = new System.Drawing.Size(153, 25);
+            this.lblOAuthAuthority.Size = new System.Drawing.Size(76, 13);
             this.lblOAuthAuthority.TabIndex = 22;
             this.lblOAuthAuthority.Text = "Auth Authority:";
             // 
             // txtOAuthAuthority
             // 
             this.txtOAuthAuthority.Enabled = false;
-            this.txtOAuthAuthority.Location = new System.Drawing.Point(218, 341);
+            this.txtOAuthAuthority.Location = new System.Drawing.Point(109, 177);
             this.txtOAuthAuthority.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthAuthority.Name = "txtOAuthAuthority";
-            this.txtOAuthAuthority.Size = new System.Drawing.Size(688, 31);
+            this.txtOAuthAuthority.Size = new System.Drawing.Size(346, 20);
             this.txtOAuthAuthority.TabIndex = 24;
             this.txtOAuthAuthority.Text = "https://login.windows.net/common";
             // 
             // label2
             // 
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label2.Location = new System.Drawing.Point(56, 154);
+            this.label2.Location = new System.Drawing.Point(28, 80);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(798, 28);
+            this.label2.Size = new System.Drawing.Size(399, 15);
             this.label2.TabIndex = 9;
             this.label2.Text = "Suggestion: Use UPN/SMTP address and no domain for Outlook 365.";
             // 
             // btnDefaultUserNameSmtp
             // 
             this.btnDefaultUserNameSmtp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDefaultUserNameSmtp.Location = new System.Drawing.Point(443, 80);
-            this.btnDefaultUserNameSmtp.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDefaultUserNameSmtp.Location = new System.Drawing.Point(222, 42);
             this.btnDefaultUserNameSmtp.Name = "btnDefaultUserNameSmtp";
-            this.btnDefaultUserNameSmtp.Size = new System.Drawing.Size(124, 36);
+            this.btnDefaultUserNameSmtp.Size = new System.Drawing.Size(62, 19);
             this.btnDefaultUserNameSmtp.TabIndex = 4;
             this.btnDefaultUserNameSmtp.Text = "Default";
             this.btnDefaultUserNameSmtp.UseVisualStyleBackColor = true;
@@ -802,9 +780,10 @@ namespace EWSEditor.Forms
             // lblEWSOauthDocs
             // 
             this.lblEWSOauthDocs.AutoSize = true;
-            this.lblEWSOauthDocs.Location = new System.Drawing.Point(212, 218);
+            this.lblEWSOauthDocs.Location = new System.Drawing.Point(106, 113);
+            this.lblEWSOauthDocs.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEWSOauthDocs.Name = "lblEWSOauthDocs";
-            this.lblEWSOauthDocs.Size = new System.Drawing.Size(446, 25);
+            this.lblEWSOauthDocs.Size = new System.Drawing.Size(219, 13);
             this.lblEWSOauthDocs.TabIndex = 12;
             this.lblEWSOauthDocs.TabStop = true;
             this.lblEWSOauthDocs.Text = "(Registration must have been completed first)";
@@ -814,10 +793,9 @@ namespace EWSEditor.Forms
             // 
             this.rdoCredentialsOAuthDelegated.AutoSize = true;
             this.rdoCredentialsOAuthDelegated.Checked = true;
-            this.rdoCredentialsOAuthDelegated.Location = new System.Drawing.Point(4, 33);
-            this.rdoCredentialsOAuthDelegated.Margin = new System.Windows.Forms.Padding(6);
+            this.rdoCredentialsOAuthDelegated.Location = new System.Drawing.Point(2, 17);
             this.rdoCredentialsOAuthDelegated.Name = "rdoCredentialsOAuthDelegated";
-            this.rdoCredentialsOAuthDelegated.Size = new System.Drawing.Size(141, 29);
+            this.rdoCredentialsOAuthDelegated.Size = new System.Drawing.Size(74, 17);
             this.rdoCredentialsOAuthDelegated.TabIndex = 0;
             this.rdoCredentialsOAuthDelegated.TabStop = true;
             this.rdoCredentialsOAuthDelegated.Text = "Delegated";
@@ -828,60 +806,59 @@ namespace EWSEditor.Forms
             // 
             this.lblOAuthApplicationId.AutoSize = true;
             this.lblOAuthApplicationId.Enabled = false;
-            this.lblOAuthApplicationId.Location = new System.Drawing.Point(56, 524);
+            this.lblOAuthApplicationId.Location = new System.Drawing.Point(28, 272);
             this.lblOAuthApplicationId.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthApplicationId.Name = "lblOAuthApplicationId";
-            this.lblOAuthApplicationId.Size = new System.Drawing.Size(143, 25);
+            this.lblOAuthApplicationId.Size = new System.Drawing.Size(72, 13);
             this.lblOAuthApplicationId.TabIndex = 29;
             this.lblOAuthApplicationId.Text = "Client App ID:";
             // 
             // txtOAuthApplicationId
             // 
             this.txtOAuthApplicationId.Enabled = false;
-            this.txtOAuthApplicationId.Location = new System.Drawing.Point(218, 521);
+            this.txtOAuthApplicationId.Location = new System.Drawing.Point(109, 271);
             this.txtOAuthApplicationId.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthApplicationId.Name = "txtOAuthApplicationId";
-            this.txtOAuthApplicationId.Size = new System.Drawing.Size(688, 31);
+            this.txtOAuthApplicationId.Size = new System.Drawing.Size(346, 20);
             this.txtOAuthApplicationId.TabIndex = 31;
             // 
             // lblOAuthTenantId
             // 
             this.lblOAuthTenantId.AutoSize = true;
             this.lblOAuthTenantId.Enabled = false;
-            this.lblOAuthTenantId.Location = new System.Drawing.Point(57, 561);
+            this.lblOAuthTenantId.Location = new System.Drawing.Point(28, 292);
             this.lblOAuthTenantId.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthTenantId.Name = "lblOAuthTenantId";
-            this.lblOAuthTenantId.Size = new System.Drawing.Size(111, 25);
+            this.lblOAuthTenantId.Size = new System.Drawing.Size(58, 13);
             this.lblOAuthTenantId.TabIndex = 32;
             this.lblOAuthTenantId.Text = "Tenant ID:";
             // 
             // txtOAuthTenantId
             // 
             this.txtOAuthTenantId.Enabled = false;
-            this.txtOAuthTenantId.Location = new System.Drawing.Point(218, 555);
+            this.txtOAuthTenantId.Location = new System.Drawing.Point(109, 289);
             this.txtOAuthTenantId.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthTenantId.Name = "txtOAuthTenantId";
-            this.txtOAuthTenantId.Size = new System.Drawing.Size(688, 31);
+            this.txtOAuthTenantId.Size = new System.Drawing.Size(346, 20);
             this.txtOAuthTenantId.TabIndex = 33;
             // 
             // lblOAuthClientSecret
             // 
             this.lblOAuthClientSecret.AutoSize = true;
             this.lblOAuthClientSecret.Enabled = false;
-            this.lblOAuthClientSecret.Location = new System.Drawing.Point(56, 595);
+            this.lblOAuthClientSecret.Location = new System.Drawing.Point(28, 309);
             this.lblOAuthClientSecret.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthClientSecret.Name = "lblOAuthClientSecret";
-            this.lblOAuthClientSecret.Size = new System.Drawing.Size(141, 25);
+            this.lblOAuthClientSecret.Size = new System.Drawing.Size(70, 13);
             this.lblOAuthClientSecret.TabIndex = 0;
             this.lblOAuthClientSecret.Text = "Client Secret:";
             // 
             // rdoCredentialsOAuthApplication
             // 
             this.rdoCredentialsOAuthApplication.AutoSize = true;
-            this.rdoCredentialsOAuthApplication.Location = new System.Drawing.Point(276, 33);
-            this.rdoCredentialsOAuthApplication.Margin = new System.Windows.Forms.Padding(6);
+            this.rdoCredentialsOAuthApplication.Location = new System.Drawing.Point(138, 17);
             this.rdoCredentialsOAuthApplication.Name = "rdoCredentialsOAuthApplication";
-            this.rdoCredentialsOAuthApplication.Size = new System.Drawing.Size(149, 29);
+            this.rdoCredentialsOAuthApplication.Size = new System.Drawing.Size(77, 17);
             this.rdoCredentialsOAuthApplication.TabIndex = 1;
             this.rdoCredentialsOAuthApplication.Tag = " ";
             this.rdoCredentialsOAuthApplication.Text = "Application";
@@ -925,20 +902,18 @@ namespace EWSEditor.Forms
             this.panel2.Controls.Add(this.txtPassword);
             this.panel2.Controls.Add(this.txtUserName);
             this.panel2.Controls.Add(this.lblUserName);
-            this.panel2.Location = new System.Drawing.Point(16, 328);
-            this.panel2.Margin = new System.Windows.Forms.Padding(6);
+            this.panel2.Location = new System.Drawing.Point(8, 171);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(992, 666);
+            this.panel2.Size = new System.Drawing.Size(497, 347);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // BtnLoadCertificate
             // 
             this.BtnLoadCertificate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnLoadCertificate.Location = new System.Drawing.Point(842, 617);
-            this.BtnLoadCertificate.Margin = new System.Windows.Forms.Padding(6);
+            this.BtnLoadCertificate.Location = new System.Drawing.Point(421, 321);
             this.BtnLoadCertificate.Name = "BtnLoadCertificate";
-            this.BtnLoadCertificate.Size = new System.Drawing.Size(64, 31);
+            this.BtnLoadCertificate.Size = new System.Drawing.Size(32, 16);
             this.BtnLoadCertificate.TabIndex = 4;
             this.BtnLoadCertificate.Text = ". . .";
             this.BtnLoadCertificate.UseVisualStyleBackColor = true;
@@ -948,10 +923,10 @@ namespace EWSEditor.Forms
             // txtAuthCertificatePath
             // 
             this.txtAuthCertificatePath.Enabled = false;
-            this.txtAuthCertificatePath.Location = new System.Drawing.Point(218, 617);
+            this.txtAuthCertificatePath.Location = new System.Drawing.Point(109, 321);
             this.txtAuthCertificatePath.Margin = new System.Windows.Forms.Padding(0);
             this.txtAuthCertificatePath.Name = "txtAuthCertificatePath";
-            this.txtAuthCertificatePath.Size = new System.Drawing.Size(609, 31);
+            this.txtAuthCertificatePath.Size = new System.Drawing.Size(306, 20);
             this.txtAuthCertificatePath.TabIndex = 3;
             this.txtAuthCertificatePath.Visible = false;
             // 
@@ -959,10 +934,10 @@ namespace EWSEditor.Forms
             // 
             this.label10.AutoSize = true;
             this.label10.Enabled = false;
-            this.label10.Location = new System.Drawing.Point(56, 620);
+            this.label10.Location = new System.Drawing.Point(28, 322);
             this.label10.Margin = new System.Windows.Forms.Padding(0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(115, 25);
+            this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 2;
             this.label10.Text = "Certificate:";
             this.label10.Visible = false;
@@ -971,10 +946,9 @@ namespace EWSEditor.Forms
             // 
             this.rdoCredentialsOAuth2.AutoSize = true;
             this.rdoCredentialsOAuth2.Checked = true;
-            this.rdoCredentialsOAuth2.Location = new System.Drawing.Point(20, 393);
-            this.rdoCredentialsOAuth2.Margin = new System.Windows.Forms.Padding(6);
+            this.rdoCredentialsOAuth2.Location = new System.Drawing.Point(10, 204);
             this.rdoCredentialsOAuth2.Name = "rdoCredentialsOAuth2";
-            this.rdoCredentialsOAuth2.Size = new System.Drawing.Size(257, 29);
+            this.rdoCredentialsOAuth2.Size = new System.Drawing.Size(131, 17);
             this.rdoCredentialsOAuth2.TabIndex = 25;
             this.rdoCredentialsOAuth2.TabStop = true;
             this.rdoCredentialsOAuth2.Text = "Use oAuth 2.0 (MSAL)";
@@ -985,9 +959,11 @@ namespace EWSEditor.Forms
             this.groupBox1.Controls.Add(this.rdoCredentialsOAuthCertificate);
             this.groupBox1.Controls.Add(this.rdoCredentialsOAuthDelegated);
             this.groupBox1.Controls.Add(this.rdoCredentialsOAuthApplication);
-            this.groupBox1.Location = new System.Drawing.Point(57, 431);
+            this.groupBox1.Location = new System.Drawing.Point(28, 224);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(769, 75);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(384, 39);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Authentication Flow";
@@ -996,10 +972,9 @@ namespace EWSEditor.Forms
             // 
             this.rdoCredentialsOAuthCertificate.AutoSize = true;
             this.rdoCredentialsOAuthCertificate.Enabled = false;
-            this.rdoCredentialsOAuthCertificate.Location = new System.Drawing.Point(556, 33);
-            this.rdoCredentialsOAuthCertificate.Margin = new System.Windows.Forms.Padding(6);
+            this.rdoCredentialsOAuthCertificate.Location = new System.Drawing.Point(278, 17);
             this.rdoCredentialsOAuthCertificate.Name = "rdoCredentialsOAuthCertificate";
-            this.rdoCredentialsOAuthCertificate.Size = new System.Drawing.Size(140, 29);
+            this.rdoCredentialsOAuthCertificate.Size = new System.Drawing.Size(72, 17);
             this.rdoCredentialsOAuthCertificate.TabIndex = 2;
             this.rdoCredentialsOAuthCertificate.Tag = " ";
             this.rdoCredentialsOAuthCertificate.Text = "Certificate";
@@ -1010,18 +985,19 @@ namespace EWSEditor.Forms
             // txtOAuthClientSecret
             // 
             this.txtOAuthClientSecret.Enabled = false;
-            this.txtOAuthClientSecret.Location = new System.Drawing.Point(218, 586);
+            this.txtOAuthClientSecret.Location = new System.Drawing.Point(109, 305);
             this.txtOAuthClientSecret.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthClientSecret.Name = "txtOAuthClientSecret";
-            this.txtOAuthClientSecret.Size = new System.Drawing.Size(688, 31);
+            this.txtOAuthClientSecret.Size = new System.Drawing.Size(346, 20);
             this.txtOAuthClientSecret.TabIndex = 1;
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(316, 393);
+            this.linkLabel1.Location = new System.Drawing.Point(158, 204);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(446, 25);
+            this.linkLabel1.Size = new System.Drawing.Size(219, 13);
             this.linkLabel1.TabIndex = 27;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "(Registration must have been completed first)";
@@ -1030,10 +1006,10 @@ namespace EWSEditor.Forms
             // ServiceDialog
             // 
             this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1547, 1000);
+            this.ClientSize = new System.Drawing.Size(788, 513);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.panel6);
@@ -1046,7 +1022,7 @@ namespace EWSEditor.Forms
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "ServiceDialog";
             this.Text = "EWS Editor - Exchange Service Configuration";
             this.Load += new System.EventHandler(this.ServiceDialog_Load);
