@@ -205,6 +205,15 @@ namespace EWSEditor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to X-AnchorMailbox should always be set when Impersonation is used or calls may fail at any time when EWS is used against O365 Exchange..
+        /// </summary>
+        internal static string WARN_IMPERSONATION_NEEDS_XANCHORMAILBOX {
+            get {
+                return ResourceManager.GetString("WARN_IMPERSONATION_NEEDS_XANCHORMAILBOX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EWSEditor does not currently display more than 1000 items in the contents view.  This folder has more items in it, only the first 1000 are displayed..
         /// </summary>
         internal static string WARN_ITEM_VIEW_COUNT_LIMIT {

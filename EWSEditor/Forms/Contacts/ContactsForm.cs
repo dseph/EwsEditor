@@ -103,7 +103,7 @@ namespace EWSEditor.Forms
                 ContactSchema.Isdn,
                 ContactSchema.IsDraft,
                 ContactSchema.IsFromMe,
-                ContactSchema.IsReminderSet,
+                //ContactSchema.IsReminderSet,   duplicate
                 ContactSchema.IsReminderSet,
                 ContactSchema.IsResend,
                 ContactSchema.IsSubmitted,

@@ -138,6 +138,12 @@ namespace EWSEditor.Forms
                 return;
             }
 
+            // Impersonation should always need X-AnchorMailbox header set or call will fail at any time.
+            if (this.ImpersonationCheck.Checked == true && this.chkSetXAnchorMailbox.Checked == false)
+            {
+                ErrorDialog.ShowInfo(DisplayStrings.WARN_IMPERSONATION_NEEDS_XANCHORMAILBOX);
+            }
+
             try
             {
                 Cursor = System.Windows.Forms.Cursors.WaitCursor;

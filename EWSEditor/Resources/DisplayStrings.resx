@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="FailCreateLogFileException" xml:space="preserve">
     <value>Unable to create EWSEditor log file at {0}.  Logging will be disabled for this session.</value>
@@ -144,8 +144,6 @@
   <data name="MSG_XANCHORMAILBOX_FOR_APP_PERMISSIONS_FLOW" xml:space="preserve">
     <value>Application permissions flow requires the X-AnchorMailbox header to be set.</value>
   </data>
-
-
   <data name="TITLE_CONTENTS_ASSOC" xml:space="preserve">
     <value>Associated items in {0}</value>
   </data>
@@ -178,5 +176,8 @@
   </data>
   <data name="WARN_SELECT_SCHEMA_PROPS" xml:space="preserve">
     <value>Please select individual schema properties, not a schema name.</value>
+  </data>
+  <data name="WARN_IMPERSONATION_NEEDS_XANCHORMAILBOX" xml:space="preserve">
+    <value>X-AnchorMailbox should always be set when Impersonation is used or calls may fail at any time when EWS is used against O365 Exchange.</value>
   </data>
 </root>
