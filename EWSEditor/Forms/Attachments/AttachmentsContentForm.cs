@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using EWSEditor.Logging;
 using Microsoft.Exchange.WebServices.Data;
+using System.Text;
 using EWSEditor.Common;
 
 // Note:  Its not possible to Copy or Move an attachment directly. Move, Copy are only valid operations 
@@ -173,9 +174,14 @@ namespace EWSEditor.Forms
                 return;
             }
 
+            this.Cursor = Cursors.WaitCursor;
+
+            System.Diagnostics.Debug.WriteLine("ItemClass of Mesage: " + currentParentItem.ItemClass);
+             
+
             // If the attachment is a FileAttachment then simply save the content
             FileAttachment fileAttach = attach as FileAttachment;
-            if (fileAttach != null)
+            if (fileAttach != null) 
             {
                 if (fileAttach.Content == null)
                 {
@@ -208,10 +214,135 @@ namespace EWSEditor.Forms
                     try
                     {
                         this.Cursor = Cursors.WaitCursor;
+                        //if (currentParentItem.ItemClass == "")
+                        //{
+                        //}
 
-                        EWSEditor.Common.DumpHelper.DumpXML(
-                            itemAttachment.Item,
-                            fileName);
+                        // Note that not everything has a MIME type. An NDR does not have one, so MIME conversion will fail.
+                        // Save an attached email by using the EWS Managed API
+                        //      https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-get-attachments-by-using-ews-in-exchange
+                        string sMIME = string.Empty;
+
+                        //System.Diagnostics.Debug.WriteLine("ItemClass of Mesage: " + currentParentItem.ItemClass);
+
+                        try  
+                        {
+                            itemAttachment.Load(ItemSchema.MimeContent);
+
+                             
+
+                            //UTF8Encoding oUTF8Encoding = new UTF8Encoding();                            // For debugging
+                            //sMIME = oUTF8Encoding.GetString(itemAttachment.Item.MimeContent.Content);   // For debugging
+
+                            System.IO.File.WriteAllBytes(fileName, itemAttachment.Item.MimeContent.Content);
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+      
+                        //string sFolderPath = System.IO.Path.GetPathRoot(fileName);
+                        //string sFilePath = System.IO.Path.GetFileName(fileName);
+
+                        //EWSEditor.Common.DumpHelper.DumpXMLbyFileName(
+                        //    itemAttachment.Item,
+                        //    sFolderPath,
+                        //    sFilePath);
+                    }
+                    finally
+                    {
+                        this.Cursor = Cursors.Default;
+                    }
+
+                    this.Cursor = Cursors.WaitCursor;
+
+                    // An Item Attachment may have attachemnets also - so, save them off also.  Things like NDR messages contain the origional message.
+                    try
+                    {
+                        this.Cursor = Cursors.WaitCursor; 
+
+                        // Save an attached email by using the EWS Managed API
+                        // https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-get-attachments-by-using-ews-in-exchange
+ 
+                        // Code to save message attachment sub-items.  This will work for journaled messages.
+                        int iSub1AttachCount = 0;
+                        if (itemAttachment.Item.Attachments.Count > 0)
+                        {
+                            foreach (Attachment Sub1Attachment in itemAttachment.Item.Attachments)
+                            {
+
+                                ItemAttachment Sub1ItemAttachment = Sub1Attachment as ItemAttachment;
+                                if (Sub1ItemAttachment != null)
+                                {
+                                    iSub1AttachCount++;
+
+                                    try
+                                    {
+                                        Sub1ItemAttachment.Load(ItemSchema.MimeContent);  // if MIME can be pulled then save it.  not all types have a MIME equivilent.
+
+                                        System.IO.File.WriteAllBytes(fileName + " - " + iSub1AttachCount.ToString(), Sub1ItemAttachment.Item.MimeContent.Content);
+                                    }
+                                    finally
+                                    {
+                                    }
+                                }
+                            }
+
+                            
+                            //int iSub2AttachCount = 0;
+                            //foreach (ItemAttachment o in itemAttachment.Item.Attachments)
+                            //{
+
+                            //    ItemAttachment itemSubAttachment = o as ItemAttachment;
+                            //    if (itemAttachment != null)
+                            //    {
+                            //        iSub2AttachCount++;
+
+                            //        try
+                            //        {
+                            //            //o.Load(ItemSchema.MimeContent);  // if MIME can be pulled then save it.  not all types have a MIME equivilent.
+
+                            //            //System.IO.File.WriteAllBytes(fileName + " - ItemAttachment " + iSubAttachCount.ToString(), itemAttachment.Item.MimeContent.Content);
+
+                            //            //int iSub2AttachCount = 0;
+
+                            //            //foreach (ItemAttachment o2 in o.Item.Attachments)
+                            //            //{
+
+                            //            //    ItemAttachment itemSub2Attachment = o2 as ItemAttachment;
+                            //            //    if (itemAttachment != null)
+                            //            //    {
+                            //            //        iSub2AttachCount++;
+
+                            //            //        try
+                            //            //        {
+                            //            //            itemAttachment.Load(ItemSchema.MimeContent);  // if MIME can be pulled then save it.  not all types have a MIME equivilent.
+
+                            //            //            System.IO.File.WriteAllBytes(fileName + " - ItemAttachment " + iSub2AttachCount.ToString(), itemAttachment.Item.MimeContent.Content);
+                            //            //        }
+                            //            //        finally
+                            //            //        {
+                            //            //        }
+                            //            //    }
+                            //            //}
+                            //        }
+                            //        finally
+                            //        {
+                            //        }
+                            //    }
+                            //}
+                        }
+
+                        this.Cursor = Cursors.Default;
+
+                        string sFolderPath = System.IO.Path.GetPathRoot(fileName);
+                        string sFilePath =  System.IO.Path.GetFileName(fileName);
+
+                        //EWSEditor.Common.DumpHelper.DumpXMLbyFileName(
+                        //    itemAttachment.Item,
+                        //    sFolderPath,
+                        //    sFilePath);
                     }
                     finally
                     {

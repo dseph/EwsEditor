@@ -279,6 +279,9 @@ namespace EWSEditor.Common
             HttpWebResponse oHttpWebResponse = null;
             string sHeader = string.Empty;
 
+            oHttpWebRequest.Timeout = 300000; // Five Minutes 
+         
+
             try
             { 
                 oHttpWebResponse = (HttpWebResponse)oHttpWebRequest.GetResponse();

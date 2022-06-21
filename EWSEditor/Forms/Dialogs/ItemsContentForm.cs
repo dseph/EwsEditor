@@ -22,7 +22,21 @@ namespace EWSEditor.Forms
 
     public partial class ItemsContentForm : BaseContentForm
     {
+        protected const string ColFrom = "colFrom";
         protected const string ColNameSubject = "colSubject";
+
+
+       // // Test - start
+       ////protected const string ColFrom = "colFrom";
+       // protected const string ColSenderEmailAddress = "colSenderEmailAddress";
+       // protected const string ColSentRepresentingEmailAddress = "colSentRepresentingEmailAddress";
+ 
+       // protected const string ColNameHttpmailFrom = "colNameHttpmailFrom";
+       // protected const string ColNameHttpmailFromEmail = "colNameHttpmailFromEmail";
+       // protected const string ColMessageHttpMailFrom = "colNameHttpmailFromEmail";
+
+       // // Test - end
+
         protected const string ColNameDisplayTo = "colDisplayTo";
         protected const string ColNameItemClass = "colItemClass";
         protected const string ColNameSize = "colSize";
@@ -118,10 +132,20 @@ namespace EWSEditor.Forms
         private static ExtendedPropertyDefinition PidLidAppointmentStartTime = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0000820F, MapiPropertyType.SystemTime);
         private static ExtendedPropertyDefinition PidLidAppointmentStartWhole = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0000820D, MapiPropertyType.SystemTime);
         private static ExtendedPropertyDefinition PidLidAppointmentStateFlags = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x00008217, MapiPropertyType.Integer);
-        private static ExtendedPropertyDefinition PidNameFrom = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.InternetHeaders, "From", MapiPropertyType.String);  // PidNameFrom -  Its the Organizer.
+
+
+        //private static ExtendedPropertyDefinition PidNameFrom = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.InternetHeaders, "From", MapiPropertyType.String);  // PidNameFrom -  Its the Organizer.
+        //private static ExtendedPropertyDefinition PidNameFrom = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.InternetHeaders, 0x001F, MapiPropertyType.String);  // PidNameFrom -  Its the Organizer.
+
         private static ExtendedPropertyDefinition PidNameHttpmailFrom = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.PublicStrings, "urn:schemas:httpmail:from", MapiPropertyType.String); // PidNameHttpmailFromEmail - 
         private static ExtendedPropertyDefinition PidNameHttpmailFromEmail = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.PublicStrings, "urn:schemas:httpmail:fromemail", MapiPropertyType.String); // PidNameHttpmailFromEmail          
+        private static ExtendedPropertyDefinition PidMessageHttpMailFrom = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.PublicStrings, "urn:schemas:message:from", MapiPropertyType.String); // PidNameHttpmailFromEmail - 
+        
+        //private static ExtendedPropertyDefinition PidNameHttpmailFromEmail = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.PublicStrings, "urn:schemas:httpmail:fromemail", MapiPropertyType.String); // PidNameHttpmailFromEmail          
+
+
         private static ExtendedPropertyDefinition PidTagSenderEmailAddress = new ExtendedPropertyDefinition(0x0C1F, MapiPropertyType.String); //  "PidTagSenderEmailAddress", "PR_SENDER_EMAIL_ADDRESS,PR_SENDER_EMAIL_ADDRESS_A, PR_SENDER_EMAIL_ADDRESS_W", "Address Properties", "[MS-OXCFXICS], [MS-OXCICAL], [MS-OXCSPAM], [MS-OXOMSG],[MS-OXORSS], [MS-OXOTASK], [MS-OXPSVAL], [MS-OXTNEF]"));        
+       
         private static ExtendedPropertyDefinition PidTagSenderFlags = new ExtendedPropertyDefinition(0x4019, MapiPropertyType.Integer); // "PidTagSenderFlags", "ptagSenderFlags", "Miscellaneous Properties", "[MS-OXCFXICS], [MS-OXTNEF]")); 
        // private static ExtendedPropertyDefinition PidTagSenderName = new ExtendedPropertyDefinition(0x0C1A, MapiPropertyType.String);  // 
         private static ExtendedPropertyDefinition PidTagSenderSimpleDisplayName = new ExtendedPropertyDefinition(0x4030, MapiPropertyType.String);  // "PidTagSenderName", "PR_SENDER_NAME, PR_SENDER_NAME_A, ptagSenderName,PR_SENDER_NAME_W, urn:schemas:httpmail:sendername,http://schemas.microsoft.com/exchange/sender-name-utf8", "Address Properties Property set", "[MS-OXCFXICS], [MS-OXCICAL], [MS-OXCSYNC], [MS-OXOCAL], [MS-OXOMSG], [MS-OXOPOST], [MS-OXORSS], [MS-OXOTASK], [MS-OXTNEF], [MS-XWDMAIL]")); 
@@ -135,7 +159,10 @@ namespace EWSEditor.Forms
         private static ExtendedPropertyDefinition PidTagCreatorName = new ExtendedPropertyDefinition(0x3FF8, MapiPropertyType.String);  // "PidTagCreatorName", "PR_CREATOR_NAME, PR_CREATOR_NAME_A, ptagCreatorName,PR_CREATOR_NAME_W", "General Message Properties", "[MS-OXCFXICS], [MS-OXCMSG], [MS-OXTNEF]"));
         private static ExtendedPropertyDefinition PidTagCreatorSimpleDisplayName = new ExtendedPropertyDefinition(0x4038, MapiPropertyType.String);  // "PidTagCreatorSimpleDisplayName", "ptagCreatorSimpleDispName", "TransportEnvelope", "[MS-OXTNEF]"));
 
-        
+
+
+         
+
 
         private List<ItemId> currentItemIds = new List<ItemId>();
         private ItemView contentItemView = new ItemView(GlobalSettings.FindItemViewSize);
@@ -270,7 +297,7 @@ namespace EWSEditor.Forms
                     PidLidAppointmentStartTime,
                     PidLidAppointmentStartWhole,
                     PidLidAppointmentStateFlags,
-                    PidNameFrom,
+                   //PidNameFrom,
                     PidNameHttpmailFrom,
                     PidNameHttpmailFromEmail,
                     PidTagSenderEmailAddress,
@@ -288,63 +315,35 @@ namespace EWSEditor.Forms
                     PidTagCreatorSimpleDisplayName 
                     );
           
-                    //Prop_PR_IS_HIDDEN,
-                    //PR_SENT_REPRESENTING_EMAIL_ADDRESS,
-                    //PR_SENDER_EMAIL_ADDRESS,
-                    //ptagSenderSimpleDispName,
-                    //PR_PARENT_ENTRYID,
-                    //PR_MESSAGE_FLAGS,
-                    //PR_MSG_STATUS,
-                    //PR_MESSAGE_DELIVERY_TIME,
-                    //PR_CONVERSATION_TOPIC,
-                    //PR_CONVERSATION_ID,
-                    //PPR_CONVERSATION_INDEX,
-                    //PR_CONTROL_FLAGS,
-                    //PidLidInboundICalStream,
-                    //PidLidAppointmentAuxiliaryFlags,
-                    //PidLidRecurrencePattern,
-                    //PidLidRecurrenceType,
-                    //PidLidRecurring, 
-                    //PidLidAppointmentRecur,
-                    //PidLidAppointmentStartDate,
-                    //PidLidAppointmentStartTime,
-                    //PidLidAppointmentStartWhole,
-                    //PidLidAppointmentStateFlags,
-                    //PidNameFrom,
-                    //PidNameHttpmailFrom,
-                    //PidNameHttpmailFromEmail,     
-                    //PidTagSenderEmailAddress,       
-                    //PidTagSenderFlags,
-                    //PidTagSenderName,
-                    //PidTagSenderSimpleDisplayName,
-                    //PidTagSentRepresentingEmailAddress,
-                    //PidTagSentRepresentingFlags,
-                    //PidTagSentRepresentingName,
-                    //PidTagSentRepresentingSimpleDisplayName,
-                    //PidTagProcessed,
-                   
-                    //PidLidIsException,
-                    //PidTagCreatorName,
-                    //PidTagCreatorSimpleDisplayName 
+ 
                 
  
             }
-            //this.contentItemView.PropertySet.Add(Prop_PR_STORE_ENTRYID);
-            //this.contentItemView.PropertySet.Add(Prop_PR_IS_HIDDEN);
-            ////this.contentItemView.PropertySet.Add(Prop_PR_FOLDER_PATH);
-            //this.contentItemView.PropertySet.Add(PidLidCleanGlobalObjectId);
-            //this.contentItemView.PropertySet.Add(PidLidGlobalObjectId);
-
-            //this.contentItemView.PropertySet.Add(PidLidClientIntent);
-            //this.contentItemView.PropertySet.Add(ClientInfoString);
-            //this.contentItemView.PropertySet.Add(Prop_PR_POLICY_TAG);
-            //this.contentItemView.PropertySet.Add(Prop_PR_ARCHIVE_TAG);
-
+  
             // Create the folder contents property set, including specifying *only*
             // the properties to be displayed in the data grid in order to get the
             // best response time possible.
             this.contentItemView.PropertySet = new PropertySet(BasePropertySet.IdOnly);
+
+
+            this.contentItemView.PropertySet.Add(EmailMessageSchema.From);
+
             this.contentItemView.PropertySet.Add(ItemSchema.Subject);
+ 
+            // test  
+ 
+            this.contentItemView.PropertySet.Add(PidTagSenderEmailAddress);
+            this.contentItemView.PropertySet.Add(PidTagSentRepresentingEmailAddress);
+ 
+ 
+            this.contentItemView.PropertySet.Add(PidNameHttpmailFrom);
+            this.contentItemView.PropertySet.Add(PidNameHttpmailFromEmail);
+            this.contentItemView.PropertySet.Add(PidMessageHttpMailFrom);
+
+ 
+
+            // test - end 
+
             this.contentItemView.PropertySet.Add(ItemSchema.DisplayTo);
             this.contentItemView.PropertySet.Add(ItemSchema.ItemClass);
             this.contentItemView.PropertySet.Add(ItemSchema.Size);
@@ -361,7 +360,7 @@ namespace EWSEditor.Forms
  
             this.contentItemView.PropertySet.Add(PidLidGlobalObjectId);
             this.contentItemView.PropertySet.Add(PidLidCleanGlobalObjectId);
-             
+
  
         //private PropertySet defaultDetailPropertySet = new PropertySet(BasePropertySet.FirstClassProperties,
         //    Prop_PR_STORE_ENTRYID,
@@ -384,6 +383,34 @@ namespace EWSEditor.Forms
 
             // Setup the this.ContentsGrid with columns for displaying item collections
             int col = 0;
+
+            //// Test - Start
+
+ 
+
+            //col = this.ContentsGrid.Columns.Add(ColSenderEmailAddress, "SenderEmailAddress");  // xx xx
+            //this.ContentsGrid.Columns[col].Width = 175;
+
+            //col = this.ContentsGrid.Columns.Add(ColSentRepresentingEmailAddress, "SentRepresentingEmailAddress");  // xx xx
+            //this.ContentsGrid.Columns[col].Width = 175;
+
+ 
+            //col = this.ContentsGrid.Columns.Add(ColNameHttpmailFrom, "NameHttpmailFrom");  // xx xx
+            //this.ContentsGrid.Columns[col].Width = 175;
+
+            //col = this.ContentsGrid.Columns.Add(ColNameHttpmailFromEmail, "NameHttpmailFromEmail");  // xx xx
+            //this.ContentsGrid.Columns[col].Width = 175;
+
+            //col = this.ContentsGrid.Columns.Add(ColMessageHttpMailFrom, "MessageHttpMailFrom");  // xx xx
+            //this.ContentsGrid.Columns[col].Width = 175;
+
+
+
+            //// Test - End
+
+            //col = this.ContentsGrid.Columns.Add(ColFrom, "From");  // xx xx
+            //this.ContentsGrid.Columns[col].Width = 175;
+
             col = this.ContentsGrid.Columns.Add(ColNameSubject, "Subject");
             this.ContentsGrid.Columns[col].Width = 175;
 
@@ -535,9 +562,97 @@ namespace EWSEditor.Forms
         /// <param name="item">Item to add</param>
         protected void AddContentItem(Item item)
         {
+            string sVal = string.Empty;
+
             // TODO: Add Try/Catch blocks
             int row = this.ContentsGrid.Rows.Add();
+
+            //try
+            //{
+            //    EmailMessage oEmailMessage = (EmailMessage)item;
+            //    this.ContentsGrid.Rows[row].Cells[ColFrom].Value = oEmailMessage.From;
+            //}
+            //catch (Exception ex)
+            //{
+            //    this.ContentsGrid.Rows[row].Cells[ColFrom].Value = ex.Message;
+            //}
+
+
             this.ContentsGrid.Rows[row].Cells[ColNameSubject].Value = item.Subject;
+
+
+ 
+
+            // Test - Start
+
+            //try
+            //{
+            //    if (item.TryGetProperty(PidTagSenderEmailAddress, out sVal))  //   xx xx
+            //        this.ContentsGrid.Rows[row].Cells[ColSenderEmailAddress].Value = sVal;
+            //    else
+            //        this.ContentsGrid.Rows[row].Cells[ColSenderEmailAddress].Value = "";
+            //}
+            //catch (Exception ex)
+            //{
+            //    this.ContentsGrid.Rows[row].Cells[ColSenderEmailAddress].Value = ex.Message;
+            //}
+
+            //try
+            //{  
+            //    if (item.TryGetProperty(PidTagSentRepresentingEmailAddress, out sVal))  //   xx xx
+            //        this.ContentsGrid.Rows[row].Cells[ColSentRepresentingEmailAddress].Value = sVal;
+            //    else
+            //        this.ContentsGrid.Rows[row].Cells[ColSentRepresentingEmailAddress].Value = "";
+            //}
+            //catch (Exception ex)
+            //{
+            //    this.ContentsGrid.Rows[row].Cells[ColSentRepresentingEmailAddress].Value = ex.Message;
+            //}
+
+            //// test  - start
+
+  
+            //try
+            //{
+            //    if (item.TryGetProperty(PidNameHttpmailFrom, out sVal))  //   xx xx
+            //        this.ContentsGrid.Rows[row].Cells[ColNameHttpmailFrom].Value = sVal;
+            //    else
+            //        this.ContentsGrid.Rows[row].Cells[ColNameHttpmailFrom].Value = "";
+            //}
+            //catch (Exception ex)
+            //{
+            //    this.ContentsGrid.Rows[row].Cells[ColNameHttpmailFrom].Value = ex.Message;
+            //}
+
+            //try
+            //{
+            //    if (item.TryGetProperty(PidNameHttpmailFromEmail, out sVal))  //   xx xx
+            //        this.ContentsGrid.Rows[row].Cells[ColNameHttpmailFromEmail].Value = sVal;
+            //    else
+            //        this.ContentsGrid.Rows[row].Cells[ColNameHttpmailFromEmail].Value = "";
+            //}
+            //catch (Exception ex)
+            //{
+            //    this.ContentsGrid.Rows[row].Cells[ColNameHttpmailFromEmail].Value = ex.Message;
+            //}
+
+            //try
+            //{
+            //    if (item.TryGetProperty(PidMessageHttpMailFrom, out sVal))  //   xx xx
+            //        this.ContentsGrid.Rows[row].Cells[ColMessageHttpMailFrom].Value = sVal;
+            //    else
+            //        this.ContentsGrid.Rows[row].Cells[ColMessageHttpMailFrom].Value = "";
+            //}
+            //catch (Exception ex)
+            //{
+            //    this.ContentsGrid.Rows[row].Cells[ColMessageHttpMailFrom].Value = ex.Message;
+            //}
+
+
+ 
+            //// test - end 
+
+
             this.ContentsGrid.Rows[row].Cells[ColNameDisplayTo].Value = item.DisplayTo;
             this.ContentsGrid.Rows[row].Cells[ColNameItemClass].Value = item.ItemClass;
             this.ContentsGrid.Rows[row].Cells[ColNameSize].Value = item.Size;
@@ -592,7 +707,7 @@ namespace EWSEditor.Forms
                 this.ContentsGrid.Rows[row].Cells[ColNameCulture].Value = ex.Message;
             }
 
-            string sVal = string.Empty;
+            //string sVal = string.Empty;
             try
             {
                 if (item.TryGetProperty(ClientInfoString, out sVal))  //  

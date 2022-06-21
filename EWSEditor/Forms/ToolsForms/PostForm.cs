@@ -536,6 +536,12 @@ namespace EWSEditor.Common
             SetFields();
             //EwsPostEnablement();
             SetEnablementForPostByVerb(true);
+
+            // Below lines are critical to work-around resizing issues for the scrolling text boxes.
+            tabControl1.Width = splitContainer1.Panel1.Width -2;
+            tabControl2.Width = splitContainer1.Panel2.Width -2;
+            tabControl1.Height = splitContainer1.Panel1.Height - 2;
+            tabControl2.Height = splitContainer1.Panel2.Height - 2;
         }
 
         private void btnLoadSettings_Click(object sender, EventArgs e)

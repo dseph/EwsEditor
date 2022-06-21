@@ -319,7 +319,7 @@ namespace EWSEditor.Common
         /// </summary>
         /// <param name="item">Loaded Item whose properties are to be dumped</param>
         /// <param name="destinationFolderPath">Folder to save messages to</param>
-        public static void DumpXML(
+        public static void DumpXMLbyFileName(
             Item item,
             string destinationFolderPath)
         {
@@ -329,6 +329,49 @@ namespace EWSEditor.Common
             string fileName = null;
             fileName = string.Format(
                 System.Globalization.CultureInfo.CurrentCulture, 
+                "{0}\\{1}.xml",
+                destinationFolderPath,
+                FileHelper.SanitizeFileName(item.Subject));
+
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlNode xmlMessage = xmlDoc.CreateNode(XmlNodeType.Element, "Message", string.Empty);
+            xmlDoc.AppendChild(xmlMessage);
+            XmlNode xmlProperties = xmlDoc.CreateNode(XmlNodeType.Element, "Properties", string.Empty);
+            xmlMessage.AppendChild(xmlProperties);
+
+            foreach (PropertyDefinitionBase baseProp in item.GetLoadedPropertyDefinitions())
+            {
+                if (baseProp != ItemSchema.ExtendedProperties)
+                {
+                    PropertyInterpretation propInter = new PropertyInterpretation(item, baseProp);
+                    xmlProperties.AppendChild(propInter.ToXML(xmlDoc));
+                }
+            }
+
+            // Write XML content to file
+            System.IO.File.WriteAllText(
+                FileHelper.EnsureUniqueFileName(fileName),
+                xmlDoc.OuterXml);
+
+            DebugLog.WriteVerbose(String.Concat("Wrote item to file, {0}", fileName));
+        }
+
+        /// <summary>
+        /// Dump the properties from the given Item to an XML file in the given
+        /// destination folder.
+        /// </summary>
+        /// <param name="item">Loaded Item whose properties are to be dumped</param>
+        /// <param name="destinationFolderPath">Folder to save messages to</param>
+        public static void DumpXML(
+            Item item,
+            string destinationFolderPath)
+        {
+            DebugLog.WriteVerbose("Writing item to file.");
+
+            // Create a file path to save the item properties to
+            string fileName = null;
+            fileName = string.Format(
+                System.Globalization.CultureInfo.CurrentCulture,
                 "{0}\\{1}.xml",
                 destinationFolderPath,
                 FileHelper.SanitizeFileName(item.Subject));
