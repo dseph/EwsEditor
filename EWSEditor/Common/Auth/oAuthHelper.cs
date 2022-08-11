@@ -124,7 +124,7 @@ namespace EWSEditor.Common.Auth
                 _Success = false;
                 _lastException = ex;
                 string sError = string.Empty;
-                sError += string.Format("Error: {0}\r\n", ex.HResult);
+                sError += string.Format("Error: {0}\r\n", ex.ToString());
                 sError += ex.ToString();
                 sError += "\r\n\r\nAlso see: https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth";
                 ErrorDialog.ShowError(sError);
