@@ -449,6 +449,12 @@
     <Compile Include="Forms\Dialogs\ListActiveSyncDevices.Designer.cs">
       <DependentUpon>ListActiveSyncDevices.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ToolsForms\FindWrongClassItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToolsForms\FindWrongClassItems.Designer.cs">
+      <DependentUpon>FindWrongClassItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ToolsForms\MailApps.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1142,6 +1148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\ListActiveSyncDevices.resx">
       <DependentUpon>ListActiveSyncDevices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToolsForms\FindWrongClassItems.resx">
+      <DependentUpon>FindWrongClassItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolsForms\MailApps.resx">
       <DependentUpon>MailApps.cs</DependentUpon>

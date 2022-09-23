@@ -354,6 +354,7 @@ namespace EWSEditor.Forms
                 this.DistributionListMenuItem.Enabled = isCurrentService;
          
                 this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem.Enabled = isCurrentService;
+                this.checkFolderItemsToolStripMenuItem.Enabled = isCurrentService;
                 this.mnuGetConversationItems.Enabled = isCurrentService;
                 this.eDiscoverySearchToolStripMenuItem.Enabled = isCurrentService;
                 this.mailAppsToolStripMenuItem.Enabled = isCurrentService;

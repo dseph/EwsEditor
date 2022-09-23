@@ -93,6 +93,7 @@
             this.mnuPowerShellTester = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkFolderItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -196,6 +197,7 @@
             this.mnuToolsSplit3,
             this.mnuUserSettings,
             this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem,
+            this.checkFolderItemsToolStripMenuItem,
             this.mnuDisplayDelegates,
             this.MeetingRoomsMenuItem,
             this.DistributionListMenuItem,
@@ -602,6 +604,13 @@
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 
+            // checkFolderItemsToolStripMenuItem
+            // 
+            this.checkFolderItemsToolStripMenuItem.Name = "checkFolderItemsToolStripMenuItem";
+            this.checkFolderItemsToolStripMenuItem.Size = new System.Drawing.Size(636, 44);
+            this.checkFolderItemsToolStripMenuItem.Text = "Check Folder Item Classes";
+            this.checkFolderItemsToolStripMenuItem.Click += new System.EventHandler(this.checkFolderItemsToolStripMenuItem_Click);
+            // 
             // BrowserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -689,5 +698,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuPowerShellTester;
         private System.Windows.Forms.ToolStripMenuItem mnuCharactersetConversion;
         private System.Windows.Forms.ToolStripMenuItem mnuViewOAuthToken;
+        public System.Windows.Forms.ToolStripMenuItem checkFolderItemsToolStripMenuItem;
     }
 }

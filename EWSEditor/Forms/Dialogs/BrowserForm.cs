@@ -1331,6 +1331,13 @@
 
              
         }
+
+        private void checkFolderItemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FindWrongClassItems oForm = new FindWrongClassItems(this.CurrentService);
+ 
+            oForm.Show();
+        }
     }
 
 }
