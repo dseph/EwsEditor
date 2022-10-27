@@ -37,6 +37,7 @@ namespace EWSEditor.Forms.ToolsForms
             this.btnRunTest = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lstErrors = new System.Windows.Forms.ListView();
+            this.colHidden = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colItemClass = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSubject = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -51,8 +52,13 @@ namespace EWSEditor.Forms.ToolsForms
             this.btnContactsFolderSet = new System.Windows.Forms.Button();
             this.textMax = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.colHidden = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.txtHelp = new System.Windows.Forms.TextBox();
+            this.txtType5 = new System.Windows.Forms.TextBox();
+            this.txtType10 = new System.Windows.Forms.TextBox();
+            this.txtType9 = new System.Windows.Forms.TextBox();
+            this.txtType8 = new System.Windows.Forms.TextBox();
+            this.txtType7 = new System.Windows.Forms.TextBox();
+            this.txtType6 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnGetFolderId
@@ -90,7 +96,7 @@ namespace EWSEditor.Forms.ToolsForms
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(232, 452);
+            this.label4.Location = new System.Drawing.Point(232, 510);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(171, 25);
@@ -100,7 +106,7 @@ namespace EWSEditor.Forms.ToolsForms
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(451, 442);
+            this.lblStatus.Location = new System.Drawing.Point(451, 500);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(24, 25);
@@ -109,7 +115,7 @@ namespace EWSEditor.Forms.ToolsForms
             // 
             // btnRunTest
             // 
-            this.btnRunTest.Location = new System.Drawing.Point(15, 442);
+            this.btnRunTest.Location = new System.Drawing.Point(15, 500);
             this.btnRunTest.Margin = new System.Windows.Forms.Padding(6);
             this.btnRunTest.Name = "btnRunTest";
             this.btnRunTest.Size = new System.Drawing.Size(192, 44);
@@ -121,7 +127,7 @@ namespace EWSEditor.Forms.ToolsForms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 507);
+            this.label1.Location = new System.Drawing.Point(15, 576);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(251, 25);
@@ -140,17 +146,22 @@ namespace EWSEditor.Forms.ToolsForms
             this.colId});
             this.lstErrors.FullRowSelect = true;
             this.lstErrors.HideSelection = false;
-            this.lstErrors.Location = new System.Drawing.Point(15, 549);
+            this.lstErrors.Location = new System.Drawing.Point(15, 625);
             this.lstErrors.Margin = new System.Windows.Forms.Padding(6);
             this.lstErrors.MultiSelect = false;
             this.lstErrors.Name = "lstErrors";
-            this.lstErrors.Size = new System.Drawing.Size(1722, 436);
+            this.lstErrors.Size = new System.Drawing.Size(1722, 360);
             this.lstErrors.TabIndex = 11;
             this.lstErrors.UseCompatibleStateImageBehavior = false;
             this.lstErrors.View = System.Windows.Forms.View.Details;
             this.lstErrors.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lstErrors_ColumnClick);
             this.lstErrors.SelectedIndexChanged += new System.EventHandler(this.lstErrors_SelectedIndexChanged);
             this.lstErrors.DoubleClick += new System.EventHandler(this.lstErrors_DoubleClick);
+            // 
+            // colHidden
+            // 
+            this.colHidden.Text = "Hidden";
+            this.colHidden.Width = 50;
             // 
             // colItemClass
             // 
@@ -193,33 +204,33 @@ namespace EWSEditor.Forms.ToolsForms
             // 
             this.txtType1.Location = new System.Drawing.Point(37, 280);
             this.txtType1.Name = "txtType1";
-            this.txtType1.Size = new System.Drawing.Size(438, 31);
+            this.txtType1.Size = new System.Drawing.Size(407, 31);
             this.txtType1.TabIndex = 14;
             // 
             // txtType2
             // 
             this.txtType2.Location = new System.Drawing.Point(37, 317);
             this.txtType2.Name = "txtType2";
-            this.txtType2.Size = new System.Drawing.Size(438, 31);
+            this.txtType2.Size = new System.Drawing.Size(407, 31);
             this.txtType2.TabIndex = 15;
             // 
             // txtType3
             // 
             this.txtType3.Location = new System.Drawing.Point(37, 354);
             this.txtType3.Name = "txtType3";
-            this.txtType3.Size = new System.Drawing.Size(438, 31);
+            this.txtType3.Size = new System.Drawing.Size(407, 31);
             this.txtType3.TabIndex = 16;
             // 
             // txtType4
             // 
             this.txtType4.Location = new System.Drawing.Point(37, 391);
             this.txtType4.Name = "txtType4";
-            this.txtType4.Size = new System.Drawing.Size(438, 31);
+            this.txtType4.Size = new System.Drawing.Size(407, 31);
             this.txtType4.TabIndex = 17;
             // 
             // btnMessageFolderSet
             // 
-            this.btnMessageFolderSet.Location = new System.Drawing.Point(590, 273);
+            this.btnMessageFolderSet.Location = new System.Drawing.Point(908, 273);
             this.btnMessageFolderSet.Margin = new System.Windows.Forms.Padding(6);
             this.btnMessageFolderSet.Name = "btnMessageFolderSet";
             this.btnMessageFolderSet.Size = new System.Drawing.Size(292, 44);
@@ -230,7 +241,7 @@ namespace EWSEditor.Forms.ToolsForms
             // 
             // btnCalendarFolderSet
             // 
-            this.btnCalendarFolderSet.Location = new System.Drawing.Point(590, 329);
+            this.btnCalendarFolderSet.Location = new System.Drawing.Point(908, 329);
             this.btnCalendarFolderSet.Margin = new System.Windows.Forms.Padding(6);
             this.btnCalendarFolderSet.Name = "btnCalendarFolderSet";
             this.btnCalendarFolderSet.Size = new System.Drawing.Size(292, 44);
@@ -241,7 +252,7 @@ namespace EWSEditor.Forms.ToolsForms
             // 
             // btnContactsFolderSet
             // 
-            this.btnContactsFolderSet.Location = new System.Drawing.Point(590, 384);
+            this.btnContactsFolderSet.Location = new System.Drawing.Point(908, 384);
             this.btnContactsFolderSet.Margin = new System.Windows.Forms.Padding(6);
             this.btnContactsFolderSet.Name = "btnContactsFolderSet";
             this.btnContactsFolderSet.Size = new System.Drawing.Size(292, 44);
@@ -252,7 +263,7 @@ namespace EWSEditor.Forms.ToolsForms
             // 
             // textMax
             // 
-            this.textMax.Location = new System.Drawing.Point(1280, 280);
+            this.textMax.Location = new System.Drawing.Point(1587, 270);
             this.textMax.Name = "textMax";
             this.textMax.Size = new System.Drawing.Size(122, 31);
             this.textMax.TabIndex = 21;
@@ -263,16 +274,11 @@ namespace EWSEditor.Forms.ToolsForms
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(916, 283);
+            this.label5.Location = new System.Drawing.Point(1223, 273);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(349, 25);
             this.label5.TabIndex = 22;
             this.label5.Text = "Maximum to check (0 is unlimited): ";
-            // 
-            // colHidden
-            // 
-            this.colHidden.Text = "Hidden";
-            this.colHidden.Width = 50;
             // 
             // txtHelp
             // 
@@ -287,11 +293,59 @@ namespace EWSEditor.Forms.ToolsForms
             this.txtHelp.TabIndex = 23;
             this.txtHelp.Text = " ";
             // 
+            // txtType5
+            // 
+            this.txtType5.Location = new System.Drawing.Point(37, 428);
+            this.txtType5.Name = "txtType5";
+            this.txtType5.Size = new System.Drawing.Size(407, 31);
+            this.txtType5.TabIndex = 24;
+            // 
+            // txtType10
+            // 
+            this.txtType10.Location = new System.Drawing.Point(456, 428);
+            this.txtType10.Name = "txtType10";
+            this.txtType10.Size = new System.Drawing.Size(407, 31);
+            this.txtType10.TabIndex = 29;
+            // 
+            // txtType9
+            // 
+            this.txtType9.Location = new System.Drawing.Point(456, 391);
+            this.txtType9.Name = "txtType9";
+            this.txtType9.Size = new System.Drawing.Size(407, 31);
+            this.txtType9.TabIndex = 28;
+            // 
+            // txtType8
+            // 
+            this.txtType8.Location = new System.Drawing.Point(456, 354);
+            this.txtType8.Name = "txtType8";
+            this.txtType8.Size = new System.Drawing.Size(407, 31);
+            this.txtType8.TabIndex = 27;
+            // 
+            // txtType7
+            // 
+            this.txtType7.Location = new System.Drawing.Point(456, 317);
+            this.txtType7.Name = "txtType7";
+            this.txtType7.Size = new System.Drawing.Size(407, 31);
+            this.txtType7.TabIndex = 26;
+            // 
+            // txtType6
+            // 
+            this.txtType6.Location = new System.Drawing.Point(456, 280);
+            this.txtType6.Name = "txtType6";
+            this.txtType6.Size = new System.Drawing.Size(407, 31);
+            this.txtType6.TabIndex = 25;
+            // 
             // FindWrongClassItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1752, 1176);
+            this.Controls.Add(this.txtType10);
+            this.Controls.Add(this.txtType9);
+            this.Controls.Add(this.txtType8);
+            this.Controls.Add(this.txtType7);
+            this.Controls.Add(this.txtType6);
+            this.Controls.Add(this.txtType5);
             this.Controls.Add(this.txtHelp);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textMax);
@@ -346,5 +400,11 @@ namespace EWSEditor.Forms.ToolsForms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ColumnHeader colHidden;
         private System.Windows.Forms.TextBox txtHelp;
+        private System.Windows.Forms.TextBox txtType5;
+        private System.Windows.Forms.TextBox txtType10;
+        private System.Windows.Forms.TextBox txtType9;
+        private System.Windows.Forms.TextBox txtType8;
+        private System.Windows.Forms.TextBox txtType7;
+        private System.Windows.Forms.TextBox txtType6;
     }
 }

@@ -99,7 +99,19 @@ namespace EWSEditor.Forms.ToolsForms
                 compoundFilter.Add(GetItemFilter(txtType3.Text.Trim()));
             if (txtType4.Text.Trim() != string.Empty)
                 compoundFilter.Add(GetItemFilter(txtType4.Text.Trim()));
- 
+            if (txtType5.Text.Trim() != string.Empty)
+                compoundFilter.Add(GetItemFilter(txtType5.Text.Trim()));
+            if (txtType6.Text.Trim() != string.Empty)
+                compoundFilter.Add(GetItemFilter(txtType6.Text.Trim()));
+            if (txtType7.Text.Trim() != string.Empty)
+                compoundFilter.Add(GetItemFilter(txtType7.Text.Trim()));
+            if (txtType8.Text.Trim() != string.Empty)
+                compoundFilter.Add(GetItemFilter(txtType8.Text.Trim()));
+            if (txtType9.Text.Trim() != string.Empty)
+                compoundFilter.Add(GetItemFilter(txtType9.Text.Trim()));
+            if (txtType10.Text.Trim() != string.Empty)
+                compoundFilter.Add(GetItemFilter(txtType10.Text.Trim()));
+
 
             //SearchFilter.SearchFilterCollection compoundFilter =
             //    new SearchFilter.SearchFilterCollection(LogicalOperator.And, testFilter1, testFilter2);
@@ -232,6 +244,12 @@ namespace EWSEditor.Forms.ToolsForms
             txtType2.Text = "IPM.Schedule";
             txtType3.Text = "";
             txtType4.Text = "";
+            txtType5.Text = "";
+            txtType6.Text = "";
+            txtType7.Text = "";
+            txtType8.Text = "";
+            txtType9.Text = "";
+            txtType10.Text = "";
         }
 
         private void btnCalendarFolderSet_Click(object sender, EventArgs e)
@@ -240,6 +258,12 @@ namespace EWSEditor.Forms.ToolsForms
             txtType2.Text = "";
             txtType3.Text = "";
             txtType4.Text = "";
+            txtType5.Text = "";
+            txtType6.Text = "";
+            txtType7.Text = "";
+            txtType8.Text = "";
+            txtType9.Text = "";
+            txtType10.Text = "";
         }
 
         private void btnContactsFolderSet_Click(object sender, EventArgs e)
@@ -248,6 +272,12 @@ namespace EWSEditor.Forms.ToolsForms
             txtType2.Text = "";
             txtType3.Text = "";
             txtType4.Text = "";
+            txtType5.Text = "";
+            txtType6.Text = "";
+            txtType7.Text = "";
+            txtType8.Text = "";
+            txtType9.Text = "";
+            txtType10.Text = "";
         }
 
         private void FindWrongClassItems_Load(object sender, EventArgs e)

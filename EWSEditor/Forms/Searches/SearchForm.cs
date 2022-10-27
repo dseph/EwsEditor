@@ -16,8 +16,7 @@ using EWSEditor.Resources;
 using Microsoft.Exchange.WebServices.Data;
 using System.Net;
 using System.Xml;
-
- 
+using System.Xml.Schema;
 
 namespace EWSEditor.Forms
 {
@@ -65,6 +64,7 @@ namespace EWSEditor.Forms
             cmboCCConditional.Text = "ContainsSubstring";
             cmboBodyConditional.Text = "ContainsSubstring";
             cmboClassConditional.Text = "ContainsSubstring";
+            cmboInternetMessageIdConditional.Text = "ContainsSubstring";
 
             toolStripStatusLabel1.Text = "";
 
@@ -95,20 +95,23 @@ namespace EWSEditor.Forms
                 this.txtCC.Enabled = false;
                 this.txtBody.Enabled = false;
                 this.txtClass.Enabled = false;
+                this.txtInternetMessageId.Enabled = false;
 
-                
+
                 this.chkSubject.Enabled = false;
                 this.chkTo.Enabled = false;
                 this.chkCC.Enabled = false;
-                this.chkBody.Enabled = false;        
+                this.chkBody.Enabled = false;
                 this.chkClass.Enabled = false;
+                this.chkInternetMessageId.Enabled = false;
 
-               
+
                 cmboSubjectConditional.Enabled = false;
                 cmboToConditional.Enabled = false;
                 cmboCCConditional.Enabled = false;
                 cmboBodyConditional.Enabled = false;
                 cmboClassConditional.Enabled = false;
+                cmboInternetMessageIdConditional.Enabled = false;
 
 
             }
@@ -121,12 +124,15 @@ namespace EWSEditor.Forms
                 this.chkBody.Enabled = true;
                 this.chkClass.Enabled = true;
 
-               
+                this.chkInternetMessageId.Enabled = true;
+
+
                 this.txtSubject.Enabled = true;
                 this.txtTo.Enabled = true;
                 this.txtCC.Enabled = true;
                 this.txtBody.Enabled = true;
                 this.txtClass.Enabled = true;
+                this.txtInternetMessageId.Enabled = true;
 
                 cmboSubjectConditional.Enabled = chkSubject.Checked;
                 
@@ -134,6 +140,7 @@ namespace EWSEditor.Forms
                 cmboCCConditional.Enabled = chkCC.Checked;
                 cmboBodyConditional.Enabled = chkBody.Checked;
                 cmboClassConditional.Enabled = chkClass.Checked;
+                cmboInternetMessageIdConditional.Enabled = chkInternetMessageId.Checked;
 
             }
 
@@ -145,8 +152,9 @@ namespace EWSEditor.Forms
             this.txtCC.Enabled  = chkCC.Checked;
             this.txtBody.Enabled = chkBody.Checked;
             this.txtClass.Enabled = chkClass.Checked;
+            this.txtInternetMessageId.Enabled = chkInternetMessageId.Checked;
 
- 
+
         }
 
         private bool CheckFields()
@@ -188,6 +196,13 @@ namespace EWSEditor.Forms
                 {
                     MessageBox.Show("Class line text cannot be blank");
                 }
+
+            if (this.chkInternetMessageId.Checked == true)
+                if (this.txtInternetMessageId.Text.Trim().Length == 0)
+                {
+                    MessageBox.Show("Msg Headers line text cannot be blank");
+                }
+
 
             if (this.rdoAqsSearch.Checked == true)
                 if (this.txtAQS.Text.Trim().Length == 0)
@@ -251,6 +266,7 @@ namespace EWSEditor.Forms
                         ItemSchema.DateTimeReceived,
                         ItemSchema.HasAttachments,
                         ItemSchema.ItemClass,
+                        EmailMessageSchema.InternetMessageId,
 
 
                         ItemSchema.IsResend,
@@ -297,9 +313,11 @@ namespace EWSEditor.Forms
                         //    AddCondition(ref searchFilterCollection, ItemSchema.IsRead, this.txtIsRead.Text, cmboIsRead.Text);
 
 
-                        if (this.chkClass.Checked == true)                            
+                        if (this.chkClass.Checked == true)
                             AddCondition(ref searchFilterCollection, ItemSchema.ItemClass, this.txtClass.Text, cmboClassConditional.Text);
- 
+                        if (this.chkInternetMessageId.Checked == true)
+                            AddCondition(ref searchFilterCollection,  EmailMessageSchema.InternetMessageId, this.txtInternetMessageId.Text, cmboInternetMessageIdConditional.Text);
+
                         if (this.chkSubject.Checked == true)
                             if (this.txtSubject.Text.Length != 0)
                                 AddCondition(ref searchFilterCollection, ItemSchema.Subject, this.txtSubject.Text, cmboSubjectConditional.Text); 
@@ -367,6 +385,8 @@ namespace EWSEditor.Forms
                     lvItems.Columns.Add("LastModifiedName", 100, HorizontalAlignment.Left);
                     lvItems.Columns.Add("LastModifiedTime", 100, HorizontalAlignment.Left);
 
+                    lvItems.Columns.Add("Message ID", 200, HorizontalAlignment.Left);
+
                     lvItems.Columns.Add("Size", 50, HorizontalAlignment.Left);
                     lvItems.Columns.Add("Folder Path", 200, HorizontalAlignment.Left);
 
@@ -413,9 +433,13 @@ namespace EWSEditor.Forms
                         oLVSI = oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
                         oLVSI.Tag = "String";
 
+                        //oLVSI = oListItem.SubItems.Add(oItem.InternetMessageId.ToString());
+                        //oLVSI.Tag = "String";
+
+                   
+
                         oLVSI = oListItem.SubItems.Add(oItem.Size.ToString());
                         oLVSI.Tag = "String";
-
 
                         if (EwsFolderHelper.GetFolderPath(oItem.Service, oItem.ParentFolderId, ref sItemFolderPath))  // 14
                         {
@@ -474,6 +498,8 @@ namespace EWSEditor.Forms
                     lvItems.Columns.Add("LastModifiedName", 100, HorizontalAlignment.Left);
                     lvItems.Columns.Add("LastModifiedTime", 100, HorizontalAlignment.Left);
 
+                    lvItems.Columns.Add("Message Id", 200, HorizontalAlignment.Left);
+
                     lvItems.Columns.Add("Size", 50, HorizontalAlignment.Left);
                     lvItems.Columns.Add("Folder Path", 200, HorizontalAlignment.Left);
 
@@ -502,6 +528,8 @@ namespace EWSEditor.Forms
                                             ItemSchema.DateTimeReceived,
                                             ItemSchema.HasAttachments,
                                             ItemSchema.ItemClass,
+                                             EmailMessageSchema.InternetMessageId,
+                                            
 
                                             ItemSchema.IsResend,
                                             ItemSchema.IsDraft,
@@ -538,12 +566,16 @@ namespace EWSEditor.Forms
 
                             //if (this.chkUID.Checked == true)
                             //    AddCondition(ref searchFilterCollection, ItemSchema.UID, this.txtUID.Text, cmboUidConditional.Text);
-                            
+
                             //if (this.chkIsRead.Checked == true)
                             //    AddCondition(ref searchFilterCollection, ItemSchema.IsRead, this.txtIsRead.Text, cmboIsRead.Text);
 
                             if (this.chkClass.Checked == true)
-                                 AddCondition(ref searchFilterCollection, ItemSchema.ItemClass, this.txtClass.Text, cmboClassConditional.Text);
+                                AddCondition(ref searchFilterCollection, ItemSchema.ItemClass, this.txtClass.Text, cmboClassConditional.Text);
+                            
+                            if (this.chkInternetMessageId.Checked == true)
+                                AddCondition(ref searchFilterCollection,  EmailMessageSchema.InternetMessageId, this.txtInternetMessageId.Text,cmboInternetMessageIdConditional.Text);
+                            
                             if (this.chkSubject.Checked == true)
                                 AddCondition(ref searchFilterCollection, ItemSchema.Subject, this.txtSubject.Text, cmboSubjectConditional.Text);
                             if (this.chkTo.Checked == true)
@@ -588,15 +620,13 @@ namespace EWSEditor.Forms
                             }
                         }
 
- 
+                        //_CurrentService.LoadPropertiesForItems(oFindItemsResults.Items, oItemView.PropertySet);
+
+
                         iCount = 0;
                         foreach (Item oItem in oFindItemsResults.Items)
                         {
                             iCount++;
-
-                            // Note:  If you change any columns then you may need to chage other code such as
-                            // that for then listview property export code, which references columns by position.
-
  
                             oListItem = new ListViewItem(iCountMore.ToString() + ":" +iCount.ToString(), 0);
 
@@ -632,6 +662,10 @@ namespace EWSEditor.Forms
                             oLVSI = oListItem.SubItems.Add(oItem.LastModifiedName.ToString());
                             oLVSI.Tag = "String";
                             oLVSI = oListItem.SubItems.Add(oItem.LastModifiedTime.ToString());
+                            oLVSI.Tag = "String";
+
+                            EmailMessage oEmailMessage = (EmailMessage)oItem;
+                            oLVSI = oListItem.SubItems.Add(oEmailMessage.InternetMessageId.ToString());
                             oLVSI.Tag = "String";
 
                             oLVSI = oListItem.SubItems.Add(oItem.Size.ToString());
@@ -1473,6 +1507,18 @@ namespace EWSEditor.Forms
             }
 
             return EWSEditor.Exchange.ExportUploadHelper.ExportItemPost(ServerVersion, oItemId.UniqueId, sFile);
+
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void chkInternetMessageId_CheckedChanged(object sender, EventArgs e)
+        {
+            this.txtInternetMessageId.Enabled = this.chkInternetMessageId.Checked;
+            cmboInternetMessageIdConditional.Enabled = this.chkInternetMessageId.Checked;
 
         }
     }
