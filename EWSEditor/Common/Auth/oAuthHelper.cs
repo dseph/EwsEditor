@@ -54,19 +54,36 @@ namespace EWSEditor.Common.Auth
          
 
 
-        public async Task<AuthenticationResult> GetDelegateToken(string ClientId,  string TenantId)
+        public async Task<AuthenticationResult> GetDelegateToken(string ClientId,  string TenantId, string OAuth2RedirectUrl)
         {
             _Success = false;
 
             // Using Microsoft.Identity.Client 4.22.0
+            PublicClientApplicationOptions pcaOptions = null ;
 
-            // Configure the MSAL client to get tokens
-            var pcaOptions = new PublicClientApplicationOptions
+            if (OAuth2RedirectUrl != "<Do not user a redirect URL.>")
             {
-                ClientId = ClientId,
-                TenantId = TenantId
-            };
+                // Configure the MSAL client to get tokens
+                pcaOptions = new PublicClientApplicationOptions
+                {
+                    ClientId = ClientId,
+                    TenantId = TenantId,
+                    RedirectUri = OAuth2RedirectUrl
+                };
 
+            }
+            else 
+            {
+                // Configure the MSAL client to get tokens
+                pcaOptions = new PublicClientApplicationOptions
+                {
+                    ClientId = ClientId,
+                    TenantId = TenantId 
+                };
+
+            }
+
+ 
             var pca = PublicClientApplicationBuilder
                 .CreateWithApplicationOptions(pcaOptions).Build();
             
@@ -95,16 +112,28 @@ namespace EWSEditor.Common.Auth
 
         }
 
-        public async Task<AuthenticationResult> GetApplicationToken(string ClientId, string TenantId, string ClientSecret)
+        public async Task<AuthenticationResult> GetApplicationToken(string ClientId, string TenantId, string ClientSecret, string OAuth2RedirectUrl)
         {
 
             // Configure the MSAL client to get tokens
             var ewsScopes = new string[] { "https://outlook.office.com/.default" };
 
-            var app = ConfidentialClientApplicationBuilder.Create(ClientId)
-                .WithAuthority(AzureCloudInstance.AzurePublic, TenantId)
-                .WithClientSecret(ClientSecret)
-                .Build();
+            IConfidentialClientApplication app = null;
+            if (OAuth2RedirectUrl != "<Do not user a redirect URL.>")
+            {
+                  app = ConfidentialClientApplicationBuilder.Create(ClientId)
+                    .WithAuthority(AzureCloudInstance.AzurePublic, TenantId)
+                    .WithClientSecret(ClientSecret)
+                    .WithRedirectUri(OAuth2RedirectUrl)
+                    .Build();
+            }
+            else
+            {
+                  app = ConfidentialClientApplicationBuilder.Create(ClientId)
+                    .WithAuthority(AzureCloudInstance.AzurePublic, TenantId)
+                    .WithClientSecret(ClientSecret)
+                    .Build();
+            }
             // Microsoft.Identity.Client.AuthenticationResult
             AuthenticationResult oResult = null;
             try
@@ -142,15 +171,29 @@ namespace EWSEditor.Common.Auth
 
         }
 
-        public async Task<AuthenticationResult> GetCertificateToken(string ClientId, string TenantId, X509Certificate2 ClientCertificate)
+        public async Task<AuthenticationResult> GetCertificateToken(string ClientId, string TenantId, X509Certificate2 ClientCertificate, string OAuth2RedirectUrl)
         {
             // Configure the MSAL client to get tokens
             var ewsScopes = new string[] { "https://outlook.office.com/.default" };
 
-            var app = ConfidentialClientApplicationBuilder.Create(ClientId)
+            IConfidentialClientApplication app = null;
+   
+
+            if (OAuth2RedirectUrl != "<Do not user a redirect URL.>")
+            {
+                app = ConfidentialClientApplicationBuilder.Create(ClientId)
+                .WithAuthority(AzureCloudInstance.AzurePublic, TenantId)
+                .WithCertificate(ClientCertificate)
+                .WithRedirectUri(OAuth2RedirectUrl)
+                .Build();
+            }
+            else
+            {
+                app = ConfidentialClientApplicationBuilder.Create(ClientId)
                 .WithAuthority(AzureCloudInstance.AzurePublic, TenantId)
                 .WithCertificate(ClientCertificate)
                 .Build();
+            }
 
             AuthenticationResult oResult = null;
             try

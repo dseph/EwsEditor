@@ -174,7 +174,9 @@ namespace EWSEditor.Forms
                 }
 
                 if (this.rdoCredentialsOAuth2.Checked)
-                {  
+                {
+                    EwsProxyFactory.OAuth2RedirectUrl = cmboRedirectUrl.Text.Trim();
+
                     if (this.rdoCredentialsOAuthDelegated.Checked)
                         EwsProxyFactory.AuthenticationMethod = RequestedAuthType.oAuth2Delegate;
               
@@ -354,10 +356,16 @@ namespace EWSEditor.Forms
 
                     // Get Access token -----------------
 
+                    
+
                     if (this.rdoCredentialsOAuthDelegated.Checked)
                     {
                         EWSEditor.Common.Auth.OAuthHelper o = new EWSEditor.Common.Auth.OAuthHelper();
-                        AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetDelegateToken(EwsProxyFactory.oAuthApplicationId, EwsProxyFactory.oAuthTenantId)).Result;
+                        AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetDelegateToken(
+                            EwsProxyFactory.oAuthApplicationId, 
+                            EwsProxyFactory.oAuthTenantId,
+                            EwsProxyFactory.OAuth2RedirectUrl)
+                            ).Result;
                         EwsProxyFactory.MsalAuthenticationResult = oResult;
                         var oCredentials =  new Microsoft.Exchange.WebServices.Data.OAuthCredentials(oResult.AccessToken);
 
@@ -375,7 +383,8 @@ namespace EWSEditor.Forms
                         EWSEditor.Common.Auth.OAuthHelper o = new EWSEditor.Common.Auth.OAuthHelper();
                         AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetApplicationToken(EwsProxyFactory.oAuthApplicationId,
                                                                                                                                 EwsProxyFactory.oAuthTenantId,
-                                                                                                                                EwsProxyFactory.oAuthClientSecret)).Result;
+                                                                                                                                EwsProxyFactory.oAuthClientSecret,
+                                                                                                                                EwsProxyFactory.OAuth2RedirectUrl)).Result;
 
                         var oCredentials = new Microsoft.Exchange.WebServices.Data.OAuthCredentials(oResult.AccessToken);
 
@@ -392,7 +401,9 @@ namespace EWSEditor.Forms
 
                         AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetCertificateToken(EwsProxyFactory.oAuthApplicationId,
                                                                                                                                 EwsProxyFactory.oAuthTenantId,
-                                                                                                                                EwsProxyFactory.oAuthClientCertificate)).Result;
+                                                                                                                                EwsProxyFactory.oAuthClientCertificate,
+                                                                                                                                EwsProxyFactory.OAuth2RedirectUrl 
+                                                                                                                                )).Result;
 
               
 
@@ -862,6 +873,20 @@ namespace EWSEditor.Forms
  
 
             }
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.lblEWSOauthDocs.LinkVisited = true;
+
+            // Navigate to a URL.  https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth
+            System.Diagnostics.Process.Start("https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth");
+
+        }
+
+        private void txtOAuthTenantId_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

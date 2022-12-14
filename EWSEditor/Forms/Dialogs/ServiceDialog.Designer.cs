@@ -97,6 +97,8 @@ namespace EWSEditor.Forms
             this.lblOAuthClientSecret = new System.Windows.Forms.Label();
             this.rdoCredentialsOAuthApplication = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cmboRedirectUrl = new System.Windows.Forms.ComboBox();
+            this.lblOAuthRedirect = new System.Windows.Forms.Label();
             this.BtnLoadCertificate = new System.Windows.Forms.Button();
             this.txtAuthCertificatePath = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -120,7 +122,7 @@ namespace EWSEditor.Forms
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(1203, 930);
+            this.btnOK.Location = new System.Drawing.Point(1163, 873);
             this.btnOK.Margin = new System.Windows.Forms.Padding(6);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(150, 44);
@@ -132,7 +134,7 @@ namespace EWSEditor.Forms
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(1377, 934);
+            this.btnCancel.Location = new System.Drawing.Point(1337, 877);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 44);
@@ -627,7 +629,7 @@ namespace EWSEditor.Forms
             // 
             this.lblExImp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblExImp.AutoSize = true;
-            this.lblExImp.Location = new System.Drawing.Point(76, 327);
+            this.lblExImp.Location = new System.Drawing.Point(206, 1274);
             this.lblExImp.Margin = new System.Windows.Forms.Padding(0);
             this.lblExImp.Name = "lblExImp";
             this.lblExImp.Size = new System.Drawing.Size(0, 25);
@@ -657,25 +659,27 @@ namespace EWSEditor.Forms
             // rdoCredentialsOAuth
             // 
             this.rdoCredentialsOAuth.AutoSize = true;
-            this.rdoCredentialsOAuth.Location = new System.Drawing.Point(12, 210);
+            this.rdoCredentialsOAuth.Location = new System.Drawing.Point(39, 1050);
             this.rdoCredentialsOAuth.Margin = new System.Windows.Forms.Padding(6);
             this.rdoCredentialsOAuth.Name = "rdoCredentialsOAuth";
             this.rdoCredentialsOAuth.Size = new System.Drawing.Size(149, 29);
             this.rdoCredentialsOAuth.TabIndex = 11;
             this.rdoCredentialsOAuth.Text = "Use oAuth ";
             this.rdoCredentialsOAuth.UseVisualStyleBackColor = true;
+            this.rdoCredentialsOAuth.Visible = false;
             this.rdoCredentialsOAuth.CheckedChanged += new System.EventHandler(this.rdoCredentialsOAuth_CheckedChanged);
             // 
             // label4
             // 
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label4.Location = new System.Drawing.Point(56, 183);
+            this.label4.Location = new System.Drawing.Point(83, 1023);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(892, 37);
             this.label4.TabIndex = 10;
             this.label4.Text = "Use credentials of mailbox being accessed or the those of the EWS Impersonation a" +
     "ccount.";
+            this.label4.Visible = false;
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // rdoCredentialsDefaultWindows
@@ -693,87 +697,95 @@ namespace EWSEditor.Forms
             // txtOAuthRedirectUri
             // 
             this.txtOAuthRedirectUri.Enabled = false;
-            this.txtOAuthRedirectUri.Location = new System.Drawing.Point(216, 248);
+            this.txtOAuthRedirectUri.Location = new System.Drawing.Point(243, 1088);
             this.txtOAuthRedirectUri.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthRedirectUri.Name = "txtOAuthRedirectUri";
             this.txtOAuthRedirectUri.Size = new System.Drawing.Size(688, 31);
             this.txtOAuthRedirectUri.TabIndex = 15;
             this.txtOAuthRedirectUri.Text = "https://microsoft.com/EwsEditor";
+            this.txtOAuthRedirectUri.Visible = false;
             this.txtOAuthRedirectUri.TextChanged += new System.EventHandler(this.txtOAuthRedirectUri_TextChanged);
             // 
             // lblOAuthAppId
             // 
             this.lblOAuthAppId.AutoSize = true;
             this.lblOAuthAppId.Enabled = false;
-            this.lblOAuthAppId.Location = new System.Drawing.Point(56, 285);
+            this.lblOAuthAppId.Location = new System.Drawing.Point(83, 1125);
             this.lblOAuthAppId.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthAppId.Name = "lblOAuthAppId";
             this.lblOAuthAppId.Size = new System.Drawing.Size(143, 25);
             this.lblOAuthAppId.TabIndex = 16;
             this.lblOAuthAppId.Text = "Client App ID:";
+            this.lblOAuthAppId.Visible = false;
             // 
             // lblOAuthRedirectUri
             // 
             this.lblOAuthRedirectUri.AutoSize = true;
             this.lblOAuthRedirectUri.Enabled = false;
-            this.lblOAuthRedirectUri.Location = new System.Drawing.Point(52, 258);
+            this.lblOAuthRedirectUri.Location = new System.Drawing.Point(79, 1098);
             this.lblOAuthRedirectUri.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthRedirectUri.Name = "lblOAuthRedirectUri";
             this.lblOAuthRedirectUri.Size = new System.Drawing.Size(139, 25);
             this.lblOAuthRedirectUri.TabIndex = 13;
             this.lblOAuthRedirectUri.Text = "Redirect URI:";
+            this.lblOAuthRedirectUri.Visible = false;
             // 
             // txtOAuthAppId
             // 
             this.txtOAuthAppId.Enabled = false;
-            this.txtOAuthAppId.Location = new System.Drawing.Point(216, 279);
+            this.txtOAuthAppId.Location = new System.Drawing.Point(243, 1119);
             this.txtOAuthAppId.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthAppId.Name = "txtOAuthAppId";
             this.txtOAuthAppId.Size = new System.Drawing.Size(688, 31);
             this.txtOAuthAppId.TabIndex = 18;
             this.txtOAuthAppId.Text = "0e4bf2e2-aa7d-46e8-aa12-263adeb3a62b";
+            this.txtOAuthAppId.Visible = false;
             // 
             // lblOAuthServerName
             // 
             this.lblOAuthServerName.AutoSize = true;
             this.lblOAuthServerName.Enabled = false;
-            this.lblOAuthServerName.Location = new System.Drawing.Point(56, 319);
+            this.lblOAuthServerName.Location = new System.Drawing.Point(83, 1159);
             this.lblOAuthServerName.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthServerName.Name = "lblOAuthServerName";
             this.lblOAuthServerName.Size = new System.Drawing.Size(143, 25);
             this.lblOAuthServerName.TabIndex = 19;
             this.lblOAuthServerName.Text = "Server Name:";
+            this.lblOAuthServerName.Visible = false;
             // 
             // txtOAuthServerName
             // 
             this.txtOAuthServerName.Enabled = false;
-            this.txtOAuthServerName.Location = new System.Drawing.Point(218, 310);
+            this.txtOAuthServerName.Location = new System.Drawing.Point(245, 1150);
             this.txtOAuthServerName.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthServerName.Name = "txtOAuthServerName";
             this.txtOAuthServerName.Size = new System.Drawing.Size(688, 31);
             this.txtOAuthServerName.TabIndex = 21;
             this.txtOAuthServerName.Text = "https://outlook.office365.com";
+            this.txtOAuthServerName.Visible = false;
             // 
             // lblOAuthAuthority
             // 
             this.lblOAuthAuthority.AutoSize = true;
             this.lblOAuthAuthority.Enabled = false;
-            this.lblOAuthAuthority.Location = new System.Drawing.Point(56, 348);
+            this.lblOAuthAuthority.Location = new System.Drawing.Point(83, 1188);
             this.lblOAuthAuthority.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthAuthority.Name = "lblOAuthAuthority";
             this.lblOAuthAuthority.Size = new System.Drawing.Size(153, 25);
             this.lblOAuthAuthority.TabIndex = 22;
             this.lblOAuthAuthority.Text = "Auth Authority:";
+            this.lblOAuthAuthority.Visible = false;
             // 
             // txtOAuthAuthority
             // 
             this.txtOAuthAuthority.Enabled = false;
-            this.txtOAuthAuthority.Location = new System.Drawing.Point(218, 340);
+            this.txtOAuthAuthority.Location = new System.Drawing.Point(245, 1180);
             this.txtOAuthAuthority.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthAuthority.Name = "txtOAuthAuthority";
             this.txtOAuthAuthority.Size = new System.Drawing.Size(688, 31);
             this.txtOAuthAuthority.TabIndex = 24;
             this.txtOAuthAuthority.Text = "https://login.windows.net/common";
+            this.txtOAuthAuthority.Visible = false;
             // 
             // label2
             // 
@@ -800,13 +812,14 @@ namespace EWSEditor.Forms
             // lblEWSOauthDocs
             // 
             this.lblEWSOauthDocs.AutoSize = true;
-            this.lblEWSOauthDocs.Location = new System.Drawing.Point(212, 217);
+            this.lblEWSOauthDocs.Location = new System.Drawing.Point(239, 1057);
             this.lblEWSOauthDocs.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEWSOauthDocs.Name = "lblEWSOauthDocs";
             this.lblEWSOauthDocs.Size = new System.Drawing.Size(446, 25);
             this.lblEWSOauthDocs.TabIndex = 12;
             this.lblEWSOauthDocs.TabStop = true;
             this.lblEWSOauthDocs.Text = "(Registration must have been completed first)";
+            this.lblEWSOauthDocs.Visible = false;
             this.lblEWSOauthDocs.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblEWSOauthDocs_LinkClicked);
             // 
             // rdoCredentialsOAuthDelegated
@@ -827,7 +840,7 @@ namespace EWSEditor.Forms
             // 
             this.lblOAuthApplicationId.AutoSize = true;
             this.lblOAuthApplicationId.Enabled = false;
-            this.lblOAuthApplicationId.Location = new System.Drawing.Point(56, 523);
+            this.lblOAuthApplicationId.Location = new System.Drawing.Point(47, 349);
             this.lblOAuthApplicationId.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthApplicationId.Name = "lblOAuthApplicationId";
             this.lblOAuthApplicationId.Size = new System.Drawing.Size(143, 25);
@@ -837,7 +850,7 @@ namespace EWSEditor.Forms
             // txtOAuthApplicationId
             // 
             this.txtOAuthApplicationId.Enabled = false;
-            this.txtOAuthApplicationId.Location = new System.Drawing.Point(218, 521);
+            this.txtOAuthApplicationId.Location = new System.Drawing.Point(209, 347);
             this.txtOAuthApplicationId.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthApplicationId.Name = "txtOAuthApplicationId";
             this.txtOAuthApplicationId.Size = new System.Drawing.Size(688, 31);
@@ -847,7 +860,7 @@ namespace EWSEditor.Forms
             // 
             this.lblOAuthTenantId.AutoSize = true;
             this.lblOAuthTenantId.Enabled = false;
-            this.lblOAuthTenantId.Location = new System.Drawing.Point(56, 562);
+            this.lblOAuthTenantId.Location = new System.Drawing.Point(47, 388);
             this.lblOAuthTenantId.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthTenantId.Name = "lblOAuthTenantId";
             this.lblOAuthTenantId.Size = new System.Drawing.Size(111, 25);
@@ -857,17 +870,18 @@ namespace EWSEditor.Forms
             // txtOAuthTenantId
             // 
             this.txtOAuthTenantId.Enabled = false;
-            this.txtOAuthTenantId.Location = new System.Drawing.Point(218, 556);
+            this.txtOAuthTenantId.Location = new System.Drawing.Point(209, 382);
             this.txtOAuthTenantId.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthTenantId.Name = "txtOAuthTenantId";
             this.txtOAuthTenantId.Size = new System.Drawing.Size(688, 31);
             this.txtOAuthTenantId.TabIndex = 33;
+            this.txtOAuthTenantId.TextChanged += new System.EventHandler(this.txtOAuthTenantId_TextChanged);
             // 
             // lblOAuthClientSecret
             // 
             this.lblOAuthClientSecret.AutoSize = true;
             this.lblOAuthClientSecret.Enabled = false;
-            this.lblOAuthClientSecret.Location = new System.Drawing.Point(56, 594);
+            this.lblOAuthClientSecret.Location = new System.Drawing.Point(47, 420);
             this.lblOAuthClientSecret.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthClientSecret.Name = "lblOAuthClientSecret";
             this.lblOAuthClientSecret.Size = new System.Drawing.Size(141, 25);
@@ -890,6 +904,8 @@ namespace EWSEditor.Forms
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.cmboRedirectUrl);
+            this.panel2.Controls.Add(this.lblOAuthRedirect);
             this.panel2.Controls.Add(this.BtnLoadCertificate);
             this.panel2.Controls.Add(this.txtAuthCertificatePath);
             this.panel2.Controls.Add(this.label10);
@@ -902,23 +918,11 @@ namespace EWSEditor.Forms
             this.panel2.Controls.Add(this.txtOAuthApplicationId);
             this.panel2.Controls.Add(this.lblOAuthApplicationId);
             this.panel2.Controls.Add(this.linkLabel1);
-            this.panel2.Controls.Add(this.lblEWSOauthDocs);
             this.panel2.Controls.Add(this.btnDefaultUserNameSmtp);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.txtOAuthAuthority);
-            this.panel2.Controls.Add(this.lblOAuthAuthority);
-            this.panel2.Controls.Add(this.txtOAuthServerName);
-            this.panel2.Controls.Add(this.lblOAuthServerName);
-            this.panel2.Controls.Add(this.txtOAuthAppId);
-            this.panel2.Controls.Add(this.lblOAuthRedirectUri);
-            this.panel2.Controls.Add(this.lblOAuthAppId);
-            this.panel2.Controls.Add(this.txtOAuthRedirectUri);
             this.panel2.Controls.Add(this.rdoCredentialsDefaultWindows);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.rdoCredentialsOAuth);
             this.panel2.Controls.Add(this.rdoCredentialsUserSpecified);
             this.panel2.Controls.Add(this.txtDomain);
-            this.panel2.Controls.Add(this.lblExImp);
             this.panel2.Controls.Add(this.lblPassword);
             this.panel2.Controls.Add(this.lblDomain);
             this.panel2.Controls.Add(this.txtPassword);
@@ -927,14 +931,40 @@ namespace EWSEditor.Forms
             this.panel2.Location = new System.Drawing.Point(16, 329);
             this.panel2.Margin = new System.Windows.Forms.Padding(6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(992, 665);
+            this.panel2.Size = new System.Drawing.Size(992, 592);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // cmboRedirectUrl
+            // 
+            this.cmboRedirectUrl.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.cmboRedirectUrl.FormattingEnabled = true;
+            this.cmboRedirectUrl.Items.AddRange(new object[] {
+            "urn:ietf:wg:oauth:2.0:oob",
+            "https://login.microsoftonline.com/common/oauth2/nativeclient",
+            "https://127.0.0.1",
+            "https://localhost",
+            "<Do not user a redirect URL.>"});
+            this.cmboRedirectUrl.Location = new System.Drawing.Point(209, 458);
+            this.cmboRedirectUrl.Name = "cmboRedirectUrl";
+            this.cmboRedirectUrl.Size = new System.Drawing.Size(654, 33);
+            this.cmboRedirectUrl.TabIndex = 35;
+            this.cmboRedirectUrl.Text = "urn:ietf:wg:oauth:2.0:oob";
+            // 
+            // lblOAuthRedirect
+            // 
+            this.lblOAuthRedirect.AutoSize = true;
+            this.lblOAuthRedirect.Enabled = false;
+            this.lblOAuthRedirect.Location = new System.Drawing.Point(47, 457);
+            this.lblOAuthRedirect.Margin = new System.Windows.Forms.Padding(0);
+            this.lblOAuthRedirect.Name = "lblOAuthRedirect";
+            this.lblOAuthRedirect.Size = new System.Drawing.Size(146, 25);
+            this.lblOAuthRedirect.TabIndex = 34;
+            this.lblOAuthRedirect.Text = "Redirect URL:";
+            // 
             // BtnLoadCertificate
             // 
-            this.BtnLoadCertificate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnLoadCertificate.Location = new System.Drawing.Point(842, 617);
+            this.BtnLoadCertificate.Location = new System.Drawing.Point(846, 505);
             this.BtnLoadCertificate.Margin = new System.Windows.Forms.Padding(6);
             this.BtnLoadCertificate.Name = "BtnLoadCertificate";
             this.BtnLoadCertificate.Size = new System.Drawing.Size(64, 31);
@@ -947,7 +977,7 @@ namespace EWSEditor.Forms
             // txtAuthCertificatePath
             // 
             this.txtAuthCertificatePath.Enabled = false;
-            this.txtAuthCertificatePath.Location = new System.Drawing.Point(218, 617);
+            this.txtAuthCertificatePath.Location = new System.Drawing.Point(207, 505);
             this.txtAuthCertificatePath.Margin = new System.Windows.Forms.Padding(0);
             this.txtAuthCertificatePath.Name = "txtAuthCertificatePath";
             this.txtAuthCertificatePath.PasswordChar = '*';
@@ -959,7 +989,7 @@ namespace EWSEditor.Forms
             // 
             this.label10.AutoSize = true;
             this.label10.Enabled = false;
-            this.label10.Location = new System.Drawing.Point(56, 619);
+            this.label10.Location = new System.Drawing.Point(47, 505);
             this.label10.Margin = new System.Windows.Forms.Padding(0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(115, 25);
@@ -971,7 +1001,7 @@ namespace EWSEditor.Forms
             // 
             this.rdoCredentialsOAuth2.AutoSize = true;
             this.rdoCredentialsOAuth2.Checked = true;
-            this.rdoCredentialsOAuth2.Location = new System.Drawing.Point(20, 392);
+            this.rdoCredentialsOAuth2.Location = new System.Drawing.Point(20, 208);
             this.rdoCredentialsOAuth2.Margin = new System.Windows.Forms.Padding(6);
             this.rdoCredentialsOAuth2.Name = "rdoCredentialsOAuth2";
             this.rdoCredentialsOAuth2.Size = new System.Drawing.Size(257, 29);
@@ -985,7 +1015,7 @@ namespace EWSEditor.Forms
             this.groupBox1.Controls.Add(this.rdoCredentialsOAuthCertificate);
             this.groupBox1.Controls.Add(this.rdoCredentialsOAuthDelegated);
             this.groupBox1.Controls.Add(this.rdoCredentialsOAuthApplication);
-            this.groupBox1.Location = new System.Drawing.Point(56, 431);
+            this.groupBox1.Location = new System.Drawing.Point(47, 257);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
@@ -1012,7 +1042,7 @@ namespace EWSEditor.Forms
             // txtOAuthClientSecret
             // 
             this.txtOAuthClientSecret.Enabled = false;
-            this.txtOAuthClientSecret.Location = new System.Drawing.Point(218, 587);
+            this.txtOAuthClientSecret.Location = new System.Drawing.Point(209, 413);
             this.txtOAuthClientSecret.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthClientSecret.Name = "txtOAuthClientSecret";
             this.txtOAuthClientSecret.PasswordChar = '*';
@@ -1022,7 +1052,7 @@ namespace EWSEditor.Forms
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(316, 392);
+            this.linkLabel1.Location = new System.Drawing.Point(316, 208);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(446, 25);
@@ -1037,7 +1067,7 @@ namespace EWSEditor.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1576, 1006);
+            this.ClientSize = new System.Drawing.Size(1555, 939);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.panel6);
@@ -1049,6 +1079,18 @@ namespace EWSEditor.Forms
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.lblOAuthRedirectUri);
+            this.Controls.Add(this.lblEWSOauthDocs);
+            this.Controls.Add(this.lblExImp);
+            this.Controls.Add(this.rdoCredentialsOAuth);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtOAuthAuthority);
+            this.Controls.Add(this.txtOAuthRedirectUri);
+            this.Controls.Add(this.lblOAuthAuthority);
+            this.Controls.Add(this.lblOAuthAppId);
+            this.Controls.Add(this.txtOAuthServerName);
+            this.Controls.Add(this.txtOAuthAppId);
+            this.Controls.Add(this.lblOAuthServerName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(10);
             this.Name = "ServiceDialog";
@@ -1153,5 +1195,7 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RadioButton rdoCredentialsOAuthCertificate;
         private System.Windows.Forms.Button BtnLoadCertificate;
+        private System.Windows.Forms.ComboBox cmboRedirectUrl;
+        private System.Windows.Forms.Label lblOAuthRedirect;
     }
 }
