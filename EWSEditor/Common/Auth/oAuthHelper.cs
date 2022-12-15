@@ -41,7 +41,7 @@ namespace EWSEditor.Common.Auth
         }
 
         public string BearerToken
-        {            
+        {
             get { return _BearerToken; }
 
         }
@@ -51,15 +51,15 @@ namespace EWSEditor.Common.Auth
             get { return _CurrentPublicClientApplication; }
         }
 
-         
 
 
-        public async Task<AuthenticationResult> GetDelegateToken(string ClientId,  string TenantId, string OAuth2RedirectUrl)
+
+        public async Task<AuthenticationResult> GetDelegateToken(string ClientId, string TenantId, string OAuth2RedirectUrl)
         {
             _Success = false;
 
             // Using Microsoft.Identity.Client 4.22.0
-            PublicClientApplicationOptions pcaOptions = null ;
+            PublicClientApplicationOptions pcaOptions = null;
 
             if (OAuth2RedirectUrl != "<Do not user a redirect URL.>")
             {
@@ -72,21 +72,21 @@ namespace EWSEditor.Common.Auth
                 };
 
             }
-            else 
+            else
             {
                 // Configure the MSAL client to get tokens
                 pcaOptions = new PublicClientApplicationOptions
                 {
                     ClientId = ClientId,
-                    TenantId = TenantId 
+                    TenantId = TenantId
                 };
 
             }
 
- 
+
             var pca = PublicClientApplicationBuilder
                 .CreateWithApplicationOptions(pcaOptions).Build();
-            
+
             // The permission scope required for EWS access
             var ewsScopes = new string[] { "https://outlook.office365.com/EWS.AccessAsUser.All" };
 
@@ -105,7 +105,7 @@ namespace EWSEditor.Common.Auth
                 _lastException = ex;
 
             }
- 
+
             GetAuthenticationResultInformation(oResult);
 
             return null;
@@ -122,7 +122,7 @@ namespace EWSEditor.Common.Auth
             try
             {
 
-   
+
                 if (OAuth2RedirectUrl != "<Do not user a redirect URL.>")
                 {
                     app = ConfidentialClientApplicationBuilder.Create(ClientId)
@@ -146,11 +146,11 @@ namespace EWSEditor.Common.Auth
                 string sError = string.Empty;
                 sError += string.Format("Error: {0}\r\n", ex.ToString());
                 sError += ex.ToString();
- 
+
                 ErrorDialog.ShowError(sError);
-    
+
             }
-       
+
             // Microsoft.Identity.Client.AuthenticationResult
             AuthenticationResult oResult = null;
             try
@@ -175,9 +175,9 @@ namespace EWSEditor.Common.Auth
                 sError += "\r\n\r\nAlso see: https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth";
                 ErrorDialog.ShowError(sError);
             }
- 
+
             GetAuthenticationResultInformation(oResult);
- 
+
             return oResult;
 
         }
@@ -188,7 +188,7 @@ namespace EWSEditor.Common.Auth
             var ewsScopes = new string[] { "https://outlook.office.com/.default" };
 
             IConfidentialClientApplication app = null;
-   
+
 
             if (OAuth2RedirectUrl != "<Do not user a redirect URL.>")
             {
@@ -224,7 +224,7 @@ namespace EWSEditor.Common.Auth
                 _lastException = ex;
             }
 
-            
+
 
             GetAuthenticationResultInformation(oResult);
 
@@ -232,7 +232,7 @@ namespace EWSEditor.Common.Auth
         }
 
         //public async Task<AuthenticationResult> GetRefreshToken(string sClientId, string sTenantId, Microsoft.Identity.Client.AuthenticationResult oAR, PublicClientApplication oPCA)
-        public async Task<AuthenticationResult> GetRefreshToken( PublicClientApplication oPCA)
+        public async Task<AuthenticationResult> GetRefreshToken(PublicClientApplication oPCA)
         {
 
             // https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-error-handling-dotnet#msaluirequiredexception
@@ -254,19 +254,19 @@ namespace EWSEditor.Common.Auth
             //var accounts = await pca.GetAccountsAsync();
             //var firstAccount = accounts.FirstOrDefault();
 
-       
+
 
             var accounts = await oPCA.GetAccountsAsync();
- 
+
             // The permission scope required for EWS access
             var ewsScopes = new string[] { "https://outlook.office365.com/EWS.AccessAsUser.All" };
 
             AuthenticationResult oResult = null;
-             
+
             try
             {
                 oResult = await oPCA.AcquireTokenSilent(ewsScopes, accounts.FirstOrDefault())
-                        .ExecuteAsync()  ;
+                        .ExecuteAsync();
                 //oResult = await pca.AcquireTokenSilent(ewsScopes, accounts.FirstOrDefault()).ExecuteAsync();
                 _CurrentPublicClientApplication = (PublicClientApplication)oPCA;
                 //GetAuthenticationResultInformation(oResult);
@@ -287,39 +287,47 @@ namespace EWSEditor.Common.Auth
 
         public string GetAuthenticationResultInformation(AuthenticationResult oResult)
         {
-            string sInfo = string.Empty;
 
-            StringBuilder sb = new StringBuilder();
+            if (oResult != null)
+            {  
+                string sInfo = string.Empty;
 
- 
-            sb.AppendLine(string.Format("AccessToken: {0}", oResult.AccessToken));
-            if (oResult.Account != null)
-            { 
-                sb.AppendLine(string.Format("Account: {0}", oResult.Account.ToString()));
-                sb.AppendLine(string.Format("    Username: {0}", oResult.Account.Username));
-                sb.AppendLine(string.Format("    Environment: {0}", oResult.Account.Environment.ToString()));
-                sb.AppendLine(string.Format("    HomeAccountId: {0}", oResult.Account.HomeAccountId.ToString()));
-                sb.AppendLine(string.Format("    Account: {0}", oResult.Account));
+                StringBuilder sb = new StringBuilder();
+
+
+                sb.AppendLine(string.Format("AccessToken: {0}", oResult.AccessToken));
+                if (oResult.Account != null)
+                {
+                    sb.AppendLine(string.Format("Account: {0}", oResult.Account.ToString()));
+                    sb.AppendLine(string.Format("    Username: {0}", oResult.Account.Username));
+                    sb.AppendLine(string.Format("    Environment: {0}", oResult.Account.Environment.ToString()));
+                    sb.AppendLine(string.Format("    HomeAccountId: {0}", oResult.Account.HomeAccountId.ToString()));
+                    sb.AppendLine(string.Format("    Account: {0}", oResult.Account));
+                }
+                sb.AppendLine(string.Format("AuthenticationResultMetadata: {0}", oResult.AuthenticationResultMetadata.ToString()));
+                sb.AppendLine(string.Format("CorrelationId: {0}", oResult.CorrelationId.ToString()));
+                sb.AppendLine(string.Format("ExpiresOn: {0}", oResult.ExpiresOn.ToString()));
+                sb.AppendLine(string.Format("ExtendedExpiresOn: {0}", oResult.ExtendedExpiresOn.ToString()));
+                sb.AppendLine(string.Format("IdToken: {0}", oResult.IdToken));
+                sb.AppendLine(string.Format("IsExtendedLifeTimeToken: {0}", oResult.IsExtendedLifeTimeToken.ToString()));
+                sb.AppendLine(string.Format("Scopes:  "));
+                foreach (string s in oResult.Scopes)
+                {
+                    sb.AppendLine(string.Format("    {0}", s));
+                }
+                sb.AppendLine(string.Format("TenantId: {0}", oResult.TenantId));
+                sb.AppendLine(string.Format("UniqueId: {0}", oResult.UniqueId));
+
+                sInfo = sb.ToString();
+
+                return sInfo;
             }
-            sb.AppendLine(string.Format("AuthenticationResultMetadata: {0}", oResult.AuthenticationResultMetadata.ToString()));
-            sb.AppendLine(string.Format("CorrelationId: {0}", oResult.CorrelationId.ToString()));
-            sb.AppendLine(string.Format("ExpiresOn: {0}", oResult.ExpiresOn.ToString()));
-            sb.AppendLine(string.Format("ExtendedExpiresOn: {0}", oResult.ExtendedExpiresOn.ToString()));
-            sb.AppendLine(string.Format("IdToken: {0}", oResult.IdToken));
-            sb.AppendLine(string.Format("IsExtendedLifeTimeToken: {0}", oResult.IsExtendedLifeTimeToken.ToString()));
-            sb.AppendLine(string.Format("Scopes:  "));
-            foreach (string s in oResult.Scopes)
+            else
             {
-                sb.AppendLine(string.Format("    {0}", s));
+                return "AuthenticationResult is Null.";
             }
-            sb.AppendLine(string.Format("TenantId: {0}", oResult.TenantId ));
-            sb.AppendLine(string.Format("UniqueId: {0}", oResult.UniqueId ));
-
-            sInfo = sb.ToString();
-
-            return sInfo;
-
         }
+ 
 
     }
     
