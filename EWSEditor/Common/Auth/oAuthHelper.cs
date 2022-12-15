@@ -19,7 +19,7 @@ using EWSEditor.Exchange;
 
  
 using Microsoft.Identity.Client;
-
+using System.Linq.Expressions;
 
 namespace EWSEditor.Common.Auth
 {
@@ -117,23 +117,40 @@ namespace EWSEditor.Common.Auth
 
             // Configure the MSAL client to get tokens
             var ewsScopes = new string[] { "https://outlook.office.com/.default" };
-
             IConfidentialClientApplication app = null;
-            if (OAuth2RedirectUrl != "<Do not user a redirect URL.>")
+
+            try
             {
-                  app = ConfidentialClientApplicationBuilder.Create(ClientId)
-                    .WithAuthority(AzureCloudInstance.AzurePublic, TenantId)
-                    .WithClientSecret(ClientSecret)
-                    .WithRedirectUri(OAuth2RedirectUrl)
-                    .Build();
+
+   
+                if (OAuth2RedirectUrl != "<Do not user a redirect URL.>")
+                {
+                    app = ConfidentialClientApplicationBuilder.Create(ClientId)
+                      .WithAuthority(AzureCloudInstance.AzurePublic, TenantId)
+                      .WithClientSecret(ClientSecret)
+                      .WithRedirectUri(OAuth2RedirectUrl)
+                      .Build();
+                }
+                else
+                {
+                    app = ConfidentialClientApplicationBuilder.Create(ClientId)
+                      .WithAuthority(AzureCloudInstance.AzurePublic, TenantId)
+                      .WithClientSecret(ClientSecret)
+                      .Build();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                  app = ConfidentialClientApplicationBuilder.Create(ClientId)
-                    .WithAuthority(AzureCloudInstance.AzurePublic, TenantId)
-                    .WithClientSecret(ClientSecret)
-                    .Build();
+                _Success = false;
+                _lastException = ex;
+                string sError = string.Empty;
+                sError += string.Format("Error: {0}\r\n", ex.ToString());
+                sError += ex.ToString();
+ 
+                ErrorDialog.ShowError(sError);
+    
             }
+       
             // Microsoft.Identity.Client.AuthenticationResult
             AuthenticationResult oResult = null;
             try
@@ -158,15 +175,9 @@ namespace EWSEditor.Common.Auth
                 sError += "\r\n\r\nAlso see: https://docs.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth";
                 ErrorDialog.ShowError(sError);
             }
-
-
-             
-
-
+ 
             GetAuthenticationResultInformation(oResult);
-
-
-
+ 
             return oResult;
 
         }
