@@ -43,6 +43,10 @@ namespace EWSEditor.Common
 
         public bool? UseoAuth2 = null;
         public string OAuth2RedirectUrl = string.Empty;
+        public string OAuth2Authority = string.Empty;
+        public bool  OAuth2ValidateAuthority = true;
+
+
         public bool? UseOAuthDelegate = null;
         public bool? UseOAuthApplication = null;
         public string oAuthApplicationId = string.Empty;

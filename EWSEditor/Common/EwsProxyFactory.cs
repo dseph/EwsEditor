@@ -57,6 +57,9 @@ namespace EWSEditor.Exchange
 
         public static bool? UseoAuth2 = null;
         public static string OAuth2RedirectUrl = string.Empty;
+        public static string OAuth2Authority = string.Empty;
+        public static bool OAuth2ValidateAuthority = true;
+
         public static bool? UseOAuthDelegate = null;
         public static bool? UseOAuthApplication = null;
         public static string oAuthApplicationId = string.Empty;
@@ -531,6 +534,9 @@ namespace EWSEditor.Exchange
 
             oSettings.UseoAuth2 = UseoAuth2;
             oSettings.OAuth2RedirectUrl = OAuth2RedirectUrl;
+            oSettings.OAuth2Authority = OAuth2Authority;
+            oSettings.OAuth2ValidateAuthority = OAuth2ValidateAuthority;
+
             oSettings.UseOAuthDelegate = UseOAuthDelegate;
             oSettings.UseOAuthApplication = UseOAuthApplication;
             oSettings.oAuthApplicationId = oAuthApplicationId;

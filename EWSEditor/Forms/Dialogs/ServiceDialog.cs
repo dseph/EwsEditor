@@ -176,6 +176,8 @@ namespace EWSEditor.Forms
                 if (this.rdoCredentialsOAuth2.Checked)
                 {
                     EwsProxyFactory.OAuth2RedirectUrl = cmboRedirectUrl.Text.Trim();
+                    EwsProxyFactory.OAuth2Authority = cmboAuthority.Text.Trim();
+                    EwsProxyFactory.OAuth2ValidateAuthority = chkValidateAuthority.Checked;
 
                     if (this.rdoCredentialsOAuthDelegated.Checked)
                         EwsProxyFactory.AuthenticationMethod = RequestedAuthType.oAuth2Delegate;
@@ -362,9 +364,12 @@ namespace EWSEditor.Forms
                     {
                         EWSEditor.Common.Auth.OAuthHelper o = new EWSEditor.Common.Auth.OAuthHelper();
                         AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetDelegateToken(
-                            EwsProxyFactory.oAuthApplicationId, 
-                            EwsProxyFactory.oAuthTenantId,
-                            EwsProxyFactory.OAuth2RedirectUrl)
+                                EwsProxyFactory.oAuthApplicationId, 
+                                EwsProxyFactory.oAuthTenantId,
+                                EwsProxyFactory.OAuth2RedirectUrl,
+                                EwsProxyFactory.OAuth2Authority,
+                                EwsProxyFactory.OAuth2ValidateAuthority
+                                )
                             ).Result;
                         EwsProxyFactory.MsalAuthenticationResult = oResult;
                         var oCredentials =  new Microsoft.Exchange.WebServices.Data.OAuthCredentials(oResult.AccessToken);
@@ -384,7 +389,11 @@ namespace EWSEditor.Forms
                         AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetApplicationToken(EwsProxyFactory.oAuthApplicationId,
                                                                                                                                 EwsProxyFactory.oAuthTenantId,
                                                                                                                                 EwsProxyFactory.oAuthClientSecret,
-                                                                                                                                EwsProxyFactory.OAuth2RedirectUrl)).Result;
+                                                                                                                                EwsProxyFactory.OAuth2RedirectUrl,
+                                                                                                                                EwsProxyFactory.OAuth2Authority,
+                                                                                                                                EwsProxyFactory.OAuth2ValidateAuthority
+
+                                                                                                                                )).Result;
 
                         var oCredentials = new Microsoft.Exchange.WebServices.Data.OAuthCredentials(oResult.AccessToken);
 
@@ -399,11 +408,15 @@ namespace EWSEditor.Forms
                     {
                         EWSEditor.Common.Auth.OAuthHelper o = new EWSEditor.Common.Auth.OAuthHelper();
 
-                        AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetCertificateToken(EwsProxyFactory.oAuthApplicationId,
-                                                                                                                                EwsProxyFactory.oAuthTenantId,
-                                                                                                                                EwsProxyFactory.oAuthClientCertificate,
-                                                                                                                                EwsProxyFactory.OAuth2RedirectUrl 
-                                                                                                                                )).Result;
+                        AuthenticationResult oResult = System.Threading.Tasks.Task.Run(async () => await o.GetCertificateToken(
+                            EwsProxyFactory.oAuthApplicationId,
+                            EwsProxyFactory.oAuthTenantId,
+                            EwsProxyFactory.oAuthClientCertificate,
+                            EwsProxyFactory.OAuth2Authority,                                                                                                           
+                            EwsProxyFactory.OAuth2RedirectUrl,                                                                                             
+                            EwsProxyFactory.OAuth2ValidateAuthority
+                                                                                                                                
+                            )).Result;
 
               
 
@@ -885,6 +898,11 @@ namespace EWSEditor.Forms
         }
 
         private void txtOAuthTenantId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmboRedirectUrl_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

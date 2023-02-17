@@ -97,6 +97,9 @@ namespace EWSEditor.Forms
             this.lblOAuthClientSecret = new System.Windows.Forms.Label();
             this.rdoCredentialsOAuthApplication = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.chkValidateAuthority = new System.Windows.Forms.CheckBox();
+            this.cmboAuthority = new System.Windows.Forms.ComboBox();
+            this.lblAuthority = new System.Windows.Forms.Label();
             this.cmboRedirectUrl = new System.Windows.Forms.ComboBox();
             this.lblOAuthRedirect = new System.Windows.Forms.Label();
             this.BtnLoadCertificate = new System.Windows.Forms.Button();
@@ -629,7 +632,7 @@ namespace EWSEditor.Forms
             // 
             this.lblExImp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblExImp.AutoSize = true;
-            this.lblExImp.Location = new System.Drawing.Point(206, 1274);
+            this.lblExImp.Location = new System.Drawing.Point(206, 1899);
             this.lblExImp.Margin = new System.Windows.Forms.Padding(0);
             this.lblExImp.Name = "lblExImp";
             this.lblExImp.Size = new System.Drawing.Size(0, 25);
@@ -844,7 +847,7 @@ namespace EWSEditor.Forms
             this.lblOAuthApplicationId.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthApplicationId.Name = "lblOAuthApplicationId";
             this.lblOAuthApplicationId.Size = new System.Drawing.Size(143, 25);
-            this.lblOAuthApplicationId.TabIndex = 29;
+            this.lblOAuthApplicationId.TabIndex = 13;
             this.lblOAuthApplicationId.Text = "Client App ID:";
             // 
             // txtOAuthApplicationId
@@ -854,7 +857,7 @@ namespace EWSEditor.Forms
             this.txtOAuthApplicationId.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthApplicationId.Name = "txtOAuthApplicationId";
             this.txtOAuthApplicationId.Size = new System.Drawing.Size(688, 31);
-            this.txtOAuthApplicationId.TabIndex = 31;
+            this.txtOAuthApplicationId.TabIndex = 14;
             // 
             // lblOAuthTenantId
             // 
@@ -864,7 +867,7 @@ namespace EWSEditor.Forms
             this.lblOAuthTenantId.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthTenantId.Name = "lblOAuthTenantId";
             this.lblOAuthTenantId.Size = new System.Drawing.Size(111, 25);
-            this.lblOAuthTenantId.TabIndex = 32;
+            this.lblOAuthTenantId.TabIndex = 15;
             this.lblOAuthTenantId.Text = "Tenant ID:";
             // 
             // txtOAuthTenantId
@@ -874,7 +877,7 @@ namespace EWSEditor.Forms
             this.txtOAuthTenantId.Margin = new System.Windows.Forms.Padding(0);
             this.txtOAuthTenantId.Name = "txtOAuthTenantId";
             this.txtOAuthTenantId.Size = new System.Drawing.Size(688, 31);
-            this.txtOAuthTenantId.TabIndex = 33;
+            this.txtOAuthTenantId.TabIndex = 16;
             this.txtOAuthTenantId.TextChanged += new System.EventHandler(this.txtOAuthTenantId_TextChanged);
             // 
             // lblOAuthClientSecret
@@ -885,7 +888,7 @@ namespace EWSEditor.Forms
             this.lblOAuthClientSecret.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthClientSecret.Name = "lblOAuthClientSecret";
             this.lblOAuthClientSecret.Size = new System.Drawing.Size(141, 25);
-            this.lblOAuthClientSecret.TabIndex = 0;
+            this.lblOAuthClientSecret.TabIndex = 17;
             this.lblOAuthClientSecret.Text = "Client Secret:";
             // 
             // rdoCredentialsOAuthApplication
@@ -904,6 +907,9 @@ namespace EWSEditor.Forms
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.chkValidateAuthority);
+            this.panel2.Controls.Add(this.cmboAuthority);
+            this.panel2.Controls.Add(this.lblAuthority);
             this.panel2.Controls.Add(this.cmboRedirectUrl);
             this.panel2.Controls.Add(this.lblOAuthRedirect);
             this.panel2.Controls.Add(this.BtnLoadCertificate);
@@ -931,9 +937,48 @@ namespace EWSEditor.Forms
             this.panel2.Location = new System.Drawing.Point(16, 329);
             this.panel2.Margin = new System.Windows.Forms.Padding(6);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(992, 592);
+            this.panel2.Size = new System.Drawing.Size(992, 604);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // chkValidateAuthority
+            // 
+            this.chkValidateAuthority.AccessibleName = "";
+            this.chkValidateAuthority.AutoSize = true;
+            this.chkValidateAuthority.Checked = true;
+            this.chkValidateAuthority.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkValidateAuthority.Location = new System.Drawing.Point(759, 470);
+            this.chkValidateAuthority.Name = "chkValidateAuthority";
+            this.chkValidateAuthority.Size = new System.Drawing.Size(213, 29);
+            this.chkValidateAuthority.TabIndex = 21;
+            this.chkValidateAuthority.Text = "Validate Authority";
+            this.chkValidateAuthority.UseVisualStyleBackColor = true;
+            // 
+            // cmboAuthority
+            // 
+            this.cmboAuthority.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.cmboAuthority.FormattingEnabled = true;
+            this.cmboAuthority.Items.AddRange(new object[] {
+            "https://login.microsoftonline.com",
+            "https://login.microsoftonline.us",
+            "https://login.microsoftonline.de",
+            "https://login.partner.microsoftonline.cn"});
+            this.cmboAuthority.Location = new System.Drawing.Point(210, 466);
+            this.cmboAuthority.Name = "cmboAuthority";
+            this.cmboAuthority.Size = new System.Drawing.Size(537, 33);
+            this.cmboAuthority.TabIndex = 20;
+            this.cmboAuthority.Text = "https://login.microsoftonline.com";
+            // 
+            // lblAuthority
+            // 
+            this.lblAuthority.AutoSize = true;
+            this.lblAuthority.Enabled = false;
+            this.lblAuthority.Location = new System.Drawing.Point(46, 469);
+            this.lblAuthority.Margin = new System.Windows.Forms.Padding(0);
+            this.lblAuthority.Name = "lblAuthority";
+            this.lblAuthority.Size = new System.Drawing.Size(103, 25);
+            this.lblAuthority.TabIndex = 19;
+            this.lblAuthority.Text = "Authority:";
             // 
             // cmboRedirectUrl
             // 
@@ -945,30 +990,31 @@ namespace EWSEditor.Forms
             "https://127.0.0.1",
             "https://localhost",
             "<Do not use a redirect URL.>"});
-            this.cmboRedirectUrl.Location = new System.Drawing.Point(209, 458);
+            this.cmboRedirectUrl.Location = new System.Drawing.Point(209, 515);
             this.cmboRedirectUrl.Name = "cmboRedirectUrl";
-            this.cmboRedirectUrl.Size = new System.Drawing.Size(654, 33);
-            this.cmboRedirectUrl.TabIndex = 35;
+            this.cmboRedirectUrl.Size = new System.Drawing.Size(773, 33);
+            this.cmboRedirectUrl.TabIndex = 23;
             this.cmboRedirectUrl.Text = "urn:ietf:wg:oauth:2.0:oob";
+            this.cmboRedirectUrl.SelectedIndexChanged += new System.EventHandler(this.cmboRedirectUrl_SelectedIndexChanged);
             // 
             // lblOAuthRedirect
             // 
             this.lblOAuthRedirect.AutoSize = true;
             this.lblOAuthRedirect.Enabled = false;
-            this.lblOAuthRedirect.Location = new System.Drawing.Point(47, 457);
+            this.lblOAuthRedirect.Location = new System.Drawing.Point(44, 519);
             this.lblOAuthRedirect.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthRedirect.Name = "lblOAuthRedirect";
             this.lblOAuthRedirect.Size = new System.Drawing.Size(146, 25);
-            this.lblOAuthRedirect.TabIndex = 34;
+            this.lblOAuthRedirect.TabIndex = 22;
             this.lblOAuthRedirect.Text = "Redirect URL:";
             // 
             // BtnLoadCertificate
             // 
-            this.BtnLoadCertificate.Location = new System.Drawing.Point(846, 505);
+            this.BtnLoadCertificate.Location = new System.Drawing.Point(846, 557);
             this.BtnLoadCertificate.Margin = new System.Windows.Forms.Padding(6);
             this.BtnLoadCertificate.Name = "BtnLoadCertificate";
             this.BtnLoadCertificate.Size = new System.Drawing.Size(64, 31);
-            this.BtnLoadCertificate.TabIndex = 4;
+            this.BtnLoadCertificate.TabIndex = 26;
             this.BtnLoadCertificate.Text = ". . .";
             this.BtnLoadCertificate.UseVisualStyleBackColor = true;
             this.BtnLoadCertificate.Visible = false;
@@ -977,23 +1023,23 @@ namespace EWSEditor.Forms
             // txtAuthCertificatePath
             // 
             this.txtAuthCertificatePath.Enabled = false;
-            this.txtAuthCertificatePath.Location = new System.Drawing.Point(207, 505);
+            this.txtAuthCertificatePath.Location = new System.Drawing.Point(207, 557);
             this.txtAuthCertificatePath.Margin = new System.Windows.Forms.Padding(0);
             this.txtAuthCertificatePath.Name = "txtAuthCertificatePath";
             this.txtAuthCertificatePath.PasswordChar = '*';
             this.txtAuthCertificatePath.Size = new System.Drawing.Size(608, 31);
-            this.txtAuthCertificatePath.TabIndex = 3;
+            this.txtAuthCertificatePath.TabIndex = 25;
             this.txtAuthCertificatePath.Visible = false;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Enabled = false;
-            this.label10.Location = new System.Drawing.Point(47, 505);
+            this.label10.Location = new System.Drawing.Point(47, 557);
             this.label10.Margin = new System.Windows.Forms.Padding(0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(115, 25);
-            this.label10.TabIndex = 2;
+            this.label10.TabIndex = 24;
             this.label10.Text = "Certificate:";
             this.label10.Visible = false;
             // 
@@ -1005,7 +1051,7 @@ namespace EWSEditor.Forms
             this.rdoCredentialsOAuth2.Margin = new System.Windows.Forms.Padding(6);
             this.rdoCredentialsOAuth2.Name = "rdoCredentialsOAuth2";
             this.rdoCredentialsOAuth2.Size = new System.Drawing.Size(257, 29);
-            this.rdoCredentialsOAuth2.TabIndex = 25;
+            this.rdoCredentialsOAuth2.TabIndex = 10;
             this.rdoCredentialsOAuth2.TabStop = true;
             this.rdoCredentialsOAuth2.Text = "Use oAuth 2.0 (MSAL)";
             this.rdoCredentialsOAuth2.UseVisualStyleBackColor = true;
@@ -1020,7 +1066,7 @@ namespace EWSEditor.Forms
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(768, 75);
-            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Authentication Flow";
             // 
@@ -1047,7 +1093,7 @@ namespace EWSEditor.Forms
             this.txtOAuthClientSecret.Name = "txtOAuthClientSecret";
             this.txtOAuthClientSecret.PasswordChar = '*';
             this.txtOAuthClientSecret.Size = new System.Drawing.Size(688, 31);
-            this.txtOAuthClientSecret.TabIndex = 1;
+            this.txtOAuthClientSecret.TabIndex = 18;
             // 
             // linkLabel1
             // 
@@ -1056,7 +1102,7 @@ namespace EWSEditor.Forms
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(446, 25);
-            this.linkLabel1.TabIndex = 27;
+            this.linkLabel1.TabIndex = 11;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "(Registration must have been completed first)";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblEWSOauthDocs_LinkClicked);
@@ -1067,7 +1113,7 @@ namespace EWSEditor.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1555, 939);
+            this.ClientSize = new System.Drawing.Size(1571, 1564);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.panel6);
@@ -1094,8 +1140,7 @@ namespace EWSEditor.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(10);
             this.Name = "ServiceDialog";
-            this.Text = "Note: The X-AnchorMailbox header should always be set when EWS Impersonation or D" +
-    "elegate Access are used.  Calls may fail at any time if its not set.";
+            this.Text = "Service";
             this.Load += new System.EventHandler(this.ServiceDialog_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -1197,5 +1242,8 @@ namespace EWSEditor.Forms
         private System.Windows.Forms.Button BtnLoadCertificate;
         private System.Windows.Forms.ComboBox cmboRedirectUrl;
         private System.Windows.Forms.Label lblOAuthRedirect;
+        private System.Windows.Forms.ComboBox cmboAuthority;
+        private System.Windows.Forms.Label lblAuthority;
+        private System.Windows.Forms.CheckBox chkValidateAuthority;
     }
 }
