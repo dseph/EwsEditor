@@ -20,6 +20,9 @@ using EWSEditor.Exchange;
  
 using Microsoft.Identity.Client;
 using System.Linq.Expressions;
+//using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace EWSEditor.Common.Auth
 {
@@ -61,7 +64,7 @@ namespace EWSEditor.Common.Auth
             // Using Microsoft.Identity.Client 4.22.0
             PublicClientApplicationOptions pcaOptions = null;
 
-            if (OAuth2RedirectUrl != "<Do not user a redirect URL.>")
+            if (OAuth2RedirectUrl != "<Do not use a redirect URL.>")
             {
                 // Configure the MSAL client to get tokens
                 pcaOptions = new PublicClientApplicationOptions
@@ -70,6 +73,8 @@ namespace EWSEditor.Common.Auth
                     TenantId = TenantId,
                     RedirectUri = OAuth2RedirectUrl
                 };
+
+                
 
             }
             else
@@ -111,6 +116,123 @@ namespace EWSEditor.Common.Auth
             return null;
 
         }
+ 
+        //// test below
+        //public async Task<AuthenticationResult> GetDelegateTokenGcc(string ClientId, string TenantId, string oAuth2AuthUrl, string OAuth2RedirectUrl)
+        //{
+
+        //    // https://learn.microsoft.com/en-us/azure/active-directory/develop/msal-client-application-configuration
+
+        //    _Success = false;
+
+        //    // Using Microsoft.Identity.Client 4.22.0
+        //    PublicClientApplicationOptions pcaOptions = null;
+
+
+        //    try
+        //    {
+        //        AuthenticationContext authenticationContext = new Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext("https://login.microsoftonline.com/common", false);
+        //        //AuthenticationResult authenticationResult = await 
+        //        //    authenticationContext.AcquireTokenAsync("https://outlook.office365.com", 
+        //        //    "a0c73c16-a7e3-4564-9a95-2bdf47383716", 
+        //        //    new Uri("urn:ietf:wg:oauth:2.0:oob"), 
+        //        //    new PlatformParameters(PromptBehavior.Always));
+        //        //return authenticationResult.CreateAuthorizationHeader();
+                
+        //    }
+        //    catch (Exception ex)
+        //    {ring();
+        //    }
+        //        string x = ex.Message.ToSt
+
+
+        //    if (OAuth2RedirectUrl != "<Do not use a redirect URL.>")
+        //    {
+        //        // Configure the MSAL client to get tokens
+        //        pcaOptions = new PublicClientApplicationOptions
+        //        {
+        //            ClientId = ClientId,
+        //            TenantId = TenantId,
+        //            RedirectUri = OAuth2RedirectUrl
+                    
+                     
+        //        };
+
+        //        pcaOption.authority
+
+        //    }
+        //    else
+        //    {
+        //        // Configure the MSAL client to get tokens
+        //        pcaOptions = new PublicClientApplicationOptions
+        //        {
+        //            ClientId = ClientId,
+        //            TenantId = TenantId
+        //        };
+
+        //    }
+
+        //    // https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-common/docs/authority.md
+        //    //Authority configuration
+        //    //  In MSAL, authority can be set in 2 locations:
+        //    //            via the configuration object during MSAL instantiation
+        //    //            via the request object during login* and acquireToken* calls
+        //    //  (2) takes precedence over(1) i.e.you can override the initial authority URL set in the configuration object later on
+        //    //   during each token request.See msal-browser configuration and msal-node configuration for more.
+
+        //    var pca = PublicClientApplicationBuilder
+               
+        //        .CreateWithApplicationOptions(pcaOptions).Build();
+        //    // pca.Authority - Getonly
+
+        //    ConfidentialClientApplication cca = new ConfidentialClientApplication({
+        //        auth: {
+        //    clientId: "<your-client-id>",
+        //        authority: "https://<your-dsts-domain>/dstsv2/<your-tenant-id>",
+        //        knownAuthorities: ["<your-dsts-domain>"] // array of domains that are known to be trusted
+        //    }
+        //});
+
+        //    //PublicClientApplication pcax = new PublicClientApplication(
+        //    //    {
+        //    //        auth: {
+        //    //        clientId: "<your-client-id>",
+        //    //        authority: "https://<your-tenant-name>.b2clogin.com/<your-tenant-name>.onmicrosoft.com/<your-policy-id>",
+        //    //        knownAuthorities: ["<your-tenant-name>.b2clogin.com"] // array of domains that are known to be trusted
+        //    //         }
+        //    //     }
+        //    //    ,
+        //    //    xxxx
+        //    //);
+
+        //    // The permission scope required for EWS access
+        //    var ewsScopes = new string[] { "https://outlook.office365.com/EWS.AccessAsUser.All" };
+
+        //    AuthenticationResult oResult = null;
+
+        //    try
+        //    {
+        //        oResult = await pca.AcquireTokenInteractive(ewsScopes).ExecuteAsync();
+        //        _CurrentPublicClientApplication = (PublicClientApplication)pca;
+        //        _Success = true;
+        //        return oResult;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _Success = false;
+        //        _lastException = ex;
+
+        //    }
+
+        //    GetAuthenticationResultInformation(oResult);
+
+        //    return null;
+
+        //}
+
+ 
+
+
 
         public async Task<AuthenticationResult> GetApplicationToken(string ClientId, string TenantId, string ClientSecret, string OAuth2RedirectUrl)
         {
@@ -123,7 +245,7 @@ namespace EWSEditor.Common.Auth
             {
 
 
-                if (OAuth2RedirectUrl != "<Do not user a redirect URL.>")
+                if (OAuth2RedirectUrl != "<Do not use a redirect URL.>")
                 {
                     app = ConfidentialClientApplicationBuilder.Create(ClientId)
                       .WithAuthority(AzureCloudInstance.AzurePublic, TenantId)
@@ -190,7 +312,7 @@ namespace EWSEditor.Common.Auth
             IConfidentialClientApplication app = null;
 
 
-            if (OAuth2RedirectUrl != "<Do not user a redirect URL.>")
+            if (OAuth2RedirectUrl != "<Do not use a redirect URL.>")
             {
                 app = ConfidentialClientApplicationBuilder.Create(ClientId)
                 .WithAuthority(AzureCloudInstance.AzurePublic, TenantId)

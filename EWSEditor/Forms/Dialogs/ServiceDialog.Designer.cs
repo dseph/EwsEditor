@@ -944,7 +944,7 @@ namespace EWSEditor.Forms
             "https://login.microsoftonline.com/common/oauth2/nativeclient",
             "https://127.0.0.1",
             "https://localhost",
-            "<Do not user a redirect URL.>"});
+            "<Do not use a redirect URL.>"});
             this.cmboRedirectUrl.Location = new System.Drawing.Point(209, 458);
             this.cmboRedirectUrl.Name = "cmboRedirectUrl";
             this.cmboRedirectUrl.Size = new System.Drawing.Size(654, 33);
