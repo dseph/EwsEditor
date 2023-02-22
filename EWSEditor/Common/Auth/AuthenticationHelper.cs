@@ -83,28 +83,8 @@ namespace EWSEditor.Common
             return Do_OAuth(ref MailboxBeingAccessed, ref AccountAccessingMailbox,
              sAuthority, sAppId, sRedirectURL, sServername, ref sBearerToken, PromptBehavior.Always);
 
-            //ExchangeCredentials oExchangeCredentials = null;
-
             //// See // https://msdn.microsoft.com/en-us/library/office/dn903761(v=exchg.150).aspx
-            //// get authentication token
-            //string authority = sAuthority;
-            //string clientID = sAppId;
-            //Uri clientAppUri = new Uri(sRedirectURL);
-            //string serverName = sServername;
 
-            //AuthenticationContext authenticationContext = new AuthenticationContext(authority, false);
-            //PlatformParameters oPlatformParameters = new PlatformParameters(PromptBehavior.Always);
-            //AuthenticationResult authenticationResult = authenticationContext.AcquireTokenAsync (serverName, clientID, clientAppUri, oPlatformParameters).Result;
-
-            //sBearerToken = authenticationResult.AccessToken;
-
-            //// Add authenticaiton token to requests
-            //oExchangeCredentials = new OAuthCredentials(authenticationResult.AccessToken);
-
-            //MailboxBeingAccessed = authenticationResult.UserInfo.DisplayableId;
-            //AccountAccessingMailbox = authenticationResult.UserInfo.DisplayableId;  // oAuth at this time does not support delegate or impersonation access - may need to change this in the future.
-
-           // return oExchangeCredentials;
 
         }
 

@@ -23,6 +23,7 @@ using System.Linq.Expressions;
 //using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
+using System.Net.NetworkInformation;
 
 // For reference:
 //      https://learn.microsoft.com/en-us/azure/active-directory/develop/msal-client-application-configuration
@@ -62,16 +63,29 @@ namespace EWSEditor.Common.Auth
         }
 
 
-
-
+        ///------------------------------------------------------------------------------------------------------
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="ClientId"></param>
+        /// <param name="TenantId"></param>
+        /// <param name="OAuth2RedirectUrl"></param>
+        /// <param name="OAuth2Authority"></param>
+        /// <param name="OAuth2ValidateAuthority"></param>
+        /// <returns></returns>
         public async Task<AuthenticationResult> GetDelegateToken(
                 string ClientId, 
                 string TenantId, 
                 string OAuth2RedirectUrl, 
                 string OAuth2Authority, 
-                bool OAuth2ValidateAuthority)
+                bool OAuth2ValidateAuthority,
+                string OAuth2Scope
+                )
         {
             _Success = false;
+
+            //var ewsScopes = new string[] { "https://outlook.office365.com/EWS.AccessAsUser.All" };
+            string[] ewsScopes = { OAuth2Scope };
 
             // Using Microsoft.Identity.Client 4.22.0
             PublicClientApplicationOptions pcaOptions = null;
@@ -105,7 +119,7 @@ namespace EWSEditor.Common.Auth
                 .CreateWithApplicationOptions(pcaOptions).Build();
 
             // The permission scope required for EWS access
-            var ewsScopes = new string[] { "https://outlook.office365.com/EWS.AccessAsUser.All" };
+             
 
             AuthenticationResult oResult = null;
 
@@ -131,21 +145,34 @@ namespace EWSEditor.Common.Auth
             return null;
 
         }
- 
-        
 
 
+        // ------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ClientId"></param>
+        /// <param name="TenantId"></param>
+        /// <param name="ClientSecret"></param>
+        /// <param name="OAuth2RedirectUrl"></param>
+        /// <param name="OAuth2Authority"></param>
+        /// <param name="OAuth2ValidateAuthority"></param>
+        /// <param name="OAuth2Scope"></param>
+        /// <returns></returns>
         public async Task<AuthenticationResult> GetApplicationToken(
                 string ClientId, 
                 string TenantId, 
                 string ClientSecret, 
                 string OAuth2RedirectUrl,
                 string OAuth2Authority,
-                bool OAuth2ValidateAuthority)
+                bool OAuth2ValidateAuthority,
+                string OAuth2Scope )
         {
 
             // Configure the MSAL client to get tokens
-            var ewsScopes = new string[] { "https://outlook.office.com/.default" };
+            //var ewsScopes = new string[] { "https://outlook.office.com/.default" };
+            string[] ewsScopes = { OAuth2Scope };
+         
             IConfidentialClientApplication app = null;
 
             try
@@ -215,16 +242,31 @@ namespace EWSEditor.Common.Auth
 
         }
 
+        // ----------------------------------------------------------------------
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ClientId"></param>
+        /// <param name="TenantId"></param>
+        /// <param name="ClientCertificate"></param>
+        /// <param name="OAuth2RedirectUrl"></param>
+        /// <param name="OAuth2Authority"></param>
+        /// <param name="OAuth2ValidateAuthority"></param>
+        /// <param name="OAuth2Scope"></param>
+        /// <returns></returns>
         public async Task<AuthenticationResult> GetCertificateToken(
                 string ClientId, 
                 string TenantId, 
                 X509Certificate2 ClientCertificate, 
                 string OAuth2RedirectUrl,
                 string OAuth2Authority,
-                bool OAuth2ValidateAuthority)
+                bool OAuth2ValidateAuthority,
+                string OAuth2Scope)
         {
             // Configure the MSAL client to get tokens
-            var ewsScopes = new string[] { "https://outlook.office.com/.default" };
+            //var ewsScopes = new string[] { "https://outlook.office.com/.default" };
+            string[] ewsScopes = { OAuth2Scope };
+     
 
             IConfidentialClientApplication app = null;
 
@@ -276,25 +318,9 @@ namespace EWSEditor.Common.Auth
         {
 
             // https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-error-handling-dotnet#msaluirequiredexception
-
-
-            //var pcaOptions = new PublicClientApplicationOptions
-            //{
-            //    ClientId = sClientId,
-            //    TenantId = sTenantId
-            //};
-
-
-
-            //var pca = PublicClientApplicationBuilder
-            //    .CreateWithApplicationOptions(pcaOptions).Build();
-
+ 
             // https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-a-cached-token
-
-            //var accounts = await pca.GetAccountsAsync();
-            //var firstAccount = accounts.FirstOrDefault();
-
-
+ 
 
             var accounts = await oPCA.GetAccountsAsync();
 

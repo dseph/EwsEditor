@@ -63,7 +63,7 @@ namespace EWSEditor.Forms
 
 
         private void BtnOK_Click(object sender, EventArgs e)
-        { 
+        {
 
             if (rdoCredentialsOAuth2.Checked == true)
             {
@@ -77,7 +77,13 @@ namespace EWSEditor.Forms
                     ErrorDialog.ShowInfo("Tenant Id is required for oAuth.");
                     return;
                 }
- 
+
+                if (cmboScope.Text.Trim() == string.Empty)
+                {  
+                    ErrorDialog.ShowInfo("Scope must be set.");
+                    return;
+                }
+
             }
 
 
@@ -178,6 +184,7 @@ namespace EWSEditor.Forms
                     EwsProxyFactory.OAuth2RedirectUrl = cmboRedirectUrl.Text.Trim();
                     EwsProxyFactory.OAuth2Authority = cmboAuthority.Text.Trim();
                     EwsProxyFactory.OAuth2ValidateAuthority = chkValidateAuthority.Checked;
+                    EwsProxyFactory.OAuth2Scope = cmboScope.Text.Trim();
 
                     if (this.rdoCredentialsOAuthDelegated.Checked)
                         EwsProxyFactory.AuthenticationMethod = RequestedAuthType.oAuth2Delegate;
@@ -368,7 +375,8 @@ namespace EWSEditor.Forms
                                 EwsProxyFactory.oAuthTenantId,
                                 EwsProxyFactory.OAuth2RedirectUrl,
                                 EwsProxyFactory.OAuth2Authority,
-                                EwsProxyFactory.OAuth2ValidateAuthority
+                                EwsProxyFactory.OAuth2ValidateAuthority,
+                                EwsProxyFactory.OAuth2Scope 
                                 )
                             ).Result;
                         EwsProxyFactory.MsalAuthenticationResult = oResult;
@@ -391,7 +399,8 @@ namespace EWSEditor.Forms
                                                                                                                                 EwsProxyFactory.oAuthClientSecret,
                                                                                                                                 EwsProxyFactory.OAuth2RedirectUrl,
                                                                                                                                 EwsProxyFactory.OAuth2Authority,
-                                                                                                                                EwsProxyFactory.OAuth2ValidateAuthority
+                                                                                                                                EwsProxyFactory.OAuth2ValidateAuthority,
+                                                                                                                                EwsProxyFactory.OAuth2Scope
 
                                                                                                                                 )).Result;
 
@@ -414,8 +423,8 @@ namespace EWSEditor.Forms
                             EwsProxyFactory.oAuthClientCertificate,
                             EwsProxyFactory.OAuth2Authority,                                                                                                           
                             EwsProxyFactory.OAuth2RedirectUrl,                                                                                             
-                            EwsProxyFactory.OAuth2ValidateAuthority
-                                                                                                                                
+                            EwsProxyFactory.OAuth2ValidateAuthority,
+                            EwsProxyFactory.OAuth2Scope
                             )).Result;
 
               
@@ -737,7 +746,10 @@ namespace EWSEditor.Forms
         private void SetAuthEnablement()
         {
             bool bUserSpecified = this.rdoCredentialsUserSpecified.Checked;
-             
+            string[] sDelegateScopes = { };
+
+ 
+ 
 
             //txtUserName.Text = string.Empty;
             //txtPassword.Text = string.Empty;
@@ -788,9 +800,36 @@ namespace EWSEditor.Forms
             this.txtOAuthApplicationId.Enabled = bUseOAuth2;
             this.txtOAuthTenantId.Enabled = bUseOAuth2;
             this.txtOAuthClientSecret.Enabled = (bUseOAuth2 && rdoCredentialsOAuthApplication.Checked);
+            this.cmboAuthority.Enabled = bUseOAuth2;
+            this.cmboScope.Enabled = bUseOAuth2;
             this.txtAuthCertificatePath.Enabled = (bUseOAuth2 && rdoCredentialsOAuthCertificate.Checked);
             this.BtnLoadCertificate.Enabled = (bUseOAuth2 && rdoCredentialsOAuthCertificate.Checked);
-             
+ 
+            if (bUseOAuth2)
+            {
+                if (rdoCredentialsOAuthApplication.Checked || rdoCredentialsOAuthCertificate.Checked)
+                {
+                    // Applicaiton Flow
+                    cmboScope.Items.Clear();
+                    cmboScope.Items.Add("https://outlook.office.com/.default");
+                    cmboScope.Items.Add("https://outlook.office365.us/.default");
+                    cmboScope.Items.Add("https://outlook.office365.de/.default");
+                    cmboScope.Items.Add("https://outlook.office365.cn/.default");
+                }
+
+                if (rdoCredentialsOAuthDelegated.Checked)
+                {
+
+                    // Delegate flow scopes
+                    cmboScope.Items.Clear();
+                    cmboScope.Items.Add("https://outlook.office365.com/EWS.AccessAsUser.All");
+                    cmboScope.Items.Add("https://outlook.office365.us/EWS.AccessAsUser.All");
+                    cmboScope.Items.Add("https://outlook.office365.de/EWS.AccessAsUser.All");
+                    cmboScope.Items.Add("https://outlook.office365.cn/EWS.AccessAsUser.All");
+
+                }
+
+            }
 
 
         }
@@ -851,16 +890,19 @@ namespace EWSEditor.Forms
         private void rdoCredentialsOAuthDelegated_CheckedChanged(object sender, EventArgs e)
         {
             SetAuthEnablement();
+            cmboScope.Text = string.Empty;
         }
 
         private void rdoCredentialsOAuthApplication_CheckedChanged(object sender, EventArgs e)
         {
             SetAuthEnablement();
+            cmboScope.Text = string.Empty;
         }
 
         private void rdoCredentialsOAuthCertificate_CheckedChanged(object sender, EventArgs e)
         {
             SetAuthEnablement();
+            cmboScope.Text = string.Empty;
         }
 
         private void BtnLoadCertificate_Click(object sender, EventArgs e)
