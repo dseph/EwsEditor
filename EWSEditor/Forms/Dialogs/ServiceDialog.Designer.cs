@@ -632,7 +632,7 @@ namespace EWSEditor.Forms
             // 
             this.lblExImp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblExImp.AutoSize = true;
-            this.lblExImp.Location = new System.Drawing.Point(206, 1899);
+            this.lblExImp.Location = new System.Drawing.Point(206, 1281);
             this.lblExImp.Margin = new System.Windows.Forms.Padding(0);
             this.lblExImp.Name = "lblExImp";
             this.lblExImp.Size = new System.Drawing.Size(0, 25);
@@ -1113,7 +1113,7 @@ namespace EWSEditor.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1571, 1564);
+            this.ClientSize = new System.Drawing.Size(1571, 946);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.panel6);
