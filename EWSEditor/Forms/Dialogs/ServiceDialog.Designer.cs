@@ -127,7 +127,7 @@ namespace EWSEditor.Forms
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(1198, 936);
+            this.btnOK.Location = new System.Drawing.Point(1206, 912);
             this.btnOK.Margin = new System.Windows.Forms.Padding(6);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(150, 44);
@@ -139,7 +139,7 @@ namespace EWSEditor.Forms
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(1368, 936);
+            this.btnCancel.Location = new System.Drawing.Point(1386, 912);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 44);
@@ -1028,7 +1028,7 @@ namespace EWSEditor.Forms
             // 
             this.lblExImp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblExImp.AutoSize = true;
-            this.lblExImp.Location = new System.Drawing.Point(206, 1354);
+            this.lblExImp.Location = new System.Drawing.Point(206, 1321);
             this.lblExImp.Margin = new System.Windows.Forms.Padding(0);
             this.lblExImp.Name = "lblExImp";
             this.lblExImp.Size = new System.Drawing.Size(0, 25);
@@ -1147,7 +1147,7 @@ namespace EWSEditor.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1636, 1019);
+            this.ClientSize = new System.Drawing.Size(1554, 986);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.panel6);

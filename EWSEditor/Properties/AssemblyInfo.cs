@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EWSEditor - 1.23.2")]
+[assembly: AssemblyTitle("EWSEditor - 1.24.0")]
 [assembly: AssemblyDescription("Example code demonstrating EWS calls.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.23.2.*")]
-[assembly: AssemblyFileVersion("1.23.2")]
+[assembly: AssemblyVersion("1.24.0.*")]
+[assembly: AssemblyFileVersion("1.24.0")]
