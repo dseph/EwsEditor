@@ -1,4 +1,6 @@
-﻿using System;
+﻿// oAuthHelper.cs //
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -90,6 +92,29 @@ namespace EWSEditor.Common.Auth
             // Using Microsoft.Identity.Client 4.22.0
             PublicClientApplicationOptions pcaOptions = null;
 
+            //Initialize the cloudInstance enum.
+            var OAuth2AzCloudInstance = AzureCloudInstance.None;
+
+            //Switch to set logon authority enum.
+            switch (OAuth2Authority)
+            {
+                case "https://login.microsoftonline.us":
+                    OAuth2AzCloudInstance = AzureCloudInstance.AzureUsGovernment;
+                    break;
+
+                case "https://login.microsoftonline.de":
+                    OAuth2AzCloudInstance = AzureCloudInstance.AzureGermany;
+                    break;
+
+                case "https://login.partner.microsoftonline.cn":
+                    OAuth2AzCloudInstance = AzureCloudInstance.AzureChina;
+                    break;
+                default:
+                    OAuth2AzCloudInstance = AzureCloudInstance.AzurePublic;
+                    break;
+            }
+
+
             if (OAuth2RedirectUrl != "<Do not use a redirect URL.>")
             {
                 // Configure the MSAL client to get tokens
@@ -97,10 +122,10 @@ namespace EWSEditor.Common.Auth
                 {
                     ClientId = ClientId,
                     TenantId = TenantId,
-                    RedirectUri = OAuth2RedirectUrl
-                };
+                    RedirectUri = OAuth2RedirectUrl,
+                    AzureCloudInstance = OAuth2AzCloudInstance
 
-                
+                }; 
 
             }
             else

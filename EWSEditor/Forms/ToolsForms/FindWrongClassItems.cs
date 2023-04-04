@@ -136,7 +136,7 @@ namespace EWSEditor.Forms.ToolsForms
             oView.OrderBy.Add(ItemSchema.ItemClass, SortDirection.Descending);
 
 
-            ItemId anchorId = null;
+            //ItemId anchorId = null;
 
             ListViewItem oListItem = null;
             ListViewItem.ListViewSubItem oLVSI = null;

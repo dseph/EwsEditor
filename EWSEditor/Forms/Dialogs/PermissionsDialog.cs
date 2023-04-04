@@ -1,4 +1,6 @@
-﻿namespace EWSEditor.Forms
+﻿// PermissionsDialog.cs //
+
+namespace EWSEditor.Forms
 {
     using System;
     using System.Collections.Generic;

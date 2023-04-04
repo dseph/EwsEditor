@@ -266,6 +266,17 @@
     <Compile Include="Common\UIHelpers\TextEdit.cs" />
     <Compile Include="Common\Exports\AttachmentTableEntryData.cs" />
     <Compile Include="Common\UtilityHelpers\IcsHelper.cs" />
+    <Compile Include="DataChecks\Calendar\CalendarCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataChecks\Calendar\CalendarCheck.Designer.cs">
+      <DependentUpon>CalendarCheck.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataChecks\Calendar\CalendarCheckGlobals.cs" />
+    <Compile Include="DataChecks\Calendar\CalendarCheckProcess.cs" />
+    <Compile Include="DataChecks\Calendar\CalendarCheckPropset.cs" />
+    <Compile Include="DataChecks\Calendar\CalendarCheckUtils.cs" />
+    <Compile Include="DataChecks\Calendar\CheckCalendarData.cs" />
     <Compile Include="ExchangeReports\ExchangeMeetingRoomStatistics.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1078,6 +1089,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Settings\ServiceSessionSetting.cs" />
+    <EmbeddedResource Include="DataChecks\Calendar\CalendarCheck.resx">
+      <DependentUpon>CalendarCheck.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExchangeReports\ExchangeMeetingRoomStatistics.resx">
       <DependentUpon>ExchangeMeetingRoomStatistics.cs</DependentUpon>
     </EmbeddedResource>
