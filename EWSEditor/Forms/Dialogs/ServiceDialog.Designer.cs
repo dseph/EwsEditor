@@ -484,7 +484,7 @@ namespace EWSEditor.Forms
             // 
             // cmboScope
             // 
-            this.cmboScope.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.cmboScope.BackColor = System.Drawing.SystemColors.Control;
             this.cmboScope.FormattingEnabled = true;
             this.cmboScope.Items.AddRange(new object[] {
             "https://outlook.office.com/.default",
@@ -527,7 +527,7 @@ namespace EWSEditor.Forms
             // 
             // cmboAuthority
             // 
-            this.cmboAuthority.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.cmboAuthority.BackColor = System.Drawing.SystemColors.Control;
             this.cmboAuthority.FormattingEnabled = true;
             this.cmboAuthority.Items.AddRange(new object[] {
             "https://login.microsoftonline.com",
@@ -553,11 +553,11 @@ namespace EWSEditor.Forms
             // 
             // cmboRedirectUrl
             // 
-            this.cmboRedirectUrl.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.cmboRedirectUrl.BackColor = System.Drawing.SystemColors.Control;
             this.cmboRedirectUrl.FormattingEnabled = true;
             this.cmboRedirectUrl.Items.AddRange(new object[] {
-            "urn:ietf:wg:oauth:2.0:oob",
             "https://login.microsoftonline.com/common/oauth2/nativeclient",
+            "urn:ietf:wg:oauth:2.0:oob",
             "https://127.0.0.1",
             "https://localhost",
             "<Do not use a redirect URL.>"});
@@ -565,7 +565,7 @@ namespace EWSEditor.Forms
             this.cmboRedirectUrl.Name = "cmboRedirectUrl";
             this.cmboRedirectUrl.Size = new System.Drawing.Size(773, 33);
             this.cmboRedirectUrl.TabIndex = 23;
-            this.cmboRedirectUrl.Text = "urn:ietf:wg:oauth:2.0:oob";
+            this.cmboRedirectUrl.Text = "https://login.microsoftonline.com/common/oauth2/nativeclient";
             this.cmboRedirectUrl.SelectedIndexChanged += new System.EventHandler(this.cmboRedirectUrl_SelectedIndexChanged);
             // 
             // lblOAuthRedirect

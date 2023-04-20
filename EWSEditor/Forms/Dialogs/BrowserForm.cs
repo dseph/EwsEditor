@@ -25,6 +25,7 @@
     using Microsoft.Win32;
     using System.Globalization;
     using System.Runtime.CompilerServices;
+    using EWSEditor.Forms.Calendar;
 
     public partial class BrowserForm : CountedForm
     {
@@ -1336,6 +1337,13 @@
         {
             FindWrongClassItems oForm = new FindWrongClassItems(this.CurrentService);
  
+            oForm.Show();
+        }
+
+        private void SharedCalendarsMenuItem_Click(object sender, EventArgs e)
+        {
+            SharedCalendarsForm oForm = new SharedCalendarsForm(this.CurrentService);
+
             oForm.Show();
         }
     }

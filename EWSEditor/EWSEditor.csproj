@@ -243,6 +243,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calendar\SharedCalendar\SharedCalendars.cs" />
     <Compile Include="Common\Auth\AuthenticationHelper.cs" />
     <Compile Include="Common\Auth\CredentialHandler.cs" />
     <Compile Include="Common\Auth\oAuthHelper.cs" />
@@ -300,6 +301,12 @@
     </Compile>
     <Compile Include="Forms\Calendar\CalendarBreakdownView.Designer.cs">
       <DependentUpon>CalendarBreakdownView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Calendar\SharedCalendarsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Calendar\SharedCalendarsForm.Designer.cs">
+      <DependentUpon>SharedCalendarsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\AddRemoveHeaders.cs">
       <SubType>Form</SubType>
@@ -1103,6 +1110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Calendar\CalendarBreakdownView.resx">
       <DependentUpon>CalendarBreakdownView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Calendar\SharedCalendarsForm.resx">
+      <DependentUpon>SharedCalendarsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\AddRemoveHeaders.resx">
       <DependentUpon>AddRemoveHeaders.cs</DependentUpon>
