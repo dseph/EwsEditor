@@ -65,6 +65,7 @@
             this.checkForErrorsLoadingPropertiesOnFolderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkFolderItemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDisplayDelegates = new System.Windows.Forms.ToolStripMenuItem();
+            this.SharedCalendarsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MeetingRoomsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DistributionListMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InboxRulesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +95,6 @@
             this.mnuPowerShellTester = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.SharedCalendarsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -399,6 +399,15 @@
             this.mnuDisplayDelegates.Text = "Delegate Information...";
             this.mnuDisplayDelegates.Click += new System.EventHandler(this.MnuDelegateInformation_Click);
             // 
+            // SharedCalendarsMenuItem
+            // 
+            this.SharedCalendarsMenuItem.Enabled = false;
+            this.SharedCalendarsMenuItem.Name = "SharedCalendarsMenuItem";
+            this.SharedCalendarsMenuItem.Size = new System.Drawing.Size(634, 44);
+            this.SharedCalendarsMenuItem.Text = "Shared Calendars";
+            this.SharedCalendarsMenuItem.Visible = false;
+            this.SharedCalendarsMenuItem.Click += new System.EventHandler(this.SharedCalendarsMenuItem_Click);
+            // 
             // MeetingRoomsMenuItem
             // 
             this.MeetingRoomsMenuItem.Name = "MeetingRoomsMenuItem";
@@ -610,16 +619,9 @@
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(328, 44);
+            this.mnuAbout.Size = new System.Drawing.Size(359, 44);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
-            // 
-            // SharedCalendarsMenuItem
-            // 
-            this.SharedCalendarsMenuItem.Name = "SharedCalendarsMenuItem";
-            this.SharedCalendarsMenuItem.Size = new System.Drawing.Size(634, 44);
-            this.SharedCalendarsMenuItem.Text = "Shared Calendars";
-            this.SharedCalendarsMenuItem.Click += new System.EventHandler(this.SharedCalendarsMenuItem_Click);
             // 
             // BrowserForm
             // 

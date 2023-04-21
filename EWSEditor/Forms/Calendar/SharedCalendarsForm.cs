@@ -33,10 +33,11 @@ namespace EWSEditor.Forms.Calendar
         private void button1_Click(object sender, EventArgs e)
         {
             EWSEditor.Calendar.SharedCalendar.SharedCalendars oSC = new EWSEditor.Calendar.SharedCalendar.SharedCalendars();
+
             System.Windows.Forms.ListViewItem oListItem =null;
  
 
-            Dictionary<string, Folder> oDict = oSC.GetSharedCalendarFolders(_Service, txtMailboxSmtp.Text.Trim());
+            Dictionary<string, Folder> oDict = oSC.GetSharedCalendarFolders(_Service, txtMailboxSmtp.Text.Trim(), txtLinkGroupName.Text.Trim());
 
             foreach (KeyValuePair<string, Folder> entry in oDict)
             {

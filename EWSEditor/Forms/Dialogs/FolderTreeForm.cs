@@ -666,13 +666,7 @@ namespace EWSEditor.Forms
                 this.Cursor = System.Windows.Forms.Cursors.WaitCursor;
 
                 TreeNode serviceNode = this.AddServiceToTreeView(service, oAppSettings);
-
-                ////this.RenewOAuthTokenServiceMenu.Visible = oAppSettings.UseoAuth;  // VS hates this
-                //if (oAppSettings.UseoAuth == true)
-                //    this.RenewOAuthTokenServiceMenu.Visible = true;
-                //else
-                //    this.RenewOAuthTokenServiceMenu.Visible = false;
-
+ 
 
             }
             finally
@@ -684,31 +678,31 @@ namespace EWSEditor.Forms
 
         private void mnuRenewOAuthToken_Click(object sender, EventArgs e)
         {
-            ExchangeCredentials oServiceCredential = null;
+           // ExchangeCredentials oServiceCredential = null;
 
-            if (this.CurrentAppSettings.AuthenticationMethod == RequestedAuthType.oAuth)
-            {
-                AuthenticationHelper oAH = new AuthenticationHelper();
-                string sBearerToken = string.Empty;
+            //if (this.CurrentAppSettings.AuthenticationMethod == RequestedAuthType.oAuth)
+            //{
+            //    AuthenticationHelper oAH = new AuthenticationHelper();
+            //    string sBearerToken = string.Empty;
 
-                oServiceCredential = oAH.Do_OAuth(
-                           ref this.CurrentAppSettings.MailboxBeingAccessed,
-                           ref this.CurrentAppSettings.AccountAccessingMailbox,
-                           this.CurrentAppSettings.oAuthAuthority,
-                           this.CurrentAppSettings.oAuthClientId,
-                           this.CurrentAppSettings.oAuthRedirectUrl,
-                           this.CurrentAppSettings.oAuthServerName,
-                           ref sBearerToken,
-                           PromptBehavior.Auto);
+            //    oServiceCredential = oAH.Do_OAuth(
+            //               ref this.CurrentAppSettings.MailboxBeingAccessed,
+            //               ref this.CurrentAppSettings.AccountAccessingMailbox,
+            //               this.CurrentAppSettings.oAuthAuthority,
+            //               this.CurrentAppSettings.oAuthClientId,
+            //               this.CurrentAppSettings.oAuthRedirectUrl,
+            //               this.CurrentAppSettings.oAuthServerName,
+            //               ref sBearerToken,
+            //               PromptBehavior.Auto);
 
-                this.CurrentService.Credentials = oServiceCredential;
+            //    this.CurrentService.Credentials = oServiceCredential;
 
-                this.CurrentAppSettings.oBearerToken = sBearerToken;
+            //    this.CurrentAppSettings.oBearerToken = sBearerToken;
 
-                this.RenewOAuthTokenServiceMenu.Visible = true;
+            //    this.RenewOAuthTokenServiceMenu.Visible = true;
 
-                MessageBox.Show("The oAuth token has been refreshed.", "oAuth token refreshed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //    MessageBox.Show("The oAuth token has been refreshed.", "oAuth token refreshed.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
 
             if (this.CurrentAppSettings.AuthenticationMethod == RequestedAuthType.oAuth2Delegate)
             {
@@ -737,7 +731,7 @@ namespace EWSEditor.Forms
                 EwsProxyFactory.oBearerToken = o.BearerToken;
                 EwsProxyFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
 
-                this.CurrentService.Credentials = oServiceCredential;
+                this.CurrentService.Credentials = oCredentials;
 
                 this.CurrentAppSettings.oBearerToken = o.BearerToken;
 

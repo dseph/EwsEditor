@@ -17,14 +17,20 @@ namespace EWSEditor.Calendar.SharedCalendar
         // the X500 address of the Mailbox these Links refer to and then use Resolve Name to resolve that to a
         // SMTP Address. Then all you need to do is Bind to that folder eg
 
-        public  Dictionary<string, Folder> GetSharedCalendarFolders(ExchangeService service, String mbMailboxname)
+        public  Dictionary<string, Folder> GetSharedCalendarFolders(ExchangeService service, String mbMailboxname, String LinkGroupName)
         {
             Dictionary<String, Folder> rtList = new System.Collections.Generic.Dictionary<string, Folder>();
 
             FolderId rfRootFolderid = new FolderId(WellKnownFolderName.Root, mbMailboxname);
             FolderView fvFolderView = new FolderView(1000);
+
+            //SearchFilter sfSearchFilterx = new SearchFilter.IsEqualTo(FolderSchema.DisplayName, "My Calendars");
+            //FindFoldersResults ffoldresx = service.FindFolders(rfRootFolderid, sfSearchFilterx, fvFolderView);
+
             SearchFilter sfSearchFilter = new SearchFilter.IsEqualTo(FolderSchema.DisplayName, "Common Views");
             FindFoldersResults ffoldres = service.FindFolders(rfRootFolderid, sfSearchFilter, fvFolderView);
+
+
             if (ffoldres.Folders.Count == 1)
             {
 
@@ -37,8 +43,11 @@ namespace EWSEditor.Calendar.SharedCalendar
                 iv.PropertySet = psPropset;
                 iv.Traversal = ItemTraversal.Associated;
 
-                SearchFilter cntSearch = new SearchFilter.IsEqualTo(PidTagWlinkGroupName, "Other Calendars");
-                // Can also find this using PidTagWlinkType = wblSharedFolder
+                //SearchFilter cntSearchx = new SearchFilter.IsEqualTo(PidTagWlinkGroupName, "My Calendars");
+                //FindItemsResults<Item> fiResultsx = ffoldres.Folders[0].FindItems(cntSearchx, iv);
+
+                SearchFilter cntSearch = new SearchFilter.IsEqualTo(PidTagWlinkGroupName, LinkGroupName);
+                 // Can also find this using PidTagWlinkType = wblSharedFolder
                 FindItemsResults<Item> fiResults = ffoldres.Folders[0].FindItems(cntSearch, iv);
                 foreach (Item itItem in fiResults.Items)
                 {
