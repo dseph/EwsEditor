@@ -17,6 +17,8 @@ namespace EWSEditor.Calendar.SharedCalendar
         // the X500 address of the Mailbox these Links refer to and then use Resolve Name to resolve that to a
         // SMTP Address. Then all you need to do is Bind to that folder eg
 
+        // Also see: https://learn.microsoft.com/en-us/openspecs/exchange_server_protocols/ms-oxocfg/086016cd-efcf-420c-a9ef-1beef982dc3e?redirectedfrom=MSDN
+
         public  Dictionary<string, Folder> GetSharedCalendarFolders(ExchangeService service, String mbMailboxname, String LinkGroupName)
         {
             Dictionary<String, Folder> rtList = new System.Collections.Generic.Dictionary<string, Folder>();

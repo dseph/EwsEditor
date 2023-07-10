@@ -401,7 +401,6 @@
             // 
             // SharedCalendarsMenuItem
             // 
-            this.SharedCalendarsMenuItem.Enabled = false;
             this.SharedCalendarsMenuItem.Name = "SharedCalendarsMenuItem";
             this.SharedCalendarsMenuItem.Size = new System.Drawing.Size(634, 44);
             this.SharedCalendarsMenuItem.Text = "Shared Calendars";
@@ -619,7 +618,7 @@
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(359, 44);
+            this.mnuAbout.Size = new System.Drawing.Size(328, 44);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 

@@ -11,6 +11,9 @@ using System.Xml;
 using EWSEditor.Common;
 using System.Text.RegularExpressions;
 using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Globalization;
 
 namespace EWSEditor.Forms
 {
@@ -64,6 +67,11 @@ namespace EWSEditor.Forms
         private const string sRemoveNonAsciiAndControlCharacters = "Remove non-ASCII and control codes (Except CR, LF and TAB)";
         private const string sRemoveNonExtendedAsciiAndControlCharacters = "Remove non-Extended ASCII and control codes (Except CR, LF and TAB)";
  
+        private const string sScanForHREFs = "Scan for HREFs";
+        private const string sExtractProtocolAndPortFromURL = "Extract protocol and port from URL";
+        private const string sStripInvalidCharactersFromString = "Strip invalid characters from string";
+        private const string VerifyThatStringsAreValidEmailFormat = "Verify that strings are valid email format";
+
  
         private void EncodeForm_Load(object sender, EventArgs e)
         { 
@@ -82,12 +90,7 @@ namespace EWSEditor.Forms
         cmboFrom.Items.Add(XmlDecode);
         cmboFrom.Items.Add(XmlBeautify);
 
-             
-
-        //cmboFrom.Items.Add(Utf8Encode);
-        //cmboFrom.Items.Add(Utf8Decode);
-        //cmboFrom.Items.Add(QuotedPrintableDecode);
-        
+ 
 
         cmboFrom.Items.Add(XmlBase64ToHex);
         cmboFrom.Items.Add(XmlBase64ToHexSpaceDelimited);
@@ -109,10 +112,15 @@ namespace EWSEditor.Forms
         cmboFrom.Items.Add(sRemoveNonAsciiAndControlCharacters);
         cmboFrom.Items.Add(sRemoveNonExtendedAsciiAndControlCharacters);
 
-        //cmboFrom.Items.Add(XmlConvertVerifyXmlChars);
+        cmboFrom.Items.Add(sScanForHREFs);
+        cmboFrom.Items.Add(sExtractProtocolAndPortFromURL);
+        cmboFrom.Items.Add(sStripInvalidCharactersFromString);
+        cmboFrom.Items.Add(VerifyThatStringsAreValidEmailFormat);
+
+            //cmboFrom.Items.Add(XmlConvertVerifyXmlChars);
 
 
-        cmboFrom.SelectedIndex = 0;
+            cmboFrom.SelectedIndex = 0;
  
  
         }
@@ -597,29 +605,154 @@ namespace EWSEditor.Forms
                     }
                     break;
 
-                //case Utf8DecodeToAscii:
-                //    oUtf8Encoding = System.Text.Encoding.UTF8;
-                //    oFromBytes = oUtf8Encoding.GetBytes(FromText);
-                //    ToBytes = Encoding.Convert(Encoding.UTF8, Encoding.UTF8, oFromBytes);
-                //    ToText =  System.Text.Encoding.ASCII.GetString(ToBytes);
-                //    break;
 
-                //case Utf32DecodeToAscii:
-                //    oUtf8Encoding = System.Text.Encoding.UTF8;
-                //    oFromBytes = oUtf8Encoding.GetBytes(FromText);
-                //    ToBytes = Encoding.Convert(Encoding.UTF32, Encoding.UTF32, oFromBytes);
-                //    ToText = System.Text.Encoding.ASCII.GetString(ToBytes);
-                //    break;
+
+                case sScanForHREFs:
+                    // https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-example-scanning-for-hrefs
+                    // Note: Read what documentation says - do not fully trust.
+
+                    string hrefPattern = @"href\s*=\s*(?:[""'](?<1>[^""']*)[""']|(?<1>[^>\s]+))";
+
+                    try
+                    {
+                        ToText  = string.Empty;
+                        Match regexMatch = Regex.Match(FromText.Trim(), hrefPattern,
+                                                       RegexOptions.IgnoreCase | RegexOptions.Compiled,
+                                                       TimeSpan.FromSeconds(1));
+                        while (regexMatch.Success)
+                        {
+                            ToText += String.Format($"Found href {regexMatch.Groups[1]} at {regexMatch.Groups[1].Index}");
+                            regexMatch = regexMatch.NextMatch();
+
+                            ToText += String.Format("\r\n\r\nThis code is using regular expresssions. See this sample's warning {0}",
+                                "https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-example-scanning-for-hrefs");
+                        }
+                    }
+                    catch (RegexMatchTimeoutException)
+                    {
+                        MessageBox.Show("The matching operation timed out.");
+                    }
+                    break;
+
+                case sExtractProtocolAndPortFromURL:
+                    // https://learn.microsoft.com/en-us/dotnet/standard/base-types/how-to-extract-a-protocol-and-port-number-from-a-url
+                    // Note: Read what documentation says - do not fully trust.
+                    ToText = String.Empty;
+
+                    try
+                    {
+                        string url = FromText.Trim();
+
+                        Regex r = new Regex(@"^(?<proto>\w+)://[^/]+?(?<port>:\d+)?/",
+                                            RegexOptions.None, TimeSpan.FromMilliseconds(150));
+
+                        Match m = r.Match(url);
+
+                        if (m.Success)
+                            ToText += String.Format((m.Result("${proto}${port}")));
+
+                        ToText += String.Format("\r\n\r\nThis code is using regular expresssions. See this sample's warning {0}",
+                            "https://learn.microsoft.com/en-us/dotnet/standard/base-types/how-to-extract-a-protocol-and-port-number-from-a-url");
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
+                case sStripInvalidCharactersFromString:
+                    // https://learn.microsoft.com/en-us/dotnet/standard/base-types/how-to-strip-invalid-characters-from-a-string
+                    // Note: Read what documentation says - do not fully trust.
+
+                    // Replace invalid characters with empty strings.
+                    try
+                    {
+                        ToText = String.Format(Regex.Replace(FromText, @"[^\w\.@-]", "",
+                                             RegexOptions.None, TimeSpan.FromSeconds(1.5)));
+
+                        ToText += String.Format("\r\n\r\nThis code is using regular expresssions. See this sample's warning {0}",
+                            "https://learn.microsoft.com/en-us/dotnet/standard/base-types/how-to-strip-invalid-characters-from-a-string");
+
+                    }
+                    // If we timeout when replacing invalid characters,
+                    // we should return Empty.
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
+
+                case VerifyThatStringsAreValidEmailFormat:
+                    // https://learn.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format
+                    // Note: Read what documentation says - do not fully trust.
+
+                    string email = FromText.Trim();
+                    string sReturn = String.Empty;
+
+                    if (string.IsNullOrWhiteSpace(email))
+                        break;
+ 
+                    try
+                    {
+                        // Normalize the domain
+                        email = Regex.Replace(FromText.Trim(), @"(@)(.+)$", DomainMapper,
+                                              RegexOptions.None, TimeSpan.FromMilliseconds(200));
+
+                        // Examines the domain part of the email and normalizes it. - embedded method
+                        string DomainMapper(Match match)
+                        {
+                            // Use IdnMapping class to convert Unicode domain names.
+                            var idn = new IdnMapping();
+
+                            // Pull out and process domain name (throws ArgumentException on invalid)
+                            string domainName = idn.GetAscii(match.Groups[2].Value);
+
+                            return match.Groups[1].Value + domainName;
+
+                        }
+                    }
+                    catch (RegexMatchTimeoutException ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+
+                    try
+                    {
+                        if (Regex.IsMatch(email,
+                            @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                            RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)))
+                            ToText = "Looks correct.";
+                        else
+                            ToText = "Does not look correct.";
+
+                        ToText += String.Format("\r\n\r\nThis code is using regular expresssions. See this sample's warning {0}",
+                            "https://learn.microsoft.com/en-us/dotnet/standard/base-types/how-to-verify-that-strings-are-in-valid-email-format");
+
+                    }
+                    catch (RegexMatchTimeoutException ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Error");
+                    }
+                    break;
  
 
-              
- 
+
             }
 
             return  ToText;
              
 
         }
+ 
+    
+
+
+
 
         private void cmdBrowse_Click(object sender, EventArgs e)
         {
