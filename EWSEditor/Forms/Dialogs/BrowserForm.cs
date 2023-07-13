@@ -26,6 +26,7 @@
     using System.Globalization;
     using System.Runtime.CompilerServices;
     using EWSEditor.Forms.Calendar;
+    using EWSEditor.Forms.IMAP;
 
     public partial class BrowserForm : CountedForm
     {
@@ -1343,6 +1344,28 @@
         private void SharedCalendarsMenuItem_Click(object sender, EventArgs e)
         {
             SharedCalendarsForm oForm = new SharedCalendarsForm(this.CurrentService);
+
+            oForm.Show();
+        }
+
+        private void authAndAcessCheckersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuOther_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuTools_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuAuthAndAccessImap_Click(object sender, EventArgs e)
+        {
+            ImapTest oForm = new ImapTest();
 
             oForm.Show();
         }

@@ -93,6 +93,10 @@
             this.mnuMimeParser = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCredentialCache = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPowerShellTester = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAuthAndAcessCheckersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAuthAndAccessImap = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAuthAndAccessPop = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAuthAndAcessSmtp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
@@ -104,10 +108,10 @@
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblExchangeService});
-            this.statusStrip.Location = new System.Drawing.Point(0, 856);
+            this.statusStrip.Location = new System.Drawing.Point(0, 968);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 28, 0);
-            this.statusStrip.Size = new System.Drawing.Size(1395, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1456, 22);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 3;
             // 
@@ -128,7 +132,7 @@
             this.mnuHelp});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(1395, 42);
+            this.mnuMain.Size = new System.Drawing.Size(1456, 42);
             this.mnuMain.TabIndex = 4;
             // 
             // mnuFile
@@ -216,6 +220,7 @@
             this.mnuTools.Name = "mnuTools";
             this.mnuTools.Size = new System.Drawing.Size(89, 38);
             this.mnuTools.Text = "Tools";
+            this.mnuTools.Click += new System.EventHandler(this.mnuTools_Click);
             // 
             // DebugLogVeiwerMenuItem
             // 
@@ -499,10 +504,12 @@
             this.viewHTMLInBrowserToolStripMenuItem,
             this.mnuMimeParser,
             this.mnuCredentialCache,
-            this.mnuPowerShellTester});
+            this.mnuPowerShellTester,
+            this.mnuAuthAndAcessCheckersToolStripMenuItem});
             this.mnuOther.Name = "mnuOther";
             this.mnuOther.Size = new System.Drawing.Size(95, 38);
             this.mnuOther.Text = "Other";
+            this.mnuOther.Click += new System.EventHandler(this.mnuOther_Click);
             // 
             // mnuOpenItemById
             // 
@@ -607,6 +614,36 @@
             this.mnuPowerShellTester.Visible = false;
             this.mnuPowerShellTester.Click += new System.EventHandler(this.mnuPowerShellTester_Click);
             // 
+            // mnuAuthAndAcessCheckersToolStripMenuItem
+            // 
+            this.mnuAuthAndAcessCheckersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuAuthAndAccessImap,
+            this.mnuAuthAndAccessPop,
+            this.mnuAuthAndAcessSmtp});
+            this.mnuAuthAndAcessCheckersToolStripMenuItem.Name = "mnuAuthAndAcessCheckersToolStripMenuItem";
+            this.mnuAuthAndAcessCheckersToolStripMenuItem.Size = new System.Drawing.Size(532, 44);
+            this.mnuAuthAndAcessCheckersToolStripMenuItem.Text = "Auth and Acess Checkers";
+            this.mnuAuthAndAcessCheckersToolStripMenuItem.Click += new System.EventHandler(this.authAndAcessCheckersToolStripMenuItem_Click);
+            // 
+            // mnuAuthAndAccessImap
+            // 
+            this.mnuAuthAndAccessImap.Name = "mnuAuthAndAccessImap";
+            this.mnuAuthAndAccessImap.Size = new System.Drawing.Size(359, 44);
+            this.mnuAuthAndAccessImap.Text = "IMAP";
+            this.mnuAuthAndAccessImap.Click += new System.EventHandler(this.mnuAuthAndAccessImap_Click);
+            // 
+            // mnuAuthAndAccessPop
+            // 
+            this.mnuAuthAndAccessPop.Name = "mnuAuthAndAccessPop";
+            this.mnuAuthAndAccessPop.Size = new System.Drawing.Size(359, 44);
+            this.mnuAuthAndAccessPop.Text = "POP";
+            // 
+            // mnuAuthAndAcessSmtp
+            // 
+            this.mnuAuthAndAcessSmtp.Name = "mnuAuthAndAcessSmtp";
+            this.mnuAuthAndAcessSmtp.Size = new System.Drawing.Size(359, 44);
+            this.mnuAuthAndAcessSmtp.Text = "SMTP";
+            // 
             // mnuHelp
             // 
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -626,7 +663,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1395, 878);
+            this.ClientSize = new System.Drawing.Size(1456, 990);
             this.Controls.Add(this.mnuMain);
             this.Controls.Add(this.statusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -711,5 +748,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuViewOAuthToken;
         public System.Windows.Forms.ToolStripMenuItem checkFolderItemsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SharedCalendarsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuAuthAndAcessCheckersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuAuthAndAccessImap;
+        private System.Windows.Forms.ToolStripMenuItem mnuAuthAndAccessPop;
+        private System.Windows.Forms.ToolStripMenuItem mnuAuthAndAcessSmtp;
     }
 }

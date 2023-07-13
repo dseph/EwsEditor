@@ -8,7 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using EWSEditor.Common;
  
+using Microsoft.Identity.Client;
+using System.Net.Sockets;
+using System.Net.Security;
+using EWSEditor.Settings;
+using Microsoft.Exchange.WebServices.Data;
+using System.DirectoryServices.AccountManagement;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+ 
+using EWSEditor.Exchange;
+
 // IMAP 4
 // https://tools.ietf.org/html/rfc1730
 //	[MS-OXIMAP4]: Internet Message Access Protocol Version 4 (IMAP4) Extensions
@@ -21,16 +33,11 @@ namespace EWSEditor.Forms.IMAP
 {
     public partial class ImapTest : Form
     {
+ 
 
-        //static System.IO.StreamWriter sw = null;
-        //static System.Net.Sockets.TcpClient tcpc = null;
-        //static System.Net.Security.SslStream ssl = null;
-        //static string username, password;
-        //static string path;
-        //static int bytes = -1;
-        //static byte[] buffer;
-        //static StringBuilder sb = new StringBuilder();
-        //static byte[] dummy;
+        private static TcpClient _imapClient = null;
+        private static SslStream _sslStream = null;
+        public StringBuilder oSB = new StringBuilder();
 
         public ImapTest()
         {
@@ -39,118 +46,470 @@ namespace EWSEditor.Forms.IMAP
 
         private void ImapTest_Load(object sender, EventArgs e)
         {
+            SetAuthEnablement();
+        }
+
+        private void TestIMAP()
+        {
+
+            AuthenticationResult authResult = GetToken();
+            RetrieveMessages(authResult);
+             
+        }
+
+        string ReadSSLStream()
+        {
+            int bytes = -1;
+            byte[] buffer = new byte[2048];
+            bytes = _sslStream.Read(buffer, 0, buffer.Length);
+            string response = Encoding.ASCII.GetString(buffer, 0, bytes);
+            oSB.AppendLine(response);
+            return response;
+        }
+
+        void WriteSSLStream(string Data)
+        {
+            _sslStream.Write(Encoding.ASCII.GetBytes($"{Data}{Environment.NewLine}"));
+            _sslStream.Flush();
+            oSB.AppendLine(Data);
+        }
+
+        /// <summary>
+        /// Test the given provided IMAP details (attempt to obtain token and access mailbox)
+        /// </summary>
+        string RetrieveMessages(AuthenticationResult authResult )
+        {
+            oSB = new StringBuilder();
+
+            try
+            {
+
+                using (_imapClient = new TcpClient(txtImapServer.Text.ToString(), 993))
+                {
+                    using (_sslStream = new SslStream(_imapClient.GetStream()))
+                    {
+                        _sslStream.AuthenticateAsClient("outlook.office365.com");
+
+                        ReadSSLStream();
+
+                        //Send the users login details
+                        WriteSSLStream($"$ CAPABILITY");
+                        ReadSSLStream();
+
+                        //Send the users login details
+                        if (AuthFactory.UseOAuthDelegate == true)
+                            WriteSSLStream($"$ AUTHENTICATE XOAUTH2 {XOauth2(authResult)}");
+                        else
+                            WriteSSLStream($"$ AUTHENTICATE XOAUTH2 {XOauth2(authResult, AuthFactory.MailboxBeingAccessed)}");
+                        string response = ReadSSLStream();
+                        if (response.StartsWith("$ NO AUTHENTICATE"))
+                            oSB.AppendLine("Authentication failed.");
+                        else
+                        {
+
+                            //sb.AppendLine("Authenticated.");
+
+                            // Retrieve inbox unread messages
+                            WriteSSLStream("$ STATUS INBOX (unseen)");
+                            ReadSSLStream();
+
+                            // Log out
+                            WriteSSLStream($"$ LOGOUT");
+                            ReadSSLStream();
+                        }
+
+                        // Tidy up
+                        oSB.AppendLine("Closing connection");
+                    }
+                }
+            }
+            catch (SocketException ex)
+            {
+                oSB.AppendLine(ex.Message);
+            }
+
+            return oSB.ToString();
+        }
+
+        /// <summary>
+        /// Calculate and return the log-in code, which is a base 64 encoded combination of mailbox (user) and auth token
+        /// </summary>
+        /// <param name="authResult">Valid OAuth token</param>
+        /// <param name="mailbox">If missing, mailbox will be read from the token</param>
+        /// <returns>IMAP log-in code</returns>
+        static string XOauth2(AuthenticationResult authResult, string mailbox = null)
+        {
+            char ctrlA = (char)1;
+            if (String.IsNullOrEmpty(mailbox))
+                mailbox = authResult.Account.Username;
+            Console.WriteLine($"Authenticating for access to mailbox {mailbox}");
+            string login = $"user={mailbox}{ctrlA}auth=Bearer {authResult.AccessToken}{ctrlA}{ctrlA}";
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(login);
+            return Convert.ToBase64String(plainTextBytes);
+        }
+
+        /// <summary>
+        /// Loads certificate from file
+        private void BtnLoadCertificate_Click(object sender, EventArgs e)
+        {
+            string sFile = string.Empty;
+            string sConnectionSettings = string.Empty;
+            // PostFormSetting oPostFormSetting = null;
+            string sFileContents = string.Empty;
+
+            if (UserIoHelper.PickLoadFromFile(Application.UserAppDataPath, "*.cer", ref sFile, "CER files (*.cer)|*.cer"))
+            {
+                try
+                {
+                    txtAuthCertificatePath.Text = sFile;
+                    if (!System.IO.File.Exists(sFile))
+                        MessageBox.Show("File does not exist.");
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.ToString(), "Error Loading File");
+                }
+
+            }
+        }
+
+        private void rdoCredentialsOAuthDelegated_CheckedChanged(object sender, EventArgs e)
+        {
+            SetAuthEnablement();
+            cmboScope.Text = string.Empty;
+        }
+
+        private void rdoCredentialsOAuthApplication_CheckedChanged(object sender, EventArgs e)
+        {
+            SetAuthEnablement();
+            cmboScope.Text = string.Empty;
+        }
+
+        private void rdoCredentialsOAuthCertificate_CheckedChanged(object sender, EventArgs e)
+        {
+            SetAuthEnablement();
+            cmboScope.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// Enables and discables controls based on the selected authentication method
+        /// </summary>
+        private void SetAuthEnablement()
+        {
+            string[] sDelegateScopes = { };
+
+
+            this.lblOAuthClientSecret.Enabled = (rdoCredentialsOAuthApplication.Checked);
+            this.txtAuthCertificatePath.Enabled = (rdoCredentialsOAuthCertificate.Checked);
+
+            this.txtOAuthClientSecret.Enabled = (rdoCredentialsOAuthApplication.Checked);
+  
+            this.txtAuthCertificatePath.Enabled = (rdoCredentialsOAuthCertificate.Checked);
+            this.BtnLoadCertificate.Enabled = (rdoCredentialsOAuthCertificate.Checked);
+
+            if (rdoCredentialsOAuthApplication.Checked || rdoCredentialsOAuthCertificate.Checked)
+            {
+                // Applicaiton Flow
+                cmboScope.Items.Clear();
+                cmboScope.Items.Add("https://outlook.office365.com/.default");
+                cmboScope.Items.Add("https://outlook.office365.us/.default");
+                cmboScope.Items.Add("https://outlook.office365.de/.default");
+                cmboScope.Items.Add("https://outlook.office365.cn/.default");
+
+                // Note In Azure set: Client credentials (Application permissions):  IMAP.AccessAsApp 
+            }
+
+            if (rdoCredentialsOAuthDelegated.Checked)
+            {
+ 
+                // Delegate flow scopes
+                cmboScope.Items.Clear();
+                cmboScope.Items.Add("https://outlook.office.com/IMAP.AccessAsUser.All");
+                cmboScope.Items.Add("https://outlook.office.us/IMAP.AccessAsUser.All");
+                cmboScope.Items.Add("https://outlook.office.de/IMAP.AccessAsUser.All");
+                cmboScope.Items.Add("https://outlook.office.cn/IMAP.AccessAsUser.All");
+
+                // Note In Azure set: Auth code flow (Delegate permissions): IMAP.AccessAsUser.All
+            }
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            AuthenticationResult authResult = GetToken();
+            this.txtToken.Text  =  authResult.AccessToken;
+            string s = RetrieveMessages(authResult);
+            this.txtTestResults .Text = s;
 
         }
 
+        /// <summary>
+        /// Loads settings from the form into the AuthFactory
+        /// </summary>
+        private void LoadSettingsFromForm()
+        {
 
-        //private void DownloadEmail()
-        //{
+
+            AuthFactory.AuthenticationMethod = RequestedAuthType.oAuth2Application;
+  
+  
+            AuthFactory.OAuth2RedirectUrl = cmboRedirectUrl.Text.Trim();
+            AuthFactory.OAuth2Authority = cmboAuthority.Text.Trim();
+            AuthFactory.OAuth2ValidateAuthority = chkValidateAuthority.Checked;
+            AuthFactory.OAuth2Scope = cmboScope.Text.Trim();
+
+            if (this.rdoCredentialsOAuthDelegated.Checked)
+                AuthFactory.AuthenticationMethod = RequestedAuthType.oAuth2Delegate;
+
+            if (this.rdoCredentialsOAuthApplication.Checked)
+                AuthFactory.AuthenticationMethod = RequestedAuthType.oAuth2Application;
+
+            if (this.rdoCredentialsOAuthCertificate.Checked)
+                AuthFactory.AuthenticationMethod = RequestedAuthType.oAuth2Certificate;
+
+            AuthFactory.MailboxBeingAccessed = this.txtMailbox.Text.Trim();
+  
+            AuthFactory.UseOAuthDelegate = this.rdoCredentialsOAuthDelegated.Checked;
+            AuthFactory.UseOAuthApplication = this.rdoCredentialsOAuthApplication.Checked;
+            AuthFactory.oAuthApplicationId = this.txtOAuthApplicationId.Text.Trim();
+            AuthFactory.oAuthTenantId = this.txtOAuthTenantId.Text.Trim();
+            AuthFactory.oAuthClientSecret = this.txtOAuthClientSecret.Text.Trim();
+            // AuthFactory.oAuthCertificate = this.txtAuthCertificate.Text.Trim();
+            AuthFactory.oBearerToken = string.Empty;
+
+            AuthFactory.LogSecurityToken = GlobalSettings.LogSecurityToken;
  
-        //    try
-        //    {
-        //        path = Environment.CurrentDirectory + "\\emailresponse.txt";
 
-        //        if (System.IO.File.Exists(path))
-        //            System.IO.File.Delete(path);
+            //AuthFactory.OverrideTimeout = GlobalSettings.OverrideTimeout;
+            //AuthFactory.Timeout = GlobalSettings.Timeout;
+            AuthFactory.UserAgent = GlobalSettings.UserAgent;
 
-        //        sw = new System.IO.StreamWriter(System.IO.File.Create(path));
-        //        // there should be no gap between the imap command and the \r\n       
-        //        // ssl.read() -- while ssl.readbyte!= eof does not work because there is no eof from server 
-        //        // cannot check for \r\n because in case of larger response from server ex:read email message 
-        //        // there are lot of lines so \r \n appears at the end of each line 
-        //        //ssl.timeout sets the underlying tcp connections timeout if the read or write 
-        //        //time out exceeds then the undelying connection is closed 
-        //        tcpc = new System.Net.Sockets.TcpClient("imap.gmail.com", 993);
+    
 
-        //        ssl = new System.Net.Security.SslStream(tcpc.GetStream());
-        //        ssl.AuthenticateAsClient("imap.gmail.com");
-        //        receiveResponse("");
+            AuthFactory.SetDefaultProxy = GlobalSettings.SetDefaultProxy;
+            AuthFactory.BypassProxyForLocalAddress = GlobalSettings.BypassProxyForLocalAddress;
+            AuthFactory.SpecifyProxySettings = GlobalSettings.SpecifyProxySettings;
+            AuthFactory.ProxyServerName = GlobalSettings.ProxyServerName;
+            AuthFactory.ProxyServerPort = GlobalSettings.ProxyServerPort;
+            AuthFactory.OverrideProxyCredentials = GlobalSettings.OverrideProxyCredentials;
+            AuthFactory.ProxyServerUser = GlobalSettings.ProxyServerUser;
+            AuthFactory.ProxyServerPassword = GlobalSettings.ProxyServerPassword;
+            AuthFactory.ProxyServerDomain = GlobalSettings.ProxyServerDomain;
 
-        //        Console.WriteLine("username : ");
-        //        username = Console.ReadLine();
+            AuthFactory.ImapServer = this.txtImapServer.Text.Trim();
+            int i;
+            bool success = int.TryParse(this.txtImapPort.Text.Trim(), out i);
 
-        //        Console.WriteLine("password : ");
-        //        password = Console.ReadLine();
-        //        receiveResponse("$ LOGIN " + username + " " + password + "  \r\n");
-        //        Console.Clear();
-
-        //        receiveResponse("$ LIST " + "\"\"" + " \"*\"" + "\r\n");
-
-        //        receiveResponse("$ SELECT INBOX\r\n");
-
-        //        receiveResponse("$ STATUS INBOX (MESSAGES)\r\n");
+            AuthFactory.ImapPort = this.txtImapPort.Text.Trim();
 
 
-        //        Console.WriteLine("enter the email number to fetch :");
-        //        int number = int.Parse(Console.ReadLine());
+ 
 
-        //        receiveResponse("$ FETCH " + number + " body[header]\r\n");
-        //        receiveResponse("$ FETCH " + number + " body[text]\r\n");
+        }
+
+        /// <summary>
+        /// Gets the oAuth token based-upon the settings of the AuthFactory
+        /// </summary>
+        /// <returns></returns>
+        private AuthenticationResult GetToken()
+        {
+
+            LoadSettingsFromForm();
+
+            AuthenticationResult oResult = null;
+
+            if (this.rdoCredentialsOAuthDelegated.Checked)
+            {
+                EWSEditor.Common.Auth.OAuthHelper o = new EWSEditor.Common.Auth.OAuthHelper();
+
+                /* AuthenticationResult */ oResult = System.Threading.Tasks.Task.Run(async () => await o.GetDelegateToken(
+                        AuthFactory.oAuthApplicationId,
+                        AuthFactory.oAuthTenantId,
+                        AuthFactory.OAuth2RedirectUrl,
+                        AuthFactory.OAuth2Authority,
+                        AuthFactory.OAuth2ValidateAuthority,
+                        AuthFactory.OAuth2Scope
+                        )
+                    ).Result;
+                AuthFactory.MsalAuthenticationResult = oResult;
+ 
+                var oCredentials = new Microsoft.Exchange.WebServices.Data.OAuthCredentials(oResult.AccessToken);
+
+              
+                AuthFactory.MsalAuthenticationResult = oResult;
+                AuthFactory.oBearerToken = oResult.AccessToken;
+                AuthFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
+
+                AuthFactory.MailboxBeingAccessed = oResult.Account.Username;
+
+            
+
+            }
+
+            if (this.rdoCredentialsOAuthApplication.Checked)
+            {
+                EWSEditor.Common.Auth.OAuthHelper o = new EWSEditor.Common.Auth.OAuthHelper();
+                /* AuthenticationResult */ oResult = System.Threading.Tasks.Task.Run(async () => await o.GetApplicationToken(AuthFactory.oAuthApplicationId,
+                                                                                                                        AuthFactory.oAuthTenantId,
+                                                                                                                        AuthFactory.oAuthClientSecret,
+                                                                                                                        AuthFactory.OAuth2RedirectUrl,
+                                                                                                                        AuthFactory.OAuth2Authority,
+                                                                                                                        AuthFactory.OAuth2ValidateAuthority,
+                                                                                                                        AuthFactory.OAuth2Scope
+
+                                                                                                                        )).Result;
+
+                var oCredentials = new Microsoft.Exchange.WebServices.Data.OAuthCredentials(oResult.AccessToken);
+
+               
+                AuthFactory.MsalAuthenticationResult = oResult;
+                AuthFactory.oBearerToken = oResult.AccessToken;
+                AuthFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
+ 
+            }
+
+            if (this.rdoCredentialsOAuthCertificate.Checked)
+            {
+                EWSEditor.Common.Auth.OAuthHelper o = new EWSEditor.Common.Auth.OAuthHelper();
+
+                /* AuthenticationResult */  oResult = System.Threading.Tasks.Task.Run(async () => await o.GetCertificateToken(
+                    AuthFactory.oAuthApplicationId,
+                    AuthFactory.oAuthTenantId,
+                    AuthFactory.oAuthClientCertificate,
+                    AuthFactory.OAuth2Authority,
+                    AuthFactory.OAuth2RedirectUrl,
+                    AuthFactory.OAuth2ValidateAuthority,
+                    AuthFactory.OAuth2Scope
+                    )).Result;
 
 
-        //        receiveResponse("$ LOGOUT\r\n");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine("error: " + ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        if (sw != null)
-        //        {
-        //            sw.Close();
-        //            sw.Dispose();
-        //        }
-        //        if (ssl != null)
-        //        {
-        //            ssl.Close();
-        //            ssl.Dispose();
-        //        }
-        //        if (tcpc != null)
-        //        {
-        //            tcpc.Close();
-        //        }
-        //    }
+
+                var oCredentials = new Microsoft.Exchange.WebServices.Data.OAuthCredentials(oResult.AccessToken);
+
+              
+                AuthFactory.MsalAuthenticationResult = oResult;
+                AuthFactory.oBearerToken = oResult.AccessToken;
+                AuthFactory.CurrentPublicClientApplication = o.CurrentPublicClientApplication;
+ 
+            }
+
+            return oResult;
+        }
+
+        /// <summary>
+        /// AuthFactory is a static class that holds the settings for the current authentication session.
+        /// </summary>
+        private class AuthFactory
+        {
+ 
+
+            public static string MailboxBeingAccessed = string.Empty;  // calculated mailbox being accessed.
+            public static string AccountAccessingMailbox = string.Empty; // Who is effectively accessing the mailbox.
+
+            public static RequestedAuthType AuthenticationMethod = RequestedAuthType.DefaultAuth;
+
+ 
+
+            public static bool? UseoAuth2 = null;
+            public static string OAuth2RedirectUrl = string.Empty;
+            public static string OAuth2Authority = string.Empty;
+            public static bool OAuth2ValidateAuthority = true;
+            public static string OAuth2Scope = string.Empty;
+
+            public static bool? UseOAuthDelegate = null;
+            public static bool? UseOAuthApplication = null;
+            public static string oAuthApplicationId = string.Empty;
+            public static string oAuthTenantId = string.Empty;
+            public static string oAuthClientSecret = string.Empty;
+            public static string oAuthClientCertificatePath = string.Empty;
+            public static X509Certificate2 oAuthClientCertificate = null;
+            public static Microsoft.Identity.Client.AuthenticationResult MsalAuthenticationResult = null;
+            public static PublicClientApplication CurrentPublicClientApplication = null;
+            public static bool LogSecurityToken = false;
+
+            public static string oBearerToken = string.Empty;
 
 
-        //    Console.ReadKey();
-        //}
-        //static void receiveResponse(string command)
-        //{
-        //    try
-        //    {
-        //        if (command != "")
-        //        {
-        //            if (tcpc.Connected)
-        //            {
-        //                dummy = Encoding.ASCII.GetBytes(command);
-        //                ssl.Write(dummy, 0, dummy.Length);
-        //            }
-        //            else
-        //            {
-        //                throw new ApplicationException("TCP CONNECTION DISCONNECTED");
-        //            }
-        //        }
-        //        ssl.Flush();
 
 
-        //        buffer = new byte[2048];
-        //        bytes = ssl.Read(buffer, 0, 2048);
-        //        sb.Append(Encoding.ASCII.GetString(buffer));
+            public static bool? UserImpersonationSelected = false;
+            public static ImpersonatedUserId UserToImpersonate = null;
+            public static string ImpersonationType = string.Empty;
+            public static string ImpersonatedId = string.Empty;
 
+ 
 
-        //        Console.WriteLine(sb.ToString());
-        //        sw.WriteLine(sb.ToString());
-        //        sb = new StringBuilder();
+            public static string UserAgent;
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new ApplicationException(ex.Message);
-        //    }
-        //}
+            public static bool SetDefaultProxy = false;
+            public static bool BypassProxyForLocalAddress = false;
+            public static bool SpecifyProxySettings;
+            public static string ProxyServerName;
+            public static int ProxyServerPort;
+            public static bool OverrideProxyCredentials;
+            public static string ProxyServerUser;
+            public static string ProxyServerPassword;
+            public static string ProxyServerDomain;
 
-    //}
+            public static string ImapServer;    
+            public static string ImapPort;
+   
 
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtToken_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShowCS_Click(object sender, EventArgs e)
+        {
+            if (txtOAuthClientSecret.PasswordChar == '*')
+                txtOAuthClientSecret.PasswordChar = '\0';
+            else
+                txtOAuthClientSecret.PasswordChar = '*';
+             
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtImapPort_TextChanged(object sender, EventArgs e)
+        {
+            int i;
+
+            if (int.TryParse(this.txtImapPort.Text.Trim(), out i) == false)
+            {
+                MessageBox.Show("Port must be an integer.  Defaulting to 993.");
+                this.txtImapPort.Text = "993";
+            }
+        }
+
+        private void txtAuthCertificatePath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
