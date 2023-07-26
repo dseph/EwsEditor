@@ -249,6 +249,7 @@
     <Compile Include="Calendar\SharedCalendar\SharedCalendars.cs" />
     <Compile Include="Common\Auth\AuthenticationHelper.cs" />
     <Compile Include="Common\Auth\CredentialHandler.cs" />
+    <Compile Include="Common\Auth\JwtHelper.cs" />
     <Compile Include="Common\Auth\oAuthHelper.cs" />
     <Compile Include="Common\AutodiscoverInfo.cs" />
     <Compile Include="Common\EwsHelpers\ContactSpecailCalendars.cs" />
@@ -411,16 +412,28 @@
     <Compile Include="Forms\Dialogs\EmptyFolder.Designer.cs">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ToolsForms\AuthAndAccessCheckers\SmtpTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToolsForms\AuthAndAccessCheckers\SmtpTest.Designer.cs">
+      <DependentUpon>SmtpTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ToolsForms\AuthAndAccessCheckers\PopTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ToolsForms\AuthAndAccessCheckers\PopTest.Designer.cs">
+      <DependentUpon>PopTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ToolsForms\FindSearchFolder.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ToolsForms\FindSearchFolder.Designer.cs">
       <DependentUpon>FindSearchFolder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\IMAP\ImapTest.cs">
+    <Compile Include="Forms\ToolsForms\AuthAndAccessCheckers\ImapTest.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\IMAP\ImapTest.Designer.cs">
+    <Compile Include="Forms\ToolsForms\AuthAndAccessCheckers\ImapTest.Designer.cs">
       <DependentUpon>ImapTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Dialogs\MarkAsJunkForm.cs">
@@ -1163,10 +1176,16 @@
     <EmbeddedResource Include="Forms\Dialogs\EmptyFolder.resx">
       <DependentUpon>EmptyFolder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToolsForms\AuthAndAccessCheckers\SmtpTest.resx">
+      <DependentUpon>SmtpTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ToolsForms\AuthAndAccessCheckers\PopTest.resx">
+      <DependentUpon>PopTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ToolsForms\FindSearchFolder.resx">
       <DependentUpon>FindSearchFolder.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\IMAP\ImapTest.resx">
+    <EmbeddedResource Include="Forms\ToolsForms\AuthAndAccessCheckers\ImapTest.resx">
       <DependentUpon>ImapTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Dialogs\MarkAsJunkForm.resx">

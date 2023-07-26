@@ -637,12 +637,14 @@
             this.mnuAuthAndAccessPop.Name = "mnuAuthAndAccessPop";
             this.mnuAuthAndAccessPop.Size = new System.Drawing.Size(359, 44);
             this.mnuAuthAndAccessPop.Text = "POP";
+            this.mnuAuthAndAccessPop.Click += new System.EventHandler(this.mnuAuthAndAccessPop_Click);
             // 
             // mnuAuthAndAcessSmtp
             // 
             this.mnuAuthAndAcessSmtp.Name = "mnuAuthAndAcessSmtp";
             this.mnuAuthAndAcessSmtp.Size = new System.Drawing.Size(359, 44);
             this.mnuAuthAndAcessSmtp.Text = "SMTP";
+            this.mnuAuthAndAcessSmtp.Click += new System.EventHandler(this.mnuAuthAndAcessSmtp_Click);
             // 
             // mnuHelp
             // 

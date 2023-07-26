@@ -21,25 +21,20 @@ using System.Security.Cryptography.X509Certificates;
  
 using EWSEditor.Exchange;
 
-// IMAP 4
-// https://tools.ietf.org/html/rfc1730
-//	[MS-OXIMAP4]: Internet Message Access Protocol Version 4 (IMAP4) Extensions
-//	https://msdn.microsoft.com/en-us/library/cc463913(v=exchg.80).aspx 
-// IMAP Client library using C#
-// https://www.codeproject.com/Articles/8008/IMAP-Client-library-using-C
-
-
-namespace EWSEditor.Forms.IMAP
-{
-    public partial class ImapTest : Form
-    {
  
 
-        private static TcpClient _imapClient = null;
+
+namespace EWSEditor.Forms.POP
+{  
+    public partial class PopTest : Form
+    {
+
+        private static TcpClient _popClient = null;
+        
         private static SslStream _sslStream = null;
         public StringBuilder oSB = new StringBuilder();
 
-        public ImapTest()
+        public PopTest()
         {
             InitializeComponent();
         }
@@ -49,13 +44,13 @@ namespace EWSEditor.Forms.IMAP
             SetAuthEnablement();
         }
 
-        private void TestIMAP()
-        {
+        //private void TestIMAP()
+        //{
 
-            AuthenticationResult authResult = GetToken();
-            RetrieveMessages(authResult);
+        //    AuthenticationResult authResult = GetToken();
+        //    RetrieveMessages(authResult);
              
-        }
+        //}
 
         string ReadSSLStream()
         {
@@ -74,70 +69,72 @@ namespace EWSEditor.Forms.IMAP
             oSB.AppendLine(Data);
         }
 
-        /// <summary>
-        /// Test the given provided IMAP details (attempt to obtain token and access mailbox)
-        /// </summary>
-        string RetrieveMessages(AuthenticationResult authResult )
+
+        string RetrieveMessages(AuthenticationResult authResult)
         {
             oSB = new StringBuilder();
 
             try
             {
-
-                using (_imapClient = new TcpClient(txtImapServer.Text.ToString(), 993))
+                int iPort = Int32.Parse(txtPort.Text.Trim());
+                using (_popClient = new TcpClient(AuthFactory.Server, AuthFactory.Port))
                 {
-                    using (_sslStream = new SslStream(_imapClient.GetStream()))
+                    using (_sslStream = new SslStream(_popClient.GetStream()))
                     {
-                        _sslStream.AuthenticateAsClient("outlook.office365.com");
+                        _sslStream.AuthenticateAsClient(txtServer.Text.ToString().Trim());
 
                         ReadSSLStream();
 
-                        //Send the users login details
-                        WriteSSLStream($"$ CAPABILITY");
-                        ReadSSLStream();
-
-                        //Send the users login details
-                        if (AuthFactory.UseOAuthDelegate == true)
-                            WriteSSLStream($"$ AUTHENTICATE XOAUTH2 {XOauth2(authResult)}");
-                        else
-                            WriteSSLStream($"$ AUTHENTICATE XOAUTH2 {XOauth2(authResult, AuthFactory.MailboxBeingAccessed)}");
-                        string response = ReadSSLStream();
-                        if (response.StartsWith("$ NO AUTHENTICATE"))
-                            oSB.AppendLine("Authentication failed.");
-                        else
+                        // Initiate OAuth login
+                        WriteSSLStream("AUTH XOAUTH2");
+                        if (ReadSSLStream().StartsWith("+"))
                         {
+                            // Send OAuth token
+                            //WriteSSLStream(XOauth2(authResult, AuthFactory.MailboxBeingAccessed))
 
-                            //sb.AppendLine("Authenticated.");
+                            //Send the users login details
+                            if (AuthFactory.UseOAuthDelegate == true)
+                                WriteSSLStream($"$ AUTHENTICATE XOAUTH2 {XOauth2(authResult)}");  // Delegate flow
+                            else
+                                WriteSSLStream($"$ AUTHENTICATE XOAUTH2 {XOauth2(authResult, AuthFactory.MailboxBeingAccessed)}");  // App flow
 
-                            // Retrieve inbox unread messages
-                            WriteSSLStream("$ STATUS INBOX (unseen)");
-                            ReadSSLStream();
+                            if (ReadSSLStream().StartsWith("+OK"))
+                            {
+                                // Logged in, get status
+                                WriteSSLStream("STAT");
+                                ReadSSLStream();
 
-                            // Log out
-                            WriteSSLStream($"$ LOGOUT");
-                            ReadSSLStream();
+                                // And list of messages
+                                WriteSSLStream("LIST");
+                                ReadSSLStream();
+                            }
                         }
-
-                        // Tidy up
+                        WriteSSLStream("QUIT");
+                        ReadSSLStream();
+ 
                         oSB.AppendLine("Closing connection");
-                    }
+                }
                 }
             }
             catch (SocketException ex)
             {
+              
                 oSB.AppendLine(ex.Message);
+
             }
 
             return oSB.ToString();
         }
 
-        /// <summary>
-        /// Calculate and return the log-in code, which is a base 64 encoded combination of mailbox (user) and auth token
-        /// </summary>
-        /// <param name="authResult">Valid OAuth token</param>
-        /// <param name="mailbox">If missing, mailbox will be read from the token</param>
-        /// <returns>IMAP log-in code</returns>
-        static string XOauth2(AuthenticationResult authResult, string mailbox = null)
+ 
+
+/// <summary>
+/// Calculate and return the log-in code, which is a base 64 encoded combination of mailbox (user) and auth token
+/// </summary>
+/// <param name="authResult">Valid OAuth token</param>
+/// <param name="mailbox">If missing, mailbox will be read from the token</param>
+/// <returns>IMAP log-in code</returns>
+static string XOauth2(AuthenticationResult authResult, string mailbox = null)
         {
             char ctrlA = (char)1;
             if (String.IsNullOrEmpty(mailbox))
@@ -204,6 +201,7 @@ namespace EWSEditor.Forms.IMAP
             this.txtAuthCertificatePath.Enabled = (rdoCredentialsOAuthCertificate.Checked);
 
             this.txtOAuthClientSecret.Enabled = (rdoCredentialsOAuthApplication.Checked);
+            this.chkShowSecret.Enabled = (rdoCredentialsOAuthApplication.Checked);
   
             this.txtAuthCertificatePath.Enabled = (rdoCredentialsOAuthCertificate.Checked);
             this.BtnLoadCertificate.Enabled = (rdoCredentialsOAuthCertificate.Checked);
@@ -225,10 +223,10 @@ namespace EWSEditor.Forms.IMAP
  
                 // Delegate flow scopes
                 cmboScope.Items.Clear();
-                cmboScope.Items.Add("https://outlook.office.com/IMAP.AccessAsUser.All");
-                cmboScope.Items.Add("https://outlook.office.us/IMAP.AccessAsUser.All");
-                cmboScope.Items.Add("https://outlook.office.de/IMAP.AccessAsUser.All");
-                cmboScope.Items.Add("https://outlook.office.cn/IMAP.AccessAsUser.All");
+                cmboScope.Items.Add("https://outlook.office.com/POP.AccessAsUser.All");
+                cmboScope.Items.Add("https://outlook.office.us/POP.AccessAsUser.All");
+                cmboScope.Items.Add("https://outlook.office.de/POP.AccessAsUser.All");
+                cmboScope.Items.Add("https://outlook.office.cn/POP.AccessAsUser.All");
 
                 // Note In Azure set: Auth code flow (Delegate permissions): IMAP.AccessAsUser.All
             }
@@ -296,11 +294,11 @@ namespace EWSEditor.Forms.IMAP
             AuthFactory.ProxyServerPassword = GlobalSettings.ProxyServerPassword;
             AuthFactory.ProxyServerDomain = GlobalSettings.ProxyServerDomain;
 
-            AuthFactory.ImapServer = this.txtImapServer.Text.Trim();
-            int i;
-            bool success = int.TryParse(this.txtImapPort.Text.Trim(), out i);
+            AuthFactory.Server = this.txtServer.Text.Trim();
 
-            AuthFactory.ImapPort = this.txtImapPort.Text.Trim();
+            int i;
+            bool success = int.TryParse(this.txtPort.Text.Trim(), out i);
+            AuthFactory.Port = i;
 
 
  
@@ -428,17 +426,13 @@ namespace EWSEditor.Forms.IMAP
             public static bool LogSecurityToken = false;
 
             public static string oBearerToken = string.Empty;
-
-
-
+ 
 
             public static bool? UserImpersonationSelected = false;
             public static ImpersonatedUserId UserToImpersonate = null;
             public static string ImpersonationType = string.Empty;
             public static string ImpersonatedId = string.Empty;
-
  
-
             public static string UserAgent;
 
             public static bool SetDefaultProxy = false;
@@ -451,8 +445,8 @@ namespace EWSEditor.Forms.IMAP
             public static string ProxyServerPassword;
             public static string ProxyServerDomain;
 
-            public static string ImapServer;    
-            public static string ImapPort;
+            public static string Server;    
+            public static int Port;
    
 
         }
@@ -500,14 +494,61 @@ namespace EWSEditor.Forms.IMAP
         {
             int i;
 
-            if (int.TryParse(this.txtImapPort.Text.Trim(), out i) == false)
+            if (int.TryParse(this.txtPort.Text.Trim(), out i) == false)
             {
-                MessageBox.Show("Port must be an integer.  Defaulting to 993.");
-                this.txtImapPort.Text = "993";
+                MessageBox.Show("Port must be an integer.  Defaulting to 995.");
+                this.txtPort.Text = "995";
             }
         }
 
         private void txtAuthCertificatePath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkShowSecret_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkShowSecret.Checked)
+                txtOAuthClientSecret.PasswordChar = '\0';
+            else
+                txtOAuthClientSecret.PasswordChar = '*';
+ 
+        }
+
+        private void lblScope_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblServer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnParseToken_Click(object sender, EventArgs e)
+        {
+            string s = txtToken.Text.Trim();
+            if (s == "")
+                MessageBox.Show("There is no bearer token.", "Bearer Token Required");
+            else
+            {
+                if (s.ToLower().StartsWith("bearer"))
+                    MessageBox.Show("The word bearer needs to be removed.", "Only enter the token value.");
+                else
+                {
+                    string sParsed = EWSEditor.Common.Auth.JwtHelper.ParseJwtToken(txtToken.Text.Trim());
+
+                    ShowTextDocument oForm = new ShowTextDocument();
+                    oForm.Text = "Parsed JWT Token";
+                    oForm.txtEntry.Text = sParsed;
+                    oForm.ShowDialog();
+                    oForm = null;
+
+                }
+            }
+        }
+
+        private void txtTestResults_TextChanged(object sender, EventArgs e)
         {
 
         }

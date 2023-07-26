@@ -1369,6 +1369,20 @@
 
             oForm.Show();
         }
+
+        private void mnuAuthAndAccessPop_Click(object sender, EventArgs e)
+        {
+            EWSEditor.Forms.POP.PopTest oForm = new EWSEditor.Forms.POP.PopTest();
+
+            oForm.Show();
+        }
+
+        private void mnuAuthAndAcessSmtp_Click(object sender, EventArgs e)
+        {
+            EWSEditor.Forms.SMTP.SmtpTest oForm = new EWSEditor.Forms.SMTP.SmtpTest();
+
+            oForm.Show();
+        }
     }
 
 }
