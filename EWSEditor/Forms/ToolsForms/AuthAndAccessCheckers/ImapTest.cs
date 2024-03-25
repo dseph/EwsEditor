@@ -22,13 +22,6 @@ using System.Security.Cryptography.X509Certificates;
 using EWSEditor.Exchange;
 using System.ComponentModel.Composition.Primitives;
 
-// IMAP 4
-// https://tools.ietf.org/html/rfc1730
-//	[MS-OXIMAP4]: Internet Message Access Protocol Version 4 (IMAP4) Extensions
-//	https://msdn.microsoft.com/en-us/library/cc463913(v=exchg.80).aspx 
-// IMAP Client library using C#
-// https://www.codeproject.com/Articles/8008/IMAP-Client-library-using-C
-
 
 namespace EWSEditor.Forms.IMAP
 {
@@ -85,7 +78,7 @@ namespace EWSEditor.Forms.IMAP
 
             try
             {
-                int iPort = Int32.Parse(txtPort.Text.Trim());
+                //int iPort = Int32.Parse(txtPort.Text.Trim());
 
                 using (_imapClient = new TcpClient(AuthFactory.Server, AuthFactory.Port))
                 {

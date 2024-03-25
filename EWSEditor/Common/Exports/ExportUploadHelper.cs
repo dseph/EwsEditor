@@ -191,7 +191,13 @@ namespace EWSEditor.Exchange
                 {
 
                 }
-            }
+            } 
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message.ToString(), "Error");
+
+            }           
             finally
             {
 

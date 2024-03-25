@@ -132,7 +132,7 @@
             this.mnuHelp});
             this.mnuMain.Location = new System.Drawing.Point(0, 0);
             this.mnuMain.Name = "mnuMain";
-            this.mnuMain.Size = new System.Drawing.Size(1456, 42);
+            this.mnuMain.Size = new System.Drawing.Size(1456, 40);
             this.mnuMain.TabIndex = 4;
             // 
             // mnuFile
@@ -140,7 +140,7 @@
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuExit});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(71, 38);
+            this.mnuFile.Size = new System.Drawing.Size(71, 36);
             this.mnuFile.Text = "File";
             this.mnuFile.Click += new System.EventHandler(this.mnuFile_Click);
             // 
@@ -159,7 +159,7 @@
             this.mnuViewSplit1,
             this.mnuRefresh});
             this.mnuView.Name = "mnuView";
-            this.mnuView.Size = new System.Drawing.Size(85, 38);
+            this.mnuView.Size = new System.Drawing.Size(85, 36);
             this.mnuView.Text = "View";
             // 
             // mnuViewConfigPropertySet
@@ -218,7 +218,7 @@
             this.developerToolsTestWindowToolStripMenuItem,
             this.mnuToolsSplit4});
             this.mnuTools.Name = "mnuTools";
-            this.mnuTools.Size = new System.Drawing.Size(89, 38);
+            this.mnuTools.Size = new System.Drawing.Size(89, 36);
             this.mnuTools.Text = "Tools";
             this.mnuTools.Click += new System.EventHandler(this.mnuTools_Click);
             // 
@@ -507,7 +507,7 @@
             this.mnuPowerShellTester,
             this.mnuAuthAndAcessCheckersToolStripMenuItem});
             this.mnuOther.Name = "mnuOther";
-            this.mnuOther.Size = new System.Drawing.Size(95, 38);
+            this.mnuOther.Size = new System.Drawing.Size(95, 36);
             this.mnuOther.Text = "Other";
             this.mnuOther.Click += new System.EventHandler(this.mnuOther_Click);
             // 
@@ -623,6 +623,7 @@
             this.mnuAuthAndAcessCheckersToolStripMenuItem.Name = "mnuAuthAndAcessCheckersToolStripMenuItem";
             this.mnuAuthAndAcessCheckersToolStripMenuItem.Size = new System.Drawing.Size(532, 44);
             this.mnuAuthAndAcessCheckersToolStripMenuItem.Text = "Auth and Acess Checkers";
+            this.mnuAuthAndAcessCheckersToolStripMenuItem.Visible = false;
             this.mnuAuthAndAcessCheckersToolStripMenuItem.Click += new System.EventHandler(this.authAndAcessCheckersToolStripMenuItem_Click);
             // 
             // mnuAuthAndAccessImap
@@ -651,13 +652,13 @@
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuAbout});
             this.mnuHelp.Name = "mnuHelp";
-            this.mnuHelp.Size = new System.Drawing.Size(84, 38);
+            this.mnuHelp.Size = new System.Drawing.Size(84, 36);
             this.mnuHelp.Text = "Help";
             // 
             // mnuAbout
             // 
             this.mnuAbout.Name = "mnuAbout";
-            this.mnuAbout.Size = new System.Drawing.Size(328, 44);
+            this.mnuAbout.Size = new System.Drawing.Size(359, 44);
             this.mnuAbout.Text = "About EWSEditor";
             this.mnuAbout.Click += new System.EventHandler(this.MnuAbout_Click);
             // 

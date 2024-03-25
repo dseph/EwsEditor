@@ -402,6 +402,8 @@ namespace EWSEditor.Forms
             txtChangeKey.Text = _Appointment.Id.ChangeKey;
             //txtConversationId.Text = _Appointment.ConversationId.ToString();
 
+            SetButtonState();
+
             return bRet;
         }
 
@@ -417,15 +419,19 @@ namespace EWSEditor.Forms
                 dtDurationStartDate.Value.Year,
                 dtDurationStartDate.Value.Month,
                 dtDurationStartDate.Value.Day,
-                dtDurationStartTime.Value.Hour,
+                10,
                 dtDurationStartTime.Value.Minute,
                 dtDurationStartTime.Value.Second);
+
+            
+
+            //dtDurationEndDate.Value.Hour = 10;
 
             DateTime oEndTime = new DateTime(
                 dtDurationEndDate.Value.Year,
                 dtDurationEndDate.Value.Month,
                 dtDurationEndDate.Value.Day,
-                dtDurationEndDate.Value.Hour,
+                10,
                 dtDurationEndDate.Value.Minute,
                 dtDurationEndDate.Value.Second);
             _Appointment.Start = oStartTime;
@@ -467,13 +473,13 @@ namespace EWSEditor.Forms
 
             if (_IsExistingAppointment == true)
             {
-                btnDelete.Enabled = true;
-            }
-            else
-            {
-                btnDelete.Enabled = false;
-            }
+                btnDelete.Enabled = _IsExistingAppointment;
+                btnForward.Visible = _IsExistingAppointment;
+                txtForwardTo.Visible = _IsExistingAppointment;
+                lblForwardTo.Visible = _IsExistingAppointment;
 
+            }
+     
             if (_isDirty == true)
             {
                 btnSend.Enabled = true;
@@ -570,7 +576,7 @@ namespace EWSEditor.Forms
                         if (oForm.ChoseOK == true)
                         {
                             _Appointment.Service.ClientRequestId = Guid.NewGuid().ToString();  // Set a new GUID. 
-                            _Appointment.Update(ConflictResolutionMode.AutoResolve, oForm.SelectedSendInvitationsOrCancellationsMode);
+                            _Appointment.Update(ConflictResolutionMode.AlwaysOverwrite, oForm.SelectedSendInvitationsOrCancellationsMode);
                             bRet = true;
                         }
                     }
@@ -695,5 +701,28 @@ namespace EWSEditor.Forms
             oDialog = null;
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Item oItem = (Item)_Appointment;
+
+            oItem.Delete(DeleteMode.MoveToDeletedItems); 
+            _WasDeleted = true;
+            this.Close();
+        }
+
+        private void btnForward_Click(object sender, EventArgs e)
+        {
+            //https://learn.microsoft.com/en-us/previous-versions/office/developer/exchange-server-2010/dd633652(v=exchg.80)
+
+ 
+
+            // Specify the recipient e-mail addresses and forward the meeting request message to the recipients with customized message body text. 
+            EmailAddress[] fwdAddresses = new EmailAddress[1];
+            fwdAddresses[0] = new EmailAddress(txtForwardTo.Text.Trim());
+
+            _Appointment.Forward("Forwarded message.", fwdAddresses);
+
+            this.Close();
+        }
     }
 }

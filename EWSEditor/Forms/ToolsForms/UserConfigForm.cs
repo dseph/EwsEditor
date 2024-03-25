@@ -184,7 +184,7 @@ namespace EWSEditor.Forms
             if (oForm.ChoseOK == true)
             {
                 txtFolderId.Text = PropertyInformation.TypeValues.FolderIdTypeValue.GetValue(oForm.ChosenFolderId, true);
-                
+                _ChosenFolderId = oForm.ChosenFolderId;
             }
 
 

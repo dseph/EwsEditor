@@ -83,19 +83,7 @@ namespace EWSEditor.Forms.SMTP
 
             try
             {
-                // Make the interactive token request
-
-
-                //var authResult = await pca.AcquireTokenInteractive(smtpScope).ExecuteAsync();
-                //if (String.IsNullOrEmpty(authResult.AccessToken))
-                //{
-                //    Console.WriteLine("No token received");
-                //    return;
-                //}
-                //Console.WriteLine($"Token received for {authResult.Account.Username}");
-
-
-
+                
                 // Use the token to connect to SMTP service
                 string SendResult = SendMessageToSelf(authResult, mimeContent);
                 oSB.AppendLine(SendResult);
@@ -120,7 +108,8 @@ namespace EWSEditor.Forms.SMTP
             oSB = new StringBuilder();
             try
             {
-                using (_smtpClient = new TcpClient("outlook.office365.com", 587))
+ 
+                using (_smtpClient = new TcpClient(AuthFactory.Server, AuthFactory.Port))
                 {
                     NetworkStream smtpStream = _smtpClient.GetStream();
                     try
@@ -138,7 +127,8 @@ namespace EWSEditor.Forms.SMTP
                     catch (Exception ex)
                     {
                         // We've received an error or unexpected response.  We'll send a QUIT as there's nothing more we can do.
-                        Console.WriteLine(ex.Message);
+                       
+                        oSB.AppendLine(ex.Message);
                         WriteNetworkStream(smtpStream, "QUIT");
                         smtpStream.Close();
                         smtpStream = null;
@@ -196,7 +186,7 @@ namespace EWSEditor.Forms.SMTP
                             }
                             catch (Exception ex)
                             {
-                                Console.WriteLine(ex.Message);
+                                oSB.AppendLine(ex.Message);
                             }
                             WriteSSLStream("QUIT");
                             ReadSSLStream();
@@ -214,64 +204,7 @@ namespace EWSEditor.Forms.SMTP
             return oSB.ToString();
         }
 
-        /////// <summary>
-        /////// Test the given provided IMAP details (attempt to obtain token and access mailbox)
-        /////// </summary>
-        ////string RetrieveMessages(AuthenticationResult authResult )
-        ////{
-        ////    oSB = new StringBuilder();
-
-
-        ////    try
-        ////    {
-        ////        int iPort = Int32.Parse(txtPort.Text.Trim());
-
-        ////        using (_imapClient = new TcpClient(AuthFactory.Server, AuthFactory.Port))
-        ////        {
-        ////            using (_sslStream = new SslStream(_imapClient.GetStream()))
-        ////            {
-        ////                _sslStream.AuthenticateAsClient(AuthFactory.Server);
-
-        ////                ReadSSLStream();
-
-        ////                //Send the users login details
-        ////                WriteSSLStream($"$ CAPABILITY");
-        ////                ReadSSLStream();
-
-        ////                //Send the users login details
-        ////                if (AuthFactory.UseOAuthDelegate == true)
-        ////                    WriteSSLStream($"$ AUTHENTICATE XOAUTH2 {XOauth2(authResult)}");
-        ////                else
-        ////                    WriteSSLStream($"$ AUTHENTICATE XOAUTH2 {XOauth2(authResult, AuthFactory.MailboxBeingAccessed)}");
-        ////                string response = ReadSSLStream();
-        ////                if (response.StartsWith("$ NO AUTHENTICATE"))
-        ////                    oSB.AppendLine("Authentication failed.");
-        ////                else
-        ////                {
-
-        ////                    //sb.AppendLine("Authenticated.");
-
-        ////                    // Retrieve inbox unread messages
-        ////                    WriteSSLStream("$ STATUS INBOX (unseen)");
-        ////                    ReadSSLStream();
-
-        ////                    // Log out
-        ////                    WriteSSLStream($"$ LOGOUT");
-        ////                    ReadSSLStream();
-        ////                }
-
-        ////                // Tidy up
-        ////                oSB.AppendLine("Closing connection");
-        ////            }
-        ////        }
-        ////    }
-        ////    catch (SocketException ex)
-        ////    {
-        ////        oSB.AppendLine(ex.Message);
-        ////    }
-
-        ////    return oSB.ToString();
-        ////}
+        
 
         /// <summary>
         /// Calculate and return the log-in code, which is a base 64 encoded combination of mailbox (user) and auth token
@@ -291,25 +224,7 @@ namespace EWSEditor.Forms.SMTP
         }
 
 
-
-        //static string ReadSSLStream()
-        //{
-        //    int bytes = -1;
-        //    byte[] buffer = new byte[4096];
-        //    bytes = _sslStream.Read(buffer, 0, buffer.Length);
-        //    string response = Encoding.ASCII.GetString(buffer, 0, bytes);
-        //    Console.WriteLine(response); // We add a blank line after the response as it makes the output easier to read
-        //    return response;
-        //}
-
-        //static void WriteSSLStream(string Data)
-        //{
-        //    if (!Data.EndsWith(Environment.NewLine))
-        //        Data = $"{Data}{Environment.NewLine}";
-        //    _sslStream.Write(Encoding.ASCII.GetBytes(Data));
-        //    _sslStream.Flush();
-        //    Console.Write(Data);
-        //}
+         
 
         static string ReadNetworkStream(NetworkStream Stream)
         {
@@ -331,11 +246,7 @@ namespace EWSEditor.Forms.SMTP
             Console.Write(Data);
         }
 
-
-
-
-
-
+ 
         /// <summary>
         /// Loads certificate from file
         private void BtnLoadCertificate_Click(object sender, EventArgs e)

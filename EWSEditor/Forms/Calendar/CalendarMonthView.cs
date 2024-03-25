@@ -240,7 +240,25 @@ namespace EWSEditor.Forms
                     this);
             }
         }
- 
-            
+
+        private void cmsItemsForwardMeetingInstance_Click(object sender, EventArgs e)
+        {
+           // if (lvItems.SelectedItems.Count > 0)
+            //{
+            //    ItemTag oItemTag = null;
+            //    oItemTag = (ItemTag)lvItems.SelectedItems[0].Tag;
+
+            //    List<ItemId> item = new List<ItemId>();
+            //    item.Add(oItemTag.Id);
+
+
+            //    // EWSEditor.Forms.Dialogs.ForwardMeetingInstance oForm = new EWSEditor.Forms.Dialogs.ForwardMeetingInstance(_CurrentService, oItemTag.Id);
+            //    EWSEditor.Forms.Calendar.ForwardInstanceOfMeeting oForm = new EWSEditor.Forms.Calendar.ForwardInstanceOfMeeting(_CurrentService, oItemTag.Id);
+            //    oForm.ShowDialog();
+            //}
+
+             
+
+        }
     }
 }

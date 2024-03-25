@@ -343,7 +343,7 @@
             this.txtToken.Multiline = true;
             this.txtToken.Name = "txtToken";
             this.txtToken.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtToken.Size = new System.Drawing.Size(1046, 147);
+            this.txtToken.Size = new System.Drawing.Size(1094, 147);
             this.txtToken.TabIndex = 1;
             this.txtToken.TextChanged += new System.EventHandler(this.txtToken_TextChanged);
             // 
@@ -356,7 +356,7 @@
             this.txtTestResults.Multiline = true;
             this.txtTestResults.Name = "txtTestResults";
             this.txtTestResults.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtTestResults.Size = new System.Drawing.Size(1173, 325);
+            this.txtTestResults.Size = new System.Drawing.Size(1208, 325);
             this.txtTestResults.TabIndex = 4;
             // 
             // txtServer
@@ -437,7 +437,7 @@
             // btnParseToken
             // 
             this.btnParseToken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnParseToken.Location = new System.Drawing.Point(1176, 582);
+            this.btnParseToken.Location = new System.Drawing.Point(1217, 582);
             this.btnParseToken.Name = "btnParseToken";
             this.btnParseToken.Size = new System.Drawing.Size(124, 46);
             this.btnParseToken.TabIndex = 29;
@@ -453,7 +453,7 @@
             this.txtMime.Multiline = true;
             this.txtMime.Name = "txtMime";
             this.txtMime.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtMime.Size = new System.Drawing.Size(1181, 147);
+            this.txtMime.Size = new System.Drawing.Size(1218, 147);
             this.txtMime.TabIndex = 30;
             // 
             // label4

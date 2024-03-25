@@ -77,5 +77,10 @@ namespace EWSEditor.Forms
                 txtSmtpAddress.Visible = true;
             }
         }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
