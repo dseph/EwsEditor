@@ -1635,6 +1635,7 @@
     <Content Include="EwsPostExamples\AddNewTelUriContactToGroup.xml" />
     <Content Include="EwsPostExamples\ApplyConversationAction.xml" />
     <Content Include="EwsPostExamples\ArchiveItem.xml" />
+    <Content Include="EwsPostExamples\Blank.txt" />
     <Content Include="EwsPostExamples\ConvertId.xml" />
     <Content Include="EwsPostExamples\CopyFolder.xml" />
     <Content Include="EwsPostExamples\CopyItem.xml" />
