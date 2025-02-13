@@ -20,6 +20,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using System.Xml;
 using System.Diagnostics;
+using System.Linq.Expressions;
 
 namespace EWSEditor.Common
 {
@@ -539,9 +540,9 @@ namespace EWSEditor.Common
 
             // Below lines are critical to work-around resizing issues for the scrolling text boxes.
             tabControl1.Width = splitContainer1.Panel1.Width -2;
-            tabControl2.Width = splitContainer1.Panel2.Width -2;
+            tabResponse.Width = splitContainer1.Panel2.Width -2;
             tabControl1.Height = splitContainer1.Panel1.Height - 2;
-            tabControl2.Height = splitContainer1.Panel2.Height - 2;
+            tabResponse.Height = splitContainer1.Panel2.Height - 2;
         }
 
         private void btnLoadSettings_Click(object sender, EventArgs e)
@@ -695,7 +696,21 @@ namespace EWSEditor.Common
                 this.chkAllowRedirect.Checked = oPostFormSetting.AllowAutoRedirect;
  
                 this.txtRequest.Text = FixSetting(oPostFormSetting.EasRequest); // .Replace("\n", "\r\n");
+
+                string sRet = string.Empty;
+                if (CheckXml(txtRequest.Text, ref sRet) == true)
+                    wbRequest.DocumentText = txtRequest.Text;
+                else
+                    wbRequest.DocumentText = sRet;
+
+ 
                 this.txtResponse.Text = FixSetting(oPostFormSetting.EasResponse); //.Replace("\n", "\r\n");
+                //try
+                //{
+                //    this.wbResponse.DocumentText = txtRequest.Text;
+                //}
+                //catch (Exception ex1)
+                //{ }
 
                 oPostFormSetting = null;
             }
@@ -848,8 +863,14 @@ namespace EWSEditor.Common
 
         private void tabControl1_Click(object sender, EventArgs e)
         {
-            wbRequest.DocumentText = txtRequest.Text;
+            string sRet = string.Empty;
+            if (CheckXml(txtRequest.Text, ref sRet) == true)
+                wbRequest.DocumentText = txtRequest.Text;
+            else
+                wbRequest.DocumentText = sRet;
         }
+
+        
 
         private void wbRequest_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
@@ -952,8 +973,60 @@ namespace EWSEditor.Common
         {
 
         }
-    }
 
+        private void tabControl1_Click_1(object sender, EventArgs e)
+        {
+
+           // wbRequest.DocumentText = "";
+            try
+            {
+                string sRet = string.Empty;
+                if (CheckXml(txtRequest.Text, ref sRet) == true)
+                    wbRequest.DocumentText = txtRequest.Text;
+                else
+                    wbRequest.DocumentText = sRet;
+
+     
+            }
+            catch (Exception ex)
+            {
+                wbRequest.DocumentText = ex.ToString();
+            };
+        }
+
+        private bool CheckXml(string XmlString, ref string  CheckXml)
+        {
+            string sRet = string.Empty;
+
+            bool bRet = false;
+
+            try
+            {
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.DtdProcessing = DtdProcessing.Prohibit; // Optional: to prevent DTD processing
+
+                using (XmlReader reader = XmlReader.Create(new System.IO.StringReader(XmlString), settings))
+                {
+                    while (reader.Read()) { }
+                }
+
+                bRet = true;
+                sRet = XmlString;
+                // Console.WriteLine("XML is well-formed.");
+            }
+            catch (XmlException ex)
+            {
+                sRet = string.Format($"XML is not well-formed: {ex.Message}");
+
+                bRet = false;
+            }
+            CheckXml = sRet;
+            return bRet;
+             
+        }
+    
+    }
+ 
 
 
     public class PostFormSetting
