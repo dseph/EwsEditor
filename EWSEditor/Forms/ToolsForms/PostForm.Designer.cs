@@ -449,7 +449,7 @@
             this.tabResponse.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.tabResponse.Name = "tabResponse";
             this.tabResponse.SelectedIndex = 0;
-            this.tabResponse.Size = new System.Drawing.Size(1938, 295);
+            this.tabResponse.Size = new System.Drawing.Size(1938, 291);
             this.tabResponse.TabIndex = 3;
             this.tabResponse.Click += new System.EventHandler(this.tabControl2_Click);
             // 
@@ -460,7 +460,7 @@
             this.tabResponseText.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.tabResponseText.Name = "tabResponseText";
             this.tabResponseText.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.tabResponseText.Size = new System.Drawing.Size(1922, 248);
+            this.tabResponseText.Size = new System.Drawing.Size(1922, 244);
             this.tabResponseText.TabIndex = 0;
             this.tabResponseText.Text = "Response Text";
             this.tabResponseText.UseVisualStyleBackColor = true;
@@ -488,7 +488,7 @@
             this.tabResponseXml.Margin = new System.Windows.Forms.Padding(5, 3, 5, 3);
             this.tabResponseXml.Name = "tabResponseXml";
             this.tabResponseXml.Padding = new System.Windows.Forms.Padding(5, 3, 5, 3);
-            this.tabResponseXml.Size = new System.Drawing.Size(1922, 248);
+            this.tabResponseXml.Size = new System.Drawing.Size(1922, 244);
             this.tabResponseXml.TabIndex = 1;
             this.tabResponseXml.Text = "Response XML";
             this.tabResponseXml.UseVisualStyleBackColor = true;
@@ -513,9 +513,9 @@
             this.tabResponseInfo.Controls.Add(this.txtResponseSummary);
             this.tabResponseInfo.Location = new System.Drawing.Point(8, 39);
             this.tabResponseInfo.Name = "tabResponseInfo";
-            this.tabResponseInfo.Size = new System.Drawing.Size(1922, 248);
+            this.tabResponseInfo.Size = new System.Drawing.Size(1922, 244);
             this.tabResponseInfo.TabIndex = 2;
-            this.tabResponseInfo.Text = "EWS Call Info";
+            this.tabResponseInfo.Text = "Call Report";
             this.tabResponseInfo.UseVisualStyleBackColor = true;
             // 
             // txtResponseSummary
@@ -530,7 +530,7 @@
             this.txtResponseSummary.Multiline = true;
             this.txtResponseSummary.Name = "txtResponseSummary";
             this.txtResponseSummary.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResponseSummary.Size = new System.Drawing.Size(1894, 313);
+            this.txtResponseSummary.Size = new System.Drawing.Size(1894, 220);
             this.txtResponseSummary.TabIndex = 2;
             this.txtResponseSummary.WordWrap = false;
             // 

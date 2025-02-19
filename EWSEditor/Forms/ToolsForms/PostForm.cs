@@ -278,8 +278,12 @@ namespace EWSEditor.Common
             wbResponse.DocumentText = sCopy;
           
           
+            // Start building Call summery 
 
             StringBuilder oSB = new StringBuilder();
+            string sDividerLine = "----------------------------------------\r\n\r\n";
+
+            oSB.AppendFormat("** Call Report **\r\n\r\n");
 
             oSB.AppendFormat("Start: {0}  End: {1}  Timespan: {2}\r\n\r\n",
                 dtStart.ToString(),
@@ -294,15 +298,24 @@ namespace EWSEditor.Common
                 oSB.AppendFormat("    Error: {0}\r\n\r\n", sError);
             }
 
+            oSB.AppendFormat(sDividerLine);
+
             oSB.AppendFormat("ResponseStatusCode: {0}\r\n\r\n", sResponseStatusCode);
             oSB.AppendFormat("ResponseCodeNumber: {0}\r\n\r\n", iResponseStatusCodeNumber);
             oSB.AppendFormat("ResponseStatusDescription: {0}\r\n\r\n", sResponseStatusDescription);
             //oSB.AppendFormat("Result: {0}\r\n", sResult);
- 
-            oSB.AppendFormat("Request Headers: \r\n{0}\r\n", sRequestHeaders);
-            oSB.AppendFormat("Response Headers: \r\n{0}\r\n", sResponeHeaders);
+            oSB.AppendFormat(sDividerLine);
 
-            oSB.AppendLine(CheckResponseForOddCharacters(sResult));
+            oSB.AppendFormat("Request Headers: \r\n\r\n{0}\r\n\r\n", sRequestHeaders);
+            oSB.AppendFormat("Request Body: \r\n\r\n{0}\r\n\r\n", txtRequest.Text);
+
+            oSB.AppendFormat(sDividerLine);
+            oSB.AppendFormat("Response Headers: \r\n\r\n{0}\r\n\r\n", sResponeHeaders);
+            oSB.AppendFormat("Response Body: \r\n\r\n{0}\r\n\r\n", sResult);
+
+            oSB.AppendFormat(sDividerLine);
+            oSB.AppendFormat("Check Response For Odd Characters: \r\n\r\n{0}\r\n\r\n", CheckResponseForOddCharacters(sResult));
+
 
             txtResponseSummary.Text = oSB.ToString();
 
@@ -489,35 +502,74 @@ namespace EWSEditor.Common
 
 
             StringBuilder oSB = new StringBuilder();
+            string sDividerLine = "----------------------------------------\r\n\r\n";
 
-            oSB.AppendFormat("Start: {0}  End: {1}  Timespan: {2}:\r\n\r\n", 
-                dtStart .ToString(),
+            oSB.AppendFormat("** Call Report **\r\n\r\n");
+
+            oSB.AppendFormat("Start: {0}  End: {1}  Timespan: {2}\r\n\r\n",
+                dtStart.ToString(),
                 dtEnd.ToString(),
                 sElapsed
                 );
 
             if (bRet != true)
-            {  
- 
-                oSB.AppendFormat("Failed:\r\n"); 
+            {
+
+                oSB.AppendFormat("Failed:\r\n");
                 oSB.AppendFormat("    Error: {0}\r\n\r\n", sError);
             }
+
+            oSB.AppendFormat(sDividerLine);
 
             oSB.AppendFormat("ResponseStatusCode: {0}\r\n\r\n", sResponseStatusCode);
             oSB.AppendFormat("ResponseCodeNumber: {0}\r\n\r\n", iResponseStatusCodeNumber);
             oSB.AppendFormat("ResponseStatusDescription: {0}\r\n\r\n", sResponseStatusDescription);
             //oSB.AppendFormat("Result: {0}\r\n", sResult);
+            oSB.AppendFormat(sDividerLine);
 
-             
+            oSB.AppendFormat("Request Headers: \r\n\r\n{0}\r\n\r\n", sRequestHeaders);
+            oSB.AppendFormat("Request Body: \r\n\r\n{0}\r\n\r\n", txtRequest.Text);
 
-            oSB.AppendFormat("Request Headers: \r\n{0}\r\n", sRequestHeaders);
-            oSB.AppendFormat("Response Headers: \r\n{0}\r\n", sResponeHeaders);
+            oSB.AppendFormat(sDividerLine);
+            oSB.AppendFormat("Response Headers: \r\n\r\n{0}\r\n\r\n", sResponeHeaders);
+            oSB.AppendFormat("Response Body: \r\n\r\n{0}\r\n\r\n", sResult);
 
-            oSB.AppendLine(CheckResponseForOddCharacters(sResult));
+            oSB.AppendFormat(sDividerLine);
+            oSB.AppendFormat("Check Response For Odd Characters: \r\n\r\n{0}\r\n\r\n", CheckResponseForOddCharacters(sResult));
+
 
             txtResponseSummary.Text = oSB.ToString();
-  
- 
+
+            //StringBuilder oSB = new StringBuilder();
+
+            //oSB.AppendFormat("Start: {0}  End: {1}  Timespan: {2}:\r\n\r\n", 
+            //    dtStart .ToString(),
+            //    dtEnd.ToString(),
+            //    sElapsed
+            //    );
+
+            //if (bRet != true)
+            //{  
+
+            //    oSB.AppendFormat("Failed:\r\n"); 
+            //    oSB.AppendFormat("    Error: {0}\r\n\r\n", sError);
+            //}
+
+            //oSB.AppendFormat("ResponseStatusCode: {0}\r\n\r\n", sResponseStatusCode);
+            //oSB.AppendFormat("ResponseCodeNumber: {0}\r\n\r\n", iResponseStatusCodeNumber);
+            //oSB.AppendFormat("ResponseStatusDescription: {0}\r\n\r\n", sResponseStatusDescription);
+            ////oSB.AppendFormat("Result: {0}\r\n", sResult);
+
+
+
+            //oSB.AppendFormat("Request Headers: \r\n{0}\r\n", sRequestHeaders);
+            //oSB.AppendFormat("Response Headers: \r\n{0}\r\n", sResponeHeaders);
+
+            //oSB.AppendLine(CheckResponseForOddCharacters(sResult));
+
+            //txtResponseSummary.Text = oSB.ToString();
+
+
             this.Cursor = Cursors.Default;
         }
 

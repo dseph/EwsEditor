@@ -504,7 +504,6 @@ namespace EWSEditor.Forms
             // lblScope
             // 
             this.lblScope.AutoSize = true;
-            this.lblScope.Enabled = false;
             this.lblScope.Location = new System.Drawing.Point(47, 509);
             this.lblScope.Margin = new System.Windows.Forms.Padding(0);
             this.lblScope.Name = "lblScope";
@@ -543,7 +542,6 @@ namespace EWSEditor.Forms
             // lblAuthority
             // 
             this.lblAuthority.AutoSize = true;
-            this.lblAuthority.Enabled = false;
             this.lblAuthority.Location = new System.Drawing.Point(46, 469);
             this.lblAuthority.Margin = new System.Windows.Forms.Padding(0);
             this.lblAuthority.Name = "lblAuthority";
@@ -571,7 +569,6 @@ namespace EWSEditor.Forms
             // lblOAuthRedirect
             // 
             this.lblOAuthRedirect.AutoSize = true;
-            this.lblOAuthRedirect.Enabled = false;
             this.lblOAuthRedirect.Location = new System.Drawing.Point(44, 544);
             this.lblOAuthRedirect.Margin = new System.Windows.Forms.Padding(0);
             this.lblOAuthRedirect.Name = "lblOAuthRedirect";
