@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using EWSEditor.Common;
 using EWSEditor.Forms;
 using EWSEditor.Forms.Controls;
+using System.Runtime.CompilerServices;
+using System.Web.Services.Description;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace EWSEditor.Exchange
 { 
@@ -18,17 +21,37 @@ namespace EWSEditor.Exchange
     {
       
 
-        public static bool ExportItemPost(string ServerVersion, string sItemId, string sFile)
+        public static bool ExportItemPost(ExchangeService oService, string sItemId, string sFile)
         {
             bool bSuccess = false;
             string sResponseText = string.Empty;
+
+            string ServerVersion = oService.RequestedServerVersion.ToString();
+            //string sAnchorMailbox = oService.HttpHeaders["X-AnchorMailbox"];
+
             System.Net.HttpWebRequest oHttpWebRequest = null;
-            EwsProxyFactory.CreateHttpWebRequest(ref oHttpWebRequest);
-            oHttpWebRequest.Headers.Add("client-request-id", Guid.NewGuid().ToString());
-            oHttpWebRequest.Headers.Add("return-client-request-id", "true"); 
+            EwsProxyFactory.CreateHttpWebRequest(ref oHttpWebRequest);   // <--  this will intiallize headers
+
+            //oHttpWebRequest.Headers.Add("client-request-id", Guid.NewGuid().ToString());
+            //oHttpWebRequest.Headers.Add("return-client-request-id", "true"); 
+
+
+            //if (sAnchorMailbox.Length != 0)
+            //    oHttpWebRequest.Headers.Add("X-AnchorMailbox", sAnchorMailbox);
 
             // Build request body...
-            string EwsRequest = TemplateEwsRequests.ExportItems;
+            string EwsRequest = string.Empty;
+            if (oService.ImpersonatedUserId != null)
+            {
+                EwsRequest = TemplateEwsRequests.ExportItems_ImpersonateBySmtp;
+                string sUserId = oService.ImpersonatedUserId.Id;
+                EwsRequest = EwsRequest.Replace("##PrimarySmtpAddress##", sUserId);
+            }
+            else
+            {
+                EwsRequest = TemplateEwsRequests.ExportItems;
+            }
+
             EwsRequest = EwsRequest.Replace("##RequestServerVersion##", ServerVersion);
             EwsRequest = EwsRequest.Replace("##ItemId##", sItemId);
  
@@ -96,6 +119,14 @@ namespace EWSEditor.Exchange
 
                         bSuccess = true;
                     }
+                    catch (System.Net.WebException ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString() + "\r\n\r\n" + "Response: \r\n" + sResponseText, "Error");
+                    }
+                    catch (System.IO.IOException ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString(), "Error");
+                    }
                     catch (Exception ex)
                     {
 
@@ -105,6 +136,14 @@ namespace EWSEditor.Exchange
                 }
                 
  
+            }
+            catch (System.Net.WebException ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error");
+            }
+            catch (System.IO.IOException ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Error");
             }
             catch (Exception ex)
             {
@@ -123,33 +162,94 @@ namespace EWSEditor.Exchange
         }
 
 
-        public static bool UploadItemPost(string ServerVersion, FolderId ParentFolderId, CreateActionType oCreateActionType, string sItemId, string sFile)
+        public static bool UploadItemPost(ExchangeService oService, FolderId ParentFolderId, CreateActionType oCreateActionType, string sItemId, string sFile)
         { 
             
             bool bSuccess = false;
             string sResponseText = string.Empty;
             System.Net.HttpWebRequest oHttpWebRequest = null;
-            EwsProxyFactory.CreateHttpWebRequest(ref oHttpWebRequest);
-            oHttpWebRequest.Headers.Add("client-request-id", Guid.NewGuid().ToString());
-            oHttpWebRequest.Headers.Add("return-client-request-id", "true"); 
+            string ServerVersion = oService.RequestedServerVersion.ToString();
 
+            EwsProxyFactory.CreateHttpWebRequest(ref oHttpWebRequest);  // <- This will set the headers
+
+            // UploadItems_Update_ImpersonateBySmtp
+            //UploadItems_Update
+            // UploadItems_CreateNew_ImpersonateBySmtp
+            // UploadItems_CreateNew
+
+            // Sample template
+                // <?xml version="1.0" encoding="utf-8"?>
+                //< soap:Envelope
+                //        xmlns:soap = "http://schemas.xmlsoap.org/soap/envelope/"
+                //        xmlns: xsi = "http://www.w3.org/2001/XMLSchema-instance"
+                //       xmlns: xsd = "http://www.w3.org/2001/XMLSchema" >
+                //< soap:Header >
+                //    < RequestServerVersion Version = "##RequestServerVersion##" xmlns = "http://schemas.microsoft.com/exchange/services/2006/types" />
+                //      < ExchangeImpersonation xmlns = "http://schemas.microsoft.com/exchange/services/2006/types" >
+                //        < ConnectingSID >
+                //          < PrimarySmtpAddress >##PrimarySmtpAddress##</PrimarySmtpAddress>
+                //        </ ConnectingSID >
+                //      </ ExchangeImpersonation >
+                //</ soap:Header >
+                //< soap:Body >
+                //    < UploadItems xmlns = "http://schemas.microsoft.com/exchange/services/2006/messages" >
+                //        < Items >
+                //        < Item CreateAction = "##CreateAction##" xmlns = "http://schemas.microsoft.com/exchange/services/2006/types" >
+                //                    < ParentFolderId Id = "##ParentFolderId_Id##" />
+                //                    < ItemId Id = "##ItemId##" />
+                //                    < Data >##Data##</Data>
+                //                </ Item >
+                //            </ Items >
+                //        </ UploadItems >
+                //    </ soap:Body >
+                //</ soap:Envelope >
+
+            //oHttpWebRequest.Headers.Add("client-request-id", Guid.NewGuid().ToString());
+            //oHttpWebRequest.Headers.Add("return-client-request-id", "true"); 
+       
             string EwsRequest = string.Empty;
 
-            if (oCreateActionType != CreateActionType.CreateNew)
-            {  
-                EwsRequest = TemplateEwsRequests.UploadItems_Update;
-                 
-                if (oCreateActionType == CreateActionType.Update)
-                    EwsRequest = EwsRequest.Replace("##CreateAction##", "Update");
+            if (oService.ImpersonatedUserId != null)
+            {
+                // ##PrimarySmtpAddress##
+                if (oCreateActionType != CreateActionType.CreateNew)
+                {
+                    EwsRequest = TemplateEwsRequests.UploadItems_Update_ImpersonateBySmtp;
+
+                    if (oCreateActionType == CreateActionType.Update)
+                        EwsRequest = EwsRequest.Replace("##CreateAction##", "Update");
+                    else
+                        EwsRequest = EwsRequest.Replace("##CreateAction##", "UpdateOrCreate");
+                    EwsRequest = EwsRequest.Replace("##ItemId##", sItemId);
+                }
                 else
-                    EwsRequest = EwsRequest.Replace("##CreateAction##", "UpdateOrCreate");
-                EwsRequest = EwsRequest.Replace("##ItemId##", sItemId);    
+                {
+                    EwsRequest = TemplateEwsRequests.UploadItems_CreateNew_ImpersonateBySmtp;
+                    EwsRequest = EwsRequest.Replace("##CreateAction##", "CreateNew");
+                }
+                string sUserId = oService.ImpersonatedUserId.Id;
+                EwsRequest = EwsRequest.Replace("##PrimarySmtpAddress##", sUserId);
             }
             else
             {
-                EwsRequest = TemplateEwsRequests.UploadItems_CreateNew;
-                EwsRequest = EwsRequest.Replace("##CreateAction##", "CreateNew");
+                if (oCreateActionType != CreateActionType.CreateNew)
+                {
+                    EwsRequest = TemplateEwsRequests.UploadItems_Update;
+
+                    if (oCreateActionType == CreateActionType.Update)
+                        EwsRequest = EwsRequest.Replace("##CreateAction##", "Update");
+                    else
+                        EwsRequest = EwsRequest.Replace("##CreateAction##", "UpdateOrCreate");
+                    EwsRequest = EwsRequest.Replace("##ItemId##", sItemId);
+                }
+                else
+                {
+                    EwsRequest = TemplateEwsRequests.UploadItems_CreateNew;
+                    EwsRequest = EwsRequest.Replace("##CreateAction##", "CreateNew");
+                }
             }
+
+
             EwsRequest = EwsRequest.Replace("##RequestServerVersion##", ServerVersion);
             EwsRequest = EwsRequest.Replace("##ParentFolderId_Id##", ParentFolderId.UniqueId);
 
@@ -191,11 +291,15 @@ namespace EWSEditor.Exchange
                 {
 
                 }
-            } 
+            }
+            catch (System.Net.WebException ex)
+            {
+                MessageBox.Show(ex.Message.ToString() + "\r\n\r\n" + "Response: \r\n" + sResponseText, "Error");
+            }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message.ToString(), "Error");
+                MessageBox.Show(ex.Message.ToString() + "\r\n\r\n" + "Response: \r\n" + sResponseText, "Error");
 
             }           
             finally

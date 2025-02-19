@@ -251,7 +251,7 @@ namespace EWSEditor.Common.Exports
             Appointment oAppointment = Appointment.Bind(oExchangeService, oItemId);
 
             // Exchange2010_SP1 is the minimal version
-            bRet = EWSEditor.Exchange.ExportUploadHelper.ExportItemPost(ServerVersion,oItemId.UniqueId, sFile);
+            bRet = EWSEditor.Exchange.ExportUploadHelper.ExportItemPost(oExchangeService, oItemId.UniqueId, sFile);
  
             bRet = true;
             return bRet;

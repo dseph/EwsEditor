@@ -1230,9 +1230,17 @@ namespace EWSEditor.Forms
             {
                 string sVersion = this.CurrentService.RequestedServerVersion.ToString();
 
-                ExportUploadHelper.ExportItemPost(sVersion, id.UniqueId, dialog.FileName);
 
+                // form.CurrentService
+                 
 
+                ExportUploadHelper.ExportItemPost(this.CurrentService,  id.UniqueId, dialog.FileName);
+
+                 
+            }
+            catch (System.Net.WebException ex)
+            {
+                MessageBox.Show(ex.InnerException.ToString(), "Error");
             }
             catch (Exception ex)
             {

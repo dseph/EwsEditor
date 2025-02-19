@@ -348,7 +348,7 @@ namespace EWSEditor.Forms
  
 
                 ExportUploadHelper.UploadItemPost(
-                    this.CurrentService.RequestedServerVersion.ToString(),
+                    this.CurrentService,
                     this.currentFolder.Id,
                     oUploadItemForm.ChoseCreateActionType,
                     oUploadItemForm.ChoseItemId,

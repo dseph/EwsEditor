@@ -423,8 +423,19 @@ namespace EWSEditor.Exchange
             {
                 oHttpWebRequest.Headers.Add("Authorization", "Bearer " + oBearerToken);
 
-      
+    
+            }
 
+            if (SetXAnchorMailbox == true)
+            { 
+                if (XAnchorMailbox != string.Empty) 
+                    oHttpWebRequest.Headers.Add("X-AnchorMailbox", XAnchorMailbox);
+            }
+
+            if (SetXPublicFolderMailbox == true)
+            {
+                if (XPublicFolderMailbox != string.Empty)
+                    oHttpWebRequest.Headers.Add("X-PublicFolderMailbox", XPublicFolderMailbox);
             }
 
 

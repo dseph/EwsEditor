@@ -1506,7 +1506,7 @@ namespace EWSEditor.Forms
                 return false;
             }
 
-            return EWSEditor.Exchange.ExportUploadHelper.ExportItemPost(ServerVersion, oItemId.UniqueId, sFile);
+            return EWSEditor.Exchange.ExportUploadHelper.ExportItemPost(oExchangeService, oItemId.UniqueId, sFile);
 
         }
 

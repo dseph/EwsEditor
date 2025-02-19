@@ -178,7 +178,7 @@ namespace EWSEditor.Common.Exports
             ////string sFile = sFolder + "\\MeetingMessage\\" + tempFile;
             //string sFile = sFolder + "\\" + tempFile;
 
-            return EWSEditor.Exchange.ExportUploadHelper.ExportItemPost(ServerVersion, oItemId.UniqueId, sFile);
+            return EWSEditor.Exchange.ExportUploadHelper.ExportItemPost(oExchangeService, oItemId.UniqueId, sFile);
 
             //return SaveMeetingMessageBlobToFolder(oExchangeService, oItemId, sFolder, sFile);
         }
