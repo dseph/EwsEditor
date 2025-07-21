@@ -1513,6 +1513,7 @@
     <EmbeddedResource Include="Resources\TemplateEwsRequests.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TemplateEwsRequests.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include=".editorconfig" />
     <None Include="AdditionalProperties\ContactSpecialCalendarProperties.csv" />

@@ -58,20 +58,34 @@ namespace EWSEditor.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FolderContentForm));
+            ((System.ComponentModel.ISupportInitialize)(this.Splitter)).BeginInit();
+            this.Splitter.Panel2.SuspendLayout();
+            this.Splitter.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // Splitter
+            // 
+            this.Splitter.Location = new System.Drawing.Point(0, 48);
+            this.Splitter.Size = new System.Drawing.Size(1962, 1228);
+            this.Splitter.SplitterDistance = 584;
             // 
             // PropertyDetailsGrid
             // 
+            this.PropertyDetailsGrid.Size = new System.Drawing.Size(1962, 636);
             this.PropertyDetailsGrid.PropertyChanged += new EWSEditor.Forms.Controls.PropertyDetialsGrid.PropertyChangedEventHandler(this.PropertyDetailsGrid_PropertyChanged);
             // 
             // FolderContentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 675);
+            this.ClientSize = new System.Drawing.Size(1962, 1298);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(48, 42, 48, 42);
             this.Name = "FolderContentForm";
+            this.Splitter.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Splitter)).EndInit();
+            this.Splitter.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

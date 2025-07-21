@@ -12,6 +12,7 @@ namespace EWSEditor.Common
 {
     public class HttpHelper
     {
+        // Below covers basic auth
         public static bool HtppCall(
             string sVerb,
             string sUrl,

@@ -40,24 +40,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.ContentsGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // splitter
+            // Splitter
             // 
             this.Splitter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Splitter.Location = new System.Drawing.Point(0, 33);
-            this.Splitter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Splitter.Name = "splitter";
+            this.Splitter.Location = new System.Drawing.Point(0, 48);
+            this.Splitter.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.Splitter.Name = "Splitter";
             this.Splitter.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitter.Panel1
+            // Splitter.Panel1
             // 
             this.Splitter.Panel1.Controls.Add(this.ContentsGrid);
             // 
-            // splitter.Panel2
+            // Splitter.Panel2
             // 
             this.Splitter.Panel2.Controls.Add(this.PropertyDetailsGrid);
-            this.Splitter.Size = new System.Drawing.Size(1129, 628);
-            this.Splitter.SplitterDistance = 299;
-            this.Splitter.SplitterWidth = 6;
+            this.Splitter.Size = new System.Drawing.Size(1505, 784);
+            this.Splitter.SplitterDistance = 373;
+            this.Splitter.SplitterWidth = 8;
             this.Splitter.TabIndex = 5;
             // 
             // ContentsGrid
@@ -73,13 +73,14 @@
             this.ContentsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentsGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ContentsGrid.Location = new System.Drawing.Point(0, 0);
-            this.ContentsGrid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ContentsGrid.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.ContentsGrid.MultiSelect = false;
             this.ContentsGrid.Name = "ContentsGrid";
             this.ContentsGrid.ReadOnly = true;
             this.ContentsGrid.RowHeadersVisible = false;
+            this.ContentsGrid.RowHeadersWidth = 82;
             this.ContentsGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ContentsGrid.Size = new System.Drawing.Size(1129, 299);
+            this.ContentsGrid.Size = new System.Drawing.Size(1505, 373);
             this.ContentsGrid.TabIndex = 1;
             this.ContentsGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ContentsGrid_CellContentClick);
             this.ContentsGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ContentsGrid_CellMouseClick);
@@ -89,26 +90,28 @@
             // TestColumn
             // 
             this.TestColumn.HeaderText = ".";
+            this.TestColumn.MinimumWidth = 10;
             this.TestColumn.Name = "TestColumn";
             this.TestColumn.ReadOnly = true;
+            this.TestColumn.Width = 200;
             // 
             // PropertyDetailsGrid
             // 
             this.PropertyDetailsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PropertyDetailsGrid.Location = new System.Drawing.Point(0, 0);
-            this.PropertyDetailsGrid.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.PropertyDetailsGrid.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.PropertyDetailsGrid.Name = "PropertyDetailsGrid";
-            this.PropertyDetailsGrid.Size = new System.Drawing.Size(1129, 323);
+            this.PropertyDetailsGrid.Size = new System.Drawing.Size(1505, 403);
             this.PropertyDetailsGrid.TabIndex = 1;
             // 
             // BaseContentForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1129, 683);
+            this.ClientSize = new System.Drawing.Size(1505, 854);
             this.Controls.Add(this.Splitter);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.Margin = new System.Windows.Forms.Padding(16, 15, 16, 15);
             this.Name = "BaseContentForm";
             this.Load += new System.EventHandler(this.BaseContentForm_Load);
             this.Controls.SetChildIndex(this.Splitter, 0);

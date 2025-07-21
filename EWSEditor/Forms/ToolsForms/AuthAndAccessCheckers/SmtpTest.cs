@@ -50,7 +50,8 @@ namespace EWSEditor.Forms.SMTP
             SetAuthEnablement();
         }
 
-        ////private void TestIMAP()
+        ////private void Test
+        ///()
         ////{
 
         ////    AuthenticationResult authResult = GetToken();
@@ -656,6 +657,11 @@ namespace EWSEditor.Forms.SMTP
 
                 }
             }
+        }
+
+        private void txtMime_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

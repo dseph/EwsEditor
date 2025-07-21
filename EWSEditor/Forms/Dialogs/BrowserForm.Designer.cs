@@ -99,6 +99,7 @@
             this.mnuAuthAndAcessSmtp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.statusStrip.SuspendLayout();
             this.mnuMain.SuspendLayout();
             this.SuspendLayout();
@@ -147,7 +148,7 @@
             // mnuExit
             // 
             this.mnuExit.Name = "mnuExit";
-            this.mnuExit.Size = new System.Drawing.Size(184, 44);
+            this.mnuExit.Size = new System.Drawing.Size(359, 44);
             this.mnuExit.Text = "Exit";
             this.mnuExit.Click += new System.EventHandler(this.MnuExit_Click);
             // 
@@ -629,21 +630,21 @@
             // mnuAuthAndAccessImap
             // 
             this.mnuAuthAndAccessImap.Name = "mnuAuthAndAccessImap";
-            this.mnuAuthAndAccessImap.Size = new System.Drawing.Size(359, 44);
+            this.mnuAuthAndAccessImap.Size = new System.Drawing.Size(208, 44);
             this.mnuAuthAndAccessImap.Text = "IMAP";
             this.mnuAuthAndAccessImap.Click += new System.EventHandler(this.mnuAuthAndAccessImap_Click);
             // 
             // mnuAuthAndAccessPop
             // 
             this.mnuAuthAndAccessPop.Name = "mnuAuthAndAccessPop";
-            this.mnuAuthAndAccessPop.Size = new System.Drawing.Size(359, 44);
+            this.mnuAuthAndAccessPop.Size = new System.Drawing.Size(208, 44);
             this.mnuAuthAndAccessPop.Text = "POP";
             this.mnuAuthAndAccessPop.Click += new System.EventHandler(this.mnuAuthAndAccessPop_Click);
             // 
             // mnuAuthAndAcessSmtp
             // 
             this.mnuAuthAndAcessSmtp.Name = "mnuAuthAndAcessSmtp";
-            this.mnuAuthAndAcessSmtp.Size = new System.Drawing.Size(359, 44);
+            this.mnuAuthAndAcessSmtp.Size = new System.Drawing.Size(208, 44);
             this.mnuAuthAndAcessSmtp.Text = "SMTP";
             this.mnuAuthAndAcessSmtp.Click += new System.EventHandler(this.mnuAuthAndAcessSmtp_Click);
             // 
@@ -755,5 +756,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuAuthAndAccessImap;
         private System.Windows.Forms.ToolStripMenuItem mnuAuthAndAccessPop;
         private System.Windows.Forms.ToolStripMenuItem mnuAuthAndAcessSmtp;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }

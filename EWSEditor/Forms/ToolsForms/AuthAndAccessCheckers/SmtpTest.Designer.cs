@@ -455,6 +455,7 @@
             this.txtMime.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtMime.Size = new System.Drawing.Size(1218, 147);
             this.txtMime.TabIndex = 30;
+            this.txtMime.TextChanged += new System.EventHandler(this.txtMime_TextChanged);
             // 
             // label4
             // 

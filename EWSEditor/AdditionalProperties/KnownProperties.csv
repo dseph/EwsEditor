@@ -187,7 +187,7 @@ PidLidDistributionListChecksum,				PidLidDistributionListChecksum,			PSETID_Addr
 //PidLidDistributionListMembers,			PidLidDistributionListMembers,			PSETID_Address,								0x00008055,    BinaryArray                    
 PidLidDistributionListName,					PidLidDistributionListName,				PSETID_Address,								0x00008053,    String                    
 //PidLidDistributionListOneOffMembers,		PidLidDistributionListOneOffMembers,    PSETID_Address,								0x00008054,    BinaryArray                    
-PidLidDistributionListStream,				PidLidDistributionListStream,			PSETID_Address,								0x00008064,    Binary                   
+//PidLidDistributionListStream,				PidLidDistributionListStream,			PSETID_Address,								0x00008064,    Binary                   
 PidLidEmail1AddressType,					PidLidEmail1AddressType,				PSETID_Address,								0x00008082,    String                    
 PidLidEmail1DisplayName,    				PidLidEmail1DisplayName,				PSETID_Address,								0x00008080,    String                    
 PidLidEmail1EmailAddress,    				PidLidEmail1EmailAddress,				PSETID_Address,								0x00008083,    String                    
@@ -1215,7 +1215,7 @@ OnlineMeetingExternalLinkl,			OnlineMeetingExternalLinkl,		PS_PUBLIC_STRINGS,			
 OnlineMeetingConfLink,				OnlineMeetingConfLink,			PS_PUBLIC_STRINGS,					"OnlineMeetingConfLink",		String  
 OnlineMeetingInternalLink,			OnlineMeetingInternalLink,		PS_PUBLIC_STRINGS,					"OnlineMeetingInternalLink",	String  
 UCCapabilities,						UCCapabilities,					PS_PUBLIC_STRINGS,					"UCCapabilities",				String  
-UCCapabilitiesLength,				UCCapabilitiesLength,			PS_PUBLIC_STRINGS,					"UCCapabilitiesLength",			Integer  
+//UCCapabilitiesLength,				UCCapabilitiesLength,			PS_PUBLIC_STRINGS,					"UCCapabilitiesLength",			Integer  
 UCInband,							UCInband,						PS_PUBLIC_STRINGS,					"UCInband",						String  
 UCInbandLength,						UCInbandLength,					PS_PUBLIC_STRINGS,					"UCInbandLength",				Integer  
 UCMeetingSettings,					UCMeetingSettings,				PS_PUBLIC_STRINGS,					"UCMeetingSettings",			String  

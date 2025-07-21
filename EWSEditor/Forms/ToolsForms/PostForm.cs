@@ -634,6 +634,7 @@ namespace EWSEditor.Common
 
             SetSettingsFromForm(ref oPostFormSetting);
 
+
             if (UserIoHelper.PickSaveFileToFolder(Application.UserAppDataPath, "Connection Settings " + TimeHelper.NowMashup() + ".xml", ref sFile, "XML files (*.xml)|*.xml"))
             {
 

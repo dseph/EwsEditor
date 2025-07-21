@@ -317,7 +317,7 @@ namespace EWSEditor.Forms
 
         private void ErrorDialog_Load(object sender, EventArgs e)
         {
-
+             
         }
 
         private void Header_Paint(object sender, PaintEventArgs e)

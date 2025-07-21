@@ -98,7 +98,7 @@ namespace EWSEditor.PropertyInformation
             this.PropertyDictionary.Add(PidLidDistributionListMembers, new KnownExtendedPropertyInfo("PidLidDistributionListMembers", "dispidDLMembers", "Contact Properties", "[MS-OXCDATA], [MS-OXOCNTC]"));
             this.PropertyDictionary.Add(PidLidDistributionListName, new KnownExtendedPropertyInfo("PidLidDistributionListName", "dispidDLName", "Contact Properties", "[MS-OXOCNTC]"));
             this.PropertyDictionary.Add(PidLidDistributionListOneOffMembers, new KnownExtendedPropertyInfo("PidLidDistributionListOneOffMembers", "dispidDLOneOffMembers", "Contact Properties", "[MS-OXOCNTC]"));
-            this.PropertyDictionary.Add(PidLidDistributionListStream, new KnownExtendedPropertyInfo("PidLidDistributionListStream", "dispidDLStream", "Contact Properties", "[MS-OXOCNTC]"));
+            //this.PropertyDictionary.Add(PidLidDistributionListStream, new KnownExtendedPropertyInfo("PidLidDistributionListStream", "dispidDLStream", "Contact Properties", "[MS-OXOCNTC]"));
             this.PropertyDictionary.Add(PidLidEmail1AddressType, new KnownExtendedPropertyInfo("PidLidEmail1AddressType", "dispidEmail1AddrType", "Contact Properties", "[MS-OXOCNTC]"));
             this.PropertyDictionary.Add(PidLidEmail1DisplayName, new KnownExtendedPropertyInfo("PidLidEmail1DisplayName", "dispidEmail1DisplayName", "Contact Properties", "[MS-OXOCNTC]"));
             this.PropertyDictionary.Add(PidLidEmail1EmailAddress, new KnownExtendedPropertyInfo("PidLidEmail1EmailAddress", "dispidEmail1EmailAddress", "Contact Properties", "[MS-OXOCNTC]"));
@@ -201,7 +201,7 @@ namespace EWSEditor.PropertyInformation
             this.PropertyDictionary.Add(PidLidOwnerCriticalChange, new KnownExtendedPropertyInfo("PidLidOwnerCriticalChange", "LID_OWNER_CRITICAL_CHANGE, urn:schemas:calendar:dtstamp,http://schemas.microsoft.com/mapi/owner_critical_change", "Meetings", "[MS-OXCICAL], [MS-OXOCAL], [MS-XWDCAL]"));
             this.PropertyDictionary.Add(PidLidOwnerName, new KnownExtendedPropertyInfo("PidLidOwnerName", "dispidOwnerName, http://schemas.microsoft.com/mapi/ownername", "Meetings", "[MS-XWDCAL]"));
             this.PropertyDictionary.Add(PidLidPercentComplete, new KnownExtendedPropertyInfo("PidLidPercentComplete", "dispidPercentComplete", "Tasks", "[MS-OXCFXICS], [MS-OXCICAL], [MS-OXCMAIL], [MS-OXOFLAG],[MS-OXOTASK]"));
-            this.PropertyDictionary.Add(PidLidPKMDocSummaryInformation17, new KnownExtendedPropertyInfo("PidLidPKMDocSummaryInformation17", "urn:schemas-microsoft-com:office:office#Version", "SharePoint", "[MS-XWDDOC]"));
+            //this.PropertyDictionary.Add(PidLidPKMDocSummaryInformation17, new KnownExtendedPropertyInfo("PidLidPKMDocSummaryInformation17", "urn:schemas-microsoft-com:office:office#Version", "SharePoint", "[MS-XWDDOC]"));
             this.PropertyDictionary.Add(PidLidPostalAddressId, new KnownExtendedPropertyInfo("PidLidPostalAddressId", "dispidPostalAddressId, urn:schemas:contacts:mailingaddressid", "Contact Properties", "[MS-OXOCNTC], [MS-XWDCNTC]"));
             this.PropertyDictionary.Add(PidLidPostRssChannel, new KnownExtendedPropertyInfo("PidLidPostRssChannel", "dispidPostRssChannel", "RSS", "[MS-OXORSS]"));
             this.PropertyDictionary.Add(PidLidPostRssChannelLink, new KnownExtendedPropertyInfo("PidLidPostRssChannelLink", "dispidPostRssChannelLink", "RSS", "[MS-OXORSS]"));
@@ -1245,7 +1245,7 @@ namespace EWSEditor.PropertyInformation
         public readonly ExtendedPropertyDefinition PidLidDistributionListMembers = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Address, 0x00008055, MapiPropertyType.BinaryArray);
         public readonly ExtendedPropertyDefinition PidLidDistributionListName = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Address, 0x00008053, MapiPropertyType.String);
         public readonly ExtendedPropertyDefinition PidLidDistributionListOneOffMembers = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Address, 0x00008054, MapiPropertyType.BinaryArray);
-        public readonly ExtendedPropertyDefinition PidLidDistributionListStream = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Address, 0x00008064, MapiPropertyType.Integer);
+        //public readonly ExtendedPropertyDefinition PidLidDistributionListStream = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Address, 0x00008064, MapiPropertyType.Integer);
         public readonly ExtendedPropertyDefinition PidLidEmail1AddressType = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Address, 0x00008082, MapiPropertyType.String);
         public readonly ExtendedPropertyDefinition PidLidEmail1DisplayName = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Address, 0x00008080, MapiPropertyType.String);
         public readonly ExtendedPropertyDefinition PidLidEmail1EmailAddress = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Address, 0x00008083, MapiPropertyType.String);
@@ -1348,7 +1348,7 @@ namespace EWSEditor.PropertyInformation
         public readonly ExtendedPropertyDefinition PidLidOwnerCriticalChange = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Meeting, 0x0000001A, MapiPropertyType.SystemTime);
         public readonly ExtendedPropertyDefinition PidLidOwnerName = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Appointment, 0x0000822E, MapiPropertyType.String);
         public readonly ExtendedPropertyDefinition PidLidPercentComplete = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Task, 0x00008102, MapiPropertyType.ApplicationTime);
-        public readonly ExtendedPropertyDefinition PidLidPKMDocSummaryInformation17 = new ExtendedPropertyDefinition(new Guid("{d5cdd502-2e9c-101b-9397-08002b2cf9ae}"), 0x11, MapiPropertyType.Integer);
+        //public readonly ExtendedPropertyDefinition PidLidPKMDocSummaryInformation17 = new ExtendedPropertyDefinition(new Guid("{d5cdd502-2e9c-101b-9397-08002b2cf9ae}"), 0x11, MapiPropertyType.Integer);
         public readonly ExtendedPropertyDefinition PidLidPostalAddressId = new ExtendedPropertyDefinition(DefaultExtendedPropertySet.Address, 0x00008022, MapiPropertyType.Integer);
         public readonly ExtendedPropertyDefinition PidLidPostRssChannel = new ExtendedPropertyDefinition(new Guid("{00062041-0000-0000-C000-000000000046}"), 0x00008904, MapiPropertyType.String);
         public readonly ExtendedPropertyDefinition PidLidPostRssChannelLink = new ExtendedPropertyDefinition(new Guid("{00062041-0000-0000-C000-000000000046}"), 0x00008900, MapiPropertyType.String);
