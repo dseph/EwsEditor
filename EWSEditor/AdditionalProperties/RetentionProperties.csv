@@ -79,14 +79,14 @@
 // 
 //  The list of properties below cover Retention/MRM properties.
 
-"DescPropertyName","ProbablePropertyName","PropertySetId","PropertyId","PropertyType"
-//MRM TAGS
-"PidTagPolicyTag","PidTagPolicyTag","","0x3019","Binary"
-"PidTagArchiveTag","PidTagArchiveTag","","0x3018","Binary"
-"PidTagRetentionPeriod","PidTagRetentionPeriod","","0x301a","Long"
-"PidTagStartDateEtc","PidTagStartDateEtc","","0x301b","Binary"
-"PidTagRetentionDate","PidTagRetentionDate","","0x301c","SystemTime"
-"PidTagRetentionFlags","PidTagRetentionFlags","","0x301d","Long"
-"PidTagArchivePeriod","PidTagArchivePeriod","","0x301e","Long"
-"PidTagArchiveDate","PidTagArchiveDate","","0x301f","SystemTime"
-"PidTagRoamingXmlStream","PidTagRoamingXmlStream","","0x7c08","Binary"
+"DescPropertyName",				"ProbablePropertyName",		"PropertySetId",		"PropertyId",					"PropertyType"
+//MRM TAGS	
+"PidTagPolicyTag",				"PidTagPolicyTag",			"",						"0x3019",						"Binary"
+"PidTagArchiveTag",				"PidTagArchiveTag",			"",						"0x3018",						"Binary"
+"PidTagRetentionPeriod",		"PidTagRetentionPeriod",	"",						"0x301a",						"Long"
+"PidTagStartDateEtc",			"PidTagStartDateEtc",		"",						"0x301b",						"Binary"
+"PidTagRetentionDate",			"PidTagRetentionDate",		"",						"0x301c",						"SystemTime"
+"PidTagRetentionFlags",			"PidTagRetentionFlags",		"",						"0x301d",						"Long"
+"PidTagArchivePeriod",			"PidTagArchivePeriod",		"",						"0x301e",						"Long"
+"PidTagArchiveDate",			"PidTagArchiveDate",		"",						"0x301f",						"SystemTime"
+"PidTagRoamingXmlStream",		"PidTagRoamingXmlStream",	"",						"0x7c08",						"Binary"

@@ -1622,6 +1622,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AdditionalProperties\X-Headers.csv" />
     <Content Include="deps\Microsoft.Exchange.WebServices.dll" />
     <Content Include="deps\Microsoft.Exchange.WebServices.pdb" />
     <Content Include="deps\Microsoft.Exchange.WebServices.xml" />
