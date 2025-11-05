@@ -96,7 +96,7 @@ X-MS-Exchange-Organization-AVStamp-Mailbox,		X-MS-Exchange-Organization-AVStamp-
 X-MS-Exchange-Organization-AutoForwarded,		X-MS-Exchange-Organization-AutoForwarded,			PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-AutoForwarded,			String
 X-MS-Exchange-Organization-PCL,					X-MS-Exchange-Organization-PCL,						PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-PCL,					String
 X-MS-Exchange-Organization-SenderIdResult,		X-MS-Exchange-Organization-SenderIdResult,			PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-SenderIdResult,		String
-X-MS-Exchange-Organization-PRD,					X-MS-Exchange-Organization-PRD,	   					PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-PRD,	X-MS-Exchange-Organization-PRD,		String
+X-MS-Exchange-Organization-PRD,					X-MS-Exchange-Organization-PRD,	   					PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-PRD,					String
 X-MS-Exchange-Organization-SCL,					X-MS-Exchange-Organization-SCL,	   					PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-SCL,					String
 X-MS-Has-Attach,       		 			        X-MS-Has-Attach,      	  				            PS_INTERNET_HEADERS,   	X-MS-Has-Attach,									String
 x-ms-exchange-crosstenant-fromentityheader,     x-ms-exchange-crosstenant-fromentityheader,    		PS_INTERNET_HEADERS,   	x-exchange-crosstenant-fromentityheader,			String

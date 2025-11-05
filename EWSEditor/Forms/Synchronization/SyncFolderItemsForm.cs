@@ -1,4 +1,5 @@
-﻿using System;
+﻿// SyncFolderItemsForm.cs
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -119,7 +120,7 @@ namespace EWSEditor
                     totalItems = totalItems + changes.Count;
                 }
 
-                this.lblLastSyncTime.Text = string.Format(Application.CurrentCulture, "Last SyncFolderItems: {0}", DateTime.Now.ToString());
+                this.lblLastSync.Text = string.Format(Application.CurrentCulture, "Last SyncFolderItems time: {0} Total synced: {1}", DateTime.Now.ToString(), totalItems.ToString());
             }
             catch (ServiceResponseException oExECF)
             {
@@ -191,7 +192,7 @@ namespace EWSEditor
 
             // Reset form elements
             this.lstChanges.Items.Clear();
-            this.lblLastSyncTime.Text = string.Empty;
+            this.lblLastSync.Text = string.Empty;
         }
 
         private void lstChanges_SelectedIndexChanged(object sender, EventArgs e)
