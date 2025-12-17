@@ -80,54 +80,74 @@
 // 
 //  The list X-Headers I've collected.
 
-"DescPropertyName",								"ProbablePropertyName",								"PropertySetId",		"PropertyId",								"PropertyType"
-
-X-MS-Exchange-Organization-AuthAs,        		X-MS-Exchange-Organization-AuthAs,			        PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-AuthAs,				String
-X-MS-Exchange-Organization-AuthMechanism,       X-MS-Exchange-Organization-AuthMechanism,           PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-AuthMechanism,		String   
-X-MS-Exchange-Organization-AuthSource,          X-MS-Exchange-Organization-AuthSource,     		    PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-AuthSource,			String   
-X-MS-Exchange-Organization-Network-Message-Id,  X-MS-Exchange-Organization-Network-Message-Id,    	PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-Network-Message-Id,	String    
-X-MS-Exchange-Organization-RecordReviewCfmType, X-MS-Exchange-Organization-RecordReviewCfmType,   	PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-RecordReviewCfmType,	String
-X-MS-Exchange-Organization-SCL,        			X-MS-Exchange-Organization-SCL,        			    PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-SCL,					String
-x-ms-exchange-transport-crosstenantheadersstamped,  x-ms-exchange-transport-crosstenantheadersstamped,	PS_INTERNET_HEADERS, x-exchange-transport-crosstenantheadersstamped,	String
-x-ms-exchange-transport-endtoendlatency,        x-ms-exchange-transport-endtoendlatency,     		PS_INTERNET_HEADERS,   	x-exchange-transport-endtoendlatency,				String
-x-ms-exchange-crosstenant-originalarrivaltime,  x-ms-exchange-crosstenant-originalarrivaltime,  	PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-originalarrivaltime,	String      
+"DescPropertyName",										"ProbablePropertyName",										"PropertySetId",		"PropertyId",										"PropertyType"
+	
+x-ms-exchange-crosstenant-originalarrivaltime,  		x-ms-exchange-crosstenant-originalarrivaltime,  			PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-originalarrivaltime,		String      
+X-MS-Exchange-CrossTenant-FromEntityHeader,     		X-MS-Exchange-CrossTenant-FromEntityHeader,    				PS_INTERNET_HEADERS,   	x-exchange-crosstenant-fromentityheader,				String
+x-ms-exchange-crosstenant-id,        					x-ms-exchange-crosstenant-id,        			  			PS_INTERNET_HEADERS,   	x-exchange-crosstenant-id,								String
+x-ms-exchange-crosstenant-network-message-id,   		x-ms-exchange-crosstenant-network-message-id, 				PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-network-message-id,			String     
+x-ms-exchange-crosstenant-mailboxtype,   				x-ms-exchange-crosstenant-mailboxtype, 			  			PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-mailboxtype,					String    
+x-ms-exchange-crosstenant-userprincipalname,    		x-ms-exchange-crosstenant-userprincipalname,   				PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-userprincipalname,			String 
+X-MS-Exchange-CrossTenant-AuthAs,    					X-MS-Exchange-CrossTenant-AuthAs,    			 			PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-authas,						String
+X-MS-Exchange-CrossTenant-AuthSource,    				X-MS-Exchange-CrossTenant-AuthSource,        				PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-authsource,					String
+X-MS-Exchange-Organization-AuthAs,        				X-MS-Exchange-Organization-AuthAs,			      			PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-AuthAs,						String
+X-MS-Exchange-Organization-AuthMechanism,       		X-MS-Exchange-Organization-AuthMechanism,         			PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-AuthMechanism,				String   
+X-MS-Exchange-Organization-AuthSource,          		X-MS-Exchange-Organization-AuthSource,     		  			PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-AuthSource,					String   
+X-MS-Exchange-Organization-Network-Message-Id,  		X-MS-Exchange-Organization-Network-Message-Id,    			PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-Network-Message-Id,			String    
+X-MS-Exchange-Organization-RecordReviewCfmType, 		X-MS-Exchange-Organization-RecordReviewCfmType,   			PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-RecordReviewCfmType,			String
+X-MS-Exchange-Organization-SCL,        					X-MS-Exchange-Organization-SCL,        			   			PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-SCL,							String
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp, X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp, PS_INTERNET_HEADERS,   	X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp, String
-X-MS-Exchange-Organization-AVStamp-Mailbox,		X-MS-Exchange-Organization-AVStamp-Mailbox,			PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-AVStamp-Mailbox,		String
-X-MS-Exchange-Organization-AutoForwarded,		X-MS-Exchange-Organization-AutoForwarded,			PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-AutoForwarded,			String
-X-MS-Exchange-Organization-PCL,					X-MS-Exchange-Organization-PCL,						PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-PCL,					String
-X-MS-Exchange-Organization-SenderIdResult,		X-MS-Exchange-Organization-SenderIdResult,			PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-SenderIdResult,		String
-X-MS-Exchange-Organization-PRD,					X-MS-Exchange-Organization-PRD,	   					PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-PRD,					String
-X-MS-Exchange-Organization-SCL,					X-MS-Exchange-Organization-SCL,	   					PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-SCL,					String
-X-MS-Has-Attach,       		 			        X-MS-Has-Attach,      	  				            PS_INTERNET_HEADERS,   	X-MS-Has-Attach,									String
-x-ms-exchange-crosstenant-fromentityheader,     x-ms-exchange-crosstenant-fromentityheader,    		PS_INTERNET_HEADERS,   	x-exchange-crosstenant-fromentityheader,			String
-x-ms-exchange-crosstenant-id,        			x-ms-exchange-crosstenant-id,        			    PS_INTERNET_HEADERS,   	x-exchange-crosstenant-id,						String
-x-ms-exchange-crosstenant-network-message-id,   x-ms-exchange-crosstenant-network-message-id, 		PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-network-message-id,		String     
-x-ms-exchange-crosstenant-mailboxtype,   		x-ms-exchange-crosstenant-mailboxtype, 			    PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-mailboxtype,			String    
-x-ms-exchange-crosstenant-userprincipalname,    x-ms-exchange-crosstenant-userprincipalname,   		PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-userprincipalname,		String 
-x-ms-exchange-crosstenant-authas,    			x-ms-exchange-crosstenant-authas,    			    PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-authas,					String
-x-ms-exchange-crosstenant-authsource,    		x-ms-exchange-crosstenant-authsource,        		PS_INTERNET_HEADERS,   	x-ms-exchange-crosstenant-authsource,				String
-x-ms-exchange-processed-by-bccfoldering,        x-ms-exchange-processed-by-bccfoldering,    		PS_INTERNET_HEADERS,   	x-ms-ms-exchange-processed-by-bccfoldering,			String
-x-ms-office365-filtering-correlation-id,        x-ms-office365-filtering-correlation-id,   		    PS_INTERNET_HEADERS,   	x-ms-office365-filtering-correlation-id,				String 
-x-ms-traffictypediagnostic,        			    x-ms-traffictypediagnostic,        			        PS_INTERNET_HEADERS,   	x-ms-traffictypediagnostic,						String
-x-ms-publictraffictype,        				    x-ms-publictraffictype,        				        PS_INTERNET_HEADERS,   	x-ms-publictraffictype,						String
-X-MS-TNEF-Correlator,       		 		    X-MS-TNEF-Correlator,        				        PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-RecordReviewCfmType,   String
-X-Microsoft-ClassDesc,							X-Microsoft-ClassDesc,								PS_INTERNET_HEADERS,	X-Microsoft-ClassDesc,							String
-X-Microsoft-ClassID,							X-Microsoft-ClassID,								PS_INTERNET_HEADERS,	X-Microsoft-ClassID,							String
-X-Microsoft-ClassKeep,							X-Microsoft-ClassKeep,								PS_INTERNET_HEADERS,	X-Microsoft-ClassKeep,							String
-X-Microsoft-Classification,						X-Microsoft-Classification,							PS_INTERNET_HEADERS,	X-Microsoft-Classification,						String
-X-Microsoft-Classified,							X-Microsoft-Classified,	   							PS_INTERNET_HEADERS,   	X-Microsoft-Classified,							String
-X-Microsoft-ClassKeep,							X-Microsoft-ClassKeep,	   							PS_INTERNET_HEADERS,   	X-Microsoft-ClassKeep,							String
-x-microsoft-antispam,    				        x-microsoft-antispam,    				            PS_INTERNET_HEADERS,   	X-microsoft-antispam,								String
-X-Microsoft-Antispam-Mailbox-Delivery,    		X-Microsoft-Antispam-Mailbox-Delivery,        		PS_INTERNET_HEADERS,   	X-Microsoft-Antispam-Mailbox-Delivery,			String
-X-Microsoft-Antispam-Message-Info,    			X-Microsoft-Antispam-Message-Info,        		    PS_INTERNET_HEADERS,   	X-Microsoft-Antispam-Message-Info,				String
-X-Mailer,										X-Mailer,											PS_INTERNET_HEADERS,	X-Mailer,										String
-X-Message-Flag,									X-Message-Flag,										PS_INTERNET_HEADERS,	X-Message-Flag,									String
-X-MimeOLE,										X-MimeOLE,											PS_INTERNET_HEADERS,	X-MimeOLE,										String
-x-forefront-antispam-report,        			x-forefront-antispam-report,     			        PS_INTERNET_HEADERS,   	x-forefront-antispam-report,						String
-X-Message-Flag,									X-Message-Flag,	   									PS_INTERNET_HEADERS,   	X-Message-Flag,	  								String
-X-CallingTelephoneNumber,						X-CallingTelephoneNumber,	   						PS_INTERNET_HEADERS,	X-CallingTelephoneNumber,						String
-X-Payload-Provider-GUID,						X-Payload-Provider-GUID,   							PS_INTERNET_HEADERS,	X-Payload-Provider-GUID,						String
+X-MS-Exchange-Organization-AVStamp-Mailbox,				X-MS-Exchange-Organization-AVStamp-Mailbox,					PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-AVStamp-Mailbox,				String
+X-MS-Exchange-Organization-AutoForwarded,				X-MS-Exchange-Organization-AutoForwarded,					PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-AutoForwarded,				String
+X-MS-Exchange-Organization-PCL,							X-MS-Exchange-Organization-PCL,								PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-PCL,							String
+X-MS-Exchange-Organization-SenderIdResult,				X-MS-Exchange-Organization-SenderIdResult,					PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-SenderIdResult,				String
+X-MS-Exchange-Organization-PRD,							X-MS-Exchange-Organization-PRD,	   							PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-PRD,							String
+X-MS-Exchange-Organization-SCL,							X-MS-Exchange-Organization-SCL,	   							PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-SCL,							String
+X-MS-Exchange-Organization-ExpirationStartTimeReason,	X-MS-Exchange-Organization-ExpirationStartTimeReason,		PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-ExpirationStartTimeReason,	String
+X-MS-Exchange-Organization-ExpirationInterval,			X-MS-Exchange-Organization-ExpirationInterval,				PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-ExpirationInterval,			String
+X-MS-Exchange-Organization-ExpirationIntervalReason,	X-MS-Exchange-Organization-ExpirationIntervalReason,		PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-ExpirationIntervalReason,	String
+X-MS-Exchange-Organization-Network-Message-Id,			X-MS-Exchange-Organization-Network-Message-Id,				PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-Network-Message-Id,			String
+X-MS-Exchange-Organization-MessageDirectionality,		X-MS-Exchange-Organization-MessageDirectionality,			PS_INTERNET_HEADERS,	X-MS-Exchange-Organization-MessageDirectionality,		String
+X-MS-Exchange-Processed-By-BccFoldering,				X-MS-Exchange-Processed-By-BccFoldering,    				PS_INTERNET_HEADERS,   	x-ms-ms-exchange-processed-by-bccfoldering,				String
+X-MS-Exchange-Transport-CrossTenantHeadersStamped,		X-MS-Exchange-Transport-CrossTenantHeadersStamped,			PS_INTERNET_HEADERS,	x-exchange-transport-crosstenantheadersstamped,			String
+x-ms-exchange-transport-endtoendlatency,				x-ms-exchange-transport-endtoendlatency,     				PS_INTERNET_HEADERS,   	x-exchange-transport-endtoendlatency,					String
+X-MS-Has-Attach,       		 			        		X-MS-Has-Attach,      	  									PS_INTERNET_HEADERS,   	X-MS-Has-Attach,										String
+x-ms-office365-filtering-correlation-id,        		x-ms-office365-filtering-correlation-id,   				    PS_INTERNET_HEADERS,   	x-ms-office365-filtering-correlation-id,				String 
+x-ms-traffictypediagnostic,        			    		x-ms-traffictypediagnostic,        							PS_INTERNET_HEADERS,   	x-ms-traffictypediagnostic,								String
+x-ms-publictraffictype,        				    		x-ms-publictraffictype,        								PS_INTERNET_HEADERS,   	x-ms-publictraffictype,									String
+X-MS-TNEF-Correlator,       		 					X-MS-TNEF-Correlator,        								PS_INTERNET_HEADERS,   	X-MS-Exchange-Organization-RecordReviewCfmType,			String
+X-Microsoft-ClassDesc,									X-Microsoft-ClassDesc,										PS_INTERNET_HEADERS,	X-Microsoft-ClassDesc,									String
+X-Microsoft-ClassID,									X-Microsoft-ClassID,										PS_INTERNET_HEADERS,	X-Microsoft-ClassID,									String
+X-Microsoft-ClassKeep,									X-Microsoft-ClassKeep,										PS_INTERNET_HEADERS,	X-Microsoft-ClassKeep,									String
+X-Microsoft-Classification,								X-Microsoft-Classification,									PS_INTERNET_HEADERS,	X-Microsoft-Classification,								String
+X-Microsoft-Classified,									X-Microsoft-Classified,	   									PS_INTERNET_HEADERS,   	X-Microsoft-Classified,									String
+X-Microsoft-ClassKeep,									X-Microsoft-ClassKeep,	   									PS_INTERNET_HEADERS,   	X-Microsoft-ClassKeep,									String
+x-microsoft-antispam,    								x-microsoft-antispam,    									PS_INTERNET_HEADERS,   	X-microsoft-antispam,									String
+X-Microsoft-Antispam-Mailbox-Delivery,    				X-Microsoft-Antispam-Mailbox-Delivery,        				PS_INTERNET_HEADERS,   	X-Microsoft-Antispam-Mailbox-Delivery,					String
+X-Microsoft-Antispam-Message-Info,    					X-Microsoft-Antispam-Message-Info,        					PS_INTERNET_HEADERS,   	X-Microsoft-Antispam-Message-Info,						String
+X-Mailer,												X-Mailer,													PS_INTERNET_HEADERS,	X-Mailer,												String
+X-Message-Flag,											X-Message-Flag,												PS_INTERNET_HEADERS,	X-Message-Flag,											String
+X-MimeOLE,												X-MimeOLE,													PS_INTERNET_HEADERS,	X-MimeOLE,												String
+x-forefront-antispam-report,        					x-forefront-antispam-report,     							PS_INTERNET_HEADERS,   	x-forefront-antispam-report,							String
+X-Message-Flag,											X-Message-Flag,	   											PS_INTERNET_HEADERS,   	X-Message-Flag,	  										String
+X-CallingTelephoneNumber,								X-CallingTelephoneNumber,	   								PS_INTERNET_HEADERS,	X-CallingTelephoneNumber,								String
+X-Payload-Provider-GUID,								X-Payload-Provider-GUID,   									PS_INTERNET_HEADERS,	X-Payload-Provider-GUID,								String
+
+DKIM-Signature,											DKIM-Signature,												PS_INTERNET_HEADERS,	DKIM-Signature,											String
+X-Google-DKIM-Signature,								X-Google-DKIM-Signature,									PS_INTERNET_HEADERS,	X-Google-DKIM-Signature,								String
+DKIM-Signature,											DKIM-Signature,												PS_INTERNET_HEADERS,	DKIM-Signature,											String
+X-Gm-Features,											X-Gm-Features,												PS_INTERNET_HEADERS,	X-Gm-Features,											String
+X-Gm-Gg,												X-Gm-Gg,													PS_INTERNET_HEADERS,	X-Gm-Gg,												String
+X-Gm-Message-State,										X-Gm-Message-State,											PS_INTERNET_HEADERS,	X-Gm-Message-State,										String
+X-Google-Smtp-Source,									X-Google-Smtp-Source,										PS_INTERNET_HEADERS,	X-Google-Smtp-Source,									String
+X-Received,												X-Received,													PS_INTERNET_HEADERS,	X-Received,												String
+X-EOPAttributedMessage,									X-EOPAttributedMessage,										PS_INTERNET_HEADERS,	X-EOPAttributedMessage,									String
+X-EOPTenantAttributedMessage,							X-EOPTenantAttributedMessage,								PS_INTERNET_HEADERS,	X-EOPTenantAttributedMessage,							String
+
+x-test-one,												x-test-one,													PS_INTERNET_HEADERS,	x-test-one,												String
+x-test-two,												x-test-two,													PS_INTERNET_HEADERS,	x-test-two,												String
+x-test-three,											x-test-three,												PS_INTERNET_HEADERS,	x-test-three,											String
 
 
-
+ 
 

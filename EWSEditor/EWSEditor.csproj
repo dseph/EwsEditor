@@ -1792,6 +1792,7 @@
     <Content Include="EwsPostExamples\UpdateInboxRules.xml" />
     <Content Include="EwsPostExamples\UpdateItem - Contact.xml" />
     <Content Include="EwsPostExamples\UpdateItem - Item.xml" />
+    <Content Include="EwsPostExamples\UpdateItem - message - add x-header.xml" />
     <Content Include="EwsPostExamples\UpdateUserConfiguration.xml" />
     <Content Include="EwsPostExamples\UploadItems.xml">
       <SubType>Designer</SubType>

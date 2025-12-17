@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+               xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+               xmlns:t="http://schemas.microsoft.com/exchange/services/2006/types">
+  <soap:Header>
+    <t:RequestServerVersion Version="Exchange2016" />
+    <t:ExchangeImpersonation>
+      <t:ConnectingSID>
+        <t:SmtpAddress>auserssmtp@contoso.com</t:SmtpAddress>
+      </t:ConnectingSID>
+    </t:ExchangeImpersonation>
+  </soap:Header>
+  <soap:Body>
+    <UpdateItem MessageDisposition="SaveOnly" ConflictResolution="AutoResolve"
+					xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <ItemChanges>
+        <t:ItemChange>
+          <t:ItemId
+					   Id="AAMkAGEyMTcxMWI4LXEyYzAtNGI1Mi05ZjYyLTQ0YzE1ZjI3NWE3ZgBGABBBAADQo/ItS2BBRJjcMPfC3brBBwC1z1oWxpmiTIh5q/oL/wAiAAAAAAEPAAC1z1oWxpmiTIh5q/oL/wAiAAmAA1Z3AAA="
+					   ChangeKey="CQAAABYAAAC1z1oWxtmiTIh7q/oL/wAiAAl/U60Z" />
+
+          <t:Updates>
+
+            <t:SetItemField>
+              <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="x-test-one" PropertyType="String" />
+              <t:Message>
+                <t:ExtendedProperty>
+                  <t:ExtendedFieldURI DistinguishedPropertySetId="InternetHeaders" PropertyName="x-test-one" PropertyType="String" />
+                  <t:Value>Provision X-Experimental Internet message header</t:Value>
+                </t:ExtendedProperty>
+              </t:Message>
+            </t:SetItemField>
+          </t:Updates>
+
+        </t:ItemChange>
+      </ItemChanges>
+    </UpdateItem>
+  </soap:Body>
+</soap:Envelope>
